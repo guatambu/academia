@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Avenir.ttc">
+            <string>Avenir-Book</string>
+            <string>Avenir-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ownerHomeDashboardCell" rowHeight="80" id="ILG-FY-gdT" userLabel="OnBoarding Dashboard Table View Cell" customClass="OwnerDashboardTableViewCell" customModule="Academia" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ILG-FY-gdT" id="U7a-HS-hSR">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="DCp-DE-hTK">
+                        <rect key="frame" x="8" y="0.0" width="359" height="79.5"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" image="checked_tick_box_50.png" translatesAutoresizingMaskIntoConstraints="NO" id="Hqf-9w-lXf">
+                                <rect key="frame" x="0.0" y="28" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="II0-OW-Isq"/>
+                                    <constraint firstAttribute="height" constant="24" id="pEF-uj-WlB"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="748" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vDs-j9-sDK">
+                                <rect key="frame" x="40" y="2" width="279" height="76"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="OnBoarding Task Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ebx-k2-3Z8">
+                                        <rect key="frame" x="0.0" y="0.0" width="279" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="Qez-j6-Cz3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="This is a description of this one specific OnBoarding Task." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqh-rI-nF4">
+                                        <rect key="frame" x="0.0" y="32" width="279" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="dbp-c8-gnS"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" image="right_red_arrow_50.png" translatesAutoresizingMaskIntoConstraints="NO" id="XWU-1a-dWd">
+                                <rect key="frame" x="335" y="28" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="Vo4-m1-QVb"/>
+                                    <constraint firstAttribute="width" constant="24" id="fSy-kF-9yX"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="DCp-DE-hTK" firstAttribute="top" secondItem="U7a-HS-hSR" secondAttribute="top" id="5fj-0Q-PkP"/>
+                    <constraint firstAttribute="bottom" secondItem="DCp-DE-hTK" secondAttribute="bottom" id="KSh-hf-IUt"/>
+                    <constraint firstItem="DCp-DE-hTK" firstAttribute="leading" secondItem="U7a-HS-hSR" secondAttribute="leading" constant="8" id="Y6Q-io-G8l"/>
+                    <constraint firstAttribute="trailing" secondItem="DCp-DE-hTK" secondAttribute="trailing" constant="8" id="lZ1-ed-Bm0"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="checkBoxOutlet" destination="Hqf-9w-lXf" id="6Wn-am-bZm"/>
+                <outlet property="onBoardingTaskDescriptionOutlet" destination="eqh-rI-nF4" id="ItY-X5-hLG"/>
+                <outlet property="onBoardingTaskTitleOutlet" destination="Ebx-k2-3Z8" id="zyQ-9y-kQd"/>
+                <outlet property="rightRedArrowOutlet" destination="XWU-1a-dWd" id="DKU-oN-G4j"/>
+            </connections>
+            <point key="canvasLocation" x="61.5" y="161"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="checked_tick_box_50.png" width="50" height="50"/>
+        <image name="right_red_arrow_50.png" width="50" height="50"/>
+    </resources>
+</document>

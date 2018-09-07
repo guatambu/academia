@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="profilePicCell" id="3q4-9u-6tm" customClass="ProfilePicTableViewCell" customModule="Academia" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3q4-9u-6tm" id="M9Z-HU-Dpy">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="academia_sample_profile_pic.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="BjF-gP-ghs">
+                        <rect key="frame" x="0.0" y="-5" width="375" height="210"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="BjF-gP-ghs" secondAttribute="height" multiplier="25:14" id="qF6-Xo-S9H"/>
+                        </constraints>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NGX-ao-ima">
+                        <rect key="frame" x="32" y="19" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="wQb-qQ-x6F"/>
+                            <constraint firstAttribute="width" constant="50" id="yvP-Y9-4D3"/>
+                        </constraints>
+                        <state key="normal" image="camera_filled_white_50.png"/>
+                        <connections>
+                            <action selector="cameraButtonTapped:" destination="3q4-9u-6tm" eventType="touchUpInside" id="Mwk-1d-BUw"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="BjF-gP-ghs" firstAttribute="top" secondItem="M9Z-HU-Dpy" secondAttribute="topMargin" constant="-16" id="BQS-Ku-zbv"/>
+                    <constraint firstItem="NGX-ao-ima" firstAttribute="leading" secondItem="M9Z-HU-Dpy" secondAttribute="leadingMargin" constant="16" id="Cq4-kg-BKs"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="BjF-gP-ghs" secondAttribute="bottom" constant="-16" id="I1J-4M-9cY"/>
+                    <constraint firstItem="NGX-ao-ima" firstAttribute="top" secondItem="M9Z-HU-Dpy" secondAttribute="topMargin" constant="8" id="Xv7-E0-gy4"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="BjF-gP-ghs" secondAttribute="trailing" constant="-16" id="lO3-VL-sS4"/>
+                    <constraint firstItem="BjF-gP-ghs" firstAttribute="leading" secondItem="M9Z-HU-Dpy" secondAttribute="leadingMargin" constant="-16" id="lgu-1J-67e"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="cameraButtonOutlet" destination="NGX-ao-ima" id="wW1-QV-Ub9"/>
+                <outlet property="profilePicImageView" destination="BjF-gP-ghs" id="1em-0b-fFs"/>
+            </connections>
+            <point key="canvasLocation" x="46" y="134"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="academia_sample_profile_pic.jpeg" width="210" height="112"/>
+        <image name="camera_filled_white_50.png" width="50" height="50"/>
+    </resources>
+</document>

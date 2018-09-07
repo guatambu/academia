@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Belt Systems Table View Controller-->
+        <scene sceneID="0TY-Wr-S1X">
+            <objects>
+                <tableViewController storyboardIdentifier="UITableViewController-TZb-1N-cMc" id="TZb-1N-cMc" userLabel="Belt Systems Table View Controller" customClass="BeltSystemsTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="nYp-g2-sbW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="AuY-ju-ur2" customClass="GeneralMenuTableViewCell" customModule="Academia" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AuY-ju-ur2" id="kIw-gD-kN9">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="aIr-FY-DQe" kind="show" identifier="to(type)BeltList" id="SfS-He-kDh"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="TZb-1N-cMc" id="XP8-bK-Rcd"/>
+                            <outlet property="delegate" destination="TZb-1N-cMc" id="0eC-zd-DW3"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Belt Systems" id="koZ-Gi-pIW">
+                        <barButtonItem key="backBarButtonItem" title=" " id="gaZ-mY-WA2"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="pjP-s7-yLH"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eWC-M3-4PA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="186" y="4702"/>
+        </scene>
+        <!--Belt List Table View Controller-->
+        <scene sceneID="hGT-OE-Vuy">
+            <objects>
+                <tableViewController storyboardIdentifier="toBeltsList" id="aIr-FY-DQe" userLabel="Belt List Table View Controller" customClass="BeltsListTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="alr-hd-ESy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="jaz-Ub-etz" customClass="GeneralMenuTableViewCell" customModule="Academia" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jaz-Ub-etz" id="ppE-Nh-eLu">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="7Nd-1Y-kAF" kind="show" identifier="toBeltDetail" id="LYv-V5-dva"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="aIr-FY-DQe" id="DQl-8B-G87"/>
+                            <outlet property="delegate" destination="aIr-FY-DQe" id="kpd-RC-4Ag"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="(type) Belt System" id="eCY-ci-QQB">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Xfc-86-C1V"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="16h-Mm-IEb">
+                            <connections>
+                                <segue destination="7Nd-1Y-kAF" kind="show" identifier="addNewBelt" id="9f1-Vz-Iiz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i7s-ba-2PF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-740" y="4701"/>
+        </scene>
+        <!--Belt Detail Table View Controller-->
+        <scene sceneID="7hm-qu-i8h">
+            <objects>
+                <tableViewController id="7Nd-1Y-kAF" userLabel="Belt Detail Table View Controller" customClass="BeltDetailTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="xF7-Cd-wa8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="cVF-DX-riG" customClass="GeneralMenuTableViewCell" customModule="Academia" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cVF-DX-riG" id="Vv1-GI-hcg">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="7Nd-1Y-kAF" id="0dq-aL-je6"/>
+                            <outlet property="delegate" destination="7Nd-1Y-kAF" id="wuI-Ms-WW1"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Belt Detail" id="Tsx-02-UGb">
+                        <barButtonItem key="backBarButtonItem" title=" " id="9KY-cc-6Hn"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="ys8-Tr-oW8"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EeS-yR-LSS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1682" y="4701"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="9f1-Vz-Iiz"/>
+    </inferredMetricsTieBreakers>
+</document>

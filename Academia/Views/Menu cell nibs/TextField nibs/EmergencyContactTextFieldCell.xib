@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="emergencyContactTextFieldCell" rowHeight="80" id="9t2-iy-MGD" userLabel="EmergencyContactTextFieldCell" customClass="EmergencyContactTextFieldTableViewCell" customModule="Academia" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9t2-iy-MGD" id="VEe-2h-2lc">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="emergency contact" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8ax-uU-GVe">
+                        <rect key="frame" x="16" y="24" width="343" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="32" id="jpF-kH-LHx"/>
+                        </constraints>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="8ax-uU-GVe" firstAttribute="leading" secondItem="VEe-2h-2lc" secondAttribute="leadingMargin" id="F8u-7R-ms8"/>
+                    <constraint firstItem="8ax-uU-GVe" firstAttribute="centerY" secondItem="VEe-2h-2lc" secondAttribute="centerY" id="JW4-t3-5u5"/>
+                    <constraint firstAttribute="bottom" secondItem="8ax-uU-GVe" secondAttribute="bottom" constant="23.5" id="Mwq-nL-KKz"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="8ax-uU-GVe" secondAttribute="trailing" id="Uoh-KM-lmD"/>
+                    <constraint firstItem="8ax-uU-GVe" firstAttribute="top" secondItem="VEe-2h-2lc" secondAttribute="top" constant="24" id="X6W-7N-Tfx"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="emergencyContactTextFieldOutlet" destination="8ax-uU-GVe" id="A2s-hy-1qF"/>
+            </connections>
+            <point key="canvasLocation" x="86.5" y="161"/>
+        </tableViewCell>
+    </objects>
+</document>
