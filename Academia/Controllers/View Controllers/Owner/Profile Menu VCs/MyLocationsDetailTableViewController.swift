@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyLocationsDetailTableViewController: UITableViewController {
+class MyLocationsDetailTableViewController: UITableViewController, SegueFromSaveProfileNibCellDelegate {
 
     // MARK: - Properties
     
@@ -25,9 +25,15 @@ class MyLocationsDetailTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
     }
+    
+    
+    // MARK: - Save Profile Cell Delegate Method
+    
+    func callSegueFromNibCell(nibCellData dataobject: AnyObject) {
+        self.performSegue(withIdentifier: "toOwnerProfileFromAddLocation", sender: dataobject)
+    }
+    
     
     
     // MARK: - Table view data source
@@ -39,70 +45,122 @@ class MyLocationsDetailTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let lastCell = cells.count - 1
+        let myCell = cells[indexPath.row]
         
-        if indexPath.row == 0 {
+        let avenirFont = [ NSAttributedStringKey.foregroundColor: UIColor.gray,
+                           NSAttributedStringKey.font: UIFont(name: "Avenir-Medium", size: 24)! ]
+        
+        // register required cell nibs
+        
+        let nibProfilePic = UINib(nibName: "ProfilePicCell", bundle: nil)
+        self.tableView.register(nibProfilePic, forCellReuseIdentifier: "profilePicCell")
+        
+        let nibLocationName = UINib(nibName: "LocationNameTextFieldCell", bundle: nil)
+        self.tableView.register(nibLocationName, forCellReuseIdentifier: "locationNameTextFieldCell")
+        
+        let nibStreetAddress = UINib(nibName: "StreetAddressTextFieldCell", bundle: nil)
+        self.tableView.register(nibStreetAddress, forCellReuseIdentifier: "streetAddressTextFieldCell")
+        
+        let nibCity = UINib(nibName: "CityTextFieldCell", bundle: nil)
+        self.tableView.register(nibCity, forCellReuseIdentifier: "cityTextFieldCell")
+        
+        let nibState = UINib(nibName: "StateTextFieldCell", bundle: nil)
+        self.tableView.register(nibState, forCellReuseIdentifier: "stateTextFieldCell")
+        
+        let nibZipCode = UINib(nibName: "ZipCodeTextFieldCell", bundle: nil)
+        self.tableView.register(nibZipCode, forCellReuseIdentifier: "zipCodeTextFieldCell")
+        
+        let nibPhone = UINib(nibName: "PhoneTextFieldCell", bundle: nil)
+        self.tableView.register(nibPhone, forCellReuseIdentifier: "phoneTextFieldCell")
+        
+        let nibWebsite = UINib(nibName: "WebsiteTextFieldCell", bundle: nil)
+        self.tableView.register(nibWebsite, forCellReuseIdentifier: "websiteTextFieldCell")
+        
+        let nibEmail = UINib(nibName: "EmailTextFieldCell", bundle: nil)
+        self.tableView.register(nibEmail, forCellReuseIdentifier: "emailTextFieldCell")
+        
+        let nibSocialNetworks = UINib(nibName: "SocialNetworksTextFieldCell", bundle: nil)
+        self.tableView.register(nibSocialNetworks, forCellReuseIdentifier: "socialNetworksTextFieldCell")
+        
+        let nibSaveProfile = UINib(nibName: "SaveProfileCell", bundle: nil)
+        self.tableView.register(nibSaveProfile, forCellReuseIdentifier: "saveProfileCell")
+        
+                
+        // switch on myCell to setup the tableView
+        
+        switch myCell {
             
-            let nib = UINib(nibName: "ProfilePicCell", bundle: nil)
-            self.tableView.register(nib, forCellReuseIdentifier: "profilePicCell")
-            
+        case .cityCell:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "cityTextFieldCell", for: indexPath) as? CityTextFieldTableViewCell {
+                
+                cell.cityTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
+                
+                return cell
+            }
+        case .emailCell:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "emailTextFieldCell", for: indexPath) as? EmailTextFieldTableViewCell {
+                
+                cell.emailTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
+                
+                return cell
+            }
+        case .locationNameCell:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "locationNameTextFieldCell", for: indexPath) as? LocationNameTextFieldTableViewCell {
+                
+                cell.locationNameTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
+                
+                return cell
+            }
+        case .phoneCell:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "phoneTextFieldCell", for: indexPath) as? PhoneTextFieldTableViewCell {
+                
+                cell.phoneTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
+                
+                return cell
+            }
+        case .profilePicCell:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "profilePicCell", for: indexPath) as? ProfilePicTableViewCell {
                 return cell
             }
-        } else if indexPath.row == lastCell {
-            
-            let nib = UINib(nibName: "SaveProfileCell", bundle: nil)
-            self.tableView.register(nib, forCellReuseIdentifier: "saveProfileCell")
-            
+        case .saveProfileButtonCell:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "saveProfileCell", for: indexPath) as? SaveProfileTableViewCell {
+                cell.delegate = self
                 return cell
             }
-        } else {
-            
-            let nib = UINib(nibName: "ProfileTextFieldCell", bundle: nil)
-            self.tableView.register(nib, forCellReuseIdentifier: "profileTextFieldCell")
-            
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "profileTextFieldCell", for: indexPath) as? ProfileTextFieldTableViewCell {
-                let avenirFont = [ NSAttributedStringKey.foregroundColor: UIColor.gray,
-                                   NSAttributedStringKey.font: UIFont(name: "Avenir-Medium", size: 24)! ]
+        case .stateCell:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "stateTextFieldCell", for: indexPath) as? StateTextFieldTableViewCell {
                 
-                let myCell = cells[indexPath.row]
-                
-                switch myCell {
-                case .beltCell: cell.textFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
-                case .birthdate: cell.textFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
-                case .cityCell: cell.textFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
-                case .emailCell: cell.textFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
-                case .emergencyContactCell: cell.textFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
-                case .emergencyContactPhoneCell: cell.textFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
-                case .emergencyContactRelationshipCell: cell.textFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
-                case .firstNameCell: cell.textFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
-                case .isInstructorCell: cell.textFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
-                case .isKidCell: cell.textFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
-                case .lastNameCell: cell.textFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
-                case .locationNameCell: cell.textFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
-                case .mobileCell: cell.textFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
-                case .parentGuardianCell: cell.textFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
-                case .paymentProgramCell: cell.textFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
-                case .phoneCell: cell.textFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
-                case .profilePicCell: cell.textFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
-                case .saveProfileButtonCell: cell.textFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
-                case .schoolGroupsCell: cell.textFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
-                case .socialNetworksCell: cell.textFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
-                case .stateCell: cell.textFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
-                case .statusCell: cell.textFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
-                case .streetAddressCell: cell.textFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
-                case .usernameCell: cell.textFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
-                case .websiteCell: cell.textFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
-                case .zipCodeCell: cell.textFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
-                    
-                }
+                cell.stateTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
                 
                 return cell
             }
+        case .streetAddressCell:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "streetAddressTextFieldCell", for: indexPath) as? StreetAddressTextFieldTableViewCell {
+                
+                cell.streetAddressTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
+                
+                return cell
+            }
+        case .websiteCell:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "websiteTextFieldCell", for: indexPath) as? WebsiteTextFieldTableViewCell {
+                
+                cell.websiteTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
+                
+                return cell
+            }
+        case .zipCodeCell:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "zipCodeTextFieldCell", for: indexPath) as? ZipCodeTextFieldTableViewCell {
+                
+                cell.zipCodeTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
+                
+                return cell
+            }
+        default: print("\(myCell.rawValue) is not supposeed to be in the owner onboarding workflow, or if is valid, the switch statement in OwnerProfileDetailsTableViewController needs to be updated.")
+        return UITableViewCell()
         }
         return UITableViewCell()
     }
+
     
     /*
      // MARK: - Navigation
