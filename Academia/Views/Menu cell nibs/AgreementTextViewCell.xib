@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Avenir.ttc">
+            <string>Avenir-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="360" id="SEr-Qp-ngN" userLabel="agreement Table View Cell" customClass="AgreementTextViewTableViewCell" customModule="Academia" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="360"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SEr-Qp-ngN" id="rSP-f1-Z9o">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="359.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Hgv-2l-Cwx">
+                        <rect key="frame" x="8" y="0.0" width="359" height="359.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="program agreement" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WGR-qt-rnf">
+                                <rect key="frame" x="0.0" y="0.0" width="359" height="33"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ne1-Tg-AEX">
+                                <rect key="frame" x="0.0" y="33" width="359" height="326.5"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="YB0-yF-44n" userLabel="Agreement Text View">
+                                        <rect key="frame" x="0.0" y="0.0" width="359" height="327"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="YB0-yF-44n" firstAttribute="leading" secondItem="Ne1-Tg-AEX" secondAttribute="leading" id="Bdy-2U-leU"/>
+                                    <constraint firstAttribute="trailing" secondItem="YB0-yF-44n" secondAttribute="trailing" id="KjG-w4-DhG"/>
+                                    <constraint firstItem="YB0-yF-44n" firstAttribute="centerY" secondItem="Ne1-Tg-AEX" secondAttribute="centerY" id="OYI-75-MZd"/>
+                                    <constraint firstAttribute="bottom" secondItem="YB0-yF-44n" secondAttribute="bottom" id="haJ-Ut-TbK"/>
+                                    <constraint firstItem="YB0-yF-44n" firstAttribute="centerX" secondItem="Ne1-Tg-AEX" secondAttribute="centerX" id="hgi-4I-ffe"/>
+                                    <constraint firstItem="YB0-yF-44n" firstAttribute="top" secondItem="Ne1-Tg-AEX" secondAttribute="top" id="va2-6s-RHb"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Ne1-Tg-AEX" secondAttribute="bottom" id="I1q-co-qu1"/>
+                            <constraint firstItem="WGR-qt-rnf" firstAttribute="leading" secondItem="Hgv-2l-Cwx" secondAttribute="leading" id="IAu-60-cQu"/>
+                            <constraint firstAttribute="trailing" secondItem="WGR-qt-rnf" secondAttribute="trailing" id="Nhb-bu-9r2"/>
+                            <constraint firstAttribute="trailing" secondItem="Ne1-Tg-AEX" secondAttribute="trailing" id="QMc-bg-gix"/>
+                            <constraint firstItem="WGR-qt-rnf" firstAttribute="top" secondItem="Hgv-2l-Cwx" secondAttribute="top" id="cgr-Km-euO"/>
+                            <constraint firstItem="Ne1-Tg-AEX" firstAttribute="top" secondItem="WGR-qt-rnf" secondAttribute="bottom" id="hcp-PJ-7bX"/>
+                            <constraint firstItem="Ne1-Tg-AEX" firstAttribute="top" secondItem="WGR-qt-rnf" secondAttribute="bottom" id="mKr-os-A2S"/>
+                            <constraint firstItem="Ne1-Tg-AEX" firstAttribute="leading" secondItem="Hgv-2l-Cwx" secondAttribute="leading" id="tcC-5q-34z"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Hgv-2l-Cwx" firstAttribute="leading" secondItem="rSP-f1-Z9o" secondAttribute="leading" constant="8" id="W4Y-X6-BNg"/>
+                    <constraint firstAttribute="trailing" secondItem="Hgv-2l-Cwx" secondAttribute="trailing" constant="8" id="XQq-SN-cuX"/>
+                    <constraint firstAttribute="bottom" secondItem="Hgv-2l-Cwx" secondAttribute="bottom" id="clz-VY-h39"/>
+                    <constraint firstItem="Hgv-2l-Cwx" firstAttribute="top" secondItem="rSP-f1-Z9o" secondAttribute="top" id="x8Y-9V-2lH"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="agreementLabel" destination="WGR-qt-rnf" id="0jg-AE-xTm"/>
+                <outlet property="agreementTextViewOutlet" destination="YB0-yF-44n" id="RAX-BH-HeO"/>
+            </connections>
+            <point key="canvasLocation" x="113.5" y="109"/>
+        </tableViewCell>
+    </objects>
+</document>
