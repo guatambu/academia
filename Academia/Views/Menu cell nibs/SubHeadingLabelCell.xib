@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Avenir.ttc">
+            <string>Avenir-Book</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="subHeadingLabelCell" rowHeight="40" id="9t2-iy-MGD" userLabel="SubHeadingLabelCell" customClass="SubHeadingLabelTableViewCell" customModule="Academia" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9t2-iy-MGD" id="VEe-2h-2lc">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="95.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZE3-Gu-JEn">
+                        <rect key="frame" x="16" y="8" width="343" height="79.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please type your name below to give your digital signature." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WO3-0N-Vqi">
+                                <rect key="frame" x="0.0" y="0.0" width="343" height="79.5"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WO3-0N-Vqi" firstAttribute="top" secondItem="ZE3-Gu-JEn" secondAttribute="top" id="Ak4-ZE-VLv"/>
+                            <constraint firstAttribute="trailing" secondItem="WO3-0N-Vqi" secondAttribute="trailing" id="EPR-uv-bHy"/>
+                            <constraint firstItem="WO3-0N-Vqi" firstAttribute="leading" secondItem="ZE3-Gu-JEn" secondAttribute="leading" id="QWg-Co-jpR"/>
+                            <constraint firstAttribute="bottom" secondItem="WO3-0N-Vqi" secondAttribute="bottom" id="mPf-WD-fOc"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="ZE3-Gu-JEn" firstAttribute="top" secondItem="VEe-2h-2lc" secondAttribute="top" constant="8" id="11Q-ld-ZN0"/>
+                    <constraint firstAttribute="trailing" secondItem="ZE3-Gu-JEn" secondAttribute="trailing" constant="16" id="5Od-EW-yxU"/>
+                    <constraint firstAttribute="trailing" secondItem="ZE3-Gu-JEn" secondAttribute="trailing" constant="16" id="QUb-fO-xfG"/>
+                    <constraint firstItem="ZE3-Gu-JEn" firstAttribute="leading" secondItem="VEe-2h-2lc" secondAttribute="leading" constant="16" id="i25-Sq-dKD"/>
+                    <constraint firstAttribute="bottom" secondItem="ZE3-Gu-JEn" secondAttribute="bottom" constant="8" id="jgc-Zr-gIg"/>
+                    <constraint firstItem="ZE3-Gu-JEn" firstAttribute="top" secondItem="VEe-2h-2lc" secondAttribute="top" constant="8" id="rua-Vo-r2z"/>
+                    <constraint firstAttribute="bottom" secondItem="ZE3-Gu-JEn" secondAttribute="bottom" constant="8" id="tsf-tf-9ep"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="subHeadingOutlet" destination="WO3-0N-Vqi" id="Aow-Qa-HPb"/>
+            </connections>
+            <point key="canvasLocation" x="86.5" y="57"/>
+        </tableViewCell>
+    </objects>
+</document>

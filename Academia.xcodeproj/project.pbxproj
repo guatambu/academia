@@ -35,6 +35,13 @@
 		FA21D6A52134D72A006790E5 /* AddNewStudentGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6A42134D72A006790E5 /* AddNewStudentGroupTableViewController.swift */; };
 		FA21D6A72136253E006790E5 /* AdultBlackBelt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6A62136253E006790E5 /* AdultBlackBelt.swift */; };
 		FA21D6A921362551006790E5 /* KidsBelt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6A821362551006790E5 /* KidsBelt.swift */; };
+		FA66A0082145BA6B002B0313 /* CheckMarkBoxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA66A0072145BA6B002B0313 /* CheckMarkBoxCell.xib */; };
+		FA66A00A2145CA2F002B0313 /* DigitalSignatureTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA66A0092145CA2F002B0313 /* DigitalSignatureTextFieldCell.xib */; };
+		FA66A00C2145CB42002B0313 /* HeadingLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA66A00B2145CB42002B0313 /* HeadingLabelCell.xib */; };
+		FA66A00E2145CD42002B0313 /* DigitalSignatureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA66A00D2145CD42002B0313 /* DigitalSignatureTableViewCell.swift */; };
+		FA66A0122145CD83002B0313 /* CheckMarkBoxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA66A0112145CD83002B0313 /* CheckMarkBoxTableViewCell.swift */; };
+		FA66A0142145CDCB002B0313 /* SubHeadingLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA66A0132145CDCB002B0313 /* SubHeadingLabelCell.xib */; };
+		FA66A0162145CE4E002B0313 /* SubHeadingLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA66A0152145CE4E002B0313 /* SubHeadingLabelTableViewCell.swift */; };
 		FA9AD9F5213782070005E1F1 /* TutorialsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9AD9F4213782070005E1F1 /* TutorialsTableViewController.swift */; };
 		FA9AD9F72137839A0005E1F1 /* BeltSystemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9AD9F62137839A0005E1F1 /* BeltSystemsTableViewController.swift */; };
 		FA9AD9F9213783BA0005E1F1 /* MyLocationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9AD9F8213783BA0005E1F1 /* MyLocationsTableViewController.swift */; };
@@ -64,6 +71,7 @@
 		FA9ADA2D2139EE6C0005E1F1 /* IsInstructorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9ADA2C2139EE6C0005E1F1 /* IsInstructorTableViewCell.swift */; };
 		FA9ADA2F2139EE940005E1F1 /* IsKidTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9ADA2E2139EE940005E1F1 /* IsKidTableViewCell.swift */; };
 		FA9ADA31213B6BA90005E1F1 /* InternationalStandardBJJBelts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9ADA30213B6BA90005E1F1 /* InternationalStandardBJJBelts.swift */; };
+		FAA550712145D03F00EC7860 /* HeadingLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA550702145D03F00EC7860 /* HeadingLabelTableViewCell.swift */; };
 		FAAAC146213E230400093D6C /* SegueFromSaveProfileNibCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAAC145213E230400093D6C /* SegueFromSaveProfileNibCellDelegate.swift */; };
 		FAAAC149213E337500093D6C /* OwnerBeltSystemFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAAAC147213E337500093D6C /* OwnerBeltSystemFlow.storyboard */; };
 		FAAAC14B213E33E000093D6C /* OwnerProfileFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAAAC14A213E33E000093D6C /* OwnerProfileFlow.storyboard */; };
@@ -208,6 +216,13 @@
 		FA21D6A42134D72A006790E5 /* AddNewStudentGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewStudentGroupTableViewController.swift; sourceTree = "<group>"; };
 		FA21D6A62136253E006790E5 /* AdultBlackBelt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdultBlackBelt.swift; sourceTree = "<group>"; };
 		FA21D6A821362551006790E5 /* KidsBelt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidsBelt.swift; sourceTree = "<group>"; };
+		FA66A0072145BA6B002B0313 /* CheckMarkBoxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckMarkBoxCell.xib; sourceTree = "<group>"; };
+		FA66A0092145CA2F002B0313 /* DigitalSignatureTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DigitalSignatureTextFieldCell.xib; sourceTree = "<group>"; };
+		FA66A00B2145CB42002B0313 /* HeadingLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeadingLabelCell.xib; sourceTree = "<group>"; };
+		FA66A00D2145CD42002B0313 /* DigitalSignatureTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalSignatureTableViewCell.swift; sourceTree = "<group>"; };
+		FA66A0112145CD83002B0313 /* CheckMarkBoxTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMarkBoxTableViewCell.swift; sourceTree = "<group>"; };
+		FA66A0132145CDCB002B0313 /* SubHeadingLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubHeadingLabelCell.xib; sourceTree = "<group>"; };
+		FA66A0152145CE4E002B0313 /* SubHeadingLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubHeadingLabelTableViewCell.swift; sourceTree = "<group>"; };
 		FA9AD9F4213782070005E1F1 /* TutorialsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialsTableViewController.swift; sourceTree = "<group>"; };
 		FA9AD9F62137839A0005E1F1 /* BeltSystemsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeltSystemsTableViewController.swift; sourceTree = "<group>"; };
 		FA9AD9F8213783BA0005E1F1 /* MyLocationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationsTableViewController.swift; sourceTree = "<group>"; };
@@ -237,6 +252,7 @@
 		FA9ADA2C2139EE6C0005E1F1 /* IsInstructorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsInstructorTableViewCell.swift; sourceTree = "<group>"; };
 		FA9ADA2E2139EE940005E1F1 /* IsKidTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsKidTableViewCell.swift; sourceTree = "<group>"; };
 		FA9ADA30213B6BA90005E1F1 /* InternationalStandardBJJBelts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternationalStandardBJJBelts.swift; sourceTree = "<group>"; };
+		FAA550702145D03F00EC7860 /* HeadingLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadingLabelTableViewCell.swift; sourceTree = "<group>"; };
 		FAAAC145213E230400093D6C /* SegueFromSaveProfileNibCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueFromSaveProfileNibCellDelegate.swift; sourceTree = "<group>"; };
 		FAAAC148213E337500093D6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Academia/Views/Base.lproj/OwnerBeltSystemFlow.storyboard; sourceTree = "<group>"; };
 		FAAAC14A213E33E000093D6C /* OwnerProfileFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerProfileFlow.storyboard; sourceTree = "<group>"; };
@@ -578,6 +594,9 @@
 				FA9ADA242139EE250005E1F1 /* StatusCell.xib */,
 				FA9ADA262139EE370005E1F1 /* IsInstructorCell.xib */,
 				FA9ADA282139EE440005E1F1 /* IsKidCell.xib */,
+				FA66A00B2145CB42002B0313 /* HeadingLabelCell.xib */,
+				FA66A0132145CDCB002B0313 /* SubHeadingLabelCell.xib */,
+				FA66A0072145BA6B002B0313 /* CheckMarkBoxCell.xib */,
 				FAF1BB892143575C00AD56AE /* AgreementTextViewCell.xib */,
 				FAF1BB872143574400AD56AE /* DescriptionTextViewCell.xib */,
 			);
@@ -661,6 +680,7 @@
 				FAE2FD842140BF4500815402 /* LocationNameTextFieldCell.xib */,
 				FAE2FD862140BF5200815402 /* WebsiteTextFieldCell.xib */,
 				FAE2FD882140BF6300815402 /* SocialNetworksTextFieldCell.xib */,
+				FA66A0092145CA2F002B0313 /* DigitalSignatureTextFieldCell.xib */,
 			);
 			path = "TextField nibs";
 			sourceTree = "<group>";
@@ -738,6 +758,10 @@
 		FAF29BCF212F6F9800752414 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				FA66A0112145CD83002B0313 /* CheckMarkBoxTableViewCell.swift */,
+				FA66A00D2145CD42002B0313 /* DigitalSignatureTableViewCell.swift */,
+				FAA550702145D03F00EC7860 /* HeadingLabelTableViewCell.swift */,
+				FA66A0152145CE4E002B0313 /* SubHeadingLabelTableViewCell.swift */,
 				FAF1BB8B21435BA900AD56AE /* AgreementTextViewTableViewCell.swift */,
 				FAF1BB8D21435BD800AD56AE /* DescriptionTextViewTableViewCell.swift */,
 				FAE2FD8A2140BF8A00815402 /* TextField Cells */,
@@ -848,15 +872,18 @@
 				FAE2FD872140BF5200815402 /* WebsiteTextFieldCell.xib in Resources */,
 				FAF29BB9212E21EA00752414 /* camera_filled_white_32.png in Resources */,
 				FAE2FD732140BEB900815402 /* PhoneTextFieldCell.xib in Resources */,
+				FA66A0082145BA6B002B0313 /* CheckMarkBoxCell.xib in Resources */,
 				FAF29BC6212E21EA00752414 /* checked_tick_box_32.png in Resources */,
 				FAF29BBB212E21EA00752414 /* students_black_32.png in Resources */,
 				FA9ADA252139EE250005E1F1 /* StatusCell.xib in Resources */,
+				FA66A00A2145CA2F002B0313 /* DigitalSignatureTextFieldCell.xib in Resources */,
 				FAF29B9D212E1EF700752414 /* camera_filled_white_50.png in Resources */,
 				FAAAC153213E348800093D6C /* OwnerBaseCampFlow.storyboard in Resources */,
 				FAB7E35A212BA643003E3B79 /* BlairMdITC TT-Medium.ttf in Resources */,
 				FAF29BC0212E21EA00752414 /* camera_outline_white_32.png in Resources */,
 				FAF29BA4212E1EF700752414 /* unchecked_checkbox_50.png in Resources */,
 				FAAAC14E213E342600093D6C /* OwnerStudentsFlow.storyboard in Resources */,
+				FA66A00C2145CB42002B0313 /* HeadingLabelCell.xib in Resources */,
 				FAF29B9F212E1EF700752414 /* programs_black_50.png in Resources */,
 				FAAAC150213E345900093D6C /* OwnerMessages.storyboard in Resources */,
 				FAE2FD6F2140BE9900815402 /* StateTextFieldCell.xib in Resources */,
@@ -888,6 +915,7 @@
 				FAF1BB882143574400AD56AE /* DescriptionTextViewCell.xib in Resources */,
 				FAF29BC8212E21EA00752414 /* left_red_arrow_32.png in Resources */,
 				FAE2FD652140BE4200815402 /* FirstNameTextFieldCell.xib in Resources */,
+				FA66A0142145CDCB002B0313 /* SubHeadingLabelCell.xib in Resources */,
 				FAE2FD892140BF6300815402 /* SocialNetworksTextFieldCell.xib in Resources */,
 				FA9ADA292139EE440005E1F1 /* IsKidCell.xib in Resources */,
 				FA0C441B21278A8F00B59194 /* Main.storyboard in Resources */,
@@ -938,6 +966,7 @@
 				FA9ADA01213784410005E1F1 /* PrivacyPolicyViewController.swift in Sources */,
 				FA0C444221278B6900B59194 /* AdultBasicBelt.swift in Sources */,
 				FAAAC146213E230400093D6C /* SegueFromSaveProfileNibCellDelegate.swift in Sources */,
+				FAA550712145D03F00EC7860 /* HeadingLabelTableViewCell.swift in Sources */,
 				FA0C444021278B5900B59194 /* User.swift in Sources */,
 				FAB7E352212B7D73003E3B79 /* UserSelfIdentifyViewController.swift in Sources */,
 				FA21D6802130BB1E006790E5 /* OwnerClassesTableViewController.swift in Sources */,
@@ -967,6 +996,7 @@
 				FAE2FD9C2140C01B00815402 /* MobileTextFieldTableViewCell.swift in Sources */,
 				FA9ADA0B2137895A0005E1F1 /* PaymentProgramDetailTableViewController.swift in Sources */,
 				FAE2FD922140BFE200815402 /* StreetAddressTextFieldTableViewCell.swift in Sources */,
+				FA66A00E2145CD42002B0313 /* DigitalSignatureTableViewCell.swift in Sources */,
 				FA9ADA1F2138DA530005E1F1 /* SaveProfileTableViewCell.swift in Sources */,
 				FA9AD9F9213783BA0005E1F1 /* MyLocationsTableViewController.swift in Sources */,
 				FAF29BCA212E23E300752414 /* OwnerHomeTableViewController.swift in Sources */,
@@ -977,6 +1007,7 @@
 				FA9ADA1B2138D6700005E1F1 /* ProfileTextFieldTableViewCell.swift in Sources */,
 				FA9AD9FD213783FE0005E1F1 /* OwnerPaymentProgramsTableViewController.swift in Sources */,
 				FAE2FDA62140C07600815402 /* EmergencyContactTextFieldTableViewCell.swift in Sources */,
+				FA66A0162145CE4E002B0313 /* SubHeadingLabelTableViewCell.swift in Sources */,
 				FA21D69221334DD4006790E5 /* AdultBasicBeltTableViewCell.swift in Sources */,
 				FA21D6A52134D72A006790E5 /* AddNewStudentGroupTableViewController.swift in Sources */,
 				FA21D6A12134B8D3006790E5 /* AddClassTableViewController.swift in Sources */,
@@ -1005,6 +1036,7 @@
 				FAE2FD3C2140700F00815402 /* MockData.swift in Sources */,
 				FA9ADA2B2139EE560005E1F1 /* StatusTableViewCell.swift in Sources */,
 				FA21D6822130BB2D006790E5 /* OwnerProfileTableViewController.swift in Sources */,
+				FA66A0122145CD83002B0313 /* CheckMarkBoxTableViewCell.swift in Sources */,
 				FA9AD9FB213783E20005E1F1 /* OwnerProfileDetailsEditTableViewController.swift in Sources */,
 				FAE2FD8C2140BFBA00815402 /* UsernameTextFieldTableViewCell.swift in Sources */,
 				FAE2FDA42140C05B00815402 /* SchoolGroupTextFieldTableViewCell.swift in Sources */,

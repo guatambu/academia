@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Avenir.ttc">
+            <string>Avenir-Book</string>
+            <string>Avenir-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="digitalSignatureCell" rowHeight="40" id="9t2-iy-MGD" userLabel="DigitalSignatureTextFieldCell" customClass="DigitalSignatureTableViewCell" customModule="Academia" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9t2-iy-MGD" id="VEe-2h-2lc">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="95.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please type your name below to give your digital signature." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WO3-0N-Vqi">
+                        <rect key="frame" x="16" y="0.0" width="343" height="44"/>
+                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vai-nR-uPW">
+                        <rect key="frame" x="16" y="55" width="343" height="30"/>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="WO3-0N-Vqi" secondAttribute="trailing" constant="16" id="GTq-nF-VbD"/>
+                    <constraint firstItem="WO3-0N-Vqi" firstAttribute="leading" secondItem="VEe-2h-2lc" secondAttribute="leading" constant="16" id="TZ3-QQ-hJo"/>
+                    <constraint firstItem="Vai-nR-uPW" firstAttribute="trailing" secondItem="VEe-2h-2lc" secondAttribute="trailingMargin" id="Xcx-1k-R3R"/>
+                    <constraint firstItem="WO3-0N-Vqi" firstAttribute="top" secondItem="VEe-2h-2lc" secondAttribute="top" id="Z5y-K5-e5S"/>
+                    <constraint firstItem="Vai-nR-uPW" firstAttribute="leading" secondItem="VEe-2h-2lc" secondAttribute="leadingMargin" id="lRi-N4-m4G"/>
+                    <constraint firstItem="Vai-nR-uPW" firstAttribute="bottom" secondItem="VEe-2h-2lc" secondAttribute="bottomMargin" id="ofg-Zq-sZ0"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="messageOutlet" destination="WO3-0N-Vqi" id="bH5-kT-Jhi"/>
+                <outlet property="signatureTextFieldOutlet" destination="Vai-nR-uPW" id="cfv-Ac-Elp"/>
+            </connections>
+            <point key="canvasLocation" x="86.5" y="57"/>
+        </tableViewCell>
+    </objects>
+</document>
