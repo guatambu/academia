@@ -11,9 +11,7 @@ import Foundation
 enum MyCells: String {
     // cell cases where String contains capital letter(s) represent cells that will most likely NOT display the raw value string to users.  will be used for dev informational purposes
     case profilePicCell = "Profile Pic"
-    case adultBasicBeltCell = "Adult Basic Belt"
-    case adultBlackBeltCell = "Adult Black Belt"
-    case kidsBeltCell = "Kids Belt"
+    case beltCell = "Belt Cell"
     case statusCell = "Status"
     case isInstructorCell = "Instructor?"
     case isKidCell = "In Kids Program?"
