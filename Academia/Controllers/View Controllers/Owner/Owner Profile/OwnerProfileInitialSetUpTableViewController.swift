@@ -66,6 +66,9 @@ class OwnerProfileInitialSetUpTableViewController: UITableViewController, SegueF
         let nibProfilePic = UINib(nibName: "ProfilePicCell", bundle: nil)
         self.tableView.register(nibProfilePic, forCellReuseIdentifier: "profilePicCell")
         
+        let nibAdultBasicBelt = UINib(nibName: "AdultBasicBeltTemplate", bundle: nil)
+        self.tableView.register(nibAdultBasicBelt, forCellReuseIdentifier: "adultBasicBeltTemplate")
+        
         let nibAdultBlackBelt = UINib(nibName: "AdultBlackBeltTemplate", bundle: nil)
         self.tableView.register(nibAdultBlackBelt, forCellReuseIdentifier: "adultBlackBeltTemplate")
         

@@ -110,6 +110,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Iub-Ea-AAB" kind="show" identifier="toSavedStudentListSegue" id="LSQ-3L-bBd"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -440,5 +443,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="yXo-Ks-n0j"/>
+        <segue reference="LSQ-3L-bBd"/>
     </inferredMetricsTieBreakers>
 </document>
