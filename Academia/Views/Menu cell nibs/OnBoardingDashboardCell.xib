@@ -25,7 +25,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="DCp-DE-hTK">
-                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="79.5"/>
+                        <rect key="frame" x="8" y="0.0" width="359" height="79.5"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" image="checked_tick_box_50.png" translatesAutoresizingMaskIntoConstraints="NO" id="Hqf-9w-lXf">
                                 <rect key="frame" x="0.0" y="28" width="24" height="24"/>
@@ -35,10 +35,10 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="748" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vDs-j9-sDK">
-                                <rect key="frame" x="0.0" y="2" width="0.0" height="76"/>
+                                <rect key="frame" x="40" y="2" width="279" height="76"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="OnBoarding Task Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ebx-k2-3Z8">
-                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="32"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="279" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="Qez-j6-Cz3"/>
                                         </constraints>
@@ -47,7 +47,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="This is a description of this one specific OnBoarding Task." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqh-rI-nF4">
-                                        <rect key="frame" x="0.0" y="32" width="0.0" height="44"/>
+                                        <rect key="frame" x="0.0" y="32" width="279" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="dbp-c8-gnS"/>
                                         </constraints>
@@ -58,7 +58,7 @@
                                 </subviews>
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" image="right_red_arrow_50.png" translatesAutoresizingMaskIntoConstraints="NO" id="XWU-1a-dWd">
-                                <rect key="frame" x="0.0" y="28" width="24" height="24"/>
+                                <rect key="frame" x="335" y="28" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="Vo4-m1-QVb"/>
                                     <constraint firstAttribute="width" constant="24" id="fSy-kF-9yX"/>
@@ -80,15 +80,9 @@
                 <outlet property="onBoardingTaskDescriptionOutlet" destination="eqh-rI-nF4" id="ItY-X5-hLG"/>
                 <outlet property="onBoardingTaskTitleOutlet" destination="Ebx-k2-3Z8" id="zyQ-9y-kQd"/>
                 <outlet property="rightRedArrowOutlet" destination="XWU-1a-dWd" id="DKU-oN-G4j"/>
-                <outletCollection property="gestureRecognizers" destination="smk-om-wpm" appends="YES" id="dEZ-LX-rpl"/>
             </connections>
             <point key="canvasLocation" x="61.5" y="161"/>
         </tableViewCell>
-        <tapGestureRecognizer id="smk-om-wpm">
-            <connections>
-                <action selector="dashboardCellTapped:" destination="ILG-FY-gdT" id="rS0-as-Fir"/>
-            </connections>
-        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="checked_tick_box_50.png" width="50" height="50"/>

@@ -30,9 +30,6 @@
                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="Zt9-e4-mTL" appends="YES" id="6vz-qG-TV8"/>
-                        </connections>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unchecked_checkbox_32.png" translatesAutoresizingMaskIntoConstraints="NO" id="txb-eU-Bfe">
                         <rect key="frame" x="16" y="23" width="32" height="32"/>
@@ -57,11 +54,6 @@
             </connections>
             <point key="canvasLocation" x="86.5" y="57"/>
         </tableViewCell>
-        <tapGestureRecognizer id="Zt9-e4-mTL">
-            <connections>
-                <action selector="checkboxCellTapped:" destination="9t2-iy-MGD" id="EvS-mI-qif"/>
-            </connections>
-        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="unchecked_checkbox_32.png" width="32" height="32"/>

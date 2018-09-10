@@ -26,8 +26,8 @@ class OwnerDashboardTableViewCell: UITableViewCell {
     
     // MARK: - Actions / Gesture Recognizers
     
-    @IBAction func dashboardCellTapped(_ sender: UITapGestureRecognizer) {
-    }
+//    @IBAction func dashboardCellTapped(_ sender: UITapGestureRecognizer) {
+//    }
     
     // MARK: - awakeFromNib()
     

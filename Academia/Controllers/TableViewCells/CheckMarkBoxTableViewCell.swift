@@ -18,8 +18,8 @@ class CheckMarkBoxTableViewCell: UITableViewCell {
     
     // MARK: - Actions / Gesture Recognizers
     
-    @IBAction func checkboxCellTapped(_ sender: UITapGestureRecognizer) {
-    }
+//    @IBAction func checkboxCellTapped(_ sender: UITapGestureRecognizer) {
+//    }
     
     
     
