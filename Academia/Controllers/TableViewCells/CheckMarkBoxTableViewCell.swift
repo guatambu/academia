@@ -12,15 +12,14 @@ class CheckMarkBoxTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     
-    @IBOutlet weak var checkBoxOutlet: UIImageView!
     @IBOutlet weak var messageOutlet: UILabel!
+    @IBOutlet weak var checkboxButtonOutlet: UIButton!
     
     
     // MARK: - Actions / Gesture Recognizers
     
-//    @IBAction func checkboxCellTapped(_ sender: UITapGestureRecognizer) {
-//    }
-    
+    @IBAction func checkboxButtonTapped(_ sender: UIButton) {
+    }
     
     
     override func awakeFromNib() {

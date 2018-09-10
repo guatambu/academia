@@ -12,7 +12,8 @@ class OwnerDashboardTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     
-    @IBOutlet weak var checkBoxOutlet: UIImageView!
+
+    @IBOutlet weak var checkboxButtonOutlet: UIButton!
     @IBOutlet weak var rightRedArrowOutlet: UIImageView!
     @IBOutlet weak var onBoardingTaskTitleOutlet: UILabel!
     @IBOutlet weak var onBoardingTaskDescriptionOutlet: UILabel!
@@ -24,10 +25,11 @@ class OwnerDashboardTableViewCell: UITableViewCell {
     }
     
     
-    // MARK: - Actions / Gesture Recognizers
+    // MARK: - Actions
     
-//    @IBAction func dashboardCellTapped(_ sender: UITapGestureRecognizer) {
-//    }
+    @IBAction func checkboxButtonTapped(_ sender: UIButton) {
+    }
+    
     
     // MARK: - awakeFromNib()
     
@@ -49,9 +51,9 @@ class OwnerDashboardTableViewCell: UITableViewCell {
         guard let onBoardTaskComplete = onBoardTask.isCompleted else { return }
         
         if onBoardTaskComplete {
-            checkBoxOutlet.image = #imageLiteral(resourceName: "checked_tick_box_32.png")
+            checkboxButtonOutlet.imageView?.image = #imageLiteral(resourceName: "checked_tick_box_32.png")
         } else {
-            checkBoxOutlet.image = #imageLiteral(resourceName: "unchecked_checkbox_32.png")
+            checkboxButtonOutlet.imageView?.image = #imageLiteral(resourceName: "unchecked_checkbox_32.png")
         }
     }
 }

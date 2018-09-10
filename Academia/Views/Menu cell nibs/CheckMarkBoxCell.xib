@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -31,25 +30,27 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unchecked_checkbox_32.png" translatesAutoresizingMaskIntoConstraints="NO" id="txb-eU-Bfe">
-                        <rect key="frame" x="16" y="23" width="32" height="32"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="32" id="H7d-Rh-PQp"/>
-                            <constraint firstAttribute="height" constant="32" id="tAH-ch-Xhj"/>
-                        </constraints>
-                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LTi-Fz-XbH" userLabel="Checkbox Button">
+                        <rect key="frame" x="0.0" y="0.0" width="56" height="79.5"/>
+                        <state key="normal" image="unchecked_checkbox_32.png"/>
+                        <connections>
+                            <action selector="checkboxButtonTapped:" destination="9t2-iy-MGD" eventType="touchUpInside" id="nDO-jd-FvS"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="txb-eU-Bfe" firstAttribute="centerY" secondItem="VEe-2h-2lc" secondAttribute="centerY" id="BHB-Ro-DXe"/>
                     <constraint firstAttribute="trailing" secondItem="WO3-0N-Vqi" secondAttribute="trailing" constant="8" id="GTq-nF-VbD"/>
+                    <constraint firstItem="LTi-Fz-XbH" firstAttribute="top" secondItem="VEe-2h-2lc" secondAttribute="top" id="Kwk-Mn-lwS"/>
                     <constraint firstAttribute="bottom" secondItem="WO3-0N-Vqi" secondAttribute="bottom" id="R73-Bc-oOW"/>
                     <constraint firstItem="WO3-0N-Vqi" firstAttribute="leading" secondItem="VEe-2h-2lc" secondAttribute="leading" constant="56" id="TZ3-QQ-hJo"/>
+                    <constraint firstAttribute="bottom" secondItem="LTi-Fz-XbH" secondAttribute="bottom" id="YvR-Eh-cz3"/>
                     <constraint firstItem="WO3-0N-Vqi" firstAttribute="top" secondItem="VEe-2h-2lc" secondAttribute="top" id="Z5y-K5-e5S"/>
-                    <constraint firstItem="txb-eU-Bfe" firstAttribute="leading" secondItem="VEe-2h-2lc" secondAttribute="leadingMargin" id="gtq-nk-V7M"/>
+                    <constraint firstItem="LTi-Fz-XbH" firstAttribute="leading" secondItem="VEe-2h-2lc" secondAttribute="leading" id="mk4-1P-fcD"/>
+                    <constraint firstItem="WO3-0N-Vqi" firstAttribute="leading" secondItem="LTi-Fz-XbH" secondAttribute="trailing" id="rcl-Nh-TD1"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="checkBoxOutlet" destination="txb-eU-Bfe" id="Mmn-nj-JxO"/>
+                <outlet property="checkboxButtonOutlet" destination="LTi-Fz-XbH" id="eFc-k8-JKw"/>
                 <outlet property="messageOutlet" destination="WO3-0N-Vqi" id="dI7-CK-AdF"/>
             </connections>
             <point key="canvasLocation" x="86.5" y="57"/>

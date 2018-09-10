@@ -24,21 +24,36 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="DCp-DE-hTK">
-                        <rect key="frame" x="8" y="0.0" width="359" height="79.5"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="y4J-8s-6Jx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" image="checked_tick_box_50.png" translatesAutoresizingMaskIntoConstraints="NO" id="Hqf-9w-lXf">
-                                <rect key="frame" x="0.0" y="28" width="24" height="24"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcG-Rc-sDk" userLabel="Checkbox View">
+                                <rect key="frame" x="0.0" y="0.0" width="40" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="95g-bz-JNx" userLabel="Checkbox Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="80.5"/>
+                                        <state key="normal" image="checked_tick_box_32.png"/>
+                                        <connections>
+                                            <action selector="checkboxButtonTapped:" destination="ILG-FY-gdT" eventType="touchUpInside" id="VYh-0a-jbX"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="24" id="II0-OW-Isq"/>
-                                    <constraint firstAttribute="height" constant="24" id="pEF-uj-WlB"/>
+                                    <constraint firstAttribute="trailing" secondItem="95g-bz-JNx" secondAttribute="trailing" id="70K-cw-ktg"/>
+                                    <constraint firstItem="95g-bz-JNx" firstAttribute="centerY" secondItem="fcG-Rc-sDk" secondAttribute="centerY" id="IpV-GU-udJ"/>
+                                    <constraint firstAttribute="width" constant="40" id="b0m-ZT-XQO"/>
+                                    <constraint firstAttribute="bottom" secondItem="95g-bz-JNx" secondAttribute="bottom" id="hu4-3l-EZe"/>
+                                    <constraint firstItem="95g-bz-JNx" firstAttribute="top" secondItem="fcG-Rc-sDk" secondAttribute="top" id="kP5-dY-cyZ"/>
+                                    <constraint firstItem="95g-bz-JNx" firstAttribute="leading" secondItem="fcG-Rc-sDk" secondAttribute="leading" id="mM1-PT-ivZ"/>
+                                    <constraint firstItem="95g-bz-JNx" firstAttribute="centerX" secondItem="fcG-Rc-sDk" secondAttribute="centerX" id="syr-BB-lTl"/>
                                 </constraints>
-                            </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="748" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vDs-j9-sDK">
-                                <rect key="frame" x="40" y="2" width="279" height="76"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n9o-R3-9rI" userLabel="Text Container View">
+                                <rect key="frame" x="52" y="0.0" width="271" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="OnBoarding Task Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ebx-k2-3Z8">
-                                        <rect key="frame" x="0.0" y="0.0" width="279" height="32"/>
+                                        <rect key="frame" x="0.0" y="4" width="271" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="Qez-j6-Cz3"/>
                                         </constraints>
@@ -47,45 +62,63 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="This is a description of this one specific OnBoarding Task." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqh-rI-nF4">
-                                        <rect key="frame" x="0.0" y="32" width="279" height="44"/>
+                                        <rect key="frame" x="0.0" y="32" width="271" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="dbp-c8-gnS"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                            </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" image="right_red_arrow_50.png" translatesAutoresizingMaskIntoConstraints="NO" id="XWU-1a-dWd">
-                                <rect key="frame" x="335" y="28" width="24" height="24"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="Vo4-m1-QVb"/>
-                                    <constraint firstAttribute="width" constant="24" id="fSy-kF-9yX"/>
+                                    <constraint firstItem="Ebx-k2-3Z8" firstAttribute="top" secondItem="n9o-R3-9rI" secondAttribute="top" constant="4" id="1Va-VX-kDp"/>
+                                    <constraint firstItem="Ebx-k2-3Z8" firstAttribute="leading" secondItem="n9o-R3-9rI" secondAttribute="leading" id="Xve-FS-YpU"/>
+                                    <constraint firstItem="eqh-rI-nF4" firstAttribute="leading" secondItem="n9o-R3-9rI" secondAttribute="leading" id="Yvx-ml-ky7"/>
+                                    <constraint firstAttribute="bottom" secondItem="eqh-rI-nF4" secondAttribute="bottom" constant="4" id="cwp-UQ-FhA"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ebx-k2-3Z8" secondAttribute="trailing" id="iWG-70-ep2"/>
+                                    <constraint firstAttribute="trailing" secondItem="eqh-rI-nF4" secondAttribute="trailing" id="yFO-ok-eBT"/>
                                 </constraints>
-                            </imageView>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4mP-Kw-kQl" userLabel="Image Container View">
+                                <rect key="frame" x="335" y="0.0" width="40" height="80"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_red_arrow_32.png" translatesAutoresizingMaskIntoConstraints="NO" id="hk6-h0-NSq">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="80"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="hk6-h0-NSq" firstAttribute="leading" secondItem="4mP-Kw-kQl" secondAttribute="leading" id="FAS-Hz-he9"/>
+                                    <constraint firstAttribute="bottom" secondItem="hk6-h0-NSq" secondAttribute="bottom" id="I7L-BI-sSk"/>
+                                    <constraint firstAttribute="trailing" secondItem="hk6-h0-NSq" secondAttribute="trailing" id="Sdn-ws-qX1"/>
+                                    <constraint firstItem="hk6-h0-NSq" firstAttribute="top" secondItem="4mP-Kw-kQl" secondAttribute="top" id="VI0-p8-cPC"/>
+                                    <constraint firstAttribute="width" constant="40" id="iSf-8k-2qe"/>
+                                </constraints>
+                            </view>
                         </subviews>
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="DCp-DE-hTK" firstAttribute="top" secondItem="U7a-HS-hSR" secondAttribute="top" id="5fj-0Q-PkP"/>
-                    <constraint firstAttribute="bottom" secondItem="DCp-DE-hTK" secondAttribute="bottom" id="KSh-hf-IUt"/>
-                    <constraint firstItem="DCp-DE-hTK" firstAttribute="leading" secondItem="U7a-HS-hSR" secondAttribute="leading" constant="8" id="Y6Q-io-G8l"/>
-                    <constraint firstAttribute="trailing" secondItem="DCp-DE-hTK" secondAttribute="trailing" constant="8" id="lZ1-ed-Bm0"/>
+                    <constraint firstItem="y4J-8s-6Jx" firstAttribute="top" secondItem="U7a-HS-hSR" secondAttribute="top" id="NzW-w9-dDv"/>
+                    <constraint firstItem="y4J-8s-6Jx" firstAttribute="leading" secondItem="U7a-HS-hSR" secondAttribute="leading" id="c1G-qm-CFt"/>
+                    <constraint firstAttribute="trailing" secondItem="y4J-8s-6Jx" secondAttribute="trailing" id="gq7-EW-wpf"/>
+                    <constraint firstAttribute="bottom" secondItem="y4J-8s-6Jx" secondAttribute="bottom" id="yP8-On-91n"/>
                 </constraints>
             </tableViewCellContentView>
             <gestureRecognizers/>
             <connections>
-                <outlet property="checkBoxOutlet" destination="Hqf-9w-lXf" id="6Wn-am-bZm"/>
+                <outlet property="checkboxButtonOutlet" destination="95g-bz-JNx" id="qx1-lA-PK5"/>
                 <outlet property="onBoardingTaskDescriptionOutlet" destination="eqh-rI-nF4" id="ItY-X5-hLG"/>
                 <outlet property="onBoardingTaskTitleOutlet" destination="Ebx-k2-3Z8" id="zyQ-9y-kQd"/>
-                <outlet property="rightRedArrowOutlet" destination="XWU-1a-dWd" id="DKU-oN-G4j"/>
+                <outlet property="rightRedArrowOutlet" destination="hk6-h0-NSq" id="ft0-TE-nsS"/>
             </connections>
             <point key="canvasLocation" x="61.5" y="161"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="checked_tick_box_50.png" width="50" height="50"/>
-        <image name="right_red_arrow_50.png" width="50" height="50"/>
+        <image name="checked_tick_box_32.png" width="32" height="32"/>
+        <image name="right_red_arrow_32.png" width="32" height="32"/>
     </resources>
 </document>
