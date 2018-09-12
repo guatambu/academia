@@ -17,11 +17,22 @@ class SignUpLoginViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
+    @IBOutlet weak var welcomeMessageOutlet: UILabel!
+    @IBOutlet weak var welcomeInstructionsOutlet: UILabel!
     
     
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
+        print("viewWillAppear: isOwner = \(isOwner)")
+        
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        guard let isOwner = isOwner else { return }
+        print("signUpVC: \(isOwner)")
         
         let avenirFont = [ NSAttributedStringKey.foregroundColor: UIColor.gray,
                            NSAttributedStringKey.font: UIFont(name: "Avenir-Medium", size: 24)! ]
@@ -31,10 +42,29 @@ class SignUpLoginViewController: UIViewController {
         usernameTextField.attributedPlaceholder = NSAttributedString(string: "username", attributes: avenirFont)
         passwordTextField.attributedPlaceholder = NSAttributedString(string: "password", attributes: avenirFont)
         confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: "confirm password", attributes: avenirFont)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+        
+        
+        guard let username = username, let password = password else {
+            
+            if isOwner {
+                welcomeMessageOutlet.text = "Welcome New Owner"
+                welcomeInstructionsOutlet.text = "please create a username and password"
+            } else {
+                welcomeMessageOutlet.text = "Welcome New Student"
+                welcomeInstructionsOutlet.text = "please create a username and password"
+            }
+            
+            return
+        }
+        
+        if isOwner {
+            welcomeMessageOutlet.text = "Welcome Owner"
+            welcomeInstructionsOutlet.text = "please login"
+        } else {
+            welcomeMessageOutlet.text = "Welcome Student"
+            welcomeInstructionsOutlet.text = "please login"
+        }
+        
 
     }
     
