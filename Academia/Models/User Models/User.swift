@@ -30,7 +30,7 @@ class User {
     
     // Data Model related
     var status: UserStatus?
-    var groups: [Group?]
+    var groups: [Group]?
     var paymentProgram: PaymentProgram?
     var permission: [Permissions]
     var kidsBelt: KidsBelt?
@@ -88,7 +88,7 @@ class User {
          mostRecentPromotion: Date?,
          attendance: [Date]?,
          userStatus: [UserStatus],
-         groups: [Group],
+         groups: [Group]?,
          paymentProgram: PaymentProgram?,
          permission: [Permissions],
          kidsBelt: KidsBelt?,

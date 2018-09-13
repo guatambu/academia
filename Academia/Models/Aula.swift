@@ -17,13 +17,13 @@ class Aula {
     var daysOfTheWeek: [Weekdays]
     var timeOfDay: [ClassTimes]
     var location: Location?
-    var groups: [Group?]
-    var students: [User?]
-    var instructor: [User?]
+    var groups: [Group]?
+    var students: [User]?
+    var instructor: [User]?
     var currentDate: Date
     var dateCreated: Date
     var dateEdited: Date
-    var attendees: [User?]
+    var attendees: [User]?
     
     enum Weekdays {
         case Monday
@@ -69,13 +69,13 @@ class Aula {
          daysOfTheWeek: [Weekdays],
          timeOfDay: [ClassTimes],
          location: Location?,
-         groups: [Group?],
-         students: [User?],
-         instructor: [User?],
+         groups: [Group]?,
+         students: [User]?,
+         instructor: [User]?,
          currentDate: Date,
          dateCreated: Date,
          dateEdited: Date,
-         attendees: [User?]
+         attendees: [User]?
         ) {
         
         self.active = active

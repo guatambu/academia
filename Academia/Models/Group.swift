@@ -16,14 +16,14 @@ class Group {
     var name: String
     var dateCreated: Date
     var dateEdited: Date
-    var members: [User?]
-    var paymentProgram: [PaymentProgram?]
+    var members: [User]?
+    var paymentProgram: [PaymentProgram]?
     var location: Location?
-    var aula: [Aula?]
+    var aula: [Aula]?
     
     // Memberwise Initializer
     
-    init(active: Bool, name: String, dateCreated: Date, dateEdited: Date, members: [User?], paymentProgram: [PaymentProgram?], location: Location?, aula: [Aula?]) {
+    init(active: Bool, name: String, dateCreated: Date, dateEdited: Date, members: [User]?, paymentProgram: [PaymentProgram]?, location: Location?, aula: [Aula]?) {
         
         self.active = active
         self.name = name

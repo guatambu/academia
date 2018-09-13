@@ -9,6 +9,12 @@
 import UIKit
 
 struct MockData {
+    
+    // 1. build the mock data in the respective ViewController's viewDidLoad() rather than an external file like here
+    
+    // 2. app delegate then is home of user for the whole app
+    
+    // 3. should be ready to go going forward
 
     // location
 
