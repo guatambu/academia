@@ -614,9 +614,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Locations" id="IXf-kh-tdc"/>
-                    <connections>
-                        <segue destination="viL-Zh-6Uc" kind="show" identifier="toOwnerProfileFromAddLocation" id="Hmx-Ep-0HX"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2JM-gV-z2e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -638,9 +635,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="iVz-Kz-S9C" kind="show" identifier="toLocationDetail" id="MOb-Qp-1Oe"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -652,10 +646,13 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="XE9-XJ-oSN"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="kR4-XT-KIE">
                             <connections>
-                                <segue destination="iVz-Kz-S9C" kind="show" identifier="addNewLocation" id="PQ0-Nf-q7y"/>
+                                <segue destination="iVz-Kz-S9C" kind="show" identifier="addNewLocation" id="gYc-W8-Drq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="iVz-Kz-S9C" kind="show" identifier="toLocationDetail" id="Y6d-4h-mMf"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="viL-hY-VdQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1585,7 +1582,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="U9B-1U-Nyt"/>
-        <segue reference="MOb-Qp-1Oe"/>
-        <segue reference="hMi-Vm-scR"/>
+        <segue reference="Y6d-4h-mMf"/>
     </inferredMetricsTieBreakers>
 </document>

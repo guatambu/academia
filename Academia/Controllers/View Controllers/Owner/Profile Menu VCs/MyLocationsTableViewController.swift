@@ -26,10 +26,7 @@ class MyLocationsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
-        
     }
-
 
 
     // MARK: - Table view data source
@@ -54,6 +51,10 @@ class MyLocationsTableViewController: UITableViewController {
         return cell
     }
 
+//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        // pass any object as parameter, i.e. the tapped row
+//        performSegue(withIdentifier: "toLocationDetail", sender: indexPath.row)
+//    }
     
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -86,6 +87,8 @@ class MyLocationsTableViewController: UITableViewController {
 
 
     // MARK: - Navigation
+    
+    
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
