@@ -18,12 +18,12 @@ class Aula {
     var timeOfDay: [ClassTimes]
     var location: Location?
     var groups: [Group]?
-    var students: [User]?
-    var instructor: [User]?
+    var students: [Any]?
+    var instructor: [Any]?
     var currentDate: Date
     var dateCreated: Date
     var dateEdited: Date
-    var attendees: [User]?
+    var attendees: [Any]?
     
     enum Weekdays {
         case Monday
@@ -70,12 +70,12 @@ class Aula {
          timeOfDay: [ClassTimes],
          location: Location?,
          groups: [Group]?,
-         students: [User]?,
-         instructor: [User]?,
+         students: [Any]?,
+         instructor: [Any]?,
          currentDate: Date,
          dateCreated: Date,
          dateEdited: Date,
-         attendees: [User]?
+         attendees: [Any]?
         ) {
         
         self.active = active
@@ -94,9 +94,6 @@ class Aula {
     
 }
 
-//let kidsClassA = Aula(active: true, className: "kids A", daysOfTheWeek: [Aula.Weekdays.Monday, Aula.Weekdays.Wednesday, Aula.Weekdays.Friday], timeOfDay: [Aula.ClassTimes.eighteen], location: myLocation, groups: [kidsParents], students: [kidA, kidB], instructor: [instructorA], currentDate: Date(), dateCreated: Date(), dateEdited: Date(), attendees: [kidA, kidB])
-//
-//let adultClassA = Aula(active: true, className: "adult A", daysOfTheWeek: [Aula.Weekdays.Monday, Aula.Weekdays.Wednesday, Aula.Weekdays.Friday], timeOfDay: [Aula.ClassTimes.nineteen], location: myLocation, groups: [adults], students: [adultA, adultB], instructor: [instructorA], currentDate: Date(), dateCreated: Date(), dateEdited: Date(), attendees: [adultA, adultB])
 
 
 

@@ -24,12 +24,12 @@ class AdultStudent {
     var attendance: [Date]?
     
     // Status
-    var userStatus: [UserStatus]
+    var studentStatus: [StudentStatus]
     
     // Data Model related
     var groups: [Group]?
     var paymentProgram: PaymentProgram?
-    var permission: [Permissions]
+    var permission: [UserPermissions]
     var adultBasicBelt: AdultBasicBelt?
     var blackBelt: AdultBlackBelt?
     
@@ -60,10 +60,10 @@ class AdultStudent {
          promotions: [String: Date]?,
          mostRecentPromotion: Date?,
          attendance: [Date]?,
-         userStatus: [UserStatus],
+         studentStatus: [StudentStatus],
          groups: [Group]?,
          paymentProgram: PaymentProgram?,
-         permission: [Permissions],
+         permission: [UserPermissions],
          adultBasicBelt: AdultBasicBelt?,
          blackBelt: AdultBlackBelt?,
          profilePic: UIImage?,
@@ -89,7 +89,7 @@ class AdultStudent {
         self.promotions = promotions
         self.mostRecentPromotion = mostRecentPromotion
         self.attendance = attendance
-        self.userStatus = userStatus
+        self.studentStatus = studentStatus
         self.adultBasicBelt = adultBasicBelt
         self.blackBelt = blackBelt
         self.groups = groups

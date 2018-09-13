@@ -16,50 +16,27 @@ struct MockData {
     
     // 3. should be ready to go going forward
 
+    // groups
+    
+    static var allStudents = Group(active: true, name: "all students", dateCreated: Date(), dateEdited: Date(), members: [owner, adultA], paymentProgram: [programA], location: myLocation, aula: [adultClassA])
+    
     // location
 
     static var myLocation = Location(active: true, dateCreated: Date(), dateEdited: Date(), profilePic: #imageLiteral(resourceName: "download.jpg"), locationName: "my location", streetAddress: "1267 the spot blvd.", city: "you know", state: "LA", zipCode: "09854", phone: "987-876-1230", website: "www.theschool.gov", email: "email@theschool.gov", social: nil)
 
     // payment programs
 
-    static var kidsProgram = PaymentProgram(active: true, programName: "Kids A", dateCreated: Date(), dateEdited: Date(), groups: [kidsParents], billingType: ["1st of month"], billingOptions: ["online with credit card"], paymentDescription: "long string", paymentAgreement: "legal agreement language", signatureType: ["digital signature"])
-
-    static var adultsProgram = PaymentProgram(active: true, programName: "Adults A", dateCreated: Date(), dateEdited: Date(), groups: [kidsParents], billingType: ["1st of month", "15th of month"], billingOptions: ["online with credit card"], paymentDescription: "long string", paymentAgreement: "legal agreement language", signatureType: ["digital signature"])
-
+    static var programA: PaymentProgram = PaymentProgram(active: true, programName: "programA", dateCreated: Date(), dateEdited: Date(), groups: [allStudents], billingType: ["digital"], billingOptions: ["1st of month"], paymentDescription: "things", paymentAgreement: "stuff", signatureType: ["digital"])
+    
     // classes
 
-    static let kidsClassA = Aula(active: true, className: "kids A", daysOfTheWeek: [Aula.Weekdays.Monday, Aula.Weekdays.Wednesday, Aula.Weekdays.Friday], timeOfDay: [Aula.ClassTimes.eighteen], location: myLocation, groups: [kidsParents], students: [kidA, kidB], instructor: [instructorA], currentDate: Date(), dateCreated: Date(), dateEdited: Date(), attendees: [kidA, kidB])
-
-    static let adultClassA: Aula = Aula(active: true, className: "adult A", daysOfTheWeek: [Aula.Weekdays.Monday, Aula.Weekdays.Wednesday, Aula.Weekdays.Friday], timeOfDay: [Aula.ClassTimes.nineteen], location: myLocation, groups: [adults], students: [adultA, adultB], instructor: [instructorA], currentDate: Date(), dateCreated: Date(), dateEdited: Date(), attendees: [adultA, adultB])
+    static let adultClassA: Aula = Aula(active: true, className: "adult A", daysOfTheWeek: [Aula.Weekdays.Monday, Aula.Weekdays.Wednesday, Aula.Weekdays.Friday], timeOfDay: [Aula.ClassTimes.nineteen], location: myLocation, groups: [allStudents], students: [adultA], instructor: [adultA], currentDate: Date(), dateCreated: Date(), dateEdited: Date(), attendees: [adultA])
 
     // users
 
-    static var owner: User = User(isOwner: true, isInstructor: true, isKid: false, dateCreated: Date(), dateEdited: Date(), birthdate: Date(), promotions: nil, mostRecentPromotion: nil, attendance: nil, userStatus: [User.UserStatus.active], groups: [allStudents, instructors, adults, kidsParents], paymentProgram: nil, permission: [User.Permissions.owner], kidsBelt: nil, adultBasicBelt: nil, blackBelt: blackBelt, profilePic: #imageLiteral(resourceName: "download.jpg"), username: "owner", firstName: "steve", lastName: "meister", parentGuardian: nil, streetAddress: "1234 street dr.", city: "coolville", state: "CA", zipCode: "93421", phone: "(523) 763-0961", mobile: "(312) 736-7843", email: "my@email.com", emergencyContact: "my wife", emergencyContactPhone: "(543) 879-9987", emergencyContactRelationship: "wife")
-
-    static var instructorA: User = User(isOwner: false, isInstructor: true, isKid: false, dateCreated: Date(), dateEdited: Date(), birthdate: Date(), promotions: nil, mostRecentPromotion: nil, attendance: nil, userStatus: [User.UserStatus.active], groups: [allStudents, instructors, adults], paymentProgram: adultsProgram, permission: [User.Permissions.instructor], kidsBelt: nil, adultBasicBelt: purpleBelt, blackBelt: nil, profilePic: #imageLiteral(resourceName: "download.jpg"), username: "instructorA", firstName: "rod", lastName: "schneider", parentGuardian: nil, streetAddress: "1234 street dr.", city: "coolville", state: "CA", zipCode: "93421", phone: "(523) 763-0961", mobile: "(312) 736-7843", email: "my@email.com", emergencyContact: "my wife", emergencyContactPhone: "(543) 879-9987", emergencyContactRelationship: "wife")
-
-    static var instructorB: User = User(isOwner: false, isInstructor: true, isKid: false, dateCreated: Date(), dateEdited: Date(), birthdate: Date(),  promotions: nil, mostRecentPromotion: nil, attendance: nil, userStatus: [User.UserStatus.active], groups: [allStudents, instructors, adults], paymentProgram: adultsProgram, permission: [User.Permissions.instructor], kidsBelt: nil, adultBasicBelt: nil, blackBelt: blackBelt, profilePic: #imageLiteral(resourceName: "download.jpg"), username: "instructorB", firstName: "daniel", lastName: "hoover", parentGuardian: nil, streetAddress: "1234 street dr.", city: "coolville", state: "CA", zipCode: "93421", phone: "(523) 763-0961", mobile: "(312) 736-7843", email: "my@email.com", emergencyContact: "my wife", emergencyContactPhone: "(543) 879-9987", emergencyContactRelationship: "wife")
-
-    static var adultA: User = User(isOwner: false, isInstructor: false, isKid: false, dateCreated: Date(), dateEdited: Date(), birthdate: Date(),  promotions: nil, mostRecentPromotion: nil, attendance: nil, userStatus: [User.UserStatus.active], groups: [allStudents, adults], paymentProgram: adultsProgram, permission: [User.Permissions.adultStudent], kidsBelt: nil, adultBasicBelt: blueBelt, blackBelt: nil, profilePic: #imageLiteral(resourceName: "download.jpg"), username: "adultA", firstName: "rob", lastName: "roberts", parentGuardian: nil, streetAddress: "1234 street dr.", city: "coolville", state: "CA", zipCode: "93421", phone: "(523) 763-0961", mobile: "(312) 736-7843", email: "my@email.com", emergencyContact: "my wife", emergencyContactPhone: "(543) 879-9987", emergencyContactRelationship: "wife")
-
-    static var adultB: User = User(isOwner: false, isInstructor: false, isKid: false, dateCreated: Date(), dateEdited: Date(), birthdate: Date(),  promotions: nil, mostRecentPromotion: nil, attendance: nil, userStatus: [User.UserStatus.active], groups: [allStudents, adults], paymentProgram: adultsProgram, permission: [User.Permissions.adultStudent], kidsBelt: nil, adultBasicBelt: brownBelt, blackBelt: nil, profilePic: #imageLiteral(resourceName: "download.jpg"), username: "adultB", firstName: "ruben", lastName: "destafani", parentGuardian: nil, streetAddress: "1234 street dr.", city: "coolville", state: "CA", zipCode: "93421", phone: "(523) 763-0961", mobile: "(312) 736-7843", email: "my@email.com", emergencyContact: "my wife", emergencyContactPhone: "(543) 879-9987", emergencyContactRelationship: "wife")
-
-    static var kidA: User = User(isOwner: false, isInstructor: false, isKid: true, dateCreated: Date(), dateEdited: Date(), birthdate: Date(),  promotions: nil, mostRecentPromotion: nil, attendance: nil, userStatus: [User.UserStatus.active], groups: [allStudents, kidsParents], paymentProgram: kidsProgram, permission: [User.Permissions.parentGuardian], kidsBelt: grayBlackBelt, adultBasicBelt: nil, blackBelt: nil, profilePic: #imageLiteral(resourceName: "download.jpg"), username: "kidA", firstName: "hunter", lastName: "deucey", parentGuardian: "douchy deucy", streetAddress: "1234 street dr.", city: "coolville", state: "CA", zipCode: "93421", phone: "(523) 763-0961", mobile: "(312) 736-7843", email: "my@email.com", emergencyContact: "my wife", emergencyContactPhone: "(543) 879-9987", emergencyContactRelationship: "wife")
-
-    static var kidB: User = User(isOwner: false, isInstructor: false, isKid: true, dateCreated: Date(), dateEdited: Date(), birthdate: Date(),  promotions: nil, mostRecentPromotion: nil, attendance: nil, userStatus: [User.UserStatus.active], groups: [allStudents,kidsParents], paymentProgram: kidsProgram, permission: [User.Permissions.parentGuardian], kidsBelt: orangeBelt, adultBasicBelt: nil, blackBelt: nil, profilePic: #imageLiteral(resourceName: "download.jpg"), username: "kidB", firstName: "marla", lastName: "unasis", parentGuardian: "alabaster unasis", streetAddress: "1234 street dr.", city: "coolville", state: "CA", zipCode: "93421", phone: "(523) 763-0961", mobile: "(312) 736-7843", email: "my@email.com", emergencyContact: "my wife", emergencyContactPhone: "(543) 879-9987", emergencyContactRelationship: "wife")
-
-    // groups
-
-    static var kidsParents: Group = Group(active: true, name: "kids Parents", dateCreated: Date(), dateEdited: Date(), members: [kidA, kidB, owner], paymentProgram: [kidsProgram], location: myLocation, aula: [kidsClassA])
-
-    static var adults = Group(active: true, name: "adults", dateCreated: Date(), dateEdited: Date(), members: [adultA, adultB, instructorA, instructorB, owner], paymentProgram: [adultsProgram], location: myLocation, aula: [adultClassA])
-
-    static var instructors = Group(active: true, name: "instructors", dateCreated: Date(), dateEdited: Date(), members: [owner, instructorB, instructorA], paymentProgram: [adultsProgram], location: myLocation, aula: [adultClassA])
-
-    // when mock data is included, fails with this group.  it may fail in other groups.  but the UI runs when the mock data is not included
-    static var allStudents = Group(active: true, name: "all students", dateCreated: Date(), dateEdited: Date(), members: [owner, instructorA, instructorB, adultA, adultB, kidA, kidB], paymentProgram: [adultsProgram, kidsProgram], location: myLocation, aula: [kidsClassA, adultClassA])
-
-
+    static var owner: Owner = Owner(isInstructor: true, dateCreated: Date(), dateEdited: Date(), birthdate: Date(), promotions: nil, mostRecentPromotion: nil, attendance: nil, groups: nil, permission: UserPermissions.owner, adultBasicBelt: nil, blackBelt: blackBelt, profilePic: #imageLiteral(resourceName: "download.jpg"), username: "owner", firstName: "steve", lastName: "meister", streetAddress: "1234 street dr.", city: "coolville", state: "CA", zipCode: "93421", phone: "(523) 763-0961", mobile: "(312) 736-7843", email: "my@email.com")
+    
+    static var adultA: AdultStudent = AdultStudent(isInstructor: true, dateCreated: Date(), dateEdited: Date(), birthdate: Date(), promotions: nil, mostRecentPromotion: nil, attendance: nil, studentStatus: [StudentStatus.active, StudentStatus.paid], groups: [allStudents], paymentProgram: programA, permission: [UserPermissions.instructor, UserPermissions.adultStudent], adultBasicBelt: purpleBelt, blackBelt: nil, profilePic: #imageLiteral(resourceName: "academia_sample_profile_pic.jpeg"), username: "adultA", firstName: "dan", lastName: "cnakle", streetAddress: "123 my street blvd.", city: "theTown", state: "CA", zipCode: "92346", phone: "123-987-0980", mobile: "098-865-1234", email: "adult@email.com", emergencyContact: "margie", emergencyContactPhone: "858-098-1234", emergencyContactRelationship: "wife")
 
     // adult basic belts
 

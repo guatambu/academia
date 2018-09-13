@@ -27,11 +27,11 @@ class OwnerModelController {
     
     var deletedOnboardingTasks: [OnBoardingTask] = []
 
-    var ownerGroups: [Group] = [MockData.kidsParents, MockData.instructors, MockData.adults]
-    var ownerClasses: [Aula] = [MockData.kidsClassA, MockData.adultClassA]
-    var ownerStudents: [User] = [MockData.owner, MockData.instructorA, MockData.instructorB, MockData.adultA, MockData.adultB, MockData.kidA, MockData.kidB]
-    var ownerLocations: [Location] = [MockData.myLocation]
-    var ownerPaymentPrograms: [PaymentProgram] = [MockData.kidsProgram, MockData.adultsProgram]
+    var ownerGroups: [Group] = [] //[MockData.kidsParents, MockData.instructors, MockData.adults]
+    var ownerClasses: [Aula] = [] //[MockData.kidsClassA, MockData.adultClassA]
+    var ownerStudents: [User] = [] //[MockData.owner, MockData.instructorA, MockData.instructorB, MockData.adultA, MockData.adultB, MockData.kidA, MockData.kidB]
+    var ownerLocations: [Location] = [] //[MockData.myLocation]
+    var ownerPaymentPrograms: [PaymentProgram] = [] //[MockData.kidsProgram, MockData.adultsProgram]
 }
 
 
