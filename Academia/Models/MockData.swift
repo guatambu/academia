@@ -18,7 +18,7 @@ struct MockData {
 
     // groups
     
-    static var allStudents = Group(active: true, name: "all students", dateCreated: Date(), dateEdited: Date(), members: [owner, adultA], paymentProgram: [programA], location: myLocation, aula: [adultClassA])
+    static var allStudents = Group(active: true, name: "all students", dateCreated: Date(), dateEdited: Date(), members: [owner, adultA])
     
     // location
 
@@ -26,11 +26,11 @@ struct MockData {
 
     // payment programs
 
-    static var programA: PaymentProgram = PaymentProgram(active: true, programName: "programA", dateCreated: Date(), dateEdited: Date(), groups: [allStudents], billingType: ["digital"], billingOptions: ["1st of month"], paymentDescription: "things", paymentAgreement: "stuff", signatureType: ["digital"])
+    static var programA: PaymentProgram = PaymentProgram(active: true, programName: "programA", dateCreated: Date(), dateEdited: Date(), billingType: ["digital"], billingOptions: ["1st of month"], paymentDescription: "things", paymentAgreement: "stuff", signatureType: ["digital"])
     
     // classes
 
-    static let adultClassA: Aula = Aula(active: true, className: "adult A", daysOfTheWeek: [Aula.Weekdays.Monday, Aula.Weekdays.Wednesday, Aula.Weekdays.Friday], timeOfDay: [Aula.ClassTimes.nineteen], location: myLocation, groups: [allStudents], students: [adultA], instructor: [adultA], currentDate: Date(), dateCreated: Date(), dateEdited: Date(), attendees: [adultA])
+    static let adultClassA: Aula = Aula(active: true, className: "adult A", daysOfTheWeek: [Aula.Weekdays.Monday, Aula.Weekdays.Wednesday, Aula.Weekdays.Friday], timeOfDay: [Aula.ClassTimes.nineteen], location: myLocation, students: [adultA], instructor: [adultA], currentDate: Date(), dateCreated: Date(), dateEdited: Date(), attendees: [adultA])
 
     // users
 

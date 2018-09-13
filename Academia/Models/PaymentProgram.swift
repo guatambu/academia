@@ -16,7 +16,6 @@ class PaymentProgram {
     var programName: String
     var dateCreated: Date
     var dateEdited: Date
-    var groups: [Group]?
     var billingType: [String]
     var billingOptions: [String]
     var paymentDescription: String
@@ -25,13 +24,12 @@ class PaymentProgram {
     
     // Memberwise Initializer
     
-    init(active: Bool, programName: String, dateCreated: Date, dateEdited: Date, groups: [Group]?, billingType: [String], billingOptions: [String], paymentDescription: String, paymentAgreement: String, signatureType: [String]) {
+    init(active: Bool, programName: String, dateCreated: Date, dateEdited: Date, billingType: [String], billingOptions: [String], paymentDescription: String, paymentAgreement: String, signatureType: [String]) {
         
         self.active = active
         self.programName = programName
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
-        self.groups = groups
         self.billingType = billingType
         self.billingOptions = billingOptions
         self.paymentDescription = paymentDescription

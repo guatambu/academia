@@ -12,10 +12,7 @@ class OwnerClassesTableViewController: UITableViewController {
     
     // MARK: - Properties
     
-    let adultClass1: Aula = Aula(active: true, className: "adult 1", daysOfTheWeek: [Aula.Weekdays.Monday, Aula.Weekdays.Wednesday, Aula.Weekdays.Friday], timeOfDay: [Aula.ClassTimes.nineteen], location: MockData.myLocation, groups: [MockData.allStudents], students: [MockData.adultA], instructor: [MockData.adultA], currentDate: Date(), dateCreated: Date(), dateEdited: Date(), attendees: [MockData.adultA])
-    let adultClass2: Aula = Aula(active: true, className: "adult 2", daysOfTheWeek: [Aula.Weekdays.Monday, Aula.Weekdays.Wednesday, Aula.Weekdays.Friday], timeOfDay: [Aula.ClassTimes.nineteen], location: MockData.myLocation, groups: [MockData.allStudents], students: [MockData.adultA], instructor: [MockData.adultA], currentDate: Date(), dateCreated: Date(), dateEdited: Date(), attendees: [MockData.adultA])
-    let kidClass1: Aula = Aula(active: true, className: "kid 1", daysOfTheWeek: [Aula.Weekdays.Tuesday, Aula.Weekdays.Thursday, Aula.Weekdays.Saturday], timeOfDay: [Aula.ClassTimes.eighteen], location: MockData.myLocation, groups: [MockData.allStudents], students: [MockData.adultA], instructor: [MockData.adultA], currentDate: Date(), dateCreated: Date(), dateEdited: Date(), attendees: [MockData.adultA])
-    let kidClass2: Aula = Aula(active: true, className: "kid 2", daysOfTheWeek: [Aula.Weekdays.Tuesday, Aula.Weekdays.Thursday, Aula.Weekdays.Saturday], timeOfDay: [Aula.ClassTimes.eighteen], location: MockData.myLocation, groups: [MockData.allStudents], students: [MockData.adultA], instructor: [MockData.adultA], currentDate: Date(), dateCreated: Date(), dateEdited: Date(), attendees: [MockData.adultA])
+    
     
     var classes = [Aula]()
     
@@ -43,14 +40,14 @@ class OwnerClassesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        classes = [adultClass1, adultClass2, kidClass1, kidClass2]
+        classes = []
         return classes.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "generalMenuCell", for: indexPath) as? GeneralMenuTableViewCell else { return UITableViewCell() }
 
-        classes = [adultClass1, adultClass2, kidClass1, kidClass2]
+        classes = []
         
         let classTitle = classes[indexPath.row].className
         // Configure the cell...

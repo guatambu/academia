@@ -17,7 +17,6 @@ class Aula {
     var daysOfTheWeek: [Weekdays]
     var timeOfDay: [ClassTimes]
     var location: Location?
-    var groups: [Group]?
     var students: [Any]?
     var instructor: [Any]?
     var currentDate: Date
@@ -69,7 +68,6 @@ class Aula {
          daysOfTheWeek: [Weekdays],
          timeOfDay: [ClassTimes],
          location: Location?,
-         groups: [Group]?,
          students: [Any]?,
          instructor: [Any]?,
          currentDate: Date,
@@ -83,7 +81,6 @@ class Aula {
         self.daysOfTheWeek = daysOfTheWeek
         self.timeOfDay = timeOfDay
         self.location = location
-        self.groups = groups
         self.students = students
         self.instructor = instructor
         self.currentDate = currentDate
