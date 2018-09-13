@@ -93,11 +93,13 @@ class MyLocationsTableViewController: UITableViewController {
         locations = [myLocation1, myLocation2]
         
         // Get the new view controller using segue.destinationViewController.
-        guard let destinationTVC = segue.destination as? MyLocationsDetailTableViewController else { return }
-        guard let indexPath = self.tableView.indexPathForSelectedRow else { return }
-        let location = locations[indexPath.row]
-        
-        // Pass the selected object to the new view controller.
-        destinationTVC.location = location
+        if segue.identifier == "toLocationDetail" {
+            guard let destinationTVC = segue.destination as? MyLocationsDetailTableViewController else { return }
+            guard let indexPath = self.tableView.indexPathForSelectedRow else { return }
+            let location = locations[indexPath.row]
+            
+            // Pass the selected object to the new view controller.
+            destinationTVC.location = location
+        }
     }
 }

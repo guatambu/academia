@@ -86,6 +86,7 @@
 		FAB7E350212B7D47003E3B79 /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB7E34F212B7D47003E3B79 /* LandingPageViewController.swift */; };
 		FAB7E352212B7D73003E3B79 /* UserSelfIdentifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB7E351212B7D73003E3B79 /* UserSelfIdentifyViewController.swift */; };
 		FAB7E35A212BA643003E3B79 /* BlairMdITC TT-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAB7E359212BA643003E3B79 /* BlairMdITC TT-Medium.ttf */; };
+		FAE2C07F214ADD26002E9756 /* ClassDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE2C07E214ADD26002E9756 /* ClassDetailTableViewController.swift */; };
 		FAE2FD3C2140700F00815402 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE2FD3B2140700F00815402 /* MockData.swift */; };
 		FAE2FD652140BE4200815402 /* FirstNameTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAE2FD642140BE4200815402 /* FirstNameTextFieldCell.xib */; };
 		FAE2FD672140BE4D00815402 /* LastNameTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAE2FD662140BE4D00815402 /* LastNameTextFieldCell.xib */; };
@@ -272,6 +273,7 @@
 		FAB7E34F212B7D47003E3B79 /* LandingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
 		FAB7E351212B7D73003E3B79 /* UserSelfIdentifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelfIdentifyViewController.swift; sourceTree = "<group>"; };
 		FAB7E359212BA643003E3B79 /* BlairMdITC TT-Medium.ttf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "BlairMdITC TT-Medium.ttf"; sourceTree = "<group>"; };
+		FAE2C07E214ADD26002E9756 /* ClassDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassDetailTableViewController.swift; sourceTree = "<group>"; };
 		FAE2FD3B2140700F00815402 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		FAE2FD642140BE4200815402 /* FirstNameTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstNameTextFieldCell.xib; sourceTree = "<group>"; };
 		FAE2FD662140BE4D00815402 /* LastNameTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LastNameTextFieldCell.xib; sourceTree = "<group>"; };
@@ -578,6 +580,7 @@
 			children = (
 				FA21D67F2130BB1E006790E5 /* OwnerClassesTableViewController.swift */,
 				FA21D6A02134B8D3006790E5 /* AddClassTableViewController.swift */,
+				FAE2C07E214ADD26002E9756 /* ClassDetailTableViewController.swift */,
 			);
 			path = Aulas;
 			sourceTree = "<group>";
@@ -1061,6 +1064,7 @@
 				FA9ADA0D213789760005E1F1 /* MyLocationsDetailTableViewController.swift in Sources */,
 				FAF29B6B212D0E9E00752414 /* OnBoardingTask.swift in Sources */,
 				FAE2FD3C2140700F00815402 /* MockData.swift in Sources */,
+				FAE2C07F214ADD26002E9756 /* ClassDetailTableViewController.swift in Sources */,
 				FA9ADA2B2139EE560005E1F1 /* StatusTableViewCell.swift in Sources */,
 				FA21D6822130BB2D006790E5 /* OwnerProfileTableViewController.swift in Sources */,
 				FA66A0122145CD83002B0313 /* CheckMarkBoxTableViewCell.swift in Sources */,
