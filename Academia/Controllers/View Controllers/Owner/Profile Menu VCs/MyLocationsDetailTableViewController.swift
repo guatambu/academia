@@ -12,6 +12,8 @@ class MyLocationsDetailTableViewController: UITableViewController, SegueFromSave
 
     // MARK: - Properties
     
+    var location: Location?
+    
     let cells: [MyCells] = [MyCells.profilePicCell, MyCells.locationNameCell, MyCells.streetAddressCell, MyCells.cityCell, MyCells.stateCell, MyCells.zipCodeCell, MyCells.phoneCell, MyCells.websiteCell, MyCells.emailCell, MyCells.socialNetworksCell, MyCells.saveProfileButtonCell]
     
     

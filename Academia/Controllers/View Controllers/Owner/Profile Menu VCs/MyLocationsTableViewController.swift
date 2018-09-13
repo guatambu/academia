@@ -10,33 +10,43 @@ import UIKit
 
 class MyLocationsTableViewController: UITableViewController {
 
+    var myLocation1 = Location(active: true, dateCreated: Date(), dateEdited: Date(), profilePic: #imageLiteral(resourceName: "download.jpg"), locationName: "my location 1", streetAddress: "1267 the spot blvd.", city: "you know", state: "LA", zipCode: "09854", phone: "987-876-1230", website: "www.theschool.gov", email: "email@theschool.gov", social: nil)
+    var myLocation2 = Location(active: true, dateCreated: Date(), dateEdited: Date(), profilePic: #imageLiteral(resourceName: "download.jpg"), locationName: "my location 2", streetAddress: "1267 the spot blvd.", city: "you know", state: "LA", zipCode: "09854", phone: "987-876-1230", website: "www.theschool.gov", email: "email@theschool.gov", social: nil)
+    var locations = [Location]()
+    
+    
+    // MARK: - ViewController Lifecycle Functions
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // register required cell nibs
+        let nibGenMenu = UINib(nibName: "GeneralMenuCell", bundle: nil)
+        self.tableView.register(nibGenMenu, forCellReuseIdentifier: "generalMenuCell")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return OwnerModelController.shared.ownerLocations.count
+        locations = [myLocation1, myLocation2]
+        return locations.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "generalMenuCell", for: indexPath) as? GeneralMenuTableViewCell else { return UITableViewCell() }
         
-        let locationTitle = OwnerModelController.shared.ownerLocations[indexPath.row].locationName
+        locations = [myLocation1, myLocation2]
+        
+        let locationTitle = locations[indexPath.row].locationName
         
         // Configure the cell...
         cell.title = locationTitle
@@ -44,26 +54,20 @@ class MyLocationsTableViewController: UITableViewController {
         return cell
     }
 
-
-    /*
+    
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
 
-    /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
-    */
 
     /*
     // Override to support rearranging the table view.
@@ -80,14 +84,20 @@ class MyLocationsTableViewController: UITableViewController {
     }
     */
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        locations = [myLocation1, myLocation2]
+        
         // Get the new view controller using segue.destinationViewController.
+        guard let destinationTVC = segue.destination as? MyLocationsDetailTableViewController else { return }
+        guard let indexPath = self.tableView.indexPathForSelectedRow else { return }
+        let location = locations[indexPath.row]
+        
         // Pass the selected object to the new view controller.
+        destinationTVC.location = location
     }
-    */
-
 }
