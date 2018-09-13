@@ -14,7 +14,7 @@ class OwnerClassesTableViewController: UITableViewController {
     
     
     
-    var classes = [Aula]()
+    var classes = [MockData.adultClassA]
     
     // MARK: - ViewController Lifecycle Functions
     
@@ -30,24 +30,23 @@ class OwnerClassesTableViewController: UITableViewController {
 
         let nib = UINib(nibName: "GeneralMenuCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "generalMenuCell")
+        
+        print(classes)
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // may want to have sections with titles here
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        classes = []
         return classes.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "generalMenuCell", for: indexPath) as? GeneralMenuTableViewCell else { return UITableViewCell() }
-
-        classes = []
         
         let classTitle = classes[indexPath.row].className
         // Configure the cell...
