@@ -12,6 +12,8 @@ class StudentListTableViewController: UITableViewController {
     
     // MARK: - Properties
     
+    var allStudents: [Any] = [MockData.adultA, MockData.kidA]
+    
     
     // MARK: - ViewController Lifecycle Functions
     
@@ -25,8 +27,8 @@ class StudentListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let nib = UINib(nibName: "GeneralMenuCell", bundle: nil)
-        self.tableView.register(nib, forCellReuseIdentifier: "generalMenuCell")
+        let nib = UINib(nibName: "ImageMenuCell", bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: "imageMenuCell")
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,17 +40,22 @@ class StudentListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return OwnerModelController.shared.ownerGroups.count
+        return allStudents.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "generalMenuCell", for: indexPath) as? GeneralMenuTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "imageMenuCell", for: indexPath) as? ImageMenuTableViewCell else { return UITableViewCell() }
         
-        let groupTitle = OwnerModelController.shared.ownerGroups[indexPath.row].name
+        let student = allStudents[indexPath.row]
         
         // Configure the cell...
-        cell.title = groupTitle
+        if student is AdultStudent {
+            cell.adultStudent = student as? AdultStudent
+        }
+        if student is KidStudent {
+            cell.kidStudent = student as? KidStudent
+        }
 
         return cell
     }

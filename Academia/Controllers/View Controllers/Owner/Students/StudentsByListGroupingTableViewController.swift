@@ -10,6 +10,10 @@ import UIKit
 
 class StudentsByListGroupingTableViewController: UITableViewController {
     
+    // MARK: - Properties
+    
+    var allGroups = [MockData.allStudents]
+    
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
@@ -21,31 +25,27 @@ class StudentsByListGroupingTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let nib = UINib(nibName: "ImageMenuCell", bundle: nil)
-        self.tableView.register(nib, forCellReuseIdentifier: "imageMenuCell")
+        
+        let nib = UINib(nibName: "GeneralMenuCell", bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: "generalMenuCell")
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return OwnerModelController.shared.ownerStudents.count
+        return allGroups.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "imageMenuCell", for: indexPath) as? ImageMenuTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "generalMenuCell", for: indexPath) as? GeneralMenuTableViewCell else { return UITableViewCell() }
         
-        let user = OwnerModelController.shared.ownerStudents[indexPath.row]
+        let group = allGroups[indexPath.row]
         
         // Configure the cell...
-        cell.user = user
+        cell.title = group.name
 
         return cell
     }
