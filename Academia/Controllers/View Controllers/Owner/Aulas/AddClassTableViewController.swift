@@ -12,6 +12,7 @@ class AddClassTableViewController: UITableViewController {
     
     // MARK: - Properties
     
+    @IBOutlet weak var saveEditBarButtonOutlet: UIBarButtonItem!
     @IBOutlet weak var statusMessageOutlet: UILabel!
     @IBOutlet weak var classNameTextFieldOutlet: UITextField!
     @IBOutlet weak var activeSwitchOutlet: UISwitch!

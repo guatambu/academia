@@ -101,7 +101,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="class name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kRt-XI-bic" userLabel="class name">
-                                                    <rect key="frame" x="32" y="20" width="311" height="30"/>
+                                                    <rect key="frame" x="24" y="20" width="327" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -109,9 +109,9 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="kRt-XI-bic" firstAttribute="centerY" secondItem="iYX-Uj-uVL" secondAttribute="centerY" id="2Rn-hU-DK3"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="kRt-XI-bic" secondAttribute="trailing" constant="16" id="KhZ-yD-rao"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="kRt-XI-bic" secondAttribute="trailing" constant="8" id="KhZ-yD-rao"/>
                                                 <constraint firstItem="kRt-XI-bic" firstAttribute="centerX" secondItem="iYX-Uj-uVL" secondAttribute="centerX" id="aoV-DL-iQL"/>
-                                                <constraint firstItem="kRt-XI-bic" firstAttribute="leading" secondItem="iYX-Uj-uVL" secondAttribute="leadingMargin" constant="16" id="gMo-Mj-bO0"/>
+                                                <constraint firstItem="kRt-XI-bic" firstAttribute="leading" secondItem="iYX-Uj-uVL" secondAttribute="leadingMargin" constant="8" id="gMo-Mj-bO0"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -425,6 +425,7 @@
                         <outlet property="dayMessageOutlet" destination="an5-fg-XGm" id="iFy-mm-TSt"/>
                         <outlet property="leadInstructorMessageOutlet" destination="Vxb-mg-Xdd" id="35G-5y-TJe"/>
                         <outlet property="locationMessageOutlet" destination="xOa-tD-RNh" id="cb6-Uh-9pD"/>
+                        <outlet property="saveEditBarButtonOutlet" destination="m81-K5-kOA" id="J40-zL-7wb"/>
                         <outlet property="statusMessageOutlet" destination="QRj-37-CBO" id="bDQ-aC-GTT"/>
                         <outlet property="timeMessageOutlet" destination="mq2-1h-Kw3" id="Rn7-3a-yvc"/>
                         <outlet property="timePickerWheelButtonTapped" destination="3an-XT-ZZB" id="5G3-GE-pfx"/>
