@@ -29,11 +29,16 @@ class PaymentProgramDetailTableViewController: UITableViewController {
     @IBOutlet weak var switchButtonOutlet: UISwitch!
     @IBOutlet weak var billingTypeMessageOutlet: UILabel!
     @IBOutlet weak var billingOptionsMessageOutlet: UILabel!
+    @IBOutlet weak var signatureTypeMessageOutlet: UILabel!
+    @IBOutlet weak var paymentDescriptionTextViewOutlet: UITextView!
+    @IBOutlet weak var paymentAgreementTextViewOutlet: UITextView!
     
     
+    // MARK: - ViewController Lifecycle Functions
     
-    
-    
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +49,34 @@ class PaymentProgramDetailTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    
+    // MARK: - Actions
 
+    @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
+        self.navigationItem.title = programNameTextFieldOutlet.text;
+    }
+    
+    
+    @IBAction func billingTypePickerWheelButtonTapped(_ sender: UIButton) {
+    }
+    
+    @IBAction func billingOptionsPickerWheelButtonTapped(_ sender: UIButton) {
+    }
+    
+    @IBAction func signatureTypePickerWheelButtonTapped(_ sender: UIButton) {
+    }
+    
+    
+    // MARK: - TableView override methods for dynamically resizing static cells per content
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
 
 
     /*
