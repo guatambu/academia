@@ -12,68 +12,44 @@ class AddClassTableViewController: UITableViewController {
     
     // MARK: - Properties
     
+    @IBOutlet weak var statusMessageOutlet: UILabel!
+    @IBOutlet weak var classNameTextFieldOutlet: UITextField!
+    @IBOutlet weak var activeSwitchOutlet: UISwitch!
+    @IBOutlet weak var locationMessageOutlet: UILabel!
+    @IBOutlet weak var leadInstructorMessageOutlet: UILabel!
+    @IBOutlet weak var assistantsMessageOutlet: UILabel!
+    @IBOutlet weak var dayMessageOutlet: UILabel!
+    @IBOutlet weak var timeMessageOutlet: UILabel!
+    
+    
     
     var aula: Aula?
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let avenirFont = [ NSAttributedStringKey.foregroundColor: UIColor.gray,
+                           NSAttributedStringKey.font: UIFont(name: "Avenir-Medium", size: 24)! ]
+        classNameTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "class name", attributes: avenirFont)
 
     }
-
-
-
-    // MARK: - Table view data source
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+    
+    
+    @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
     }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+    
+    @IBAction func locationPickerWheelButtonTapped(_ sender: UIButton) {
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    @IBAction func leadInstructorPickerWheelButtonTapped(_ sender: UIButton) {
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    @IBAction func assistantsPickerWheelButtonTapped(_ sender: UIButton) {
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    @IBAction func dayPickerWheelButtonTapped(_ sender: UIButton) {
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
+    @IBOutlet weak var timePickerWheelButtonTapped: UIButton!
+    
 
     /*
     // MARK: - Navigation
