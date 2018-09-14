@@ -37,6 +37,12 @@ class AddClassTableViewController: UITableViewController {
     }
     
     
+    // MARK: - Actions
+    
+    @IBAction func switchTapped(_ sender: Any) {
+    }
+    
+    
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
     }
     

@@ -24,7 +24,7 @@ class SignUpLoginViewController: UIViewController {
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
-        print("viewWillAppear: isOwner = \(isOwner)")
+        print("viewWillAppear: isOwner = \(String(describing: isOwner))")
         
     }
     

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -139,6 +140,9 @@
                                                         </label>
                                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t8J-8S-lZ6">
                                                             <rect key="frame" x="174.5" y="0.0" width="51" height="33"/>
+                                                            <connections>
+                                                                <action selector="switchTapped:" destination="Wxn-sY-U0n" eventType="valueChanged" id="oJy-jr-Hqp"/>
+                                                            </connections>
                                                         </switch>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="no" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jnp-M3-BZW" userLabel="no">
                                                             <rect key="frame" x="263.5" y="0.0" width="31.5" height="33"/>
@@ -180,7 +184,6 @@
                                                     <rect key="frame" x="279" y="0.0" width="80" height="48"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="48" id="hPB-7G-khL"/>
-                                                        <constraint firstAttribute="width" constant="80" id="oWf-vb-sI4"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                     <state key="normal" title="Add">
@@ -192,6 +195,9 @@
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(info)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xOa-tD-RNh">
                                                     <rect key="frame" x="40" y="42" width="239" height="23"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="xOa-tD-RNh" secondAttribute="height" multiplier="239:23" id="r5A-Mn-vfb"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -228,7 +234,6 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wo7-Dh-MkT">
                                                     <rect key="frame" x="279" y="0.0" width="80" height="48"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="80" id="Iad-ye-D6T"/>
                                                         <constraint firstAttribute="height" constant="48" id="N3D-Wb-I3M"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
@@ -241,6 +246,9 @@
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(info)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vxb-mg-Xdd">
                                                     <rect key="frame" x="40" y="42" width="239" height="23"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="Vxb-mg-Xdd" secondAttribute="height" multiplier="239:23" id="frj-pb-rHf"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -278,7 +286,6 @@
                                                     <rect key="frame" x="279" y="0.0" width="80" height="48"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="48" id="a8h-L6-akn"/>
-                                                        <constraint firstAttribute="width" constant="80" id="dfy-q0-hWV"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                     <state key="normal" title="Add">
@@ -290,6 +297,9 @@
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(info)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gjG-Wn-Xqk">
                                                     <rect key="frame" x="40" y="42" width="239" height="23"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="gjG-Wn-Xqk" secondAttribute="height" multiplier="239:23" id="yca-tS-6J1"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -326,7 +336,6 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWK-MQ-emb">
                                                     <rect key="frame" x="279" y="0.0" width="80" height="48"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="80" id="CPK-o7-EkQ"/>
                                                         <constraint firstAttribute="height" constant="48" id="iGK-4X-XcN"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
@@ -339,6 +348,9 @@
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(info)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="an5-fg-XGm">
                                                     <rect key="frame" x="40" y="40" width="239" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="an5-fg-XGm" secondAttribute="height" multiplier="239:25" id="PSz-LF-lAi"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -376,7 +388,6 @@
                                                     <rect key="frame" x="279" y="0.0" width="80" height="48"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="48" id="HBF-jd-lRA"/>
-                                                        <constraint firstAttribute="width" constant="80" id="RFd-C2-0ia"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                     <state key="normal" title="Add">
@@ -385,6 +396,9 @@
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(info)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mq2-1h-Kw3">
                                                     <rect key="frame" x="40" y="42" width="239" height="23"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="mq2-1h-Kw3" secondAttribute="height" multiplier="239:23" id="bf1-I8-bo7"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
