@@ -19,7 +19,6 @@
 		FA0C444621278BBF00B59194 /* Aula.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0C444521278BBF00B59194 /* Aula.swift */; };
 		FA0C444821278C9A00B59194 /* PaymentProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0C444721278C9A00B59194 /* PaymentProgram.swift */; };
 		FA0C444A21278CA900B59194 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0C444921278CA900B59194 /* Group.swift */; };
-		FA0C44512128FDB000B59194 /* download.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA0C44502128FDB000B59194 /* download.jpg */; };
 		FA21D6802130BB1E006790E5 /* OwnerClassesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D67F2130BB1E006790E5 /* OwnerClassesTableViewController.swift */; };
 		FA21D6822130BB2D006790E5 /* OwnerProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6812130BB2D006790E5 /* OwnerProfileTableViewController.swift */; };
 		FA21D6842130BB7F006790E5 /* StudentListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6832130BB7F006790E5 /* StudentListTableViewController.swift */; };
@@ -35,6 +34,11 @@
 		FA21D6A52134D72A006790E5 /* AddNewStudentGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6A42134D72A006790E5 /* AddNewStudentGroupTableViewController.swift */; };
 		FA21D6A72136253E006790E5 /* AdultBlackBelt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6A62136253E006790E5 /* AdultBlackBelt.swift */; };
 		FA21D6A921362551006790E5 /* KidsBelt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6A821362551006790E5 /* KidsBelt.swift */; };
+		FA5C5C28214DCE5E00BF62D5 /* kid_sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA5C5C25214DCE5D00BF62D5 /* kid_sample.jpg */; };
+		FA5C5C29214DCE5E00BF62D5 /* student_sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA5C5C26214DCE5E00BF62D5 /* student_sample.jpg */; };
+		FA5C5C2A214DCE5E00BF62D5 /* owner_sample.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5C5C27214DCE5E00BF62D5 /* owner_sample.png */; };
+		FA5C5C2C214EFCCC00BF62D5 /* location1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA5C5C2B214EFCCC00BF62D5 /* location1.jpg */; };
+		FA5C5C2E214EFCD100BF62D5 /* location2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA5C5C2D214EFCD100BF62D5 /* location2.jpg */; };
 		FA66A0082145BA6B002B0313 /* CheckMarkBoxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA66A0072145BA6B002B0313 /* CheckMarkBoxCell.xib */; };
 		FA66A00A2145CA2F002B0313 /* DigitalSignatureTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA66A0092145CA2F002B0313 /* DigitalSignatureTextFieldCell.xib */; };
 		FA66A00C2145CB42002B0313 /* HeadingLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA66A00B2145CB42002B0313 /* HeadingLabelCell.xib */; };
@@ -206,7 +210,6 @@
 		FA0C444521278BBF00B59194 /* Aula.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aula.swift; sourceTree = "<group>"; };
 		FA0C444721278C9A00B59194 /* PaymentProgram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProgram.swift; sourceTree = "<group>"; };
 		FA0C444921278CA900B59194 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
-		FA0C44502128FDB000B59194 /* download.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = download.jpg; sourceTree = "<group>"; };
 		FA21D67F2130BB1E006790E5 /* OwnerClassesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerClassesTableViewController.swift; sourceTree = "<group>"; };
 		FA21D6812130BB2D006790E5 /* OwnerProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerProfileTableViewController.swift; sourceTree = "<group>"; };
 		FA21D6832130BB7F006790E5 /* StudentListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentListTableViewController.swift; sourceTree = "<group>"; };
@@ -222,6 +225,11 @@
 		FA21D6A42134D72A006790E5 /* AddNewStudentGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewStudentGroupTableViewController.swift; sourceTree = "<group>"; };
 		FA21D6A62136253E006790E5 /* AdultBlackBelt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdultBlackBelt.swift; sourceTree = "<group>"; };
 		FA21D6A821362551006790E5 /* KidsBelt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidsBelt.swift; sourceTree = "<group>"; };
+		FA5C5C25214DCE5D00BF62D5 /* kid_sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kid_sample.jpg; sourceTree = "<group>"; };
+		FA5C5C26214DCE5E00BF62D5 /* student_sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = student_sample.jpg; sourceTree = "<group>"; };
+		FA5C5C27214DCE5E00BF62D5 /* owner_sample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = owner_sample.png; sourceTree = "<group>"; };
+		FA5C5C2B214EFCCC00BF62D5 /* location1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = location1.jpg; sourceTree = "<group>"; };
+		FA5C5C2D214EFCD100BF62D5 /* location2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = location2.jpg; sourceTree = "<group>"; };
 		FA66A0072145BA6B002B0313 /* CheckMarkBoxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckMarkBoxCell.xib; sourceTree = "<group>"; };
 		FA66A0092145CA2F002B0313 /* DigitalSignatureTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DigitalSignatureTextFieldCell.xib; sourceTree = "<group>"; };
 		FA66A00B2145CB42002B0313 /* HeadingLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeadingLabelCell.xib; sourceTree = "<group>"; };
@@ -433,7 +441,11 @@
 				FA0C441F21278A8F00B59194 /* Assets.xcassets */,
 				FA0C442421278A8F00B59194 /* Info.plist */,
 				FA9ADA142138C6450005E1F1 /* academia_sample_profile_pic.jpeg */,
-				FA0C44502128FDB000B59194 /* download.jpg */,
+				FA5C5C2B214EFCCC00BF62D5 /* location1.jpg */,
+				FA5C5C2D214EFCD100BF62D5 /* location2.jpg */,
+				FA5C5C25214DCE5D00BF62D5 /* kid_sample.jpg */,
+				FA5C5C27214DCE5E00BF62D5 /* owner_sample.png */,
+				FA5C5C26214DCE5E00BF62D5 /* student_sample.jpg */,
 				FAF29B88212E1BEC00752414 /* Glyph images */,
 			);
 			path = "App Resources";
@@ -900,6 +912,7 @@
 				FAF1BB8A2143575C00AD56AE /* AgreementTextViewCell.xib in Resources */,
 				FA21D68A2130E319006790E5 /* AdultBlackBeltTemplate.xib in Resources */,
 				FAE2FD712140BEAA00815402 /* ZipCodeTextFieldCell.xib in Resources */,
+				FA5C5C2A214DCE5E00BF62D5 /* owner_sample.png in Resources */,
 				FAE2FD7D2140BF0500815402 /* SchoolGroupTextFieldCell.xib in Resources */,
 				FAF29BBD212E21EA00752414 /* unchecked_checkbox_32.png in Resources */,
 				FAF29B9B212E1EF700752414 /* messages_black_50.png in Resources */,
@@ -925,6 +938,7 @@
 				FAF29B9A212E1EF700752414 /* right_red_arrow_50.png in Resources */,
 				FAF29BD7212F8CE400752414 /* home_outline_black_32 copy.png in Resources */,
 				FA21D68C2130E522006790E5 /* AdultBasicBeltTemplate.xib in Resources */,
+				FA5C5C2E214EFCD100BF62D5 /* location2.jpg in Resources */,
 				FAF29BBA212E21EA00752414 /* right_red_arrow_32.png in Resources */,
 				FAE2FD772140BED100815402 /* EmailTextFieldCell.xib in Resources */,
 				FAF29BE32130AC2900752414 /* ImageMenuCell.xib in Resources */,
@@ -939,9 +953,11 @@
 				FA0C442021278A8F00B59194 /* Assets.xcassets in Resources */,
 				FA9ADA1D2138D9C90005E1F1 /* SaveProfileCell.xib in Resources */,
 				FAE2FD812140BF2A00815402 /* EmergencyContactPhoneTextFieldCell.xib in Resources */,
+				FA5C5C29214DCE5E00BF62D5 /* student_sample.jpg in Resources */,
 				FAF29B9E212E1EF700752414 /* profile_red_50.png in Resources */,
 				FAF29BA7212E1EF700752414 /* classes_red_50.png in Resources */,
 				FAE2FD7B2140BEFA00815402 /* PaymentProgramTextFieldCell.xib in Resources */,
+				FA5C5C2C214EFCCC00BF62D5 /* location1.jpg in Resources */,
 				FAF29BC5212E21EA00752414 /* profile_black_32.png in Resources */,
 				FAAAC14B213E33E000093D6C /* OwnerProfileFlow.storyboard in Resources */,
 				FAF29BC7212E21EA00752414 /* students_red_32.png in Resources */,
@@ -956,12 +972,12 @@
 				FAE2FD6D2140BE8C00815402 /* CityTextFieldCell.xib in Resources */,
 				FAF29BC3212E21EA00752414 /* classes_red_32.png in Resources */,
 				FAF29BD8212F8CE400752414 /* home_outline_red_32 copy.png in Resources */,
-				FA0C44512128FDB000B59194 /* download.jpg in Resources */,
 				FAF29B99212E1EF700752414 /* left_red_arrow_50.png in Resources */,
 				FAF29BA2212E1EF700752414 /* programs_red_50.png in Resources */,
 				FAE2FD672140BE4D00815402 /* LastNameTextFieldCell.xib in Resources */,
 				FAF29BA5212E1EF700752414 /* checked_tick_box_50.png in Resources */,
 				FAE2FD6B2140BE8200815402 /* StreetAddressTextFieldCell.xib in Resources */,
+				FA5C5C28214DCE5E00BF62D5 /* kid_sample.jpg in Resources */,
 				FAF29BA1212E1EF700752414 /* camera_outline_white.png in Resources */,
 				FAE2FD752140BEC600815402 /* MobileTextFieldCell.xib in Resources */,
 				FAF29BC2212E21EA00752414 /* profile_red_32.png in Resources */,

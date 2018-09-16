@@ -51,10 +51,9 @@ class StudentListTableViewController: UITableViewController {
         
         // Configure the cell...
         if student is AdultStudent {
-            cell.adultStudent = student as? AdultStudent
-        }
-        if student is KidStudent {
-            cell.kidStudent = student as? KidStudent
+            cell.adultStudent = (student as! AdultStudent)
+        } else if student is KidStudent {
+            cell.kidStudent = (student as! KidStudent)
         }
 
         return cell

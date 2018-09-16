@@ -29,7 +29,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ISa-qQ-rY8">
                                 <rect key="frame" x="0.0" y="0.0" width="343" height="80"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="754" image="download.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="TLd-DB-8L9">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="754" image="academia_sample_profile_pic.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="TLd-DB-8L9">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="Qef-sT-DsR"/>
@@ -85,7 +85,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="download.jpg" width="225" height="225"/>
+        <image name="academia_sample_profile_pic.jpeg" width="210" height="112"/>
         <image name="right_red_arrow_32.png" width="32" height="32"/>
     </resources>
 </document>

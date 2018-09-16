@@ -22,7 +22,7 @@ struct MockData {
     
     // location
 
-    static var myLocation = Location(active: true, dateCreated: Date(), dateEdited: Date(), profilePic: #imageLiteral(resourceName: "download.jpg"), locationName: "my location", streetAddress: "1267 the spot blvd.", city: "you know", state: "LA", zipCode: "09854", phone: "987-876-1230", website: "www.theschool.gov", email: "email@theschool.gov", social: nil)
+    static var myLocation = Location(active: true, dateCreated: Date(), dateEdited: Date(), profilePic: #imageLiteral(resourceName: "owner_sample.png"), locationName: "my location", streetAddress: "1267 the spot blvd.", city: "you know", state: "LA", zipCode: "09854", phone: "987-876-1230", website: "www.theschool.gov", email: "email@theschool.gov", social: nil)
 
     // payment programs
 
@@ -34,11 +34,14 @@ struct MockData {
 
     // users
 
-    static var owner: Owner = Owner(isInstructor: true, dateCreated: Date(), dateEdited: Date(), birthdate: Date(), promotions: nil, mostRecentPromotion: nil, attendance: nil, groups: nil, permission: UserPermissions.owner, adultBasicBelt: nil, blackBelt: blackBelt, profilePic: #imageLiteral(resourceName: "download.jpg"), username: "owner", firstName: "steve", lastName: "meister", streetAddress: "1234 street dr.", city: "coolville", state: "CA", zipCode: "93421", phone: "(523) 763-0961", mobile: "(312) 736-7843", email: "my@email.com")
+    static var owner: Owner = Owner(isInstructor: true, dateCreated: Date(), dateEdited: Date(), birthdate: Date(), promotions: nil, mostRecentPromotion: nil, attendance: nil, groups: nil, permission: UserPermissions.owner, adultBasicBelt: nil, blackBelt: blackBelt, profilePic: #imageLiteral(resourceName: "owner_sample.png"), username: "owner", firstName: "steve", lastName: "meister", streetAddress: "1234 street dr.", city: "coolville", state: "CA", zipCode: "93421", phone: "(523) 763-0961", mobile: "(312) 736-7843", email: "my@email.com")
     
-    static var adultA: AdultStudent = AdultStudent(isInstructor: true, dateCreated: Date(), dateEdited: Date(), birthdate: Date(), promotions: nil, mostRecentPromotion: nil, attendance: nil, studentStatus: [StudentStatus.active, StudentStatus.paid], groups: nil, paymentProgram: programA, permission: [UserPermissions.instructor, UserPermissions.adultStudent], adultBasicBelt: purpleBelt, blackBelt: nil, profilePic: #imageLiteral(resourceName: "academia_sample_profile_pic.jpeg"), username: "adultA", firstName: "dan", lastName: "cnakle", streetAddress: "123 my street blvd.", city: "theTown", state: "CA", zipCode: "92346", phone: "123-987-0980", mobile: "098-865-1234", email: "adult@email.com", emergencyContact: "margie", emergencyContactPhone: "858-098-1234", emergencyContactRelationship: "wife")
+    static var adultA: AdultStudent = AdultStudent(isInstructor: true, dateCreated: Date(), dateEdited: Date(), birthdate: Date(), promotions: nil, mostRecentPromotion: nil, attendance: nil, studentStatus: [StudentStatus.active, StudentStatus.paid], groups: nil, paymentProgram: programA, permission: [UserPermissions.instructor, UserPermissions.adultStudent], adultBasicBelt: purpleBelt, blackBelt: nil, profilePic: #imageLiteral(resourceName: "student_sample.jpg"), username: "adultA", firstName: "dan", lastName: "cnakle", streetAddress: "123 my street blvd.", city: "theTown", state: "CA", zipCode: "92346", phone: "123-987-0980", mobile: "098-865-1234", email: "adult@email.com", emergencyContact: "margie", emergencyContactPhone: "858-098-1234", emergencyContactRelationship: "wife")
     
-    static var kidA: KidStudent = KidStudent(isKid: true, dateCreated: Date(), dateEdited: Date(), birthdate: Date(), promotions: nil, mostRecentPromotion: nil, attendance: nil, userStatus: [StudentStatus.active], groups: nil, paymentProgram: nil, permission: [UserPermissions.parentGuardian], kidsBelt: grayBelt, profilePic: #imageLiteral(resourceName: "academia_sample_profile_pic.jpeg"), username: "kiddo", firstName: "stevie", lastName: "johnson", parentGuardian: "david johnson", streetAddress: "123 street st.", city: "city", state: "state", zipCode: "12334", phone: "123-098-0987", mobile: "345-678-5432", email: "email@email.com", emergencyContact: "marsha johnson", emergencyContactPhone: "123-098-0997", emergencyContactRelationship: "momma")
+    static var kidA: KidStudent = KidStudent(isKid: true, dateCreated: Date(), dateEdited: Date(), birthdate: Date(), promotions: nil, mostRecentPromotion: nil, attendance: nil, userStatus: [StudentStatus.active], groups: nil, paymentProgram: nil, permission: [UserPermissions.parentGuardian], kidsBelt: grayBelt, profilePic: #imageLiteral(resourceName: "kid_sample.jpg"), username: "kiddo", firstName: "stevie", lastName: "johnson", parentGuardian: "david johnson", streetAddress: "123 street st.", city: "city", state: "state", zipCode: "12334", phone: "123-098-0987", mobile: "345-678-5432", email: "email@email.com", emergencyContact: "marsha johnson", emergencyContactPhone: "123-098-0997", emergencyContactRelationship: "momma")
+    
+    static var adultStudents = [adultA]
+    static var kidStudents = [kidA]
 
     // adult basic belts
 

@@ -288,6 +288,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="4sK-Vj-UfW"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="groupNameTextFieldOutlet" destination="7cw-bo-NDO" id="V6h-de-qRp"/>
                         <outlet property="statusMessageOutlet" destination="Otg-mL-gtg" id="8yN-vM-lv8"/>
                     </connections>
                 </tableViewController>
