@@ -18,7 +18,7 @@ class AddNewStudentGroupTableViewController: UITableViewController {
     // would this be better as a dictionary? a struct?
     // trying to think about properly organizing this data
     
-    var studentsInGroup: [[Any]] = [MockData.adultStudents, [MockData.kidStudents]]
+    var studentsInGroup: [[Any]] = [MockData.adultStudents, MockData.kidStudents]
 
     // MARK: - ViewController Lifecycle Functions
     
@@ -85,12 +85,9 @@ class AddNewStudentGroupTableViewController: UITableViewController {
         let student = studentsInGroup[indexPath.section][indexPath.row]
         
         // Configure the cell...
-        if student is AdultStudent {
-            cell.adultStudent = (student as! AdultStudent)
-        } else if student is KidStudent {
-            cell.kidStudent = (student as! KidStudent)
-        }
-        
+        cell.adultStudent = student as? AdultStudent
+        cell.kidStudent = student as? KidStudent
+
         return cell
     }
     

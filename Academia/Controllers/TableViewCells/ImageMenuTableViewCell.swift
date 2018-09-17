@@ -47,19 +47,15 @@ class ImageMenuTableViewCell: UITableViewCell {
 
     func updateViews() {
         
-        // check if the student is an adult
-        guard let adultStudent = adultStudent else { return }
-        userThumbnailImageViewOutlet.image = adultStudent.profilePic
-        cellTitleOutlet.text = "\(adultStudent.firstName) \(adultStudent.lastName)"
-        
-        // check to see if the student is a kid
-        guard let kidStudent = kidStudent else { return }
-        userThumbnailImageViewOutlet.image = kidStudent.profilePic
-        cellTitleOutlet.text = "\(kidStudent.firstName) \(kidStudent.lastName)"
-        
-        // check to see if the student is a location
-        guard let location = location else { return }
-        userThumbnailImageViewOutlet.image = location.profilePic
-        cellTitleOutlet.text = "\(location.locationName)"
+        if let adultStudent = adultStudent {
+            userThumbnailImageViewOutlet.image = adultStudent.profilePic
+            cellTitleOutlet.text = "\(adultStudent.firstName) \(adultStudent.lastName)"
+        } else if let kidStudent = kidStudent {
+            userThumbnailImageViewOutlet.image = kidStudent.profilePic
+            cellTitleOutlet.text = "\(kidStudent.firstName) \(kidStudent.lastName)"
+        } else if let location = location {
+            userThumbnailImageViewOutlet.image = location.profilePic
+            cellTitleOutlet.text = "\(location.locationName)"
+        }
     }
 }
