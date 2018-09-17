@@ -32,7 +32,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Iub-Ea-AAB" kind="show" id="QY7-Wn-Yco"/>
+                                    <segue destination="Iub-Ea-AAB" kind="show" identifier="toGroupOfStudentList" id="QY7-Wn-Yco"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -298,7 +298,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="yXo-Ks-n0j"/>
+        <segue reference="v3R-4g-g9e"/>
         <segue reference="QY7-Wn-Yco"/>
     </inferredMetricsTieBreakers>
 </document>

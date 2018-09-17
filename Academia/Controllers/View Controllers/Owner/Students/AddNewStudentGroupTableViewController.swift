@@ -43,8 +43,6 @@ class AddNewStudentGroupTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-
     }
     
     

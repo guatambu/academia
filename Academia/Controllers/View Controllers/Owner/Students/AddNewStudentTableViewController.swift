@@ -13,6 +13,9 @@ class AddNewStudentTableViewController: UITableViewController, SegueFromSaveProf
 
     // MARK: - Properties
     
+    var adultStudent: AdultStudent?
+    var kidStudent: KidStudent?
+    
     let cells: [MyCells] = [MyCells.profilePicCell, MyCells.beltCell, MyCells.statusCell, MyCells.isKidCell, MyCells.isInstructorCell, MyCells.usernameCell, MyCells.firstNameCell, MyCells.lastNameCell, MyCells.parentGuardianCell, MyCells.paymentProgramCell, MyCells.schoolGroupsCell, MyCells.streetAddressCell, MyCells.cityCell, MyCells.stateCell, MyCells.zipCodeCell, MyCells.phoneCell, MyCells.mobileCell, MyCells.emailCell, MyCells.emergencyContactCell, MyCells.emergencyContactPhoneCell, MyCells.emergencyContactRelationshipCell, MyCells.saveProfileButtonCell]
     
     
