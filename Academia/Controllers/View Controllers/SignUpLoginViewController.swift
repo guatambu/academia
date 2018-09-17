@@ -14,6 +14,9 @@ class SignUpLoginViewController: UIViewController {
     var isOwner: Bool?
     var username: String?
     var password: String?
+    
+    var delegate: InitialStudentSegueDelegate!
+    
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
@@ -68,7 +71,27 @@ class SignUpLoginViewController: UIViewController {
 
     }
     
-
+    
+    // MARK: - Actions
+    
+    @IBAction func signUpButtonTapped(_ sender: UIButton) {
+        if isOwner == false {
+            // instantiate the relevant storyboard
+            let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            // instantiate the desired TableViewController as ViewController on relevant storyboard
+            let destViewController = mainView.instantiateViewController(withIdentifier: "toInitialStudentSignUp") as! AddNewStudentTableViewController
+            // create the segue programmatically
+            self.navigationController?.pushViewController(destViewController, animated: true)
+            // set the desired properties of the destinationVC's navgation Item
+            let backButtonItem = UIBarButtonItem()
+            backButtonItem.title = " "
+            navigationItem.backBarButtonItem = backButtonItem
+        } else {
+            // try programmatically performing the owner segue
+        }
+    }
+    
+    
     /*
     // MARK: - Navigation
 

@@ -39,6 +39,7 @@
 		FA5C5C2A214DCE5E00BF62D5 /* owner_sample.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5C5C27214DCE5E00BF62D5 /* owner_sample.png */; };
 		FA5C5C2C214EFCCC00BF62D5 /* location1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA5C5C2B214EFCCC00BF62D5 /* location1.jpg */; };
 		FA5C5C2E214EFCD100BF62D5 /* location2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA5C5C2D214EFCD100BF62D5 /* location2.jpg */; };
+		FA5C5C3021506B7400BF62D5 /* InitialStudentSegueDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C5C2F21506B7400BF62D5 /* InitialStudentSegueDelegate.swift */; };
 		FA66A0082145BA6B002B0313 /* CheckMarkBoxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA66A0072145BA6B002B0313 /* CheckMarkBoxCell.xib */; };
 		FA66A00A2145CA2F002B0313 /* DigitalSignatureTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA66A0092145CA2F002B0313 /* DigitalSignatureTextFieldCell.xib */; };
 		FA66A00C2145CB42002B0313 /* HeadingLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA66A00B2145CB42002B0313 /* HeadingLabelCell.xib */; };
@@ -230,6 +231,7 @@
 		FA5C5C27214DCE5E00BF62D5 /* owner_sample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = owner_sample.png; sourceTree = "<group>"; };
 		FA5C5C2B214EFCCC00BF62D5 /* location1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = location1.jpg; sourceTree = "<group>"; };
 		FA5C5C2D214EFCD100BF62D5 /* location2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = location2.jpg; sourceTree = "<group>"; };
+		FA5C5C2F21506B7400BF62D5 /* InitialStudentSegueDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialStudentSegueDelegate.swift; sourceTree = "<group>"; };
 		FA66A0072145BA6B002B0313 /* CheckMarkBoxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckMarkBoxCell.xib; sourceTree = "<group>"; };
 		FA66A0092145CA2F002B0313 /* DigitalSignatureTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DigitalSignatureTextFieldCell.xib; sourceTree = "<group>"; };
 		FA66A00B2145CB42002B0313 /* HeadingLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeadingLabelCell.xib; sourceTree = "<group>"; };
@@ -691,6 +693,7 @@
 		FAAAC144213E22DB00093D6C /* Segue Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				FA5C5C2F21506B7400BF62D5 /* InitialStudentSegueDelegate.swift */,
 				FAAAC145213E230400093D6C /* SegueFromSaveProfileNibCellDelegate.swift */,
 			);
 			path = "Segue Protocols";
@@ -1075,6 +1078,7 @@
 				FAE2FD9A2140C01100815402 /* PhoneTextFieldTableViewCell.swift in Sources */,
 				FAE2FDAA2140C08900815402 /* EmergencyContactRelationshipTextFieldTableViewCell.swift in Sources */,
 				FAF29BD1212F6FC800752414 /* OwnerDashboardTableViewCell.swift in Sources */,
+				FA5C5C3021506B7400BF62D5 /* InitialStudentSegueDelegate.swift in Sources */,
 				FA0C441E21278A8F00B59194 /* Academia.xcdatamodeld in Sources */,
 				FA9ADA31213B6BA90005E1F1 /* InternationalStandardBJJBelts.swift in Sources */,
 				FAE2FDA82140C07F00815402 /* EmergencyContactPhoneTextFieldTableViewCell.swift in Sources */,

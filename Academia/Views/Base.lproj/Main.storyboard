@@ -320,6 +320,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
+                                            <action selector="signUpButtonTapped:" destination="VkD-Ki-GOj" eventType="touchUpInside" id="gg8-GI-gMK"/>
                                             <segue destination="4zD-s2-pzq" kind="show" id="oR2-kG-ShN"/>
                                         </connections>
                                     </button>
@@ -387,7 +388,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Srz-1x-ptd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2242" y="206"/>
+            <point key="canvasLocation" x="2359" y="206"/>
         </scene>
         <!--Owner Setup Your Profile-->
         <scene sceneID="7gb-a2-HDM">
@@ -420,7 +421,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cVL-1z-4c8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3084" y="206"/>
+            <point key="canvasLocation" x="3537" y="692"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OjB-cP-hRh">
@@ -460,6 +461,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hp5-4V-kOO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4799" y="1353"/>
+        </scene>
+        <!--Initial Add New Student Profile-->
+        <scene sceneID="ygT-YB-Kuk">
+            <objects>
+                <tableViewController storyboardIdentifier="toInitialStudentSignUp" id="5cS-NI-WEW" userLabel="Initial Add New Student Profile" customClass="AddNewStudentTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" estimatedRowHeight="70" sectionHeaderHeight="29" sectionFooterHeight="28" id="wYD-Kc-88T">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="70" id="Str-oF-hQI">
+                                <rect key="frame" x="0.0" y="29" width="375" height="70"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Str-oF-hQI" id="Kqg-R8-s8p">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="5cS-NI-WEW" id="Cqn-X2-GJH"/>
+                            <outlet property="delegate" destination="5cS-NI-WEW" id="unF-d6-oVp"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="New Student Profile" id="duu-7x-eo2">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="THC-qn-wR8"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PsF-th-WZ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3537" y="-284"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
