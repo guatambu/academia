@@ -24,6 +24,7 @@ class AddNewStudentTableViewController: UITableViewController, SegueFromSaveProf
     override func viewWillAppear(_ animated: Bool) {
         tableView.estimatedRowHeight = 80
         tableView.rowHeight = UITableViewAutomaticDimension
+        
     }
     
     override func viewDidLoad() {
@@ -45,7 +46,7 @@ class AddNewStudentTableViewController: UITableViewController, SegueFromSaveProf
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+    
         //        func nibRegistration(nibName: String, forCellReuseIdentifier: String) -> UINib {
         //            let nib = UINib(nibName: nibName, bundle: nil)
         //            self.tableView.register(nib, forCellReuseIdentifier: forCellReuseIdentifier)
@@ -132,8 +133,9 @@ class AddNewStudentTableViewController: UITableViewController, SegueFromSaveProf
         self.tableView.register(nibSaveProfile, forCellReuseIdentifier: "saveProfileCell")
         
         // switch on myCell to setup the tableView
-        
         switch myCell {
+            
+            // use "where" clause to determine distinction between between adult and kid students?
             
         case .beltCell:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "adultBlackBeltTemplate", for: indexPath) as? AdultBlackBeltTableViewCell {

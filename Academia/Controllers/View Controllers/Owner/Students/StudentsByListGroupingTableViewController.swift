@@ -28,6 +28,8 @@ class StudentsByListGroupingTableViewController: UITableViewController {
         
         let nib = UINib(nibName: "GeneralMenuCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "generalMenuCell")
+        
+        tableView.delegate = self
     }
 
     
@@ -80,12 +82,16 @@ class StudentsByListGroupingTableViewController: UITableViewController {
 
 
     // MARK: - Navigation
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegue(withIdentifier: "toGroupOfStudents", sender: indexPath);
+    }
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         // Get the new view controller using segue.destinationViewController.
-        if segue.identifier == "toGroupOfStudentList" {
+        if segue.identifier == "toGroupOfStudents" {
             guard let destinationTVC = segue.destination as? StudentListTableViewController else { return }
             guard let indexPath = self.tableView.indexPathForSelectedRow else { return }
             
