@@ -88,6 +88,7 @@ class SignUpLoginViewController: UIViewController {
             navigationItem.backBarButtonItem = backButtonItem
         } else {
             // try programmatically performing the owner segue
+            // might run into some trouble but probbaly not yay!
         }
     }
     
