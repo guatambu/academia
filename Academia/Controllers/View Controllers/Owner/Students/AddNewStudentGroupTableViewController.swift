@@ -19,20 +19,25 @@ class AddNewStudentGroupTableViewController: UITableViewController {
     // trying to think about properly organizing this data
     
     var studentsInGroup: [[Any]] = [MockData.adultStudents, MockData.kidStudents]
+    var groupNamePlaceholderText = "group name"
+    
 
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
-        let avenirFont = [ NSAttributedStringKey.foregroundColor: UIColor.gray,
+        let avenirFontGray = [ NSAttributedStringKey.foregroundColor: UIColor.gray,
                            NSAttributedStringKey.font: UIFont(name: "Avenir-Medium", size: 24)! ]
+        let avenirFontBlack = [ NSAttributedStringKey.foregroundColor: UIColor.black,
+                               NSAttributedStringKey.font: UIFont(name: "Avenir-Medium", size: 24)! ]
         
-        navigationController?.navigationBar.titleTextAttributes = avenirFont
+        navigationController?.navigationBar.titleTextAttributes = avenirFontGray
         
         self.tableView.sectionHeaderHeight = 48
         
         let nib = UINib(nibName: "ImageMenuCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "imageMenuCell")
         
+        groupNameTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(groupNamePlaceholderText)", attributes: avenirFontGray)
     }
     
     override func viewDidLoad() {

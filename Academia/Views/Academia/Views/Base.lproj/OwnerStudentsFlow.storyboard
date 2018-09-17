@@ -143,23 +143,26 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Fd7-Yn-IQd">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Onv-P6-I6O" userLabel="status Stack View">
-                                            <rect key="frame" x="24" y="0.0" width="327" height="57"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ha7-Iu-aDI" userLabel="group name View">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="57"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="status:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jSB-VU-aOu">
-                                                    <rect key="frame" x="0.0" y="0.0" width="132.5" height="57"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="group name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7cw-bo-NDO" userLabel="group name">
+                                                    <rect key="frame" x="0.0" y="12" width="343" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="3Hn-RA-itB"/>
+                                                    </constraints>
+                                                    <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="last changed 06/09/2018" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Otg-mL-gtg">
-                                                    <rect key="frame" x="148.5" y="0.0" width="178.5" height="57"/>
-                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
                                             </subviews>
-                                        </stackView>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="7cw-bo-NDO" firstAttribute="centerY" secondItem="ha7-Iu-aDI" secondAttribute="centerY" id="BZe-x4-c3W"/>
+                                                <constraint firstAttribute="trailing" secondItem="7cw-bo-NDO" secondAttribute="trailing" id="CqD-zs-Cou"/>
+                                                <constraint firstItem="7cw-bo-NDO" firstAttribute="leading" secondItem="ha7-Iu-aDI" secondAttribute="leading" id="FpA-4m-Hz0"/>
+                                            </constraints>
+                                        </view>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="cDc-BN-v1E" userLabel="active Stack View">
                                             <rect key="frame" x="24" y="61" width="327" height="57"/>
                                             <subviews>
@@ -205,26 +208,23 @@
                                                 </view>
                                             </subviews>
                                         </stackView>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ha7-Iu-aDI" userLabel="group name View">
-                                            <rect key="frame" x="16" y="122" width="343" height="57"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Onv-P6-I6O" userLabel="status Stack View">
+                                            <rect key="frame" x="24" y="122" width="327" height="57"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="group name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7cw-bo-NDO" userLabel="group name">
-                                                    <rect key="frame" x="0.0" y="12" width="343" height="32"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="32" id="3Hn-RA-itB"/>
-                                                    </constraints>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="status:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jSB-VU-aOu">
+                                                    <rect key="frame" x="0.0" y="0.0" width="132.5" height="57"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
                                                     <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="last changed 06/09/2018" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Otg-mL-gtg">
+                                                    <rect key="frame" x="148.5" y="0.0" width="178.5" height="57"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstItem="7cw-bo-NDO" firstAttribute="centerY" secondItem="ha7-Iu-aDI" secondAttribute="centerY" id="BZe-x4-c3W"/>
-                                                <constraint firstAttribute="trailing" secondItem="7cw-bo-NDO" secondAttribute="trailing" id="CqD-zs-Cou"/>
-                                                <constraint firstItem="7cw-bo-NDO" firstAttribute="leading" secondItem="ha7-Iu-aDI" secondAttribute="leading" id="FpA-4m-Hz0"/>
-                                            </constraints>
-                                        </view>
+                                        </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="96" translatesAutoresizingMaskIntoConstraints="NO" id="iup-rn-nfj" userLabel="add students button Stack View">
                                             <rect key="frame" x="24" y="183" width="327" height="57"/>
                                             <subviews>
