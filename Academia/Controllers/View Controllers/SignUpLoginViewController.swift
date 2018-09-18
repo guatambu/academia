@@ -76,6 +76,8 @@ class SignUpLoginViewController: UIViewController {
     
     @IBAction func signUpButtonTapped(_ sender: UIButton) {
         if isOwner == false {
+            // programmatically performing the owner segue
+            
             // instantiate the relevant storyboard
             let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             // instantiate the desired TableViewController as ViewController on relevant storyboard
@@ -87,8 +89,7 @@ class SignUpLoginViewController: UIViewController {
             backButtonItem.title = " "
             navigationItem.backBarButtonItem = backButtonItem
         } else {
-            // try programmatically performing the owner segue
-            // might run into some trouble but probbaly not yay!
+            // programmatically performing the owner segue
             
             // instantiate the relevant storyboard
             let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)

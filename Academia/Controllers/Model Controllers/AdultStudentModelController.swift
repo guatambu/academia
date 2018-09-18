@@ -1,20 +1,20 @@
 //
-//  OwnerModelController.swift
+//  AdultStudentModelController.swift
 //  Academia
 //
-//  Created by Michael Guatambu Davis on 8/22/18.
+//  Created by Kelly Johnson on 9/18/18.
 //  Copyright © 2018 DunDak, LLC. All rights reserved.
 //
 
 import Foundation
 
-class OwnerModelController {
+class AdultStudentModelController {
     
-    static let shared = OwnerModelController()
+    static let shared = AdultStudentModelController()
     
     var numberTasksCompleted: Int = 0
     
-    var ownerOnboardingTasks: [OnBoardingTask] = [
+    var adultStudentOnboardingTasks: [OnBoardingTask] = [
         
         OnBoardingTask(name: "welcome", title: "Welcome!", description: "This is your Home's Dashboard. Here you stay current with your academy.", isCompleted: true, dateCompleted: nil, dateOfMostRecentChange: nil),
         OnBoardingTask(name: "startGettingPaid", title: "Start getting paid", description: "Set up your account to receive your payments.", isCompleted: false, dateCompleted: nil, dateOfMostRecentChange: nil),
@@ -25,8 +25,8 @@ class OwnerModelController {
         OnBoardingTask(name: "reviewBeltSystems", title: "Review Belt Systems", description: "Please Take a moment to review the included Belt Systems", isCompleted: false, dateCompleted: nil, dateOfMostRecentChange: nil)
     ]
     
-    var deletedOwnerOnboardingTasks: [OnBoardingTask] = []
-
+    var deletedAdultStudentOnboardingTasks: [OnBoardingTask] = []
+    
 }
 
 

@@ -28,20 +28,19 @@ class StudentsByListGroupingTableViewController: UITableViewController {
         
         let nib = UINib(nibName: "GeneralMenuCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "generalMenuCell")
-        
-        tableView.delegate = self
     }
 
     
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        
         return allGroups.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "generalMenuCell", for: indexPath) as? GeneralMenuTableViewCell else { return UITableViewCell() }
         
         let group = allGroups[indexPath.row]
@@ -68,23 +67,23 @@ class StudentsByListGroupingTableViewController: UITableViewController {
         }
     }
 
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
- 
-
 
     // MARK: - Navigation
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegue(withIdentifier: "toGroupOfStudents", sender: indexPath);
+        // programmatically performing the group segue
+        
+        // instantiate the relevant storyboard
+        let ownerStudentFlowView: UIStoryboard = UIStoryboard(name: "OwnerStudentsFlow", bundle: nil)
+        // instantiate the desired TableViewController as ViewController on relevant storyboard
+        let destViewController = ownerStudentFlowView.instantiateViewController(withIdentifier: "toStudentsList") as! StudentListTableViewController
+        // create the segue programmatically
+        self.navigationController?.pushViewController(destViewController, animated: true)
+        // set the desired properties of the destinationVC's navgation Item
+        let backButtonItem = UIBarButtonItem()
+        backButtonItem.title = " "
+        navigationItem.backBarButtonItem = backButtonItem
+
     }
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

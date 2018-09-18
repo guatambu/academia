@@ -57,7 +57,7 @@
         <!--Student List Table View Controller-->
         <scene sceneID="KE1-5f-UiM">
             <objects>
-                <tableViewController id="Iub-Ea-AAB" userLabel="Student List Table View Controller" customClass="StudentListTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="toStudentsList" id="Iub-Ea-AAB" userLabel="Student List Table View Controller" customClass="StudentListTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="XWw-U9-Ach">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

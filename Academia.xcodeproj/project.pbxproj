@@ -40,6 +40,9 @@
 		FA5C5C2C214EFCCC00BF62D5 /* location1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA5C5C2B214EFCCC00BF62D5 /* location1.jpg */; };
 		FA5C5C2E214EFCD100BF62D5 /* location2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA5C5C2D214EFCD100BF62D5 /* location2.jpg */; };
 		FA5C5C3021506B7400BF62D5 /* InitialStudentSegueDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C5C2F21506B7400BF62D5 /* InitialStudentSegueDelegate.swift */; };
+		FA5C5C32215170AE00BF62D5 /* AdultStudentModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C5C31215170AE00BF62D5 /* AdultStudentModelController.swift */; };
+		FA5C5C34215170BE00BF62D5 /* KidStudentModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C5C33215170BE00BF62D5 /* KidStudentModelController.swift */; };
+		FA5C5C36215170D200BF62D5 /* LocationModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C5C35215170D200BF62D5 /* LocationModelController.swift */; };
 		FA66A0082145BA6B002B0313 /* CheckMarkBoxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA66A0072145BA6B002B0313 /* CheckMarkBoxCell.xib */; };
 		FA66A00A2145CA2F002B0313 /* DigitalSignatureTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA66A0092145CA2F002B0313 /* DigitalSignatureTextFieldCell.xib */; };
 		FA66A00C2145CB42002B0313 /* HeadingLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA66A00B2145CB42002B0313 /* HeadingLabelCell.xib */; };
@@ -232,6 +235,9 @@
 		FA5C5C2B214EFCCC00BF62D5 /* location1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = location1.jpg; sourceTree = "<group>"; };
 		FA5C5C2D214EFCD100BF62D5 /* location2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = location2.jpg; sourceTree = "<group>"; };
 		FA5C5C2F21506B7400BF62D5 /* InitialStudentSegueDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialStudentSegueDelegate.swift; sourceTree = "<group>"; };
+		FA5C5C31215170AE00BF62D5 /* AdultStudentModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdultStudentModelController.swift; sourceTree = "<group>"; };
+		FA5C5C33215170BE00BF62D5 /* KidStudentModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidStudentModelController.swift; sourceTree = "<group>"; };
+		FA5C5C35215170D200BF62D5 /* LocationModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModelController.swift; sourceTree = "<group>"; };
 		FA66A0072145BA6B002B0313 /* CheckMarkBoxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckMarkBoxCell.xib; sourceTree = "<group>"; };
 		FA66A0092145CA2F002B0313 /* DigitalSignatureTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DigitalSignatureTextFieldCell.xib; sourceTree = "<group>"; };
 		FA66A00B2145CB42002B0313 /* HeadingLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeadingLabelCell.xib; sourceTree = "<group>"; };
@@ -506,6 +512,9 @@
 		FA0C443D21278B2500B59194 /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FA5C5C31215170AE00BF62D5 /* AdultStudentModelController.swift */,
+				FA5C5C33215170BE00BF62D5 /* KidStudentModelController.swift */,
+				FA5C5C35215170D200BF62D5 /* LocationModelController.swift */,
 				FAF29BCD212E4CF200752414 /* OwnerModelController.swift */,
 			);
 			path = "Model Controllers";
@@ -1077,6 +1086,7 @@
 				FA9AD9F5213782070005E1F1 /* TutorialsTableViewController.swift in Sources */,
 				FAE2FD9A2140C01100815402 /* PhoneTextFieldTableViewCell.swift in Sources */,
 				FAE2FDAA2140C08900815402 /* EmergencyContactRelationshipTextFieldTableViewCell.swift in Sources */,
+				FA5C5C32215170AE00BF62D5 /* AdultStudentModelController.swift in Sources */,
 				FAF29BD1212F6FC800752414 /* OwnerDashboardTableViewCell.swift in Sources */,
 				FA5C5C3021506B7400BF62D5 /* InitialStudentSegueDelegate.swift in Sources */,
 				FA0C441E21278A8F00B59194 /* Academia.xcdatamodeld in Sources */,
@@ -1084,6 +1094,7 @@
 				FAE2FDA82140C07F00815402 /* EmergencyContactPhoneTextFieldTableViewCell.swift in Sources */,
 				FAF29BDF2130892B00752414 /* ImageMenuTableViewCell.swift in Sources */,
 				FA9ADA092137861B0005E1F1 /* OwnerPaymentInfoTableViewController.swift in Sources */,
+				FA5C5C34215170BE00BF62D5 /* KidStudentModelController.swift in Sources */,
 				FA9ADA2D2139EE6C0005E1F1 /* IsInstructorTableViewCell.swift in Sources */,
 				FA6FBA012149F33100558657 /* AdultStudent.swift in Sources */,
 				FA21D6862130BB93006790E5 /* StudentsByListGroupingTableViewController.swift in Sources */,
@@ -1100,6 +1111,7 @@
 				FAE2FD8C2140BFBA00815402 /* UsernameTextFieldTableViewCell.swift in Sources */,
 				FA6FBA082149F3C700558657 /* StudentStatus.swift in Sources */,
 				FAE2FDA42140C05B00815402 /* SchoolGroupTextFieldTableViewCell.swift in Sources */,
+				FA5C5C36215170D200BF62D5 /* LocationModelController.swift in Sources */,
 				FA21D6A921362551006790E5 /* KidsBelt.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
