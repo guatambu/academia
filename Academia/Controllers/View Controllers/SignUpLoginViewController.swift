@@ -89,6 +89,17 @@ class SignUpLoginViewController: UIViewController {
         } else {
             // try programmatically performing the owner segue
             // might run into some trouble but probbaly not yay!
+            
+            // instantiate the relevant storyboard
+            let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            // instantiate the desired TableViewController as ViewController on relevant storyboard
+            let destViewController = mainView.instantiateViewController(withIdentifier: "toInitialOwnerSignUp") as! OwnerProfileInitialSetUpTableViewController
+            // create the segue programmatically
+            self.navigationController?.pushViewController(destViewController, animated: true)
+            // set the desired properties of the destinationVC's navgation Item
+            let backButtonItem = UIBarButtonItem()
+            backButtonItem.title = " "
+            navigationItem.backBarButtonItem = backButtonItem
         }
     }
     

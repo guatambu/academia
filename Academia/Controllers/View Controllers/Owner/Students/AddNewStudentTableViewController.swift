@@ -97,7 +97,7 @@ class AddNewStudentTableViewController: UITableViewController, SegueFromSaveProf
         self.tableView.register(nibPaymentProgram, forCellReuseIdentifier: "paymentProgramTextFieldCell")
         
         let nibSchoolGroup = UINib(nibName: "SchoolGroupTextFieldCell", bundle: nil)
-        self.tableView.register(nibSchoolGroup, forCellReuseIdentifier: "schoolGroupTextFieldCelll")
+        self.tableView.register(nibSchoolGroup, forCellReuseIdentifier: "schoolGroupTextFieldCell")
         
         let nibStreetAddress = UINib(nibName: "StreetAddressTextFieldCell", bundle: nil)
         self.tableView.register(nibStreetAddress, forCellReuseIdentifier: "streetAddressTextFieldCell")
@@ -123,10 +123,10 @@ class AddNewStudentTableViewController: UITableViewController, SegueFromSaveProf
         let nibEmergencyContact = UINib(nibName: "EmergencyContactTextFieldCell", bundle: nil)
         self.tableView.register(nibEmergencyContact, forCellReuseIdentifier: "emergencyContactTextFieldCell")
 
-        let nibEmergencyContactPhone = UINib(nibName: "EmergencyContactPhoneTextField", bundle: nil)
+        let nibEmergencyContactPhone = UINib(nibName: "EmergencyContactPhoneTextFieldCell", bundle: nil)
         self.tableView.register(nibEmergencyContactPhone, forCellReuseIdentifier: "emergencyContactPhoneTextFieldCell")
         
-        let nibEmergencyContactRelationship = UINib(nibName: "EmergencyContactRelationshipTextField", bundle: nil)
+        let nibEmergencyContactRelationship = UINib(nibName: "EmergencyContactRelationshipTextFieldCell", bundle: nil)
         self.tableView.register(nibEmergencyContactRelationship, forCellReuseIdentifier: "emergencyContactRelationshipTextFieldCell")
         
         let nibSaveProfile = UINib(nibName: "SaveProfileCell", bundle: nil)

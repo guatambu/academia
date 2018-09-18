@@ -321,7 +321,6 @@
                                         </state>
                                         <connections>
                                             <action selector="signUpButtonTapped:" destination="VkD-Ki-GOj" eventType="touchUpInside" id="gg8-GI-gMK"/>
-                                            <segue destination="4zD-s2-pzq" kind="show" id="oR2-kG-ShN"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -393,7 +392,7 @@
         <!--Owner Setup Your Profile-->
         <scene sceneID="7gb-a2-HDM">
             <objects>
-                <tableViewController id="4zD-s2-pzq" userLabel="Owner Setup Your Profile" customClass="OwnerProfileInitialSetUpTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="toInitialOwnerSignUp" id="4zD-s2-pzq" userLabel="Owner Setup Your Profile" customClass="OwnerProfileInitialSetUpTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" estimatedRowHeight="70" sectionHeaderHeight="29" sectionFooterHeight="28" id="rcz-zl-rkI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
