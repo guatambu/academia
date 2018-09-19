@@ -16,7 +16,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="generalMenuCell" rowHeight="80" id="UOh-7m-KwE" userLabel="Student User General Menu Table View Cell" customClass="StudentUserGeneralMenuTableViewCell" customModule="Academia" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="studentUserGeneralMenuCell" rowHeight="80" id="UOh-7m-KwE" userLabel="Student User General Menu Table View Cell" customClass="StudentUserGeneralMenuTableViewCell" customModule="Academia" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UOh-7m-KwE" id="bma-2F-UEA">
@@ -54,6 +54,7 @@
                         </subviews>
                     </stackView>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="uKQ-yj-bDf" firstAttribute="leading" secondItem="bma-2F-UEA" secondAttribute="leading" constant="16" id="9qk-Oa-Gi6"/>
                     <constraint firstItem="uKQ-yj-bDf" firstAttribute="top" secondItem="bma-2F-UEA" secondAttribute="top" id="Ajq-w0-NUS"/>

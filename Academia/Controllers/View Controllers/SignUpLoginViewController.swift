@@ -75,6 +75,9 @@ class SignUpLoginViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func signUpButtonTapped(_ sender: UIButton) {
+        
+        guard let isOwner = isOwner else { return }
+        
         if isOwner == false {
             // programmatically performing the "student choice" segue
             

@@ -546,7 +546,7 @@
         <!--Initial Add New Kid Student Profile-->
         <scene sceneID="bll-UA-wdW">
             <objects>
-                <tableViewController storyboardIdentifier="toInitialKidStudentSignUp" id="rBK-le-o3U" userLabel="Initial Add New Kid Student Profile" customClass="AddNewStudentTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="toInitialKidStudentSignUp" id="rBK-le-o3U" userLabel="Initial Add New Kid Student Profile" customClass="AddNewKidStudentTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" estimatedRowHeight="70" sectionHeaderHeight="29" sectionFooterHeight="28" id="h6W-8a-1Od">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -614,7 +614,6 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="kidsProgramButtonTapped:" destination="Rmh-VZ-Ycm" eventType="touchUpInside" id="u7d-Fv-2oj"/>
-                                            <action selector="ownerButtonTapped:" destination="Rmh-VZ-Ycm" eventType="touchUpInside" id="iDd-kc-ztK"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W5y-f9-oz7" userLabel="Adults Program Button Outlet">
@@ -639,7 +638,6 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="adultsProgramButtonTapped:" destination="Rmh-VZ-Ycm" eventType="touchUpInside" id="WdA-C5-NPz"/>
-                                            <action selector="studentButtonTapped:" destination="Rmh-VZ-Ycm" eventType="touchUpInside" id="wwO-Nf-AaX"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="-56" translatesAutoresizingMaskIntoConstraints="NO" id="EDQ-s6-Bmy" userLabel="Confirm Button Stack View">
@@ -657,7 +655,6 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="confirmKidsProgramButtonTapped:" destination="Rmh-VZ-Ycm" eventType="touchUpInside" id="RnC-vW-v9Z"/>
-                                                    <action selector="confirmStudentButtonTapped:" destination="Rmh-VZ-Ycm" eventType="touchUpInside" id="Wsy-pb-maM"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ged-74-kY0" userLabel="Confirm Adults Program Button Outlet">
@@ -672,7 +669,6 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="confirmAdultsProgramButtonTapped:" destination="Rmh-VZ-Ycm" eventType="touchUpInside" id="u0P-vb-gsR"/>
-                                                    <action selector="confirmOwnerButtonTapped:" destination="Rmh-VZ-Ycm" eventType="touchUpInside" id="whc-za-tHN"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -710,10 +706,6 @@
                         <outlet property="adultsProgramButtonOutlet" destination="W5y-f9-oz7" id="Q0R-k5-zeH"/>
                         <outlet property="confirmAdultsProgramButtonOutlet" destination="ged-74-kY0" id="pIq-gG-Pxg"/>
                         <outlet property="confirmKidsProgramButtonOutlet" destination="EMe-4e-xkS" id="qae-It-JhF"/>
-                        <outlet property="confirmOwnerButtonOutlet" destination="ged-74-kY0" id="ZkL-Mo-jB2"/>
-                        <outlet property="confirmStudentButtonOutlet" destination="EMe-4e-xkS" id="MpK-hT-8ul"/>
-                        <outlet property="iAmOwnerButtonOutlet" destination="FTs-XE-JpF" id="OCX-iU-kkb"/>
-                        <outlet property="iAmStudentButtonOutlet" destination="W5y-f9-oz7" id="kMl-Yg-aDb"/>
                         <outlet property="kidsProgramButtonOutlet" destination="FTs-XE-JpF" id="fjI-OT-DUp"/>
                     </connections>
                 </viewController>

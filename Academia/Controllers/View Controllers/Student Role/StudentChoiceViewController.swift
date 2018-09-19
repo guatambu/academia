@@ -48,17 +48,51 @@ class StudentChoiceViewController: UIViewController {
     
     @IBAction func adultsProgramButtonTapped(_ sender: UIButton) {
         
-        confirmKidsProgramButtonOutlet.isHidden = false
-        confirmKidsProgramButtonOutlet.isEnabled = true
+        confirmKidsProgramButtonOutlet.isHidden = true
+        confirmKidsProgramButtonOutlet.isEnabled = false
         
-        confirmAdultsProgramButtonOutlet.isHidden = true
-        confirmAdultsProgramButtonOutlet.isEnabled = false
+        confirmAdultsProgramButtonOutlet.isHidden = false
+        confirmAdultsProgramButtonOutlet.isEnabled = true
     }
     
     @IBAction func confirmKidsProgramButtonTapped(_ sender: UIButton) {
+        
+        // programmatically performing the Kid Student segue
+        
+        // instantiate the relevant storyboard
+        let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        // instantiate the desired TableViewController as ViewController on relevant storyboard
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toInitialKidStudentSignUp") as! AddNewKidStudentTableViewController
+        // create the segue programmatically
+        self.navigationController?.pushViewController(destViewController, animated: true)
+        // set the desired properties of the destinationVC's navgation Item
+        
+         destViewController.cells = [MyCells.profilePicCell, MyCells.beltCell, MyCells.statusCell, MyCells.usernameCell, MyCells.firstNameCell, MyCells.lastNameCell, MyCells.parentGuardianCell, MyCells.streetAddressCell, MyCells.cityCell, MyCells.stateCell, MyCells.zipCodeCell, MyCells.phoneCell, MyCells.mobileCell, MyCells.emailCell, MyCells.emergencyContactCell, MyCells.emergencyContactPhoneCell, MyCells.emergencyContactRelationshipCell, MyCells.saveProfileButtonCell]
+        
+        let backButtonItem = UIBarButtonItem()
+        backButtonItem.title = " "
+        navigationItem.backBarButtonItem = backButtonItem
+        
     }
     
     @IBAction func confirmAdultsProgramButtonTapped(_ sender: UIButton) {
+        
+        // programmatically performing the adult student segue
+        
+        // instantiate the relevant storyboard
+        let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        // instantiate the desired TableViewController as ViewController on relevant storyboard
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toInitialStudentSignUp") as! AddNewStudentTableViewController
+        // create the segue programmatically
+        self.navigationController?.pushViewController(destViewController, animated: true)
+        // set the desired properties of the destinationVC's navgation Item
+        
+         destViewController.cells = [MyCells.profilePicCell, MyCells.beltCell, MyCells.statusCell, MyCells.isInstructorCell, MyCells.usernameCell, MyCells.firstNameCell, MyCells.lastNameCell, MyCells.parentGuardianCell, MyCells.streetAddressCell, MyCells.cityCell, MyCells.stateCell, MyCells.zipCodeCell, MyCells.phoneCell, MyCells.mobileCell, MyCells.emailCell, MyCells.emergencyContactCell, MyCells.emergencyContactPhoneCell, MyCells.emergencyContactRelationshipCell, MyCells.saveProfileButtonCell]
+        
+        let backButtonItem = UIBarButtonItem()
+        backButtonItem.title = " "
+        navigationItem.backBarButtonItem = backButtonItem
+        
     }
     
     
@@ -72,10 +106,6 @@ class StudentChoiceViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-     
-     
-     destViewController.cells = [MyCells.profilePicCell, MyCells.beltCell, MyCells.statusCell, MyCells.isKidCell, MyCells.isInstructorCell, MyCells.usernameCell, MyCells.firstNameCell, MyCells.lastNameCell, MyCells.parentGuardianCell, MyCells.streetAddressCell, MyCells.cityCell, MyCells.stateCell, MyCells.zipCodeCell, MyCells.phoneCell, MyCells.mobileCell, MyCells.emailCell, MyCells.emergencyContactCell, MyCells.emergencyContactPhoneCell, MyCells.emergencyContactRelationshipCell, MyCells.saveProfileButtonCell]
-     
      
     }
     */

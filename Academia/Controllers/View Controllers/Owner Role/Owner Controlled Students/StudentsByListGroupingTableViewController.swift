@@ -26,8 +26,8 @@ class StudentsByListGroupingTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let nib = UINib(nibName: "GeneralMenuCell", bundle: nil)
-        self.tableView.register(nib, forCellReuseIdentifier: "generalMenuCell")
+        let nib = UINib(nibName: "StudentUserGeneralMenuCell", bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: "studentUserGeneralMenuCell")
     }
 
     
@@ -41,7 +41,7 @@ class StudentsByListGroupingTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "generalMenuCell", for: indexPath) as? GeneralMenuTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "studentUserGeneralMenuCell", for: indexPath) as? StudentUserGeneralMenuTableViewCell else { return UITableViewCell() }
         
         let group = allGroups[indexPath.row]
         

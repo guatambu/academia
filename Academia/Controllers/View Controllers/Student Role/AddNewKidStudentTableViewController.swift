@@ -29,6 +29,8 @@ class AddNewKidStudentTableViewController: UITableViewController, SegueFromSaveP
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "New Kids Student Profile"
+        
     }
     
     // MARK: - SegueFromSaveProfileNibCellDelegate protocol method
