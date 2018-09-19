@@ -76,17 +76,15 @@ class SignUpLoginViewController: UIViewController {
     
     @IBAction func signUpButtonTapped(_ sender: UIButton) {
         if isOwner == false {
-            // programmatically performing the owner segue
+            // programmatically performing the "student choice" segue
             
             // instantiate the relevant storyboard
             let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             // instantiate the desired TableViewController as ViewController on relevant storyboard
-            let destViewController = mainView.instantiateViewController(withIdentifier: "toInitialStudentSignUp") as! AddNewStudentTableViewController
+            let destViewController = mainView.instantiateViewController(withIdentifier: "toStudentChoiceVC") as! StudentChoiceViewController
             // create the segue programmatically
             self.navigationController?.pushViewController(destViewController, animated: true)
             // set the desired properties of the destinationVC's navgation Item
-            
-            destViewController.cells = [MyCells.profilePicCell, MyCells.beltCell, MyCells.statusCell, MyCells.isKidCell, MyCells.isInstructorCell, MyCells.usernameCell, MyCells.firstNameCell, MyCells.lastNameCell, MyCells.parentGuardianCell, MyCells.streetAddressCell, MyCells.cityCell, MyCells.stateCell, MyCells.zipCodeCell, MyCells.phoneCell, MyCells.mobileCell, MyCells.emailCell, MyCells.emergencyContactCell, MyCells.emergencyContactPhoneCell, MyCells.emergencyContactRelationshipCell, MyCells.saveProfileButtonCell]
             
             let backButtonItem = UIBarButtonItem()
             backButtonItem.title = " "

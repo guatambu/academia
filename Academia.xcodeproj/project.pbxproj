@@ -43,6 +43,9 @@
 		FA5C5C32215170AE00BF62D5 /* AdultStudentModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C5C31215170AE00BF62D5 /* AdultStudentModelController.swift */; };
 		FA5C5C34215170BE00BF62D5 /* KidStudentModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C5C33215170BE00BF62D5 /* KidStudentModelController.swift */; };
 		FA5C5C36215170D200BF62D5 /* LocationModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C5C35215170D200BF62D5 /* LocationModelController.swift */; };
+		FA5C5C382151D3C600BF62D5 /* StudentHomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C5C372151D3C600BF62D5 /* StudentHomeTableViewController.swift */; };
+		FA5C5C3C2152C99A00BF62D5 /* AddNewKidStudentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C5C3B2152C99A00BF62D5 /* AddNewKidStudentTableViewController.swift */; };
+		FA5C5C3E2152CB3200BF62D5 /* StudentChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C5C3D2152CB3200BF62D5 /* StudentChoiceViewController.swift */; };
 		FA66A0082145BA6B002B0313 /* CheckMarkBoxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA66A0072145BA6B002B0313 /* CheckMarkBoxCell.xib */; };
 		FA66A00A2145CA2F002B0313 /* DigitalSignatureTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA66A0092145CA2F002B0313 /* DigitalSignatureTextFieldCell.xib */; };
 		FA66A00C2145CB42002B0313 /* HeadingLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA66A00B2145CB42002B0313 /* HeadingLabelCell.xib */; };
@@ -238,6 +241,9 @@
 		FA5C5C31215170AE00BF62D5 /* AdultStudentModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdultStudentModelController.swift; sourceTree = "<group>"; };
 		FA5C5C33215170BE00BF62D5 /* KidStudentModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidStudentModelController.swift; sourceTree = "<group>"; };
 		FA5C5C35215170D200BF62D5 /* LocationModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModelController.swift; sourceTree = "<group>"; };
+		FA5C5C372151D3C600BF62D5 /* StudentHomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentHomeTableViewController.swift; sourceTree = "<group>"; };
+		FA5C5C3B2152C99A00BF62D5 /* AddNewKidStudentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewKidStudentTableViewController.swift; sourceTree = "<group>"; };
+		FA5C5C3D2152CB3200BF62D5 /* StudentChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentChoiceViewController.swift; sourceTree = "<group>"; };
 		FA66A0072145BA6B002B0313 /* CheckMarkBoxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckMarkBoxCell.xib; sourceTree = "<group>"; };
 		FA66A0092145CA2F002B0313 /* DigitalSignatureTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DigitalSignatureTextFieldCell.xib; sourceTree = "<group>"; };
 		FA66A00B2145CB42002B0313 /* HeadingLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeadingLabelCell.xib; sourceTree = "<group>"; };
@@ -526,8 +532,8 @@
 				FAB7E34F212B7D47003E3B79 /* LandingPageViewController.swift */,
 				FAB7E351212B7D73003E3B79 /* UserSelfIdentifyViewController.swift */,
 				FAF29B62212BBB5000752414 /* SignUpLoginViewController.swift */,
-				FA21D69621336073006790E5 /* Owner */,
-				FA21D6972133607E006790E5 /* Student */,
+				FA21D69621336073006790E5 /* Owner Role */,
+				FA21D6972133607E006790E5 /* Student Role */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -550,34 +556,37 @@
 			path = "Belt TableViewCells";
 			sourceTree = "<group>";
 		};
-		FA21D69621336073006790E5 /* Owner */ = {
+		FA21D69621336073006790E5 /* Owner Role */ = {
 			isa = PBXGroup;
 			children = (
 				FA9AD9F3213780DD0005E1F1 /* Profile Menu VCs */,
-				FA21D69A21339E0B006790E5 /* Students */,
+				FA21D69A21339E0B006790E5 /* Owner Controlled Students */,
 				FA21D69B21339E29006790E5 /* Owner Profile */,
 				FA21D69C21339E37006790E5 /* Home Dashboard */,
 				FA21D69D21339E49006790E5 /* Aulas */,
 			);
-			path = Owner;
+			path = "Owner Role";
 			sourceTree = "<group>";
 		};
-		FA21D6972133607E006790E5 /* Student */ = {
+		FA21D6972133607E006790E5 /* Student Role */ = {
 			isa = PBXGroup;
 			children = (
+				FA5C5C3D2152CB3200BF62D5 /* StudentChoiceViewController.swift */,
+				FA5C5C3B2152C99A00BF62D5 /* AddNewKidStudentTableViewController.swift */,
+				FA5C5C3F2152CC7A00BF62D5 /* Home Dashboard */,
 			);
-			path = Student;
+			path = "Student Role";
 			sourceTree = "<group>";
 		};
-		FA21D69A21339E0B006790E5 /* Students */ = {
+		FA21D69A21339E0B006790E5 /* Owner Controlled Students */ = {
 			isa = PBXGroup;
 			children = (
 				FA21D6832130BB7F006790E5 /* StudentListTableViewController.swift */,
 				FA21D6852130BB93006790E5 /* StudentsByListGroupingTableViewController.swift */,
-				FA21D6A22134BAC5006790E5 /* AddNewStudentTableViewController.swift */,
 				FA21D6A42134D72A006790E5 /* AddNewStudentGroupTableViewController.swift */,
+				FA21D6A22134BAC5006790E5 /* AddNewStudentTableViewController.swift */,
 			);
-			path = Students;
+			path = "Owner Controlled Students";
 			sourceTree = "<group>";
 		};
 		FA21D69B21339E29006790E5 /* Owner Profile */ = {
@@ -648,6 +657,14 @@
 				FA9ADA30213B6BA90005E1F1 /* InternationalStandardBJJBelts.swift */,
 			);
 			path = "Belt Models";
+			sourceTree = "<group>";
+		};
+		FA5C5C3F2152CC7A00BF62D5 /* Home Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				FA5C5C372151D3C600BF62D5 /* StudentHomeTableViewController.swift */,
+			);
+			path = "Home Dashboard";
 			sourceTree = "<group>";
 		};
 		FA6FBA042149F37000558657 /* User Models */ = {
@@ -1047,9 +1064,11 @@
 				FAE2FD9E2140C02800815402 /* EmailTextFieldTableViewCell.swift in Sources */,
 				FAF1BB8E21435BD800AD56AE /* DescriptionTextViewTableViewCell.swift in Sources */,
 				FAF29BCE212E4CF200752414 /* OwnerModelController.swift in Sources */,
+				FA5C5C3E2152CB3200BF62D5 /* StudentChoiceViewController.swift in Sources */,
 				FA0C444421278B8D00B59194 /* Location.swift in Sources */,
 				FA6FBA062149F3B700558657 /* UserPermissions.swift in Sources */,
 				FA21D6A32134BAC5006790E5 /* AddNewStudentTableViewController.swift in Sources */,
+				FA5C5C382151D3C600BF62D5 /* StudentHomeTableViewController.swift in Sources */,
 				FA9ADA172138C7030005E1F1 /* ProfilePicTableViewCell.swift in Sources */,
 				FAE2FD982140C00300815402 /* ZipCodeTextFieldTableViewCell.swift in Sources */,
 				FA21D69021334DB7006790E5 /* KidsBeltTableViewCell.swift in Sources */,
@@ -1099,6 +1118,7 @@
 				FA6FBA012149F33100558657 /* AdultStudent.swift in Sources */,
 				FA21D6862130BB93006790E5 /* StudentsByListGroupingTableViewController.swift in Sources */,
 				FA0C441621278A8F00B59194 /* AppDelegate.swift in Sources */,
+				FA5C5C3C2152C99A00BF62D5 /* AddNewKidStudentTableViewController.swift in Sources */,
 				FAF29BDD213087F600752414 /* GeneralMenuTableViewCell.swift in Sources */,
 				FA9ADA0D213789760005E1F1 /* MyLocationsDetailTableViewController.swift in Sources */,
 				FAF29B6B212D0E9E00752414 /* OnBoardingTask.swift in Sources */,

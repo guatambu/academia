@@ -82,7 +82,6 @@ class StudentListTableViewController: UITableViewController {
             let student = allStudents[indexPath.row]
             
             studentDetailTVC.adultStudent = student as? AdultStudent
-            studentDetailTVC.kidStudent = student as? KidStudent
             
         } else if segue.identifier == "addNewStudent" {
             

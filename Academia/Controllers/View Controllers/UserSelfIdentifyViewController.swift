@@ -26,6 +26,9 @@ class UserSelfIdentifyViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         confirmOwnerButtonOutlet.isHidden = true
         confirmStudentButtonOutlet.isHidden = true
+        
+        confirmOwnerButtonOutlet.isEnabled = false
+        confirmStudentButtonOutlet.isEnabled = false
     }
     
     

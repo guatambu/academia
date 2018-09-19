@@ -1,23 +1,21 @@
 //
-//  AddNewStudentTableViewController.swift
+//  AddNewKidStudentTableViewController.swift
 //  Academia
 //
-//  Created by Michael Guatambu Davis on 8/27/18.
+//  Created by Kelly Johnson on 9/19/18.
 //  Copyright © 2018 DunDak, LLC. All rights reserved.
 //
 
 import UIKit
 
-class AddNewStudentTableViewController: UITableViewController, SegueFromSaveProfileNibCellDelegate {
-    
-
+class AddNewKidStudentTableViewController: UITableViewController, SegueFromSaveProfileNibCellDelegate {
+        
+        
     // MARK: - Properties
     
-    var adultStudent: AdultStudent?
     var kidStudent: KidStudent?
     
     var cells: [MyCells]?
-//        = [MyCells.profilePicCell, MyCells.beltCell, MyCells.statusCell, MyCells.isKidCell, MyCells.isInstructorCell, MyCells.usernameCell, MyCells.firstNameCell, MyCells.lastNameCell, MyCells.parentGuardianCell, MyCells.paymentProgramCell, MyCells.schoolGroupsCell, MyCells.streetAddressCell, MyCells.cityCell, MyCells.stateCell, MyCells.zipCodeCell, MyCells.phoneCell, MyCells.mobileCell, MyCells.emailCell, MyCells.emergencyContactCell, MyCells.emergencyContactPhoneCell, MyCells.emergencyContactRelationshipCell, MyCells.saveProfileButtonCell]
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -48,7 +46,7 @@ class AddNewStudentTableViewController: UITableViewController, SegueFromSaveProf
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
+        
         //        func nibRegistration(nibName: String, forCellReuseIdentifier: String) -> UINib {
         //            let nib = UINib(nibName: nibName, bundle: nil)
         //            self.tableView.register(nib, forCellReuseIdentifier: forCellReuseIdentifier)
@@ -123,10 +121,10 @@ class AddNewStudentTableViewController: UITableViewController, SegueFromSaveProf
         
         let nibEmail = UINib(nibName: "EmailTextFieldCell", bundle: nil)
         self.tableView.register(nibEmail, forCellReuseIdentifier: "emailTextFieldCell")
-
+        
         let nibEmergencyContact = UINib(nibName: "EmergencyContactTextFieldCell", bundle: nil)
         self.tableView.register(nibEmergencyContact, forCellReuseIdentifier: "emergencyContactTextFieldCell")
-
+        
         let nibEmergencyContactPhone = UINib(nibName: "EmergencyContactPhoneTextFieldCell", bundle: nil)
         self.tableView.register(nibEmergencyContactPhone, forCellReuseIdentifier: "emergencyContactPhoneTextFieldCell")
         
@@ -291,5 +289,5 @@ class AddNewStudentTableViewController: UITableViewController, SegueFromSaveProf
      // Pass the selected object to the new view controller.
      }
      */
-
+    
 }

@@ -257,16 +257,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="72" translatesAutoresizingMaskIntoConstraints="NO" id="lWL-Ql-B6J" userLabel="Sign up elements Stack View">
-                                <rect key="frame" x="0.0" y="232.5" width="0.0" height="314"/>
+                                <rect key="frame" x="24" y="232.5" width="327" height="314"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="fu3-iU-hvD">
-                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="186"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="327" height="186"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="pYp-jK-1o1">
-                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="327" height="30"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fcy-tN-8sC">
-                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="327" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -278,10 +278,10 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Czu-an-chF">
-                                                <rect key="frame" x="0.0" y="78" width="0.0" height="30"/>
+                                                <rect key="frame" x="0.0" y="78" width="327" height="30"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g7O-Uz-dNH">
-                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="327" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -293,10 +293,10 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Tkb-r3-Xpu">
-                                                <rect key="frame" x="0.0" y="156" width="0.0" height="30"/>
+                                                <rect key="frame" x="0.0" y="156" width="327" height="30"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H7R-IC-LBX">
-                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="327" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -310,7 +310,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hG7-ZD-xeK">
-                                        <rect key="frame" x="0.0" y="258" width="0.0" height="56"/>
+                                        <rect key="frame" x="40" y="258" width="247" height="56"/>
                                         <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="Bze-5e-UXS"/>
@@ -332,10 +332,10 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="4bv-0j-ExZ" userLabel="Welcome Stack View">
-                                <rect key="frame" x="0.0" y="122.5" width="0.0" height="64"/>
+                                <rect key="frame" x="24" y="122.5" width="327" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Owner" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Met-Vb-e07">
-                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="24"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="327" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="Ac9-g9-mrg"/>
                                         </constraints>
@@ -344,7 +344,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="please create a username &amp; password" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pkd-H1-wIb">
-                                        <rect key="frame" x="0.0" y="40" width="0.0" height="24"/>
+                                        <rect key="frame" x="0.0" y="40" width="327" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="wx2-1i-hcI"/>
                                         </constraints>
@@ -461,10 +461,10 @@
             </objects>
             <point key="canvasLocation" x="4799" y="1353"/>
         </scene>
-        <!--Initial Add New Student Profile-->
+        <!--Initial Add New Adult Student Profile-->
         <scene sceneID="ygT-YB-Kuk">
             <objects>
-                <tableViewController storyboardIdentifier="toInitialStudentSignUp" id="5cS-NI-WEW" userLabel="Initial Add New Student Profile" customClass="AddNewStudentTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="toInitialStudentSignUp" id="5cS-NI-WEW" userLabel="Initial Add New Adult Student Profile" customClass="AddNewStudentTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" estimatedRowHeight="70" sectionHeaderHeight="29" sectionFooterHeight="28" id="wYD-Kc-88T">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -491,7 +491,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PsF-th-WZ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3537" y="-284"/>
+            <point key="canvasLocation" x="4799" y="-270"/>
         </scene>
         <!--Item 2-->
         <scene sceneID="xQn-Yf-ihV">
@@ -507,7 +507,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pZ6-P7-kzA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5432" y="-752"/>
+            <point key="canvasLocation" x="7191" y="-369"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="1YM-zu-Wd8">
@@ -523,7 +523,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hFI-fj-FCH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5432" y="-1417"/>
+            <point key="canvasLocation" x="7191" y="-1034"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Wpl-Tz-fei">
@@ -541,7 +541,185 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vbg-nC-T1C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4470" y="-1089"/>
+            <point key="canvasLocation" x="6228" y="-695"/>
+        </scene>
+        <!--Initial Add New Kid Student Profile-->
+        <scene sceneID="bll-UA-wdW">
+            <objects>
+                <tableViewController storyboardIdentifier="toInitialKidStudentSignUp" id="rBK-le-o3U" userLabel="Initial Add New Kid Student Profile" customClass="AddNewStudentTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" estimatedRowHeight="70" sectionHeaderHeight="29" sectionFooterHeight="28" id="h6W-8a-1Od">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="70" id="mwO-9X-N1N">
+                                <rect key="frame" x="0.0" y="29" width="375" height="70"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mwO-9X-N1N" id="duB-41-xiF">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="rBK-le-o3U" id="ixx-ew-oJm"/>
+                            <outlet property="delegate" destination="rBK-le-o3U" id="NuQ-Bg-4Y0"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="New Student Profile" id="hIi-84-3Kn">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="JaX-mb-mgE"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hOh-mn-4an" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4799" y="-1076"/>
+        </scene>
+        <!--Student Choice Scene-->
+        <scene sceneID="1Jq-Rh-ahZ">
+            <objects>
+                <viewController storyboardIdentifier="toStudentChoiceVC" id="Rmh-VZ-Ycm" userLabel="Student Choice Scene" customClass="StudentChoiceViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dtC-zT-nuw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="zZe-sn-BFk">
+                                <rect key="frame" x="64" y="127.5" width="247" height="412.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Choose" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYq-iY-Cbe">
+                                        <rect key="frame" x="30.5" y="0.0" width="186" height="36.5"/>
+                                        <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="32"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FTs-XE-JpF" userLabel="Kids Program Button Outlet">
+                                        <rect key="frame" x="24" y="116.5" width="199" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="wW4-eY-hVN"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
+                                        <state key="normal" title="Kids Program">
+                                            <color key="titleColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.94534217980000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="kidsProgramButtonTapped:" destination="Rmh-VZ-Ycm" eventType="touchUpInside" id="u7d-Fv-2oj"/>
+                                            <action selector="ownerButtonTapped:" destination="Rmh-VZ-Ycm" eventType="touchUpInside" id="iDd-kc-ztK"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W5y-f9-oz7" userLabel="Adults Program Button Outlet">
+                                        <rect key="frame" x="24" y="236.5" width="199" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="ReN-RV-5uF"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
+                                        <state key="normal" title="Adults Program">
+                                            <color key="titleColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.94534217980000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="adultsProgramButtonTapped:" destination="Rmh-VZ-Ycm" eventType="touchUpInside" id="WdA-C5-NPz"/>
+                                            <action selector="studentButtonTapped:" destination="Rmh-VZ-Ycm" eventType="touchUpInside" id="wwO-Nf-AaX"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="-56" translatesAutoresizingMaskIntoConstraints="NO" id="EDQ-s6-Bmy" userLabel="Confirm Button Stack View">
+                                        <rect key="frame" x="0.0" y="356.5" width="247" height="56"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EMe-4e-xkS" userLabel="Confirm Kids Program Button Outlet">
+                                                <rect key="frame" x="0.0" y="0.0" width="247" height="56"/>
+                                                <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="56" id="gcf-Xr-Wwl"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                                <state key="normal" title="Confirm: Kids Program">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="confirmKidsProgramButtonTapped:" destination="Rmh-VZ-Ycm" eventType="touchUpInside" id="RnC-vW-v9Z"/>
+                                                    <action selector="confirmStudentButtonTapped:" destination="Rmh-VZ-Ycm" eventType="touchUpInside" id="Wsy-pb-maM"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ged-74-kY0" userLabel="Confirm Adults Program Button Outlet">
+                                                <rect key="frame" x="0.0" y="0.0" width="247" height="56"/>
+                                                <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="56" id="Dov-Ka-KfB"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                                <state key="normal" title="Confirm: Adults Program">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="confirmAdultsProgramButtonTapped:" destination="Rmh-VZ-Ycm" eventType="touchUpInside" id="u0P-vb-gsR"/>
+                                                    <action selector="confirmOwnerButtonTapped:" destination="Rmh-VZ-Ycm" eventType="touchUpInside" id="whc-za-tHN"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="ged-74-kY0" firstAttribute="leading" secondItem="EDQ-s6-Bmy" secondAttribute="leading" id="eOz-9n-dIZ"/>
+                                            <constraint firstItem="EMe-4e-xkS" firstAttribute="leading" secondItem="EDQ-s6-Bmy" secondAttribute="leading" id="kZy-fY-cQZ"/>
+                                            <constraint firstAttribute="trailing" secondItem="EMe-4e-xkS" secondAttribute="trailing" id="l1N-vZ-NV9"/>
+                                            <constraint firstAttribute="trailing" secondItem="ged-74-kY0" secondAttribute="trailing" id="yRR-gb-TeT"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="EDQ-s6-Bmy" secondAttribute="trailing" id="MGd-jP-rQI"/>
+                                    <constraint firstAttribute="trailing" secondItem="FTs-XE-JpF" secondAttribute="trailing" constant="24" id="Rma-fn-8pW"/>
+                                    <constraint firstItem="FTs-XE-JpF" firstAttribute="leading" secondItem="zZe-sn-BFk" secondAttribute="leading" constant="24" id="UmL-oL-qLy"/>
+                                    <constraint firstAttribute="trailing" secondItem="W5y-f9-oz7" secondAttribute="trailing" constant="24" id="owN-0I-nPP"/>
+                                    <constraint firstItem="EDQ-s6-Bmy" firstAttribute="leading" secondItem="zZe-sn-BFk" secondAttribute="leading" id="rUx-bZ-xP2"/>
+                                    <constraint firstItem="W5y-f9-oz7" firstAttribute="leading" secondItem="zZe-sn-BFk" secondAttribute="leading" constant="24" id="xLG-0s-cXi"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zZe-sn-BFk" firstAttribute="centerX" secondItem="dtC-zT-nuw" secondAttribute="centerX" id="Ao1-VZ-38F"/>
+                            <constraint firstItem="zZe-sn-BFk" firstAttribute="leading" secondItem="X07-eP-ZFV" secondAttribute="leading" constant="64" id="YtJ-9k-vwy"/>
+                            <constraint firstItem="X07-eP-ZFV" firstAttribute="trailing" secondItem="zZe-sn-BFk" secondAttribute="trailing" constant="64" id="dLe-wK-zYX"/>
+                            <constraint firstItem="zZe-sn-BFk" firstAttribute="centerY" secondItem="dtC-zT-nuw" secondAttribute="centerY" id="hTH-EV-g4U"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="X07-eP-ZFV"/>
+                    </view>
+                    <navigationItem key="navigationItem" title=" " id="COp-uy-Aux">
+                        <barButtonItem key="backBarButtonItem" title=" " id="THa-2o-sKP"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="adultsProgramButtonOutlet" destination="W5y-f9-oz7" id="Q0R-k5-zeH"/>
+                        <outlet property="confirmAdultsProgramButtonOutlet" destination="ged-74-kY0" id="pIq-gG-Pxg"/>
+                        <outlet property="confirmKidsProgramButtonOutlet" destination="EMe-4e-xkS" id="qae-It-JhF"/>
+                        <outlet property="confirmOwnerButtonOutlet" destination="ged-74-kY0" id="ZkL-Mo-jB2"/>
+                        <outlet property="confirmStudentButtonOutlet" destination="EMe-4e-xkS" id="MpK-hT-8ul"/>
+                        <outlet property="iAmOwnerButtonOutlet" destination="FTs-XE-JpF" id="OCX-iU-kkb"/>
+                        <outlet property="iAmStudentButtonOutlet" destination="W5y-f9-oz7" id="kMl-Yg-aDb"/>
+                        <outlet property="kidsProgramButtonOutlet" destination="FTs-XE-JpF" id="fjI-OT-DUp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p70-NB-DGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3537" y="-568"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
