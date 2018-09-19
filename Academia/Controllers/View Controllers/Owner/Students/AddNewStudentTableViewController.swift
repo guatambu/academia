@@ -16,7 +16,8 @@ class AddNewStudentTableViewController: UITableViewController, SegueFromSaveProf
     var adultStudent: AdultStudent?
     var kidStudent: KidStudent?
     
-    let cells: [MyCells] = [MyCells.profilePicCell, MyCells.beltCell, MyCells.statusCell, MyCells.isKidCell, MyCells.isInstructorCell, MyCells.usernameCell, MyCells.firstNameCell, MyCells.lastNameCell, MyCells.parentGuardianCell, MyCells.paymentProgramCell, MyCells.schoolGroupsCell, MyCells.streetAddressCell, MyCells.cityCell, MyCells.stateCell, MyCells.zipCodeCell, MyCells.phoneCell, MyCells.mobileCell, MyCells.emailCell, MyCells.emergencyContactCell, MyCells.emergencyContactPhoneCell, MyCells.emergencyContactRelationshipCell, MyCells.saveProfileButtonCell]
+    var cells: [MyCells]?
+//        = [MyCells.profilePicCell, MyCells.beltCell, MyCells.statusCell, MyCells.isKidCell, MyCells.isInstructorCell, MyCells.usernameCell, MyCells.firstNameCell, MyCells.lastNameCell, MyCells.parentGuardianCell, MyCells.paymentProgramCell, MyCells.schoolGroupsCell, MyCells.streetAddressCell, MyCells.cityCell, MyCells.stateCell, MyCells.zipCodeCell, MyCells.phoneCell, MyCells.mobileCell, MyCells.emailCell, MyCells.emergencyContactCell, MyCells.emergencyContactPhoneCell, MyCells.emergencyContactRelationshipCell, MyCells.saveProfileButtonCell]
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -41,6 +42,7 @@ class AddNewStudentTableViewController: UITableViewController, SegueFromSaveProf
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let cells = cells else { return 0 }
         return cells.count
     }
     
@@ -52,6 +54,8 @@ class AddNewStudentTableViewController: UITableViewController, SegueFromSaveProf
         //            self.tableView.register(nib, forCellReuseIdentifier: forCellReuseIdentifier)
         //            return nib
         //        }
+        
+        guard let cells = cells else { return UITableViewCell() }
         
         let myCell = cells[indexPath.row]
         
