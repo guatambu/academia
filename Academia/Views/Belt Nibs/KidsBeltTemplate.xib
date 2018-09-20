@@ -25,7 +25,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QKV-X1-ZcE" userLabel="belt">
-                        <rect key="frame" x="0.0" y="20" width="375" height="40"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ro3-C1-dkl" userLabel="center ribbon View">
                                 <rect key="frame" x="0.0" y="14" width="375" height="12"/>
@@ -263,13 +263,13 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CyV-21-Ohu">
-                        <rect key="frame" x="16" y="67" width="343" height="22"/>
+                        <rect key="frame" x="16" y="47" width="343" height="22"/>
                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="xvr-3J-Geq" userLabel="stripe labels Stack View">
-                        <rect key="frame" x="114" y="59" width="217" height="16.5"/>
+                        <rect key="frame" x="114" y="43.5" width="217" height="16.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ce-J2-NGN" userLabel="FirstWhiteStripe">
                                 <rect key="frame" x="0.0" y="0.0" width="17" height="16.5"/>
@@ -342,27 +342,18 @@
                             <constraint firstAttribute="height" constant="16" id="0mZ-E2-9w8"/>
                         </constraints>
                     </stackView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_red_arrow_32.png" translatesAutoresizingMaskIntoConstraints="NO" id="xdI-az-z4T" userLabel="??? right_red_arrow_32.png">
-                        <rect key="frame" x="340" y="67" width="32" height="24"/>
-                        <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="24" id="9L6-QA-5Zr"/>
-                            <constraint firstAttribute="height" constant="24" id="S5B-IC-fDp"/>
-                        </constraints>
-                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="QKV-X1-ZcE" secondAttribute="bottom" constant="39.5" id="9ug-LN-x5y"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="xvr-3J-Geq" secondAttribute="bottom" constant="14" id="HHv-aA-sph"/>
-                    <constraint firstAttribute="trailing" secondItem="xdI-az-z4T" secondAttribute="trailing" constant="3" id="J2d-i6-rN5"/>
+                    <constraint firstAttribute="bottom" secondItem="QKV-X1-ZcE" secondAttribute="bottom" constant="59.5" id="9ug-LN-x5y"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="xvr-3J-Geq" secondAttribute="trailing" constant="28" id="BoT-1F-Wuv"/>
+                    <constraint firstItem="xvr-3J-Geq" firstAttribute="leading" secondItem="v7s-BV-Mad" secondAttribute="leadingMargin" constant="98" id="Crm-zk-BmW"/>
                     <constraint firstItem="CyV-21-Ohu" firstAttribute="trailing" secondItem="v7s-BV-Mad" secondAttribute="trailingMargin" id="J2r-Pm-wjd"/>
-                    <constraint firstAttribute="bottom" secondItem="xdI-az-z4T" secondAttribute="bottom" constant="8.5" id="cNL-qF-Y0q"/>
-                    <constraint firstItem="QKV-X1-ZcE" firstAttribute="top" secondItem="v7s-BV-Mad" secondAttribute="top" constant="20" id="eUm-mm-Gsi"/>
+                    <constraint firstItem="QKV-X1-ZcE" firstAttribute="top" secondItem="v7s-BV-Mad" secondAttribute="top" id="eUm-mm-Gsi"/>
                     <constraint firstItem="CyV-21-Ohu" firstAttribute="leading" secondItem="v7s-BV-Mad" secondAttribute="leadingMargin" id="gAH-vf-bH2"/>
                     <constraint firstItem="QKV-X1-ZcE" firstAttribute="leading" secondItem="v7s-BV-Mad" secondAttribute="leading" id="gz3-lh-DAf"/>
-                    <constraint firstItem="xvr-3J-Geq" firstAttribute="top" secondItem="v7s-BV-Mad" secondAttribute="topMargin" constant="48" id="lSY-ME-4MS"/>
-                    <constraint firstItem="xdI-az-z4T" firstAttribute="leading" secondItem="xvr-3J-Geq" secondAttribute="trailing" constant="9" id="nTf-65-Ifm"/>
+                    <constraint firstItem="xvr-3J-Geq" firstAttribute="bottom" secondItem="QKV-X1-ZcE" secondAttribute="bottom" constant="20" id="l4E-VT-ZOb"/>
                     <constraint firstAttribute="trailing" secondItem="QKV-X1-ZcE" secondAttribute="trailing" id="qp7-4w-zg8"/>
-                    <constraint firstItem="CyV-21-Ohu" firstAttribute="bottom" secondItem="v7s-BV-Mad" secondAttribute="bottomMargin" id="ud2-4l-VuG"/>
+                    <constraint firstItem="CyV-21-Ohu" firstAttribute="bottom" secondItem="v7s-BV-Mad" secondAttribute="bottomMargin" constant="-20" id="ud2-4l-VuG"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -386,7 +377,6 @@
                 <outlet property="labelThirdBlackStripeOutlet" destination="BtF-JV-fiS" id="9yq-49-7Wa"/>
                 <outlet property="labelThirdRedStripeOutlet" destination="95P-p0-tSL" id="oZ0-jL-y5F"/>
                 <outlet property="labelThirdWhiteStripeOutlet" destination="nTc-CP-zTF" id="SVU-G0-qJd"/>
-                <outlet property="rightRedArrowImageViewOutlet" destination="xdI-az-z4T" id="NIF-dR-38E"/>
                 <outlet property="secondBlackStripeViewOutlet" destination="f7X-tc-mzO" id="aMk-Mi-iAe"/>
                 <outlet property="secondRedStripeViewOutlet" destination="dwC-QI-5XI" id="xQ6-t2-EYq"/>
                 <outlet property="secondWhiteStripeViewOutlet" destination="mmk-G1-A9A" id="fC0-Qh-lq2"/>
@@ -397,7 +387,4 @@
             <point key="canvasLocation" x="-65.5" y="-38"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="right_red_arrow_32.png" width="32" height="32"/>
-    </resources>
 </document>

@@ -213,6 +213,13 @@ class AddNewKidStudentTableViewController: UITableViewController, SegueFromSaveP
                 
                 return cell
             }
+        case .statusCell:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "statusCell", for: indexPath) as? StatusTableViewCell {
+                
+                cell.detailLabelOutlet.text = "PAID - 06/15/2018"  // eventually will be date of last successful payment from payment program object
+                
+                return cell
+            }
         case .streetAddressCell:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "streetAddressTextFieldCell", for: indexPath) as? StreetAddressTextFieldTableViewCell {
                 
