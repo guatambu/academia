@@ -464,7 +464,7 @@
         <!--Initial Add New Adult Student Profile-->
         <scene sceneID="ygT-YB-Kuk">
             <objects>
-                <tableViewController storyboardIdentifier="toInitialStudentSignUp" id="5cS-NI-WEW" userLabel="Initial Add New Adult Student Profile" customClass="AddNewStudentTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="toInitialStudentSignUp" id="5cS-NI-WEW" userLabel="Initial Add New Adult Student Profile" customClass="AdultStudentInitialSetupTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" estimatedRowHeight="70" sectionHeaderHeight="29" sectionFooterHeight="28" id="wYD-Kc-88T">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -488,6 +488,9 @@
                     <navigationItem key="navigationItem" title="New Student Profile" id="duu-7x-eo2">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="THC-qn-wR8"/>
                     </navigationItem>
+                    <connections>
+                        <segue destination="pjt-Bq-FLx" kind="presentation" identifier="initialAdultStudentSegue" id="KPd-HR-0cy"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PsF-th-WZ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -528,7 +531,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="Wpl-Tz-fei">
             <objects>
-                <tabBarController id="pjt-Bq-FLx" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="toStudentDashbooard" id="pjt-Bq-FLx" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="IMD-vn-hWe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -546,7 +549,7 @@
         <!--Initial Add New Kid Student Profile-->
         <scene sceneID="bll-UA-wdW">
             <objects>
-                <tableViewController storyboardIdentifier="toInitialKidStudentSignUp" id="rBK-le-o3U" userLabel="Initial Add New Kid Student Profile" customClass="AddNewKidStudentTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="toInitialKidStudentSignUp" id="rBK-le-o3U" userLabel="Initial Add New Kid Student Profile" customClass="KidStudentInitialSetupTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" estimatedRowHeight="70" sectionHeaderHeight="29" sectionFooterHeight="28" id="h6W-8a-1Od">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -570,6 +573,9 @@
                     <navigationItem key="navigationItem" title="New Student Profile" id="hIi-84-3Kn">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="JaX-mb-mgE"/>
                     </navigationItem>
+                    <connections>
+                        <segue destination="pjt-Bq-FLx" kind="presentation" identifier="initialKidStudentSegue" id="ceG-WH-5hf"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hOh-mn-4an" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -715,6 +721,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="ceG-WH-5hf"/>
         <segue reference="GYQ-pn-A7P"/>
     </inferredMetricsTieBreakers>
 </document>

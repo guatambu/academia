@@ -34,7 +34,7 @@ class AddNewStudentTableViewController: UITableViewController, SegueFromSaveProf
     // MARK: - SegueFromSaveProfileNibCellDelegate protocol method
     
     func callSegueFromNibCell(nibCellData dataobject: AnyObject) {
-        self.performSegue(withIdentifier: "toSavedStudentListSegue", sender: dataobject)
+        self.performSegue(withIdentifier: "initialAdultStudentSegue", sender: dataobject)
     }
     
     // MARK: - Table view data source

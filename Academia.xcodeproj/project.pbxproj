@@ -49,6 +49,8 @@
 		FA5C5C412152F0C000BF62D5 /* StudentUserGeneralMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA5C5C402152F0C000BF62D5 /* StudentUserGeneralMenuCell.xib */; };
 		FA5C5C432152F11400BF62D5 /* StudentUserGeneralMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C5C422152F11400BF62D5 /* StudentUserGeneralMenuTableViewCell.swift */; };
 		FA5C5C452153022300BF62D5 /* SegueFromSaveProfileNibCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C5C442153022300BF62D5 /* SegueFromSaveProfileNibCellDelegate.swift */; };
+		FA5C5C4B2154632900BF62D5 /* AdultStudentInitialSetupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C5C4A2154632900BF62D5 /* AdultStudentInitialSetupTableViewController.swift */; };
+		FA5C5C4D215463BE00BF62D5 /* KidStudentInitialSetupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C5C4C215463BE00BF62D5 /* KidStudentInitialSetupTableViewController.swift */; };
 		FA66A0082145BA6B002B0313 /* CheckMarkBoxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA66A0072145BA6B002B0313 /* CheckMarkBoxCell.xib */; };
 		FA66A00A2145CA2F002B0313 /* DigitalSignatureTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA66A0092145CA2F002B0313 /* DigitalSignatureTextFieldCell.xib */; };
 		FA66A00C2145CB42002B0313 /* HeadingLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA66A00B2145CB42002B0313 /* HeadingLabelCell.xib */; };
@@ -249,6 +251,8 @@
 		FA5C5C402152F0C000BF62D5 /* StudentUserGeneralMenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudentUserGeneralMenuCell.xib; sourceTree = "<group>"; };
 		FA5C5C422152F11400BF62D5 /* StudentUserGeneralMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentUserGeneralMenuTableViewCell.swift; sourceTree = "<group>"; };
 		FA5C5C442153022300BF62D5 /* SegueFromSaveProfileNibCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueFromSaveProfileNibCellDelegate.swift; sourceTree = "<group>"; };
+		FA5C5C4A2154632900BF62D5 /* AdultStudentInitialSetupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdultStudentInitialSetupTableViewController.swift; sourceTree = "<group>"; };
+		FA5C5C4C215463BE00BF62D5 /* KidStudentInitialSetupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidStudentInitialSetupTableViewController.swift; sourceTree = "<group>"; };
 		FA66A0072145BA6B002B0313 /* CheckMarkBoxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckMarkBoxCell.xib; sourceTree = "<group>"; };
 		FA66A0092145CA2F002B0313 /* DigitalSignatureTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DigitalSignatureTextFieldCell.xib; sourceTree = "<group>"; };
 		FA66A00B2145CB42002B0313 /* HeadingLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeadingLabelCell.xib; sourceTree = "<group>"; };
@@ -578,6 +582,8 @@
 				FA5C5C3D2152CB3200BF62D5 /* StudentChoiceViewController.swift */,
 				FA5C5C3B2152C99A00BF62D5 /* AddNewKidStudentTableViewController.swift */,
 				FA5C5C3F2152CC7A00BF62D5 /* Home Dashboard */,
+				FA5C5C4A2154632900BF62D5 /* AdultStudentInitialSetupTableViewController.swift */,
+				FA5C5C4C215463BE00BF62D5 /* KidStudentInitialSetupTableViewController.swift */,
 			);
 			path = "Student Role";
 			sourceTree = "<group>";
@@ -1069,6 +1075,7 @@
 				FAE2FDB02140C0C900815402 /* SocialNetworksTextFieldTableViewCell.swift in Sources */,
 				FAE2FD9E2140C02800815402 /* EmailTextFieldTableViewCell.swift in Sources */,
 				FAF1BB8E21435BD800AD56AE /* DescriptionTextViewTableViewCell.swift in Sources */,
+				FA5C5C4B2154632900BF62D5 /* AdultStudentInitialSetupTableViewController.swift in Sources */,
 				FAF29BCE212E4CF200752414 /* OwnerModelController.swift in Sources */,
 				FA5C5C3E2152CB3200BF62D5 /* StudentChoiceViewController.swift in Sources */,
 				FA0C444421278B8D00B59194 /* Location.swift in Sources */,
@@ -1109,6 +1116,7 @@
 				FA21D6A72136253E006790E5 /* AdultBlackBelt.swift in Sources */,
 				FA9AD9F72137839A0005E1F1 /* BeltSystemsTableViewController.swift in Sources */,
 				FAE2FD8E2140BFC700815402 /* FirstNameTextFieldTableViewCell.swift in Sources */,
+				FA5C5C4D215463BE00BF62D5 /* KidStudentInitialSetupTableViewController.swift in Sources */,
 				FA9AD9F5213782070005E1F1 /* TutorialsTableViewController.swift in Sources */,
 				FAE2FD9A2140C01100815402 /* PhoneTextFieldTableViewCell.swift in Sources */,
 				FAE2FDAA2140C08900815402 /* EmergencyContactRelationshipTextFieldTableViewCell.swift in Sources */,

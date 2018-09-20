@@ -1,19 +1,19 @@
 //
-//  AddNewKidStudentTableViewController.swift
+//  AdultStudentInitialSetupTableViewController.swift
 //  Academia
 //
-//  Created by Kelly Johnson on 9/19/18.
+//  Created by Kelly Johnson on 9/20/18.
 //  Copyright © 2018 DunDak, LLC. All rights reserved.
 //
 
 import UIKit
 
-class AddNewKidStudentTableViewController: UITableViewController, SegueFromSaveProfileNibCellDelegate {
-        
-        
+class AdultStudentInitialSetupTableViewController: UITableViewController, SegueFromSaveProfileNibCellDelegate {
+    
+    
     // MARK: - Properties
     
-    var kidStudent: KidStudent?
+    var adultStudent: AdultStudent?
     
     var cells: [MyCells]?
     
@@ -29,14 +29,12 @@ class AddNewKidStudentTableViewController: UITableViewController, SegueFromSaveP
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "New Kids Student Profile"
-        
     }
     
     // MARK: - SegueFromSaveProfileNibCellDelegate protocol method
     
     func callSegueFromNibCell(nibCellData dataobject: AnyObject) {
-        self.performSegue(withIdentifier: "initialKidStudentSegue", sender: dataobject)
+        self.performSegue(withIdentifier: "initialAdultStudentSegue", sender: dataobject)
     }
     
     // MARK: - Table view data source
@@ -67,11 +65,17 @@ class AddNewKidStudentTableViewController: UITableViewController, SegueFromSaveP
         let nibProfilePic = UINib(nibName: "ProfilePicCell", bundle: nil)
         self.tableView.register(nibProfilePic, forCellReuseIdentifier: "profilePicCell")
         
-        let nibKidsBelt = UINib(nibName: "KidsBeltTemplate", bundle: nil)
-        self.tableView.register(nibKidsBelt, forCellReuseIdentifier: "kidsBeltTemplate")
+        let nibAdultBasicBelt = UINib(nibName: "AdultBasicBeltTemplate", bundle: nil)
+        self.tableView.register(nibAdultBasicBelt, forCellReuseIdentifier: "adultBasicBeltTemplate")
+        
+        let nibAdultBlackBelt = UINib(nibName: "AdultBlackBeltTemplate", bundle: nil)
+        self.tableView.register(nibAdultBlackBelt, forCellReuseIdentifier: "adultBlackBeltTemplate")
         
         let nibStatus = UINib(nibName: "StatusCell", bundle: nil)
         self.tableView.register(nibStatus, forCellReuseIdentifier: "statusCell")
+        
+        let nibIsInstructor = UINib(nibName: "IsInstructorCell", bundle: nil)
+        self.tableView.register(nibIsInstructor, forCellReuseIdentifier: "isInstructorCell")
         
         let nibUsername = UINib(nibName: "UsernameTextFieldCell", bundle: nil)
         self.tableView.register(nibUsername, forCellReuseIdentifier: "usernameTextFieldCell")
@@ -124,7 +128,7 @@ class AddNewKidStudentTableViewController: UITableViewController, SegueFromSaveP
             // use "where" clause to determine distinction between between adult and kid students?
             
         case .beltCell:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "kidsBeltTemplate", for: indexPath) as? KidsBeltTableViewCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "adultBasicBeltTemplate", for: indexPath) as? AdultBasicBeltTableViewCell {
                 return cell
             }
         case .cityCell:
@@ -166,6 +170,11 @@ class AddNewKidStudentTableViewController: UITableViewController, SegueFromSaveP
             if let cell = tableView.dequeueReusableCell(withIdentifier: "firstNameTextFieldCell", for: indexPath) as? FirstNameTextFieldTableViewCell {
                 
                 cell.firstNameTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
+                
+                return cell
+            }
+        case .isInstructorCell:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "isInstructorCell", for: indexPath) as? IsInstructorTableViewCell {
                 
                 return cell
             }
