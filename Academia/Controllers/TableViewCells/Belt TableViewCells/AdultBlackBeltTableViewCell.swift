@@ -29,6 +29,8 @@ class AdultBlackBeltTableViewCell: UITableViewCell {
     @IBOutlet weak var ninthWhiteDegreeOutlet: UIView!
     @IBOutlet weak var tenthWhiteDegreeOutlet: UIView!
     
+    @IBOutlet weak var degreesStackViewOutles: UIStackView!
+    
     // Labels
     @IBOutlet weak var beltTimeLabelOutlet: UILabel!
     @IBOutlet weak var labelFirstDegreeTimeOutlet: UILabel!

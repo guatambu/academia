@@ -13,6 +13,9 @@ enum InternationalStandardBJJBelts: String {
     case kidBelts = "Kid Belts"
     case adultBelts = "Adult Belts"
     
+    // spacer
+    case spacer = ""
+    
     // standard kids belts
     case kidsWhiteBelt = "Kids White Belt"
     case kidsGreyWhiteBelt = "Kids Gray White Belt"

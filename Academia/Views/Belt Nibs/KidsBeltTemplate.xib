@@ -262,7 +262,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CyV-21-Ohu">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 year" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CyV-21-Ohu">
                         <rect key="frame" x="16" y="47" width="343" height="22"/>
                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                         <nil key="textColor"/>
@@ -383,6 +383,7 @@
                 <outlet property="thirdBlackStripeViewOutlet" destination="iwS-ny-vg2" id="Omk-op-d7i"/>
                 <outlet property="thirdRedStripeViewOutlet" destination="us2-45-cXJ" id="4Ew-05-iZt"/>
                 <outlet property="thirdWhiteStripeViewOutlet" destination="lbS-3Q-7Be" id="OaQ-af-jqx"/>
+                <outlet property="timeLabelsStackViewOutlet" destination="xvr-3J-Geq" id="dVW-CU-71s"/>
             </connections>
             <point key="canvasLocation" x="-65.5" y="-38"/>
         </tableViewCell>

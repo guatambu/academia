@@ -28,6 +28,7 @@ class KidsBeltTableViewCell: UITableViewCell {
     @IBOutlet weak var secondBlackStripeViewOutlet: UIView!
     @IBOutlet weak var thirdBlackStripeViewOutlet: UIView!
     
+    @IBOutlet weak var timeLabelsStackViewOutlet: UIStackView!
     // Labels
     @IBOutlet weak var beltTimeLabelOutlet: UILabel!
     @IBOutlet weak var labelFirstWhiteStripeOutlet: UILabel!

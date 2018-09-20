@@ -132,11 +132,8 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 years" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hf3-8A-qj0">
-                        <rect key="frame" x="16" y="47" width="80" height="22"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="80" id="v7f-N4-TOQ"/>
-                        </constraints>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 years" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hf3-8A-qj0">
+                        <rect key="frame" x="16" y="47" width="359" height="22"/>
                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -183,7 +180,7 @@
                     <constraint firstAttribute="trailing" secondItem="Z9Y-VN-0kP" secondAttribute="trailing" id="V1P-0q-eTs"/>
                     <constraint firstItem="Z9Y-VN-0kP" firstAttribute="top" secondItem="uDu-ct-Tkv" secondAttribute="top" id="WzE-4j-myn"/>
                     <constraint firstAttribute="bottomMargin" secondItem="FVk-SF-GcW" secondAttribute="bottom" constant="33" id="cQZ-ta-TTc"/>
-                    <constraint firstItem="FVk-SF-GcW" firstAttribute="leading" secondItem="hf3-8A-qj0" secondAttribute="trailing" constant="115" id="mMd-ZQ-B9H"/>
+                    <constraint firstAttribute="trailing" secondItem="hf3-8A-qj0" secondAttribute="trailing" id="pOM-XC-72h"/>
                     <constraint firstItem="Z9Y-VN-0kP" firstAttribute="leading" secondItem="uDu-ct-Tkv" secondAttribute="leading" id="r8l-Ia-BAT"/>
                 </constraints>
             </tableViewCellContentView>
@@ -197,6 +194,7 @@
                 <outlet property="fourthWhiteStripeOutlet" destination="GJf-UZ-zSF" id="LD8-QX-gJX"/>
                 <outlet property="secondStripeTimeOutlet" destination="IQi-TM-sl9" id="oXG-s4-xkX"/>
                 <outlet property="secondWhiteStripeOutlet" destination="niO-dV-9fc" id="ApD-1d-1z0"/>
+                <outlet property="stripesStackViewOutlet" destination="FVk-SF-GcW" id="TbG-TC-O21"/>
                 <outlet property="thirdStripeTimeOutlet" destination="zPC-S4-TVZ" id="Rpe-td-8aW"/>
                 <outlet property="thirdWhiteStripeOutlet" destination="Cat-Tr-4jH" id="EPc-F1-ElX"/>
             </connections>

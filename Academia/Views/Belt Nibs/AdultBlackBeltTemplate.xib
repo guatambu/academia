@@ -269,7 +269,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31 years" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wmK-a0-yvE" userLabel="description">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31 years" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wmK-a0-yvE" userLabel="description">
                         <rect key="frame" x="16" y="67" width="80" height="22"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="80" id="ihk-iN-ySs"/>
@@ -363,6 +363,7 @@
                 <outlet property="beltTimeLabelOutlet" destination="wmK-a0-yvE" id="KdB-sq-Moe"/>
                 <outlet property="beltViewOutlet" destination="8yf-T4-gWQ" id="gLT-TV-lui"/>
                 <outlet property="coralBarOutlet" destination="gpT-GG-dNw" id="08Z-hc-n1A"/>
+                <outlet property="degreesStackViewOutles" destination="Yxa-Ml-dJW" id="9vz-GD-X5A"/>
                 <outlet property="eigthWhiteDegreeOutlet" destination="7DE-1r-5B0" id="dBW-4F-mNc"/>
                 <outlet property="fifthWhiteDegreeOutlet" destination="dsa-0W-WHK" id="4iP-Ka-z6e"/>
                 <outlet property="firstWhiteDegreeOutlet" destination="tWU-hk-CKM" id="k6M-DX-l9Q"/>
