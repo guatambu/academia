@@ -67,23 +67,11 @@ class AddNewKidStudentTableViewController: UITableViewController, SegueFromSaveP
         let nibProfilePic = UINib(nibName: "ProfilePicCell", bundle: nil)
         self.tableView.register(nibProfilePic, forCellReuseIdentifier: "profilePicCell")
         
-        let nibAdultBasicBelt = UINib(nibName: "AdultBasicBeltTemplate", bundle: nil)
-        self.tableView.register(nibAdultBasicBelt, forCellReuseIdentifier: "adultBasicBeltTemplate")
-        
-        let nibAdultBlackBelt = UINib(nibName: "AdultBlackBeltTemplate", bundle: nil)
-        self.tableView.register(nibAdultBlackBelt, forCellReuseIdentifier: "adultBlackBeltTemplate")
-        
         let nibKidsBelt = UINib(nibName: "KidsBeltTemplate", bundle: nil)
         self.tableView.register(nibKidsBelt, forCellReuseIdentifier: "kidsBeltTemplate")
         
         let nibStatus = UINib(nibName: "StatusCell", bundle: nil)
         self.tableView.register(nibStatus, forCellReuseIdentifier: "statusCell")
-        
-        let nibIsKid = UINib(nibName: "IsKidCell", bundle: nil)
-        self.tableView.register(nibIsKid, forCellReuseIdentifier: "isKidCell")
-        
-        let nibIsInstructor = UINib(nibName: "IsInstructorCell", bundle: nil)
-        self.tableView.register(nibIsInstructor, forCellReuseIdentifier: "isInstructorCell")
         
         let nibUsername = UINib(nibName: "UsernameTextFieldCell", bundle: nil)
         self.tableView.register(nibUsername, forCellReuseIdentifier: "usernameTextFieldCell")
@@ -96,12 +84,6 @@ class AddNewKidStudentTableViewController: UITableViewController, SegueFromSaveP
         
         let nibParentGuardian = UINib(nibName: "ParentGuardianTextFieldCell", bundle: nil)
         self.tableView.register(nibParentGuardian, forCellReuseIdentifier: "parentGuardianTextFieldCell")
-        
-        let nibPaymentProgram = UINib(nibName: "PaymentProgramTextFieldCell", bundle: nil)
-        self.tableView.register(nibPaymentProgram, forCellReuseIdentifier: "paymentProgramTextFieldCell")
-        
-        let nibSchoolGroup = UINib(nibName: "SchoolGroupTextFieldCell", bundle: nil)
-        self.tableView.register(nibSchoolGroup, forCellReuseIdentifier: "schoolGroupTextFieldCell")
         
         let nibStreetAddress = UINib(nibName: "StreetAddressTextFieldCell", bundle: nil)
         self.tableView.register(nibStreetAddress, forCellReuseIdentifier: "streetAddressTextFieldCell")
@@ -142,7 +124,7 @@ class AddNewKidStudentTableViewController: UITableViewController, SegueFromSaveP
             // use "where" clause to determine distinction between between adult and kid students?
             
         case .beltCell:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "adultBlackBeltTemplate", for: indexPath) as? AdultBlackBeltTableViewCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "kidsBeltTemplate", for: indexPath) as? KidsBeltTableViewCell {
                 return cell
             }
         case .cityCell:
@@ -187,16 +169,6 @@ class AddNewKidStudentTableViewController: UITableViewController, SegueFromSaveP
                 
                 return cell
             }
-        case .isInstructorCell:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "isInstructorCell", for: indexPath) as? IsInstructorTableViewCell {
-                
-                return cell
-            }
-        case .isKidCell:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "isKidCell", for: indexPath) as? IsKidTableViewCell {
-                
-                return cell
-            }
         case .lastNameCell:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "lastNameTextFieldCell", for: indexPath) as? LastNameTextFieldTableViewCell {
                 
@@ -218,13 +190,6 @@ class AddNewKidStudentTableViewController: UITableViewController, SegueFromSaveP
                 
                 return cell
             }
-        case .paymentProgramCell:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "paymentProgramTextFieldCell", for: indexPath) as? PaymentProgramTextFieldTableViewCell {
-                
-                cell.paymentProgramTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
-                
-                return cell
-            }
         case .phoneCell:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "phoneTextFieldCell", for: indexPath) as? PhoneTextFieldTableViewCell {
                 
@@ -239,13 +204,6 @@ class AddNewKidStudentTableViewController: UITableViewController, SegueFromSaveP
         case .saveProfileButtonCell:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "saveProfileCell", for: indexPath) as? SaveProfileTableViewCell {
                 cell.delegate = self
-                return cell
-            }
-        case .schoolGroupsCell:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "schoolGroupTextFieldCell", for: indexPath) as? SchoolGroupTextFieldTableViewCell {
-                
-                cell.schoolGroupTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
-                
                 return cell
             }
         case .stateCell:

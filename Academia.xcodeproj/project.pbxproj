@@ -48,6 +48,7 @@
 		FA5C5C3E2152CB3200BF62D5 /* StudentChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C5C3D2152CB3200BF62D5 /* StudentChoiceViewController.swift */; };
 		FA5C5C412152F0C000BF62D5 /* StudentUserGeneralMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA5C5C402152F0C000BF62D5 /* StudentUserGeneralMenuCell.xib */; };
 		FA5C5C432152F11400BF62D5 /* StudentUserGeneralMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C5C422152F11400BF62D5 /* StudentUserGeneralMenuTableViewCell.swift */; };
+		FA5C5C452153022300BF62D5 /* SegueFromSaveProfileNibCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C5C442153022300BF62D5 /* SegueFromSaveProfileNibCellDelegate.swift */; };
 		FA66A0082145BA6B002B0313 /* CheckMarkBoxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA66A0072145BA6B002B0313 /* CheckMarkBoxCell.xib */; };
 		FA66A00A2145CA2F002B0313 /* DigitalSignatureTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA66A0092145CA2F002B0313 /* DigitalSignatureTextFieldCell.xib */; };
 		FA66A00C2145CB42002B0313 /* HeadingLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA66A00B2145CB42002B0313 /* HeadingLabelCell.xib */; };
@@ -90,7 +91,6 @@
 		FA9ADA2F2139EE940005E1F1 /* IsKidTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9ADA2E2139EE940005E1F1 /* IsKidTableViewCell.swift */; };
 		FA9ADA31213B6BA90005E1F1 /* InternationalStandardBJJBelts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9ADA30213B6BA90005E1F1 /* InternationalStandardBJJBelts.swift */; };
 		FAA550712145D03F00EC7860 /* HeadingLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA550702145D03F00EC7860 /* HeadingLabelTableViewCell.swift */; };
-		FAAAC146213E230400093D6C /* SegueFromSaveProfileNibCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAAC145213E230400093D6C /* SegueFromSaveProfileNibCellDelegate.swift */; };
 		FAAAC149213E337500093D6C /* OwnerBeltSystemFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAAAC147213E337500093D6C /* OwnerBeltSystemFlow.storyboard */; };
 		FAAAC14B213E33E000093D6C /* OwnerProfileFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAAAC14A213E33E000093D6C /* OwnerProfileFlow.storyboard */; };
 		FAAAC14E213E342600093D6C /* OwnerStudentsFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAAAC14C213E342600093D6C /* OwnerStudentsFlow.storyboard */; };
@@ -248,6 +248,7 @@
 		FA5C5C3D2152CB3200BF62D5 /* StudentChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentChoiceViewController.swift; sourceTree = "<group>"; };
 		FA5C5C402152F0C000BF62D5 /* StudentUserGeneralMenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudentUserGeneralMenuCell.xib; sourceTree = "<group>"; };
 		FA5C5C422152F11400BF62D5 /* StudentUserGeneralMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentUserGeneralMenuTableViewCell.swift; sourceTree = "<group>"; };
+		FA5C5C442153022300BF62D5 /* SegueFromSaveProfileNibCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueFromSaveProfileNibCellDelegate.swift; sourceTree = "<group>"; };
 		FA66A0072145BA6B002B0313 /* CheckMarkBoxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckMarkBoxCell.xib; sourceTree = "<group>"; };
 		FA66A0092145CA2F002B0313 /* DigitalSignatureTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DigitalSignatureTextFieldCell.xib; sourceTree = "<group>"; };
 		FA66A00B2145CB42002B0313 /* HeadingLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeadingLabelCell.xib; sourceTree = "<group>"; };
@@ -290,7 +291,6 @@
 		FA9ADA2E2139EE940005E1F1 /* IsKidTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsKidTableViewCell.swift; sourceTree = "<group>"; };
 		FA9ADA30213B6BA90005E1F1 /* InternationalStandardBJJBelts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternationalStandardBJJBelts.swift; sourceTree = "<group>"; };
 		FAA550702145D03F00EC7860 /* HeadingLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadingLabelTableViewCell.swift; sourceTree = "<group>"; };
-		FAAAC145213E230400093D6C /* SegueFromSaveProfileNibCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueFromSaveProfileNibCellDelegate.swift; sourceTree = "<group>"; };
 		FAAAC148213E337500093D6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Academia/Views/Base.lproj/OwnerBeltSystemFlow.storyboard; sourceTree = "<group>"; };
 		FAAAC14A213E33E000093D6C /* OwnerProfileFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerProfileFlow.storyboard; sourceTree = "<group>"; };
 		FAAAC14D213E342600093D6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Academia/Views/Base.lproj/OwnerStudentsFlow.storyboard; sourceTree = "<group>"; };
@@ -725,7 +725,7 @@
 			isa = PBXGroup;
 			children = (
 				FA5C5C2F21506B7400BF62D5 /* InitialStudentSegueDelegate.swift */,
-				FAAAC145213E230400093D6C /* SegueFromSaveProfileNibCellDelegate.swift */,
+				FA5C5C442153022300BF62D5 /* SegueFromSaveProfileNibCellDelegate.swift */,
 			);
 			path = "Segue Protocols";
 			sourceTree = "<group>";
@@ -1051,7 +1051,6 @@
 				FAE2FD902140BFD100815402 /* LastNameTextFieldTableViewCell.swift in Sources */,
 				FA9ADA01213784410005E1F1 /* PrivacyPolicyViewController.swift in Sources */,
 				FA0C444221278B6900B59194 /* AdultBasicBelt.swift in Sources */,
-				FAAAC146213E230400093D6C /* SegueFromSaveProfileNibCellDelegate.swift in Sources */,
 				FAA550712145D03F00EC7860 /* HeadingLabelTableViewCell.swift in Sources */,
 				FA0C444021278B5900B59194 /* User.swift in Sources */,
 				FAB7E352212B7D73003E3B79 /* UserSelfIdentifyViewController.swift in Sources */,
@@ -1131,6 +1130,7 @@
 				FA9ADA0D213789760005E1F1 /* MyLocationsDetailTableViewController.swift in Sources */,
 				FAF29B6B212D0E9E00752414 /* OnBoardingTask.swift in Sources */,
 				FAE2FD3C2140700F00815402 /* MockData.swift in Sources */,
+				FA5C5C452153022300BF62D5 /* SegueFromSaveProfileNibCellDelegate.swift in Sources */,
 				FAE2C07F214ADD26002E9756 /* ClassDetailTableViewController.swift in Sources */,
 				FA9ADA2B2139EE560005E1F1 /* StatusTableViewCell.swift in Sources */,
 				FA21D6822130BB2D006790E5 /* OwnerProfileTableViewController.swift in Sources */,
