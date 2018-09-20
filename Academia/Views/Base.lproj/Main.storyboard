@@ -496,7 +496,7 @@
             </objects>
             <point key="canvasLocation" x="4799" y="-270"/>
         </scene>
-        <!--Item 2-->
+        <!--View Controller-->
         <scene sceneID="xQn-Yf-ihV">
             <objects>
                 <viewController id="iO4-N0-guD" sceneMemberID="viewController">
@@ -506,13 +506,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="ZBD-qQ-C82"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="Ulk-5f-5II"/>
+                    <navigationItem key="navigationItem" id="z2d-yV-fLy"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pZ6-P7-kzA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7191" y="-369"/>
+            <point key="canvasLocation" x="8153" y="-370"/>
         </scene>
-        <!--Item 1-->
+        <!--View Controller-->
         <scene sceneID="1YM-zu-Wd8">
             <objects>
                 <viewController id="XpF-F7-Izn" sceneMemberID="viewController">
@@ -522,11 +522,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="ozW-dG-f3S"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="fpY-fJ-5QU"/>
+                    <navigationItem key="navigationItem" id="OMb-wb-QoD"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hFI-fj-FCH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7191" y="-1034"/>
+            <point key="canvasLocation" x="8153" y="-1035"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Wpl-Tz-fei">
@@ -536,10 +536,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.94534217980000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="selectedImageTintColor" red="0.94534217980000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="XpF-F7-Izn" kind="relationship" relationship="viewControllers" id="c0k-5G-Iau"/>
-                        <segue destination="iO4-N0-guD" kind="relationship" relationship="viewControllers" id="2sK-a6-3gs"/>
+                        <segue destination="u6Y-Ni-mVW" kind="relationship" relationship="viewControllers" id="c0k-5G-Iau"/>
+                        <segue destination="vZE-5R-AmN" kind="relationship" relationship="viewControllers" id="2sK-a6-3gs"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vbg-nC-T1C" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -719,7 +721,49 @@
             </objects>
             <point key="canvasLocation" x="3537" y="-568"/>
         </scene>
+        <!--Item 1-->
+        <scene sceneID="kt1-Ms-cpM">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="u6Y-Ni-mVW" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item 1" image="home_red_32 copy.png" selectedImage="home_red_32 copy.png" id="fpY-fJ-5QU"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6xb-F7-GRj">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="XpF-F7-Izn" kind="relationship" relationship="rootViewController" id="blM-KB-OKu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uzy-eH-9Sb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7190.3999999999996" y="-1034.4827586206898"/>
+        </scene>
+        <!--Item 2-->
+        <scene sceneID="DTT-yJ-19N">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vZE-5R-AmN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item 2" image="classes_red_32.png" selectedImage="classes_red_32.png" id="Ulk-5f-5II"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9ag-Y2-Jle">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="iO4-N0-guD" kind="relationship" relationship="rootViewController" id="lqV-Im-RfG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T3c-u3-JsJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7190.3999999999996" y="-369.71514242878561"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="classes_red_32.png" width="32" height="32"/>
+        <image name="home_red_32 copy.png" width="32" height="32"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ceG-WH-5hf"/>
         <segue reference="GYQ-pn-A7P"/>
