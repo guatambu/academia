@@ -51,6 +51,10 @@
 		FA5C5C452153022300BF62D5 /* SegueFromSaveProfileNibCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C5C442153022300BF62D5 /* SegueFromSaveProfileNibCellDelegate.swift */; };
 		FA5C5C4B2154632900BF62D5 /* AdultStudentInitialSetupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C5C4A2154632900BF62D5 /* AdultStudentInitialSetupTableViewController.swift */; };
 		FA5C5C4D215463BE00BF62D5 /* KidStudentInitialSetupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C5C4C215463BE00BF62D5 /* KidStudentInitialSetupTableViewController.swift */; };
+		FA5C5C50215498C900BF62D5 /* StudentBaseCampFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA5C5C4E215498C900BF62D5 /* StudentBaseCampFlow.storyboard */; };
+		FA5C5C522154999C00BF62D5 /* StudentClassesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C5C512154999C00BF62D5 /* StudentClassesTableViewController.swift */; };
+		FA5C5C54215499B400BF62D5 /* StudentClassDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C5C53215499B400BF62D5 /* StudentClassDetailTableViewController.swift */; };
+		FA5C5C56215499F300BF62D5 /* StudentProfileDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C5C55215499F300BF62D5 /* StudentProfileDetailTableViewController.swift */; };
 		FA66A0082145BA6B002B0313 /* CheckMarkBoxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA66A0072145BA6B002B0313 /* CheckMarkBoxCell.xib */; };
 		FA66A00A2145CA2F002B0313 /* DigitalSignatureTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA66A0092145CA2F002B0313 /* DigitalSignatureTextFieldCell.xib */; };
 		FA66A00C2145CB42002B0313 /* HeadingLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA66A00B2145CB42002B0313 /* HeadingLabelCell.xib */; };
@@ -253,6 +257,10 @@
 		FA5C5C442153022300BF62D5 /* SegueFromSaveProfileNibCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueFromSaveProfileNibCellDelegate.swift; sourceTree = "<group>"; };
 		FA5C5C4A2154632900BF62D5 /* AdultStudentInitialSetupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdultStudentInitialSetupTableViewController.swift; sourceTree = "<group>"; };
 		FA5C5C4C215463BE00BF62D5 /* KidStudentInitialSetupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidStudentInitialSetupTableViewController.swift; sourceTree = "<group>"; };
+		FA5C5C4F215498C900BF62D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Academia/Views/Base.lproj/StudentBaseCampFlow.storyboard; sourceTree = "<group>"; };
+		FA5C5C512154999C00BF62D5 /* StudentClassesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentClassesTableViewController.swift; sourceTree = "<group>"; };
+		FA5C5C53215499B400BF62D5 /* StudentClassDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentClassDetailTableViewController.swift; sourceTree = "<group>"; };
+		FA5C5C55215499F300BF62D5 /* StudentProfileDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentProfileDetailTableViewController.swift; sourceTree = "<group>"; };
 		FA66A0072145BA6B002B0313 /* CheckMarkBoxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckMarkBoxCell.xib; sourceTree = "<group>"; };
 		FA66A0092145CA2F002B0313 /* DigitalSignatureTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DigitalSignatureTextFieldCell.xib; sourceTree = "<group>"; };
 		FA66A00B2145CB42002B0313 /* HeadingLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeadingLabelCell.xib; sourceTree = "<group>"; };
@@ -417,6 +425,7 @@
 		FA0C440921278A8F00B59194 = {
 			isa = PBXGroup;
 			children = (
+				FA5C5C4E215498C900BF62D5 /* StudentBaseCampFlow.storyboard */,
 				FA0C441421278A8F00B59194 /* Academia */,
 				FA0C442C21278A8F00B59194 /* AcademiaTests */,
 				FA0C441321278A8F00B59194 /* Products */,
@@ -581,9 +590,11 @@
 			children = (
 				FA5C5C3D2152CB3200BF62D5 /* StudentChoiceViewController.swift */,
 				FA5C5C3B2152C99A00BF62D5 /* AddNewKidStudentTableViewController.swift */,
-				FA5C5C3F2152CC7A00BF62D5 /* Home Dashboard */,
 				FA5C5C4A2154632900BF62D5 /* AdultStudentInitialSetupTableViewController.swift */,
 				FA5C5C4C215463BE00BF62D5 /* KidStudentInitialSetupTableViewController.swift */,
+				FA5C5C3F2152CC7A00BF62D5 /* Home Dashboard */,
+				FA5C5C5721549A1300BF62D5 /* Aulas */,
+				FA5C5C55215499F300BF62D5 /* StudentProfileDetailTableViewController.swift */,
 			);
 			path = "Student Role";
 			sourceTree = "<group>";
@@ -676,6 +687,15 @@
 				FA5C5C372151D3C600BF62D5 /* StudentHomeTableViewController.swift */,
 			);
 			path = "Home Dashboard";
+			sourceTree = "<group>";
+		};
+		FA5C5C5721549A1300BF62D5 /* Aulas */ = {
+			isa = PBXGroup;
+			children = (
+				FA5C5C512154999C00BF62D5 /* StudentClassesTableViewController.swift */,
+				FA5C5C53215499B400BF62D5 /* StudentClassDetailTableViewController.swift */,
+			);
+			path = Aulas;
 			sourceTree = "<group>";
 		};
 		FA6FBA042149F37000558657 /* User Models */ = {
@@ -1012,6 +1032,7 @@
 				FA9ADA292139EE440005E1F1 /* IsKidCell.xib in Resources */,
 				FA0C441B21278A8F00B59194 /* Main.storyboard in Resources */,
 				FAE2FD6D2140BE8C00815402 /* CityTextFieldCell.xib in Resources */,
+				FA5C5C50215498C900BF62D5 /* StudentBaseCampFlow.storyboard in Resources */,
 				FAF29BC3212E21EA00752414 /* classes_red_32.png in Resources */,
 				FAF29BD8212F8CE400752414 /* home_outline_red_32 copy.png in Resources */,
 				FAF29B99212E1EF700752414 /* left_red_arrow_50.png in Resources */,
@@ -1084,6 +1105,7 @@
 				FA5C5C382151D3C600BF62D5 /* StudentHomeTableViewController.swift in Sources */,
 				FA9ADA172138C7030005E1F1 /* ProfilePicTableViewCell.swift in Sources */,
 				FAE2FD982140C00300815402 /* ZipCodeTextFieldTableViewCell.swift in Sources */,
+				FA5C5C56215499F300BF62D5 /* StudentProfileDetailTableViewController.swift in Sources */,
 				FA21D69021334DB7006790E5 /* KidsBeltTableViewCell.swift in Sources */,
 				FA9ADA212138DBC30005E1F1 /* MyCells.swift in Sources */,
 				FAE2FDAC2140C09A00815402 /* LocationNameTextFieldTableViewCell.swift in Sources */,
@@ -1116,6 +1138,8 @@
 				FA21D6A72136253E006790E5 /* AdultBlackBelt.swift in Sources */,
 				FA9AD9F72137839A0005E1F1 /* BeltSystemsTableViewController.swift in Sources */,
 				FAE2FD8E2140BFC700815402 /* FirstNameTextFieldTableViewCell.swift in Sources */,
+				FA5C5C54215499B400BF62D5 /* StudentClassDetailTableViewController.swift in Sources */,
+				FA5C5C522154999C00BF62D5 /* StudentClassesTableViewController.swift in Sources */,
 				FA5C5C4D215463BE00BF62D5 /* KidStudentInitialSetupTableViewController.swift in Sources */,
 				FA9AD9F5213782070005E1F1 /* TutorialsTableViewController.swift in Sources */,
 				FAE2FD9A2140C01100815402 /* PhoneTextFieldTableViewCell.swift in Sources */,
@@ -1185,6 +1209,14 @@
 				FA0C442221278A8F00B59194 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		FA5C5C4E215498C900BF62D5 /* StudentBaseCampFlow.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA5C5C4F215498C900BF62D5 /* Base */,
+			);
+			name = StudentBaseCampFlow.storyboard;
 			sourceTree = "<group>";
 		};
 		FAAAC147213E337500093D6C /* OwnerBeltSystemFlow.storyboard */ = {
