@@ -51,7 +51,6 @@
 		FA5C5C452153022300BF62D5 /* SegueFromSaveProfileNibCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C5C442153022300BF62D5 /* SegueFromSaveProfileNibCellDelegate.swift */; };
 		FA5C5C4B2154632900BF62D5 /* AdultStudentInitialSetupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C5C4A2154632900BF62D5 /* AdultStudentInitialSetupTableViewController.swift */; };
 		FA5C5C4D215463BE00BF62D5 /* KidStudentInitialSetupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C5C4C215463BE00BF62D5 /* KidStudentInitialSetupTableViewController.swift */; };
-		FA5C5C50215498C900BF62D5 /* StudentBaseCampFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA5C5C4E215498C900BF62D5 /* StudentBaseCampFlow.storyboard */; };
 		FA5C5C522154999C00BF62D5 /* StudentClassesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C5C512154999C00BF62D5 /* StudentClassesTableViewController.swift */; };
 		FA5C5C54215499B400BF62D5 /* StudentClassDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C5C53215499B400BF62D5 /* StudentClassDetailTableViewController.swift */; };
 		FA5C5C56215499F300BF62D5 /* StudentProfileDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C5C55215499F300BF62D5 /* StudentProfileDetailTableViewController.swift */; };
@@ -145,6 +144,7 @@
 		FAE2FDAC2140C09A00815402 /* LocationNameTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE2FDAB2140C09A00815402 /* LocationNameTextFieldTableViewCell.swift */; };
 		FAE2FDAE2140C0A600815402 /* WebsiteTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE2FDAD2140C0A600815402 /* WebsiteTextFieldTableViewCell.swift */; };
 		FAE2FDB02140C0C900815402 /* SocialNetworksTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE2FDAF2140C0C900815402 /* SocialNetworksTextFieldTableViewCell.swift */; };
+		FAE67A2D2157453100822DCF /* StudentBaseCampFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE67A2B2157453100822DCF /* StudentBaseCampFlow.storyboard */; };
 		FAF1BB882143574400AD56AE /* DescriptionTextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAF1BB872143574400AD56AE /* DescriptionTextViewCell.xib */; };
 		FAF1BB8A2143575C00AD56AE /* AgreementTextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAF1BB892143575C00AD56AE /* AgreementTextViewCell.xib */; };
 		FAF1BB8C21435BA900AD56AE /* AgreementTextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF1BB8B21435BA900AD56AE /* AgreementTextViewTableViewCell.swift */; };
@@ -257,7 +257,6 @@
 		FA5C5C442153022300BF62D5 /* SegueFromSaveProfileNibCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueFromSaveProfileNibCellDelegate.swift; sourceTree = "<group>"; };
 		FA5C5C4A2154632900BF62D5 /* AdultStudentInitialSetupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdultStudentInitialSetupTableViewController.swift; sourceTree = "<group>"; };
 		FA5C5C4C215463BE00BF62D5 /* KidStudentInitialSetupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidStudentInitialSetupTableViewController.swift; sourceTree = "<group>"; };
-		FA5C5C4F215498C900BF62D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Academia/Views/Base.lproj/StudentBaseCampFlow.storyboard; sourceTree = "<group>"; };
 		FA5C5C512154999C00BF62D5 /* StudentClassesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentClassesTableViewController.swift; sourceTree = "<group>"; };
 		FA5C5C53215499B400BF62D5 /* StudentClassDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentClassDetailTableViewController.swift; sourceTree = "<group>"; };
 		FA5C5C55215499F300BF62D5 /* StudentProfileDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentProfileDetailTableViewController.swift; sourceTree = "<group>"; };
@@ -351,6 +350,7 @@
 		FAE2FDAB2140C09A00815402 /* LocationNameTextFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationNameTextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		FAE2FDAD2140C0A600815402 /* WebsiteTextFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsiteTextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		FAE2FDAF2140C0C900815402 /* SocialNetworksTextFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialNetworksTextFieldTableViewCell.swift; sourceTree = "<group>"; };
+		FAE67A2C2157453100822DCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Academia/Views/Base.lproj/StudentBaseCampFlow.storyboard; sourceTree = "<group>"; };
 		FAF1BB872143574400AD56AE /* DescriptionTextViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DescriptionTextViewCell.xib; sourceTree = "<group>"; };
 		FAF1BB892143575C00AD56AE /* AgreementTextViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AgreementTextViewCell.xib; sourceTree = "<group>"; };
 		FAF1BB8B21435BA900AD56AE /* AgreementTextViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementTextViewTableViewCell.swift; sourceTree = "<group>"; };
@@ -487,7 +487,7 @@
 				FA0C442121278A8F00B59194 /* LaunchScreen.storyboard */,
 				FA0C441921278A8F00B59194 /* Main.storyboard */,
 				FAAAC151213E348800093D6C /* OwnerBaseCampFlow.storyboard */,
-				FA5C5C4E215498C900BF62D5 /* StudentBaseCampFlow.storyboard */,
+				FAE67A2B2157453100822DCF /* StudentBaseCampFlow.storyboard */,
 				FAAAC14C213E342600093D6C /* OwnerStudentsFlow.storyboard */,
 				FAAAC14F213E345900093D6C /* OwnerMessages.storyboard */,
 				FAAAC14A213E33E000093D6C /* OwnerProfileFlow.storyboard */,
@@ -1032,7 +1032,7 @@
 				FA9ADA292139EE440005E1F1 /* IsKidCell.xib in Resources */,
 				FA0C441B21278A8F00B59194 /* Main.storyboard in Resources */,
 				FAE2FD6D2140BE8C00815402 /* CityTextFieldCell.xib in Resources */,
-				FA5C5C50215498C900BF62D5 /* StudentBaseCampFlow.storyboard in Resources */,
+				FAE67A2D2157453100822DCF /* StudentBaseCampFlow.storyboard in Resources */,
 				FAF29BC3212E21EA00752414 /* classes_red_32.png in Resources */,
 				FAF29BD8212F8CE400752414 /* home_outline_red_32 copy.png in Resources */,
 				FAF29B99212E1EF700752414 /* left_red_arrow_50.png in Resources */,
@@ -1211,14 +1211,6 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		FA5C5C4E215498C900BF62D5 /* StudentBaseCampFlow.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FA5C5C4F215498C900BF62D5 /* Base */,
-			);
-			name = StudentBaseCampFlow.storyboard;
-			sourceTree = "<group>";
-		};
 		FAAAC147213E337500093D6C /* OwnerBeltSystemFlow.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1241,6 +1233,14 @@
 				FAAAC152213E348800093D6C /* Base */,
 			);
 			name = OwnerBaseCampFlow.storyboard;
+			sourceTree = "<group>";
+		};
+		FAE67A2B2157453100822DCF /* StudentBaseCampFlow.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FAE67A2C2157453100822DCF /* Base */,
+			);
+			name = StudentBaseCampFlow.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
