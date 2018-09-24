@@ -217,10 +217,12 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="9BZ-Oi-uu9" firstAttribute="centerY" secondItem="sTV-lf-QrA" secondAttribute="centerY" id="0kq-XB-uD6"/>
+                                            <constraint firstAttribute="trailing" secondItem="9BZ-Oi-uu9" secondAttribute="trailing" constant="12" id="B0e-vk-une"/>
+                                            <constraint firstItem="9BZ-Oi-uu9" firstAttribute="top" secondItem="sTV-lf-QrA" secondAttribute="top" id="B5R-fz-elz"/>
+                                            <constraint firstItem="9BZ-Oi-uu9" firstAttribute="leading" secondItem="sTV-lf-QrA" secondAttribute="leading" constant="12" id="MrZ-7o-UVN"/>
                                             <constraint firstAttribute="width" constant="216" id="N9F-1D-3ir"/>
-                                            <constraint firstItem="9BZ-Oi-uu9" firstAttribute="centerX" secondItem="sTV-lf-QrA" secondAttribute="centerX" id="oFk-mz-lj1"/>
                                             <constraint firstAttribute="height" constant="40" id="sZk-ut-haU"/>
+                                            <constraint firstAttribute="bottom" secondItem="9BZ-Oi-uu9" secondAttribute="bottom" id="zea-Yc-PE0"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z3h-Ds-xoF" userLabel="right teacher bar">

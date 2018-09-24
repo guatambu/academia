@@ -14,7 +14,7 @@ enum InternationalStandardBJJBelts: String {
     case adultBelts = "Adult Belts"
     
     // spacer
-    case spacer = ""
+    case spacer = "Belt progression comes through time and dedication. Timing of promotion is your teacher's decision."
     
     // standard kids belts
     case kidsWhiteBelt = "Kids White Belt"

@@ -234,12 +234,12 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="1Y6-cY-rOW" secondAttribute="trailing" constant="14" id="2Fo-sB-6du"/>
+                                    <constraint firstItem="1Y6-cY-rOW" firstAttribute="leading" secondItem="fK1-GW-DYp" secondAttribute="leading" constant="14" id="5wC-EE-7Pt"/>
                                     <constraint firstAttribute="width" constant="240" id="FyL-gB-7vp"/>
                                     <constraint firstItem="1Y6-cY-rOW" firstAttribute="top" secondItem="fK1-GW-DYp" secondAttribute="top" id="L24-cf-UTV"/>
                                     <constraint firstAttribute="height" constant="40" id="SPt-Rh-sCT"/>
                                     <constraint firstAttribute="bottom" secondItem="1Y6-cY-rOW" secondAttribute="bottom" id="Xdi-E4-LnX"/>
-                                    <constraint firstItem="1Y6-cY-rOW" firstAttribute="centerX" secondItem="fK1-GW-DYp" secondAttribute="centerX" id="ppH-GF-AS6"/>
-                                    <constraint firstItem="1Y6-cY-rOW" firstAttribute="centerY" secondItem="fK1-GW-DYp" secondAttribute="centerY" id="q5r-fj-rHZ"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -249,9 +249,9 @@
                             <constraint firstItem="fK1-GW-DYp" firstAttribute="top" secondItem="QKV-X1-ZcE" secondAttribute="top" id="EPF-ex-BCG"/>
                             <constraint firstAttribute="trailing" secondItem="fK1-GW-DYp" secondAttribute="trailing" constant="32" id="TNk-h1-BtJ"/>
                             <constraint firstAttribute="trailing" secondItem="ro3-C1-dkl" secondAttribute="trailing" id="Tgt-Af-vxZ"/>
-                            <constraint firstItem="ro3-C1-dkl" firstAttribute="centerY" secondItem="QKV-X1-ZcE" secondAttribute="centerY" id="dBW-j2-Y2l"/>
-                            <constraint firstItem="ro3-C1-dkl" firstAttribute="centerX" secondItem="QKV-X1-ZcE" secondAttribute="centerX" id="nEe-nf-7pI"/>
+                            <constraint firstAttribute="bottom" secondItem="ro3-C1-dkl" secondAttribute="bottom" constant="14" id="Wmu-aw-wx4"/>
                             <constraint firstItem="ro3-C1-dkl" firstAttribute="leading" secondItem="QKV-X1-ZcE" secondAttribute="leading" id="py8-EF-Ccu"/>
+                            <constraint firstItem="ro3-C1-dkl" firstAttribute="top" secondItem="QKV-X1-ZcE" secondAttribute="top" constant="14" id="xX7-Et-g05"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">

@@ -61,17 +61,23 @@
                             </label>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="lo2-pI-eOd" firstAttribute="centerY" secondItem="kIc-ZN-Yz4" secondAttribute="centerY" id="dhH-BT-wVO"/>
-                            <constraint firstItem="bsc-eF-O1F" firstAttribute="centerY" secondItem="kIc-ZN-Yz4" secondAttribute="centerY" id="e43-4x-nfM"/>
-                            <constraint firstItem="FmP-0T-WYI" firstAttribute="centerY" secondItem="kIc-ZN-Yz4" secondAttribute="centerY" id="waE-lp-jh9"/>
+                            <constraint firstAttribute="bottom" secondItem="lo2-pI-eOd" secondAttribute="bottom" id="3g5-7j-VJ7"/>
+                            <constraint firstAttribute="bottom" secondItem="bsc-eF-O1F" secondAttribute="bottom" id="Cte-Yq-nbA"/>
+                            <constraint firstItem="lo2-pI-eOd" firstAttribute="top" secondItem="kIc-ZN-Yz4" secondAttribute="top" id="EeZ-Cz-p3B"/>
+                            <constraint firstItem="FmP-0T-WYI" firstAttribute="top" secondItem="kIc-ZN-Yz4" secondAttribute="top" id="IW8-I0-JdF"/>
+                            <constraint firstItem="bsc-eF-O1F" firstAttribute="top" secondItem="kIc-ZN-Yz4" secondAttribute="top" id="SAs-QY-7Fa"/>
+                            <constraint firstAttribute="bottom" secondItem="FmP-0T-WYI" secondAttribute="bottom" id="g5L-x6-BMx"/>
                         </constraints>
                     </stackView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="kIc-ZN-Yz4" firstAttribute="top" secondItem="UDe-BQ-IIF" secondAttribute="top" constant="24" id="B1z-OS-eGu"/>
                     <constraint firstAttribute="trailingMargin" secondItem="kIc-ZN-Yz4" secondAttribute="trailing" constant="8" id="C3p-Up-9pr"/>
-                    <constraint firstItem="fNw-UG-98X" firstAttribute="centerY" secondItem="UDe-BQ-IIF" secondAttribute="centerY" id="EUY-fd-IW9"/>
+                    <constraint firstItem="fNw-UG-98X" firstAttribute="top" secondItem="UDe-BQ-IIF" secondAttribute="top" constant="23.5" id="QJY-Vg-MEU"/>
                     <constraint firstItem="fNw-UG-98X" firstAttribute="leading" secondItem="UDe-BQ-IIF" secondAttribute="leadingMargin" id="WVX-Sm-pwQ"/>
-                    <constraint firstItem="kIc-ZN-Yz4" firstAttribute="centerY" secondItem="UDe-BQ-IIF" secondAttribute="centerY" id="kmN-k2-ev0"/>
+                    <constraint firstItem="bsc-eF-O1F" firstAttribute="leading" secondItem="fNw-UG-98X" secondAttribute="trailing" constant="1.5" id="XC7-zw-qF3"/>
+                    <constraint firstAttribute="bottom" secondItem="kIc-ZN-Yz4" secondAttribute="bottom" constant="24.5" id="ldJ-SM-TRa"/>
+                    <constraint firstAttribute="bottom" secondItem="fNw-UG-98X" secondAttribute="bottom" constant="23" id="me7-WI-wFV"/>
                 </constraints>
             </tableViewCellContentView>
             <point key="canvasLocation" x="-1" y="102"/>

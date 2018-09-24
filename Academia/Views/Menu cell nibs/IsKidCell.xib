@@ -61,17 +61,22 @@
                             </label>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="msA-Z9-AhJ" firstAttribute="centerY" secondItem="T9e-wL-fTw" secondAttribute="centerY" id="jo8-HP-xME"/>
-                            <constraint firstItem="w9b-vf-UxR" firstAttribute="centerY" secondItem="T9e-wL-fTw" secondAttribute="centerY" id="p6Z-Lv-mZ7"/>
-                            <constraint firstItem="oFv-Nw-Snu" firstAttribute="centerY" secondItem="T9e-wL-fTw" secondAttribute="centerY" id="vyi-Aw-8aE"/>
+                            <constraint firstAttribute="bottom" secondItem="w9b-vf-UxR" secondAttribute="bottom" id="3Tk-mn-8rJ"/>
+                            <constraint firstItem="oFv-Nw-Snu" firstAttribute="top" secondItem="T9e-wL-fTw" secondAttribute="top" id="4hR-IT-iIm"/>
+                            <constraint firstItem="w9b-vf-UxR" firstAttribute="top" secondItem="T9e-wL-fTw" secondAttribute="top" id="9Qf-41-akT"/>
+                            <constraint firstAttribute="bottom" secondItem="msA-Z9-AhJ" secondAttribute="bottom" id="EtG-eJ-HGD"/>
+                            <constraint firstItem="msA-Z9-AhJ" firstAttribute="top" secondItem="T9e-wL-fTw" secondAttribute="top" id="gEF-Rl-dhN"/>
+                            <constraint firstAttribute="bottom" secondItem="oFv-Nw-Snu" secondAttribute="bottom" id="y4T-0j-VMV"/>
                         </constraints>
                     </stackView>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="e5t-e8-ZkO" secondAttribute="bottom" constant="23" id="51N-J4-Y0K"/>
                     <constraint firstAttribute="trailingMargin" secondItem="T9e-wL-fTw" secondAttribute="trailing" constant="8" id="9cR-qb-s8z"/>
                     <constraint firstItem="e5t-e8-ZkO" firstAttribute="leading" secondItem="em7-06-VNq" secondAttribute="leadingMargin" id="AWD-fm-kGv"/>
-                    <constraint firstItem="e5t-e8-ZkO" firstAttribute="centerY" secondItem="em7-06-VNq" secondAttribute="centerY" id="L1x-eN-w83"/>
-                    <constraint firstItem="T9e-wL-fTw" firstAttribute="centerY" secondItem="em7-06-VNq" secondAttribute="centerY" id="UIQ-d1-wdN"/>
+                    <constraint firstItem="T9e-wL-fTw" firstAttribute="top" secondItem="em7-06-VNq" secondAttribute="top" constant="24" id="NSb-02-Hc4"/>
+                    <constraint firstAttribute="bottom" secondItem="T9e-wL-fTw" secondAttribute="bottom" constant="24.5" id="pY1-87-BrX"/>
+                    <constraint firstItem="e5t-e8-ZkO" firstAttribute="top" secondItem="em7-06-VNq" secondAttribute="top" constant="23.5" id="xgj-rW-Zl4"/>
                 </constraints>
             </tableViewCellContentView>
             <point key="canvasLocation" x="62" y="103"/>

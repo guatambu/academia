@@ -6,6 +6,9 @@
 //  Copyright © 2018 DunDak, LLC. All rights reserved.
 //
 
+
+// note.... see viewWillAppear()
+
 import UIKit
 
 class KidStudentInitialSetupTableViewController: UITableViewController, SegueFromSaveProfileNibCellDelegate {
@@ -23,6 +26,8 @@ class KidStudentInitialSetupTableViewController: UITableViewController, SegueFro
     override func viewWillAppear(_ animated: Bool) {
         tableView.estimatedRowHeight = 80
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+        // this .rowHeight setting may be creating a situation where the constraints are all over the place because of the attempt at being dynamic... check with Karl
         
     }
     

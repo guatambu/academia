@@ -46,12 +46,16 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="gpk-0R-6Ch" secondAttribute="trailing" id="7S2-51-4z7"/>
-                    <constraint firstItem="T8K-Bl-32o" firstAttribute="centerY" secondItem="7Ie-ta-8hs" secondAttribute="centerY" id="9Ne-lG-gGv"/>
+                    <constraint firstAttribute="bottom" secondItem="gpk-0R-6Ch" secondAttribute="bottom" constant="28" id="CjT-ee-MUy"/>
                     <constraint firstItem="T8K-Bl-32o" firstAttribute="leading" secondItem="7Ie-ta-8hs" secondAttribute="leadingMargin" id="IKU-dh-dmQ"/>
-                    <constraint firstItem="gpk-0R-6Ch" firstAttribute="centerY" secondItem="7Ie-ta-8hs" secondAttribute="centerY" id="JuH-vY-6j5"/>
+                    <constraint firstItem="T8K-Bl-32o" firstAttribute="top" secondItem="7Ie-ta-8hs" secondAttribute="top" constant="28" id="XHU-wI-wZ6"/>
+                    <constraint firstItem="gpk-0R-6Ch" firstAttribute="top" secondItem="7Ie-ta-8hs" secondAttribute="top" constant="29.5" id="exy-dX-WtX"/>
                     <constraint firstItem="gpk-0R-6Ch" firstAttribute="leading" secondItem="T8K-Bl-32o" secondAttribute="trailing" constant="8" id="g6o-FB-Ynz"/>
                 </constraints>
             </tableViewCellContentView>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="T8K-Bl-32o" secondAttribute="bottom" constant="28" id="o0n-eJ-bFM"/>
+            </constraints>
             <connections>
                 <outlet property="detailLabelOutlet" destination="gpk-0R-6Ch" id="Py6-lc-ATv"/>
                 <outlet property="statusLabelOutlet" destination="T8K-Bl-32o" id="Mwl-Ou-vVU"/>

@@ -109,9 +109,9 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="dkK-BQ-jRi" firstAttribute="top" secondItem="Li2-Rq-nCL" secondAttribute="top" id="5Kl-oW-OVG"/>
-                                    <constraint firstItem="dkK-BQ-jRi" firstAttribute="centerY" secondItem="Li2-Rq-nCL" secondAttribute="centerY" id="9H1-go-ZKa"/>
-                                    <constraint firstItem="dkK-BQ-jRi" firstAttribute="centerX" secondItem="Li2-Rq-nCL" secondAttribute="centerX" id="Dpv-2v-ZkR"/>
                                     <constraint firstAttribute="bottom" secondItem="dkK-BQ-jRi" secondAttribute="bottom" id="RIo-RD-eLL"/>
+                                    <constraint firstItem="dkK-BQ-jRi" firstAttribute="leading" secondItem="Li2-Rq-nCL" secondAttribute="leading" constant="13.5" id="rHJ-Cm-hhO"/>
+                                    <constraint firstAttribute="trailing" secondItem="dkK-BQ-jRi" secondAttribute="trailing" constant="13.5" id="yfA-vB-DMe"/>
                                 </constraints>
                             </view>
                         </subviews>

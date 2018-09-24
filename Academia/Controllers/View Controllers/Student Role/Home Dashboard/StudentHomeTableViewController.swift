@@ -12,8 +12,8 @@ class StudentHomeTableViewController: UITableViewController {
     
     // MARK: - Properties
     
-    var adultStudent = MockData.adultA
-    var kidStudent: KidStudent?
+    var adultStudent: AdultStudent?
+    var kidStudent = MockData.kidA
     
     
     // MARK: - ViewController Lifecycle Functions
