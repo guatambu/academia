@@ -29,8 +29,6 @@ class AdultBlackBeltTableViewCell: UITableViewCell {
     @IBOutlet weak var ninthWhiteDegreeOutlet: UIView!
     @IBOutlet weak var tenthWhiteDegreeOutlet: UIView!
     
-    @IBOutlet weak var degreesStackViewOutles: UIStackView!
-    
     // Labels
     @IBOutlet weak var beltTimeLabelOutlet: UILabel!
     @IBOutlet weak var labelFirstDegreeTimeOutlet: UILabel!
@@ -112,7 +110,7 @@ class AdultBlackBeltTableViewCell: UITableViewCell {
                 eigthWhiteDegreeOutlet.isHidden = false
                 adultBlackBelt.elligibleForNextBelt = true
             } else {
-                fourthWhiteDegreeOutlet.isHidden = true
+                eigthWhiteDegreeOutlet.isHidden = true
             }
             if adultBlackBelt.ninthWhiteDegree {
                 ninthWhiteDegreeOutlet.isHidden = false

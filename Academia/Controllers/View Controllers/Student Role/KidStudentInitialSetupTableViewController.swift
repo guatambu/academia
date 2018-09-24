@@ -25,7 +25,7 @@ class KidStudentInitialSetupTableViewController: UITableViewController, SegueFro
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.estimatedRowHeight = 80
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = 80
         
         // this .rowHeight setting may be creating a situation where the constraints are all over the place because of the attempt at being dynamic... check with Karl
         
@@ -130,12 +130,17 @@ class KidStudentInitialSetupTableViewController: UITableViewController, SegueFro
             
         case .beltCell:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "kidsBeltTemplate", for: indexPath) as? KidsBeltTableViewCell {
+                tableView.estimatedRowHeight = 100
+                tableView.rowHeight = 100
                 return cell
             }
         case .cityCell:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "cityTextFieldCell", for: indexPath) as? CityTextFieldTableViewCell {
                 
                 cell.cityTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
+                
+                tableView.estimatedRowHeight = 80
+                tableView.rowHeight = 80
                 
                 return cell
             }
@@ -144,12 +149,18 @@ class KidStudentInitialSetupTableViewController: UITableViewController, SegueFro
                 
                 cell.emailTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
                 
+                tableView.estimatedRowHeight = 80
+                tableView.rowHeight = 80
+                
                 return cell
             }
         case .emergencyContactCell:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "emergencyContactTextFieldCell", for: indexPath) as? EmergencyContactTextFieldTableViewCell {
                 
                 cell.emergencyContactTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
+                
+                tableView.estimatedRowHeight = 80
+                tableView.rowHeight = 80
                 
                 return cell
             }
@@ -158,12 +169,18 @@ class KidStudentInitialSetupTableViewController: UITableViewController, SegueFro
                 
                 cell.emergencyContactPhoneTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
                 
+                tableView.estimatedRowHeight = 80
+                tableView.rowHeight = 80
+                
                 return cell
             }
         case .emergencyContactRelationshipCell:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "emergencyContactRelationshipTextFieldCell", for: indexPath) as? EmergencyContactRelationshipTextFieldTableViewCell {
                 
                 cell.emergencyContactRelationshipTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
+                
+                tableView.estimatedRowHeight = 80
+                tableView.rowHeight = 80
                 
                 return cell
             }
@@ -172,12 +189,18 @@ class KidStudentInitialSetupTableViewController: UITableViewController, SegueFro
                 
                 cell.firstNameTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
                 
+                tableView.estimatedRowHeight = 80
+                tableView.rowHeight = 80
+                
                 return cell
             }
         case .lastNameCell:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "lastNameTextFieldCell", for: indexPath) as? LastNameTextFieldTableViewCell {
                 
                 cell.lastNameTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
+                
+                tableView.estimatedRowHeight = 80
+                tableView.rowHeight = 80
                 
                 return cell
             }
@@ -186,12 +209,18 @@ class KidStudentInitialSetupTableViewController: UITableViewController, SegueFro
                 
                 cell.mobileTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
                 
+                tableView.estimatedRowHeight = 80
+                tableView.rowHeight = 80
+                
                 return cell
             }
         case .parentGuardianCell:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "parentGuardianTextFieldCell", for: indexPath) as? ParentGuardianTextFieldTableViewCell {
                 
                 cell.parentGuardianTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
+                
+                tableView.estimatedRowHeight = 80
+                tableView.rowHeight = 80
                 
                 return cell
             }
@@ -200,21 +229,33 @@ class KidStudentInitialSetupTableViewController: UITableViewController, SegueFro
                 
                 cell.phoneTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
                 
+                tableView.estimatedRowHeight = 80
+                tableView.rowHeight = 80
+                
                 return cell
             }
         case .profilePicCell:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "profilePicCell", for: indexPath) as? ProfilePicTableViewCell {
+                tableView.estimatedRowHeight = 200
+                tableView.rowHeight = 200
                 return cell
             }
         case .saveProfileButtonCell:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "saveProfileCell", for: indexPath) as? SaveProfileTableViewCell {
                 cell.delegate = self
+                
+                tableView.estimatedRowHeight = 80
+                tableView.rowHeight = 80
+                
                 return cell
             }
         case .stateCell:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "stateTextFieldCell", for: indexPath) as? StateTextFieldTableViewCell {
                 
                 cell.stateTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
+                
+                tableView.estimatedRowHeight = 80
+                tableView.rowHeight = 80
                 
                 return cell
             }
@@ -223,12 +264,18 @@ class KidStudentInitialSetupTableViewController: UITableViewController, SegueFro
                 
                 cell.detailLabelOutlet.text = "PAID - 06/15/2018"  // eventually will be date of last successful payment from payment program object
                 
+                tableView.estimatedRowHeight = 80
+                tableView.rowHeight = 80
+                
                 return cell
             }
         case .streetAddressCell:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "streetAddressTextFieldCell", for: indexPath) as? StreetAddressTextFieldTableViewCell {
                 
                 cell.streetAddressTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
+                
+                tableView.estimatedRowHeight = 80
+                tableView.rowHeight = 80
                 
                 return cell
             }
@@ -237,12 +284,18 @@ class KidStudentInitialSetupTableViewController: UITableViewController, SegueFro
                 
                 cell.usernameTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
                 
+                tableView.estimatedRowHeight = 80
+                tableView.rowHeight = 80
+                
                 return cell
             }
         case .zipCodeCell:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "zipCodeTextFieldCell", for: indexPath) as? ZipCodeTextFieldTableViewCell {
                 
                 cell.zipCodeTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
+                
+                tableView.estimatedRowHeight = 80
+                tableView.rowHeight = 80
                 
                 return cell
             }

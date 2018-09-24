@@ -97,7 +97,6 @@ class BeltsListTableViewController: UITableViewController {
                 
                 switch myCell {
                 case .spacer: cell.beltViewOutlet.isHidden = true
-                    cell.stripesStackViewOutlet.isHidden = true
                     cell.beltTimeOutlet.text = "Belt progression comes through time and dedication. Timing of promotion is your teacher's decision."
                     // what setting allows this to dynamic - something to do with storyboard layout constriants
                 case .adultWhiteBelt: cell.displayAdultBasicBeltWith(provided: whiteBelt)

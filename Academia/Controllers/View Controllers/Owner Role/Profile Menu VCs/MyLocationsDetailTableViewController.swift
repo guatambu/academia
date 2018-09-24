@@ -21,7 +21,7 @@ class MyLocationsDetailTableViewController: UITableViewController, SegueFromSave
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.estimatedRowHeight = 80
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = 80
     }
     
     override func viewDidLoad() {
@@ -109,6 +109,9 @@ class MyLocationsDetailTableViewController: UITableViewController, SegueFromSave
         case .locationNameCell:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "locationNameTextFieldCell", for: indexPath) as? LocationNameTextFieldTableViewCell {
                 
+                tableView.estimatedRowHeight = 80
+                tableView.rowHeight = 80
+                
                 cell.locationNameTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
                 
                 return cell
@@ -122,17 +125,24 @@ class MyLocationsDetailTableViewController: UITableViewController, SegueFromSave
             }
         case .profilePicCell:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "profilePicCell", for: indexPath) as? ProfilePicTableViewCell {
+                tableView.estimatedRowHeight = 200
+                tableView.rowHeight = 200
                 return cell
             }
         case .saveProfileButtonCell:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "saveProfileCell", for: indexPath) as? SaveProfileTableViewCell {
                 cell.delegate = self
+                tableView.estimatedRowHeight = 80
+                tableView.rowHeight = 80
                 return cell
             }
         case .stateCell:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "stateTextFieldCell", for: indexPath) as? StateTextFieldTableViewCell {
                 
                 cell.stateTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
+                
+                tableView.estimatedRowHeight = 80
+                tableView.rowHeight = 80
                 
                 return cell
             }
@@ -141,6 +151,9 @@ class MyLocationsDetailTableViewController: UITableViewController, SegueFromSave
                 
                 cell.streetAddressTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
                 
+                tableView.estimatedRowHeight = 80
+                tableView.rowHeight = 80
+                
                 return cell
             }
         case .websiteCell:
@@ -148,12 +161,18 @@ class MyLocationsDetailTableViewController: UITableViewController, SegueFromSave
                 
                 cell.websiteTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
                 
+                tableView.estimatedRowHeight = 80
+                tableView.rowHeight = 80
+                
                 return cell
             }
         case .zipCodeCell:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "zipCodeTextFieldCell", for: indexPath) as? ZipCodeTextFieldTableViewCell {
                 
                 cell.zipCodeTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
+                
+                tableView.estimatedRowHeight = 80
+                tableView.rowHeight = 80
                 
                 return cell
             }
