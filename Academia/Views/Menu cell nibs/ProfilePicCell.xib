@@ -6,8 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,17 +19,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="academia_sample_profile_pic.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="BjF-gP-ghs">
-                        <rect key="frame" x="0.0" y="-5" width="375" height="210"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="BjF-gP-ghs" secondAttribute="height" multiplier="25:14" id="qF6-Xo-S9H"/>
-                        </constraints>
+                        <rect key="frame" x="0.0" y="1" width="375" height="199"/>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NGX-ao-ima">
                         <rect key="frame" x="32" y="19" width="50" height="50"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="50" id="wQb-qQ-x6F"/>
-                            <constraint firstAttribute="width" constant="50" id="yvP-Y9-4D3"/>
-                        </constraints>
                         <state key="normal" image="camera_filled_white_50.png"/>
                         <connections>
                             <action selector="cameraButtonTapped:" destination="3q4-9u-6tm" eventType="touchUpInside" id="Mwk-1d-BUw"/>
@@ -39,19 +30,21 @@
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="BjF-gP-ghs" firstAttribute="top" secondItem="M9Z-HU-Dpy" secondAttribute="topMargin" constant="-16" id="BQS-Ku-zbv"/>
-                    <constraint firstItem="NGX-ao-ima" firstAttribute="leading" secondItem="M9Z-HU-Dpy" secondAttribute="leadingMargin" constant="16" id="Cq4-kg-BKs"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="BjF-gP-ghs" secondAttribute="bottom" constant="-16" id="I1J-4M-9cY"/>
-                    <constraint firstItem="NGX-ao-ima" firstAttribute="top" secondItem="M9Z-HU-Dpy" secondAttribute="topMargin" constant="8" id="Xv7-E0-gy4"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="BjF-gP-ghs" secondAttribute="trailing" constant="-16" id="lO3-VL-sS4"/>
-                    <constraint firstItem="BjF-gP-ghs" firstAttribute="leading" secondItem="M9Z-HU-Dpy" secondAttribute="leadingMargin" constant="-16" id="lgu-1J-67e"/>
+                    <constraint firstAttribute="trailing" secondItem="NGX-ao-ima" secondAttribute="trailing" constant="293" identifier="cameraTrailing" id="0cW-KF-z0d"/>
+                    <constraint firstItem="NGX-ao-ima" firstAttribute="leading" secondItem="M9Z-HU-Dpy" secondAttribute="leading" constant="32" identifier="cameraLeading" id="3qL-Lm-x8k"/>
+                    <constraint firstItem="BjF-gP-ghs" firstAttribute="top" secondItem="M9Z-HU-Dpy" secondAttribute="top" constant="1" identifier="profilePicTop" id="Ahk-j3-JSi"/>
+                    <constraint firstAttribute="bottom" secondItem="BjF-gP-ghs" secondAttribute="bottom" constant="-0.5" identifier="profilePicBottom" id="Jc3-aP-gHa"/>
+                    <constraint firstItem="BjF-gP-ghs" firstAttribute="leading" secondItem="M9Z-HU-Dpy" secondAttribute="leading" identifier="profilePicLeading" id="W1Y-zT-lHn"/>
+                    <constraint firstAttribute="trailing" secondItem="BjF-gP-ghs" secondAttribute="trailing" identifier="profilePicTrailing" id="gyR-im-UCo"/>
+                    <constraint firstAttribute="bottom" secondItem="NGX-ao-ima" secondAttribute="bottom" constant="130.5" identifier="cameraBottom" id="qQ1-q7-HiZ"/>
+                    <constraint firstItem="NGX-ao-ima" firstAttribute="top" secondItem="M9Z-HU-Dpy" secondAttribute="top" constant="19" identifier="cameraTop" id="qxL-7k-lBI"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="cameraButtonOutlet" destination="NGX-ao-ima" id="wW1-QV-Ub9"/>
                 <outlet property="profilePicImageView" destination="BjF-gP-ghs" id="1em-0b-fFs"/>
             </connections>
-            <point key="canvasLocation" x="46" y="134"/>
+            <point key="canvasLocation" x="45.5" y="134"/>
         </tableViewCell>
     </objects>
     <resources>
