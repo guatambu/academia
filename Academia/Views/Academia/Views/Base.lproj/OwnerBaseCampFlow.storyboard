@@ -15,6 +15,9 @@
             <string>Avenir-Book</string>
             <string>Avenir-Medium</string>
         </array>
+        <array key="GillSans.ttc">
+            <string>GillSans-Light</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Owner Home Table View Controller-->
@@ -26,12 +29,50 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell1" rowHeight="80" id="3Cq-8b-2OP" customClass="OwnerDashboardTableViewCell" customModule="Academia" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ownerProfileMenuCell" rowHeight="80" id="3Cq-8b-2OP" customClass="OwnerDashboardTableViewCell" customModule="Academia" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3Cq-8b-2OP" id="zAq-km-icC">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qks-go-t0v">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="79.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adults" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="sap-J3-2u2" userLabel="Kids Program A Class 6PM">
+                                                    <rect key="frame" x="0.0" y="0.0" width="311" height="79.5"/>
+                                                    <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="24"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Iw2-Ze-SDZ">
+                                                    <rect key="frame" x="311" y="0.0" width="32" height="79.5"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I06-Vu-TpU">
+                                                            <rect key="frame" x="0.0" y="0.0" width="32" height="26.5"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </view>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_red_arrow_32.png" translatesAutoresizingMaskIntoConstraints="NO" id="B8n-uL-eb4">
+                                                            <rect key="frame" x="0.0" y="26.5" width="32" height="26.5"/>
+                                                        </imageView>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UzZ-nA-XbL">
+                                                            <rect key="frame" x="0.0" y="53" width="32" height="26.5"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </view>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="32" id="87k-3O-fpx"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="Qks-go-t0v" secondAttribute="trailing" constant="16" id="QJ5-qD-3cd"/>
+                                        <constraint firstAttribute="bottom" secondItem="Qks-go-t0v" secondAttribute="bottom" id="Sbu-az-ZO3"/>
+                                        <constraint firstItem="Qks-go-t0v" firstAttribute="top" secondItem="zAq-km-icC" secondAttribute="top" id="mS4-ru-Oar"/>
+                                        <constraint firstItem="Qks-go-t0v" firstAttribute="leading" secondItem="zAq-km-icC" secondAttribute="leading" constant="16" id="v6W-vI-DRv"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -462,12 +503,50 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="Mch-TC-uN5" customClass="GeneralMenuTableViewCell" customModule="Academia" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="classesMenuCell" rowHeight="80" id="Mch-TC-uN5" customClass="GeneralMenuTableViewCell" customModule="Academia" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Mch-TC-uN5" id="XEF-Nd-Xs0">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eEF-Oh-gnB">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="79.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adults" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="m9l-dH-Dve" userLabel="Kids Program A Class 6PM">
+                                                    <rect key="frame" x="0.0" y="0.0" width="311" height="79.5"/>
+                                                    <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="24"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Zuk-1V-Jrq">
+                                                    <rect key="frame" x="311" y="0.0" width="32" height="79.5"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="deM-gm-e4S">
+                                                            <rect key="frame" x="0.0" y="0.0" width="32" height="26.5"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </view>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_red_arrow_32.png" translatesAutoresizingMaskIntoConstraints="NO" id="qNY-Fa-LdU">
+                                                            <rect key="frame" x="0.0" y="26.5" width="32" height="26.5"/>
+                                                        </imageView>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M0l-7m-4QS">
+                                                            <rect key="frame" x="0.0" y="53" width="32" height="26.5"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </view>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="32" id="tEI-OB-2T7"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="eEF-Oh-gnB" firstAttribute="leading" secondItem="XEF-Nd-Xs0" secondAttribute="leading" constant="16" id="9ke-sV-Afq"/>
+                                        <constraint firstAttribute="bottom" secondItem="eEF-Oh-gnB" secondAttribute="bottom" id="KMF-vA-edq"/>
+                                        <constraint firstItem="eEF-Oh-gnB" firstAttribute="top" secondItem="XEF-Nd-Xs0" secondAttribute="top" id="m8v-dg-QvM"/>
+                                        <constraint firstAttribute="trailing" secondItem="eEF-Oh-gnB" secondAttribute="trailing" constant="16" id="yBF-26-5oV"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="Wxn-sY-U0n" kind="show" identifier="toClassDetail" id="kic-Rq-KdV"/>
@@ -617,6 +696,7 @@
     <resources>
         <image name="classes_red_32.png" width="32" height="32"/>
         <image name="home_outline_red_32 copy.png" width="32" height="32"/>
+        <image name="right_red_arrow_32.png" width="32" height="32"/>
         <image name="students_red_32.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>

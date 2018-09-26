@@ -258,16 +258,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="72" translatesAutoresizingMaskIntoConstraints="NO" id="lWL-Ql-B6J" userLabel="Sign up elements Stack View">
-                                <rect key="frame" x="24" y="232.5" width="327" height="314"/>
+                                <rect key="frame" x="0.0" y="232.5" width="0.0" height="314"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="fu3-iU-hvD">
-                                        <rect key="frame" x="0.0" y="0.0" width="327" height="186"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="186"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="pYp-jK-1o1">
-                                                <rect key="frame" x="0.0" y="0.0" width="327" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="30"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fcy-tN-8sC">
-                                                        <rect key="frame" x="0.0" y="0.0" width="327" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -279,10 +279,10 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Czu-an-chF">
-                                                <rect key="frame" x="0.0" y="78" width="327" height="30"/>
+                                                <rect key="frame" x="0.0" y="78" width="0.0" height="30"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g7O-Uz-dNH">
-                                                        <rect key="frame" x="0.0" y="0.0" width="327" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -294,10 +294,10 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Tkb-r3-Xpu">
-                                                <rect key="frame" x="0.0" y="156" width="327" height="30"/>
+                                                <rect key="frame" x="0.0" y="156" width="0.0" height="30"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H7R-IC-LBX">
-                                                        <rect key="frame" x="0.0" y="0.0" width="327" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -311,7 +311,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hG7-ZD-xeK">
-                                        <rect key="frame" x="40" y="258" width="247" height="56"/>
+                                        <rect key="frame" x="0.0" y="258" width="0.0" height="56"/>
                                         <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="Bze-5e-UXS"/>
@@ -333,10 +333,10 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="4bv-0j-ExZ" userLabel="Welcome Stack View">
-                                <rect key="frame" x="24" y="122.5" width="327" height="64"/>
+                                <rect key="frame" x="0.0" y="122.5" width="0.0" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Owner" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Met-Vb-e07">
-                                        <rect key="frame" x="0.0" y="0.0" width="327" height="24"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="Ac9-g9-mrg"/>
                                         </constraints>
@@ -345,7 +345,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="please create a username &amp; password" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pkd-H1-wIb">
-                                        <rect key="frame" x="0.0" y="40" width="327" height="24"/>
+                                        <rect key="frame" x="0.0" y="40" width="0.0" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="wx2-1i-hcI"/>
                                         </constraints>
