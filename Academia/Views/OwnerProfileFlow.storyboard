@@ -1172,7 +1172,7 @@
         <!--About Academia View Controller-->
         <scene sceneID="eGu-qq-IJa">
             <objects>
-                <viewController id="PN7-Yz-I1v" userLabel="About Academia View Controller" customClass="AboutAcademiaViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toAboutAcademia" id="PN7-Yz-I1v" userLabel="About Academia View Controller" customClass="AboutAcademiaViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UZ0-0C-L2y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1203,7 +1203,7 @@
         <!--Privacy Policy View Controller-->
         <scene sceneID="Sz1-RO-CbG">
             <objects>
-                <viewController id="Iym-ir-YpH" userLabel="Privacy Policy View Controller" customClass="PrivacyPolicyViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toPrivacyPolicy" id="Iym-ir-YpH" userLabel="Privacy Policy View Controller" customClass="PrivacyPolicyViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QNy-jY-NlC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1234,7 +1234,7 @@
         <!--About Acdemia's Services View Controller-->
         <scene sceneID="fYv-8n-AaE">
             <objects>
-                <viewController id="oJt-vn-5KJ" userLabel="About Acdemia's Services View Controller" customClass="AboutAcademiaServicesViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toAcademiaServices" id="oJt-vn-5KJ" userLabel="About Acdemia's Services View Controller" customClass="AboutAcademiaServicesViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Spk-Ek-hzS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1668,7 +1668,7 @@
         <!--Social Networks View Controller-->
         <scene sceneID="omb-1C-npS">
             <objects>
-                <viewController id="3hs-OG-O0q" userLabel="Social Networks View Controller" customClass="ProfileMenuSocialNetworksViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toSocialNetworks" id="3hs-OG-O0q" userLabel="Social Networks View Controller" customClass="ProfileMenuSocialNetworksViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ujN-CQ-fGD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

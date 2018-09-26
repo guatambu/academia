@@ -148,6 +148,7 @@
 		FAE67A30215C0EC100822DCF /* StudentProfileFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE67A2E215C0EC100822DCF /* StudentProfileFlow.storyboard */; };
 		FAE67A32215C135A00822DCF /* KidStudentDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE67A31215C135A00822DCF /* KidStudentDetailsTableViewController.swift */; };
 		FAE67A34215C139A00822DCF /* AdultStudentDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE67A33215C139A00822DCF /* AdultStudentDetailsTableViewController.swift */; };
+		FAE67A36215C2DDF00822DCF /* StudentPaymentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE67A35215C2DDF00822DCF /* StudentPaymentTableViewController.swift */; };
 		FAF1BB882143574400AD56AE /* DescriptionTextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAF1BB872143574400AD56AE /* DescriptionTextViewCell.xib */; };
 		FAF1BB8A2143575C00AD56AE /* AgreementTextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAF1BB892143575C00AD56AE /* AgreementTextViewCell.xib */; };
 		FAF1BB8C21435BA900AD56AE /* AgreementTextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF1BB8B21435BA900AD56AE /* AgreementTextViewTableViewCell.swift */; };
@@ -357,6 +358,7 @@
 		FAE67A2F215C0EC100822DCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Academia/Views/Academia/Views/Base.lproj/StudentProfileFlow.storyboard; sourceTree = "<group>"; };
 		FAE67A31215C135A00822DCF /* KidStudentDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidStudentDetailsTableViewController.swift; sourceTree = "<group>"; };
 		FAE67A33215C139A00822DCF /* AdultStudentDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdultStudentDetailsTableViewController.swift; sourceTree = "<group>"; };
+		FAE67A35215C2DDF00822DCF /* StudentPaymentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentPaymentTableViewController.swift; sourceTree = "<group>"; };
 		FAF1BB872143574400AD56AE /* DescriptionTextViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DescriptionTextViewCell.xib; sourceTree = "<group>"; };
 		FAF1BB892143575C00AD56AE /* AgreementTextViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AgreementTextViewCell.xib; sourceTree = "<group>"; };
 		FAF1BB8B21435BA900AD56AE /* AgreementTextViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementTextViewTableViewCell.swift; sourceTree = "<group>"; };
@@ -597,13 +599,14 @@
 			children = (
 				FA5C5C3D2152CB3200BF62D5 /* StudentChoiceViewController.swift */,
 				FA5C5C3B2152C99A00BF62D5 /* AddNewKidStudentTableViewController.swift */,
-				FAE67A31215C135A00822DCF /* KidStudentDetailsTableViewController.swift */,
-				FA5C5C4A2154632900BF62D5 /* AdultStudentInitialSetupTableViewController.swift */,
 				FAE67A33215C139A00822DCF /* AdultStudentDetailsTableViewController.swift */,
+				FA5C5C4A2154632900BF62D5 /* AdultStudentInitialSetupTableViewController.swift */,
+				FAE67A31215C135A00822DCF /* KidStudentDetailsTableViewController.swift */,
 				FA5C5C4C215463BE00BF62D5 /* KidStudentInitialSetupTableViewController.swift */,
 				FA5C5C3F2152CC7A00BF62D5 /* Home Dashboard */,
 				FA5C5C5721549A1300BF62D5 /* Aulas */,
 				FA5C5C55215499F300BF62D5 /* StudentProfileDetailTableViewController.swift */,
+				FAE67A35215C2DDF00822DCF /* StudentPaymentTableViewController.swift */,
 			);
 			path = "Student Role";
 			sourceTree = "<group>";
@@ -1171,6 +1174,7 @@
 				FA5C5C3C2152C99A00BF62D5 /* AddNewKidStudentTableViewController.swift in Sources */,
 				FAF29BDD213087F600752414 /* GeneralMenuTableViewCell.swift in Sources */,
 				FA9ADA0D213789760005E1F1 /* MyLocationsDetailTableViewController.swift in Sources */,
+				FAE67A36215C2DDF00822DCF /* StudentPaymentTableViewController.swift in Sources */,
 				FAF29B6B212D0E9E00752414 /* OnBoardingTask.swift in Sources */,
 				FAE2FD3C2140700F00815402 /* MockData.swift in Sources */,
 				FA5C5C452153022300BF62D5 /* SegueFromSaveProfileNibCellDelegate.swift in Sources */,
