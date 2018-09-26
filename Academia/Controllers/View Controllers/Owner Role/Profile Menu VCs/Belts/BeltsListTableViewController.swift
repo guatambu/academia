@@ -11,10 +11,12 @@ import UIKit
 class BeltsListTableViewController: UITableViewController {
 
     // MARK: - Properties
+    @IBOutlet weak var beltDisclaimerLabelOutlet: UILabel!
+    @IBOutlet weak var beltDisclaimerViewOutlet: UIView!
     
-    var kidsBelts: [InternationalStandardBJJBelts] = [.spacer, .kidsWhiteBelt, .kidsGreyWhiteBelt, .kidsGreyBelt, .kidsGreyBlackBelt, .kidsYellowWhiteBelt, .kidsYellowBelt, .kidsYellowBlackBelt, .kidsOrangeWhiteBelt, .kidsOrangeBelt, .kidsOrangeBlackBelt, .kidsGreenWhiteBelt, .kidsGreenBelt, .kidsGreenBlackBelt]
+    var kidsBelts: [InternationalStandardBJJBelts] = [.kidsWhiteBelt, .kidsGreyWhiteBelt, .kidsGreyBelt, .kidsGreyBlackBelt, .kidsYellowWhiteBelt, .kidsYellowBelt, .kidsYellowBlackBelt, .kidsOrangeWhiteBelt, .kidsOrangeBelt, .kidsOrangeBlackBelt, .kidsGreenWhiteBelt, .kidsGreenBelt, .kidsGreenBlackBelt]
     
-    var adultBelts: [InternationalStandardBJJBelts] = [.spacer, .adultWhiteBelt, .adultBlueBelt, .adultPurpleBelt, .adultBrownBelt, .adultBlackBelt, .adultRedBlackBelt, .adultRedWhiteBelt, .adultRedBelt]
+    var adultBelts: [InternationalStandardBJJBelts] = [.adultWhiteBelt, .adultBlueBelt, .adultPurpleBelt, .adultBrownBelt, .adultBlackBelt, .adultRedBlackBelt, .adultRedWhiteBelt, .adultRedBelt]
     
     var isKidsBelts: InternationalStandardBJJBelts?
     
@@ -27,6 +29,8 @@ class BeltsListTableViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         
         self.navigationController?.navigationBar.tintColor = UIColor(displayP3Red: 241.0, green: 0.0, blue: 0.0, alpha: 1.0)
+        
+        beltDisclaimerLabelOutlet.text = InternationalStandardBJJBelts.beltDisclaimer.rawValue
         
     }
     
@@ -64,23 +68,20 @@ class BeltsListTableViewController: UITableViewController {
                 let myCell = kidsBelts[indexPath.row]
 
                 switch myCell {
-                case .spacer: cell.timeLabelsStackViewOutlet.isHidden = true
-                    cell.beltViewOutlet.isHidden = true
-                    cell.beltTimeLabelOutlet.text = myCell.rawValue
-                // what setting allows this to dynamic - something to do with storyboard layout constriants
-                case .kidsWhiteBelt: cell.displayKidsBeltWith(provided: kidsWhiteBelt)
-                case .kidsGreyWhiteBelt: cell.displayKidsBeltWith(provided: grayWhiteBelt)
-                case .kidsGreyBelt: cell.displayKidsBeltWith(provided: grayBelt)
-                case .kidsGreyBlackBelt: cell.displayKidsBeltWith(provided: grayBlackBelt)
-                case .kidsYellowWhiteBelt: cell.displayKidsBeltWith(provided: yellowWhiteBelt)
-                case .kidsYellowBelt: cell.displayKidsBeltWith(provided: yellowBelt)
-                case .kidsYellowBlackBelt: cell.displayKidsBeltWith(provided: yellowBlackBelt)
-                case .kidsOrangeWhiteBelt: cell.displayKidsBeltWith(provided: orangeWhiteBelt)
-                case .kidsOrangeBelt: cell.displayKidsBeltWith(provided: orangeBelt)
-                case .kidsOrangeBlackBelt: cell.displayKidsBeltWith(provided: orangeBlackBelt)
-                case .kidsGreenWhiteBelt: cell.displayKidsBeltWith(provided: greenWhiteBelt)
-                case .kidsGreenBelt: cell.displayKidsBeltWith(provided: greenBelt)
-                case .kidsGreenBlackBelt: cell.displayKidsBeltWith(provided: greenBlackBelt)
+                
+                case .kidsWhiteBelt: cell.displayKidsBeltWith(provided: MockData.kidsWhiteBelt)
+                case .kidsGreyWhiteBelt: cell.displayKidsBeltWith(provided: MockData.grayWhiteBelt)
+                case .kidsGreyBelt: cell.displayKidsBeltWith(provided: MockData.grayBelt)
+                case .kidsGreyBlackBelt: cell.displayKidsBeltWith(provided: MockData.grayBlackBelt)
+                case .kidsYellowWhiteBelt: cell.displayKidsBeltWith(provided: MockData.yellowWhiteBelt)
+                case .kidsYellowBelt: cell.displayKidsBeltWith(provided: MockData.yellowBelt)
+                case .kidsYellowBlackBelt: cell.displayKidsBeltWith(provided: MockData.yellowBlackBelt)
+                case .kidsOrangeWhiteBelt: cell.displayKidsBeltWith(provided: MockData.orangeWhiteBelt)
+                case .kidsOrangeBelt: cell.displayKidsBeltWith(provided: MockData.orangeBelt)
+                case .kidsOrangeBlackBelt: cell.displayKidsBeltWith(provided: MockData.orangeBlackBelt)
+                case .kidsGreenWhiteBelt: cell.displayKidsBeltWith(provided: MockData.greenWhiteBelt)
+                case .kidsGreenBelt: cell.displayKidsBeltWith(provided: MockData.greenBelt)
+                case .kidsGreenBlackBelt: cell.displayKidsBeltWith(provided: MockData.greenBlackBelt)
                 default: print("that's not a currently active kids belt to display")
                 }
                 return cell
@@ -96,13 +97,11 @@ class BeltsListTableViewController: UITableViewController {
                 let myCell = adultBelts[indexPath.row]
                 
                 switch myCell {
-                case .spacer: cell.beltViewOutlet.isHidden = true
-                    cell.beltTimeOutlet.text = "Belt progression comes through time and dedication. Timing of promotion is your teacher's decision."
-                    // what setting allows this to dynamic - something to do with storyboard layout constriants
-                case .adultWhiteBelt: cell.displayAdultBasicBeltWith(provided: whiteBelt)
-                case .adultBlueBelt: cell.displayAdultBasicBeltWith(provided: blueBelt)
-                case .adultPurpleBelt: cell.displayAdultBasicBeltWith(provided: purpleBelt)
-                case .adultBrownBelt: cell.displayAdultBasicBeltWith(provided: brownBelt)
+                
+                case .adultWhiteBelt: cell.displayAdultBasicBeltWith(provided: MockData.whiteBelt)
+                case .adultBlueBelt: cell.displayAdultBasicBeltWith(provided: MockData.blueBelt)
+                case .adultPurpleBelt: cell.displayAdultBasicBeltWith(provided: MockData.purpleBelt)
+                case .adultBrownBelt: cell.displayAdultBasicBeltWith(provided: MockData.brownBelt)
                 
                 default:
                     let nib = UINib(nibName: "AdultBlackBeltTemplate", bundle: nil)
@@ -113,10 +112,10 @@ class BeltsListTableViewController: UITableViewController {
                         let myBlackBeltCell = myCell
                         
                         switch myBlackBeltCell {
-                        case .adultBlackBelt: cell.displayAdultBlackBeltWith(provided: blackBelt)
-                        case .adultRedBlackBelt: cell.displayAdultBlackBeltWith(provided: redBlackBelt)
-                        case .adultRedWhiteBelt: cell.displayAdultBlackBeltWith(provided: redWhiteBelt)
-                        case .adultRedBelt: cell.displayAdultBlackBeltWith(provided: redBelt)
+                        case .adultBlackBelt: cell.displayAdultBlackBeltWith(provided: MockData.blackBelt)
+                        case .adultRedBlackBelt: cell.displayAdultBlackBeltWith(provided: MockData.redBlackBelt)
+                        case .adultRedWhiteBelt: cell.displayAdultBlackBeltWith(provided: MockData.redWhiteBelt)
+                        case .adultRedBelt: cell.displayAdultBlackBeltWith(provided: MockData.redBelt)
                         default: print("that's not a currently active adult black belt to display")
                         }
                         return cell
