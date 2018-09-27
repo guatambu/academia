@@ -107,7 +107,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="mg0-Ng-h4w">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="studentListImageMenuCell" rowHeight="80" id="mg0-Ng-h4w" customClass="StudentListImageMenuTableViewCell" customModule="Academia" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mg0-Ng-h4w" id="oWV-HI-vFs">
@@ -167,6 +167,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="cellTitleOutlet" destination="QsW-Rp-ned" id="KfY-L5-GN5"/>
+                                    <outlet property="rightRedArrowImageViewOutlet" destination="4he-mn-h1K" id="kPC-on-CoZ"/>
+                                    <outlet property="userThumbnailImageViewOutlet" destination="7FK-Ud-xkt" id="4t3-Tg-c9M"/>
                                     <segue destination="oqS-Zd-HpL" kind="show" identifier="toStudentDetail" id="v3R-4g-g9e"/>
                                 </connections>
                             </tableViewCell>
@@ -455,7 +458,7 @@
         <image name="right_red_arrow_32.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gr4-dd-3uC"/>
+        <segue reference="yXo-Ks-n0j"/>
         <segue reference="qsH-Ya-VlQ"/>
     </inferredMetricsTieBreakers>
 </document>
