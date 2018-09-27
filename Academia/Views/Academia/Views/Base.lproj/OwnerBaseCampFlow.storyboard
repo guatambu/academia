@@ -503,7 +503,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="classesMenuCell" rowHeight="80" id="Mch-TC-uN5" customClass="GeneralMenuTableViewCell" customModule="Academia" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="classesMenuCell" rowHeight="80" id="Mch-TC-uN5" customClass="AulasListMenuTableViewCell" customModule="Academia" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Mch-TC-uN5" id="XEF-Nd-Xs0">
@@ -549,6 +549,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="cellTitleOutlet" destination="m9l-dH-Dve" id="EDR-yK-ggx"/>
+                                    <outlet property="rightRedArrowImageViewOutlet" destination="qNY-Fa-LdU" id="dxJ-je-jhj"/>
                                     <segue destination="Wxn-sY-U0n" kind="show" identifier="toClassDetail" id="kic-Rq-KdV"/>
                                 </connections>
                             </tableViewCell>
@@ -700,6 +702,6 @@
         <image name="students_red_32.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Kjb-Yl-QhF"/>
+        <segue reference="kic-Rq-KdV"/>
     </inferredMetricsTieBreakers>
 </document>

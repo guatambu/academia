@@ -28,10 +28,6 @@ class OwnerClassesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let nib = UINib(nibName: "GeneralMenuCell", bundle: nil)
-        self.tableView.register(nib, forCellReuseIdentifier: "generalMenuCell")
-        
-        print(classes)
     }
 
     // MARK: - Table view data source
@@ -46,7 +42,7 @@ class OwnerClassesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "generalMenuCell", for: indexPath) as? GeneralMenuTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "classesMenuCell", for: indexPath) as? AulasListMenuTableViewCell else { return UITableViewCell() }
         
         let classTitle = classes[indexPath.row].className
         // Configure the cell...
