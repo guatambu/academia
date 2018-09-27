@@ -28,8 +28,6 @@ class StudentListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let nib = UINib(nibName: "ImageMenuCell", bundle: nil)
-        self.tableView.register(nib, forCellReuseIdentifier: "imageMenuCell")
     }
     
 
