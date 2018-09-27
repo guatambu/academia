@@ -150,6 +150,7 @@
 		FAE67A34215C139A00822DCF /* AdultStudentDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE67A33215C139A00822DCF /* AdultStudentDetailsTableViewController.swift */; };
 		FAE67A36215C2DDF00822DCF /* StudentPaymentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE67A35215C2DDF00822DCF /* StudentPaymentTableViewController.swift */; };
 		FAE67A38215C6C0F00822DCF /* AulasListMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE67A37215C6C0F00822DCF /* AulasListMenuTableViewCell.swift */; };
+		FAE67A3A215C6EDD00822DCF /* StudentGroupGeneralMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE67A39215C6EDD00822DCF /* StudentGroupGeneralMenuTableViewCell.swift */; };
 		FAF1BB882143574400AD56AE /* DescriptionTextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAF1BB872143574400AD56AE /* DescriptionTextViewCell.xib */; };
 		FAF1BB8A2143575C00AD56AE /* AgreementTextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAF1BB892143575C00AD56AE /* AgreementTextViewCell.xib */; };
 		FAF1BB8C21435BA900AD56AE /* AgreementTextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF1BB8B21435BA900AD56AE /* AgreementTextViewTableViewCell.swift */; };
@@ -361,6 +362,7 @@
 		FAE67A33215C139A00822DCF /* AdultStudentDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdultStudentDetailsTableViewController.swift; sourceTree = "<group>"; };
 		FAE67A35215C2DDF00822DCF /* StudentPaymentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentPaymentTableViewController.swift; sourceTree = "<group>"; };
 		FAE67A37215C6C0F00822DCF /* AulasListMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AulasListMenuTableViewCell.swift; sourceTree = "<group>"; };
+		FAE67A39215C6EDD00822DCF /* StudentGroupGeneralMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentGroupGeneralMenuTableViewCell.swift; sourceTree = "<group>"; };
 		FAF1BB872143574400AD56AE /* DescriptionTextViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DescriptionTextViewCell.xib; sourceTree = "<group>"; };
 		FAF1BB892143575C00AD56AE /* AgreementTextViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AgreementTextViewCell.xib; sourceTree = "<group>"; };
 		FAF1BB8B21435BA900AD56AE /* AgreementTextViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementTextViewTableViewCell.swift; sourceTree = "<group>"; };
@@ -887,6 +889,7 @@
 				FAE2FD8A2140BF8A00815402 /* TextField Cells */,
 				FAF29BD0212F6FC800752414 /* OwnerDashboardTableViewCell.swift */,
 				FAE67A37215C6C0F00822DCF /* AulasListMenuTableViewCell.swift */,
+				FAE67A39215C6EDD00822DCF /* StudentGroupGeneralMenuTableViewCell.swift */,
 				FAF29BDC213087F600752414 /* GeneralMenuTableViewCell.swift */,
 				FA5C5C422152F11400BF62D5 /* StudentUserGeneralMenuTableViewCell.swift */,
 				FAF29BDE2130892B00752414 /* ImageMenuTableViewCell.swift */,
@@ -1107,6 +1110,7 @@
 				FAF29B63212BBB5000752414 /* SignUpLoginViewController.swift in Sources */,
 				FAE2FDA02140C03900815402 /* ParentGuardianTextFieldTableViewCell.swift in Sources */,
 				FA0C444A21278CA900B59194 /* Group.swift in Sources */,
+				FAE67A3A215C6EDD00822DCF /* StudentGroupGeneralMenuTableViewCell.swift in Sources */,
 				FAF29B69212CCC1600752414 /* OwnerProfileInitialSetUpTableViewController.swift in Sources */,
 				FA9ADA0F21378B140005E1F1 /* BeltsListTableViewController.swift in Sources */,
 				FAE2FDB02140C0C900815402 /* SocialNetworksTextFieldTableViewCell.swift in Sources */,

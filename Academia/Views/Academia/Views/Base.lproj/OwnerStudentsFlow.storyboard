@@ -28,7 +28,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ownerStudentGroupsMenuCell" rowHeight="80" id="Hy2-v6-juH" customClass="ImageMenuTableViewCell" customModule="Academia" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ownerStudentGroupsMenuCell" rowHeight="80" id="Hy2-v6-juH" customClass="StudentGroupGeneralMenuTableViewCell" customModule="Academia" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hy2-v6-juH" id="Aj3-oU-9k2">
@@ -73,6 +73,11 @@
                                         <constraint firstItem="pDB-p3-UpX" firstAttribute="leading" secondItem="Aj3-oU-9k2" secondAttribute="leading" constant="16" id="rjk-un-TEt"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cellTitleOutlet" destination="stN-Oa-TaE" id="jQ5-7n-FlE"/>
+                                    <outlet property="rightRedArrowImageViewOutlet" destination="VpW-IY-2uJ" id="ni3-AE-U73"/>
+                                    <segue destination="Iub-Ea-AAB" kind="show" identifier="toStudentList" id="qsH-Ya-VlQ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -88,9 +93,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <segue destination="Iub-Ea-AAB" kind="show" identifier="toGroupOfStudents" id="2MB-EJ-8ke"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ORS-Qg-liT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -454,6 +456,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="gr4-dd-3uC"/>
-        <segue reference="2MB-EJ-8ke"/>
+        <segue reference="qsH-Ya-VlQ"/>
     </inferredMetricsTieBreakers>
 </document>
