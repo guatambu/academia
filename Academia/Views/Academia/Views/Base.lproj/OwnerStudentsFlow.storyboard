@@ -369,7 +369,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="addNewGroupStudentImageMenuCell" rowHeight="80" id="B4b-5A-sjy" userLabel="student status Table View Cell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="addNewGroupStudentImageMenuCell" rowHeight="80" id="B4b-5A-sjy" userLabel="student status Table View Cell" customClass="AddNewStudentGroupImageMenuTableViewCell" customModule="Academia" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="268" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="B4b-5A-sjy" id="ydI-WP-L3J" userLabel="status Content View">
@@ -429,6 +429,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="cellTitleOutlet" destination="EyR-Da-bHa" id="zwW-n7-AO6"/>
+                                    <outlet property="rightRedArrowImageViewOutlet" destination="qiK-k2-6PK" id="7eC-ey-l1q"/>
+                                    <outlet property="userThumbnailImageViewOutlet" destination="mvR-mZ-GxA" id="d7Y-VQ-e2Y"/>
                                     <segue destination="oqS-Zd-HpL" kind="show" identifier="toStudentDetailFromNewGroupTVC" id="gr4-dd-3uC"/>
                                 </connections>
                             </tableViewCell>
@@ -458,7 +461,7 @@
         <image name="right_red_arrow_32.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yXo-Ks-n0j"/>
+        <segue reference="gr4-dd-3uC"/>
         <segue reference="qsH-Ya-VlQ"/>
     </inferredMetricsTieBreakers>
 </document>

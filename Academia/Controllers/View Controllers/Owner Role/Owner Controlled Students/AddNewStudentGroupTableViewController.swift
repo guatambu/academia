@@ -83,7 +83,7 @@ class AddNewStudentGroupTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "imageMenuCell", for: indexPath) as? ImageMenuTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "addNewGroupStudentImageMenuCell", for: indexPath) as? AddNewStudentGroupImageMenuTableViewCell else { return UITableViewCell() }
         
         let student = studentsInGroup[indexPath.section][indexPath.row]
         

@@ -1,5 +1,5 @@
 //
-//  StudentListImageMenuTableViewCell.swift
+//  AddNewStudentGroupImageMenuTableViewCell.swift
 //  Academia
 //
 //  Created by Kelly Johnson on 9/26/18.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-class StudentListImageMenuTableViewCell: UITableViewCell {
-   
+class AddNewStudentGroupImageMenuTableViewCell: UITableViewCell {
+
     // MARK: - Properties
     
     @IBOutlet weak var userThumbnailImageViewOutlet: UIImageView!
