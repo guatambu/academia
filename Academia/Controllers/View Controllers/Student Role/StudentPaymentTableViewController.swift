@@ -22,11 +22,24 @@ class StudentPaymentTableViewController: UITableViewController {
     @IBOutlet weak var paymentDescriptionTextViewOutlet: UITextView!
     @IBOutlet weak var paymentAgreementTextViewOutlet: UITextView!
     
+    var adultStudent: AdultStudent?
+    var kidStudent: KidStudent?
+    
     
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
         
+        let avenirFont = [ NSAttributedStringKey.foregroundColor: UIColor.gray,
+                           NSAttributedStringKey.font: UIFont(name: "Avenir-Medium", size: 24)! ]
+        
+        navigationController?.navigationBar.titleTextAttributes = avenirFont
+        
+        if let adultStudent = adultStudent {
+            self.title = adultStudent.paymentProgram?.programName
+        } else if let kidStudent = kidStudent {
+            self.title = kidStudent.paymentProgram?.programName
+        }
     }
     
     override func viewDidLoad() {

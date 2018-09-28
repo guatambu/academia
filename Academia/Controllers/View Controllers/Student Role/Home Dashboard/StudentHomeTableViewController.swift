@@ -35,7 +35,6 @@ class StudentHomeTableViewController: UITableViewController {
         self.tableView.register(nib, forCellReuseIdentifier: "ownerHomeDashboardCell")
         
         self.tabBarController?.selectedIndex = 1
-        
     }
     
     
@@ -48,8 +47,6 @@ class StudentHomeTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ownerHomeDashboardCell", for: indexPath) as? OwnerDashboardTableViewCell else { return UITableViewCell() }
-        
-        
         
         if adultStudent != nil {
             let adultStudentTask = AdultStudentModelController.shared.adultStudentOnboardingTasks[indexPath.row]
@@ -72,13 +69,12 @@ class StudentHomeTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        
         if AdultStudentModelController.shared.adultStudentOnboardingTasks[indexPath.item].name == "setUpPaymentPrograms" {
             
             // instantiate the relevant storyboard
-            let ownerProfileFlowView: UIStoryboard = UIStoryboard(name: "StudentBaseCampFlow", bundle: nil)
+            let studentProfileFlowView: UIStoryboard = UIStoryboard(name: "StudentProfileFlow", bundle: nil)
             // instantiate the desired TableViewController as ViewController on relevant storyboard
-            let destViewController = ownerProfileFlowView.instantiateViewController(withIdentifier: "toOwnerPaymentPrograms") as! OwnerPaymentProgramsTableViewController
+            let destViewController = studentProfileFlowView.instantiateViewController(withIdentifier: "toStudentPayment") as! StudentPaymentTableViewController
             // create the segue programmatically
             self.navigationController?.pushViewController(destViewController, animated: true)
             // set the desired properties of the destinationVC's navgation Item
@@ -86,6 +82,11 @@ class StudentHomeTableViewController: UITableViewController {
             backButtonItem.title = " "
             navigationItem.backBarButtonItem = backButtonItem
             navigationController?.navigationBar.tintColor = UIColor(red: 241.0, green: 0.0, blue: 0.0, alpha: 1.0)
+            
+            print(kidStudent.firstName)
+            
+            destViewController.adultStudent = adultStudent
+            destViewController.kidStudent = kidStudent
             
         } else if AdultStudentModelController.shared.adultStudentOnboardingTasks[indexPath.item].name == "messagingGroups" {
             
@@ -153,20 +154,6 @@ class StudentHomeTableViewController: UITableViewController {
         }
     }
     
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
     
     /*
      // MARK: - Navigation

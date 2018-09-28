@@ -12,9 +12,6 @@ class StudentProfileDetailTableViewController: UITableViewController {
     
     //MARK: - Properties
     
-    var isKid: Bool?  // this needs to be passed through from the initial student onboarding and the student's individual object
-    
-    
     @IBOutlet weak var studentProfileMenuCell: UITableViewCell!
     @IBOutlet weak var beltSystemsMenuCell: UITableViewCell!
     @IBOutlet weak var studentPaymentDetailsMenuCell: UITableViewCell!
@@ -23,6 +20,9 @@ class StudentProfileDetailTableViewController: UITableViewController {
     @IBOutlet weak var privacyInfoMenuCell: UITableViewCell!
     @IBOutlet weak var aboutAcademiaMenuCell: UITableViewCell!
     @IBOutlet weak var aboutAcademiaServicesMenuCell: UITableViewCell!
+    
+    var adultStudent: AdultStudent?
+    var kidStudent: KidStudent?
     
     
     //MARK: - ViewController Lifecycle Functions
@@ -36,10 +36,9 @@ class StudentProfileDetailTableViewController: UITableViewController {
     
     @IBAction func myProfileButtonTapped(_ sender: UIButton) {
         
-        isKid = true
-        guard let isKid = isKid else { return }
         
-        if isKid {
+        
+        if kidStudent != nil {
             // instantiate the relevant storyboard
             let studentProfileFlowView: UIStoryboard = UIStoryboard(name: "StudentProfileFlow", bundle: nil)
             // instantiate the desired TableViewController as ViewController on relevant storyboard
@@ -51,7 +50,7 @@ class StudentProfileDetailTableViewController: UITableViewController {
             backButtonItem.title = " "
             navigationItem.backBarButtonItem = backButtonItem
             
-        } else {
+        } else if adultStudent != nil {
             
             // instantiate the relevant storyboard
             let studentProfileFlowView: UIStoryboard = UIStoryboard(name: "StudentProfileFlow", bundle: nil)
@@ -90,6 +89,14 @@ class StudentProfileDetailTableViewController: UITableViewController {
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        navigationController?.navigationBar.tintColor = UIColor(red: 241.0, green: 0.0, blue: 0.0, alpha: 1.0)
+        
+        destViewController.adultStudent = adultStudent
+        destViewController.kidStudent = kidStudent
+        
+        guard let kidStudent = kidStudent else { return }
+        print("*********  kidStudent first name: \(kidStudent.firstName)")
+
     }
     
     @IBAction func socialNetworksButtonTapped(_ sender: UIButton) {
