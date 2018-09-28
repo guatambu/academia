@@ -113,14 +113,32 @@ class AddNewStudentGroupTableViewController: UITableViewController {
      }
  
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "toStudentDetailFromNewGroupTVC" {
+            guard let studentDetailTVC = segue.destination as? StudentDetailTableViewController else { return }
+            
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            
+            let student = studentsInGroup[indexPath.section][indexPath.row]
+            
+            // Pass the selected object to the new view controller.
+            
+            if student is AdultStudent {
+                
+                guard let adultStudent = student as? AdultStudent else { return }
+                studentDetailTVC.adultStudent = adultStudent
+                
+            } else if student is KidStudent {
+                
+                guard let kidStudent = student as? KidStudent else { return }
+                studentDetailTVC.kidStudent = kidStudent
+                
+            }
+        }
     }
-    */
-
 }

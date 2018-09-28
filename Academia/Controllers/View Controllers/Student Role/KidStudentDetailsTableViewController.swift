@@ -28,7 +28,7 @@ class KidStudentDetailsTableViewController: UITableViewController, SegueFromSave
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "New Kids Student Profile"
+        self.title = "Kids Student Profile"
         
     }
     

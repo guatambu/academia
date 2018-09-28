@@ -30,7 +30,7 @@
 		FA21D69221334DD4006790E5 /* AdultBasicBeltTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D69121334DD4006790E5 /* AdultBasicBeltTableViewCell.swift */; };
 		FA21D69421334DE9006790E5 /* AdultBlackBeltTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D69321334DE9006790E5 /* AdultBlackBeltTableViewCell.swift */; };
 		FA21D6A12134B8D3006790E5 /* AddClassTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6A02134B8D3006790E5 /* AddClassTableViewController.swift */; };
-		FA21D6A32134BAC5006790E5 /* AddNewStudentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6A22134BAC5006790E5 /* AddNewStudentTableViewController.swift */; };
+		FA21D6A32134BAC5006790E5 /* StudentDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6A22134BAC5006790E5 /* StudentDetailTableViewController.swift */; };
 		FA21D6A52134D72A006790E5 /* AddNewStudentGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6A42134D72A006790E5 /* AddNewStudentGroupTableViewController.swift */; };
 		FA21D6A72136253E006790E5 /* AdultBlackBelt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6A62136253E006790E5 /* AdultBlackBelt.swift */; };
 		FA21D6A921362551006790E5 /* KidsBelt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6A821362551006790E5 /* KidsBelt.swift */; };
@@ -244,7 +244,7 @@
 		FA21D69121334DD4006790E5 /* AdultBasicBeltTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdultBasicBeltTableViewCell.swift; sourceTree = "<group>"; };
 		FA21D69321334DE9006790E5 /* AdultBlackBeltTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdultBlackBeltTableViewCell.swift; sourceTree = "<group>"; };
 		FA21D6A02134B8D3006790E5 /* AddClassTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClassTableViewController.swift; sourceTree = "<group>"; };
-		FA21D6A22134BAC5006790E5 /* AddNewStudentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewStudentTableViewController.swift; sourceTree = "<group>"; };
+		FA21D6A22134BAC5006790E5 /* StudentDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDetailTableViewController.swift; sourceTree = "<group>"; };
 		FA21D6A42134D72A006790E5 /* AddNewStudentGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewStudentGroupTableViewController.swift; sourceTree = "<group>"; };
 		FA21D6A62136253E006790E5 /* AdultBlackBelt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdultBlackBelt.swift; sourceTree = "<group>"; };
 		FA21D6A821362551006790E5 /* KidsBelt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidsBelt.swift; sourceTree = "<group>"; };
@@ -625,7 +625,7 @@
 				FA21D6832130BB7F006790E5 /* StudentListTableViewController.swift */,
 				FA21D6852130BB93006790E5 /* StudentsByListGroupingTableViewController.swift */,
 				FA21D6A42134D72A006790E5 /* AddNewStudentGroupTableViewController.swift */,
-				FA21D6A22134BAC5006790E5 /* AddNewStudentTableViewController.swift */,
+				FA21D6A22134BAC5006790E5 /* StudentDetailTableViewController.swift */,
 			);
 			path = "Owner Controlled Students";
 			sourceTree = "<group>";
@@ -1127,7 +1127,7 @@
 				FA5C5C3E2152CB3200BF62D5 /* StudentChoiceViewController.swift in Sources */,
 				FA0C444421278B8D00B59194 /* Location.swift in Sources */,
 				FA6FBA062149F3B700558657 /* UserPermissions.swift in Sources */,
-				FA21D6A32134BAC5006790E5 /* AddNewStudentTableViewController.swift in Sources */,
+				FA21D6A32134BAC5006790E5 /* StudentDetailTableViewController.swift in Sources */,
 				FA5C5C382151D3C600BF62D5 /* StudentHomeTableViewController.swift in Sources */,
 				FA9ADA172138C7030005E1F1 /* ProfilePicTableViewCell.swift in Sources */,
 				FAE2FD982140C00300815402 /* ZipCodeTextFieldTableViewCell.swift in Sources */,

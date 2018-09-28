@@ -29,6 +29,8 @@ class AdultStudentInitialSetupTableViewController: UITableViewController, SegueF
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "New Adult Student Profile"
+        
     }
     
     // MARK: - SegueFromSaveProfileNibCellDelegate protocol method

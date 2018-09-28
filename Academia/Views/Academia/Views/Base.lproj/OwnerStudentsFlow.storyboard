@@ -170,7 +170,7 @@
                                     <outlet property="cellTitleOutlet" destination="QsW-Rp-ned" id="KfY-L5-GN5"/>
                                     <outlet property="rightRedArrowImageViewOutlet" destination="4he-mn-h1K" id="kPC-on-CoZ"/>
                                     <outlet property="userThumbnailImageViewOutlet" destination="7FK-Ud-xkt" id="4t3-Tg-c9M"/>
-                                    <segue destination="oqS-Zd-HpL" kind="show" identifier="toStudentDetail" id="v3R-4g-g9e"/>
+                                    <segue destination="oqS-Zd-HpL" kind="show" identifier="toStudentDetail" id="rlL-eO-rbb"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -181,21 +181,17 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Students" id="lEp-tr-irD">
                         <barButtonItem key="backBarButtonItem" title=" " id="tp7-RC-MWS"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="rwS-Dl-Rxk">
-                            <connections>
-                                <segue destination="oqS-Zd-HpL" kind="show" identifier="addNewStudent" id="yXo-Ks-n0j"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="rwS-Dl-Rxk"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iaq-0f-GM4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7653.6000000000004" y="2925.7871064467768"/>
         </scene>
-        <!--Add New Student Profile-->
+        <!--Student Detail Scene-->
         <scene sceneID="M7d-3f-GET">
             <objects>
-                <tableViewController id="oqS-Zd-HpL" userLabel="Add New Student Profile" customClass="AddNewStudentTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="toStudentDetailTVC" id="oqS-Zd-HpL" userLabel="Student Detail Scene" customClass="StudentDetailTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" estimatedRowHeight="70" sectionHeaderHeight="29" sectionFooterHeight="28" id="gcU-DN-D7h">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -461,7 +457,7 @@
         <image name="right_red_arrow_32.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gr4-dd-3uC"/>
-        <segue reference="qsH-Ya-VlQ"/>
+        <segue reference="rlL-eO-rbb"/>
+        <segue reference="LSQ-3L-bBd"/>
     </inferredMetricsTieBreakers>
 </document>

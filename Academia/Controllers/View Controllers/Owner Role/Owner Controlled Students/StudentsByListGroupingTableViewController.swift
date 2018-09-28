@@ -25,9 +25,7 @@ class StudentsByListGroupingTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let nib = UINib(nibName: "StudentUserGeneralMenuCell", bundle: nil)
-        self.tableView.register(nib, forCellReuseIdentifier: "studentUserGeneralMenuCell")
+ 
     }
 
     

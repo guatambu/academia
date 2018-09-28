@@ -1,5 +1,5 @@
 //
-//  AddNewStudentTableViewController.swift
+//  StudentDetailTableViewController.swift
 //  Academia
 //
 //  Created by Michael Guatambu Davis on 8/27/18.
@@ -8,14 +8,56 @@
 
 import UIKit
 
-class AddNewStudentTableViewController: UITableViewController, SegueFromSaveProfileNibCellDelegate {
-    
+class StudentDetailTableViewController: UITableViewController, SegueFromSaveProfileNibCellDelegate {
 
     // MARK: - Properties
     
     var adultStudent: AdultStudent?
     
-    var cells: [MyCells]?
+    var kidStudent: KidStudent?
+    
+    var kidStudentCells = [
+        MyCells.profilePicCell,
+        MyCells.beltCell,
+        MyCells.statusCell,
+        MyCells.usernameCell,
+        MyCells.firstNameCell,
+        MyCells.lastNameCell,
+        MyCells.parentGuardianCell,
+        MyCells.streetAddressCell,
+        MyCells.cityCell,
+        MyCells.stateCell,
+        MyCells.zipCodeCell,
+        MyCells.phoneCell,
+        MyCells.mobileCell,
+        MyCells.emailCell,
+        MyCells.emergencyContactCell,
+        MyCells.emergencyContactPhoneCell,
+        MyCells.emergencyContactRelationshipCell,
+        MyCells.saveProfileButtonCell
+    ]
+
+    var adultStudentCells = [
+        MyCells.profilePicCell,
+        MyCells.beltCell,
+        MyCells.statusCell,
+        MyCells.isInstructorCell,
+        MyCells.usernameCell,
+        MyCells.firstNameCell,
+        MyCells.lastNameCell,
+        MyCells.parentGuardianCell,
+        MyCells.streetAddressCell,
+        MyCells.cityCell,
+        MyCells.stateCell,
+        MyCells.zipCodeCell,
+        MyCells.phoneCell,
+        MyCells.mobileCell,
+        MyCells.emailCell,
+        MyCells.emergencyContactCell,
+        MyCells.emergencyContactPhoneCell,
+        MyCells.emergencyContactRelationshipCell,
+        MyCells.saveProfileButtonCell
+    ]
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -31,19 +73,25 @@ class AddNewStudentTableViewController: UITableViewController, SegueFromSaveProf
         
     }
     
+    
     // MARK: - SegueFromSaveProfileNibCellDelegate protocol method
     
     func callSegueFromNibCell(nibCellData dataobject: AnyObject) {
         self.performSegue(withIdentifier: "initialAdultStudentSegue", sender: dataobject)
     }
     
+    
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let cells = cells else { return 0 }
-        return cells.count
+
+        if adultStudent != nil {
+            return adultStudentCells.count
+        } else if kidStudent != nil {
+            return kidStudentCells.count
+        }
+        return 0
     }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
@@ -52,10 +100,6 @@ class AddNewStudentTableViewController: UITableViewController, SegueFromSaveProf
         //            self.tableView.register(nib, forCellReuseIdentifier: forCellReuseIdentifier)
         //            return nib
         //        }
-        
-        guard let cells = cells else { return UITableViewCell() }
-        
-        let myCell = cells[indexPath.row]
         
         let avenirFont = [ NSAttributedStringKey.foregroundColor: UIColor.gray,
                            NSAttributedStringKey.font: UIFont(name: "Avenir-Medium", size: 24)! ]
@@ -70,6 +114,9 @@ class AddNewStudentTableViewController: UITableViewController, SegueFromSaveProf
         
         let nibAdultBlackBelt = UINib(nibName: "AdultBlackBeltTemplate", bundle: nil)
         self.tableView.register(nibAdultBlackBelt, forCellReuseIdentifier: "adultBlackBeltTemplate")
+        
+        let nibKidsBelt = UINib(nibName: "KidsBeltTemplate", bundle: nil)
+        self.tableView.register(nibKidsBelt, forCellReuseIdentifier: "kidsBeltTemplate")
         
         let nibStatus = UINib(nibName: "StatusCell", bundle: nil)
         self.tableView.register(nibStatus, forCellReuseIdentifier: "statusCell")
@@ -109,10 +156,10 @@ class AddNewStudentTableViewController: UITableViewController, SegueFromSaveProf
         
         let nibEmail = UINib(nibName: "EmailTextFieldCell", bundle: nil)
         self.tableView.register(nibEmail, forCellReuseIdentifier: "emailTextFieldCell")
-
+        
         let nibEmergencyContact = UINib(nibName: "EmergencyContactTextFieldCell", bundle: nil)
         self.tableView.register(nibEmergencyContact, forCellReuseIdentifier: "emergencyContactTextFieldCell")
-
+        
         let nibEmergencyContactPhone = UINib(nibName: "EmergencyContactPhoneTextFieldCell", bundle: nil)
         self.tableView.register(nibEmergencyContactPhone, forCellReuseIdentifier: "emergencyContactPhoneTextFieldCell")
         
@@ -122,16 +169,34 @@ class AddNewStudentTableViewController: UITableViewController, SegueFromSaveProf
         let nibSaveProfile = UINib(nibName: "SaveProfileCell", bundle: nil)
         self.tableView.register(nibSaveProfile, forCellReuseIdentifier: "saveProfileCell")
         
+        // determine which type of cell is "myCell"
+        
+        var myCell: MyCells = .usernameCell
+        
+        if adultStudent != nil {
+            myCell = adultStudentCells[indexPath.row]
+        } else if kidStudent != nil {
+            myCell = kidStudentCells[indexPath.row]
+        }
+            
         // switch on myCell to setup the tableView
         switch myCell {
             
             // use "where" clause to determine distinction between between adult and kid students?
             
         case .beltCell:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "adultBasicBeltTemplate", for: indexPath) as? AdultBasicBeltTableViewCell {
-                tableView.estimatedRowHeight = 100
-                tableView.rowHeight = 100
-                return cell
+            if adultStudent != nil {
+                if let cell = tableView.dequeueReusableCell(withIdentifier: "adultBasicBeltTemplate", for: indexPath) as? AdultBasicBeltTableViewCell {
+                    tableView.estimatedRowHeight = 100
+                    tableView.rowHeight = 100
+                    return cell
+                }
+            } else if kidStudent != nil {
+                if let cell = tableView.dequeueReusableCell(withIdentifier: "kidsBeltTemplate", for: indexPath) as? KidsBeltTableViewCell {
+                    tableView.estimatedRowHeight = 100
+                    tableView.rowHeight = 100
+                    return cell
+                }
             }
         case .cityCell:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "cityTextFieldCell", for: indexPath) as? CityTextFieldTableViewCell {

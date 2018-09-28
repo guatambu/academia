@@ -64,7 +64,7 @@ class StudentListTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         } 
     }
-
+        
 
     // MARK: - Navigation
 
@@ -73,17 +73,36 @@ class StudentListTableViewController: UITableViewController {
         
         // Get the new view controller using segue.destinationViewController.
         if segue.identifier == "toStudentDetail" {
-            guard let studentDetailTVC = segue.destination as? AddNewStudentTableViewController else { return }
+            guard let studentDetailTVC = segue.destination as? StudentDetailTableViewController else {
+                print("this is printed from within the destination TVC guard statement fail case")
             
-            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+                return
+                
+            }
+            
+            guard let indexPath = tableView.indexPathForSelectedRow else {
+                return
+                
+            }
             
             let student = allStudents[indexPath.row]
             
-            studentDetailTVC.adultStudent = student as? AdultStudent
+            if student is AdultStudent {
+                
+                guard let adultStudent = student as? AdultStudent else { return }
+                studentDetailTVC.adultStudent = adultStudent
+                
+            } else if student is KidStudent {
+                
+                guard let kidStudent = student as? KidStudent else { return }
+                studentDetailTVC.kidStudent = kidStudent
+                
+            }
             
         } else if segue.identifier == "addNewStudent" {
             
         }
         // Pass the selected object to the new view controller.
     }
+ 
 }
