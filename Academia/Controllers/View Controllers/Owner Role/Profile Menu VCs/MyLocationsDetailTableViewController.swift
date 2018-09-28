@@ -14,7 +14,7 @@ class MyLocationsDetailTableViewController: UITableViewController, SegueFromSave
     
     var location: Location?
     
-    let cells: [MyCells] = [MyCells.profilePicCell, MyCells.locationNameCell, MyCells.streetAddressCell, MyCells.cityCell, MyCells.stateCell, MyCells.zipCodeCell, MyCells.phoneCell, MyCells.websiteCell, MyCells.emailCell, MyCells.socialNetworksCell, MyCells.saveProfileButtonCell]
+    let cells: [MyCells] = [MyCells.profilePicCell, MyCells.locationNameCell, MyCells.streetAddressCell, MyCells.cityCell, MyCells.stateCell, MyCells.zipCodeCell, MyCells.phoneCell, MyCells.websiteCell, MyCells.emailCell, MyCells.saveProfileButtonCell]
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -80,9 +80,6 @@ class MyLocationsDetailTableViewController: UITableViewController, SegueFromSave
         
         let nibEmail = UINib(nibName: "EmailTextFieldCell", bundle: nil)
         self.tableView.register(nibEmail, forCellReuseIdentifier: "emailTextFieldCell")
-        
-        let nibSocialNetworks = UINib(nibName: "SocialNetworksTextFieldCell", bundle: nil)
-        self.tableView.register(nibSocialNetworks, forCellReuseIdentifier: "socialNetworksTextFieldCell")
         
         let nibSaveProfile = UINib(nibName: "SaveProfileCell", bundle: nil)
         self.tableView.register(nibSaveProfile, forCellReuseIdentifier: "saveProfileCell")
@@ -176,7 +173,7 @@ class MyLocationsDetailTableViewController: UITableViewController, SegueFromSave
                 
                 return cell
             }
-        default: print("\(myCell.rawValue) is not supposeed to be in the owner onboarding workflow, or if is valid, the switch statement in OwnerProfileDetailsTableViewController needs to be updated.")
+        default: print("\(myCell.rawValue) is not supposeed to be in the locations detail scene, or if is valid, the switch statement in OwnerProfileDetailsTableViewController needs to be updated.")
         return UITableViewCell()
         }
         return UITableViewCell()

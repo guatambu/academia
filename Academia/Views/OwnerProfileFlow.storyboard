@@ -629,7 +629,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ownerLocationsMenuCell" rowHeight="80" id="3Ob-5d-2f0" customClass="ImageMenuTableViewCell" customModule="Academia" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ownerLocationsImageMenuCell" rowHeight="80" id="3Ob-5d-2f0" customClass="LocationsImageMenuTableViewCell" customModule="Academia" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3Ob-5d-2f0" id="r83-3g-nbE">
@@ -688,6 +688,12 @@
                                         <constraint firstAttribute="trailing" secondItem="Eud-FW-ca1" secondAttribute="trailing" id="OyK-RD-J0l"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cellTitleOutlet" destination="2aS-2S-szZ" id="Zqf-L6-o8K"/>
+                                    <outlet property="locationThumbnailImageViewOutlet" destination="nak-Gg-RrY" id="0HJ-ka-5S5"/>
+                                    <outlet property="rightRedArrowImageViewOutlet" destination="VgS-b1-SOC" id="iJx-eO-fvG"/>
+                                    <segue destination="iVz-Kz-S9C" kind="show" identifier="toLocationDetail" id="yju-Be-v0f"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -703,9 +709,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <segue destination="iVz-Kz-S9C" kind="show" identifier="toLocationDetail" id="Y6d-4h-mMf"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="viL-hY-VdQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1006,7 +1009,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="V8D-Aj-Nbx">
-                                                            <rect key="frame" x="0.0" y="32" width="0.0" height="48"/>
+                                                            <rect key="frame" x="0.0" y="32" width="327" height="48"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. </string>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1782,6 +1785,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="U9B-1U-Nyt"/>
-        <segue reference="Y6d-4h-mMf"/>
+        <segue reference="yju-Be-v0f"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -18,9 +18,7 @@ class MyLocationsTableViewController: UITableViewController {
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
-        // register required cell nibs
-        let nibGenMenu = UINib(nibName: "GeneralMenuCell", bundle: nil)
-        self.tableView.register(nibGenMenu, forCellReuseIdentifier: "generalMenuCell")
+        
     }
     
     override func viewDidLoad() {
@@ -39,14 +37,14 @@ class MyLocationsTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "generalMenuCell", for: indexPath) as? GeneralMenuTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ownerLocationsImageMenuCell", for: indexPath) as? LocationsImageMenuTableViewCell else { return UITableViewCell() }
         
         locations = [myLocation1, myLocation2]
         
-        let locationTitle = locations[indexPath.row].locationName
+        let location = locations[indexPath.row]
         
         // Configure the cell...
-        cell.title = locationTitle
+        cell.location = location
 
         return cell
     }
