@@ -161,7 +161,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="classesMenuCell" rowHeight="80" id="c0u-dK-9qM" customClass="AulasListMenuTableViewCell" customModule="Academia" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="classesMenuCell" rowHeight="80" id="c0u-dK-9qM" customClass="StudentAulasListMenuTableViewCell" customModule="Academia" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="c0u-dK-9qM" id="lCe-7a-hRB">
@@ -201,14 +201,8 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1gF-B6-aO5">
                                             <rect key="frame" x="8" y="48" width="80" height="23.5"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="20:00" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kn6-y9-kAe">
-                                                    <rect key="frame" x="0.0" y="0.0" width="56.5" height="24"/>
-                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
-                                                    <color key="textColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="PM" textAlignment="natural" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohj-Lj-UiW">
-                                                    <rect key="frame" x="56.5" y="0.0" width="23.5" height="23.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="20:00 PM" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kn6-y9-kAe">
+                                                    <rect key="frame" x="0.0" y="0.0" width="68" height="24"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                     <color key="textColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -216,14 +210,10 @@
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="ohj-Lj-UiW" secondAttribute="bottom" id="AAB-d6-cBn"/>
-                                                <constraint firstAttribute="trailing" secondItem="ohj-Lj-UiW" secondAttribute="trailing" id="Fri-uz-ne4"/>
                                                 <constraint firstItem="Kn6-y9-kAe" firstAttribute="top" secondItem="1gF-B6-aO5" secondAttribute="top" id="ICy-xV-JCq"/>
                                                 <constraint firstItem="Kn6-y9-kAe" firstAttribute="leading" secondItem="1gF-B6-aO5" secondAttribute="leading" id="ZeL-3i-sgU"/>
                                                 <constraint firstAttribute="bottom" secondItem="Kn6-y9-kAe" secondAttribute="bottom" id="Zxp-eO-hp8"/>
-                                                <constraint firstItem="ohj-Lj-UiW" firstAttribute="leading" secondItem="Kn6-y9-kAe" secondAttribute="trailing" id="ad1-pe-C9r"/>
                                                 <constraint firstAttribute="width" constant="80" id="m3H-bx-2AV"/>
-                                                <constraint firstItem="ohj-Lj-UiW" firstAttribute="top" secondItem="1gF-B6-aO5" secondAttribute="top" id="rwQ-5a-hLi"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -238,8 +228,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="cellTitleOutlet" destination="TW7-ES-FcP" id="fti-jL-reF"/>
-                                    <outlet property="rightRedArrowImageViewOutlet" destination="g9q-1q-fuH" id="BEE-Yr-1gs"/>
+                                    <outlet property="cellSubtitleOutlet" destination="Kn6-y9-kAe" id="qpz-Gn-XE2"/>
+                                    <outlet property="cellTitleOutlet" destination="TW7-ES-FcP" id="Zod-eU-738"/>
+                                    <outlet property="rightRedArrowImageViewOutlet" destination="g9q-1q-fuH" id="cfK-J5-5dS"/>
                                     <segue destination="8ap-qt-vme" kind="show" id="tKM-Fe-eDZ"/>
                                 </connections>
                             </tableViewCell>
