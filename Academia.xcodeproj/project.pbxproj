@@ -52,7 +52,6 @@
 		FA5C5C4B2154632900BF62D5 /* AdultStudentInitialSetupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C5C4A2154632900BF62D5 /* AdultStudentInitialSetupTableViewController.swift */; };
 		FA5C5C4D215463BE00BF62D5 /* KidStudentInitialSetupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C5C4C215463BE00BF62D5 /* KidStudentInitialSetupTableViewController.swift */; };
 		FA5C5C522154999C00BF62D5 /* StudentClassesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C5C512154999C00BF62D5 /* StudentClassesTableViewController.swift */; };
-		FA5C5C54215499B400BF62D5 /* StudentClassDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C5C53215499B400BF62D5 /* StudentClassDetailTableViewController.swift */; };
 		FA5C5C56215499F300BF62D5 /* StudentProfileDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C5C55215499F300BF62D5 /* StudentProfileDetailTableViewController.swift */; };
 		FA66A0082145BA6B002B0313 /* CheckMarkBoxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA66A0072145BA6B002B0313 /* CheckMarkBoxCell.xib */; };
 		FA66A00A2145CA2F002B0313 /* DigitalSignatureTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA66A0092145CA2F002B0313 /* DigitalSignatureTextFieldCell.xib */; };
@@ -102,6 +101,7 @@
 		FAAAC150213E345900093D6C /* OwnerMessages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAAAC14F213E345900093D6C /* OwnerMessages.storyboard */; };
 		FAAAC153213E348800093D6C /* OwnerBaseCampFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAAAC151213E348800093D6C /* OwnerBaseCampFlow.storyboard */; };
 		FAB203D4215EA8630034E1D4 /* LocationsImageMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB203D3215EA8630034E1D4 /* LocationsImageMenuTableViewCell.swift */; };
+		FAB203DA216187190034E1D4 /* StudentClassDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB203D9216187190034E1D4 /* StudentClassDetailViewController.swift */; };
 		FAB7E350212B7D47003E3B79 /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB7E34F212B7D47003E3B79 /* LandingPageViewController.swift */; };
 		FAB7E352212B7D73003E3B79 /* UserSelfIdentifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB7E351212B7D73003E3B79 /* UserSelfIdentifyViewController.swift */; };
 		FAB7E35A212BA643003E3B79 /* BlairMdITC TT-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAB7E359212BA643003E3B79 /* BlairMdITC TT-Medium.ttf */; };
@@ -267,7 +267,6 @@
 		FA5C5C4A2154632900BF62D5 /* AdultStudentInitialSetupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdultStudentInitialSetupTableViewController.swift; sourceTree = "<group>"; };
 		FA5C5C4C215463BE00BF62D5 /* KidStudentInitialSetupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidStudentInitialSetupTableViewController.swift; sourceTree = "<group>"; };
 		FA5C5C512154999C00BF62D5 /* StudentClassesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentClassesTableViewController.swift; sourceTree = "<group>"; };
-		FA5C5C53215499B400BF62D5 /* StudentClassDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentClassDetailTableViewController.swift; sourceTree = "<group>"; };
 		FA5C5C55215499F300BF62D5 /* StudentProfileDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentProfileDetailTableViewController.swift; sourceTree = "<group>"; };
 		FA66A0072145BA6B002B0313 /* CheckMarkBoxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckMarkBoxCell.xib; sourceTree = "<group>"; };
 		FA66A0092145CA2F002B0313 /* DigitalSignatureTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DigitalSignatureTextFieldCell.xib; sourceTree = "<group>"; };
@@ -317,6 +316,7 @@
 		FAAAC14F213E345900093D6C /* OwnerMessages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerMessages.storyboard; sourceTree = "<group>"; };
 		FAAAC152213E348800093D6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Academia/Views/Base.lproj/OwnerBaseCampFlow.storyboard; sourceTree = "<group>"; };
 		FAB203D3215EA8630034E1D4 /* LocationsImageMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsImageMenuTableViewCell.swift; sourceTree = "<group>"; };
+		FAB203D9216187190034E1D4 /* StudentClassDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentClassDetailViewController.swift; sourceTree = "<group>"; };
 		FAB7E34F212B7D47003E3B79 /* LandingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
 		FAB7E351212B7D73003E3B79 /* UserSelfIdentifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelfIdentifyViewController.swift; sourceTree = "<group>"; };
 		FAB7E359212BA643003E3B79 /* BlairMdITC TT-Medium.ttf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "BlairMdITC TT-Medium.ttf"; sourceTree = "<group>"; };
@@ -715,7 +715,7 @@
 			isa = PBXGroup;
 			children = (
 				FA5C5C512154999C00BF62D5 /* StudentClassesTableViewController.swift */,
-				FA5C5C53215499B400BF62D5 /* StudentClassDetailTableViewController.swift */,
+				FAB203D9216187190034E1D4 /* StudentClassDetailViewController.swift */,
 			);
 			path = Aulas;
 			sourceTree = "<group>";
@@ -1165,10 +1165,10 @@
 				FA9ADA1121378B3C0005E1F1 /* BeltDetailTableViewController.swift in Sources */,
 				FA21D69421334DE9006790E5 /* AdultBlackBeltTableViewCell.swift in Sources */,
 				FAF1BB8C21435BA900AD56AE /* AgreementTextViewTableViewCell.swift in Sources */,
+				FAB203DA216187190034E1D4 /* StudentClassDetailViewController.swift in Sources */,
 				FA21D6A72136253E006790E5 /* AdultBlackBelt.swift in Sources */,
 				FA9AD9F72137839A0005E1F1 /* BeltSystemsTableViewController.swift in Sources */,
 				FAE2FD8E2140BFC700815402 /* FirstNameTextFieldTableViewCell.swift in Sources */,
-				FA5C5C54215499B400BF62D5 /* StudentClassDetailTableViewController.swift in Sources */,
 				FAE67A3E215C733400822DCF /* AddNewStudentGroupImageMenuTableViewCell.swift in Sources */,
 				FA5C5C522154999C00BF62D5 /* StudentClassesTableViewController.swift in Sources */,
 				FAE67A38215C6C0F00822DCF /* AulasListMenuTableViewCell.swift in Sources */,

@@ -113,7 +113,7 @@
                             <constraints>
                                 <constraint firstItem="v5G-g1-HjW" firstAttribute="top" secondItem="nLT-dM-tZG" secondAttribute="top" constant="24" id="B2q-j7-59d"/>
                                 <constraint firstAttribute="trailing" secondItem="v5G-g1-HjW" secondAttribute="trailing" constant="32" id="DWf-Rd-rnG"/>
-                                <constraint firstItem="v5G-g1-HjW" firstAttribute="leading" relation="lessThanOrEqual" secondItem="nLT-dM-tZG" secondAttribute="leading" constant="32" id="NDo-Nv-nb8"/>
+                                <constraint firstItem="v5G-g1-HjW" firstAttribute="leading" secondItem="nLT-dM-tZG" secondAttribute="leading" constant="32" id="NDo-Nv-nb8"/>
                                 <constraint firstAttribute="bottom" secondItem="v5G-g1-HjW" secondAttribute="bottom" constant="24" id="jnC-ft-fGH"/>
                             </constraints>
                         </view>

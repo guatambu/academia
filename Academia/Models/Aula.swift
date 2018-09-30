@@ -14,6 +14,7 @@ class Aula {
     
     var active: Bool
     var className: String
+    var classDescription: String
     var daysOfTheWeek: [Weekdays]
     var timeOfDay: [ClassTimes]
     var location: Location?
@@ -65,6 +66,7 @@ class Aula {
     
     init(active: Bool,
          className: String,
+         classDescription: String,
          daysOfTheWeek: [Weekdays],
          timeOfDay: [ClassTimes],
          location: Location?,
@@ -78,6 +80,7 @@ class Aula {
         
         self.active = active
         self.className = className
+        self.classDescription = classDescription
         self.daysOfTheWeek = daysOfTheWeek
         self.timeOfDay = timeOfDay
         self.location = location
