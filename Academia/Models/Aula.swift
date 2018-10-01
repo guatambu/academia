@@ -16,7 +16,7 @@ class Aula {
     var className: String
     var classDescription: String
     var daysOfTheWeek: [Weekdays]
-    var timeOfDay: [ClassTimes]
+    var timeOfDay: ClassTimes
     var location: Location?
     var students: [Any]?
     var instructor: [Any]?
@@ -24,16 +24,6 @@ class Aula {
     var dateCreated: Date
     var dateEdited: Date
     var attendees: [Any]?
-    
-    enum Weekdays {
-        case Monday
-        case Tuesday
-        case Wednesday
-        case Thursday
-        case Friday
-        case Saturday
-        case Sunday
-    }
     
     enum ClassTimes: Int {
         case one = 01
@@ -68,7 +58,7 @@ class Aula {
          className: String,
          classDescription: String,
          daysOfTheWeek: [Weekdays],
-         timeOfDay: [ClassTimes],
+         timeOfDay: ClassTimes,
          location: Location?,
          students: [Any]?,
          instructor: [Any]?,

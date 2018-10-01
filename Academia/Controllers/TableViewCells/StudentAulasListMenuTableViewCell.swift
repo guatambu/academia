@@ -16,7 +16,7 @@ class StudentAulasListMenuTableViewCell: UITableViewCell {
     @IBOutlet weak var cellSubtitleOutlet: UILabel!
     @IBOutlet weak var rightRedArrowImageViewOutlet: UIImageView!
     
-    var title: String? {
+    var cell: Aula? {
         didSet {
             updateViews()
         }
@@ -31,10 +31,10 @@ class StudentAulasListMenuTableViewCell: UITableViewCell {
     // MARK: - updateViews()
     
     func updateViews() {
-        guard let title = title else { return }
+        guard let cell = cell else { return }
         
-        cellTitleOutlet.text = title
+        cellTitleOutlet.text = cell.className
+        cellSubtitleOutlet.text = "\(cell.timeOfDay.rawValue):00"
         
     }
-
 }
