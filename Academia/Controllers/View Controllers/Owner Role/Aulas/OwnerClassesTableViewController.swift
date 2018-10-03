@@ -12,6 +12,7 @@ class OwnerClassesTableViewController: UITableViewController {
     
     // MARK: - Properties
     
+    let weekdays: [Weekdays] = [.Sunday, .Monday, .Tuesday, .Wednesday, .Thursday, .Friday, .Saturday]
     
     
     var classes = [MockData.adultClassA]
@@ -34,12 +35,29 @@ class OwnerClassesTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // may want to have sections with titles here
-        return 1
+        return weekdays.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return classes.count
     }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let sectionTitle = UILabel()
+        
+        sectionTitle.backgroundColor = UIColor.white
+        
+        let avenirFont = [ NSAttributedStringKey.foregroundColor: UIColor.lightGray,
+                           NSAttributedStringKey.font: UIFont(name: "Avenir-Medium", size: 24)! ]
+        
+        let weekday = weekdays[section]
+        
+        sectionTitle.attributedText = NSAttributedString(string: "  \(weekday)", attributes: avenirFont)
+        
+        return sectionTitle
+    }
+
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "classesMenuCell", for: indexPath) as? AulasListMenuTableViewCell else { return UITableViewCell() }
