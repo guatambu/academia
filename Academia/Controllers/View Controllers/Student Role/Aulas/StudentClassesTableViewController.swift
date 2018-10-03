@@ -30,17 +30,17 @@ class StudentClassesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let sectionTitle = UILabel()
-        sectionTitle.backgroundColor = UIColor.black
         
-        let avenirFont = [ NSAttributedStringKey.foregroundColor: UIColor.white,
+        let sectionTitle = UILabel()
+        
+        sectionTitle.backgroundColor = UIColor.white
+        
+        let avenirFont = [ NSAttributedStringKey.foregroundColor: UIColor.lightGray,
                            NSAttributedStringKey.font: UIFont(name: "Avenir-Medium", size: 24)! ]
         
-        
-        
         let weekday = weekdays[section]
-        sectionTitle.attributedText = NSAttributedString(string: "  \(weekday)", attributes: avenirFont)
         
+        sectionTitle.attributedText = NSAttributedString(string: "  \(weekday)", attributes: avenirFont)
         
         return sectionTitle
     }

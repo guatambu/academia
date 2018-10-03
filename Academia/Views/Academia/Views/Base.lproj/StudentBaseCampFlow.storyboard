@@ -202,7 +202,7 @@
                                             <rect key="frame" x="8" y="48" width="80" height="23.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="20:00 PM" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kn6-y9-kAe">
-                                                    <rect key="frame" x="0.0" y="0.0" width="68" height="24"/>
+                                                    <rect key="frame" x="8" y="0.0" width="68" height="24"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                     <color key="textColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -211,7 +211,7 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="Kn6-y9-kAe" firstAttribute="top" secondItem="1gF-B6-aO5" secondAttribute="top" id="ICy-xV-JCq"/>
-                                                <constraint firstItem="Kn6-y9-kAe" firstAttribute="leading" secondItem="1gF-B6-aO5" secondAttribute="leading" id="ZeL-3i-sgU"/>
+                                                <constraint firstItem="Kn6-y9-kAe" firstAttribute="leading" secondItem="1gF-B6-aO5" secondAttribute="leading" constant="8" id="ZeL-3i-sgU"/>
                                                 <constraint firstAttribute="bottom" secondItem="Kn6-y9-kAe" secondAttribute="bottom" id="Zxp-eO-hp8"/>
                                                 <constraint firstAttribute="width" constant="80" id="m3H-bx-2AV"/>
                                             </constraints>

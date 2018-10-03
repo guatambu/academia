@@ -70,7 +70,7 @@ class AddNewStudentGroupTableViewController: UITableViewController {
         let sectionTitle = UILabel()
         sectionTitle.backgroundColor = UIColor.white
         
-        let avenirFont = [ NSAttributedStringKey.foregroundColor: UIColor.black,
+        let avenirFont = [ NSAttributedStringKey.foregroundColor: UIColor.lightGray,
                            NSAttributedStringKey.font: UIFont(name: "Avenir-Medium", size: 24)! ]
         
         if section == 0 {
