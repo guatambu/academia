@@ -12,6 +12,9 @@ class AdultStudent {
     
     // MARK: - Properties
     
+    // UID
+    let adultStudentUID: String
+    
     // Bool
     var isInstructor: Bool
     
@@ -53,7 +56,8 @@ class AdultStudent {
     
     
     // Basic Memberwise Initializer
-    init(isInstructor: Bool,
+    init(adultStudentUID: String,
+         isInstructor: Bool,
          dateCreated: Date,
          dateEdited: Date,
          birthdate: Date,
@@ -82,6 +86,7 @@ class AdultStudent {
          emergencyContactRelationship: String
         ) {
         
+        self.adultStudentUID = adultStudentUID
         self.isInstructor = isInstructor
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited

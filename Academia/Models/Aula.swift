@@ -12,6 +12,9 @@ class Aula {
     
     // MARK: - Properties
     
+    // UID
+    let aulaUID: String
+    
     var active: Bool
     var className: String
     var classDescription: String
@@ -54,7 +57,8 @@ class Aula {
     
     // Memberwise Initializer
     
-    init(active: Bool,
+    init(aulaUID: String,
+         active: Bool,
          className: String,
          classDescription: String,
          daysOfTheWeek: [Weekdays],
@@ -68,6 +72,7 @@ class Aula {
          attendees: [Any]?
         ) {
         
+        self.aulaUID = aulaUID
         self.active = active
         self.className = className
         self.classDescription = classDescription

@@ -11,6 +11,9 @@ import UIKit
 class KidStudent {
     // MARK: - Properties
     
+    // UID
+    let kidUID: String
+    
     // Date
     var dateCreated: Date
     var dateEdited: Date
@@ -49,7 +52,8 @@ class KidStudent {
     
     
     // Basic Memberwise Initializer
-    init(isKid: Bool,
+    init(kidUID: String,
+         isKid: Bool,
          dateCreated: Date,
          dateEdited: Date,
          birthdate: Date,
@@ -78,6 +82,7 @@ class KidStudent {
          emergencyContactRelationship: String
         ) {
         
+        self.kidUID = kidUID
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
         self.birthdate = birthdate

@@ -11,6 +11,9 @@ import UIKit
 class Owner {
     // MARK: - Properties
     
+    // UID
+    let ownerUID: String
+    
     // Bool
     var isInstructor: Bool
     
@@ -45,7 +48,8 @@ class Owner {
     
     
     // Basic Memberwise Initializer
-    init(isInstructor: Bool,
+    init(ownerUID: String,
+         isInstructor: Bool,
          dateCreated: Date,
          dateEdited: Date,
          birthdate: Date,
@@ -69,6 +73,7 @@ class Owner {
          email: String
         ) {
         
+        self.ownerUID = ownerUID
         self.isInstructor = isInstructor
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited

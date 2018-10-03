@@ -12,6 +12,9 @@ class Location {
     
     // MARK: - Properties
     
+    // UID
+    let locationUID: String
+    
     var active: Bool
     
     // Date
@@ -34,7 +37,8 @@ class Location {
     
     // Basic Memberwise Initializer
     
-    init(active: Bool,
+    init(locationUID: String,
+         active: Bool,
          dateCreated: Date,
          dateEdited: Date,
          profilePic: UIImage?,
@@ -49,6 +53,7 @@ class Location {
          social: String?
         ) {
         
+        self.locationUID = locationUID
         self.active = active
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
@@ -65,8 +70,6 @@ class Location {
     }
     
 }
-
-//var myLocation = Location(active: true, dateCreated: Date(), dateEdited: Date(), profilePic: #imageLiteral(resourceName: "download.jpg"), locationName: "my location", streetAddress: "1267 the spot blvd.", city: "you know", state: "LA", zipCode: "09854", phone: "987-876-1230", website: "www.theschool.gov", email: "email@theschool.gov", social: nil)
 
 
 

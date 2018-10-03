@@ -11,6 +11,10 @@ import UIKit
 class AdultBlackBelt {
     
     // MARK: - Properties
+    
+    // UID
+    let adultBlackBeltUID: String
+    
     var dateCreated: Date
     var dateEdited: Date
     var name: String
@@ -51,7 +55,8 @@ class AdultBlackBelt {
     
     // Memberwise Initializer
     
-    init(dateCreated: Date,
+    init(adultBlackBeltUID: String,
+         dateCreated: Date,
          dateEdited: Date,
          name: String,
          active: Bool,
@@ -84,6 +89,7 @@ class AdultBlackBelt {
          labelTenthDegreeTime: String?
         ) {
         
+        self.adultBlackBeltUID = adultBlackBeltUID
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
         self.name = name
@@ -123,15 +129,7 @@ class AdultBlackBelt {
 }
 
 
-let blackBelt = AdultBlackBelt(dateCreated: Date(), dateEdited: Date(), name: "Black Belt", active: true, elligibleForNextBelt: true, belt: UIColor.black, leftTeacherBar: UIColor.white, rightTeacherBar: UIColor.white, redBar: UIColor.red, coralBar: UIColor.black, firstWhiteDegree: true, secondWhiteDegree: true, thirdWhiteDegree: true, fourthWhiteDegree: true, fifthWhiteDegree: true, sixthWhiteDegree: true, seventhWhiteDegree: false, eigthWhiteDegree: false, ninthWhiteDegree: false, tenthWhiteDegree: false, beltTimeLabel: "31 years", labelFirstDegreeTime: "3y", labelSecondDegreeTime: "3y", labelThirdDegreeTime: "5y", labelFourthDegreeTime: "5y", labelFifthDegreeTime: "5y", labelSixthDegreeTime: "5y", labelSeventhDegreeTime: nil, labelEigthDegreeTime: nil, labelNinthDegreeTime: nil, labelTenthDegreeTime: nil)
 
-let redBlackBelt = AdultBlackBelt(dateCreated: Date(), dateEdited: Date(), name: "Black Red Belt", active: true, elligibleForNextBelt: true, belt: UIColor.black, leftTeacherBar: UIColor.white, rightTeacherBar: UIColor.white, redBar: UIColor.red, coralBar: UIColor.red, firstWhiteDegree: true, secondWhiteDegree: true, thirdWhiteDegree: true, fourthWhiteDegree: true, fifthWhiteDegree: true, sixthWhiteDegree: true, seventhWhiteDegree: true, eigthWhiteDegree: true, ninthWhiteDegree: false, tenthWhiteDegree: false, beltTimeLabel: "10 years", labelFirstDegreeTime: "3y", labelSecondDegreeTime: "3y", labelThirdDegreeTime: "5y", labelFourthDegreeTime: "5y", labelFifthDegreeTime: "5y", labelSixthDegreeTime: "5y", labelSeventhDegreeTime: "5y", labelEigthDegreeTime: "5y", labelNinthDegreeTime: nil, labelTenthDegreeTime: nil)
-
-let redWhiteBelt = AdultBlackBelt(dateCreated: Date(), dateEdited: Date(), name: "Black Red Belt", active: true, elligibleForNextBelt: true, belt: UIColor.white, leftTeacherBar: UIColor.white, rightTeacherBar: UIColor.white, redBar: UIColor.red, coralBar: UIColor.red, firstWhiteDegree: true, secondWhiteDegree: true, thirdWhiteDegree: true, fourthWhiteDegree: true, fifthWhiteDegree: true, sixthWhiteDegree: true, seventhWhiteDegree: true, eigthWhiteDegree: true, ninthWhiteDegree: true, tenthWhiteDegree: false, beltTimeLabel: "7 years", labelFirstDegreeTime: "3y", labelSecondDegreeTime: "3y", labelThirdDegreeTime: "5y", labelFourthDegreeTime: "5y", labelFifthDegreeTime: "5y", labelSixthDegreeTime: "5y", labelSeventhDegreeTime: "5y", labelEigthDegreeTime: "5y", labelNinthDegreeTime: "7y", labelTenthDegreeTime: nil)
-
-let redBelt = AdultBlackBelt(dateCreated: Date(), dateEdited: Date(), name: "Black Red Belt", active: true, elligibleForNextBelt: true, belt: UIColor.red, leftTeacherBar: UIColor.white, rightTeacherBar: UIColor.white, redBar: UIColor.red, coralBar: nil, firstWhiteDegree: true, secondWhiteDegree: true, thirdWhiteDegree: true, fourthWhiteDegree: true, fifthWhiteDegree: true, sixthWhiteDegree: true, seventhWhiteDegree: true, eigthWhiteDegree: true, ninthWhiteDegree: true, tenthWhiteDegree: true, beltTimeLabel: "7 years", labelFirstDegreeTime: "3y", labelSecondDegreeTime: "3y", labelThirdDegreeTime: "5y", labelFourthDegreeTime: "5y", labelFifthDegreeTime: "5y", labelSixthDegreeTime: "5y", labelSeventhDegreeTime: "5y", labelEigthDegreeTime: "5y", labelNinthDegreeTime: "7y", labelTenthDegreeTime: "7y")
-
-var blackBelts = [blackBelt, redBlackBelt, redWhiteBelt, redBelt]
 
 
 

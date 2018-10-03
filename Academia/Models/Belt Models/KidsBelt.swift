@@ -11,6 +11,10 @@ import UIKit
 class KidsBelt {
     
     // MARK: - Properties
+    
+    // UID
+    let kidsBeltUID: String
+    
     var dateCreated: Date
     var dateEdited: Date
     var name: String
@@ -50,7 +54,8 @@ class KidsBelt {
     
     // Memberwise Initializer
     
-    init(dateCreated: Date,
+    init(kidsBeltUID: String,
+         dateCreated: Date,
          dateEdited: Date,
          name: String,
          active: Bool,
@@ -83,6 +88,7 @@ class KidsBelt {
          labelThirdBlackStripe: String?
         ) {
         
+        self.kidsBeltUID = kidsBeltUID
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
         self.name = name

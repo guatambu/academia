@@ -11,6 +11,10 @@ import UIKit
 class AdultBasicBelt {
     
     // MARK: - Properties
+    
+    // UID
+    let adultBasicBeltUID: String
+    
     var dateCreated: Date
     var dateEdited: Date
     var name: String
@@ -36,7 +40,8 @@ class AdultBasicBelt {
     
     // Memberwise Initializer
     
-    init(dateCreated: Date,
+    init(adultBasicBeltUID: String,
+         dateCreated: Date,
          dateEdited: Date,
          name: String,
          active: Bool,
@@ -54,6 +59,7 @@ class AdultBasicBelt {
          fourthStripeTime: String?
          ) {
         
+        self.adultBasicBeltUID = adultBasicBeltUID
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
         self.name = name
@@ -75,15 +81,6 @@ class AdultBasicBelt {
 }
 
 
-let whiteBelt = AdultBasicBelt(dateCreated: Date(), dateEdited: Date(), name: "White Belt", active: true, elligibleForNextBelt: true, belt: UIColor.white, blackBar: UIColor.black, firstWhiteStripe: true, secondWhiteStripe: true, thirdWhiteStripe: true, fourthWhiteStripe: true, beltTime: "1 year", firstStripeTime: "3m", secondStripeTime: "3m", thirdStripeTime: "3m", fourthStripeTime: "3m")
-
-let blueBelt = AdultBasicBelt(dateCreated: Date(), dateEdited: Date(), name: "Blue Belt", active: true, elligibleForNextBelt: true, belt: UIColor.blue, blackBar: UIColor.black, firstWhiteStripe: true, secondWhiteStripe: true, thirdWhiteStripe: true, fourthWhiteStripe: true, beltTime: "2 years", firstStripeTime: "4m", secondStripeTime: "6m", thirdStripeTime: "6m", fourthStripeTime: "4m")
-
-let purpleBelt = AdultBasicBelt(dateCreated: Date(), dateEdited: Date(), name: "Purple Belt", active: true, elligibleForNextBelt: true, belt: UIColor.purple, blackBar: UIColor.black, firstWhiteStripe: true, secondWhiteStripe: true, thirdWhiteStripe: true, fourthWhiteStripe: true, beltTime: "1 1/2 years", firstStripeTime: "3m", secondStripeTime: "4m", thirdStripeTime: "4m", fourthStripeTime: "4m")
-
-let brownBelt = AdultBasicBelt(dateCreated: Date(), dateEdited: Date(), name: "Brown Belt", active: true, elligibleForNextBelt: true, belt: UIColor.brown, blackBar: UIColor.black, firstWhiteStripe: true, secondWhiteStripe: true, thirdWhiteStripe: true, fourthWhiteStripe: true, beltTime: "1 1/2 years", firstStripeTime: "3m", secondStripeTime: "4m", thirdStripeTime: "4m", fourthStripeTime: "4m")
-
-var adultBasicBelts = [whiteBelt, blueBelt, purpleBelt, brownBelt]
 
 
 

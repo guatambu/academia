@@ -12,6 +12,9 @@ class OnBoardingTask {
     
     // MARK: - Properties
     
+    // UID
+    let onboardingTaskUID: String
+    
     let name: String
     let title: String
     let description: String
@@ -21,7 +24,9 @@ class OnBoardingTask {
     
     // MARK: - Memberwise Initializer
     
-    init(name: String, title: String, description: String, isCompleted: Bool?, dateCompleted: Date?, dateOfMostRecentChange: Date?) {
+    init(onboardingTaskUID: String, name: String, title: String, description: String, isCompleted: Bool?, dateCompleted: Date?, dateOfMostRecentChange: Date?) {
+        
+        self.onboardingTaskUID = onboardingTaskUID
         self.name = name
         self.title = title
         self.description = description
