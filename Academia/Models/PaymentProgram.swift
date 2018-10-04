@@ -43,9 +43,24 @@ class PaymentProgram {
     
 }
 
-//var kidsProgram = PaymentProgram(active: true, programName: "Kids A", dateCreated: Date(), dateEdited: Date(), groups: [kidsParents], billingType: ["1st of month"], billingOptions: ["online with credit card"], paymentDescription: "long string", paymentAgreement: "legal agreement language", signatureType: ["digital signature"])
-//
-//var adultsProgram = PaymentProgram(active: true, programName: "Adults A", dateCreated: Date(), dateEdited: Date(), groups: [kidsParents], billingType: ["1st of month", "15th of month"], billingOptions: ["online with credit card"], paymentDescription: "long string", paymentAgreement: "legal agreement language", signatureType: ["digital signature"])
+extension PaymentProgram: Equatable {
+    
+    static func ==(lhs: PaymentProgram, rhs: PaymentProgram) -> Bool {
+        if lhs.active != rhs.active { return false }
+        if lhs.billingType != rhs.billingType { return false }
+        if lhs.billingOptions != rhs.billingOptions { return false }
+        if lhs.dateCreated != rhs.dateCreated { return false }
+        if lhs.dateEdited != rhs.dateEdited { return false }
+        if lhs.paymentAgreement != rhs.paymentAgreement { return false }
+        if lhs.paymentDescription != rhs.paymentDescription { return false }
+        if lhs.paymentProgramUID != rhs.paymentProgramUID { return false }
+        if lhs.programName != rhs.programName { return false }
+        if lhs.signatureType != rhs.signatureType { return false }
+        
+        
+        return true
+    }
+}
 
 
 

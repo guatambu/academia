@@ -93,12 +93,12 @@ extension Aula: Equatable {
     
     static func ==(lhs: Aula, rhs: Aula) -> Bool {
         if lhs.active != rhs.active { return false }
+        if lhs.aulaUID != rhs.aulaUID{ return false }
+        if lhs.classDescription != rhs.classDescription { return false }
+        if lhs.className != rhs.className { return false }
         if lhs.currentDate != rhs.currentDate { return false }
         if lhs.dateCreated != rhs.dateCreated { return false }
         if lhs.dateEdited != rhs.dateEdited { return false }
-        if lhs.className != rhs.className { return false }
-        if lhs.aulaUID != rhs.aulaUID{ return false }
-        if lhs.classDescription != rhs.classDescription { return false }
         if lhs.daysOfTheWeek != rhs.daysOfTheWeek { return false }
         if lhs.timeOfDay != rhs.timeOfDay { return false }
         

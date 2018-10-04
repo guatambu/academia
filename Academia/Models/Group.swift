@@ -34,6 +34,19 @@ class Group {
     }
 }
 
+extension Group: Equatable {
+    
+    static func ==(lhs: Group, rhs: Group) -> Bool {
+        if lhs.active != rhs.active { return false }
+        if lhs.dateCreated != rhs.dateCreated { return false }
+        if lhs.dateEdited != rhs.dateEdited { return false }
+        if lhs.groupUID != rhs.groupUID { return false }
+        if lhs.name != rhs.name { return false }
+        
+        return true
+    }
+}
+
 
 
 

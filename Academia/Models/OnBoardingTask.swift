@@ -37,7 +37,20 @@ class OnBoardingTask {
     }
 }
 
-
+extension OnBoardingTask: Equatable {
+    
+    static func ==(lhs: OnBoardingTask, rhs: OnBoardingTask) -> Bool {
+        if lhs.dateCompleted != rhs.dateCompleted { return false }
+        if lhs.dateOfMostRecentChange != rhs.dateOfMostRecentChange { return false }
+        if lhs.description != rhs.description { return false }
+        if lhs.isCompleted != rhs.isCompleted { return false }
+        if lhs.name != rhs.name { return false }
+        if lhs.onboardingTaskUID != rhs.onboardingTaskUID { return false }
+        if lhs.title != rhs.title { return false }
+        
+        return true
+    }
+}
 
 
 

@@ -126,8 +126,8 @@ extension KidStudent: Equatable {
         if lhs.emergencyContactPhone != rhs.emergencyContactPhone { return false }
         if lhs.emergencyContactRelationship != rhs.emergencyContactRelationship { return false }
         if lhs.firstName != rhs.firstName { return false }
-        if lhs.lastName != rhs.lastName { return false }
         if lhs.kidUID != rhs.kidUID { return false }
+        if lhs.lastName != rhs.lastName { return false }
         if lhs.permission != rhs.permission { return false }
         if lhs.state != rhs.state { return false }
         if lhs.streetAddress != rhs.streetAddress { return false }
