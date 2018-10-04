@@ -117,6 +117,33 @@ class AdultStudent {
     }
 }
 
+extension AdultStudent: Equatable {
+    
+    static func ==(lhs: AdultStudent, rhs: AdultStudent) -> Bool {
+        if lhs.birthdate != rhs.birthdate { return false }
+        if lhs.city != rhs.city { return false }
+        if lhs.dateCreated != rhs.dateCreated { return false }
+        if lhs.dateEdited != rhs.dateEdited { return false }
+        if lhs.email != rhs.email { return false }
+        if lhs.emergencyContact != rhs.emergencyContact { return false }
+        if lhs.emergencyContactPhone != rhs.emergencyContactPhone { return false }
+        if lhs.emergencyContactRelationship != rhs.emergencyContactRelationship { return false }
+        if lhs.firstName != rhs.firstName { return false }
+        if lhs.isInstructor != rhs.isInstructor { return false }
+        if lhs.lastName != rhs.lastName { return false }
+        if lhs.adultStudentUID != rhs.adultStudentUID{ return false }
+        if lhs.permission != rhs.permission { return false }
+        if lhs.state != rhs.state { return false }
+        if lhs.streetAddress != rhs.streetAddress { return false }
+        if lhs.studentStatus != rhs.studentStatus { return false }
+        if lhs.username != rhs.username { return false }
+        if lhs.zipCode != rhs.zipCode { return false }
+        
+        return true
+    }
+}
+
+
 
 
 

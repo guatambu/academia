@@ -71,6 +71,22 @@ class Location {
     
 }
 
+extension Location: Equatable {
+    
+    static func ==(lhs: Location, rhs: Location) -> Bool {
+        if lhs.city != rhs.city { return false }
+        if lhs.dateCreated != rhs.dateCreated { return false }
+        if lhs.dateEdited != rhs.dateEdited { return false }
+        if lhs.email != rhs.email { return false }
+        if lhs.locationName != rhs.locationName { return false }
+        if lhs.locationUID != rhs.locationUID{ return false }
+        if lhs.state != rhs.state { return false }
+        if lhs.streetAddress != rhs.streetAddress { return false }
+        if lhs.zipCode != rhs.zipCode { return false }
+        
+        return true
+    }
+}
 
 
 

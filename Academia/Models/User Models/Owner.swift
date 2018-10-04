@@ -122,9 +122,6 @@ extension Owner: Equatable {
 
         return true
     }
-    
-    
-    
 }
 
 
