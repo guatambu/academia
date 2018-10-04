@@ -103,25 +103,18 @@ class Owner {
 extension Owner: Equatable {
 
     static func ==(lhs: Owner, rhs: Owner) -> Bool {
-        if lhs.adultBasicBelt != rhs.adultBasicBelt { return false }
-        if lhs.attendance != rhs.attendance { return false }
         if lhs.birthdate != rhs.birthdate { return false }
-        if lhs.blackBelt != rhs.blackBelt { return false }
         if lhs.city != rhs.city { return false }
         if lhs.dateCreated != rhs.dateCreated { return false }
         if lhs.dateEdited != rhs.dateEdited { return false }
         if lhs.email != rhs.email { return false }
         if lhs.firstName != rhs.firstName { return false }
-        if lhs.groups != rhs.groups { return false }
         if lhs.isInstructor != rhs.isInstructor { return false }
         if lhs.lastName != rhs.lastName { return false }
         if lhs.mobile != rhs.mobile { return false }
-        if lhs.mostRecentPromotion != rhs.mostRecentPromotion { return false }
         if lhs.ownerUID != rhs.ownerUID { return false }
         if lhs.permission != rhs.permission { return false }
         if lhs.phone != rhs.phone { return false }
-        if lhs.profilePic != rhs.profilePic { return false }
-        if lhs.promotions != rhs.promotions { return false }
         if lhs.state != rhs.state { return false }
         if lhs.streetAddress != rhs.streetAddress { return false }
         if lhs.username != rhs.username { return false }
