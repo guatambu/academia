@@ -7,3 +7,40 @@
 //
 
 import Foundation
+
+class LocationModelController {
+    
+    static let shared = LocationModelController()
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

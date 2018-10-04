@@ -14,6 +14,16 @@ import Foundation
     // Models
         // Add UID String properties to all relevant Models - *** COMPLETE?
 
+        // all models need to conform to Equatable Protocol
+//            extension Model: Equatable {}
+//
+//            func ==(lhs: Model, rhs: Model) -> Bool {
+//                if lhs.property1 != rhs.property1 { return false }
+//                if lhs.property2 != rhs.property2 { return false }
+//
+//                return true
+//            }
+
     // Model Controllers
         // User Model Controllers
             // Adult Student Model Controller
