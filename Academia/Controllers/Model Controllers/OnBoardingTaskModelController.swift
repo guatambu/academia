@@ -8,49 +8,72 @@
 
 import UIKit
 
-class LocationModelController {
+class OnBoardingTaskModelController {
     
-    static let shared = LocationModelController()
+    static let shared = OnBoardingTaskModelController()
     
-    var locations = [Location]()
+    var ownerOnBoardingTasks = [OnBoardingTask]()
+    var kidStudentOnBoardingTasks = [OnBoardingTask]()
+    var adultStudentOnBoardingTasks = [OnBoardingTask]()
     
     
     // MARK: - CRUD Functions
     
     // Create
-    func addNew(profilePic: UIImage?, active: Bool, locationName: String, firstName: String, lastName: String, streetAddress: String, city: String, state: String, zipCode: String, phone: String, website: String, email: String, social: String?) {
+    func addNewOwnerTask(name: String, title: String, description: String, isCompleted: Bool?) {
         
-        let location = Location(locationUID: "004", active: active, dateCreated: Date(), dateEdited: Date(), profilePic: profilePic, locationName: locationName, streetAddress: streetAddress, city: city, state: state, zipCode: zipCode, phone: phone, website: website, email: email, social: social)
+        let ownerOnBoardingTask = OnBoardingTask(onboardingTaskUID: "01", name: name, title: title, description: description, isCompleted: isCompleted, dateCompleted: nil, dateOfMostRecentChange: Date())
         
-        locations.append(location)
+        ownerOnBoardingTasks.append(ownerOnBoardingTask)
+    }
+    
+    func addNewAdultStudentTask(name: String, title: String, description: String, isCompleted: Bool?) {
+        
+        let adultStudentOnBoardingTask = OnBoardingTask(onboardingTaskUID: "02", name: name, title: title, description: description, isCompleted: isCompleted, dateCompleted: nil, dateOfMostRecentChange: Date())
+        
+        adultStudentOnBoardingTasks.append(adultStudentOnBoardingTask)
+    }
+    
+    func addNewKidStudentTask(name: String, title: String, description: String, isCompleted: Bool?) {
+        
+        let kidStudentOnBoardingTask = OnBoardingTask(onboardingTaskUID: "03", name: name, title: title, description: description, isCompleted: isCompleted, dateCompleted: nil, dateOfMostRecentChange: Date())
+        
+        kidStudentOnBoardingTasks.append(kidStudentOnBoardingTask)
     }
     
     // Read
     
     
     // Update
-    func update(location: Location, active: Bool, city: String, email: String, locationName: String, phone: String, profilePic: UIImage?, social: String, state: String, streetAddress: String, website: String, zipCode: String) {
+    func update(task: OnBoardingTask, name: String, title: String, description: String, isCompleted: Bool?) {
         
-        location.active = active
-        location.city = city
-        location.dateEdited = Date()
-        location.email = email
-        location.locationName = locationName
-        location.phone = phone
-        location.profilePic = profilePic
-        location.social = social
-        location.state = state
-        location.streetAddress = streetAddress
-        location.website = website
-        location.zipCode = zipCode
+        task.description = description
+        task.isCompleted = isCompleted
+        task.name = name
+        task.title = title
+        task.dateOfMostRecentChange = Date()
         
+        guard let isTaskComplete = task.isCompleted else { return }
+        if isTaskComplete {
+            task.dateCompleted = Date()
+        }
     }
     
     
     // Delete
-    func delete(location: Location) {
-        guard let index = self.locations.index(of: location) else { return }
-        self.locations.remove(at: index)
+    func deleteOwnerTask(ownerTask: OnBoardingTask) {
+        guard let index = self.ownerOnBoardingTasks.index(of: ownerTask) else { return }
+        self.ownerOnBoardingTasks.remove(at: index)
+    }
+    
+    func deleteAdultStudentTask(adultStudentTask: OnBoardingTask) {
+        guard let index = self.adultStudentOnBoardingTasks.index(of: adultStudentTask) else { return }
+        self.adultStudentOnBoardingTasks.remove(at: index)
+    }
+    
+    func deleteKidStudentTask(kidStudentTask: OnBoardingTask) {
+        guard let index = self.kidStudentOnBoardingTasks.index(of: kidStudentTask) else { return }
+        self.kidStudentOnBoardingTasks.remove(at: index)
     }
     
     

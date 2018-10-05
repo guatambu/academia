@@ -15,12 +15,12 @@ class OnBoardingTask {
     // UID
     let onboardingTaskUID: String
     
-    let name: String
-    let title: String
-    let description: String
-    let isCompleted: Bool?
-    let dateCompleted: Date?
-    let dateOfMostRecentChange: Date?
+    var name: String
+    var title: String
+    var description: String
+    var isCompleted: Bool?
+    var dateCompleted: Date?
+    var dateOfMostRecentChange: Date?
     
     // MARK: - Memberwise Initializer
     
