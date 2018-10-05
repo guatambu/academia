@@ -18,7 +18,7 @@ class GroupModelController {
     // MARK: - CRUD Functions
     
     // Create
-    func addGroup(profilePic: UIImage?, active: Bool, name: String, members: [Any]?) {
+    func add(profilePic: UIImage?, active: Bool, name: String, members: [Any]?) {
         
         let group = Group(groupUID: "006", active: active, name: name, dateCreated: Date(), dateEdited: Date(), members: members)
         
@@ -29,10 +29,17 @@ class GroupModelController {
     
     
     // Update
+    func update(group: Group, active: Bool, name: String, members: [Any]?) {
+        
+        group.active = active
+        group.dateEdited = Date()
+        group.members = members
+        group.name = name
+    }
     
     
     // Delete
-    func deleteGroup(group: Group) {
+    func delete(group: Group) {
         guard let index = self.groups.index(of: group) else { return }
         self.groups.remove(at: index)
     }

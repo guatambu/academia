@@ -130,7 +130,7 @@ extension KidStudent: Equatable {
         if lhs.permission != rhs.permission { return false }
         if lhs.state != rhs.state { return false }
         if lhs.streetAddress != rhs.streetAddress { return false }
-        if lhs.userStatus != rhs.userStatus { return false }
+        if lhs.studentStatus != rhs.studentStatus { return false }
         if lhs.username != rhs.username { return false }
         if lhs.zipCode != rhs.zipCode { return false }
         

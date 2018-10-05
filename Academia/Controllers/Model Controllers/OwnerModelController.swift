@@ -15,6 +15,7 @@ class OwnerModelController {
     static let shared = OwnerModelController()
     
     var owners = [Owner]()
+    var ownerAttendance = [Date]()
     
     var numberTasksCompleted: Int = 0
     
@@ -35,7 +36,7 @@ class OwnerModelController {
     // MARK: - CRUD Functions
     
     // Create
-    func addNewOwner(birthdate: Date, adultBasicBelt: AdultBasicBelt?, adultBlackBelt: AdultBlackBelt?, profilePic: UIImage?, username: String, firstName: String, lastName: String, streetAddress: String, city: String, state: String, zipCode: String, phone: String, mobile: String, email: String) {
+    func addNew(birthdate: Date, adultBasicBelt: AdultBasicBelt?, adultBlackBelt: AdultBlackBelt?, profilePic: UIImage?, username: String, firstName: String, lastName: String, streetAddress: String, city: String, state: String, zipCode: String, phone: String, mobile: String, email: String) {
         
         let owner = Owner(ownerUID: "001", isInstructor: true, dateCreated: Date(), dateEdited: Date(), birthdate: birthdate, promotions: nil, mostRecentPromotion: nil, attendance: nil, groups: nil, permission: UserPermissions.owner, adultBasicBelt: adultBasicBelt, blackBelt: adultBlackBelt, profilePic: profilePic, username: username, firstName: firstName, lastName: lastName, streetAddress: streetAddress, city: city, state: state, zipCode: zipCode, phone: phone, mobile: mobile, email: email)
         
@@ -45,9 +46,41 @@ class OwnerModelController {
     // Read
     
     // Update
+    func updateProfileInfo(owner: Owner, birthdate: Date, city: String, email: String, firstName: String, groups: [Group]?, isInstructor: Bool, lastNAme: String, mobile: String, permission: UserPermissions, phone: String, profilePic: UIImage?, state: String, streetAddress: String, username: String, zipCode: String) {
+        
+        owner.birthdate = birthdate
+        owner.city = city
+        owner.dateEdited = Date()
+        owner.email = email
+        owner.firstName = firstName
+        owner.groups = groups
+        owner.isInstructor = isInstructor
+        owner.lastName = lastNAme
+        owner.mobile = mobile
+        owner.permission = permission
+        owner.phone = phone
+        owner.profilePic = profilePic
+        owner.state = state
+        owner.streetAddress = streetAddress
+        owner.username = username
+        owner.zipCode = zipCode
+    }
+    
+    func promote(owner: Owner, adultBasicBelt: AdultBasicBelt, adultBlackBelt: AdultBlackBelt, mostRecentPromotion: Date, promotions: [String: Date]) {
+        owner.adultBasicBelt = adultBasicBelt
+        owner.blackBelt = adultBlackBelt
+        owner.mostRecentPromotion = mostRecentPromotion
+        owner.promotions = promotions
+    }
+    
+    func markAttendaence(owner: Owner, attendance: Date) {
+        self.ownerAttendance.append(attendance)
+        owner.attendance = self.ownerAttendance
+        
+    }
     
     // Delete
-    func deleteOwner(owner: Owner) {
+    func delete(owner: Owner) {
         guard let index = self.owners.index(of: owner) else { return }
         self.owners.remove(at: index)
     }
