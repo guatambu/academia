@@ -23,7 +23,7 @@ class KidStudent {
     var attendance: [Date]?
     
     // Status
-    var userStatus: [StudentStatus]
+    var studentStatus: [StudentStatus]
     
     // Data Model related
     var groups: [Group]?
@@ -53,14 +53,13 @@ class KidStudent {
     
     // Basic Memberwise Initializer
     init(kidUID: String,
-         isKid: Bool,
          dateCreated: Date,
          dateEdited: Date,
          birthdate: Date,
          promotions: [String: Date]?,
          mostRecentPromotion: Date?,
          attendance: [Date]?,
-         userStatus: [StudentStatus],
+         studentStatus: [StudentStatus],
          groups: [Group]?,
          paymentProgram: PaymentProgram?,
          permission: [UserPermissions],
@@ -89,7 +88,7 @@ class KidStudent {
         self.promotions = promotions
         self.mostRecentPromotion = mostRecentPromotion
         self.attendance = attendance
-        self.userStatus = userStatus
+        self.studentStatus = studentStatus
         self.kidsBelt = kidsBelt
         self.groups = groups
         self.paymentProgram = paymentProgram

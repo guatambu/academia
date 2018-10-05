@@ -6,11 +6,13 @@
 //  Copyright © 2018 DunDak, LLC. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class KidStudentModelController {
     
     static let shared = KidStudentModelController()
+    
+    var kids = [KidStudent]()
     
     var numberTasksCompleted: Int = 0
     
@@ -24,6 +26,29 @@ class KidStudentModelController {
     ]
     
     var deletedKidStudentOnboardingTasks: [OnBoardingTask] = []
+    
+    
+    // MARK: - CRUD Functions
+    
+    // Create
+    func addNewKidStudent(birthdate: Date, kidsBelt: KidsBelt?, profilePic: UIImage?, username: String, firstName: String, lastName: String, parentGuardian: String?, streetAddress: String, city: String, state: String, zipCode: String, phone: String, mobile: String, email: String, emergencyContact: String, emergencyContactPhone: String, emergencyContactRelationship: String) {
+        
+        let kid = KidStudent(kidUID: "003", dateCreated: Date(), dateEdited: Date(), birthdate: Date(), promotions: nil, mostRecentPromotion: nil, attendance: nil, studentStatus: [StudentStatus.inactive], groups: nil, paymentProgram: nil, permission: [UserPermissions.parentGuardian], kidsBelt: nil, profilePic: profilePic, username: username, firstName: firstName, lastName: lastName, parentGuardian: parentGuardian, streetAddress: streetAddress, city: city, state: state, zipCode: zipCode, phone: phone, mobile: mobile, email: email, emergencyContact: emergencyContact, emergencyContactPhone: emergencyContactPhone, emergencyContactRelationship: emergencyContactRelationship)
+        
+        kids.append(kid)
+    }
+    
+    // Read
+    
+    
+    // Update
+    
+    
+    // Delete
+    func deleteKidStudent(kidStudent: KidStudent) {
+        guard let index = self.kids.index(of: kidStudent) else { return }
+        self.kids.remove(at: index)
+    }
     
 }
 

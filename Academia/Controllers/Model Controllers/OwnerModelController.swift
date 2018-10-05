@@ -31,7 +31,8 @@ class OwnerModelController {
     
     var deletedOwnerOnboardingTasks: [OnBoardingTask] = []
     
-     // MARK: - CRUD Functions
+    
+    // MARK: - CRUD Functions
     
     // Create
     func addNewOwner(birthdate: Date, adultBasicBelt: AdultBasicBelt?, adultBlackBelt: AdultBlackBelt?, profilePic: UIImage?, username: String, firstName: String, lastName: String, streetAddress: String, city: String, state: String, zipCode: String, phone: String, mobile: String, email: String) {
