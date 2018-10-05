@@ -14,37 +14,30 @@ import Foundation
     // Models
         // Add UID String properties to all relevant Models - *** COMPLETE?
 
-        // all models need to conform to Equatable Protocol
-//            extension Model: Equatable {}
-//
-//            func ==(lhs: Model, rhs: Model) -> Bool {
-//                if lhs.property1 != rhs.property1 { return false }
-//                if lhs.property2 != rhs.property2 { return false }
-//
-//                return true
-//            }
+        // all models need to conform to Equatable Protocol -  *** COMPLETE?
+
 
     // Model Controllers
         // User Model Controllers
-            // Adult Student Model Controller
+            // Adult Student Model Controller  -  *** COMPLETE?
                 // CRUD Functions
-            // Kid Student Model Controller
+            // Kid Student Model Controller  -  *** COMPLETE?
                 // CRUD Functions
-            // Owner Model Controller
+            // Owner Model Controller  -  *** COMPLETE?
                 // CRUD Functions
-        // Location Model Controller
+        // Location Model Controller  -  *** COMPLETE?
             // CRUD Functions
-        // Adult Basic Belt Model Controller
+        // Adult Basic Belt Model Controller  -  *** COMPLETE??
             // CRUD Functions
-        // Adult Black Belt Model Controller
+        // Adult Black Belt Model Controller  -  *** COMPLETE??
             // CRUD Functions
-        // Kids Belt Model Controller
+        // Kids Belt Model Controller  -  *** COMPLETE??
             // CRUD Functions
-        // Aula Model Controller
+        // Aula Model Controller  -  *** COMPLETE?
             // CRUD Functions
-        // Payemnt Program Model Controller
+        // Payemnt Program Model Controller  -  *** COMPLETE?
             // CRUD Functions
-        // Group Model Controller
+        // Group Model Controller  -  *** COMPLETE?
             // CRUD Functions
         // OnBoarding Task Model Controller
             // CRUD Functions

@@ -80,7 +80,26 @@ class AdultBasicBelt {
     }
 }
 
-
+extension AdultBasicBelt: Equatable {
+    
+    static func ==(lhs: AdultBasicBelt, rhs: AdultBasicBelt) -> Bool {
+        if lhs.active != rhs.active { return false }
+        if lhs.adultBasicBeltUID != rhs.adultBasicBeltUID { return false }
+        if lhs.belt != rhs.belt { return false }
+        if lhs.blackBar != rhs.blackBar { return false }
+        if lhs.dateCreated != rhs.dateCreated { return false }
+        if lhs.dateEdited != rhs.dateEdited { return false }
+        if lhs.elligibleForNextBelt != rhs.elligibleForNextBelt { return false }
+        if lhs.name != rhs.name { return false }
+        
+        if lhs.firstWhiteStripe != rhs.firstWhiteStripe { return false }
+        if lhs.secondWhiteStripe != rhs.secondWhiteStripe { return false }
+        if lhs.thirdWhiteStripe != rhs.thirdWhiteStripe { return false }
+        if lhs.fourthWhiteStripe != rhs.fourthWhiteStripe { return false }
+        
+        return true
+    }
+}
 
 
 

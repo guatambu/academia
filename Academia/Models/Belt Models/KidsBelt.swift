@@ -121,14 +121,36 @@ class KidsBelt {
         self.labelSecondBlackStripe = labelSecondBlackStripe
         self.labelThirdBlackStripe = labelThirdBlackStripe
     }
-    
-    
-    
-    
-    
 }
 
-
+extension KidsBelt: Equatable {
+    
+    static func ==(lhs: KidsBelt, rhs: KidsBelt) -> Bool {
+        
+        if lhs.active != rhs.active { return false }
+        if lhs.kidsBeltUID != rhs.kidsBeltUID { return false }
+        if lhs.belt != rhs.belt { return false }
+        if lhs.blackBar != rhs.blackBar { return false }
+        if lhs.dateCreated != rhs.dateCreated { return false }
+        if lhs.dateEdited != rhs.dateEdited { return false }
+        if lhs.elligibleForNextBelt != rhs.elligibleForNextBelt { return false }
+        if lhs.name != rhs.name { return false }
+        
+        if lhs.firstWhiteStripe != rhs.firstWhiteStripe { return false }
+        if lhs.secondWhiteStripe != rhs.secondWhiteStripe { return false }
+        if lhs.thirdWhiteStripe != rhs.thirdWhiteStripe { return false }
+        if lhs.fourthWhiteStripe != rhs.fourthWhiteStripe { return false }
+        if lhs.firstRedStripe != rhs.firstRedStripe { return false }
+        if lhs.secondRedStripe != rhs.secondRedStripe { return false }
+        if lhs.thirdRedStripe != rhs.thirdRedStripe { return false }
+        if lhs.fourthRedStripe != rhs.fourthRedStripe { return false }
+        if lhs.firstBlackStripe != rhs.firstBlackStripe { return false }
+        if lhs.secondBlackStripe != rhs.secondBlackStripe { return false }
+        if lhs.thirdBlackStripe != rhs.thirdBlackStripe { return false }
+        
+        return true
+    }
+}
 
 
 

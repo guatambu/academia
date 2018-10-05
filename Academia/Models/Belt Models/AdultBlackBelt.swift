@@ -123,10 +123,46 @@ class AdultBlackBelt {
         self.labelTenthDegreeTime = labelTenthDegreeTime
         
     }
-    
-    
-    
 }
+
+extension AdultBlackBelt: Equatable {
+    
+    static func ==(lhs: AdultBlackBelt, rhs: AdultBlackBelt) -> Bool {
+        
+        if lhs.active != rhs.active { return false }
+        if lhs.adultBlackBeltUID != rhs.adultBlackBeltUID { return false }
+        if lhs.belt != rhs.belt { return false }
+        if lhs.dateCreated != rhs.dateCreated { return false }
+        if lhs.dateEdited != rhs.dateEdited { return false }
+        if lhs.elligibleForNextBelt != rhs.elligibleForNextBelt { return false }
+        if lhs.leftTeacherBar != rhs.leftTeacherBar { return false }
+        if lhs.name != rhs.name { return false }
+        if lhs.redBar != rhs.redBar { return false }
+        if lhs.rightTeacherBar != rhs.rightTeacherBar { return false }
+        
+        if lhs.firstWhiteDegree != rhs.firstWhiteDegree { return false }
+        if lhs.secondWhiteDegree != rhs.secondWhiteDegree { return false }
+        if lhs.thirdWhiteDegree != rhs.thirdWhiteDegree { return false }
+        if lhs.fourthWhiteDegree != rhs.fourthWhiteDegree { return false }
+        if lhs.fifthWhiteDegree != rhs.fifthWhiteDegree { return false }
+        if lhs.sixthWhiteDegree != rhs.sixthWhiteDegree { return false }
+        if lhs.seventhWhiteDegree != rhs.seventhWhiteDegree { return false }
+        if lhs.eigthWhiteDegree != rhs.eigthWhiteDegree { return false }
+        if lhs.ninthWhiteDegree != rhs.ninthWhiteDegree { return false }
+        if lhs.tenthWhiteDegree != rhs.tenthWhiteDegree { return false }
+        
+        return true
+    }
+}
+
+
+
+
+
+
+
+
+
 
 
 

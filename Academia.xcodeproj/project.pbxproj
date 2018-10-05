@@ -37,6 +37,10 @@
 		FA23D2832166F5AE00707056 /* AulaModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23D2822166F5AE00707056 /* AulaModelController.swift */; };
 		FA23D2852166F5C900707056 /* PaymentProgramModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23D2842166F5C900707056 /* PaymentProgramModelController.swift */; };
 		FA23D2882166F5E400707056 /* GroupModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23D2872166F5E400707056 /* GroupModelController.swift */; };
+		FA23D28A2167E31200707056 /* AdultBasicBeltModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23D2892167E31200707056 /* AdultBasicBeltModelController.swift */; };
+		FA23D28C2167E32600707056 /* AdultBlackBeltModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23D28B2167E32600707056 /* AdultBlackBeltModelController.swift */; };
+		FA23D28E2167E35300707056 /* KidsBeltModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23D28D2167E35300707056 /* KidsBeltModelController.swift */; };
+		FA23D2922167F9EF00707056 /* OnBoardingTaskModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23D2912167F9EF00707056 /* OnBoardingTaskModelController.swift */; };
 		FA5C5C28214DCE5E00BF62D5 /* kid_sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA5C5C25214DCE5D00BF62D5 /* kid_sample.jpg */; };
 		FA5C5C29214DCE5E00BF62D5 /* student_sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA5C5C26214DCE5E00BF62D5 /* student_sample.jpg */; };
 		FA5C5C2A214DCE5E00BF62D5 /* owner_sample.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5C5C27214DCE5E00BF62D5 /* owner_sample.png */; };
@@ -258,6 +262,10 @@
 		FA23D2822166F5AE00707056 /* AulaModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AulaModelController.swift; sourceTree = "<group>"; };
 		FA23D2842166F5C900707056 /* PaymentProgramModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProgramModelController.swift; sourceTree = "<group>"; };
 		FA23D2872166F5E400707056 /* GroupModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupModelController.swift; sourceTree = "<group>"; };
+		FA23D2892167E31200707056 /* AdultBasicBeltModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdultBasicBeltModelController.swift; sourceTree = "<group>"; };
+		FA23D28B2167E32600707056 /* AdultBlackBeltModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdultBlackBeltModelController.swift; sourceTree = "<group>"; };
+		FA23D28D2167E35300707056 /* KidsBeltModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidsBeltModelController.swift; sourceTree = "<group>"; };
+		FA23D2912167F9EF00707056 /* OnBoardingTaskModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingTaskModelController.swift; sourceTree = "<group>"; };
 		FA5C5C25214DCE5D00BF62D5 /* kid_sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kid_sample.jpg; sourceTree = "<group>"; };
 		FA5C5C26214DCE5E00BF62D5 /* student_sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = student_sample.jpg; sourceTree = "<group>"; };
 		FA5C5C27214DCE5E00BF62D5 /* owner_sample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = owner_sample.png; sourceTree = "<group>"; };
@@ -568,13 +576,13 @@
 		FA0C443D21278B2500B59194 /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FA5C5C31215170AE00BF62D5 /* AdultStudentModelController.swift */,
-				FA5C5C33215170BE00BF62D5 /* KidStudentModelController.swift */,
-				FAF29BCD212E4CF200752414 /* OwnerModelController.swift */,
+				FA23D28F2167E36500707056 /* User Model Controllers */,
 				FA5C5C35215170D200BF62D5 /* LocationModelController.swift */,
 				FA23D2822166F5AE00707056 /* AulaModelController.swift */,
 				FA23D2872166F5E400707056 /* GroupModelController.swift */,
 				FA23D2842166F5C900707056 /* PaymentProgramModelController.swift */,
+				FA23D2902167E38D00707056 /* Belt Model Controllers */,
+				FA23D2912167F9EF00707056 /* OnBoardingTaskModelController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -718,6 +726,26 @@
 				FA9ADA30213B6BA90005E1F1 /* InternationalStandardBJJBelts.swift */,
 			);
 			path = "Belt Models";
+			sourceTree = "<group>";
+		};
+		FA23D28F2167E36500707056 /* User Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FA5C5C31215170AE00BF62D5 /* AdultStudentModelController.swift */,
+				FA5C5C33215170BE00BF62D5 /* KidStudentModelController.swift */,
+				FAF29BCD212E4CF200752414 /* OwnerModelController.swift */,
+			);
+			path = "User Model Controllers";
+			sourceTree = "<group>";
+		};
+		FA23D2902167E38D00707056 /* Belt Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FA23D2892167E31200707056 /* AdultBasicBeltModelController.swift */,
+				FA23D28B2167E32600707056 /* AdultBlackBeltModelController.swift */,
+				FA23D28D2167E35300707056 /* KidsBeltModelController.swift */,
+			);
+			path = "Belt Model Controllers";
 			sourceTree = "<group>";
 		};
 		FA5C5C3F2152CC7A00BF62D5 /* Home Dashboard */ = {
@@ -1145,6 +1173,7 @@
 				FAE2FDB02140C0C900815402 /* SocialNetworksTextFieldTableViewCell.swift in Sources */,
 				FAE2FD9E2140C02800815402 /* EmailTextFieldTableViewCell.swift in Sources */,
 				FAF1BB8E21435BD800AD56AE /* DescriptionTextViewTableViewCell.swift in Sources */,
+				FA23D28A2167E31200707056 /* AdultBasicBeltModelController.swift in Sources */,
 				FA5C5C4B2154632900BF62D5 /* AdultStudentInitialSetupTableViewController.swift in Sources */,
 				FAF29BCE212E4CF200752414 /* OwnerModelController.swift in Sources */,
 				FA5C5C3E2152CB3200BF62D5 /* StudentChoiceViewController.swift in Sources */,
@@ -1159,7 +1188,9 @@
 				FA9ADA212138DBC30005E1F1 /* MyCells.swift in Sources */,
 				FAE2FDAC2140C09A00815402 /* LocationNameTextFieldTableViewCell.swift in Sources */,
 				FA9ADA07213784870005E1F1 /* AboutAcademiaServicesViewController.swift in Sources */,
+				FA23D28C2167E32600707056 /* AdultBlackBeltModelController.swift in Sources */,
 				FAE2FD9C2140C01B00815402 /* MobileTextFieldTableViewCell.swift in Sources */,
+				FA23D2922167F9EF00707056 /* OnBoardingTaskModelController.swift in Sources */,
 				FAE67A32215C135A00822DCF /* KidStudentDetailsTableViewController.swift in Sources */,
 				FA9ADA0B2137895A0005E1F1 /* PaymentProgramDetailTableViewController.swift in Sources */,
 				FA6FB9FF2149F32200558657 /* Owner.swift in Sources */,
@@ -1228,6 +1259,7 @@
 				FAB203DC216188C50034E1D4 /* StudentAulasListMenuTableViewCell.swift in Sources */,
 				FAE67A34215C139A00822DCF /* AdultStudentDetailsTableViewController.swift in Sources */,
 				FA9AD9FB213783E20005E1F1 /* OwnerProfileDetailsEditTableViewController.swift in Sources */,
+				FA23D28E2167E35300707056 /* KidsBeltModelController.swift in Sources */,
 				FAE2FD8C2140BFBA00815402 /* UsernameTextFieldTableViewCell.swift in Sources */,
 				FA6FBA082149F3C700558657 /* StudentStatus.swift in Sources */,
 				FAE2FDA42140C05B00815402 /* SchoolGroupTextFieldTableViewCell.swift in Sources */,
