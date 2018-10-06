@@ -59,8 +59,8 @@ class Aula {
     
     init(aulaUID: String,
          active: Bool,
-         className: String,
-         classDescription: String,
+         aulaName: String,
+         aulaDescription: String,
          daysOfTheWeek: [Weekdays],
          timeOfDay: ClassTimes,
          location: Location?,
@@ -74,8 +74,8 @@ class Aula {
         
         self.aulaUID = aulaUID
         self.active = active
-        self.className = className
-        self.classDescription = classDescription
+        self.aulaName = aulaName
+        self.aulaDescription = aulaDescription
         self.daysOfTheWeek = daysOfTheWeek
         self.timeOfDay = timeOfDay
         self.location = location
