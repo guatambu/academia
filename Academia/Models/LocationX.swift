@@ -1,5 +1,5 @@
 //
-//  Location.swift
+//  LocationX.swift
 //  Academia
 //
 //  Created by Michael Guatambu Davis on 8/17/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Location {
+class LocationX {
     
     // MARK: - Properties
     
@@ -71,9 +71,9 @@ class Location {
     
 }
 
-extension Location: Equatable {
+extension LocationX: Equatable {
     
-    static func ==(lhs: Location, rhs: Location) -> Bool {
+    static func ==(lhs: LocationX, rhs: LocationX) -> Bool {
         if lhs.city != rhs.city { return false }
         if lhs.dateCreated != rhs.dateCreated { return false }
         if lhs.dateEdited != rhs.dateEdited { return false }

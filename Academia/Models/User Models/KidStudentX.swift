@@ -1,5 +1,5 @@
 //
-//  AdultStudent.swift
+//  KidStudentX.swift
 //  Academia
 //
 //  Created by Kelly Johnson on 9/12/18.
@@ -8,15 +8,11 @@
 
 import UIKit
 
-class AdultStudent {
-    
+class KidStudentX {
     // MARK: - Properties
     
     // UID
-    let adultStudentUID: String
-    
-    // Bool
-    var isInstructor: Bool
+    let kidUID: String
     
     // Date
     var dateCreated: Date
@@ -30,11 +26,10 @@ class AdultStudent {
     var studentStatus: [StudentStatus]
     
     // Data Model related
-    var groups: [Group]?
-    var paymentProgram: PaymentProgram?
+    var groups: [GroupX]?
+    var paymentProgram: PaymentProgramX?
     var permission: [UserPermissions]
-    var adultBasicBelt: AdultBasicBelt?
-    var blackBelt: AdultBlackBelt?
+    var kidsBelt: KidsBeltX?
     
     // Images
     var profilePic: UIImage?
@@ -43,6 +38,7 @@ class AdultStudent {
     var username: String
     var firstName: String
     var lastName: String
+    var parentGuardian: String?
     var streetAddress: String
     var city: String
     var state: String
@@ -56,8 +52,7 @@ class AdultStudent {
     
     
     // Basic Memberwise Initializer
-    init(adultStudentUID: String,
-         isInstructor: Bool,
+    init(kidUID: String,
          dateCreated: Date,
          dateEdited: Date,
          birthdate: Date,
@@ -65,15 +60,15 @@ class AdultStudent {
          mostRecentPromotion: Date?,
          attendance: [Date]?,
          studentStatus: [StudentStatus],
-         groups: [Group]?,
-         paymentProgram: PaymentProgram?,
+         groups: [GroupX]?,
+         paymentProgram: PaymentProgramX?,
          permission: [UserPermissions],
-         adultBasicBelt: AdultBasicBelt?,
-         blackBelt: AdultBlackBelt?,
+         kidsBelt: KidsBeltX?,
          profilePic: UIImage?,
          username: String,
          firstName: String,
          lastName: String,
+         parentGuardian: String?,
          streetAddress: String,
          city: String,
          state: String,
@@ -86,8 +81,7 @@ class AdultStudent {
          emergencyContactRelationship: String
         ) {
         
-        self.adultStudentUID = adultStudentUID
-        self.isInstructor = isInstructor
+        self.kidUID = kidUID
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
         self.birthdate = birthdate
@@ -95,8 +89,7 @@ class AdultStudent {
         self.mostRecentPromotion = mostRecentPromotion
         self.attendance = attendance
         self.studentStatus = studentStatus
-        self.adultBasicBelt = adultBasicBelt
-        self.blackBelt = blackBelt
+        self.kidsBelt = kidsBelt
         self.groups = groups
         self.paymentProgram = paymentProgram
         self.permission = permission
@@ -104,6 +97,7 @@ class AdultStudent {
         self.username = username
         self.firstName = firstName
         self.lastName = lastName
+        self.parentGuardian = parentGuardian
         self.streetAddress = streetAddress
         self.city = city
         self.state = state
@@ -115,12 +109,13 @@ class AdultStudent {
         self.emergencyContactPhone = emergencyContactPhone
         self.emergencyContactRelationship = emergencyContactRelationship
     }
+    
+    
 }
 
-extension AdultStudent: Equatable {
+extension KidStudentX: Equatable {
     
-    static func ==(lhs: AdultStudent, rhs: AdultStudent) -> Bool {
-        if lhs.adultStudentUID != rhs.adultStudentUID{ return false }
+    static func ==(lhs: KidStudentX, rhs: KidStudentX) -> Bool {
         if lhs.birthdate != rhs.birthdate { return false }
         if lhs.city != rhs.city { return false }
         if lhs.dateCreated != rhs.dateCreated { return false }
@@ -130,7 +125,7 @@ extension AdultStudent: Equatable {
         if lhs.emergencyContactPhone != rhs.emergencyContactPhone { return false }
         if lhs.emergencyContactRelationship != rhs.emergencyContactRelationship { return false }
         if lhs.firstName != rhs.firstName { return false }
-        if lhs.isInstructor != rhs.isInstructor { return false }
+        if lhs.kidUID != rhs.kidUID { return false }
         if lhs.lastName != rhs.lastName { return false }
         if lhs.permission != rhs.permission { return false }
         if lhs.state != rhs.state { return false }
@@ -142,9 +137,6 @@ extension AdultStudent: Equatable {
         return true
     }
 }
-
-
-
 
 
 

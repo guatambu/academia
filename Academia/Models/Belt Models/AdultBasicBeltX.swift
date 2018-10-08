@@ -1,5 +1,5 @@
 //
-//  AdultBasicBelt.swift
+//  AdultBasicBeltX.swift
 //  Academia
 //
 //  Created by Michael Guatambu Davis on 8/17/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AdultBasicBelt {
+class AdultBasicBeltX {
     
     // MARK: - Properties
     
@@ -80,9 +80,9 @@ class AdultBasicBelt {
     }
 }
 
-extension AdultBasicBelt: Equatable {
+extension AdultBasicBeltX: Equatable {
     
-    static func ==(lhs: AdultBasicBelt, rhs: AdultBasicBelt) -> Bool {
+    static func ==(lhs: AdultBasicBeltX, rhs: AdultBasicBeltX) -> Bool {
         if lhs.active != rhs.active { return false }
         if lhs.adultBasicBeltUID != rhs.adultBasicBeltUID { return false }
         if lhs.belt != rhs.belt { return false }

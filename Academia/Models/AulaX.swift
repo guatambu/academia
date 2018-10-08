@@ -1,5 +1,5 @@
 //
-//  Aula.swift
+//  AulaX.swift
 //  Academia
 //
 //  Created by Michael Guatambu Davis on 8/17/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Aula {
+class AulaX {
     
     // MARK: - Properties
     
@@ -20,7 +20,7 @@ class Aula {
     var classDescription: String
     var daysOfTheWeek: [Weekdays]
     var timeOfDay: ClassTimes
-    var location: Location?
+    var location: LocationX?
     var students: [Any]?
     var instructor: [Any]?
     var currentDate: Date
@@ -63,7 +63,7 @@ class Aula {
          aulaDescription: String,
          daysOfTheWeek: [Weekdays],
          timeOfDay: ClassTimes,
-         location: Location?,
+         location: LocationX?,
          students: [Any]?,
          instructor: [Any]?,
          currentDate: Date,
@@ -89,9 +89,9 @@ class Aula {
     
 }
 
-extension Aula: Equatable {
+extension AulaX: Equatable {
     
-    static func ==(lhs: Aula, rhs: Aula) -> Bool {
+    static func ==(lhs: AulaX, rhs: AulaX) -> Bool {
         if lhs.active != rhs.active { return false }
         if lhs.aulaUID != rhs.aulaUID{ return false }
         if lhs.classDescription != rhs.classDescription { return false }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class OnBoardingTaskModelController {
     
@@ -22,21 +23,21 @@ class OnBoardingTaskModelController {
     // Create
     func addNewOwnerTask(name: String, title: String, description: String, isCompleted: Bool?) {
         
-        let ownerOnBoardingTask = OnBoardingTask(onboardingTaskUID: "01", name: name, title: title, description: description, isCompleted: isCompleted, dateCompleted: nil, dateOfMostRecentChange: Date())
+        let ownerOnBoardingTask = OnBoardingTask(onboardingTaskUID: "01", name: name, title: title, descriptionDetail: description, isCompleted: isCompleted, dateCompleted: nil, dateOfMostRecentChange: Date())
         
         ownerOnBoardingTasks.append(ownerOnBoardingTask)
     }
     
     func addNewAdultStudentTask(name: String, title: String, description: String, isCompleted: Bool?) {
         
-        let adultStudentOnBoardingTask = OnBoardingTask(onboardingTaskUID: "02", name: name, title: title, description: description, isCompleted: isCompleted, dateCompleted: nil, dateOfMostRecentChange: Date())
+        let adultStudentOnBoardingTask = OnBoardingTask(onboardingTaskUID: "02", name: name, title: title, descriptionDetail: description, isCompleted: isCompleted, dateCompleted: nil, dateOfMostRecentChange: Date())
         
         adultStudentOnBoardingTasks.append(adultStudentOnBoardingTask)
     }
     
     func addNewKidStudentTask(name: String, title: String, description: String, isCompleted: Bool?) {
         
-        let kidStudentOnBoardingTask = OnBoardingTask(onboardingTaskUID: "03", name: name, title: title, description: description, isCompleted: isCompleted, dateCompleted: nil, dateOfMostRecentChange: Date())
+        let kidStudentOnBoardingTask = OnBoardingTask(onboardingTaskUID: "03", name: name, title: title, descriptionDetail: description, isCompleted: isCompleted, dateCompleted: nil, dateOfMostRecentChange: Date())
         
         kidStudentOnBoardingTasks.append(kidStudentOnBoardingTask)
     }
@@ -45,9 +46,9 @@ class OnBoardingTaskModelController {
     
     
     // Update
-    func update(task: OnBoardingTask, name: String, title: String, description: String, isCompleted: Bool?) {
+    func update(task: OnBoardingTask, name: String, title: String, descriptionDetail: String, isCompleted: Bool?) {
         
-        task.description = description
+        task.descriptionDetail = descriptionDetail
         task.isCompleted = isCompleted
         task.name = name
         task.title = title
