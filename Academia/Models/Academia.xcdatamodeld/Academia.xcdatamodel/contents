@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="16G1510" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AdultBelt" representedClassName="AdultBelt" syncable="YES" codeGenerationType="class">
+        <attribute name="active" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="adultBeltUID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="beltColor" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="beltTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="blackBar" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dateEdited" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="elligibleForNextBelt" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="firstStripeTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstWhiteStripe" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="fourthStripeTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fourthWhiteStripe" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="secondStripeTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="secondWhiteStripe" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="thirdStripeTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thirdWhiteStripe" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <entity name="AdultStudent" representedClassName="AdultStudent" syncable="YES" codeGenerationType="class">
+        <attribute name="adultBelt" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="adultStudentUID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="attendance" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="birthdate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="blackBelt" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dateEdited" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emergencyContact" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emergencyContactPhone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emergencyContactRelationship" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="groups" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="isInstructor" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mobile" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mostRecentPromotion" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="paymentProgram" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="permission" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="profilePic" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="promotions" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="streetAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="studentStatus" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zipCode" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Aula" representedClassName="Aula" syncable="YES" codeGenerationType="class">
+        <attribute name="active" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="attendees" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="aulaDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="aulaID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="aulaName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="currentDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dateEdited" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="daysOfTheWeek" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="instructors" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="location" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="students" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="timeOfDay" optional="YES" attributeType="Transformable" syncable="YES"/>
+    </entity>
+    <entity name="BlackBelt" representedClassName="BlackBelt" syncable="YES" codeGenerationType="class">
+        <attribute name="active" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="beltColor" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="beltTimeLabel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="blackBeltUID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="coralBar" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dateEdited" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="eightDegree" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="eighthDegreeTimeLabel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="elligibleForNextBelt" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="fifthDegree" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="fifthDegreeTimeLabel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstDegree" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="firstDegreeTimeLabel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fourthDegree" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="fourthDegreeTimeLabel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="leftTeacherBar" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ninthDegree" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="ninthDegreeTimeLabel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="redBar" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="rightTeacherBar" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="secondDegree" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="secondDegreeTimeLabel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="seventhDegree" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="seventhDegreeTimeLabel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sixthDegree" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="sixthDegreeTimeLabel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tenthDegree" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="tenthDegreeTimeLabel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thirdDegree" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="thirdDegreeTimeLabel" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Group" representedClassName="Group" syncable="YES" codeGenerationType="class">
+        <attribute name="active" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dateEdited" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="groupUID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="members" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="KidsBelt" representedClassName="KidsBelt" syncable="YES" codeGenerationType="class">
+        <attribute name="active" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="beltCenterRibbonView" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="beltColor" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="blackBar" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="bletTimeLabel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dateEdited" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="elligibleForNextBelt" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="firstBlackStripe" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="firstBlackStripeTimeLabel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstRedStripe" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="firstRedStripeTimeLabel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstWhiteStripe" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="firstWhiteStripeTimeLabel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fourthRedStripe" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="fourthRedStripeTimeLabel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fourthWhiteStripe" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="fourthWhiteStripeTimeLabel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="kidsBeltUID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="secondBlackStripe" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="secondBlackStripeTimeLabel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="secondRedStripe" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="secondRedStripeTimeLabel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="secondWhiteStripe" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="secondWhiteStripeTimeLabel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thirdBlackStripe" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="thirdBlackStripeTimeLabel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thirdRedStripe" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="thirdRedStripeTimeLabel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thirdWhiteStripe" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="thirdWhiteStripeTimeLabel" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="KidStudent" representedClassName="KidStudent" syncable="YES" codeGenerationType="class">
+        <attribute name="attendance" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="birthdate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dateEdited" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emergencyContact" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emergencyContactPhone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emergencyContactRelationship" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="groups" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="kidsBelt" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="kidStudentUID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mobile" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mostRecentPromotion" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="parentGuardian" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="paymentProgram" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="permission" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="profilePic" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="promotions" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="streetAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="studentStatus" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zipCode" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Location" representedClassName="Location" syncable="YES" codeGenerationType="class">
+        <attribute name="active" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dateEdited" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="locationName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="locationUID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="profilePic" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="social" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="streetAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zipCode" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="OnBoardingTask" representedClassName="OnBoardingTask" syncable="YES" codeGenerationType="class">
+        <attribute name="dateComplete" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dateEdited" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="descriptionDetail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isComplete" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="onboardingTaskUID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Owner" representedClassName="Owner" syncable="YES" codeGenerationType="class">
+        <attribute name="adultBelt" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="attendance" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="birthdate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="blackBelt" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dateEdited" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="groups" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="isInsctructor" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mobile" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mostRecentPromotionDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="ownerUID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="permission" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="profilePic" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="promotions" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="streetAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zipCode" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="PaymentProgram" representedClassName="PaymentProgram" syncable="YES" codeGenerationType="class">
+        <attribute name="active" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="billingOptions" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="billingType" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dateEdited" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="paymentAgreement" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="paymentDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="paymentProgramUID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="programName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="signatureType" optional="YES" attributeType="Transformable" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Owner" positionX="16" positionY="-450" width="128" height="388"/>
+        <element name="AdultStudent" positionX="151" positionY="-90" width="128" height="463"/>
+        <element name="KidStudent" positionX="-47" positionY="-90" width="128" height="448"/>
+        <element name="AdultBelt" positionX="250" positionY="-216" width="128" height="298"/>
+        <element name="BlackBelt" positionX="70" positionY="-216" width="128" height="523"/>
+        <element name="Location" positionX="252" positionY="-297" width="128" height="253"/>
+        <element name="Aula" positionX="-297" positionY="-297" width="128" height="238"/>
+        <element name="PaymentProgram" positionX="70" positionY="-297" width="128" height="193"/>
+        <element name="OnBoardingTask" positionX="18" positionY="-378" width="128" height="148"/>
+        <element name="KidsBelt" positionX="-110" positionY="-216" width="128" height="523"/>
+        <element name="Group" positionX="-110" positionY="-297" width="128" height="133"/>
+    </elements>
+</model>

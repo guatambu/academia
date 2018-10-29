@@ -41,12 +41,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="95g-bz-JNx" secondAttribute="trailing" id="70K-cw-ktg"/>
-                                    <constraint firstItem="95g-bz-JNx" firstAttribute="centerY" secondItem="fcG-Rc-sDk" secondAttribute="centerY" id="IpV-GU-udJ"/>
                                     <constraint firstAttribute="width" constant="40" id="b0m-ZT-XQO"/>
                                     <constraint firstAttribute="bottom" secondItem="95g-bz-JNx" secondAttribute="bottom" id="hu4-3l-EZe"/>
                                     <constraint firstItem="95g-bz-JNx" firstAttribute="top" secondItem="fcG-Rc-sDk" secondAttribute="top" id="kP5-dY-cyZ"/>
                                     <constraint firstItem="95g-bz-JNx" firstAttribute="leading" secondItem="fcG-Rc-sDk" secondAttribute="leading" id="mM1-PT-ivZ"/>
-                                    <constraint firstItem="95g-bz-JNx" firstAttribute="centerX" secondItem="fcG-Rc-sDk" secondAttribute="centerX" id="syr-BB-lTl"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n9o-R3-9rI" userLabel="Text Container View">
