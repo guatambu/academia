@@ -16,7 +16,13 @@ class ImageMenuTableViewCell: UITableViewCell {
     @IBOutlet weak var cellTitleOutlet: UILabel!
     @IBOutlet weak var rightRedArrowImageViewOutlet: UIImageView!
 
-    var user: User? {
+    var adultStudent: AdultStudent? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    var kidStudent: KidStudent? {
         didSet {
             updateViews()
         }
@@ -41,14 +47,15 @@ class ImageMenuTableViewCell: UITableViewCell {
 
     func updateViews() {
         
-        if let user = user {
-            userThumbnailImageViewOutlet.image = user.profilePic
-            cellTitleOutlet.text = "\(user.firstName) \(user.lastName)"
+        if let adultStudent = adultStudent {
+            userThumbnailImageViewOutlet.image = adultStudent.profilePic
+            cellTitleOutlet.text = "\(adultStudent.firstName) \(adultStudent.lastName)"
+        } else if let kidStudent = kidStudent {
+            userThumbnailImageViewOutlet.image = kidStudent.profilePic
+            cellTitleOutlet.text = "\(kidStudent.firstName) \(kidStudent.lastName)"
         } else if let location = location {
             userThumbnailImageViewOutlet.image = location.profilePic
             cellTitleOutlet.text = "\(location.locationName)"
         }
     }
-
-
 }

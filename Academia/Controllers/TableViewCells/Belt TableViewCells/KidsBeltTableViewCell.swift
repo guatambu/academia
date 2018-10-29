@@ -28,6 +28,7 @@ class KidsBeltTableViewCell: UITableViewCell {
     @IBOutlet weak var secondBlackStripeViewOutlet: UIView!
     @IBOutlet weak var thirdBlackStripeViewOutlet: UIView!
     
+    @IBOutlet weak var timeLabelsStackViewOutlet: UIStackView!
     // Labels
     @IBOutlet weak var beltTimeLabelOutlet: UILabel!
     @IBOutlet weak var labelFirstWhiteStripeOutlet: UILabel!
@@ -52,12 +53,6 @@ class KidsBeltTableViewCell: UITableViewCell {
         if kidsBelt.active {
             // set kids belt color
             beltViewOutlet.backgroundColor = kidsBelt.belt
-            
-            
-            // set center ribbon color if present
-            if let beltCenterRibbonColor = kidsBelt.beltCenterRibbonView {
-                beltCenterRibbonViewOutlet.backgroundColor = beltCenterRibbonColor
-            }
             
             // set graduation bar color
             blackBarViewOutlet.backgroundColor = kidsBelt.blackBar
@@ -132,6 +127,18 @@ class KidsBeltTableViewCell: UITableViewCell {
             let errorMessage = "This is belt is not currently active and available for use in your belt system."
             print(errorMessage)
             return
+        }
+        
+        // set center ribbon color if present
+        if kidsBelt.beltCenterRibbonView == UIColor.black {
+            beltCenterRibbonViewOutlet.backgroundColor = kidsBelt.beltCenterRibbonView
+            beltCenterRibbonViewOutlet.isHidden = false
+        } else if kidsBelt.beltCenterRibbonView == UIColor.white {
+            beltCenterRibbonViewOutlet.backgroundColor = kidsBelt.beltCenterRibbonView
+            beltCenterRibbonViewOutlet.isHidden = false
+        } else {
+            beltCenterRibbonViewOutlet.isHidden = true
+            
         }
     }
     

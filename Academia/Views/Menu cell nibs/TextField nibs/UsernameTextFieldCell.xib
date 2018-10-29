@@ -21,20 +21,16 @@
                 <subviews>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8ax-uU-GVe">
                         <rect key="frame" x="16" y="24" width="343" height="32"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="32" id="jpF-kH-LHx"/>
-                        </constraints>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="8ax-uU-GVe" firstAttribute="leading" secondItem="VEe-2h-2lc" secondAttribute="leadingMargin" id="F8u-7R-ms8"/>
-                    <constraint firstItem="8ax-uU-GVe" firstAttribute="centerY" secondItem="VEe-2h-2lc" secondAttribute="centerY" id="JW4-t3-5u5"/>
-                    <constraint firstAttribute="bottom" secondItem="8ax-uU-GVe" secondAttribute="bottom" constant="23.5" id="Mwq-nL-KKz"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="8ax-uU-GVe" secondAttribute="trailing" id="Uoh-KM-lmD"/>
-                    <constraint firstItem="8ax-uU-GVe" firstAttribute="top" secondItem="VEe-2h-2lc" secondAttribute="top" constant="24" id="X6W-7N-Tfx"/>
+                    <constraint firstItem="8ax-uU-GVe" firstAttribute="leading" secondItem="VEe-2h-2lc" secondAttribute="leadingMargin" identifier="usernameLeading" id="F8u-7R-ms8"/>
+                    <constraint firstAttribute="bottom" secondItem="8ax-uU-GVe" secondAttribute="bottom" constant="23.5" identifier="usernameBottom" id="Mwq-nL-KKz"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="8ax-uU-GVe" secondAttribute="trailing" identifier="usernameTrailing" id="Uoh-KM-lmD"/>
+                    <constraint firstItem="8ax-uU-GVe" firstAttribute="top" secondItem="VEe-2h-2lc" secondAttribute="top" constant="24" identifier="usernameTop" id="X6W-7N-Tfx"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

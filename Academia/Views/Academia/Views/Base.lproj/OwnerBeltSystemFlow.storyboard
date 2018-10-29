@@ -8,6 +8,14 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Avenir.ttc">
+            <string>Avenir-Book</string>
+        </array>
+        <array key="GillSans.ttc">
+            <string>GillSans-Light</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Belt Systems Table View Controller-->
         <scene sceneID="0TY-Wr-S1X">
@@ -18,12 +26,50 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="AuY-ju-ur2" customClass="GeneralMenuTableViewCell" customModule="Academia" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="beltSystemsMenuCell" rowHeight="80" id="AuY-ju-ur2" customClass="GeneralMenuTableViewCell" customModule="Academia" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AuY-ju-ur2" id="kIw-gD-kN9">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KfF-ko-Baq">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="79.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adults" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="p3B-Aq-ZVR" userLabel="Kids Program A Class 6PM">
+                                                    <rect key="frame" x="0.0" y="0.0" width="311" height="79.5"/>
+                                                    <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="24"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="NOy-7G-Xj8">
+                                                    <rect key="frame" x="311" y="0.0" width="32" height="79.5"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bcg-WQ-E4D">
+                                                            <rect key="frame" x="0.0" y="0.0" width="32" height="26.5"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </view>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_red_arrow_32.png" translatesAutoresizingMaskIntoConstraints="NO" id="x6L-c0-3Od">
+                                                            <rect key="frame" x="0.0" y="26.5" width="32" height="26.5"/>
+                                                        </imageView>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vo0-px-yIN">
+                                                            <rect key="frame" x="0.0" y="53" width="32" height="26.5"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </view>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="32" id="TeF-d7-uI8"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="KfF-ko-Baq" secondAttribute="bottom" id="50y-br-dHf"/>
+                                        <constraint firstItem="KfF-ko-Baq" firstAttribute="leading" relation="lessThanOrEqual" secondItem="kIw-gD-kN9" secondAttribute="leading" constant="16" id="Pj1-zD-6vI"/>
+                                        <constraint firstItem="KfF-ko-Baq" firstAttribute="top" secondItem="kIw-gD-kN9" secondAttribute="top" id="Zr1-y5-ZGE"/>
+                                        <constraint firstAttribute="trailing" secondItem="KfF-ko-Baq" secondAttribute="trailing" constant="16" id="vUl-Ks-7UK"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="aIr-FY-DQe" kind="show" identifier="to(type)BeltList" id="SfS-He-kDh"/>
@@ -52,9 +98,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="nLT-dM-tZG" userLabel="blet disclaimer View">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5G-g1-HjW">
+                                    <rect key="frame" x="32" y="24" width="311" height="112"/>
+                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="v5G-g1-HjW" firstAttribute="top" secondItem="nLT-dM-tZG" secondAttribute="top" constant="24" id="B2q-j7-59d"/>
+                                <constraint firstAttribute="trailing" secondItem="v5G-g1-HjW" secondAttribute="trailing" constant="32" id="DWf-Rd-rnG"/>
+                                <constraint firstItem="v5G-g1-HjW" firstAttribute="leading" secondItem="nLT-dM-tZG" secondAttribute="leading" constant="32" id="NDo-Nv-nb8"/>
+                                <constraint firstAttribute="bottom" secondItem="v5G-g1-HjW" secondAttribute="bottom" constant="24" id="jnC-ft-fGH"/>
+                            </constraints>
+                        </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="jaz-Ub-etz" customClass="GeneralMenuTableViewCell" customModule="Academia" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="80"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="beltListCell" rowHeight="80" id="jaz-Ub-etz" customClass="GeneralMenuTableViewCell" customModule="Academia" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="188" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jaz-Ub-etz" id="ppE-Nh-eLu">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
@@ -78,6 +143,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="beltDisclaimerLabelOutlet" destination="v5G-g1-HjW" id="XEl-BA-VIB"/>
+                        <outlet property="beltDisclaimerViewOutlet" destination="nLT-dM-tZG" id="kWN-hF-a1q"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i7s-ba-2PF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -116,7 +185,10 @@
             <point key="canvasLocation" x="-1682" y="4701"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="right_red_arrow_32.png" width="32" height="32"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9f1-Vz-Iiz"/>
+        <segue reference="LYv-V5-dva"/>
     </inferredMetricsTieBreakers>
 </document>

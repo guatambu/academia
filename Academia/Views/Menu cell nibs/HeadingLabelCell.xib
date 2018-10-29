@@ -45,10 +45,7 @@
                 <constraints>
                     <constraint firstItem="ZE3-Gu-JEn" firstAttribute="top" secondItem="VEe-2h-2lc" secondAttribute="top" constant="8" id="11Q-ld-ZN0"/>
                     <constraint firstAttribute="trailing" secondItem="ZE3-Gu-JEn" secondAttribute="trailing" constant="16" id="5Od-EW-yxU"/>
-                    <constraint firstAttribute="trailing" secondItem="ZE3-Gu-JEn" secondAttribute="trailing" constant="16" id="QUb-fO-xfG"/>
                     <constraint firstItem="ZE3-Gu-JEn" firstAttribute="leading" secondItem="VEe-2h-2lc" secondAttribute="leading" constant="16" id="i25-Sq-dKD"/>
-                    <constraint firstAttribute="bottom" secondItem="ZE3-Gu-JEn" secondAttribute="bottom" constant="8" id="jgc-Zr-gIg"/>
-                    <constraint firstItem="ZE3-Gu-JEn" firstAttribute="top" secondItem="VEe-2h-2lc" secondAttribute="top" constant="8" id="rua-Vo-r2z"/>
                     <constraint firstAttribute="bottom" secondItem="ZE3-Gu-JEn" secondAttribute="bottom" constant="8" id="tsf-tf-9ep"/>
                 </constraints>
             </tableViewCellContentView>

@@ -37,16 +37,12 @@
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="4ZY-72-3Rr" firstAttribute="centerX" secondItem="fzo-O3-dmS" secondAttribute="centerX" id="RR0-er-AeE"/>
                     <constraint firstItem="4ZY-72-3Rr" firstAttribute="leading" secondItem="fzo-O3-dmS" secondAttribute="leadingMargin" constant="48" id="S00-mZ-tYz"/>
                     <constraint firstItem="4ZY-72-3Rr" firstAttribute="top" secondItem="fzo-O3-dmS" secondAttribute="top" constant="16.5" id="Yz1-Wi-NK9"/>
                     <constraint firstAttribute="trailingMargin" secondItem="4ZY-72-3Rr" secondAttribute="trailing" constant="48" id="fdp-Bj-0ar"/>
-                    <constraint firstItem="4ZY-72-3Rr" firstAttribute="centerY" secondItem="fzo-O3-dmS" secondAttribute="centerY" id="zWc-sE-b30"/>
+                    <constraint firstAttribute="bottom" secondItem="4ZY-72-3Rr" secondAttribute="bottom" constant="18" id="lWl-vW-ezu"/>
                 </constraints>
             </tableViewCellContentView>
-            <constraints>
-                <constraint firstAttribute="bottom" secondItem="4ZY-72-3Rr" secondAttribute="bottom" constant="18.5" id="oTW-dW-E0L"/>
-            </constraints>
             <connections>
                 <outlet property="buttonOutlet" destination="4ZY-72-3Rr" id="MzE-jC-A51"/>
             </connections>

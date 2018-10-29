@@ -20,6 +20,9 @@ class AdultBasicBeltTableViewCell: UITableViewCell {
     @IBOutlet weak var secondWhiteStripeOutlet: UIView!
     @IBOutlet weak var firstWhiteStripeOutlet: UIView!
     
+    @IBOutlet weak var stripesStackViewOutlet: UIStackView!
+    
+    
     // Labels
     @IBOutlet weak var beltTimeOutlet: UILabel!
     @IBOutlet weak var fourthStripeTimeOutlet: UILabel!

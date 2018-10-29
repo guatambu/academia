@@ -110,7 +110,7 @@ class AdultBlackBeltTableViewCell: UITableViewCell {
                 eigthWhiteDegreeOutlet.isHidden = false
                 adultBlackBelt.elligibleForNextBelt = true
             } else {
-                fourthWhiteDegreeOutlet.isHidden = true
+                eigthWhiteDegreeOutlet.isHidden = true
             }
             if adultBlackBelt.ninthWhiteDegree {
                 ninthWhiteDegreeOutlet.isHidden = false
