@@ -35,8 +35,8 @@ class StudentClassesTableViewController: UITableViewController {
         
         sectionTitle.backgroundColor = UIColor.white
         
-        let avenirFont = [ NSAttributedStringKey.foregroundColor: UIColor.lightGray,
-                           NSAttributedStringKey.font: UIFont(name: "Avenir-Medium", size: 24)! ]
+        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.lightGray,
+                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 24)! ]
         
         let weekday = weekdays[section]
         
