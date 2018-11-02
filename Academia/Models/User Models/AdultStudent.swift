@@ -13,7 +13,7 @@ class AdultStudent {
     // MARK: - Properties
     
     // UID
-    let adultStudentUID: String
+    let adultStudentUID: UUID
     
     // Bool
     var isInstructor: Bool
@@ -56,7 +56,7 @@ class AdultStudent {
     
     
     // Basic Memberwise Initializer
-    init(adultStudentUID: String,
+    init(adultStudentUID: UUID,
          isInstructor: Bool,
          dateCreated: Date,
          dateEdited: Date,

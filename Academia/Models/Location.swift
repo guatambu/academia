@@ -13,7 +13,7 @@ class Location {
     // MARK: - Properties
     
     // UID
-    let locationUID: String
+    let locationUID: UUID
     
     var active: Bool
     
@@ -37,7 +37,7 @@ class Location {
     
     // Basic Memberwise Initializer
     
-    init(locationUID: String,
+    init(locationUID: UUID,
          active: Bool,
          dateCreated: Date,
          dateEdited: Date,

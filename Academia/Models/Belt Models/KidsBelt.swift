@@ -13,7 +13,7 @@ class KidsBelt {
     // MARK: - Properties
     
     // UID
-    let kidsBeltUID: String
+    let kidsBeltUID: UUID
     
     var dateCreated: Date
     var dateEdited: Date
@@ -54,7 +54,7 @@ class KidsBelt {
     
     // Memberwise Initializer
     
-    init(kidsBeltUID: String,
+    init(kidsBeltUID: UUID,
          dateCreated: Date,
          dateEdited: Date,
          name: String,

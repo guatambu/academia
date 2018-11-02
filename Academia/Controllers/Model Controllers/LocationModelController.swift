@@ -21,7 +21,7 @@ class LocationModelController {
     // Create
     func addNew(profilePic: UIImage?, active: Bool, locationName: String, firstName: String, lastName: String, streetAddress: String, city: String, state: String, zipCode: String, phone: String, website: String, email: String, social: String?) {
         
-        let location = Location(locationUID: "004", active: active, dateCreated: Date(), dateEdited: Date(), profilePic: profilePic, locationName: locationName, streetAddress: streetAddress, city: city, state: state, zipCode: zipCode, phone: phone, website: website, email: email, social: social)
+        let location = Location(locationUID: UUID(), active: active, dateCreated: Date(), dateEdited: Date(), profilePic: profilePic, locationName: locationName, streetAddress: streetAddress, city: city, state: state, zipCode: zipCode, phone: phone, website: website, email: email, social: social)
         
         locations.append(location)
     }

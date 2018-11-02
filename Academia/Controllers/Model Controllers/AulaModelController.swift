@@ -21,7 +21,7 @@ class AulaModelController {
     // Create
     func addNew(active: Bool, className: String, classDescription: String, daysOfTheWeek: [Weekdays], timeOfDay: Aula.ClassTimes, location: Location?, students: [Any]?, instructor: [Any]?) {
         
-        let aula = Aula(aulaUID: "005", active: active, aulaName: className, aulaDescription: classDescription, daysOfTheWeek: daysOfTheWeek, timeOfDay: timeOfDay, location: location, students: students, instructor: instructor, currentDate: Date(), dateCreated: Date(), dateEdited: Date(), attendees: nil)
+        let aula = Aula(aulaUID: UUID(), active: active, aulaName: className, aulaDescription: classDescription, daysOfTheWeek: daysOfTheWeek, timeOfDay: timeOfDay, location: location, students: students, instructor: instructor, currentDate: Date(), dateCreated: Date(), dateEdited: Date(), attendees: nil)
         
         aulas.append(aula)
     }

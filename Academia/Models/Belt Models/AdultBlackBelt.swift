@@ -13,7 +13,7 @@ class AdultBlackBelt {
     // MARK: - Properties
     
     // UID
-    let adultBlackBeltUID: String
+    let adultBlackBeltUID: UUID
     
     var dateCreated: Date
     var dateEdited: Date
@@ -55,7 +55,7 @@ class AdultBlackBelt {
     
     // Memberwise Initializer
     
-    init(adultBlackBeltUID: String,
+    init(adultBlackBeltUID: UUID,
          dateCreated: Date,
          dateEdited: Date,
          name: String,
