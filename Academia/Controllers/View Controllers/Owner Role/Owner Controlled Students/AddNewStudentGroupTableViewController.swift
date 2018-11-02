@@ -25,10 +25,10 @@ class AddNewStudentGroupTableViewController: UITableViewController {
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
-        let avenirFontGray = [ NSAttributedStringKey.foregroundColor: UIColor.gray,
-                           NSAttributedStringKey.font: UIFont(name: "Avenir-Medium", size: 24)! ]
-        let avenirFontBlack = [ NSAttributedStringKey.foregroundColor: UIColor.black,
-                               NSAttributedStringKey.font: UIFont(name: "Avenir-Medium", size: 24)! ]
+        let avenirFontGray = [ NSAttributedString.Key.foregroundColor: UIColor.gray,
+                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 24)! ]
+        let avenirFontBlack = [ NSAttributedString.Key.foregroundColor: UIColor.black,
+                               NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 24)! ]
         
         navigationController?.navigationBar.titleTextAttributes = avenirFontGray
         
@@ -70,8 +70,8 @@ class AddNewStudentGroupTableViewController: UITableViewController {
         let sectionTitle = UILabel()
         sectionTitle.backgroundColor = UIColor.white
         
-        let avenirFont = [ NSAttributedStringKey.foregroundColor: UIColor.lightGray,
-                           NSAttributedStringKey.font: UIFont(name: "Avenir-Medium", size: 24)! ]
+        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.lightGray,
+                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 24)! ]
         
         if section == 0 {
             sectionTitle.attributedText = NSAttributedString(string: "  Adults", attributes: avenirFont)
@@ -103,7 +103,7 @@ class AddNewStudentGroupTableViewController: UITableViewController {
      }
 
      // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
      if editingStyle == .delete {
      // Delete the row from the data source
      tableView.deleteRows(at: [indexPath], with: .fade)

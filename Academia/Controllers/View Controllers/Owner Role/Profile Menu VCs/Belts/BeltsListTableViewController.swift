@@ -26,7 +26,7 @@ class BeltsListTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.estimatedRowHeight = 100
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         
         self.navigationController?.navigationBar.tintColor = UIColor(displayP3Red: 241.0, green: 0.0, blue: 0.0, alpha: 1.0)
         

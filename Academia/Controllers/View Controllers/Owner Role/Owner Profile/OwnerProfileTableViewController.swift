@@ -19,8 +19,8 @@ class OwnerProfileTableViewController: UITableViewController {
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
-        let avenirFont = [ NSAttributedStringKey.foregroundColor: UIColor.gray,
-                           NSAttributedStringKey.font: UIFont(name: "Avenir-Medium", size: 24)! ]
+        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.gray,
+                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 24)! ]
         
         navigationController?.navigationBar.titleTextAttributes = avenirFont
     }

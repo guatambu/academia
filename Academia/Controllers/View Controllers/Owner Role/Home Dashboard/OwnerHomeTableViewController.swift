@@ -16,8 +16,8 @@ class OwnerHomeTableViewController: UITableViewController {
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
-        let avenirFont = [ NSAttributedStringKey.foregroundColor: UIColor.gray,
-                           NSAttributedStringKey.font: UIFont(name: "Avenir-Medium", size: 24)! ]
+        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.gray,
+                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 24)! ]
         
         navigationController?.navigationBar.titleTextAttributes = avenirFont
     }
@@ -147,7 +147,7 @@ class OwnerHomeTableViewController: UITableViewController {
     }
 
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
