@@ -1,4 +1,53 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18A391" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+    <entity name="ClassAttendessPersistent" representedClassName="ClassAttendessPersistent" syncable="YES" codeGenerationType="class">
+        <attribute name="belt" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="mostRecentClass" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="mostRecentPromotionDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="profilePic" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="uid" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+    </entity>
+    <entity name="ClassesPersistent" representedClassName="ClassesPersistent" syncable="YES" codeGenerationType="class">
+        <attribute name="classElligibilityCode" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="friday" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="instructor" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="instructorName" attributeType="String" syncable="YES"/>
+        <attribute name="location" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="monday" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="saturday" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="sunday" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="thursday" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="timeOfDay" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="tuesday" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="wednesday" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <entity name="PaymentProgramPersistent" representedClassName="PaymentProgramPersistent" syncable="YES" codeGenerationType="class">
+        <attribute name="agreementText" attributeType="String" syncable="YES"/>
+        <attribute name="dateCreated" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dateEdited" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="programDescritpion" attributeType="String" syncable="YES"/>
+        <attribute name="programName" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="StudentProgramSignaturePersistent" representedClassName="StudentProgramSignaturePersistent" syncable="YES" codeGenerationType="class">
+        <attribute name="acknowledgeReadAgreeemnt" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="acknowledgeSignedAgreement" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="city" attributeType="String" syncable="YES"/>
+        <attribute name="dateSigned" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="digitalSignature1" attributeType="String" syncable="YES"/>
+        <attribute name="digitalSignature2" attributeType="String" syncable="YES"/>
+        <attribute name="mobile" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="phone" attributeType="String" syncable="YES"/>
+        <attribute name="state" attributeType="String" syncable="YES"/>
+        <attribute name="streetAddress" attributeType="String" syncable="YES"/>
+        <attribute name="zip" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="ClassAttendessPersistent" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="PaymentProgramPersistent" positionX="-54" positionY="-9" width="128" height="120"/>
+        <element name="ClassesPersistent" positionX="-36" positionY="9" width="128" height="240"/>
+        <element name="StudentProgramSignaturePersistent" positionX="0" positionY="63" width="128" height="225"/>
+    </elements>
 </model>
