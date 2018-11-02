@@ -1,5 +1,5 @@
 //
-//  OnBoardingTaskX.swift
+//  OnBoardingTask.swift
 //  Academia
 //
 //  Created by Michael Guatambu Davis on 8/21/18.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class OnBoardingTaskX {
+class OnBoardingTask {
     
     // MARK: - Properties
     
@@ -37,9 +37,9 @@ class OnBoardingTaskX {
     }
 }
 
-extension OnBoardingTaskX: Equatable {
+extension OnBoardingTask: Equatable {
     
-    static func ==(lhs: OnBoardingTaskX, rhs: OnBoardingTaskX) -> Bool {
+    static func ==(lhs: OnBoardingTask, rhs: OnBoardingTask) -> Bool {
         if lhs.dateCompleted != rhs.dateCompleted { return false }
         if lhs.dateOfMostRecentChange != rhs.dateOfMostRecentChange { return false }
         if lhs.descriptionDetail != rhs.descriptionDetail { return false }

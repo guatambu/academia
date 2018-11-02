@@ -22,13 +22,13 @@ class OwnerModelController {
     
     var ownerOnboardingTasks: [OnBoardingTask] = [
         
-        OnBoardingTask(onboardingTaskUID: "001", name: "welcome", title: "Welcome!", description: "This is your Home's Dashboard. Here you stay current with your academy.", isCompleted: true, dateCompleted: nil, dateOfMostRecentChange: nil),
-        OnBoardingTask(onboardingTaskUID: "002", name: "startGettingPaid", title: "Start getting paid", description: "Set up your account to receive your payments.", isCompleted: false, dateCompleted: nil, dateOfMostRecentChange: nil),
-        OnBoardingTask(onboardingTaskUID: "003", name: "setUpPaymentPrograms", title: "$0.00 in sales", description: "Please set the Payment Program(s) for your school.", isCompleted: false, dateCompleted: nil, dateOfMostRecentChange: nil),
-        OnBoardingTask(onboardingTaskUID: "004", name: "locationsSetUp", title: "No Locations", description: "Please add your School Location(s).", isCompleted: false, dateCompleted: nil, dateOfMostRecentChange: nil),
-        OnBoardingTask(onboardingTaskUID: "005", name: "messagingGroups", title: "0 Messaging Groups", description: "Please create Messaging Group(s) for your academy.", isCompleted: false, dateCompleted: nil, dateOfMostRecentChange: nil),
-        OnBoardingTask(onboardingTaskUID: "006", name: "createClassSchedule", title: "No Classes Scheduled", description: "Please set up Your School's complete Class Schedule", isCompleted: false, dateCompleted: nil, dateOfMostRecentChange: nil),
-        OnBoardingTask(onboardingTaskUID: "007", name: "reviewBeltSystems", title: "Review Belt Systems", description: "Please Take a moment to review the included Belt Systems", isCompleted: false, dateCompleted: nil, dateOfMostRecentChange: nil)
+        OnBoardingTask(onboardingTaskUID: "001", name: "welcome", title: "Welcome!", descriptionDetail: "This is your Home's Dashboard. Here you stay current with your academy.", isCompleted: true, dateCompleted: nil, dateOfMostRecentChange: nil),
+        OnBoardingTask(onboardingTaskUID: "002", name: "startGettingPaid", title: "Start getting paid", descriptionDetail: "Set up your account to receive your payments.", isCompleted: false, dateCompleted: nil, dateOfMostRecentChange: nil),
+        OnBoardingTask(onboardingTaskUID: "003", name: "setUpPaymentPrograms", title: "$0.00 in sales", descriptionDetail: "Please set the Payment Program(s) for your school.", isCompleted: false, dateCompleted: nil, dateOfMostRecentChange: nil),
+        OnBoardingTask(onboardingTaskUID: "004", name: "locationsSetUp", title: "No Locations", descriptionDetail: "Please add your School Location(s).", isCompleted: false, dateCompleted: nil, dateOfMostRecentChange: nil),
+        OnBoardingTask(onboardingTaskUID: "005", name: "messagingGroups", title: "0 Messaging Groups", descriptionDetail: "Please create Messaging Group(s) for your academy.", isCompleted: false, dateCompleted: nil, dateOfMostRecentChange: nil),
+        OnBoardingTask(onboardingTaskUID: "006", name: "createClassSchedule", title: "No Classes Scheduled", descriptionDetail: "Please set up Your School's complete Class Schedule", isCompleted: false, dateCompleted: nil, dateOfMostRecentChange: nil),
+        OnBoardingTask(onboardingTaskUID: "007", name: "reviewBeltSystems", title: "Review Belt Systems", descriptionDetail: "Please Take a moment to review the included Belt Systems", isCompleted: false, dateCompleted: nil, dateOfMostRecentChange: nil)
     ]
     
     var deletedOwnerOnboardingTasks: [OnBoardingTask] = []

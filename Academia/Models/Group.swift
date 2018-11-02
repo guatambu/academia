@@ -1,5 +1,5 @@
 //
-//  GroupX.swift
+//  Group.swift
 //  Academia
 //
 //  Created by Michael Guatambu Davis on 8/17/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GroupX {
+class Group {
     
     // MARK: - Properties
     
@@ -34,9 +34,9 @@ class GroupX {
     }
 }
 
-extension GroupX: Equatable {
+extension Group: Equatable {
     
-    static func ==(lhs: GroupX, rhs: GroupX) -> Bool {
+    static func ==(lhs: Group, rhs: Group) -> Bool {
         if lhs.active != rhs.active { return false }
         if lhs.dateCreated != rhs.dateCreated { return false }
         if lhs.dateEdited != rhs.dateEdited { return false }
