@@ -18,8 +18,8 @@ class UsernameTextFieldTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.gray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 24)! ]
+        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.lightGray,
+                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 16)! ]
         
         usernameTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "", attributes: avenirFont)
         

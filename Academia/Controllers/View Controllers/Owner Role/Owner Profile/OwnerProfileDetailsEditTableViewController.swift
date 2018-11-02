@@ -53,7 +53,7 @@ class OwnerProfileDetailsEditTableViewController: UITableViewController, SegueFr
         let myCell = cells[indexPath.row]
         
         let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.gray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 24)! ]
+                           NSAttributedString.Key.font: UIFont(name: "Avenir-LightOblique", size: 16)! ]
         
         // register required cell nibs
         

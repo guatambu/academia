@@ -26,7 +26,7 @@ class AddNewStudentGroupTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         let avenirFontGray = [ NSAttributedString.Key.foregroundColor: UIColor.gray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 24)! ]
+                           NSAttributedString.Key.font: UIFont(name: "Avenir-LightOblique", size: 16)! ]
         let avenirFontBlack = [ NSAttributedString.Key.foregroundColor: UIColor.black,
                                NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 24)! ]
         

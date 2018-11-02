@@ -31,7 +31,7 @@ class AddClassTableViewController: UITableViewController {
         super.viewDidLoad()
         
         let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.gray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 24)! ]
+                           NSAttributedString.Key.font: UIFont(name: "Avenir-LightOblique", size: 16)! ]
         classNameTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "class name", attributes: avenirFont)
 
     }

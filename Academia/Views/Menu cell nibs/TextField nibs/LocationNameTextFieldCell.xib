@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,17 +19,25 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="location name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8ax-uU-GVe">
-                        <rect key="frame" x="16" y="24" width="343" height="32"/>
+                        <rect key="frame" x="16" y="23" width="343" height="30"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="location name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TYZ-Kg-ddR">
+                        <rect key="frame" x="20" y="-5.5" width="339" height="28"/>
+                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="TYZ-Kg-ddR" secondAttribute="trailing" constant="16" id="4Cd-ZW-sPD"/>
+                    <constraint firstItem="8ax-uU-GVe" firstAttribute="top" secondItem="TYZ-Kg-ddR" secondAttribute="bottom" constant="0.5" id="7Av-Ua-rkb"/>
                     <constraint firstItem="8ax-uU-GVe" firstAttribute="leading" secondItem="VEe-2h-2lc" secondAttribute="leadingMargin" id="F8u-7R-ms8"/>
-                    <constraint firstAttribute="bottom" secondItem="8ax-uU-GVe" secondAttribute="bottom" constant="23.5" id="Mwq-nL-KKz"/>
                     <constraint firstAttribute="trailingMargin" secondItem="8ax-uU-GVe" secondAttribute="trailing" id="Uoh-KM-lmD"/>
-                    <constraint firstItem="8ax-uU-GVe" firstAttribute="top" secondItem="VEe-2h-2lc" secondAttribute="top" constant="24" id="X6W-7N-Tfx"/>
+                    <constraint firstItem="TYZ-Kg-ddR" firstAttribute="leading" secondItem="VEe-2h-2lc" secondAttribute="leading" constant="20" id="cCE-w3-zuU"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="8ax-uU-GVe" secondAttribute="bottom" constant="16" id="oNG-Bm-rDv"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

@@ -38,13 +38,13 @@ class SignUpLoginViewController: UIViewController {
         print("signUpVC: \(isOwner)")
         
         let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.gray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 24)! ]
+                           NSAttributedString.Key.font: UIFont(name: "Avenir-LightOblique", size: 16)! ]
         
         navigationController?.navigationBar.titleTextAttributes = avenirFont
         
-        usernameTextField.attributedPlaceholder = NSAttributedString(string: "username", attributes: avenirFont)
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: "password", attributes: avenirFont)
-        confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: "confirm password", attributes: avenirFont)
+        usernameTextField.attributedPlaceholder = NSAttributedString(string: "please tap to enter username", attributes: avenirFont)
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "please tap to enter password", attributes: avenirFont)
+        confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: "please tap to enter password", attributes: avenirFont)
         
         
         guard let username = username, let password = password else {

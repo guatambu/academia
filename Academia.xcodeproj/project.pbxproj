@@ -103,6 +103,7 @@
 		FA9ADA2D2139EE6C0005E1F1 /* IsInstructorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9ADA2C2139EE6C0005E1F1 /* IsInstructorTableViewCell.swift */; };
 		FA9ADA2F2139EE940005E1F1 /* IsKidTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9ADA2E2139EE940005E1F1 /* IsKidTableViewCell.swift */; };
 		FA9ADA31213B6BA90005E1F1 /* InternationalStandardBJJBelts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9ADA30213B6BA90005E1F1 /* InternationalStandardBJJBelts.swift */; };
+		FAA516CE218D0234009875CB /* SpacerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA516CD218D0234009875CB /* SpacerCell.xib */; };
 		FAA550712145D03F00EC7860 /* HeadingLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA550702145D03F00EC7860 /* HeadingLabelTableViewCell.swift */; };
 		FAAAC149213E337500093D6C /* OwnerBeltSystemFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAAAC147213E337500093D6C /* OwnerBeltSystemFlow.storyboard */; };
 		FAAAC14B213E33E000093D6C /* OwnerProfileFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAAAC14A213E33E000093D6C /* OwnerProfileFlow.storyboard */; };
@@ -330,6 +331,7 @@
 		FA9ADA2C2139EE6C0005E1F1 /* IsInstructorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsInstructorTableViewCell.swift; sourceTree = "<group>"; };
 		FA9ADA2E2139EE940005E1F1 /* IsKidTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsKidTableViewCell.swift; sourceTree = "<group>"; };
 		FA9ADA30213B6BA90005E1F1 /* InternationalStandardBJJBelts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternationalStandardBJJBelts.swift; sourceTree = "<group>"; };
+		FAA516CD218D0234009875CB /* SpacerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpacerCell.xib; sourceTree = "<group>"; };
 		FAA550702145D03F00EC7860 /* HeadingLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadingLabelTableViewCell.swift; sourceTree = "<group>"; };
 		FAAAC148213E337500093D6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Academia/Views/Base.lproj/OwnerBeltSystemFlow.storyboard; sourceTree = "<group>"; };
 		FAAAC14A213E33E000093D6C /* OwnerProfileFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerProfileFlow.storyboard; sourceTree = "<group>"; };
@@ -714,6 +716,7 @@
 				FA66A0072145BA6B002B0313 /* CheckMarkBoxCell.xib */,
 				FAF1BB892143575C00AD56AE /* AgreementTextViewCell.xib */,
 				FAF1BB872143574400AD56AE /* DescriptionTextViewCell.xib */,
+				FAA516CD218D0234009875CB /* SpacerCell.xib */,
 			);
 			path = "Menu cell nibs";
 			sourceTree = "<group>";
@@ -1074,6 +1077,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAE2FD7F2140BF1400815402 /* EmergencyContactTextFieldCell.xib in Resources */,
+				FAA516CE218D0234009875CB /* SpacerCell.xib in Resources */,
 				FA9ADA132138C29C0005E1F1 /* ProfilePicCell.xib in Resources */,
 				FAF1BB8A2143575C00AD56AE /* AgreementTextViewCell.xib in Resources */,
 				FA21D68A2130E319006790E5 /* AdultBlackBeltTemplate.xib in Resources */,

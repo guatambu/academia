@@ -102,7 +102,7 @@ class StudentDetailTableViewController: UITableViewController, SegueFromSaveProf
         //        }
         
         let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.gray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 24)! ]
+                           NSAttributedString.Key.font: UIFont(name: "Avenir-LightOblique", size: 16)! ]
         
         // register required cell nibs
         
