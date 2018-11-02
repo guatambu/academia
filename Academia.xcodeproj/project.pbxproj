@@ -39,6 +39,9 @@
 		FA23D28C2167E32600707056 /* AdultBlackBeltModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23D28B2167E32600707056 /* AdultBlackBeltModelController.swift */; };
 		FA23D28E2167E35300707056 /* KidsBeltModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23D28D2167E35300707056 /* KidsBeltModelController.swift */; };
 		FA23D2922167F9EF00707056 /* OnBoardingTaskModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23D2912167F9EF00707056 /* OnBoardingTaskModelController.swift */; };
+		FA4DF32C218CCA0300ECC167 /* Technique.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4DF32B218CCA0300ECC167 /* Technique.swift */; };
+		FA4DF32E218CCA1A00ECC167 /* CurriculumModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4DF32D218CCA1A00ECC167 /* CurriculumModule.swift */; };
+		FA4DF330218CCA2400ECC167 /* Curriculum.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4DF32F218CCA2400ECC167 /* Curriculum.swift */; };
 		FA5C5C28214DCE5E00BF62D5 /* kid_sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA5C5C25214DCE5D00BF62D5 /* kid_sample.jpg */; };
 		FA5C5C29214DCE5E00BF62D5 /* student_sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA5C5C26214DCE5E00BF62D5 /* student_sample.jpg */; };
 		FA5C5C2A214DCE5E00BF62D5 /* owner_sample.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5C5C27214DCE5E00BF62D5 /* owner_sample.png */; };
@@ -263,6 +266,9 @@
 		FA23D28B2167E32600707056 /* AdultBlackBeltModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdultBlackBeltModelController.swift; sourceTree = "<group>"; };
 		FA23D28D2167E35300707056 /* KidsBeltModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidsBeltModelController.swift; sourceTree = "<group>"; };
 		FA23D2912167F9EF00707056 /* OnBoardingTaskModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingTaskModelController.swift; sourceTree = "<group>"; };
+		FA4DF32B218CCA0300ECC167 /* Technique.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Technique.swift; sourceTree = "<group>"; };
+		FA4DF32D218CCA1A00ECC167 /* CurriculumModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumModule.swift; sourceTree = "<group>"; };
+		FA4DF32F218CCA2400ECC167 /* Curriculum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Curriculum.swift; sourceTree = "<group>"; };
 		FA5C5C25214DCE5D00BF62D5 /* kid_sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kid_sample.jpg; sourceTree = "<group>"; };
 		FA5C5C26214DCE5E00BF62D5 /* student_sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = student_sample.jpg; sourceTree = "<group>"; };
 		FA5C5C27214DCE5E00BF62D5 /* owner_sample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = owner_sample.png; sourceTree = "<group>"; };
@@ -540,16 +546,13 @@
 			isa = PBXGroup;
 			children = (
 				FA7A12D0216AE57A00C03590 /* Academia.xcdatamodeld */,
+				FA4DF332218CCA8A00ECC167 /* Payment Programs */,
+				FA4DF331218CCA6400ECC167 /* Location Models */,
+				FA4DF32A218CC9E100ECC167 /* Curriculum Models */,
 				FA6FBA042149F37000558657 /* User Models */,
-				FA0C444321278B8D00B59194 /* Location.swift */,
 				FA21D6AA21362560006790E5 /* Belt Models */,
-				FA0C444521278BBF00B59194 /* Aula.swift */,
-				FA0C444721278C9A00B59194 /* PaymentProgram.swift */,
-				FA0C444921278CA900B59194 /* Group.swift */,
-				FAF29B6A212D0E9E00752414 /* OnBoardingTask.swift */,
 				FA9ADA202138DBC30005E1F1 /* MyCells.swift */,
 				FAE2FD3B2140700F00815402 /* MockData.swift */,
-				FAB203DD2161C9C40034E1D4 /* Weekdays.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -746,6 +749,34 @@
 			path = "Belt Model Controllers";
 			sourceTree = "<group>";
 		};
+		FA4DF32A218CC9E100ECC167 /* Curriculum Models */ = {
+			isa = PBXGroup;
+			children = (
+				FAB203DD2161C9C40034E1D4 /* Weekdays.swift */,
+				FA0C444521278BBF00B59194 /* Aula.swift */,
+				FA4DF32B218CCA0300ECC167 /* Technique.swift */,
+				FA4DF32D218CCA1A00ECC167 /* CurriculumModule.swift */,
+				FA4DF32F218CCA2400ECC167 /* Curriculum.swift */,
+			);
+			path = "Curriculum Models";
+			sourceTree = "<group>";
+		};
+		FA4DF331218CCA6400ECC167 /* Location Models */ = {
+			isa = PBXGroup;
+			children = (
+				FA0C444321278B8D00B59194 /* Location.swift */,
+			);
+			path = "Location Models";
+			sourceTree = "<group>";
+		};
+		FA4DF332218CCA8A00ECC167 /* Payment Programs */ = {
+			isa = PBXGroup;
+			children = (
+				FA0C444721278C9A00B59194 /* PaymentProgram.swift */,
+			);
+			path = "Payment Programs";
+			sourceTree = "<group>";
+		};
 		FA5C5C3F2152CC7A00BF62D5 /* Home Dashboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -766,6 +797,8 @@
 		FA6FBA042149F37000558657 /* User Models */ = {
 			isa = PBXGroup;
 			children = (
+				FAF29B6A212D0E9E00752414 /* OnBoardingTask.swift */,
+				FA0C444921278CA900B59194 /* Group.swift */,
 				FA6FB9FE2149F32200558657 /* Owner.swift */,
 				FA6FBA002149F33100558657 /* AdultStudent.swift */,
 				FA6FBA022149F36300558657 /* KidStudent.swift */,
@@ -1168,6 +1201,7 @@
 				FAE67A3A215C6EDD00822DCF /* StudentGroupGeneralMenuTableViewCell.swift in Sources */,
 				FAF29B69212CCC1600752414 /* OwnerProfileInitialSetUpTableViewController.swift in Sources */,
 				FA9ADA0F21378B140005E1F1 /* BeltsListTableViewController.swift in Sources */,
+				FA4DF32E218CCA1A00ECC167 /* CurriculumModule.swift in Sources */,
 				FAE2FDB02140C0C900815402 /* SocialNetworksTextFieldTableViewCell.swift in Sources */,
 				FAE2FD9E2140C02800815402 /* EmailTextFieldTableViewCell.swift in Sources */,
 				FAF1BB8E21435BD800AD56AE /* DescriptionTextViewTableViewCell.swift in Sources */,
@@ -1235,6 +1269,7 @@
 				FAF29BD1212F6FC800752414 /* OwnerDashboardTableViewCell.swift in Sources */,
 				FA5C5C3021506B7400BF62D5 /* InitialStudentSegueDelegate.swift in Sources */,
 				FA9ADA31213B6BA90005E1F1 /* InternationalStandardBJJBelts.swift in Sources */,
+				FA4DF330218CCA2400ECC167 /* Curriculum.swift in Sources */,
 				FAE2FDA82140C07F00815402 /* EmergencyContactPhoneTextFieldTableViewCell.swift in Sources */,
 				FAF29BDF2130892B00752414 /* ImageMenuTableViewCell.swift in Sources */,
 				FA9ADA092137861B0005E1F1 /* OwnerPaymentInfoTableViewController.swift in Sources */,
@@ -1256,6 +1291,7 @@
 				FA66A0122145CD83002B0313 /* CheckMarkBoxTableViewCell.swift in Sources */,
 				FAB203DC216188C50034E1D4 /* StudentAulasListMenuTableViewCell.swift in Sources */,
 				FAE67A34215C139A00822DCF /* AdultStudentDetailsTableViewController.swift in Sources */,
+				FA4DF32C218CCA0300ECC167 /* Technique.swift in Sources */,
 				FA9AD9FB213783E20005E1F1 /* OwnerProfileDetailsEditTableViewController.swift in Sources */,
 				FA23D28E2167E35300707056 /* KidsBeltModelController.swift in Sources */,
 				FAE2FD8C2140BFBA00815402 /* UsernameTextFieldTableViewCell.swift in Sources */,

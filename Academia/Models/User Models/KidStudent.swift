@@ -12,7 +12,7 @@ class KidStudent {
     // MARK: - Properties
     
     // UID
-    let kidUID: String
+    let kidUID: UUID
     
     // Date
     var dateCreated: Date
@@ -52,7 +52,7 @@ class KidStudent {
     
     
     // Basic Memberwise Initializer
-    init(kidUID: String,
+    init(kidUID: UUID,
          dateCreated: Date,
          dateEdited: Date,
          birthdate: Date,

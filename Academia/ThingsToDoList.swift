@@ -11,6 +11,9 @@ import Foundation
 
 // THINGS TO DO
 
+    // UI
+        // update fields with data collection to include actual labels rather than allow placeholder text to be the label... asking too much of user
+
     // Models
         // Add UID String properties to all relevant Models - *** COMPLETE?
 
@@ -48,9 +51,8 @@ import Foundation
             // CRUD Functions
 
     // Core Data
-        // create models
+        // create models specifically for persistance
         // refactor existing models
-        // refactor existing model controllers
         // set up Core Data structure to support the immediate collection and storage of data
         // on owner side - the data is then sent to cloud backup via batches or individual user granted action
         // on student side - same idea as owner

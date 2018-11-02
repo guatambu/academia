@@ -21,7 +21,7 @@ class AdultBasicBeltModelController {
     // Create
     func addNew(name: String, active: Bool, elligibleForNextBelt: Bool, belt: UIColor, blackBar: UIColor, firstWhiteStripe: Bool, secondWhiteStripe: Bool, thirdWhiteStripe: Bool, fourthWhiteStripe: Bool, beltTime: String?, firstStripeTime: String?, secondStripeTime: String?, thirdStripeTime: String?, fourthStripeTime: String?) {
         
-        let adultBasicBelt = AdultBasicBelt(adultBasicBeltUID: "003", dateCreated: Date(), dateEdited: Date(), name: name, active: active, elligibleForNextBelt: elligibleForNextBelt, belt: belt, blackBar: blackBar, firstWhiteStripe: firstWhiteStripe, secondWhiteStripe: secondWhiteStripe, thirdWhiteStripe: thirdWhiteStripe, fourthWhiteStripe: fourthWhiteStripe, beltTime: beltTime, firstStripeTime: firstStripeTime, secondStripeTime: secondStripeTime, thirdStripeTime: thirdStripeTime, fourthStripeTime: fourthStripeTime)
+        let adultBasicBelt = AdultBasicBelt(adultBasicBeltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: name, active: active, elligibleForNextBelt: elligibleForNextBelt, belt: belt, blackBar: blackBar, firstWhiteStripe: firstWhiteStripe, secondWhiteStripe: secondWhiteStripe, thirdWhiteStripe: thirdWhiteStripe, fourthWhiteStripe: fourthWhiteStripe, beltTime: beltTime, firstStripeTime: firstStripeTime, secondStripeTime: secondStripeTime, thirdStripeTime: thirdStripeTime, fourthStripeTime: fourthStripeTime)
         
         adultBasicBelts.append(adultBasicBelt)
     }

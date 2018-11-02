@@ -21,7 +21,7 @@ class PaymentProgramModelController {
     // Create
     func addNew(active: Bool, programName: String, billingType: [String], billingOptions: [String], paymentDescription: String, paymentAgreement: String, signatureType: [String]) {
         
-        let paymentProgram = PaymentProgram(paymentProgramUID: "007", active: active, programName: programName, dateCreated: Date(), dateEdited: Date(), billingType: billingType, billingOptions: billingOptions, paymentDescription: paymentDescription, paymentAgreement: paymentAgreement, signatureType: signatureType)
+        let paymentProgram = PaymentProgram(paymentProgramUID: UUID(), active: active, programName: programName, dateCreated: Date(), dateEdited: Date(), billingType: billingType, billingOptions: billingOptions, paymentDescription: paymentDescription, paymentAgreement: paymentAgreement, signatureType: signatureType)
         
         paymentPrograms.append(paymentProgram)
     }

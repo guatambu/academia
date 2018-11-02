@@ -13,7 +13,7 @@ class Group {
     // MARK: - Properties
     
     // UID
-    let groupUID: String
+    let groupUID: UUID
     
     var active: Bool
     var name: String
@@ -23,7 +23,7 @@ class Group {
     
     // Memberwise Initializer
     
-    init(groupUID: String, active: Bool, name: String, dateCreated: Date, dateEdited: Date, members: [Any]?) {
+    init(groupUID: UUID, active: Bool, name: String, dateCreated: Date, dateEdited: Date, members: [Any]?) {
         
         self.groupUID = groupUID
         self.active = active

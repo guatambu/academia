@@ -12,7 +12,7 @@ class Owner {
     // MARK: - Properties
     
     // UID
-    let ownerUID: String
+    let ownerUID: UUID
     
     // Bool
     var isInstructor: Bool
@@ -48,7 +48,7 @@ class Owner {
     
     
     // Basic Memberwise Initializer
-    init(ownerUID: String,
+    init(ownerUID: UUID,
          isInstructor: Bool,
          dateCreated: Date,
          dateEdited: Date,

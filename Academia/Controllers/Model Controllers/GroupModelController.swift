@@ -21,7 +21,7 @@ class GroupModelController {
     // Create
     func add(profilePic: UIImage?, active: Bool, name: String, members: [Any]?) {
         
-        let group = Group(groupUID: "006", active: active, name: name, dateCreated: Date(), dateEdited: Date(), members: members)
+        let group = Group(groupUID: UUID(), active: active, name: name, dateCreated: Date(), dateEdited: Date(), members: members)
         
         groups.append(group)
     }

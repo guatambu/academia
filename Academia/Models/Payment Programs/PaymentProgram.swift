@@ -13,7 +13,7 @@ class PaymentProgram {
     // MARK: - Properties
     
     // UID
-    let paymentProgramUID: String
+    let paymentProgramUID: UUID
     
     var active: Bool
     var programName: String
@@ -27,7 +27,7 @@ class PaymentProgram {
     
     // Memberwise Initializer
     
-    init(paymentProgramUID: String, active: Bool, programName: String, dateCreated: Date, dateEdited: Date, billingType: [String], billingOptions: [String], paymentDescription: String, paymentAgreement: String, signatureType: [String]) {
+    init(paymentProgramUID: UUID, active: Bool, programName: String, dateCreated: Date, dateEdited: Date, billingType: [String], billingOptions: [String], paymentDescription: String, paymentAgreement: String, signatureType: [String]) {
         
         self.paymentProgramUID = paymentProgramUID
         self.active = active

@@ -13,7 +13,7 @@ enum InternationalStandardBJJBelts: String {
     case kidBelts = "Kid Belts"
     case adultBelts = "Adult Belts"
     
-    // spacer
+    // disclaimer
     case beltDisclaimer = "Belt progression comes through time and dedication. Timing of promotion is your teacher's decision."
     
     // standard kids belts
@@ -40,6 +40,22 @@ enum InternationalStandardBJJBelts: String {
     case adultRedBlackBelt = "Adult Red Black Belt"
     case adultRedWhiteBelt = "Adult Red White Belt"
     case adultRedBelt = "Adult Red Belt"
+    
+    // equipment categories
+    case noGi = "No Gi"
+    case gi = "Gi"
+    
+    // adult general categories
+    case adultBeginner = "Adult Beginner"
+    case adultIntermediate = "Adult Intermediate"
+    case adultAdvanced = "Adult Advanced"
+    case adultCompetition = "Adult Competition"
+    
+    // kid general categories
+    case kidBeginner = "Kid Beginner"
+    case kidIntermediate = "Kid Intermediate"
+    case kidAdvanced = "Kid Advanced"
+    case kidCompetition = "Kid Competition"
 }
 
 

@@ -13,7 +13,7 @@ class Aula {
     // MARK: - Properties
     
     // UID
-    let aulaUID: String
+    let aulaUID: UUID
     
     var active: Bool
     var aulaName: String
@@ -57,7 +57,7 @@ class Aula {
     
     // Memberwise Initializer
     
-    init(aulaUID: String,
+    init(aulaUID: UUID,
          active: Bool,
          aulaName: String,
          aulaDescription: String,
