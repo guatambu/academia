@@ -11,6 +11,9 @@ import Foundation
 
 // THINGS TO DO
 
+    // UI
+        // update fields with data collection to include actual labels rather than allow placeholder text to be the label... asking too much of user
+
     // Models
         // Add UID String properties to all relevant Models - *** COMPLETE?
 
