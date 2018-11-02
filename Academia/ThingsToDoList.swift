@@ -16,6 +16,11 @@ import Foundation
 
         // all models need to conform to Equatable Protocol -  *** COMPLETE?
 
+        // create curriculum model?  would it need persistence
+            // could create technique data model, then a curriculum class would be a one to many realtionship with techniques
+            // curriculum itself would be one to many curriculum classes
+            // likely have more than 1 curriculum (eg. adults, kids, beginners, intermediate, advanced)
+
 
     // Model Controllers
         // User Model Controllers
