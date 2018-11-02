@@ -1,5 +1,5 @@
 //
-//  KidsBeltX.swift
+//  KidsBelt.swift
 //  Academia
 //
 //  Created by Michael Guatambu Davis on 8/28/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class KidsBeltX {
+class KidsBelt {
     
     // MARK: - Properties
     
@@ -123,9 +123,9 @@ class KidsBeltX {
     }
 }
 
-extension KidsBeltX: Equatable {
+extension KidsBelt: Equatable {
     
-    static func ==(lhs: KidsBeltX, rhs: KidsBeltX) -> Bool {
+    static func ==(lhs: KidsBelt, rhs: KidsBelt) -> Bool {
         
         if lhs.active != rhs.active { return false }
         if lhs.kidsBeltUID != rhs.kidsBeltUID { return false }

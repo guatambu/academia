@@ -1,5 +1,5 @@
 //
-//  AdultStudentX.swift
+//  Owner.swift
 //  Academia
 //
 //  Created by Kelly Johnson on 9/12/18.
@@ -8,12 +8,11 @@
 
 import UIKit
 
-class AdultStudentX {
-    
+class Owner {
     // MARK: - Properties
     
     // UID
-    let adultStudentUID: String
+    let ownerUID: String
     
     // Bool
     var isInstructor: Bool
@@ -26,15 +25,11 @@ class AdultStudentX {
     var mostRecentPromotion: Date?
     var attendance: [Date]?
     
-    // Status
-    var studentStatus: [StudentStatus]
-    
     // Data Model related
-    var groups: [GroupX]?
-    var paymentProgram: PaymentProgramX?
-    var permission: [UserPermissions]
-    var adultBasicBelt: AdultBasicBeltX?
-    var blackBelt: AdultBlackBeltX?
+    var permission: UserPermissions
+    var adultBasicBelt: AdultBasicBelt?
+    var blackBelt: AdultBlackBelt?
+    var groups: [Group]?
     
     // Images
     var profilePic: UIImage?
@@ -50,13 +45,10 @@ class AdultStudentX {
     var phone: String?
     var mobile: String?
     var email: String
-    var emergencyContact: String
-    var emergencyContactPhone: String
-    var emergencyContactRelationship: String
     
     
     // Basic Memberwise Initializer
-    init(adultStudentUID: String,
+    init(ownerUID: String,
          isInstructor: Bool,
          dateCreated: Date,
          dateEdited: Date,
@@ -64,12 +56,10 @@ class AdultStudentX {
          promotions: [String: Date]?,
          mostRecentPromotion: Date?,
          attendance: [Date]?,
-         studentStatus: [StudentStatus],
-         groups: [GroupX]?,
-         paymentProgram: PaymentProgramX?,
-         permission: [UserPermissions],
-         adultBasicBelt: AdultBasicBeltX?,
-         blackBelt: AdultBlackBeltX?,
+         groups: [Group]?,
+         permission: UserPermissions,
+         adultBasicBelt: AdultBasicBelt?,
+         blackBelt: AdultBlackBelt?,
          profilePic: UIImage?,
          username: String,
          firstName: String,
@@ -80,13 +70,10 @@ class AdultStudentX {
          zipCode: String,
          phone: String?,
          mobile: String?,
-         email: String,
-         emergencyContact: String,
-         emergencyContactPhone: String,
-         emergencyContactRelationship: String
+         email: String
         ) {
         
-        self.adultStudentUID = adultStudentUID
+        self.ownerUID = ownerUID
         self.isInstructor = isInstructor
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
@@ -94,11 +81,9 @@ class AdultStudentX {
         self.promotions = promotions
         self.mostRecentPromotion = mostRecentPromotion
         self.attendance = attendance
-        self.studentStatus = studentStatus
         self.adultBasicBelt = adultBasicBelt
         self.blackBelt = blackBelt
         self.groups = groups
-        self.paymentProgram = paymentProgram
         self.permission = permission
         self.profilePic = profilePic
         self.username = username
@@ -111,40 +96,33 @@ class AdultStudentX {
         self.phone = phone
         self.mobile = mobile
         self.email = email
-        self.emergencyContact = emergencyContact
-        self.emergencyContactPhone = emergencyContactPhone
-        self.emergencyContactRelationship = emergencyContactRelationship
     }
+    
 }
 
-extension AdultStudentX: Equatable {
-    
-    static func ==(lhs: AdultStudentX, rhs: AdultStudentX) -> Bool {
-        if lhs.adultStudentUID != rhs.adultStudentUID{ return false }
+extension Owner: Equatable {
+
+    static func ==(lhs: Owner, rhs: Owner) -> Bool {
         if lhs.birthdate != rhs.birthdate { return false }
         if lhs.city != rhs.city { return false }
         if lhs.dateCreated != rhs.dateCreated { return false }
         if lhs.dateEdited != rhs.dateEdited { return false }
         if lhs.email != rhs.email { return false }
-        if lhs.emergencyContact != rhs.emergencyContact { return false }
-        if lhs.emergencyContactPhone != rhs.emergencyContactPhone { return false }
-        if lhs.emergencyContactRelationship != rhs.emergencyContactRelationship { return false }
         if lhs.firstName != rhs.firstName { return false }
         if lhs.isInstructor != rhs.isInstructor { return false }
         if lhs.lastName != rhs.lastName { return false }
+        if lhs.mobile != rhs.mobile { return false }
+        if lhs.ownerUID != rhs.ownerUID { return false }
         if lhs.permission != rhs.permission { return false }
+        if lhs.phone != rhs.phone { return false }
         if lhs.state != rhs.state { return false }
         if lhs.streetAddress != rhs.streetAddress { return false }
-        if lhs.studentStatus != rhs.studentStatus { return false }
         if lhs.username != rhs.username { return false }
         if lhs.zipCode != rhs.zipCode { return false }
-        
+
         return true
     }
 }
-
-
-
 
 
 

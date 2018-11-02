@@ -1,5 +1,5 @@
 //
-//  AulaX.swift
+//  Aula.swift
 //  Academia
 //
 //  Created by Michael Guatambu Davis on 8/17/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AulaX {
+class Aula {
     
     // MARK: - Properties
     
@@ -16,11 +16,11 @@ class AulaX {
     let aulaUID: String
     
     var active: Bool
-    var className: String
-    var classDescription: String
+    var aulaName: String
+    var aulaDescription: String
     var daysOfTheWeek: [Weekdays]
     var timeOfDay: ClassTimes
-    var location: LocationX?
+    var location: Location?
     var students: [Any]?
     var instructor: [Any]?
     var currentDate: Date
@@ -63,7 +63,7 @@ class AulaX {
          aulaDescription: String,
          daysOfTheWeek: [Weekdays],
          timeOfDay: ClassTimes,
-         location: LocationX?,
+         location: Location?,
          students: [Any]?,
          instructor: [Any]?,
          currentDate: Date,
@@ -89,13 +89,13 @@ class AulaX {
     
 }
 
-extension AulaX: Equatable {
+extension Aula: Equatable {
     
-    static func ==(lhs: AulaX, rhs: AulaX) -> Bool {
+    static func ==(lhs: Aula, rhs: Aula) -> Bool {
         if lhs.active != rhs.active { return false }
         if lhs.aulaUID != rhs.aulaUID{ return false }
-        if lhs.classDescription != rhs.classDescription { return false }
-        if lhs.className != rhs.className { return false }
+        if lhs.aulaDescription != rhs.aulaDescription { return false }
+        if lhs.aulaName != rhs.aulaName { return false }
         if lhs.currentDate != rhs.currentDate { return false }
         if lhs.dateCreated != rhs.dateCreated { return false }
         if lhs.dateEdited != rhs.dateEdited { return false }

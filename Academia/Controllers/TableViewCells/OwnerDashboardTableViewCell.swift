@@ -45,7 +45,7 @@ class OwnerDashboardTableViewCell: UITableViewCell {
         guard let onBoardTask = onBoardTask else { return }
         
         onBoardingTaskTitleOutlet.text = onBoardTask.title
-        onBoardingTaskDescriptionOutlet.text = onBoardTask.description
+        onBoardingTaskDescriptionOutlet.text = onBoardTask.descriptionDetail
         
         
         guard let onBoardTaskComplete = onBoardTask.isCompleted else { return }

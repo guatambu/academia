@@ -1,5 +1,5 @@
 //
-//  AdultBlackBeltX.swift
+//  AdultBlackBelt.swift
 //  Academia
 //
 //  Created by Michael Guatambu Davis on 8/28/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AdultBlackBeltX {
+class AdultBlackBelt {
     
     // MARK: - Properties
     
@@ -125,9 +125,9 @@ class AdultBlackBeltX {
     }
 }
 
-extension AdultBlackBeltX: Equatable {
+extension AdultBlackBelt: Equatable {
     
-    static func ==(lhs: AdultBlackBeltX, rhs: AdultBlackBeltX) -> Bool {
+    static func ==(lhs: AdultBlackBelt, rhs: AdultBlackBelt) -> Bool {
         
         if lhs.active != rhs.active { return false }
         if lhs.adultBlackBeltUID != rhs.adultBlackBeltUID { return false }

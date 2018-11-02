@@ -62,7 +62,7 @@ class OwnerClassesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "classesMenuCell", for: indexPath) as? AulasListMenuTableViewCell else { return UITableViewCell() }
         
-        let classTitle = classes[indexPath.row].className
+        let classTitle = classes[indexPath.row].aulaName
         // Configure the cell...
         cell.title = classTitle
         

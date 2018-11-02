@@ -21,7 +21,7 @@ class AulaModelController {
     // Create
     func addNew(active: Bool, className: String, classDescription: String, daysOfTheWeek: [Weekdays], timeOfDay: Aula.ClassTimes, location: Location?, students: [Any]?, instructor: [Any]?) {
         
-        let aula = Aula(aulaUID: "005", active: active, className: className, classDescription: classDescription, daysOfTheWeek: daysOfTheWeek, timeOfDay: timeOfDay, location: location, students: students, instructor: instructor, currentDate: Date(), dateCreated: Date(), dateEdited: Date(), attendees: nil)
+        let aula = Aula(aulaUID: "005", active: active, aulaName: className, aulaDescription: classDescription, daysOfTheWeek: daysOfTheWeek, timeOfDay: timeOfDay, location: location, students: students, instructor: instructor, currentDate: Date(), dateCreated: Date(), dateEdited: Date(), attendees: nil)
         
         aulas.append(aula)
     }
@@ -30,12 +30,12 @@ class AulaModelController {
     
     
     // Update
-    func update(aula: Aula, active: Bool, attendees: [Any]?, classDescription: String, className: String, daysOfTheWeek: [Weekdays], instructor: [Any]?, location: Location?, students: [Any]?, timeOfDay: Aula.ClassTimes) {
+    func update(aula: Aula, active: Bool, attendees: [Any]?, aulaDescription: String, aulaName: String, daysOfTheWeek: [Weekdays], instructor: [Any]?, location: Location?, students: [Any]?, timeOfDay: Aula.ClassTimes) {
         
         aula.active = active
         aula.attendees = attendees
-        aula.classDescription = classDescription
-        aula.className = className
+        aula.aulaDescription = aulaDescription
+        aula.aulaName = aulaName
         aula.dateEdited = Date()
         aula.daysOfTheWeek = daysOfTheWeek
         aula.instructor = instructor

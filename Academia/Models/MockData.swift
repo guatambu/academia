@@ -30,7 +30,7 @@ struct MockData {
     
     // classes
 
-    static let adultClassA: Aula = Aula(aulaUID: "001", active: true, className: "adult A", classDescription: "A class for the adults",  daysOfTheWeek: [Weekdays.Monday, Weekdays.Wednesday, Weekdays.Friday], timeOfDay: Aula.ClassTimes.nineteen, location: myLocation, students: [adultA], instructor: [adultA], currentDate: Date(), dateCreated: Date(), dateEdited: Date(), attendees: [adultA])
+    static let adultClassA: Aula = Aula(aulaUID: "001", active: true, aulaName: "adult A", aulaDescription: "A class for the adults",  daysOfTheWeek: [Weekdays.Monday, Weekdays.Wednesday, Weekdays.Friday], timeOfDay: Aula.ClassTimes.nineteen, location: myLocation, students: [adultA], instructor: [adultA], currentDate: Date(), dateCreated: Date(), dateEdited: Date(), attendees: [adultA])
 
     // users
 

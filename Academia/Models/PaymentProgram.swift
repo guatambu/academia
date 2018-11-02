@@ -1,5 +1,5 @@
 //
-//  PaymentProgramX.swift
+//  PaymentProgram.swift
 //  Academia
 //
 //  Created by Michael Guatambu Davis on 8/17/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PaymentProgramX {
+class PaymentProgram {
     
     // MARK: - Properties
     
@@ -43,9 +43,9 @@ class PaymentProgramX {
     
 }
 
-extension PaymentProgramX: Equatable {
+extension PaymentProgram: Equatable {
     
-    static func ==(lhs: PaymentProgramX, rhs: PaymentProgramX) -> Bool {
+    static func ==(lhs: PaymentProgram, rhs: PaymentProgram) -> Bool {
         if lhs.active != rhs.active { return false }
         if lhs.billingType != rhs.billingType { return false }
         if lhs.billingOptions != rhs.billingOptions { return false }
