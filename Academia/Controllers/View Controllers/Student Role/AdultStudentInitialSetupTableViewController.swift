@@ -82,6 +82,12 @@ class AdultStudentInitialSetupTableViewController: UITableViewController, SegueF
         let nibUsername = UINib(nibName: "UsernameTextFieldCell", bundle: nil)
         self.tableView.register(nibUsername, forCellReuseIdentifier: "usernameTextFieldCell")
         
+        let nibPassword = UINib(nibName: "PasswordTextFieldCell", bundle: nil)
+        self.tableView.register(nibPassword, forCellReuseIdentifier: "passwordTextFieldCell")
+        
+        let nibConfirmPassword = UINib(nibName: "ConfirmPasswordTextFieldCell", bundle: nil)
+        self.tableView.register(nibConfirmPassword, forCellReuseIdentifier: "confirmPasswordTextFieldCell")
+        
         let nibFirstName = UINib(nibName: "FirstNameTextFieldCell", bundle: nil)
         self.tableView.register(nibFirstName, forCellReuseIdentifier: "firstNameTextFieldCell")
         
@@ -228,6 +234,24 @@ class AdultStudentInitialSetupTableViewController: UITableViewController, SegueF
                 
                 cell.parentGuardianTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
                 
+                tableView.estimatedRowHeight = 80
+                tableView.rowHeight = 80
+                
+                return cell
+            }
+        case .passwordCell:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "passwordTextFieldCell", for: indexPath) as? PasswordTextFieldTableViewCell {
+                
+                cell.passwordTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
+                tableView.estimatedRowHeight = 80
+                tableView.rowHeight = 80
+                
+                return cell
+            }
+        case .confirmPasswordCell:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "confirmPasswordTextFieldCell", for: indexPath) as? ConfirmPasswordTextFieldTableViewCell {
+                
+                cell.confirmPasswordTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
                 tableView.estimatedRowHeight = 80
                 tableView.rowHeight = 80
                 
