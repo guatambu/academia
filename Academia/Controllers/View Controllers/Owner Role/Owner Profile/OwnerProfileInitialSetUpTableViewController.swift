@@ -29,8 +29,6 @@ class OwnerProfileInitialSetUpTableViewController: UITableViewController, SegueF
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
     }
     
     

@@ -278,7 +278,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Czu-an-chF">
                                                 <rect key="frame" x="0.0" y="85.5" width="327" height="61.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ou7-4q-TQw">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="create password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ou7-4q-TQw">
                                                         <rect key="frame" x="4" y="0.0" width="319" height="27.5"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
                                                         <nil key="textColor"/>
@@ -390,8 +390,12 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="74a-Qe-M6R"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="confirmPasswordLabelOutlet" destination="Tf3-wZ-SNQ" id="MmQ-2G-Lk9"/>
                         <outlet property="confirmPasswordTextField" destination="H7R-IC-LBX" id="RHT-sc-YlI"/>
+                        <outlet property="passwordLabelOutlet" destination="Ou7-4q-TQw" id="Jf8-Ta-lRj"/>
                         <outlet property="passwordTextField" destination="g7O-Uz-dNH" id="rp3-Lx-WH5"/>
+                        <outlet property="signUpButtonOutlet" destination="hG7-ZD-xeK" id="Mj1-xs-9RO"/>
+                        <outlet property="usernameLabelOutlet" destination="hCA-Yg-GNI" id="cQ9-fr-3q8"/>
                         <outlet property="usernameTextField" destination="fcy-tN-8sC" id="qsC-Th-z6f"/>
                         <outlet property="welcomeInstructionsOutlet" destination="pkd-H1-wIb" id="nFh-7Z-H0S"/>
                         <outlet property="welcomeMessageOutlet" destination="Met-Vb-e07" id="Zvh-ID-Tns"/>
