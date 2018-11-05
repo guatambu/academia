@@ -2,7 +2,7 @@
 //  SegueFromSaveProfileNibCellDelegate.swift
 //  Academia
 //
-//  Created by Kelly Johnson on 9/19/18.
+//  Created by Michael Guatambu Davison 9/19/18.
 //  Copyright © 2018 DunDak, LLC. All rights reserved.
 //
 

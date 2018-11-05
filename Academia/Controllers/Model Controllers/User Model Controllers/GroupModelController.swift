@@ -2,7 +2,7 @@
 //  GroupModelController.swift
 //  Academia
 //
-//  Created by Kelly Johnson on 10/4/18.
+//  Created by Kelly JohnsonMichael Guatambu Davis
 //  Copyright © 2018 DunDak, LLC. All rights reserved.
 //
 

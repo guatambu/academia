@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PasswordTextFieldTableViewCell: UITableViewCell {
+class PasswordTextFieldTableViewCell: UITableViewCell, UITextInputTraits {
     
     // MARK: - Properties
     @IBOutlet weak var passwordLabelOutlet: UILabel!
@@ -23,6 +23,12 @@ class PasswordTextFieldTableViewCell: UITableViewCell {
                            NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 16)! ]
         
         passwordTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "", attributes: avenirFont)
+        
+        // turns of autocorrect in this UITextField
+        passwordTextFieldOutlet.autocorrectionType = UITextAutocorrectionType.no
+        // turns off auto-capitaization in this UITextfield
+        passwordTextFieldOutlet.autocapitalizationType = UITextAutocapitalizationType.none
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
