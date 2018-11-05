@@ -2,7 +2,7 @@
 //  DescriptionTextViewTableViewCell.swift
 //  Academia
 //
-//  Created by Kelly Johnson on 9/7/18.
+//  Created by Michael Guatambu Davis on 9/7/18.
 //  Copyright © 2018 DunDak, LLC. All rights reserved.
 //
 

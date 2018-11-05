@@ -214,6 +214,8 @@ class OwnerProfileInitialSetUpTableViewController: UITableViewController, SegueF
                 tableView.estimatedRowHeight = 80
                 tableView.rowHeight = 80
                 
+                
+                
                 return cell
             }
         case .stateCell:
