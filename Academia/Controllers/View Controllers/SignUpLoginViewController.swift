@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignUpLoginViewController: UIViewController {
+class SignUpLoginViewController: UIViewController, UITextInputTraits {
     
     // MARK: - Properties
     var isOwner: Bool?
@@ -32,6 +32,17 @@ class SignUpLoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         print("viewWillAppear: isOwner = \(String(describing: isOwner))")
+        
+        // turns off auto-correct in these UITextFields
+        usernameTextField.autocorrectionType = UITextAutocorrectionType.no
+        passwordTextField.autocorrectionType = UITextAutocorrectionType.no
+        confirmPasswordTextField.autocorrectionType = UITextAutocorrectionType.no
+        
+        // turns off auto-capitalization in these UITextFields
+        usernameTextField.autocapitalizationType = UITextAutocapitalizationType.none
+        passwordTextField.autocapitalizationType = UITextAutocapitalizationType.none
+        confirmPasswordTextField.autocapitalizationType = UITextAutocapitalizationType.none
+        
         
     }
     

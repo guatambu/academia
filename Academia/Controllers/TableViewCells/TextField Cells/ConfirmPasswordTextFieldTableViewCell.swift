@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConfirmPasswordTextFieldTableViewCell: UITableViewCell {
+class ConfirmPasswordTextFieldTableViewCell: UITableViewCell, UITextInputTraits {
     
     // MARK: - Properties
     
@@ -23,6 +23,11 @@ class ConfirmPasswordTextFieldTableViewCell: UITableViewCell {
                            NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 16)! ]
         
         confirmPasswordTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "", attributes: avenirFont)
+        
+        // turns of autocorrect in this UITextField
+        confirmPasswordTextFieldOutlet.autocorrectionType = UITextAutocorrectionType.no
+        // turns off auto-capitaization in this UITextfield
+        confirmPasswordTextFieldOutlet.autocapitalizationType = UITextAutocapitalizationType.none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
