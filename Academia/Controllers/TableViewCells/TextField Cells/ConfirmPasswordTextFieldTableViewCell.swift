@@ -9,10 +9,20 @@
 import UIKit
 
 class ConfirmPasswordTextFieldTableViewCell: UITableViewCell {
+    
+    // MARK: - Properties
+    
+    @IBOutlet weak var confirmPasswordLabelOutlet: UILabel!
+    @IBOutlet weak var confirmPasswordTextFieldOutlet: UITextField!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.lightGray,
+                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 16)! ]
+        
+        confirmPasswordTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "", attributes: avenirFont)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

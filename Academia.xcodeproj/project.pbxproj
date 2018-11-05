@@ -906,6 +906,8 @@
 			children = (
 				FA9ADA1A2138D6700005E1F1 /* ProfileTextFieldTableViewCell.swift */,
 				FAE2FD8B2140BFBA00815402 /* UsernameTextFieldTableViewCell.swift */,
+				FAA516D3218FEC47009875CB /* PasswordTextFieldTableViewCell.swift */,
+				FAA516D5218FEC5A009875CB /* ConfirmPasswordTextFieldTableViewCell.swift */,
 				FAE2FD8D2140BFC700815402 /* FirstNameTextFieldTableViewCell.swift */,
 				FAE2FD8F2140BFD100815402 /* LastNameTextFieldTableViewCell.swift */,
 				FAE2FD912140BFE200815402 /* StreetAddressTextFieldTableViewCell.swift */,
@@ -924,8 +926,6 @@
 				FAE2FDAB2140C09A00815402 /* LocationNameTextFieldTableViewCell.swift */,
 				FAE2FDAD2140C0A600815402 /* WebsiteTextFieldTableViewCell.swift */,
 				FAE2FDAF2140C0C900815402 /* SocialNetworksTextFieldTableViewCell.swift */,
-				FAA516D3218FEC47009875CB /* PasswordTextFieldTableViewCell.swift */,
-				FAA516D5218FEC5A009875CB /* ConfirmPasswordTextFieldTableViewCell.swift */,
 			);
 			path = "TextField Cells";
 			sourceTree = "<group>";

@@ -9,10 +9,20 @@
 import UIKit
 
 class PasswordTextFieldTableViewCell: UITableViewCell {
+    
+    // MARK: - Properties
+    @IBOutlet weak var passwordLabelOutlet: UILabel!
+    @IBOutlet weak var passwordTextFieldOutlet: UITextField!
+    
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.lightGray,
+                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 16)! ]
+        
+        passwordTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "", attributes: avenirFont)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
