@@ -12,6 +12,10 @@ class StudentChoiceViewController: UIViewController {
     
     // MARK: - Properties
     
+    var isOwner: Bool?
+    var username: String?
+    var password: String?
+    
     @IBOutlet weak var kidsProgramButtonOutlet: UIButton!
     @IBOutlet weak var adultsProgramButtonOutlet: UIButton!
     @IBOutlet weak var confirmKidsProgramButtonOutlet: UIButton!
@@ -30,8 +34,8 @@ class StudentChoiceViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        print("********* StudentChoiceVC \n isOwner: \(isOwner) \n username: \(username) \n password: \(password)")
     }
     
     

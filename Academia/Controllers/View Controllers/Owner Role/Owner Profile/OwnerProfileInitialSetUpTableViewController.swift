@@ -29,7 +29,7 @@ class OwnerProfileInitialSetUpTableViewController: UITableViewController, SegueF
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        print("******** OwnerProfileInitialSetupTVC \n isOwner: \(isOwner) \n username: \(username) \n password: \(password)")
         
     }
     
