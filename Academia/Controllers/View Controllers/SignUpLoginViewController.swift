@@ -38,8 +38,8 @@ class SignUpLoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        username = "guatambu"
-        password = "1998Gwbic"
+//        username = "guatambu"
+//        password = "1998Gwbic"
         
         confirmPasswordTextField.isEnabled = true
         confirmPasswordTextField.isHidden = false
@@ -60,7 +60,7 @@ class SignUpLoginViewController: UIViewController {
         confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: "tap to re-enter password", attributes: avenirFont)
         
         
-        guard let username = username, let password = password else {
+        guard let _ = username, let _ = password else {
             
             if isOwner {
                 welcomeMessageOutlet.text = "Welcome New Owner"
@@ -107,8 +107,6 @@ class SignUpLoginViewController: UIViewController {
         guard let isOwner = isOwner else { return }
         
         if isOwner == false {
-            
-            
             // programmatically performing the "student choice" segue
             
             // instantiate the relevant storyboard
@@ -122,15 +120,46 @@ class SignUpLoginViewController: UIViewController {
             let backButtonItem = UIBarButtonItem()
             backButtonItem.title = " "
             navigationItem.backBarButtonItem = backButtonItem
+                    // pass the created username and confirmed password to next VC - where it will be on its way to be sorted to either adult or student
             
             // run check to see is there is username/password
-                // if usermame/password -
-                    // login
+            guard let username = username, let password = password else {
                 // if no username/password -
-                    // pass the created username and confirmed password to next VC - where it will be on its way to be sorted to either adult or student
+                // pass created username and confirmed password to destViewController where rest of owner model creation will occur
+                
+                // check to see if there is valid username
+                guard let newUsername = self.usernameTextField.text, self.usernameTextField.text != "" else {
+                    
+                    welcomeInstructionsOutlet.textColor = UIColor.red
+                    return
+                }
+                // if valid username, pass it to destViewController
+                destViewController.username = newUsername
+                
+                // check to see if there is a valid and matching password
+                if self.passwordTextField.text == "" {
+                    welcomeInstructionsOutlet.text = "please create a password"
+                    welcomeInstructionsOutlet.textColor = UIColor.red
+                } else if self.confirmPasswordTextField.text == "" {
+                    welcomeInstructionsOutlet.text = "please confirm your password"
+                    welcomeInstructionsOutlet.textColor = UIColor.red
+                } else if self.passwordTextField.text != self.confirmPasswordTextField.text {
+                    welcomeInstructionsOutlet.text = "your password does not match your confirmed password. please try again."
+                    welcomeInstructionsOutlet.textColor = UIColor.red
+                } else if self.passwordTextField.text == self.confirmPasswordTextField.text {
+                    // if valid password, pass it to destViewController
+                    guard let newPassword = self.passwordTextField.text else { return }
+                    destViewController.password = newPassword
+                }
+                // pass the isOwner value to destViewController
+                destViewController.isOwner = isOwner
+                
+                return
+            }
+            
+            // if usermame/password -
+                // login
         } else {
-            
-            
             // programmatically performing the owner segue
             
             // instantiate the relevant storyboard
