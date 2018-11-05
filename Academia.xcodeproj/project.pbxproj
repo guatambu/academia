@@ -104,6 +104,10 @@
 		FA9ADA2F2139EE940005E1F1 /* IsKidTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9ADA2E2139EE940005E1F1 /* IsKidTableViewCell.swift */; };
 		FA9ADA31213B6BA90005E1F1 /* InternationalStandardBJJBelts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9ADA30213B6BA90005E1F1 /* InternationalStandardBJJBelts.swift */; };
 		FAA516CE218D0234009875CB /* SpacerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA516CD218D0234009875CB /* SpacerCell.xib */; };
+		FAA516D0218FEBD1009875CB /* PasswordTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA516CF218FEBD1009875CB /* PasswordTextFieldCell.xib */; };
+		FAA516D2218FEBEE009875CB /* ConfirmPasswordTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA516D1218FEBEE009875CB /* ConfirmPasswordTextFieldCell.xib */; };
+		FAA516D4218FEC47009875CB /* PasswordTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA516D3218FEC47009875CB /* PasswordTextFieldTableViewCell.swift */; };
+		FAA516D6218FEC5A009875CB /* ConfirmPasswordTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA516D5218FEC5A009875CB /* ConfirmPasswordTextFieldTableViewCell.swift */; };
 		FAA550712145D03F00EC7860 /* HeadingLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA550702145D03F00EC7860 /* HeadingLabelTableViewCell.swift */; };
 		FAAAC149213E337500093D6C /* OwnerBeltSystemFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAAAC147213E337500093D6C /* OwnerBeltSystemFlow.storyboard */; };
 		FAAAC14B213E33E000093D6C /* OwnerProfileFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAAAC14A213E33E000093D6C /* OwnerProfileFlow.storyboard */; };
@@ -332,6 +336,10 @@
 		FA9ADA2E2139EE940005E1F1 /* IsKidTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsKidTableViewCell.swift; sourceTree = "<group>"; };
 		FA9ADA30213B6BA90005E1F1 /* InternationalStandardBJJBelts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternationalStandardBJJBelts.swift; sourceTree = "<group>"; };
 		FAA516CD218D0234009875CB /* SpacerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpacerCell.xib; sourceTree = "<group>"; };
+		FAA516CF218FEBD1009875CB /* PasswordTextFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PasswordTextFieldCell.xib; sourceTree = "<group>"; };
+		FAA516D1218FEBEE009875CB /* ConfirmPasswordTextFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmPasswordTextFieldCell.xib; sourceTree = "<group>"; };
+		FAA516D3218FEC47009875CB /* PasswordTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextFieldTableViewCell.swift; sourceTree = "<group>"; };
+		FAA516D5218FEC5A009875CB /* ConfirmPasswordTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPasswordTextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		FAA550702145D03F00EC7860 /* HeadingLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadingLabelTableViewCell.swift; sourceTree = "<group>"; };
 		FAAAC148213E337500093D6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Academia/Views/Base.lproj/OwnerBeltSystemFlow.storyboard; sourceTree = "<group>"; };
 		FAAAC14A213E33E000093D6C /* OwnerProfileFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerProfileFlow.storyboard; sourceTree = "<group>"; };
@@ -868,6 +876,8 @@
 			children = (
 				FA9ADA182138D60E0005E1F1 /* ProfileTextFieldCell.xib */,
 				FAE2FD682140BE7100815402 /* UsernameTextFieldCell.xib */,
+				FAA516CF218FEBD1009875CB /* PasswordTextFieldCell.xib */,
+				FAA516D1218FEBEE009875CB /* ConfirmPasswordTextFieldCell.xib */,
 				FAE2FD642140BE4200815402 /* FirstNameTextFieldCell.xib */,
 				FAE2FD662140BE4D00815402 /* LastNameTextFieldCell.xib */,
 				FAE2FD6A2140BE8200815402 /* StreetAddressTextFieldCell.xib */,
@@ -896,6 +906,8 @@
 			children = (
 				FA9ADA1A2138D6700005E1F1 /* ProfileTextFieldTableViewCell.swift */,
 				FAE2FD8B2140BFBA00815402 /* UsernameTextFieldTableViewCell.swift */,
+				FAA516D3218FEC47009875CB /* PasswordTextFieldTableViewCell.swift */,
+				FAA516D5218FEC5A009875CB /* ConfirmPasswordTextFieldTableViewCell.swift */,
 				FAE2FD8D2140BFC700815402 /* FirstNameTextFieldTableViewCell.swift */,
 				FAE2FD8F2140BFD100815402 /* LastNameTextFieldTableViewCell.swift */,
 				FAE2FD912140BFE200815402 /* StreetAddressTextFieldTableViewCell.swift */,
@@ -1138,6 +1150,7 @@
 				FAF29BC8212E21EA00752414 /* left_red_arrow_32.png in Resources */,
 				FAE2FD652140BE4200815402 /* FirstNameTextFieldCell.xib in Resources */,
 				FA66A0142145CDCB002B0313 /* SubHeadingLabelCell.xib in Resources */,
+				FAA516D2218FEBEE009875CB /* ConfirmPasswordTextFieldCell.xib in Resources */,
 				FAE2FD892140BF6300815402 /* SocialNetworksTextFieldCell.xib in Resources */,
 				FA9ADA292139EE440005E1F1 /* IsKidCell.xib in Resources */,
 				FA0C441B21278A8F00B59194 /* Main.storyboard in Resources */,
@@ -1145,6 +1158,7 @@
 				FAE67A2D2157453100822DCF /* StudentBaseCampFlow.storyboard in Resources */,
 				FAF29BC3212E21EA00752414 /* classes_red_32.png in Resources */,
 				FAF29BD8212F8CE400752414 /* home_outline_red_32 copy.png in Resources */,
+				FAA516D0218FEBD1009875CB /* PasswordTextFieldCell.xib in Resources */,
 				FAF29B99212E1EF700752414 /* left_red_arrow_50.png in Resources */,
 				FAF29BA2212E1EF700752414 /* programs_red_50.png in Resources */,
 				FAE2FD672140BE4D00815402 /* LastNameTextFieldCell.xib in Resources */,
@@ -1252,6 +1266,7 @@
 				FA21D6A12134B8D3006790E5 /* AddClassTableViewController.swift in Sources */,
 				FAB7E350212B7D47003E3B79 /* LandingPageViewController.swift in Sources */,
 				FAB20413216566E50034E1D4 /* ThingsToDoList.swift in Sources */,
+				FAA516D6218FEC5A009875CB /* ConfirmPasswordTextFieldTableViewCell.swift in Sources */,
 				FA9ADA1121378B3C0005E1F1 /* BeltDetailTableViewController.swift in Sources */,
 				FA21D69421334DE9006790E5 /* AdultBlackBeltTableViewCell.swift in Sources */,
 				FA23D2882166F5E400707056 /* GroupModelController.swift in Sources */,
@@ -1261,6 +1276,7 @@
 				FA9AD9F72137839A0005E1F1 /* BeltSystemsTableViewController.swift in Sources */,
 				FAE2FD8E2140BFC700815402 /* FirstNameTextFieldTableViewCell.swift in Sources */,
 				FAE67A3E215C733400822DCF /* AddNewStudentGroupImageMenuTableViewCell.swift in Sources */,
+				FAA516D4218FEC47009875CB /* PasswordTextFieldTableViewCell.swift in Sources */,
 				FA5C5C522154999C00BF62D5 /* StudentClassesTableViewController.swift in Sources */,
 				FAE67A38215C6C0F00822DCF /* AulasListMenuTableViewCell.swift in Sources */,
 				FAB203D4215EA8630034E1D4 /* LocationsImageMenuTableViewCell.swift in Sources */,

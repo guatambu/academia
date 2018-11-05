@@ -16,7 +16,7 @@ class OwnerProfileInitialSetUpTableViewController: UITableViewController, SegueF
     var username: String?
     var password: String?
     
-    let cells: [MyCells] = [MyCells.profilePicCell, MyCells.beltCell, MyCells.usernameCell, MyCells.firstNameCell, MyCells.lastNameCell, MyCells.streetAddressCell, MyCells.cityCell, MyCells.stateCell, MyCells.zipCodeCell, MyCells.phoneCell, MyCells.mobileCell, MyCells.emailCell, MyCells.saveProfileButtonCell]
+    let cells: [MyCells] = [MyCells.profilePicCell, MyCells.beltCell, MyCells.usernameCell, MyCells.passwordCell, MyCells.firstNameCell, MyCells.lastNameCell, MyCells.streetAddressCell, MyCells.cityCell, MyCells.stateCell, MyCells.zipCodeCell, MyCells.phoneCell, MyCells.mobileCell, MyCells.emailCell, MyCells.saveProfileButtonCell]
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -74,6 +74,12 @@ class OwnerProfileInitialSetUpTableViewController: UITableViewController, SegueF
         
         let nibUsername = UINib(nibName: "UsernameTextFieldCell", bundle: nil)
         self.tableView.register(nibUsername, forCellReuseIdentifier: "usernameTextFieldCell")
+        
+        let nibPassword = UINib(nibName: "PasswordTextFieldCell", bundle: nil)
+        self.tableView.register(nibPassword, forCellReuseIdentifier: "passwordTextFieldCell")
+        
+        let nibConfirmPassword = UINib(nibName: "ConfirmPasswordTextFieldCell", bundle: nil)
+        self.tableView.register(nibConfirmPassword, forCellReuseIdentifier: "confirmPasswordTextFieldCell")
         
         let nibFirstName = UINib(nibName: "FirstNameTextFieldCell", bundle: nil)
         self.tableView.register(nibFirstName, forCellReuseIdentifier: "firstNameTextFieldCell")
@@ -162,6 +168,24 @@ class OwnerProfileInitialSetUpTableViewController: UITableViewController, SegueF
             if let cell = tableView.dequeueReusableCell(withIdentifier: "mobileTextFieldCell", for: indexPath) as? MobileTextFieldTableViewCell {
                 
                 cell.mobileTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
+                tableView.estimatedRowHeight = 80
+                tableView.rowHeight = 80
+                
+                return cell
+            }
+        case .passwordCell:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "passwordTextFieldCell", for: indexPath) as? PasswordTextFieldTableViewCell {
+                
+                cell.passwordTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
+                tableView.estimatedRowHeight = 80
+                tableView.rowHeight = 80
+                
+                return cell
+            }
+        case .confirmPasswordCell:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "confirmPasswordTextFieldCell", for: indexPath) as? ConfirmPasswordTextFieldTableViewCell {
+                
+                cell.confirmPasswordTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(myCell.rawValue)", attributes: avenirFont)
                 tableView.estimatedRowHeight = 80
                 tableView.rowHeight = 80
                 
