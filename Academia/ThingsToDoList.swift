@@ -12,12 +12,12 @@ import Foundation
 // THINGS TO DO
 
     // UI
-        // update fields with data collection to include actual labels rather than allow placeholder text to be the label... asking too much of user
+        // update fields with data collection to include actual labels rather than allow placeholder text to be the label... asking too much of user - *** COMPLETE
 
     // Models
-        // Add UID String properties to all relevant Models - *** COMPLETE?
+        // Add UID String properties to all relevant Models - *** COMPLETE
 
-        // all models need to conform to Equatable Protocol -  *** COMPLETE?
+        // all models need to conform to Equatable Protocol -  *** COMPLETE
 
         // create curriculum model?  would it need persistence
             // could create technique data model, then a curriculum class would be a one to many realtionship with techniques
