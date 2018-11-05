@@ -28,6 +28,8 @@ enum MyCells: String {
     // cell cases where strings are all lowercase represent raw values that may be presented to the user
     case birthdateCell = "tap to enter date of birth"
     case usernameCell = "tap to enter username"
+    case passwordCell = "tap to enter pasword"
+    case confirmPasswordCell = "tap to re-enter password"
     case firstNameCell = "tap to enter first name"
     case lastNameCell = "tap to enter last name"
     case streetAddressCell = "tap to enter street address"

@@ -39,6 +39,11 @@
                     <constraint firstItem="TYZ-Kg-ddR" firstAttribute="leading" secondItem="VEe-2h-2lc" secondAttribute="leading" constant="20" id="cCE-w3-zuU"/>
                     <constraint firstAttribute="bottomMargin" secondItem="8ax-uU-GVe" secondAttribute="bottom" constant="16" id="oNG-Bm-rDv"/>
                 </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                        <real key="value" value="0.0"/>
+                    </userDefinedRuntimeAttribute>
+                </userDefinedRuntimeAttributes>
             </tableViewCellContentView>
             <connections>
                 <outlet property="locationNameTextFieldOutlet" destination="8ax-uU-GVe" id="w82-UU-x2S"/>
