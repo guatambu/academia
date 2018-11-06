@@ -562,11 +562,11 @@
 			isa = PBXGroup;
 			children = (
 				FA7A12D0216AE57A00C03590 /* Academia.xcdatamodeld */,
-				FA4DF332218CCA8A00ECC167 /* Payment Programs */,
-				FA4DF331218CCA6400ECC167 /* Location Models */,
-				FA4DF32A218CC9E100ECC167 /* Curriculum Models */,
 				FA6FBA042149F37000558657 /* User Models */,
 				FA21D6AA21362560006790E5 /* Belt Models */,
+				FA4DF32A218CC9E100ECC167 /* Curriculum Models */,
+				FA4DF332218CCA8A00ECC167 /* Payment Programs */,
+				FA4DF331218CCA6400ECC167 /* Location Models */,
 				FA9ADA202138DBC30005E1F1 /* MyCells.swift */,
 				FAE2FD3B2140700F00815402 /* MockData.swift */,
 			);
@@ -814,11 +814,11 @@
 		FA6FBA042149F37000558657 /* User Models */ = {
 			isa = PBXGroup;
 			children = (
-				FAF29B6A212D0E9E00752414 /* OnBoardingTask.swift */,
-				FA0C444921278CA900B59194 /* Group.swift */,
 				FA6FB9FE2149F32200558657 /* Owner.swift */,
 				FA6FBA002149F33100558657 /* AdultStudent.swift */,
 				FA6FBA022149F36300558657 /* KidStudent.swift */,
+				FAF29B6A212D0E9E00752414 /* OnBoardingTask.swift */,
+				FA0C444921278CA900B59194 /* Group.swift */,
 				FA6FBA052149F3B700558657 /* UserPermissions.swift */,
 				FA6FBA072149F3C700558657 /* StudentStatus.swift */,
 			);
