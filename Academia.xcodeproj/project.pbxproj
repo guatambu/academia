@@ -125,6 +125,8 @@
 		FAB7E350212B7D47003E3B79 /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB7E34F212B7D47003E3B79 /* LandingPageViewController.swift */; };
 		FAB7E352212B7D73003E3B79 /* UserSelfIdentifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB7E351212B7D73003E3B79 /* UserSelfIdentifyViewController.swift */; };
 		FAB7E35A212BA643003E3B79 /* BlairMdITC TT-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAB7E359212BA643003E3B79 /* BlairMdITC TT-Medium.ttf */; };
+		FACA3EAC21927C3F0099E620 /* profile_pic_placeholder_image.png in Resources */ = {isa = PBXBuildFile; fileRef = FACA3EAB21927C3F0099E620 /* profile_pic_placeholder_image.png */; };
+		FACA3EAE21927CEE0099E620 /* IBDesignables.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA3EAD21927CEE0099E620 /* IBDesignables.swift */; };
 		FAE2C07F214ADD26002E9756 /* ClassDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE2C07E214ADD26002E9756 /* ClassDetailTableViewController.swift */; };
 		FAE2FD3C2140700F00815402 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE2FD3B2140700F00815402 /* MockData.swift */; };
 		FAE2FD652140BE4200815402 /* FirstNameTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAE2FD642140BE4200815402 /* FirstNameTextFieldCell.xib */; };
@@ -360,6 +362,8 @@
 		FAB7E34F212B7D47003E3B79 /* LandingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
 		FAB7E351212B7D73003E3B79 /* UserSelfIdentifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelfIdentifyViewController.swift; sourceTree = "<group>"; };
 		FAB7E359212BA643003E3B79 /* BlairMdITC TT-Medium.ttf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "BlairMdITC TT-Medium.ttf"; sourceTree = "<group>"; };
+		FACA3EAB21927C3F0099E620 /* profile_pic_placeholder_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile_pic_placeholder_image.png; sourceTree = "<group>"; };
+		FACA3EAD21927CEE0099E620 /* IBDesignables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignables.swift; sourceTree = "<group>"; };
 		FAE2C07E214ADD26002E9756 /* ClassDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassDetailTableViewController.swift; sourceTree = "<group>"; };
 		FAE2FD3B2140700F00815402 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		FAE2FD642140BE4200815402 /* FirstNameTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstNameTextFieldCell.xib; sourceTree = "<group>"; };
@@ -530,6 +534,7 @@
 				FA0C442421278A8F00B59194 /* Info.plist */,
 				FA9ADA142138C6450005E1F1 /* academia_sample_profile_pic.jpeg */,
 				FA5C5C2B214EFCCC00BF62D5 /* location1.jpg */,
+				FACA3EAB21927C3F0099E620 /* profile_pic_placeholder_image.png */,
 				FA5C5C2D214EFCD100BF62D5 /* location2.jpg */,
 				FA5C5C25214DCE5D00BF62D5 /* kid_sample.jpg */,
 				FA5C5C27214DCE5E00BF62D5 /* owner_sample.png */,
@@ -586,6 +591,7 @@
 		FA0C443C21278AF300B59194 /* Helper Files */ = {
 			isa = PBXGroup;
 			children = (
+				FACA3EAD21927CEE0099E620 /* IBDesignables.swift */,
 			);
 			path = "Helper Files";
 			sourceTree = "<group>";
@@ -1213,6 +1219,7 @@
 				FA9ADA272139EE370005E1F1 /* IsInstructorCell.xib in Resources */,
 				FAF29BA6212E1EF700752414 /* classes_black_50.png in Resources */,
 				FAE2FD852140BF4500815402 /* LocationNameTextFieldCell.xib in Resources */,
+				FACA3EAC21927C3F0099E620 /* profile_pic_placeholder_image.png in Resources */,
 				FAF29BC4212E21EA00752414 /* classes_black_32.png in Resources */,
 				FAF29BE12130ABF900752414 /* GeneralMenuCell.xib in Resources */,
 			);
@@ -1270,6 +1277,7 @@
 				FA5C5C56215499F300BF62D5 /* StudentProfileDetailTableViewController.swift in Sources */,
 				FA21D69021334DB7006790E5 /* KidsBeltTableViewCell.swift in Sources */,
 				FA9ADA212138DBC30005E1F1 /* MyCells.swift in Sources */,
+				FACA3EAE21927CEE0099E620 /* IBDesignables.swift in Sources */,
 				FAE2FDAC2140C09A00815402 /* LocationNameTextFieldTableViewCell.swift in Sources */,
 				FA9ADA07213784870005E1F1 /* AboutAcademiaServicesViewController.swift in Sources */,
 				FA23D28C2167E32600707056 /* AdultBlackBeltModelController.swift in Sources */,

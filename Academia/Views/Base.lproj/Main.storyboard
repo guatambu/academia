@@ -18,10 +18,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@ leme group 2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vft-3p-g33">
+                                <rect key="frame" x="264.5" y="546" width="39.5" height="14"/>
+                                <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UC2-vA-Rkn" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
+                                <rect key="frame" x="87" y="320" width="145" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="7ap-Zx-2OB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                <state key="normal" title="Let's Go!">
+                                    <color key="titleColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="ZNH-ok-J1f" kind="show" id="dw6-gi-Aha"/>
+                                </connections>
+                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fkL-eq-LtA">
                                 <rect key="frame" x="0.0" y="208" width="320" height="72"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ACADEMIA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Vu-yd-73M">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ACADEMIA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="7Vu-yd-73M">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="Q4n-wm-sYX"/>
@@ -57,29 +87,16 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                            </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@ leme group 2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vft-3p-g33">
-                                <rect key="frame" x="264.5" y="546" width="39.5" height="14"/>
-                                <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="12"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UC2-vA-Rkn">
-                                <rect key="frame" x="87" y="320" width="145" height="56"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="7ap-Zx-2OB"/>
+                                    <constraint firstAttribute="trailing" secondItem="7Vu-yd-73M" secondAttribute="trailing" id="11L-Hg-Imu"/>
+                                    <constraint firstItem="7Vu-yd-73M" firstAttribute="leading" secondItem="fkL-eq-LtA" secondAttribute="leading" id="BdV-hX-ykW"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                <state key="normal" title="Let's Go!">
-                                    <color key="titleColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="ZNH-ok-J1f" kind="show" id="dw6-gi-Aha"/>
-                                </connections>
-                            </button>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="fkL-eq-LtA" firstAttribute="leading" secondItem="WGu-rn-OWm" secondAttribute="leading" id="7jX-8a-akw"/>
+                            <constraint firstItem="fkL-eq-LtA" firstAttribute="trailing" secondItem="WGu-rn-OWm" secondAttribute="trailing" id="AJ6-xV-6mJ"/>
                             <constraint firstItem="UC2-vA-Rkn" firstAttribute="top" secondItem="lj3-6t-8am" secondAttribute="bottom" constant="40" id="FBe-bI-N4T"/>
                             <constraint firstItem="Vft-3p-g33" firstAttribute="leading" secondItem="WGu-rn-OWm" secondAttribute="leading" constant="264.5" id="L83-YR-SHE"/>
                             <constraint firstItem="WGu-rn-OWm" firstAttribute="bottom" secondItem="Vft-3p-g33" secondAttribute="bottom" constant="8" id="Vai-C7-ysP"/>
@@ -87,7 +104,6 @@
                             <constraint firstItem="WGu-rn-OWm" firstAttribute="trailing" secondItem="UC2-vA-Rkn" secondAttribute="trailing" constant="88" id="dzg-EW-zyF"/>
                             <constraint firstItem="WGu-rn-OWm" firstAttribute="trailing" secondItem="Vft-3p-g33" secondAttribute="trailing" constant="16" id="pxF-7E-6gc"/>
                             <constraint firstItem="UC2-vA-Rkn" firstAttribute="leading" secondItem="WGu-rn-OWm" secondAttribute="leading" constant="87" id="wz5-Pm-fTU"/>
-                            <constraint firstItem="fkL-eq-LtA" firstAttribute="centerX" secondItem="TkU-AK-AMr" secondAttribute="centerX" id="xE6-6l-3km"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WGu-rn-OWm"/>
                     </view>
@@ -108,7 +124,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="HLh-2o-jGg">
-                                <rect key="frame" x="16" y="78" width="288" height="412.5"/>
+                                <rect key="frame" x="16" y="62" width="288" height="444.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Choose" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUB-nx-jdZ">
                                         <rect key="frame" x="51" y="0.0" width="186" height="36.5"/>
@@ -116,10 +132,10 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9y4-bA-Bq2">
-                                        <rect key="frame" x="24" y="116.5" width="240" height="40"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9y4-bA-Bq2" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="116.5" width="240" height="56"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="6Ec-OD-HCI"/>
+                                            <constraint firstAttribute="height" constant="56" id="6Ec-OD-HCI"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
                                         <state key="normal" title="I am the Owner">
@@ -127,10 +143,10 @@
                                         </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="1"/>
+                                                <real key="value" value="2"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" red="0.94534217980000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="value" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="10"/>
@@ -140,10 +156,10 @@
                                             <action selector="ownerButtonTapped:" destination="ZNH-ok-J1f" eventType="touchUpInside" id="7gi-d7-V0k"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TeO-u6-dgl">
-                                        <rect key="frame" x="24" y="236.5" width="240" height="40"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TeO-u6-dgl" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="252.5" width="240" height="56"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="AYb-qr-PPb"/>
+                                            <constraint firstAttribute="height" constant="56" id="AYb-qr-PPb"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
                                         <state key="normal" title="I am a Student">
@@ -154,7 +170,7 @@
                                                 <color key="value" red="0.94534217980000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="1"/>
+                                                <real key="value" value="2"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="10"/>
@@ -165,7 +181,7 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="-56" translatesAutoresizingMaskIntoConstraints="NO" id="gD2-Q6-B1k" userLabel="Confirm Button Stack View">
-                                        <rect key="frame" x="24" y="356.5" width="240" height="56"/>
+                                        <rect key="frame" x="24" y="388.5" width="240" height="56"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FFK-VC-oAq">
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="56"/>
@@ -182,7 +198,7 @@
                                                     <segue destination="VkD-Ki-GOj" kind="show" identifier="studentSegue" id="GYQ-pn-A7P"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rWb-VE-Qt4">
+                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rWb-VE-Qt4" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="56"/>
                                                 <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -192,6 +208,11 @@
                                                 <state key="normal" title="Confirm:  Owner">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="confirmOwnerButtonTapped:" destination="ZNH-ok-J1f" eventType="touchUpInside" id="BPr-5p-u79"/>
                                                     <segue destination="VkD-Ki-GOj" kind="show" identifier="ownerSegue" id="47q-te-3x9"/>
@@ -241,7 +262,7 @@
         <!--login / signup-->
         <scene sceneID="Cv7-Ml-mLh">
             <objects>
-                <viewController id="VkD-Ki-GOj" userLabel="login / signup" customClass="SignUpLoginViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toUsernamePassword" id="VkD-Ki-GOj" userLabel="login / signup" customClass="SignUpLoginViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yJ7-23-i4y">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -320,7 +341,7 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hG7-ZD-xeK">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hG7-ZD-xeK" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
                                         <rect key="frame" x="40" y="248" width="208" height="56"/>
                                         <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -330,6 +351,11 @@
                                         <state key="normal" title="Get Started">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="signUpButtonTapped:" destination="VkD-Ki-GOj" eventType="touchUpInside" id="gg8-GI-gMK"/>
                                         </connections>
@@ -393,6 +419,8 @@
                         <outlet property="passwordLabelOutlet" destination="Ou7-4q-TQw" id="Jf8-Ta-lRj"/>
                         <outlet property="passwordTextField" destination="g7O-Uz-dNH" id="rp3-Lx-WH5"/>
                         <outlet property="signUpButtonOutlet" destination="hG7-ZD-xeK" id="Mj1-xs-9RO"/>
+                        <outlet property="usernameLabelOutlet" destination="hLX-2D-glf" id="a0Y-X5-T0T"/>
+                        <outlet property="usernameTextField" destination="4LC-jr-0QM" id="ZcI-wZ-qhy"/>
                         <outlet property="welcomeInstructionsOutlet" destination="pkd-H1-wIb" id="nFh-7Z-H0S"/>
                         <outlet property="welcomeMessageOutlet" destination="Met-Vb-e07" id="Zvh-ID-Tns"/>
                     </connections>
@@ -560,7 +588,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FTs-XE-JpF" userLabel="Kids Program Button Outlet">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FTs-XE-JpF" userLabel="Kids Program Button Outlet" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
                                         <rect key="frame" x="24" y="116.5" width="240" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="wW4-eY-hVN"/>
@@ -584,7 +612,7 @@
                                             <action selector="kidsProgramButtonTapped:" destination="Rmh-VZ-Ycm" eventType="touchUpInside" id="u7d-Fv-2oj"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W5y-f9-oz7" userLabel="Adults Program Button Outlet">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W5y-f9-oz7" userLabel="Adults Program Button Outlet" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
                                         <rect key="frame" x="24" y="236.5" width="240" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="ReN-RV-5uF"/>
@@ -678,7 +706,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p70-NB-DGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3537" y="-568"/>
+            <point key="canvasLocation" x="1459" y="-513"/>
         </scene>
         <!--toStudentDashbooard-->
         <scene sceneID="qka-Og-LnG">
@@ -691,7 +719,7 @@
         <!--name + belt-->
         <scene sceneID="zpX-mq-44p">
             <objects>
-                <viewController id="YpM-67-keD" userLabel="name + belt" customClass="SignUpLoginViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toNameBelt" id="YpM-67-keD" userLabel="name + belt" customClass="SignUpLoginViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D59-Sg-yRh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -777,7 +805,7 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PoG-2I-4ya" userLabel="belt View">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PoG-2I-4ya" userLabel="belt View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="152" width="320" height="40"/>
                                         <subviews>
                                             <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="HPG-cu-ibO" userLabel="black bar View">
@@ -883,18 +911,19 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxn-nS-91i">
-                                        <rect key="frame" x="113.5" y="216" width="93" height="40"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxn-nS-91i" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
+                                        <rect key="frame" x="68" y="216" width="184" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Jl9-jb-bcd"/>
+                                            <constraint firstAttribute="width" constant="184" id="j8m-r5-yOZ"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
                                         <state key="normal" title="set belt level">
                                             <color key="titleColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="1"/>
+                                                <real key="value" value="2"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                 <color key="value" red="0.94534217980000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -915,7 +944,7 @@
                                     <constraint firstItem="YSA-tz-XOE" firstAttribute="leading" secondItem="l0r-U9-Vrw" secondAttribute="leading" constant="16" id="zkk-un-Xgj"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rOe-Eg-NUk" userLabel="Next Button Outlet">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rOe-Eg-NUk" userLabel="Next Button Outlet" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
                                 <rect key="frame" x="40" y="448" width="240" height="56"/>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -925,6 +954,11 @@
                                 <state key="normal" title="Next">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="signUpButtonTapped:" destination="YpM-67-keD" eventType="touchUpInside" id="38p-si-evr"/>
                                 </connections>
@@ -963,7 +997,7 @@
         <!--address-->
         <scene sceneID="N4s-7k-cpQ">
             <objects>
-                <viewController id="Gda-mL-WGC" userLabel="address" customClass="SignUpLoginViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toAddress" id="Gda-mL-WGC" userLabel="address" customClass="SignUpLoginViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Nza-qM-EcD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1091,7 +1125,7 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QqB-34-XbY">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QqB-34-XbY" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
                                         <rect key="frame" x="40" y="320" width="208" height="56"/>
                                         <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -1101,6 +1135,11 @@
                                         <state key="normal" title="Next">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="signUpButtonTapped:" destination="Gda-mL-WGC" eventType="touchUpInside" id="k5y-2k-gUK"/>
                                         </connections>
@@ -1175,7 +1214,7 @@
         <!--contact info-->
         <scene sceneID="M8O-hx-JO7">
             <objects>
-                <viewController id="H0v-p9-n7k" userLabel="contact info" customClass="SignUpLoginViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toContactInfo" id="H0v-p9-n7k" userLabel="contact info" customClass="SignUpLoginViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NFj-iS-P8E">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1254,7 +1293,7 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bVz-Bl-kvv">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bVz-Bl-kvv" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
                                         <rect key="frame" x="40" y="248" width="208" height="56"/>
                                         <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -1264,6 +1303,11 @@
                                         <state key="normal" title="Next">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="signUpButtonTapped:" destination="H0v-p9-n7k" eventType="touchUpInside" id="XeS-KV-oHn"/>
                                         </connections>
@@ -1338,55 +1382,68 @@
         <!--profile pic-->
         <scene sceneID="4Ky-ip-5cC">
             <objects>
-                <viewController id="lbT-YZ-VcJ" userLabel="profile pic" customClass="SignUpLoginViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toTakeProfilePic" id="lbT-YZ-VcJ" userLabel="profile pic" customClass="SignUpLoginViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dxR-y9-aRV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="4MF-hh-4Ck" userLabel="Sign up elements Stack View">
-                                <rect key="frame" x="0.0" y="160" width="320" height="360"/>
+                                <rect key="frame" x="0.0" y="148" width="320" height="384"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="4Xn-gA-RIX" userLabel="profile pic Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="256"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="280"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xx1-3Z-Sf4" userLabel="Profile Pic Image View">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_pic_placeholder_image.png" translatesAutoresizingMaskIntoConstraints="NO" id="Xx1-3Z-Sf4" userLabel="Profile Pic Image View">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="200" id="gE3-Jv-xU5"/>
                                                 </constraints>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hmw-cR-E8N">
-                                                <rect key="frame" x="0.0" y="216" width="320" height="40"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H67-XO-wVB">
+                                                <rect key="frame" x="0.0" y="216" width="320" height="64"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hmw-cR-E8N" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
+                                                        <rect key="frame" x="32" y="4" width="256" height="56"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="56" id="LpC-RC-Ddm"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                                        <state key="normal" title="take a profile picture">
+                                                            <color key="titleColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="2"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" red="0.94534217980000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="ownerButtonTapped:" destination="ZNH-ok-J1f" eventType="touchUpInside" id="Bzr-xl-x5f"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="LpC-RC-Ddm"/>
+                                                    <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="hmw-cR-E8N" secondAttribute="trailing" constant="32" id="gPZ-VU-HlK"/>
+                                                    <constraint firstItem="hmw-cR-E8N" firstAttribute="leading" relation="lessThanOrEqual" secondItem="H67-XO-wVB" secondAttribute="leading" constant="32" id="pjE-Kt-523"/>
+                                                    <constraint firstAttribute="bottom" secondItem="hmw-cR-E8N" secondAttribute="bottom" constant="4" id="rmw-iq-9MC"/>
+                                                    <constraint firstItem="hmw-cR-E8N" firstAttribute="top" secondItem="H67-XO-wVB" secondAttribute="top" constant="4" id="u5r-T2-58V"/>
+                                                    <constraint firstAttribute="height" constant="64" id="uhj-kW-xIU"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
-                                                <state key="normal" title="take a profile picture">
-                                                    <color key="titleColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="1"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" red="0.94534217980000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="10"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="ownerButtonTapped:" destination="ZNH-ok-J1f" eventType="touchUpInside" id="Bzr-xl-x5f"/>
-                                                </connections>
-                                            </button>
+                                            </view>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="Xx1-3Z-Sf4" secondAttribute="trailing" id="IF0-6S-TAb"/>
                                             <constraint firstItem="Xx1-3Z-Sf4" firstAttribute="leading" secondItem="4Xn-gA-RIX" secondAttribute="leading" id="YGr-Bm-yca"/>
                                         </constraints>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="naV-Hw-BRF">
-                                        <rect key="frame" x="40" y="304" width="240" height="56"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="naV-Hw-BRF" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
+                                        <rect key="frame" x="40" y="328" width="240" height="56"/>
                                         <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="mOy-jG-sK3"/>
@@ -1395,6 +1452,11 @@
                                         <state key="normal" title="Create Account">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="signUpButtonTapped:" destination="lbT-YZ-VcJ" eventType="touchUpInside" id="b9F-cM-ccA"/>
                                         </connections>
@@ -1465,7 +1527,7 @@
         <!--profile complete-->
         <scene sceneID="4VU-BK-fhG">
             <objects>
-                <viewController id="ksU-gg-XAc" userLabel="profile complete" customClass="SignUpLoginViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toProfileComplete" id="ksU-gg-XAc" userLabel="profile complete" customClass="SignUpLoginViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zSq-YM-t9n">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1476,13 +1538,13 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="vNX-WZ-Huo" userLabel="profile pic Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="256"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mO9-Kg-Exx" userLabel="Profile Pic Image View">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_pic_placeholder_image.png" translatesAutoresizingMaskIntoConstraints="NO" id="mO9-Kg-Exx" userLabel="Profile Pic Image View">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="200" id="uBR-Ql-aHS"/>
                                                 </constraints>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bIZ-Py-vrk">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bIZ-Py-vrk" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="216" width="320" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="0gL-er-DiY"/>
@@ -1493,7 +1555,7 @@
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="1"/>
+                                                        <real key="value" value="2"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                         <color key="value" red="0.94534217980000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1590,6 +1652,9 @@
             <point key="canvasLocation" x="2359" y="-3826"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="profile_pic_placeholder_image.png" width="256" height="256"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="lA2-qM-r4F"/>
         <segue reference="GYQ-pn-A7P"/>
