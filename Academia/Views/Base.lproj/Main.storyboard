@@ -460,7 +460,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cVL-1z-4c8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3537" y="692"/>
+            <point key="canvasLocation" x="3506" y="1008"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OjB-cP-hRh">
@@ -706,7 +706,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p70-NB-DGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1459" y="-513"/>
+            <point key="canvasLocation" x="3221" y="205"/>
         </scene>
         <!--toStudentDashbooard-->
         <scene sceneID="qka-Og-LnG">
@@ -719,7 +719,7 @@
         <!--name + belt-->
         <scene sceneID="zpX-mq-44p">
             <objects>
-                <viewController storyboardIdentifier="toNameBelt" id="YpM-67-keD" userLabel="name + belt" customClass="SignUpLoginViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toNameBelt" id="YpM-67-keD" userLabel="name + belt" customClass="NameAndBeltViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D59-Sg-yRh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -934,6 +934,7 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="ownerButtonTapped:" destination="ZNH-ok-J1f" eventType="touchUpInside" id="0G7-h8-DfT"/>
+                                            <action selector="setBeltLevelButtonTapped:" destination="YpM-67-keD" eventType="touchUpInside" id="mLA-B6-nIF"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -960,6 +961,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="nextButtonTapped:" destination="YpM-67-keD" eventType="touchUpInside" id="Xux-Dy-YMn"/>
                                     <action selector="signUpButtonTapped:" destination="YpM-67-keD" eventType="touchUpInside" id="38p-si-evr"/>
                                 </connections>
                             </button>
@@ -983,21 +985,27 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="86w-wi-1Aw"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="firstNameLabelOutlet" destination="b9N-1b-iky" id="g9F-bT-5Oa"/>
+                        <outlet property="firstNameTextField" destination="7mb-Xv-B5q" id="meR-e9-lH9"/>
+                        <outlet property="lastNameLabelOutlet" destination="RPI-iQ-Tsn" id="6nM-6Q-dHN"/>
+                        <outlet property="lastNameTextField" destination="WJm-hb-ZwF" id="Qsg-FM-Mi7"/>
                         <outlet property="passwordLabelOutlet" destination="RPI-iQ-Tsn" id="YGf-0c-o6q"/>
                         <outlet property="passwordTextField" destination="WJm-hb-ZwF" id="012-m0-8Ee"/>
                         <outlet property="signUpButtonOutlet" destination="rOe-Eg-NUk" id="Te9-EN-IEN"/>
+                        <outlet property="welcomeInstructionsLabelOutlet" destination="jS8-29-PJZ" id="1QG-Zy-6qj"/>
                         <outlet property="welcomeInstructionsOutlet" destination="jS8-29-PJZ" id="9wQ-6E-Nr8"/>
+                        <outlet property="welcomeLabeOutlet" destination="VU4-gQ-df6" id="215-LD-vul"/>
                         <outlet property="welcomeMessageOutlet" destination="VU4-gQ-df6" id="Nbx-8Y-T8X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LvP-3c-ToH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2359" y="-568"/>
+            <point key="canvasLocation" x="2779" y="-568"/>
         </scene>
         <!--address-->
         <scene sceneID="N4s-7k-cpQ">
             <objects>
-                <viewController storyboardIdentifier="toAddress" id="Gda-mL-WGC" userLabel="address" customClass="SignUpLoginViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toAddress" id="Gda-mL-WGC" userLabel="address" customClass="AddressViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Nza-qM-EcD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1141,6 +1149,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <action selector="nextButtonTapped:" destination="Gda-mL-WGC" eventType="touchUpInside" id="PKg-mu-Qum"/>
                                             <action selector="signUpButtonTapped:" destination="Gda-mL-WGC" eventType="touchUpInside" id="k5y-2k-gUK"/>
                                         </connections>
                                     </button>
@@ -1198,23 +1207,35 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="bye-SA-Zsb"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="addressLine1LabelOutlet" destination="PX4-TW-lyW" id="EpC-8G-fMy"/>
+                        <outlet property="addressLine1TextField" destination="mag-Vi-ZQ2" id="yC4-m8-JVA"/>
+                        <outlet property="addressLine2LabelOutlet" destination="nip-cz-aY2" id="J0m-k9-KOs"/>
+                        <outlet property="addressLine2TextField" destination="JZM-ae-XSW" id="Uvc-Vr-L0X"/>
+                        <outlet property="cityLabelOutlet" destination="WgS-ze-28V" id="kV4-BT-Er4"/>
+                        <outlet property="cityTextField" destination="Ydw-YA-IwU" id="kWQ-XZ-3ap"/>
                         <outlet property="confirmPasswordLabelOutlet" destination="WgS-ze-28V" id="2l1-tz-MAO"/>
                         <outlet property="confirmPasswordTextField" destination="Ydw-YA-IwU" id="kdl-vS-Ldq"/>
                         <outlet property="passwordLabelOutlet" destination="nip-cz-aY2" id="FKE-rZ-RqS"/>
                         <outlet property="passwordTextField" destination="JZM-ae-XSW" id="qtz-Qi-p7Q"/>
                         <outlet property="signUpButtonOutlet" destination="QqB-34-XbY" id="9qx-wD-7B0"/>
+                        <outlet property="stateLabelOutlet" destination="gCX-wd-bPr" id="M5n-30-YUM"/>
+                        <outlet property="stateTextField" destination="E0j-7v-PIT" id="3KD-RV-ZYr"/>
+                        <outlet property="welcomeInstructionsLabelOutlet" destination="PJI-kg-WIi" id="heX-9s-tpq"/>
                         <outlet property="welcomeInstructionsOutlet" destination="PJI-kg-WIi" id="BUL-M8-X2v"/>
+                        <outlet property="welcomeLabeOutlet" destination="Y13-Mi-8yD" id="jqn-rP-2dy"/>
                         <outlet property="welcomeMessageOutlet" destination="Y13-Mi-8yD" id="6Df-0L-FBg"/>
+                        <outlet property="zipCodeLabelOutlet" destination="1XU-ah-s9Z" id="auq-Fh-LeU"/>
+                        <outlet property="zipCodeTextField" destination="RTs-Bz-XVW" id="Nn4-Qy-F47"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oFd-ez-81t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2359" y="-1339"/>
+            <point key="canvasLocation" x="2779" y="-1332"/>
         </scene>
         <!--contact info-->
         <scene sceneID="M8O-hx-JO7">
             <objects>
-                <viewController storyboardIdentifier="toContactInfo" id="H0v-p9-n7k" userLabel="contact info" customClass="SignUpLoginViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toContactInfo" id="H0v-p9-n7k" userLabel="contact info" customClass="ContactInfoViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NFj-iS-P8E">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1309,6 +1330,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <action selector="nextButtonTapped:" destination="H0v-p9-n7k" eventType="touchUpInside" id="T9r-LR-56o"/>
                                             <action selector="signUpButtonTapped:" destination="H0v-p9-n7k" eventType="touchUpInside" id="XeS-KV-oHn"/>
                                         </connections>
                                     </button>
@@ -1368,21 +1390,29 @@
                     <connections>
                         <outlet property="confirmPasswordLabelOutlet" destination="oYP-P4-Ybd" id="n1s-ow-Fyu"/>
                         <outlet property="confirmPasswordTextField" destination="oGV-bI-vdD" id="YN1-uf-z1f"/>
+                        <outlet property="emailOutlet" destination="oYP-P4-Ybd" id="4xg-CU-fd5"/>
+                        <outlet property="emailTextField" destination="oGV-bI-vdD" id="ZSs-Zn-hp9"/>
+                        <outlet property="mobileLabelOutlet" destination="R4k-TD-VhF" id="tWb-wM-iUV"/>
+                        <outlet property="mobileTextField" destination="Shd-Oj-k9N" id="tAJ-wt-sCS"/>
                         <outlet property="passwordLabelOutlet" destination="R4k-TD-VhF" id="r9Z-R2-c5a"/>
                         <outlet property="passwordTextField" destination="Shd-Oj-k9N" id="rft-qs-8rw"/>
+                        <outlet property="phoneLabelOutlet" destination="pfE-o7-Bnx" id="ihr-yV-9I7"/>
+                        <outlet property="phoneTextField" destination="zCk-cf-jYJ" id="D7I-pp-ARI"/>
                         <outlet property="signUpButtonOutlet" destination="bVz-Bl-kvv" id="x00-Ka-umj"/>
+                        <outlet property="welcomeInstructionsLabelOutlet" destination="PzT-MW-YK9" id="9ho-BC-HF8"/>
                         <outlet property="welcomeInstructionsOutlet" destination="PzT-MW-YK9" id="xd4-FZ-jGK"/>
+                        <outlet property="welcomeLabeOutlet" destination="Oh6-cb-FdB" id="lbV-nX-RMm"/>
                         <outlet property="welcomeMessageOutlet" destination="Oh6-cb-FdB" id="Fpa-Pt-hiK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tcv-2y-Y6q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2359" y="-2151"/>
+            <point key="canvasLocation" x="2779" y="-2071"/>
         </scene>
         <!--profile pic-->
         <scene sceneID="4Ky-ip-5cC">
             <objects>
-                <viewController storyboardIdentifier="toTakeProfilePic" id="lbT-YZ-VcJ" userLabel="profile pic" customClass="SignUpLoginViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toTakeProfilePic" id="lbT-YZ-VcJ" userLabel="profile pic" customClass="TakeProfilePicViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dxR-y9-aRV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1424,6 +1454,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="ownerButtonTapped:" destination="ZNH-ok-J1f" eventType="touchUpInside" id="Bzr-xl-x5f"/>
+                                                            <action selector="takeProfilePicButtonTapped:" destination="lbT-YZ-VcJ" eventType="touchUpInside" id="dq8-Di-MWl"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -1458,6 +1489,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <action selector="createAccountButtonTapped:" destination="lbT-YZ-VcJ" eventType="touchUpInside" id="rH8-yM-DOt"/>
                                             <action selector="signUpButtonTapped:" destination="lbT-YZ-VcJ" eventType="touchUpInside" id="b9F-cM-ccA"/>
                                         </connections>
                                     </button>
@@ -1515,19 +1547,22 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="93e-jO-l1G"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="profilePicImageViewOutlet" destination="Xx1-3Z-Sf4" id="OvE-Un-1Eh"/>
                         <outlet property="signUpButtonOutlet" destination="naV-Hw-BRF" id="buq-zj-RUY"/>
+                        <outlet property="welcomeInstructionsLabelOutlet" destination="iVr-Yb-To6" id="4Zm-K3-wH0"/>
                         <outlet property="welcomeInstructionsOutlet" destination="iVr-Yb-To6" id="DYb-aQ-eqD"/>
+                        <outlet property="welcomeLabeOutlet" destination="rMg-Px-f46" id="AB7-OG-pZx"/>
                         <outlet property="welcomeMessageOutlet" destination="rMg-Px-f46" id="Egc-8m-TQ3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mY2-eP-3NA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2359" y="-3021"/>
+            <point key="canvasLocation" x="2520" y="-3603"/>
         </scene>
         <!--profile complete-->
         <scene sceneID="4VU-BK-fhG">
             <objects>
-                <viewController storyboardIdentifier="toProfileComplete" id="ksU-gg-XAc" userLabel="profile complete" customClass="SignUpLoginViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toProfileComplete" id="ksU-gg-XAc" userLabel="profile complete" customClass="CompletedProfileViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zSq-YM-t9n">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1649,7 +1684,184 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYx-wp-Y05" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2359" y="-3826"/>
+            <point key="canvasLocation" x="2520" y="-4333"/>
+        </scene>
+        <!--emergency contact info-->
+        <scene sceneID="SGk-R8-yR3">
+            <objects>
+                <viewController storyboardIdentifier="toEmergencyContactInfo" id="XLp-YJ-uEk" userLabel="emergency contact info" customClass="EmergencyContactViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2sT-Ya-K3f">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="KtE-4y-EfR" userLabel="Sign up elements Stack View">
+                                <rect key="frame" x="16" y="188" width="288" height="304"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="c75-dL-YcS" userLabel="contact info Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="200"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Gar-av-37B" userLabel="phone Stack View">
+                                                <rect key="frame" x="0.0" y="0.0" width="288" height="56"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="emergency contact name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mgd-uL-cHP" userLabel="phone">
+                                                        <rect key="frame" x="4" y="0.0" width="280" height="22"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fN9-Ga-Wdw">
+                                                        <rect key="frame" x="0.0" y="26" width="288" height="30"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="mgd-uL-cHP" firstAttribute="leading" secondItem="Gar-av-37B" secondAttribute="leading" constant="4" id="M1E-9o-ym9"/>
+                                                    <constraint firstAttribute="trailing" secondItem="fN9-Ga-Wdw" secondAttribute="trailing" id="kVg-3O-QHr"/>
+                                                    <constraint firstItem="fN9-Ga-Wdw" firstAttribute="leading" secondItem="Gar-av-37B" secondAttribute="leading" id="opA-IX-iBC"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="F6d-fa-aSG" userLabel="mobile Stack View">
+                                                <rect key="frame" x="0.0" y="72" width="288" height="56"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="emergency contact phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="odr-98-k92" userLabel="mobile Label Outlet">
+                                                        <rect key="frame" x="4" y="0.0" width="280" height="22"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zFT-Nr-eSM" userLabel="mobile Text Field">
+                                                        <rect key="frame" x="0.0" y="26" width="288" height="30"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="odr-98-k92" firstAttribute="leading" secondItem="F6d-fa-aSG" secondAttribute="leading" constant="4" id="68F-ps-Au9"/>
+                                                    <constraint firstAttribute="trailing" secondItem="zFT-Nr-eSM" secondAttribute="trailing" id="L63-Dc-9hO"/>
+                                                    <constraint firstItem="zFT-Nr-eSM" firstAttribute="leading" secondItem="F6d-fa-aSG" secondAttribute="leading" id="X2D-rF-xMT"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="A3F-HD-E0t" userLabel="email Stack View">
+                                                <rect key="frame" x="0.0" y="144" width="288" height="56"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="emergency contact relationship" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Omz-k9-fgv" userLabel="email Label Outlet">
+                                                        <rect key="frame" x="4" y="0.0" width="280" height="22"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="plq-5q-JLg" userLabel="email Text Field">
+                                                        <rect key="frame" x="0.0" y="26" width="288" height="30"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="plq-5q-JLg" firstAttribute="leading" secondItem="A3F-HD-E0t" secondAttribute="leading" id="Na2-E5-e7g"/>
+                                                    <constraint firstAttribute="trailing" secondItem="plq-5q-JLg" secondAttribute="trailing" id="cVq-r3-Xb1"/>
+                                                    <constraint firstItem="Omz-k9-fgv" firstAttribute="leading" secondItem="A3F-HD-E0t" secondAttribute="leading" constant="4" id="vPP-ID-Kya"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="peg-9k-muy" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
+                                        <rect key="frame" x="40" y="248" width="208" height="56"/>
+                                        <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="4Qh-SA-oiY"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
+                                        <state key="normal" title="Next">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="nextButtonTapped:" destination="XLp-YJ-uEk" eventType="touchUpInside" id="zIv-W8-DXA"/>
+                                            <action selector="signUpButtonTapped:" destination="XLp-YJ-uEk" eventType="touchUpInside" id="YVz-Ib-bSv"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="c75-dL-YcS" firstAttribute="leading" secondItem="KtE-4y-EfR" secondAttribute="leading" id="EOz-2f-Xd9"/>
+                                    <constraint firstAttribute="trailing" secondItem="peg-9k-muy" secondAttribute="trailing" constant="40" id="gD4-YK-4Xe"/>
+                                    <constraint firstAttribute="trailing" secondItem="c75-dL-YcS" secondAttribute="trailing" id="gbc-hC-nho"/>
+                                    <constraint firstItem="peg-9k-muy" firstAttribute="leading" secondItem="KtE-4y-EfR" secondAttribute="leading" constant="40" id="tEj-Lk-ghQ"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Dp4-3b-hu0" userLabel="Welcome Stack View">
+                                <rect key="frame" x="24" y="44" width="272" height="52"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Owner" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blQ-vT-axg">
+                                        <rect key="frame" x="0.0" y="0.0" width="272" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="Bjg-WU-zlt"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="32"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="please enter the following: " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBT-dY-Jbn">
+                                        <rect key="frame" x="0.0" y="28" width="272" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="Mn7-7y-OrX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="blQ-vT-axg" firstAttribute="leading" secondItem="Dp4-3b-hu0" secondAttribute="leading" id="A5P-l5-YJn"/>
+                                    <constraint firstAttribute="trailing" secondItem="LBT-dY-Jbn" secondAttribute="trailing" id="BTg-rf-CfM"/>
+                                    <constraint firstAttribute="trailing" secondItem="blQ-vT-axg" secondAttribute="trailing" id="GPc-1g-66S"/>
+                                    <constraint firstItem="LBT-dY-Jbn" firstAttribute="leading" secondItem="Dp4-3b-hu0" secondAttribute="leading" id="PFa-bn-Pcj"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7mc-0F-3fF" firstAttribute="trailing" secondItem="Dp4-3b-hu0" secondAttribute="trailing" constant="24" id="206-K2-4yu"/>
+                            <constraint firstItem="7mc-0F-3fF" firstAttribute="trailing" secondItem="KtE-4y-EfR" secondAttribute="trailing" constant="16" id="C81-gz-NVH"/>
+                            <constraint firstItem="KtE-4y-EfR" firstAttribute="centerY" secondItem="2sT-Ya-K3f" secondAttribute="centerY" constant="56" id="LOc-eY-KsY"/>
+                            <constraint firstItem="Dp4-3b-hu0" firstAttribute="leading" secondItem="7mc-0F-3fF" secondAttribute="leading" constant="24" id="XpO-ME-55v"/>
+                            <constraint firstItem="Dp4-3b-hu0" firstAttribute="centerX" secondItem="2sT-Ya-K3f" secondAttribute="centerX" id="eeu-1U-uQa"/>
+                            <constraint firstItem="KtE-4y-EfR" firstAttribute="leading" secondItem="7mc-0F-3fF" secondAttribute="leading" constant="16" id="eqy-DQ-9dT"/>
+                            <constraint firstItem="Dp4-3b-hu0" firstAttribute="top" secondItem="7mc-0F-3fF" secondAttribute="top" constant="24" id="ics-MP-9MW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7mc-0F-3fF"/>
+                    </view>
+                    <navigationItem key="navigationItem" title=" " id="SX0-9D-3yp">
+                        <barButtonItem key="backBarButtonItem" title=" " id="e7P-Sr-Ocd"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="confirmPasswordLabelOutlet" destination="Omz-k9-fgv" id="fJq-8r-KGX"/>
+                        <outlet property="confirmPasswordTextField" destination="plq-5q-JLg" id="MXO-7T-vRo"/>
+                        <outlet property="emergencyContactNameLabelOutlet" destination="mgd-uL-cHP" id="gqW-6z-EbA"/>
+                        <outlet property="emergencyContactNameTextField" destination="fN9-Ga-Wdw" id="wlv-9q-GTF"/>
+                        <outlet property="emergencyContactPhoneLabelOutlet" destination="odr-98-k92" id="EDF-PS-GwB"/>
+                        <outlet property="emergencyContactPhoneTextField" destination="zFT-Nr-eSM" id="xcc-lU-5KE"/>
+                        <outlet property="emergencyContactRelationshipOutlet" destination="Omz-k9-fgv" id="Lwk-dy-UOD"/>
+                        <outlet property="emergencyContactRelationshipTextField" destination="plq-5q-JLg" id="rOG-Ms-2J0"/>
+                        <outlet property="passwordLabelOutlet" destination="odr-98-k92" id="i5j-68-8Yd"/>
+                        <outlet property="passwordTextField" destination="zFT-Nr-eSM" id="7Zv-ft-adF"/>
+                        <outlet property="signUpButtonOutlet" destination="peg-9k-muy" id="Ykv-2y-sUe"/>
+                        <outlet property="welcomeInstructionsLabelOutlet" destination="LBT-dY-Jbn" id="6Qq-dq-acp"/>
+                        <outlet property="welcomeInstructionsOutlet" destination="LBT-dY-Jbn" id="te1-Y7-GN3"/>
+                        <outlet property="welcomeLabeOutlet" destination="blQ-vT-axg" id="mbE-F4-O1N"/>
+                        <outlet property="welcomeMessageOutlet" destination="blQ-vT-axg" id="Aku-gj-tRq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KO3-RA-G13" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2520" y="-2880"/>
         </scene>
     </scenes>
     <resources>
