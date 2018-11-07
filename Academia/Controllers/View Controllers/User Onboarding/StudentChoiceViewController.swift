@@ -16,6 +16,8 @@ class StudentChoiceViewController: UIViewController {
     var username: String?
     var password: String?
     
+    var isKid = false
+    
     @IBOutlet weak var kidsProgramButtonOutlet: UIButton!
     @IBOutlet weak var adultsProgramButtonOutlet: UIButton!
     @IBOutlet weak var confirmKidsProgramButtonOutlet: UIButton!
@@ -48,6 +50,8 @@ class StudentChoiceViewController: UIViewController {
         
         confirmAdultsProgramButtonOutlet.isHidden = true
         confirmAdultsProgramButtonOutlet.isEnabled = false
+        
+        isKid = true
     }
     
     @IBAction func adultsProgramButtonTapped(_ sender: UIButton) {
@@ -57,6 +61,8 @@ class StudentChoiceViewController: UIViewController {
         
         confirmAdultsProgramButtonOutlet.isHidden = false
         confirmAdultsProgramButtonOutlet.isEnabled = true
+        
+        isKid = false
     }
     
     @IBAction func confirmKidsProgramButtonTapped(_ sender: UIButton) {
@@ -66,16 +72,17 @@ class StudentChoiceViewController: UIViewController {
         // instantiate the relevant storyboard
         let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
-        let destViewController = mainView.instantiateViewController(withIdentifier: "toInitialKidStudentSignUp") as! KidStudentInitialSetupTableViewController
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toUsernamePassword") as! SignUpLoginViewController
         // create the segue programmatically
         self.navigationController?.pushViewController(destViewController, animated: true)
         // set the desired properties of the destinationVC's navgation Item
-        
-         destViewController.cells = [MyCells.profilePicCell, MyCells.beltCell, MyCells.statusCell, MyCells.usernameCell, MyCells.passwordCell, MyCells.firstNameCell, MyCells.lastNameCell, MyCells.parentGuardianCell, MyCells.streetAddressCell, MyCells.cityCell, MyCells.stateCell, MyCells.zipCodeCell, MyCells.phoneCell, MyCells.mobileCell, MyCells.emailCell, MyCells.emergencyContactCell, MyCells.emergencyContactPhoneCell, MyCells.emergencyContactRelationshipCell, MyCells.saveProfileButtonCell]
-        
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        
+        // pass desired data to relevant view controller
+        destViewController.isOwner = self.isOwner
+        destViewController.isKid = true
         
     }
     
@@ -86,16 +93,17 @@ class StudentChoiceViewController: UIViewController {
         // instantiate the relevant storyboard
         let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
-        let destViewController = mainView.instantiateViewController(withIdentifier: "toInitialStudentSignUp") as! AdultStudentInitialSetupTableViewController
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toUsernamePassword") as! SignUpLoginViewController
         // create the segue programmatically
         self.navigationController?.pushViewController(destViewController, animated: true)
         // set the desired properties of the destinationVC's navgation Item
-        
-         destViewController.cells = [MyCells.profilePicCell, MyCells.beltCell, MyCells.statusCell, MyCells.isInstructorCell, MyCells.usernameCell, MyCells.passwordCell, MyCells.firstNameCell, MyCells.lastNameCell, MyCells.parentGuardianCell, MyCells.streetAddressCell, MyCells.cityCell, MyCells.stateCell, MyCells.zipCodeCell, MyCells.phoneCell, MyCells.mobileCell, MyCells.emailCell, MyCells.emergencyContactCell, MyCells.emergencyContactPhoneCell, MyCells.emergencyContactRelationshipCell, MyCells.saveProfileButtonCell]
-        
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        
+        // pass desired data to relevant view controller
+        destViewController.isOwner = self.isOwner
+        destViewController.isKid = false
         
     }
     

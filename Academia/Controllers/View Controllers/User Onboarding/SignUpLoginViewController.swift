@@ -14,6 +14,9 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
     var isOwner: Bool?
     var username: String?
     var password: String?
+    var isKid: Bool?
+    
+    @IBOutlet weak var firstProgressDotOutlet: DesignableView!
     
     var delegate: InitialStudentSegueDelegate!
     
@@ -32,6 +35,7 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
     
     override func viewWillAppear(_ animated: Bool) {
         print("viewWillAppear: isOwner = \(String(describing: isOwner))")
+        print("viewWillAppear: isKid = \(String(describing: isKid))")
         
         // turns off auto-correct in these UITextFields
         usernameTextField.autocorrectionType = UITextAutocorrectionType.no
@@ -43,7 +47,19 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         passwordTextField.autocapitalizationType = UITextAutocapitalizationType.none
         confirmPasswordTextField.autocapitalizationType = UITextAutocapitalizationType.none
         
+        guard let isOwner = isOwner else { return }
         
+        if isOwner {
+            firstProgressDotOutlet.isHidden = true
+        }
+        
+        guard let isKid = isKid else { return }
+        
+        if isKid {
+            welcomeMessageOutlet.text = "Welcome Kids Program"
+        } else {
+            welcomeMessageOutlet.text = "Welcome Adults Program"
+        }
     }
     
     override func viewDidLoad() {
@@ -114,113 +130,65 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
     // MARK: - Actions
     
     @IBAction func signUpButtonTapped(_ sender: UIButton) {
+        // programmatically performing segue
         
-        guard let isOwner = isOwner else { return }
+        // instantiate the relevant storyboard
+        let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        // instantiate the desired TableViewController as ViewController on relevant storyboard
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toNameBelt") as! NameAndBeltViewController
         
-        if isOwner == false {
-            // programmatically performing the "student choice" segue
-            
-            // instantiate the relevant storyboard
-            let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            // instantiate the desired TableViewController as ViewController on relevant storyboard
-            let destViewController = mainView.instantiateViewController(withIdentifier: "toStudentChoiceVC") as! StudentChoiceViewController
-            // create the segue programmatically
-            self.navigationController?.pushViewController(destViewController, animated: true)
-            // set the desired properties of the destinationVC's navgation Item
-            
-            let backButtonItem = UIBarButtonItem()
-            backButtonItem.title = " "
-            navigationItem.backBarButtonItem = backButtonItem
-                    // pass the created username and confirmed password to next VC - where it will be on its way to be sorted to either adult or student
-            
-            // run check to see is there is username/password
-            guard let username = username, let password = password else {
-                // if no username/password -
-                // pass created username and confirmed password to destViewController where rest of owner model creation will occur
-                
-                // check to see if there is valid username
-                guard let newUsername = self.usernameTextField.text, self.usernameTextField.text != "" else {
-                    
-                    welcomeInstructionsOutlet.textColor = UIColor.red
-                    return
-                }
-                // if valid username, pass it to destViewController
-                destViewController.username = newUsername
-                
-                // check to see if there is a valid and matching password
-                if self.passwordTextField.text == "" {
-                    welcomeInstructionsOutlet.text = "please create a password"
-                    welcomeInstructionsOutlet.textColor = UIColor.red
-                } else if self.confirmPasswordTextField.text == "" {
-                    welcomeInstructionsOutlet.text = "please confirm your password"
-                    welcomeInstructionsOutlet.textColor = UIColor.red
-                } else if self.passwordTextField.text != self.confirmPasswordTextField.text {
-                    welcomeInstructionsOutlet.text = "your password does not match your confirmed password. please try again."
-                    welcomeInstructionsOutlet.textColor = UIColor.red
-                } else if self.passwordTextField.text == self.confirmPasswordTextField.text {
-                    // if valid password, pass it to destViewController
-                    guard let newPassword = self.passwordTextField.text else { return }
-                    destViewController.password = newPassword
-                }
-                // pass the isOwner value to destViewController
-                destViewController.isOwner = isOwner
-                
+        // run check to see is there is username/password
+        guard let username = username, let password = password else {
+            // if no username/password -
+                // pass new username & confirmed password to destViewController
+            // check to see if there is valid username
+            guard let newUsername = self.usernameTextField.text, self.usernameTextField.text != "" else {
+                welcomeInstructionsOutlet.textColor = UIColor.red
                 return
             }
-            
-            // if usermame/password -
-                // login
-        } else {
-            // programmatically performing the owner segue
-            
-            // instantiate the relevant storyboard
-            let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            // instantiate the desired TableViewController as ViewController on relevant storyboard
-            let destViewController = mainView.instantiateViewController(withIdentifier: "toInitialOwnerSignUp") as! OwnerProfileInitialSetUpTableViewController
-            // create the segue programmatically
-            self.navigationController?.pushViewController(destViewController, animated: true)
-            // set the desired properties of the destinationVC's navgation Item
-            let backButtonItem = UIBarButtonItem()
-            backButtonItem.title = " "
-            navigationItem.backBarButtonItem = backButtonItem
-            
-            // run check to see is there is username/password
-            guard let username = username, let password = password else {
-                // if no username/password -
-                    // pass created username and confirmed password to destViewController where rest of owner model creation will occur
-                
-                // check to see if there is valid username
-                guard let newUsername = self.usernameTextField.text, self.usernameTextField.text != "" else {
-                    
-                    welcomeInstructionsOutlet.textColor = UIColor.red
-                    return
-                }
-                // if valid username, pass it to destViewController
-                destViewController.username = newUsername
-                
-                // check to see if there is a valid and matching password
-                if self.passwordTextField.text == "" {
-                    welcomeInstructionsOutlet.text = "please create a password"
-                    welcomeInstructionsOutlet.textColor = UIColor.red
-                } else if self.confirmPasswordTextField.text == "" {
-                    welcomeInstructionsOutlet.text = "please confirm your password"
-                    welcomeInstructionsOutlet.textColor = UIColor.red
-                } else if self.passwordTextField.text != self.confirmPasswordTextField.text {
-                    welcomeInstructionsOutlet.text = "your password does not match your confirmed password. please try again."
-                    welcomeInstructionsOutlet.textColor = UIColor.red
-                } else if self.passwordTextField.text == self.confirmPasswordTextField.text {
+            // check to see if there is a valid and matching password
+            if self.passwordTextField.text == "" {
+                welcomeInstructionsOutlet.text = "please create a password"
+                welcomeInstructionsOutlet.textColor = UIColor.red
+            } else if self.confirmPasswordTextField.text == "" {
+                welcomeInstructionsOutlet.text = "please confirm your password"
+                welcomeInstructionsOutlet.textColor = UIColor.red
+            } else if self.passwordTextField.text != self.confirmPasswordTextField.text {
+                welcomeInstructionsOutlet.text = "your password does not match your confirmed password. please try again."
+                welcomeInstructionsOutlet.textColor = UIColor.red
+            } else if self.passwordTextField.text == self.confirmPasswordTextField.text {
                 // if valid password, pass it to destViewController
-                    guard let newPassword = self.passwordTextField.text else { return }
-                    destViewController.password = newPassword
-                }
-                // pass the isOwner value to destViewController
-                destViewController.isOwner = isOwner
-                
-                return
+                guard let newPassword = self.passwordTextField.text else { return }
+                destViewController.password = newPassword
             }
-            // if usermame/password -
-                // login
+            
+            // create the segue programmatically
+            self.navigationController?.pushViewController(destViewController, animated: true)
+            // set the desired properties of the destinationVC's navgation Item
+            let backButtonItem = UIBarButtonItem()
+            backButtonItem.title = " "
+            navigationItem.backBarButtonItem = backButtonItem
+            
+            // pass data to destViewController
+            destViewController.isOwner = isOwner
+            destViewController.isKid = isKid
+            destViewController.username = newUsername
+
+            return
         }
+        // pass data to destViewController
+        destViewController.isOwner = isOwner
+        destViewController.isKid = isKid
+        destViewController.username = username
+        destViewController.password = password
+        // if usermame/password - login
+        
+        // create the segue programmatically
+        self.navigationController?.pushViewController(destViewController, animated: true)
+        // set the desired properties of the destinationVC's navgation Item
+        let backButtonItem = UIBarButtonItem()
+        backButtonItem.title = " "
+        navigationItem.backBarButtonItem = backButtonItem
     }
     
     
