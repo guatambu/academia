@@ -14,6 +14,33 @@ import Foundation
     // UI
         // update fields with data collection to include actual labels rather than allow placeholder text to be the label... asking too much of user - *** COMPLETE
 
+        // redo UI for to allow for multiple screen intake AND NO MORE NIBS!!!
+            // owner
+                // username password - ***** COMPLETE
+                // first & last name + belt - ***** COMPLETE
+                // profile pic
+                // address - ***** COMPLETE
+                // contact info
+            // kid student
+                // username password
+                // first & last name + belt
+                // profile pic
+                // address
+                // contact + emergency contact info
+            // adult student
+                // username password
+                // first & last name + belt
+                // profile pic
+                // address
+                // contact + emergency contact info
+            // location:
+                // profile pic
+                // address
+                // contact info
+
+        // wire up all scenes to corresponding cocoa touch files
+
+
     // Models
         // Add UID String properties to all relevant Models - *** COMPLETE
 
