@@ -25,7 +25,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UC2-vA-Rkn" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
-                                <rect key="frame" x="87" y="320" width="145" height="56"/>
+                                <rect key="frame" x="87" y="336" width="145" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="7ap-Zx-2OB"/>
                                 </constraints>
@@ -96,7 +96,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="fkL-eq-LtA" firstAttribute="centerX" secondItem="TkU-AK-AMr" secondAttribute="centerX" id="6mv-k6-z88"/>
-                            <constraint firstItem="UC2-vA-Rkn" firstAttribute="top" secondItem="lj3-6t-8am" secondAttribute="bottom" constant="40" id="FBe-bI-N4T"/>
+                            <constraint firstItem="UC2-vA-Rkn" firstAttribute="top" secondItem="lj3-6t-8am" secondAttribute="bottom" constant="56" id="FBe-bI-N4T"/>
                             <constraint firstItem="Vft-3p-g33" firstAttribute="leading" secondItem="WGu-rn-OWm" secondAttribute="leading" constant="264.5" id="L83-YR-SHE"/>
                             <constraint firstItem="WGu-rn-OWm" firstAttribute="bottom" secondItem="Vft-3p-g33" secondAttribute="bottom" constant="8" id="Vai-C7-ysP"/>
                             <constraint firstItem="fkL-eq-LtA" firstAttribute="centerY" secondItem="TkU-AK-AMr" secondAttribute="centerY" constant="-40" id="a4e-X1-D0g"/>
@@ -915,7 +915,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p70-NB-DGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2254" y="533"/>
+            <point key="canvasLocation" x="2233" y="205"/>
         </scene>
         <!--toStudentDashbooard-->
         <scene sceneID="qka-Og-LnG">
@@ -928,7 +928,7 @@
         <!--name + belt-->
         <scene sceneID="zpX-mq-44p">
             <objects>
-                <viewController storyboardIdentifier="toNameBelt" id="YpM-67-keD" userLabel="name + belt" customClass="NameAndBeltViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toUserNameBelt" id="YpM-67-keD" userLabel="name + belt" customClass="NameAndBeltViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D59-Sg-yRh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -963,7 +963,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="l0r-U9-Vrw" userLabel="name + belt elements Stack View">
-                                <rect key="frame" x="0.0" y="156" width="320" height="256"/>
+                                <rect key="frame" x="0.0" y="156" width="320" height="264"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="YSA-tz-XOE" userLabel="credentials Stack View">
                                         <rect key="frame" x="16" y="0.0" width="288" height="128"/>
@@ -1014,114 +1014,15 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PoG-2I-4ya" userLabel="belt View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="152" width="320" height="40"/>
-                                        <subviews>
-                                            <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="HPG-cu-ibO" userLabel="black bar View">
-                                                <rect key="frame" x="200" y="0.0" width="72" height="40"/>
-                                                <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Rb-Er-nOC" userLabel="4 white stripe View">
-                                                        <rect key="frame" x="-43" y="0.0" width="15" height="40"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="4Rb-Er-nOC" secondAttribute="height" multiplier="3:8" id="bpW-2H-DGC"/>
-                                                            <constraint firstAttribute="width" secondItem="4Rb-Er-nOC" secondAttribute="height" multiplier="3:8" id="dkG-1e-j5n"/>
-                                                        </constraints>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="0.5"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CME-gH-jqj" userLabel="3 white stripe View">
-                                                        <rect key="frame" x="-12" y="0.0" width="15" height="40"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="CME-gH-jqj" secondAttribute="height" multiplier="3:8" id="UgC-VU-JaW"/>
-                                                            <constraint firstAttribute="width" secondItem="CME-gH-jqj" secondAttribute="height" multiplier="3:8" id="XP0-I4-AUh"/>
-                                                        </constraints>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="0.5"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AAJ-fw-ttS" userLabel="2 white stripe View">
-                                                        <rect key="frame" x="17" y="0.0" width="15" height="40"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="AAJ-fw-ttS" secondAttribute="height" multiplier="3:8" id="kaT-B9-EJV"/>
-                                                            <constraint firstAttribute="width" secondItem="AAJ-fw-ttS" secondAttribute="height" multiplier="3:8" id="pTf-l3-JIe"/>
-                                                        </constraints>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="0.5"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G2B-C8-t12" userLabel="1 white stripe View">
-                                                        <rect key="frame" x="44" y="0.0" width="15" height="40"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="G2B-C8-t12" secondAttribute="height" multiplier="3:8" id="nZV-eO-wJy"/>
-                                                            <constraint firstAttribute="width" secondItem="G2B-C8-t12" secondAttribute="height" multiplier="3:8" id="ua5-1f-b0N"/>
-                                                        </constraints>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="0.5"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </view>
-                                                </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstItem="AAJ-fw-ttS" firstAttribute="leading" secondItem="CME-gH-jqj" secondAttribute="trailing" constant="14" id="4cM-qr-dZg"/>
-                                                    <constraint firstItem="AAJ-fw-ttS" firstAttribute="top" secondItem="HPG-cu-ibO" secondAttribute="top" id="DAC-Zd-qEN"/>
-                                                    <constraint firstItem="G2B-C8-t12" firstAttribute="top" secondItem="HPG-cu-ibO" secondAttribute="top" id="EF5-8j-3rS"/>
-                                                    <constraint firstAttribute="bottom" secondItem="G2B-C8-t12" secondAttribute="bottom" id="IaG-Ep-NAe"/>
-                                                    <constraint firstAttribute="trailing" secondItem="G2B-C8-t12" secondAttribute="trailing" constant="13" id="Iw6-lj-uH1"/>
-                                                    <constraint firstItem="CME-gH-jqj" firstAttribute="leading" secondItem="4Rb-Er-nOC" secondAttribute="trailing" constant="16" id="Vzc-Wr-KT6"/>
-                                                    <constraint firstItem="G2B-C8-t12" firstAttribute="leading" secondItem="AAJ-fw-ttS" secondAttribute="trailing" constant="12" id="Wlh-EN-Nzl"/>
-                                                    <constraint firstAttribute="bottom" secondItem="CME-gH-jqj" secondAttribute="bottom" id="cXg-bY-755"/>
-                                                    <constraint firstAttribute="bottom" secondItem="4Rb-Er-nOC" secondAttribute="bottom" id="d2K-J4-Xa9"/>
-                                                    <constraint firstItem="CME-gH-jqj" firstAttribute="top" secondItem="HPG-cu-ibO" secondAttribute="top" id="d2h-41-MER"/>
-                                                    <constraint firstAttribute="bottom" secondItem="AAJ-fw-ttS" secondAttribute="bottom" id="fbg-0N-NcV"/>
-                                                    <constraint firstItem="CME-gH-jqj" firstAttribute="leading" secondItem="4Rb-Er-nOC" secondAttribute="trailing" constant="16" id="t3M-fY-vkn"/>
-                                                    <constraint firstItem="4Rb-Er-nOC" firstAttribute="top" secondItem="HPG-cu-ibO" secondAttribute="top" id="uiI-7C-4cK"/>
-                                                </constraints>
-                                            </view>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hfp-kY-bBz" userLabel="Belt Holder View">
+                                        <rect key="frame" x="0.0" y="152" width="320" height="48"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="HPG-cu-ibO" firstAttribute="leading" secondItem="PoG-2I-4ya" secondAttribute="leading" constant="200" id="6yQ-vS-OSP"/>
-                                            <constraint firstItem="HPG-cu-ibO" firstAttribute="top" secondItem="PoG-2I-4ya" secondAttribute="top" id="Cu4-ft-qAO"/>
-                                            <constraint firstAttribute="bottom" secondItem="HPG-cu-ibO" secondAttribute="bottom" id="Ndw-Li-sCE"/>
-                                            <constraint firstAttribute="height" constant="40" id="j30-Nb-xjc"/>
-                                            <constraint firstAttribute="trailing" secondItem="HPG-cu-ibO" secondAttribute="trailing" constant="48" id="zTQ-jO-ET2"/>
+                                            <constraint firstAttribute="height" constant="48" id="Pex-jP-tsb"/>
                                         </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="0.5"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxn-nS-91i" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="68" y="216" width="184" height="40"/>
+                                        <rect key="frame" x="68" y="224" width="184" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Jl9-jb-bcd"/>
                                             <constraint firstAttribute="width" constant="184" id="j8m-r5-yOZ"/>
@@ -1148,14 +1049,14 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="PoG-2I-4ya" firstAttribute="leading" secondItem="l0r-U9-Vrw" secondAttribute="leading" id="K7Y-oI-N0U"/>
-                                    <constraint firstAttribute="trailing" secondItem="PoG-2I-4ya" secondAttribute="trailing" id="c09-of-TQR"/>
+                                    <constraint firstAttribute="trailing" secondItem="Hfp-kY-bBz" secondAttribute="trailing" id="2Qx-d4-yS9"/>
                                     <constraint firstAttribute="trailing" secondItem="YSA-tz-XOE" secondAttribute="trailing" constant="16" id="gnA-f7-g0E"/>
+                                    <constraint firstItem="Hfp-kY-bBz" firstAttribute="leading" secondItem="l0r-U9-Vrw" secondAttribute="leading" id="r0J-Jx-W4t"/>
                                     <constraint firstItem="YSA-tz-XOE" firstAttribute="leading" secondItem="l0r-U9-Vrw" secondAttribute="leading" constant="16" id="zkk-un-Xgj"/>
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rOe-Eg-NUk" userLabel="Next Button Outlet" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
-                                <rect key="frame" x="40" y="460" width="240" height="56"/>
+                                <rect key="frame" x="40" y="468" width="240" height="56"/>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="xdM-cB-Ii8"/>
@@ -1306,7 +1207,7 @@
         <!--address-->
         <scene sceneID="N4s-7k-cpQ">
             <objects>
-                <viewController storyboardIdentifier="toAddress" id="Gda-mL-WGC" userLabel="address" customClass="AddressViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toUserAddress" id="Gda-mL-WGC" userLabel="address" customClass="AddressViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Nza-qM-EcD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
