@@ -12,6 +12,14 @@ class NameAndBeltViewController: UIViewController {
     
     // MARK: - Properties
     
+    var isOwner: Bool?
+    var isKid: Bool?
+    var username: String?
+    var password: String?
+    var firstName = ""
+    var lastName = ""
+    var beltLevel: InternationalStandardBJJBelts = .adultWhiteBelt
+    
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     @IBOutlet weak var firstNameLabelOutlet: UILabel!
@@ -19,6 +27,7 @@ class NameAndBeltViewController: UIViewController {
     @IBOutlet weak var lastNameLabelOutlet: UILabel!
     @IBOutlet weak var lastNameTextField: UITextField!
     // need to implement nib or axe the belt nibs...  we'll see
+    
     
     // MARK: - ViewController Lifecycle Functions
 

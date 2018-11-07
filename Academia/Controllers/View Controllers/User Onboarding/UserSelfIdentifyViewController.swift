@@ -64,36 +64,42 @@ class UserSelfIdentifyViewController: UIViewController {
     
     @IBAction func confirmStudentButtonTapped(_ sender: UIButton) {
         print(self.isOwner)
+        
+        // programmatically performing the segue
+        
+        // instantiate the relevant storyboard
+        let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        // instantiate the desired TableViewController as ViewController on relevant storyboard
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toStudentChoiceVC") as! StudentChoiceViewController
+        // create the segue programmatically
+        self.navigationController?.pushViewController(destViewController, animated: true)
+        // set the desired properties of the destinationVC's navgation Item
+        let backButtonItem = UIBarButtonItem()
+        backButtonItem.title = " "
+        navigationItem.backBarButtonItem = backButtonItem
+        
+        // pass desired data to relevant view controller
+        destViewController.isOwner = self.isOwner
 
     }
     
     @IBAction func confirmOwnerButtonTapped(_ sender: UIButton) {
         print(self.isOwner)
-
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        // Get the new view controller using segue.destinationViewController.
-        if segue.identifier == "studentSegue" {
-            guard let destinationVC = segue.destination as? SignUpLoginViewController else {
-                return
-            }
-            // Pass the selected object to the new view controller.
-            destinationVC.isOwner = self.isOwner
-            print("self: \(self.isOwner)")
-            print("dest: \(String(describing: destinationVC.isOwner))")
-        }
-        // Get the new view controller using segue.destinationViewController.
-        if segue.identifier == "ownerSegue" {
-            guard let destinationVC = segue.destination as? SignUpLoginViewController else {
-                return
-            }
-            // Pass the selected object to the new view controller.
-            destinationVC.isOwner = self.isOwner
-            print("self: \(self.isOwner)")
-            print("dest: \(String(describing: destinationVC.isOwner))")
-        }
+        // instantiate the relevant storyboard
+        let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        // instantiate the desired TableViewController as ViewController on relevant storyboard
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toUsernamePassword") as! SignUpLoginViewController
+        // create the segue programmatically
+        self.navigationController?.pushViewController(destViewController, animated: true)
+        // set the desired properties of the destinationVC's navgation Item
+        let backButtonItem = UIBarButtonItem()
+        backButtonItem.title = " "
+        navigationItem.backBarButtonItem = backButtonItem
+        
+        // pass desired data to relevant view controller
+        destViewController.isOwner = self.isOwner
 
     }
+
 }
