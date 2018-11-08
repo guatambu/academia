@@ -40,6 +40,8 @@ import Foundation
 
         // wire up all scenes to corresponding cocoa touch files
 
+        // create belts via code rather than nib
+            // create funciton that takes inputs for isKid, belt level, number of white stripes, red stripes, black stripes, white degrees and produces appropriate belt level visually in UI.
 
     // Models
         // Add UID String properties to all relevant Models - *** COMPLETE
