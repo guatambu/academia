@@ -19,19 +19,11 @@ class Belt {
     var active: Bool
     var elligibleForNextBelt: Bool
     
-    
     // belt constructors
     var kidStripes: Int?
     var adultStripes: Int?
     var blackBeltDegrees: Int?
     var coralBeltDegrees: Int?
-    
-    // Labels
-//    var beltTime: String?
-//    var firstStripeTime: String?
-//    var secondStripeTime: String?
-//    var thirdStripeTime: String?
-//    var fourthStripeTime: String?
     
     
     // Memberwise Initializer
