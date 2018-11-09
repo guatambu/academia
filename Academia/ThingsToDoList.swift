@@ -11,6 +11,10 @@ import Foundation
 
 // THINGS TO DO
 
+    // Belt class
+        // add property for promotion elligibilty so owner can set that up, make it variable
+        // add method so owner can set the elligibility property
+
     // UI
         // update fields with data collection to include actual labels rather than allow placeholder text to be the label... asking too much of user - *** COMPLETE
 
