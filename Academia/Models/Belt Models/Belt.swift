@@ -193,7 +193,7 @@ class Belt {
             // set graduation bar
             setGraduationBarSpecs(belt: .kidsWhiteBelt)
             // set stripes
-            stripeGenerator(beltGraduationBar: beltGraduationBar, numberOfStripes: kidStripes, numberOfDegrees: nil)
+            stripeGenerator(beltGraduationBar: beltGraduationBar, numberOfStripes: kidsStripes, numberOfDegrees: nil)
             // add border to white belt for visibility
             view.layer.borderWidth = 1
             view.layer.borderColor = UIColor.darkGray.cgColor
@@ -205,7 +205,7 @@ class Belt {
             // set graduation bar
             setGraduationBarSpecs(belt: .kidsGreyWhiteBelt)
             // set stripes
-            stripeGenerator(beltGraduationBar: beltGraduationBar, numberOfStripes: kidStripes, numberOfDegrees: nil)
+            stripeGenerator(beltGraduationBar: beltGraduationBar, numberOfStripes: kidsStripes, numberOfDegrees: nil)
             
         case .kidsGreyBelt:
             // set belt color
@@ -214,7 +214,7 @@ class Belt {
             // set graduation bar
             setGraduationBarSpecs(belt: .kidsGreyBelt)
             // set stripes
-            stripeGenerator(beltGraduationBar: beltGraduationBar, numberOfStripes: kidStripes, numberOfDegrees: nil)
+            stripeGenerator(beltGraduationBar: beltGraduationBar, numberOfStripes: kidsStripes, numberOfDegrees: nil)
 
         case .kidsGreyBlackBelt:
             // set belt color
@@ -223,7 +223,7 @@ class Belt {
             // set graduation bar
             setGraduationBarSpecs(belt: .kidsGreyBlackBelt)
             // set stripes
-            stripeGenerator(beltGraduationBar: beltGraduationBar, numberOfStripes: kidStripes, numberOfDegrees: nil)
+            stripeGenerator(beltGraduationBar: beltGraduationBar, numberOfStripes: kidsStripes, numberOfDegrees: nil)
 
         case .kidsYellowWhiteBelt:
             // set belt color
@@ -232,7 +232,7 @@ class Belt {
             // set graduation bar
             setGraduationBarSpecs(belt: .kidsYellowWhiteBelt)
             // set stripes
-            stripeGenerator(beltGraduationBar: beltGraduationBar, numberOfStripes: kidStripes, numberOfDegrees: nil)
+            stripeGenerator(beltGraduationBar: beltGraduationBar, numberOfStripes: kidsStripes, numberOfDegrees: nil)
 
         case .kidsYellowBelt:
             // set belt color
@@ -241,7 +241,7 @@ class Belt {
             // set graduation bar
             setGraduationBarSpecs(belt: .kidsYellowBelt)
             // set stripes
-            stripeGenerator(beltGraduationBar: beltGraduationBar, numberOfStripes: kidStripes, numberOfDegrees: nil)
+            stripeGenerator(beltGraduationBar: beltGraduationBar, numberOfStripes: kidsStripes, numberOfDegrees: nil)
  
         case .kidsYellowBlackBelt:
             // set belt color
@@ -250,7 +250,7 @@ class Belt {
             // set graduation bar
             setGraduationBarSpecs(belt: .kidsYellowBlackBelt)
             // set stripes
-            stripeGenerator(beltGraduationBar: beltGraduationBar, numberOfStripes: kidStripes, numberOfDegrees: nil)
+            stripeGenerator(beltGraduationBar: beltGraduationBar, numberOfStripes: kidsStripes, numberOfDegrees: nil)
           
         case .kidsOrangeWhiteBelt:
             // set belt color
@@ -259,7 +259,7 @@ class Belt {
             // set graduation bar
             setGraduationBarSpecs(belt: .kidsOrangeWhiteBelt)
             // set stripes
-            stripeGenerator(beltGraduationBar: beltGraduationBar, numberOfStripes: kidStripes, numberOfDegrees: nil)
+            stripeGenerator(beltGraduationBar: beltGraduationBar, numberOfStripes: kidsStripes, numberOfDegrees: nil)
             
         case .kidsOrangeBelt:
             // set belt color
@@ -268,7 +268,7 @@ class Belt {
             // set graduation bar
             setGraduationBarSpecs(belt: .kidsOrangeBelt)
             // set stripes
-            stripeGenerator(beltGraduationBar: beltGraduationBar, numberOfStripes: kidStripes, numberOfDegrees: nil)
+            stripeGenerator(beltGraduationBar: beltGraduationBar, numberOfStripes: kidsStripes, numberOfDegrees: nil)
             
         case .kidsOrangeBlackBelt:
             // set belt color
@@ -277,7 +277,7 @@ class Belt {
             // set graduation bar
             setGraduationBarSpecs(belt: .kidsOrangeBlackBelt)
             // set stripes
-            stripeGenerator(beltGraduationBar: beltGraduationBar, numberOfStripes: kidStripes, numberOfDegrees: nil)
+            stripeGenerator(beltGraduationBar: beltGraduationBar, numberOfStripes: kidsStripes, numberOfDegrees: nil)
             
         case .kidsGreenWhiteBelt:
             // set belt color
@@ -286,7 +286,7 @@ class Belt {
             // set graduation bar
             setGraduationBarSpecs(belt: .kidsGreenWhiteBelt)
             // set stripes
-            stripeGenerator(beltGraduationBar: beltGraduationBar, numberOfStripes: kidStripes, numberOfDegrees: nil)
+            stripeGenerator(beltGraduationBar: beltGraduationBar, numberOfStripes: kidsStripes, numberOfDegrees: nil)
             
         case .kidsGreenBelt:
             // set belt color
@@ -295,7 +295,7 @@ class Belt {
             // set graduation bar
             setGraduationBarSpecs(belt: .kidsGreenBelt)
             // set stripes
-            stripeGenerator(beltGraduationBar: beltGraduationBar, numberOfStripes: kidStripes, numberOfDegrees: nil)
+            stripeGenerator(beltGraduationBar: beltGraduationBar, numberOfStripes: kidsStripes, numberOfDegrees: nil)
             
         case .kidsGreenBlackBelt:
             // set belt color
@@ -304,7 +304,7 @@ class Belt {
             // set graduation bar
             setGraduationBarSpecs(belt: .kidsGreenBlackBelt)
             // set stripes
-            stripeGenerator(beltGraduationBar: beltGraduationBar, numberOfStripes: kidStripes, numberOfDegrees: nil)
+            stripeGenerator(beltGraduationBar: beltGraduationBar, numberOfStripes: kidsStripes, numberOfDegrees: nil)
             
             
             // STANDARD ADULT BELTS
