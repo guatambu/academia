@@ -42,13 +42,13 @@ class NameAndBeltViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         // kids belt
         view.backgroundColor = UIColor.black
-        view.widthAnchor.constraint(equalToConstant: 240).isActive = true
+        view.widthAnchor.constraint(equalToConstant: 232).isActive = true
         // adult basic belt
 //        view.backgroundColor = UIColor.black
 //        view.widthAnchor.constraint(equalToConstant: 120).isActive = true
         // black belt
 //        view.backgroundColor = UIColor.black
-//        view.widthAnchor.constraint(equalToConstant: 240).isActive = true
+//        view.widthAnchor.constraint(equalToConstant: 232).isActive = true
         return view
     }()
     lazy var stripesStackView: UIStackView = {
@@ -167,6 +167,32 @@ class NameAndBeltViewController: UIViewController {
         view.heightAnchor.constraint(equalToConstant: 10).isActive = true
         return view
     }()
+    let leftTeacherBar: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.darkGray.cgColor
+        //view.backgroundColor = UIColor.white
+        // gold color
+        //view.backgroundColor = UIColor(red: 252.0/255.0, green: 194.0/255.0, blue: 0.0, alpha: 1.0)
+        //silver color
+        view.backgroundColor = UIColor(red: 189.0/255.0, green: 195.0/255.0, blue: 199.0/255.0, alpha: 1.0)
+        view.widthAnchor.constraint(equalToConstant: 16).isActive = true
+        return view
+    }()
+    let rightTeacherBar: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.darkGray.cgColor
+        //view.backgroundColor = UIColor.white
+        // gold color
+        //view.backgroundColor = UIColor(red: 252.0/255.0, green: 194.0/255.0, blue: 0.0, alpha: 1.0)
+        //silver color
+        view.backgroundColor = UIColor(red: 189.0/255.0, green: 195.0/255.0, blue: 199.0/255.0, alpha: 1.0)
+        view.widthAnchor.constraint(equalToConstant: 16).isActive = true
+        return view
+    }()
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -180,40 +206,7 @@ class NameAndBeltViewController: UIViewController {
         print("viewWillAppear: username = \(String(describing: username))")
         print("viewWillAppear: password = \(String(describing: password))")
         
-        // add belt views to viewController
-        view.addSubview(beltViewA)
-        // add kidsCenterRibbon
-        beltViewA.addSubview(kidsCenterRibbon)
-        // add adult graduation bar to beltViewA
-        beltViewA.addSubview(beltGraduationBar)
-        // add stripes stack view to adultGraduationBar
-        beltGraduationBar.addSubview(stripesStackView)
-        // add coral bar to beltViewA
-        beltViewA.addSubview(coralBar)
-        
-        // addd belt constraints
-        beltViewA.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        beltViewA.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        beltViewA.topAnchor.constraint(equalTo: lastNameTextField.bottomAnchor, constant: 32).isActive = true
-        // add kidsCenterRibbon constraints
-        kidsCenterRibbon.centerYAnchor.constraint(equalTo: beltViewA.centerYAnchor).isActive = true
-        kidsCenterRibbon.rightAnchor.constraint(equalTo: beltViewA.rightAnchor).isActive = true
-        kidsCenterRibbon.leftAnchor.constraint(equalTo: beltViewA.leftAnchor).isActive = true
-        // add blet gradutaion bar constraints
-        beltGraduationBar.topAnchor.constraint(equalTo: beltViewA.topAnchor, constant: 0).isActive = true
-        beltGraduationBar.bottomAnchor.constraint(equalTo: beltViewA.bottomAnchor, constant: 0).isActive = true
-        beltGraduationBar.rightAnchor.constraint(equalTo: beltViewA.rightAnchor, constant: -32).isActive = true
-        // add coralBar constraints
-        coralBar.topAnchor.constraint(equalTo: beltViewA.topAnchor, constant: 0).isActive = true
-        coralBar.bottomAnchor.constraint(equalTo: beltViewA.bottomAnchor, constant: 0).isActive = true
-        coralBar.leftAnchor.constraint(equalTo: beltViewA.leftAnchor).isActive = true
-        
-        // add stripe stackView constraints
-        NSLayoutConstraint.activate([
-            stripesStackView.topAnchor.constraint(equalTo: beltGraduationBar.topAnchor),
-            stripesStackView.bottomAnchor.constraint(equalTo: beltGraduationBar.bottomAnchor),
-            stripesStackView.leftAnchor.constraint(equalTo: beltGraduationBar.leftAnchor, constant: 12.0)
-            ])
+        generateBelt()
     }
     
     
@@ -259,4 +252,62 @@ class NameAndBeltViewController: UIViewController {
         
         return
     }
+    
+    
+    // MARK: - Helper Methods
+    
+    func generateBelt() {
+        
+        // add belt views to viewController
+        view.addSubview(beltViewA)
+        // add kidsCenterRibbon
+        beltViewA.addSubview(kidsCenterRibbon)
+        // add adult graduation bar to beltViewA
+        beltViewA.addSubview(beltGraduationBar)
+        // add stripes stack view to adultGraduationBar
+        beltGraduationBar.addSubview(stripesStackView)
+        // add coral bar to beltViewA
+        beltViewA.addSubview(coralBar)
+        // add teacher bars to either side of graduation bar
+        beltViewA.addSubview(leftTeacherBar)
+        beltViewA.addSubview(rightTeacherBar)
+        
+        // addd belt constraints
+        beltViewA.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        beltViewA.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        beltViewA.topAnchor.constraint(equalTo: lastNameTextField.bottomAnchor, constant: 32).isActive = true
+        
+        // add kidsCenterRibbon constraints
+        kidsCenterRibbon.centerYAnchor.constraint(equalTo: beltViewA.centerYAnchor).isActive = true
+        kidsCenterRibbon.rightAnchor.constraint(equalTo: beltViewA.rightAnchor).isActive = true
+        kidsCenterRibbon.leftAnchor.constraint(equalTo: beltViewA.leftAnchor).isActive = true
+        
+        // add blet gradutaion bar constraints
+        beltGraduationBar.topAnchor.constraint(equalTo: beltViewA.topAnchor, constant: 0).isActive = true
+        beltGraduationBar.bottomAnchor.constraint(equalTo: beltViewA.bottomAnchor, constant: 0).isActive = true
+        beltGraduationBar.rightAnchor.constraint(equalTo: beltViewA.rightAnchor, constant: -32).isActive = true
+        
+        // add coralBar constraints
+        coralBar.topAnchor.constraint(equalTo: beltViewA.topAnchor, constant: 0).isActive = true
+        coralBar.bottomAnchor.constraint(equalTo: beltViewA.bottomAnchor, constant: 0).isActive = true
+        coralBar.leftAnchor.constraint(equalTo: beltViewA.leftAnchor).isActive = true
+        
+        // add stripe stackView constraints
+        NSLayoutConstraint.activate([
+            stripesStackView.topAnchor.constraint(equalTo: beltGraduationBar.topAnchor),
+            stripesStackView.bottomAnchor.constraint(equalTo: beltGraduationBar.bottomAnchor),
+            stripesStackView.leftAnchor.constraint(equalTo: beltGraduationBar.leftAnchor, constant: 8.0)
+            ])
+        
+        // add left teacher bar constraints
+        leftTeacherBar.topAnchor.constraint(equalTo: beltViewA.topAnchor).isActive = true
+        leftTeacherBar.bottomAnchor.constraint(equalTo: beltViewA.bottomAnchor).isActive = true
+        leftTeacherBar.rightAnchor.constraint(equalTo: beltGraduationBar.leftAnchor).isActive = true
+        // add right teacher bar constraints
+        rightTeacherBar.topAnchor.constraint(equalTo: beltViewA.topAnchor).isActive = true
+        rightTeacherBar.bottomAnchor.constraint(equalTo: beltViewA.bottomAnchor).isActive = true
+        rightTeacherBar.leftAnchor.constraint(equalTo: beltGraduationBar.rightAnchor).isActive = true
+    }
+    
+    
 }
