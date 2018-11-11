@@ -12,6 +12,14 @@ class AddressViewController: UIViewController {
     
     // MARK: - Properties
     
+    var isOwner: Bool?
+    var isKid: Bool?
+    var username: String?
+    var password: String?
+    var firstName: String?
+    var lastName: String?
+    var beltLevel: InternationalStandardBJJBelts?
+    
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     @IBOutlet weak var addressLine1LabelOutlet: UILabel!

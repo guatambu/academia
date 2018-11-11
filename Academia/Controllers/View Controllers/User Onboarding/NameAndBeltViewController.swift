@@ -20,39 +20,81 @@ class NameAndBeltViewController: UIViewController {
     var lastName = ""
     var beltLevel: InternationalStandardBJJBelts = .adultWhiteBelt
     
+    let beltBuilder = BeltBuilder()
+    
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     @IBOutlet weak var firstNameLabelOutlet: UILabel!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameLabelOutlet: UILabel!
     @IBOutlet weak var lastNameTextField: UITextField!
-    // need to implement nib or axe the belt nibs...  we'll see
+    
+    @IBOutlet weak var beltHolderViewOutlet: UIView!
+    
+    @IBOutlet weak var credentialsStackViewOutlet: UIStackView!
     
     
     // MARK: - ViewController Lifecycle Functions
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // successfully working... yay programtatic segues!
+        print("viewWillAppear: isOwner = \(String(describing: isOwner))")
+        print("viewWillAppear: isKid = \(String(describing: isKid))")
+        print("viewWillAppear: username = \(String(describing: username))")
+        print("viewWillAppear: password = \(String(describing: password))")
 
-        // Do any additional setup after loading the view.
+        
+        beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .adultRedWhiteBelt, numberOfStripes: 5)
     }
     
     
     // MARK: - Actions
     @IBAction func setBeltLevelButtonTapped(_ sender: DesignableButton) {
+        
     }
     
     @IBAction func nextButtonTapped(_ sender: DesignableButton) {
+        
+        // programmatically performing segue
+        
+        // instantiate the relevant storyboard
+        let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        // instantiate the desired TableViewController as ViewController on relevant storyboard
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toUserAddress") as! AddressViewController
+        
+        guard let newFirstName = self.firstNameTextField.text,
+            let newLastName = lastNameTextField.text,
+            self.firstNameTextField.text != "",
+            self.lastNameTextField.text != ""
+            else {
+
+            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+            return
+        }
+        
+        // create the segue programmatically
+        self.navigationController?.pushViewController(destViewController, animated: true)
+        // set the desired properties of the destinationVC's navgation Item
+        let backButtonItem = UIBarButtonItem()
+        backButtonItem.title = " "
+        navigationItem.backBarButtonItem = backButtonItem
+        
+        // pass data to destViewController
+        destViewController.isOwner = isOwner
+        destViewController.isKid = isKid
+        destViewController.username = username
+        destViewController.password = password
+        destViewController.firstName = newFirstName
+        destViewController.lastName = newLastName
+        destViewController.beltLevel = beltLevel
+        
+        return
     }
     
-    /*
-    // MARK: - Navigation
+    
+    // MARK: - Helper Methods
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

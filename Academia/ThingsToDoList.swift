@@ -11,6 +11,10 @@ import Foundation
 
 // THINGS TO DO
 
+    // Belt class
+        // add property for promotion elligibilty so owner can set that up, make it variable
+        // add method so owner can set the elligibility property
+
     // UI
         // update fields with data collection to include actual labels rather than allow placeholder text to be the label... asking too much of user - *** COMPLETE
 
@@ -40,6 +44,8 @@ import Foundation
 
         // wire up all scenes to corresponding cocoa touch files
 
+        // create belts via code rather than nib
+            // create funciton that takes inputs for isKid, belt level, number of white stripes, red stripes, black stripes, white degrees and produces appropriate belt level visually in UI.
 
     // Models
         // Add UID String properties to all relevant Models - *** COMPLETE
