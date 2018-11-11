@@ -46,7 +46,7 @@ class NameAndBeltViewController: UIViewController {
         print("viewWillAppear: password = \(String(describing: password))")
 
         
-        beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .kidsOrangeBlackBelt, numberOfStripes: 10)
+        beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .adultRedWhiteBelt, numberOfStripes: 5)
     }
     
     
