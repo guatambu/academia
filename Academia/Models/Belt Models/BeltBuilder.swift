@@ -70,49 +70,49 @@ class BeltBuilder {
     }()
     
     // Stripe Constructor Elements
-    let whiteStripe: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.darkGray.cgColor
-        view.backgroundColor = UIColor.white
-        view.widthAnchor.constraint(equalToConstant: 16).isActive = true
-        return view
-    }()
-    let redStripe: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.red
-        view.widthAnchor.constraint(equalToConstant: 16).isActive = true
-        return view
-    }()
-    let blackStripe: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.lightGray.cgColor
-        view.backgroundColor = UIColor.black
-        view.widthAnchor.constraint(equalToConstant: 16).isActive = true
-        return view
-    }()
-    let blackBeltDegree: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.darkGray.cgColor
-        view.backgroundColor = UIColor.white
-        view.widthAnchor.constraint(equalToConstant: 12).isActive = true
-        return view
-    }()
-    let coralBeltDegree: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.darkGray.cgColor
-        view.backgroundColor = UIColor.white
-        view.widthAnchor.constraint(equalToConstant: 8).isActive = true
-        return view
-    }()
+//    let whiteStripe: UIView = {
+//        let view = UIView()
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.layer.borderWidth = 1
+//        view.layer.borderColor = UIColor.darkGray.cgColor
+//        view.backgroundColor = UIColor.white
+//        view.widthAnchor.constraint(equalToConstant: 16).isActive = true
+//        return view
+//    }()
+//    let redStripe: UIView = {
+//        let view = UIView()
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.backgroundColor = UIColor.red
+//        view.widthAnchor.constraint(equalToConstant: 16).isActive = true
+//        return view
+//    }()
+//    let blackStripe: UIView = {
+//        let view = UIView()
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.layer.borderWidth = 1
+//        view.layer.borderColor = UIColor.lightGray.cgColor
+//        view.backgroundColor = UIColor.black
+//        view.widthAnchor.constraint(equalToConstant: 16).isActive = true
+//        return view
+//    }()
+//    let blackBeltDegree: UIView = {
+//        let view = UIView()
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.layer.borderWidth = 1
+//        view.layer.borderColor = UIColor.darkGray.cgColor
+//        view.backgroundColor = UIColor.white
+//        view.widthAnchor.constraint(equalToConstant: 12).isActive = true
+//        return view
+//    }()
+//    let coralBeltDegree: UIView = {
+//        let view = UIView()
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.layer.borderWidth = 1
+//        view.layer.borderColor = UIColor.darkGray.cgColor
+//        view.backgroundColor = UIColor.white
+//        view.widthAnchor.constraint(equalToConstant: 8).isActive = true
+//        return view
+//    }()
     
     // stripe holder: UIStackView
     let stripesStackView: UIStackView = {
@@ -132,8 +132,6 @@ class BeltBuilder {
     // Belt Visual Contstruction Method
     func buildABelt(view: UIView, belt: InternationalStandardBJJBelts, numberOfStripes: Int) {
         
-        //  //  can return the belt constructor specs via copy paste    //  //
-        
         // ADD BELT CONSTRUCTOR ELEMENTS TO DESIRED UIView
         addBeltConstructorsToView(view: view)
         
@@ -143,8 +141,7 @@ class BeltBuilder {
         // SET UP INDIVIDUAL BELTS
         switch belt {
             
-            // STANDARD KIDS BELTS
-            
+        // STANDARD KIDS BELTS
         case .kidsWhiteBelt:
             // set belt color
             beltView.backgroundColor = UIColor.white
@@ -248,8 +245,8 @@ class BeltBuilder {
             
         case .kidsGreenBelt:
             // set belt color
-            beltView.backgroundColor = UIColor.orange
-            kidsCenterRibbon.backgroundColor = UIColor.orange
+            beltView.backgroundColor = UIColor.green
+            kidsCenterRibbon.backgroundColor = UIColor.green
             // set graduation bar
             setGraduationBarSpecs(belt: .kidsGreenBelt)
             // set stripes
@@ -257,7 +254,7 @@ class BeltBuilder {
             
         case .kidsGreenBlackBelt:
             // set belt color
-            beltView.backgroundColor = UIColor.orange
+            beltView.backgroundColor = UIColor.green
             kidsCenterRibbon.backgroundColor = UIColor.black
             // set graduation bar
             setGraduationBarSpecs(belt: .kidsGreenBlackBelt)
@@ -265,8 +262,7 @@ class BeltBuilder {
             stripeGenerator(beltGraduationBar: beltGraduationBar, numberOfStripes: numberOfStripes, belt: .kidsGreenBlackBelt)
             
             
-            // STANDARD ADULT BELTS
-            
+        // STANDARD ADULT BELTS
         case .adultWhiteBelt:
             // set belt color
             beltView.backgroundColor = UIColor.white
@@ -279,6 +275,8 @@ class BeltBuilder {
             view.layer.borderColor = UIColor.darkGray.cgColor
             
         case .adultBlueBelt:
+            // check it out
+            print(InternationalStandardBJJBelts.adultBlueBelt.rawValue)
             // set belt color
             beltView.backgroundColor = UIColor.blue
             // set graduation bar
@@ -339,6 +337,9 @@ class BeltBuilder {
             setTeacherBars(belt: .adultRedBlackBelt)
             
         case .adultRedWhiteBelt:
+            // check it out
+            print("this is the set teachers bar function saying what up!!!")
+            
             // set belt color
             beltView.backgroundColor = UIColor.white
             coralBar.isHidden = false
@@ -352,6 +353,10 @@ class BeltBuilder {
             setTeacherBars(belt: .adultRedWhiteBelt)
             
         case .adultRedBelt:
+            
+            // check it out
+            print(InternationalStandardBJJBelts.adultRedBelt.rawValue)
+            print("this is the build a belt function!!! 1/6")
             // set belt color
             beltView.backgroundColor = UIColor.red
             coralBar.isHidden = true
@@ -371,6 +376,9 @@ class BeltBuilder {
     
     func stripeGenerator(beltGraduationBar: UIView, numberOfStripes: Int, belt: InternationalStandardBJJBelts) {
         // standard kids belts
+        
+        print("this is the stripe generator function saying hello!!! 2/6")
+        
         switch belt {
         case nil:
             break
@@ -379,6 +387,31 @@ class BeltBuilder {
                 if numberOfStripes > 11 { break }
                 
                 for i in 1...numberOfStripes {
+                    let whiteStripe: UIView = {
+                        let view = UIView()
+                        view.translatesAutoresizingMaskIntoConstraints = false
+                        view.layer.borderWidth = 1
+                        view.layer.borderColor = UIColor.darkGray.cgColor
+                        view.backgroundColor = UIColor.white
+                        view.widthAnchor.constraint(equalToConstant: 16).isActive = true
+                        return view
+                    }()
+                    let redStripe: UIView = {
+                        let view = UIView()
+                        view.translatesAutoresizingMaskIntoConstraints = false
+                        view.backgroundColor = UIColor.red
+                        view.widthAnchor.constraint(equalToConstant: 16).isActive = true
+                        return view
+                    }()
+                    let blackStripe: UIView = {
+                        let view = UIView()
+                        view.translatesAutoresizingMaskIntoConstraints = false
+                        view.layer.borderWidth = 1
+                        view.layer.borderColor = UIColor.lightGray.cgColor
+                        view.backgroundColor = UIColor.black
+                        view.widthAnchor.constraint(equalToConstant: 16).isActive = true
+                        return view
+                    }()
                     if i < 5 {
                         stripesStackView.addArrangedSubview(whiteStripe)
                     } else if i < 9 {
@@ -392,7 +425,16 @@ class BeltBuilder {
             
             if numberOfStripes > 4 { break }
             
-            for _ in 1...numberOfStripes {
+            for i in 1...numberOfStripes {
+                let whiteStripe: UIView = {
+                    let view = UIView()
+                    view.translatesAutoresizingMaskIntoConstraints = false
+                    view.layer.borderWidth = 1
+                    view.layer.borderColor = UIColor.darkGray.cgColor
+                    view.backgroundColor = UIColor.white
+                    view.widthAnchor.constraint(equalToConstant: 16).isActive = true
+                    return view
+                }()
                 stripesStackView.addArrangedSubview(whiteStripe)
             }
             
@@ -402,27 +444,39 @@ class BeltBuilder {
             if numberOfStripes > 6 { break }
             
             for _ in 1...numberOfStripes {
+                let blackBeltDegree: UIView = {
+                    let view = UIView()
+                    view.translatesAutoresizingMaskIntoConstraints = false
+                    view.layer.borderWidth = 1
+                    view.layer.borderColor = UIColor.darkGray.cgColor
+                    view.backgroundColor = UIColor.white
+                    view.widthAnchor.constraint(equalToConstant: 12).isActive = true
+                    return view
+                }()
                 stripesStackView.addArrangedSubview(blackBeltDegree)
             }
             
         // coral belts and up
         case .adultRedBlackBelt, .adultRedWhiteBelt, .adultRedBelt:
+            // check it out
             
             if numberOfStripes > 10 { break }
             
             for _ in 1...numberOfStripes {
+                let coralBeltDegree: UIView = {
+                    let view = UIView()
+                    view.translatesAutoresizingMaskIntoConstraints = false
+                    view.layer.borderWidth = 1
+                    view.layer.borderColor = UIColor.darkGray.cgColor
+                    view.backgroundColor = UIColor.white
+                    view.widthAnchor.constraint(equalToConstant: 8).isActive = true
+                    return view
+                }()
                 stripesStackView.addArrangedSubview(coralBeltDegree)
             }
         default:
             print("OOOPS!  we either don't recognize that belt or that is way too many stripes senhor!")
         }
-        
-        // add stripe stackView constraints
-        NSLayoutConstraint.activate([
-            stripesStackView.topAnchor.constraint(equalTo: beltGraduationBar.topAnchor),
-            stripesStackView.bottomAnchor.constraint(equalTo: beltGraduationBar.bottomAnchor),
-            stripesStackView.leftAnchor.constraint(equalTo: beltGraduationBar.leftAnchor, constant: 8.0)
-            ])
     }
     
     // adjust color and width of graduation bar for appropriate belts
@@ -447,6 +501,9 @@ class BeltBuilder {
             self.beltGraduationBar.widthAnchor.constraint(equalToConstant: self.adultGraduationBarWidth).isActive = true
         // coral belts and up
         case .adultRedBlackBelt, .adultRedWhiteBelt, .adultRedBelt:
+            // check it out
+            print("this is the set graduation bar function saying hey!!! 3/6")
+            
             self.beltGraduationBar.backgroundColor = self.blackBeltUpGraduationBarColor
             self.beltGraduationBar.widthAnchor.constraint(equalToConstant: self.coralBeltGraduationBarWidth).isActive = true
             
@@ -471,6 +528,7 @@ class BeltBuilder {
             leftTeacherBar.backgroundColor = UIColor.white
             
         case .adultRedBlackBelt, . adultRedWhiteBelt:
+            
             // show teacgher bars
             rightTeacherBar.isHidden = false
             leftTeacherBar.isHidden = false
@@ -482,7 +540,11 @@ class BeltBuilder {
             leftTeacherBar.backgroundColor = silverColor
             
         case .adultRedBelt:
-            // show teacgher bars
+            
+            // check it out
+            print("this is the set teachers bar function saying what up!!! 4/6")
+            
+            // show teacher bars
             rightTeacherBar.isHidden = false
             leftTeacherBar.isHidden = false
             // no color visibility help needed
@@ -500,6 +562,10 @@ class BeltBuilder {
     // adds belt constructor elements to desired UIView
     func addBeltConstructorsToView(view: UIView) {
         
+        // check it out
+        print("this is the set add belt constructors to view function saying what up!!! 5/6")
+        
+        
         // add belt views to view
         view.addSubview(beltView)
         
@@ -508,6 +574,9 @@ class BeltBuilder {
         
         // add adult graduation bar to beltViewA
         beltView.addSubview(beltGraduationBar)
+        
+        // add stripes stackView to gradutaion bar
+        beltGraduationBar.addSubview(stripesStackView)
         
         // add coral bar to beltViewA
         beltView.addSubview(coralBar)
@@ -523,38 +592,68 @@ class BeltBuilder {
     // adds belt elements' constraints to desired UIView
     func addBeltConstraintsToView(view: UIView) {
         
+        // check it out
+        print("this is the add belt constraints to view function saying what up!!! 6/6")
+        
+        
         // add belt constraints
         beltView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         beltView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        beltView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        beltView.topAnchor.constraint(equalTo: view.topAnchor, constant: 16).isActive = true
         beltView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        /***  works up to here ***/
+        print("belt constraints work!!! a/f")
         
         // add kidsCenterRibbon constraints
         kidsCenterRibbon.centerYAnchor.constraint(equalTo: beltView.centerYAnchor).isActive = true
         kidsCenterRibbon.rightAnchor.constraint(equalTo: beltView.rightAnchor).isActive = true
         kidsCenterRibbon.leftAnchor.constraint(equalTo: beltView.leftAnchor).isActive = true
         
+        /*** works up to here ***/
+        print("kid center ribbon constraints work!!! b/f")
+        
         // add belt gradutaion bar constraints
         beltGraduationBar.topAnchor.constraint(equalTo: beltView.topAnchor, constant: 0).isActive = true
         beltGraduationBar.bottomAnchor.constraint(equalTo: beltView.bottomAnchor, constant: 0).isActive = true
         beltGraduationBar.rightAnchor.constraint(equalTo: beltView.rightAnchor, constant: -40).isActive = true
+        
+        /*** works up to here ***/
+        print("belt graduation bar constraints work!!! c/f")
         
         // add coralBar constraints
         coralBar.topAnchor.constraint(equalTo: beltView.topAnchor, constant: 0).isActive = true
         coralBar.bottomAnchor.constraint(equalTo: beltView.bottomAnchor, constant: 0).isActive = true
         coralBar.leftAnchor.constraint(equalTo: beltView.leftAnchor).isActive = true
         
+        /*** works up to here ***/
+        print("coral bar constraints work!!! d/f")
+        
         // add left teacher bar constraints
         leftTeacherBar.topAnchor.constraint(equalTo: beltView.topAnchor).isActive = true
+        
         leftTeacherBar.bottomAnchor.constraint(equalTo: beltView.bottomAnchor).isActive = true
+        
         leftTeacherBar.rightAnchor.constraint(equalTo: beltGraduationBar.leftAnchor).isActive = true
         // add right teacher bar constraints
         rightTeacherBar.topAnchor.constraint(equalTo: beltView.topAnchor).isActive = true
+        
         rightTeacherBar.bottomAnchor.constraint(equalTo: beltView.bottomAnchor).isActive = true
+        
         rightTeacherBar.leftAnchor.constraint(equalTo: beltGraduationBar.rightAnchor).isActive = true
+        
+        /*** works up to here ***/
+        print("both teacher bar constraints work!!! e/f")
+        
+        // add stripe stackView constraints
+        stripesStackView.bottomAnchor.constraint(equalTo: beltGraduationBar.bottomAnchor).isActive = true
+
+        stripesStackView.leftAnchor.constraint(equalTo: beltGraduationBar.leftAnchor, constant: 8.0).isActive = true
+
+        stripesStackView.topAnchor.constraint(equalTo: beltGraduationBar.topAnchor).isActive = true
+        
+        /*** works up to here ***/
+        print("stripe stackView constraints work!!! f/f")
     }
-    
-    
 }
 
 

@@ -966,7 +966,7 @@
                                 <rect key="frame" x="0.0" y="156" width="320" height="264"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="YSA-tz-XOE" userLabel="credentials Stack View">
-                                        <rect key="frame" x="16" y="0.0" width="288" height="128"/>
+                                        <rect key="frame" x="16" y="0.0" width="288" height="200"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="zq2-cr-gtK" userLabel="first name Stack View">
                                                 <rect key="frame" x="0.0" y="0.0" width="288" height="56"/>
@@ -1012,15 +1012,19 @@
                                                     <constraint firstItem="WJm-hb-ZwF" firstAttribute="leading" secondItem="hnX-Mc-hOi" secondAttribute="leading" id="j4j-cx-tE8"/>
                                                 </constraints>
                                             </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tIo-gd-Eif" userLabel="belt holder View">
+                                                <rect key="frame" x="0.0" y="144" width="288" height="56"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="56" id="K0F-e2-lpj"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
-                                    </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hfp-kY-bBz" userLabel="Belt Holder View">
-                                        <rect key="frame" x="0.0" y="152" width="320" height="48"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="48" id="Pex-jP-tsb"/>
+                                            <constraint firstAttribute="trailing" secondItem="tIo-gd-Eif" secondAttribute="trailing" id="cEi-VX-XPQ"/>
+                                            <constraint firstItem="tIo-gd-Eif" firstAttribute="leading" secondItem="YSA-tz-XOE" secondAttribute="leading" id="hvB-as-M9s"/>
                                         </constraints>
-                                    </view>
+                                    </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxn-nS-91i" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
                                         <rect key="frame" x="68" y="224" width="184" height="40"/>
                                         <constraints>
@@ -1049,9 +1053,7 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Hfp-kY-bBz" secondAttribute="trailing" id="2Qx-d4-yS9"/>
                                     <constraint firstAttribute="trailing" secondItem="YSA-tz-XOE" secondAttribute="trailing" constant="16" id="gnA-f7-g0E"/>
-                                    <constraint firstItem="Hfp-kY-bBz" firstAttribute="leading" secondItem="l0r-U9-Vrw" secondAttribute="leading" id="r0J-Jx-W4t"/>
                                     <constraint firstItem="YSA-tz-XOE" firstAttribute="leading" secondItem="l0r-U9-Vrw" secondAttribute="leading" constant="16" id="zkk-un-Xgj"/>
                                 </constraints>
                             </stackView>
@@ -1192,6 +1194,8 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="86w-wi-1Aw"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="beltHolderViewOutlet" destination="tIo-gd-Eif" id="yAY-e6-RpV"/>
+                        <outlet property="credentialsStackViewOutlet" destination="YSA-tz-XOE" id="ND0-6l-MeS"/>
                         <outlet property="firstNameLabelOutlet" destination="b9N-1b-iky" id="g9F-bT-5Oa"/>
                         <outlet property="firstNameTextField" destination="7mb-Xv-B5q" id="meR-e9-lH9"/>
                         <outlet property="lastNameLabelOutlet" destination="RPI-iQ-Tsn" id="6nM-6Q-dHN"/>
