@@ -1172,19 +1172,39 @@
                                     </view>
                                 </subviews>
                             </stackView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h1P-3X-Kip" userLabel="Stripe Number Picker View">
+                                <rect key="frame" x="0.0" y="352" width="320" height="216"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" id="pTC-7T-fgV"/>
+                                </constraints>
+                            </pickerView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bN3-Ri-FpF" userLabel="Belt Level Picker View">
+                                <rect key="frame" x="0.0" y="352" width="320" height="216"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" id="L4I-Ow-IjB"/>
+                                </constraints>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="14j-uA-7If" firstAttribute="trailing" secondItem="l0r-U9-Vrw" secondAttribute="trailing" id="3ek-Ux-QtT"/>
                             <constraint firstItem="rOe-Eg-NUk" firstAttribute="leading" secondItem="14j-uA-7If" secondAttribute="leading" constant="40" id="3tF-WC-IEO"/>
+                            <constraint firstItem="bN3-Ri-FpF" firstAttribute="bottom" secondItem="14j-uA-7If" secondAttribute="bottom" id="4zT-Wa-l7p"/>
+                            <constraint firstItem="14j-uA-7If" firstAttribute="bottom" secondItem="h1P-3X-Kip" secondAttribute="bottom" id="8oZ-S1-cPN"/>
                             <constraint firstItem="B3V-XW-Yhx" firstAttribute="top" secondItem="14j-uA-7If" secondAttribute="top" constant="24" id="9kY-UN-mWx"/>
+                            <constraint firstItem="bN3-Ri-FpF" firstAttribute="leading" secondItem="14j-uA-7If" secondAttribute="leading" id="Ehg-9Z-EBS"/>
                             <constraint firstItem="l0r-U9-Vrw" firstAttribute="top" secondItem="B3V-XW-Yhx" secondAttribute="bottom" constant="48" id="Kde-3Q-pO9"/>
+                            <constraint firstItem="bN3-Ri-FpF" firstAttribute="trailing" secondItem="14j-uA-7If" secondAttribute="trailing" id="S5C-6Z-wOw"/>
                             <constraint firstItem="rOe-Eg-NUk" firstAttribute="top" secondItem="l0r-U9-Vrw" secondAttribute="bottom" constant="48" id="Wlg-P9-Omg"/>
                             <constraint firstItem="14j-uA-7If" firstAttribute="trailing" secondItem="B3V-XW-Yhx" secondAttribute="trailing" constant="24" id="Yph-fJ-BTg"/>
                             <constraint firstItem="tXm-ZD-chp" firstAttribute="centerX" secondItem="D59-Sg-yRh" secondAttribute="centerX" id="aJK-gl-ix2"/>
+                            <constraint firstItem="h1P-3X-Kip" firstAttribute="trailing" secondItem="14j-uA-7If" secondAttribute="trailing" id="dQw-Hk-2aQ"/>
                             <constraint firstItem="l0r-U9-Vrw" firstAttribute="leading" secondItem="14j-uA-7If" secondAttribute="leading" id="kfJ-JZ-R1h"/>
                             <constraint firstItem="B3V-XW-Yhx" firstAttribute="leading" secondItem="14j-uA-7If" secondAttribute="leading" constant="24" id="n17-j7-WDY"/>
                             <constraint firstItem="14j-uA-7If" firstAttribute="trailing" secondItem="rOe-Eg-NUk" secondAttribute="trailing" constant="40" id="nSs-Sn-LPW"/>
+                            <constraint firstItem="h1P-3X-Kip" firstAttribute="leading" secondItem="14j-uA-7If" secondAttribute="leading" id="org-3P-MfK"/>
                             <constraint firstItem="B3V-XW-Yhx" firstAttribute="centerX" secondItem="D59-Sg-yRh" secondAttribute="centerX" id="rj2-4s-XIM"/>
                             <constraint firstItem="14j-uA-7If" firstAttribute="bottom" secondItem="tXm-ZD-chp" secondAttribute="bottom" constant="24" id="uBa-f8-UsF"/>
                         </constraints>
@@ -1195,18 +1215,22 @@
                     </navigationItem>
                     <connections>
                         <outlet property="beltHolderViewOutlet" destination="tIo-gd-Eif" id="yAY-e6-RpV"/>
+                        <outlet property="beltLevelPickerView" destination="bN3-Ri-FpF" id="hoT-Z4-3zp"/>
                         <outlet property="credentialsStackViewOutlet" destination="YSA-tz-XOE" id="ND0-6l-MeS"/>
                         <outlet property="firstNameLabelOutlet" destination="b9N-1b-iky" id="g9F-bT-5Oa"/>
                         <outlet property="firstNameTextField" destination="7mb-Xv-B5q" id="meR-e9-lH9"/>
                         <outlet property="lastNameLabelOutlet" destination="RPI-iQ-Tsn" id="6nM-6Q-dHN"/>
                         <outlet property="lastNameTextField" destination="WJm-hb-ZwF" id="Qsg-FM-Mi7"/>
+                        <outlet property="nextButtonOutlet" destination="rOe-Eg-NUk" id="Rw6-yM-e4G"/>
+                        <outlet property="setBeltLevelButtonOutlet" destination="nxn-nS-91i" id="K3u-Tx-DTU"/>
+                        <outlet property="stripeNumberPickerView" destination="h1P-3X-Kip" id="hxA-EY-UPN"/>
                         <outlet property="welcomeInstructionsLabelOutlet" destination="jS8-29-PJZ" id="1QG-Zy-6qj"/>
                         <outlet property="welcomeLabeOutlet" destination="VU4-gQ-df6" id="215-LD-vul"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LvP-3c-ToH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2779" y="-568"/>
+            <point key="canvasLocation" x="2778.75" y="-568.30985915492954"/>
         </scene>
         <!--address-->
         <scene sceneID="N4s-7k-cpQ">

@@ -10,7 +10,22 @@ import UIKit
 
 class BeltBuilder {
     
-    // MARK: - SET Properties
+    // MARK: - Properties
+    
+    // Belt arrays
+    let adultBelts: [InternationalStandardBJJBelts] = [.adultWhiteBelt, .adultBlueBelt, .adultPurpleBelt, .adultBrownBelt, .adultBlackBelt, .adultRedBlackBelt, .adultRedWhiteBelt, .adultRedBelt]
+    
+    let kidsBelts: [InternationalStandardBJJBelts] = [.kidsWhiteBelt, .kidsGreyWhiteBelt, .kidsGreyBelt, .kidsGreyBlackBelt, .kidsYellowWhiteBelt, .kidsYellowBelt, .kidsYellowBlackBelt, .kidsOrangeWhiteBelt, .kidsOrangeBelt, .kidsOrangeBlackBelt, .kidsGreenWhiteBelt, .kidsGreenBelt, .kidsGreenBlackBelt]
+    
+    // belt stripe specifications
+    let kidsWhiteBeltStripes = 5
+    let allOtherKidsBeltStripes = 11
+    let adultBasicBeltStripes = 4
+    let blackBeltDegrees = 6
+    let redBlackBeltDegrees = 7
+    let redWhiteBeltDegrees = 8
+    let redBeltDegrees = 10
+    
     
     // UIColor specs
     let silverColor: UIColor = UIColor(red: 189.0/255.0, green: 195.0/255.0, blue: 199.0/255.0, alpha: 1.0)
@@ -620,6 +635,54 @@ class BeltBuilder {
         
         /*** works up to here ***/
         print("stripe stackView constraints work!!! f/f")
+    }
+    
+    // return an array of Int eqivalent to stripes in a given belt
+    func howManyStripes(belt: InternationalStandardBJJBelts) -> [Int] {
+        
+        var numberOfStripes: [Int] = []
+        
+        switch belt {
+            
+        case .kidsWhiteBelt:
+            for i in 1...kidsWhiteBeltStripes {
+                numberOfStripes.append(i)
+            }
+        case .kidsGreyWhiteBelt, .kidsGreyBelt, .kidsGreyBlackBelt, .kidsYellowWhiteBelt, .kidsYellowBelt, .kidsYellowBlackBelt, .kidsOrangeWhiteBelt, .kidsOrangeBelt, .kidsOrangeBlackBelt, .kidsGreenWhiteBelt, .kidsGreenBelt, .kidsGreenBlackBelt:
+            for i in 1...allOtherKidsBeltStripes {
+                numberOfStripes = []
+                numberOfStripes.append(i)
+            }
+            
+        case .adultWhiteBelt, .adultBlueBelt, .adultPurpleBelt, .adultBrownBelt:
+            numberOfStripes = []
+            for i in 1...adultBasicBeltStripes {
+                numberOfStripes.append(i)
+            }
+            
+        case .adultBlackBelt:
+            numberOfStripes = []
+            for i in 1...blackBeltDegrees {
+                numberOfStripes.append(i)
+            }
+            
+        case .adultRedBlackBelt:
+            numberOfStripes = []
+            numberOfStripes.append(7)
+            
+        case .adultRedWhiteBelt:
+            numberOfStripes = []
+            numberOfStripes.append(8)
+        case .adultRedBelt:
+            numberOfStripes = []
+            for i in redWhiteBeltDegrees...blackBeltDegrees {
+                numberOfStripes.append(i)
+            }
+        default:
+            print("we don't recognize that type of belt... howManyStripes function in BeltBuilder.swift - line 682")
+        }
+        
+        return numberOfStripes
     }
 }
 
