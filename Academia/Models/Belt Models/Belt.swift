@@ -22,6 +22,7 @@ class Belt {
     var active: Bool
     var elligibleForNextBelt: Bool
     var numberOfClassesToNextPromotion: Int
+    var beltLevel: InternationalStandardBJJBelts
     
     // belt constructors
     var kidStripes: Int?
@@ -40,6 +41,7 @@ class Belt {
          active: Bool,
          elligibleForNextBelt: Bool,
          numberOfClassesToNextPromotion: Int,
+         beltLevel: InternationalStandardBJJBelts,
          kidStripes: Int?,
          adultStripes: Int?,
          blackBeltDegrees: Int?,
@@ -53,6 +55,7 @@ class Belt {
         self.active = active
         self.elligibleForNextBelt = elligibleForNextBelt
         self.numberOfClassesToNextPromotion = numberOfClassesToNextPromotion
+        self.beltLevel = beltLevel
         self.kidStripes = kidStripes
         self.adultStripes = adultStripes
         self.blackBeltDegrees = blackBeltDegrees

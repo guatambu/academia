@@ -19,28 +19,20 @@ class NameAndBeltViewController: UIViewController {
     var firstName = ""
     var lastName = ""
     var beltLevel: InternationalStandardBJJBelts = .adultWhiteBelt
-    var numberOfStripes = 1
+    var numberOfStripes = 0
     
     let beltBuilder = BeltBuilder()
     
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
-    @IBOutlet weak var firstNameLabelOutlet: UILabel!
-    @IBOutlet weak var firstNameTextField: UITextField!
-    @IBOutlet weak var lastNameLabelOutlet: UILabel!
-    @IBOutlet weak var lastNameTextField: UITextField!
     
     // view that holds belt to be instantiated and displayed
     @IBOutlet weak var beltHolderViewOutlet: UIView!
-    // stack view holding user gather information in this ViewController
-    @IBOutlet weak var credentialsStackViewOutlet: UIStackView!
-    
-    // UIPickerView called when user is setting belt level
+    // belt level pickerView
     @IBOutlet weak var beltLevelPickerView: UIPickerView!
-    // UIPickerView called when user is setting belt stripe number
-    @IBOutlet weak var stripeNumberPickerView: UIPickerView!
+    // stripe number slider
+    @IBOutlet weak var stripeNumberSlider: UISlider!
     
-    @IBOutlet weak var setBeltLevelButtonOutlet: DesignableButton!
     @IBOutlet weak var nextButtonOutlet: DesignableButton!
     
     
@@ -49,52 +41,35 @@ class NameAndBeltViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // pickerView requirements
         beltLevelPickerView.delegate = self
         beltLevelPickerView.dataSource = self
         
-        // buttons to display at user arrival
-        setBeltLevelButtonOutlet.isHidden = false
-        nextButtonOutlet.isHidden = false
+        stripeNumberSlider.tintColor = UIColor.red
         
-        // successfully working... yay programtatic segues!
-        print("viewWillAppear: isOwner = \(String(describing: isOwner))")
-        print("viewWillAppear: isKid = \(String(describing: isKid))")
-        print("viewWillAppear: username = \(String(describing: username))")
-        print("viewWillAppear: password = \(String(describing: password))")
+        // default belt to display upon user arrival
+        beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: numberOfStripes)
         
-        beltLevelPickerView.isHidden = true
-        stripeNumberPickerView.isHidden = true
-        
-        beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .adultBlackBelt, numberOfStripes: 3)
     }
     
     
     // MARK: - Actions
     
-    @IBAction func setBeltLevelButtonTapped(_ sender: DesignableButton) {
+
+
+    @IBAction func sliderValueChanged(_ sender: Any) {
         
-        let setBeltLevel = "set belt level"
-        let setNumberOfStripes = "set number of stripes"
+        stripeNumberSlider.isContinuous = false
+        let currentValue = Int(stripeNumberSlider.value)
+        self.numberOfStripes = currentValue
         
+        print(currentValue)
         
-        if self.setBeltLevelButtonOutlet.titleLabel?.text == setBeltLevel {
-            
-            setBeltLevelButtonOutlet.isHidden = true
-            nextButtonOutlet.isHidden = true
-            stripeNumberPickerView.isHidden = true
-            beltLevelPickerView.isHidden = false
-            self.setBeltLevelButtonOutlet.titleLabel?.text = setNumberOfStripes
-            
-        } else if self.setBeltLevelButtonOutlet.titleLabel?.text == setNumberOfStripes {
-            
-            setBeltLevelButtonOutlet.isHidden = true
-            nextButtonOutlet.isHidden = true
-            stripeNumberPickerView.isHidden = false
-            beltLevelPickerView.isHidden = true
-            self.setBeltLevelButtonOutlet.titleLabel?.text = setBeltLevel
-        }
+        self.beltBuilder.buildABelt(view: self.beltHolderViewOutlet, belt: self.beltLevel, numberOfStripes: self.numberOfStripes)
     }
+    
+    
+    
+  
     
     @IBAction func nextButtonTapped(_ sender: DesignableButton) {
         
@@ -104,16 +79,6 @@ class NameAndBeltViewController: UIViewController {
         let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
         let destViewController = mainView.instantiateViewController(withIdentifier: "toUserAddress") as! AddressViewController
-        
-        guard let newFirstName = self.firstNameTextField.text,
-            let newLastName = lastNameTextField.text,
-            self.firstNameTextField.text != "",
-            self.lastNameTextField.text != ""
-            else {
-
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
-            return
-        }
         
         // create the segue programmatically
         self.navigationController?.pushViewController(destViewController, animated: true)
@@ -127,8 +92,6 @@ class NameAndBeltViewController: UIViewController {
         destViewController.isKid = isKid
         destViewController.username = username
         destViewController.password = password
-        destViewController.firstName = newFirstName
-        destViewController.lastName = newLastName
         destViewController.beltLevel = beltLevel
         destViewController.numberOfStripes = numberOfStripes
         
@@ -137,14 +100,15 @@ class NameAndBeltViewController: UIViewController {
     
     
     // MARK: - Helper Methods
-
+    
+    
 
 }
 
 
 extension NameAndBeltViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
-    // we are going to have two pickerViews
+    // we have two pickerViews: 1 for belt level, 1 for number of stripes
     
     // PickerView DataSource Methods
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -153,39 +117,26 @@ extension NameAndBeltViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
-        if pickerView == beltLevelPickerView {
-            guard let isKid = isKid else { return 0 }
-            
-            if isKid {
-                return beltBuilder.kidsBelts.count
-            } else if !isKid {
-                return beltBuilder.adultBelts.count
-            }
-        } else if pickerView == stripeNumberPickerView {
-            
-            let stripesArray = beltBuilder.howManyStripes(belt: self.beltLevel)
-            return stripesArray.count
-        }
+        guard let isKid = isKid else { return 0 }
         
+        if isKid {
+            return beltBuilder.kidsBelts.count
+        } else if !isKid {
+            return beltBuilder.adultBelts.count
+        }
+
         return 0
     }
     
     // PickerView Delegate Methods
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    
+        guard let isKid = isKid else { return nil }
         
-        if pickerView == beltLevelPickerView {
-            
-            guard let isKid = isKid else { return nil }
-            
-            if isKid {
-                return beltBuilder.kidsBelts[row].rawValue
-            } else if !isKid {
-                return beltBuilder.adultBelts[row].rawValue
-            }
-        } else if pickerView == stripeNumberPickerView {
-            
-            let stripesArray = beltBuilder.howManyStripes(belt: self.beltLevel)
-            return "\(stripesArray[row])"
+        if isKid {
+            return beltBuilder.kidsBelts[row].rawValue
+        } else if !isKid {
+            return beltBuilder.adultBelts[row].rawValue
         }
         
         return nil
@@ -198,19 +149,15 @@ extension NameAndBeltViewController: UIPickerViewDelegate, UIPickerViewDataSourc
             return
         }
         
-        if pickerView == beltLevelPickerView {
-            
-            if isKid {
-                self.beltLevel = beltBuilder.kidsBelts[row]
-            } else {
-                self.beltLevel = beltBuilder.adultBelts[row]
-            }
-            
-        } else if pickerView == stripeNumberPickerView {
-            
-            let stripesArray = beltBuilder.howManyStripes(belt: self.beltLevel)
-            
-            self.numberOfStripes = stripesArray[row]
+        if isKid {
+            self.beltLevel = beltBuilder.kidsBelts[row]
+        } else {
+            self.beltLevel = beltBuilder.adultBelts[row]
         }
+        
+        self.beltBuilder.buildABelt(view: self.beltHolderViewOutlet, belt: self.beltLevel, numberOfStripes: self.numberOfStripes)
     }
 }
+
+
+

@@ -339,7 +339,9 @@ class BeltBuilder {
             
             break
         case .kidsWhiteBelt:
+            if numberOfStripes <= 0 { break }
             if numberOfStripes > 5 { break }
+            if stripesStackView.subviews.count > 5 { break }
             
             for i in 1...numberOfStripes {
                 let whiteStripe: UIView = {
@@ -366,7 +368,9 @@ class BeltBuilder {
             }
             case .kidsGreyWhiteBelt, .kidsGreyBelt, .kidsGreyBlackBelt, .kidsYellowWhiteBelt, .kidsYellowBelt, .kidsYellowBlackBelt, .kidsOrangeWhiteBelt, .kidsOrangeBelt, .kidsOrangeBlackBelt, .kidsGreenWhiteBelt, .kidsGreenBelt, .kidsGreenBlackBelt:
             
+                if numberOfStripes <= 0 { break }
                 if numberOfStripes > 11 { break }
+                if stripesStackView.subviews.count > 11 { break }
                 
                 for i in 1...numberOfStripes {
                     let whiteStripe: UIView = {
@@ -405,7 +409,9 @@ class BeltBuilder {
         // standard adult belts
         case .adultWhiteBelt, .adultBlueBelt, .adultPurpleBelt, .adultBrownBelt:
             
+            if numberOfStripes <= 0 { break }
             if numberOfStripes > 4 { break }
+            if stripesStackView.subviews.count > 4 { break }
             
             for _ in 1...numberOfStripes {
                 let whiteStripe: UIView = {
@@ -423,7 +429,9 @@ class BeltBuilder {
         // standard black belt
         case .adultBlackBelt:
             
+            if numberOfStripes <= 0 { break }
             if numberOfStripes > 6 { break }
+            if stripesStackView.subviews.count > 6 { break }
             
             for _ in 1...numberOfStripes {
                 let blackBeltDegree: UIView = {
@@ -442,7 +450,9 @@ class BeltBuilder {
         case .adultRedBlackBelt, .adultRedWhiteBelt, .adultRedBelt:
             // check it out
             
+            if numberOfStripes <= 0 { break }
             if numberOfStripes > 10 { break }
+            if stripesStackView.subviews.count > 10 { break }
             
             for _ in 1...numberOfStripes {
                 let coralBeltDegree: UIView = {
@@ -581,7 +591,7 @@ class BeltBuilder {
         // add belt constraints
         beltView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         beltView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        beltView.topAnchor.constraint(equalTo: view.topAnchor, constant: 16).isActive = true
+        beltView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         beltView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         /***  works up to here ***/
         print("belt constraints work!!! a/f")

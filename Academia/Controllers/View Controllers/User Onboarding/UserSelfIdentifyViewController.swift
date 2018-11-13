@@ -19,6 +19,7 @@ class UserSelfIdentifyViewController: UIViewController {
     
     
     var isOwner = false
+    var isKid = false
     
     
     // MARK: ViewController Lifecycle Functions
@@ -80,6 +81,7 @@ class UserSelfIdentifyViewController: UIViewController {
         
         // pass desired data to relevant view controller
         destViewController.isOwner = self.isOwner
+        destViewController.isKid = self.isKid
 
     }
     
@@ -99,6 +101,7 @@ class UserSelfIdentifyViewController: UIViewController {
         
         // pass desired data to relevant view controller
         destViewController.isOwner = self.isOwner
+        destViewController.isKid = self.isKid
 
     }
 
