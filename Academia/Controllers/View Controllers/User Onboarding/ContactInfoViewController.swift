@@ -12,6 +12,24 @@ class ContactInfoViewController: UIViewController {
 
     // MARK: - Properties
     
+    var isOwner: Bool?
+    var isKid: Bool?
+    var username: String?
+    var password: String?
+    var firstName: String?
+    var lastName: String?
+    var profilePic: UIImage?
+    var beltLevel: InternationalStandardBJJBelts?
+    var numberOfStripes: Int?
+    var addressLine1: String?
+    var addressLine2: String?
+    var city: String?
+    var state: String?
+    var zipCode: String?
+    var phone: String?
+    var mobile: String?
+    var email: String?
+    
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     @IBOutlet weak var phoneLabelOutlet: UILabel!

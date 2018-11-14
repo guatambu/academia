@@ -16,8 +16,17 @@ class AddressViewController: UIViewController {
     var isKid: Bool?
     var username: String?
     var password: String?
+    var firstName: String?
+    var lastName: String?
+    var profilePic: UIImage?
     var beltLevel: InternationalStandardBJJBelts?
     var numberOfStripes: Int?
+    var addressLine1: String?
+    var addressLine2: String?
+    var city: String?
+    var state: String?
+    var zipCode: String?
+    
     
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
@@ -38,9 +47,9 @@ class AddressViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let isOwner = isOwner, let isKid = isKid, let username = username, let password = password, let beltLevel = beltLevel, let numberOfStripes = numberOfStripes else { return }
+        guard let isOwner = isOwner, let isKid = isKid, let username = username, let password = password, let firstName = firstName, let lastName = lastName, let beltLevel = beltLevel, let numberOfStripes = numberOfStripes else { return }
         
-        print("isOwner: \(isOwner) \nisKid: \(isKid) \nusername: \(username) \npassword: \(password) \nbeltLevel: \(beltLevel.rawValue) \nnumberOfStripes: \(numberOfStripes)")
+        print("isOwner: \(isOwner) \nisKid: \(isKid) \nusername: \(username) \npassword: \(password) \nfirstName: \(firstName) \nlastName: \(lastName) \nbeltLevel: \(beltLevel.rawValue) \nnumberOfStripes: \(numberOfStripes)")
         
         // Do any additional setup after loading the view.
     }

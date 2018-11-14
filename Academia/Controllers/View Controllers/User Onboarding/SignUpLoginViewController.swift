@@ -133,7 +133,7 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         // instantiate the relevant storyboard
         let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
-        let destViewController = mainView.instantiateViewController(withIdentifier: "toUserNameBelt") as! NameAndBeltViewController
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toUserNameBelt") as! TakeProfilePicViewController
         
         // run check to see is there is username/password
         guard let username = username, let password = password else {

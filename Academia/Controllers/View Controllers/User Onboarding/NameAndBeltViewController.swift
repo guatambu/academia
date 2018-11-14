@@ -16,8 +16,9 @@ class NameAndBeltViewController: UIViewController {
     var isKid: Bool?
     var username: String?
     var password: String?
-    var firstName = ""
-    var lastName = ""
+    var firstName: String?
+    var lastName: String?
+    var profilePic: UIImage?
     var beltLevel: InternationalStandardBJJBelts = .adultWhiteBelt
     var numberOfStripes = 0
     
