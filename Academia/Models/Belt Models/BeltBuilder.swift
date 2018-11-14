@@ -18,10 +18,10 @@ class BeltBuilder {
     let kidsBelts: [InternationalStandardBJJBelts] = [.kidsWhiteBelt, .kidsGreyWhiteBelt, .kidsGreyBelt, .kidsGreyBlackBelt, .kidsYellowWhiteBelt, .kidsYellowBelt, .kidsYellowBlackBelt, .kidsOrangeWhiteBelt, .kidsOrangeBelt, .kidsOrangeBlackBelt, .kidsGreenWhiteBelt, .kidsGreenBelt, .kidsGreenBlackBelt]
     
     // belt stripe specifications
-    let kidsWhiteBeltStripes = [1, 2, 3, 4, 5]
-    let allOtherKidsBeltStripes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-    let adultBasicBeltStripes = [1, 2, 3, 4]
-    let blackBeltDegrees = [1, 2, 3, 4, 5, 6]
+    let kidsWhiteBeltStripes = [0, 1, 2, 3, 4, 5]
+    let allOtherKidsBeltStripes = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+    let adultBasicBeltStripes = [0, 1, 2, 3, 4]
+    let blackBeltDegrees = [0, 1, 2, 3, 4, 5, 6]
     let redBlackBeltDegrees = [7]
     let redWhiteBeltDegrees = [8]
     let redBeltDegrees = [9, 10]
@@ -95,6 +95,7 @@ class BeltBuilder {
         stack.axis = .horizontal
         stack.spacing = 4
         stack.distribution = .fillEqually
+        stack.tag = 100
         return stack
     }()
     

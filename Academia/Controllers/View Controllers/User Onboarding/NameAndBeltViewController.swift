@@ -155,26 +155,34 @@ extension NameAndBeltViewController: UIPickerViewDelegate, UIPickerViewDataSourc
                 
             case .kidsWhiteBelt:
                 
-                if beltBuilder.kidsWhiteBeltStripes[row] == 1 {
+                if beltBuilder.kidsWhiteBeltStripes[row] == 0 {
+                    return "\(beltBuilder.kidsWhiteBeltStripes[row]) stripes"
+                } else if beltBuilder.kidsWhiteBeltStripes[row] == 1 {
                     return "\(beltBuilder.kidsWhiteBeltStripes[row]) stripe"
                 }
                 return "\(beltBuilder.kidsWhiteBeltStripes[row]) stripes"
             case .kidsGreyWhiteBelt, .kidsGreyBelt, .kidsGreyBlackBelt, .kidsYellowWhiteBelt, .kidsYellowBelt, .kidsYellowBlackBelt, .kidsOrangeWhiteBelt, .kidsOrangeBelt, .kidsOrangeBlackBelt, .kidsGreenWhiteBelt, .kidsGreenBelt, .kidsGreenBlackBelt:
                 
-                if beltBuilder.allOtherKidsBeltStripes[row] == 1 {
+                if beltBuilder.allOtherKidsBeltStripes[row] == 0 {
+                    return "\(beltBuilder.allOtherKidsBeltStripes[row]) stripes"
+                } else if beltBuilder.allOtherKidsBeltStripes[row] == 1 {
                     return "\(beltBuilder.allOtherKidsBeltStripes[row]) stripe"
                 }
                 return "\(beltBuilder.allOtherKidsBeltStripes[row]) stripes"
             case .adultWhiteBelt, .adultBlueBelt, .adultPurpleBelt, .adultBrownBelt:
                 
-                if beltBuilder.adultBasicBeltStripes[row] == 1 {
+                if beltBuilder.adultBasicBeltStripes[row] == 0 {
+                    return "\(beltBuilder.adultBasicBeltStripes[row]) stripes"
+                } else if beltBuilder.adultBasicBeltStripes[row] == 1 {
                     return "\(beltBuilder.adultBasicBeltStripes[row]) stripe"
                 }
                 return "\(beltBuilder.adultBasicBeltStripes[row]) stripes"
                 
             case .adultBlackBelt:
                 
-                if beltBuilder.blackBeltDegrees[row] == 1 {
+                if beltBuilder.blackBeltDegrees[row] == 0 {
+                    return "\(beltBuilder.blackBeltDegrees[row]) degrees"
+                } else if beltBuilder.blackBeltDegrees[row] == 1 {
                     return "\(beltBuilder.blackBeltDegrees[row]) degree"
                 }
                 return "\(beltBuilder.blackBeltDegrees[row]) degrees"
@@ -212,15 +220,43 @@ extension NameAndBeltViewController: UIPickerViewDelegate, UIPickerViewDataSourc
                 pickerView.reloadComponent(1)
             }
             
-            if beltLevel == .adultRedBlackBelt {
-                beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: 7)
-            } else if beltLevel == .adultRedWhiteBelt {
-                beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: 8)
-            } else if beltLevel == .adultRedBelt {
-                beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: 9)
+            for view in beltBuilder.stripesStackView.arrangedSubviews {
+                beltBuilder.stripesStackView.removeArrangedSubview(view)
+                view.removeFromSuperview()
             }
             
             beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: 0)
+            
+            if beltLevel == .adultRedBlackBelt {
+                
+                for view in beltBuilder.stripesStackView.arrangedSubviews {
+                    beltBuilder.stripesStackView.removeArrangedSubview(view)
+                    view.removeFromSuperview()
+                }
+                
+                beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: 7)
+                
+            } else if beltLevel == .adultRedWhiteBelt {
+                
+                for view in beltBuilder.stripesStackView.arrangedSubviews {
+                    beltBuilder.stripesStackView.removeArrangedSubview(view)
+                    view.removeFromSuperview()
+                }
+                
+                beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: 8)
+                
+            } else if beltLevel == .adultRedBelt {
+                
+                for view in beltBuilder.stripesStackView.arrangedSubviews {
+                    beltBuilder.stripesStackView.removeArrangedSubview(view)
+                    view.removeFromSuperview()
+                }
+                
+                beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: 9)
+            }
+            
+            pickerView.selectRow(0, inComponent: 1, animated: true)
+            
         } else {
             
             switch beltLevel {
@@ -228,12 +264,22 @@ extension NameAndBeltViewController: UIPickerViewDelegate, UIPickerViewDataSourc
             case .kidsWhiteBelt:
                 pickerView.reloadComponent(1)
                 
+                for view in beltBuilder.stripesStackView.arrangedSubviews {
+                    beltBuilder.stripesStackView.removeArrangedSubview(view)
+                    view.removeFromSuperview()
+                }
+                
                 numberOfStripes = beltBuilder.kidsWhiteBeltStripes[row]
     
                 beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: numberOfStripes)
             case .kidsGreyWhiteBelt, .kidsGreyBelt, .kidsGreyBlackBelt, .kidsYellowWhiteBelt, .kidsYellowBelt, .kidsYellowBlackBelt, .kidsOrangeWhiteBelt, .kidsOrangeBelt, .kidsOrangeBlackBelt, .kidsGreenWhiteBelt, .kidsGreenBelt, .kidsGreenBlackBelt:
                 
                 pickerView.reloadComponent(1)
+                
+                for view in beltBuilder.stripesStackView.arrangedSubviews {
+                    beltBuilder.stripesStackView.removeArrangedSubview(view)
+                    view.removeFromSuperview()
+                }
 
                 numberOfStripes = beltBuilder.allOtherKidsBeltStripes[row]
                 
@@ -242,15 +288,25 @@ extension NameAndBeltViewController: UIPickerViewDelegate, UIPickerViewDataSourc
             case .adultWhiteBelt, .adultBlueBelt, .adultPurpleBelt, .adultBrownBelt:
                 
                 pickerView.reloadComponent(1)
+                
+                for view in beltBuilder.stripesStackView.arrangedSubviews {
+                    beltBuilder.stripesStackView.removeArrangedSubview(view)
+                    view.removeFromSuperview()
+                }
 
                 numberOfStripes = beltBuilder.adultBasicBeltStripes[row]
                 
-                beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: 1)
+                beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: numberOfStripes)
                 
                 
             case .adultBlackBelt:
                 
                 pickerView.reloadComponent(1)
+                
+                for view in beltBuilder.stripesStackView.arrangedSubviews {
+                    beltBuilder.stripesStackView.removeArrangedSubview(view)
+                    view.removeFromSuperview()
+                }
                
                 numberOfStripes = beltBuilder.blackBeltDegrees[row]
                 
@@ -261,11 +317,21 @@ extension NameAndBeltViewController: UIPickerViewDelegate, UIPickerViewDataSourc
                 
                 pickerView.reloadComponent(1)
                 
+                for view in beltBuilder.stripesStackView.arrangedSubviews {
+                    beltBuilder.stripesStackView.removeArrangedSubview(view)
+                    view.removeFromSuperview()
+                }
+                
                 numberOfStripes = beltBuilder.redBlackBeltDegrees[row]
                 
             case .adultRedWhiteBelt:
                 
                 pickerView.reloadComponent(1)
+                
+                for view in beltBuilder.stripesStackView.arrangedSubviews {
+                    beltBuilder.stripesStackView.removeArrangedSubview(view)
+                    view.removeFromSuperview()
+                }
                 
                 numberOfStripes = beltBuilder.redWhiteBeltDegrees[row]
                 
@@ -273,10 +339,15 @@ extension NameAndBeltViewController: UIPickerViewDelegate, UIPickerViewDataSourc
                 
                 pickerView.reloadComponent(1)
                 
+                for view in beltBuilder.stripesStackView.arrangedSubviews {
+                    beltBuilder.stripesStackView.removeArrangedSubview(view)
+                    view.removeFromSuperview()
+                }
+                
                 numberOfStripes = beltBuilder.redBeltDegrees[row]
                 
                 if beltBuilder.redBeltDegrees[row] == 10 {
-                    beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: 10)
+                    beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: numberOfStripes)
                 }
                 
             default:
