@@ -34,8 +34,14 @@ class TakeProfilePicViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        guard let isOwner = isOwner, let isKid = isKid, let username = username, let password = password else { return }
+        
+        print("isOwner: \(isOwner) \nisKid: \(isKid) \nusername: \(username) \npassword: \(password) ")
+        
         // instantiate tapGestureRecognizer for the profilePicImageViewOutet
-        let tapGestureRecognizer = UITapGestureRecognizer(target: profilePicImageViewOutlet, action: #selector(TakeProfilePicViewController.profilePicImageTapped))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TakeProfilePicViewController.profilePicImageTapped))
+        profilePicImageViewOutlet.addGestureRecognizer(tapGestureRecognizer)
+        profilePicImageViewOutlet.isUserInteractionEnabled = true
         
         // Do any additional setup after loading the view.
     }
@@ -50,7 +56,7 @@ class TakeProfilePicViewController: UIViewController {
         // instantiate the relevant storyboard
         let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
-        let destViewController = mainView.instantiateViewController(withIdentifier: "toInitialOwnerSignUp") as! NameAndBeltViewController
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toUserNameBelt") as! NameAndBeltViewController
     
         // run check to see is there is firstName, lastName, and profilePic
         guard let firstName = firstNameTextField.text, firstNameTextField.text != "" else {
@@ -80,7 +86,7 @@ class TakeProfilePicViewController: UIViewController {
         // pass data to destViewController
         destViewController.isOwner = isOwner
         destViewController.isKid = isKid
-        destViewController.username = firstName
+        destViewController.username = username
         destViewController.password = password
         destViewController.firstName = firstName
         destViewController.lastName = lastName
@@ -92,14 +98,89 @@ class TakeProfilePicViewController: UIViewController {
     @objc func profilePicImageTapped() {
         
         // brings up the camera to snap a profile pic
+        presentImagePicker()
+
         
+    }
+}
+
+
+// MARK: - UINavigationControllerDelegate
+extension TakeProfilePicViewController: UINavigationControllerDelegate {
+}
+
+// MARK: - UIImagePickerControllerDelegate
+extension TakeProfilePicViewController: UIImagePickerControllerDelegate {
+    
+    func presentImagePicker() {
+    
+        let imagePickerActionSheet = UIAlertController(title: "Snap/Upload Image",
+                                                       message: nil, preferredStyle: .actionSheet)
+    
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let cameraButton = UIAlertAction(title: "Take Photo",
+                                             style: .default) { (alert) -> Void in
+                                                let imagePicker = UIImagePickerController()
+                                                imagePicker.delegate = self
+                                                imagePicker.sourceType = .camera
+                                                self.present(imagePicker, animated: true)
+            }
+            imagePickerActionSheet.addAction(cameraButton)
+        }
+
+        let libraryButton = UIAlertAction(title: "Choose Existing",
+                                          style: .default) { (alert) -> Void in
+                                            let imagePicker = UIImagePickerController()
+                                            imagePicker.delegate = self
+                                            imagePicker.sourceType = .photoLibrary
+                                            self.present(imagePicker, animated: true)
+        }
+        imagePickerActionSheet.addAction(libraryButton)
+
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
+        imagePickerActionSheet.addAction(cancelButton)
+    
+        present(imagePickerActionSheet, animated: true)
+
     }
     
-    func resizeProfilePic() {
-        
-        // reduces size and crops dimentsions of original camera image profile pic to smaller size for storage within app
-        
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+      
+        if let selectedPhoto = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
+            let scaledImage = selectedPhoto.scaleImage(640) {
+            
+            dismiss(animated: true, completion: {
+                self.profilePicImageViewOutlet.image = scaledImage
+                self.profilePic = scaledImage
+            })
+        }
     }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+}
 
 
+// MARK: - UIImage extension
+extension UIImage {
+    func scaleImage(_ maxDimension: CGFloat) -> UIImage? {
+        
+        var scaledSize = CGSize(width: maxDimension, height: maxDimension)
+        
+        if size.width > size.height {
+            let scaleFactor = size.height / size.width
+            scaledSize.height = scaledSize.width * scaleFactor
+        } else {
+            let scaleFactor = size.width / size.height
+            scaledSize.width = scaledSize.height * scaleFactor
+        }
+        
+        UIGraphicsBeginImageContext(scaledSize)
+        draw(in: CGRect(origin: .zero, size: scaledSize))
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return scaledImage
+    }
 }

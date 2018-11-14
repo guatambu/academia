@@ -38,6 +38,12 @@ class CompletedProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let isOwner = isOwner, let isKid = isKid, let username = username, let password = password, let firstName = firstName, let lastName = lastName, let beltLevel = beltLevel, let numberOfStripes = numberOfStripes, let addressLine1 = addressLine1, let addressLine2 = addressLine2, let city = city, let state = state, let zipCode = zipCode, let phone = phone, let mobile = mobile, let email = email, let emergencyContactName = emergencyContactName, let emergencyContactRelationship = emergencyContactRelationship, let emergencyContactPhone = emergencyContactPhone else { return }
+        
+        print("isOwner: \(isOwner) \nisKid: \(isKid) \nusername: \(username) \npassword: \(password) \nfirstName: \(firstName) \nlastName: \(lastName) \nbeltLevel: \(beltLevel.rawValue) \nnumberOfStripes: \(numberOfStripes) \naddressLine1: \(addressLine1) \naddressLine2: \(addressLine2) \ncity: \(city) \nstate: \(state) \nzipCode: \(zipCode) \nphone: \(phone) \nmobile: \(mobile) \nemail: \(email) \nemergencyContactName: \(emergencyContactName) \nemergencyContactRelationship: \(emergencyContactRelationship) \nemergencyContactPhone: \(emergencyContactPhone)")
+        
+        
 
         // Do any additional setup after loading the view.
     }

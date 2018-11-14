@@ -40,10 +40,14 @@ class NameAndBeltViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        guard let isOwner = isOwner, let isKid = isKid, let username = username, let password = password, let firstName = firstName, let lastName = lastName else { return }
+        
+        print("isOwner: \(isOwner) \nisKid: \(isKid) \nusername: \(username) \npassword: \(password) \nfirstName: \(firstName) \nlastName: \(lastName)")
+        
         beltLevelPickerView.delegate = self
         beltLevelPickerView.dataSource = self
         
-        guard let isKid = isKid else { return }
+        //guard let isKid = isKid else { return }
         
         if isKid {
             beltLevel = .kidsWhiteBelt
@@ -52,6 +56,9 @@ class NameAndBeltViewController: UIViewController {
         }
         // default belt to display upon user arrival
         beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: numberOfStripes)
+        
+        print("viewDidLoad(): \(beltLevel.rawValue)")
+        print("viewDidLoad(): \(numberOfStripes) stripes")
         
     }
     
@@ -81,8 +88,10 @@ class NameAndBeltViewController: UIViewController {
         destViewController.password = password
         destViewController.beltLevel = beltLevel
         destViewController.numberOfStripes = numberOfStripes
+        destViewController.firstName = firstName
+        destViewController.lastName = lastName
         
-        return
+        
     }
     
     
@@ -92,6 +101,7 @@ class NameAndBeltViewController: UIViewController {
 }
 
 
+// MARK: - PickerView Functionality
 extension NameAndBeltViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     // we have two pickerViews: 1 for belt level, 1 for number of stripes

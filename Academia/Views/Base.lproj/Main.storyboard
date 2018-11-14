@@ -1833,7 +1833,6 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="createAccountButtonTapped:" destination="lbT-YZ-VcJ" eventType="touchUpInside" id="rH8-yM-DOt"/>
                                             <action selector="nextButtonTapped:" destination="lbT-YZ-VcJ" eventType="touchUpInside" id="Vjk-Tw-Mgt"/>
                                         </connections>
                                     </button>

@@ -14,7 +14,7 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
     var isOwner: Bool?
     var username: String?
     var password: String?
-    var isKid: Bool?
+    var isKid: Bool = false
     
     @IBOutlet weak var firstProgressDotOutlet: DesignableView!
     
@@ -50,18 +50,12 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         if isOwner {
             firstProgressDotOutlet.isHidden = true
         }
-        
-        guard let isKid = isKid else { return }
-        
-        if isKid {
-            welcomeMessageOutlet.text = "Welcome Kids Program"
-        } else {
-            welcomeMessageOutlet.text = "Welcome Adults Program"
-        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let isOwner = isOwner else { return }
         
 //        username = "guatambu"
 //        password = "1998Gwbic"
@@ -72,7 +66,7 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         
         welcomeMessageOutlet.textColor = UIColor.black
         
-        guard let isOwner = isOwner else { return }
+        //guard let isOwner = isOwner else { return }
         print("signUpVC: \(isOwner)")
         
         let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.gray,
@@ -85,7 +79,7 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: "tap to re-enter password", attributes: avenirFont)
         
         
-        guard let _ = username, let _ = password else {
+        guard let username = username, let password = password else {
             
             if isOwner {
                 welcomeMessageOutlet.text = "Welcome New Owner"
@@ -121,7 +115,6 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
             signUpButtonOutlet.setTitle("Login", for: UIControl.State.normal)
         }
         
-
     }
     
     
@@ -133,7 +126,7 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         // instantiate the relevant storyboard
         let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
-        let destViewController = mainView.instantiateViewController(withIdentifier: "toUserNameBelt") as! TakeProfilePicViewController
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toTakeProfilePic") as! TakeProfilePicViewController
         
         // run check to see is there is username/password
         guard let username = username, let password = password else {

@@ -58,6 +58,37 @@ class AddressViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func nextButtonTapped(_ sender: DesignableButton) {
+        
+        // programmatically performing segue
+        
+        // instantiate the relevant storyboard
+        let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        // instantiate the desired TableViewController as ViewController on relevant storyboard
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toContactInfo") as! ContactInfoViewController
+        
+        // create the segue programmatically
+        self.navigationController?.pushViewController(destViewController, animated: true)
+        // set the desired properties of the destinationVC's navgation Item
+        let backButtonItem = UIBarButtonItem()
+        backButtonItem.title = " "
+        navigationItem.backBarButtonItem = backButtonItem
+        
+        // pass textfield data to variables
+        
+        // pass data to destViewController
+        destViewController.isOwner = isOwner
+        destViewController.isKid = isKid
+        destViewController.username = username
+        destViewController.password = password
+        destViewController.firstName = firstName
+        destViewController.lastName = lastName
+        destViewController.beltLevel = beltLevel
+        destViewController.numberOfStripes = numberOfStripes
+        destViewController.addressLine1 = addressLine1
+        destViewController.addressLine2 = addressLine2
+        destViewController.city = city
+        destViewController.state = state
+        destViewController.zipCode = zipCode
     }
 
     /*
