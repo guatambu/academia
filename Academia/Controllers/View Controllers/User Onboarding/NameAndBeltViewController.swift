@@ -236,30 +236,36 @@ extension NameAndBeltViewController: UIPickerViewDelegate, UIPickerViewDataSourc
             
             if beltLevel == .adultRedBlackBelt {
                 
+                numberOfStripes = 7
+                
                 for view in beltBuilder.stripesStackView.arrangedSubviews {
                     beltBuilder.stripesStackView.removeArrangedSubview(view)
                     view.removeFromSuperview()
                 }
                 
-                beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: 7)
+                beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: numberOfStripes)
                 
             } else if beltLevel == .adultRedWhiteBelt {
                 
+                numberOfStripes = 8
+                
                 for view in beltBuilder.stripesStackView.arrangedSubviews {
                     beltBuilder.stripesStackView.removeArrangedSubview(view)
                     view.removeFromSuperview()
                 }
                 
-                beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: 8)
+                beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: numberOfStripes)
                 
             } else if beltLevel == .adultRedBelt {
                 
+                numberOfStripes = 9
+                
                 for view in beltBuilder.stripesStackView.arrangedSubviews {
                     beltBuilder.stripesStackView.removeArrangedSubview(view)
                     view.removeFromSuperview()
                 }
                 
-                beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: 9)
+                beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: numberOfStripes)
             }
             
             pickerView.selectRow(0, inComponent: 1, animated: true)
@@ -328,9 +334,7 @@ extension NameAndBeltViewController: UIPickerViewDelegate, UIPickerViewDataSourc
                     beltBuilder.stripesStackView.removeArrangedSubview(view)
                     view.removeFromSuperview()
                 }
-                
-                numberOfStripes = beltBuilder.redBlackBeltDegrees[row]
-                
+             
             case .adultRedWhiteBelt:
                 
                 pickerView.reloadComponent(1)
@@ -339,8 +343,6 @@ extension NameAndBeltViewController: UIPickerViewDelegate, UIPickerViewDataSourc
                     beltBuilder.stripesStackView.removeArrangedSubview(view)
                     view.removeFromSuperview()
                 }
-                
-                numberOfStripes = beltBuilder.redWhiteBeltDegrees[row]
                 
             case .adultRedBelt:
                 

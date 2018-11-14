@@ -2,7 +2,7 @@
 //  AddressViewController.swift
 //  Academia
 //
-//  Created by Kelly Johnson on 11/6/18.
+//  Created by Michael Guatambu Davis on 11/6/18.
 //  Copyright © 2018 DunDak, LLC. All rights reserved.
 //
 
@@ -16,8 +16,6 @@ class AddressViewController: UIViewController {
     var isKid: Bool?
     var username: String?
     var password: String?
-    var firstName: String?
-    var lastName: String?
     var beltLevel: InternationalStandardBJJBelts?
     var numberOfStripes: Int?
     
@@ -39,6 +37,10 @@ class AddressViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let isOwner = isOwner, let isKid = isKid, let username = username, let password = password, let beltLevel = beltLevel, let numberOfStripes = numberOfStripes else { return }
+        
+        print("isOwner: \(isOwner) \nisKid: \(isKid) \nusername: \(username) \npassword: \(password) \nbeltLevel: \(beltLevel.rawValue) \nnumberOfStripes: \(numberOfStripes)")
         
         // Do any additional setup after loading the view.
     }

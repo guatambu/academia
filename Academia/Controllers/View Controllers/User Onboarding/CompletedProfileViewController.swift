@@ -2,7 +2,7 @@
 //  CompletedProfileViewController.swift
 //  Academia
 //
-//  Created by Kelly Johnson on 11/6/18.
+//  Created by Michael Guatambu Davis on 11/6/18.
 //  Copyright © 2018 DunDak, LLC. All rights reserved.
 //
 

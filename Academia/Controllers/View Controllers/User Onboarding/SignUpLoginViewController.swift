@@ -34,8 +34,6 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
-        print("viewWillAppear: isOwner = \(String(describing: isOwner))")
-        print("viewWillAppear: isKid = \(String(describing: isKid))")
         
         // turns off auto-correct in these UITextFields
         usernameTextField.autocorrectionType = UITextAutocorrectionType.no
