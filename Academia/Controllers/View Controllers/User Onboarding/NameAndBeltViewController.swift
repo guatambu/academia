@@ -42,6 +42,13 @@ class NameAndBeltViewController: UIViewController {
         beltLevelPickerView.delegate = self
         beltLevelPickerView.dataSource = self
         
+        guard let isKid = isKid else { return }
+        
+        if isKid {
+            beltLevel = .kidsWhiteBelt
+        } else {
+            beltLevel = .adultWhiteBelt
+        }
         // default belt to display upon user arrival
         beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: numberOfStripes)
         
@@ -270,7 +277,7 @@ extension NameAndBeltViewController: UIPickerViewDelegate, UIPickerViewDataSourc
                 }
                 
                 numberOfStripes = beltBuilder.kidsWhiteBeltStripes[row]
-    
+                
                 beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: numberOfStripes)
             case .kidsGreyWhiteBelt, .kidsGreyBelt, .kidsGreyBlackBelt, .kidsYellowWhiteBelt, .kidsYellowBelt, .kidsYellowBlackBelt, .kidsOrangeWhiteBelt, .kidsOrangeBelt, .kidsOrangeBlackBelt, .kidsGreenWhiteBelt, .kidsGreenBelt, .kidsGreenBlackBelt:
                 
