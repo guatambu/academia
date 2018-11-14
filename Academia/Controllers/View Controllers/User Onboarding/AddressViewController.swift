@@ -19,6 +19,7 @@ class AddressViewController: UIViewController {
     var firstName: String?
     var lastName: String?
     var beltLevel: InternationalStandardBJJBelts?
+    var numberOfStripes: Int?
     
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
