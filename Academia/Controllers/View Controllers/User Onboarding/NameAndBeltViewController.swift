@@ -30,8 +30,6 @@ class NameAndBeltViewController: UIViewController {
     @IBOutlet weak var beltHolderViewOutlet: UIView!
     // belt level pickerView
     @IBOutlet weak var beltLevelPickerView: UIPickerView!
-    // stripe number slider
-    @IBOutlet weak var stripeNumberSlider: UISlider!
     
     @IBOutlet weak var nextButtonOutlet: DesignableButton!
     
@@ -44,8 +42,6 @@ class NameAndBeltViewController: UIViewController {
         beltLevelPickerView.delegate = self
         beltLevelPickerView.dataSource = self
         
-        stripeNumberSlider.tintColor = UIColor.red
-        
         // default belt to display upon user arrival
         beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: numberOfStripes)
         
@@ -53,23 +49,6 @@ class NameAndBeltViewController: UIViewController {
     
     
     // MARK: - Actions
-    
-
-
-    @IBAction func sliderValueChanged(_ sender: Any) {
-        
-        stripeNumberSlider.isContinuous = false
-        let currentValue = Int(stripeNumberSlider.value)
-        self.numberOfStripes = currentValue
-        
-        print(currentValue)
-        
-        self.beltBuilder.buildABelt(view: self.beltHolderViewOutlet, belt: self.beltLevel, numberOfStripes: self.numberOfStripes)
-    }
-    
-    
-    
-  
     
     @IBAction func nextButtonTapped(_ sender: DesignableButton) {
         
@@ -101,7 +80,6 @@ class NameAndBeltViewController: UIViewController {
     
     // MARK: - Helper Methods
     
-    
 
 }
 
@@ -112,19 +90,51 @@ extension NameAndBeltViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     
     // PickerView DataSource Methods
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+        return 2
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
         guard let isKid = isKid else { return 0 }
         
-        if isKid {
-            return beltBuilder.kidsBelts.count
-        } else if !isKid {
-            return beltBuilder.adultBelts.count
+        if component == 0 {
+            
+            if isKid {
+                return beltBuilder.kidsBelts.count
+            } else if !isKid {
+                return beltBuilder.adultBelts.count
+            }
+        } else {
+            
+            switch beltLevel {
+                
+            case .kidsWhiteBelt:
+                return beltBuilder.kidsWhiteBeltStripes.count
+            case .kidsGreyWhiteBelt, .kidsGreyBelt, .kidsGreyBlackBelt, .kidsYellowWhiteBelt, .kidsYellowBelt, .kidsYellowBlackBelt, .kidsOrangeWhiteBelt, .kidsOrangeBelt, .kidsOrangeBlackBelt, .kidsGreenWhiteBelt, .kidsGreenBelt, .kidsGreenBlackBelt:
+                
+                return beltBuilder.allOtherKidsBeltStripes.count
+            case .adultWhiteBelt, .adultBlueBelt, .adultPurpleBelt, .adultBrownBelt:
+                
+                return beltBuilder.adultBasicBeltStripes.count
+                
+            case .adultBlackBelt:
+                
+                return beltBuilder.blackBeltDegrees.count
+                
+            case .adultRedBlackBelt:
+                
+                return beltBuilder.redBlackBeltDegrees.count
+            case .adultRedWhiteBelt:
+                
+                return beltBuilder.redWhiteBeltDegrees.count
+            case .adultRedBelt:
+                
+                return beltBuilder.redBeltDegrees.count
+            default:
+                print("OOOPS!  this belt is not currently represented in international standard. error: NameAndBeltVC - function sliderVlaueChanged, line 88 ")
+            }
+            
         }
-
         return 0
     }
     
@@ -133,10 +143,54 @@ extension NameAndBeltViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     
         guard let isKid = isKid else { return nil }
         
-        if isKid {
-            return beltBuilder.kidsBelts[row].rawValue
-        } else if !isKid {
-            return beltBuilder.adultBelts[row].rawValue
+        if component == 0 {
+            
+            if isKid {
+                return beltBuilder.kidsBelts[row].rawValue
+            } else if !isKid {
+                return beltBuilder.adultBelts[row].rawValue
+            }
+        } else {
+            switch beltLevel {
+                
+            case .kidsWhiteBelt:
+                
+                if beltBuilder.kidsWhiteBeltStripes[row] == 1 {
+                    return "\(beltBuilder.kidsWhiteBeltStripes[row]) stripe"
+                }
+                return "\(beltBuilder.kidsWhiteBeltStripes[row]) stripes"
+            case .kidsGreyWhiteBelt, .kidsGreyBelt, .kidsGreyBlackBelt, .kidsYellowWhiteBelt, .kidsYellowBelt, .kidsYellowBlackBelt, .kidsOrangeWhiteBelt, .kidsOrangeBelt, .kidsOrangeBlackBelt, .kidsGreenWhiteBelt, .kidsGreenBelt, .kidsGreenBlackBelt:
+                
+                if beltBuilder.allOtherKidsBeltStripes[row] == 1 {
+                    return "\(beltBuilder.allOtherKidsBeltStripes[row]) stripe"
+                }
+                return "\(beltBuilder.allOtherKidsBeltStripes[row]) stripes"
+            case .adultWhiteBelt, .adultBlueBelt, .adultPurpleBelt, .adultBrownBelt:
+                
+                if beltBuilder.adultBasicBeltStripes[row] == 1 {
+                    return "\(beltBuilder.adultBasicBeltStripes[row]) stripe"
+                }
+                return "\(beltBuilder.adultBasicBeltStripes[row]) stripes"
+                
+            case .adultBlackBelt:
+                
+                if beltBuilder.blackBeltDegrees[row] == 1 {
+                    return "\(beltBuilder.blackBeltDegrees[row]) degree"
+                }
+                return "\(beltBuilder.blackBeltDegrees[row]) degrees"
+                
+            case .adultRedBlackBelt:
+                
+                return "\(beltBuilder.redBlackBeltDegrees[row]) degrees"
+            case .adultRedWhiteBelt:
+                
+                return "\(beltBuilder.redWhiteBeltDegrees[row]) degrees"
+            case .adultRedBelt:
+        
+                return "\(beltBuilder.redBeltDegrees[row]) degrees"
+            default:
+                print("OOOPS!  this belt is not currently represented in international standard. error: NameAndBeltVC - function sliderVlaueChanged, line 88 ")
+            }
         }
         
         return nil
@@ -149,13 +203,86 @@ extension NameAndBeltViewController: UIPickerViewDelegate, UIPickerViewDataSourc
             return
         }
         
-        if isKid {
-            self.beltLevel = beltBuilder.kidsBelts[row]
+        if component == 0 {
+            if isKid {
+                beltLevel = beltBuilder.kidsBelts[row]
+                pickerView.reloadComponent(1)
+            } else {
+                beltLevel = beltBuilder.adultBelts[row]
+                pickerView.reloadComponent(1)
+            }
+            
+            if beltLevel == .adultRedBlackBelt {
+                beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: 7)
+            } else if beltLevel == .adultRedWhiteBelt {
+                beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: 8)
+            } else if beltLevel == .adultRedBelt {
+                beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: 9)
+            }
+            
+            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: 0)
         } else {
-            self.beltLevel = beltBuilder.adultBelts[row]
+            
+            switch beltLevel {
+                
+            case .kidsWhiteBelt:
+                pickerView.reloadComponent(1)
+                
+                numberOfStripes = beltBuilder.kidsWhiteBeltStripes[row]
+    
+                beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: numberOfStripes)
+            case .kidsGreyWhiteBelt, .kidsGreyBelt, .kidsGreyBlackBelt, .kidsYellowWhiteBelt, .kidsYellowBelt, .kidsYellowBlackBelt, .kidsOrangeWhiteBelt, .kidsOrangeBelt, .kidsOrangeBlackBelt, .kidsGreenWhiteBelt, .kidsGreenBelt, .kidsGreenBlackBelt:
+                
+                pickerView.reloadComponent(1)
+
+                numberOfStripes = beltBuilder.allOtherKidsBeltStripes[row]
+                
+                beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: numberOfStripes)
+                
+            case .adultWhiteBelt, .adultBlueBelt, .adultPurpleBelt, .adultBrownBelt:
+                
+                pickerView.reloadComponent(1)
+
+                numberOfStripes = beltBuilder.adultBasicBeltStripes[row]
+                
+                beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: 1)
+                
+                
+            case .adultBlackBelt:
+                
+                pickerView.reloadComponent(1)
+               
+                numberOfStripes = beltBuilder.blackBeltDegrees[row]
+                
+                beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: numberOfStripes)
+                
+                
+            case .adultRedBlackBelt:
+                
+                pickerView.reloadComponent(1)
+                
+                numberOfStripes = beltBuilder.redBlackBeltDegrees[row]
+                
+            case .adultRedWhiteBelt:
+                
+                pickerView.reloadComponent(1)
+                
+                numberOfStripes = beltBuilder.redWhiteBeltDegrees[row]
+                
+            case .adultRedBelt:
+                
+                pickerView.reloadComponent(1)
+                
+                numberOfStripes = beltBuilder.redBeltDegrees[row]
+                
+                if beltBuilder.redBeltDegrees[row] == 10 {
+                    beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: 10)
+                }
+                
+            default:
+                print("OOOPS!  this belt is not currently represented in international standard. error: NameAndBeltVC - function pickerView didSelectRow, line 316 ")
+            }
         }
-        
-        self.beltBuilder.buildABelt(view: self.beltHolderViewOutlet, belt: self.beltLevel, numberOfStripes: self.numberOfStripes)
     }
 }
 

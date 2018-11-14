@@ -18,13 +18,13 @@ class BeltBuilder {
     let kidsBelts: [InternationalStandardBJJBelts] = [.kidsWhiteBelt, .kidsGreyWhiteBelt, .kidsGreyBelt, .kidsGreyBlackBelt, .kidsYellowWhiteBelt, .kidsYellowBelt, .kidsYellowBlackBelt, .kidsOrangeWhiteBelt, .kidsOrangeBelt, .kidsOrangeBlackBelt, .kidsGreenWhiteBelt, .kidsGreenBelt, .kidsGreenBlackBelt]
     
     // belt stripe specifications
-    let kidsWhiteBeltStripes = 5
-    let allOtherKidsBeltStripes = 11
-    let adultBasicBeltStripes = 4
-    let blackBeltDegrees = 6
-    let redBlackBeltDegrees = 7
-    let redWhiteBeltDegrees = 8
-    let redBeltDegrees = 10
+    let kidsWhiteBeltStripes = [1, 2, 3, 4, 5]
+    let allOtherKidsBeltStripes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+    let adultBasicBeltStripes = [1, 2, 3, 4]
+    let blackBeltDegrees = [1, 2, 3, 4, 5, 6]
+    let redBlackBeltDegrees = [7]
+    let redWhiteBeltDegrees = [8]
+    let redBeltDegrees = [9, 10]
     
     
     // UIColor specs
@@ -292,9 +292,6 @@ class BeltBuilder {
             setTeacherBars(belt: .adultRedBlackBelt)
             
         case .adultRedWhiteBelt:
-            // check it out
-            print("this is the set teachers bar function saying what up!!!")
-            
             // set belt color
             beltView.backgroundColor = UIColor.white
             coralBar.isHidden = false
@@ -309,10 +306,6 @@ class BeltBuilder {
             setTeacherBars(belt: .adultRedWhiteBelt)
             
         case .adultRedBelt:
-            
-            // check it out
-            print(InternationalStandardBJJBelts.adultRedBelt.rawValue)
-            print("this is the build a belt function!!! 1/6")
             // set belt color
             beltView.backgroundColor = UIColor.red
             coralBar.isHidden = true
@@ -331,8 +324,6 @@ class BeltBuilder {
     func stripeGenerator(beltGraduationBar: UIView, numberOfStripes: Int, belt: InternationalStandardBJJBelts) {
         // standard kids belts
         
-        print("this is the stripe generator function saying hello!!! 2/6")
-        
         switch belt {
             
         case nil:
@@ -341,7 +332,7 @@ class BeltBuilder {
         case .kidsWhiteBelt:
             if numberOfStripes <= 0 { break }
             if numberOfStripes > 5 { break }
-            if stripesStackView.subviews.count > 5 { break }
+            if stripesStackView.arrangedSubviews.count > 5 { break }
             
             for i in 1...numberOfStripes {
                 let whiteStripe: UIView = {
@@ -370,7 +361,7 @@ class BeltBuilder {
             
                 if numberOfStripes <= 0 { break }
                 if numberOfStripes > 11 { break }
-                if stripesStackView.subviews.count > 11 { break }
+                if stripesStackView.arrangedSubviews.count > 11 { break }
                 
                 for i in 1...numberOfStripes {
                     let whiteStripe: UIView = {
@@ -411,7 +402,7 @@ class BeltBuilder {
             
             if numberOfStripes <= 0 { break }
             if numberOfStripes > 4 { break }
-            if stripesStackView.subviews.count > 4 { break }
+            if stripesStackView.arrangedSubviews.count > 4 { break }
             
             for _ in 1...numberOfStripes {
                 let whiteStripe: UIView = {
@@ -431,7 +422,7 @@ class BeltBuilder {
             
             if numberOfStripes <= 0 { break }
             if numberOfStripes > 6 { break }
-            if stripesStackView.subviews.count > 6 { break }
+            if stripesStackView.arrangedSubviews.count > 6 { break }
             
             for _ in 1...numberOfStripes {
                 let blackBeltDegree: UIView = {
@@ -452,7 +443,7 @@ class BeltBuilder {
             
             if numberOfStripes <= 0 { break }
             if numberOfStripes > 10 { break }
-            if stripesStackView.subviews.count > 10 { break }
+            if stripesStackView.arrangedSubviews.count > 10 { break }
             
             for _ in 1...numberOfStripes {
                 let coralBeltDegree: UIView = {
@@ -493,8 +484,6 @@ class BeltBuilder {
             self.beltGraduationBar.widthAnchor.constraint(equalToConstant: self.adultGraduationBarWidth).isActive = true
         // coral belts and up
         case .adultRedBlackBelt, .adultRedWhiteBelt, .adultRedBelt:
-            // check it out
-            print("this is the set graduation bar function saying hey!!! 3/6")
             
             self.beltGraduationBar.backgroundColor = self.blackBeltUpGraduationBarColor
             self.beltGraduationBar.widthAnchor.constraint(equalToConstant: self.coralBeltGraduationBarWidth).isActive = true
@@ -533,9 +522,6 @@ class BeltBuilder {
             
         case .adultRedBelt:
             
-            // check it out
-            print("this is the set teachers bar function saying what up!!! 4/6")
-            
             // show teacher bars
             rightTeacherBar.isHidden = false
             leftTeacherBar.isHidden = false
@@ -553,11 +539,7 @@ class BeltBuilder {
     
     // adds belt constructor elements to desired UIView
     func addBeltConstructorsToView(view: UIView) {
-        
-        // check it out
-        print("this is the set add belt constructors to view function saying what up!!! 5/6")
-        
-        
+    
         // add belt views to view
         view.addSubview(beltView)
         
@@ -584,41 +566,26 @@ class BeltBuilder {
     // adds belt elements' constraints to desired UIView
     func addBeltConstraintsToView(view: UIView) {
         
-        // check it out
-        print("this is the add belt constraints to view function saying what up!!! 6/6")
-        
-        
         // add belt constraints
         beltView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         beltView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         beltView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         beltView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        /***  works up to here ***/
-        print("belt constraints work!!! a/f")
         
         // add kidsCenterRibbon constraints
         kidsCenterRibbon.centerYAnchor.constraint(equalTo: beltView.centerYAnchor).isActive = true
         kidsCenterRibbon.rightAnchor.constraint(equalTo: beltView.rightAnchor).isActive = true
         kidsCenterRibbon.leftAnchor.constraint(equalTo: beltView.leftAnchor).isActive = true
         
-        /*** works up to here ***/
-        print("kid center ribbon constraints work!!! b/f")
-        
         // add belt gradutaion bar constraints
         beltGraduationBar.topAnchor.constraint(equalTo: beltView.topAnchor, constant: 0).isActive = true
         beltGraduationBar.bottomAnchor.constraint(equalTo: beltView.bottomAnchor, constant: 0).isActive = true
         beltGraduationBar.rightAnchor.constraint(equalTo: beltView.rightAnchor, constant: -40).isActive = true
         
-        /*** works up to here ***/
-        print("belt graduation bar constraints work!!! c/f")
-        
         // add coralBar constraints
         coralBar.topAnchor.constraint(equalTo: beltView.topAnchor, constant: 0).isActive = true
         coralBar.bottomAnchor.constraint(equalTo: beltView.bottomAnchor, constant: 0).isActive = true
         coralBar.leftAnchor.constraint(equalTo: beltView.leftAnchor).isActive = true
-        
-        /*** works up to here ***/
-        print("coral bar constraints work!!! d/f")
         
         // add left teacher bar constraints
         leftTeacherBar.topAnchor.constraint(equalTo: beltView.topAnchor).isActive = true
@@ -633,67 +600,15 @@ class BeltBuilder {
         
         rightTeacherBar.leftAnchor.constraint(equalTo: beltGraduationBar.rightAnchor).isActive = true
         
-        /*** works up to here ***/
-        print("both teacher bar constraints work!!! e/f")
-        
         // add stripe stackView constraints
         stripesStackView.bottomAnchor.constraint(equalTo: beltGraduationBar.bottomAnchor).isActive = true
 
         stripesStackView.leftAnchor.constraint(equalTo: beltGraduationBar.leftAnchor, constant: 8.0).isActive = true
 
         stripesStackView.topAnchor.constraint(equalTo: beltGraduationBar.topAnchor).isActive = true
-        
-        /*** works up to here ***/
-        print("stripe stackView constraints work!!! f/f")
+
     }
     
-    // return an array of Int eqivalent to stripes in a given belt
-    func howManyStripes(belt: InternationalStandardBJJBelts) -> [Int] {
-        
-        var numberOfStripes: [Int] = []
-        
-        switch belt {
-            
-        case .kidsWhiteBelt:
-            for i in 1...kidsWhiteBeltStripes {
-                numberOfStripes.append(i)
-            }
-        case .kidsGreyWhiteBelt, .kidsGreyBelt, .kidsGreyBlackBelt, .kidsYellowWhiteBelt, .kidsYellowBelt, .kidsYellowBlackBelt, .kidsOrangeWhiteBelt, .kidsOrangeBelt, .kidsOrangeBlackBelt, .kidsGreenWhiteBelt, .kidsGreenBelt, .kidsGreenBlackBelt:
-            for i in 1...allOtherKidsBeltStripes {
-                numberOfStripes = []
-                numberOfStripes.append(i)
-            }
-            
-        case .adultWhiteBelt, .adultBlueBelt, .adultPurpleBelt, .adultBrownBelt:
-            numberOfStripes = []
-            for i in 1...adultBasicBeltStripes {
-                numberOfStripes.append(i)
-            }
-            
-        case .adultBlackBelt:
-            numberOfStripes = []
-            for i in 1...blackBeltDegrees {
-                numberOfStripes.append(i)
-            }
-            
-        case .adultRedBlackBelt:
-            numberOfStripes = []
-            numberOfStripes.append(7)
-            
-        case .adultRedWhiteBelt:
-            numberOfStripes = []
-            numberOfStripes.append(8)
-        case .adultRedBelt:
-            numberOfStripes = []
-            for i in redWhiteBeltDegrees...blackBeltDegrees {
-                numberOfStripes.append(i)
-            }
-        default:
-            print("we don't recognize that type of belt... howManyStripes function in BeltBuilder.swift - line 682")
-        }
-        
-        return numberOfStripes
-    }
 }
 
 

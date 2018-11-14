@@ -970,22 +970,13 @@
                                 </constraints>
                             </view>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="axk-NK-laR">
-                                <rect key="frame" x="0.0" y="192" width="320" height="160"/>
+                                <rect key="frame" x="0.0" y="192" width="320" height="216"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="160" id="FNY-Vq-2DM"/>
+                                    <constraint firstAttribute="height" constant="216" id="FNY-Vq-2DM"/>
                                 </constraints>
                             </pickerView>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="11" translatesAutoresizingMaskIntoConstraints="NO" id="1Fo-ho-Y5s" userLabel="Stripe Slider">
-                                <rect key="frame" x="14" y="376" width="292" height="33"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="B1y-8i-hvH"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="sliderValueChanged:" destination="YpM-67-keD" eventType="valueChanged" id="s6C-zZ-k0e"/>
-                                </connections>
-                            </slider>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rOe-Eg-NUk" userLabel="Next Button Outlet" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
-                                <rect key="frame" x="56" y="456" width="208" height="56"/>
+                                <rect key="frame" x="56" y="448" width="208" height="56"/>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="xdM-cB-Ii8"/>
@@ -1102,7 +1093,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="1Fo-ho-Y5s" firstAttribute="leading" secondItem="14j-uA-7If" secondAttribute="leading" constant="16" id="6in-04-BKM"/>
                             <constraint firstItem="rOe-Eg-NUk" firstAttribute="leading" secondItem="14j-uA-7If" secondAttribute="leading" constant="56" id="7dj-8H-1nV"/>
                             <constraint firstItem="axk-NK-laR" firstAttribute="leading" secondItem="14j-uA-7If" secondAttribute="leading" id="7f6-d8-tTu"/>
                             <constraint firstItem="axk-NK-laR" firstAttribute="top" secondItem="tIo-gd-Eif" secondAttribute="bottom" id="Joh-ih-x2p"/>
@@ -1112,13 +1102,11 @@
                             <constraint firstItem="tIo-gd-Eif" firstAttribute="leading" secondItem="14j-uA-7If" secondAttribute="leading" constant="16" id="P7z-MK-LQP"/>
                             <constraint firstItem="tXm-ZD-chp" firstAttribute="centerX" secondItem="D59-Sg-yRh" secondAttribute="centerX" id="Sgz-RU-j43"/>
                             <constraint firstItem="B3V-XW-Yhx" firstAttribute="leading" secondItem="14j-uA-7If" secondAttribute="leading" constant="16" id="UT9-lV-ch2"/>
+                            <constraint firstItem="rOe-Eg-NUk" firstAttribute="top" secondItem="axk-NK-laR" secondAttribute="bottom" constant="40" id="XnK-9y-ltg"/>
                             <constraint firstItem="tIo-gd-Eif" firstAttribute="top" secondItem="B3V-XW-Yhx" secondAttribute="bottom" constant="56" id="aLh-vj-Pn0"/>
                             <constraint firstItem="14j-uA-7If" firstAttribute="trailing" secondItem="tIo-gd-Eif" secondAttribute="trailing" constant="16" id="boB-Pi-slK"/>
-                            <constraint firstItem="1Fo-ho-Y5s" firstAttribute="top" secondItem="axk-NK-laR" secondAttribute="bottom" constant="24" id="bsT-vM-RX3"/>
                             <constraint firstItem="14j-uA-7If" firstAttribute="bottom" secondItem="tXm-ZD-chp" secondAttribute="bottom" constant="24" id="dMR-CB-qDi"/>
                             <constraint firstItem="14j-uA-7If" firstAttribute="trailing" secondItem="B3V-XW-Yhx" secondAttribute="trailing" constant="16" id="i1p-8s-xLZ"/>
-                            <constraint firstItem="14j-uA-7If" firstAttribute="trailing" secondItem="1Fo-ho-Y5s" secondAttribute="trailing" constant="16" id="pA4-bp-qhm"/>
-                            <constraint firstItem="rOe-Eg-NUk" firstAttribute="top" secondItem="1Fo-ho-Y5s" secondAttribute="bottom" constant="48" id="uo4-m4-3iv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="14j-uA-7If"/>
                     </view>
@@ -1129,7 +1117,6 @@
                         <outlet property="beltHolderViewOutlet" destination="tIo-gd-Eif" id="yAY-e6-RpV"/>
                         <outlet property="beltLevelPickerView" destination="axk-NK-laR" id="r6N-De-Wfr"/>
                         <outlet property="nextButtonOutlet" destination="rOe-Eg-NUk" id="Rw6-yM-e4G"/>
-                        <outlet property="stripeNumberSlider" destination="1Fo-ho-Y5s" id="iVI-IO-FLX"/>
                         <outlet property="welcomeInstructionsLabelOutlet" destination="jS8-29-PJZ" id="1QG-Zy-6qj"/>
                         <outlet property="welcomeLabeOutlet" destination="VU4-gQ-df6" id="215-LD-vul"/>
                     </connections>
