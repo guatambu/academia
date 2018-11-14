@@ -1983,10 +1983,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="ifN-af-a7e" userLabel="Sign up elements Stack View">
-                                <rect key="frame" x="0.0" y="160" width="320" height="360"/>
+                                <rect key="frame" x="0.0" y="188" width="320" height="304"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="vNX-WZ-Huo" userLabel="profile pic Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="256"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_pic_placeholder_image.png" translatesAutoresizingMaskIntoConstraints="NO" id="mO9-Kg-Exx" userLabel="Profile Pic Image View">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
@@ -1994,30 +1994,6 @@
                                                     <constraint firstAttribute="height" constant="200" id="uBR-Ql-aHS"/>
                                                 </constraints>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bIZ-Py-vrk" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="216" width="320" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="0gL-er-DiY"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
-                                                <state key="normal" title="take a profile picture">
-                                                    <color key="titleColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="2"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" red="0.94534217980000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="10"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="ownerButtonTapped:" destination="ZNH-ok-J1f" eventType="touchUpInside" id="on7-TR-5dz"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="mO9-Kg-Exx" firstAttribute="leading" secondItem="vNX-WZ-Huo" secondAttribute="leading" id="nP9-Aa-bPU"/>
@@ -2025,7 +2001,7 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wa1-MA-k3x">
-                                        <rect key="frame" x="40" y="304" width="240" height="56"/>
+                                        <rect key="frame" x="40" y="248" width="240" height="56"/>
                                         <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="7Ba-3E-UjO"/>
@@ -2034,9 +2010,6 @@
                                         <state key="normal" title="Create Account">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <action selector="signUpButtonTapped:" destination="ksU-gg-XAc" eventType="touchUpInside" id="qwX-m8-wuf"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -2091,11 +2064,6 @@
                     <navigationItem key="navigationItem" title=" " id="iPp-h9-d10">
                         <barButtonItem key="backBarButtonItem" title=" " id="5rW-Kw-aE7"/>
                     </navigationItem>
-                    <connections>
-                        <outlet property="signUpButtonOutlet" destination="wa1-MA-k3x" id="Ti6-9R-ehU"/>
-                        <outlet property="welcomeInstructionsOutlet" destination="6xy-lZ-RUD" id="4ZH-Xf-jBO"/>
-                        <outlet property="welcomeMessageOutlet" destination="8G2-C7-JqR" id="NQv-Zc-iwU"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYx-wp-Y05" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2200,7 +2168,6 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="nextButtonTapped:" destination="XLp-YJ-uEk" eventType="touchUpInside" id="zIv-W8-DXA"/>
-                                            <action selector="signUpButtonTapped:" destination="XLp-YJ-uEk" eventType="touchUpInside" id="YVz-Ib-bSv"/>
                                         </connections>
                                     </button>
                                 </subviews>

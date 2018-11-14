@@ -54,12 +54,11 @@ class ContactInfoViewController: UIViewController {
         guard let beltLevel = beltLevel else { print("fail beltlevel"); return }
         guard let numberOfStripes = numberOfStripes else { print("fail stripes"); return }
         guard let addressLine1 = addressLine1 else { print("fail address1"); return }
-        guard let addressLine2 = addressLine2 else { print("fail address2"); return }
         guard let city = city else { print("fail city"); return }
         guard let state = state else { print("fail state"); return }
         guard let zipCode = zipCode else { print("fail zip"); return }
         
-        print("isOwner: \(isOwner) \nisKid: \(isKid) \nusername: \(username) \npassword: \(password) \nfirstName: \(firstName) \nlastName: \(lastName) \nbeltLevel: \(beltLevel.rawValue) \nnumberOfStripes: \(numberOfStripes) \naddressLine1: \(addressLine1) \naddressLine2: \(addressLine2) \ncity: \(city) \nstate: \(state) \nzipCode: \(zipCode)")
+        print("isOwner: \(isOwner) \nisKid: \(isKid) \nusername: \(username) \npassword: \(password) \nfirstName: \(firstName) \nlastName: \(lastName) \nbeltLevel: \(beltLevel.rawValue) \nnumberOfStripes: \(numberOfStripes) \naddressLine1: \(addressLine1) \naddressLine2: \(String(describing: addressLine2)) \ncity: \(city) \nstate: \(state) \nzipCode: \(zipCode)")
         
         // Do any additional setup after loading the view.
         
@@ -84,13 +83,29 @@ class ContactInfoViewController: UIViewController {
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
         
-        // pass textfield data to variables
+        // run check to see is there is phone, mobile, email
+        guard let phone = phoneTextField.text, phoneTextField.text != "" else {
+            
+            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+            return
+        }
+        
+        // not a required field
+        let mobile = mobileTextField.text
+        
+        guard let email = emailTextField.text, emailTextField.text != "" else {
+            
+            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+            return
+        }
         
         // pass data to destViewController
         destViewController.isOwner = isOwner
         destViewController.isKid = isKid
         destViewController.username = username
         destViewController.password = password
+        destViewController.firstName = firstName
+        destViewController.lastName = lastName
         destViewController.beltLevel = beltLevel
         destViewController.numberOfStripes = numberOfStripes
         destViewController.addressLine1 = addressLine1

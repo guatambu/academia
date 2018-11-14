@@ -73,7 +73,33 @@ class AddressViewController: UIViewController {
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
         
-        // pass textfield data to variables
+        // run check to see is there is addressline1, city, state, and zipCode
+        guard let addressLine1 = addressLine1TextField.text, addressLine1TextField.text != "" else {
+            
+            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+            return
+        }
+        
+        // not a required field
+        let addressLine2 = addressLine2TextField.text
+        
+        guard let city = cityTextField.text, cityTextField.text != "" else {
+            
+            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+            return
+        }
+        
+        guard let state = stateTextField.text, stateTextField.text != "" else {
+            
+            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+            return
+        }
+        
+        guard let zipCode = zipCodeTextField.text, zipCodeTextField.text != "" else {
+            
+            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+            return
+        }
         
         // pass data to destViewController
         destViewController.isOwner = isOwner

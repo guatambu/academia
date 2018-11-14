@@ -48,7 +48,21 @@ class EmergencyContactViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let isOwner = isOwner, let isKid = isKid, let username = username, let password = password, let firstName = firstName, let lastName = lastName, let beltLevel = beltLevel, let numberOfStripes = numberOfStripes, let addressLine1 = addressLine1, let addressLine2 = addressLine2, let city = city, let state = state, let zipCode = zipCode, let phone = phone, let mobile = mobile, let email = email else { return }
+        guard let isOwner = isOwner else { print("fail owner"); return }
+        guard let isKid = isKid else { print("fail kid"); return }
+        guard let username = username else { print("fail username"); return }
+        guard let password = password else { print("fail password"); return }
+        guard let firstName = firstName else { print("fail firtsname"); return }
+        guard let lastName = lastName else { print("fail lastname"); return }
+        guard let beltLevel = beltLevel else { print("fail beltlevel"); return }
+        guard let numberOfStripes = numberOfStripes else { print("fail stripes"); return }
+        guard let addressLine1 = addressLine1 else { print("fail address1"); return }
+        guard let city = city else { print("fail city"); return }
+        guard let state = state else { print("fail state"); return }
+        guard let zipCode = zipCode else { print("fail zip"); return }
+        guard let phone = phone else { print("fail phone"); return }
+        guard let mobile = mobile else { print("fail mobile"); return }
+        guard let email = email else { print("fail email"); return }
         
         print("isOwner: \(isOwner) \nisKid: \(isKid) \nusername: \(username) \npassword: \(password) \nfirstName: \(firstName) \nlastName: \(lastName) \nbeltLevel: \(beltLevel.rawValue) \nnumberOfStripes: \(numberOfStripes) \naddressLine1: \(addressLine1) \naddressLine2: \(addressLine2) \ncity: \(city) \nstate: \(state) \nzipCode: \(zipCode) \nphone: \(phone) \nmobile: \(mobile) \nemail: \(email)")
         
@@ -73,13 +87,33 @@ class EmergencyContactViewController: UIViewController {
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
         
-        // pass textfield data to variables
+        // run check to see is there is emergency contact name, relationship, phone
+        guard let emergencyContactName = emergencyContactNameTextField.text, emergencyContactNameTextField.text != "" else {
+            
+            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+            return
+        }
+        
+        guard let emergencyContactRelationship = emergencyContactRelationshipTextField.text, emergencyContactRelationshipTextField.text != "" else {
+            
+            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+            return
+        }
+        
+        guard let emergencyContactPhone = emergencyContactPhoneTextField.text, emergencyContactPhoneTextField.text != "" else {
+            
+            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+            return
+        }
+        
         
         // pass data to destViewController
         destViewController.isOwner = isOwner
         destViewController.isKid = isKid
         destViewController.username = username
         destViewController.password = password
+        destViewController.firstName = firstName
+        destViewController.lastName = lastName
         destViewController.beltLevel = beltLevel
         destViewController.numberOfStripes = numberOfStripes
         destViewController.addressLine1 = addressLine1
