@@ -37,7 +37,9 @@ class StudentChoiceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("********* StudentChoiceVC \n isOwner: \(isOwner) \n username: \(username) \n password: \(password)")
+        guard let isOwner = isOwner, let username = username, let password = password else { return }
+        
+        print("isOwner: \(isOwner) \nusername: \(username) \npassword: \(password)")
     }
     
     
