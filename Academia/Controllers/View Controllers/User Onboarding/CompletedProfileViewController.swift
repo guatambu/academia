@@ -33,6 +33,28 @@ class CompletedProfileViewController: UIViewController {
     var emergencyContactPhone: String?
     var emergencyContactRelationship: String?
     
+    // name / username outlets
+    @IBOutlet weak var nameLabelOutlet: UILabel!
+    @IBOutlet weak var usernameLabelOutlet: UILabel!
+    // profile pic imageView
+    @IBOutlet weak var profilePicImageView: UIImageView!
+    // contact info outlets
+    @IBOutlet weak var phoneLabelOutlet: UILabel!
+    @IBOutlet weak var mobileLabelOutlet: UILabel!
+    @IBOutlet weak var emailLabelOutlet: UILabel!
+    // belt holder UIView
+    @IBOutlet weak var beltHolderViewOutlet: UIView!
+    // address outlets
+    @IBOutlet weak var addressLine1LabelOutlet: UILabel!
+    @IBOutlet weak var addressLine2LabelOutlet: UILabel!
+    @IBOutlet weak var cityLabelOutlet: UILabel!
+    @IBOutlet weak var stateLabelOutlet: UILabel!
+    @IBOutlet weak var zipCodeLabelOutlet: UILabel!
+    // emergency contact info outlets
+    @IBOutlet weak var emergencyContactNameLabelOutlet: UILabel!
+    @IBOutlet weak var emergencyContactRelationshipLabelOutlet: UILabel!
+    @IBOutlet weak var emergencyContactPhoneLabelOutlet: UILabel!
+    
     
     // MARK: - ViewController Lifecycle Functions
 
