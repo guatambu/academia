@@ -48,24 +48,6 @@ class EmergencyContactViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let isOwner = isOwner else { print("fail owner"); return }
-        guard let isKid = isKid else { print("fail kid"); return }
-        guard let username = username else { print("fail username"); return }
-        guard let password = password else { print("fail password"); return }
-        guard let firstName = firstName else { print("fail firtsname"); return }
-        guard let lastName = lastName else { print("fail lastname"); return }
-        guard let beltLevel = beltLevel else { print("fail beltlevel"); return }
-        guard let numberOfStripes = numberOfStripes else { print("fail stripes"); return }
-        guard let addressLine1 = addressLine1 else { print("fail address1"); return }
-        guard let city = city else { print("fail city"); return }
-        guard let state = state else { print("fail state"); return }
-        guard let zipCode = zipCode else { print("fail zip"); return }
-        guard let phone = phone else { print("fail phone"); return }
-        guard let mobile = mobile else { print("fail mobile"); return }
-        guard let email = email else { print("fail email"); return }
-        
-        print("isOwner: \(isOwner) \nisKid: \(isKid) \nusername: \(username) \npassword: \(password) \nfirstName: \(firstName) \nlastName: \(lastName) \nbeltLevel: \(beltLevel.rawValue) \nnumberOfStripes: \(numberOfStripes) \naddressLine1: \(addressLine1) \naddressLine2: \(addressLine2) \ncity: \(city) \nstate: \(state) \nzipCode: \(zipCode) \nphone: \(phone) \nmobile: \(mobile) \nemail: \(email)")
-        
         // Do any additional setup after loading the view.
     }
     
@@ -114,6 +96,7 @@ class EmergencyContactViewController: UIViewController {
         destViewController.password = password
         destViewController.firstName = firstName
         destViewController.lastName = lastName
+        destViewController.profilePic = profilePic
         destViewController.beltLevel = beltLevel
         destViewController.numberOfStripes = numberOfStripes
         destViewController.addressLine1 = addressLine1

@@ -86,10 +86,11 @@ class NameAndBeltViewController: UIViewController {
         destViewController.isKid = isKid
         destViewController.username = username
         destViewController.password = password
-        destViewController.beltLevel = beltLevel
-        destViewController.numberOfStripes = numberOfStripes
         destViewController.firstName = firstName
         destViewController.lastName = lastName
+        destViewController.profilePic = profilePic
+        destViewController.beltLevel = beltLevel
+        destViewController.numberOfStripes = numberOfStripes
         
         
     }
