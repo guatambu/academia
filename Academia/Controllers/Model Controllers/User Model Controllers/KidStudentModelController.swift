@@ -33,9 +33,9 @@ class KidStudentModelController {
     // MARK: - CRUD Functions
     
     // Create
-    func addNew(birthdate: Date, kidsBelt: KidsBelt?, profilePic: UIImage?, username: String, firstName: String, lastName: String, parentGuardian: String?, streetAddress: String, city: String, state: String, zipCode: String, phone: String, mobile: String, email: String, emergencyContact: String, emergencyContactPhone: String, emergencyContactRelationship: String) {
+    func addNew(birthdate: Date, belt: Belt, profilePic: UIImage?, username: String, firstName: String, lastName: String, parentGuardian: String, addressLine1: String, addressLine2: String, city: String, state: String, zipCode: String, phone: String, mobile: String, email: String, emergencyContact: String, emergencyContactPhone: String, emergencyContactRelationship: String) {
         
-        let kid = KidStudent(kidUID: UUID(), dateCreated: Date(), dateEdited: Date(), birthdate: Date(), promotions: nil, mostRecentPromotion: nil, attendance: nil, studentStatus: [StudentStatus.inactive], groups: nil, paymentProgram: nil, permission: [UserPermissions.parentGuardian], kidsBelt: nil, profilePic: profilePic, username: username, firstName: firstName, lastName: lastName, parentGuardian: parentGuardian, streetAddress: streetAddress, city: city, state: state, zipCode: zipCode, phone: phone, mobile: mobile, email: email, emergencyContact: emergencyContact, emergencyContactPhone: emergencyContactPhone, emergencyContactRelationship: emergencyContactRelationship)
+        let kid = KidStudent(kidUID: UUID(), dateCreated: Date(), dateEdited: Date(), birthdate: Date(), promotions: nil, mostRecentPromotion: nil, attendance: nil, studentStatus: [StudentStatus.inactive], groups: nil, paymentProgram: nil, permission: [UserPermissions.parentGuardian], belt: belt, profilePic: profilePic, username: username, firstName: firstName, lastName: lastName, parentGuardian: parentGuardian, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, phone: phone, mobile: mobile, email: email, emergencyContactName: emergencyContact, emergencyContactPhone: emergencyContactPhone, emergencyContactRelationship: emergencyContactRelationship)
         
         kids.append(kid)
     }
@@ -44,7 +44,7 @@ class KidStudentModelController {
     
     
     // Update
-    func updateProfileInfo(kidStudent: KidStudent, birthdate: Date, city: String, email: String, firstName: String, groups: [Group]?, lastNAme: String, mobile: String, parentGuardian: String, permission: [UserPermissions], phone: String, profilePic: UIImage?, state: String, streetAddress: String, username: String, zipCode: String, emergencyContact: String, emergencyContactPhone: String, emergencyContactRelationship: String) {
+    func updateProfileInfo(kidStudent: KidStudent, birthdate: Date, city: String, email: String, firstName: String, groups: [Group]?, lastNAme: String, mobile: String, parentGuardian: String, permission: [UserPermissions], phone: String, profilePic: UIImage?, state: String, addressLine1: String, addressLine2: String, username: String, zipCode: String, emergencyContact: String, emergencyContactPhone: String, emergencyContactRelationship: String) {
         
         kidStudent.birthdate = birthdate
         kidStudent.city = city
@@ -59,13 +59,14 @@ class KidStudentModelController {
         kidStudent.phone = phone
         kidStudent.profilePic = profilePic
         kidStudent.state = state
-        kidStudent.streetAddress = streetAddress
+        kidStudent.addressLine1 = addressLine1
+        kidStudent.addressLine2 = addressLine2
         kidStudent.username = username
         kidStudent.zipCode = zipCode
     }
     
-    func promote(kidStudent: KidStudent, kidsBelt: KidsBelt, mostRecentPromotion: Date, promotions: [String: Date]) {
-        kidStudent.kidsBelt = kidsBelt
+    func promote(kidStudent: KidStudent, belt: Belt, mostRecentPromotion: Date, promotions: [String: Date]) {
+        kidStudent.belt = belt
         kidStudent.mostRecentPromotion = mostRecentPromotion
         kidStudent.promotions = promotions
     }

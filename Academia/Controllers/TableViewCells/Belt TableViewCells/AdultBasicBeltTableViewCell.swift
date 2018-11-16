@@ -36,10 +36,10 @@ class AdultBasicBeltTableViewCell: UITableViewCell {
     
     // MARK: - display Adult Basic Belt
     
-    func displayAdultBasicBeltWith(provided adultBasicBelt: AdultBasicBelt) {
+    func displayAdultBasicBeltWith(provided adultBasicBelt: Belt) {
         if adultBasicBelt.active {
             // set adult belt color
-            beltViewOutlet.backgroundColor = adultBasicBelt.belt
+            beltViewOutlet.backgroundColor = adultBasicBelt.beltLevel
             
             // set graduation bar color
             blackBarViewOutlet.backgroundColor = adultBasicBelt.blackBar

@@ -37,9 +37,9 @@ class OwnerModelController {
     // MARK: - CRUD Functions
     
     // Create
-    func addNew(birthdate: Date, adultBasicBelt: AdultBasicBelt?, adultBlackBelt: AdultBlackBelt?, profilePic: UIImage?, username: String, firstName: String, lastName: String, streetAddress: String, city: String, state: String, zipCode: String, phone: String, mobile: String, email: String) {
+    func addNew(birthdate: Date, belt: Belt, profilePic: UIImage?, username: String, firstName: String, lastName: String, addressLine1: String, addressLine2: String, city: String, state: String, zipCode: String, phone: String, mobile: String, email: String, emergencyContactName: String, emergencyContactPhone: String, emergencyContactRelationship: String) {
         
-        let owner = Owner(ownerUID: UUID(), isInstructor: true, dateCreated: Date(), dateEdited: Date(), birthdate: birthdate, promotions: nil, mostRecentPromotion: nil, attendance: nil, groups: nil, permission: UserPermissions.owner, adultBasicBelt: adultBasicBelt, blackBelt: adultBlackBelt, profilePic: profilePic, username: username, firstName: firstName, lastName: lastName, streetAddress: streetAddress, city: city, state: state, zipCode: zipCode, phone: phone, mobile: mobile, email: email)
+        let owner = Owner(ownerUID: UUID(), isInstructor: true, dateCreated: Date(), dateEdited: Date(), birthdate: birthdate, promotions: nil, mostRecentPromotion: nil, attendance: nil, groups: nil, permission: UserPermissions.owner, belt: belt, profilePic: profilePic, username: username, firstName: firstName, lastName: lastName, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, phone: phone, mobile: mobile, email: email, emergencyContactName: emergencyContactName, emergencyContactPhone: emergencyContactPhone, emergencyContactRelationship: emergencyContactRelationship)
         
         owners.append(owner)
     }
@@ -47,7 +47,7 @@ class OwnerModelController {
     // Read
     
     // Update
-    func updateProfileInfo(owner: Owner, birthdate: Date, city: String, email: String, firstName: String, groups: [Group]?, isInstructor: Bool, lastNAme: String, mobile: String, permission: UserPermissions, phone: String, profilePic: UIImage?, state: String, streetAddress: String, username: String, zipCode: String) {
+    func updateProfileInfo(owner: Owner, birthdate: Date, city: String, email: String, firstName: String, groups: [Group]?, isInstructor: Bool, lastNAme: String, mobile: String, permission: UserPermissions, phone: String, profilePic: UIImage?, state: String, addressLine1: String, addressLine2: String, username: String, zipCode: String) {
         
         owner.birthdate = birthdate
         owner.city = city
@@ -62,14 +62,14 @@ class OwnerModelController {
         owner.phone = phone
         owner.profilePic = profilePic
         owner.state = state
-        owner.streetAddress = streetAddress
+        owner.addressLine1 = addressLine1
+        owner.addressLine2 = addressLine2
         owner.username = username
         owner.zipCode = zipCode
     }
     
-    func promote(owner: Owner, adultBasicBelt: AdultBasicBelt, adultBlackBelt: AdultBlackBelt, mostRecentPromotion: Date, promotions: [String: Date]) {
-        owner.adultBasicBelt = adultBasicBelt
-        owner.blackBelt = adultBlackBelt
+    func promote(owner: Owner, belt: Belt, mostRecentPromotion: Date, promotions: [String: Date]) {
+        owner.belt = belt
         owner.mostRecentPromotion = mostRecentPromotion
         owner.promotions = promotions
     }
