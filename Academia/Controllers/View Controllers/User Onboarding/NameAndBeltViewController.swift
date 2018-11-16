@@ -43,7 +43,7 @@ class NameAndBeltViewController: UIViewController {
         beltLevelPickerView.delegate = self
         beltLevelPickerView.dataSource = self
         
-        //guard let isKid = isKid else { return }
+        guard let isKid = isKid else { return }
         
         if isKid {
             beltLevel = .kidsWhiteBelt
