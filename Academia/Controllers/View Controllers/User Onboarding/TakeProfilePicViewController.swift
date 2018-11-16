@@ -34,10 +34,6 @@ class TakeProfilePicViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let isOwner = isOwner, let isKid = isKid, let username = username, let password = password else { return }
-        
-        print("isOwner: \(isOwner) \nisKid: \(isKid) \nusername: \(username) \npassword: \(password) ")
-        
         // instantiate tapGestureRecognizer for the profilePicImageViewOutet
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TakeProfilePicViewController.profilePicImageTapped))
         profilePicImageViewOutlet.addGestureRecognizer(tapGestureRecognizer)

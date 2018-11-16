@@ -55,7 +55,6 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let isOwner = isOwner else { return }
         
 //        username = "guatambu"
 //        password = "1998Gwbic"
@@ -66,9 +65,6 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         
         welcomeMessageOutlet.textColor = UIColor.black
         
-        //guard let isOwner = isOwner else { return }
-        print("signUpVC: \(isOwner)")
-        
         let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.gray,
                            NSAttributedString.Key.font: UIFont(name: "Avenir-LightOblique", size: 16)! ]
         
@@ -78,7 +74,7 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         passwordTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter password", attributes: avenirFont)
         confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: "tap to re-enter password", attributes: avenirFont)
         
-        
+        guard let isOwner = isOwner else { return }
         guard let username = username, let password = password else {
             
             if isOwner {
@@ -114,7 +110,6 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
             confirmPasswordLabelOutlet.isHidden = true
             signUpButtonOutlet.setTitle("Login", for: UIControl.State.normal)
         }
-        
     }
     
     
@@ -181,16 +176,4 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
     }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -87,7 +87,7 @@ class CompletedProfileViewController: UIViewController {
         // create the segue programmatically - MODAL
         self.present(destViewController, animated: true, completion: nil)
         
-        // set the desired properties of the destinationVC's navgation Item
+        // set the desired properties of the destinationVC's navigation Item
         
     }
     
@@ -140,7 +140,7 @@ extension CompletedProfileViewController {
         guard let emergencyContactPhone = emergencyContactPhone else { print("fail emergencyContactPhone"); return }
         
         // print to console for developer verification
-        print("isOwner: \(isOwner) \nisKid: \(isKid) \nusername: \(username) \npassword: \(password) \nfirstName: \(firstName) \nlastName: \(lastName) \nbeltLevel: \(beltLevel.rawValue) \nnumberOfStripes: \(numberOfStripes) \naddressLine1: \(addressLine1) \naddressLine2: \(String(describing: addressLine2)) \ncity: \(city) \nstate: \(state) \nzipCode: \(zipCode) \nphone: \(phone) \nmobile: \(String(describing: mobile)) \nemail: \(email) \nemail: \(emergencyContactName) \nemail: \(emergencyContactRelationship) \nemail: \(emergencyContactPhone)")
+        print("isOwner: \(isOwner) \nisKid: \(isKid) \nusername: \(username) \npassword: \(password) \nfirstName: \(firstName) \nlastName: \(lastName) \nbeltLevel: \(beltLevel.rawValue) \nnumberOfStripes: \(numberOfStripes) \naddressLine1: \(addressLine1) \naddressLine2: \(String(describing: addressLine2)) \ncity: \(city) \nstate: \(state) \nzipCode: \(zipCode) \nphone: \(phone) \nmobile: \(String(describing: mobile)) \nemail: \(email) \nemergencyContactName: \(emergencyContactName) \nemergencyContactRelationship: \(emergencyContactRelationship) \nemergencyContactPhone: \(emergencyContactPhone)")
         
         // populate UI elements in VC
         nameLabelOutlet.text = "\(firstName) \(lastName)"

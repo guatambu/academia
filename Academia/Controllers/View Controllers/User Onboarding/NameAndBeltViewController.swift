@@ -40,10 +40,6 @@ class NameAndBeltViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let isOwner = isOwner, let isKid = isKid, let username = username, let password = password, let firstName = firstName, let lastName = lastName else { return }
-        
-        print("isOwner: \(isOwner) \nisKid: \(isKid) \nusername: \(username) \npassword: \(password) \nfirstName: \(firstName) \nlastName: \(lastName)")
-        
         beltLevelPickerView.delegate = self
         beltLevelPickerView.dataSource = self
         

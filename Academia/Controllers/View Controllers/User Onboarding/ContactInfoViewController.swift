@@ -45,21 +45,6 @@ class ContactInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let isOwner = isOwner else { print("fail owner"); return }
-        guard let isKid = isKid else { print("fail kid"); return }
-        guard let username = username else { print("fail username"); return }
-        guard let password = password else { print("fail password"); return }
-        guard let firstName = firstName else { print("fail firtsname"); return }
-        guard let lastName = lastName else { print("fail lastname"); return }
-        guard let beltLevel = beltLevel else { print("fail beltlevel"); return }
-        guard let numberOfStripes = numberOfStripes else { print("fail stripes"); return }
-        guard let addressLine1 = addressLine1 else { print("fail address1"); return }
-        guard let city = city else { print("fail city"); return }
-        guard let state = state else { print("fail state"); return }
-        guard let zipCode = zipCode else { print("fail zip"); return }
-        
-        print("isOwner: \(isOwner) \nisKid: \(isKid) \nusername: \(username) \npassword: \(password) \nfirstName: \(firstName) \nlastName: \(lastName) \nbeltLevel: \(beltLevel.rawValue) \nnumberOfStripes: \(numberOfStripes) \naddressLine1: \(addressLine1) \naddressLine2: \(String(describing: addressLine2)) \ncity: \(city) \nstate: \(state) \nzipCode: \(zipCode)")
-        
         // Do any additional setup after loading the view.
         
     }
@@ -119,16 +104,4 @@ class ContactInfoViewController: UIViewController {
         destViewController.email = email
 
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
