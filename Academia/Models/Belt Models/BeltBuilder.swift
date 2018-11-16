@@ -87,10 +87,6 @@ class BeltBuilder {
     // stripe holder: UIStackView
     let stripesStackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [])
-        // black belt = up to 6 blackBeltDegrees
-        // coral belt = 7 coralBeltDegrees
-        // red & white belt = 8 coralBeltDegrees
-        // red belt = 9 & 10 coralBeltDegrees
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
         stack.spacing = 4

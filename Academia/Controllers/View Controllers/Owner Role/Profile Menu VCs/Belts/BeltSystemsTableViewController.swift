@@ -68,16 +68,16 @@ class BeltSystemsTableViewController: UITableViewController {
         
         if beltSystems[indexPath.item] == .adultBelts {
             let destViewController = storyboard?.instantiateViewController(withIdentifier: "toBeltsList") as! BeltsListTableViewController
-            destViewController.isKidsBelts = beltSystems[indexPath.item]
+            destViewController.beltSystem = beltSystems[indexPath.item]
             print("********  \(beltSystems[indexPath.item])")
-            print("*********  isKidsBelts: \(String(describing: destViewController.isKidsBelts))")
+            print("*********  isKidsBelts: \(String(describing: destViewController.beltSystem))")
             self.navigationController?.pushViewController(destViewController, animated: true)
         }
         else if beltSystems[indexPath.item] == .kidBelts {
             let destViewController = storyboard?.instantiateViewController(withIdentifier: "toBeltsList") as! BeltsListTableViewController
-            destViewController.isKidsBelts = beltSystems[indexPath.item]
+            destViewController.beltSystem = beltSystems[indexPath.item]
             print("********  \(beltSystems[indexPath.item])")
-            print("********  isKidsBelts: \(String(describing: destViewController.isKidsBelts))")
+            print("********  isKidsBelts: \(String(describing: destViewController.beltSystem))")
             self.navigationController?.pushViewController(destViewController, animated: true)
         }
     }

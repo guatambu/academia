@@ -9,53 +9,44 @@
 import UIKit
 import CoreData
 
-class AdultBasicBeltModelController {
+class BeltModelController {
     
-    static let shared = AdultBasicBeltModelController()
+    static let shared = BeltModelController()
     
-    var adultBasicBelts = [AdultBasicBelt]()
+    var belts = [Belt]()
     
     
     // MARK: - CRUD Functions
     
     // Create
-    func addNew(name: String, active: Bool, elligibleForNextBelt: Bool, belt: UIColor, blackBar: UIColor, firstWhiteStripe: Bool, secondWhiteStripe: Bool, thirdWhiteStripe: Bool, fourthWhiteStripe: Bool, beltTime: String?, firstStripeTime: String?, secondStripeTime: String?, thirdStripeTime: String?, fourthStripeTime: String?) {
+    func addNew(name: String, active: Bool, elligibleForNextBelt: Bool, classesToNextPromotion: Int, beltLevel: InternationalStandardBJJBelts, numberOfStripes: Int) {
         
-        let adultBasicBelt = AdultBasicBelt(adultBasicBeltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: name, active: active, elligibleForNextBelt: elligibleForNextBelt, belt: belt, blackBar: blackBar, firstWhiteStripe: firstWhiteStripe, secondWhiteStripe: secondWhiteStripe, thirdWhiteStripe: thirdWhiteStripe, fourthWhiteStripe: fourthWhiteStripe, beltTime: beltTime, firstStripeTime: firstStripeTime, secondStripeTime: secondStripeTime, thirdStripeTime: thirdStripeTime, fourthStripeTime: fourthStripeTime)
+        let belt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: name, active: active, elligibleForNextBelt: elligibleForNextBelt, classesToNextPromotion: classesToNextPromotion, beltLevel: beltLevel, numberOfStripes: numberOfStripes)
         
-        adultBasicBelts.append(adultBasicBelt)
+        belts.append(belt)
     }
     
     // Read
     
     
     // Update
-    func update(adultBasicBelt: AdultBasicBelt, name: String, active: Bool, elligibleForNextBelt: Bool, belt: UIColor, blackBar: UIColor, firstWhiteStripe: Bool, secondWhiteStripe: Bool, thirdWhiteStripe: Bool, fourthWhiteStripe: Bool, beltTime: String?, firstStripeTime: String?, secondStripeTime: String?, thirdStripeTime: String?, fourthStripeTime: String?) {
+    func update(belt: Belt, name: String, active: Bool, elligibleForNextBelt: Bool, classesToNextPromotion: Int, beltLevel: InternationalStandardBJJBelts, numberOfStripes: Int) {
         
-        adultBasicBelt.dateEdited = Date()
-        adultBasicBelt.name = name
-        adultBasicBelt.active = active
-        adultBasicBelt.elligibleForNextBelt = elligibleForNextBelt
-        adultBasicBelt.belt = belt
-        adultBasicBelt.blackBar = blackBar
-        adultBasicBelt.beltTime = beltTime
+        belt.dateEdited = Date()
+        belt.name = name
+        belt.active = active
+        belt.elligibleForNextBelt = elligibleForNextBelt
+        belt.classesToNextPromotion = classesToNextPromotion
+        belt.beltLevel = beltLevel
+        belt.numberOfStripes = numberOfStripes
         
-        adultBasicBelt.firstStripeTime = firstStripeTime
-        adultBasicBelt.secondStripeTime = secondStripeTime
-        adultBasicBelt.thirdStripeTime = thirdStripeTime
-        adultBasicBelt.fourthStripeTime = fourthStripeTime
-        
-        adultBasicBelt.firstWhiteStripe = firstWhiteStripe
-        adultBasicBelt.secondWhiteStripe = secondWhiteStripe
-        adultBasicBelt.thirdWhiteStripe = thirdWhiteStripe
-        adultBasicBelt.fourthWhiteStripe = fourthWhiteStripe
     }
     
     
     // Delete
-    func delete(adultBasicBelt: AdultBasicBelt) {
-        guard let index = self.adultBasicBelts.index(of: adultBasicBelt) else { return }
-        self.adultBasicBelts.remove(at: index)
+    func delete(belt: Belt) {
+        guard let index = self.belts.index(of: belt) else { return }
+        self.belts.remove(at: index)
     }
     
     

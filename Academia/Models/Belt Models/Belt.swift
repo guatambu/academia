@@ -21,7 +21,7 @@ class Belt {
     var name: String
     var active: Bool
     var elligibleForNextBelt: Bool
-    var numberOfClassesToNextPromotion: Int
+    var classesToNextPromotion: Int
     var beltLevel: InternationalStandardBJJBelts
     
     // belt constructors
@@ -37,7 +37,7 @@ class Belt {
          name: String,
          active: Bool,
          elligibleForNextBelt: Bool,
-         numberOfClassesToNextPromotion: Int,
+         classesToNextPromotion: Int,
          beltLevel: InternationalStandardBJJBelts,
          numberOfStripes: Int
         ) {
@@ -48,7 +48,7 @@ class Belt {
         self.name = name
         self.active = active
         self.elligibleForNextBelt = elligibleForNextBelt
-        self.numberOfClassesToNextPromotion = numberOfClassesToNextPromotion
+        self.classesToNextPromotion = classesToNextPromotion
         self.beltLevel = beltLevel
         self.numberOfStripes = numberOfStripes
     }
@@ -63,6 +63,8 @@ extension Belt: Equatable {
         if lhs.name != rhs.name { return false }
         if lhs.active != rhs.active { return false }
         if lhs.elligibleForNextBelt != rhs.elligibleForNextBelt { return false }
+        if lhs.classesToNextPromotion != rhs.classesToNextPromotion { return false }
+        if lhs.beltLevel != rhs.beltLevel { return false }
         if lhs.numberOfStripes != rhs.numberOfStripes { return false }
         
         return true

@@ -186,13 +186,13 @@ class StudentDetailTableViewController: UITableViewController, SegueFromSaveProf
             
         case .beltCell:
             if adultStudent != nil {
-                if let cell = tableView.dequeueReusableCell(withIdentifier: "adultBasicBeltTemplate", for: indexPath) as? AdultBasicBeltTableViewCell {
+                if let cell = tableView.dequeueReusableCell(withIdentifier: "beltTemplate", for: indexPath) as? BeltTableViewCell {
                     tableView.estimatedRowHeight = 100
                     tableView.rowHeight = 100
                     return cell
                 }
             } else if kidStudent != nil {
-                if let cell = tableView.dequeueReusableCell(withIdentifier: "kidsBeltTemplate", for: indexPath) as? KidsBeltTableViewCell {
+                if let cell = tableView.dequeueReusableCell(withIdentifier: "beltTemplate", for: indexPath) as? BeltTableViewCell {
                     tableView.estimatedRowHeight = 100
                     tableView.rowHeight = 100
                     return cell

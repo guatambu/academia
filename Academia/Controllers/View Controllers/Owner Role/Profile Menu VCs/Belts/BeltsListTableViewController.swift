@@ -11,22 +11,18 @@ import UIKit
 class BeltsListTableViewController: UITableViewController {
 
     // MARK: - Properties
+    let beltBuilder = BeltBuilder()
+    
     @IBOutlet weak var beltDisclaimerLabelOutlet: UILabel!
     @IBOutlet weak var beltDisclaimerViewOutlet: UIView!
     
-    var kidsBelts: [InternationalStandardBJJBelts] = [.kidsWhiteBelt, .kidsGreyWhiteBelt, .kidsGreyBelt, .kidsGreyBlackBelt, .kidsYellowWhiteBelt, .kidsYellowBelt, .kidsYellowBlackBelt, .kidsOrangeWhiteBelt, .kidsOrangeBelt, .kidsOrangeBlackBelt, .kidsGreenWhiteBelt, .kidsGreenBelt, .kidsGreenBlackBelt]
-    
-    var adultBelts: [InternationalStandardBJJBelts] = [.adultWhiteBelt, .adultBlueBelt, .adultPurpleBelt, .adultBrownBelt, .adultBlackBelt, .adultRedBlackBelt, .adultRedWhiteBelt, .adultRedBelt]
-    
-    var isKidsBelts: InternationalStandardBJJBelts?
+    var beltSystem: InternationalStandardBJJBelts?
     
     
     
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
-        tableView.estimatedRowHeight = 100
-        tableView.rowHeight = UITableView.automaticDimension
         
         self.navigationController?.navigationBar.tintColor = UIColor(displayP3Red: 241.0, green: 0.0, blue: 0.0, alpha: 1.0)
         
@@ -37,89 +33,109 @@ class BeltsListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let isKidsBelts = isKidsBelts?.rawValue else { return }
-        print(isKidsBelts)
-        self.title = isKidsBelts
+        tableView.estimatedRowHeight = 120
+        tableView.rowHeight = 120
+        
+        guard let beltSystem = beltSystem?.rawValue else { return }
+        print(beltSystem)
+        self.title = beltSystem
     }
     
     
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let isKidsBelts = isKidsBelts else { return 0 }
-        if isKidsBelts == .kidBelts {
-            return kidsBelts.count
+        guard let beltSystem = beltSystem else { return 0 }
+        if beltSystem == .kidBelts {
+            return beltBuilder.kidsBelts.count
         } else {
-            return adultBelts.count
+            return beltBuilder.adultBelts.count
         }
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let isKidsBelts = isKidsBelts else { return UITableViewCell() }
+        guard let beltSystem = beltSystem else { return UITableViewCell() }
         
-        if isKidsBelts == .kidBelts {
-            let nib = UINib(nibName: "KidsBeltTemplate", bundle: nil)
-            self.tableView.register(nib, forCellReuseIdentifier: "kidsBeltTemplate")
+        guard let numberOfKidsWhiteBeltStripes = beltBuilder.kidsWhiteBeltStripes.last,
+              let allOtherKidsBeltStripes = beltBuilder.allOtherKidsBeltStripes.last,
+              let adultBasicBeltStripes = beltBuilder.adultBasicBeltStripes.last,
+              let blackBeltDegrees = beltBuilder.blackBeltDegrees.last,
+              let redBlackBeltDegrees = beltBuilder.redBlackBeltDegrees.last,
+              let redWhiteBeltDegrees = beltBuilder.redWhiteBeltDegrees.last,
+              let redBeltDegrees = beltBuilder.redBeltDegrees.last
+            else { return UITableViewCell() }
+        
+        if beltSystem == .kidBelts {
             
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "kidsBeltTemplate", for: indexPath) as? KidsBeltTableViewCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "beltListCell", for: indexPath) as? BeltTableViewCell {
                 
-                let myCell = kidsBelts[indexPath.row]
+                let myCell = beltBuilder.kidsBelts[indexPath.row]
 
                 switch myCell {
                 
-                case .kidsWhiteBelt: cell.displayKidsBeltWith(provided: MockData.kidsWhiteBelt)
-                case .kidsGreyWhiteBelt: cell.displayKidsBeltWith(provided: MockData.grayWhiteBelt)
-                case .kidsGreyBelt: cell.displayKidsBeltWith(provided: MockData.grayBelt)
-                case .kidsGreyBlackBelt: cell.displayKidsBeltWith(provided: MockData.grayBlackBelt)
-                case .kidsYellowWhiteBelt: cell.displayKidsBeltWith(provided: MockData.yellowWhiteBelt)
-                case .kidsYellowBelt: cell.displayKidsBeltWith(provided: MockData.yellowBelt)
-                case .kidsYellowBlackBelt: cell.displayKidsBeltWith(provided: MockData.yellowBlackBelt)
-                case .kidsOrangeWhiteBelt: cell.displayKidsBeltWith(provided: MockData.orangeWhiteBelt)
-                case .kidsOrangeBelt: cell.displayKidsBeltWith(provided: MockData.orangeBelt)
-                case .kidsOrangeBlackBelt: cell.displayKidsBeltWith(provided: MockData.orangeBlackBelt)
-                case .kidsGreenWhiteBelt: cell.displayKidsBeltWith(provided: MockData.greenWhiteBelt)
-                case .kidsGreenBelt: cell.displayKidsBeltWith(provided: MockData.greenBelt)
-                case .kidsGreenBlackBelt: cell.displayKidsBeltWith(provided: MockData.greenBlackBelt)
+                case .kidsWhiteBelt:
+                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .kidsWhiteBelt, numberOfStripes: numberOfKidsWhiteBeltStripes)
+                case .kidsGreyWhiteBelt:
+                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .kidsGreyWhiteBelt, numberOfStripes: allOtherKidsBeltStripes)
+                case .kidsGreyBelt:
+                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .kidsGreyBelt, numberOfStripes: allOtherKidsBeltStripes)
+                case .kidsGreyBlackBelt:
+                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .kidsGreyBlackBelt, numberOfStripes: allOtherKidsBeltStripes)
+                case .kidsYellowWhiteBelt:
+                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .kidsYellowWhiteBelt, numberOfStripes: allOtherKidsBeltStripes)
+                case .kidsYellowBelt:
+                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .kidsYellowBelt, numberOfStripes: allOtherKidsBeltStripes)
+                case .kidsYellowBlackBelt:
+                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .kidsYellowBlackBelt, numberOfStripes: allOtherKidsBeltStripes)
+                case .kidsOrangeWhiteBelt:
+                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .kidsOrangeWhiteBelt, numberOfStripes: allOtherKidsBeltStripes)
+                case .kidsOrangeBelt:
+                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .kidsOrangeBelt, numberOfStripes: allOtherKidsBeltStripes)
+                case .kidsOrangeBlackBelt:
+                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .kidsOrangeBlackBelt, numberOfStripes: allOtherKidsBeltStripes)
+                case .kidsGreenWhiteBelt:
+                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .kidsGreenWhiteBelt, numberOfStripes: allOtherKidsBeltStripes)
+                case .kidsGreenBelt:
+                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .kidsGreenBelt, numberOfStripes: allOtherKidsBeltStripes)
+                case .kidsGreenBlackBelt:
+                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .kidsGreyBlackBelt, numberOfStripes: allOtherKidsBeltStripes)
                 default: print("that's not a currently active kids belt to display")
                 }
                 return cell
             }
             return UITableViewCell()
             
-        } else if isKidsBelts == .adultBelts {
-            let nib = UINib(nibName: "AdultBasicBeltTemplate", bundle: nil)
-            self.tableView.register(nib, forCellReuseIdentifier: "adultBasicBeltTemplate")
+        } else if beltSystem == .adultBelts {
             
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "adultBasicBeltTemplate", for: indexPath) as? AdultBasicBeltTableViewCell {
+            // there must be a constraint issue significant enough in the programmatic belt builder to throw off the table view population
+            
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "beltListCell", for: indexPath) as? BeltTableViewCell {
                 
-                let myCell = adultBelts[indexPath.row]
+                let myCell = beltBuilder.adultBelts[indexPath.row]
                 
                 switch myCell {
-                
-                case .adultWhiteBelt: cell.displayAdultBasicBeltWith(provided: MockData.whiteBelt)
-                case .adultBlueBelt: cell.displayAdultBasicBeltWith(provided: MockData.blueBelt)
-                case .adultPurpleBelt: cell.displayAdultBasicBeltWith(provided: MockData.purpleBelt)
-                case .adultBrownBelt: cell.displayAdultBasicBeltWith(provided: MockData.brownBelt)
-                
+
+                case .adultWhiteBelt:
+                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .adultWhiteBelt, numberOfStripes: adultBasicBeltStripes)
+                case .adultBlueBelt:
+                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .adultBlueBelt, numberOfStripes: adultBasicBeltStripes)
+                case .adultPurpleBelt:
+                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .adultPurpleBelt, numberOfStripes: adultBasicBeltStripes)
+                case .adultBrownBelt:
+                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .adultBrownBelt, numberOfStripes: adultBasicBeltStripes)
+                case .adultBlackBelt:
+                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .adultBlackBelt, numberOfStripes: blackBeltDegrees)
+                case .adultRedBlackBelt:
+                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .adultRedBlackBelt, numberOfStripes: redBlackBeltDegrees)
+                case .adultRedWhiteBelt:
+                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .adultRedWhiteBelt, numberOfStripes: redWhiteBeltDegrees)
+                case .adultRedBelt:
+                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .adultRedBelt, numberOfStripes: redBeltDegrees)
                 default:
-                    let nib = UINib(nibName: "AdultBlackBeltTemplate", bundle: nil)
-                    self.tableView.register(nib, forCellReuseIdentifier: "adultBlackBeltTemplate")
-                    
-                    if let cell = tableView.dequeueReusableCell(withIdentifier: "adultBlackBeltTemplate", for: indexPath) as? AdultBlackBeltTableViewCell {
-                        
-                        let myBlackBeltCell = myCell
-                        
-                        switch myBlackBeltCell {
-                        case .adultBlackBelt: cell.displayAdultBlackBeltWith(provided: MockData.blackBelt)
-                        case .adultRedBlackBelt: cell.displayAdultBlackBeltWith(provided: MockData.redBlackBelt)
-                        case .adultRedWhiteBelt: cell.displayAdultBlackBeltWith(provided: MockData.redWhiteBelt)
-                        case .adultRedBelt: cell.displayAdultBlackBeltWith(provided: MockData.redBelt)
-                        default: print("that's not a currently active adult black belt to display")
-                        }
-                        return cell
-                    }
+                    print("that's not a currently an active belt to display")
+
                 }
                 return cell
             }
