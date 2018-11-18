@@ -53,9 +53,6 @@ class NameAndBeltViewController: UIViewController {
         // default belt to display upon user arrival
         beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: numberOfStripes)
         
-        print("viewDidLoad(): \(beltLevel.rawValue)")
-        print("viewDidLoad(): \(numberOfStripes) stripes")
-        
     }
     
     
@@ -272,6 +269,7 @@ extension NameAndBeltViewController: UIPickerViewDelegate, UIPickerViewDataSourc
                     beltBuilder.stripesStackView.removeArrangedSubview(view)
                     view.removeFromSuperview()
                 }
+                beltBuilder.beltGraduationBar.removeFromSuperview()
                 
                 beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: numberOfStripes)
             }

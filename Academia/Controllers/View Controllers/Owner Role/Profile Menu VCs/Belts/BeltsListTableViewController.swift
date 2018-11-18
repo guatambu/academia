@@ -24,7 +24,7 @@ class BeltsListTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        self.navigationController?.navigationBar.tintColor = UIColor(displayP3Red: 241.0, green: 0.0, blue: 0.0, alpha: 1.0)
+        self.navigationController?.navigationBar.tintColor = UIColor(red: 241/255, green: 0/255, blue: 0/255, alpha: 1.0)
         
         beltDisclaimerLabelOutlet.text = InternationalStandardBJJBelts.beltDisclaimer.rawValue
         
@@ -37,7 +37,6 @@ class BeltsListTableViewController: UITableViewController {
         tableView.rowHeight = 120
         
         guard let beltSystem = beltSystem?.rawValue else { return }
-        print(beltSystem)
         self.title = beltSystem
     }
     
@@ -118,20 +117,52 @@ class BeltsListTableViewController: UITableViewController {
                 switch myCell {
 
                 case .adultWhiteBelt:
+                    for view in beltBuilder.stripesStackView.arrangedSubviews {
+                        beltBuilder.stripesStackView.removeArrangedSubview(view)
+                        view.removeFromSuperview()
+                    }
                     beltBuilder.buildABelt(view: cell.beltHolderView, belt: .adultWhiteBelt, numberOfStripes: adultBasicBeltStripes)
                 case .adultBlueBelt:
+                    for view in beltBuilder.stripesStackView.arrangedSubviews {
+                        beltBuilder.stripesStackView.removeArrangedSubview(view)
+                        view.removeFromSuperview()
+                    }
                     beltBuilder.buildABelt(view: cell.beltHolderView, belt: .adultBlueBelt, numberOfStripes: adultBasicBeltStripes)
                 case .adultPurpleBelt:
+                    for view in beltBuilder.stripesStackView.arrangedSubviews {
+                        beltBuilder.stripesStackView.removeArrangedSubview(view)
+                        view.removeFromSuperview()
+                    }
                     beltBuilder.buildABelt(view: cell.beltHolderView, belt: .adultPurpleBelt, numberOfStripes: adultBasicBeltStripes)
                 case .adultBrownBelt:
+                    for view in beltBuilder.stripesStackView.arrangedSubviews {
+                        beltBuilder.stripesStackView.removeArrangedSubview(view)
+                        view.removeFromSuperview()
+                    }
                     beltBuilder.buildABelt(view: cell.beltHolderView, belt: .adultBrownBelt, numberOfStripes: adultBasicBeltStripes)
                 case .adultBlackBelt:
+                    for view in beltBuilder.stripesStackView.arrangedSubviews {
+                        beltBuilder.stripesStackView.removeArrangedSubview(view)
+                        view.removeFromSuperview()
+                    }
                     beltBuilder.buildABelt(view: cell.beltHolderView, belt: .adultBlackBelt, numberOfStripes: blackBeltDegrees)
                 case .adultRedBlackBelt:
+                    for view in beltBuilder.stripesStackView.arrangedSubviews {
+                        beltBuilder.stripesStackView.removeArrangedSubview(view)
+                        view.removeFromSuperview()
+                    }
                     beltBuilder.buildABelt(view: cell.beltHolderView, belt: .adultRedBlackBelt, numberOfStripes: redBlackBeltDegrees)
                 case .adultRedWhiteBelt:
+                    for view in beltBuilder.stripesStackView.arrangedSubviews {
+                        beltBuilder.stripesStackView.removeArrangedSubview(view)
+                        view.removeFromSuperview()
+                    }
                     beltBuilder.buildABelt(view: cell.beltHolderView, belt: .adultRedWhiteBelt, numberOfStripes: redWhiteBeltDegrees)
                 case .adultRedBelt:
+                    for view in beltBuilder.stripesStackView.arrangedSubviews {
+                        beltBuilder.stripesStackView.removeArrangedSubview(view)
+                        view.removeFromSuperview()
+                    }
                     beltBuilder.buildABelt(view: cell.beltHolderView, belt: .adultRedBelt, numberOfStripes: redBeltDegrees)
                 default:
                     print("that's not a currently an active belt to display")
