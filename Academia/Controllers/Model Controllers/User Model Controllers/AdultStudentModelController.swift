@@ -33,9 +33,9 @@ class AdultStudentModelController {
     // MARK: - CRUD Functions
     
     // Create
-    func addNew(birthdate: Date, adultBasicBelt: AdultBasicBelt?, adultBlackBelt: AdultBlackBelt?, profilePic: UIImage?, username: String, firstName: String, lastName: String, streetAddress: String, city: String, state: String, zipCode: String, phone: String, mobile: String, email: String, emergencyContact: String, emergencyContactPhone: String, emergencyContactRelationship: String) {
+    func addNew(birthdate: Date, belt: Belt, profilePic: UIImage?, username: String, firstName: String, lastName: String, addressLine1: String, addressLine2: String, city: String, state: String, zipCode: String, phone: String, mobile: String, email: String, emergencyContactName: String, emergencyContactPhone: String, emergencyContactRelationship: String) {
         
-        let adult = AdultStudent(adultStudentUID: UUID(), isInstructor: false, dateCreated: Date(), dateEdited: Date(), birthdate: birthdate, promotions: nil, mostRecentPromotion: nil, attendance: nil, studentStatus: [StudentStatus.inactive], groups: nil, paymentProgram: nil, permission: [UserPermissions.adultStudent], adultBasicBelt: adultBasicBelt, blackBelt: adultBlackBelt, profilePic: profilePic, username: username, firstName: firstName, lastName: lastName, streetAddress: streetAddress, city: city, state: state, zipCode: zipCode, phone: phone, mobile: mobile, email: email, emergencyContact: emergencyContact, emergencyContactPhone: emergencyContactPhone, emergencyContactRelationship: emergencyContactRelationship)
+        let adult = AdultStudent(adultStudentUID: UUID(), isInstructor: false, dateCreated: Date(), dateEdited: Date(), birthdate: birthdate, promotions: nil, mostRecentPromotion: nil, attendance: nil, studentStatus: [StudentStatus.inactive], groups: nil, paymentProgram: nil, permission: [UserPermissions.adultStudent], belt: belt, profilePic: profilePic, username: username, firstName: firstName, lastName: lastName, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, phone: phone, mobile: mobile, email: email, emergencyContactName: emergencyContactName, emergencyContactPhone: emergencyContactPhone, emergencyContactRelationship: emergencyContactRelationship)
         
         adults.append(adult)
     }
@@ -44,7 +44,7 @@ class AdultStudentModelController {
     
     
     // Update
-    func updateProfileInfo(adultStudent: AdultStudent, birthdate: Date, city: String, email: String, firstName: String, groups: [Group]?, isInstructor: Bool, lastNAme: String, mobile: String, parentGuardian: String, permission: [UserPermissions], phone: String, profilePic: UIImage?, state: String, streetAddress: String, username: String, zipCode: String, emergencyContact: String, emergencyContactPhone: String, emergencyContactRelationship: String) {
+    func updateProfileInfo(adultStudent: AdultStudent, birthdate: Date, city: String, email: String, firstName: String, groups: [Group]?, isInstructor: Bool, lastNAme: String, mobile: String, parentGuardian: String, permission: [UserPermissions], phone: String, profilePic: UIImage?, state: String, addressLine1: String, addressLine2: String, username: String, zipCode: String, emergencyContact: String, emergencyContactPhone: String, emergencyContactRelationship: String) {
         
         adultStudent.birthdate = birthdate
         adultStudent.city = city
@@ -59,14 +59,14 @@ class AdultStudentModelController {
         adultStudent.phone = phone
         adultStudent.profilePic = profilePic
         adultStudent.state = state
-        adultStudent.streetAddress = streetAddress
+        adultStudent.addressLine1 = addressLine1
+        adultStudent.addressLine2 = addressLine2
         adultStudent.username = username
         adultStudent.zipCode = zipCode
     }
     
-    func promote(adultStudent: AdultStudent, adultBasicBelt: AdultBasicBelt?, adultBlackBelt: AdultBlackBelt?, mostRecentPromotion: Date, promotions: [String: Date]) {
-        adultStudent.adultBasicBelt = adultBasicBelt
-        adultStudent.blackBelt = adultBlackBelt
+    func promote(adultStudent: AdultStudent, belt: Belt, mostRecentPromotion: Date, promotions: [String: Date]) {
+        adultStudent.belt = belt
         adultStudent.mostRecentPromotion = mostRecentPromotion
         adultStudent.promotions = promotions
     }

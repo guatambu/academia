@@ -565,7 +565,7 @@
         <!--Owner Tab Bar View Controller-->
         <scene sceneID="CWg-33-oxi">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="yWK-Yj-UHD" userLabel="Owner Tab Bar View Controller" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="toOwnerBaseCamp" automaticallyAdjustsScrollViewInsets="NO" id="yWK-Yj-UHD" userLabel="Owner Tab Bar View Controller" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="R5I-0B-da3">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>

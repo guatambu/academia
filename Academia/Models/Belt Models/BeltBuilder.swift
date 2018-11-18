@@ -28,8 +28,8 @@ class BeltBuilder {
     
     
     // UIColor specs
-    let silverColor: UIColor = UIColor(red: 189.0/255.0, green: 195.0/255.0, blue: 199.0/255.0, alpha: 1.0)
-    let goldColor: UIColor = UIColor(red: 252.0/255.0, green: 194.0/255.0, blue: 0.0, alpha: 1.0)
+    let silverColor: UIColor = UIColor(red: 189/255, green: 195/255, blue: 199/255, alpha: 1.0)
+    let goldColor: UIColor = UIColor(red: 252/255, green: 194/255, blue: 0/255, alpha: 1.0)
     let kidsGraduationBarColor = UIColor.black
     let adultGraduationBarColor = UIColor.black
     let blackBeltUpGraduationBarColor = UIColor.red
@@ -39,7 +39,6 @@ class BeltBuilder {
     // graduation bar specs
     let kidsBeltGraduationBarWidth: CGFloat = 232.0
     let adultGraduationBarWidth: CGFloat = 120.0
-    let coralBeltGraduationBarWidth: CGFloat = 132.0
     
     // belt UIView Constructor Elements
     let beltView: UIView = {
@@ -87,10 +86,6 @@ class BeltBuilder {
     // stripe holder: UIStackView
     let stripesStackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [])
-        // black belt = up to 6 blackBeltDegrees
-        // coral belt = 7 coralBeltDegrees
-        // red & white belt = 8 coralBeltDegrees
-        // red belt = 9 & 10 coralBeltDegrees
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
         stack.spacing = 4
@@ -100,8 +95,8 @@ class BeltBuilder {
     }()
     
     
-    // Belt Visual Contstruction Method
     func buildABelt(view: UIView, belt: InternationalStandardBJJBelts, numberOfStripes: Int) {
+    // Belt Visual Contstruction Method
         
         // ADD BELT CONSTRUCTOR ELEMENTS TO DESIRED UIView
         addBeltConstructorsToView(view: view)
@@ -246,8 +241,6 @@ class BeltBuilder {
             beltView.layer.borderColor = UIColor.darkGray.cgColor
             
         case .adultBlueBelt:
-            // check it out
-            print(InternationalStandardBJJBelts.adultBlueBelt.rawValue)
             // set belt color
             beltView.backgroundColor = UIColor.blue
             // set graduation bar
@@ -453,7 +446,7 @@ class BeltBuilder {
                     view.layer.borderWidth = 1
                     view.layer.borderColor = UIColor.darkGray.cgColor
                     view.backgroundColor = UIColor.white
-                    view.widthAnchor.constraint(equalToConstant: 8).isActive = true
+                    view.widthAnchor.constraint(equalToConstant: 7).isActive = true
                     return view
                 }()
                 stripesStackView.addArrangedSubview(coralBeltDegree)
@@ -479,16 +472,10 @@ class BeltBuilder {
             self.beltGraduationBar.backgroundColor = self.adultGraduationBarColor
             self.beltGraduationBar.widthAnchor.constraint(equalToConstant: self.adultGraduationBarWidth).isActive = true
             
-        // standard black belt
-        case .adultBlackBelt:
+        // standard black belts
+        case .adultBlackBelt, .adultRedBlackBelt, .adultRedWhiteBelt, .adultRedBelt:
             self.beltGraduationBar.backgroundColor = self.blackBeltUpGraduationBarColor
             self.beltGraduationBar.widthAnchor.constraint(equalToConstant: self.adultGraduationBarWidth).isActive = true
-        // coral belts and up
-        case .adultRedBlackBelt, .adultRedWhiteBelt, .adultRedBelt:
-            
-            self.beltGraduationBar.backgroundColor = self.blackBeltUpGraduationBarColor
-            self.beltGraduationBar.widthAnchor.constraint(equalToConstant: self.coralBeltGraduationBarWidth).isActive = true
-            
         default:
             print("OOOPS! we don't recoginize this kind of belt")
         }

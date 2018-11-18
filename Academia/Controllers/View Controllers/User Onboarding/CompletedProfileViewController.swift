@@ -76,19 +76,26 @@ class CompletedProfileViewController: UIViewController {
         
         // place network call to firebase firestore for account creation
         
-        
         // programmatically performing the segue
-        
-        // instantiate the relevant storyboard
-        let mainView: UIStoryboard = UIStoryboard(name: "OwnerBaseCampFlow", bundle: nil)
-        // instantiate the desired TableViewController as ViewController on relevant storyboard
-        let destViewController = mainView.instantiateViewController(withIdentifier: "toOwnerBaseCampHome") as! OwnerHomeTableViewController
-        
-        // create the segue programmatically - MODAL
-        self.present(destViewController, animated: true, completion: nil)
-        
-        // set the desired properties of the destinationVC's navgation Item
-        
+        guard let isOwner = isOwner else { return }
+        if isOwner {
+            
+            // instantiate the relevant storyboard for the Owner
+            let mainView: UIStoryboard = UIStoryboard(name: "OwnerBaseCampFlow", bundle: nil)
+            // create the UITabBarController segue programmatically - MODAL
+            if let tabBarDestViewController = (mainView.instantiateViewController(withIdentifier: "toOwnerBaseCamp") as? UITabBarController) {
+                self.present(tabBarDestViewController, animated: true, completion: nil)
+            }
+        } else {
+            
+            // instantiate the relevant storyboard for the Student (Kid or Adult... both are directed to the same TabBarController)
+            let mainView: UIStoryboard = UIStoryboard(name: "StudentBaseCampFlow", bundle: nil)
+            // create the UITabBarController segue programmatically - MODAL
+            if let tabBarDestViewController = (mainView.instantiateViewController(withIdentifier: "toStudentDashbooard") as? UITabBarController) {
+                self.present(tabBarDestViewController, animated: true, completion: nil)
+            }
+        }
+        // set the desired properties of the destinationVC's navigation Item
     }
     
     // MARK: - Helper Methods
@@ -140,7 +147,7 @@ extension CompletedProfileViewController {
         guard let emergencyContactPhone = emergencyContactPhone else { print("fail emergencyContactPhone"); return }
         
         // print to console for developer verification
-        print("isOwner: \(isOwner) \nisKid: \(isKid) \nusername: \(username) \npassword: \(password) \nfirstName: \(firstName) \nlastName: \(lastName) \nbeltLevel: \(beltLevel.rawValue) \nnumberOfStripes: \(numberOfStripes) \naddressLine1: \(addressLine1) \naddressLine2: \(String(describing: addressLine2)) \ncity: \(city) \nstate: \(state) \nzipCode: \(zipCode) \nphone: \(phone) \nmobile: \(String(describing: mobile)) \nemail: \(email) \nemail: \(emergencyContactName) \nemail: \(emergencyContactRelationship) \nemail: \(emergencyContactPhone)")
+        print("isOwner: \(isOwner) \nisKid: \(isKid) \nusername: \(username) \npassword: \(password) \nfirstName: \(firstName) \nlastName: \(lastName) \nbeltLevel: \(beltLevel.rawValue) \nnumberOfStripes: \(numberOfStripes) \naddressLine1: \(addressLine1) \naddressLine2: \(String(describing: addressLine2)) \ncity: \(city) \nstate: \(state) \nzipCode: \(zipCode) \nphone: \(phone) \nmobile: \(String(describing: mobile)) \nemail: \(email) \nemergencyContactName: \(emergencyContactName) \nemergencyContactRelationship: \(emergencyContactRelationship) \nemergencyContactPhone: \(emergencyContactPhone)")
         
         // populate UI elements in VC
         nameLabelOutlet.text = "\(firstName) \(lastName)"

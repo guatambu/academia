@@ -18,20 +18,16 @@ class BeltSystemsTableViewController: UITableViewController {
     // MARK: - ViewController LifeCycle Fucntions
     
     override func viewWillAppear(_ animated: Bool) {
-        let nib = UINib(nibName: "GeneralMenuCell", bundle: nil)
-        self.tableView.register(nib, forCellReuseIdentifier: "generalMenuCell")
-
-        self.navigationController?.navigationBar.tintColor = UIColor(displayP3Red: 241.0, green: 0.0, blue: 0.0, alpha: 1.0)
-            
-
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-    
+        let nib = UINib(nibName: "GeneralMenuCell", bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: "generalMenuCell")
+        
+        self.navigationController?.navigationBar.tintColor = UIColor(red: 241/255, green: 0/255, blue: 0/255, alpha: 1.0)
     }
-
 
 
     // MARK: - Table view data source
@@ -68,16 +64,12 @@ class BeltSystemsTableViewController: UITableViewController {
         
         if beltSystems[indexPath.item] == .adultBelts {
             let destViewController = storyboard?.instantiateViewController(withIdentifier: "toBeltsList") as! BeltsListTableViewController
-            destViewController.isKidsBelts = beltSystems[indexPath.item]
-            print("********  \(beltSystems[indexPath.item])")
-            print("*********  isKidsBelts: \(String(describing: destViewController.isKidsBelts))")
+            destViewController.beltSystem = beltSystems[indexPath.item]
             self.navigationController?.pushViewController(destViewController, animated: true)
         }
         else if beltSystems[indexPath.item] == .kidBelts {
             let destViewController = storyboard?.instantiateViewController(withIdentifier: "toBeltsList") as! BeltsListTableViewController
-            destViewController.isKidsBelts = beltSystems[indexPath.item]
-            print("********  \(beltSystems[indexPath.item])")
-            print("********  isKidsBelts: \(String(describing: destViewController.isKidsBelts))")
+            destViewController.beltSystem = beltSystems[indexPath.item]
             self.navigationController?.pushViewController(destViewController, animated: true)
         }
     }

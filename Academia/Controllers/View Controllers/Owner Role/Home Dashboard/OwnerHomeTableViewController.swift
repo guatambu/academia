@@ -66,7 +66,7 @@ class OwnerHomeTableViewController: UITableViewController {
             let backButtonItem = UIBarButtonItem()
             backButtonItem.title = " "
             navigationItem.backBarButtonItem = backButtonItem
-            navigationController?.navigationBar.tintColor = UIColor(red: 241.0, green: 0.0, blue: 0.0, alpha: 1.0)
+            navigationController?.navigationBar.tintColor = UIColor(red: 241/255, green: 0/255, blue: 0/255, alpha: 1.0)
             
         } else if OwnerModelController.shared.ownerOnboardingTasks[indexPath.item].name == "setUpPaymentPrograms" {
             
@@ -80,7 +80,7 @@ class OwnerHomeTableViewController: UITableViewController {
             let backButtonItem = UIBarButtonItem()
             backButtonItem.title = " "
             navigationItem.backBarButtonItem = backButtonItem
-            navigationController?.navigationBar.tintColor = UIColor(red: 241.0, green: 0.0, blue: 0.0, alpha: 1.0)
+            navigationController?.navigationBar.tintColor = UIColor(red: 241/255, green: 0/255, blue: 0/255, alpha: 1.0)
             
         } else if OwnerModelController.shared.ownerOnboardingTasks[indexPath.item].name == "locationsSetUp" {
             
@@ -94,7 +94,7 @@ class OwnerHomeTableViewController: UITableViewController {
             let backButtonItem = UIBarButtonItem()
             backButtonItem.title = " "
             navigationItem.backBarButtonItem = backButtonItem
-            navigationController?.navigationBar.tintColor = UIColor(red: 241.0, green: 0.0, blue: 0.0, alpha: 1.0)
+            navigationController?.navigationBar.tintColor = UIColor(red: 241/255, green: 0/255, blue: 0/255, alpha: 1.0)
             
         } else if OwnerModelController.shared.ownerOnboardingTasks[indexPath.item].name == "messagingGroups" {
             
@@ -108,7 +108,7 @@ class OwnerHomeTableViewController: UITableViewController {
             let backButtonItem = UIBarButtonItem()
             backButtonItem.title = " "
             navigationItem.backBarButtonItem = backButtonItem
-            navigationController?.navigationBar.tintColor = UIColor(red: 241.0, green: 0.0, blue: 0.0, alpha: 1.0)
+            navigationController?.navigationBar.tintColor = UIColor(red: 241/255, green: 0/255, blue: 0/255, alpha: 1.0)
             
         } else if OwnerModelController.shared.ownerOnboardingTasks[indexPath.item].name == "createClassSchedule" {
             
@@ -122,7 +122,7 @@ class OwnerHomeTableViewController: UITableViewController {
             let backButtonItem = UIBarButtonItem()
             backButtonItem.title = " "
             navigationItem.backBarButtonItem = backButtonItem
-            navigationController?.navigationBar.tintColor = UIColor(red: 241.0, green: 0.0, blue: 0.0, alpha: 1.0)
+            navigationController?.navigationBar.tintColor = UIColor(red: 241/255, green: 0/255, blue: 0/255, alpha: 1.0)
             
         } else if OwnerModelController.shared.ownerOnboardingTasks[indexPath.item].name == "reviewBeltSystems" {
             
@@ -136,7 +136,7 @@ class OwnerHomeTableViewController: UITableViewController {
             let backButtonItem = UIBarButtonItem()
             backButtonItem.title = " "
             navigationItem.backBarButtonItem = backButtonItem
-            navigationController?.navigationBar.tintColor = UIColor(red: 241.0, green: 0.0, blue: 0.0, alpha: 1.0)
+            navigationController?.navigationBar.tintColor = UIColor(red: 241/255, green: 0/255, blue: 0/255, alpha: 1.0)
         }
     }
 

@@ -400,96 +400,109 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ntL-hc-WSZ" userLabel="Progress Stack View">
-                                <rect key="frame" x="65" y="534" width="190" height="10"/>
+                                <rect key="frame" x="58" y="536" width="204" height="8"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dbc-F8-2BE" userLabel="Progress 1 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="8" height="8"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="10" id="tRa-eT-pj5"/>
-                                            <constraint firstAttribute="height" constant="10" id="wx6-QO-sgv"/>
+                                            <constraint firstAttribute="width" constant="8" id="1UF-dg-06c"/>
+                                            <constraint firstAttribute="height" constant="8" id="d73-99-wcj"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l9u-wG-rxu" userLabel="Progress 2 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="0.0" width="10" height="10"/>
+                                        <rect key="frame" x="28" y="0.0" width="8" height="8"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="10" id="5SF-6A-pLP"/>
-                                            <constraint firstAttribute="height" constant="10" id="thc-mo-L93"/>
+                                            <constraint firstAttribute="width" constant="8" id="HOC-Rj-6AN"/>
+                                            <constraint firstAttribute="height" constant="8" id="Vyd-hL-W5q"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0iq-U9-i0N" userLabel="Progress 3 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="60" y="0.0" width="10" height="10"/>
+                                        <rect key="frame" x="56" y="0.0" width="8" height="8"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="10" id="SEL-Et-DY4"/>
-                                            <constraint firstAttribute="height" constant="10" id="dl6-Cw-3uF"/>
+                                            <constraint firstAttribute="width" constant="8" id="0E8-NE-kx1"/>
+                                            <constraint firstAttribute="height" constant="8" id="51v-dl-NaL"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cz4-Ib-9iX" userLabel="Progress 4 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="90" y="0.0" width="10" height="10"/>
+                                        <rect key="frame" x="84" y="0.0" width="8" height="8"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="10" id="Y1J-V4-36z"/>
-                                            <constraint firstAttribute="height" constant="10" id="xSq-VG-vpP"/>
+                                            <constraint firstAttribute="width" constant="8" id="KGr-fd-WOv"/>
+                                            <constraint firstAttribute="height" constant="8" id="fQf-BI-5zq"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3dF-Hg-3Fs" userLabel="Progress 5 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="120" y="0.0" width="10" height="10"/>
+                                        <rect key="frame" x="112" y="0.0" width="8" height="8"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="fdD-f7-SpO"/>
-                                            <constraint firstAttribute="width" constant="10" id="wyT-Tb-lFD"/>
+                                            <constraint firstAttribute="height" constant="8" id="AIw-MH-1KK"/>
+                                            <constraint firstAttribute="width" constant="8" id="Pej-k8-Dx1"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1dU-lm-LnU" userLabel="Progress 6 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="150" y="0.0" width="10" height="10"/>
+                                        <rect key="frame" x="140" y="0.0" width="8" height="8"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="3Ya-97-8Zu"/>
-                                            <constraint firstAttribute="width" constant="10" id="lVB-il-yiY"/>
+                                            <constraint firstAttribute="width" constant="8" id="WMT-rK-IFN"/>
+                                            <constraint firstAttribute="height" constant="8" id="bkI-gJ-QMB"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WW0-Al-eY4" userLabel="Progress 7 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="180" y="0.0" width="10" height="10"/>
+                                        <rect key="frame" x="168" y="0.0" width="8" height="8"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="4jx-Yy-sYb"/>
-                                            <constraint firstAttribute="width" constant="10" id="oae-QT-nx9"/>
+                                            <constraint firstAttribute="height" constant="8" id="GXN-Em-BLI"/>
+                                            <constraint firstAttribute="width" constant="8" id="NPo-FB-vUT"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M9a-bB-2Z5" userLabel="Progress 8 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
+                                        <rect key="frame" x="196" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="8" id="Y0c-1t-wOZ"/>
+                                            <constraint firstAttribute="height" constant="8" id="ake-u5-zGo"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
@@ -797,96 +810,109 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="oWr-Nw-etm" userLabel="Progress Stack View">
-                                <rect key="frame" x="65" y="534" width="190" height="10"/>
+                                <rect key="frame" x="58" y="536" width="204" height="8"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uUy-pG-fKZ" userLabel="Progress 1 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="8" height="8"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="10" id="KE2-LO-uZv"/>
-                                            <constraint firstAttribute="height" constant="10" id="hh2-6d-guS"/>
+                                            <constraint firstAttribute="width" constant="8" id="FDn-Vy-1nu"/>
+                                            <constraint firstAttribute="height" constant="8" id="dWh-UO-3fa"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Swl-0D-IuD" userLabel="Progress 2 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="0.0" width="10" height="10"/>
+                                        <rect key="frame" x="28" y="0.0" width="8" height="8"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="10" id="6AM-cf-d5G"/>
-                                            <constraint firstAttribute="height" constant="10" id="hB1-yG-e3R"/>
+                                            <constraint firstAttribute="width" constant="8" id="7Iy-ni-KfI"/>
+                                            <constraint firstAttribute="height" constant="8" id="fsx-OA-Odi"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="03b-Cn-Nqy" userLabel="Progress 3 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="60" y="0.0" width="10" height="10"/>
+                                        <rect key="frame" x="56" y="0.0" width="8" height="8"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="kAE-yD-FBQ"/>
-                                            <constraint firstAttribute="width" constant="10" id="lZd-xN-4KA"/>
+                                            <constraint firstAttribute="height" constant="8" id="TKp-pp-E9r"/>
+                                            <constraint firstAttribute="width" constant="8" id="bLJ-v9-rdr"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PnV-hX-VCC" userLabel="Progress 4 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="90" y="0.0" width="10" height="10"/>
+                                        <rect key="frame" x="84" y="0.0" width="8" height="8"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="10" id="IK4-lA-hQL"/>
-                                            <constraint firstAttribute="height" constant="10" id="L19-3w-afw"/>
+                                            <constraint firstAttribute="height" constant="8" id="7yM-6u-IXf"/>
+                                            <constraint firstAttribute="width" constant="8" id="DnI-IT-iqs"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sDk-C3-hb3" userLabel="Progress 5 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="120" y="0.0" width="10" height="10"/>
+                                        <rect key="frame" x="112" y="0.0" width="8" height="8"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="VaQ-T7-At3"/>
-                                            <constraint firstAttribute="width" constant="10" id="l1s-5i-VRE"/>
+                                            <constraint firstAttribute="width" constant="8" id="U0N-PY-Goc"/>
+                                            <constraint firstAttribute="height" constant="8" id="uZN-YT-HY1"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xZK-Wn-nJm" userLabel="Progress 6 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="150" y="0.0" width="10" height="10"/>
+                                        <rect key="frame" x="140" y="0.0" width="8" height="8"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="10" id="021-2F-Bqk"/>
-                                            <constraint firstAttribute="height" constant="10" id="HAV-a9-bFW"/>
+                                            <constraint firstAttribute="height" constant="8" id="wDV-fD-xSG"/>
+                                            <constraint firstAttribute="width" constant="8" id="yBI-dR-Net"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yj7-Zj-6Jg" userLabel="Progress 7 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="180" y="0.0" width="10" height="10"/>
+                                        <rect key="frame" x="168" y="0.0" width="8" height="8"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="10" id="a6I-ce-BKl"/>
-                                            <constraint firstAttribute="height" constant="10" id="abN-BP-DXa"/>
+                                            <constraint firstAttribute="height" constant="8" id="Psh-hD-0ZH"/>
+                                            <constraint firstAttribute="width" constant="8" id="kRT-0g-qur"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TkN-eK-UgL" userLabel="Progress 8 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
+                                        <rect key="frame" x="196" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="8" id="FaA-fd-B5h"/>
+                                            <constraint firstAttribute="width" constant="8" id="aot-3q-WNb"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
@@ -995,7 +1021,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="tXm-ZD-chp" userLabel="Progress Stack View">
-                                <rect key="frame" x="72" y="536" width="176" height="8"/>
+                                <rect key="frame" x="58" y="536" width="204" height="8"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M20-XX-wsh" userLabel="Progress 1 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="8" height="8"/>
@@ -1025,7 +1051,7 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vOO-xM-z1L" userLabel="Progress 3 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
                                         <rect key="frame" x="56" y="0.0" width="8" height="8"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="8" id="Aat-jV-nS6"/>
                                             <constraint firstAttribute="width" constant="8" id="a0L-Tx-9C1"/>
@@ -1038,7 +1064,7 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gcy-UR-CHM" userLabel="Progress 4 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
                                         <rect key="frame" x="84" y="0.0" width="8" height="8"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="8" id="EMN-aI-KEK"/>
                                             <constraint firstAttribute="width" constant="8" id="Lyh-3N-IXb"/>
@@ -1081,6 +1107,19 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="8" id="jqp-hh-Rsn"/>
                                             <constraint firstAttribute="width" constant="8" id="nsf-HP-HlX"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dxx-RP-iXD" userLabel="Progress 7 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
+                                        <rect key="frame" x="196" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="8" id="geX-48-Bbf"/>
+                                            <constraint firstAttribute="height" constant="8" id="mVo-sL-bR1"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -1313,96 +1352,109 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="CQY-pR-AxX" userLabel="Progress Stack View">
-                                <rect key="frame" x="65" y="534" width="190" height="10"/>
+                                <rect key="frame" x="58" y="536" width="204" height="8"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="thI-4i-jef" userLabel="Progress 1 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="8" height="8"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="10" id="U2v-KB-0PA"/>
-                                            <constraint firstAttribute="height" constant="10" id="e7T-xM-tG0"/>
+                                            <constraint firstAttribute="width" constant="8" id="K0s-RV-npL"/>
+                                            <constraint firstAttribute="height" constant="8" id="SGR-2R-8lm"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yrO-gW-Jmo" userLabel="Progress 2 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="0.0" width="10" height="10"/>
+                                        <rect key="frame" x="28" y="0.0" width="8" height="8"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="10" id="4cS-R9-hIE"/>
-                                            <constraint firstAttribute="height" constant="10" id="PdH-n3-EQt"/>
+                                            <constraint firstAttribute="width" constant="8" id="8yK-pj-GqV"/>
+                                            <constraint firstAttribute="height" constant="8" id="9rJ-gX-u0X"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UeB-e6-OzJ" userLabel="Progress 3 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="60" y="0.0" width="10" height="10"/>
+                                        <rect key="frame" x="56" y="0.0" width="8" height="8"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="1fk-k9-wg8"/>
-                                            <constraint firstAttribute="width" constant="10" id="MUL-Z9-uoU"/>
+                                            <constraint firstAttribute="height" constant="8" id="AlM-Zj-37k"/>
+                                            <constraint firstAttribute="width" constant="8" id="LS4-5s-Kf3"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ISa-JO-hQN" userLabel="Progress 4 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="90" y="0.0" width="10" height="10"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="84" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="lBr-rw-6b8"/>
-                                            <constraint firstAttribute="width" constant="10" id="nK7-O0-EdK"/>
+                                            <constraint firstAttribute="height" constant="8" id="Khb-be-I1x"/>
+                                            <constraint firstAttribute="width" constant="8" id="ULC-Qq-0mU"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e3x-A5-WVR" userLabel="Progress 5 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="120" y="0.0" width="10" height="10"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="112" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="10" id="I45-Wm-FxP"/>
-                                            <constraint firstAttribute="height" constant="10" id="XdX-k3-sqS"/>
+                                            <constraint firstAttribute="height" constant="8" id="79R-w2-q7M"/>
+                                            <constraint firstAttribute="width" constant="8" id="jDE-4K-GiE"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Emd-Bb-mNg" userLabel="Progress 6 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="150" y="0.0" width="10" height="10"/>
+                                        <rect key="frame" x="140" y="0.0" width="8" height="8"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="LWD-2B-FrW"/>
-                                            <constraint firstAttribute="width" constant="10" id="gia-Dk-ncR"/>
+                                            <constraint firstAttribute="height" constant="8" id="GK1-n9-qYu"/>
+                                            <constraint firstAttribute="width" constant="8" id="qwz-T8-L7T"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7RP-dx-vTa" userLabel="Progress 7 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="180" y="0.0" width="10" height="10"/>
+                                        <rect key="frame" x="168" y="0.0" width="8" height="8"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="hFu-5V-LsT"/>
-                                            <constraint firstAttribute="width" constant="10" id="jV1-u5-eAm"/>
+                                            <constraint firstAttribute="width" constant="8" id="8Tb-pq-r0o"/>
+                                            <constraint firstAttribute="height" constant="8" id="nDg-w3-l0D"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E1P-NM-d0z" userLabel="Progress 7 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
+                                        <rect key="frame" x="196" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="8" id="TUD-HY-898"/>
+                                            <constraint firstAttribute="width" constant="8" id="iis-jy-Z3t"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
@@ -1468,7 +1520,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zCk-cf-jYJ">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ex. (555) 123-4567" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zCk-cf-jYJ">
                                                         <rect key="frame" x="0.0" y="26" width="288" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1490,7 +1542,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Shd-Oj-k9N" userLabel="mobile Text Field">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ex. (555) 123-4567" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Shd-Oj-k9N" userLabel="mobile Text Field">
                                                         <rect key="frame" x="0.0" y="26" width="288" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1512,7 +1564,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oGV-bI-vdD" userLabel="email Text Field">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ex. myaddress@email.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oGV-bI-vdD" userLabel="email Text Field">
                                                         <rect key="frame" x="0.0" y="26" width="288" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1584,96 +1636,109 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="VMe-g6-7tp" userLabel="Progress Stack View">
-                                <rect key="frame" x="65" y="534" width="190" height="10"/>
+                                <rect key="frame" x="58" y="536" width="204" height="8"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mjU-hz-YaK" userLabel="Progress 1 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="8" height="8"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="DUH-lR-MH2"/>
-                                            <constraint firstAttribute="width" constant="10" id="U6I-Ah-iFB"/>
+                                            <constraint firstAttribute="height" constant="8" id="Nd3-AT-1vV"/>
+                                            <constraint firstAttribute="width" constant="8" id="bSs-FZ-Xwf"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5sP-Du-cri" userLabel="Progress 2 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="0.0" width="10" height="10"/>
+                                        <rect key="frame" x="28" y="0.0" width="8" height="8"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="DOs-TA-QPS"/>
-                                            <constraint firstAttribute="width" constant="10" id="xfr-J3-YYD"/>
+                                            <constraint firstAttribute="width" constant="8" id="dui-O0-SZQ"/>
+                                            <constraint firstAttribute="height" constant="8" id="wRm-ws-CHD"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cQb-At-jEb" userLabel="Progress 3 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="60" y="0.0" width="10" height="10"/>
+                                        <rect key="frame" x="56" y="0.0" width="8" height="8"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="10" id="OBe-L7-axq"/>
-                                            <constraint firstAttribute="height" constant="10" id="fUZ-ys-mJO"/>
+                                            <constraint firstAttribute="height" constant="8" id="Msc-6s-MGH"/>
+                                            <constraint firstAttribute="width" constant="8" id="sEL-bk-hYR"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EsO-E0-gkL" userLabel="Progress 4 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="90" y="0.0" width="10" height="10"/>
+                                        <rect key="frame" x="84" y="0.0" width="8" height="8"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="adD-jJ-XEv"/>
-                                            <constraint firstAttribute="width" constant="10" id="s4A-Dy-8bK"/>
+                                            <constraint firstAttribute="height" constant="8" id="PRT-GR-BPb"/>
+                                            <constraint firstAttribute="width" constant="8" id="wGr-ZB-1Ko"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7ZP-V1-z4t" userLabel="Progress 5 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="120" y="0.0" width="10" height="10"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="112" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="10" id="57O-Bm-D3X"/>
-                                            <constraint firstAttribute="height" constant="10" id="Yey-SY-dSf"/>
+                                            <constraint firstAttribute="height" constant="8" id="a2m-uG-x7d"/>
+                                            <constraint firstAttribute="width" constant="8" id="adV-CB-ALu"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EoW-np-cSs" userLabel="Progress 6 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="150" y="0.0" width="10" height="10"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="140" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="PKB-Oi-WFX"/>
-                                            <constraint firstAttribute="width" constant="10" id="zea-zO-UfU"/>
+                                            <constraint firstAttribute="width" constant="8" id="P5w-lE-vyw"/>
+                                            <constraint firstAttribute="height" constant="8" id="hXb-kc-mnU"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7nq-YF-CWC" userLabel="Progress 7 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="180" y="0.0" width="10" height="10"/>
+                                        <rect key="frame" x="168" y="0.0" width="8" height="8"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="Rd9-U4-JMi"/>
-                                            <constraint firstAttribute="width" constant="10" id="f34-yZ-Jdv"/>
+                                            <constraint firstAttribute="height" constant="8" id="H9C-3f-iLD"/>
+                                            <constraint firstAttribute="width" constant="8" id="ypw-6l-JOJ"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r3n-ji-bRa" userLabel="Progress 7 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
+                                        <rect key="frame" x="196" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="8" id="XDd-cw-iDt"/>
+                                            <constraint firstAttribute="height" constant="8" id="riu-QB-dQW"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
@@ -1755,24 +1820,60 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4Xn-gA-RIX" userLabel="profile pic Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
                                         <subviews>
-                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X1M-p4-dgJ" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
+                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X1M-p4-dgJ">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_pic_placeholder_image.png" translatesAutoresizingMaskIntoConstraints="NO" id="Xx1-3Z-Sf4" userLabel="Profile Pic Image View">
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jAm-vz-OSz" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
                                                         <rect key="frame" x="80" y="0.0" width="160" height="160"/>
-                                                        <gestureRecognizers/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_pic_placeholder_image.png" translatesAutoresizingMaskIntoConstraints="NO" id="Xx1-3Z-Sf4" userLabel="Profile Pic Image View">
+                                                                <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                                                                <gestureRecognizers/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="160" id="ZTb-YD-g37"/>
+                                                                    <constraint firstAttribute="height" constant="160" id="gE3-Jv-xU5"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="160" id="ZTb-YD-g37"/>
-                                                            <constraint firstAttribute="height" constant="160" id="gE3-Jv-xU5"/>
+                                                            <constraint firstItem="Xx1-3Z-Sf4" firstAttribute="leading" secondItem="jAm-vz-OSz" secondAttribute="leading" id="1eB-bI-DBl"/>
+                                                            <constraint firstItem="Xx1-3Z-Sf4" firstAttribute="top" secondItem="jAm-vz-OSz" secondAttribute="top" id="BlF-hL-ziK"/>
+                                                            <constraint firstAttribute="bottom" secondItem="Xx1-3Z-Sf4" secondAttribute="bottom" id="Sse-5h-ogX"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Xx1-3Z-Sf4" secondAttribute="trailing" id="THy-aY-hDV"/>
+                                                            <constraint firstAttribute="height" constant="160" id="koX-a1-O8Z"/>
+                                                            <constraint firstAttribute="width" constant="160" id="yW0-Zp-2uK"/>
                                                         </constraints>
-                                                    </imageView>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="80"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="0.5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                                <real key="value" value="4"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                                <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                                <size key="value" width="2" height="2"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="320" id="1dS-aq-Rti"/>
-                                                    <constraint firstItem="Xx1-3Z-Sf4" firstAttribute="top" secondItem="X1M-p4-dgJ" secondAttribute="top" id="Jvw-Ru-ZFl"/>
-                                                    <constraint firstAttribute="bottom" secondItem="Xx1-3Z-Sf4" secondAttribute="bottom" id="gTa-OF-mtV"/>
-                                                    <constraint firstItem="Xx1-3Z-Sf4" firstAttribute="centerX" secondItem="X1M-p4-dgJ" secondAttribute="centerX" id="uLu-nW-uJj"/>
+                                                    <constraint firstAttribute="bottom" secondItem="jAm-vz-OSz" secondAttribute="bottom" id="2oE-pn-IiQ"/>
+                                                    <constraint firstItem="jAm-vz-OSz" firstAttribute="centerX" secondItem="X1M-p4-dgJ" secondAttribute="centerX" id="Dod-5L-tkv"/>
+                                                    <constraint firstItem="jAm-vz-OSz" firstAttribute="top" secondItem="X1M-p4-dgJ" secondAttribute="top" id="kvJ-89-uNM"/>
                                                     <constraint firstAttribute="height" constant="160" id="xIL-5t-bbh"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
@@ -1783,8 +1884,8 @@
                                             </view>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="X1M-p4-dgJ" firstAttribute="centerY" secondItem="4Xn-gA-RIX" secondAttribute="centerY" id="hlu-V7-UUV"/>
-                                            <constraint firstItem="X1M-p4-dgJ" firstAttribute="centerX" secondItem="4Xn-gA-RIX" secondAttribute="centerX" id="v8Q-Nh-OCz"/>
+                                            <constraint firstItem="X1M-p4-dgJ" firstAttribute="leading" secondItem="4Xn-gA-RIX" secondAttribute="leading" id="Ui0-Db-noS"/>
+                                            <constraint firstAttribute="trailing" secondItem="X1M-p4-dgJ" secondAttribute="trailing" id="miW-JW-oiE"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="ltJ-zL-4xU" userLabel="credentials Stack View">
@@ -1866,96 +1967,109 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="V9l-LX-z4N" userLabel="Progress Stack View">
-                                <rect key="frame" x="65" y="534" width="190" height="10"/>
+                                <rect key="frame" x="58" y="536" width="204" height="8"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z86-NL-KeR" userLabel="Progress 1 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="8" height="8"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="8oc-Zs-AZ3"/>
-                                            <constraint firstAttribute="width" constant="10" id="WsX-5f-Jtz"/>
+                                            <constraint firstAttribute="width" constant="8" id="I2c-8W-wSh"/>
+                                            <constraint firstAttribute="height" constant="8" id="Jkf-At-9Ts"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="exx-bG-PiR" userLabel="Progress 2 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="0.0" width="10" height="10"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="28" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="10" id="Akk-0t-FdN"/>
-                                            <constraint firstAttribute="height" constant="10" id="UUg-p1-kWY"/>
+                                            <constraint firstAttribute="height" constant="8" id="OM4-iz-5Kh"/>
+                                            <constraint firstAttribute="width" constant="8" id="Tkh-LL-NDV"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KXR-ty-2Yf" userLabel="Progress 3 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="60" y="0.0" width="10" height="10"/>
-                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="56" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="3oU-6H-VqP"/>
-                                            <constraint firstAttribute="width" constant="10" id="alV-8G-acI"/>
+                                            <constraint firstAttribute="height" constant="8" id="cne-LE-fs3"/>
+                                            <constraint firstAttribute="width" constant="8" id="tJm-W6-XQX"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Isq-XJ-5sY" userLabel="Progress 4 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="90" y="0.0" width="10" height="10"/>
+                                        <rect key="frame" x="84" y="0.0" width="8" height="8"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="43m-Rd-48I"/>
-                                            <constraint firstAttribute="width" constant="10" id="CFS-N5-dIc"/>
+                                            <constraint firstAttribute="height" constant="8" id="MzV-TV-goe"/>
+                                            <constraint firstAttribute="width" constant="8" id="lQs-5M-nPI"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1XS-dN-lVU" userLabel="Progress 5 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="120" y="0.0" width="10" height="10"/>
+                                        <rect key="frame" x="112" y="0.0" width="8" height="8"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="10" id="MiI-OR-P4C"/>
-                                            <constraint firstAttribute="height" constant="10" id="qSR-je-wdq"/>
+                                            <constraint firstAttribute="width" constant="8" id="Fnb-25-TOa"/>
+                                            <constraint firstAttribute="height" constant="8" id="Pek-Oo-Znk"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="44F-p0-bfH" userLabel="Progress 6 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="150" y="0.0" width="10" height="10"/>
+                                        <rect key="frame" x="140" y="0.0" width="8" height="8"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="10" id="EAE-9U-iUA"/>
-                                            <constraint firstAttribute="height" constant="10" id="be3-iG-TN4"/>
+                                            <constraint firstAttribute="height" constant="8" id="Y4w-K1-qxL"/>
+                                            <constraint firstAttribute="width" constant="8" id="kbD-Dl-HLO"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tPF-vy-H20" userLabel="Progress 7 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="180" y="0.0" width="10" height="10"/>
+                                        <rect key="frame" x="168" y="0.0" width="8" height="8"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="Izo-cZ-4uf"/>
-                                            <constraint firstAttribute="width" constant="10" id="P1M-ma-8cL"/>
+                                            <constraint firstAttribute="width" constant="8" id="0hK-jK-2Sh"/>
+                                            <constraint firstAttribute="height" constant="8" id="1k9-gu-9Ih"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0CE-ef-e5h" userLabel="Progress 7 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
+                                        <rect key="frame" x="196" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="8" id="4mA-Lx-JZb"/>
+                                            <constraint firstAttribute="width" constant="8" id="YU3-k7-rQY"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
@@ -2078,7 +2192,7 @@
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="50"/>
+                                                        <real key="value" value="60"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
@@ -2239,7 +2353,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="xav-Vo-Q5d" userLabel="Progress Stack View">
-                                <rect key="frame" x="72" y="544" width="176" height="8"/>
+                                <rect key="frame" x="58" y="544" width="204" height="8"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ySx-Qo-bjb" userLabel="Progress 1 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="8" height="8"/>
@@ -2321,10 +2435,23 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VBw-8h-H2D" userLabel="Progress 7 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
                                         <rect key="frame" x="168" y="0.0" width="8" height="8"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="8" id="CXE-Ff-zrs"/>
                                             <constraint firstAttribute="height" constant="8" id="a1d-UK-agN"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PUN-3l-ixz" userLabel="Progress 7 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
+                                        <rect key="frame" x="196" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="8" id="F9y-aB-sMn"/>
+                                            <constraint firstAttribute="width" constant="8" id="ntg-zp-ZbB"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -2421,7 +2548,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zFT-Nr-eSM" userLabel="emergency contact phone Text Field">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ex. (555) 123-4567" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zFT-Nr-eSM" userLabel="emergency contact phone Text Field">
                                                         <rect key="frame" x="0.0" y="26" width="288" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -2515,96 +2642,109 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Vmx-fN-27M" userLabel="Progress Stack View">
-                                <rect key="frame" x="65" y="534" width="190" height="10"/>
+                                <rect key="frame" x="58" y="536" width="204" height="8"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zdb-pR-tOs" userLabel="Progress 1 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="8" height="8"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="byF-Ed-Sai"/>
-                                            <constraint firstAttribute="width" constant="10" id="klA-2x-lo2"/>
+                                            <constraint firstAttribute="height" constant="8" id="pLi-2z-pWU"/>
+                                            <constraint firstAttribute="width" constant="8" id="qLF-Y4-0GB"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Twt-Aq-Pzc" userLabel="Progress 2 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="0.0" width="10" height="10"/>
+                                        <rect key="frame" x="28" y="0.0" width="8" height="8"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="10" id="GVW-Vj-JlV"/>
-                                            <constraint firstAttribute="height" constant="10" id="YZf-Hd-QGg"/>
+                                            <constraint firstAttribute="height" constant="8" id="jnp-VF-Yc2"/>
+                                            <constraint firstAttribute="width" constant="8" id="umq-51-bei"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dR6-59-DRa" userLabel="Progress 3 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="60" y="0.0" width="10" height="10"/>
+                                        <rect key="frame" x="56" y="0.0" width="8" height="8"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="k6w-LB-ho1"/>
-                                            <constraint firstAttribute="width" constant="10" id="nf6-RB-mhU"/>
+                                            <constraint firstAttribute="width" constant="8" id="8sh-AT-Ofz"/>
+                                            <constraint firstAttribute="height" constant="8" id="iMa-sM-e4g"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dFD-0Q-HNd" userLabel="Progress 4 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="90" y="0.0" width="10" height="10"/>
+                                        <rect key="frame" x="84" y="0.0" width="8" height="8"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="f73-fW-zb9"/>
-                                            <constraint firstAttribute="width" constant="10" id="ohe-Rs-K3v"/>
+                                            <constraint firstAttribute="height" constant="8" id="ZSH-WK-XFX"/>
+                                            <constraint firstAttribute="width" constant="8" id="ZcH-Ps-iHa"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LhX-QD-Bkc" userLabel="Progress 5 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="120" y="0.0" width="10" height="10"/>
+                                        <rect key="frame" x="112" y="0.0" width="8" height="8"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="9lJ-Dc-miy"/>
-                                            <constraint firstAttribute="width" constant="10" id="aLg-Mw-4F0"/>
+                                            <constraint firstAttribute="height" constant="8" id="Rze-QQ-rrv"/>
+                                            <constraint firstAttribute="width" constant="8" id="qLx-01-ymP"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OQp-77-j9b" userLabel="Progress 6 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="150" y="0.0" width="10" height="10"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="140" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="foR-Cc-xqz"/>
-                                            <constraint firstAttribute="width" constant="10" id="zYp-mi-eU0"/>
+                                            <constraint firstAttribute="height" constant="8" id="RaR-F5-hh6"/>
+                                            <constraint firstAttribute="width" constant="8" id="sLt-Wi-TeF"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AeV-Mq-iYz" userLabel="Progress 7 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="180" y="0.0" width="10" height="10"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="168" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="Vhh-AU-0Yk"/>
-                                            <constraint firstAttribute="width" constant="10" id="bJy-XV-EXK"/>
+                                            <constraint firstAttribute="width" constant="8" id="NIi-SJ-D70"/>
+                                            <constraint firstAttribute="height" constant="8" id="aWZ-bQ-sDt"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zBB-Qv-aBi" userLabel="Progress 7 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
+                                        <rect key="frame" x="196" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="8" id="IKC-hd-EXC"/>
+                                            <constraint firstAttribute="width" constant="8" id="i4H-sU-0X7"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>

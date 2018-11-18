@@ -20,6 +20,8 @@ class TakeProfilePicViewController: UIViewController {
     var lastName: String?
     var profilePic: UIImage?
     
+    let imagePickerController = UIImagePickerController()
+    
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     @IBOutlet weak var profilePicImageViewOutlet: UIImageView!
@@ -34,14 +36,16 @@ class TakeProfilePicViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let isOwner = isOwner, let isKid = isKid, let username = username, let password = password else { return }
-        
-        print("isOwner: \(isOwner) \nisKid: \(isKid) \nusername: \(username) \npassword: \(password) ")
-        
         // instantiate tapGestureRecognizer for the profilePicImageViewOutet
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TakeProfilePicViewController.profilePicImageTapped))
         profilePicImageViewOutlet.addGestureRecognizer(tapGestureRecognizer)
         profilePicImageViewOutlet.isUserInteractionEnabled = true
+        
+        imagePickerController.delegate = self
+        
+        // photo authorization code
+        
+        
         
         // Do any additional setup after loading the view.
     }

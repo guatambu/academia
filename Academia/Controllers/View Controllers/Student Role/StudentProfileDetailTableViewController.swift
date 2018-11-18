@@ -40,9 +40,9 @@ class StudentProfileDetailTableViewController: UITableViewController {
         
         if kidStudent != nil {
             // instantiate the relevant storyboard
-            let studentProfileFlowView: UIStoryboard = UIStoryboard(name: "StudentProfileFlow", bundle: nil)
+            let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             // instantiate the desired TableViewController as ViewController on relevant storyboard
-            let destViewController = studentProfileFlowView.instantiateViewController(withIdentifier: "toKidStudentDetails") as! KidStudentDetailsTableViewController
+            let destViewController = mainView.instantiateViewController(withIdentifier: "toProfileComplete") as! CompletedProfileViewController
             // create the segue programmatically
             self.navigationController?.pushViewController(destViewController, animated: true)
             // set the desired properties of the destinationVC's navgation Item
@@ -53,9 +53,9 @@ class StudentProfileDetailTableViewController: UITableViewController {
         } else if adultStudent != nil {
             
             // instantiate the relevant storyboard
-            let studentProfileFlowView: UIStoryboard = UIStoryboard(name: "StudentProfileFlow", bundle: nil)
+            let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             // instantiate the desired TableViewController as ViewController on relevant storyboard
-            let destViewController = studentProfileFlowView.instantiateViewController(withIdentifier: "toAdultStudentDetails") as! AdultStudentDetailsTableViewController
+            let destViewController = mainView.instantiateViewController(withIdentifier: "toProfileComplete") as! CompletedProfileViewController
             // create the segue programmatically
             self.navigationController?.pushViewController(destViewController, animated: true)
             // set the desired properties of the destinationVC's navgation Item

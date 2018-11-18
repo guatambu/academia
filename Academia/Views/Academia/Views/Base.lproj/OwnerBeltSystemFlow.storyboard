@@ -90,7 +90,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="nLT-dM-tZG" userLabel="blet disclaimer View">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="nLT-dM-tZG" userLabel="belt disclaimer View">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -110,16 +110,16 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="beltListCell" rowHeight="80" id="jaz-Ub-etz" customClass="GeneralMenuTableViewCell" customModule="Academia" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="188" width="375" height="80"/>
+                            <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="beltListCell" rowHeight="120" id="jaz-Ub-etz">
+                                <rect key="frame" x="0.0" y="188" width="375" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jaz-Ub-etz" id="ppE-Nh-eLu">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="7Nd-1Y-kAF" kind="show" identifier="toBeltDetail" id="LYv-V5-dva"/>
-                                </connections>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -129,11 +129,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="(type) Belt System" id="eCY-ci-QQB">
                         <barButtonItem key="backBarButtonItem" title=" " id="Xfc-86-C1V"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="16h-Mm-IEb">
-                            <connections>
-                                <segue destination="7Nd-1Y-kAF" kind="show" identifier="addNewBelt" id="9f1-Vz-Iiz"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="16h-Mm-IEb"/>
                     </navigationItem>
                     <connections>
                         <outlet property="beltDisclaimerLabelOutlet" destination="v5G-g1-HjW" id="XEl-BA-VIB"/>
@@ -142,45 +138,10 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i7s-ba-2PF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-740" y="4701"/>
-        </scene>
-        <!--Belt Detail Table View Controller-->
-        <scene sceneID="7hm-qu-i8h">
-            <objects>
-                <tableViewController id="7Nd-1Y-kAF" userLabel="Belt Detail Table View Controller" customClass="BeltDetailTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="xF7-Cd-wa8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="cVF-DX-riG" customClass="GeneralMenuTableViewCell" customModule="Academia" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="80"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cVF-DX-riG" id="Vv1-GI-hcg">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="7Nd-1Y-kAF" id="0dq-aL-je6"/>
-                            <outlet property="delegate" destination="7Nd-1Y-kAF" id="wuI-Ms-WW1"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Belt Detail" id="Tsx-02-UGb">
-                        <barButtonItem key="backBarButtonItem" title=" " id="9KY-cc-6Hn"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="ys8-Tr-oW8"/>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EeS-yR-LSS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1682" y="4701"/>
+            <point key="canvasLocation" x="-740" y="4700.5997001499254"/>
         </scene>
     </scenes>
     <resources>
         <image name="right_red_arrow_32.png" width="32" height="32"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="LYv-V5-dva"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -18,17 +18,14 @@ class Belt {
     // general properties
     var dateCreated: Date
     var dateEdited: Date
-    var name: InternationalStandardBJJBelts
+    var name: String
     var active: Bool
     var elligibleForNextBelt: Bool
-    var numberOfClassesToNextPromotion: Int
+    var classesToNextPromotion: Int
     var beltLevel: InternationalStandardBJJBelts
     
     // belt constructors
-    var kidStripes: Int?
-    var adultStripes: Int?
-    var blackBeltDegrees: Int?
-    var coralBeltDegrees: Int?    
+    var numberOfStripes: Int
 
     
     // MARK: - Initialization
@@ -37,15 +34,12 @@ class Belt {
     init(beltUID: UUID,
          dateCreated: Date,
          dateEdited: Date,
-         name: InternationalStandardBJJBelts,
+         name: String,
          active: Bool,
          elligibleForNextBelt: Bool,
-         numberOfClassesToNextPromotion: Int,
+         classesToNextPromotion: Int,
          beltLevel: InternationalStandardBJJBelts,
-         kidStripes: Int?,
-         adultStripes: Int?,
-         blackBeltDegrees: Int?,
-         coralBeltDegrees: Int?
+         numberOfStripes: Int
         ) {
         
         self.beltUID = beltUID
@@ -54,12 +48,9 @@ class Belt {
         self.name = name
         self.active = active
         self.elligibleForNextBelt = elligibleForNextBelt
-        self.numberOfClassesToNextPromotion = numberOfClassesToNextPromotion
+        self.classesToNextPromotion = classesToNextPromotion
         self.beltLevel = beltLevel
-        self.kidStripes = kidStripes
-        self.adultStripes = adultStripes
-        self.blackBeltDegrees = blackBeltDegrees
-        self.coralBeltDegrees = coralBeltDegrees
+        self.numberOfStripes = numberOfStripes
     }
 }
 
@@ -72,10 +63,9 @@ extension Belt: Equatable {
         if lhs.name != rhs.name { return false }
         if lhs.active != rhs.active { return false }
         if lhs.elligibleForNextBelt != rhs.elligibleForNextBelt { return false }
-        if lhs.kidStripes != rhs.kidStripes { return false }
-        if lhs.adultStripes != rhs.adultStripes { return false }
-        if lhs.blackBeltDegrees != rhs.blackBeltDegrees { return false }
-        if lhs.coralBeltDegrees != rhs.coralBeltDegrees { return false }
+        if lhs.classesToNextPromotion != rhs.classesToNextPromotion { return false }
+        if lhs.beltLevel != rhs.beltLevel { return false }
+        if lhs.numberOfStripes != rhs.numberOfStripes { return false }
         
         return true
     }
