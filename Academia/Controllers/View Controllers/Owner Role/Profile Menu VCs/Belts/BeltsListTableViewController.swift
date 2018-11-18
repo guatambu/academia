@@ -19,7 +19,6 @@ class BeltsListTableViewController: UITableViewController {
     var beltSystem: InternationalStandardBJJBelts?
     
     
-    
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,6 +37,9 @@ class BeltsListTableViewController: UITableViewController {
         
         guard let beltSystem = beltSystem?.rawValue else { return }
         self.title = beltSystem
+        
+        let nib = UINib(nibName: "BeltCellNib", bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: "beltCellNib")
     }
     
     
@@ -52,138 +54,30 @@ class BeltsListTableViewController: UITableViewController {
         }
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "beltCellNib", for: indexPath) as? BeltTableViewCell else { return UITableViewCell() }
         
         guard let beltSystem = beltSystem else { return UITableViewCell() }
         
-        guard let numberOfKidsWhiteBeltStripes = beltBuilder.kidsWhiteBeltStripes.last,
-              let allOtherKidsBeltStripes = beltBuilder.allOtherKidsBeltStripes.last,
-              let adultBasicBeltStripes = beltBuilder.adultBasicBeltStripes.last,
-              let blackBeltDegrees = beltBuilder.blackBeltDegrees.last,
-              let redBlackBeltDegrees = beltBuilder.redBlackBeltDegrees.last,
-              let redWhiteBeltDegrees = beltBuilder.redWhiteBeltDegrees.last,
-              let redBeltDegrees = beltBuilder.redBeltDegrees.last
-            else { return UITableViewCell() }
-        
         if beltSystem == .kidBelts {
-            
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "beltListCell", for: indexPath) as? BeltTableViewCell {
-                
-                let myCell = beltBuilder.kidsBelts[indexPath.row]
 
-                switch myCell {
-                
-                case .kidsWhiteBelt:
-                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .kidsWhiteBelt, numberOfStripes: numberOfKidsWhiteBeltStripes)
-                case .kidsGreyWhiteBelt:
-                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .kidsGreyWhiteBelt, numberOfStripes: allOtherKidsBeltStripes)
-                case .kidsGreyBelt:
-                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .kidsGreyBelt, numberOfStripes: allOtherKidsBeltStripes)
-                case .kidsGreyBlackBelt:
-                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .kidsGreyBlackBelt, numberOfStripes: allOtherKidsBeltStripes)
-                case .kidsYellowWhiteBelt:
-                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .kidsYellowWhiteBelt, numberOfStripes: allOtherKidsBeltStripes)
-                case .kidsYellowBelt:
-                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .kidsYellowBelt, numberOfStripes: allOtherKidsBeltStripes)
-                case .kidsYellowBlackBelt:
-                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .kidsYellowBlackBelt, numberOfStripes: allOtherKidsBeltStripes)
-                case .kidsOrangeWhiteBelt:
-                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .kidsOrangeWhiteBelt, numberOfStripes: allOtherKidsBeltStripes)
-                case .kidsOrangeBelt:
-                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .kidsOrangeBelt, numberOfStripes: allOtherKidsBeltStripes)
-                case .kidsOrangeBlackBelt:
-                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .kidsOrangeBlackBelt, numberOfStripes: allOtherKidsBeltStripes)
-                case .kidsGreenWhiteBelt:
-                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .kidsGreenWhiteBelt, numberOfStripes: allOtherKidsBeltStripes)
-                case .kidsGreenBelt:
-                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .kidsGreenBelt, numberOfStripes: allOtherKidsBeltStripes)
-                case .kidsGreenBlackBelt:
-                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .kidsGreyBlackBelt, numberOfStripes: allOtherKidsBeltStripes)
-                default: print("that's not a currently active kids belt to display")
-                }
-                return cell
-            }
-            return UITableViewCell()
+            let belt = beltBuilder.kidsBelts[indexPath.row]
+            
+            cell.belt = belt
+            
+            return cell
             
         } else if beltSystem == .adultBelts {
-            
-            // there must be a constraint issue significant enough in the programmatic belt builder to throw off the table view population
-            
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "beltListCell", for: indexPath) as? BeltTableViewCell {
                 
-                let myCell = beltBuilder.adultBelts[indexPath.row]
-                
-                switch myCell {
-
-                case .adultWhiteBelt:
-                    for view in beltBuilder.stripesStackView.arrangedSubviews {
-                        beltBuilder.stripesStackView.removeArrangedSubview(view)
-                        view.removeFromSuperview()
-                    }
-                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .adultWhiteBelt, numberOfStripes: adultBasicBeltStripes)
-                case .adultBlueBelt:
-                    for view in beltBuilder.stripesStackView.arrangedSubviews {
-                        beltBuilder.stripesStackView.removeArrangedSubview(view)
-                        view.removeFromSuperview()
-                    }
-                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .adultBlueBelt, numberOfStripes: adultBasicBeltStripes)
-                case .adultPurpleBelt:
-                    for view in beltBuilder.stripesStackView.arrangedSubviews {
-                        beltBuilder.stripesStackView.removeArrangedSubview(view)
-                        view.removeFromSuperview()
-                    }
-                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .adultPurpleBelt, numberOfStripes: adultBasicBeltStripes)
-                case .adultBrownBelt:
-                    for view in beltBuilder.stripesStackView.arrangedSubviews {
-                        beltBuilder.stripesStackView.removeArrangedSubview(view)
-                        view.removeFromSuperview()
-                    }
-                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .adultBrownBelt, numberOfStripes: adultBasicBeltStripes)
-                case .adultBlackBelt:
-                    for view in beltBuilder.stripesStackView.arrangedSubviews {
-                        beltBuilder.stripesStackView.removeArrangedSubview(view)
-                        view.removeFromSuperview()
-                    }
-                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .adultBlackBelt, numberOfStripes: blackBeltDegrees)
-                case .adultRedBlackBelt:
-                    for view in beltBuilder.stripesStackView.arrangedSubviews {
-                        beltBuilder.stripesStackView.removeArrangedSubview(view)
-                        view.removeFromSuperview()
-                    }
-                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .adultRedBlackBelt, numberOfStripes: redBlackBeltDegrees)
-                case .adultRedWhiteBelt:
-                    for view in beltBuilder.stripesStackView.arrangedSubviews {
-                        beltBuilder.stripesStackView.removeArrangedSubview(view)
-                        view.removeFromSuperview()
-                    }
-                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .adultRedWhiteBelt, numberOfStripes: redWhiteBeltDegrees)
-                case .adultRedBelt:
-                    for view in beltBuilder.stripesStackView.arrangedSubviews {
-                        beltBuilder.stripesStackView.removeArrangedSubview(view)
-                        view.removeFromSuperview()
-                    }
-                    beltBuilder.buildABelt(view: cell.beltHolderView, belt: .adultRedBelt, numberOfStripes: redBeltDegrees)
-                default:
-                    print("that's not a currently an active belt to display")
-
-                }
-                return cell
-            }
-            return UITableViewCell()
+            let belt = beltBuilder.adultBelts[indexPath.row]
+            
+            cell.belt = belt
+            
+            return cell
+            
         }
         return UITableViewCell()
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-
 }
 
