@@ -45,74 +45,67 @@ struct MockData {
 
     // adult basic belts
 
-    static let whiteBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.adultWhiteBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.adultWhiteBelt, numberOfStripes: 4)
+    static let whiteBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.adultWhiteBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.adultWhiteBelt, numberOfStripes: 4, beltTime: "1 year", minAgeRequirement: "none", iStripe: "1M", iiStripe: "1M", iiiStripe: "2M", ivStripe: "4M", vStripe: nil, viStripe: nil, viiStripe: nil, viiiStripe: nil, ixStripe: nil, xStripe: nil, xiStripe: nil)
 
 
-    static let blueBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.adultBlueBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.adultBlueBelt, numberOfStripes: 4)
+    static let blueBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.adultBlueBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.adultBlueBelt, numberOfStripes: 4, beltTime: "2 years", minAgeRequirement: "16 years", iStripe: "4M", iiStripe: "4M", iiiStripe: "5M", ivStripe: "5M", vStripe: nil, viStripe: nil, viiStripe: nil, viiiStripe: nil, ixStripe: nil, xStripe: nil, xiStripe: nil)
 
 
-    static let purpleBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.adultPurpleBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.adultPurpleBelt, numberOfStripes: 4)
-
-    static let brownBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.adultBrownBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.adultBrownBelt, numberOfStripes: 4)
-
+    static let purpleBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.adultPurpleBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.adultPurpleBelt, numberOfStripes: 4, beltTime: "1 1/2 years", minAgeRequirement: "16 years", iStripe: "3M", iiStripe: "3M", iiiStripe: "4M", ivStripe: "4M", vStripe: nil, viStripe: nil, viiStripe: nil, viiiStripe: nil, ixStripe: nil, xStripe: nil, xiStripe: nil)
+    
+    static let brownBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.adultBrownBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.adultBrownBelt, numberOfStripes: 4, beltTime: "1 1/2 years", minAgeRequirement: "18 years", iStripe: "3M", iiStripe: "3M", iiiStripe: "4M", ivStripe: "4M", vStripe: nil, viStripe: nil, viiStripe: nil, viiiStripe: nil, ixStripe: nil, xStripe: nil, xiStripe: nil)
 
     static var adultBasicBelts = [whiteBelt, blueBelt, purpleBelt, brownBelt]
 
     // adult black belts
 
-    static let blackBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.adultBlackBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.adultBlackBelt, numberOfStripes: 6)
+    static let blackBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.adultBlackBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.adultBlackBelt, numberOfStripes: 6, beltTime: "31 years", minAgeRequirement: "19 years", iStripe: "3Y", iiStripe: "3Y", iiiStripe: "3Y", ivStripe: "5Y", vStripe: "5Y", viStripe: "5Y", viiStripe: nil, viiiStripe: nil, ixStripe: nil, xStripe: nil, xiStripe: nil)
+
+    static let redBlackBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.adultRedBlackBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.adultRedBlackBelt, numberOfStripes: 7, beltTime: "7 years", minAgeRequirement: "50 years", iStripe: nil, iiStripe: nil, iiiStripe: nil, ivStripe: nil, vStripe: nil, viStripe: nil, viiStripe: nil, viiiStripe: nil, ixStripe: nil, xStripe: nil, xiStripe: nil)
 
 
-    static let redBlackBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.adultRedBlackBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.adultRedBlackBelt, numberOfStripes: 7)
+    static let redWhiteBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.adultRedWhiteBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.adultRedWhiteBelt, numberOfStripes: 8, beltTime: "10 years", minAgeRequirement: "57 years", iStripe: nil, iiStripe: nil, iiiStripe: nil, ivStripe: nil, vStripe: nil, viStripe: nil, viiStripe: nil, viiiStripe: nil, ixStripe: nil, xStripe: nil, xiStripe: nil)
 
 
-    static let redWhiteBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.adultRedWhiteBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.adultRedWhiteBelt, numberOfStripes: 8)
-
-
-    static let redBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.adultRedBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.adultRedBelt, numberOfStripes: 10)
+    static let redBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.adultRedBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.adultRedBelt, numberOfStripes: 10, beltTime: "", minAgeRequirement: "67 years", iStripe: nil, iiStripe: nil, iiiStripe: nil, ivStripe: nil, vStripe: nil, viStripe: nil, viiStripe: nil, viiiStripe: nil, ixStripe: nil, xStripe: "7Y", xiStripe: nil)
 
 
     static var blackBelts = [blackBelt, redBlackBelt, redWhiteBelt, redBelt]
 
     // kids belts
 
-    static let kidsWhiteBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.kidsWhiteBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.kidsWhiteBelt, numberOfStripes: 11)
+    static let kidsWhiteBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.kidsWhiteBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.kidsWhiteBelt, numberOfStripes: 11, beltTime: "1 year", minAgeRequirement: "3 years", iStripe: "1M", iiStripe: "1M", iiiStripe: "1M", ivStripe: "1M", vStripe: "1M", viStripe: nil, viiStripe: nil, viiiStripe: nil, ixStripe: nil, xStripe: nil, xiStripe: nil)
 
 
-    static let grayWhiteBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.kidsGreyWhiteBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.kidsGreyWhiteBelt, numberOfStripes: 11)
+    static let grayWhiteBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.kidsGreyWhiteBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.kidsGreyWhiteBelt, numberOfStripes: 11, beltTime: "1 year", minAgeRequirement: "3 years", iStripe: "1M", iiStripe: "1M", iiiStripe: "1M", ivStripe: "1M", vStripe: "1M", viStripe: "1M", viiStripe: "1M", viiiStripe: "1M", ixStripe: "1M", xStripe: "1M", xiStripe: nil)
 
 
-    static let grayBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.kidsGreyBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.kidsGreyBelt, numberOfStripes: 11)
+    static let grayBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.kidsGreyBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.kidsGreyBelt, numberOfStripes: 11, beltTime: "1 year", minAgeRequirement: "3 years", iStripe: "1M", iiStripe: "1M", iiiStripe: "1M", ivStripe: "1M", vStripe: "1M", viStripe: "1M", viiStripe: "1M", viiiStripe: "1M", ixStripe: "1M", xStripe: "1M", xiStripe: nil)
+
+    static let grayBlackBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.kidsGreyBlackBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.kidsGreyBlackBelt, numberOfStripes: 11, beltTime: "1 year", minAgeRequirement: "3 years", iStripe: "1M", iiStripe: "1M", iiiStripe: "1M", ivStripe: "1M", vStripe: "1M", viStripe: "1M", viiStripe: "1M", viiiStripe: "1M", ixStripe: "1M", xStripe: "1M", xiStripe: nil)
 
 
-    static let grayBlackBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.kidsGreyBlackBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.kidsGreyBlackBelt, numberOfStripes: 11)
+    static let yellowWhiteBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.kidsYellowWhiteBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.kidsYellowWhiteBelt, numberOfStripes: 11, beltTime: "1 year", minAgeRequirement: "3 years", iStripe: "1M", iiStripe: "1M", iiiStripe: "1M", ivStripe: "1M", vStripe: "1M", viStripe: "1M", viiStripe: "1M", viiiStripe: "1M", ixStripe: "1M", xStripe: "1M", xiStripe: nil)
 
 
-    static let yellowWhiteBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.kidsYellowWhiteBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.kidsYellowWhiteBelt, numberOfStripes: 11)
+    static let yellowBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.kidsYellowBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.kidsYellowBelt, numberOfStripes: 11, beltTime: "1 year", minAgeRequirement: "3 years", iStripe: "1M", iiStripe: "1M", iiiStripe: "1M", ivStripe: "1M", vStripe: "1M", viStripe: "1M", viiStripe: "1M", viiiStripe: "1M", ixStripe: "1M", xStripe: "1M", xiStripe: nil)
+
+    static let yellowBlackBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.kidsYellowBlackBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.kidsYellowBlackBelt, numberOfStripes: 11, beltTime: "1 year", minAgeRequirement: "3 years", iStripe: "1M", iiStripe: "1M", iiiStripe: "1M", ivStripe: "1M", vStripe: "1M", viStripe: "1M", viiStripe: "1M", viiiStripe: "1M", ixStripe: "1M", xStripe: "1M", xiStripe: nil)
+
+    static let orangeWhiteBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.kidsOrangeWhiteBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.kidsOrangeWhiteBelt, numberOfStripes: 11, beltTime: "1 year", minAgeRequirement: "3 years", iStripe: "1M", iiStripe: "1M", iiiStripe: "1M", ivStripe: "1M", vStripe: "1M", viStripe: "1M", viiStripe: "1M", viiiStripe: "1M", ixStripe: "1M", xStripe: "1M", xiStripe: nil)
 
 
-    static let yellowBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.kidsYellowBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.kidsYellowBelt, numberOfStripes: 11)
+    static let orangeBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.kidsOrangeBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.kidsOrangeBelt, numberOfStripes: 11, beltTime: "1 year", minAgeRequirement: "3 years", iStripe: "1M", iiStripe: "1M", iiiStripe: "1M", ivStripe: "1M", vStripe: "1M", viStripe: "1M", viiStripe: "1M", viiiStripe: "1M", ixStripe: "1M", xStripe: "1M", xiStripe: nil)
+    
+    static let orangeBlackBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.kidsOrangeBlackBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.kidsOrangeBlackBelt, numberOfStripes: 11, beltTime: "1 year", minAgeRequirement: "3 years", iStripe: "1M", iiStripe: "1M", iiiStripe: "1M", ivStripe: "1M", vStripe: "1M", viStripe: "1M", viiStripe: "1M", viiiStripe: "1M", ixStripe: "1M", xStripe: "1M", xiStripe: nil)
 
 
-    static let yellowBlackBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.kidsYellowBlackBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.kidsYellowBlackBelt, numberOfStripes: 11)
+    static let greenWhiteBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.kidsGreenWhiteBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.kidsGreenWhiteBelt, numberOfStripes: 11, beltTime: "1 year", minAgeRequirement: "3 years", iStripe: "1M", iiStripe: "1M", iiiStripe: "1M", ivStripe: "1M", vStripe: "1M", viStripe: "1M", viiStripe: "1M", viiiStripe: "1M", ixStripe: "1M", xStripe: "1M", xiStripe: nil)
 
 
-    static let orangeWhiteBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.kidsOrangeWhiteBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.kidsOrangeWhiteBelt, numberOfStripes: 11)
+    static let greenBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.kidsGreenBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.kidsGreenBelt, numberOfStripes: 11, beltTime: "1 year", minAgeRequirement: "3 years", iStripe: "1M", iiStripe: "1M", iiiStripe: "1M", ivStripe: "1M", vStripe: "1M", viStripe: "1M", viiStripe: "1M", viiiStripe: "1M", ixStripe: "1M", xStripe: "1M", xiStripe: nil)
 
-
-    static let orangeBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.kidsOrangeBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.kidsOrangeBelt, numberOfStripes: 11)
-
-
-    static let orangeBlackBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.kidsOrangeBlackBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.kidsOrangeBlackBelt, numberOfStripes: 11)
-
-
-    static let greenWhiteBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.kidsGreenWhiteBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.kidsGreenWhiteBelt, numberOfStripes: 11)
-
-
-    static let greenBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.kidsGreenBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.kidsGreenBelt, numberOfStripes: 11)
-
-
-    static let greenBlackBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.kidsGreenBlackBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.kidsGreenBlackBelt, numberOfStripes: 11)
+    static let greenBlackBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.kidsGreenBlackBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.kidsGreenBlackBelt, numberOfStripes: 11, beltTime: "1 year", minAgeRequirement: "3 years", iStripe: "1M", iiStripe: "1M", iiiStripe: "1M", ivStripe: "1M", vStripe: "1M", viStripe: "1M", viiStripe: "1M", viiiStripe: "1M", ixStripe: "1M", xStripe: "1M", xiStripe: nil)
 
 
     static var kidsBelts = [kidsWhiteBelt, grayWhiteBelt, grayBelt, grayBlackBelt, yellowWhiteBelt, yellowBelt, yellowBlackBelt, orangeWhiteBelt, orangeBelt, orangeBlackBelt, greenWhiteBelt, greenBelt, greenBlackBelt]

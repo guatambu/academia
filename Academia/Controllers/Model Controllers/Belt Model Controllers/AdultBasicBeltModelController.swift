@@ -19,9 +19,27 @@ class BeltModelController {
     // MARK: - CRUD Functions
     
     // Create
-    func addNew(name: String, active: Bool, elligibleForNextBelt: Bool, classesToNextPromotion: Int, beltLevel: InternationalStandardBJJBelts, numberOfStripes: Int) {
+    func addNew(name: String,
+                active: Bool,
+                elligibleForNextBelt: Bool,
+                classesToNextPromotion: Int,
+                beltLevel: InternationalStandardBJJBelts,
+                numberOfStripes: Int,
+                beltTime: String,
+                minAgeRequirement: String,
+                iStripe: String?,
+                iiStripe: String?,
+                iiiStripe: String?,
+                ivStripe: String?,
+                vStripe: String?,
+                viStripe: String?,
+                viiStripe: String?,
+                viiiStripe: String?,
+                ixStripe: String?,
+                xStripe: String?,
+                xiStripe: String?) {
         
-        let belt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: name, active: active, elligibleForNextBelt: elligibleForNextBelt, classesToNextPromotion: classesToNextPromotion, beltLevel: beltLevel, numberOfStripes: numberOfStripes)
+        let belt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: name, active: active, elligibleForNextBelt: elligibleForNextBelt, classesToNextPromotion: classesToNextPromotion, beltLevel: beltLevel, numberOfStripes: numberOfStripes, beltTime: beltTime, minAgeRequirement: minAgeRequirement, iStripe: iStripe, iiStripe: iiStripe, iiiStripe: iiiStripe, ivStripe: ivStripe, vStripe: vStripe, viStripe: viStripe, viiStripe: viiStripe, viiiStripe: viiiStripe, ixStripe: ixStripe, xStripe: xiStripe, xiStripe: xiStripe)
         
         belts.append(belt)
     }
