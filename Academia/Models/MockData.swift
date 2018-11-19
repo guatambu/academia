@@ -71,6 +71,8 @@ struct MockData {
 
 
     static var blackBelts = [blackBelt, redBlackBelt, redWhiteBelt, redBelt]
+    
+    static var allAdultBelts = [whiteBelt, blueBelt, purpleBelt, brownBelt, blackBelt, redBlackBelt, redWhiteBelt, redBelt]
 
     // kids belts
 
