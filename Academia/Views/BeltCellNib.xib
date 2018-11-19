@@ -20,7 +20,7 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bha-yz-iNo" userLabel="belt holder View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
                         <rect key="frame" x="16" y="0.0" width="343" height="40"/>
-                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="xR5-zd-1YZ"/>
                         </constraints>
