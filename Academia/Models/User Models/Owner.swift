@@ -35,6 +35,7 @@ class Owner {
     
     // Strings
     var username: String
+    var password: String
     var firstName: String
     var lastName: String
     var addressLine1: String
@@ -64,6 +65,7 @@ class Owner {
          belt: Belt,
          profilePic: UIImage?,
          username: String,
+         password: String,
          firstName: String,
          lastName: String,
          addressLine1: String,
@@ -92,6 +94,7 @@ class Owner {
         self.permission = permission
         self.profilePic = profilePic
         self.username = username
+        self.password = password
         self.firstName = firstName
         self.lastName = lastName
         self.addressLine1 = addressLine1
@@ -120,6 +123,7 @@ extension Owner: Equatable {
         if lhs.permission != rhs.permission { return false }
         if lhs.belt != rhs.belt { return false }
         if lhs.username != rhs.username { return false }
+        if lhs.password != rhs.password { return false }
         if lhs.firstName != rhs.firstName { return false }
         if lhs.lastName != rhs.lastName { return false }
         if lhs.addressLine1 != rhs.addressLine1 { return false }

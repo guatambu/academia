@@ -1,14 +1,14 @@
 //
-//  CompletedProfileViewController.swift
+//  OwnerProfileDetailsViewController.swift
 //  Academia
 //
-//  Created by Michael Guatambu Davis on 11/6/18.
+//  Created by Michael Guatambu Davis on 11/19/18.
 //  Copyright © 2018 DunDak, LLC. All rights reserved.
 //
 
 import UIKit
 
-class CompletedProfileViewController: UIViewController {
+class OwnerProfileDetailsViewController: UIViewController {
     
     // MARK: - Properties
     
@@ -33,12 +33,9 @@ class CompletedProfileViewController: UIViewController {
     var emergencyContactPhone: String?
     var emergencyContactRelationship: String?
     
-    var belt: Belt?
-    
     let beltBuilder = BeltBuilder()
     
-    // name / username outlets
-    @IBOutlet weak var nameLabelOutlet: UILabel!
+    // username outlets
     @IBOutlet weak var usernameLabelOutlet: UILabel!
     // profile pic imageView
     @IBOutlet weak var profilePicImageView: UIImageView!
@@ -58,67 +55,36 @@ class CompletedProfileViewController: UIViewController {
     @IBOutlet weak var emergencyContactNameLabelOutlet: UILabel!
     @IBOutlet weak var emergencyContactRelationshipLabelOutlet: UILabel!
     @IBOutlet weak var emergencyContactPhoneLabelOutlet: UILabel!
-    
-    @IBOutlet weak var firstProgressDotOutlet: DesignableView!
-    
+
     
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
         
-        // hide first progress dot for owner users
-        guard let isOwner = isOwner else { return }
-        
-        if isOwner {
-            firstProgressDotOutlet.isHidden = true
-        }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Do any additional setup after loading the view.
-        
         populateCompletedProfileInfo(isOwner: isOwner, isKid: isKid, username: username, password: password, firstName: firstName, lastName: lastName, profilePic: profilePic, beltLevel: beltLevel, numberOfStripes: numberOfStripes, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, phone: phone, mobile: mobile, email: email, emergencyContactName: emergencyContactName, emergencyContactPhone: emergencyContactPhone, emergencyContactRelationship: emergencyContactRelationship)
         
     }
     
-    
-    // MARK: - Actions
-    
-    @IBAction func createAccountButtonTapped(_ sender: DesignableButton) {
-        
-        // place network call to firebase firestore for account creation
-        
-        // programmatically performing the segue
-        guard let isOwner = isOwner else { return }
-        if isOwner {
-            
-            // instantiate the relevant storyboard for the Owner
-            let mainView: UIStoryboard = UIStoryboard(name: "OwnerBaseCampFlow", bundle: nil)
-            // create the UITabBarController segue programmatically - MODAL
-            if let tabBarDestViewController = (mainView.instantiateViewController(withIdentifier: "toOwnerBaseCamp") as? UITabBarController) {
-                self.present(tabBarDestViewController, animated: true, completion: nil)
-            }
-        } else {
-            
-            // instantiate the relevant storyboard for the Student (Kid or Adult... both are directed to the same TabBarController)
-            let mainView: UIStoryboard = UIStoryboard(name: "StudentBaseCampFlow", bundle: nil)
-            // create the UITabBarController segue programmatically - MODAL
-            if let tabBarDestViewController = (mainView.instantiateViewController(withIdentifier: "toStudentDashbooard") as? UITabBarController) {
-                self.present(tabBarDestViewController, animated: true, completion: nil)
-            }
-        }
-        // set the desired properties of the destinationVC's navigation Item
-    }
-    
-    // MARK: - Helper Methods
-    
 
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
 }
 
-//MARK: - populate CompletedProfileVC with user info for display at viewDidLoad()
-extension CompletedProfileViewController {
+
+extension OwnerProfileDetailsViewController {
     
     func populateCompletedProfileInfo(isOwner: Bool?,
                                       isKid: Bool?,
@@ -164,7 +130,7 @@ extension CompletedProfileViewController {
         print("isOwner: \(isOwner) \nisKid: \(isKid) \nusername: \(username) \npassword: \(password) \nfirstName: \(firstName) \nlastName: \(lastName) \nbeltLevel: \(beltLevel.rawValue) \nnumberOfStripes: \(numberOfStripes) \naddressLine1: \(addressLine1) \naddressLine2: \(String(describing: addressLine2)) \ncity: \(city) \nstate: \(state) \nzipCode: \(zipCode) \nphone: \(phone) \nmobile: \(String(describing: mobile)) \nemail: \(email) \nemergencyContactName: \(emergencyContactName) \nemergencyContactRelationship: \(emergencyContactRelationship) \nemergencyContactPhone: \(emergencyContactPhone)")
         
         // populate UI elements in VC
-        nameLabelOutlet.text = "\(firstName) \(lastName)"
+        self.title = "\(firstName) \(lastName)"
         usernameLabelOutlet.text = username
         // contact info outlets
         phoneLabelOutlet.text = phone
@@ -189,68 +155,5 @@ extension CompletedProfileViewController {
         // belt holder UIView
         beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: numberOfStripes)
     }
-    
-    func createBelt() {
-        
-    }
-    
-    func createOwner(username: String?,
-                     password: String?,
-                     firstName: String?,
-                     lastName: String?,
-                     profilePic: UIImage?,
-                     belt: Belt?,
-                     addressLine1: String?,
-                     addressLine2: String?,
-                     city: String?,
-                     state: String?,
-                     zipCode: String?,
-                     phone: String?,
-                     mobile: String?,
-                     email: String?,
-                     emergencyContactName: String?,
-                     emergencyContactPhone: String?,
-                     emergencyContactRelationship: String?) {
-        
-        guard let profilePic = profilePic else { print("fail profilePic"); return }
-        guard let username = username else { print("fail username"); return }
-        guard let password = password else { print("fail password"); return }
-        guard let firstName = firstName else { print("fail firtsName"); return }
-        guard let lastName = lastName else { print("fail lastName"); return }
-        guard let belt = belt else { print("fail belt"); return }
-        guard let addressLine1 = addressLine1 else { print("fail addressLine1"); return }
-        guard let city = city else { print("fail city"); return }
-        guard let state = state else { print("fail state"); return }
-        guard let zipCode = zipCode else { print("fail zip"); return }
-        guard let phone = phone else { print("fail phone"); return }
-        guard let email = email else { print("fail email"); return }
-        guard let emergencyContactName = emergencyContactName else { print("fail emergencyContactName"); return }
-        guard let emergencyContactRelationship = emergencyContactRelationship else { print("fail emergencyContactRelationship"); return }
-        guard let emergencyContactPhone = emergencyContactPhone else { print("fail emergencyContactPhone"); return }
-        
-        let addressLine2 = addressLine2 ?? ""
-        let mobile = mobile ?? ""
-        
-        OwnerModelController.shared.addNew(birthdate: Date(),
-                                           belt: belt,
-                                           profilePic: profilePic,
-                                           username: username,
-                                           password: password,
-                                           firstName: firstName,
-                                           lastName: lastName,
-                                           addressLine1: addressLine1,
-                                           addressLine2: addressLine2,
-                                           city: city,
-                                           state: state,
-                                           zipCode: zipCode,
-                                           phone: phone,
-                                           mobile: mobile,
-                                           email: email,
-                                           emergencyContactName: emergencyContactName,
-                                           emergencyContactPhone: emergencyContactPhone,
-                                           emergencyContactRelationship: emergencyContactRelationship)
-        
-    }
 }
-
 

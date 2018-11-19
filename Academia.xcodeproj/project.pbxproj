@@ -29,6 +29,7 @@
 		FA23D28A2167E31200707056 /* BeltModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23D2892167E31200707056 /* BeltModelController.swift */; };
 		FA23D2922167F9EF00707056 /* OnBoardingTaskModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23D2912167F9EF00707056 /* OnBoardingTaskModelController.swift */; };
 		FA41CE6721A1336F00EAD53A /* BeltCellNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA41CE6621A1336F00EAD53A /* BeltCellNib.xib */; };
+		FA41CE6B21A344B100EAD53A /* OwnerProfileDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41CE6A21A344B100EAD53A /* OwnerProfileDetailsViewController.swift */; };
 		FA463DE4219F4343001CDDD7 /* BeltTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA463DE3219F4343001CDDD7 /* BeltTableViewCell.swift */; };
 		FA4DF32C218CCA0300ECC167 /* Technique.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4DF32B218CCA0300ECC167 /* Technique.swift */; };
 		FA4DF32E218CCA1A00ECC167 /* CurriculumModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4DF32D218CCA1A00ECC167 /* CurriculumModule.swift */; };
@@ -257,6 +258,7 @@
 		FA23D2892167E31200707056 /* BeltModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeltModelController.swift; sourceTree = "<group>"; };
 		FA23D2912167F9EF00707056 /* OnBoardingTaskModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingTaskModelController.swift; sourceTree = "<group>"; };
 		FA41CE6621A1336F00EAD53A /* BeltCellNib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BeltCellNib.xib; sourceTree = "<group>"; };
+		FA41CE6A21A344B100EAD53A /* OwnerProfileDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerProfileDetailsViewController.swift; sourceTree = "<group>"; };
 		FA463DE3219F4343001CDDD7 /* BeltTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeltTableViewCell.swift; sourceTree = "<group>"; };
 		FA4DF32B218CCA0300ECC167 /* Technique.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Technique.swift; sourceTree = "<group>"; };
 		FA4DF32D218CCA1A00ECC167 /* CurriculumModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumModule.swift; sourceTree = "<group>"; };
@@ -791,6 +793,7 @@
 		FA9AD9F3213780DD0005E1F1 /* Profile Menu VCs */ = {
 			isa = PBXGroup;
 			children = (
+				FA41CE6A21A344B100EAD53A /* OwnerProfileDetailsViewController.swift */,
 				FA9AD9F4213782070005E1F1 /* TutorialsTableViewController.swift */,
 				FA9AD9F8213783BA0005E1F1 /* MyLocationsTableViewController.swift */,
 				FA9ADA0C213789760005E1F1 /* MyLocationsDetailTableViewController.swift */,
@@ -1299,6 +1302,7 @@
 				FA9ADA2D2139EE6C0005E1F1 /* IsInstructorTableViewCell.swift in Sources */,
 				FACA3EB7219289310099E620 /* TakeProfilePicViewController.swift in Sources */,
 				FA6FBA012149F33100558657 /* AdultStudent.swift in Sources */,
+				FA41CE6B21A344B100EAD53A /* OwnerProfileDetailsViewController.swift in Sources */,
 				FA21D6862130BB93006790E5 /* StudentsByListGroupingTableViewController.swift in Sources */,
 				FA0C441621278A8F00B59194 /* AppDelegate.swift in Sources */,
 				FAF29BDD213087F600752414 /* GeneralMenuTableViewCell.swift in Sources */,

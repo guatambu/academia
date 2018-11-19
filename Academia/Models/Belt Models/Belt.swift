@@ -18,7 +18,6 @@ class Belt {
     // general properties
     var dateCreated: Date
     var dateEdited: Date
-    var name: String
     var active: Bool
     var elligibleForNextBelt: Bool
     var classesToNextPromotion: Int
@@ -26,8 +25,8 @@ class Belt {
     // belt constructors
     var numberOfStripes: Int
     // belt promotion specifications
-    var beltTime: String
-    var minAgeRequirement: String
+    var beltTime: String?
+    var minAgeRequirement: String?
     var iStripe: String?
     var iiStripe: String?
     var iiiStripe: String?
@@ -45,17 +44,14 @@ class Belt {
     // MARK: - Initialization
     
     // Memberwise Initializer
-    init(beltUID: UUID,
-         dateCreated: Date,
-         dateEdited: Date,
-         name: String,
-         active: Bool,
-         elligibleForNextBelt: Bool,
+    init(beltUID: UUID = UUID(),
+         dateCreated: Date = Date(),
+         dateEdited: Date = Date(),
          classesToNextPromotion: Int,
          beltLevel: InternationalStandardBJJBelts,
          numberOfStripes: Int,
-         beltTime: String,
-         minAgeRequirement: String,
+         beltTime: String?,
+         minAgeRequirement: String?,
          iStripe: String?,
          iiStripe: String?,
          iiiStripe: String?,
@@ -72,9 +68,8 @@ class Belt {
         self.beltUID = beltUID
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
-        self.name = name
-        self.active = active
-        self.elligibleForNextBelt = elligibleForNextBelt
+        self.active = true
+        self.elligibleForNextBelt = false
         self.classesToNextPromotion = classesToNextPromotion
         self.beltLevel = beltLevel
         self.numberOfStripes = numberOfStripes
@@ -92,6 +87,29 @@ class Belt {
         self.xStripe = xStripe
         self.xiStripe = xiStripe
     }
+    
+    // convenience initializer
+    convenience init(classesToNextPromotion: Int,
+                     beltLevel: InternationalStandardBJJBelts,
+                     numberOfStripes: Int) {
+        
+        self.init(classesToNextPromotion: classesToNextPromotion,
+                  beltLevel: beltLevel,
+                  numberOfStripes: numberOfStripes,
+                  beltTime: nil,
+                  minAgeRequirement: nil,
+                  iStripe: nil,
+                  iiStripe: nil,
+                  iiiStripe: nil,
+                  ivStripe: nil,
+                  vStripe: nil,
+                  viStripe: nil,
+                  viiStripe: nil,
+                  viiiStripe: nil,
+                  ixStripe: nil,
+                  xStripe: nil,
+                  xiStripe: nil)
+    }
 }
 
 extension Belt: Equatable {
@@ -100,7 +118,6 @@ extension Belt: Equatable {
         if lhs.beltUID != rhs.beltUID { return false }
         if lhs.dateCreated != rhs.dateCreated { return false }
         if lhs.dateEdited != rhs.dateEdited { return false }
-        if lhs.name != rhs.name { return false }
         if lhs.active != rhs.active { return false }
         if lhs.elligibleForNextBelt != rhs.elligibleForNextBelt { return false }
         if lhs.classesToNextPromotion != rhs.classesToNextPromotion { return false }

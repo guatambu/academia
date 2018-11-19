@@ -19,10 +19,7 @@ class BeltModelController {
     // MARK: - CRUD Functions
     
     // Create
-    func addNew(name: String,
-                active: Bool,
-                elligibleForNextBelt: Bool,
-                classesToNextPromotion: Int,
+    func addNew(classesToNextPromotion: Int,
                 beltLevel: InternationalStandardBJJBelts,
                 numberOfStripes: Int,
                 beltTime: String,
@@ -39,7 +36,7 @@ class BeltModelController {
                 xStripe: String?,
                 xiStripe: String?) {
         
-        let belt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: name, active: active, elligibleForNextBelt: elligibleForNextBelt, classesToNextPromotion: classesToNextPromotion, beltLevel: beltLevel, numberOfStripes: numberOfStripes, beltTime: beltTime, minAgeRequirement: minAgeRequirement, iStripe: iStripe, iiStripe: iiStripe, iiiStripe: iiiStripe, ivStripe: ivStripe, vStripe: vStripe, viStripe: viStripe, viiStripe: viiStripe, viiiStripe: viiiStripe, ixStripe: ixStripe, xStripe: xiStripe, xiStripe: xiStripe)
+        let belt = Belt(classesToNextPromotion: classesToNextPromotion, beltLevel: beltLevel, numberOfStripes: numberOfStripes, beltTime: beltTime, minAgeRequirement: minAgeRequirement, iStripe: iStripe, iiStripe: iiStripe, iiiStripe: iiiStripe, ivStripe: ivStripe, vStripe: vStripe, viStripe: viStripe, viiStripe: viiStripe, viiiStripe: viiiStripe, ixStripe: ixStripe, xStripe: xiStripe, xiStripe: xiStripe)
         
         belts.append(belt)
     }
@@ -48,10 +45,9 @@ class BeltModelController {
     
     
     // Update
-    func update(belt: Belt, name: String, active: Bool, elligibleForNextBelt: Bool, classesToNextPromotion: Int, beltLevel: InternationalStandardBJJBelts, numberOfStripes: Int) {
+    func update(belt: Belt, active: Bool, elligibleForNextBelt: Bool, classesToNextPromotion: Int, beltLevel: InternationalStandardBJJBelts, numberOfStripes: Int) {
         
         belt.dateEdited = Date()
-        belt.name = name
         belt.active = active
         belt.elligibleForNextBelt = elligibleForNextBelt
         belt.classesToNextPromotion = classesToNextPromotion
