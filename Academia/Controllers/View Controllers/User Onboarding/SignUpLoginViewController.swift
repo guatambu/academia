@@ -45,6 +45,7 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         passwordTextField.autocapitalizationType = UITextAutocapitalizationType.none
         confirmPasswordTextField.autocapitalizationType = UITextAutocapitalizationType.none
         
+        // hide first progress dot for owner users
         guard let isOwner = isOwner else { return }
         
         if isOwner {

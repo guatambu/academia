@@ -57,8 +57,20 @@ class CompletedProfileViewController: UIViewController {
     @IBOutlet weak var emergencyContactRelationshipLabelOutlet: UILabel!
     @IBOutlet weak var emergencyContactPhoneLabelOutlet: UILabel!
     
+    @IBOutlet weak var firstProgressDotOutlet: DesignableView!
+    
     
     // MARK: - ViewController Lifecycle Functions
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        // hide first progress dot for owner users
+        guard let isOwner = isOwner else { return }
+        
+        if isOwner {
+            firstProgressDotOutlet.isHidden = true
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

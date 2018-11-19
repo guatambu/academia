@@ -41,8 +41,20 @@ class AddressViewController: UIViewController {
     @IBOutlet weak var zipCodeLabelOutlet: UILabel!
     @IBOutlet weak var zipCodeTextField: UITextField!
     
+    @IBOutlet weak var firstProgressDotOutlet: DesignableView!
+    
     
     // MARK: - ViewController Lifecycle Functions
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        // hide first progress dot for owner users
+        guard let isOwner = isOwner else { return }
+        
+        if isOwner {
+            firstProgressDotOutlet.isHidden = true
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

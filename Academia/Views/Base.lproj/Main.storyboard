@@ -1155,6 +1155,7 @@
                     <connections>
                         <outlet property="beltHolderViewOutlet" destination="tIo-gd-Eif" id="yAY-e6-RpV"/>
                         <outlet property="beltLevelPickerView" destination="axk-NK-laR" id="r6N-De-Wfr"/>
+                        <outlet property="firstProgressDotOutlet" destination="M20-XX-wsh" id="Enn-OC-vPZ"/>
                         <outlet property="nextButtonOutlet" destination="rOe-Eg-NUk" id="Rw6-yM-e4G"/>
                         <outlet property="welcomeInstructionsLabelOutlet" destination="jS8-29-PJZ" id="1QG-Zy-6qj"/>
                         <outlet property="welcomeLabeOutlet" destination="VU4-gQ-df6" id="215-LD-vul"/>
@@ -1485,6 +1486,7 @@
                         <outlet property="addressLine2TextField" destination="JZM-ae-XSW" id="Uvc-Vr-L0X"/>
                         <outlet property="cityLabelOutlet" destination="WgS-ze-28V" id="kV4-BT-Er4"/>
                         <outlet property="cityTextField" destination="Ydw-YA-IwU" id="kWQ-XZ-3ap"/>
+                        <outlet property="firstProgressDotOutlet" destination="thI-4i-jef" id="YMW-U9-qgm"/>
                         <outlet property="stateLabelOutlet" destination="gCX-wd-bPr" id="M5n-30-YUM"/>
                         <outlet property="stateTextField" destination="E0j-7v-PIT" id="3KD-RV-ZYr"/>
                         <outlet property="welcomeInstructionsLabelOutlet" destination="PJI-kg-WIi" id="heX-9s-tpq"/>
@@ -1765,6 +1767,7 @@
                     <connections>
                         <outlet property="emailOutlet" destination="oYP-P4-Ybd" id="4xg-CU-fd5"/>
                         <outlet property="emailTextField" destination="oGV-bI-vdD" id="ZSs-Zn-hp9"/>
+                        <outlet property="firstProgressDotOutlet" destination="mjU-hz-YaK" id="4kc-dK-Bj3"/>
                         <outlet property="mobileLabelOutlet" destination="R4k-TD-VhF" id="tWb-wM-iUV"/>
                         <outlet property="mobileTextField" destination="Shd-Oj-k9N" id="tAJ-wt-sCS"/>
                         <outlet property="phoneLabelOutlet" destination="pfE-o7-Bnx" id="ihr-yV-9I7"/>
@@ -2096,6 +2099,7 @@
                     <connections>
                         <outlet property="firstNameLabelOutlet" destination="bw2-x7-wRe" id="5ZR-7U-1w9"/>
                         <outlet property="firstNameTextField" destination="qqt-Ex-yPa" id="Gqh-di-lWm"/>
+                        <outlet property="firstProgressDotOutlet" destination="z86-NL-KeR" id="leL-zT-qiL"/>
                         <outlet property="lastNameLabelOutlet" destination="rxz-k6-3ma" id="Cub-Oz-B5K"/>
                         <outlet property="lastNameTextField" destination="qyc-gt-GHQ" id="sZl-tN-Vtz"/>
                         <outlet property="profilePicImageViewOutlet" destination="Xx1-3Z-Sf4" id="OvE-Un-1Eh"/>
@@ -2490,6 +2494,7 @@
                         <outlet property="emergencyContactNameLabelOutlet" destination="yLg-XP-oXb" id="IsA-tW-wLA"/>
                         <outlet property="emergencyContactPhoneLabelOutlet" destination="sTP-1K-S3P" id="blt-UM-DiX"/>
                         <outlet property="emergencyContactRelationshipLabelOutlet" destination="Vwc-qP-AtJ" id="YVQ-Sr-IIk"/>
+                        <outlet property="firstProgressDotOutlet" destination="ySx-Qo-bjb" id="0wP-Gy-gLU"/>
                         <outlet property="mobileLabelOutlet" destination="0NJ-jb-0G8" id="NNs-wd-yx9"/>
                         <outlet property="nameLabelOutlet" destination="8G2-C7-JqR" id="omS-0U-qwl"/>
                         <outlet property="phoneLabelOutlet" destination="1Dk-JI-M0e" id="SAw-zY-uqc"/>
@@ -2775,6 +2780,7 @@
                         <outlet property="emergencyContactPhoneTextField" destination="zFT-Nr-eSM" id="xcc-lU-5KE"/>
                         <outlet property="emergencyContactRelationshipOutlet" destination="Omz-k9-fgv" id="Lwk-dy-UOD"/>
                         <outlet property="emergencyContactRelationshipTextField" destination="plq-5q-JLg" id="rOG-Ms-2J0"/>
+                        <outlet property="firstProgressDotOutlet" destination="zdb-pR-tOs" id="MQA-eQ-bz5"/>
                         <outlet property="welcomeInstructionsLabelOutlet" destination="LBT-dY-Jbn" id="6Qq-dq-acp"/>
                         <outlet property="welcomeLabeOutlet" destination="blQ-vT-axg" id="mbE-F4-O1N"/>
                     </connections>
