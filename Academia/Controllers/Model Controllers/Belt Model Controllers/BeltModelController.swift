@@ -1,5 +1,5 @@
 //
-//  AdultBasicBeltModelController.swift
+//  BeltModelController.swift
 //  Academia
 //
 //  Created by Michael Guatambu Davis on 10/5/18.

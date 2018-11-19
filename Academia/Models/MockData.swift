@@ -17,23 +17,18 @@ struct MockData {
     // 3. should be ready to go going forward
 
     // groups
-
     static var allStudents = Group(groupUID: UUID(), active: true, name: "all students", dateCreated: Date(), dateEdited: Date(), members: [owner, adultA])
 
     // location
-
     static var myLocation = Location(locationUID: UUID(), active: true, dateCreated: Date(), dateEdited: Date(), profilePic: #imageLiteral(resourceName: "owner_sample.png"), locationName: "my location", streetAddress: "1267 the spot blvd.", city: "you know", state: "LA", zipCode: "09854", phone: "987-876-1230", website: "www.theschool.gov", email: "email@theschool.gov", social: nil)
 
     // payment programs
-
     static var programA: PaymentProgram = PaymentProgram(paymentProgramUID: UUID(), active: true, programName: "programA", dateCreated: Date(), dateEdited: Date(), billingType: ["digital"], billingOptions: ["1st of month"], paymentDescription: "things", paymentAgreement: "stuff", signatureType: ["digital"])
 
     // classes
-
     static let adultClassA: Aula = Aula(aulaUID: UUID(), active: true, aulaName: "adult A", aulaDescription: "A class for the adults",  daysOfTheWeek: [Weekdays.Monday, Weekdays.Wednesday, Weekdays.Friday], timeOfDay: Aula.ClassTimes.nineteen, location: myLocation, students: [adultA], instructor: [adultA], currentDate: Date(), dateCreated: Date(), dateEdited: Date(), attendees: [adultA])
 
     // users
-
     static var owner: Owner = Owner(ownerUID: UUID(), isInstructor: true, dateCreated: Date(), dateEdited: Date(), birthdate: Date(), promotions: nil, mostRecentPromotion: nil, attendance: nil, groups: nil, permission: UserPermissions.owner, belt: blackBelt, profilePic: #imageLiteral(resourceName: "owner_sample.png"), username: "owner", firstName: "steve", lastName: "meister", addressLine1: "1234 street dr.", addressLine2: "123", city: "coolville", state: "CA", zipCode: "93421", phone: "(523) 763-0961", mobile: "(312) 736-7843", email: "my@email.com", emergencyContactName: "margaret stewart", emergencyContactPhone: "345-123-0987", emergencyContactRelationship: "bae")
 
     static var adultA: AdultStudent = AdultStudent(adultStudentUID: UUID(), isInstructor: true, dateCreated: Date(), dateEdited: Date(), birthdate: Date(), promotions: nil, mostRecentPromotion: nil, attendance: nil, studentStatus: [StudentStatus.active, StudentStatus.paid], groups: nil, paymentProgram: programA, permission: [UserPermissions.instructor, UserPermissions.adultStudent], belt: purpleBelt, profilePic: #imageLiteral(resourceName: "student_sample.jpg"), username: "adultA", firstName: "dan", lastName: "cnakle", addressLine1: "123 my street blvd.", addressLine2: "4A", city: "theTown", state: "CA", zipCode: "92346", phone: "123-987-0980", mobile: "098-865-1234", email: "adult@email.com", emergencyContactName: "margie", emergencyContactPhone: "858-098-1234", emergencyContactRelationship: "wife")
@@ -44,7 +39,6 @@ struct MockData {
     static var kidStudents = [kidA]
 
     // adult basic belts
-
     static let whiteBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.adultWhiteBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.adultWhiteBelt, numberOfStripes: 4, beltTime: "1 year", minAgeRequirement: "none", iStripe: "1M", iiStripe: "1M", iiiStripe: "2M", ivStripe: "4M", vStripe: nil, viStripe: nil, viiStripe: nil, viiiStripe: nil, ixStripe: nil, xStripe: nil, xiStripe: nil)
 
 
@@ -58,7 +52,6 @@ struct MockData {
     static var adultBasicBelts = [whiteBelt, blueBelt, purpleBelt, brownBelt]
 
     // adult black belts
-
     static let blackBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.adultBlackBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.adultBlackBelt, numberOfStripes: 6, beltTime: "31 years", minAgeRequirement: "19 years", iStripe: "3Y", iiStripe: "3Y", iiiStripe: "3Y", ivStripe: "5Y", vStripe: "5Y", viStripe: "5Y", viiStripe: nil, viiiStripe: nil, ixStripe: nil, xStripe: nil, xiStripe: nil)
 
     static let redBlackBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.adultRedBlackBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.adultRedBlackBelt, numberOfStripes: 7, beltTime: "7 years", minAgeRequirement: "50 years", iStripe: nil, iiStripe: nil, iiiStripe: nil, ivStripe: nil, vStripe: nil, viStripe: nil, viiStripe: nil, viiiStripe: nil, ixStripe: nil, xStripe: nil, xiStripe: nil)
@@ -75,7 +68,6 @@ struct MockData {
     static var allAdultBelts = [whiteBelt, blueBelt, purpleBelt, brownBelt, blackBelt, redBlackBelt, redWhiteBelt, redBelt]
 
     // kids belts
-
     static let kidsWhiteBelt = Belt(beltUID: UUID(), dateCreated: Date(), dateEdited: Date(), name: InternationalStandardBJJBelts.kidsWhiteBelt.rawValue, active: true, elligibleForNextBelt: false, classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.kidsWhiteBelt, numberOfStripes: 11, beltTime: "1 year", minAgeRequirement: "3 years", iStripe: "1M", iiStripe: "1M", iiiStripe: "1M", ivStripe: "1M", vStripe: "1M", viStripe: nil, viiStripe: nil, viiiStripe: nil, ixStripe: nil, xStripe: nil, xiStripe: nil)
 
 
