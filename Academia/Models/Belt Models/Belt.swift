@@ -23,9 +23,23 @@ class Belt {
     var elligibleForNextBelt: Bool
     var classesToNextPromotion: Int
     var beltLevel: InternationalStandardBJJBelts
-    
     // belt constructors
     var numberOfStripes: Int
+    // belt promotion specifications
+    var beltTime: String
+    var minAgeRequirement: String
+    var iStripe: String?
+    var iiStripe: String?
+    var iiiStripe: String?
+    var ivStripe: String?
+    var vStripe: String?
+    var viStripe: String?
+    var viiStripe: String?
+    var viiiStripe: String?
+    var ixStripe: String?
+    var xStripe: String?
+    var xiStripe: String?
+    
 
     
     // MARK: - Initialization
@@ -39,7 +53,20 @@ class Belt {
          elligibleForNextBelt: Bool,
          classesToNextPromotion: Int,
          beltLevel: InternationalStandardBJJBelts,
-         numberOfStripes: Int
+         numberOfStripes: Int,
+         beltTime: String,
+         minAgeRequirement: String,
+         iStripe: String?,
+         iiStripe: String?,
+         iiiStripe: String?,
+         ivStripe: String?,
+         vStripe: String?,
+         viStripe: String?,
+         viiStripe: String?,
+         viiiStripe: String?,
+         ixStripe: String?,
+         xStripe: String?,
+         xiStripe: String?
         ) {
         
         self.beltUID = beltUID
@@ -51,6 +78,19 @@ class Belt {
         self.classesToNextPromotion = classesToNextPromotion
         self.beltLevel = beltLevel
         self.numberOfStripes = numberOfStripes
+        self.beltTime = beltTime
+        self.minAgeRequirement = minAgeRequirement
+        self.iStripe = iStripe
+        self.iiStripe = iiStripe
+        self.iiiStripe = iiiStripe
+        self.ivStripe = ivStripe
+        self.vStripe = vStripe
+        self.viStripe = viStripe
+        self.viiStripe = viiStripe
+        self.viiiStripe = viiiStripe
+        self.ixStripe = ixStripe
+        self.xStripe = xStripe
+        self.xiStripe = xiStripe
     }
 }
 
@@ -66,6 +106,19 @@ extension Belt: Equatable {
         if lhs.classesToNextPromotion != rhs.classesToNextPromotion { return false }
         if lhs.beltLevel != rhs.beltLevel { return false }
         if lhs.numberOfStripes != rhs.numberOfStripes { return false }
+        if lhs.beltTime != rhs.beltTime { return false }
+        if lhs.minAgeRequirement != rhs.minAgeRequirement { return false }
+        if lhs.iStripe != rhs.iStripe { return false }
+        if lhs.iiStripe != rhs.iiStripe { return false }
+        if lhs.iiiStripe != rhs.iiiStripe { return false }
+        if lhs.ivStripe != rhs.ivStripe { return false }
+        if lhs.vStripe != rhs.vStripe { return false }
+        if lhs.viStripe != rhs.viStripe { return false }
+        if lhs.viiStripe != rhs.viiStripe { return false }
+        if lhs.viiiStripe != rhs.viiiStripe { return false }
+        if lhs.ixStripe != rhs.ixStripe { return false }
+        if lhs.xStripe != rhs.xStripe { return false }
+        if lhs.xiStripe != rhs.xiStripe { return false }
         
         return true
     }

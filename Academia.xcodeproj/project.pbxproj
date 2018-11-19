@@ -26,7 +26,7 @@
 		FA23D2832166F5AE00707056 /* AulaModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23D2822166F5AE00707056 /* AulaModelController.swift */; };
 		FA23D2852166F5C900707056 /* PaymentProgramModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23D2842166F5C900707056 /* PaymentProgramModelController.swift */; };
 		FA23D2882166F5E400707056 /* GroupModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23D2872166F5E400707056 /* GroupModelController.swift */; };
-		FA23D28A2167E31200707056 /* AdultBasicBeltModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23D2892167E31200707056 /* AdultBasicBeltModelController.swift */; };
+		FA23D28A2167E31200707056 /* BeltModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23D2892167E31200707056 /* BeltModelController.swift */; };
 		FA23D2922167F9EF00707056 /* OnBoardingTaskModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23D2912167F9EF00707056 /* OnBoardingTaskModelController.swift */; };
 		FA41CE6721A1336F00EAD53A /* BeltCellNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA41CE6621A1336F00EAD53A /* BeltCellNib.xib */; };
 		FA463DE4219F4343001CDDD7 /* BeltTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA463DE3219F4343001CDDD7 /* BeltTableViewCell.swift */; };
@@ -254,7 +254,7 @@
 		FA23D2822166F5AE00707056 /* AulaModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AulaModelController.swift; sourceTree = "<group>"; };
 		FA23D2842166F5C900707056 /* PaymentProgramModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProgramModelController.swift; sourceTree = "<group>"; };
 		FA23D2872166F5E400707056 /* GroupModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupModelController.swift; sourceTree = "<group>"; };
-		FA23D2892167E31200707056 /* AdultBasicBeltModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdultBasicBeltModelController.swift; sourceTree = "<group>"; };
+		FA23D2892167E31200707056 /* BeltModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeltModelController.swift; sourceTree = "<group>"; };
 		FA23D2912167F9EF00707056 /* OnBoardingTaskModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingTaskModelController.swift; sourceTree = "<group>"; };
 		FA41CE6621A1336F00EAD53A /* BeltCellNib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BeltCellNib.xib; sourceTree = "<group>"; };
 		FA463DE3219F4343001CDDD7 /* BeltTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeltTableViewCell.swift; sourceTree = "<group>"; };
@@ -724,7 +724,7 @@
 		FA23D2902167E38D00707056 /* Belt Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FA23D2892167E31200707056 /* AdultBasicBeltModelController.swift */,
+				FA23D2892167E31200707056 /* BeltModelController.swift */,
 			);
 			path = "Belt Model Controllers";
 			sourceTree = "<group>";
@@ -1224,7 +1224,7 @@
 				FAE2FDB02140C0C900815402 /* SocialNetworksTextFieldTableViewCell.swift in Sources */,
 				FAE2FD9E2140C02800815402 /* EmailTextFieldTableViewCell.swift in Sources */,
 				FAF1BB8E21435BD800AD56AE /* DescriptionTextViewTableViewCell.swift in Sources */,
-				FA23D28A2167E31200707056 /* AdultBasicBeltModelController.swift in Sources */,
+				FA23D28A2167E31200707056 /* BeltModelController.swift in Sources */,
 				FAF29BCE212E4CF200752414 /* OwnerModelController.swift in Sources */,
 				FA5C5C3E2152CB3200BF62D5 /* StudentChoiceViewController.swift in Sources */,
 				FA0C444421278B8D00B59194 /* Location.swift in Sources */,
