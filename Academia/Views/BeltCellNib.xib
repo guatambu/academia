@@ -109,9 +109,9 @@
                 <accessibilityTraits key="traits" notEnabled="YES"/>
             </accessibility>
             <connections>
-                <outlet property="ageRequirementLabelOutlet" destination="fCB-kS-N4o" id="3LZ-8y-FRr"/>
+                <outlet property="ageRequirementLabelOutlet" destination="5yo-7G-XBH" id="ETP-0r-Tkc"/>
                 <outlet property="beltHolderView" destination="bha-yz-iNo" id="dex-8V-90b"/>
-                <outlet property="beltLabelOutlet" destination="5yo-7G-XBH" id="4Xc-hO-A4A"/>
+                <outlet property="beltLabelOutlet" destination="fCB-kS-N4o" id="ccW-CU-e8h"/>
                 <outlet property="stripeALabelOutlet" destination="hPB-H9-orB" id="xdJ-Vc-vtJ"/>
                 <outlet property="stripeBLabelOutlet" destination="wx3-Gf-yMk" id="F9r-a4-dKv"/>
                 <outlet property="stripeCLabelOutlet" destination="kf1-Ze-naI" id="c0h-kL-pPc"/>
