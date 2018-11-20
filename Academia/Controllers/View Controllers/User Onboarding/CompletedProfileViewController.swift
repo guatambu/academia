@@ -51,6 +51,7 @@ class CompletedProfileViewController: UIViewController {
     // belt holder UIView
     @IBOutlet weak var beltHolderViewOutlet: UIView!
     // address outlets
+    @IBOutlet weak var parentGuardianLabelOutlet: UILabel!
     @IBOutlet weak var addressLine1LabelOutlet: UILabel!
     @IBOutlet weak var addressLine2LabelOutlet: UILabel!
     @IBOutlet weak var cityLabelOutlet: UILabel!
@@ -81,7 +82,7 @@ class CompletedProfileViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         
-        populateCompletedProfileInfo(isOwner: isOwner, isKid: isKid, username: username, password: password, firstName: firstName, lastName: lastName, profilePic: profilePic, beltLevel: beltLevel, numberOfStripes: numberOfStripes, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, phone: phone, mobile: mobile, email: email, emergencyContactName: emergencyContactName, emergencyContactPhone: emergencyContactPhone, emergencyContactRelationship: emergencyContactRelationship)
+        populateCompletedProfileInfo(isOwner: isOwner, isKid: isKid, username: username, password: password, firstName: firstName, lastName: lastName, profilePic: profilePic, beltLevel: beltLevel, numberOfStripes: numberOfStripes, parentGuardian: parentGuardian, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, phone: phone, mobile: mobile, email: email, emergencyContactName: emergencyContactName, emergencyContactPhone: emergencyContactPhone, emergencyContactRelationship: emergencyContactRelationship)
         
     }
     
@@ -136,6 +137,7 @@ extension CompletedProfileViewController {
                                       profilePic: UIImage?,
                                       beltLevel: InternationalStandardBJJBelts?,
                                       numberOfStripes: Int?,
+                                      parentGuardian: String?,
                                       addressLine1: String?,
                                       addressLine2: String?,
                                       city: String?,
@@ -167,8 +169,9 @@ extension CompletedProfileViewController {
         guard let emergencyContactRelationship = emergencyContactRelationship else { print("fail emergencyContactRelationship"); return }
         guard let emergencyContactPhone = emergencyContactPhone else { print("fail emergencyContactPhone"); return }
         
+        
         // print to console for developer verification
-        print("isOwner: \(isOwner) \nisKid: \(isKid) \nusername: \(username) \npassword: \(password) \nfirstName: \(firstName) \nlastName: \(lastName) \nbeltLevel: \(beltLevel.rawValue) \nnumberOfStripes: \(numberOfStripes) \naddressLine1: \(addressLine1) \naddressLine2: \(String(describing: addressLine2)) \ncity: \(city) \nstate: \(state) \nzipCode: \(zipCode) \nphone: \(phone) \nmobile: \(String(describing: mobile)) \nemail: \(email) \nemergencyContactName: \(emergencyContactName) \nemergencyContactRelationship: \(emergencyContactRelationship) \nemergencyContactPhone: \(emergencyContactPhone)")
+        print("isOwner: \(isOwner) \nisKid: \(isKid) \nusername: \(username) \npassword: \(password) \nfirstName: \(firstName) \nlastName: \(lastName) \nbeltLevel: \(beltLevel.rawValue) \nnumberOfStripes: \(numberOfStripes) \naddressLine1: \(addressLine1) \naddressLine2: \(String(describing: addressLine2)) \ncity: \(city) \nstate: \(state) \nzipCode: \(zipCode) \nphone: \(phone) \nmobile: \(String(describing: mobile)) \nemail: \(email) \nemergencyContactName: \(emergencyContactName) \nemergencyContactRelationship: \(emergencyContactRelationship) \nemergencyContactPhone: \(emergencyContactPhone) \nparentGuardian: \(String(describing: parentGuardian))")
         
         // populate UI elements in VC
         nameLabelOutlet.text = "\(firstName) \(lastName)"
@@ -179,6 +182,7 @@ extension CompletedProfileViewController {
         mobileLabelOutlet.text = mobile ?? ""
         emailLabelOutlet.text = email
         // address outlets
+        parentGuardianLabelOutlet.text = parentGuardian ?? ""
         addressLine1LabelOutlet.text = addressLine1
         // addressLine2 is not a required field
         addressLine2LabelOutlet.text = addressLine2 ?? ""

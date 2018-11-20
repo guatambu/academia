@@ -18,6 +18,7 @@ class EmergencyContactViewController: UIViewController {
     var password: String?
     var firstName: String?
     var lastName: String?
+    var parentGuardian: String?
     var profilePic: UIImage?
     var beltLevel: InternationalStandardBJJBelts?
     var numberOfStripes: Int?
@@ -107,6 +108,7 @@ class EmergencyContactViewController: UIViewController {
         destViewController.password = password
         destViewController.firstName = firstName
         destViewController.lastName = lastName
+        destViewController.parentGuardian = parentGuardian
         destViewController.profilePic = profilePic
         destViewController.beltLevel = beltLevel
         destViewController.numberOfStripes = numberOfStripes

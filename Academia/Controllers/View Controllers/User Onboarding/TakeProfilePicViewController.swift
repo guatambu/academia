@@ -18,6 +18,7 @@ class TakeProfilePicViewController: UIViewController {
     var password: String?
     var firstName: String?
     var lastName: String?
+    var parentGuardian: String?
     var profilePic: UIImage?
     
     let imagePickerController = UIImagePickerController()
@@ -29,6 +30,8 @@ class TakeProfilePicViewController: UIViewController {
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameLabelOutlet: UILabel!
     @IBOutlet weak var lastNameTextField: UITextField!
+    @IBOutlet weak var parentGuardianLabelOutlet: UILabel!
+    @IBOutlet weak var parentGuardianTextField: UITextField!
     
     @IBOutlet weak var firstProgressDotOutlet: DesignableView!
     
@@ -87,6 +90,8 @@ class TakeProfilePicViewController: UIViewController {
         }
         
         guard let profilePic = profilePic else { return }
+        
+        let parentGuardian = parentGuardianTextField.text
             
         
     
@@ -105,6 +110,7 @@ class TakeProfilePicViewController: UIViewController {
         destViewController.password = password
         destViewController.firstName = firstName
         destViewController.lastName = lastName
+        destViewController.parentGuardian = parentGuardian
         destViewController.profilePic = profilePic
     }
 

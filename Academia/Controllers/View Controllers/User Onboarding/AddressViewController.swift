@@ -18,6 +18,7 @@ class AddressViewController: UIViewController {
     var password: String?
     var firstName: String?
     var lastName: String?
+    var parentGuardian: String?
     var profilePic: UIImage?
     var beltLevel: InternationalStandardBJJBelts?
     var numberOfStripes: Int?
@@ -88,9 +89,6 @@ class AddressViewController: UIViewController {
             return
         }
         
-        // not a required field
-        let addressLine2 = addressLine2TextField.text
-        
         guard let city = cityTextField.text, cityTextField.text != "" else {
             
             welcomeInstructionsLabelOutlet.textColor = UIColor.red
@@ -109,6 +107,8 @@ class AddressViewController: UIViewController {
             return
         }
         
+        let addressLine2 = addressLine2TextField.text
+        
         // pass data to destViewController
         destViewController.isOwner = isOwner
         destViewController.isKid = isKid
@@ -116,6 +116,7 @@ class AddressViewController: UIViewController {
         destViewController.password = password
         destViewController.firstName = firstName
         destViewController.lastName = lastName
+        destViewController.parentGuardian = parentGuardian
         destViewController.profilePic = profilePic
         destViewController.beltLevel = beltLevel
         destViewController.numberOfStripes = numberOfStripes

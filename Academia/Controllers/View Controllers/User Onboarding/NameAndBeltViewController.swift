@@ -18,6 +18,7 @@ class NameAndBeltViewController: UIViewController {
     var password: String?
     var firstName: String?
     var lastName: String?
+    var parentGuardian: String?
     var profilePic: UIImage?
     var beltLevel: InternationalStandardBJJBelts = .adultWhiteBelt
     var numberOfStripes = 0
@@ -93,6 +94,7 @@ class NameAndBeltViewController: UIViewController {
         destViewController.password = password
         destViewController.firstName = firstName
         destViewController.lastName = lastName
+        destViewController.parentGuardian = parentGuardian
         destViewController.profilePic = profilePic
         destViewController.beltLevel = beltLevel
         destViewController.numberOfStripes = numberOfStripes
