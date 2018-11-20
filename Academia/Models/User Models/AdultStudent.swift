@@ -40,6 +40,7 @@ class AdultStudent {
     
     // Strings
     var username: String
+    var password: String
     var firstName: String
     var lastName: String
     var addressLine1: String
@@ -71,6 +72,7 @@ class AdultStudent {
          belt: Belt,
          profilePic: UIImage?,
          username: String,
+         password: String,
          firstName: String,
          lastName: String,
          addressLine1: String,
@@ -101,6 +103,7 @@ class AdultStudent {
         self.permission = permission
         self.profilePic = profilePic
         self.username = username
+        self.password = password
         self.firstName = firstName
         self.lastName = lastName
         self.addressLine1 = addressLine1

@@ -32,6 +32,8 @@ class CompletedProfileViewController: UIViewController {
     var emergencyContactName: String?
     var emergencyContactPhone: String?
     var emergencyContactRelationship: String?
+    var parentGuardian: String?
+    var birthdate: Date?
     
     var belt: Belt?
     
@@ -87,6 +89,11 @@ class CompletedProfileViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func createAccountButtonTapped(_ sender: DesignableButton) {
+        
+        // create data models
+        createBelt()
+        
+        createUser(isOwner: isOwner, isKid: isKid, birthdate: birthdate, username: username, password: password, firstName: firstName, lastName: lastName, profilePic: profilePic, belt: belt, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, phone: phone, mobile: mobile, email: email, emergencyContactName: emergencyContactName, emergencyContactPhone: emergencyContactPhone, emergencyContactRelationship: emergencyContactRelationship, parentGuardian: parentGuardian)
         
         // place network call to firebase firestore for account creation
         
@@ -189,12 +196,26 @@ extension CompletedProfileViewController {
         // belt holder UIView
         beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: numberOfStripes)
     }
+}
+
+// MARK: - Create Data Models Functions
+extension CompletedProfileViewController {
     
+    // create a Belt model for a User
     func createBelt() {
         
+        guard let beltLevel = beltLevel else { print("fail beltLevel"); return }
+        guard let numberOfStripes = numberOfStripes else { print("fail stripes"); return }
+        
+        belt = Belt(classesToNextPromotion: 32, beltLevel: beltLevel, numberOfStripes: numberOfStripes)
+
     }
     
-    func createOwner(username: String?,
+    // create User model
+    func createUser(isOwner: Bool?,
+                     isKid: Bool?,
+                     birthdate: Date?,
+                     username: String?,
                      password: String?,
                      firstName: String?,
                      lastName: String?,
@@ -210,8 +231,11 @@ extension CompletedProfileViewController {
                      email: String?,
                      emergencyContactName: String?,
                      emergencyContactPhone: String?,
-                     emergencyContactRelationship: String?) {
+                     emergencyContactRelationship: String?,
+                     parentGuardian: String?) {
         
+        guard let isOwner = isOwner else { print("fail isOwner"); return }
+        guard let isKid = isKid else { print("fail isKid"); return }
         guard let profilePic = profilePic else { print("fail profilePic"); return }
         guard let username = username else { print("fail username"); return }
         guard let password = password else { print("fail password"); return }
@@ -228,29 +252,80 @@ extension CompletedProfileViewController {
         guard let emergencyContactRelationship = emergencyContactRelationship else { print("fail emergencyContactRelationship"); return }
         guard let emergencyContactPhone = emergencyContactPhone else { print("fail emergencyContactPhone"); return }
         
+        guard let parentGuardian = parentGuardian else { print("fail parentGuardian"); return }
+        guard let birthdate = birthdate else { print("fail birthdate"); return }
+        
         let addressLine2 = addressLine2 ?? ""
         let mobile = mobile ?? ""
         
-        OwnerModelController.shared.addNew(birthdate: Date(),
-                                           belt: belt,
-                                           profilePic: profilePic,
-                                           username: username,
-                                           password: password,
-                                           firstName: firstName,
-                                           lastName: lastName,
-                                           addressLine1: addressLine1,
-                                           addressLine2: addressLine2,
-                                           city: city,
-                                           state: state,
-                                           zipCode: zipCode,
-                                           phone: phone,
-                                           mobile: mobile,
-                                           email: email,
-                                           emergencyContactName: emergencyContactName,
-                                           emergencyContactPhone: emergencyContactPhone,
-                                           emergencyContactRelationship: emergencyContactRelationship)
+        if isOwner{
+            
+            OwnerModelController.shared.addNew(birthdate: Date(),
+                                               belt: belt,
+                                               profilePic: profilePic,
+                                               username: username,
+                                               password: password,
+                                               firstName: firstName,
+                                               lastName: lastName,
+                                               addressLine1: addressLine1,
+                                               addressLine2: addressLine2,
+                                               city: city,
+                                               state: state,
+                                               zipCode: zipCode,
+                                               phone: phone,
+                                               mobile: mobile,
+                                               email: email,
+                                               emergencyContactName: emergencyContactName,
+                                               emergencyContactPhone: emergencyContactPhone,
+                                               emergencyContactRelationship: emergencyContactRelationship)
+        } else if isKid {
+            
+            KidStudentModelController.shared.addNew(birthdate: birthdate,
+                                                    belt: belt,
+                                                    profilePic: profilePic,
+                                                    username: username,
+                                                    password: password,
+                                                    firstName: firstName,
+                                                    lastName: lastName,
+                                                    parentGuardian: parentGuardian,
+                                                    addressLine1: addressLine1,
+                                                    addressLine2: addressLine2,
+                                                    city: city,
+                                                    state: state,
+                                                    zipCode: zipCode,
+                                                    phone: phone,
+                                                    mobile: mobile,
+                                                    email: email,
+                                                    emergencyContactName: emergencyContactName,
+                                                    emergencyContactPhone: emergencyContactPhone,
+                                                    emergencyContactRelationship: emergencyContactRelationship)
+            
+        } else if !isKid {
+            
+            AdultStudentModelController.shared.addNew(birthdate: birthdate,
+                                                      belt: belt,
+                                                      profilePic: profilePic,
+                                                      username: username,
+                                                      password: password,
+                                                      firstName: firstName,
+                                                      lastName: lastName,
+                                                      addressLine1: addressLine1,
+                                                      addressLine2: addressLine2,
+                                                      city: city,
+                                                      state: state,
+                                                      zipCode: zipCode,
+                                                      phone: phone,
+                                                      mobile: mobile,
+                                                      email: email,
+                                                      emergencyContactName: emergencyContactName,
+                                                      emergencyContactPhone: emergencyContactPhone,
+                                                      emergencyContactRelationship: emergencyContactRelationship)
+        }
+        
         
     }
+    
+    
 }
 
 

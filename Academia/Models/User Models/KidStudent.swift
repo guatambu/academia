@@ -36,6 +36,7 @@ class KidStudent {
     
     // Strings
     var username: String
+    var password: String
     var firstName: String
     var lastName: String
     var parentGuardian: String
@@ -67,6 +68,7 @@ class KidStudent {
          belt: Belt,
          profilePic: UIImage?,
          username: String,
+         password: String,
          firstName: String,
          lastName: String,
          parentGuardian: String,
@@ -97,6 +99,7 @@ class KidStudent {
         self.permission = permission
         self.profilePic = profilePic
         self.username = username
+        self.password = password
         self.firstName = firstName
         self.lastName = lastName
         self.parentGuardian = parentGuardian
@@ -136,6 +139,7 @@ extension KidStudent: Equatable {
         if lhs.addressLine2 != rhs.addressLine2 { return false }
         if lhs.studentStatus != rhs.studentStatus { return false }
         if lhs.username != rhs.username { return false }
+        if lhs.password != rhs.password { return false }
         if lhs.zipCode != rhs.zipCode { return false }
         
         return true

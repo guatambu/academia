@@ -70,7 +70,7 @@ class Belt {
         self.dateEdited = dateEdited
         self.active = true
         self.elligibleForNextBelt = false
-        self.classesToNextPromotion = classesToNextPromotion
+        self.classesToNextPromotion = 8
         self.beltLevel = beltLevel
         self.numberOfStripes = numberOfStripes
         self.beltTime = beltTime

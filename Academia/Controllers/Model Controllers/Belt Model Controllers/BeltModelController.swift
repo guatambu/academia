@@ -11,10 +11,11 @@ import CoreData
 
 class BeltModelController {
     
+    // MAAK: - Properties
+    
     static let shared = BeltModelController()
     
     var belts = [Belt]()
-    
     
     // MARK: - CRUD Functions
     
