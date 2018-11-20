@@ -21,6 +21,7 @@ class OwnerProfileDetailsViewController: UIViewController {
     var profilePic: UIImage?
     var beltLevel: InternationalStandardBJJBelts?
     var numberOfStripes: Int?
+    var parentGuardian: String?
     var addressLine1: String?
     var addressLine2: String?
     var city: String?
@@ -46,6 +47,7 @@ class OwnerProfileDetailsViewController: UIViewController {
     // belt holder UIView
     @IBOutlet weak var beltHolderViewOutlet: UIView!
     // address outlets
+    @IBOutlet weak var parentGuardianLabelOutlet: UILabel!
     @IBOutlet weak var addressLine1LabelOutlet: UILabel!
     @IBOutlet weak var addressLine2LabelOutlet: UILabel!
     @IBOutlet weak var cityLabelOutlet: UILabel!
@@ -67,7 +69,6 @@ class OwnerProfileDetailsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        populateCompletedProfileInfo(isOwner: isOwner, isKid: isKid, username: username, password: password, firstName: firstName, lastName: lastName, profilePic: profilePic, beltLevel: beltLevel, numberOfStripes: numberOfStripes, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, phone: phone, mobile: mobile, email: email, emergencyContactName: emergencyContactName, emergencyContactPhone: emergencyContactPhone, emergencyContactRelationship: emergencyContactRelationship)
         
     }
     
@@ -95,6 +96,7 @@ extension OwnerProfileDetailsViewController {
                                       profilePic: UIImage?,
                                       beltLevel: InternationalStandardBJJBelts?,
                                       numberOfStripes: Int?,
+                                      parentGuardian: String?,
                                       addressLine1: String?,
                                       addressLine2: String?,
                                       city: String?,
@@ -138,6 +140,7 @@ extension OwnerProfileDetailsViewController {
         mobileLabelOutlet.text = mobile ?? ""
         emailLabelOutlet.text = email
         // address outlets
+        parentGuardianLabelOutlet.text = parentGuardian ?? ""
         addressLine1LabelOutlet.text = addressLine1
         // addressLine2 is not a required field
         addressLine2LabelOutlet.text = addressLine2 ?? ""
