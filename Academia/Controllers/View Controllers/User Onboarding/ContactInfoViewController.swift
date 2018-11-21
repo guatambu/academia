@@ -20,6 +20,7 @@ class ContactInfoViewController: UIViewController {
     var lastName: String?
     var parentGuardian: String?
     var profilePic: UIImage?
+    var birthdate: Date?
     var beltLevel: InternationalStandardBJJBelts?
     var numberOfStripes: Int?
     var addressLine1: String?
@@ -106,6 +107,7 @@ class ContactInfoViewController: UIViewController {
         destViewController.lastName = lastName
         destViewController.parentGuardian = parentGuardian
         destViewController.profilePic = profilePic
+        destViewController.birthdate = birthdate
         destViewController.beltLevel = beltLevel
         destViewController.numberOfStripes = numberOfStripes
         destViewController.addressLine1 = addressLine1

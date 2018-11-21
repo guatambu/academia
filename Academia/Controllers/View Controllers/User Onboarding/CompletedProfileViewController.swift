@@ -19,6 +19,7 @@ class CompletedProfileViewController: UIViewController {
     var firstName: String?
     var lastName: String?
     var profilePic: UIImage?
+    var birthdate: Date?
     var beltLevel: InternationalStandardBJJBelts?
     var numberOfStripes: Int?
     var addressLine1: String?
@@ -33,7 +34,6 @@ class CompletedProfileViewController: UIViewController {
     var emergencyContactPhone: String?
     var emergencyContactRelationship: String?
     var parentGuardian: String?
-    var birthdate: Date?
     
     var belt: Belt?
     
@@ -42,6 +42,8 @@ class CompletedProfileViewController: UIViewController {
     // name / username outlets
     @IBOutlet weak var nameLabelOutlet: UILabel!
     @IBOutlet weak var usernameLabelOutlet: UILabel!
+    // birthdate outlet
+    @IBOutlet weak var birthdateLabelOutlet: UILabel!
     // profile pic imageView
     @IBOutlet weak var profilePicImageView: UIImageView!
     // contact info outlets
@@ -82,7 +84,7 @@ class CompletedProfileViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         
-        populateCompletedProfileInfo(isOwner: isOwner, isKid: isKid, username: username, password: password, firstName: firstName, lastName: lastName, profilePic: profilePic, beltLevel: beltLevel, numberOfStripes: numberOfStripes, parentGuardian: parentGuardian, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, phone: phone, mobile: mobile, email: email, emergencyContactName: emergencyContactName, emergencyContactPhone: emergencyContactPhone, emergencyContactRelationship: emergencyContactRelationship)
+        populateCompletedProfileInfo(isOwner: isOwner, isKid: isKid, username: username, password: password, firstName: firstName, lastName: lastName, profilePic: profilePic, birthdate: birthdate, beltLevel: beltLevel, numberOfStripes: numberOfStripes, parentGuardian: parentGuardian, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, phone: phone, mobile: mobile, email: email, emergencyContactName: emergencyContactName, emergencyContactPhone: emergencyContactPhone, emergencyContactRelationship: emergencyContactRelationship)
         
     }
     
@@ -125,6 +127,27 @@ class CompletedProfileViewController: UIViewController {
 
 }
 
+// MARK: - date formatter setup for birthdate display
+extension CompletedProfileViewController {
+    
+    func formatBirthdate(birthdate: Date) {
+        
+        // set up date format
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateStyle = DateFormatter.Style.short
+        dateFormatter.timeStyle = DateFormatter.Style.none
+        dateFormatter.locale = Locale(identifier: "en_US")
+        
+        let birthdateString = dateFormatter.string(from: birthdate)
+        
+        print(birthdateString)
+        
+        self.birthdateLabelOutlet.text = birthdateString
+    }
+}
+
+
 //MARK: - populate CompletedProfileVC with user info for display at viewDidLoad()
 extension CompletedProfileViewController {
     
@@ -135,6 +158,7 @@ extension CompletedProfileViewController {
                                       firstName: String?,
                                       lastName: String?,
                                       profilePic: UIImage?,
+                                      birthdate: Date?,
                                       beltLevel: InternationalStandardBJJBelts?,
                                       numberOfStripes: Int?,
                                       parentGuardian: String?,
@@ -157,6 +181,7 @@ extension CompletedProfileViewController {
         guard let password = password else { print("fail password"); return }
         guard let firstName = firstName else { print("fail firtsName"); return }
         guard let lastName = lastName else { print("fail lastName"); return }
+        guard let birthdate = birthdate else { print("fail birthdate"); return }
         guard let beltLevel = beltLevel else { print("fail beltLevel"); return }
         guard let numberOfStripes = numberOfStripes else { print("fail stripes"); return }
         guard let addressLine1 = addressLine1 else { print("fail addressLine1"); return }
@@ -171,7 +196,7 @@ extension CompletedProfileViewController {
         
         
         // print to console for developer verification
-        print("isOwner: \(isOwner) \nisKid: \(isKid) \nusername: \(username) \npassword: \(password) \nfirstName: \(firstName) \nlastName: \(lastName) \nbeltLevel: \(beltLevel.rawValue) \nnumberOfStripes: \(numberOfStripes) \naddressLine1: \(addressLine1) \naddressLine2: \(String(describing: addressLine2)) \ncity: \(city) \nstate: \(state) \nzipCode: \(zipCode) \nphone: \(phone) \nmobile: \(String(describing: mobile)) \nemail: \(email) \nemergencyContactName: \(emergencyContactName) \nemergencyContactRelationship: \(emergencyContactRelationship) \nemergencyContactPhone: \(emergencyContactPhone) \nparentGuardian: \(String(describing: parentGuardian))")
+        print("isOwner: \(isOwner) \nisKid: \(isKid) \nusername: \(username) \npassword: \(password) \nfirstName: \(firstName) \nlastName: \(lastName) \nbirthdate: \(birthdate) \nbeltLevel: \(beltLevel.rawValue) \nnumberOfStripes: \(numberOfStripes) \naddressLine1: \(addressLine1) \naddressLine2: \(String(describing: addressLine2)) \ncity: \(city) \nstate: \(state) \nzipCode: \(zipCode) \nphone: \(phone) \nmobile: \(String(describing: mobile)) \nemail: \(email) \nemergencyContactName: \(emergencyContactName) \nemergencyContactRelationship: \(emergencyContactRelationship) \nemergencyContactPhone: \(emergencyContactPhone) \nparentGuardian: \(String(describing: parentGuardian))")
         
         // populate UI elements in VC
         nameLabelOutlet.text = "\(firstName) \(lastName)"
@@ -196,6 +221,9 @@ extension CompletedProfileViewController {
         
         // profile pic imageView
         profilePicImageView.image = profilePic
+        
+        // display birthdate
+        formatBirthdate(birthdate: birthdate)
         
         // belt holder UIView
         beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: numberOfStripes)

@@ -20,6 +20,7 @@ class NameAndBeltViewController: UIViewController {
     var lastName: String?
     var parentGuardian: String?
     var profilePic: UIImage?
+    var birthdate: Date?
     var beltLevel: InternationalStandardBJJBelts = .adultWhiteBelt
     var numberOfStripes = 0
     
@@ -96,6 +97,7 @@ class NameAndBeltViewController: UIViewController {
         destViewController.lastName = lastName
         destViewController.parentGuardian = parentGuardian
         destViewController.profilePic = profilePic
+        destViewController.birthdate = birthdate
         destViewController.beltLevel = beltLevel
         destViewController.numberOfStripes = numberOfStripes
         
@@ -111,8 +113,6 @@ class NameAndBeltViewController: UIViewController {
 
 // MARK: - PickerView Functionality
 extension NameAndBeltViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-    
-    // we have two pickerViews: 1 for belt level, 1 for number of stripes
     
     // PickerView DataSource Methods
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

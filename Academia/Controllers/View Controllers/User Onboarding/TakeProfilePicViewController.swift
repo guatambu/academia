@@ -74,7 +74,7 @@ class TakeProfilePicViewController: UIViewController {
         // instantiate the relevant storyboard
         let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
-        let destViewController = mainView.instantiateViewController(withIdentifier: "toUserNameBelt") as! NameAndBeltViewController
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toUserBirthday") as! BirthdayViewController
     
         // run check to see is there is firstName, lastName, and profilePic
         guard let firstName = firstNameTextField.text, firstNameTextField.text != "" else {
