@@ -18,7 +18,9 @@ class EmergencyContactViewController: UIViewController {
     var password: String?
     var firstName: String?
     var lastName: String?
+    var parentGuardian: String?
     var profilePic: UIImage?
+    var birthdate: Date?
     var beltLevel: InternationalStandardBJJBelts?
     var numberOfStripes: Int?
     var addressLine1: String?
@@ -42,8 +44,19 @@ class EmergencyContactViewController: UIViewController {
     @IBOutlet weak var emergencyContactRelationshipOutlet: UILabel!
     @IBOutlet weak var emergencyContactRelationshipTextField: UITextField!
     
+    @IBOutlet weak var firstProgressDotOutlet: DesignableView!
+    
     
     // MARK: - ViewController Lifecycle Functions
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // hide first progress dot for owner users
+        guard let isOwner = isOwner else { return }
+        
+        if isOwner {
+            firstProgressDotOutlet.isHidden = true
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,7 +109,9 @@ class EmergencyContactViewController: UIViewController {
         destViewController.password = password
         destViewController.firstName = firstName
         destViewController.lastName = lastName
+        destViewController.parentGuardian = parentGuardian
         destViewController.profilePic = profilePic
+        destViewController.birthdate = birthdate
         destViewController.beltLevel = beltLevel
         destViewController.numberOfStripes = numberOfStripes
         destViewController.addressLine1 = addressLine1
@@ -110,5 +125,26 @@ class EmergencyContactViewController: UIViewController {
         destViewController.emergencyContactName = emergencyContactName
         destViewController.emergencyContactRelationship = emergencyContactRelationship
         destViewController.emergencyContactPhone = emergencyContactPhone
+        
+        
+        guard let isOwner = isOwner else { print("fail isOwner"); return }
+        guard let isKid = isKid else { print("fail isKid"); return }
+        guard let profilePic = profilePic else { print("fail profilePic"); return }
+        guard let username = username else { print("fail username"); return }
+        guard let password = password else { print("fail password"); return }
+        guard let firstName = firstName else { print("fail firtsName"); return }
+        guard let lastName = lastName else { print("fail lastName"); return }
+        guard let birthdate = birthdate else { print("fail birthdate"); return }
+        guard let beltLevel = beltLevel else { print("fail beltLevel"); return }
+        guard let numberOfStripes = numberOfStripes else { print("fail stripes"); return }
+        guard let addressLine1 = addressLine1 else { print("fail addressLine1"); return }
+        guard let city = city else { print("fail city"); return }
+        guard let state = state else { print("fail state"); return }
+        guard let zipCode = zipCode else { print("fail zip"); return }
+        guard let phone = phone else { print("fail phone"); return }
+        guard let email = email else { print("fail email"); return }
+        
+        // print to console for developer verification
+        print("isOwner: \(isOwner) \nisKid: \(isKid) \nusername: \(username) \npassword: \(password) \nfirstName: \(firstName) \nlastName: \(lastName) \nbirthdate: \(birthdate) \nbeltLevel: \(beltLevel.rawValue) \nnumberOfStripes: \(numberOfStripes) \naddressLine1: \(addressLine1) \naddressLine2: \(String(describing: addressLine2)) \ncity: \(city) \nstate: \(state) \nzipCode: \(zipCode) \nphone: \(phone) \nmobile: \(String(describing: mobile)) \nemail: \(email) \nemergencyContactName: \(emergencyContactName) \nemergencyContactRelationship: \(emergencyContactRelationship) \nemergencyContactPhone: \(emergencyContactPhone) \nparentGuardian: \(String(describing: parentGuardian))")
     }
 }

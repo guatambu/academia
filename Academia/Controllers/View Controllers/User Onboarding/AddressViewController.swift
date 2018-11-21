@@ -18,7 +18,9 @@ class AddressViewController: UIViewController {
     var password: String?
     var firstName: String?
     var lastName: String?
+    var parentGuardian: String?
     var profilePic: UIImage?
+    var birthdate: Date?
     var beltLevel: InternationalStandardBJJBelts?
     var numberOfStripes: Int?
     var addressLine1: String?
@@ -41,8 +43,20 @@ class AddressViewController: UIViewController {
     @IBOutlet weak var zipCodeLabelOutlet: UILabel!
     @IBOutlet weak var zipCodeTextField: UITextField!
     
+    @IBOutlet weak var firstProgressDotOutlet: DesignableView!
+    
     
     // MARK: - ViewController Lifecycle Functions
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        // hide first progress dot for owner users
+        guard let isOwner = isOwner else { return }
+        
+        if isOwner {
+            firstProgressDotOutlet.isHidden = true
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,9 +90,6 @@ class AddressViewController: UIViewController {
             return
         }
         
-        // not a required field
-        let addressLine2 = addressLine2TextField.text
-        
         guard let city = cityTextField.text, cityTextField.text != "" else {
             
             welcomeInstructionsLabelOutlet.textColor = UIColor.red
@@ -97,6 +108,8 @@ class AddressViewController: UIViewController {
             return
         }
         
+        let addressLine2 = addressLine2TextField.text
+        
         // pass data to destViewController
         destViewController.isOwner = isOwner
         destViewController.isKid = isKid
@@ -104,7 +117,9 @@ class AddressViewController: UIViewController {
         destViewController.password = password
         destViewController.firstName = firstName
         destViewController.lastName = lastName
+        destViewController.parentGuardian = parentGuardian
         destViewController.profilePic = profilePic
+        destViewController.birthdate = birthdate
         destViewController.beltLevel = beltLevel
         destViewController.numberOfStripes = numberOfStripes
         destViewController.addressLine1 = addressLine1

@@ -45,6 +45,7 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         passwordTextField.autocapitalizationType = UITextAutocapitalizationType.none
         confirmPasswordTextField.autocapitalizationType = UITextAutocapitalizationType.none
         
+        // hide first progress dot for owner users
         guard let isOwner = isOwner else { return }
         
         if isOwner {
@@ -75,7 +76,7 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: "tap to re-enter password", attributes: avenirFont)
         
         guard let isOwner = isOwner else { return }
-        guard let username = username, let password = password else {
+        guard let _ = username, let _ = password else {
             
             if isOwner {
                 welcomeMessageOutlet.text = "Welcome New Owner"

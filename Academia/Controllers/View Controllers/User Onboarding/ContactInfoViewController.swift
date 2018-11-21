@@ -18,7 +18,9 @@ class ContactInfoViewController: UIViewController {
     var password: String?
     var firstName: String?
     var lastName: String?
+    var parentGuardian: String?
     var profilePic: UIImage?
+    var birthdate: Date?
     var beltLevel: InternationalStandardBJJBelts?
     var numberOfStripes: Int?
     var addressLine1: String?
@@ -38,9 +40,21 @@ class ContactInfoViewController: UIViewController {
     @IBOutlet weak var mobileTextField: UITextField!
     @IBOutlet weak var emailOutlet: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
+    
+    @IBOutlet weak var firstProgressDotOutlet: DesignableView!
 
     
     // MARK: - ViewController Lifecycle Functions
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        // hide first progress dot for owner users
+        guard let isOwner = isOwner else { return }
+        
+        if isOwner {
+            firstProgressDotOutlet.isHidden = true
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,7 +105,9 @@ class ContactInfoViewController: UIViewController {
         destViewController.password = password
         destViewController.firstName = firstName
         destViewController.lastName = lastName
+        destViewController.parentGuardian = parentGuardian
         destViewController.profilePic = profilePic
+        destViewController.birthdate = birthdate
         destViewController.beltLevel = beltLevel
         destViewController.numberOfStripes = numberOfStripes
         destViewController.addressLine1 = addressLine1

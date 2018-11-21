@@ -33,9 +33,54 @@ class AdultStudentModelController {
     // MARK: - CRUD Functions
     
     // Create
-    func addNew(birthdate: Date, belt: Belt, profilePic: UIImage?, username: String, firstName: String, lastName: String, addressLine1: String, addressLine2: String, city: String, state: String, zipCode: String, phone: String, mobile: String, email: String, emergencyContactName: String, emergencyContactPhone: String, emergencyContactRelationship: String) {
+    func addNew(birthdate: Date,
+                belt: Belt,
+                profilePic: UIImage?,
+                username: String,
+                password: String,
+                firstName: String,
+                lastName: String,
+                addressLine1: String,
+                addressLine2: String,
+                city: String,
+                state: String,
+                zipCode: String,
+                phone: String,
+                mobile: String,
+                email: String,
+                emergencyContactName: String,
+                emergencyContactPhone: String,
+                emergencyContactRelationship: String) {
         
-        let adult = AdultStudent(adultStudentUID: UUID(), isInstructor: false, dateCreated: Date(), dateEdited: Date(), birthdate: birthdate, promotions: nil, mostRecentPromotion: nil, attendance: nil, studentStatus: [StudentStatus.inactive], groups: nil, paymentProgram: nil, permission: [UserPermissions.adultStudent], belt: belt, profilePic: profilePic, username: username, firstName: firstName, lastName: lastName, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, phone: phone, mobile: mobile, email: email, emergencyContactName: emergencyContactName, emergencyContactPhone: emergencyContactPhone, emergencyContactRelationship: emergencyContactRelationship)
+        let adult = AdultStudent(adultStudentUID: UUID(),
+                                 isInstructor: false,
+                                 dateCreated: Date(),
+                                 dateEdited: Date(),
+                                 birthdate: birthdate,
+                                 promotions: nil,
+                                 mostRecentPromotion: nil,
+                                 attendance: nil,
+                                 studentStatus: [StudentStatus.active],
+                                 groups: nil,
+                                 paymentProgram: nil,
+                                 permission: [UserPermissions.adultStudent],
+                                 belt: belt,
+                                 profilePic: profilePic,
+                                 username: username,
+                                 password: password,
+                                 firstName: firstName,
+                                 lastName: lastName,
+                                 addressLine1: addressLine1,
+                                 addressLine2: addressLine2,
+                                 city: city,
+                                 state: state,
+                                 zipCode: zipCode,
+                                 phone: phone,
+                                 mobile: mobile,
+                                 email: email,
+                                 emergencyContactName: emergencyContactName,
+                                 emergencyContactPhone: emergencyContactPhone,
+                                 emergencyContactRelationship: emergencyContactRelationship)
         
         adults.append(adult)
     }
@@ -44,7 +89,27 @@ class AdultStudentModelController {
     
     
     // Update
-    func updateProfileInfo(adultStudent: AdultStudent, birthdate: Date, city: String, email: String, firstName: String, groups: [Group]?, isInstructor: Bool, lastNAme: String, mobile: String, parentGuardian: String, permission: [UserPermissions], phone: String, profilePic: UIImage?, state: String, addressLine1: String, addressLine2: String, username: String, zipCode: String, emergencyContact: String, emergencyContactPhone: String, emergencyContactRelationship: String) {
+    func updateProfileInfo(adultStudent: AdultStudent,
+                           birthdate: Date,
+                           city: String,
+                           email: String,
+                           firstName: String,
+                           groups: [Group]?,
+                           isInstructor: Bool,
+                           lastName: String,
+                           mobile: String,
+                           parentGuardian: String,
+                           permission: [UserPermissions],
+                           phone: String,
+                           profilePic: UIImage?,
+                           state: String,
+                           addressLine1: String,
+                           addressLine2: String,
+                           username: String,
+                           zipCode: String,
+                           emergencyContactName: String,
+                           emergencyContactPhone: String,
+                           emergencyContactRelationship: String) {
         
         adultStudent.birthdate = birthdate
         adultStudent.city = city
@@ -53,7 +118,7 @@ class AdultStudentModelController {
         adultStudent.firstName = firstName
         adultStudent.groups = groups
         adultStudent.isInstructor = isInstructor
-        adultStudent.lastName = lastNAme
+        adultStudent.lastName = lastName
         adultStudent.mobile = mobile
         adultStudent.permission = permission
         adultStudent.phone = phone
@@ -63,6 +128,9 @@ class AdultStudentModelController {
         adultStudent.addressLine2 = addressLine2
         adultStudent.username = username
         adultStudent.zipCode = zipCode
+        adultStudent.emergencyContactName = emergencyContactName
+        adultStudent.emergencyContactPhone = emergencyContactPhone
+        adultStudent.emergencyContactRelationship = emergencyContactRelationship
     }
     
     func promote(adultStudent: AdultStudent, belt: Belt, mostRecentPromotion: Date, promotions: [String: Date]) {

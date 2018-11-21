@@ -18,7 +18,9 @@ class NameAndBeltViewController: UIViewController {
     var password: String?
     var firstName: String?
     var lastName: String?
+    var parentGuardian: String?
     var profilePic: UIImage?
+    var birthdate: Date?
     var beltLevel: InternationalStandardBJJBelts = .adultWhiteBelt
     var numberOfStripes = 0
     
@@ -34,8 +36,20 @@ class NameAndBeltViewController: UIViewController {
     
     @IBOutlet weak var nextButtonOutlet: DesignableButton!
     
+    @IBOutlet weak var firstProgressDotOutlet: DesignableView!
+    
     
     // MARK: - ViewController Lifecycle Functions
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        // hide first progress dot for owner users
+        guard let isOwner = isOwner else { return }
+        
+        if isOwner {
+            firstProgressDotOutlet.isHidden = true
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,7 +95,9 @@ class NameAndBeltViewController: UIViewController {
         destViewController.password = password
         destViewController.firstName = firstName
         destViewController.lastName = lastName
+        destViewController.parentGuardian = parentGuardian
         destViewController.profilePic = profilePic
+        destViewController.birthdate = birthdate
         destViewController.beltLevel = beltLevel
         destViewController.numberOfStripes = numberOfStripes
         
@@ -97,8 +113,6 @@ class NameAndBeltViewController: UIViewController {
 
 // MARK: - PickerView Functionality
 extension NameAndBeltViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-    
-    // we have two pickerViews: 1 for belt level, 1 for number of stripes
     
     // PickerView DataSource Methods
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

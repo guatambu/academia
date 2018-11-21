@@ -20,7 +20,7 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bha-yz-iNo" userLabel="belt holder View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
                         <rect key="frame" x="16" y="0.0" width="343" height="40"/>
-                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="xR5-zd-1YZ"/>
                         </constraints>
@@ -37,28 +37,28 @@
                         <rect key="frame" x="62.5" y="44" width="250" height="71.5"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kjs-AW-nKn" userLabel="StripesA Stack View">
-                                <rect key="frame" x="0.0" y="0.0" width="98.5" height="71.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="135.5" height="71.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Belt: 31 years" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5yo-7G-XBH">
-                                        <rect key="frame" x="0.0" y="0.0" width="98.5" height="22"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Min. Age: 57 years" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5yo-7G-XBH">
+                                        <rect key="frame" x="0.0" y="0.0" width="135.5" height="22"/>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="White Stripes: 1M" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPB-H9-orB">
-                                        <rect key="frame" x="0.0" y="22" width="98.5" height="16.5"/>
+                                        <rect key="frame" x="0.0" y="22" width="135.5" height="16.5"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Black Stripes: 1M" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wx3-Gf-yMk">
-                                        <rect key="frame" x="0.0" y="38.5" width="98.5" height="16.5"/>
+                                        <rect key="frame" x="0.0" y="38.5" width="135.5" height="16.5"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Black Stripes: 1M" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kf1-Ze-naI">
-                                        <rect key="frame" x="0.0" y="55" width="98.5" height="16.5"/>
+                                        <rect key="frame" x="0.0" y="55" width="135.5" height="16.5"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -66,28 +66,28 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="61Q-IE-qz8" userLabel="StripesB Stack View">
-                                <rect key="frame" x="114.5" y="0.0" width="135.5" height="71.5"/>
+                                <rect key="frame" x="151.5" y="0.0" width="98.5" height="71.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Min. Age: 58 years" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCB-kS-N4o">
-                                        <rect key="frame" x="0.0" y="0.0" width="135.5" height="22"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Belt: 31 years" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCB-kS-N4o">
+                                        <rect key="frame" x="0.0" y="0.0" width="98.5" height="22"/>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Red Stripes: 1M" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wcr-Jh-dli">
-                                        <rect key="frame" x="0.0" y="22" width="135.5" height="16.5"/>
+                                        <rect key="frame" x="0.0" y="22" width="98.5" height="16.5"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Black Stripes: 1M" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lxS-EZ-4aX">
-                                        <rect key="frame" x="0.0" y="38.5" width="135.5" height="16.5"/>
+                                        <rect key="frame" x="0.0" y="38.5" width="98.5" height="16.5"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Black Stripes: 1M" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PX4-eO-SO4">
-                                        <rect key="frame" x="0.0" y="55" width="135.5" height="16.5"/>
+                                        <rect key="frame" x="0.0" y="55" width="98.5" height="16.5"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -109,9 +109,9 @@
                 <accessibilityTraits key="traits" notEnabled="YES"/>
             </accessibility>
             <connections>
-                <outlet property="ageRequirementLabelOutlet" destination="fCB-kS-N4o" id="3LZ-8y-FRr"/>
+                <outlet property="ageRequirementLabelOutlet" destination="5yo-7G-XBH" id="ETP-0r-Tkc"/>
                 <outlet property="beltHolderView" destination="bha-yz-iNo" id="dex-8V-90b"/>
-                <outlet property="beltLabelOutlet" destination="5yo-7G-XBH" id="4Xc-hO-A4A"/>
+                <outlet property="beltLabelOutlet" destination="fCB-kS-N4o" id="ccW-CU-e8h"/>
                 <outlet property="stripeALabelOutlet" destination="hPB-H9-orB" id="xdJ-Vc-vtJ"/>
                 <outlet property="stripeBLabelOutlet" destination="wx3-Gf-yMk" id="F9r-a4-dKv"/>
                 <outlet property="stripeCLabelOutlet" destination="kf1-Ze-naI" id="c0h-kL-pPc"/>

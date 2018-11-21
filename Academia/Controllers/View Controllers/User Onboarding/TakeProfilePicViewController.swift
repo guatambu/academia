@@ -18,6 +18,7 @@ class TakeProfilePicViewController: UIViewController {
     var password: String?
     var firstName: String?
     var lastName: String?
+    var parentGuardian: String?
     var profilePic: UIImage?
     
     let imagePickerController = UIImagePickerController()
@@ -29,9 +30,22 @@ class TakeProfilePicViewController: UIViewController {
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameLabelOutlet: UILabel!
     @IBOutlet weak var lastNameTextField: UITextField!
+    @IBOutlet weak var parentGuardianLabelOutlet: UILabel!
+    @IBOutlet weak var parentGuardianTextField: UITextField!
+    
+    @IBOutlet weak var firstProgressDotOutlet: DesignableView!
     
     
     // MARK: - ViewController Lifecycle Functions
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // hide first progress dot for owner users
+        guard let isOwner = isOwner else { return }
+        
+        if isOwner {
+            firstProgressDotOutlet.isHidden = true
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +74,7 @@ class TakeProfilePicViewController: UIViewController {
         // instantiate the relevant storyboard
         let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
-        let destViewController = mainView.instantiateViewController(withIdentifier: "toUserNameBelt") as! NameAndBeltViewController
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toUserBirthday") as! BirthdayViewController
     
         // run check to see is there is firstName, lastName, and profilePic
         guard let firstName = firstNameTextField.text, firstNameTextField.text != "" else {
@@ -76,6 +90,8 @@ class TakeProfilePicViewController: UIViewController {
         }
         
         guard let profilePic = profilePic else { return }
+        
+        let parentGuardian = parentGuardianTextField.text
             
         
     
@@ -94,6 +110,7 @@ class TakeProfilePicViewController: UIViewController {
         destViewController.password = password
         destViewController.firstName = firstName
         destViewController.lastName = lastName
+        destViewController.parentGuardian = parentGuardian
         destViewController.profilePic = profilePic
     }
 
