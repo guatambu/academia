@@ -14,9 +14,7 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
     var isOwner: Bool?
     var username: String?
     var password: String?
-    var isKid: Bool = false
-    
-    @IBOutlet weak var firstProgressDotOutlet: DesignableView!
+    var isKid: Bool?
     
     var delegate: InitialStudentSegueDelegate!
     
@@ -44,18 +42,18 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         usernameTextField.autocapitalizationType = UITextAutocapitalizationType.none
         passwordTextField.autocapitalizationType = UITextAutocapitalizationType.none
         confirmPasswordTextField.autocapitalizationType = UITextAutocapitalizationType.none
-        
-        // hide first progress dot for owner users
-        guard let isOwner = isOwner else { return }
-        
-        if isOwner {
-            firstProgressDotOutlet.isHidden = true
-        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        guard let isOwner = isOwner else { return }
+        
+        if isOwner{
+            welcomeMessageOutlet.text = "Welcome Owner"
+        } else {
+            welcomeMessageOutlet.text = "Welcome New Student"
+        }
         
 //        username = "guatambu"
 //        password = "1998Gwbic"
@@ -75,7 +73,6 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         passwordTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter password", attributes: avenirFont)
         confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: "tap to re-enter password", attributes: avenirFont)
         
-        guard let isOwner = isOwner else { return }
         guard let _ = username, let _ = password else {
             
             if isOwner {

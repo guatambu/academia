@@ -24,6 +24,8 @@ class NameAndBeltViewController: UIViewController {
     var beltLevel: InternationalStandardBJJBelts = .adultWhiteBelt
     var numberOfStripes = 0
     
+    var inEditingMode: Bool?
+    
     let beltBuilder = BeltBuilder()
     
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
@@ -40,19 +42,17 @@ class NameAndBeltViewController: UIViewController {
     
     
     // MARK: - ViewController Lifecycle Functions
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        // hide first progress dot for owner users
-        guard let isOwner = isOwner else { return }
-        
-        if isOwner {
-            firstProgressDotOutlet.isHidden = true
-        }
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let isOwner = isOwner else { return }
+        
+        if isOwner{
+            welcomeLabeOutlet.text = "Welcome Owner"
+        } else {
+            welcomeLabeOutlet.text = "Welcome New Student"
+        }
         
         beltLevelPickerView.delegate = self
         beltLevelPickerView.dataSource = self
@@ -67,10 +67,34 @@ class NameAndBeltViewController: UIViewController {
         // default belt to display upon user arrival
         beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: numberOfStripes)
         
+        // if editing profile
+        guard let inEditingMode = inEditingMode else { return }
+        
+        if inEditingMode {
+            let saveButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveButtonTapped))
+            navigationItem.rightBarButtonItem = saveButtonItem
+        }
     }
     
     
     // MARK: - Actions
+    
+    @objc func saveButtonTapped() {
+        
+        if let isOwner = isOwner {
+            if isOwner {
+                // isOwner update profile info
+            }
+        } else if let isKid = isKid {
+            if isKid{
+                // kidStudent update profile info
+            } else {
+                // adultStudent update profile info
+            }
+        }
+        
+        inEditingMode = false
+    }
     
     @IBAction func nextButtonTapped(_ sender: DesignableButton) {
         

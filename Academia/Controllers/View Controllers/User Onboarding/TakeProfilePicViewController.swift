@@ -21,6 +21,8 @@ class TakeProfilePicViewController: UIViewController {
     var parentGuardian: String?
     var profilePic: UIImage?
     
+    var inEditingMode: Bool?
+    
     let imagePickerController = UIImagePickerController()
     
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
@@ -38,17 +40,16 @@ class TakeProfilePicViewController: UIViewController {
     
     // MARK: - ViewController Lifecycle Functions
     
-    override func viewWillAppear(_ animated: Bool) {
-        // hide first progress dot for owner users
-        guard let isOwner = isOwner else { return }
-        
-        if isOwner {
-            firstProgressDotOutlet.isHidden = true
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let isOwner = isOwner else { return }
+        
+        if isOwner{
+            welcomeLabeOutlet.text = "Welcome Owner"
+        } else {
+            welcomeLabeOutlet.text = "Welcome New Student"
+        }
         
         // instantiate tapGestureRecognizer for the profilePicImageViewOutet
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TakeProfilePicViewController.profilePicImageTapped))
@@ -57,15 +58,35 @@ class TakeProfilePicViewController: UIViewController {
         
         imagePickerController.delegate = self
         
-        // photo authorization code
+        // if editing profile
+        guard let inEditingMode = inEditingMode else { return }
         
+        if inEditingMode {
+            let saveButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveButtonTapped))
+            navigationItem.rightBarButtonItem = saveButtonItem
+        }
         
-        
-        // Do any additional setup after loading the view.
     }
     
     
     // MARK: - Actions
+    
+    @objc func saveButtonTapped() {
+        
+        if let isOwner = isOwner {
+            if isOwner {
+                // isOwner update profile info
+            }
+        } else if let isKid = isKid {
+            if isKid{
+                // kidStudent update profile info
+            } else {
+                // adultStudent update profile info
+            }
+        }
+        
+        inEditingMode = false
+    }
     
     @IBAction func nextButtonTapped(_ sender: DesignableButton) {
         

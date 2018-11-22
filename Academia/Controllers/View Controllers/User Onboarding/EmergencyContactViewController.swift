@@ -35,6 +35,8 @@ class EmergencyContactViewController: UIViewController {
     var emergencyContactPhone: String?
     var emergencyContactRelationship: String?
     
+    var inEditingMode: Bool?
+    
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     @IBOutlet weak var emergencyContactNameLabelOutlet: UILabel!
@@ -49,23 +51,45 @@ class EmergencyContactViewController: UIViewController {
     
     // MARK: - ViewController Lifecycle Functions
     
-    override func viewWillAppear(_ animated: Bool) {
-        // hide first progress dot for owner users
-        guard let isOwner = isOwner else { return }
-        
-        if isOwner {
-            firstProgressDotOutlet.isHidden = true
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        guard let isOwner = isOwner else { return }
+        
+        if isOwner{
+            welcomeLabeOutlet.text = "Welcome Owner"
+        } else {
+            welcomeLabeOutlet.text = "Welcome New Student"
+        }
+        
+        // if editing profile
+        guard let inEditingMode = inEditingMode else { return }
+        
+        if inEditingMode {
+            let saveButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveButtonTapped))
+            navigationItem.rightBarButtonItem = saveButtonItem
+        }
     }
     
     
     // MARK: - Actions
+    
+    @objc func saveButtonTapped() {
+        
+        if let isOwner = isOwner {
+            if isOwner {
+                // isOwner update profile info
+            }
+        } else if let isKid = isKid {
+            if isKid{
+                // kidStudent update profile info
+            } else {
+                // adultStudent update profile info
+            }
+        }
+        
+        inEditingMode = false
+    }
     
     @IBAction func nextButtonTapped(_ sender: DesignableButton) {
         // programmatically performing segue
@@ -129,7 +153,7 @@ class EmergencyContactViewController: UIViewController {
         
         guard let isOwner = isOwner else { print("fail isOwner"); return }
         guard let isKid = isKid else { print("fail isKid"); return }
-        guard let profilePic = profilePic else { print("fail profilePic"); return }
+        guard profilePic != nil else { print("fail profilePic"); return }
         guard let username = username else { print("fail username"); return }
         guard let password = password else { print("fail password"); return }
         guard let firstName = firstName else { print("fail firtsName"); return }

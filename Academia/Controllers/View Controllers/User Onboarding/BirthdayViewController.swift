@@ -22,6 +22,8 @@ class BirthdayViewController: UIViewController {
     var profilePic: UIImage?
     var birthdate: Date?
     
+    var inEditingMode: Bool?
+    
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     @IBOutlet weak var whenIsYourBirthdayLabelOutlet: UILabel!
@@ -36,23 +38,48 @@ class BirthdayViewController: UIViewController {
     
     // MARK: - ViewController Lifecycle Functions
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-        // hide first progress dot for owner users
-        guard let isOwner = isOwner else { return }
-        
-        if isOwner {
-            firstProgressDotOutlet.isHidden = true
-        }
-    }
+   
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        guard let isOwner = isOwner else { return }
+        
+        if isOwner{
+            welcomeLabeOutlet.text = "Welcome Owner"
+        } else {
+            welcomeLabeOutlet.text = "Welcome New Student"
+        }
+        
         birthdayDatePickerView.addTarget(self, action: #selector(birthdayPicked(_:)), for: UIControl.Event.valueChanged)
+        
+        // if editing profile
+        guard let inEditingMode = inEditingMode else { return }
+        
+        if inEditingMode {
+            let saveButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveButtonTapped))
+            navigationItem.rightBarButtonItem = saveButtonItem
+        }
     }
     
     // MARK: - Actions
+    
+    @objc func saveButtonTapped() {
+        
+        if let isOwner = isOwner {
+            if isOwner {
+                // isOwner update profile info
+            }
+        } else if let isKid = isKid {
+            if isKid{
+                // kidStudent update profile info
+            } else {
+                // adultStudent update profile info
+            }
+        }
+        
+        inEditingMode = false
+    }
     
     @IBAction func birthdayPicked(_ sender: UIDatePicker) {
         
