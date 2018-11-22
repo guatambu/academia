@@ -143,7 +143,7 @@ extension CompletedProfileViewController {
         
         print(birthdateString)
         
-        self.birthdateLabelOutlet.text = birthdateString
+        self.birthdateLabelOutlet.text = "birthdate: " + birthdateString
     }
 }
 
@@ -200,14 +200,14 @@ extension CompletedProfileViewController {
         
         // populate UI elements in VC
         nameLabelOutlet.text = "\(firstName) \(lastName)"
-        usernameLabelOutlet.text = username
+        usernameLabelOutlet.text = "user: " + username
         // contact info outlets
-        phoneLabelOutlet.text = phone
+        phoneLabelOutlet.text = "p: " + phone
         // mobile is not a required field
-        mobileLabelOutlet.text = mobile ?? ""
+        mobileLabelOutlet.text = "m: \(mobile ?? "")"
         emailLabelOutlet.text = email
         // address outlets
-        parentGuardianLabelOutlet.text = parentGuardian ?? ""
+        parentGuardianLabelOutlet.text = "guardian: \(parentGuardian ?? "")"
         addressLine1LabelOutlet.text = addressLine1
         // addressLine2 is not a required field
         addressLine2LabelOutlet.text = addressLine2 ?? ""
