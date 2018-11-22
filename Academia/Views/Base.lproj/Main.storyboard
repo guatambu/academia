@@ -25,11 +25,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UC2-vA-Rkn" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
-                                <rect key="frame" x="87" y="336" width="145" height="40"/>
+                                <rect key="frame" x="87" y="336" width="146" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="7ap-Zx-2OB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                <inset key="contentEdgeInsets" minX="32" minY="0.0" maxX="32" maxY="0.0"/>
                                 <state key="normal" title="Let's Go!">
                                     <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -100,9 +101,8 @@
                             <constraint firstItem="Vft-3p-g33" firstAttribute="leading" secondItem="WGu-rn-OWm" secondAttribute="leading" constant="264.5" id="L83-YR-SHE"/>
                             <constraint firstItem="WGu-rn-OWm" firstAttribute="bottom" secondItem="Vft-3p-g33" secondAttribute="bottom" constant="8" id="Vai-C7-ysP"/>
                             <constraint firstItem="fkL-eq-LtA" firstAttribute="centerY" secondItem="TkU-AK-AMr" secondAttribute="centerY" constant="-40" id="a4e-X1-D0g"/>
-                            <constraint firstItem="WGu-rn-OWm" firstAttribute="trailing" secondItem="UC2-vA-Rkn" secondAttribute="trailing" constant="88" id="dzg-EW-zyF"/>
+                            <constraint firstItem="UC2-vA-Rkn" firstAttribute="centerX" secondItem="TkU-AK-AMr" secondAttribute="centerX" id="mRx-Ay-59m"/>
                             <constraint firstItem="WGu-rn-OWm" firstAttribute="trailing" secondItem="Vft-3p-g33" secondAttribute="trailing" constant="16" id="pxF-7E-6gc"/>
-                            <constraint firstItem="UC2-vA-Rkn" firstAttribute="leading" secondItem="WGu-rn-OWm" secondAttribute="leading" constant="87" id="wz5-Pm-fTU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WGu-rn-OWm"/>
                     </view>
@@ -132,11 +132,12 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9y4-bA-Bq2" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="116.5" width="240" height="40"/>
+                                        <rect key="frame" x="41.5" y="116.5" width="205" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="6Ec-OD-HCI"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                        <inset key="contentEdgeInsets" minX="32" minY="0.0" maxX="32" maxY="0.0"/>
                                         <state key="normal" title="I am the Owner">
                                             <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -156,11 +157,12 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TeO-u6-dgl" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="236.5" width="240" height="40"/>
+                                        <rect key="frame" x="46" y="236.5" width="196" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="AYb-qr-PPb"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                        <inset key="contentEdgeInsets" minX="32" minY="0.0" maxX="32" maxY="0.0"/>
                                         <state key="normal" title="I am a Student">
                                             <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -183,12 +185,13 @@
                                         <rect key="frame" x="24" y="356.5" width="240" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FFK-VC-oAq" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="240" height="40"/>
+                                                <rect key="frame" x="7" y="0.0" width="226" height="40"/>
                                                 <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="p8j-fL-DaY"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                                <inset key="contentEdgeInsets" minX="32" minY="0.0" maxX="32" maxY="0.0"/>
                                                 <state key="normal" title="Confirm:  Student">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -202,12 +205,13 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rWb-VE-Qt4" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="240" height="40"/>
+                                                <rect key="frame" x="12" y="0.0" width="216" height="40"/>
                                                 <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="q0f-Xs-L9d"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                                <inset key="contentEdgeInsets" minX="32" minY="0.0" maxX="32" maxY="0.0"/>
                                                 <state key="normal" title="Confirm:  Owner">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -221,21 +225,11 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstItem="rWb-VE-Qt4" firstAttribute="leading" secondItem="gD2-Q6-B1k" secondAttribute="leading" id="HfN-q1-nYl"/>
-                                            <constraint firstItem="FFK-VC-oAq" firstAttribute="leading" secondItem="gD2-Q6-B1k" secondAttribute="leading" id="eYG-Ze-9he"/>
-                                            <constraint firstAttribute="trailing" secondItem="rWb-VE-Qt4" secondAttribute="trailing" id="i4Y-l6-9Cb"/>
-                                            <constraint firstAttribute="trailing" secondItem="FFK-VC-oAq" secondAttribute="trailing" id="kCO-yI-Fba"/>
-                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="gD2-Q6-B1k" firstAttribute="leading" secondItem="HLh-2o-jGg" secondAttribute="leading" constant="24" id="6Ag-4S-enA"/>
-                                    <constraint firstItem="TeO-u6-dgl" firstAttribute="leading" secondItem="HLh-2o-jGg" secondAttribute="leading" constant="24" id="6qJ-B8-eRx"/>
-                                    <constraint firstItem="9y4-bA-Bq2" firstAttribute="leading" secondItem="HLh-2o-jGg" secondAttribute="leading" constant="24" id="RlR-Zu-M1A"/>
                                     <constraint firstAttribute="trailing" secondItem="gD2-Q6-B1k" secondAttribute="trailing" constant="24" id="eJT-p2-XsL"/>
-                                    <constraint firstAttribute="trailing" secondItem="TeO-u6-dgl" secondAttribute="trailing" constant="24" id="f7v-mp-d1v"/>
-                                    <constraint firstAttribute="trailing" secondItem="9y4-bA-Bq2" secondAttribute="trailing" constant="24" id="k6l-pc-t1D"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -373,12 +367,13 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hG7-ZD-xeK" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="40" y="240" width="208" height="40"/>
+                                        <rect key="frame" x="58.5" y="240" width="171" height="40"/>
                                         <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Bze-5e-UXS"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                        <inset key="contentEdgeInsets" minX="32" minY="0.0" maxX="32" maxY="0.0"/>
                                         <state key="normal" title="Get Started">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -393,9 +388,7 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="hG7-ZD-xeK" secondAttribute="trailing" constant="40" id="KV5-Br-Z6g"/>
                                     <constraint firstItem="fu3-iU-hvD" firstAttribute="leading" secondItem="lWL-Ql-B6J" secondAttribute="leading" id="eIp-yr-5g5"/>
-                                    <constraint firstItem="hG7-ZD-xeK" firstAttribute="leading" secondItem="lWL-Ql-B6J" secondAttribute="leading" constant="40" id="gmW-ol-yxW"/>
                                     <constraint firstAttribute="trailing" secondItem="fu3-iU-hvD" secondAttribute="trailing" id="nES-jX-yU7"/>
                                 </constraints>
                             </stackView>
@@ -605,11 +598,12 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FTs-XE-JpF" userLabel="Kids Program Button Outlet" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="116.5" width="240" height="40"/>
+                                        <rect key="frame" x="50.5" y="116.5" width="187" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="wW4-eY-hVN"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                        <inset key="contentEdgeInsets" minX="32" minY="0.0" maxX="32" maxY="0.0"/>
                                         <state key="normal" title="Kids Program">
                                             <color key="titleColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -629,11 +623,12 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W5y-f9-oz7" userLabel="Adults Program Button Outlet" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="236.5" width="240" height="40"/>
+                                        <rect key="frame" x="41" y="236.5" width="206" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="ReN-RV-5uF"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                        <inset key="contentEdgeInsets" minX="32" minY="0.0" maxX="32" maxY="0.0"/>
                                         <state key="normal" title="Adults Program">
                                             <color key="titleColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -656,12 +651,13 @@
                                         <rect key="frame" x="0.0" y="356.5" width="288" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EMe-4e-xkS" userLabel="Confirm Kids Program Button Outlet" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="288" height="40"/>
+                                                <rect key="frame" x="8.5" y="0.0" width="271" height="40"/>
                                                 <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="gcf-Xr-Wwl"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                                <inset key="contentEdgeInsets" minX="32" minY="0.0" maxX="32" maxY="0.0"/>
                                                 <state key="normal" title="Confirm: Kids Program">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -674,13 +670,14 @@
                                                     <action selector="confirmKidsProgramButtonTapped:" destination="Rmh-VZ-Ycm" eventType="touchUpInside" id="RnC-vW-v9Z"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ged-74-kY0" userLabel="Confirm Adults Program Button Outlet" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="ged-74-kY0" userLabel="Confirm Adults Program Button Outlet" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="288" height="40"/>
                                                 <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="Dov-Ka-KfB"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                                <inset key="contentEdgeInsets" minX="32" minY="0.0" maxX="32" maxY="0.0"/>
                                                 <state key="normal" title="Confirm: Adults Program">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -694,21 +691,11 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstItem="ged-74-kY0" firstAttribute="leading" secondItem="EDQ-s6-Bmy" secondAttribute="leading" id="eOz-9n-dIZ"/>
-                                            <constraint firstItem="EMe-4e-xkS" firstAttribute="leading" secondItem="EDQ-s6-Bmy" secondAttribute="leading" id="kZy-fY-cQZ"/>
-                                            <constraint firstAttribute="trailing" secondItem="EMe-4e-xkS" secondAttribute="trailing" id="l1N-vZ-NV9"/>
-                                            <constraint firstAttribute="trailing" secondItem="ged-74-kY0" secondAttribute="trailing" id="yRR-gb-TeT"/>
-                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="EDQ-s6-Bmy" secondAttribute="trailing" id="MGd-jP-rQI"/>
-                                    <constraint firstAttribute="trailing" secondItem="FTs-XE-JpF" secondAttribute="trailing" constant="24" id="Rma-fn-8pW"/>
-                                    <constraint firstItem="FTs-XE-JpF" firstAttribute="leading" secondItem="zZe-sn-BFk" secondAttribute="leading" constant="24" id="UmL-oL-qLy"/>
-                                    <constraint firstAttribute="trailing" secondItem="W5y-f9-oz7" secondAttribute="trailing" constant="24" id="owN-0I-nPP"/>
                                     <constraint firstItem="EDQ-s6-Bmy" firstAttribute="leading" secondItem="zZe-sn-BFk" secondAttribute="leading" id="rUx-bZ-xP2"/>
-                                    <constraint firstItem="W5y-f9-oz7" firstAttribute="leading" secondItem="zZe-sn-BFk" secondAttribute="leading" constant="24" id="xLG-0s-cXi"/>
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="oWr-Nw-etm" userLabel="Progress Stack View">
@@ -909,12 +896,13 @@
                                 </constraints>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rOe-Eg-NUk" userLabel="Next Button Outlet" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
-                                <rect key="frame" x="56" y="448" width="208" height="40"/>
+                                <rect key="frame" x="105.5" y="448" width="109" height="40"/>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="xdM-cB-Ii8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                <inset key="contentEdgeInsets" minX="32" minY="0.0" maxX="32" maxY="0.0"/>
                                 <state key="normal" title="Next">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1052,11 +1040,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="rOe-Eg-NUk" firstAttribute="leading" secondItem="14j-uA-7If" secondAttribute="leading" constant="56" id="7dj-8H-1nV"/>
+                            <constraint firstItem="rOe-Eg-NUk" firstAttribute="centerX" secondItem="D59-Sg-yRh" secondAttribute="centerX" id="4rf-4K-Qw4"/>
                             <constraint firstItem="axk-NK-laR" firstAttribute="leading" secondItem="14j-uA-7If" secondAttribute="leading" id="7f6-d8-tTu"/>
                             <constraint firstItem="axk-NK-laR" firstAttribute="top" secondItem="tIo-gd-Eif" secondAttribute="bottom" id="Joh-ih-x2p"/>
                             <constraint firstItem="14j-uA-7If" firstAttribute="trailing" secondItem="axk-NK-laR" secondAttribute="trailing" id="KvJ-6Q-BdG"/>
-                            <constraint firstItem="14j-uA-7If" firstAttribute="trailing" secondItem="rOe-Eg-NUk" secondAttribute="trailing" constant="56" id="Mq2-ZU-Iqe"/>
                             <constraint firstItem="B3V-XW-Yhx" firstAttribute="top" secondItem="14j-uA-7If" secondAttribute="top" constant="16" id="Nun-34-T7f"/>
                             <constraint firstItem="tIo-gd-Eif" firstAttribute="leading" secondItem="14j-uA-7If" secondAttribute="leading" constant="16" id="P7z-MK-LQP"/>
                             <constraint firstItem="tXm-ZD-chp" firstAttribute="centerX" secondItem="D59-Sg-yRh" secondAttribute="centerX" id="Sgz-RU-j43"/>
@@ -1217,12 +1204,13 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QqB-34-XbY" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="40" y="320" width="208" height="40"/>
+                                        <rect key="frame" x="89.5" y="320" width="109" height="40"/>
                                         <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="G4u-VW-RYh"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                        <inset key="contentEdgeInsets" minX="32" minY="0.0" maxX="32" maxY="0.0"/>
                                         <state key="normal" title="Next">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1237,10 +1225,9 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="QqB-34-XbY" secondAttribute="trailing" constant="40" id="Zae-xo-9yF"/>
+                                    <constraint firstItem="QqB-34-XbY" firstAttribute="centerX" secondItem="ca9-ym-M4X" secondAttribute="centerX" id="WK5-oJ-eVw"/>
                                     <constraint firstItem="NB0-cb-OjZ" firstAttribute="leading" secondItem="ca9-ym-M4X" secondAttribute="leading" id="fRH-Ax-bIL"/>
                                     <constraint firstAttribute="trailing" secondItem="NB0-cb-OjZ" secondAttribute="trailing" id="kYZ-bL-XI9"/>
-                                    <constraint firstItem="QqB-34-XbY" firstAttribute="leading" secondItem="ca9-ym-M4X" secondAttribute="leading" constant="40" id="y5J-JS-eum"/>
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="w2T-y0-8FC" userLabel="Welcome Stack View">
@@ -1515,12 +1502,13 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bVz-Bl-kvv" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="40" y="248" width="208" height="40"/>
+                                        <rect key="frame" x="89.5" y="248" width="109" height="40"/>
                                         <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Gfd-8G-dsx"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                        <inset key="contentEdgeInsets" minX="32" minY="0.0" maxX="32" maxY="0.0"/>
                                         <state key="normal" title="Next">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1536,9 +1524,8 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="ZAC-yU-kIz" firstAttribute="leading" secondItem="1Cn-dC-EO8" secondAttribute="leading" id="3bO-23-WB5"/>
-                                    <constraint firstItem="bVz-Bl-kvv" firstAttribute="leading" secondItem="1Cn-dC-EO8" secondAttribute="leading" constant="40" id="7Fc-sp-eq9"/>
                                     <constraint firstAttribute="trailing" secondItem="ZAC-yU-kIz" secondAttribute="trailing" id="KiV-Bj-Auh"/>
-                                    <constraint firstAttribute="trailing" secondItem="bVz-Bl-kvv" secondAttribute="trailing" constant="40" id="Xud-WG-hKx"/>
+                                    <constraint firstItem="bVz-Bl-kvv" firstAttribute="centerX" secondItem="1Cn-dC-EO8" secondAttribute="centerX" id="M4q-TP-hw9"/>
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="yaZ-Vp-Cd7" userLabel="Welcome Stack View">
@@ -1919,12 +1906,13 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="naV-Hw-BRF" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="40" y="372" width="240" height="40"/>
+                                        <rect key="frame" x="105.5" y="372" width="109" height="40"/>
                                         <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="mOy-jG-sK3"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                        <inset key="contentEdgeInsets" minX="32" minY="0.0" maxX="32" maxY="0.0"/>
                                         <state key="normal" title="Next">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1940,11 +1928,9 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="4Xn-gA-RIX" secondAttribute="trailing" id="bl9-uM-Vtv"/>
-                                    <constraint firstAttribute="trailing" secondItem="naV-Hw-BRF" secondAttribute="trailing" constant="40" id="h0I-DG-hjT"/>
                                     <constraint firstItem="ltJ-zL-4xU" firstAttribute="leading" secondItem="4MF-hh-4Ck" secondAttribute="leading" constant="16" id="ihI-8x-FRp"/>
                                     <constraint firstItem="4Xn-gA-RIX" firstAttribute="leading" secondItem="4MF-hh-4Ck" secondAttribute="leading" id="mfx-Hi-hGd"/>
                                     <constraint firstAttribute="trailing" secondItem="ltJ-zL-4xU" secondAttribute="trailing" constant="16" id="paZ-6F-Ch5"/>
-                                    <constraint firstItem="naV-Hw-BRF" firstAttribute="leading" secondItem="4MF-hh-4Ck" secondAttribute="leading" constant="40" id="y2u-rm-5ld"/>
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="V9l-LX-z4N" userLabel="Progress Stack View">
@@ -2352,13 +2338,13 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wa1-MA-k3x" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
-                                <rect key="frame" x="65" y="482" width="190" height="40"/>
+                                <rect key="frame" x="57" y="482" width="206" height="40"/>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="7Ba-3E-UjO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                <inset key="contentEdgeInsets" minX="24" minY="0.0" maxX="24" maxY="0.0"/>
+                                <inset key="contentEdgeInsets" minX="32" minY="0.0" maxX="32" maxY="0.0"/>
                                 <state key="normal" title="Create Account">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -2621,12 +2607,13 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="peg-9k-muy" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="40" y="248" width="208" height="40"/>
+                                        <rect key="frame" x="89.5" y="248" width="109" height="40"/>
                                         <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="4Qh-SA-oiY"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                        <inset key="contentEdgeInsets" minX="32" minY="0.0" maxX="32" maxY="0.0"/>
                                         <state key="normal" title="Next">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -2642,9 +2629,8 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="c75-dL-YcS" firstAttribute="leading" secondItem="KtE-4y-EfR" secondAttribute="leading" id="EOz-2f-Xd9"/>
-                                    <constraint firstAttribute="trailing" secondItem="peg-9k-muy" secondAttribute="trailing" constant="40" id="gD4-YK-4Xe"/>
+                                    <constraint firstItem="peg-9k-muy" firstAttribute="centerX" secondItem="KtE-4y-EfR" secondAttribute="centerX" id="JYX-Os-fr6"/>
                                     <constraint firstAttribute="trailing" secondItem="c75-dL-YcS" secondAttribute="trailing" id="gbc-hC-nho"/>
-                                    <constraint firstItem="peg-9k-muy" firstAttribute="leading" secondItem="KtE-4y-EfR" secondAttribute="leading" constant="40" id="tEj-Lk-ghQ"/>
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Dp4-3b-hu0" userLabel="Welcome Stack View">
@@ -2885,12 +2871,13 @@
                                 </connections>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ef6-dh-gYh" userLabel="Next Button Outlet" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
-                                <rect key="frame" x="56" y="451" width="208" height="40"/>
+                                <rect key="frame" x="105.5" y="451" width="109" height="40"/>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="bOg-Ug-qfM"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                <inset key="contentEdgeInsets" minX="32" minY="0.0" maxX="32" maxY="0.0"/>
                                 <state key="normal" title="Next">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -3034,14 +3021,13 @@
                             <constraint firstItem="J6p-EH-HfR" firstAttribute="leading" secondItem="Jkh-Yv-fLa" secondAttribute="leading" constant="16" id="GaY-Ak-f9V"/>
                             <constraint firstItem="GMk-Cb-qsR" firstAttribute="trailing" secondItem="Jkh-Yv-fLa" secondAttribute="trailing" id="MAb-eU-ZiK"/>
                             <constraint firstItem="Jkh-Yv-fLa" firstAttribute="trailing" secondItem="q9D-Gs-vbn" secondAttribute="trailing" constant="16" id="PJq-Bf-hSV"/>
-                            <constraint firstItem="Jkh-Yv-fLa" firstAttribute="trailing" secondItem="ef6-dh-gYh" secondAttribute="trailing" constant="56" id="Sp4-HP-4WQ"/>
                             <constraint firstItem="q9D-Gs-vbn" firstAttribute="leading" secondItem="Jkh-Yv-fLa" secondAttribute="leading" constant="16" id="ZIn-kz-g0H"/>
-                            <constraint firstItem="ef6-dh-gYh" firstAttribute="leading" secondItem="Jkh-Yv-fLa" secondAttribute="leading" constant="56" id="Zrk-KU-4rN"/>
                             <constraint firstItem="Jkh-Yv-fLa" firstAttribute="bottom" secondItem="Fp0-bI-xb2" secondAttribute="bottom" constant="24" id="avh-Oe-rJ0"/>
                             <constraint firstItem="GMk-Cb-qsR" firstAttribute="top" secondItem="J6p-EH-HfR" secondAttribute="bottom" constant="26" id="bmP-ft-wPq"/>
                             <constraint firstItem="J6p-EH-HfR" firstAttribute="top" secondItem="q9D-Gs-vbn" secondAttribute="bottom" constant="40" id="frr-IK-zPP"/>
                             <constraint firstItem="Fp0-bI-xb2" firstAttribute="centerX" secondItem="Ks4-Ek-77h" secondAttribute="centerX" id="kU6-uZ-B5S"/>
                             <constraint firstItem="q9D-Gs-vbn" firstAttribute="top" secondItem="Jkh-Yv-fLa" secondAttribute="top" constant="16" id="ucm-oc-l2a"/>
+                            <constraint firstItem="ef6-dh-gYh" firstAttribute="centerX" secondItem="Ks4-Ek-77h" secondAttribute="centerX" id="xcv-xk-RHZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Jkh-Yv-fLa"/>
                     </view>
