@@ -22,7 +22,7 @@ class NameAndBeltViewController: UIViewController {
     var profilePic: UIImage?
     var birthdate: Date?
     var beltLevel: InternationalStandardBJJBelts = .adultWhiteBelt
-    var numberOfStripes = 0
+    var numberOfStripes: Int = 0
     
     var inEditingMode: Bool?
     
@@ -37,8 +37,6 @@ class NameAndBeltViewController: UIViewController {
     @IBOutlet weak var beltLevelPickerView: UIPickerView!
     
     @IBOutlet weak var nextButtonOutlet: DesignableButton!
-    
-    @IBOutlet weak var firstProgressDotOutlet: DesignableView!
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -59,13 +57,12 @@ class NameAndBeltViewController: UIViewController {
         
         guard let isKid = isKid else { return }
         
-        if isKid {
-            beltLevel = .kidsWhiteBelt
-        } else {
-            beltLevel = .adultWhiteBelt
-        }
         // default belt to display upon user arrival
-        beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: numberOfStripes)
+        if isKid {
+            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .kidsWhiteBelt, numberOfStripes: 0)
+        } else {
+            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .adultWhiteBelt, numberOfStripes: 0)
+        }
         
         // if editing profile
         guard let inEditingMode = inEditingMode else { return }
@@ -83,15 +80,18 @@ class NameAndBeltViewController: UIViewController {
         
         if let isOwner = isOwner {
             if isOwner {
-                // isOwner update profile info
+                // Owner update belt info
+                BeltModelController.shared.update(belt: OwnerModelController.shared.owners[0].belt, active: nil, elligibleForNextBelt: nil, classesToNextPromotion: nil, beltLevel: beltLevel, numberOfStripes: numberOfStripes)
             }
         } else if let isKid = isKid {
-            if isKid{
-                // kidStudent update profile info
+            if isKid {
+                // kidStudent update belt info
+                BeltModelController.shared.update(belt: KidStudentModelController.shared.kids[0].belt, active: nil, elligibleForNextBelt: nil, classesToNextPromotion: nil, beltLevel: beltLevel, numberOfStripes: numberOfStripes)
+                }
             } else {
-                // adultStudent update profile info
+                // adultStudent update belt info
+                BeltModelController.shared.update(belt: AdultStudentModelController.shared.adults[0].belt, active: nil, elligibleForNextBelt: nil, classesToNextPromotion: nil, beltLevel: beltLevel, numberOfStripes: numberOfStripes)
             }
-        }
         
         inEditingMode = false
     }
@@ -257,7 +257,7 @@ extension NameAndBeltViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         guard let isKid = isKid else {
-            print("the isKid value is somehow nil in pickerView delegate method didSelectRow in NameAndBeltVC.swift - line 146")
+            print("the isKid value is somehow nil in pickerView delegate method didSelectRow in NameAndBeltVC.swift - line: 272")
             return
         }
         

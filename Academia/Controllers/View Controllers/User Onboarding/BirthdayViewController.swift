@@ -68,13 +68,23 @@ class BirthdayViewController: UIViewController {
         
         if let isOwner = isOwner {
             if isOwner {
-                // isOwner update profile info
+                // Owner update profile info
+                if birthdate != nil {
+                    
+                    OwnerModelController.shared.updateProfileInfo(owner: OwnerModelController.shared.owners[0], isInstructor: nil, birthdate: birthdate, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+                }
             }
         } else if let isKid = isKid {
             if isKid{
                 // kidStudent update profile info
+                if birthdate != nil {
+                    KidStudentModelController.shared.updateProfileInfo(kidStudent: KidStudentModelController.shared.kids[0],birthdate: birthdate, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, parentGuardian: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+                }
             } else {
                 // adultStudent update profile info
+                if birthdate != nil {
+                    AdultStudentModelController.shared.updateProfileInfo(adultStudent: AdultStudentModelController.shared.adults[0], birthdate: birthdate, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+                }
             }
         }
         

@@ -22,6 +22,7 @@ class TakeProfilePicViewController: UIViewController {
     var profilePic: UIImage?
     
     var inEditingMode: Bool?
+    var userToEdit: Any?
     
     let imagePickerController = UIImagePickerController()
     
@@ -35,10 +36,13 @@ class TakeProfilePicViewController: UIViewController {
     @IBOutlet weak var parentGuardianLabelOutlet: UILabel!
     @IBOutlet weak var parentGuardianTextField: UITextField!
     
-    @IBOutlet weak var firstProgressDotOutlet: DesignableView!
-    
     
     // MARK: - ViewController Lifecycle Functions
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // check to see if enter editing mode
+        enterEditingMode(inEditingMode: inEditingMode)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,15 +61,6 @@ class TakeProfilePicViewController: UIViewController {
         profilePicImageViewOutlet.isUserInteractionEnabled = true
         
         imagePickerController.delegate = self
-        
-        // if editing profile
-        guard let inEditingMode = inEditingMode else { return }
-        
-        if inEditingMode {
-            let saveButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveButtonTapped))
-            navigationItem.rightBarButtonItem = saveButtonItem
-        }
-        
     }
     
     
@@ -75,16 +70,26 @@ class TakeProfilePicViewController: UIViewController {
         
         if let isOwner = isOwner {
             if isOwner {
-                // isOwner update profile info
+                // Owner update profile info
+                if firstNameTextField.text != "" && lastNameTextField.text != "" && profilePicImageViewOutlet.image != UIImage(contentsOfFile: "user_placeholder") {
+                    
+                    OwnerModelController.shared.updateProfileInfo(owner: OwnerModelController.shared.owners[0], isInstructor: nil, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: profilePicImageViewOutlet.image, username: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+                }
             }
         } else if let isKid = isKid {
             if isKid{
                 // kidStudent update profile info
+                if firstNameTextField.text != "" && lastNameTextField.text != "" && parentGuardianTextField.text != "" && profilePicImageViewOutlet.image != UIImage(contentsOfFile: "user_placeholder") {
+                    KidStudentModelController.shared.updateProfileInfo(kidStudent: KidStudentModelController.shared.kids[0], birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: profilePicImageViewOutlet.image, username: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, parentGuardian: parentGuardianTextField.text, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+                }
             } else {
                 // adultStudent update profile info
+                if firstNameTextField.text != "" && lastNameTextField.text != "" && profilePicImageViewOutlet.image != UIImage(contentsOfFile: "user_placeholder") {
+                    AdultStudentModelController.shared.updateProfileInfo(adultStudent: AdultStudentModelController.shared.adults[0], birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: profilePicImageViewOutlet.image, username: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+                }
             }
         }
-        
+
         inEditingMode = false
     }
     
@@ -135,6 +140,7 @@ class TakeProfilePicViewController: UIViewController {
         destViewController.profilePic = profilePic
     }
 
+    
     // MARK: - Helper Functions
     
     @objc func profilePicImageTapped() {
@@ -142,7 +148,18 @@ class TakeProfilePicViewController: UIViewController {
         // brings up the camera to snap a profile pic
         presentImagePicker()
 
+    }
+    
+    func enterEditingMode(inEditingMode: Bool?) {
         
+        guard let inEditingMode = inEditingMode else { return }
+        
+        if inEditingMode {
+            let saveButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveButtonTapped))
+            navigationItem.rightBarButtonItem = saveButtonItem
+        }
+        
+        print(inEditingMode)
     }
 }
 

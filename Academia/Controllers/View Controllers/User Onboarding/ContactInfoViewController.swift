@@ -42,8 +42,6 @@ class ContactInfoViewController: UIViewController {
     @IBOutlet weak var mobileTextField: UITextField!
     @IBOutlet weak var emailOutlet: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
-    
-    @IBOutlet weak var firstProgressDotOutlet: DesignableView!
 
     
     // MARK: - ViewController Lifecycle Functions
@@ -75,13 +73,23 @@ class ContactInfoViewController: UIViewController {
         
         if let isOwner = isOwner {
             if isOwner {
-                // isOwner update profile info
+                // Owner update profile info
+                if phoneTextField.text != "" && emailTextField.text != "" {
+                    
+                    OwnerModelController.shared.updateProfileInfo(owner: OwnerModelController.shared.owners[0], isInstructor: nil, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: phoneTextField.text, mobile: mobileTextField.text, email: emailTextField.text, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+                }
             }
         } else if let isKid = isKid {
             if isKid{
                 // kidStudent update profile info
+                if phoneTextField.text != "" && emailTextField.text != "" {
+                    KidStudentModelController.shared.updateProfileInfo(kidStudent: KidStudentModelController.shared.kids[0], birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, parentGuardian: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: phoneTextField.text, mobile: mobileTextField.text, email: emailTextField.text, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+                }
             } else {
                 // adultStudent update profile info
+                if phoneTextField.text != "" && emailTextField.text != "" {
+                    AdultStudentModelController.shared.updateProfileInfo(adultStudent: AdultStudentModelController.shared.adults[0], birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: phoneTextField.text, mobile: mobileTextField.text, email: emailTextField.text, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+                }
             }
         }
         

@@ -46,14 +46,24 @@ class BeltModelController {
     
     
     // Update
-    func update(belt: Belt, active: Bool, elligibleForNextBelt: Bool, classesToNextPromotion: Int, beltLevel: InternationalStandardBJJBelts, numberOfStripes: Int) {
+    func update(belt: Belt, active: Bool?, elligibleForNextBelt: Bool?, classesToNextPromotion: Int?, beltLevel: InternationalStandardBJJBelts, numberOfStripes: Int) {
         
         belt.dateEdited = Date()
-        belt.active = active
-        belt.elligibleForNextBelt = elligibleForNextBelt
-        belt.classesToNextPromotion = classesToNextPromotion
+        
+        if let active = active {
+            belt.active = active
+            
+        } else if let elligibleForNextBelt = elligibleForNextBelt {
+            belt.elligibleForNextBelt = elligibleForNextBelt
+            
+        } else if let classesToNextPromotion = classesToNextPromotion {
+            belt.classesToNextPromotion = classesToNextPromotion
+            
+        }
+        
         belt.beltLevel = beltLevel
         belt.numberOfStripes = numberOfStripes
+            
         
     }
     

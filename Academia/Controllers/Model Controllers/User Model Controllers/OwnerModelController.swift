@@ -95,6 +95,7 @@ class OwnerModelController {
                            birthdate: Date?,
                            groups: [Group]?,
                            permission: UserPermissions?,
+                           belt: Belt?,
                            profilePic: UIImage?,
                            username: String?,
                            firstName: String?,
@@ -124,6 +125,9 @@ class OwnerModelController {
             
         } else if let permission = permission {
             owner.permission = permission
+            
+        } else if let belt = belt {
+            owner.belt = belt
             
         } else if let profilePic = profilePic {
             owner.profilePic = profilePic
