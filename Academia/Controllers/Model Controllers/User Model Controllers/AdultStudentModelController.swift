@@ -114,59 +114,59 @@ class AdultStudentModelController {
         
         if let birthdate = birthdate {
             adultStudent.birthdate = birthdate
-            
-        } else if let groups = groups {
+        }
+        if let groups = groups {
             adultStudent.groups = groups
-            
-        } else if let permission = permission {
+        }
+        if let permission = permission {
             adultStudent.permission = permission
-            
-        } else if let belt = belt {
+        }
+        if let belt = belt {
             adultStudent.belt = belt
-            
-        } else if let profilePic = profilePic {
+        }
+        if let profilePic = profilePic {
             adultStudent.profilePic = profilePic
-            
-        } else if let username = username {
+        }
+        if let username = username {
             adultStudent.username = username
-            
-        } else if let firstName = firstName {
+        }
+        if let firstName = firstName {
             adultStudent.firstName = firstName
-            
-        } else if let lastName = lastName {
+        }
+        if let lastName = lastName {
             adultStudent.lastName = lastName
-            
-        } else if let addressLine1 = addressLine1 {
+        }
+        if let addressLine1 = addressLine1 {
             adultStudent.addressLine1 = addressLine1
-            
-        } else if let addressLine2 = addressLine2 {
+        }
+        if let addressLine2 = addressLine2 {
             adultStudent.addressLine2 = addressLine2
-            
-        } else if let city = city {
+        }
+        if let city = city {
             adultStudent.city = city
-            
-        } else if let state = state {
+        }
+        if let state = state {
             adultStudent.state = state
-            
-        } else if let zipCode = zipCode {
+        }
+        if let zipCode = zipCode {
             adultStudent.zipCode = zipCode
-            
-        } else if let phone = phone {
+        }
+        if let phone = phone {
             adultStudent.phone = phone
-            
-        } else if let mobile = mobile {
+        }
+        if let mobile = mobile {
             adultStudent.mobile = mobile
-            
-        } else if let email = email {
+        }
+        if let email = email {
             adultStudent.email = email
-            
-        } else if let emergencyContactName = emergencyContactName {
+        }
+        if let emergencyContactName = emergencyContactName {
             adultStudent.emergencyContactName = emergencyContactName
-            
-        } else if let emergencyContactPhone = emergencyContactPhone {
+        }
+        if let emergencyContactPhone = emergencyContactPhone {
             adultStudent.emergencyContactPhone = emergencyContactPhone
-            
-        } else if let emergencyContactRelationship = emergencyContactRelationship {
+        }
+        if let emergencyContactRelationship = emergencyContactRelationship {
             adultStudent.emergencyContactRelationship = emergencyContactRelationship
         }
     }

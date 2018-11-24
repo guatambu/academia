@@ -115,62 +115,62 @@ class KidStudentModelController {
         
         if let birthdate = birthdate {
             kidStudent.birthdate = birthdate
-            
-        } else if let groups = groups {
+        }
+        if let groups = groups {
             kidStudent.groups = groups
-            
-        } else if let permission = permission {
+        }
+        if let permission = permission {
             kidStudent.permission = permission
-            
-        } else if let belt = belt {
+        }
+        if let belt = belt {
             kidStudent.belt = belt
-            
-        } else if let profilePic = profilePic {
+        }
+        if let profilePic = profilePic {
             kidStudent.profilePic = profilePic
-            
-        } else if let username = username {
+        }
+        if let username = username {
             kidStudent.username = username
-            
-        } else if let firstName = firstName {
+        }
+        if let firstName = firstName {
             kidStudent.firstName = firstName
-            
-        } else if let lastName = lastName {
+        }
+        if let lastName = lastName {
             kidStudent.lastName = lastName
-            
-        } else if let parentGuardian = parentGuardian {
+        }
+        if let parentGuardian = parentGuardian {
             kidStudent.parentGuardian = parentGuardian
-            
-        } else if let addressLine1 = addressLine1 {
+        }
+        if let addressLine1 = addressLine1 {
             kidStudent.addressLine1 = addressLine1
-            
-        } else if let addressLine2 = addressLine2 {
+        }
+        if let addressLine2 = addressLine2 {
             kidStudent.addressLine2 = addressLine2
-            
-        } else if let city = city {
+        }
+        if let city = city {
             kidStudent.city = city
-            
-        } else if let state = state {
+        }
+        if let state = state {
             kidStudent.state = state
-            
-        } else if let zipCode = zipCode {
+        }
+        if let zipCode = zipCode {
             kidStudent.zipCode = zipCode
-            
-        } else if let phone = phone {
+        }
+        if let phone = phone {
             kidStudent.phone = phone
-            
-        } else if let mobile = mobile {
+        }
+        if let mobile = mobile {
             kidStudent.mobile = mobile
-            
-        } else if let email = email {
+        }
+        if let email = email {
             kidStudent.email = email
-            
-        } else if let emergencyContactName = emergencyContactName {
+        }
+        if let emergencyContactName = emergencyContactName {
             kidStudent.emergencyContactName = emergencyContactName
-            
-        } else if let emergencyContactPhone = emergencyContactPhone {
+        }
+        if let emergencyContactPhone = emergencyContactPhone {
             kidStudent.emergencyContactPhone = emergencyContactPhone
-            
-        } else if let emergencyContactRelationship = emergencyContactRelationship {
+        }
+        if let emergencyContactRelationship = emergencyContactRelationship {
             kidStudent.emergencyContactRelationship = emergencyContactRelationship
         }
     }
