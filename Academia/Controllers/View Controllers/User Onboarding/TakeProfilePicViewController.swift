@@ -124,9 +124,10 @@ class TakeProfilePicViewController: UIViewController {
     }
     
     @IBAction func nextButtonTapped(_ sender: DesignableButton) {
-        
+    
         // programmatically performing the segue
     
+        print("to birthday segue")
         // instantiate the relevant storyboard
         let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
@@ -145,7 +146,7 @@ class TakeProfilePicViewController: UIViewController {
             return
         }
         
-        guard let profilePic = profilePic else { return }
+        guard let profilePic = profilePicImageViewOutlet.image else { return }
         
         let parentGuardian = parentGuardianTextField.text
     

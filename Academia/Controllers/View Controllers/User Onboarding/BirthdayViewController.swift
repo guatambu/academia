@@ -38,7 +38,7 @@ class BirthdayViewController: UIViewController {
     
     // MARK: - ViewController Lifecycle Functions
     
-   
+    // TODO:  set up all the rest of the editing mode funcitonality for this and future VCs in owner profile eidting mode flow
 
     override func viewDidLoad() {
         super.viewDidLoad()
