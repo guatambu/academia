@@ -24,10 +24,10 @@ class LandingPageViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.tintColor = self.beltBuilder.redBeltRed
         
-        
+        // following code allows tracking of howmany VCs are present in the current Navigaiton Stack in case have stray VCs out there at any point
         print("how many viewControllers we got at LandingPageVC: \(String(describing: self.navigationController?.viewControllers.count))")
         
-        guard var navStack = self.navigationController?.viewControllers else {
+        guard let navStack = self.navigationController?.viewControllers else {
             print("no VCs right now")
             return
         }
