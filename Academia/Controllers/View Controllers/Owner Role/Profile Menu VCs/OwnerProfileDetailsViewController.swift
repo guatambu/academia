@@ -98,8 +98,13 @@ class OwnerProfileDetailsViewController: UIViewController {
             let destViewController = mainView.instantiateViewController(withIdentifier: "toLandingPage") as! LandingPageViewController
             // add to Navigation stack
             let destVCNavigation = UINavigationController(rootViewController: destViewController)
-            // perform the segure - pop to viewController of choice
+            // perform the segure - present viewController of choice
             self.navigationController?.present(destVCNavigation, animated: true, completion: nil)
+            
+            // perform segue to specified viewController removing all others from Navigation Stack
+//            self.navigationController?.popToViewController(destVCNavigation, animated: true)
+            // why can't i 'pop' to this VC?  if not the way to go, then, is navigation stack clean?
+            
             self.navigationController?.navigationBar.tintColor = self.beltBuilder.redBeltRed
             
             print("how many owners we got now: \(OwnerModelController.shared.owners.count)")

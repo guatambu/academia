@@ -23,8 +23,19 @@ class LandingPageViewController: UIViewController {
         // need to get rid of that lil border line at the bottom of the navigation bar
         navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.tintColor = self.beltBuilder.redBeltRed
-        // Do any additional setup after loading the view.
         
+        
+        print("how many viewControllers we got at LandingPageVC: \(String(describing: self.navigationController?.viewControllers.count))")
+        
+        guard var navStack = self.navigationController?.viewControllers else {
+            print("no VCs right now")
+            return
+        }
+        var index = 0
+        for vc in navStack {
+            print("\(vc) at navStack index: \(index)")
+            index += 1
+        }
     }
 
 
