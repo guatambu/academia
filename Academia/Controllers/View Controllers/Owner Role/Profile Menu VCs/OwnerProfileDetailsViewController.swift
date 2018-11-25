@@ -81,7 +81,38 @@ class OwnerProfileDetailsViewController: UIViewController {
             // also need to build in programmatic segues for saveTapped to exit editing mode and return to OwnerProfileDetailsVC
     }
     
- 
+    @IBAction func deleteAccountButtonTapped(_ sender: UIButton) {
+        
+        let alertController = UIAlertController(title: "Delete Account", message: "are you sure you want to delete your account?", preferredStyle: UIAlertController.Style.alert)
+        
+        let cancel = UIAlertAction(title: "cancel", style: UIAlertAction.Style.cancel, handler: nil)
+        let deleteAccount = UIAlertAction(title: "delete account", style: UIAlertAction.Style.destructive) { (alert) in
+            
+            OwnerModelController.shared.delete(owner: OwnerModelController.shared.owners[0])
+            
+            // programmatically performing the segue
+            
+            // instantiate the relevant storyboard
+            let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            // instantiate the desired TableViewController as ViewController on relevant storyboard
+            let destViewController = mainView.instantiateViewController(withIdentifier: "toLandingPage") as! LandingPageViewController
+            // add to Navigation stack
+            let destVCNavigation = UINavigationController(rootViewController: destViewController)
+            // perform the segure - pop to viewController of choice
+            self.navigationController?.present(destVCNavigation, animated: true, completion: nil)
+            self.navigationController?.navigationBar.tintColor = self.beltBuilder.redBeltRed
+            
+            print("how many owners we got now: \(OwnerModelController.shared.owners.count)")
+            
+        }
+        
+        alertController.addAction(cancel)
+        alertController.addAction(deleteAccount)
+        
+        self.present(alertController, animated: true)
+        
+    }
+    
 }
 
 

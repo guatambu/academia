@@ -13,7 +13,7 @@
         <!--Landing Page View Controller-->
         <scene sceneID="A80-Qu-Cf5">
             <objects>
-                <viewController id="Cjy-iC-IKQ" customClass="LandingPageViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toLandingPage" id="Cjy-iC-IKQ" customClass="LandingPageViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TkU-AK-AMr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

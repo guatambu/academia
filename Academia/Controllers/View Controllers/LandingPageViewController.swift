@@ -9,13 +9,20 @@
 import UIKit
 
 class LandingPageViewController: UIViewController {
+    
+    // MARK: - Properties
+    
+    let beltBuilder = BeltBuilder()
+    
+    
+    // MARK: ViewController Lifecycle Functions
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // need to get rid of that lil border line at the bottom of the navigation bar
         navigationController?.navigationBar.shadowImage = UIImage()
-
+        self.navigationController?.navigationBar.tintColor = self.beltBuilder.redBeltRed
         // Do any additional setup after loading the view.
         
     }

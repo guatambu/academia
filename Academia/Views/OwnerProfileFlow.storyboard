@@ -734,13 +734,27 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="LtR-SD-FdO">
+                                <rect key="frame" x="74.5" y="530" width="171" height="22"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="contentEdgeInsets" minX="32" minY="0.0" maxX="32" maxY="0.0"/>
+                                <state key="normal" title="delete account">
+                                    <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteAccountButtonTapped:" destination="cDB-5R-ULH" eventType="touchUpInside" id="xIZ-AQ-BXd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="1iZ-Ri-MIy" secondAttribute="bottom" constant="40" id="7P5-6C-zMf"/>
                             <constraint firstItem="qbH-Hf-8xE" firstAttribute="trailing" secondItem="1iZ-Ri-MIy" secondAttribute="trailing" id="Ioc-8E-8Wt"/>
+                            <constraint firstItem="LtR-SD-FdO" firstAttribute="centerX" secondItem="xOr-hb-RuH" secondAttribute="centerX" id="PIh-y0-MgO"/>
                             <constraint firstItem="1iZ-Ri-MIy" firstAttribute="leading" secondItem="xOr-hb-RuH" secondAttribute="leading" id="aRI-Rq-4UN"/>
                             <constraint firstItem="1iZ-Ri-MIy" firstAttribute="top" secondItem="qbH-Hf-8xE" secondAttribute="top" constant="16" id="rfq-hb-3Zh"/>
+                            <constraint firstItem="qbH-Hf-8xE" firstAttribute="bottom" secondItem="LtR-SD-FdO" secondAttribute="bottom" constant="16" id="yhu-Z9-Ret"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qbH-Hf-8xE"/>
                     </view>
@@ -771,7 +785,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vC7-T7-rin" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5968" y="5164"/>
+            <point key="canvasLocation" x="5966.25" y="5163.3802816901407"/>
         </scene>
         <!--profile-->
         <scene sceneID="Nlf-uj-xfx">
