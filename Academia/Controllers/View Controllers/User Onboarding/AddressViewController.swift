@@ -29,6 +29,8 @@ class AddressViewController: UIViewController {
     var state: String?
     var zipCode: String?
     
+    var inEditingMode: Bool?
+    var userToEdit: Any?
     
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
@@ -43,29 +45,66 @@ class AddressViewController: UIViewController {
     @IBOutlet weak var zipCodeLabelOutlet: UILabel!
     @IBOutlet weak var zipCodeTextField: UITextField!
     
-    @IBOutlet weak var firstProgressDotOutlet: DesignableView!
-    
     
     // MARK: - ViewController Lifecycle Functions
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        // hide first progress dot for owner users
-        guard let isOwner = isOwner else { return }
-        
-        if isOwner {
-            firstProgressDotOutlet.isHidden = true
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        guard let isOwner = isOwner else { return }
+        
+        if isOwner{
+            welcomeLabeOutlet.text = "Welcome Owner"
+        } else {
+            welcomeLabeOutlet.text = "Welcome New Student"
+        }
+        
+        // if editing profile
+        guard let inEditingMode = inEditingMode else { return }
+        
+        if inEditingMode {
+            let saveButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveButtonTapped))
+            navigationItem.rightBarButtonItem = saveButtonItem
+        }
     }
     
     
     // MARK: - Actions
+    
+    @objc func saveButtonTapped() {
+        
+        if let isOwner = isOwner {
+            if isOwner {
+                // Owner update profile info
+                if addressLine1TextField.text != "" && cityTextField.text != "" && stateTextField.text != "" && zipCodeTextField.text != "" {
+                    
+                    let owner = OwnerModelController.shared.owners[0]
+                    
+                    OwnerModelController.shared.updateProfileInfo(owner: owner, isInstructor: nil, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: addressLine1TextField.text, addressLine2: addressLine2TextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: zipCodeTextField.text, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+                    
+                    self.returnToOwnerProfile()
+                }
+            }
+        } else if let isKid = isKid {
+            if isKid{
+                // kidStudent update profile info
+                if addressLine1TextField.text != "" && cityTextField.text != "" && stateTextField.text != "" && zipCodeTextField.text != "" {
+                    
+                    let kid = KidStudentModelController.shared.kids[0]
+                    KidStudentModelController.shared.updateProfileInfo(kidStudent: kid, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, parentGuardian: nil, addressLine1: addressLine1TextField.text, addressLine2: addressLine2TextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: zipCodeTextField.text, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+                }
+            } else {
+                // adultStudent update profile info
+                if addressLine1TextField.text != "" && cityTextField.text != "" && stateTextField.text != "" && zipCodeTextField.text != "" {
+                    
+                    let adult = AdultStudentModelController.shared.adults[0]
+                    AdultStudentModelController.shared.updateProfileInfo(adultStudent: adult, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: addressLine1TextField.text, addressLine2: addressLine2TextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: zipCodeTextField.text, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+                }
+            }
+        }
+        
+        inEditingMode = false
+    }
     
     @IBAction func nextButtonTapped(_ sender: DesignableButton) {
         
@@ -127,5 +166,8 @@ class AddressViewController: UIViewController {
         destViewController.city = city
         destViewController.state = state
         destViewController.zipCode = zipCode
+        
+        destViewController.inEditingMode = inEditingMode
+        destViewController.userToEdit = userToEdit
     }
 }

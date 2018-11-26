@@ -90,47 +90,85 @@ class AdultStudentModelController {
     
     // Update
     func updateProfileInfo(adultStudent: AdultStudent,
-                           birthdate: Date,
-                           city: String,
-                           email: String,
-                           firstName: String,
+                           birthdate: Date?,
                            groups: [Group]?,
-                           isInstructor: Bool,
-                           lastName: String,
-                           mobile: String,
-                           parentGuardian: String,
-                           permission: [UserPermissions],
-                           phone: String,
+                           permission: [UserPermissions]?,
+                           belt: Belt?,
                            profilePic: UIImage?,
-                           state: String,
-                           addressLine1: String,
-                           addressLine2: String,
-                           username: String,
-                           zipCode: String,
-                           emergencyContactName: String,
-                           emergencyContactPhone: String,
-                           emergencyContactRelationship: String) {
+                           username: String?,
+                           firstName: String?,
+                           lastName: String?,
+                           addressLine1: String?,
+                           addressLine2: String?,
+                           city: String?,
+                           state: String?,
+                           zipCode: String?,
+                           phone: String?,
+                           mobile: String?,
+                           email: String?,
+                           emergencyContactName: String?,
+                           emergencyContactPhone: String?,
+                           emergencyContactRelationship: String?) {
         
-        adultStudent.birthdate = birthdate
-        adultStudent.city = city
         adultStudent.dateEdited = Date()
-        adultStudent.email = email
-        adultStudent.firstName = firstName
-        adultStudent.groups = groups
-        adultStudent.isInstructor = isInstructor
-        adultStudent.lastName = lastName
-        adultStudent.mobile = mobile
-        adultStudent.permission = permission
-        adultStudent.phone = phone
-        adultStudent.profilePic = profilePic
-        adultStudent.state = state
-        adultStudent.addressLine1 = addressLine1
-        adultStudent.addressLine2 = addressLine2
-        adultStudent.username = username
-        adultStudent.zipCode = zipCode
-        adultStudent.emergencyContactName = emergencyContactName
-        adultStudent.emergencyContactPhone = emergencyContactPhone
-        adultStudent.emergencyContactRelationship = emergencyContactRelationship
+        
+        if let birthdate = birthdate {
+            adultStudent.birthdate = birthdate
+        }
+        if let groups = groups {
+            adultStudent.groups = groups
+        }
+        if let permission = permission {
+            adultStudent.permission = permission
+        }
+        if let belt = belt {
+            adultStudent.belt = belt
+        }
+        if let profilePic = profilePic {
+            adultStudent.profilePic = profilePic
+        }
+        if let username = username {
+            adultStudent.username = username
+        }
+        if let firstName = firstName {
+            adultStudent.firstName = firstName
+        }
+        if let lastName = lastName {
+            adultStudent.lastName = lastName
+        }
+        if let addressLine1 = addressLine1 {
+            adultStudent.addressLine1 = addressLine1
+        }
+        if let addressLine2 = addressLine2 {
+            adultStudent.addressLine2 = addressLine2
+        }
+        if let city = city {
+            adultStudent.city = city
+        }
+        if let state = state {
+            adultStudent.state = state
+        }
+        if let zipCode = zipCode {
+            adultStudent.zipCode = zipCode
+        }
+        if let phone = phone {
+            adultStudent.phone = phone
+        }
+        if let mobile = mobile {
+            adultStudent.mobile = mobile
+        }
+        if let email = email {
+            adultStudent.email = email
+        }
+        if let emergencyContactName = emergencyContactName {
+            adultStudent.emergencyContactName = emergencyContactName
+        }
+        if let emergencyContactPhone = emergencyContactPhone {
+            adultStudent.emergencyContactPhone = emergencyContactPhone
+        }
+        if let emergencyContactRelationship = emergencyContactRelationship {
+            adultStudent.emergencyContactRelationship = emergencyContactRelationship
+        }
     }
     
     func promote(adultStudent: AdultStudent, belt: Belt, mostRecentPromotion: Date, promotions: [String: Date]) {

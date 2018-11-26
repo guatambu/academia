@@ -64,28 +64,16 @@ class CompletedProfileViewController: UIViewController {
     @IBOutlet weak var emergencyContactRelationshipLabelOutlet: UILabel!
     @IBOutlet weak var emergencyContactPhoneLabelOutlet: UILabel!
     
-    @IBOutlet weak var firstProgressDotOutlet: DesignableView!
-    
     
     // MARK: - ViewController Lifecycle Functions
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-        // hide first progress dot for owner users
-        guard let isOwner = isOwner else { return }
-        
-        if isOwner {
-            firstProgressDotOutlet.isHidden = true
-        }
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         
         populateCompletedProfileInfo(isOwner: isOwner, isKid: isKid, username: username, password: password, firstName: firstName, lastName: lastName, profilePic: profilePic, birthdate: birthdate, beltLevel: beltLevel, numberOfStripes: numberOfStripes, parentGuardian: parentGuardian, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, phone: phone, mobile: mobile, email: email, emergencyContactName: emergencyContactName, emergencyContactPhone: emergencyContactPhone, emergencyContactRelationship: emergencyContactRelationship)
-        
+    
     }
     
     
@@ -120,6 +108,8 @@ class CompletedProfileViewController: UIViewController {
             }
         }
         // set the desired properties of the destinationVC's navigation Item
+        
+        print("\(OwnerModelController.shared.owners[0].city)")
     }
     
     // MARK: - Helper Methods
@@ -143,7 +133,7 @@ extension CompletedProfileViewController {
         
         print(birthdateString)
         
-        self.birthdateLabelOutlet.text = birthdateString
+        self.birthdateLabelOutlet.text = "birthdate: " + birthdateString
     }
 }
 
@@ -200,14 +190,14 @@ extension CompletedProfileViewController {
         
         // populate UI elements in VC
         nameLabelOutlet.text = "\(firstName) \(lastName)"
-        usernameLabelOutlet.text = username
+        usernameLabelOutlet.text = "user: " + username
         // contact info outlets
-        phoneLabelOutlet.text = phone
+        phoneLabelOutlet.text = "p: " + phone
         // mobile is not a required field
-        mobileLabelOutlet.text = mobile ?? ""
+        mobileLabelOutlet.text = "m: \(mobile ?? "")"
         emailLabelOutlet.text = email
         // address outlets
-        parentGuardianLabelOutlet.text = parentGuardian ?? ""
+        parentGuardianLabelOutlet.text = "guardian: \(parentGuardian ?? "")"
         addressLine1LabelOutlet.text = addressLine1
         // addressLine2 is not a required field
         addressLine2LabelOutlet.text = addressLine2 ?? ""
@@ -238,6 +228,8 @@ extension CompletedProfileViewController {
         
         guard let beltLevel = beltLevel else { print("fail beltLevel"); return }
         guard let numberOfStripes = numberOfStripes else { print("fail stripes"); return }
+        
+        print("CompletedProfileVC -> createBelt() - beltLevel: \(beltLevel.rawValue) numberOfStripes: \(numberOfStripes)")
         
         belt = Belt(classesToNextPromotion: 32, beltLevel: beltLevel, numberOfStripes: numberOfStripes)
 
@@ -292,7 +284,7 @@ extension CompletedProfileViewController {
         
         if isOwner{
             
-            OwnerModelController.shared.addNew(birthdate: Date(),
+            OwnerModelController.shared.addNew(birthdate: birthdate,
                                                belt: belt,
                                                profilePic: profilePic,
                                                username: username,

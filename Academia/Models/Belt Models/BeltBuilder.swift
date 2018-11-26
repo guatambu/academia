@@ -335,6 +335,7 @@ class BeltBuilder {
         case .kidsWhiteBelt:
             if numberOfStripes <= 0 { break }
             if numberOfStripes > 5 { break }
+            if stripesStackView.arrangedSubviews.count == numberOfStripes { break }
             if stripesStackView.arrangedSubviews.count > 5 { break }
             
             for i in 1...numberOfStripes {
@@ -364,6 +365,7 @@ class BeltBuilder {
             
                 if numberOfStripes <= 0 { break }
                 if numberOfStripes > 11 { break }
+                if stripesStackView.arrangedSubviews.count == numberOfStripes { break }
                 if stripesStackView.arrangedSubviews.count > 11 { break }
                 
                 for i in 1...numberOfStripes {
@@ -405,6 +407,7 @@ class BeltBuilder {
             
             if numberOfStripes <= 0 { break }
             if numberOfStripes > 4 { break }
+            if stripesStackView.arrangedSubviews.count == numberOfStripes { break }
             if stripesStackView.arrangedSubviews.count > 4 { break }
             
             for _ in 1...numberOfStripes {
@@ -425,6 +428,7 @@ class BeltBuilder {
             
             if numberOfStripes <= 0 { break }
             if numberOfStripes > 6 { break }
+            if stripesStackView.arrangedSubviews.count == numberOfStripes { break }
             if stripesStackView.arrangedSubviews.count > 6 { break }
             
             for _ in 1...numberOfStripes {
@@ -446,6 +450,7 @@ class BeltBuilder {
             
             if numberOfStripes <= 0 { break }
             if numberOfStripes > 10 { break }
+            if stripesStackView.arrangedSubviews.count == numberOfStripes { break }
             if stripesStackView.arrangedSubviews.count > 10 { break }
             
             for _ in 1...numberOfStripes {

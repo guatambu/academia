@@ -21,6 +21,9 @@ class TakeProfilePicViewController: UIViewController {
     var parentGuardian: String?
     var profilePic: UIImage?
     
+    var inEditingMode: Bool?
+    var userToEdit: Any?
+    
     let imagePickerController = UIImagePickerController()
     
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
@@ -33,22 +36,37 @@ class TakeProfilePicViewController: UIViewController {
     @IBOutlet weak var parentGuardianLabelOutlet: UILabel!
     @IBOutlet weak var parentGuardianTextField: UITextField!
     
-    @IBOutlet weak var firstProgressDotOutlet: DesignableView!
-    
     
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
-        // hide first progress dot for owner users
-        guard let isOwner = isOwner else { return }
+        // check to see if enter editing mode
+        enterEditingMode(inEditingMode: inEditingMode)
         
-        if isOwner {
-            firstProgressDotOutlet.isHidden = true
+        // set editing mode for each user case scenario
+        if let isOwner = isOwner {
+            if isOwner {
+                ownerEditingSetup(userToEdit: userToEdit)
+            }
+        } else if let isKid = isKid {
+            if isKid {
+                kidStudentEditingSetup(userToEdit: userToEdit)
+            } else {
+                adultStudentEditingSetup(userToEdit: userToEdit)
+            }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let isOwner = isOwner else { return }
+        
+        if isOwner{
+            welcomeLabeOutlet.text = "Welcome Owner"
+        } else {
+            welcomeLabeOutlet.text = "Welcome New Student"
+        }
         
         // instantiate tapGestureRecognizer for the profilePicImageViewOutet
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TakeProfilePicViewController.profilePicImageTapped))
@@ -56,21 +74,60 @@ class TakeProfilePicViewController: UIViewController {
         profilePicImageViewOutlet.isUserInteractionEnabled = true
         
         imagePickerController.delegate = self
-        
-        // photo authorization code
-        
-        
-        
-        // Do any additional setup after loading the view.
     }
     
     
     // MARK: - Actions
     
-    @IBAction func nextButtonTapped(_ sender: DesignableButton) {
+    @objc func saveButtonTapped() {
         
+        if let isOwner = isOwner {
+            
+            guard let owner = userToEdit as? Owner else { return }
+            
+            if isOwner {
+                // Owner update profile info
+                if firstNameTextField.text != "" && lastNameTextField.text != "" && profilePicImageViewOutlet.image != UIImage(contentsOfFile: "user_placeholder") {
+                    
+                    OwnerModelController.shared.updateProfileInfo(owner: owner, isInstructor: nil, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: profilePicImageViewOutlet.image, username: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+                    
+                    self.returnToOwnerProfile()
+                    
+                    print("update owner name: \(OwnerModelController.shared.owners[0].firstName) \(OwnerModelController.shared.owners[0].lastName)")
+                }
+            }
+        } else if let isKid = isKid {
+            
+            guard let kidStudent = userToEdit as? KidStudent else { return }
+            
+            if isKid{
+                // kidStudent update profile info
+                if firstNameTextField.text != "" && lastNameTextField.text != "" && parentGuardianTextField.text != "" && profilePicImageViewOutlet.image != UIImage(contentsOfFile: "user_placeholder") {
+                    KidStudentModelController.shared.updateProfileInfo(kidStudent: kidStudent, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: profilePicImageViewOutlet.image, username: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, parentGuardian: parentGuardianTextField.text, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+                    
+//                    returnToKidStudentProfile()
+                }
+            } else {
+                
+                guard let adultStudent = userToEdit as? AdultStudent else { return }
+                
+                // adultStudent update profile info
+                if firstNameTextField.text != "" && lastNameTextField.text != "" && profilePicImageViewOutlet.image != UIImage(contentsOfFile: "user_placeholder") {
+                    AdultStudentModelController.shared.updateProfileInfo(adultStudent: adultStudent, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: profilePicImageViewOutlet.image, username: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+                    
+//                    returnToAdultStudentProfile()
+                }
+            }
+        }
+
+        inEditingMode = false
+    }
+    
+    @IBAction func nextButtonTapped(_ sender: DesignableButton) {
+    
         // programmatically performing the segue
     
+        print("to birthday segue")
         // instantiate the relevant storyboard
         let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
@@ -89,11 +146,9 @@ class TakeProfilePicViewController: UIViewController {
             return
         }
         
-        guard let profilePic = profilePic else { return }
+        guard let profilePic = profilePicImageViewOutlet.image else { return }
         
         let parentGuardian = parentGuardianTextField.text
-            
-        
     
         // create the segue programmatically
         self.navigationController?.pushViewController(destViewController, animated: true)
@@ -112,17 +167,141 @@ class TakeProfilePicViewController: UIViewController {
         destViewController.lastName = lastName
         destViewController.parentGuardian = parentGuardian
         destViewController.profilePic = profilePic
+        
+        destViewController.inEditingMode = inEditingMode
+        destViewController.userToEdit = userToEdit
     }
+}
 
-    // MARK: - Helper Functions
+
+// MARK: - Editing Mode for Individual User case specific setup
+extension TakeProfilePicViewController {
     
-    @objc func profilePicImageTapped() {
+    func enterEditingMode(inEditingMode: Bool?) {
         
-        // brings up the camera to snap a profile pic
-        presentImagePicker()
+        guard let inEditingMode = inEditingMode else { return }
+        
+        if inEditingMode {
+            let saveButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveButtonTapped))
+            navigationItem.rightBarButtonItem = saveButtonItem
+            
+            if let isOwner = isOwner {
+                if isOwner {
+                    ownerEditingSetup(userToEdit: userToEdit)
+                }
+            } else if let isKid = isKid {
+                if isKid {
+                    kidStudentEditingSetup(userToEdit: userToEdit)
+                } else {
+                    adultStudentEditingSetup(userToEdit: userToEdit)
+                }
+            }
+        }
+        
+        print(inEditingMode)
+    }
+    
+    // owner setup for editing mode
+    func ownerEditingSetup(userToEdit: Any?) {
+        
+        guard let ownerToEdit = userToEdit as? Owner else {
+            return
+        }
+        
+        welcomeLabeOutlet.text = "Welcome \(ownerToEdit.firstName)"
+        
+        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
+        
+        profilePicImageViewOutlet.image = ownerToEdit.profilePic
+        firstNameTextField.text = ownerToEdit.firstName
+        lastNameTextField.text = ownerToEdit.lastName
+    }
+    
+    // kid student setu for editing mode
+    func kidStudentEditingSetup(userToEdit: Any?) {
+        
+        guard let kidToEdit = userToEdit as? KidStudent else {
+            return
+        }
+        
+        welcomeLabeOutlet.text = "Welcome \(kidToEdit.firstName)"
+        
+        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
+        
+        profilePicImageViewOutlet.image = kidToEdit.profilePic
+        firstNameTextField.text = kidToEdit.firstName
+        lastNameTextField.text = kidToEdit.lastName
+    }
+    
+    // adult student setu for editing mode
+    func adultStudentEditingSetup(userToEdit: Any?) {
+        
+        guard let adultToEdit = userToEdit as? AdultStudent else {
+            return
+        }
+        
+        welcomeLabeOutlet.text = "Welcome \(adultToEdit.firstName)"
+        
+        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
+        
+        profilePicImageViewOutlet.image = adultToEdit.profilePic
+        firstNameTextField.text = adultToEdit.firstName
+        lastNameTextField.text = adultToEdit.lastName
+    }
+}
 
+
+// MARK: - Programmatic Segues to return to proper ProfileFlow storyboard and user profileVC
+extension /* TakeProfilePicViewController */ UIViewController {
+    
+    func returnToOwnerProfile() {
+        
+        // instantiate the relevant storyboard
+        let mainView: UIStoryboard = UIStoryboard(name: "OwnerProfileFlow", bundle: nil)
+        // instantiate the desired TableViewController as ViewController on relevant storyboard
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toOwnerProfileDetails") as! OwnerProfileDetailsViewController
+        // create the segue programmatically - PUSH
+        self.navigationController?.pushViewController(destViewController, animated: true)
+        
+        // set the desired properties of the destinationVC's navgation Item
+        let backButtonItem = UIBarButtonItem()
+        backButtonItem.title = " "
+        navigationItem.backBarButtonItem = backButtonItem
         
     }
+    
+//    func returnToKidStudentProfile() {
+//
+//        // instantiate the relevant storyboard
+//        let mainView: UIStoryboard = UIStoryboard(name: "StudentProfileFlow", bundle: nil)
+//        // instantiate the desired TableViewController as ViewController on relevant storyboard
+//        let destViewController = mainView.instantiateViewController(withIdentifier: "toKidStudentProfileDetails") as! KidStudentProfileDetailsViewController
+//        // create the segue programmatically - PUSH
+//        self.navigationController?.pushViewController(destViewController, animated: true)
+//
+//        // set the desired properties of the destinationVC's navgation Item
+//        let backButtonItem = UIBarButtonItem()
+//        backButtonItem.title = " "
+//        navigationItem.backBarButtonItem = backButtonItem
+//
+//    }
+//
+//    func returnToAdultStudentProfile() {
+//
+//        // instantiate the relevant storyboard
+//        let mainView: UIStoryboard = UIStoryboard(name: "StudentProfileFlow", bundle: nil)
+//        // instantiate the desired TableViewController as ViewController on relevant storyboard
+//        let destViewController = mainView.instantiateViewController(withIdentifier: "toAdultStudentProfileDetails") as! AdultStudentProfileDetailsViewController
+//        // create the segue programmatically - PUSH
+//        self.navigationController?.pushViewController(destViewController, animated: true)
+//
+//        // set the desired properties of the destinationVC's navgation Item
+//        let backButtonItem = UIBarButtonItem()
+//        backButtonItem.title = " "
+//        navigationItem.backBarButtonItem = backButtonItem
+//
+//    }
+    
 }
 
 
@@ -132,6 +311,11 @@ extension TakeProfilePicViewController: UINavigationControllerDelegate {
 
 // MARK: - UIImagePickerControllerDelegate
 extension TakeProfilePicViewController: UIImagePickerControllerDelegate {
+    
+    @objc func profilePicImageTapped() {
+        // brings up the camera to snap a profile pic
+        presentImagePicker()
+    }
     
     func presentImagePicker() {
     

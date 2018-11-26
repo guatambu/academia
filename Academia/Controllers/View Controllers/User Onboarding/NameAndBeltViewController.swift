@@ -22,7 +22,10 @@ class NameAndBeltViewController: UIViewController {
     var profilePic: UIImage?
     var birthdate: Date?
     var beltLevel: InternationalStandardBJJBelts = .adultWhiteBelt
-    var numberOfStripes = 0
+    var numberOfStripes: Int = 0
+    
+    var inEditingMode: Bool?
+    var userToEdit: Any?
     
     let beltBuilder = BeltBuilder()
     
@@ -36,41 +39,72 @@ class NameAndBeltViewController: UIViewController {
     
     @IBOutlet weak var nextButtonOutlet: DesignableButton!
     
-    @IBOutlet weak var firstProgressDotOutlet: DesignableView!
-    
     
     // MARK: - ViewController Lifecycle Functions
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        // hide first progress dot for owner users
-        guard let isOwner = isOwner else { return }
-        
-        if isOwner {
-            firstProgressDotOutlet.isHidden = true
-        }
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let isOwner = isOwner else { return }
+        
+        if isOwner{
+            welcomeLabeOutlet.text = "Welcome Owner"
+        } else {
+            welcomeLabeOutlet.text = "Welcome New Student"
+        }
         
         beltLevelPickerView.delegate = self
         beltLevelPickerView.dataSource = self
         
         guard let isKid = isKid else { return }
         
-        if isKid {
-            beltLevel = .kidsWhiteBelt
-        } else {
-            beltLevel = .adultWhiteBelt
-        }
         // default belt to display upon user arrival
-        beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: numberOfStripes)
+        if isKid {
+            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .kidsWhiteBelt, numberOfStripes: 0)
+        } else {
+            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .adultWhiteBelt, numberOfStripes: 0)
+        }
         
+        // if editing profile
+        guard let inEditingMode = inEditingMode else { return }
+        
+        if inEditingMode {
+            let saveButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveButtonTapped))
+            navigationItem.rightBarButtonItem = saveButtonItem
+        }
     }
     
     
     // MARK: - Actions
+    
+    @objc func saveButtonTapped() {
+        
+        if let isOwner = isOwner {
+            if isOwner {
+                // Owner update belt info
+                let owner = OwnerModelController.shared.owners[0]
+                
+                BeltModelController.shared.update(belt: owner.belt, active: nil, elligibleForNextBelt: nil, classesToNextPromotion: nil, beltLevel: beltLevel, numberOfStripes: numberOfStripes)
+                
+                self.returnToOwnerProfile()
+            }
+        } else if let isKid = isKid {
+            if isKid {
+                // kidStudent update belt info
+                let kid = KidStudentModelController.shared.kids[0]
+                
+                BeltModelController.shared.update(belt: kid.belt, active: nil, elligibleForNextBelt: nil, classesToNextPromotion: nil, beltLevel: beltLevel, numberOfStripes: numberOfStripes)
+                
+                }
+            } else {
+                // adultStudent update belt info
+                let adult = AdultStudentModelController.shared.adults[0]
+            
+                BeltModelController.shared.update(belt: adult.belt, active: nil, elligibleForNextBelt: nil, classesToNextPromotion: nil, beltLevel: beltLevel, numberOfStripes: numberOfStripes)
+        }
+        
+        inEditingMode = false
+    }
     
     @IBAction func nextButtonTapped(_ sender: DesignableButton) {
         
@@ -101,7 +135,8 @@ class NameAndBeltViewController: UIViewController {
         destViewController.beltLevel = beltLevel
         destViewController.numberOfStripes = numberOfStripes
         
-        
+        destViewController.inEditingMode = inEditingMode
+        destViewController.userToEdit = userToEdit
     }
     
     
@@ -233,7 +268,7 @@ extension NameAndBeltViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         guard let isKid = isKid else {
-            print("the isKid value is somehow nil in pickerView delegate method didSelectRow in NameAndBeltVC.swift - line 146")
+            print("the isKid value is somehow nil in pickerView delegate method didSelectRow in NameAndBeltVC.swift - line: 272")
             return
         }
         

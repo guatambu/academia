@@ -32,6 +32,9 @@ class ContactInfoViewController: UIViewController {
     var mobile: String?
     var email: String?
     
+    var inEditingMode: Bool?
+    var userToEdit: Any?
+    
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     @IBOutlet weak var phoneLabelOutlet: UILabel!
@@ -40,31 +43,67 @@ class ContactInfoViewController: UIViewController {
     @IBOutlet weak var mobileTextField: UITextField!
     @IBOutlet weak var emailOutlet: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
-    
-    @IBOutlet weak var firstProgressDotOutlet: DesignableView!
 
     
     // MARK: - ViewController Lifecycle Functions
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-        // hide first progress dot for owner users
-        guard let isOwner = isOwner else { return }
-        
-        if isOwner {
-            firstProgressDotOutlet.isHidden = true
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        guard let isOwner = isOwner else { return }
         
+        if isOwner{
+            welcomeLabeOutlet.text = "Welcome Owner"
+        } else {
+            welcomeLabeOutlet.text = "Welcome New Student"
+        }
+        
+        // if editing profile
+        guard let inEditingMode = inEditingMode else { return }
+        
+        if inEditingMode {
+            let saveButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveButtonTapped))
+            navigationItem.rightBarButtonItem = saveButtonItem
+        }
     }
     
     
     // MARK: - Actions
+    
+    @objc func saveButtonTapped() {
+        
+        if let isOwner = isOwner {
+            if isOwner {
+                // Owner update profile info
+                if phoneTextField.text != "" && emailTextField.text != "" {
+                    
+                    let owner = OwnerModelController.shared.owners[0]
+                    
+                    OwnerModelController.shared.updateProfileInfo(owner: owner, isInstructor: nil, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: phoneTextField.text, mobile: mobileTextField.text, email: emailTextField.text, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+                    
+                    self.returnToOwnerProfile()
+                }
+            }
+        } else if let isKid = isKid {
+            if isKid{
+                // kidStudent update profile info
+                if phoneTextField.text != "" && emailTextField.text != "" {
+                   
+                    let kid = KidStudentModelController.shared.kids[0]
+                    KidStudentModelController.shared.updateProfileInfo(kidStudent: kid, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, parentGuardian: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: phoneTextField.text, mobile: mobileTextField.text, email: emailTextField.text, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+                }
+            } else {
+                // adultStudent update profile info
+                if phoneTextField.text != "" && emailTextField.text != "" {
+                
+                   let adult = AdultStudentModelController.shared.adults[0]
+                    AdultStudentModelController.shared.updateProfileInfo(adultStudent: adult, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: phoneTextField.text, mobile: mobileTextField.text, email: emailTextField.text, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+                }
+            }
+        }
+        
+        inEditingMode = false
+    }
     
     @IBAction func nextButtonTapped(_ sender: DesignableButton) {
         
@@ -118,6 +157,8 @@ class ContactInfoViewController: UIViewController {
         destViewController.phone = phone
         destViewController.mobile = mobile
         destViewController.email = email
-
+        
+        destViewController.inEditingMode = inEditingMode
+        destViewController.userToEdit = userToEdit
     }
 }

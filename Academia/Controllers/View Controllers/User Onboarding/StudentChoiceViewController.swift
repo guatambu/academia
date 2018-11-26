@@ -39,6 +39,8 @@ class StudentChoiceViewController: UIViewController {
         
         guard let isOwner = isOwner, let username = username, let password = password else { return }
         
+        
+        
         print("isOwner: \(isOwner) \nusername: \(username) \npassword: \(password)")
     }
     
@@ -104,8 +106,8 @@ class StudentChoiceViewController: UIViewController {
         navigationItem.backBarButtonItem = backButtonItem
         
         // pass desired data to relevant view controller
-        destViewController.isOwner = self.isOwner
-        destViewController.isKid = false
+        destViewController.isOwner = isOwner
+        destViewController.isKid = isKid
         
     }
 }
