@@ -91,7 +91,7 @@ class TakeProfilePicViewController: UIViewController {
                     
                     OwnerModelController.shared.updateProfileInfo(owner: owner, isInstructor: nil, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: profilePicImageViewOutlet.image, username: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
                     
-                    returnToOwnerProfile()
+                    self.returnToOwnerProfile()
                     
                     print("update owner name: \(OwnerModelController.shared.owners[0].firstName) \(OwnerModelController.shared.owners[0].lastName)")
                 }
@@ -167,6 +167,9 @@ class TakeProfilePicViewController: UIViewController {
         destViewController.lastName = lastName
         destViewController.parentGuardian = parentGuardian
         destViewController.profilePic = profilePic
+        
+        destViewController.inEditingMode = inEditingMode
+        destViewController.userToEdit = userToEdit
     }
 }
 
@@ -249,7 +252,7 @@ extension TakeProfilePicViewController {
 
 
 // MARK: - Programmatic Segues to return to proper ProfileFlow storyboard and user profileVC
-extension TakeProfilePicViewController {
+extension /* TakeProfilePicViewController */ UIViewController {
     
     func returnToOwnerProfile() {
         

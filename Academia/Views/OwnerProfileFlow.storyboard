@@ -600,25 +600,31 @@
                                                         <rect key="frame" x="136" y="0.0" width="184" height="120"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(username)" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2EE-cd-9bo">
-                                                                <rect key="frame" x="0.0" y="0.0" width="184" height="54"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="184" height="49.5"/>
+                                                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="birthdate: (birthdate)" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vDA-Um-inj" userLabel="birthdate Label Outlet">
+                                                                <rect key="frame" x="0.0" y="17.5" width="148" height="49.5"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="p: 310 123-4567" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgR-t5-9hw">
-                                                                <rect key="frame" x="0.0" y="22" width="111" height="54"/>
+                                                                <rect key="frame" x="0.0" y="35" width="111" height="50"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="m: 323 123-4567" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZL-lg-rTk">
-                                                                <rect key="frame" x="0.0" y="44" width="115" height="54"/>
+                                                                <rect key="frame" x="0.0" y="53" width="115" height="49.5"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="stupid.long@myemail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="fED-wg-AZs">
-                                                                <rect key="frame" x="0.0" y="66" width="184" height="54"/>
+                                                                <rect key="frame" x="0.0" y="70.5" width="184" height="49.5"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -770,6 +776,7 @@
                         <outlet property="addressLine1LabelOutlet" destination="k9k-9Y-kK9" id="Ho1-sA-hPS"/>
                         <outlet property="addressLine2LabelOutlet" destination="PaY-sH-1WL" id="hxc-at-mku"/>
                         <outlet property="beltHolderViewOutlet" destination="dVO-iK-2MY" id="NK0-FT-TQt"/>
+                        <outlet property="birthdateLabelOutlets" destination="vDA-Um-inj" id="Kav-FO-XQJ"/>
                         <outlet property="cityLabelOutlet" destination="87G-Nl-AtX" id="gqW-wj-O3M"/>
                         <outlet property="emailLabelOutlet" destination="fED-wg-AZs" id="fKv-vl-LKd"/>
                         <outlet property="emergencyContactNameLabelOutlet" destination="6OB-K0-Xh9" id="SV2-z8-o26"/>

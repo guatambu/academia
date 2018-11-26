@@ -14,8 +14,10 @@ class OwnerProfileDetailsViewController: UIViewController {
     
     let beltBuilder = BeltBuilder()
     
-    // username outlets
+    // username outlet
     @IBOutlet weak var usernameLabelOutlet: UILabel!
+    // birthdate outlet
+    @IBOutlet weak var birthdateLabelOutlets: UILabel!
     // profile pic imageView
     @IBOutlet weak var profilePicImageView: UIImageView!
     // contact info outlets
@@ -129,6 +131,8 @@ extension OwnerProfileDetailsViewController {
         // populate UI elements in VC
         self.title = "\(owner.firstName) \(owner.lastName)"
         usernameLabelOutlet.text = owner.username
+        // populate birthdate outlet
+        formatBirthdate(birthdate: owner.birthdate)
         // contact info outlets
         phoneLabelOutlet.text = owner.phone
         // mobile is not a required field
@@ -158,7 +162,25 @@ extension OwnerProfileDetailsViewController {
         profilePicImageView.image = owner.profilePic
         
         // belt holder UIView
+        print("OwnersProfileVC -> beltLevel: \(owner.belt.beltLevel)")
+        print("OwnersProfileVC -> numberOfStripes: \(owner.belt.numberOfStripes)")
         beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: owner.belt.beltLevel, numberOfStripes: owner.belt.numberOfStripes)
+    }
+    
+    func formatBirthdate(birthdate: Date) {
+        
+        // set up date format
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateStyle = DateFormatter.Style.short
+        dateFormatter.timeStyle = DateFormatter.Style.none
+        dateFormatter.locale = Locale(identifier: "en_US")
+        
+        let birthdateString = dateFormatter.string(from: birthdate)
+        
+        print(birthdateString)
+        
+        self.birthdateLabelOutlets.text = "birthdate: " + birthdateString
     }
 }
 

@@ -24,6 +24,8 @@ class BirthdayViewController: UIViewController {
     
     var inEditingMode: Bool?
     
+    var userToEdit: Any?
+    
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     @IBOutlet weak var whenIsYourBirthdayLabelOutlet: UILabel!
@@ -39,6 +41,24 @@ class BirthdayViewController: UIViewController {
     // MARK: - ViewController Lifecycle Functions
     
     // TODO:  set up all the rest of the editing mode funcitonality for this and future VCs in owner profile eidting mode flow
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // check to see if enter editing mode
+        enterEditingMode(inEditingMode: inEditingMode)
+        
+        // set editing mode for each user case scenario
+        if let isOwner = isOwner {
+            if isOwner {
+                ownerEditingSetup(userToEdit: userToEdit)
+            }
+        } else if let isKid = isKid {
+            if isKid {
+                kidStudentEditingSetup(userToEdit: userToEdit)
+            } else {
+                adultStudentEditingSetup(userToEdit: userToEdit)
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,14 +72,7 @@ class BirthdayViewController: UIViewController {
         }
         
         birthdayDatePickerView.addTarget(self, action: #selector(birthdayPicked(_:)), for: UIControl.Event.valueChanged)
-        
-        // if editing profile
-        guard let inEditingMode = inEditingMode else { return }
-        
-        if inEditingMode {
-            let saveButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveButtonTapped))
-            navigationItem.rightBarButtonItem = saveButtonItem
-        }
+
     }
     
     // MARK: - Actions
@@ -73,6 +86,8 @@ class BirthdayViewController: UIViewController {
                     
                     OwnerModelController.shared.updateProfileInfo(owner: OwnerModelController.shared.owners[0], isInstructor: nil, birthdate: birthdate, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
                 }
+                self.returnToOwnerProfile()
+                
             }
         } else if let isKid = isKid {
             if isKid{
@@ -126,16 +141,84 @@ class BirthdayViewController: UIViewController {
         destViewController.profilePic = profilePic
         destViewController.birthdate = birthdate
         
+        destViewController.inEditingMode = inEditingMode
+        destViewController.userToEdit = userToEdit
+        
+    }
+}
+
+
+
+
+// MARK: - Editing Mode for Individual User case specific setup
+extension BirthdayViewController {
+    
+    func enterEditingMode(inEditingMode: Bool?) {
+        
+        guard let inEditingMode = inEditingMode else { return }
+        
+        if inEditingMode {
+            let saveButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveButtonTapped))
+            navigationItem.rightBarButtonItem = saveButtonItem
+            
+            if let isOwner = isOwner {
+                if isOwner {
+                    ownerEditingSetup(userToEdit: userToEdit)
+                }
+            } else if let isKid = isKid {
+                if isKid {
+                    kidStudentEditingSetup(userToEdit: userToEdit)
+                } else {
+                    adultStudentEditingSetup(userToEdit: userToEdit)
+                }
+            }
+        }
+        
+        print(inEditingMode)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // owner setup for editing mode
+    func ownerEditingSetup(userToEdit: Any?) {
+        
+        guard let ownerToEdit = userToEdit as? Owner else {
+            return
+        }
+        
+        welcomeLabeOutlet.text = "Welcome \(ownerToEdit.firstName)"
+        
+        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
+        
+        print("\(ownerToEdit.birthdate)")
+        birthdayDatePickerView.date = ownerToEdit.birthdate
+        //birthdayDatePickerView.setDate(ownerToEdit.birthdate, animated: true)
     }
-    */
+    
+    // kid student setu for editing mode
+    func kidStudentEditingSetup(userToEdit: Any?) {
+        
+        guard let kidToEdit = userToEdit as? KidStudent else {
+            return
+        }
+        
+        welcomeLabeOutlet.text = "Welcome \(kidToEdit.firstName)"
+        
+        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
 
+        
+        birthdayDatePickerView.setDate(kidToEdit.birthdate, animated: true)
+    }
+    
+    // adult student setu for editing mode
+    func adultStudentEditingSetup(userToEdit: Any?) {
+        
+        guard let adultToEdit = userToEdit as? AdultStudent else {
+            return
+        }
+        
+        welcomeLabeOutlet.text = "Welcome \(adultToEdit.firstName)"
+        
+        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
+    
+        birthdayDatePickerView.setDate(adultToEdit.birthdate, animated: true)
+    }
 }

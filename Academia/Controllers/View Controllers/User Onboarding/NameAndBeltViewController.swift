@@ -25,6 +25,7 @@ class NameAndBeltViewController: UIViewController {
     var numberOfStripes: Int = 0
     
     var inEditingMode: Bool?
+    var userToEdit: Any?
     
     let beltBuilder = BeltBuilder()
     
@@ -81,17 +82,26 @@ class NameAndBeltViewController: UIViewController {
         if let isOwner = isOwner {
             if isOwner {
                 // Owner update belt info
-                BeltModelController.shared.update(belt: OwnerModelController.shared.owners[0].belt, active: nil, elligibleForNextBelt: nil, classesToNextPromotion: nil, beltLevel: beltLevel, numberOfStripes: numberOfStripes)
+                let owner = OwnerModelController.shared.owners[0]
+                
+                BeltModelController.shared.update(belt: owner.belt, active: nil, elligibleForNextBelt: nil, classesToNextPromotion: nil, beltLevel: beltLevel, numberOfStripes: numberOfStripes)
+                
+                self.returnToOwnerProfile()
             }
         } else if let isKid = isKid {
             if isKid {
                 // kidStudent update belt info
-                BeltModelController.shared.update(belt: KidStudentModelController.shared.kids[0].belt, active: nil, elligibleForNextBelt: nil, classesToNextPromotion: nil, beltLevel: beltLevel, numberOfStripes: numberOfStripes)
+                let kid = KidStudentModelController.shared.kids[0]
+                
+                BeltModelController.shared.update(belt: kid.belt, active: nil, elligibleForNextBelt: nil, classesToNextPromotion: nil, beltLevel: beltLevel, numberOfStripes: numberOfStripes)
+                
                 }
             } else {
                 // adultStudent update belt info
-                BeltModelController.shared.update(belt: AdultStudentModelController.shared.adults[0].belt, active: nil, elligibleForNextBelt: nil, classesToNextPromotion: nil, beltLevel: beltLevel, numberOfStripes: numberOfStripes)
-            }
+                let adult = AdultStudentModelController.shared.adults[0]
+            
+                BeltModelController.shared.update(belt: adult.belt, active: nil, elligibleForNextBelt: nil, classesToNextPromotion: nil, beltLevel: beltLevel, numberOfStripes: numberOfStripes)
+        }
         
         inEditingMode = false
     }
@@ -125,7 +135,8 @@ class NameAndBeltViewController: UIViewController {
         destViewController.beltLevel = beltLevel
         destViewController.numberOfStripes = numberOfStripes
         
-        
+        destViewController.inEditingMode = inEditingMode
+        destViewController.userToEdit = userToEdit
     }
     
     

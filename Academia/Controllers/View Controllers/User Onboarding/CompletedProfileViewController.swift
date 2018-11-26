@@ -229,6 +229,8 @@ extension CompletedProfileViewController {
         guard let beltLevel = beltLevel else { print("fail beltLevel"); return }
         guard let numberOfStripes = numberOfStripes else { print("fail stripes"); return }
         
+        print("CompletedProfileVC -> createBelt() - beltLevel: \(beltLevel.rawValue) numberOfStripes: \(numberOfStripes)")
+        
         belt = Belt(classesToNextPromotion: 32, beltLevel: beltLevel, numberOfStripes: numberOfStripes)
 
     }
@@ -282,7 +284,7 @@ extension CompletedProfileViewController {
         
         if isOwner{
             
-            OwnerModelController.shared.addNew(birthdate: Date(),
+            OwnerModelController.shared.addNew(birthdate: birthdate,
                                                belt: belt,
                                                profilePic: profilePic,
                                                username: username,

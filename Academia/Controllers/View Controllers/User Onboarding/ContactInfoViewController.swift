@@ -33,6 +33,7 @@ class ContactInfoViewController: UIViewController {
     var email: String?
     
     var inEditingMode: Bool?
+    var userToEdit: Any?
     
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
@@ -76,19 +77,27 @@ class ContactInfoViewController: UIViewController {
                 // Owner update profile info
                 if phoneTextField.text != "" && emailTextField.text != "" {
                     
-                    OwnerModelController.shared.updateProfileInfo(owner: OwnerModelController.shared.owners[0], isInstructor: nil, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: phoneTextField.text, mobile: mobileTextField.text, email: emailTextField.text, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+                    let owner = OwnerModelController.shared.owners[0]
+                    
+                    OwnerModelController.shared.updateProfileInfo(owner: owner, isInstructor: nil, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: phoneTextField.text, mobile: mobileTextField.text, email: emailTextField.text, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+                    
+                    self.returnToOwnerProfile()
                 }
             }
         } else if let isKid = isKid {
             if isKid{
                 // kidStudent update profile info
                 if phoneTextField.text != "" && emailTextField.text != "" {
-                    KidStudentModelController.shared.updateProfileInfo(kidStudent: KidStudentModelController.shared.kids[0], birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, parentGuardian: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: phoneTextField.text, mobile: mobileTextField.text, email: emailTextField.text, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+                   
+                    let kid = KidStudentModelController.shared.kids[0]
+                    KidStudentModelController.shared.updateProfileInfo(kidStudent: kid, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, parentGuardian: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: phoneTextField.text, mobile: mobileTextField.text, email: emailTextField.text, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
                 }
             } else {
                 // adultStudent update profile info
                 if phoneTextField.text != "" && emailTextField.text != "" {
-                    AdultStudentModelController.shared.updateProfileInfo(adultStudent: AdultStudentModelController.shared.adults[0], birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: phoneTextField.text, mobile: mobileTextField.text, email: emailTextField.text, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+                
+                   let adult = AdultStudentModelController.shared.adults[0]
+                    AdultStudentModelController.shared.updateProfileInfo(adultStudent: adult, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: phoneTextField.text, mobile: mobileTextField.text, email: emailTextField.text, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
                 }
             }
         }
@@ -148,6 +157,8 @@ class ContactInfoViewController: UIViewController {
         destViewController.phone = phone
         destViewController.mobile = mobile
         destViewController.email = email
-
+        
+        destViewController.inEditingMode = inEditingMode
+        destViewController.userToEdit = userToEdit
     }
 }
