@@ -96,7 +96,7 @@ class NameAndBeltViewController: UIViewController {
                 
                 BeltModelController.shared.update(belt: owner.belt, active: nil, elligibleForNextBelt: nil, classesToNextPromotion: nil, beltLevel: beltLevel, numberOfStripes: numberOfStripes)
                 
-                self.returnToOwnerProfile()
+                self.returnToOwnerInfo()
             }
         } else if let isKid = isKid {
             if isKid {
@@ -459,10 +459,6 @@ extension NameAndBeltViewController {
         print(inEditingMode)
     }
     
-    
-    // TODO:
-    // call a buildABelt to display the existing belt in the beltHolderView upon viewWillAppear()  *** Complete ***
-    
     // owner setup for editing mode
     func ownerEditingSetup(userToEdit: Any?) {
         
@@ -495,7 +491,7 @@ extension NameAndBeltViewController {
         
         beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: kidToEdit.belt.beltLevel, numberOfStripes: kidToEdit.belt.numberOfStripes)
         
-//        setEditingModeForBeltPicker(beltLevel: kidToEdit.belt.beltLevel, numberOfStripes: kidToEdit.belt.numberOfStripes)
+        setEditingModeForBeltPicker(beltLevel: kidToEdit.belt.beltLevel, numberOfStripes: kidToEdit.belt.numberOfStripes)
     }
     
     // adult student setu for editing mode
@@ -511,19 +507,15 @@ extension NameAndBeltViewController {
         
         beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: adultToEdit.belt.beltLevel, numberOfStripes: adultToEdit.belt.numberOfStripes)
         
-//        setEditingModeForBeltPicker(beltLevel: adultToEdit.belt.beltLevel, numberOfStripes: adultToEdit.belt.numberOfStripes)
+        setEditingModeForBeltPicker(beltLevel: adultToEdit.belt.beltLevel, numberOfStripes: adultToEdit.belt.numberOfStripes)
         
     }
     
-    // TODO:
-    // also set the picker to the current beltLevel and numberOfStripes which will look something like:  beltLevelPickerView.selectRow(userToEdit.beltLevel, inComponent: 0, animated: true))
-    // this will likely involve some kind of a switch statement that gives an index Int value as it relates to a given userToEdit.beltLevel
-    // &
-    // beltLevelPickerView.selectRow(userToEdit.numberOfStripes, inComponent: 1, animated: true))
+    
     func setEditingModeForBeltPicker(beltLevel: InternationalStandardBJJBelts?, numberOfStripes: Int?) {
         
         guard let beltLevel = beltLevel, let numberOfStripes = numberOfStripes else {
-            print("no value for editing mode beltLevel or numberOfStripes or both in: NameAndBeltVC -> setEditingModeForBeltPicker(beltLevel: numberOfStripes:) - line 515")
+            print("no value for editing mode beltLevel or numberOfStripes or both in: NameAndBeltVC -> setEditingModeForBeltPicker(beltLevel: numberOfStripes:) - line 518")
             return
         }
         
@@ -572,7 +564,7 @@ extension NameAndBeltViewController {
         case .adultRedBelt:
             beltLevelPickerView.selectRow(7, inComponent: 0, animated: true)
             
-        default: print("that's NOT A BELT being used in: NameAndBeltVC -> setEditingModeForBeltPicker(beltLevel: numberOfStripes:) - line 521")
+        default: print("that's NOT A BELT being used in: NameAndBeltVC -> setEditingModeForBeltPicker(beltLevel: numberOfStripes:) - line 567")
         }
         
         switch numberOfStripes {
@@ -614,7 +606,7 @@ extension NameAndBeltViewController {
             beltLevelPickerView.selectRow(11, inComponent: 1, animated: true)
             print("numberOfStripes: \(numberOfStripes)")
             
-        default: print("that's NOT A STRIPE being used in: NameAndBeltVC -> setEditingModeForBeltPicker(beltLevel: numberOfStripes:) - line 549")
+        default: print("that's NOT A STRIPE being used in: NameAndBeltVC -> setEditingModeForBeltPicker(beltLevel: numberOfStripes:) - line 609")
         }
     }
 }

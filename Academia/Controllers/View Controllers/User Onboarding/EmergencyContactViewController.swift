@@ -86,7 +86,7 @@ class EmergencyContactViewController: UIViewController {
                     
                     OwnerModelController.shared.updateProfileInfo(owner: owner, isInstructor: nil, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: emergencyContactNameTextField.text, emergencyContactPhone: emergencyContactPhoneTextField.text, emergencyContactRelationship: emergencyContactRelationshipTextField.text)
                     
-                    self.returnToOwnerProfile()
+                    self.returnToOwnerInfo()
                 }
             }
         } else if let isKid = isKid {

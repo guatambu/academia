@@ -1,5 +1,5 @@
 //
-//  OwnerProfileDetailsViewController.swift
+//  OwnerInfoDetailsViewController.swift
 //  Academia
 //
 //  Created by Michael Guatambu Davis on 11/19/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OwnerProfileDetailsViewController: UIViewController {
+class OwnerInfoDetailsViewController: UIViewController {
     
     // MARK: - Properties
     
@@ -123,7 +123,7 @@ class OwnerProfileDetailsViewController: UIViewController {
 }
 
 
-extension OwnerProfileDetailsViewController {
+extension OwnerInfoDetailsViewController {
     
     func populateCompletedProfileInfo() {
     
@@ -188,52 +188,45 @@ extension OwnerProfileDetailsViewController {
 // MARK: - Programmatic Segues to return to proper ProfileFlow storyboard and user profileVC
 extension UIViewController {
     
-    func returnToOwnerProfile() {
+    func returnToOwnerInfo() {
         
-        // instantiate the relevant storyboard
-        let mainView: UIStoryboard = UIStoryboard(name: "OwnerProfileFlow", bundle: nil)
-        // instantiate the desired TableViewController as ViewController on relevant storyboard
-        let destViewController = mainView.instantiateViewController(withIdentifier: "toOwnerProfileDetails") as! OwnerProfileDetailsViewController
-        // create the segue programmatically - PUSH
-        self.navigationController?.pushViewController(destViewController, animated: true)
+        guard let viewControllers = self.navigationController?.viewControllers else { return }
         
-        // set the desired properties of the destinationVC's navgation Item
-        let backButtonItem = UIBarButtonItem()
-        backButtonItem.title = " "
-        navigationItem.backBarButtonItem = backButtonItem
-        
+        for viewController in viewControllers {
+            
+            if viewController is OwnerInfoDetailsViewController {
+                self.navigationController?.popToViewController(viewController, animated: true)
+            }
+        }
     }
     
-//        func returnToKidStudentProfile() {
-//    
-//            // instantiate the relevant storyboard
-//            let mainView: UIStoryboard = UIStoryboard(name: "StudentProfileFlow", bundle: nil)
-//            // instantiate the desired TableViewController as ViewController on relevant storyboard
-//            let destViewController = mainView.instantiateViewController(withIdentifier: "toKidStudentProfileDetails") as! KidStudentProfileDetailsViewController
-//            // create the segue programmatically - PUSH
-//            self.navigationController?.pushViewController(destViewController, animated: true)
-//    
-//            // set the desired properties of the destinationVC's navgation Item
-//            let backButtonItem = UIBarButtonItem()
-//            backButtonItem.title = " "
-//            navigationItem.backBarButtonItem = backButtonItem
-//    
+//    func returnToKidStudentProfile() {
+//
+//        func returnToOwnerInfo() {
+//            
+//            guard let viewControllers = self.navigationController?.viewControllers else { return }
+//            
+//            for viewController in viewControllers {
+//                
+//                if viewController is KidStudentInfoDetailsViewController {
+//                    self.navigationController?.popToViewController(viewController, animated: true)
+//                }
+//            }
 //        }
+//    }
 //    
-//        func returnToAdultStudentProfile() {
-//    
-//            // instantiate the relevant storyboard
-//            let mainView: UIStoryboard = UIStoryboard(name: "StudentProfileFlow", bundle: nil)
-//            // instantiate the desired TableViewController as ViewController on relevant storyboard
-//            let destViewController = mainView.instantiateViewController(withIdentifier: "toAdultStudentProfileDetails") as! AdultStudentProfileDetailsViewController
-//            // create the segue programmatically - PUSH
-//            self.navigationController?.pushViewController(destViewController, animated: true)
-//    
-//            // set the desired properties of the destinationVC's navgation Item
-//            let backButtonItem = UIBarButtonItem()
-//            backButtonItem.title = " "
-//            navigationItem.backBarButtonItem = backButtonItem
-//    
+//    func returnToAdultStudentProfile() {
+//
+//        func returnToOwnerInfo() {
+//            
+//            guard let viewControllers = self.navigationController?.viewControllers else { return }
+//            
+//            for viewController in viewControllers {
+//                
+//                if viewController is AdultStudentInfoDetailsViewController {
+//                    self.navigationController?.popToViewController(viewController, animated: true)
+//                }
+//            }
 //        }
-    
+//    }
 }
