@@ -184,3 +184,56 @@ extension OwnerProfileDetailsViewController {
     }
 }
 
+
+// MARK: - Programmatic Segues to return to proper ProfileFlow storyboard and user profileVC
+extension UIViewController {
+    
+    func returnToOwnerProfile() {
+        
+        // instantiate the relevant storyboard
+        let mainView: UIStoryboard = UIStoryboard(name: "OwnerProfileFlow", bundle: nil)
+        // instantiate the desired TableViewController as ViewController on relevant storyboard
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toOwnerProfileDetails") as! OwnerProfileDetailsViewController
+        // create the segue programmatically - PUSH
+        self.navigationController?.pushViewController(destViewController, animated: true)
+        
+        // set the desired properties of the destinationVC's navgation Item
+        let backButtonItem = UIBarButtonItem()
+        backButtonItem.title = " "
+        navigationItem.backBarButtonItem = backButtonItem
+        
+    }
+    
+//        func returnToKidStudentProfile() {
+//    
+//            // instantiate the relevant storyboard
+//            let mainView: UIStoryboard = UIStoryboard(name: "StudentProfileFlow", bundle: nil)
+//            // instantiate the desired TableViewController as ViewController on relevant storyboard
+//            let destViewController = mainView.instantiateViewController(withIdentifier: "toKidStudentProfileDetails") as! KidStudentProfileDetailsViewController
+//            // create the segue programmatically - PUSH
+//            self.navigationController?.pushViewController(destViewController, animated: true)
+//    
+//            // set the desired properties of the destinationVC's navgation Item
+//            let backButtonItem = UIBarButtonItem()
+//            backButtonItem.title = " "
+//            navigationItem.backBarButtonItem = backButtonItem
+//    
+//        }
+//    
+//        func returnToAdultStudentProfile() {
+//    
+//            // instantiate the relevant storyboard
+//            let mainView: UIStoryboard = UIStoryboard(name: "StudentProfileFlow", bundle: nil)
+//            // instantiate the desired TableViewController as ViewController on relevant storyboard
+//            let destViewController = mainView.instantiateViewController(withIdentifier: "toAdultStudentProfileDetails") as! AdultStudentProfileDetailsViewController
+//            // create the segue programmatically - PUSH
+//            self.navigationController?.pushViewController(destViewController, animated: true)
+//    
+//            // set the desired properties of the destinationVC's navgation Item
+//            let backButtonItem = UIBarButtonItem()
+//            backButtonItem.title = " "
+//            navigationItem.backBarButtonItem = backButtonItem
+//    
+//        }
+    
+}
