@@ -1,5 +1,5 @@
 //
-//  OwnerProfileDetailsViewController.swift
+//  OwnerInfoDetailsViewController.swift
 //  Academia
 //
 //  Created by Michael Guatambu Davis on 11/19/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OwnerProfileDetailsViewController: UIViewController {
+class OwnerInfoDetailsViewController: UIViewController {
     
     // MARK: - Properties
     
@@ -123,7 +123,7 @@ class OwnerProfileDetailsViewController: UIViewController {
 }
 
 
-extension OwnerProfileDetailsViewController {
+extension OwnerInfoDetailsViewController {
     
     func populateCompletedProfileInfo() {
     
@@ -184,3 +184,49 @@ extension OwnerProfileDetailsViewController {
     }
 }
 
+
+// MARK: - Programmatic Segues to return to proper ProfileFlow storyboard and user profileVC
+extension UIViewController {
+    
+    func returnToOwnerInfo() {
+        
+        guard let viewControllers = self.navigationController?.viewControllers else { return }
+        
+        for viewController in viewControllers {
+            
+            if viewController is OwnerInfoDetailsViewController {
+                self.navigationController?.popToViewController(viewController, animated: true)
+            }
+        }
+    }
+    
+//    func returnToKidStudentProfile() {
+//
+//        func returnToOwnerInfo() {
+//            
+//            guard let viewControllers = self.navigationController?.viewControllers else { return }
+//            
+//            for viewController in viewControllers {
+//                
+//                if viewController is KidStudentInfoDetailsViewController {
+//                    self.navigationController?.popToViewController(viewController, animated: true)
+//                }
+//            }
+//        }
+//    }
+//    
+//    func returnToAdultStudentProfile() {
+//
+//        func returnToOwnerInfo() {
+//            
+//            guard let viewControllers = self.navigationController?.viewControllers else { return }
+//            
+//            for viewController in viewControllers {
+//                
+//                if viewController is AdultStudentInfoDetailsViewController {
+//                    self.navigationController?.popToViewController(viewController, animated: true)
+//                }
+//            }
+//        }
+//    }
+}

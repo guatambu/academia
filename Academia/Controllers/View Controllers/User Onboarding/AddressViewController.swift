@@ -82,7 +82,7 @@ class AddressViewController: UIViewController {
                     
                     OwnerModelController.shared.updateProfileInfo(owner: owner, isInstructor: nil, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: addressLine1TextField.text, addressLine2: addressLine2TextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: zipCodeTextField.text, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
                     
-                    self.returnToOwnerProfile()
+                    self.returnToOwnerInfo()
                 }
             }
         } else if let isKid = isKid {

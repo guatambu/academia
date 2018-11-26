@@ -31,7 +31,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jVY-e1-bqu">
                                                     <rect key="frame" x="16" y="0.0" width="288" height="79.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="JPI-bw-8Ga">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="JPI-bw-8Ga">
                                                             <rect key="frame" x="0.0" y="0.0" width="256" height="79.5"/>
                                                             <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="24"/>
                                                             <nil key="textColor"/>
@@ -519,18 +519,18 @@
                             <outlet property="delegate" destination="viL-Zh-6Uc" id="evE-T6-KWL"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="My Profile" id="ONp-eR-Zj1">
-                        <barButtonItem key="backBarButtonItem" title=" " id="q5H-TM-ddZ"/>
+                    <navigationItem key="navigationItem" title="Profile" id="ONp-eR-Zj1">
+                        <barButtonItem key="backBarButtonItem" title="Profile" id="q5H-TM-ddZ"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qCt-FN-Ii0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4798" y="5165"/>
         </scene>
-        <!--Owner Profile Details View Controller-->
+        <!--Owner Info Details View Controller-->
         <scene sceneID="fyA-t8-MSN">
             <objects>
-                <viewController storyboardIdentifier="toOwnerProfileDetails" id="cDB-5R-ULH" customClass="OwnerProfileDetailsViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toOwnerInfoDetails" id="cDB-5R-ULH" customClass="OwnerInfoDetailsViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xOr-hb-RuH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -771,6 +771,7 @@
                         <viewLayoutGuide key="safeArea" id="qbH-Hf-8xE"/>
                     </view>
                     <navigationItem key="navigationItem" id="jfC-p4-G5K">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Zbe-qC-TCU"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="3bd-86-gYg">
                             <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -800,10 +801,10 @@
             </objects>
             <point key="canvasLocation" x="5966.25" y="5163.3802816901407"/>
         </scene>
-        <!--profile-->
+        <!--profile Navigation Controller-->
         <scene sceneID="Nlf-uj-xfx">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yvt-9O-K6O" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yvt-9O-K6O" userLabel="profile Navigation Controller" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="profile" image="profile_red_32.png" selectedImage="profile_red_32.png" id="YNh-JJ-pck">
                         <color key="badgeColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBarItem>

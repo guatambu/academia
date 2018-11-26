@@ -86,7 +86,7 @@ class BirthdayViewController: UIViewController {
                     
                     OwnerModelController.shared.updateProfileInfo(owner: OwnerModelController.shared.owners[0], isInstructor: nil, birthdate: birthdate, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
                 }
-                self.returnToOwnerProfile()
+                self.returnToOwnerInfo()
                 
             }
         } else if let isKid = isKid {

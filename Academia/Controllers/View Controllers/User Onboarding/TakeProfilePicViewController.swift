@@ -91,7 +91,7 @@ class TakeProfilePicViewController: UIViewController {
                     
                     OwnerModelController.shared.updateProfileInfo(owner: owner, isInstructor: nil, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: profilePicImageViewOutlet.image, username: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
                     
-                    self.returnToOwnerProfile()
+                    self.returnToOwnerInfo()
                     
                     print("update owner name: \(OwnerModelController.shared.owners[0].firstName) \(OwnerModelController.shared.owners[0].lastName)")
                 }
@@ -248,60 +248,6 @@ extension TakeProfilePicViewController {
         firstNameTextField.text = adultToEdit.firstName
         lastNameTextField.text = adultToEdit.lastName
     }
-}
-
-
-// MARK: - Programmatic Segues to return to proper ProfileFlow storyboard and user profileVC
-extension /* TakeProfilePicViewController */ UIViewController {
-    
-    func returnToOwnerProfile() {
-        
-        // instantiate the relevant storyboard
-        let mainView: UIStoryboard = UIStoryboard(name: "OwnerProfileFlow", bundle: nil)
-        // instantiate the desired TableViewController as ViewController on relevant storyboard
-        let destViewController = mainView.instantiateViewController(withIdentifier: "toOwnerProfileDetails") as! OwnerProfileDetailsViewController
-        // create the segue programmatically - PUSH
-        self.navigationController?.pushViewController(destViewController, animated: true)
-        
-        // set the desired properties of the destinationVC's navgation Item
-        let backButtonItem = UIBarButtonItem()
-        backButtonItem.title = " "
-        navigationItem.backBarButtonItem = backButtonItem
-        
-    }
-    
-//    func returnToKidStudentProfile() {
-//
-//        // instantiate the relevant storyboard
-//        let mainView: UIStoryboard = UIStoryboard(name: "StudentProfileFlow", bundle: nil)
-//        // instantiate the desired TableViewController as ViewController on relevant storyboard
-//        let destViewController = mainView.instantiateViewController(withIdentifier: "toKidStudentProfileDetails") as! KidStudentProfileDetailsViewController
-//        // create the segue programmatically - PUSH
-//        self.navigationController?.pushViewController(destViewController, animated: true)
-//
-//        // set the desired properties of the destinationVC's navgation Item
-//        let backButtonItem = UIBarButtonItem()
-//        backButtonItem.title = " "
-//        navigationItem.backBarButtonItem = backButtonItem
-//
-//    }
-//
-//    func returnToAdultStudentProfile() {
-//
-//        // instantiate the relevant storyboard
-//        let mainView: UIStoryboard = UIStoryboard(name: "StudentProfileFlow", bundle: nil)
-//        // instantiate the desired TableViewController as ViewController on relevant storyboard
-//        let destViewController = mainView.instantiateViewController(withIdentifier: "toAdultStudentProfileDetails") as! AdultStudentProfileDetailsViewController
-//        // create the segue programmatically - PUSH
-//        self.navigationController?.pushViewController(destViewController, animated: true)
-//
-//        // set the desired properties of the destinationVC's navgation Item
-//        let backButtonItem = UIBarButtonItem()
-//        backButtonItem.title = " "
-//        navigationItem.backBarButtonItem = backButtonItem
-//
-//    }
-    
 }
 
 

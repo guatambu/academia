@@ -41,6 +41,24 @@ class NameAndBeltViewController: UIViewController {
     
     
     // MARK: - ViewController Lifecycle Functions
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // check to see if enter editing mode
+        enterEditingMode(inEditingMode: inEditingMode)
+        
+        // set editing mode for each user case scenario
+        if let isOwner = isOwner {
+            if isOwner {
+                ownerEditingSetup(userToEdit: userToEdit)
+            }
+        } else if let isKid = isKid {
+            if isKid {
+                kidStudentEditingSetup(userToEdit: userToEdit)
+            } else {
+                adultStudentEditingSetup(userToEdit: userToEdit)
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,14 +82,6 @@ class NameAndBeltViewController: UIViewController {
         } else {
             beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .adultWhiteBelt, numberOfStripes: 0)
         }
-        
-        // if editing profile
-        guard let inEditingMode = inEditingMode else { return }
-        
-        if inEditingMode {
-            let saveButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveButtonTapped))
-            navigationItem.rightBarButtonItem = saveButtonItem
-        }
     }
     
     
@@ -86,7 +96,7 @@ class NameAndBeltViewController: UIViewController {
                 
                 BeltModelController.shared.update(belt: owner.belt, active: nil, elligibleForNextBelt: nil, classesToNextPromotion: nil, beltLevel: beltLevel, numberOfStripes: numberOfStripes)
                 
-                self.returnToOwnerProfile()
+                self.returnToOwnerInfo()
             }
         } else if let isKid = isKid {
             if isKid {
@@ -422,4 +432,181 @@ extension NameAndBeltViewController: UIPickerViewDelegate, UIPickerViewDataSourc
 }
 
 
-
+//MARK: Editing Mode set up functions
+extension NameAndBeltViewController {
+    
+    func enterEditingMode(inEditingMode: Bool?) {
+        
+        guard let inEditingMode = inEditingMode else { return }
+        
+        if inEditingMode {
+            let saveButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveButtonTapped))
+            navigationItem.rightBarButtonItem = saveButtonItem
+            
+            if let isOwner = isOwner {
+                if isOwner {
+                    ownerEditingSetup(userToEdit: userToEdit)
+                }
+            } else if let isKid = isKid {
+                if isKid {
+                    kidStudentEditingSetup(userToEdit: userToEdit)
+                } else {
+                    adultStudentEditingSetup(userToEdit: userToEdit)
+                }
+            }
+        }
+        
+        print(inEditingMode)
+    }
+    
+    // owner setup for editing mode
+    func ownerEditingSetup(userToEdit: Any?) {
+        
+        guard let ownerToEdit = userToEdit as? Owner else {
+            return
+        }
+        
+        welcomeLabeOutlet.text = "Welcome \(ownerToEdit.firstName)"
+        
+        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
+        
+        beltLevel = ownerToEdit.belt.beltLevel
+        numberOfStripes = ownerToEdit.belt.numberOfStripes
+        
+        beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: ownerToEdit.belt.beltLevel, numberOfStripes: ownerToEdit.belt.numberOfStripes)
+        
+        setEditingModeForBeltPicker(beltLevel: ownerToEdit.belt.beltLevel, numberOfStripes: ownerToEdit.belt.numberOfStripes)
+    }
+    
+    // kid student setu for editing mode
+    func kidStudentEditingSetup(userToEdit: Any?) {
+        
+        guard let kidToEdit = userToEdit as? KidStudent else {
+            return
+        }
+        
+        welcomeLabeOutlet.text = "Welcome \(kidToEdit.firstName)"
+        
+        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
+        
+        beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: kidToEdit.belt.beltLevel, numberOfStripes: kidToEdit.belt.numberOfStripes)
+        
+        setEditingModeForBeltPicker(beltLevel: kidToEdit.belt.beltLevel, numberOfStripes: kidToEdit.belt.numberOfStripes)
+    }
+    
+    // adult student setu for editing mode
+    func adultStudentEditingSetup(userToEdit: Any?) {
+        
+        guard let adultToEdit = userToEdit as? AdultStudent else {
+            return
+        }
+        
+        welcomeLabeOutlet.text = "Welcome \(adultToEdit.firstName)"
+        
+        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
+        
+        beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: adultToEdit.belt.beltLevel, numberOfStripes: adultToEdit.belt.numberOfStripes)
+        
+        setEditingModeForBeltPicker(beltLevel: adultToEdit.belt.beltLevel, numberOfStripes: adultToEdit.belt.numberOfStripes)
+        
+    }
+    
+    
+    func setEditingModeForBeltPicker(beltLevel: InternationalStandardBJJBelts?, numberOfStripes: Int?) {
+        
+        guard let beltLevel = beltLevel, let numberOfStripes = numberOfStripes else {
+            print("no value for editing mode beltLevel or numberOfStripes or both in: NameAndBeltVC -> setEditingModeForBeltPicker(beltLevel: numberOfStripes:) - line 518")
+            return
+        }
+        
+        switch beltLevel {
+            
+        case .kidsWhiteBelt:
+            beltLevelPickerView.selectRow(0, inComponent: 0, animated: true)
+        case .kidsGreyWhiteBelt:
+            beltLevelPickerView.selectRow(1, inComponent: 0, animated: true)
+        case .kidsGreyBelt:
+            beltLevelPickerView.selectRow(2, inComponent: 0, animated: true)
+        case .kidsGreyBlackBelt:
+            beltLevelPickerView.selectRow(3, inComponent: 0, animated: true)
+        case .kidsYellowWhiteBelt:
+            beltLevelPickerView.selectRow(4, inComponent: 0, animated: true)
+        case .kidsYellowBelt:
+            beltLevelPickerView.selectRow(5, inComponent: 0, animated: true)
+        case .kidsYellowBlackBelt:
+            beltLevelPickerView.selectRow(6, inComponent: 0, animated: true)
+        case .kidsOrangeWhiteBelt:
+            beltLevelPickerView.selectRow(7, inComponent: 0, animated: true)
+        case .kidsOrangeBelt:
+            beltLevelPickerView.selectRow(8, inComponent: 0, animated: true)
+        case .kidsOrangeBlackBelt:
+            beltLevelPickerView.selectRow(9, inComponent: 0, animated: true)
+        case .kidsGreenWhiteBelt:
+            beltLevelPickerView.selectRow(10, inComponent: 0, animated: true)
+        case .kidsGreenBelt:
+            beltLevelPickerView.selectRow(11, inComponent: 0, animated: true)
+        case .kidsGreenBlackBelt:
+            beltLevelPickerView.selectRow(12, inComponent: 0, animated: true)
+        case .adultWhiteBelt:
+            beltLevelPickerView.selectRow(0, inComponent: 0, animated: true)
+        case .adultBlueBelt:
+            beltLevelPickerView.selectRow(1, inComponent: 0, animated: true)
+        case .adultPurpleBelt:
+            beltLevelPickerView.selectRow(2, inComponent: 0, animated: true)
+        case .adultBrownBelt:
+            beltLevelPickerView.selectRow(3, inComponent: 0, animated: true)
+        case .adultBlackBelt:
+            beltLevelPickerView.selectRow(4, inComponent: 0, animated: true)
+        case .adultRedBlackBelt:
+            beltLevelPickerView.selectRow(5, inComponent: 0, animated: true)
+        case .adultRedWhiteBelt:
+            beltLevelPickerView.selectRow(6, inComponent: 0, animated: true)
+        case .adultRedBelt:
+            beltLevelPickerView.selectRow(7, inComponent: 0, animated: true)
+            
+        default: print("that's NOT A BELT being used in: NameAndBeltVC -> setEditingModeForBeltPicker(beltLevel: numberOfStripes:) - line 567")
+        }
+        
+        switch numberOfStripes {
+            
+        case 0:
+            beltLevelPickerView.selectRow(0, inComponent: 1, animated: true)
+            print("numberOfStripes: \(numberOfStripes)")
+        case 1:
+            beltLevelPickerView.selectRow(1, inComponent: 1, animated: true)
+            print("numberOfStripes: \(numberOfStripes)")
+        case 2:
+            beltLevelPickerView.selectRow(2, inComponent: 1, animated: true)
+            print("numberOfStripes: \(numberOfStripes)")
+        case 3:
+            beltLevelPickerView.selectRow(3, inComponent: 1, animated: true)
+            print("numberOfStripes: \(numberOfStripes)")
+        case 4:
+            beltLevelPickerView.selectRow(4, inComponent: 1, animated: true)
+            print("numberOfStripes: \(numberOfStripes)")
+        case 5:
+            beltLevelPickerView.selectRow(5, inComponent: 1, animated: true)
+            print("numberOfStripes: \(numberOfStripes)")
+        case 6:
+            beltLevelPickerView.selectRow(6, inComponent: 1, animated: true)
+            print("numberOfStripes: \(numberOfStripes)")
+        case 7:
+            beltLevelPickerView.selectRow(7, inComponent: 1, animated: true)
+            print("numberOfStripes: \(numberOfStripes)")
+        case 8:
+            beltLevelPickerView.selectRow(8, inComponent: 1, animated: true)
+            print("numberOfStripes: \(numberOfStripes)")
+        case 9:
+            beltLevelPickerView.selectRow(9, inComponent: 1, animated: true)
+            print("numberOfStripes: \(numberOfStripes)")
+        case 10:
+            beltLevelPickerView.selectRow(10, inComponent: 1, animated: true)
+            print("numberOfStripes: \(numberOfStripes)")
+        case 11:
+            beltLevelPickerView.selectRow(11, inComponent: 1, animated: true)
+            print("numberOfStripes: \(numberOfStripes)")
+            
+        default: print("that's NOT A STRIPE being used in: NameAndBeltVC -> setEditingModeForBeltPicker(beltLevel: numberOfStripes:) - line 609")
+        }
+    }
+}
