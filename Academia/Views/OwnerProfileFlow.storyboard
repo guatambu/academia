@@ -539,10 +539,10 @@
                                 <rect key="frame" x="0.0" y="80" width="320" height="438"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="z0C-b0-dDY" userLabel="plese review and name Stack View">
-                                        <rect key="frame" x="43.5" y="0.0" width="233" height="56"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Review Your Info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edJ-hb-z3g">
-                                                <rect key="frame" x="0.0" y="0.0" width="233" height="24"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="4FK-Go-SO1"/>
                                                 </constraints>
@@ -551,7 +551,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap Edit above to make changes" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uVL-Ej-Ltc">
-                                                <rect key="frame" x="0.0" y="32" width="233" height="24"/>
+                                                <rect key="frame" x="0.0" y="32" width="320" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="BIU-RD-Vzo"/>
                                                 </constraints>
@@ -568,10 +568,10 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="QOS-3D-cIq" userLabel="User Stack View">
-                                        <rect key="frame" x="0.0" y="64" width="320" height="374"/>
+                                        <rect key="frame" x="16" y="64" width="288" height="374"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="4M8-hE-Z6D" userLabel="profile Stack View">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="288" height="120"/>
                                                 <subviews>
                                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MJY-b7-SPY" userLabel="Round Profile Pic View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
@@ -597,10 +597,10 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="-32" translatesAutoresizingMaskIntoConstraints="NO" id="NIX-ME-yAl" userLabel="username and contact Stack View">
-                                                        <rect key="frame" x="136" y="0.0" width="184" height="120"/>
+                                                        <rect key="frame" x="136" y="0.0" width="152" height="120"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(username)" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2EE-cd-9bo">
-                                                                <rect key="frame" x="0.0" y="0.0" width="184" height="49.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="152" height="49.5"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -624,7 +624,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="stupid.long@myemail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="fED-wg-AZs">
-                                                                <rect key="frame" x="0.0" y="70.5" width="184" height="49.5"/>
+                                                                <rect key="frame" x="0.0" y="70.5" width="152" height="49.5"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -640,35 +640,35 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dVO-iK-2MY" userLabel="belt holder View">
-                                                <rect key="frame" x="0.0" y="128" width="320" height="40"/>
+                                                <rect key="frame" x="0.0" y="128" width="288" height="40"/>
                                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="JCW-AC-EEb"/>
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="5Xq-4f-pSc" userLabel="address and emergency contact Stack View">
-                                                <rect key="frame" x="16" y="176" width="288" height="198"/>
+                                                <rect key="frame" x="16" y="176" width="256" height="198"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="uQl-mt-moZ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="288" height="22"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="256" height="22"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(address line 1)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="k9k-9Y-kK9">
-                                                        <rect key="frame" x="0.0" y="22" width="288" height="22"/>
+                                                        <rect key="frame" x="0.0" y="22" width="256" height="22"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(address line 2)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="PaY-sH-1WL">
-                                                        <rect key="frame" x="0.0" y="44" width="288" height="22"/>
+                                                        <rect key="frame" x="0.0" y="44" width="256" height="22"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(city)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="87G-Nl-AtX">
-                                                        <rect key="frame" x="0.0" y="66" width="288" height="22"/>
+                                                        <rect key="frame" x="0.0" y="66" width="256" height="22"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -691,25 +691,25 @@
                                                         </subviews>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="emergency contact information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="4MF-uN-SV1">
-                                                        <rect key="frame" x="0.0" y="110" width="288" height="22"/>
+                                                        <rect key="frame" x="0.0" y="110" width="256" height="22"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(emergency contact name)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="6OB-K0-Xh9">
-                                                        <rect key="frame" x="0.0" y="132" width="288" height="22"/>
+                                                        <rect key="frame" x="0.0" y="132" width="256" height="22"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(emergency contact relationship)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="SfN-mv-cYN">
-                                                        <rect key="frame" x="0.0" y="154" width="288" height="22"/>
+                                                        <rect key="frame" x="0.0" y="154" width="256" height="22"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(emergency contact phone)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="bJt-QM-A0l">
-                                                        <rect key="frame" x="0.0" y="176" width="288" height="22"/>
+                                                        <rect key="frame" x="0.0" y="176" width="256" height="22"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -739,6 +739,12 @@
                                         </constraints>
                                     </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="QOS-3D-cIq" firstAttribute="leading" secondItem="1iZ-Ri-MIy" secondAttribute="leading" constant="16" id="2QK-18-RMR"/>
+                                    <constraint firstItem="z0C-b0-dDY" firstAttribute="leading" secondItem="1iZ-Ri-MIy" secondAttribute="leading" id="A4b-mW-nHi"/>
+                                    <constraint firstAttribute="trailing" secondItem="z0C-b0-dDY" secondAttribute="trailing" id="PuH-KW-jOU"/>
+                                    <constraint firstAttribute="trailing" secondItem="QOS-3D-cIq" secondAttribute="trailing" constant="16" id="bIL-6f-PGH"/>
+                                </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="LtR-SD-FdO">
                                 <rect key="frame" x="74.5" y="530" width="171" height="22"/>

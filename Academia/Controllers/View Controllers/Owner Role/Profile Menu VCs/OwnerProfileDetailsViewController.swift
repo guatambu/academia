@@ -50,7 +50,7 @@ class OwnerProfileDetailsViewController: UIViewController {
         addressLine2LabelOutlet.isHidden = false
         mobileLabelOutlet.isHidden = false
         
-        populateCompletedProfileInfo()
+        //populateCompletedProfileInfo()
     }
     
 

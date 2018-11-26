@@ -190,7 +190,7 @@ extension BirthdayViewController {
         
         print("\(ownerToEdit.birthdate)")
         birthdayDatePickerView.date = ownerToEdit.birthdate
-        //birthdayDatePickerView.setDate(ownerToEdit.birthdate, animated: true)
+        
     }
     
     // kid student setu for editing mode
