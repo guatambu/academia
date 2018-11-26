@@ -72,6 +72,14 @@ class NameAndBeltViewController: UIViewController {
             let saveButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveButtonTapped))
             navigationItem.rightBarButtonItem = saveButtonItem
         }
+        
+        // TODO:
+        // call a buildABelt to display the existing belt in the beltHolderView upon viewWillAppear()
+        // also in viewWillAppear() as we set up editing mode, set the picker to the current beltLevel and numberOfStripes which will look something like:  beltLevelPickerView.selectRow(userToEdit.beltLevel, inComponent: 0, animated: true))
+            // this will likely involve some kind of a switch statement that gives an index Int value as it relates to a given userToEdit.beltLevel
+        // &
+        // beltLevelPickerView.selectRow(userToEdit.numberOfStripes, inComponent: 1, animated: true))
+        
     }
     
     
