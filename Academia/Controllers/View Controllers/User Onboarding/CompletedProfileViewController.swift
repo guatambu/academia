@@ -109,7 +109,7 @@ class CompletedProfileViewController: UIViewController {
         }
         // set the desired properties of the destinationVC's navigation Item
         
-        print("\(OwnerModelController.shared.owners[0].city)")
+
     }
     
     // MARK: - Helper Methods

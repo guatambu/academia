@@ -85,30 +85,18 @@ class EmergencyContactViewController: UIViewController {
         if let isOwner = isOwner {
             if isOwner {
                 // Owner update profile info
-                if emergencyContactNameTextField.text != "" && emergencyContactPhoneTextField.text != "" && emergencyContactRelationshipTextField.text != "" {
-                    
-                    let owner = OwnerModelController.shared.owners[0]
-                    
-                    OwnerModelController.shared.updateProfileInfo(owner: owner, isInstructor: nil, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: emergencyContactNameTextField.text, emergencyContactPhone: emergencyContactPhoneTextField.text, emergencyContactRelationship: emergencyContactRelationshipTextField.text)
-                    
-                    self.returnToOwnerInfo()
-                }
+                updateOwnerInfo()
+                self.returnToOwnerInfo()
             }
         } else if let isKid = isKid {
             if isKid{
                 // kidStudent update profile info
-                if emergencyContactNameTextField.text != "" && emergencyContactPhoneTextField.text != "" && emergencyContactRelationshipTextField.text != "" {
-                    
-                    let kid = KidStudentModelController.shared.kids[0]
-                    KidStudentModelController.shared.updateProfileInfo(kidStudent: kid, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, parentGuardian: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: emergencyContactNameTextField.text, emergencyContactPhone: emergencyContactPhoneTextField.text, emergencyContactRelationship: emergencyContactRelationshipTextField.text)
-                }
+                updateKidStudentInfo()
+//                self.returnToKidStudentInfo()
             } else {
                 // adultStudent update profile info
-                if emergencyContactNameTextField.text != "" && emergencyContactPhoneTextField.text != "" && emergencyContactRelationshipTextField.text != "" {
-                    
-                    let adult = AdultStudentModelController.shared.adults[0]
-                    AdultStudentModelController.shared.updateProfileInfo(adultStudent: adult, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: emergencyContactNameTextField.text, emergencyContactPhone: emergencyContactPhoneTextField.text, emergencyContactRelationship: emergencyContactRelationshipTextField.text)
-                }
+                updateAdultStudentInfo()
+//                self.returnToAdultStudentInfo()
             }
         }
         
@@ -202,6 +190,35 @@ class EmergencyContactViewController: UIViewController {
 
 // MARK: - Editing Mode for Individual User case specific setup
 extension EmergencyContactViewController {
+    
+    // Update Function for case where want to update user info without a segue
+    func updateOwnerInfo() {
+        if emergencyContactNameTextField.text != "" && emergencyContactPhoneTextField.text != "" && emergencyContactRelationshipTextField.text != "" {
+            
+            guard let owner = userToEdit as? Owner else { return }
+            
+            OwnerModelController.shared.updateProfileInfo(owner: owner, isInstructor: nil, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: emergencyContactNameTextField.text, emergencyContactPhone: emergencyContactPhoneTextField.text, emergencyContactRelationship: emergencyContactRelationshipTextField.text)
+        }
+    }
+    
+    func updateKidStudentInfo() {
+        if emergencyContactNameTextField.text != "" && emergencyContactPhoneTextField.text != "" && emergencyContactRelationshipTextField.text != "" {
+            
+            guard let kidStudent = userToEdit as? KidStudent else { return }
+            
+            KidStudentModelController.shared.updateProfileInfo(kidStudent: kidStudent, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, parentGuardian: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: emergencyContactNameTextField.text, emergencyContactPhone: emergencyContactPhoneTextField.text, emergencyContactRelationship: emergencyContactRelationshipTextField.text)
+        }
+    }
+    
+    func updateAdultStudentInfo() {
+        if emergencyContactNameTextField.text != "" && emergencyContactPhoneTextField.text != "" && emergencyContactRelationshipTextField.text != "" {
+            
+            guard let adultStudent = userToEdit as? AdultStudent else { return }
+            
+            let adult = AdultStudentModelController.shared.adults[0]
+            AdultStudentModelController.shared.updateProfileInfo(adultStudent: adultStudent, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: emergencyContactNameTextField.text, emergencyContactPhone: emergencyContactPhoneTextField.text, emergencyContactRelationship: emergencyContactRelationshipTextField.text)
+        }
+    }
     
     func enterEditingMode(inEditingMode: Bool?) {
         
