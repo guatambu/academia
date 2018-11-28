@@ -48,6 +48,12 @@ class AddressViewController: UIViewController {
     
     // MARK: - ViewController Lifecycle Functions
     
+    override func viewWillAppear(_ animated: Bool) {
+        // check to see if enter editing mode
+        enterEditingMode(inEditingMode: inEditingMode)
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,14 +63,6 @@ class AddressViewController: UIViewController {
             welcomeLabeOutlet.text = "Welcome Owner"
         } else {
             welcomeLabeOutlet.text = "Welcome New Student"
-        }
-        
-        // if editing profile
-        guard let inEditingMode = inEditingMode else { return }
-        
-        if inEditingMode {
-            let saveButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveButtonTapped))
-            navigationItem.rightBarButtonItem = saveButtonItem
         }
     }
     
@@ -169,5 +167,97 @@ class AddressViewController: UIViewController {
         
         destViewController.inEditingMode = inEditingMode
         destViewController.userToEdit = userToEdit
+        
+        // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
+        if let _ = inEditingMode {
+            saveButtonTapped()
+        }
+    }
+}
+
+
+// MARK: - Editing Mode for Individual User case specific setup
+extension AddressViewController {
+    
+    func enterEditingMode(inEditingMode: Bool?) {
+        
+        guard let inEditingMode = inEditingMode else { return }
+        
+        if inEditingMode {
+            let saveButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveButtonTapped))
+            navigationItem.rightBarButtonItem = saveButtonItem
+            
+            // set editing mode for each user case
+            if let isOwner = isOwner {
+                if isOwner {
+                    ownerEditingSetup(userToEdit: userToEdit)
+                }
+            } else if let isKid = isKid {
+                if isKid {
+                    kidStudentEditingSetup(userToEdit: userToEdit)
+                } else {
+                    adultStudentEditingSetup(userToEdit: userToEdit)
+                }
+            }
+        }
+        
+        print(inEditingMode)
+    }
+    
+    // owner setup for editing mode
+    func ownerEditingSetup(userToEdit: Any?) {
+        
+        guard let ownerToEdit = userToEdit as? Owner else {
+            return
+        }
+        
+        welcomeLabeOutlet.text = "Welcome \(ownerToEdit.firstName)"
+        
+        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
+        
+        
+        addressLine1TextField.text = ownerToEdit.addressLine1
+        addressLine2TextField.text = ownerToEdit.addressLine2
+        cityTextField.text = ownerToEdit.city
+        stateTextField.text = ownerToEdit.state
+        zipCodeTextField.text = ownerToEdit.zipCode
+        
+        
+    }
+    
+    // kid student setu for editing mode
+    func kidStudentEditingSetup(userToEdit: Any?) {
+        
+        guard let kidToEdit = userToEdit as? KidStudent else {
+            return
+        }
+        
+        welcomeLabeOutlet.text = "Welcome \(kidToEdit.firstName)"
+        
+        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
+        
+        addressLine1TextField.text = kidToEdit.addressLine1
+        addressLine2TextField.text = kidToEdit.addressLine2
+        cityTextField.text = kidToEdit.city
+        stateTextField.text = kidToEdit.state
+        zipCodeTextField.text = kidToEdit.zipCode
+    }
+    
+    // adult student setu for editing mode
+    func adultStudentEditingSetup(userToEdit: Any?) {
+        
+        guard let adultToEdit = userToEdit as? AdultStudent else {
+            return
+        }
+        
+        welcomeLabeOutlet.text = "Welcome \(adultToEdit.firstName)"
+        
+        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
+        
+        addressLine1TextField.text = adultToEdit.addressLine1
+        addressLine2TextField.text = adultToEdit.addressLine2
+        cityTextField.text = adultToEdit.city
+        stateTextField.text = adultToEdit.state
+        zipCodeTextField.text = adultToEdit.zipCode
     }
 }

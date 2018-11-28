@@ -45,19 +45,7 @@ class NameAndBeltViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         // check to see if enter editing mode
         enterEditingMode(inEditingMode: inEditingMode)
-        
-        // set editing mode for each user case scenario
-        if let isOwner = isOwner {
-            if isOwner {
-                ownerEditingSetup(userToEdit: userToEdit)
-            }
-        } else if let isKid = isKid {
-            if isKid {
-                kidStudentEditingSetup(userToEdit: userToEdit)
-            } else {
-                adultStudentEditingSetup(userToEdit: userToEdit)
-            }
-        }
+
     }
 
     override func viewDidLoad() {
@@ -147,12 +135,12 @@ class NameAndBeltViewController: UIViewController {
         
         destViewController.inEditingMode = inEditingMode
         destViewController.userToEdit = userToEdit
+        
+        // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
+        if let _ = inEditingMode {
+            saveButtonTapped()
+        }
     }
-    
-    
-    // MARK: - Helper Methods
-    
-
 }
 
 

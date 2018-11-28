@@ -334,9 +334,19 @@ class BeltBuilder {
             break
         case .kidsWhiteBelt:
             if numberOfStripes <= 0 { break }
+            // prevents too many stripes added upon initial creation
             if numberOfStripes > 5 { break }
-            if stripesStackView.arrangedSubviews.count == numberOfStripes { break }
+            // these 2 lines prevent too many stripes added when in edit workflow
             if stripesStackView.arrangedSubviews.count > 5 { break }
+            if stripesStackView.arrangedSubviews.count == numberOfStripes { break }
+            // when user wants to reduce the number of stripes after having saved/created their account and in edit profile workflow
+            if numberOfStripes < stripesStackView.arrangedSubviews.count {
+                for _ in 1...stripesStackView.arrangedSubviews.count {
+                    for stripeView in stripesStackView.arrangedSubviews {
+                        stripesStackView.removeArrangedSubview(stripeView)
+                    }
+                }
+            }
             
             for i in 1...numberOfStripes {
                 let whiteStripe: UIView = {
@@ -364,9 +374,19 @@ class BeltBuilder {
             case .kidsGreyWhiteBelt, .kidsGreyBelt, .kidsGreyBlackBelt, .kidsYellowWhiteBelt, .kidsYellowBelt, .kidsYellowBlackBelt, .kidsOrangeWhiteBelt, .kidsOrangeBelt, .kidsOrangeBlackBelt, .kidsGreenWhiteBelt, .kidsGreenBelt, .kidsGreenBlackBelt:
             
                 if numberOfStripes <= 0 { break }
+                // prevents too many stripes added upon initial creation
                 if numberOfStripes > 11 { break }
-                if stripesStackView.arrangedSubviews.count == numberOfStripes { break }
+                // these 2 lines prevent too many stripes added when in edit workflow
                 if stripesStackView.arrangedSubviews.count > 11 { break }
+                if stripesStackView.arrangedSubviews.count == numberOfStripes { break }
+                // when user wants to reduce the number of stripes after having saved/created their account and in edit profile workflow
+                if numberOfStripes < stripesStackView.arrangedSubviews.count {
+                    for _ in 1...stripesStackView.arrangedSubviews.count {
+                        for stripeView in stripesStackView.arrangedSubviews {
+                            stripesStackView.removeArrangedSubview(stripeView)
+                        }
+                    }
+                }
                 
                 for i in 1...numberOfStripes {
                     let whiteStripe: UIView = {
@@ -406,9 +426,19 @@ class BeltBuilder {
         case .adultWhiteBelt, .adultBlueBelt, .adultPurpleBelt, .adultBrownBelt:
             
             if numberOfStripes <= 0 { break }
+            // prevents too many stripes added upon initial creation
             if numberOfStripes > 4 { break }
-            if stripesStackView.arrangedSubviews.count == numberOfStripes { break }
+            // these 2 lines prevent too many stripes added when in edit workflow
             if stripesStackView.arrangedSubviews.count > 4 { break }
+            if stripesStackView.arrangedSubviews.count == numberOfStripes { break }
+            // when user wants to reduce the number of stripes after having saved/created their account and in edit profile workflow
+            if numberOfStripes < stripesStackView.arrangedSubviews.count {
+                for _ in 1...stripesStackView.arrangedSubviews.count {
+                    for stripeView in stripesStackView.arrangedSubviews {
+                        stripesStackView.removeArrangedSubview(stripeView)
+                    }
+                }
+            }
             
             for _ in 1...numberOfStripes {
                 let whiteStripe: UIView = {
@@ -427,9 +457,19 @@ class BeltBuilder {
         case .adultBlackBelt:
             
             if numberOfStripes <= 0 { break }
+            // prevents too many stripes added upon initial creation
             if numberOfStripes > 6 { break }
-            if stripesStackView.arrangedSubviews.count == numberOfStripes { break }
+            // these 2 lines prevent too many stripes added when in edit workflow
             if stripesStackView.arrangedSubviews.count > 6 { break }
+            if stripesStackView.arrangedSubviews.count == numberOfStripes { break }
+            // when user wants to reduce the number of stripes after having saved/created their account and in edit profile workflow
+            if numberOfStripes < stripesStackView.arrangedSubviews.count {
+                for _ in 1...stripesStackView.arrangedSubviews.count {
+                    for stripeView in stripesStackView.arrangedSubviews {
+                        stripesStackView.removeArrangedSubview(stripeView)
+                    }
+                }
+            }
             
             for _ in 1...numberOfStripes {
                 let blackBeltDegree: UIView = {
@@ -449,9 +489,19 @@ class BeltBuilder {
             // check it out
             
             if numberOfStripes <= 0 { break }
+            // prevents too many stripes added upon initial creation
             if numberOfStripes > 10 { break }
-            if stripesStackView.arrangedSubviews.count == numberOfStripes { break }
+            // these 2 lines prevent too many stripes added when in edit workflow
             if stripesStackView.arrangedSubviews.count > 10 { break }
+            if stripesStackView.arrangedSubviews.count == numberOfStripes { break }
+            // when user wants to reduce the number of stripes after having saved/created their account and in edit profile workflow
+            if numberOfStripes < stripesStackView.arrangedSubviews.count {
+                for _ in 1...stripesStackView.arrangedSubviews.count {
+                    for stripeView in stripesStackView.arrangedSubviews {
+                        stripesStackView.removeArrangedSubview(stripeView)
+                    }
+                }
+            }
             
             for _ in 1...numberOfStripes {
                 let coralBeltDegree: UIView = {

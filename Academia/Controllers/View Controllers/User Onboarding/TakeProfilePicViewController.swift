@@ -43,18 +43,6 @@ class TakeProfilePicViewController: UIViewController {
         // check to see if enter editing mode
         enterEditingMode(inEditingMode: inEditingMode)
         
-        // set editing mode for each user case scenario
-        if let isOwner = isOwner {
-            if isOwner {
-                ownerEditingSetup(userToEdit: userToEdit)
-            }
-        } else if let isKid = isKid {
-            if isKid {
-                kidStudentEditingSetup(userToEdit: userToEdit)
-            } else {
-                adultStudentEditingSetup(userToEdit: userToEdit)
-            }
-        }
     }
     
     override func viewDidLoad() {
@@ -83,37 +71,32 @@ class TakeProfilePicViewController: UIViewController {
         
         if let isOwner = isOwner {
             
-            guard let owner = userToEdit as? Owner else { return }
-            
             if isOwner {
                 // Owner update profile info
                 if firstNameTextField.text != "" && lastNameTextField.text != "" && profilePicImageViewOutlet.image != UIImage(contentsOfFile: "user_placeholder") {
                     
-                    OwnerModelController.shared.updateProfileInfo(owner: owner, isInstructor: nil, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: profilePicImageViewOutlet.image, username: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+                    updateOwnerInfo()
                     
                     self.returnToOwnerInfo()
-                    
+                  
                     print("update owner name: \(OwnerModelController.shared.owners[0].firstName) \(OwnerModelController.shared.owners[0].lastName)")
                 }
             }
         } else if let isKid = isKid {
             
-            guard let kidStudent = userToEdit as? KidStudent else { return }
-            
             if isKid{
                 // kidStudent update profile info
                 if firstNameTextField.text != "" && lastNameTextField.text != "" && parentGuardianTextField.text != "" && profilePicImageViewOutlet.image != UIImage(contentsOfFile: "user_placeholder") {
-                    KidStudentModelController.shared.updateProfileInfo(kidStudent: kidStudent, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: profilePicImageViewOutlet.image, username: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, parentGuardian: parentGuardianTextField.text, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+                    
+                    updateKidStudentInfo()
                     
 //                    returnToKidStudentProfile()
                 }
             } else {
-                
-                guard let adultStudent = userToEdit as? AdultStudent else { return }
-                
                 // adultStudent update profile info
                 if firstNameTextField.text != "" && lastNameTextField.text != "" && profilePicImageViewOutlet.image != UIImage(contentsOfFile: "user_placeholder") {
-                    AdultStudentModelController.shared.updateProfileInfo(adultStudent: adultStudent, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: profilePicImageViewOutlet.image, username: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+                    
+                    updateAdultStudentInfo()
                     
 //                    returnToAdultStudentProfile()
                 }
@@ -170,12 +153,54 @@ class TakeProfilePicViewController: UIViewController {
         
         destViewController.inEditingMode = inEditingMode
         destViewController.userToEdit = userToEdit
+        
+        // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
+        // ****  implement this across the other VCs in onbaording after lunch
+        if let isOwner = isOwner {
+            if isOwner {
+                updateOwnerInfo()
+            }
+        }
+        if let isKid = isKid {
+            if isKid {
+                updateKidStudentInfo()
+            } else {
+                updateAdultStudentInfo()
+            }
+        }
     }
 }
 
 
 // MARK: - Editing Mode for Individual User case specific setup
 extension TakeProfilePicViewController {
+    
+    // Update Function for case where want to update user info without a segue
+    func updateOwnerInfo() {
+        guard let owner = userToEdit as? Owner else { return }
+            // Owner update profile info
+        if firstNameTextField.text != "" && lastNameTextField.text != "" && profilePicImageViewOutlet.image != UIImage(contentsOfFile: "user_placeholder") {
+            OwnerModelController.shared.updateProfileInfo(owner: owner, isInstructor: nil, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: profilePicImageViewOutlet.image, username: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+            print("update owner name: \(OwnerModelController.shared.owners[0].firstName) \(OwnerModelController.shared.owners[0].lastName)")
+        }
+    }
+    
+    func updateKidStudentInfo() {
+        guard let kidStudent = userToEdit as? KidStudent else { return }
+            // kidStudent update profile info
+        if firstNameTextField.text != "" && lastNameTextField.text != "" && parentGuardianTextField.text != "" && profilePicImageViewOutlet.image != UIImage(contentsOfFile: "user_placeholder") {
+            KidStudentModelController.shared.updateProfileInfo(kidStudent: kidStudent, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: profilePicImageViewOutlet.image, username: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, parentGuardian: parentGuardianTextField.text, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+        }
+    }
+    
+    func updateAdultStudentInfo() {
+        guard let adultStudent = userToEdit as? AdultStudent else { return }
+        
+        // adultStudent update profile info
+        if firstNameTextField.text != "" && lastNameTextField.text != "" && profilePicImageViewOutlet.image != UIImage(contentsOfFile: "user_placeholder") {
+            AdultStudentModelController.shared.updateProfileInfo(adultStudent: adultStudent, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: profilePicImageViewOutlet.image, username: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+        }
+    }
     
     func enterEditingMode(inEditingMode: Bool?) {
         

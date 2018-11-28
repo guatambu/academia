@@ -2323,6 +2323,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Dp4-3b-hu0" userLabel="Welcome Stack View">
+                                <rect key="frame" x="24" y="36" width="272" height="64"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Owner" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blQ-vT-axg">
+                                        <rect key="frame" x="0.0" y="0.0" width="272" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="Bjg-WU-zlt"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="32"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="please enter the following: " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBT-dY-Jbn">
+                                        <rect key="frame" x="0.0" y="40" width="272" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="Mn7-7y-OrX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="blQ-vT-axg" firstAttribute="leading" secondItem="Dp4-3b-hu0" secondAttribute="leading" id="A5P-l5-YJn"/>
+                                    <constraint firstAttribute="trailing" secondItem="LBT-dY-Jbn" secondAttribute="trailing" id="BTg-rf-CfM"/>
+                                    <constraint firstAttribute="trailing" secondItem="blQ-vT-axg" secondAttribute="trailing" id="GPc-1g-66S"/>
+                                    <constraint firstItem="LBT-dY-Jbn" firstAttribute="leading" secondItem="Dp4-3b-hu0" secondAttribute="leading" id="PFa-bn-Pcj"/>
+                                </constraints>
+                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="KtE-4y-EfR" userLabel="Sign up elements Stack View">
                                 <rect key="frame" x="16" y="196" width="288" height="288"/>
                                 <subviews>
@@ -2422,35 +2451,6 @@
                                     <constraint firstItem="c75-dL-YcS" firstAttribute="leading" secondItem="KtE-4y-EfR" secondAttribute="leading" id="EOz-2f-Xd9"/>
                                     <constraint firstItem="peg-9k-muy" firstAttribute="centerX" secondItem="KtE-4y-EfR" secondAttribute="centerX" id="JYX-Os-fr6"/>
                                     <constraint firstAttribute="trailing" secondItem="c75-dL-YcS" secondAttribute="trailing" id="gbc-hC-nho"/>
-                                </constraints>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Dp4-3b-hu0" userLabel="Welcome Stack View">
-                                <rect key="frame" x="24" y="36" width="272" height="64"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Owner" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blQ-vT-axg">
-                                        <rect key="frame" x="0.0" y="0.0" width="272" height="36"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="36" id="Bjg-WU-zlt"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="32"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="please enter the following: " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBT-dY-Jbn">
-                                        <rect key="frame" x="0.0" y="40" width="272" height="24"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="Mn7-7y-OrX"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="blQ-vT-axg" firstAttribute="leading" secondItem="Dp4-3b-hu0" secondAttribute="leading" id="A5P-l5-YJn"/>
-                                    <constraint firstAttribute="trailing" secondItem="LBT-dY-Jbn" secondAttribute="trailing" id="BTg-rf-CfM"/>
-                                    <constraint firstAttribute="trailing" secondItem="blQ-vT-axg" secondAttribute="trailing" id="GPc-1g-66S"/>
-                                    <constraint firstItem="LBT-dY-Jbn" firstAttribute="leading" secondItem="Dp4-3b-hu0" secondAttribute="leading" id="PFa-bn-Pcj"/>
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Vmx-fN-27M" userLabel="Progress Stack View">
@@ -2601,6 +2601,7 @@
                         <outlet property="emergencyContactRelationshipOutlet" destination="Omz-k9-fgv" id="Lwk-dy-UOD"/>
                         <outlet property="emergencyContactRelationshipTextField" destination="plq-5q-JLg" id="rOG-Ms-2J0"/>
                         <outlet property="firstProgressDotOutlet" destination="zdb-pR-tOs" id="MQA-eQ-bz5"/>
+                        <outlet property="nextButtonOutlet" destination="peg-9k-muy" id="hma-g1-Duf"/>
                         <outlet property="welcomeInstructionsLabelOutlet" destination="LBT-dY-Jbn" id="6Qq-dq-acp"/>
                         <outlet property="welcomeLabeOutlet" destination="blQ-vT-axg" id="mbE-F4-O1N"/>
                     </connections>
