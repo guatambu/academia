@@ -469,7 +469,7 @@ extension NameAndBeltViewController {
             }
         }
         
-        print(inEditingMode)
+        print("NameAndBeltVC -> inEditingMode = \(inEditingMode)")
     }
     
     // owner setup for editing mode

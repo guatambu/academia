@@ -229,7 +229,7 @@ extension AddressViewController {
             }
         }
         
-        print(inEditingMode)
+        print("AddressVC -> inEditingMode = \(inEditingMode)")
     }
     
     // owner setup for editing mode

@@ -198,7 +198,7 @@ extension BirthdayViewController {
             }
         }
         
-        print(inEditingMode)
+        print("BirthdayVC -> inEditingMode = \(inEditingMode)")
     }
     
     // owner setup for editing mode
@@ -210,7 +210,7 @@ extension BirthdayViewController {
         
         welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
         
-        print("\(ownerToEdit.birthdate)")
+        print("BirthdayVC birthdate choice: \(ownerToEdit.birthdate)")
         birthdayDatePickerView.date = ownerToEdit.birthdate
         
     }
@@ -224,7 +224,7 @@ extension BirthdayViewController {
         
         welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
 
-        print("\(kidToEdit.birthdate)")
+        print("BirthdayVC birthdate choice: \(kidToEdit.birthdate)")
         birthdayDatePickerView.date = kidToEdit.birthdate
     }
     
@@ -237,7 +237,7 @@ extension BirthdayViewController {
         
         welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
     
-        print("\(adultToEdit.birthdate)")
+        print("BirthdayVC birthdate choice: \(adultToEdit.birthdate)")
         birthdayDatePickerView.date = adultToEdit.birthdate
     }
 }
