@@ -124,5 +124,8 @@ import Foundation
         // Portuguese (BR)
 
 
+// BUGS:
+    // going from coral belts to lower belts, the stripes do not reset to the proper width.  not terrible.  rare use case.  but let's fix it.  thi is after having saved the belt, and making this change in the edit profile workflow.
+    // reducing the number of stripes in a belt may result in too many stripes added in the editing workflow after having clicked save. **** COMPLETE ****
 
 

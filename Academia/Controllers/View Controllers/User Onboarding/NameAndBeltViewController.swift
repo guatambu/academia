@@ -45,19 +45,7 @@ class NameAndBeltViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         // check to see if enter editing mode
         enterEditingMode(inEditingMode: inEditingMode)
-        
-        // set editing mode for each user case scenario
-        if let isOwner = isOwner {
-            if isOwner {
-                ownerEditingSetup(userToEdit: userToEdit)
-            }
-        } else if let isKid = isKid {
-            if isKid {
-                kidStudentEditingSetup(userToEdit: userToEdit)
-            } else {
-                adultStudentEditingSetup(userToEdit: userToEdit)
-            }
-        }
+
     }
 
     override func viewDidLoad() {
@@ -79,6 +67,7 @@ class NameAndBeltViewController: UIViewController {
         // default belt to display upon user arrival
         if isKid {
             beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .kidsWhiteBelt, numberOfStripes: 0)
+            beltLevel = .kidsWhiteBelt
         } else {
             beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .adultWhiteBelt, numberOfStripes: 0)
         }
@@ -92,25 +81,22 @@ class NameAndBeltViewController: UIViewController {
         if let isOwner = isOwner {
             if isOwner {
                 // Owner update belt info
-                let owner = OwnerModelController.shared.owners[0]
-                
-                BeltModelController.shared.update(belt: owner.belt, active: nil, elligibleForNextBelt: nil, classesToNextPromotion: nil, beltLevel: beltLevel, numberOfStripes: numberOfStripes)
-                
+                updateOwnerInfo()
                 self.returnToOwnerInfo()
             }
-        } else if let isKid = isKid {
+        }
+        if let isKid = isKid {
             if isKid {
                 // kidStudent update belt info
-                let kid = KidStudentModelController.shared.kids[0]
-                
-                BeltModelController.shared.update(belt: kid.belt, active: nil, elligibleForNextBelt: nil, classesToNextPromotion: nil, beltLevel: beltLevel, numberOfStripes: numberOfStripes)
-                
+                updateKidStudentInfo()
+                self.returnToStudentInfo()
                 }
             } else {
                 // adultStudent update belt info
-                let adult = AdultStudentModelController.shared.adults[0]
+                updateAdultStudentInfo()
+                self.returnToStudentInfo()
             
-                BeltModelController.shared.update(belt: adult.belt, active: nil, elligibleForNextBelt: nil, classesToNextPromotion: nil, beltLevel: beltLevel, numberOfStripes: numberOfStripes)
+            
         }
         
         inEditingMode = false
@@ -147,12 +133,22 @@ class NameAndBeltViewController: UIViewController {
         
         destViewController.inEditingMode = inEditingMode
         destViewController.userToEdit = userToEdit
+        
+        // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
+        // ****  implement this across the other VCs in onbaording after lunch
+        if let isOwner = isOwner {
+            if isOwner {
+                updateOwnerInfo()
+            }
+        }
+        if let isKid = isKid {
+            if isKid {
+                updateKidStudentInfo()
+            } else {
+                updateAdultStudentInfo()
+            }
+        }
     }
-    
-    
-    // MARK: - Helper Methods
-    
-
 }
 
 
@@ -435,6 +431,22 @@ extension NameAndBeltViewController: UIPickerViewDelegate, UIPickerViewDataSourc
 //MARK: Editing Mode set up functions
 extension NameAndBeltViewController {
     
+    // Update Function for case where want to update user info without a segue
+    func updateOwnerInfo() {
+        guard let owner = userToEdit as? Owner else { return }
+        BeltModelController.shared.update(belt: owner.belt, active: nil, elligibleForNextBelt: nil, classesToNextPromotion: nil, beltLevel: beltLevel, numberOfStripes: numberOfStripes)
+    }
+    
+    func updateKidStudentInfo() {
+        guard let kidStudent = userToEdit as? KidStudent else { return }
+        BeltModelController.shared.update(belt: kidStudent.belt, active: nil, elligibleForNextBelt: nil, classesToNextPromotion: nil, beltLevel: beltLevel, numberOfStripes: numberOfStripes)
+    }
+    
+    func updateAdultStudentInfo() {
+        guard let adultStudent = userToEdit as? AdultStudent else { return }
+        BeltModelController.shared.update(belt: adultStudent.belt, active: nil, elligibleForNextBelt: nil, classesToNextPromotion: nil, beltLevel: beltLevel, numberOfStripes: numberOfStripes)
+    }
+    
     func enterEditingMode(inEditingMode: Bool?) {
         
         guard let inEditingMode = inEditingMode else { return }
@@ -447,7 +459,8 @@ extension NameAndBeltViewController {
                 if isOwner {
                     ownerEditingSetup(userToEdit: userToEdit)
                 }
-            } else if let isKid = isKid {
+            }
+            if let isKid = isKid {
                 if isKid {
                     kidStudentEditingSetup(userToEdit: userToEdit)
                 } else {

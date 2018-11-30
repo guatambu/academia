@@ -47,10 +47,20 @@ class EmergencyContactViewController: UIViewController {
     @IBOutlet weak var emergencyContactRelationshipOutlet: UILabel!
     @IBOutlet weak var emergencyContactRelationshipTextField: UITextField!
     
+    @IBOutlet weak var nextButtonOutlet: DesignableButton!
+    
     @IBOutlet weak var firstProgressDotOutlet: DesignableView!
     
     
     // MARK: - ViewController Lifecycle Functions
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // to reset from editing mode
+        nextButtonOutlet.isHidden = false
+        nextButtonOutlet.isEnabled = true
+        // check to see if enter editing mode
+        enterEditingMode(inEditingMode: inEditingMode)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,13 +73,8 @@ class EmergencyContactViewController: UIViewController {
             welcomeLabeOutlet.text = "Welcome New Student"
         }
         
-        // if editing profile
-        guard let inEditingMode = inEditingMode else { return }
-        
-        if inEditingMode {
-            let saveButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveButtonTapped))
-            navigationItem.rightBarButtonItem = saveButtonItem
-        }
+        nextButtonOutlet.isHidden = false
+        nextButtonOutlet.isEnabled = true
     }
     
     
@@ -80,30 +85,19 @@ class EmergencyContactViewController: UIViewController {
         if let isOwner = isOwner {
             if isOwner {
                 // Owner update profile info
-                if emergencyContactNameTextField.text != "" && emergencyContactPhoneTextField.text != "" && emergencyContactRelationshipTextField.text != "" {
-                    
-                    let owner = OwnerModelController.shared.owners[0]
-                    
-                    OwnerModelController.shared.updateProfileInfo(owner: owner, isInstructor: nil, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: emergencyContactNameTextField.text, emergencyContactPhone: emergencyContactPhoneTextField.text, emergencyContactRelationship: emergencyContactRelationshipTextField.text)
-                    
-                    self.returnToOwnerInfo()
-                }
+                updateOwnerInfo()
+                self.returnToOwnerInfo()
             }
-        } else if let isKid = isKid {
+        }
+        if let isKid = isKid {
             if isKid{
                 // kidStudent update profile info
-                if emergencyContactNameTextField.text != "" && emergencyContactPhoneTextField.text != "" && emergencyContactRelationshipTextField.text != "" {
-                    
-                    let kid = KidStudentModelController.shared.kids[0]
-                    KidStudentModelController.shared.updateProfileInfo(kidStudent: kid, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, parentGuardian: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: emergencyContactNameTextField.text, emergencyContactPhone: emergencyContactPhoneTextField.text, emergencyContactRelationship: emergencyContactRelationshipTextField.text)
-                }
+                updateKidStudentInfo()
+                self.returnToStudentInfo()
             } else {
                 // adultStudent update profile info
-                if emergencyContactNameTextField.text != "" && emergencyContactPhoneTextField.text != "" && emergencyContactRelationshipTextField.text != "" {
-                    
-                    let adult = AdultStudentModelController.shared.adults[0]
-                    AdultStudentModelController.shared.updateProfileInfo(adultStudent: adult, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: emergencyContactNameTextField.text, emergencyContactPhone: emergencyContactPhoneTextField.text, emergencyContactRelationship: emergencyContactRelationshipTextField.text)
-                }
+                updateAdultStudentInfo()
+                self.returnToStudentInfo()
             }
         }
         
@@ -193,3 +187,114 @@ class EmergencyContactViewController: UIViewController {
         print("isOwner: \(isOwner) \nisKid: \(isKid) \nusername: \(username) \npassword: \(password) \nfirstName: \(firstName) \nlastName: \(lastName) \nbirthdate: \(birthdate) \nbeltLevel: \(beltLevel.rawValue) \nnumberOfStripes: \(numberOfStripes) \naddressLine1: \(addressLine1) \naddressLine2: \(String(describing: addressLine2)) \ncity: \(city) \nstate: \(state) \nzipCode: \(zipCode) \nphone: \(phone) \nmobile: \(String(describing: mobile)) \nemail: \(email) \nemergencyContactName: \(emergencyContactName) \nemergencyContactRelationship: \(emergencyContactRelationship) \nemergencyContactPhone: \(emergencyContactPhone) \nparentGuardian: \(String(describing: parentGuardian))")
     }
 }
+
+
+// MARK: - Editing Mode for Individual User case specific setup
+extension EmergencyContactViewController {
+    
+    // Update Function for case where want to update user info without a segue
+    func updateOwnerInfo() {
+        if emergencyContactNameTextField.text != "" && emergencyContactPhoneTextField.text != "" && emergencyContactRelationshipTextField.text != "" {
+            
+            guard let owner = userToEdit as? Owner else { return }
+            
+            OwnerModelController.shared.updateProfileInfo(owner: owner, isInstructor: nil, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: emergencyContactNameTextField.text, emergencyContactPhone: emergencyContactPhoneTextField.text, emergencyContactRelationship: emergencyContactRelationshipTextField.text)
+        }
+    }
+    
+    func updateKidStudentInfo() {
+        if emergencyContactNameTextField.text != "" && emergencyContactPhoneTextField.text != "" && emergencyContactRelationshipTextField.text != "" {
+            
+            guard let kidStudent = userToEdit as? KidStudent else { return }
+            
+            KidStudentModelController.shared.updateProfileInfo(kidStudent: kidStudent, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, parentGuardian: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: emergencyContactNameTextField.text, emergencyContactPhone: emergencyContactPhoneTextField.text, emergencyContactRelationship: emergencyContactRelationshipTextField.text)
+        }
+    }
+    
+    func updateAdultStudentInfo() {
+        if emergencyContactNameTextField.text != "" && emergencyContactPhoneTextField.text != "" && emergencyContactRelationshipTextField.text != "" {
+            
+            guard let adultStudent = userToEdit as? AdultStudent else { return }
+            
+            let adult = AdultStudentModelController.shared.adults[0]
+            AdultStudentModelController.shared.updateProfileInfo(adultStudent: adultStudent, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: emergencyContactNameTextField.text, emergencyContactPhone: emergencyContactPhoneTextField.text, emergencyContactRelationship: emergencyContactRelationshipTextField.text)
+        }
+    }
+    
+    func enterEditingMode(inEditingMode: Bool?) {
+        
+        guard let inEditingMode = inEditingMode else { return }
+        
+        if inEditingMode {
+            let saveButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveButtonTapped))
+            navigationItem.rightBarButtonItem = saveButtonItem
+            
+            // set editing mode for each user case
+            if let isOwner = isOwner {
+                if isOwner {
+                    ownerEditingSetup(userToEdit: userToEdit)
+                }
+            }
+            if let isKid = isKid {
+                if isKid {
+                    kidStudentEditingSetup(userToEdit: userToEdit)
+                } else {
+                    adultStudentEditingSetup(userToEdit: userToEdit)
+                }
+            }
+            nextButtonOutlet.isHidden = true
+            nextButtonOutlet.isEnabled = false
+        }
+        
+        print(inEditingMode)
+    }
+    
+    // owner setup for editing mode
+    func ownerEditingSetup(userToEdit: Any?) {
+        
+        guard let ownerToEdit = userToEdit as? Owner else {
+            return
+        }
+        
+        welcomeLabeOutlet.text = "Welcome \(ownerToEdit.firstName)"
+        
+        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
+        
+        emergencyContactNameTextField.text = ownerToEdit.emergencyContactName
+        emergencyContactPhoneTextField.text = ownerToEdit.emergencyContactPhone
+        emergencyContactRelationshipTextField.text = ownerToEdit.emergencyContactRelationship
+    }
+    
+    // kid student setu for editing mode
+    func kidStudentEditingSetup(userToEdit: Any?) {
+        
+        guard let kidToEdit = userToEdit as? KidStudent else {
+            return
+        }
+        
+        welcomeLabeOutlet.text = "Welcome \(kidToEdit.firstName)"
+        
+        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
+        
+        emergencyContactNameTextField.text = kidToEdit.emergencyContactName
+        emergencyContactPhoneTextField.text = kidToEdit.emergencyContactPhone
+        emergencyContactRelationshipTextField.text = kidToEdit.emergencyContactRelationship
+    }
+    
+    // adult student setu for editing mode
+    func adultStudentEditingSetup(userToEdit: Any?) {
+        
+        guard let adultToEdit = userToEdit as? AdultStudent else {
+            return
+        }
+        
+        welcomeLabeOutlet.text = "Welcome \(adultToEdit.firstName)"
+        
+        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
+        
+        emergencyContactNameTextField.text = adultToEdit.emergencyContactName
+        emergencyContactPhoneTextField.text = adultToEdit.emergencyContactPhone
+        emergencyContactRelationshipTextField.text = adultToEdit.emergencyContactRelationship
+    }
+}
+

@@ -263,8 +263,8 @@ class BeltTableViewCell: UITableViewCell {
             
         case .adultRedWhiteBelt:
             
-            beltLabelOutlet.text = "Belt: \(MockData.redBelt.beltTime ?? "")"
-            ageRequirementLabelOutlet.text = "Min. Age: \(MockData.redBelt.minAgeRequirement ?? "")"
+            beltLabelOutlet.text = "Belt: \(MockData.redWhiteBelt.beltTime ?? "")"
+            ageRequirementLabelOutlet.text = "Min. Age: \(MockData.redWhiteBelt.minAgeRequirement ?? "")"
             stripeALabelOutlet.text = ""
             stripeBLabelOutlet.text = ""
             stripeCLabelOutlet.text = ""
@@ -274,8 +274,8 @@ class BeltTableViewCell: UITableViewCell {
             
         case .adultRedBelt:
             
-            beltLabelOutlet.text = "Belt: \(MockData.blackBelt.beltTime ?? "")"
-            ageRequirementLabelOutlet.text = "Min. Age: \(MockData.blackBelt.minAgeRequirement ?? "")"
+            beltLabelOutlet.text = "Belt: \(MockData.redBelt.beltTime ?? "")"
+            ageRequirementLabelOutlet.text = "Min. Age: \(MockData.redBelt.minAgeRequirement ?? "")"
             stripeALabelOutlet.text = "10th Degree \(MockData.redBelt.xStripe ?? "")"
             stripeBLabelOutlet.text = " "
             stripeCLabelOutlet.text = " "

@@ -45,19 +45,7 @@ class BirthdayViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         // check to see if enter editing mode
         enterEditingMode(inEditingMode: inEditingMode)
-        
-        // set editing mode for each user case scenario
-        if let isOwner = isOwner {
-            if isOwner {
-                ownerEditingSetup(userToEdit: userToEdit)
-            }
-        } else if let isKid = isKid {
-            if isKid {
-                kidStudentEditingSetup(userToEdit: userToEdit)
-            } else {
-                adultStudentEditingSetup(userToEdit: userToEdit)
-            }
-        }
+
     }
 
     override func viewDidLoad() {
@@ -82,24 +70,20 @@ class BirthdayViewController: UIViewController {
         if let isOwner = isOwner {
             if isOwner {
                 // Owner update profile info
-                if birthdate != nil {
-                    
-                    OwnerModelController.shared.updateProfileInfo(owner: OwnerModelController.shared.owners[0], isInstructor: nil, birthdate: birthdate, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
-                }
+                updateOwnerInfo()
                 self.returnToOwnerInfo()
                 
             }
-        } else if let isKid = isKid {
+        }
+        if let isKid = isKid {
             if isKid{
                 // kidStudent update profile info
-                if birthdate != nil {
-                    KidStudentModelController.shared.updateProfileInfo(kidStudent: KidStudentModelController.shared.kids[0],birthdate: birthdate, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, parentGuardian: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
-                }
+                updateKidStudentInfo()
+                self.returnToStudentInfo()
             } else {
                 // adultStudent update profile info
-                if birthdate != nil {
-                    AdultStudentModelController.shared.updateProfileInfo(adultStudent: AdultStudentModelController.shared.adults[0], birthdate: birthdate, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
-                }
+                updateAdultStudentInfo()
+                self.returnToStudentInfo()
             }
         }
         
@@ -108,9 +92,8 @@ class BirthdayViewController: UIViewController {
     
     @IBAction func birthdayPicked(_ sender: UIDatePicker) {
         
-        
         birthdate = birthdayDatePickerView.date
-        
+
         print("\(String(describing: birthdate))")
     }
 
@@ -144,6 +127,20 @@ class BirthdayViewController: UIViewController {
         destViewController.inEditingMode = inEditingMode
         destViewController.userToEdit = userToEdit
         
+        // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
+        // ****  implement this across the other VCs in onbaording after lunch
+        if let isOwner = isOwner {
+            if isOwner {
+                updateOwnerInfo()
+            }
+        }
+        if let isKid = isKid {
+            if isKid {
+                updateKidStudentInfo()
+            } else {
+                updateAdultStudentInfo()
+            }
+        }
     }
 }
 
@@ -152,6 +149,32 @@ class BirthdayViewController: UIViewController {
 
 // MARK: - Editing Mode for Individual User case specific setup
 extension BirthdayViewController {
+    
+    // Update Function for case where want to update user info without a segue
+    func updateOwnerInfo() {
+        guard let owner = userToEdit as? Owner else { return }
+        // Owner update profile info
+        if birthdate != nil {
+            OwnerModelController.shared.updateProfileInfo(owner: owner, isInstructor: nil, birthdate: birthdate, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+        }
+        print("update owner name: \(OwnerModelController.shared.owners[0].firstName) \(OwnerModelController.shared.owners[0].lastName)")
+    }
+    
+    func updateKidStudentInfo() {
+        guard let kidStudent = userToEdit as? KidStudent else { return }
+        // kidStudent update profile info
+        if birthdate != nil {
+            KidStudentModelController.shared.updateProfileInfo(kidStudent: kidStudent,birthdate: birthdate, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, parentGuardian: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+        }
+    }
+    
+    func updateAdultStudentInfo() {
+        guard let adultStudent = userToEdit as? AdultStudent else { return }
+        // adultStudent update profile info
+        if birthdate != nil {
+            AdultStudentModelController.shared.updateProfileInfo(adultStudent: adultStudent, birthdate: birthdate, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+        }
+    }
     
     func enterEditingMode(inEditingMode: Bool?) {
         
@@ -165,7 +188,8 @@ extension BirthdayViewController {
                 if isOwner {
                     ownerEditingSetup(userToEdit: userToEdit)
                 }
-            } else if let isKid = isKid {
+            }
+            if let isKid = isKid {
                 if isKid {
                     kidStudentEditingSetup(userToEdit: userToEdit)
                 } else {
@@ -180,9 +204,7 @@ extension BirthdayViewController {
     // owner setup for editing mode
     func ownerEditingSetup(userToEdit: Any?) {
         
-        guard let ownerToEdit = userToEdit as? Owner else {
-            return
-        }
+        guard let ownerToEdit = userToEdit as? Owner else { return }
         
         welcomeLabeOutlet.text = "Welcome \(ownerToEdit.firstName)"
         
@@ -196,29 +218,26 @@ extension BirthdayViewController {
     // kid student setu for editing mode
     func kidStudentEditingSetup(userToEdit: Any?) {
         
-        guard let kidToEdit = userToEdit as? KidStudent else {
-            return
-        }
+        guard let kidToEdit = userToEdit as? KidStudent else { return }
         
         welcomeLabeOutlet.text = "Welcome \(kidToEdit.firstName)"
         
         welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
 
-        
-        birthdayDatePickerView.setDate(kidToEdit.birthdate, animated: true)
+        print("\(kidToEdit.birthdate)")
+        birthdayDatePickerView.date = kidToEdit.birthdate
     }
     
     // adult student setu for editing mode
     func adultStudentEditingSetup(userToEdit: Any?) {
         
-        guard let adultToEdit = userToEdit as? AdultStudent else {
-            return
-        }
+        guard let adultToEdit = userToEdit as? AdultStudent else { return }
         
         welcomeLabeOutlet.text = "Welcome \(adultToEdit.firstName)"
         
         welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
     
-        birthdayDatePickerView.setDate(adultToEdit.birthdate, animated: true)
+        print("\(adultToEdit.birthdate)")
+        birthdayDatePickerView.date = adultToEdit.birthdate
     }
 }

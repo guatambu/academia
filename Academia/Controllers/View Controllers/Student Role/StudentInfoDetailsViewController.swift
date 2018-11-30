@@ -1,18 +1,20 @@
 //
-//  OwnerInfoDetailsViewController.swift
+//  StudentInfoDetailsViewController.swift
 //  Academia
 //
-//  Created by Michael Guatambu Davis on 11/19/18.
+//  Created by Michael Guatambu Davis on 11/28/18.
 //  Copyright © 2018 DunDak, LLC. All rights reserved.
 //
 
 import UIKit
 
-class OwnerInfoDetailsViewController: UIViewController {
-    
+class StudentInfoDetailsViewController: UIViewController {
+
     // MARK: - Properties
     
     let beltBuilder = BeltBuilder()
+    
+    var isKid: Bool?
     
     // username outlet
     @IBOutlet weak var usernameLabelOutlet: UILabel!
@@ -27,6 +29,7 @@ class OwnerInfoDetailsViewController: UIViewController {
     // belt holder UIView
     @IBOutlet weak var beltHolderViewOutlet: UIView!
     // address outlets
+    @IBOutlet weak var parentGuardianLabelOutlet: UILabel!
     @IBOutlet weak var addressLine1LabelOutlet: UILabel!
     @IBOutlet weak var addressLine2LabelOutlet: UILabel!
     @IBOutlet weak var cityLabelOutlet: UILabel!
@@ -36,26 +39,26 @@ class OwnerInfoDetailsViewController: UIViewController {
     @IBOutlet weak var emergencyContactNameLabelOutlet: UILabel!
     @IBOutlet weak var emergencyContactRelationshipLabelOutlet: UILabel!
     @IBOutlet weak var emergencyContactPhoneLabelOutlet: UILabel!
-
+    
     
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
         populateCompletedProfileInfo()
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         addressLine2LabelOutlet.isHidden = false
         mobileLabelOutlet.isHidden = false
         
         //populateCompletedProfileInfo()
     }
     
-
+    
     // MARK: - Actions
- 
+    
     @IBAction func editButtonTapped(_ sender: Any) {
         
         // programmatically performing the segue
@@ -75,12 +78,18 @@ class OwnerInfoDetailsViewController: UIViewController {
         
         // set properties on destinationVC
         destViewController.inEditingMode = true
-        destViewController.isOwner = true
-        destViewController.isKid = false
-        destViewController.userToEdit = OwnerModelController.shared.owners[0]
+        destViewController.isOwner = false
+        
+        // **** IF KID STUDENT ****
+        destViewController.isKid = true
+        destViewController.userToEdit = KidStudentModelController.shared.kids[0]
+        print("saved kid belt level from kid model controller source of truth: " + KidStudentModelController.shared.kids[0].belt.beltLevel.rawValue)
+//        // **** IF ADULT STUDENT ****
+//        destViewController.isKid = false
+//        destViewController.userToEdit = AdultStudentModelController.shared.adults[0]
         // TODO: set destinationVC properties to display user to be edited
-            // in destintaionVC unrwrap userToEdit? as either Owner, AdultStudent, or KidStudent and us this to display info, and be passed around for updating in each update function
-            // also need to build in programmatic segues for saveTapped to exit editing mode and return to OwnerProfileDetailsVC
+        // in destintaionVC unrwrap userToEdit? as either Owner, AdultStudent, or KidStudent and us this to display info, and be passed around for updating in each update function
+        // also need to build in programmatic segues for saveTapped to exit editing mode and return to OwnerProfileDetailsVC
     }
     
     @IBAction func deleteAccountButtonTapped(_ sender: UIButton) {
@@ -104,7 +113,7 @@ class OwnerInfoDetailsViewController: UIViewController {
             self.navigationController?.present(destVCNavigation, animated: true, completion: nil)
             
             // perform segue to specified viewController removing all others from Navigation Stack
-//            self.navigationController?.popToViewController(destVCNavigation, animated: true)
+            //            self.navigationController?.popToViewController(destVCNavigation, animated: true)
             // why can't i 'pop' to this VC?  if not the way to go, then, is navigation stack clean?
             
             self.navigationController?.navigationBar.tintColor = self.beltBuilder.redBeltRed
@@ -123,48 +132,95 @@ class OwnerInfoDetailsViewController: UIViewController {
 }
 
 
-extension OwnerInfoDetailsViewController {
+extension StudentInfoDetailsViewController {
     
     func populateCompletedProfileInfo() {
-    
-        guard let owner = OwnerModelController.shared.owners.first else { return }
+        
+        // KID STUDENT OPTION
+        guard let kidStudent = KidStudentModelController.shared.kids.first else { return }
+
         // populate UI elements in VC
-        self.title = "\(owner.firstName) \(owner.lastName)"
-        usernameLabelOutlet.text = owner.username
+        self.title = "\(kidStudent.firstName) \(kidStudent.lastName)"
+        usernameLabelOutlet.text = "username: \(kidStudent.username)"
         // populate birthdate outlet
-        formatBirthdate(birthdate: owner.birthdate)
+        formatBirthdate(birthdate: kidStudent.birthdate)
         // contact info outlets
-        phoneLabelOutlet.text = owner.phone
+        phoneLabelOutlet.text = kidStudent.phone
         // mobile is not a required field
-        if owner.mobile != "" {
-            mobileLabelOutlet.text = owner.mobile
+        if kidStudent.mobile != "" {
+            mobileLabelOutlet.text = kidStudent.mobile
         } else {
             mobileLabelOutlet.isHidden = true
         }
-        emailLabelOutlet.text = owner.email
+        emailLabelOutlet.text = kidStudent.email
+        // parent / guardian name
+        parentGuardianLabelOutlet.text = "parent/guardian: \(kidStudent.parentGuardian)"
         // address outlets
-        addressLine1LabelOutlet.text = owner.addressLine1
+        addressLine1LabelOutlet.text = kidStudent.addressLine1
         // addressLine2 is not a required field
-        if owner.addressLine2 != "" {
-            addressLine2LabelOutlet.text = owner.addressLine2
+        if kidStudent.addressLine2 != "" {
+            addressLine2LabelOutlet.text = kidStudent.addressLine2
         } else {
             addressLine2LabelOutlet.isHidden = true
         }
-        cityLabelOutlet.text = owner.city
-        stateLabelOutlet.text = owner.state
-        zipCodeLabelOutlet.text = owner.zipCode
+        cityLabelOutlet.text = kidStudent.city
+        stateLabelOutlet.text = kidStudent.state
+        zipCodeLabelOutlet.text = kidStudent.zipCode
         // emergency contact info outlets
-        emergencyContactNameLabelOutlet.text = owner.emergencyContactName
-        emergencyContactRelationshipLabelOutlet.text = owner.emergencyContactRelationship
-        emergencyContactPhoneLabelOutlet.text = owner.emergencyContactPhone
-        
+        emergencyContactNameLabelOutlet.text = kidStudent.emergencyContactName
+        emergencyContactRelationshipLabelOutlet.text = kidStudent.emergencyContactRelationship
+        emergencyContactPhoneLabelOutlet.text = kidStudent.emergencyContactPhone
+
         // profile pic imageView
-        profilePicImageView.image = owner.profilePic
-        
+        profilePicImageView.image = kidStudent.profilePic
+
         // belt holder UIView
-        print("OwnersProfileVC -> beltLevel: \(owner.belt.beltLevel)")
-        print("OwnersProfileVC -> numberOfStripes: \(owner.belt.numberOfStripes)")
-        beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: owner.belt.beltLevel, numberOfStripes: owner.belt.numberOfStripes)
+        print("Kid Student Info in StudentInfodetailsVC -> beltLevel: \(kidStudent.belt.beltLevel)")
+        print("Kid Student Info in StudentInfodetailsVC -> \(kidStudent.belt.numberOfStripes)")
+        beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: kidStudent.belt.beltLevel, numberOfStripes: kidStudent.belt.numberOfStripes)
+        
+//        // ADULT STUDENT OPTION
+//        guard let adultStudent = AdultStudentModelController.shared.adults.first else {
+//            return
+//        }
+//
+//        // populate UI elements in VC
+//        self.title = "\(adultStudent.firstName) \(adultStudent.lastName)"
+//        usernameLabelOutlet.text = adultStudent.username
+//        // populate birthdate outlet
+//        formatBirthdate(birthdate: adultStudent.birthdate)
+//        // contact info outlets
+//        phoneLabelOutlet.text = adultStudent.phone
+//        // mobile is not a required field
+//        if adultStudent.mobile != "" {
+//            mobileLabelOutlet.text = adultStudent.mobile
+//        } else {
+//            mobileLabelOutlet.isHidden = true
+//        }
+//        emailLabelOutlet.text = adultStudent.email
+//        // address outlets
+//        addressLine1LabelOutlet.text = adultStudent.addressLine1
+//        // addressLine2 is not a required field
+//        if adultStudent.addressLine2 != "" {
+//            addressLine2LabelOutlet.text = adultStudent.addressLine2
+//        } else {
+//            addressLine2LabelOutlet.isHidden = true
+//        }
+//        cityLabelOutlet.text = adultStudent.city
+//        stateLabelOutlet.text = adultStudent.state
+//        zipCodeLabelOutlet.text = adultStudent.zipCode
+//        // emergency contact info outlets
+//        emergencyContactNameLabelOutlet.text = adultStudent.emergencyContactName
+//        emergencyContactRelationshipLabelOutlet.text = adultStudent.emergencyContactRelationship
+//        emergencyContactPhoneLabelOutlet.text = adultStudent.emergencyContactPhone
+//
+//        // profile pic imageView
+//        profilePicImageView.image = adultStudent.profilePic
+//
+//        // belt holder UIView
+//        print("Adult Student Info in StudentInfodetailsVC -> beltLevel: \(adultStudent.belt.beltLevel)")
+//        print("Adult Student Info in StudentInfodetailsVC -> \(adultStudent.belt.numberOfStripes)")
+//        beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: adultStudent.belt.beltLevel, numberOfStripes: adultStudent.belt.numberOfStripes)
     }
     
     func formatBirthdate(birthdate: Date) {
@@ -184,32 +240,3 @@ extension OwnerInfoDetailsViewController {
     }
 }
 
-
-// MARK: - Programmatic Segues to return to proper ProfileFlow storyboard and user profileVC
-extension UIViewController {
-    
-    func returnToOwnerInfo() {
-        
-        guard let viewControllers = self.navigationController?.viewControllers else { return }
-        
-        for viewController in viewControllers {
-            
-            if viewController is OwnerInfoDetailsViewController {
-                self.navigationController?.popToViewController(viewController, animated: true)
-            }
-        }
-    }
-    
-    func returnToStudentInfo() {
-        
-        guard let viewControllers = self.navigationController?.viewControllers else { return }
-        
-        for viewController in viewControllers {
-            
-            if viewController is StudentInfoDetailsViewController {
-                self.navigationController?.popToViewController(viewController, animated: true)
-            }
-        }
-    }
-    
-}

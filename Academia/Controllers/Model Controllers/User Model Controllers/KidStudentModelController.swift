@@ -56,7 +56,7 @@ class KidStudentModelController {
         let kid = KidStudent(kidUID: UUID(),
                              dateCreated: Date(),
                              dateEdited: Date(),
-                             birthdate: Date(),
+                             birthdate: birthdate,
                              promotions: nil,
                              mostRecentPromotion: nil,
                              attendance: nil,
