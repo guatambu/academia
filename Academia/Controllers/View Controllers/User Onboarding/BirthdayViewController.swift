@@ -74,15 +74,16 @@ class BirthdayViewController: UIViewController {
                 self.returnToOwnerInfo()
                 
             }
-        } else if let isKid = isKid {
+        }
+        if let isKid = isKid {
             if isKid{
                 // kidStudent update profile info
                 updateKidStudentInfo()
-//                self.returnToKidStudentInfo()
+                self.returnToStudentInfo()
             } else {
                 // adultStudent update profile info
                 updateAdultStudentInfo()
-//                self.returnToAdultStudentInfo()
+                self.returnToStudentInfo()
             }
         }
         
@@ -91,9 +92,8 @@ class BirthdayViewController: UIViewController {
     
     @IBAction func birthdayPicked(_ sender: UIDatePicker) {
         
-        
         birthdate = birthdayDatePickerView.date
-        
+
         print("\(String(describing: birthdate))")
     }
 
@@ -188,7 +188,8 @@ extension BirthdayViewController {
                 if isOwner {
                     ownerEditingSetup(userToEdit: userToEdit)
                 }
-            } else if let isKid = isKid {
+            }
+            if let isKid = isKid {
                 if isKid {
                     kidStudentEditingSetup(userToEdit: userToEdit)
                 } else {
@@ -203,9 +204,7 @@ extension BirthdayViewController {
     // owner setup for editing mode
     func ownerEditingSetup(userToEdit: Any?) {
         
-        guard let ownerToEdit = userToEdit as? Owner else {
-            return
-        }
+        guard let ownerToEdit = userToEdit as? Owner else { return }
         
         welcomeLabeOutlet.text = "Welcome \(ownerToEdit.firstName)"
         
@@ -219,29 +218,26 @@ extension BirthdayViewController {
     // kid student setu for editing mode
     func kidStudentEditingSetup(userToEdit: Any?) {
         
-        guard let kidToEdit = userToEdit as? KidStudent else {
-            return
-        }
+        guard let kidToEdit = userToEdit as? KidStudent else { return }
         
         welcomeLabeOutlet.text = "Welcome \(kidToEdit.firstName)"
         
         welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
 
-        
-        birthdayDatePickerView.setDate(kidToEdit.birthdate, animated: true)
+        print("\(kidToEdit.birthdate)")
+        birthdayDatePickerView.date = kidToEdit.birthdate
     }
     
     // adult student setu for editing mode
     func adultStudentEditingSetup(userToEdit: Any?) {
         
-        guard let adultToEdit = userToEdit as? AdultStudent else {
-            return
-        }
+        guard let adultToEdit = userToEdit as? AdultStudent else { return }
         
         welcomeLabeOutlet.text = "Welcome \(adultToEdit.firstName)"
         
         welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
     
-        birthdayDatePickerView.setDate(adultToEdit.birthdate, animated: true)
+        print("\(adultToEdit.birthdate)")
+        birthdayDatePickerView.date = adultToEdit.birthdate
     }
 }

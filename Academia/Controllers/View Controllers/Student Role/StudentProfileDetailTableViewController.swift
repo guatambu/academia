@@ -34,37 +34,6 @@ class StudentProfileDetailTableViewController: UITableViewController {
     
     //MARK: - Actions
     
-    @IBAction func myProfileButtonTapped(_ sender: UIButton) {
-        
-        
-        
-        if kidStudent != nil {
-            // instantiate the relevant storyboard
-            let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            // instantiate the desired TableViewController as ViewController on relevant storyboard
-            let destViewController = mainView.instantiateViewController(withIdentifier: "toProfileComplete") as! CompletedProfileViewController
-            // create the segue programmatically
-            self.navigationController?.pushViewController(destViewController, animated: true)
-            // set the desired properties of the destinationVC's navgation Item
-            let backButtonItem = UIBarButtonItem()
-            backButtonItem.title = " "
-            navigationItem.backBarButtonItem = backButtonItem
-            
-        } else if adultStudent != nil {
-            
-            // instantiate the relevant storyboard
-            let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            // instantiate the desired TableViewController as ViewController on relevant storyboard
-            let destViewController = mainView.instantiateViewController(withIdentifier: "toProfileComplete") as! CompletedProfileViewController
-            // create the segue programmatically
-            self.navigationController?.pushViewController(destViewController, animated: true)
-            // set the desired properties of the destinationVC's navgation Item
-            let backButtonItem = UIBarButtonItem()
-            backButtonItem.title = " "
-            navigationItem.backBarButtonItem = backButtonItem
-        }
-    }
-    
     @IBAction func beltSystemsButtonTapped(_ sender: UIButton) {
         // instantiate the relevant storyboard
         let ownerBeltSystemFlowView: UIStoryboard = UIStoryboard(name: "OwnerBeltSystemFlow", bundle: nil)

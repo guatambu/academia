@@ -43,6 +43,7 @@ class TakeProfilePicViewController: UIViewController {
         // check to see if enter editing mode
         enterEditingMode(inEditingMode: inEditingMode)
         
+        print("isKid in TakeProfilePicVC: \(String(describing: isKid))")
     }
     
     override func viewDidLoad() {
@@ -82,7 +83,8 @@ class TakeProfilePicViewController: UIViewController {
                     print("update owner name: \(OwnerModelController.shared.owners[0].firstName) \(OwnerModelController.shared.owners[0].lastName)")
                 }
             }
-        } else if let isKid = isKid {
+        }
+        if let isKid = isKid {
             
             if isKid{
                 // kidStudent update profile info
@@ -90,7 +92,7 @@ class TakeProfilePicViewController: UIViewController {
                     
                     updateKidStudentInfo()
                     
-//                    returnToKidStudentProfile()
+                    self.returnToStudentInfo()
                 }
             } else {
                 // adultStudent update profile info
@@ -98,7 +100,7 @@ class TakeProfilePicViewController: UIViewController {
                     
                     updateAdultStudentInfo()
                     
-//                    returnToAdultStudentProfile()
+                    self.returnToStudentInfo()
                 }
             }
         }
@@ -214,7 +216,8 @@ extension TakeProfilePicViewController {
                 if isOwner {
                     ownerEditingSetup(userToEdit: userToEdit)
                 }
-            } else if let isKid = isKid {
+            }
+            if let isKid = isKid {
                 if isKid {
                     kidStudentEditingSetup(userToEdit: userToEdit)
                 } else {
@@ -256,6 +259,7 @@ extension TakeProfilePicViewController {
         profilePicImageViewOutlet.image = kidToEdit.profilePic
         firstNameTextField.text = kidToEdit.firstName
         lastNameTextField.text = kidToEdit.lastName
+        parentGuardianTextField.text = kidToEdit.parentGuardian
     }
     
     // adult student setu for editing mode

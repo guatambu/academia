@@ -111,10 +111,6 @@ class CompletedProfileViewController: UIViewController {
         
 
     }
-    
-    // MARK: - Helper Methods
-    
-
 }
 
 // MARK: - date formatter setup for birthdate display
@@ -324,6 +320,8 @@ extension CompletedProfileViewController {
                                                     emergencyContactPhone: emergencyContactPhone,
                                                     emergencyContactRelationship: emergencyContactRelationship)
             
+            print("kid just created in CompletedProfileVC birthdate: \(String(describing: KidStudentModelController.shared.kids.last?.birthdate))")
+            
         } else if !isKid {
             
             AdultStudentModelController.shared.addNew(birthdate: birthdate,
@@ -345,10 +343,7 @@ extension CompletedProfileViewController {
                                                       emergencyContactPhone: emergencyContactPhone,
                                                       emergencyContactRelationship: emergencyContactRelationship)
         }
-        
-        
     }
-    
     
 }
 

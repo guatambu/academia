@@ -67,6 +67,7 @@ class NameAndBeltViewController: UIViewController {
         // default belt to display upon user arrival
         if isKid {
             beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .kidsWhiteBelt, numberOfStripes: 0)
+            beltLevel = .kidsWhiteBelt
         } else {
             beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .adultWhiteBelt, numberOfStripes: 0)
         }
@@ -83,14 +84,17 @@ class NameAndBeltViewController: UIViewController {
                 updateOwnerInfo()
                 self.returnToOwnerInfo()
             }
-        } else if let isKid = isKid {
+        }
+        if let isKid = isKid {
             if isKid {
                 // kidStudent update belt info
                 updateKidStudentInfo()
-//                self.returnToKidStudentInfo
+                self.returnToStudentInfo()
                 }
             } else {
                 // adultStudent update belt info
+                updateAdultStudentInfo()
+                self.returnToStudentInfo()
             
             
         }
@@ -455,7 +459,8 @@ extension NameAndBeltViewController {
                 if isOwner {
                     ownerEditingSetup(userToEdit: userToEdit)
                 }
-            } else if let isKid = isKid {
+            }
+            if let isKid = isKid {
                 if isKid {
                     kidStudentEditingSetup(userToEdit: userToEdit)
                 } else {

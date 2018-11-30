@@ -115,6 +115,7 @@
 		FAB7E350212B7D47003E3B79 /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB7E34F212B7D47003E3B79 /* LandingPageViewController.swift */; };
 		FAB7E352212B7D73003E3B79 /* UserSelfIdentifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB7E351212B7D73003E3B79 /* UserSelfIdentifyViewController.swift */; };
 		FAB7E35A212BA643003E3B79 /* BlairMdITC TT-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAB7E359212BA643003E3B79 /* BlairMdITC TT-Medium.ttf */; };
+		FABF859321AF8370005CEBD4 /* StudentInfoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF859221AF8370005CEBD4 /* StudentInfoDetailsViewController.swift */; };
 		FACA3EAC21927C3F0099E620 /* profile_pic_placeholder_image.png in Resources */ = {isa = PBXBuildFile; fileRef = FACA3EAB21927C3F0099E620 /* profile_pic_placeholder_image.png */; };
 		FACA3EAE21927CEE0099E620 /* IBDesignables.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA3EAD21927CEE0099E620 /* IBDesignables.swift */; };
 		FACA3EB1219288CD0099E620 /* NameAndBeltViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA3EB0219288CD0099E620 /* NameAndBeltViewController.swift */; };
@@ -345,6 +346,7 @@
 		FAB7E34F212B7D47003E3B79 /* LandingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
 		FAB7E351212B7D73003E3B79 /* UserSelfIdentifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelfIdentifyViewController.swift; sourceTree = "<group>"; };
 		FAB7E359212BA643003E3B79 /* BlairMdITC TT-Medium.ttf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "BlairMdITC TT-Medium.ttf"; sourceTree = "<group>"; };
+		FABF859221AF8370005CEBD4 /* StudentInfoDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInfoDetailsViewController.swift; sourceTree = "<group>"; };
 		FACA3EAB21927C3F0099E620 /* profile_pic_placeholder_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile_pic_placeholder_image.png; sourceTree = "<group>"; };
 		FACA3EAD21927CEE0099E620 /* IBDesignables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignables.swift; sourceTree = "<group>"; };
 		FACA3EB0219288CD0099E620 /* NameAndBeltViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameAndBeltViewController.swift; sourceTree = "<group>"; };
@@ -639,6 +641,7 @@
 				FA5C5C5721549A1300BF62D5 /* Aulas */,
 				FA5C5C55215499F300BF62D5 /* StudentProfileDetailTableViewController.swift */,
 				FAE67A35215C2DDF00822DCF /* StudentPaymentTableViewController.swift */,
+				FABF859221AF8370005CEBD4 /* StudentInfoDetailsViewController.swift */,
 			);
 			path = "Student Role";
 			sourceTree = "<group>";
@@ -1285,6 +1288,7 @@
 				FAE2FD8E2140BFC700815402 /* FirstNameTextFieldTableViewCell.swift in Sources */,
 				FAE67A3E215C733400822DCF /* AddNewStudentGroupImageMenuTableViewCell.swift in Sources */,
 				FAA516D4218FEC47009875CB /* PasswordTextFieldTableViewCell.swift in Sources */,
+				FABF859321AF8370005CEBD4 /* StudentInfoDetailsViewController.swift in Sources */,
 				FA5C5C522154999C00BF62D5 /* StudentClassesTableViewController.swift in Sources */,
 				FAE67A38215C6C0F00822DCF /* AulasListMenuTableViewCell.swift in Sources */,
 				FAB203D4215EA8630034E1D4 /* LocationsImageMenuTableViewCell.swift in Sources */,

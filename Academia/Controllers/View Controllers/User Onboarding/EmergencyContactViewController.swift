@@ -88,15 +88,16 @@ class EmergencyContactViewController: UIViewController {
                 updateOwnerInfo()
                 self.returnToOwnerInfo()
             }
-        } else if let isKid = isKid {
+        }
+        if let isKid = isKid {
             if isKid{
                 // kidStudent update profile info
                 updateKidStudentInfo()
-//                self.returnToKidStudentInfo()
+                self.returnToStudentInfo()
             } else {
                 // adultStudent update profile info
                 updateAdultStudentInfo()
-//                self.returnToAdultStudentInfo()
+                self.returnToStudentInfo()
             }
         }
         
@@ -233,7 +234,8 @@ extension EmergencyContactViewController {
                 if isOwner {
                     ownerEditingSetup(userToEdit: userToEdit)
                 }
-            } else if let isKid = isKid {
+            }
+            if let isKid = isKid {
                 if isKid {
                     kidStudentEditingSetup(userToEdit: userToEdit)
                 } else {
