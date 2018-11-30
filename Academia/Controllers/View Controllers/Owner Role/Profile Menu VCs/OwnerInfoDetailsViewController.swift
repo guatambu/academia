@@ -98,7 +98,7 @@ class OwnerInfoDetailsViewController: UIViewController {
             
             OwnerModelController.shared.delete(owner: OwnerModelController.shared.owners[0])
             
-            // programmatically performing the segue
+            // programmatically performing the segue if "resetting" the app to beginning with no saved user
             
             // instantiate the relevant storyboard
             let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)

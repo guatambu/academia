@@ -119,9 +119,21 @@ class StudentInfoDetailsViewController: UIViewController {
         let cancel = UIAlertAction(title: "cancel", style: UIAlertAction.Style.cancel, handler: nil)
         let deleteAccount = UIAlertAction(title: "delete account", style: UIAlertAction.Style.destructive) { (alert) in
             
-            OwnerModelController.shared.delete(owner: OwnerModelController.shared.owners[0])
+            // check the isKid property
+            guard let isKid = self.isKid else {
+                print("StudentInfoDetailsVC -> deleteAccountButtonTapped(sender:) - isKid is nil, and that's a problem")
+                return
+            }
+            // determine user deletion type
+            if isKid {
+                let kid = KidStudentModelController.shared.kids[0]
+                KidStudentModelController.shared.delete(kidStudent: kid)
+            } else if !isKid {
+                let adult = AdultStudentModelController.shared.adults[0]
+                AdultStudentModelController.shared.delete(adultStudent: adult)
+            }
             
-            // programmatically performing the segue
+            // programmatically performing the segue if "resetting" the app to beginning with no saved user
             
             // instantiate the relevant storyboard
             let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -160,6 +172,8 @@ extension StudentInfoDetailsViewController {
             
             // KID STUDENT OPTION
             guard let kidStudent = KidStudentModelController.shared.kids.first else { return }
+            
+            isKid = true
             
             // populate UI elements in VC
             self.title = "\(kidStudent.firstName) \(kidStudent.lastName)"
@@ -207,6 +221,8 @@ extension StudentInfoDetailsViewController {
             guard let adultStudent = AdultStudentModelController.shared.adults.first else {
                 return
             }
+            
+            isKid = false
             
             // populate UI elements in VC
             self.title = "\(adultStudent.firstName) \(adultStudent.lastName)"
