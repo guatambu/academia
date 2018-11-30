@@ -80,16 +80,30 @@ class StudentInfoDetailsViewController: UIViewController {
         destViewController.inEditingMode = true
         destViewController.isOwner = false
         
-        // **** IF KID STUDENT ****
-        destViewController.isKid = true
-        destViewController.userToEdit = KidStudentModelController.shared.kids[0]
-        print("saved kid belt level from kid model controller source of truth: " + KidStudentModelController.shared.kids[0].belt.beltLevel.rawValue)
-//        // **** IF ADULT STUDENT ****
-//        destViewController.isKid = false
-//        destViewController.userToEdit = AdultStudentModelController.shared.adults[0]
-        // TODO: set destinationVC properties to display user to be edited
-        // in destintaionVC unrwrap userToEdit? as either Owner, AdultStudent, or KidStudent and us this to display info, and be passed around for updating in each update function
-        // also need to build in programmatic segues for saveTapped to exit editing mode and return to OwnerProfileDetailsVC
+        if KidStudentModelController.shared.kids.isEmpty == false {
+            isKid = true
+        } else if AdultStudentModelController.shared.adults.isEmpty == false {
+            isKid = false
+        }
+        
+        guard let isKid = isKid else {
+            print("there is no vlaue for isKid in StudentInfoDetailsVC -> editButtonTapped(sender:) - line 83")
+            return
+        }
+        if isKid {
+            // **** IF KID STUDENT ****
+            destViewController.isKid = true
+            destViewController.userToEdit = KidStudentModelController.shared.kids[0]
+            print("saved kid belt level from kid model controller source of truth: " + KidStudentModelController.shared.kids[0].belt.beltLevel.rawValue)
+        } else {
+            // **** IF ADULT STUDENT ****
+            destViewController.isKid = false
+            destViewController.userToEdit = AdultStudentModelController.shared.adults[0]
+        }
+    
+//         TODO: set destinationVC properties to display user to be edited
+//         in destintaionVC unrwrap userToEdit? as either Owner, AdultStudent, or KidStudent and us this to display info, and be passed around for updating in each update function
+//         also need to build in programmatic segues for saveTapped to exit editing mode and return to OwnerProfileDetailsVC
     }
     
     @IBAction func deleteAccountButtonTapped(_ sender: UIButton) {
@@ -136,91 +150,96 @@ extension StudentInfoDetailsViewController {
     
     func populateCompletedProfileInfo() {
         
-        // KID STUDENT OPTION
-        guard let kidStudent = KidStudentModelController.shared.kids.first else { return }
-
-        // populate UI elements in VC
-        self.title = "\(kidStudent.firstName) \(kidStudent.lastName)"
-        usernameLabelOutlet.text = "username: \(kidStudent.username)"
-        // populate birthdate outlet
-        formatBirthdate(birthdate: kidStudent.birthdate)
-        // contact info outlets
-        phoneLabelOutlet.text = kidStudent.phone
-        // mobile is not a required field
-        if kidStudent.mobile != "" {
-            mobileLabelOutlet.text = kidStudent.mobile
-        } else {
-            mobileLabelOutlet.isHidden = true
+        if KidStudentModelController.shared.kids.isEmpty == false {
+            
+            // KID STUDENT OPTION
+            guard let kidStudent = KidStudentModelController.shared.kids.first else { return }
+            
+            // populate UI elements in VC
+            self.title = "\(kidStudent.firstName) \(kidStudent.lastName)"
+            usernameLabelOutlet.text = "username: \(kidStudent.username)"
+            // populate birthdate outlet
+            formatBirthdate(birthdate: kidStudent.birthdate)
+            // contact info outlets
+            phoneLabelOutlet.text = kidStudent.phone
+            // mobile is not a required field
+            if kidStudent.mobile != "" {
+                mobileLabelOutlet.text = kidStudent.mobile
+            } else {
+                mobileLabelOutlet.isHidden = true
+            }
+            emailLabelOutlet.text = kidStudent.email
+            // parent / guardian name
+            parentGuardianLabelOutlet.text = "parent/guardian: \(kidStudent.parentGuardian)"
+            // address outlets
+            addressLine1LabelOutlet.text = kidStudent.addressLine1
+            // addressLine2 is not a required field
+            if kidStudent.addressLine2 != "" {
+                addressLine2LabelOutlet.text = kidStudent.addressLine2
+            } else {
+                addressLine2LabelOutlet.isHidden = true
+            }
+            cityLabelOutlet.text = kidStudent.city
+            stateLabelOutlet.text = kidStudent.state
+            zipCodeLabelOutlet.text = kidStudent.zipCode
+            // emergency contact info outlets
+            emergencyContactNameLabelOutlet.text = kidStudent.emergencyContactName
+            emergencyContactRelationshipLabelOutlet.text = kidStudent.emergencyContactRelationship
+            emergencyContactPhoneLabelOutlet.text = kidStudent.emergencyContactPhone
+            
+            // profile pic imageView
+            profilePicImageView.image = kidStudent.profilePic
+            
+            // belt holder UIView
+            print("Kid Student Info in StudentInfodetailsVC -> beltLevel: \(kidStudent.belt.beltLevel)")
+            print("Kid Student Info in StudentInfodetailsVC -> \(kidStudent.belt.numberOfStripes)")
+            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: kidStudent.belt.beltLevel, numberOfStripes: kidStudent.belt.numberOfStripes)
+            
+        } else if AdultStudentModelController.shared.adults.isEmpty == false {
+            
+            // ADULT STUDENT OPTION
+            guard let adultStudent = AdultStudentModelController.shared.adults.first else {
+                return
+            }
+            
+            // populate UI elements in VC
+            self.title = "\(adultStudent.firstName) \(adultStudent.lastName)"
+            usernameLabelOutlet.text = "username: \(adultStudent.username)"
+            // populate birthdate outlet
+            formatBirthdate(birthdate: adultStudent.birthdate)
+            // contact info outlets
+            phoneLabelOutlet.text = adultStudent.phone
+            // mobile is not a required field
+            if adultStudent.mobile != "" {
+                mobileLabelOutlet.text = adultStudent.mobile
+            } else {
+                mobileLabelOutlet.isHidden = true
+            }
+            emailLabelOutlet.text = adultStudent.email
+            // address outlets
+            addressLine1LabelOutlet.text = adultStudent.addressLine1
+            // addressLine2 is not a required field
+            if adultStudent.addressLine2 != "" {
+                addressLine2LabelOutlet.text = adultStudent.addressLine2
+            } else {
+                addressLine2LabelOutlet.isHidden = true
+            }
+            cityLabelOutlet.text = adultStudent.city
+            stateLabelOutlet.text = adultStudent.state
+            zipCodeLabelOutlet.text = adultStudent.zipCode
+            // emergency contact info outlets
+            emergencyContactNameLabelOutlet.text = adultStudent.emergencyContactName
+            emergencyContactRelationshipLabelOutlet.text = adultStudent.emergencyContactRelationship
+            emergencyContactPhoneLabelOutlet.text = adultStudent.emergencyContactPhone
+            
+            // profile pic imageView
+            profilePicImageView.image = adultStudent.profilePic
+            
+            // belt holder UIView
+            print("Adult Student Info in StudentInfodetailsVC -> beltLevel: \(adultStudent.belt.beltLevel)")
+            print("Adult Student Info in StudentInfodetailsVC -> \(adultStudent.belt.numberOfStripes)")
+            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: adultStudent.belt.beltLevel, numberOfStripes: adultStudent.belt.numberOfStripes)
         }
-        emailLabelOutlet.text = kidStudent.email
-        // parent / guardian name
-        parentGuardianLabelOutlet.text = "parent/guardian: \(kidStudent.parentGuardian)"
-        // address outlets
-        addressLine1LabelOutlet.text = kidStudent.addressLine1
-        // addressLine2 is not a required field
-        if kidStudent.addressLine2 != "" {
-            addressLine2LabelOutlet.text = kidStudent.addressLine2
-        } else {
-            addressLine2LabelOutlet.isHidden = true
-        }
-        cityLabelOutlet.text = kidStudent.city
-        stateLabelOutlet.text = kidStudent.state
-        zipCodeLabelOutlet.text = kidStudent.zipCode
-        // emergency contact info outlets
-        emergencyContactNameLabelOutlet.text = kidStudent.emergencyContactName
-        emergencyContactRelationshipLabelOutlet.text = kidStudent.emergencyContactRelationship
-        emergencyContactPhoneLabelOutlet.text = kidStudent.emergencyContactPhone
-
-        // profile pic imageView
-        profilePicImageView.image = kidStudent.profilePic
-
-        // belt holder UIView
-        print("Kid Student Info in StudentInfodetailsVC -> beltLevel: \(kidStudent.belt.beltLevel)")
-        print("Kid Student Info in StudentInfodetailsVC -> \(kidStudent.belt.numberOfStripes)")
-        beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: kidStudent.belt.beltLevel, numberOfStripes: kidStudent.belt.numberOfStripes)
-        
-//        // ADULT STUDENT OPTION
-//        guard let adultStudent = AdultStudentModelController.shared.adults.first else {
-//            return
-//        }
-//
-//        // populate UI elements in VC
-//        self.title = "\(adultStudent.firstName) \(adultStudent.lastName)"
-//        usernameLabelOutlet.text = adultStudent.username
-//        // populate birthdate outlet
-//        formatBirthdate(birthdate: adultStudent.birthdate)
-//        // contact info outlets
-//        phoneLabelOutlet.text = adultStudent.phone
-//        // mobile is not a required field
-//        if adultStudent.mobile != "" {
-//            mobileLabelOutlet.text = adultStudent.mobile
-//        } else {
-//            mobileLabelOutlet.isHidden = true
-//        }
-//        emailLabelOutlet.text = adultStudent.email
-//        // address outlets
-//        addressLine1LabelOutlet.text = adultStudent.addressLine1
-//        // addressLine2 is not a required field
-//        if adultStudent.addressLine2 != "" {
-//            addressLine2LabelOutlet.text = adultStudent.addressLine2
-//        } else {
-//            addressLine2LabelOutlet.isHidden = true
-//        }
-//        cityLabelOutlet.text = adultStudent.city
-//        stateLabelOutlet.text = adultStudent.state
-//        zipCodeLabelOutlet.text = adultStudent.zipCode
-//        // emergency contact info outlets
-//        emergencyContactNameLabelOutlet.text = adultStudent.emergencyContactName
-//        emergencyContactRelationshipLabelOutlet.text = adultStudent.emergencyContactRelationship
-//        emergencyContactPhoneLabelOutlet.text = adultStudent.emergencyContactPhone
-//
-//        // profile pic imageView
-//        profilePicImageView.image = adultStudent.profilePic
-//
-//        // belt holder UIView
-//        print("Adult Student Info in StudentInfodetailsVC -> beltLevel: \(adultStudent.belt.beltLevel)")
-//        print("Adult Student Info in StudentInfodetailsVC -> \(adultStudent.belt.numberOfStripes)")
-//        beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: adultStudent.belt.beltLevel, numberOfStripes: adultStudent.belt.numberOfStripes)
     }
     
     func formatBirthdate(birthdate: Date) {
@@ -234,7 +253,7 @@ extension StudentInfoDetailsViewController {
         
         let birthdateString = dateFormatter.string(from: birthdate)
         
-        print(birthdateString)
+        print("StudentInfoDetailsVC -> formatBirthdate(birthdate:) - current student birthdate: \(birthdateString)")
         
         self.birthdateLabelOutlets.text = "birthdate: " + birthdateString
     }

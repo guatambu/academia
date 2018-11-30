@@ -6,6 +6,13 @@
 //  Copyright © 2018 DunDak, LLC. All rights reserved.
 //
 
+
+// TODO:
+    // need to build in a check for whether the user is adult student or kid student
+    // since a student user profile will only have one user, the test will be whether or there is an user object in either the source of truth for a kid or an adult student
+    // if there is an user object present, then populate this TVC properly with the respective info and set adultStudent property to the present adultStudent or set the kidStudent property to the present kidStudent from the respective source of truth
+    // maybe want to set up where a parent or family member can manage all of the family in one account, meaning that the studentController sources of truth may have more than one entry... might not be for first time launch.  maybe a later feature.
+
 import UIKit
 
 class StudentHomeTableViewController: UITableViewController {
@@ -13,7 +20,8 @@ class StudentHomeTableViewController: UITableViewController {
     // MARK: - Properties
     
     var adultStudent: AdultStudent?
-    var kidStudent = MockData.kidA
+    var kidStudent: KidStudent?
+    var isKid: Bool?
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -35,6 +43,14 @@ class StudentHomeTableViewController: UITableViewController {
         self.tableView.register(nib, forCellReuseIdentifier: "ownerHomeDashboardCell")
         
         self.tabBarController?.selectedIndex = 1
+        
+        if AdultStudentModelController.shared.adults.isEmpty == false {
+            adultStudent = AdultStudentModelController.shared.adults.first
+            isKid = false
+        } else if KidStudentModelController.shared.kids.isEmpty == false {
+            kidStudent = KidStudentModelController.shared.kids.first
+            isKid = true
+        }
     }
     
     
@@ -82,8 +98,6 @@ class StudentHomeTableViewController: UITableViewController {
             backButtonItem.title = " "
             navigationItem.backBarButtonItem = backButtonItem
             navigationController?.navigationBar.tintColor = UIColor(red: 241.0, green: 0.0, blue: 0.0, alpha: 1.0)
-            
-            print(kidStudent.firstName)
             
             destViewController.adultStudent = adultStudent
             destViewController.kidStudent = kidStudent
