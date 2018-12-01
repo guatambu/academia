@@ -26,7 +26,8 @@ class Location {
     
     // Strings
     var locationName: String
-    var streetAddress: String
+    var addressLine1: String
+    var addressLine2: String
     var city: String
     var state: String
     var zipCode: String
@@ -43,7 +44,8 @@ class Location {
          dateEdited: Date,
          profilePic: UIImage?,
          locationName: String,
-         streetAddress: String,
+         addressLine1: String,
+         addressLine2: String,
          city: String,
          state: String,
          zipCode: String,
@@ -59,7 +61,8 @@ class Location {
         self.dateEdited = dateEdited
         self.profilePic = profilePic
         self.locationName = locationName
-        self.streetAddress = streetAddress
+        self.addressLine1 = addressLine1
+        self.addressLine2 = addressLine2
         self.city = city
         self.state = state
         self.zipCode = zipCode
@@ -81,7 +84,8 @@ extension Location: Equatable {
         if lhs.locationName != rhs.locationName { return false }
         if lhs.locationUID != rhs.locationUID { return false }
         if lhs.state != rhs.state { return false }
-        if lhs.streetAddress != rhs.streetAddress { return false }
+        if lhs.addressLine1 != rhs.addressLine1 { return false }
+        if lhs.addressLine2 != rhs.addressLine2 { return false }
         if lhs.zipCode != rhs.zipCode { return false }
         
         return true

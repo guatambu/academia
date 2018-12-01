@@ -19,9 +19,9 @@ class LocationModelController {
     // MARK: - CRUD Functions
     
     // Create
-    func addNew(profilePic: UIImage?, active: Bool, locationName: String, firstName: String, lastName: String, streetAddress: String, city: String, state: String, zipCode: String, phone: String, website: String, email: String, social: String?) {
+    func addNew(profilePic: UIImage?, active: Bool, locationName: String, firstName: String, lastName: String, addressLine1: String, addressLine2: String, city: String, state: String, zipCode: String, phone: String, website: String, email: String, social: String?) {
         
-        let location = Location(locationUID: UUID(), active: active, dateCreated: Date(), dateEdited: Date(), profilePic: profilePic, locationName: locationName, streetAddress: streetAddress, city: city, state: state, zipCode: zipCode, phone: phone, website: website, email: email, social: social)
+        let location = Location(locationUID: UUID(), active: active, dateCreated: Date(), dateEdited: Date(), profilePic: profilePic, locationName: locationName, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, phone: phone, website: website, email: email, social: social)
         
         locations.append(location)
     }
@@ -30,7 +30,7 @@ class LocationModelController {
     
     
     // Update
-    func update(location: Location, active: Bool, city: String, email: String, locationName: String, phone: String, profilePic: UIImage?, social: String, state: String, streetAddress: String, website: String, zipCode: String) {
+    func update(location: Location, active: Bool, city: String, email: String, locationName: String, phone: String, profilePic: UIImage?, social: String, state: String, addressLine1: String, addressLine2: String, website: String, zipCode: String) {
         
         location.active = active
         location.city = city
@@ -41,7 +41,8 @@ class LocationModelController {
         location.profilePic = profilePic
         location.social = social
         location.state = state
-        location.streetAddress = streetAddress
+        location.addressLine1 = addressLine1
+        location.addressLine2 = addressLine2
         location.website = website
         location.zipCode = zipCode
         

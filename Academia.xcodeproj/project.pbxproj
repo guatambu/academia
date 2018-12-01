@@ -116,6 +116,7 @@
 		FAB7E352212B7D73003E3B79 /* UserSelfIdentifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB7E351212B7D73003E3B79 /* UserSelfIdentifyViewController.swift */; };
 		FAB7E35A212BA643003E3B79 /* BlairMdITC TT-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAB7E359212BA643003E3B79 /* BlairMdITC TT-Medium.ttf */; };
 		FABF859321AF8370005CEBD4 /* StudentInfoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF859221AF8370005CEBD4 /* StudentInfoDetailsViewController.swift */; };
+		FABF859621B220B9005CEBD4 /* LocationInfoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF859521B220B9005CEBD4 /* LocationInfoDetailsViewController.swift */; };
 		FACA3EAC21927C3F0099E620 /* profile_pic_placeholder_image.png in Resources */ = {isa = PBXBuildFile; fileRef = FACA3EAB21927C3F0099E620 /* profile_pic_placeholder_image.png */; };
 		FACA3EAE21927CEE0099E620 /* IBDesignables.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA3EAD21927CEE0099E620 /* IBDesignables.swift */; };
 		FACA3EB1219288CD0099E620 /* NameAndBeltViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA3EB0219288CD0099E620 /* NameAndBeltViewController.swift */; };
@@ -347,6 +348,7 @@
 		FAB7E351212B7D73003E3B79 /* UserSelfIdentifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelfIdentifyViewController.swift; sourceTree = "<group>"; };
 		FAB7E359212BA643003E3B79 /* BlairMdITC TT-Medium.ttf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "BlairMdITC TT-Medium.ttf"; sourceTree = "<group>"; };
 		FABF859221AF8370005CEBD4 /* StudentInfoDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInfoDetailsViewController.swift; sourceTree = "<group>"; };
+		FABF859521B220B9005CEBD4 /* LocationInfoDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfoDetailsViewController.swift; sourceTree = "<group>"; };
 		FACA3EAB21927C3F0099E620 /* profile_pic_placeholder_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile_pic_placeholder_image.png; sourceTree = "<group>"; };
 		FACA3EAD21927CEE0099E620 /* IBDesignables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignables.swift; sourceTree = "<group>"; };
 		FACA3EB0219288CD0099E620 /* NameAndBeltViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameAndBeltViewController.swift; sourceTree = "<group>"; };
@@ -798,6 +800,7 @@
 		FA9AD9F3213780DD0005E1F1 /* Profile Menu VCs */ = {
 			isa = PBXGroup;
 			children = (
+				FABF859421B22089005CEBD4 /* Locations */,
 				FA41CE6A21A344B100EAD53A /* OwnerInfoDetailsViewController.swift */,
 				FA9AD9F4213782070005E1F1 /* TutorialsTableViewController.swift */,
 				FA9AD9F8213783BA0005E1F1 /* MyLocationsTableViewController.swift */,
@@ -865,6 +868,14 @@
 				FA5C5C442153022300BF62D5 /* SegueFromSaveProfileNibCellDelegate.swift */,
 			);
 			path = "Segue Protocols";
+			sourceTree = "<group>";
+		};
+		FABF859421B22089005CEBD4 /* Locations */ = {
+			isa = PBXGroup;
+			children = (
+				FABF859521B220B9005CEBD4 /* LocationInfoDetailsViewController.swift */,
+			);
+			path = Locations;
 			sourceTree = "<group>";
 		};
 		FACA3EAF219288480099E620 /* User Onboarding */ = {
@@ -1232,6 +1243,7 @@
 				FA4DF32E218CCA1A00ECC167 /* CurriculumModule.swift in Sources */,
 				FAE2FDB02140C0C900815402 /* SocialNetworksTextFieldTableViewCell.swift in Sources */,
 				FAE2FD9E2140C02800815402 /* EmailTextFieldTableViewCell.swift in Sources */,
+				FABF859621B220B9005CEBD4 /* LocationInfoDetailsViewController.swift in Sources */,
 				FAF1BB8E21435BD800AD56AE /* DescriptionTextViewTableViewCell.swift in Sources */,
 				FA23D28A2167E31200707056 /* BeltModelController.swift in Sources */,
 				FAF29BCE212E4CF200752414 /* OwnerModelController.swift in Sources */,
