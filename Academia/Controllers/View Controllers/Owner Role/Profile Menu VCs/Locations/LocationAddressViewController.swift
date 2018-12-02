@@ -9,6 +9,22 @@
 import UIKit
 
 class LocationAddressViewController: UIViewController {
+    
+    // MARK: - Properties
+    
+    var locationName: String?
+    var locationPic: UIImage?
+    var active: Bool?
+    var addressLine1: String?
+    var addressLine2: String?
+    var city: String?
+    var state: String?
+    var zipCode: String?
+    
+    var inEditingMode: Bool?
+    var locationToEdit: Location?
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

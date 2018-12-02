@@ -12,6 +12,21 @@ class LocationInfoDetailsViewController: UIViewController {
 
     // MARK: - Properties
     
+    var locationName: String?
+    var locationPic: UIImage?
+    var active: Bool?
+    var addressLine1: String?
+    var addressLine2: String?
+    var city: String?
+    var state: String?
+    var zipCode: String?
+    var phone: String?
+    var website: String?
+    var email: String?
+    var social1: String?
+    var social2: String?
+    var social3: String?
+    
     let beltBuilder = BeltBuilder()
     
     // profile pic imageView
@@ -147,11 +162,11 @@ extension LocationInfoDetailsViewController {
         stateLabelOutlet.text = location.state
         zipCodeLabelOutlet.text = location.zipCode
         // emergency contact info outlets
-        socialLink1LabelOutlet.text = location.social
-        socialLink2LabelOutlet.text = location.social
-        socialLink3LabelOutlet.text = location.social
+        socialLink1LabelOutlet.text = location.social1
+        socialLink2LabelOutlet.text = location.social2
+        socialLink3LabelOutlet.text = location.social3
         // profile pic imageView
-        locationPicImageView.image = location.profilePic
+        locationPicImageView.image = location.locationPic
     }
 }
 

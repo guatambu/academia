@@ -37,7 +37,7 @@ class LocationsImageMenuTableViewCell: UITableViewCell {
         
         guard let location = location else { return }
         
-        locationThumbnailImageViewOutlet.image = location.profilePic
+        locationThumbnailImageViewOutlet.image = location.locationPic
         cellTitleOutlet.text = "\(location.locationName)"
         
     }

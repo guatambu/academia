@@ -881,11 +881,11 @@
 		FABF859421B22089005CEBD4 /* Locations */ = {
 			isa = PBXGroup;
 			children = (
-				FABF859521B220B9005CEBD4 /* LocationInfoDetailsViewController.swift */,
 				FABF859721B38934005CEBD4 /* LocationPicAndNameViewController.swift */,
 				FABF859921B3895B005CEBD4 /* LocationAddressViewController.swift */,
 				FABF859B21B38980005CEBD4 /* LocationContactInfoViewController.swift */,
 				FABF859D21B38995005CEBD4 /* LocationSocialLinksViewController.swift */,
+				FABF859521B220B9005CEBD4 /* LocationInfoDetailsViewController.swift */,
 			);
 			path = Locations;
 			sourceTree = "<group>";

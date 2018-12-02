@@ -10,8 +10,8 @@ import UIKit
 
 class MyLocationsTableViewController: UITableViewController {
 
-    var myLocation1 = Location(locationUID: UUID(), active: true, dateCreated: Date(), dateEdited: Date(), profilePic: #imageLiteral(resourceName: "location1.jpg"), locationName: "my location 1", addressLine1: "1267 the spot blvd.", addressLine2: "", city: "you know", state: "LA", zipCode: "09854", phone: "987-876-1230", website: "www.theschool.gov", email: "email@theschool.gov", social: nil)
-    var myLocation2 = Location(locationUID: UUID(), active: true, dateCreated: Date(), dateEdited: Date(), profilePic: #imageLiteral(resourceName: "location2.jpg"), locationName: "my location 2", addressLine1: "1267 the spot blvd.", addressLine2: "", city: "you know", state: "LA", zipCode: "09854", phone: "987-876-1230", website: "www.theschool.gov", email: "email@theschool.gov", social: nil)
+    var myLocation1 = Location(locationUID: UUID(), active: true, dateCreated: Date(), dateEdited: Date(), locationPic: #imageLiteral(resourceName: "location1.jpg"), locationName: "my location 1", addressLine1: "1267 the spot blvd.", addressLine2: "", city: "you know", state: "LA", zipCode: "09854", phone: "987-876-1230", website: "www.theschool.gov", email: "email@theschool.gov", social1: nil, social2: nil, social3: nil)
+    var myLocation2 = Location(locationUID: UUID(), active: true, dateCreated: Date(), dateEdited: Date(), locationPic: #imageLiteral(resourceName: "location2.jpg"), locationName: "my location 2", addressLine1: "1267 the spot blvd.", addressLine2: "", city: "you know", state: "LA", zipCode: "09854", phone: "987-876-1230", website: "www.theschool.gov", email: "email@theschool.gov", social1: nil, social2: nil, social3: nil)
     var locations = [Location]()
     
     
