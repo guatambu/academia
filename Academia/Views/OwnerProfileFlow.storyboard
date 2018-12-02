@@ -2245,7 +2245,7 @@
         <!--location pic-->
         <scene sceneID="IXZ-xN-XbP">
             <objects>
-                <viewController storyboardIdentifier="toTakeProfilePic" id="fGh-4I-Kqu" userLabel="location pic" customClass="TakeProfilePicViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toTakeProfilePic" id="fGh-4I-Kqu" userLabel="location pic" customClass="LocationPicAndNameViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IH7-0k-bNE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2492,7 +2492,7 @@
         <!--address-->
         <scene sceneID="JqJ-CB-IOi">
             <objects>
-                <viewController storyboardIdentifier="toUserAddress" id="ORB-8f-mzO" userLabel="address" customClass="AddressViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toUserAddress" id="ORB-8f-mzO" userLabel="address" customClass="LocationAddressViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f17-54-5rW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2773,7 +2773,7 @@
         <!--contact info-->
         <scene sceneID="nJB-lc-lHD">
             <objects>
-                <viewController storyboardIdentifier="toContactInfo" id="wDg-KX-Jeo" userLabel="contact info" customClass="ContactInfoViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toContactInfo" id="wDg-KX-Jeo" userLabel="contact info" customClass="LocationContactInfoViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Suk-aI-djz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3001,7 +3001,7 @@
         <!--emergency contact info-->
         <scene sceneID="GuZ-90-fI7">
             <objects>
-                <viewController storyboardIdentifier="toEmergencyContactInfo" id="79B-mD-KKL" userLabel="emergency contact info" customClass="EmergencyContactViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toEmergencyContactInfo" id="79B-mD-KKL" userLabel="emergency contact info" customClass="LocationSocialLinksViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yiw-x1-Vb3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

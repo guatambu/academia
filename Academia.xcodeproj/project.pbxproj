@@ -117,6 +117,10 @@
 		FAB7E35A212BA643003E3B79 /* BlairMdITC TT-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAB7E359212BA643003E3B79 /* BlairMdITC TT-Medium.ttf */; };
 		FABF859321AF8370005CEBD4 /* StudentInfoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF859221AF8370005CEBD4 /* StudentInfoDetailsViewController.swift */; };
 		FABF859621B220B9005CEBD4 /* LocationInfoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF859521B220B9005CEBD4 /* LocationInfoDetailsViewController.swift */; };
+		FABF859821B38934005CEBD4 /* LocationPicAndNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF859721B38934005CEBD4 /* LocationPicAndNameViewController.swift */; };
+		FABF859A21B3895B005CEBD4 /* LocationAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF859921B3895B005CEBD4 /* LocationAddressViewController.swift */; };
+		FABF859C21B38980005CEBD4 /* LocationContactInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF859B21B38980005CEBD4 /* LocationContactInfoViewController.swift */; };
+		FABF859E21B38995005CEBD4 /* LocationSocialLinksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF859D21B38995005CEBD4 /* LocationSocialLinksViewController.swift */; };
 		FACA3EAC21927C3F0099E620 /* profile_pic_placeholder_image.png in Resources */ = {isa = PBXBuildFile; fileRef = FACA3EAB21927C3F0099E620 /* profile_pic_placeholder_image.png */; };
 		FACA3EAE21927CEE0099E620 /* IBDesignables.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA3EAD21927CEE0099E620 /* IBDesignables.swift */; };
 		FACA3EB1219288CD0099E620 /* NameAndBeltViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA3EB0219288CD0099E620 /* NameAndBeltViewController.swift */; };
@@ -349,6 +353,10 @@
 		FAB7E359212BA643003E3B79 /* BlairMdITC TT-Medium.ttf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "BlairMdITC TT-Medium.ttf"; sourceTree = "<group>"; };
 		FABF859221AF8370005CEBD4 /* StudentInfoDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInfoDetailsViewController.swift; sourceTree = "<group>"; };
 		FABF859521B220B9005CEBD4 /* LocationInfoDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfoDetailsViewController.swift; sourceTree = "<group>"; };
+		FABF859721B38934005CEBD4 /* LocationPicAndNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPicAndNameViewController.swift; sourceTree = "<group>"; };
+		FABF859921B3895B005CEBD4 /* LocationAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAddressViewController.swift; sourceTree = "<group>"; };
+		FABF859B21B38980005CEBD4 /* LocationContactInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationContactInfoViewController.swift; sourceTree = "<group>"; };
+		FABF859D21B38995005CEBD4 /* LocationSocialLinksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSocialLinksViewController.swift; sourceTree = "<group>"; };
 		FACA3EAB21927C3F0099E620 /* profile_pic_placeholder_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile_pic_placeholder_image.png; sourceTree = "<group>"; };
 		FACA3EAD21927CEE0099E620 /* IBDesignables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignables.swift; sourceTree = "<group>"; };
 		FACA3EB0219288CD0099E620 /* NameAndBeltViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameAndBeltViewController.swift; sourceTree = "<group>"; };
@@ -874,6 +882,10 @@
 			isa = PBXGroup;
 			children = (
 				FABF859521B220B9005CEBD4 /* LocationInfoDetailsViewController.swift */,
+				FABF859721B38934005CEBD4 /* LocationPicAndNameViewController.swift */,
+				FABF859921B3895B005CEBD4 /* LocationAddressViewController.swift */,
+				FABF859B21B38980005CEBD4 /* LocationContactInfoViewController.swift */,
+				FABF859D21B38995005CEBD4 /* LocationSocialLinksViewController.swift */,
 			);
 			path = Locations;
 			sourceTree = "<group>";
@@ -1229,6 +1241,7 @@
 				FA21D6802130BB1E006790E5 /* OwnerClassesTableViewController.swift in Sources */,
 				FAE2FDA22140C04A00815402 /* PaymentProgramTextFieldTableViewCell.swift in Sources */,
 				FAE2FD962140BFF600815402 /* StateTextFieldTableViewCell.swift in Sources */,
+				FABF859821B38934005CEBD4 /* LocationPicAndNameViewController.swift in Sources */,
 				FA0C444621278BBF00B59194 /* Aula.swift in Sources */,
 				FA9ADA2F2139EE940005E1F1 /* IsKidTableViewCell.swift in Sources */,
 				FA21D6842130BB7F006790E5 /* StudentListTableViewController.swift in Sources */,
@@ -1247,6 +1260,7 @@
 				FAF1BB8E21435BD800AD56AE /* DescriptionTextViewTableViewCell.swift in Sources */,
 				FA23D28A2167E31200707056 /* BeltModelController.swift in Sources */,
 				FAF29BCE212E4CF200752414 /* OwnerModelController.swift in Sources */,
+				FABF859C21B38980005CEBD4 /* LocationContactInfoViewController.swift in Sources */,
 				FA5C5C3E2152CB3200BF62D5 /* StudentChoiceViewController.swift in Sources */,
 				FA0C444421278B8D00B59194 /* Location.swift in Sources */,
 				FACA3EBB21928B150099E620 /* EmergencyContactViewController.swift in Sources */,
@@ -1308,6 +1322,7 @@
 				FAE2FD9A2140C01100815402 /* PhoneTextFieldTableViewCell.swift in Sources */,
 				FA463DE4219F4343001CDDD7 /* BeltTableViewCell.swift in Sources */,
 				FAE2FDAA2140C08900815402 /* EmergencyContactRelationshipTextFieldTableViewCell.swift in Sources */,
+				FABF859E21B38995005CEBD4 /* LocationSocialLinksViewController.swift in Sources */,
 				FAE67A3C215C714B00822DCF /* StudentListImageMenuTableViewCell.swift in Sources */,
 				FA5C5C32215170AE00BF62D5 /* AdultStudentModelController.swift in Sources */,
 				FAA516DD2190CAA7009875CB /* CurriculumModuleModelController.swift in Sources */,
@@ -1320,6 +1335,7 @@
 				FA9ADA092137861B0005E1F1 /* OwnerPaymentInfoTableViewController.swift in Sources */,
 				FA5C5C34215170BE00BF62D5 /* KidStudentModelController.swift in Sources */,
 				FA9ADA2D2139EE6C0005E1F1 /* IsInstructorTableViewCell.swift in Sources */,
+				FABF859A21B3895B005CEBD4 /* LocationAddressViewController.swift in Sources */,
 				FACA3EB7219289310099E620 /* TakeProfilePicViewController.swift in Sources */,
 				FA6FBA012149F33100558657 /* AdultStudent.swift in Sources */,
 				FA41CE6B21A344B100EAD53A /* OwnerInfoDetailsViewController.swift in Sources */,
