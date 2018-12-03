@@ -9,16 +9,11 @@
 import UIKit
 
 class MyLocationsTableViewController: UITableViewController {
-
-    var myLocation1 = Location(locationUID: UUID(), active: true, dateCreated: Date(), dateEdited: Date(), locationPic: #imageLiteral(resourceName: "location1.jpg"), locationName: "my location 1", addressLine1: "1267 the spot blvd.", addressLine2: "", city: "you know", state: "LA", zipCode: "09854", phone: "987-876-1230", website: "www.theschool.gov", email: "email@theschool.gov", social1: nil, social2: nil, social3: nil)
-    var myLocation2 = Location(locationUID: UUID(), active: true, dateCreated: Date(), dateEdited: Date(), locationPic: #imageLiteral(resourceName: "location2.jpg"), locationName: "my location 2", addressLine1: "1267 the spot blvd.", addressLine2: "", city: "you know", state: "LA", zipCode: "09854", phone: "987-876-1230", website: "www.theschool.gov", email: "email@theschool.gov", social1: nil, social2: nil, social3: nil)
-    var locations = [Location]()
-    
     
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        tableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -30,18 +25,15 @@ class MyLocationsTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        locations = [myLocation1, myLocation2]
-        return locations.count
+       
+        return LocationModelController.shared.locations.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ownerLocationsImageMenuCell", for: indexPath) as? LocationsImageMenuTableViewCell else { return UITableViewCell() }
         
-        locations = [myLocation1, myLocation2]
-        
-        let location = locations[indexPath.row]
+        let location = LocationModelController.shared.locations[indexPath.row]
         
         // Configure the cell...
         cell.location = location
@@ -91,13 +83,11 @@ class MyLocationsTableViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        locations = [myLocation1, myLocation2]
-        
         // Get the new view controller using segue.destinationViewController.
         if segue.identifier == "toLocationDetail" {
             guard let destinationTVC = segue.destination as? MyLocationsDetailTableViewController else { return }
             guard let indexPath = self.tableView.indexPathForSelectedRow else { return }
-            let location = locations[indexPath.row]
+            let location = LocationModelController.shared.locations[indexPath.row]
             
             // Pass the selected object to the new view controller.
             destinationTVC.location = location

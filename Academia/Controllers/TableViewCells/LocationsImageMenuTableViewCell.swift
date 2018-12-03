@@ -35,7 +35,13 @@ class LocationsImageMenuTableViewCell: UITableViewCell {
     
     func updateViews() {
         
-        guard let location = location else { return }
+        guard let location = location else {
+            print("failed to unwrap a location object in LocationImageMenuTVCell")
+            print("how many locations we got in location source of truth: \(LocationModelController.shared.locations.count)")
+            
+            return
+        }
+        print("LocationsImageMenuTVCell location object: \(location)")
         
         locationThumbnailImageViewOutlet.image = location.locationPic
         cellTitleOutlet.text = "\(location.locationName)"
