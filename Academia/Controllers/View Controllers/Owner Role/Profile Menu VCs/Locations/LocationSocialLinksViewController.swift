@@ -52,6 +52,9 @@ class LocationSocialLinksViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // make sure the next button is displayed by default when not inEditingMode
+        nextButtonOutlet.isEnabled = true
+        nextButtonOutlet.isHidden = false
     }
     
     
@@ -64,7 +67,7 @@ class LocationSocialLinksViewController: UIViewController {
         
         self.returnToLocationInfo()
         
-        print("update location address: \(LocationModelController.shared.locations[0].phone) \n\(String(describing: LocationModelController.shared.locations[0].website)) \n\(String(describing: LocationModelController.shared.locations[0].email))")
+        print("update location social links (if any): \(LocationModelController.shared.locations[0].social1) \n\(String(describing: LocationModelController.shared.locations[0].social2)) \n\(String(describing: LocationModelController.shared.locations[0].social3))")
         
         inEditingMode = false
     }
@@ -76,7 +79,7 @@ class LocationSocialLinksViewController: UIViewController {
         // instantiate the relevant storyboard
         let mainView: UIStoryboard = UIStoryboard(name: "OwnerProfileFlow", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
-        let destViewController = mainView.instantiateViewController(withIdentifier: "toLocationInfoDetails") as! LocationInfoDetailsViewController
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toReviewAndCreateLocation") as! ReviewAndCreateLocationViewController
         
         // create the segue programmatically
         self.navigationController?.pushViewController(destViewController, animated: true)
@@ -132,6 +135,7 @@ extension LocationSocialLinksViewController {
         
         print("LocationSocialLinksVC -> inEditingMode = \(inEditingMode)")
         
+        // hide the next button in favor of the save button being the only choice besides returning tho the previous VC via navigation stack
         nextButtonOutlet.isHidden = true
         nextButtonOutlet.isEnabled = false
     }

@@ -46,8 +46,6 @@ class LocationInfoDetailsViewController: UIViewController {
     @IBOutlet weak var socialLink2LabelOutlet: UILabel!
     @IBOutlet weak var socialLink3LabelOutlet: UILabel!
     
-    @IBOutlet weak var createAccountButtonOutlet: DesignableButton!
-    
     
     // MARK: - ViewController Lifecycle Functions
     
@@ -65,9 +63,7 @@ class LocationInfoDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         addressLine2LabelOutlet.isHidden = false
-        
-        createAccountButtonOutlet.isHidden = true
-        createAccountButtonOutlet.isEnabled = false
+
         //populateCompletedProfileInfo()
     }
     
@@ -75,34 +71,14 @@ class LocationInfoDetailsViewController: UIViewController {
     
     // MARK: - Actions
     
-    @IBAction func createAccountButtonTapped(_ sender: DesignableButton) {
-        
-        // create the new location in the LocationModelController source of truth
-        createLocation()
-        
-        // programmatic segue back to the MyLocations TVC to view the current locations
-        guard let viewControllers = self.navigationController?.viewControllers else { return }
-        
-        for viewController in viewControllers {
-            
-            if viewController is MyLocationsTableViewController {
-                self.navigationController?.popToViewController(viewController, animated: true)
-
-            }
-        }
-    }
-    
-    
     @IBAction func editButtonTapped(_ sender: Any) {
         
         // programmatically performing the segue
         
-        // OPTIONS FOR DIFFERENT TYPES OF SEGUES + TYPES OF DESTINATION VIEWCONTROLLERS
-        
         // instantiate the relevant storyboard
-        let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainView: UIStoryboard = UIStoryboard(name: "OwnerProfileFlow", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
-        let destViewController = mainView.instantiateViewController(withIdentifier: "toTakeProfilePic") as! TakeProfilePicViewController
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toLocationPicAndName") as! LocationPicAndNameViewController
         // create the segue programmatically - PUSH
         self.navigationController?.pushViewController(destViewController, animated: true)
         // set the desired properties of the destinationVC's navgation Item
@@ -112,9 +88,7 @@ class LocationInfoDetailsViewController: UIViewController {
         
         // set properties on destinationVC
         destViewController.inEditingMode = true
-        destViewController.isOwner = true
-        destViewController.isKid = false
-        destViewController.userToEdit = OwnerModelController.shared.owners[0]
+        destViewController.locationToEdit = LocationModelController.shared.locations[0]
         // TODO: set destinationVC properties to display user to be edited
         // in destintaionVC unrwrap userToEdit? as either Owner, AdultStudent, or KidStudent and us this to display info, and be passed around for updating in each update function
         // also need to build in programmatic segues for saveTapped to exit editing mode and return to OwnerProfileDetailsVC
@@ -127,14 +101,14 @@ class LocationInfoDetailsViewController: UIViewController {
         let cancel = UIAlertAction(title: "cancel", style: UIAlertAction.Style.cancel, handler: nil)
         let deleteAccount = UIAlertAction(title: "delete account", style: UIAlertAction.Style.destructive) { (alert) in
             
-            OwnerModelController.shared.delete(owner: OwnerModelController.shared.owners[0])
+            LocationModelController.shared.delete(location: LocationModelController.shared.locations[0])
             
-            // programmatically performing the segue if "resetting" the app to beginning with no saved user
+            // programmatically performing the segue
             
             // instantiate the relevant storyboard
-            let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let mainView: UIStoryboard = UIStoryboard(name: "OwnerProfileFlow", bundle: nil)
             // instantiate the desired TableViewController as ViewController on relevant storyboard
-            let destViewController = mainView.instantiateViewController(withIdentifier: "toLandingPage") as! LandingPageViewController
+            let destViewController = mainView.instantiateViewController(withIdentifier: "toOwnerLocationsList") as! MyLocationsTableViewController
             // add to Navigation stack
             let destVCNavigation = UINavigationController(rootViewController: destViewController)
             // perform the segure - present viewController of choice
@@ -146,7 +120,7 @@ class LocationInfoDetailsViewController: UIViewController {
             
             self.navigationController?.navigationBar.tintColor = self.beltBuilder.redBeltRed
             
-            print("how many owners we got now: \(OwnerModelController.shared.owners.count)")
+            print("how many location we got now: \(LocationModelController.shared.locations.count)")
             
         }
         

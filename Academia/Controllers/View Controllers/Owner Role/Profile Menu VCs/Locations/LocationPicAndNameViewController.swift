@@ -131,8 +131,8 @@ extension LocationPicAndNameViewController {
         guard let location = locationToEdit else { return }
         // Owner update profile info
         if locationNameTextField.text != "" && locationPicImageViewOutlet.image != UIImage(contentsOfFile: "user_placeholder") {
-            LocationModelController.shared.update(location: location, active: active, locationPic: locationPic, locationName: locationName, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, website: nil, email: nil, social1: nil, social2: nil, social3: nil)
-            print("update owner name: \(OwnerModelController.shared.owners[0].firstName) \(OwnerModelController.shared.owners[0].lastName)")
+            LocationModelController.shared.update(location: location, active: active, locationPic: locationPicImageViewOutlet.image, locationName: locationNameTextField.text, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, website: nil, email: nil, social1: nil, social2: nil, social3: nil)
+            print("update location name: \(LocationModelController.shared.locations[0].locationName)")
         }
     }
     
@@ -156,6 +156,8 @@ extension LocationPicAndNameViewController {
         guard let locationToEdit = locationToEdit else {
             return
         }
+        
+        self.title = locationToEdit.locationName
         
         welcomeLabeOutlet.text = "Location: \(locationToEdit.locationName)"
         

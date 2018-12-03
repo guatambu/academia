@@ -121,6 +121,7 @@
 		FABF859A21B3895B005CEBD4 /* LocationAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF859921B3895B005CEBD4 /* LocationAddressViewController.swift */; };
 		FABF859C21B38980005CEBD4 /* LocationContactInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF859B21B38980005CEBD4 /* LocationContactInfoViewController.swift */; };
 		FABF859E21B38995005CEBD4 /* LocationSocialLinksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF859D21B38995005CEBD4 /* LocationSocialLinksViewController.swift */; };
+		FABF85A021B5B668005CEBD4 /* ReviewAndCreateLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF859F21B5B668005CEBD4 /* ReviewAndCreateLocationViewController.swift */; };
 		FACA3EAC21927C3F0099E620 /* profile_pic_placeholder_image.png in Resources */ = {isa = PBXBuildFile; fileRef = FACA3EAB21927C3F0099E620 /* profile_pic_placeholder_image.png */; };
 		FACA3EAE21927CEE0099E620 /* IBDesignables.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA3EAD21927CEE0099E620 /* IBDesignables.swift */; };
 		FACA3EB1219288CD0099E620 /* NameAndBeltViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA3EB0219288CD0099E620 /* NameAndBeltViewController.swift */; };
@@ -357,6 +358,7 @@
 		FABF859921B3895B005CEBD4 /* LocationAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAddressViewController.swift; sourceTree = "<group>"; };
 		FABF859B21B38980005CEBD4 /* LocationContactInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationContactInfoViewController.swift; sourceTree = "<group>"; };
 		FABF859D21B38995005CEBD4 /* LocationSocialLinksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSocialLinksViewController.swift; sourceTree = "<group>"; };
+		FABF859F21B5B668005CEBD4 /* ReviewAndCreateLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewAndCreateLocationViewController.swift; sourceTree = "<group>"; };
 		FACA3EAB21927C3F0099E620 /* profile_pic_placeholder_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile_pic_placeholder_image.png; sourceTree = "<group>"; };
 		FACA3EAD21927CEE0099E620 /* IBDesignables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignables.swift; sourceTree = "<group>"; };
 		FACA3EB0219288CD0099E620 /* NameAndBeltViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameAndBeltViewController.swift; sourceTree = "<group>"; };
@@ -811,7 +813,6 @@
 				FABF859421B22089005CEBD4 /* Locations */,
 				FA41CE6A21A344B100EAD53A /* OwnerInfoDetailsViewController.swift */,
 				FA9AD9F4213782070005E1F1 /* TutorialsTableViewController.swift */,
-				FA9AD9F8213783BA0005E1F1 /* MyLocationsTableViewController.swift */,
 				FA9ADA0C213789760005E1F1 /* MyLocationsDetailTableViewController.swift */,
 				FA9AD9FC213783FE0005E1F1 /* OwnerPaymentProgramsTableViewController.swift */,
 				FA9ADA232139EDD30005E1F1 /* About & Privacy */,
@@ -881,11 +882,13 @@
 		FABF859421B22089005CEBD4 /* Locations */ = {
 			isa = PBXGroup;
 			children = (
+				FA9AD9F8213783BA0005E1F1 /* MyLocationsTableViewController.swift */,
+				FABF859521B220B9005CEBD4 /* LocationInfoDetailsViewController.swift */,
 				FABF859721B38934005CEBD4 /* LocationPicAndNameViewController.swift */,
 				FABF859921B3895B005CEBD4 /* LocationAddressViewController.swift */,
 				FABF859B21B38980005CEBD4 /* LocationContactInfoViewController.swift */,
 				FABF859D21B38995005CEBD4 /* LocationSocialLinksViewController.swift */,
-				FABF859521B220B9005CEBD4 /* LocationInfoDetailsViewController.swift */,
+				FABF859F21B5B668005CEBD4 /* ReviewAndCreateLocationViewController.swift */,
 			);
 			path = Locations;
 			sourceTree = "<group>";
@@ -1273,6 +1276,7 @@
 				FA7A12D2216AE57A00C03590 /* Academia.xcdatamodeld in Sources */,
 				FA5C5C56215499F300BF62D5 /* StudentProfileDetailTableViewController.swift in Sources */,
 				FA9ADA212138DBC30005E1F1 /* MyCells.swift in Sources */,
+				FABF85A021B5B668005CEBD4 /* ReviewAndCreateLocationViewController.swift in Sources */,
 				FACA3EAE21927CEE0099E620 /* IBDesignables.swift in Sources */,
 				FAE2FDAC2140C09A00815402 /* LocationNameTextFieldTableViewCell.swift in Sources */,
 				FA9ADA07213784870005E1F1 /* AboutAcademiaServicesViewController.swift in Sources */,

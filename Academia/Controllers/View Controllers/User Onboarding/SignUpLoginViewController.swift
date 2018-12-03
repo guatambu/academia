@@ -134,12 +134,15 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
             if self.passwordTextField.text == "" {
                 welcomeInstructionsOutlet.text = "please create a password"
                 welcomeInstructionsOutlet.textColor = UIColor.red
+                return
             } else if self.confirmPasswordTextField.text == "" {
                 welcomeInstructionsOutlet.text = "please confirm your password"
                 welcomeInstructionsOutlet.textColor = UIColor.red
+                return
             } else if self.passwordTextField.text != self.confirmPasswordTextField.text {
-                welcomeInstructionsOutlet.text = "your password does not match your confirmed password. please try again."
+                welcomeInstructionsOutlet.text = "your passwords do not match. please try again."
                 welcomeInstructionsOutlet.textColor = UIColor.red
+                return
             } else if self.passwordTextField.text == self.confirmPasswordTextField.text {
                 // if valid password, pass it to destViewController
                 guard let newPassword = self.passwordTextField.text else { return }
