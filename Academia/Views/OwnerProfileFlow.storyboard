@@ -2184,6 +2184,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <action selector="createAccountButtonTapped:" destination="TNe-L4-kqx" eventType="touchUpInside" id="uZh-QV-ZSb"/>
                                             <action selector="nextButtonTapped:" destination="79B-mD-KKL" eventType="touchUpInside" id="XLW-Pl-Xlg"/>
                                         </connections>
                                     </button>
@@ -2232,14 +2233,15 @@
                         <outlet property="addressLine1LabelOutlet" destination="6w6-vD-beI" id="Iab-rR-yF3"/>
                         <outlet property="addressLine2LabelOutlet" destination="LxG-lw-o72" id="AFL-hv-Ec8"/>
                         <outlet property="cityLabelOutlet" destination="Hs7-hE-b34" id="aFY-kt-AFN"/>
+                        <outlet property="createAccountButtonOutlet" destination="Yae-Ds-rUM" id="1tC-3g-nyE"/>
                         <outlet property="emailLabelOutlet" destination="B7T-RN-YPr" id="BAn-TJ-gDc"/>
-                        <outlet property="emergencyContactNameLabelOutlet" destination="rvg-dU-eat" id="kwt-4Q-HpS"/>
-                        <outlet property="emergencyContactPhoneLabelOutlet" destination="asU-nI-zhl" id="vmQ-y9-TC4"/>
-                        <outlet property="emergencyContactRelationshipLabelOutlet" destination="IUa-gt-4mU" id="KD1-WY-CcQ"/>
-                        <outlet property="mobileLabelOutlet" destination="g8a-J2-nVY" id="LRV-JG-7KA"/>
+                        <outlet property="locationPicImageView" destination="74x-tt-5ig" id="sar-z2-dOt"/>
                         <outlet property="phoneLabelOutlet" destination="M6Y-7h-nwS" id="689-0A-cPl"/>
-                        <outlet property="profilePicImageView" destination="74x-tt-5ig" id="bqI-l3-DlN"/>
+                        <outlet property="socialLink1LabelOutlet" destination="rvg-dU-eat" id="3DM-KZ-bTi"/>
+                        <outlet property="socialLink2LabelOutlet" destination="IUa-gt-4mU" id="EwQ-ps-qeU"/>
+                        <outlet property="socialLink3LabelOutlet" destination="asU-nI-zhl" id="2d8-X8-ZCN"/>
                         <outlet property="stateLabelOutlet" destination="d6d-t6-jP4" id="ekI-RX-j0w"/>
+                        <outlet property="websiteLabelOutlet" destination="g8a-J2-nVY" id="tuH-1i-jf1"/>
                         <outlet property="zipCodeLabelOutlet" destination="mx9-rG-KKD" id="33G-f9-jo8"/>
                     </connections>
                 </viewController>
@@ -2470,6 +2472,9 @@
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TZh-nm-pME">
                                         <rect key="frame" x="87.5" y="0.0" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="activeSwitchToggled:" destination="fGh-4I-Kqu" eventType="valueChanged" id="NwI-T1-eXr"/>
+                                        </connections>
                                     </switch>
                                 </subviews>
                             </stackView>
@@ -2500,11 +2505,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="activeSwitch" destination="TZh-nm-pME" id="IiN-Iz-2X7"/>
-                        <outlet property="firstNameLabelOutlet" destination="zHK-02-dqW" id="h49-t8-wHc"/>
-                        <outlet property="firstNameTextField" destination="MkS-hv-O2c" id="uZK-n8-FyM"/>
                         <outlet property="locationNameLabelOutlet" destination="zHK-02-dqW" id="EFX-xm-rBz"/>
                         <outlet property="locationNameTextField" destination="MkS-hv-O2c" id="Du2-uS-96G"/>
-                        <outlet property="profilePicImageViewOutlet" destination="Etl-RG-H35" id="xze-Rt-20V"/>
+                        <outlet property="locationPicImageViewOutlet" destination="Etl-RG-H35" id="XOK-Xz-Lu0"/>
                         <outlet property="welcomeInstructionsLabelOutlet" destination="MDj-d0-tyU" id="tbv-yO-YCt"/>
                         <outlet property="welcomeLabeOutlet" destination="V9C-6y-OB8" id="tiq-hT-8Dq"/>
                     </connections>
@@ -3010,10 +3013,10 @@
                     <connections>
                         <outlet property="emailOutlet" destination="F5J-1h-nIW" id="KYa-Ay-ojq"/>
                         <outlet property="emailTextField" destination="KSB-UB-gAb" id="IgF-le-HFa"/>
-                        <outlet property="mobileLabelOutlet" destination="DMR-S8-Nmy" id="0U4-c9-Jrp"/>
-                        <outlet property="mobileTextField" destination="d1x-Fg-TGK" id="4Xj-UE-1Zo"/>
                         <outlet property="phoneLabelOutlet" destination="yaj-fh-DXe" id="X9r-z6-hd8"/>
                         <outlet property="phoneTextField" destination="V3F-mp-PVE" id="FOq-6d-knd"/>
+                        <outlet property="websiteLabelOutlet" destination="DMR-S8-Nmy" id="I0W-uS-L67"/>
+                        <outlet property="websiteTextField" destination="d1x-Fg-TGK" id="JBx-pa-N6W"/>
                         <outlet property="welcomeInstructionsLabelOutlet" destination="Nxo-xA-cCd" id="aBU-OE-UWF"/>
                         <outlet property="welcomeLabeOutlet" destination="kRc-y2-k2w" id="MNd-j5-nLu"/>
                     </connections>
@@ -3112,7 +3115,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="eGv-8P-8ut" userLabel="social link 3 stackView">
                                                 <rect key="frame" x="0.0" y="144" width="288" height="56"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="social link 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f6u-56-GZQ" userLabel="social link 3 Label Outlet">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="social link 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f6u-56-GZQ" userLabel="social link 3 Label Outlet">
                                                         <rect key="frame" x="4" y="0.0" width="280" height="22"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                                         <nil key="textColor"/>
@@ -3149,9 +3152,6 @@
                                                 <real key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="nextButtonTapped:" destination="79B-mD-KKL" eventType="touchUpInside" id="yH4-4E-4VF"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -3236,9 +3236,13 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="nql-0T-t4y"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="emergencyContactNameLabelOutlet" destination="KjY-S1-1cm" id="d1t-lm-sGr"/>
-                        <outlet property="emergencyContactNameTextField" destination="eGZ-r3-s2S" id="kwc-So-pge"/>
-                        <outlet property="nextButtonOutlet" destination="phR-S1-FcL" id="bji-3m-axN"/>
+                        <outlet property="nextButtonOutlet" destination="phR-S1-FcL" id="SLb-4Y-oXR"/>
+                        <outlet property="socialLink1LabelOutlet" destination="KjY-S1-1cm" id="oPU-QU-MSE"/>
+                        <outlet property="socialLink1TextField" destination="eGZ-r3-s2S" id="Kb6-z4-N5a"/>
+                        <outlet property="socialLink2LabelOutlet" destination="cdm-eq-5IK" id="nb6-js-03r"/>
+                        <outlet property="socialLink2TextField" destination="5JZ-sB-0N7" id="ymx-DE-xux"/>
+                        <outlet property="socialLink3Outlet" destination="f6u-56-GZQ" id="evX-Ap-59d"/>
+                        <outlet property="socialLink3TextField" destination="0Yi-IH-lmf" id="ZAV-VF-Cdz"/>
                         <outlet property="welcomeInstructionsLabelOutlet" destination="4vk-e4-gme" id="d4N-Mj-AXA"/>
                         <outlet property="welcomeLabeOutlet" destination="634-t4-Vda" id="xNa-aU-cQh"/>
                     </connections>

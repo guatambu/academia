@@ -46,6 +46,8 @@ class LocationInfoDetailsViewController: UIViewController {
     @IBOutlet weak var socialLink2LabelOutlet: UILabel!
     @IBOutlet weak var socialLink3LabelOutlet: UILabel!
     
+    @IBOutlet weak var createAccountButtonOutlet: DesignableButton!
+    
     
     // MARK: - ViewController Lifecycle Functions
     
@@ -64,12 +66,32 @@ class LocationInfoDetailsViewController: UIViewController {
         
         addressLine2LabelOutlet.isHidden = false
         
-        
+        createAccountButtonOutlet.isHidden = true
+        createAccountButtonOutlet.isEnabled = false
         //populateCompletedProfileInfo()
     }
     
+    // TODO: decide whether to create a new review your location details VC or tweak current one to work when creating location button not needed
     
     // MARK: - Actions
+    
+    @IBAction func createAccountButtonTapped(_ sender: DesignableButton) {
+        
+        // create the new location in the LocationModelController source of truth
+        createLocation()
+        
+        // programmatic segue back to the MyLocations TVC to view the current locations
+        guard let viewControllers = self.navigationController?.viewControllers else { return }
+        
+        for viewController in viewControllers {
+            
+            if viewController is MyLocationsTableViewController {
+                self.navigationController?.popToViewController(viewController, animated: true)
+
+            }
+        }
+    }
+    
     
     @IBAction func editButtonTapped(_ sender: Any) {
         
@@ -171,7 +193,33 @@ extension LocationInfoDetailsViewController {
 }
 
 
-// MARK: - Programmatic Segues to return to proper ProfileFlow storyboard and user profileVC
+extension LocationInfoDetailsViewController {
+    
+    func createLocation() {
+        
+        guard let locationPic = locationPic else { print("fail locationPic"); return }
+        guard let locationName = locationName else { print("fail locationName"); return }
+        guard let active = active else { print("fail active"); return }
+        guard let addressLine1 = addressLine1 else { print("fail addressLine1"); return }
+        guard let city = city else { print("fail city"); return }
+        guard let state = state else { print("fail state"); return }
+        guard let zipCode = zipCode else { print("fail zip"); return }
+        guard let phone = phone else { print("fail phone"); return }
+        guard let email = email else { print("fail email"); return }
+        
+        let website = self.website ?? ""
+        let addressLine2 = self.addressLine2 ?? ""
+        let social1 = self.social1 ?? ""
+        let social2 = self.social2 ?? ""
+        let social3 = self.social3 ?? ""
+        
+        LocationModelController.shared.addNew(locationPic: locationPic, active: active, locationName: locationName, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, phone: phone, website: website, email: email, social1: social1, social2: social2, social3: social3)
+    }
+    
+}
+
+
+// MARK: - Programmatic Segues to return to proper ProfileFlow storyboard and location profileVC
 extension UIViewController {
     
     func returnToLocationInfo() {
@@ -182,6 +230,7 @@ extension UIViewController {
             
             if viewController is LocationInfoDetailsViewController {
                 self.navigationController?.popToViewController(viewController, animated: true)
+                
             }
         }
     }

@@ -16,7 +16,7 @@ class LocationPicAndNameViewController: UIViewController {
     
     var locationName: String?
     var locationPic: UIImage?
-    var active: Bool?
+    var active = true
     
     var inEditingMode: Bool?
     var locationToEdit: Location?
@@ -36,14 +36,20 @@ class LocationPicAndNameViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         // check to see if enter editing mode
         enterEditingMode(inEditingMode: inEditingMode)
-       
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if active == true {
+            activeSwitch.isOn = true
+        } else {
+            activeSwitch.isOn = false
+        }
+        
         // instantiate tapGestureRecognizer for the profilePicImageViewOutet
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TakeProfilePicViewController.profilePicImageTapped))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LocationPicAndNameViewController.profilePicImageTapped))
         locationPicImageViewOutlet.addGestureRecognizer(tapGestureRecognizer)
         locationPicImageViewOutlet.isUserInteractionEnabled = true
         
@@ -52,6 +58,13 @@ class LocationPicAndNameViewController: UIViewController {
     
     
     // MARK: - Actions
+    
+    @IBAction func activeSwitchToggled(_ sender: UISwitch) {
+        active = !active
+        
+        print("LocationPicAndNameVC active property: \(active)")
+    }
+    
     
     @objc func saveButtonTapped() {
     
@@ -76,7 +89,7 @@ class LocationPicAndNameViewController: UIViewController {
         // instantiate the relevant storyboard
         let mainView: UIStoryboard = UIStoryboard(name: "OwnerProfileFlow", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
-        let destViewController = mainView.instantiateViewController(withIdentifier: "toLocationPicAndName") as! LocationPicAndNameViewController
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toLocationAddress") as! LocationAddressViewController
         
         // run check to see is there is firstName, lastName, and profilePic
         guard let locationName = locationNameTextField.text, locationNameTextField.text != "" else {
@@ -98,12 +111,13 @@ class LocationPicAndNameViewController: UIViewController {
         // pass data to destViewController
         destViewController.locationName = locationName
         destViewController.locationPic = locationPic
+        destViewController.active = active
         
         destViewController.inEditingMode = inEditingMode
         destViewController.locationToEdit = locationToEdit
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
-        // ****  implement this across the other VCs in onbaording after lunch
+        // ****  implement this across the other VCs in onboarding
         updateLocationInfo()
     }
 }
@@ -133,7 +147,7 @@ extension LocationPicAndNameViewController {
             locationEditingSetup()
         }
         
-        print("TakeProfilePicVC -> inEditingMode: \(inEditingMode)")
+        print("LocationPicAndNameVC -> inEditingMode: \(inEditingMode)")
     }
     
     // owner setup for editing mode
@@ -143,7 +157,7 @@ extension LocationPicAndNameViewController {
             return
         }
         
-        welcomeLabeOutlet.text = "Welcome \(locationToEdit.locationName)"
+        welcomeLabeOutlet.text = "Location: \(locationToEdit.locationName)"
         
         welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
         
