@@ -641,7 +641,6 @@
 				FA21D69A21339E0B006790E5 /* Owner Controlled Students */,
 				FA21D69B21339E29006790E5 /* Owner Profile */,
 				FA21D69C21339E37006790E5 /* Home Dashboard */,
-				FA21D69D21339E49006790E5 /* Aulas */,
 			);
 			path = "Owner Role";
 			sourceTree = "<group>";
@@ -810,16 +809,16 @@
 		FA9AD9F3213780DD0005E1F1 /* Profile Menu VCs */ = {
 			isa = PBXGroup;
 			children = (
+				FABF85A121B5F874005CEBD4 /* Payment Programs */,
+				FA9ADA222139EDB60005E1F1 /* Belts */,
 				FABF859421B22089005CEBD4 /* Locations */,
+				FA21D69D21339E49006790E5 /* Aulas */,
 				FA41CE6A21A344B100EAD53A /* OwnerInfoDetailsViewController.swift */,
 				FA9AD9F4213782070005E1F1 /* TutorialsTableViewController.swift */,
 				FA9ADA0C213789760005E1F1 /* MyLocationsDetailTableViewController.swift */,
-				FA9AD9FC213783FE0005E1F1 /* OwnerPaymentProgramsTableViewController.swift */,
 				FA9ADA232139EDD30005E1F1 /* About & Privacy */,
 				FA9ADA022137845E0005E1F1 /* ProfileMenuSocialNetworksViewController.swift */,
 				FA9ADA082137861B0005E1F1 /* OwnerPaymentInfoTableViewController.swift */,
-				FA9ADA0A2137895A0005E1F1 /* PaymentProgramDetailTableViewController.swift */,
-				FA9ADA222139EDB60005E1F1 /* Belts */,
 			);
 			path = "Profile Menu VCs";
 			sourceTree = "<group>";
@@ -891,6 +890,15 @@
 				FABF859F21B5B668005CEBD4 /* ReviewAndCreateLocationViewController.swift */,
 			);
 			path = Locations;
+			sourceTree = "<group>";
+		};
+		FABF85A121B5F874005CEBD4 /* Payment Programs */ = {
+			isa = PBXGroup;
+			children = (
+				FA9AD9FC213783FE0005E1F1 /* OwnerPaymentProgramsTableViewController.swift */,
+				FA9ADA0A2137895A0005E1F1 /* PaymentProgramDetailTableViewController.swift */,
+			);
+			path = "Payment Programs";
 			sourceTree = "<group>";
 		};
 		FACA3EAF219288480099E620 /* User Onboarding */ = {
