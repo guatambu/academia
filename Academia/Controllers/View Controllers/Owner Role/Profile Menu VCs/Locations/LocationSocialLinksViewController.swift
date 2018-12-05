@@ -67,7 +67,7 @@ class LocationSocialLinksViewController: UIViewController {
         
         self.returnToLocationInfo()
         
-        print("update location social links (if any): \(LocationModelController.shared.locations[0].social1) \n\(String(describing: LocationModelController.shared.locations[0].social2)) \n\(String(describing: LocationModelController.shared.locations[0].social3))")
+        print("update location social links (if any): \(String(describing: LocationModelController.shared.locations[0].social1)) \n\(String(describing: LocationModelController.shared.locations[0].social2)) \n\(String(describing: LocationModelController.shared.locations[0].social3))")
         
         inEditingMode = false
     }
@@ -77,7 +77,7 @@ class LocationSocialLinksViewController: UIViewController {
         // programmatically performing segue
         
         // instantiate the relevant storyboard
-        let mainView: UIStoryboard = UIStoryboard(name: "OwnerProfileFlow", bundle: nil)
+        let mainView: UIStoryboard = UIStoryboard(name: "OwnerLocationWorkFlow", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
         let destViewController = mainView.instantiateViewController(withIdentifier: "toReviewAndCreateLocation") as! ReviewAndCreateLocationViewController
         

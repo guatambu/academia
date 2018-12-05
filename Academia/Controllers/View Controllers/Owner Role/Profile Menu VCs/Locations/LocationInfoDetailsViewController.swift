@@ -76,7 +76,7 @@ class LocationInfoDetailsViewController: UIViewController {
         // programmatically performing the segue
         
         // instantiate the relevant storyboard
-        let mainView: UIStoryboard = UIStoryboard(name: "OwnerProfileFlow", bundle: nil)
+        let mainView: UIStoryboard = UIStoryboard(name: "OwnerLocationWorkFlow", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
         let destViewController = mainView.instantiateViewController(withIdentifier: "toLocationPicAndName") as! LocationPicAndNameViewController
         // create the segue programmatically - PUSH
@@ -106,7 +106,7 @@ class LocationInfoDetailsViewController: UIViewController {
             // programmatically performing the segue
             
             // instantiate the relevant storyboard
-            let mainView: UIStoryboard = UIStoryboard(name: "OwnerProfileFlow", bundle: nil)
+            let mainView: UIStoryboard = UIStoryboard(name: "OwnerLocationWorkFlow", bundle: nil)
             // instantiate the desired TableViewController as ViewController on relevant storyboard
             let destViewController = mainView.instantiateViewController(withIdentifier: "toOwnerLocationsList") as! MyLocationsTableViewController
             // add to Navigation stack

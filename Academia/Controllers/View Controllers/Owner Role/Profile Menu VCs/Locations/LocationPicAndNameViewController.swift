@@ -87,7 +87,7 @@ class LocationPicAndNameViewController: UIViewController {
         
         print("to address segue")
         // instantiate the relevant storyboard
-        let mainView: UIStoryboard = UIStoryboard(name: "OwnerProfileFlow", bundle: nil)
+        let mainView: UIStoryboard = UIStoryboard(name: "OwnerLocationWorkFlow", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
         let destViewController = mainView.instantiateViewController(withIdentifier: "toLocationAddress") as! LocationAddressViewController
         

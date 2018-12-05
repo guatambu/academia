@@ -128,6 +128,8 @@
 		FABF85AB21B78C36005CEBD4 /* PaymentProgramAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF85AA21B78C36005CEBD4 /* PaymentProgramAgreementViewController.swift */; };
 		FABF85AD21B78C6F005CEBD4 /* ReviewAndCreatePaymentProgramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF85AC21B78C6F005CEBD4 /* ReviewAndCreatePaymentProgramViewController.swift */; };
 		FABF85AF21B78CB2005CEBD4 /* ViewPaymentProgramAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF85AE21B78CB2005CEBD4 /* ViewPaymentProgramAgreementViewController.swift */; };
+		FABF85B521B862FB005CEBD4 /* OwnerLocationWorkFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABF85B421B862FB005CEBD4 /* OwnerLocationWorkFlow.storyboard */; };
+		FABF85B721B86333005CEBD4 /* OwnerPaymentProgramWorkFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABF85B621B86333005CEBD4 /* OwnerPaymentProgramWorkFlow.storyboard */; };
 		FACA3EAC21927C3F0099E620 /* profile_pic_placeholder_image.png in Resources */ = {isa = PBXBuildFile; fileRef = FACA3EAB21927C3F0099E620 /* profile_pic_placeholder_image.png */; };
 		FACA3EAE21927CEE0099E620 /* IBDesignables.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA3EAD21927CEE0099E620 /* IBDesignables.swift */; };
 		FACA3EB1219288CD0099E620 /* NameAndBeltViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA3EB0219288CD0099E620 /* NameAndBeltViewController.swift */; };
@@ -371,6 +373,8 @@
 		FABF85AA21B78C36005CEBD4 /* PaymentProgramAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProgramAgreementViewController.swift; sourceTree = "<group>"; };
 		FABF85AC21B78C6F005CEBD4 /* ReviewAndCreatePaymentProgramViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewAndCreatePaymentProgramViewController.swift; sourceTree = "<group>"; };
 		FABF85AE21B78CB2005CEBD4 /* ViewPaymentProgramAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPaymentProgramAgreementViewController.swift; sourceTree = "<group>"; };
+		FABF85B421B862FB005CEBD4 /* OwnerLocationWorkFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerLocationWorkFlow.storyboard; sourceTree = "<group>"; };
+		FABF85B621B86333005CEBD4 /* OwnerPaymentProgramWorkFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerPaymentProgramWorkFlow.storyboard; sourceTree = "<group>"; };
 		FACA3EAB21927C3F0099E620 /* profile_pic_placeholder_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile_pic_placeholder_image.png; sourceTree = "<group>"; };
 		FACA3EAD21927CEE0099E620 /* IBDesignables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignables.swift; sourceTree = "<group>"; };
 		FACA3EB0219288CD0099E620 /* NameAndBeltViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameAndBeltViewController.swift; sourceTree = "<group>"; };
@@ -565,6 +569,8 @@
 				FAAAC14C213E342600093D6C /* OwnerStudentsFlow.storyboard */,
 				FAAAC14F213E345900093D6C /* OwnerMessages.storyboard */,
 				FAAAC14A213E33E000093D6C /* OwnerProfileFlow.storyboard */,
+				FABF85B621B86333005CEBD4 /* OwnerPaymentProgramWorkFlow.storyboard */,
+				FABF85B421B862FB005CEBD4 /* OwnerLocationWorkFlow.storyboard */,
 				FAAAC147213E337500093D6C /* OwnerBeltSystemFlow.storyboard */,
 				FAE67A2B2157453100822DCF /* StudentBaseCampFlow.storyboard */,
 				FAE67A2E215C0EC100822DCF /* StudentProfileFlow.storyboard */,
@@ -821,9 +827,9 @@
 		FA9AD9F3213780DD0005E1F1 /* Profile Menu VCs */ = {
 			isa = PBXGroup;
 			children = (
-				FABF85A121B5F874005CEBD4 /* Payment Programs */,
 				FA9ADA222139EDB60005E1F1 /* Belts */,
 				FABF859421B22089005CEBD4 /* Locations */,
+				FABF85A121B5F874005CEBD4 /* Payment Programs */,
 				FA21D69D21339E49006790E5 /* Aulas */,
 				FA41CE6A21A344B100EAD53A /* OwnerInfoDetailsViewController.swift */,
 				FA9AD9F4213782070005E1F1 /* TutorialsTableViewController.swift */,
@@ -1171,6 +1177,7 @@
 				FA9ADA252139EE250005E1F1 /* StatusCell.xib in Resources */,
 				FA66A00A2145CA2F002B0313 /* DigitalSignatureTextFieldCell.xib in Resources */,
 				FAF29B9D212E1EF700752414 /* camera_filled_white_50.png in Resources */,
+				FABF85B721B86333005CEBD4 /* OwnerPaymentProgramWorkFlow.storyboard in Resources */,
 				FAAAC153213E348800093D6C /* OwnerBaseCampFlow.storyboard in Resources */,
 				FAB7E35A212BA643003E3B79 /* BlairMdITC TT-Medium.ttf in Resources */,
 				FAF29BC0212E21EA00752414 /* camera_outline_white_32.png in Resources */,
@@ -1235,6 +1242,7 @@
 				FAF29BC1212E21EA00752414 /* programs_red_32.png in Resources */,
 				FAF29BA8212E1EF700752414 /* messages_red_50.png in Resources */,
 				FAF29BA3212E1EF700752414 /* students_red_50.png in Resources */,
+				FABF85B521B862FB005CEBD4 /* OwnerLocationWorkFlow.storyboard in Resources */,
 				FAF29BBC212E21EA00752414 /* messages_red_32.png in Resources */,
 				FAF29BBE212E21EA00752414 /* programs_black_32.png in Resources */,
 				FAE2FD692140BE7100815402 /* UsernameTextFieldCell.xib in Resources */,
