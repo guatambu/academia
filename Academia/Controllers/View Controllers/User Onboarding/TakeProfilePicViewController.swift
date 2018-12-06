@@ -226,7 +226,7 @@ extension TakeProfilePicViewController {
             }
         }
         
-        print(inEditingMode)
+        print("TakeProfilePicVC -> inEditingMode: \(inEditingMode)")
     }
     
     // owner setup for editing mode

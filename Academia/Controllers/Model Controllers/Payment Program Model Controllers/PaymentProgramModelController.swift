@@ -31,17 +31,40 @@ class PaymentProgramModelController {
     
     // Update
     
-    func update(paymentProgram: PaymentProgram, active: Bool, programName: String, billingType: [String], billingOptions: [String], paymentDescription: String, paymentAgreement: String, signatureType: [String]) {
+    func update(paymentProgram:PaymentProgram,
+                programName: String?,
+                active: Bool?,
+                paymentDescription: String?,
+                billingType: [String]?,
+                billingOptions: [String]?,
+                signatureType: [String]?,
+                paymentAgreement: String?
+        ) {
         
-        paymentProgram.active = active
         paymentProgram.dateEdited = Date()
-        paymentProgram.billingType = billingType
-        paymentProgram.billingOptions = billingOptions
-        paymentProgram.paymentDescription = paymentDescription
-        paymentProgram.paymentAgreement = paymentAgreement
-        paymentProgram.programName = programName
-        paymentProgram.signatureType = signatureType
         
+        if let active = active {
+            paymentProgram.active = active
+        }
+        if let programName = programName {
+            paymentProgram.programName = programName
+        }
+        if let paymentDescription = paymentDescription {
+            paymentProgram.paymentDescription = paymentDescription
+        }
+        if let billingType = billingType {
+            paymentProgram.billingType = billingType
+        }
+        if let billingOptions = billingOptions {
+            paymentProgram.billingOptions = billingOptions
+        }
+        if let signatureType = signatureType {
+            paymentProgram.signatureType = signatureType
+        }
+        if let paymentAgreement = paymentAgreement {
+            paymentProgram.paymentAgreement = paymentAgreement
+        }
+    
     }
     
     

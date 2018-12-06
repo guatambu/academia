@@ -220,7 +220,7 @@ extension ContactInfoViewController {
             }
         }
         
-        print(inEditingMode)
+        print("ContactInfoVC -> inEditingMode = \(inEditingMode)")
     }
     
     // owner setup for editing mode

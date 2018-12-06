@@ -54,7 +54,7 @@ class AddNewStudentGroupImageMenuTableViewCell: UITableViewCell {
             userThumbnailImageViewOutlet.image = kidStudent.profilePic
             cellTitleOutlet.text = "\(kidStudent.firstName) \(kidStudent.lastName)"
         } else if let location = location {
-            userThumbnailImageViewOutlet.image = location.profilePic
+            userThumbnailImageViewOutlet.image = location.locationPic
             cellTitleOutlet.text = "\(location.locationName)"
         }
     }

@@ -216,7 +216,7 @@ extension EmergencyContactViewController {
             
             guard let adultStudent = userToEdit as? AdultStudent else { return }
             
-            let adult = AdultStudentModelController.shared.adults[0]
+//            let adult = AdultStudentModelController.shared.adults[0]
             AdultStudentModelController.shared.updateProfileInfo(adultStudent: adultStudent, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: emergencyContactNameTextField.text, emergencyContactPhone: emergencyContactPhoneTextField.text, emergencyContactRelationship: emergencyContactRelationshipTextField.text)
         }
     }
@@ -246,7 +246,7 @@ extension EmergencyContactViewController {
             nextButtonOutlet.isEnabled = false
         }
         
-        print(inEditingMode)
+        print("EmergencyContactVC -> inEditingMode = \(inEditingMode)")
     }
     
     // owner setup for editing mode

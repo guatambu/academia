@@ -20,7 +20,7 @@ struct MockData {
     static var allStudents = Group(groupUID: UUID(), active: true, name: "all students", dateCreated: Date(), dateEdited: Date(), members: [owner, adultA])
 
     // location
-    static var myLocation = Location(locationUID: UUID(), active: true, dateCreated: Date(), dateEdited: Date(), profilePic: #imageLiteral(resourceName: "owner_sample.png"), locationName: "my location", streetAddress: "1267 the spot blvd.", city: "you know", state: "LA", zipCode: "09854", phone: "987-876-1230", website: "www.theschool.gov", email: "email@theschool.gov", social: nil)
+    static var myLocation = Location(locationUID: UUID(), active: true, dateCreated: Date(), dateEdited: Date(), locationPic: #imageLiteral(resourceName: "owner_sample.png"), locationName: "my location", addressLine1: "1267 the spot blvd.", addressLine2: "", city: "you know", state: "LA", zipCode: "09854", phone: "987-876-1230", website: "www.theschool.gov", email: "email@theschool.gov", social1: nil, social2: nil, social3: nil)
 
     // payment programs
     static var programA: PaymentProgram = PaymentProgram(paymentProgramUID: UUID(), active: true, programName: "programA", dateCreated: Date(), dateEdited: Date(), billingType: ["digital"], billingOptions: ["1st of month"], paymentDescription: "things", paymentAgreement: "stuff", signatureType: ["digital"])

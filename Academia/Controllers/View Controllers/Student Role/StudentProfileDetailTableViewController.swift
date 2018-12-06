@@ -68,19 +68,6 @@ class StudentProfileDetailTableViewController: UITableViewController {
 
     }
     
-    @IBAction func socialNetworksButtonTapped(_ sender: UIButton) {
-        // instantiate the relevant storyboard
-        let ownerProfileFlowView: UIStoryboard = UIStoryboard(name: "OwnerProfileFlow", bundle: nil)
-        // instantiate the desired TableViewController as ViewController on relevant storyboard
-        let destViewController = ownerProfileFlowView.instantiateViewController(withIdentifier: "toSocialNetworks") as! ProfileMenuSocialNetworksViewController
-        // create the segue programmatically
-        self.navigationController?.pushViewController(destViewController, animated: true)
-        // set the desired properties of the destinationVC's navgation Item
-        let backButtonItem = UIBarButtonItem()
-        backButtonItem.title = " "
-        navigationItem.backBarButtonItem = backButtonItem
-    }
-    
     @IBAction func tutorialsButtonTapped(_ sender: UIButton) {
         // instantiate the relevant storyboard
         let ownerProfileFlowView: UIStoryboard = UIStoryboard(name: "OwnerProfileFlow", bundle: nil)

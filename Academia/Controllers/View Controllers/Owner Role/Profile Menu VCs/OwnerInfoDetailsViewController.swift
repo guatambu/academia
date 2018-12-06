@@ -41,6 +41,12 @@ class OwnerInfoDetailsViewController: UIViewController {
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
+                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
+        
+        navigationController?.navigationBar.titleTextAttributes = avenirFont
+        
         populateCompletedProfileInfo()
     }
 
@@ -92,7 +98,7 @@ class OwnerInfoDetailsViewController: UIViewController {
             
             OwnerModelController.shared.delete(owner: OwnerModelController.shared.owners[0])
             
-            // programmatically performing the segue
+            // programmatically performing the segue if "resetting" the app to beginning with no saved user
             
             // instantiate the relevant storyboard
             let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -130,7 +136,7 @@ extension OwnerInfoDetailsViewController {
         guard let owner = OwnerModelController.shared.owners.first else { return }
         // populate UI elements in VC
         self.title = "\(owner.firstName) \(owner.lastName)"
-        usernameLabelOutlet.text = owner.username
+        usernameLabelOutlet.text = "username: \(owner.username)"
         // populate birthdate outlet
         formatBirthdate(birthdate: owner.birthdate)
         // contact info outlets

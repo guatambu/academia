@@ -11,6 +11,16 @@ import Foundation
 
 // THINGS TO DO
 
+    // User Account Deletion
+        // for code reusability... will want to make a check when delting a student account to determine whether it is from the student or user side of the app
+
+            // if owner, then need to simply delete the student user account and return to the previous VC whether the macro student list, a group list, or wherever
+            // also owner has the final say over the decision to delete a student user account
+            // a student user can't delete their account at any given moment becasue they will have the payment obligation to meet.
+            // if and when a student wishes to delete an account, a notificaiton will be sent to the owner
+            // then owner can make a student user account available for deletion by the student
+            // if student, then, only with owner approval, if only one student user account, then the app is being "reset" to the beginning... no account saved
+
     // Belt class
         // add property for promotion elligibilty so owner can set that up, make it variable
         // add method so owner can set the elligibility property
@@ -22,21 +32,21 @@ import Foundation
             // owner
                 // username password - ***** COMPLETE
                 // first & last name + belt - ***** COMPLETE
-                // profile pic
+                // profile pic - ***** COMPLETE
                 // address - ***** COMPLETE
                 // contact info
             // kid student
-                // username password
-                // first & last name + belt
-                // profile pic
-                // address
-                // contact + emergency contact info
+                // username password - ***** COMPLETE
+                // first & last name + belt - ***** COMPLETE
+                // profile pic - ***** COMPLETE
+                // address - ***** COMPLETE
+                // contact + emergency contact info - ***** COMPLETE
             // adult student
-                // username password
-                // first & last name + belt
-                // profile pic
-                // address
-                // contact + emergency contact info
+                // username password - ***** COMPLETE
+                // first & last name + belt - ***** COMPLETE
+                // profile pic - ***** COMPLETE
+                // address - ***** COMPLETE
+                // contact + emergency contact info - ***** COMPLETE
             // location:
                 // profile pic
                 // address
@@ -45,7 +55,7 @@ import Foundation
         // wire up all scenes to corresponding cocoa touch files
 
         // create belts via code rather than nib
-            // create funciton that takes inputs for isKid, belt level, number of white stripes, red stripes, black stripes, white degrees and produces appropriate belt level visually in UI.
+            // create funciton that takes inputs for isKid, belt level, number of white stripes, red stripes, black stripes, white degrees and produces appropriate belt level visually in UI. - ***** COMPLETE
 
     // Models
         // Add UID String properties to all relevant Models - *** COMPLETE
@@ -101,7 +111,7 @@ import Foundation
     // Picker Wheels
         // Owner New Payment Program
         // Owner Add class
-        // Belt Creation?
+        // Belt Creation?  - ***** COMPLETE
 
     // Add new Students to group Button fucntionality
         // collection view add
@@ -125,7 +135,7 @@ import Foundation
 
 
 // BUGS:
-    // going from coral belts to lower belts, the stripes do not reset to the proper width.  not terrible.  rare use case.  but let's fix it.  thi is after having saved the belt, and making this change in the edit profile workflow.
+    // going from coral belts to lower belts, the stripes do not reset to the proper width.  not terrible.  rare use case.  but let's fix it.  thi is after having saved the belt, and making this change in the edit profile workflow. **** Complete ****
     // reducing the number of stripes in a belt may result in too many stripes added in the editing workflow after having clicked save. **** COMPLETE ****
 
 

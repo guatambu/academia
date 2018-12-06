@@ -19,9 +19,23 @@ class LocationModelController {
     // MARK: - CRUD Functions
     
     // Create
-    func addNew(profilePic: UIImage?, active: Bool, locationName: String, firstName: String, lastName: String, streetAddress: String, city: String, state: String, zipCode: String, phone: String, website: String, email: String, social: String?) {
+    func addNew(locationPic: UIImage?,
+                active: Bool,
+                locationName: String,
+                addressLine1: String,
+                addressLine2: String,
+                city: String,
+                state: String,
+                zipCode: String,
+                phone: String,
+                website: String,
+                email: String,
+                social1: String,
+                social2: String,
+                social3: String
+        ) {
         
-        let location = Location(locationUID: UUID(), active: active, dateCreated: Date(), dateEdited: Date(), profilePic: profilePic, locationName: locationName, streetAddress: streetAddress, city: city, state: state, zipCode: zipCode, phone: phone, website: website, email: email, social: social)
+        let location = Location(locationUID: UUID(), active: active, dateCreated: Date(), dateEdited: Date(), locationPic: locationPic, locationName: locationName, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, phone: phone, website: website, email: email, social1: social1, social2: social2, social3: social3)
         
         locations.append(location)
     }
@@ -30,21 +44,66 @@ class LocationModelController {
     
     
     // Update
-    func update(location: Location, active: Bool, city: String, email: String, locationName: String, phone: String, profilePic: UIImage?, social: String, state: String, streetAddress: String, website: String, zipCode: String) {
+    func update(location: Location,
+                active: Bool?,
+                locationPic: UIImage?,
+                locationName: String?,
+                addressLine1: String?,
+                addressLine2: String?,
+                city: String?,
+                state: String?,
+                zipCode: String?,
+                phone: String?,
+                website: String?,
+                email: String?,
+                social1: String?,
+                social2: String?,
+                social3: String?) {
         
-        location.active = active
-        location.city = city
         location.dateEdited = Date()
-        location.email = email
-        location.locationName = locationName
-        location.phone = phone
-        location.profilePic = profilePic
-        location.social = social
-        location.state = state
-        location.streetAddress = streetAddress
-        location.website = website
-        location.zipCode = zipCode
         
+        if let active = active {
+            location.active = active
+        }
+        if let locationPic = locationPic {
+            location.locationPic = locationPic
+        }
+        if let locationName = locationName {
+            location.locationName = locationName
+        }
+        if let addressLine1 = addressLine1 {
+            location.addressLine1 = addressLine1
+        }
+        if let addressLine2 = addressLine2 {
+            location.addressLine2 = addressLine2
+        }
+        if let city = city {
+            location.city = city
+        }
+        if let state = state {
+            location.state = state
+        }
+        if let zipCode = zipCode {
+            location.zipCode = zipCode
+        }
+        if let phone = phone {
+            location.phone = phone
+        }
+        if let website = website {
+            location.website = website
+        }
+        if let email = email {
+            location.email = email
+        }
+        if let social1 = social1 {
+            location.social1 = social1
+        }
+        if let social2 = social2 {
+            location.social2 = social2
+        }
+        if let social3 = social3 {
+            location.social3 = social3
+        }
     }
     
     

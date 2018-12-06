@@ -49,7 +49,7 @@ class UserSelfIdentifyViewController: UIViewController {
         confirmStudentButtonOutlet.isEnabled = false
         
         isOwner = true
-        print(isOwner)
+        print("UserSelfIdentifyVC -> ownerButtonTapped(sender:) - isOwner = \(self.isOwner)")
     }
     
     @IBAction func studentButtonTapped(_ sender: UIButton) {
@@ -60,11 +60,11 @@ class UserSelfIdentifyViewController: UIViewController {
         confirmOwnerButtonOutlet.isEnabled = false
         
         isOwner = false
-        print(isOwner)
+        print("UserSelfIdentifyVC -> studentButtonTapped(sender:) - isOwner = \(self.isOwner)")
     }
     
     @IBAction func confirmStudentButtonTapped(_ sender: UIButton) {
-        print(self.isOwner)
+        print("UserSelfIdentifyVC isOwner = \(self.isOwner)")
         
         // programmatically performing the segue
         
@@ -86,7 +86,7 @@ class UserSelfIdentifyViewController: UIViewController {
     }
     
     @IBAction func confirmOwnerButtonTapped(_ sender: UIButton) {
-        print(self.isOwner)
+        print("UserSelfIdentifyVC isOwner = \(self.isOwner)")
         
         // instantiate the relevant storyboard
         let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
