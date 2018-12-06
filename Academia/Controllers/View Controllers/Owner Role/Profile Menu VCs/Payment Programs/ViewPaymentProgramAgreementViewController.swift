@@ -2,7 +2,7 @@
 //  ViewPaymentProgramAgreementViewController.swift
 //  Academia
 //
-//  Created by Kelly Johnson on 12/4/18.
+//  Created by Michael Guatambu Davis on 12/4/18.
 //  Copyright © 2018 DunDak, LLC. All rights reserved.
 //
 
@@ -10,21 +10,43 @@ import UIKit
 
 class ViewPaymentProgramAgreementViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    // MARK: - Properties
+    
+    var paymentProgramName: String?
+    var programAgreement: String?
+    
+    // program agreement textView
+    @IBOutlet weak var programAgreementTextView: UITextView!
+    
+    
+    // MARK: - ViewController Lifecycle Functions
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
+                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
+        
+        navigationController?.navigationBar.titleTextAttributes = avenirFont
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        guard let programName = paymentProgramName else {
+            
+            print("programName has a nil value in ViewPaymentProgramAgreementVC -> viewDidLoad() - line 37")
+            return
+        }
+        self.title = "\(programName)"
+        
+        guard let programAgreement = programAgreement else {
+            
+            print("programAgreement has a nil value in ViewPaymentProgramAgreementVC -> viewDidLoad() - line 44")
+            return
+        }
+        programAgreementTextView.text = programAgreement
     }
-    */
-
 }
+
+
+

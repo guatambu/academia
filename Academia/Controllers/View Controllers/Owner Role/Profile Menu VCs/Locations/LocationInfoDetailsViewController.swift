@@ -167,32 +167,6 @@ extension LocationInfoDetailsViewController {
 }
 
 
-extension LocationInfoDetailsViewController {
-    
-    func createLocation() {
-        
-        guard let locationPic = locationPic else { print("fail locationPic"); return }
-        guard let locationName = locationName else { print("fail locationName"); return }
-        guard let active = active else { print("fail active"); return }
-        guard let addressLine1 = addressLine1 else { print("fail addressLine1"); return }
-        guard let city = city else { print("fail city"); return }
-        guard let state = state else { print("fail state"); return }
-        guard let zipCode = zipCode else { print("fail zip"); return }
-        guard let phone = phone else { print("fail phone"); return }
-        guard let email = email else { print("fail email"); return }
-        
-        let website = self.website ?? ""
-        let addressLine2 = self.addressLine2 ?? ""
-        let social1 = self.social1 ?? ""
-        let social2 = self.social2 ?? ""
-        let social3 = self.social3 ?? ""
-        
-        LocationModelController.shared.addNew(locationPic: locationPic, active: active, locationName: locationName, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, phone: phone, website: website, email: email, social1: social1, social2: social2, social3: social3)
-    }
-    
-}
-
-
 // MARK: - Programmatic Segues to return to proper ProfileFlow storyboard and location profileVC
 extension UIViewController {
     

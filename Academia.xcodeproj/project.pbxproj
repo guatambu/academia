@@ -120,7 +120,6 @@
 		FABF859E21B38995005CEBD4 /* LocationSocialLinksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF859D21B38995005CEBD4 /* LocationSocialLinksViewController.swift */; };
 		FABF85A021B5B668005CEBD4 /* ReviewAndCreateLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF859F21B5B668005CEBD4 /* ReviewAndCreateLocationViewController.swift */; };
 		FABF85A321B78ABD005CEBD4 /* PaymentProgramInfoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF85A221B78ABD005CEBD4 /* PaymentProgramInfoDetailsViewController.swift */; };
-		FABF85A521B78AF9005CEBD4 /* ReviewPaymentProgramAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF85A421B78AF9005CEBD4 /* ReviewPaymentProgramAgreementViewController.swift */; };
 		FABF85A721B78B4C005CEBD4 /* PaymentProgramNameAndDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF85A621B78B4C005CEBD4 /* PaymentProgramNameAndDescriptionViewController.swift */; };
 		FABF85A921B78B99005CEBD4 /* PaymentProgramBillingDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF85A821B78B99005CEBD4 /* PaymentProgramBillingDetailsViewController.swift */; };
 		FABF85AB21B78C36005CEBD4 /* PaymentProgramAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF85AA21B78C36005CEBD4 /* PaymentProgramAgreementViewController.swift */; };
@@ -363,7 +362,6 @@
 		FABF859D21B38995005CEBD4 /* LocationSocialLinksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSocialLinksViewController.swift; sourceTree = "<group>"; };
 		FABF859F21B5B668005CEBD4 /* ReviewAndCreateLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewAndCreateLocationViewController.swift; sourceTree = "<group>"; };
 		FABF85A221B78ABD005CEBD4 /* PaymentProgramInfoDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProgramInfoDetailsViewController.swift; sourceTree = "<group>"; };
-		FABF85A421B78AF9005CEBD4 /* ReviewPaymentProgramAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPaymentProgramAgreementViewController.swift; sourceTree = "<group>"; };
 		FABF85A621B78B4C005CEBD4 /* PaymentProgramNameAndDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProgramNameAndDescriptionViewController.swift; sourceTree = "<group>"; };
 		FABF85A821B78B99005CEBD4 /* PaymentProgramBillingDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProgramBillingDetailsViewController.swift; sourceTree = "<group>"; };
 		FABF85AA21B78C36005CEBD4 /* PaymentProgramAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProgramAgreementViewController.swift; sourceTree = "<group>"; };
@@ -614,8 +612,8 @@
 			children = (
 				FA23D28F2167E36500707056 /* User Model Controllers */,
 				FAA516D72190C9E2009875CB /* Location Model Controllers */,
-				FAA516D92190CA5B009875CB /* Curriculum Model Controllers */,
 				FAA516D82190CA48009875CB /* Payment Program Model Controllers */,
+				FAA516D92190CA5B009875CB /* Curriculum Model Controllers */,
 				FA23D2902167E38D00707056 /* Belt Model Controllers */,
 			);
 			path = "Model Controllers";
@@ -909,7 +907,6 @@
 			children = (
 				FA9AD9FC213783FE0005E1F1 /* OwnerPaymentProgramsTableViewController.swift */,
 				FABF85A221B78ABD005CEBD4 /* PaymentProgramInfoDetailsViewController.swift */,
-				FABF85A421B78AF9005CEBD4 /* ReviewPaymentProgramAgreementViewController.swift */,
 				FABF85A621B78B4C005CEBD4 /* PaymentProgramNameAndDescriptionViewController.swift */,
 				FABF85A821B78B99005CEBD4 /* PaymentProgramBillingDetailsViewController.swift */,
 				FABF85AA21B78C36005CEBD4 /* PaymentProgramAgreementViewController.swift */,
@@ -1380,7 +1377,6 @@
 				FAF29BDD213087F600752414 /* GeneralMenuTableViewCell.swift in Sources */,
 				FAE67A36215C2DDF00822DCF /* StudentPaymentTableViewController.swift in Sources */,
 				FAF29B6B212D0E9E00752414 /* OnBoardingTask.swift in Sources */,
-				FABF85A521B78AF9005CEBD4 /* ReviewPaymentProgramAgreementViewController.swift in Sources */,
 				FAE2FD3C2140700F00815402 /* MockData.swift in Sources */,
 				FA5C5C452153022300BF62D5 /* SegueFromSaveProfileNibCellDelegate.swift in Sources */,
 				FAE2C07F214ADD26002E9756 /* ClassDetailTableViewController.swift in Sources */,

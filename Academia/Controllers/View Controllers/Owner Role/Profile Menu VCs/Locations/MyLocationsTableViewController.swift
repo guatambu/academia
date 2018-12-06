@@ -75,22 +75,4 @@ class MyLocationsTableViewController: UITableViewController {
     }
     */
 
-
-    // MARK: - Navigation
-    
-    
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        // Get the new view controller using segue.destinationViewController.
-        if segue.identifier == "toLocationDetail" {
-            guard let destinationTVC = segue.destination as? MyLocationsDetailTableViewController else { return }
-            guard let indexPath = self.tableView.indexPathForSelectedRow else { return }
-            let location = LocationModelController.shared.locations[indexPath.row]
-            
-            // Pass the selected object to the new view controller.
-            destinationTVC.location = location
-        }
-    }
 }
