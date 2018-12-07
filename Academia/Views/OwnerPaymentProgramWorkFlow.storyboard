@@ -747,10 +747,10 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="38" translatesAutoresizingMaskIntoConstraints="NO" id="75h-HC-KlO" userLabel="billing settings Stack View">
-                                <rect key="frame" x="24" y="172" width="327" height="323"/>
+                                <rect key="frame" x="24" y="160" width="327" height="347"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="sdp-8v-zbe" userLabel="billing type vertical Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="327" height="78"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="327" height="86"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="KrA-jL-9OT" userLabel="billing type Stack View">
                                                 <rect key="frame" x="0.0" y="0.0" width="248" height="48"/>
@@ -774,20 +774,20 @@
                                                     </button>
                                                 </subviews>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(info)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0EA-TK-6jd">
-                                                <rect key="frame" x="0.0" y="56" width="327" height="22"/>
-                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ex. 12 month agreement" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rs3-cw-QLR" userLabel="billing type Text Field">
+                                                <rect key="frame" x="0.0" y="56" width="327" height="30"/>
                                                 <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="0EA-TK-6jd" firstAttribute="leading" secondItem="sdp-8v-zbe" secondAttribute="leading" id="17u-ig-3LW"/>
-                                            <constraint firstAttribute="trailing" secondItem="0EA-TK-6jd" secondAttribute="trailing" id="q5o-wr-474"/>
+                                            <constraint firstAttribute="trailing" secondItem="Rs3-cw-QLR" secondAttribute="trailing" id="Bk9-Jm-UP0"/>
+                                            <constraint firstItem="Rs3-cw-QLR" firstAttribute="leading" secondItem="sdp-8v-zbe" secondAttribute="leading" id="orW-dw-4Pz"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="t0A-vO-Xpb" userLabel="billing options vertical Stack View">
-                                        <rect key="frame" x="0.0" y="116" width="327" height="78"/>
+                                        <rect key="frame" x="0.0" y="124" width="327" height="86"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="fE9-J2-d7Z" userLabel="billing options Stack View">
                                                 <rect key="frame" x="0.0" y="0.0" width="248" height="48"/>
@@ -811,20 +811,20 @@
                                                     </button>
                                                 </subviews>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(info)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rXa-wd-cF4">
-                                                <rect key="frame" x="0.0" y="56" width="327" height="22"/>
-                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ex. 1st of the month" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tfo-mO-SFn" userLabel="billing options Text Field">
+                                                <rect key="frame" x="0.0" y="56" width="327" height="30"/>
                                                 <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="rXa-wd-cF4" secondAttribute="trailing" id="kTJ-D7-gv3"/>
-                                            <constraint firstItem="rXa-wd-cF4" firstAttribute="leading" secondItem="t0A-vO-Xpb" secondAttribute="leading" id="sVF-Sx-KtF"/>
+                                            <constraint firstAttribute="trailing" secondItem="Tfo-mO-SFn" secondAttribute="trailing" id="N0b-MC-QcE"/>
+                                            <constraint firstItem="Tfo-mO-SFn" firstAttribute="leading" secondItem="t0A-vO-Xpb" secondAttribute="leading" id="qtA-cs-s0x"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="aMw-lc-vAj" userLabel="signature type vertical Stack View">
-                                        <rect key="frame" x="0.0" y="232" width="327" height="91"/>
+                                        <rect key="frame" x="0.0" y="248" width="327" height="99"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="vQ8-oh-FqO" userLabel="signature type Stack View">
                                                 <rect key="frame" x="0.0" y="0.0" width="247.5" height="48"/>
@@ -848,16 +848,16 @@
                                                     </button>
                                                 </subviews>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(info)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Fa-bc-9BW">
-                                                <rect key="frame" x="0.0" y="69" width="327" height="22"/>
-                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="digital signature" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RlJ-CU-P9x" userLabel="signature type Text Field">
+                                                <rect key="frame" x="0.0" y="69" width="327" height="30"/>
                                                 <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="7Fa-bc-9BW" firstAttribute="leading" secondItem="aMw-lc-vAj" secondAttribute="leading" id="ESK-zE-86O"/>
-                                            <constraint firstAttribute="trailing" secondItem="7Fa-bc-9BW" secondAttribute="trailing" id="Yao-qU-Ilg"/>
+                                            <constraint firstItem="RlJ-CU-P9x" firstAttribute="leading" secondItem="aMw-lc-vAj" secondAttribute="leading" id="RC2-ao-C24"/>
+                                            <constraint firstAttribute="trailing" secondItem="RlJ-CU-P9x" secondAttribute="trailing" id="jgk-5N-iOq"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -960,8 +960,18 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="m3l-nc-7cU"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="welcomeInstructionsLabelOutlet" destination="Y14-gf-5y1" id="95P-HV-osh"/>
-                        <outlet property="welcomeLabeOutlet" destination="yHe-g9-Smh" id="ezU-n6-74T"/>
+                        <outlet property="billingOptionsAddButtonOutlet" destination="rav-NT-nhL" id="b8s-q0-L0I"/>
+                        <outlet property="billingOptionsLabelOutlet" destination="gB8-fc-KFd" id="YOs-kv-UOC"/>
+                        <outlet property="billingOptionsTextField" destination="Tfo-mO-SFn" id="gkX-Mf-BPh"/>
+                        <outlet property="billingTypeAddButtonOutlet" destination="y1y-aA-D6u" id="4uj-vM-geM"/>
+                        <outlet property="billingTypeLabelOutlet" destination="qhE-lj-UtH" id="0I4-dS-QQo"/>
+                        <outlet property="billingTypeTextField" destination="Rs3-cw-QLR" id="kgE-12-WpG"/>
+                        <outlet property="nextButtonOutlet" destination="faL-f3-70Z" id="xUJ-yG-TsS"/>
+                        <outlet property="signatureTypeAddButtonOutlet" destination="yT2-zy-9EU" id="8Ma-mL-xMN"/>
+                        <outlet property="signatureTypeLabelOutlet" destination="zuG-JW-8De" id="TEt-jO-KmE"/>
+                        <outlet property="signatureTypeTextField" destination="RlJ-CU-P9x" id="5Wt-uh-txr"/>
+                        <outlet property="welcomeInstructionsLabelOutlet" destination="Y14-gf-5y1" id="IGL-nD-PaA"/>
+                        <outlet property="welcomeMessageLabelOutlet" destination="yHe-g9-Smh" id="8Jn-gZ-Nux"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Okl-Cu-vX8" userLabel="First Responder" sceneMemberID="firstResponder"/>

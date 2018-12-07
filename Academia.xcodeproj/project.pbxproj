@@ -127,6 +127,7 @@
 		FABF85AF21B78CB2005CEBD4 /* ViewPaymentProgramAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF85AE21B78CB2005CEBD4 /* ViewPaymentProgramAgreementViewController.swift */; };
 		FABF85B521B862FB005CEBD4 /* OwnerLocationWorkFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABF85B421B862FB005CEBD4 /* OwnerLocationWorkFlow.storyboard */; };
 		FABF85B721B86333005CEBD4 /* OwnerPaymentProgramWorkFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABF85B621B86333005CEBD4 /* OwnerPaymentProgramWorkFlow.storyboard */; };
+		FABF85BF21BB09FC005CEBD4 /* Billing.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF85BE21BB09FC005CEBD4 /* Billing.swift */; };
 		FACA3EAC21927C3F0099E620 /* profile_pic_placeholder_image.png in Resources */ = {isa = PBXBuildFile; fileRef = FACA3EAB21927C3F0099E620 /* profile_pic_placeholder_image.png */; };
 		FACA3EAE21927CEE0099E620 /* IBDesignables.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA3EAD21927CEE0099E620 /* IBDesignables.swift */; };
 		FACA3EB1219288CD0099E620 /* NameAndBeltViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA3EB0219288CD0099E620 /* NameAndBeltViewController.swift */; };
@@ -369,6 +370,7 @@
 		FABF85AE21B78CB2005CEBD4 /* ViewPaymentProgramAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPaymentProgramAgreementViewController.swift; sourceTree = "<group>"; };
 		FABF85B421B862FB005CEBD4 /* OwnerLocationWorkFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerLocationWorkFlow.storyboard; sourceTree = "<group>"; };
 		FABF85B621B86333005CEBD4 /* OwnerPaymentProgramWorkFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerPaymentProgramWorkFlow.storyboard; sourceTree = "<group>"; };
+		FABF85BE21BB09FC005CEBD4 /* Billing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Billing.swift; sourceTree = "<group>"; };
 		FACA3EAB21927C3F0099E620 /* profile_pic_placeholder_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile_pic_placeholder_image.png; sourceTree = "<group>"; };
 		FACA3EAD21927CEE0099E620 /* IBDesignables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignables.swift; sourceTree = "<group>"; };
 		FACA3EB0219288CD0099E620 /* NameAndBeltViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameAndBeltViewController.swift; sourceTree = "<group>"; };
@@ -781,6 +783,7 @@
 			isa = PBXGroup;
 			children = (
 				FA0C444721278C9A00B59194 /* PaymentProgram.swift */,
+				FABF85BE21BB09FC005CEBD4 /* Billing.swift */,
 			);
 			path = "Payment Programs";
 			sourceTree = "<group>";
@@ -1297,6 +1300,7 @@
 				FA0C444421278B8D00B59194 /* Location.swift in Sources */,
 				FACA3EBB21928B150099E620 /* EmergencyContactViewController.swift in Sources */,
 				FA531C26219630E700AE2C38 /* BeltBuilder.swift in Sources */,
+				FABF85BF21BB09FC005CEBD4 /* Billing.swift in Sources */,
 				FA6FBA062149F3B700558657 /* UserPermissions.swift in Sources */,
 				FA21D6A32134BAC5006790E5 /* StudentDetailTableViewController.swift in Sources */,
 				FA5C5C382151D3C600BF62D5 /* StudentHomeTableViewController.swift in Sources */,

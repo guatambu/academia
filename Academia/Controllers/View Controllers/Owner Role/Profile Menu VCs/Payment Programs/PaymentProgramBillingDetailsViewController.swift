@@ -24,16 +24,23 @@ class PaymentProgramBillingDetailsViewController: UIViewController {
     
     let beltBuilder = BeltBuilder()
     
-    // payment program info outlets
-    @IBOutlet weak var paymentProgramNameLabelOutlet: UILabel!
-    @IBOutlet weak var activeLabelOutlet: UILabel!
-    @IBOutlet weak var lastChangedLabelOutlet: UILabel!
-    // program description textView
-    @IBOutlet weak var programDescriptionTextView: UITextView!
-    // billing details outlets
-    @IBOutlet weak var billingOptionsLabelOutlet: UILabel!
+    // welcome message outlets
+    @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
+    @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
+    // billing type outlets
     @IBOutlet weak var billingTypeLabelOutlet: UILabel!
+    @IBOutlet weak var billingTypeAddButtonOutlet: UIButton!
+    @IBOutlet weak var billingTypeTextField: UITextField!
+    // billing options outlets
+    @IBOutlet weak var billingOptionsLabelOutlet: UILabel!
+    @IBOutlet weak var billingOptionsAddButtonOutlet: UIButton!
+    @IBOutlet weak var billingOptionsTextField: UITextField!
+    // signature type outlets
     @IBOutlet weak var signatureTypeLabelOutlet: UILabel!
+    @IBOutlet weak var signatureTypeAddButtonOutlet: UIButton!
+    @IBOutlet weak var signatureTypeTextField: UITextField!
+    // next button outlet
+    @IBOutlet weak var nextButtonOutlet: DesignableButton!
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -76,13 +83,13 @@ class PaymentProgramBillingDetailsViewController: UIViewController {
         
         // programmatically performing the segue
         
-        print("to address segue")
+        print("to agreement segue")
         // instantiate the relevant storyboard
         let mainView: UIStoryboard = UIStoryboard(name: "OwnerPaymentProgramWorkFlow", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
-        let destViewController = mainView.instantiateViewController(withIdentifier: "toPaymentProgramBillingDetails") as! PaymentProgramBillingDetailsViewController
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toPaymentProgramAgreement") as! PaymentProgramAgreementViewController
         
-        // run check to see is there is a paymentProgramName
+        // run check to see if billing details are properly selected/in place
         guard programNameTextField.text != "" else {
             
             welcomeInstructionsLabelOutlet.textColor = UIColor.red
@@ -101,6 +108,9 @@ class PaymentProgramBillingDetailsViewController: UIViewController {
         destViewController.paymentProgramName = paymentProgramName
         destViewController.active = active
         destViewController.programDescription = programDescription
+        destViewController.billingOptions = billingOptions
+        destViewController.billingType = billingType
+        destViewController.signatureType = signatureType
         
         destViewController.inEditingMode = inEditingMode
         destViewController.paymentProgramToEdit = paymentProgramToEdit
@@ -114,7 +124,6 @@ class PaymentProgramBillingDetailsViewController: UIViewController {
 
 // MARK: - Editing Mode for Individual User case specific setup
 extension PaymentProgramBillingDetailsViewController {
-    
     // Update Function for case where want to update user info without a segue
     func updatePaymentProgramInfo() {
         guard let paymentProgram = paymentProgramToEdit else { return }
@@ -124,37 +133,23 @@ extension PaymentProgramBillingDetailsViewController {
             print("update payment program name: \(PaymentProgramModelController.shared.paymentPrograms[0].programName)")
         }
     }
-    
     func enterEditingMode(inEditingMode: Bool?) {
-        
         guard let inEditingMode = inEditingMode else { return }
-        
         if inEditingMode {
             let saveButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveButtonTapped))
             navigationItem.rightBarButtonItem = saveButtonItem
             
             paymentProgramEditingSetup()
         }
-        
         print("PaymentProgramNameAndDescriptionVC -> inEditingMode: \(inEditingMode)")
     }
-    
     // owner setup for editing mode
     func paymentProgramEditingSetup() {
-        
         guard let paymentProgramToEdit = paymentProgramToEdit else {
             return
         }
-        
-        welcomeLabelOutlet.text = "Program: \(paymentProgramToEdit.programName)"
+        welcomeMessageLabelOutlet.text = "Program: \(paymentProgramToEdit.programName)"
         
         welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
-        
-        programDescriptionTextView.text = paymentProgramToEdit.paymentDescription
-        programNameTextField.text = paymentProgramToEdit.programName
     }
-}
-
-
-
 }
