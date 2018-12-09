@@ -163,21 +163,21 @@ extension PaymentProgramInfoDetailsViewController {
         // payment program description
         programDescriptionTextView.text = paymentProgram.paymentDescription
         // billing details outlets
-        for option in paymentProgram.billingOptions {
-            billingOptions += option
+        for date in paymentProgram.billingDates {
+            billingOptions += date.rawValue
         }
         // billing options
-        for type in paymentProgram.billingType {
+        for type in paymentProgram.billingTypes {
 //            guard let option = option else {
 //                print("no billing options present in payment program billing options PaymentProgramInfoDetailsViewController -> populateCompletedProfileInfo() - line 146")
 //                return
 //            }
-            billingType += type
+            billingType += type.rawValue
         }
         billingOptionsLabelOutlet.text = billingOptions
         // signature type
-        for type in paymentProgram.signatureType {
-            signatureType += type
+        for type in paymentProgram.signatureTypes {
+            signatureType += type.rawValue
         }
         signatureTypeLabelOutlet.text = signatureType
     }

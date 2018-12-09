@@ -128,6 +128,7 @@
 		FABF85B521B862FB005CEBD4 /* OwnerLocationWorkFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABF85B421B862FB005CEBD4 /* OwnerLocationWorkFlow.storyboard */; };
 		FABF85B721B86333005CEBD4 /* OwnerPaymentProgramWorkFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABF85B621B86333005CEBD4 /* OwnerPaymentProgramWorkFlow.storyboard */; };
 		FABF85BF21BB09FC005CEBD4 /* Billing.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF85BE21BB09FC005CEBD4 /* Billing.swift */; };
+		FABF85C121BB3AA3005CEBD4 /* BillingDetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF85C021BB3AA3005CEBD4 /* BillingDetailsCollectionViewCell.swift */; };
 		FACA3EAC21927C3F0099E620 /* profile_pic_placeholder_image.png in Resources */ = {isa = PBXBuildFile; fileRef = FACA3EAB21927C3F0099E620 /* profile_pic_placeholder_image.png */; };
 		FACA3EAE21927CEE0099E620 /* IBDesignables.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA3EAD21927CEE0099E620 /* IBDesignables.swift */; };
 		FACA3EB1219288CD0099E620 /* NameAndBeltViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA3EB0219288CD0099E620 /* NameAndBeltViewController.swift */; };
@@ -371,6 +372,7 @@
 		FABF85B421B862FB005CEBD4 /* OwnerLocationWorkFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerLocationWorkFlow.storyboard; sourceTree = "<group>"; };
 		FABF85B621B86333005CEBD4 /* OwnerPaymentProgramWorkFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerPaymentProgramWorkFlow.storyboard; sourceTree = "<group>"; };
 		FABF85BE21BB09FC005CEBD4 /* Billing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Billing.swift; sourceTree = "<group>"; };
+		FABF85C021BB3AA3005CEBD4 /* BillingDetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingDetailsCollectionViewCell.swift; sourceTree = "<group>"; };
 		FACA3EAB21927C3F0099E620 /* profile_pic_placeholder_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile_pic_placeholder_image.png; sourceTree = "<group>"; };
 		FACA3EAD21927CEE0099E620 /* IBDesignables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignables.swift; sourceTree = "<group>"; };
 		FACA3EB0219288CD0099E620 /* NameAndBeltViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameAndBeltViewController.swift; sourceTree = "<group>"; };
@@ -582,9 +584,9 @@
 				FA7A12D0216AE57A00C03590 /* Academia.xcdatamodeld */,
 				FA6FBA042149F37000558657 /* User Models */,
 				FA21D6AA21362560006790E5 /* Belt Models */,
-				FA4DF32A218CC9E100ECC167 /* Curriculum Models */,
 				FA4DF332218CCA8A00ECC167 /* Payment Programs */,
 				FA4DF331218CCA6400ECC167 /* Location Models */,
+				FA4DF32A218CC9E100ECC167 /* Curriculum Models */,
 				FA9ADA202138DBC30005E1F1 /* MyCells.swift */,
 				FAE2FD3B2140700F00815402 /* MockData.swift */,
 			);
@@ -912,6 +914,7 @@
 				FABF85A221B78ABD005CEBD4 /* PaymentProgramInfoDetailsViewController.swift */,
 				FABF85A621B78B4C005CEBD4 /* PaymentProgramNameAndDescriptionViewController.swift */,
 				FABF85A821B78B99005CEBD4 /* PaymentProgramBillingDetailsViewController.swift */,
+				FABF85C021BB3AA3005CEBD4 /* BillingDetailsCollectionViewCell.swift */,
 				FABF85AA21B78C36005CEBD4 /* PaymentProgramAgreementViewController.swift */,
 				FABF85AC21B78C6F005CEBD4 /* ReviewAndCreatePaymentProgramViewController.swift */,
 				FABF85AE21B78CB2005CEBD4 /* ViewPaymentProgramAgreementViewController.swift */,
@@ -1287,6 +1290,7 @@
 				FAE67A3A215C6EDD00822DCF /* StudentGroupGeneralMenuTableViewCell.swift in Sources */,
 				FA9ADA0F21378B140005E1F1 /* BeltsListTableViewController.swift in Sources */,
 				FA4DF32E218CCA1A00ECC167 /* CurriculumModule.swift in Sources */,
+				FABF85C121BB3AA3005CEBD4 /* BillingDetailsCollectionViewCell.swift in Sources */,
 				FAE2FDB02140C0C900815402 /* SocialNetworksTextFieldTableViewCell.swift in Sources */,
 				FAE2FD9E2140C02800815402 /* EmailTextFieldTableViewCell.swift in Sources */,
 				FABF859621B220B9005CEBD4 /* LocationInfoDetailsViewController.swift in Sources */,

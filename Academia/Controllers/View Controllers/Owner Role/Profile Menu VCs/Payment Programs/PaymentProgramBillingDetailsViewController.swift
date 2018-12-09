@@ -9,15 +9,20 @@
 import UIKit
 
 class PaymentProgramBillingDetailsViewController: UIViewController {
+    
+    
 
     // MARK: - Properties
     
     var paymentProgramName: String?
     var active: Bool?
     var programDescription: String?
-    var billingOptions: String = ""
-    var billingType: String = ""
-    var signatureType: String = ""
+    var billingOptionsString = ""
+    var billingTypeString = ""
+    var signatureTypeString = ""
+    var billingTypes: [Billing.BillingType]?
+    var billingDates: [Billing.BillingDate]?
+    var signatureTypes: [Billing.BillingSignature]?
     
     var inEditingMode: Bool?
     var paymentProgramToEdit: PaymentProgram?
@@ -27,18 +32,6 @@ class PaymentProgramBillingDetailsViewController: UIViewController {
     // welcome message outlets
     @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
-    // billing type outlets
-    @IBOutlet weak var billingTypeLabelOutlet: UILabel!
-    @IBOutlet weak var billingTypeAddButtonOutlet: UIButton!
-    @IBOutlet weak var billingTypeTextField: UITextField!
-    // billing options outlets
-    @IBOutlet weak var billingOptionsLabelOutlet: UILabel!
-    @IBOutlet weak var billingOptionsAddButtonOutlet: UIButton!
-    @IBOutlet weak var billingOptionsTextField: UITextField!
-    // signature type outlets
-    @IBOutlet weak var signatureTypeLabelOutlet: UILabel!
-    @IBOutlet weak var signatureTypeAddButtonOutlet: UIButton!
-    @IBOutlet weak var signatureTypeTextField: UITextField!
     // next button outlet
     @IBOutlet weak var nextButtonOutlet: DesignableButton!
     
@@ -52,7 +45,7 @@ class PaymentProgramBillingDetailsViewController: UIViewController {
         
         navigationController?.navigationBar.titleTextAttributes = avenirFont
         
-        populateCompletedProfileInfo()
+        enterEditingMode(inEditingMode: inEditingMode)
     }
     
     override func viewDidLoad() {
@@ -108,9 +101,9 @@ class PaymentProgramBillingDetailsViewController: UIViewController {
         destViewController.paymentProgramName = paymentProgramName
         destViewController.active = active
         destViewController.programDescription = programDescription
-        destViewController.billingOptions = billingOptions
-        destViewController.billingType = billingType
-        destViewController.signatureType = signatureType
+        destViewController.billingDates = billingDates
+        destViewController.billingTypes = billingTypes
+        destViewController.signatureTypes = signatureTypes
         
         destViewController.inEditingMode = inEditingMode
         destViewController.paymentProgramToEdit = paymentProgramToEdit
@@ -129,7 +122,7 @@ extension PaymentProgramBillingDetailsViewController {
         guard let paymentProgram = paymentProgramToEdit else { return }
         // payment program update info
         if programNameTextField.text != "" {
-            PaymentProgramModelController.shared.update(paymentProgram: paymentProgram, programName: paymentProgramName, active: active, paymentDescription: programDescription, billingType: nil, billingOptions: nil, signatureType: nil, paymentAgreement: nil)
+            PaymentProgramModelController.shared.update(paymentProgram: paymentProgram, programName: paymentProgramName, active: active, paymentDescription: programDescription, billingTypes: nil, billingDates: nil, signatureTypes: nil, paymentAgreement: nil)
             print("update payment program name: \(PaymentProgramModelController.shared.paymentPrograms[0].programName)")
         }
     }
@@ -152,4 +145,22 @@ extension PaymentProgramBillingDetailsViewController {
         
         welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
     }
+}
+
+
+// MARK: - UICollectionView Protocol Conformance & Methods
+extension PaymentProgramBillingDetailsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+    }
+    
 }

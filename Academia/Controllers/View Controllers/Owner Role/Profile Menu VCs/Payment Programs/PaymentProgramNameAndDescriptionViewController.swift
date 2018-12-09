@@ -126,7 +126,7 @@ extension PaymentProgramNameAndDescriptionViewController {
         guard let paymentProgram = paymentProgramToEdit else { return }
         // payment program update info
         if programNameTextField.text != "" {
-            PaymentProgramModelController.shared.update(paymentProgram: paymentProgram, programName: paymentProgramName, active: active, paymentDescription: programDescription, billingType: nil, billingOptions: nil, signatureType: nil, paymentAgreement: nil)
+            PaymentProgramModelController.shared.update(paymentProgram: paymentProgram, programName: paymentProgramName, active: active, paymentDescription: programDescription, billingTypes: nil, billingDates: nil, signatureTypes: nil, paymentAgreement: nil)
             print("update payment program name: \(PaymentProgramModelController.shared.paymentPrograms[0].programName)")
         }
     }

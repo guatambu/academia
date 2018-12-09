@@ -16,9 +16,9 @@ class PaymentProgramAgreementViewController: UIViewController {
     var active: Bool?
     var programDescription: String?
     var programAgreement: String?
-    var billingOptions: [String]?
-    var billingType: [String]?
-    var signatureType: [String]?
+    var billingTypes: [Billing.BillingType]?
+    var billingDates: [Billing.BillingDate]?
+    var signatureTypes: [Billing.BillingSignature]?
     
     var inEditingMode: Bool?
     var paymentProgramToEdit: PaymentProgram?
@@ -98,9 +98,9 @@ class PaymentProgramAgreementViewController: UIViewController {
         destViewController.paymentProgramName = paymentProgramName
         destViewController.active = active
         destViewController.programDescription = programDescription
-        destViewController.billingOptions = billingOptions
-        destViewController.billingType = billingType
-        destViewController.signatureType = signatureType
+        destViewController.billingDates = billingDates
+        destViewController.billingTypes = billingTypes
+        destViewController.signatureTypes = signatureTypes
         destViewController.programAgreement = programAgreement
         
         destViewController.inEditingMode = inEditingMode
@@ -121,7 +121,7 @@ extension PaymentProgramAgreementViewController {
         guard let paymentProgram = paymentProgramToEdit else { return }
         // payment program update info
         if programAgreementTextView.text != "" {
-            PaymentProgramModelController.shared.update(paymentProgram: paymentProgram, programName: nil, active: nil, paymentDescription: nil, billingType: nil, billingOptions: nil, signatureType: nil, paymentAgreement: programAgreement)
+            PaymentProgramModelController.shared.update(paymentProgram: paymentProgram, programName: nil, active: nil, paymentDescription: nil, billingTypes: nil, billingDates: nil, signatureTypes: nil, paymentAgreement: programAgreement)
             print("update payment program name: \(PaymentProgramModelController.shared.paymentPrograms[0].programName)")
         }
     }

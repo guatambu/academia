@@ -16,9 +16,9 @@ class ReviewAndCreatePaymentProgramViewController: UIViewController {
     var active: Bool?
     var programDescription: String?
     var programAgreement: String?
-    var billingOptions: [String]?
-    var billingType: [String]?
-    var signatureType: [String]?
+    var billingTypes: [Billing.BillingType]?
+    var billingDates: [Billing.BillingDate]?
+    var signatureTypes: [Billing.BillingSignature]?
     
     var inEditingMode: Bool?
     var paymentProgramToEdit: PaymentProgram?
@@ -86,7 +86,7 @@ extension ReviewAndCreatePaymentProgramViewController {
     
     func populateCompletedPaymentProgramInfo() {
         
-        var optionsCounter = 0
+        var datesCounter = 0
         var typesCounter = 0
         var signatureCounter = 0
         
@@ -109,19 +109,19 @@ extension ReviewAndCreatePaymentProgramViewController {
         // payment program description
         programDescriptionTextView.text = paymentProgram.paymentDescription
         // billing details outlets
-        for option in paymentProgram.billingOptions {
-            if optionsCounter == paymentProgram.billingOptions.count - 1 {
-                billingOptionsString += "\(option)"
+        for date in paymentProgram.billingDates {
+            if datesCounter == paymentProgram.billingDates.count - 1 {
+                billingOptionsString += "\(date)"
             } else {
-                billingOptionsString += "\(option), "
+                billingOptionsString += "\(date), "
             }
-            optionsCounter += 1
+            datesCounter += 1
         }
         billingOptionsLabelOutlet.text = billingOptionsString
         // billing options
-        for type in paymentProgram.billingType {
+        for type in paymentProgram.billingTypes {
            
-            if typesCounter == paymentProgram.billingType.count - 1 {
+            if typesCounter == paymentProgram.billingTypes.count - 1 {
                 billingTypesString += "\(type)"
             } else {
                 billingTypesString += "\(type), "
@@ -130,8 +130,8 @@ extension ReviewAndCreatePaymentProgramViewController {
         }
         billingTypeLabelOutlet.text = billingTypesString
         // signature type
-        for type in paymentProgram.signatureType {
-            if signatureCounter == paymentProgram.billingOptions.count - 1 {
+        for type in paymentProgram.signatureTypes {
+            if signatureCounter == paymentProgram.signatureTypes.count - 1 {
                 signatureTypesString += "\(type)"
             } else {
                 signatureTypesString += "\(type), "
@@ -151,11 +151,11 @@ extension ReviewAndCreatePaymentProgramViewController {
         guard let active = active else { print("fail active"); return }
         guard let programDescription = programDescription else { print("fail programDescription"); return }
         guard let programAgreement = programAgreement else { print("fail programAgreement"); return }
-        guard let billingOptions = billingOptions else { print("fail billingOptions"); return }
-        guard let billingType = billingType else { print("fail billingType"); return }
-        guard let signatureType = signatureType else { print("fail signatureType"); return }
+        guard let billingDates = billingDates else { print("fail billingOptions"); return }
+        guard let billingTypes = billingTypes else { print("fail billingType"); return }
+        guard let signatureTypes = signatureTypes else { print("fail signatureType"); return }
         
-        PaymentProgramModelController.shared.addNew(active: active, programName: paymentProgramName, billingType: billingType, billingOptions: billingOptions, paymentDescription: programDescription, paymentAgreement: programAgreement, signatureType: signatureType)
+        PaymentProgramModelController.shared.addNew(active: active, programName: paymentProgramName, billingTypes: billingTypes, billingDates: billingDates, signatureTypes: signatureTypes, paymentDescription: programDescription, paymentAgreement: programAgreement)
     }
 }
 

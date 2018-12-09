@@ -746,121 +746,213 @@
                                     <constraint firstAttribute="trailing" secondItem="yHe-g9-Smh" secondAttribute="trailing" id="sRD-8s-Xim"/>
                                 </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="38" translatesAutoresizingMaskIntoConstraints="NO" id="75h-HC-KlO" userLabel="billing settings Stack View">
-                                <rect key="frame" x="24" y="160" width="327" height="347"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="e0Z-At-aEc">
+                                <rect key="frame" x="16" y="139.5" width="343" height="388"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="sdp-8v-zbe" userLabel="billing type vertical Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="327" height="86"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="KrA-jL-9OT" userLabel="billing type Stack View">
-                                                <rect key="frame" x="0.0" y="0.0" width="248" height="48"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="billing type:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qhE-lj-UtH">
-                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="48"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y1y-aA-D6u">
-                                                        <rect key="frame" x="168" y="0.0" width="80" height="48"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="80" id="S9i-wk-M0p"/>
-                                                            <constraint firstAttribute="height" constant="48" id="SQO-vX-CFO"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
-                                                        <state key="normal" title="Add">
-                                                            <color key="titleColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </state>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ex. 12 month agreement" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rs3-cw-QLR" userLabel="billing type Text Field">
-                                                <rect key="frame" x="0.0" y="56" width="327" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="billing type:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dsv-jY-no6">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="22"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(chosen billing type results)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ydO-um-0PW">
+                                        <rect key="frame" x="0.0" y="30" width="343" height="22"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lNN-Pf-lKK" userLabel="billing type Collection View">
+                                        <rect key="frame" x="0.0" y="60" width="343" height="64"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="Rs3-cw-QLR" secondAttribute="trailing" id="Bk9-Jm-UP0"/>
-                                            <constraint firstItem="Rs3-cw-QLR" firstAttribute="leading" secondItem="sdp-8v-zbe" secondAttribute="leading" id="orW-dw-4Pz"/>
+                                            <constraint firstAttribute="height" constant="64" id="odf-No-wHH"/>
                                         </constraints>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="t0A-vO-Xpb" userLabel="billing options vertical Stack View">
-                                        <rect key="frame" x="0.0" y="124" width="327" height="86"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="fE9-J2-d7Z" userLabel="billing options Stack View">
-                                                <rect key="frame" x="0.0" y="0.0" width="248" height="48"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="billing options:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gB8-fc-KFd">
-                                                        <rect key="frame" x="0.0" y="0.0" width="161" height="48"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rav-NT-nhL">
-                                                        <rect key="frame" x="168" y="0.0" width="80" height="48"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="48" id="8aH-XE-Kus"/>
-                                                            <constraint firstAttribute="width" constant="80" id="nMv-8T-U4S"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
-                                                        <state key="normal" title="Add">
-                                                            <color key="titleColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </state>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ex. 1st of the month" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tfo-mO-SFn" userLabel="billing options Text Field">
-                                                <rect key="frame" x="0.0" y="56" width="327" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="4" minimumInteritemSpacing="4" id="dlg-5f-VWk">
+                                            <size key="itemSize" width="210" height="64"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BillingDetailsCollectionCell" id="zP3-E0-cuN" customClass="BillingDetailsCollectionViewCell" customModule="Academia" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="210" height="64"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="210" height="64"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(billing details label):" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oYY-Sz-hTp">
+                                                            <rect key="frame" x="8" y="16" width="146.5" height="32"/>
+                                                            <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unchecked_checkbox_32.png" translatesAutoresizingMaskIntoConstraints="NO" id="IYe-WG-hFw">
+                                                            <rect key="frame" x="170" y="16" width="32" height="32"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="32" id="O2h-zd-1Hn"/>
+                                                                <constraint firstAttribute="height" constant="32" id="zUn-CP-83K"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                </view>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="oYY-Sz-hTp" secondAttribute="bottom" constant="16" id="8ar-2s-V70"/>
+                                                    <constraint firstAttribute="bottom" secondItem="IYe-WG-hFw" secondAttribute="bottom" constant="16" id="AjA-nx-d6i"/>
+                                                    <constraint firstAttribute="trailing" secondItem="IYe-WG-hFw" secondAttribute="trailing" constant="8" id="G28-cc-2dC"/>
+                                                    <constraint firstItem="oYY-Sz-hTp" firstAttribute="top" secondItem="zP3-E0-cuN" secondAttribute="top" constant="16" id="UZX-gQ-JmQ"/>
+                                                    <constraint firstItem="oYY-Sz-hTp" firstAttribute="leading" secondItem="zP3-E0-cuN" secondAttribute="leading" constant="8" id="VHG-4j-sud"/>
+                                                    <constraint firstItem="IYe-WG-hFw" firstAttribute="top" secondItem="zP3-E0-cuN" secondAttribute="top" constant="16" id="fgV-BL-mwv"/>
+                                                </constraints>
+                                                <size key="customSize" width="210" height="64"/>
+                                                <connections>
+                                                    <outlet property="billingDetailsLabel" destination="oYY-Sz-hTp" id="RTU-8o-96F"/>
+                                                    <outlet property="checkboxImageView" destination="IYe-WG-hFw" id="f5w-jv-WIt"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="billing date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="djf-OH-pnA">
+                                        <rect key="frame" x="0.0" y="132" width="343" height="22"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(chosen billing date results)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CGp-IK-Ttq">
+                                        <rect key="frame" x="0.0" y="162" width="343" height="22"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BRJ-bw-ge9" userLabel="billing date Collection View">
+                                        <rect key="frame" x="0.0" y="192" width="343" height="64"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="Tfo-mO-SFn" secondAttribute="trailing" id="N0b-MC-QcE"/>
-                                            <constraint firstItem="Tfo-mO-SFn" firstAttribute="leading" secondItem="t0A-vO-Xpb" secondAttribute="leading" id="qtA-cs-s0x"/>
+                                            <constraint firstAttribute="height" constant="64" id="QGD-EC-87z"/>
                                         </constraints>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="aMw-lc-vAj" userLabel="signature type vertical Stack View">
-                                        <rect key="frame" x="0.0" y="248" width="327" height="99"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="vQ8-oh-FqO" userLabel="signature type Stack View">
-                                                <rect key="frame" x="0.0" y="0.0" width="247.5" height="48"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="signature type:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zuG-JW-8De">
-                                                        <rect key="frame" x="0.0" y="0.0" width="163.5" height="48"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yT2-zy-9EU">
-                                                        <rect key="frame" x="167.5" y="0.0" width="80" height="48"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="80" id="q0A-Jb-BHj"/>
-                                                            <constraint firstAttribute="height" constant="48" id="tsw-9l-8u7"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
-                                                        <state key="normal" title="Add">
-                                                            <color key="titleColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </state>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="digital signature" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RlJ-CU-P9x" userLabel="signature type Text Field">
-                                                <rect key="frame" x="0.0" y="69" width="327" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="4" minimumInteritemSpacing="4" id="7cx-BE-j6d">
+                                            <size key="itemSize" width="210" height="64"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="BillingDetailsCollectionCell" id="OtK-Iy-PhB" customClass="BillingDetailsCollectionViewCell" customModule="Academia" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="210" height="64"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="210" height="64"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(billing details label):" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vMR-6V-aBg">
+                                                            <rect key="frame" x="8" y="16" width="146.5" height="32"/>
+                                                            <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unchecked_checkbox_32.png" translatesAutoresizingMaskIntoConstraints="NO" id="e0f-0H-GFl">
+                                                            <rect key="frame" x="170" y="16" width="32" height="32"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="32" id="8tY-sk-hQd"/>
+                                                                <constraint firstAttribute="width" constant="32" id="MGC-n8-kQS"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                </view>
+                                                <constraints>
+                                                    <constraint firstItem="vMR-6V-aBg" firstAttribute="top" secondItem="OtK-Iy-PhB" secondAttribute="top" constant="16" id="1U6-Kc-fdW"/>
+                                                    <constraint firstItem="e0f-0H-GFl" firstAttribute="top" secondItem="OtK-Iy-PhB" secondAttribute="top" constant="16" id="3K6-mt-Nxx"/>
+                                                    <constraint firstAttribute="trailing" secondItem="e0f-0H-GFl" secondAttribute="trailing" constant="8" id="cMU-ge-4KR"/>
+                                                    <constraint firstItem="vMR-6V-aBg" firstAttribute="leading" secondItem="OtK-Iy-PhB" secondAttribute="leading" constant="8" id="gZN-Vc-apu"/>
+                                                    <constraint firstAttribute="bottom" secondItem="e0f-0H-GFl" secondAttribute="bottom" constant="16" id="oDC-iG-pCQ"/>
+                                                    <constraint firstAttribute="bottom" secondItem="vMR-6V-aBg" secondAttribute="bottom" constant="16" id="zQ7-MW-QGq"/>
+                                                </constraints>
+                                                <size key="customSize" width="210" height="64"/>
+                                                <connections>
+                                                    <outlet property="billingDetailsLabel" destination="vMR-6V-aBg" id="mAk-4w-AHQ"/>
+                                                    <outlet property="checkboxImageView" destination="e0f-0H-GFl" id="egz-ns-XRz"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="signature type:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6PC-LU-i3A">
+                                        <rect key="frame" x="0.0" y="264" width="343" height="22"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(chosen signature type results)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u1H-IP-qYm">
+                                        <rect key="frame" x="0.0" y="294" width="343" height="22"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CG3-Vj-ahM" userLabel="signature type Collection View">
+                                        <rect key="frame" x="0.0" y="324" width="343" height="64"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="RlJ-CU-P9x" firstAttribute="leading" secondItem="aMw-lc-vAj" secondAttribute="leading" id="RC2-ao-C24"/>
-                                            <constraint firstAttribute="trailing" secondItem="RlJ-CU-P9x" secondAttribute="trailing" id="jgk-5N-iOq"/>
+                                            <constraint firstAttribute="height" constant="64" id="xgq-1U-F9C"/>
                                         </constraints>
-                                    </stackView>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="4" minimumInteritemSpacing="4" id="nDs-al-fAJ">
+                                            <size key="itemSize" width="210" height="64"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BillingDetailsCollectionCell" id="PNU-dI-nmL" customClass="BillingDetailsCollectionViewCell" customModule="Academia" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="210" height="64"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="210" height="64"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(billing details label):" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpd-Oh-Nf4">
+                                                            <rect key="frame" x="8" y="16" width="146.5" height="32"/>
+                                                            <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unchecked_checkbox_32.png" translatesAutoresizingMaskIntoConstraints="NO" id="Um7-9E-ijz">
+                                                            <rect key="frame" x="170" y="16" width="32" height="32"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="32" id="DSy-P1-AQ5"/>
+                                                                <constraint firstAttribute="height" constant="32" id="sCz-5O-T95"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                </view>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="Um7-9E-ijz" secondAttribute="bottom" constant="16" id="0Qg-O3-2es"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Um7-9E-ijz" secondAttribute="trailing" constant="8" id="2IN-VR-zm5"/>
+                                                    <constraint firstItem="Um7-9E-ijz" firstAttribute="top" secondItem="PNU-dI-nmL" secondAttribute="top" constant="16" id="Gkc-x7-iqE"/>
+                                                    <constraint firstItem="xpd-Oh-Nf4" firstAttribute="top" secondItem="PNU-dI-nmL" secondAttribute="top" constant="16" id="JFx-Eg-9x8"/>
+                                                    <constraint firstAttribute="bottom" secondItem="xpd-Oh-Nf4" secondAttribute="bottom" constant="16" id="K67-xR-S1a"/>
+                                                    <constraint firstItem="xpd-Oh-Nf4" firstAttribute="leading" secondItem="PNU-dI-nmL" secondAttribute="leading" constant="8" id="aiZ-l6-cek"/>
+                                                </constraints>
+                                                <size key="customSize" width="210" height="64"/>
+                                                <connections>
+                                                    <outlet property="billingDetailsLabel" destination="xpd-Oh-Nf4" id="TaV-p5-t0X"/>
+                                                    <outlet property="checkboxImageView" destination="Um7-9E-ijz" id="bnf-ta-4WF"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="CGp-IK-Ttq" secondAttribute="trailing" id="5qw-oi-XKA"/>
+                                    <constraint firstItem="djf-OH-pnA" firstAttribute="leading" secondItem="e0Z-At-aEc" secondAttribute="leading" id="7xJ-cd-rU2"/>
+                                    <constraint firstAttribute="trailing" secondItem="djf-OH-pnA" secondAttribute="trailing" id="LUZ-zm-nXH"/>
+                                    <constraint firstItem="6PC-LU-i3A" firstAttribute="leading" secondItem="e0Z-At-aEc" secondAttribute="leading" id="Nlc-vv-4b7"/>
+                                    <constraint firstAttribute="trailing" secondItem="u1H-IP-qYm" secondAttribute="trailing" id="PP1-dg-1qg"/>
+                                    <constraint firstItem="dsv-jY-no6" firstAttribute="leading" secondItem="e0Z-At-aEc" secondAttribute="leading" id="bT6-HF-xSZ"/>
+                                    <constraint firstItem="ydO-um-0PW" firstAttribute="leading" secondItem="e0Z-At-aEc" secondAttribute="leading" id="cXF-hD-aAj"/>
+                                    <constraint firstItem="u1H-IP-qYm" firstAttribute="leading" secondItem="e0Z-At-aEc" secondAttribute="leading" id="fAL-KY-Ktg"/>
+                                    <constraint firstAttribute="trailing" secondItem="dsv-jY-no6" secondAttribute="trailing" id="n7e-BK-oSp"/>
+                                    <constraint firstAttribute="trailing" secondItem="ydO-um-0PW" secondAttribute="trailing" id="nCy-Pi-pA8"/>
+                                    <constraint firstItem="CGp-IK-Ttq" firstAttribute="leading" secondItem="e0Z-At-aEc" secondAttribute="leading" id="rDz-Xj-l3w"/>
+                                    <constraint firstAttribute="trailing" secondItem="6PC-LU-i3A" secondAttribute="trailing" id="yjn-VK-36W"/>
+                                </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="faL-f3-70Z" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
                                 <rect key="frame" x="133" y="571" width="109" height="40"/>
@@ -942,15 +1034,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="e0Z-At-aEc" firstAttribute="centerY" secondItem="oAm-qa-hIg" secondAttribute="centerY" id="5wr-vw-fLY"/>
                             <constraint firstItem="Whu-cT-Vni" firstAttribute="top" secondItem="faL-f3-70Z" secondAttribute="bottom" constant="24" id="BZN-Ka-6V2"/>
                             <constraint firstItem="Whu-cT-Vni" firstAttribute="centerX" secondItem="oAm-qa-hIg" secondAttribute="centerX" id="EIb-nW-RS7"/>
-                            <constraint firstItem="75h-HC-KlO" firstAttribute="leading" secondItem="gyx-1f-nYi" secondAttribute="leading" constant="24" id="LkY-Pv-Zdx"/>
                             <constraint firstItem="gyx-1f-nYi" firstAttribute="trailing" secondItem="Z2O-T9-N8e" secondAttribute="trailing" constant="24" id="P8l-of-0LN"/>
                             <constraint firstItem="Z2O-T9-N8e" firstAttribute="centerX" secondItem="oAm-qa-hIg" secondAttribute="centerX" id="YoU-uq-Pn1"/>
-                            <constraint firstItem="gyx-1f-nYi" firstAttribute="trailing" secondItem="75h-HC-KlO" secondAttribute="trailing" constant="24" id="Z4m-xQ-2VN"/>
-                            <constraint firstItem="75h-HC-KlO" firstAttribute="centerY" secondItem="oAm-qa-hIg" secondAttribute="centerY" id="gGp-NM-ztU"/>
+                            <constraint firstItem="gyx-1f-nYi" firstAttribute="trailing" secondItem="e0Z-At-aEc" secondAttribute="trailing" constant="16" id="Zn0-WC-WYy"/>
                             <constraint firstItem="gyx-1f-nYi" firstAttribute="bottom" secondItem="Whu-cT-Vni" secondAttribute="bottom" constant="24" id="qmW-dr-xPV"/>
                             <constraint firstItem="faL-f3-70Z" firstAttribute="centerX" secondItem="oAm-qa-hIg" secondAttribute="centerX" id="rLe-Gb-0yZ"/>
+                            <constraint firstItem="e0Z-At-aEc" firstAttribute="leading" secondItem="gyx-1f-nYi" secondAttribute="leading" constant="16" id="utP-Wy-493"/>
                             <constraint firstItem="Z2O-T9-N8e" firstAttribute="top" secondItem="gyx-1f-nYi" secondAttribute="top" constant="16" id="veI-rW-B1Z"/>
                             <constraint firstItem="Z2O-T9-N8e" firstAttribute="leading" secondItem="gyx-1f-nYi" secondAttribute="leading" constant="24" id="wS5-7B-ynW"/>
                         </constraints>
@@ -960,23 +1052,14 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="m3l-nc-7cU"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="billingOptionsAddButtonOutlet" destination="rav-NT-nhL" id="b8s-q0-L0I"/>
-                        <outlet property="billingOptionsLabelOutlet" destination="gB8-fc-KFd" id="YOs-kv-UOC"/>
-                        <outlet property="billingOptionsTextField" destination="Tfo-mO-SFn" id="gkX-Mf-BPh"/>
-                        <outlet property="billingTypeAddButtonOutlet" destination="y1y-aA-D6u" id="4uj-vM-geM"/>
-                        <outlet property="billingTypeLabelOutlet" destination="qhE-lj-UtH" id="0I4-dS-QQo"/>
-                        <outlet property="billingTypeTextField" destination="Rs3-cw-QLR" id="kgE-12-WpG"/>
                         <outlet property="nextButtonOutlet" destination="faL-f3-70Z" id="xUJ-yG-TsS"/>
-                        <outlet property="signatureTypeAddButtonOutlet" destination="yT2-zy-9EU" id="8Ma-mL-xMN"/>
-                        <outlet property="signatureTypeLabelOutlet" destination="zuG-JW-8De" id="TEt-jO-KmE"/>
-                        <outlet property="signatureTypeTextField" destination="RlJ-CU-P9x" id="5Wt-uh-txr"/>
                         <outlet property="welcomeInstructionsLabelOutlet" destination="Y14-gf-5y1" id="IGL-nD-PaA"/>
                         <outlet property="welcomeMessageLabelOutlet" destination="yHe-g9-Smh" id="8Jn-gZ-Nux"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Okl-Cu-vX8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8683" y="8473"/>
+            <point key="canvasLocation" x="8682.3999999999996" y="8472.4137931034493"/>
         </scene>
         <!--payment program agreement-->
         <scene sceneID="MhU-fC-YX8">
@@ -1277,5 +1360,6 @@
     </scenes>
     <resources>
         <image name="right_red_arrow_32.png" width="32" height="32"/>
+        <image name="unchecked_checkbox_32.png" width="32" height="32"/>
     </resources>
 </document>

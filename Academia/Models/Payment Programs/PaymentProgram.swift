@@ -19,26 +19,26 @@ class PaymentProgram {
     var programName: String
     var dateCreated: Date
     var dateEdited: Date
-    var billingType: [String]
-    var billingOptions: [String]
+    var billingTypes: [Billing.BillingType]
+    var billingDates: [Billing.BillingDate]
+    var signatureTypes: [Billing.BillingSignature]
     var paymentDescription: String
     var paymentAgreement: String
-    var signatureType: [String]
     
     // Memberwise Initializer
     
-    init(paymentProgramUID: UUID, active: Bool, programName: String, dateCreated: Date, dateEdited: Date, billingType: [String], billingOptions: [String], paymentDescription: String, paymentAgreement: String, signatureType: [String]) {
+    init(paymentProgramUID: UUID, active: Bool, programName: String, dateCreated: Date, dateEdited: Date, billingTypes: [Billing.BillingType], billingDates: [Billing.BillingDate], signatureTypes: [Billing.BillingSignature], paymentDescription: String, paymentAgreement: String ) {
         
         self.paymentProgramUID = paymentProgramUID
         self.active = active
         self.programName = programName
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
-        self.billingType = billingType
-        self.billingOptions = billingOptions
+        self.billingTypes = billingTypes
+        self.billingDates = billingDates
+        self.signatureTypes = signatureTypes
         self.paymentDescription = paymentDescription
         self.paymentAgreement = paymentAgreement
-        self.signatureType = signatureType
     }
     
 }
@@ -46,16 +46,16 @@ class PaymentProgram {
 extension PaymentProgram: Equatable {
     
     static func ==(lhs: PaymentProgram, rhs: PaymentProgram) -> Bool {
+        if lhs.paymentProgramUID != rhs.paymentProgramUID { return false }
         if lhs.active != rhs.active { return false }
-        if lhs.billingType != rhs.billingType { return false }
-        if lhs.billingOptions != rhs.billingOptions { return false }
+        if lhs.programName != rhs.programName { return false }
         if lhs.dateCreated != rhs.dateCreated { return false }
         if lhs.dateEdited != rhs.dateEdited { return false }
+        if lhs.billingTypes != rhs.billingTypes { return false }
+        if lhs.billingDates != rhs.billingDates { return false }
+        if lhs.signatureTypes != rhs.signatureTypes { return false }
         if lhs.paymentAgreement != rhs.paymentAgreement { return false }
         if lhs.paymentDescription != rhs.paymentDescription { return false }
-        if lhs.paymentProgramUID != rhs.paymentProgramUID { return false }
-        if lhs.programName != rhs.programName { return false }
-        if lhs.signatureType != rhs.signatureType { return false }
         
         
         return true

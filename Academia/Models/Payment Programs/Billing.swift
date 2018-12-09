@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Billing {
+struct Billing {
     
     
     enum BillingType: String {
@@ -19,7 +19,7 @@ class Billing {
         case twelveMonths = "12 months"
     }
     
-    enum BillingOption: String {
+    enum BillingDate: String {
         case firstOfTheMonth = "1st of the month"
         case fifthOfTheMonth = "5th of the month"
         case fifteenthOfTheMonth = "15th of the month"
@@ -39,7 +39,6 @@ class Billing {
 
     // arrays of Billing details to be used throughout app
     let types: [BillingType] = [.dropIn, .monthly, .threeMonths, .sixMonths, .twelveMonths]
-    let options: [BillingOption] = [.firstOfTheMonth, .fifthOfTheMonth, .fifteenthOfTheMonth, .twentiethOfTheMonth, .registrationDay, .singleDay]
+    let options: [BillingDate] = [.firstOfTheMonth, .fifthOfTheMonth, .fifteenthOfTheMonth, .twentiethOfTheMonth, .registrationDay, .singleDay]
     let signatures: [BillingSignature] = [.digitallyTyped, .paperContract, .digitalFingerSignature, .touchID, .faceID, .otherBioMetric]
-
 }
