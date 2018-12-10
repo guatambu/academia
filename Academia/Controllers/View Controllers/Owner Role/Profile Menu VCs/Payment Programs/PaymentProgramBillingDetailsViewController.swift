@@ -60,7 +60,7 @@ class PaymentProgramBillingDetailsViewController: UIViewController {
     @objc func saveButtonTapped() {
         
         // Location update profile info
-        if programNameTextField.text != "" {
+        if billingTypes?.count != 0 && billingDates?.count != 0 && signatureTypes?.count != 0 {
             
             updatePaymentProgramInfo()
             
@@ -83,7 +83,7 @@ class PaymentProgramBillingDetailsViewController: UIViewController {
         let destViewController = mainView.instantiateViewController(withIdentifier: "toPaymentProgramAgreement") as! PaymentProgramAgreementViewController
         
         // run check to see if billing details are properly selected/in place
-        guard programNameTextField.text != "" else {
+        guard billingTypes?.count != 0 && billingDates?.count != 0 && signatureTypes?.count != 0 else {
             
             welcomeInstructionsLabelOutlet.textColor = UIColor.red
             return
@@ -121,7 +121,7 @@ extension PaymentProgramBillingDetailsViewController {
     func updatePaymentProgramInfo() {
         guard let paymentProgram = paymentProgramToEdit else { return }
         // payment program update info
-        if programNameTextField.text != "" {
+        if billingTypes?.count != 0 && billingDates?.count != 0 && signatureTypes?.count != 0 {
             PaymentProgramModelController.shared.update(paymentProgram: paymentProgram, programName: paymentProgramName, active: active, paymentDescription: programDescription, billingTypes: nil, billingDates: nil, signatureTypes: nil, paymentAgreement: nil)
             print("update payment program name: \(PaymentProgramModelController.shared.paymentPrograms[0].programName)")
         }
@@ -152,15 +152,15 @@ extension PaymentProgramBillingDetailsViewController {
 extension PaymentProgramBillingDetailsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        
+        return 0
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
+        return 0
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+        return UICollectionViewCell()
     }
     
 }
