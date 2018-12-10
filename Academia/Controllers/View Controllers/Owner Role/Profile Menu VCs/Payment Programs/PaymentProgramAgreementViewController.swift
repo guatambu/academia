@@ -75,7 +75,7 @@ class PaymentProgramAgreementViewController: UIViewController {
         
         print("to address segue")
         // instantiate the relevant storyboard
-        let mainView: UIStoryboard = UIStoryboard(name: "OwnerPaymentProgramWorkFlow", bundle: nil)
+        let mainView: UIStoryboard = UIStoryboard(name: "OwnerPaymentProgramWorkflow", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
         let destViewController = mainView.instantiateViewController(withIdentifier: "toReviewAndCreatePaymentProgram") as! ReviewAndCreatePaymentProgramViewController
         

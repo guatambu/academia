@@ -39,6 +39,6 @@ struct Billing {
 
     // arrays of Billing details to be used throughout app
     let types: [BillingType] = [.dropIn, .monthly, .threeMonths, .sixMonths, .twelveMonths]
-    let options: [BillingDate] = [.firstOfTheMonth, .fifthOfTheMonth, .fifteenthOfTheMonth, .twentiethOfTheMonth, .registrationDay, .singleDay]
+    let dates: [BillingDate] = [.firstOfTheMonth, .fifthOfTheMonth, .fifteenthOfTheMonth, .twentiethOfTheMonth, .registrationDay, .singleDay]
     let signatures: [BillingSignature] = [.digitallyTyped, .paperContract, .digitalFingerSignature, .touchID, .faceID, .otherBioMetric]
 }

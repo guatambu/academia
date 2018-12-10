@@ -12,15 +12,21 @@ class BillingDetailsCollectionViewCell: UICollectionViewCell {
     
     // MARK: Properties
     
-    var billingDetailTitle: String? {
+    var billingType: Billing.BillingType? {
         didSet {
-            updateLabelViews()
+            updateViews()
         }
     }
     
-    var checkboxChecked: Bool? {
+    var billingDate: Billing.BillingDate? {
         didSet {
-            updateCheckBoxValue()
+            updateViews()
+        }
+    }
+    
+    var signatureType: Billing.BillingSignature? {
+        didSet {
+            updateViews()
         }
     }
     
@@ -28,13 +34,18 @@ class BillingDetailsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var billingDetailsLabel: UILabel!
     
     
-    // MARK: - updateLabelViews()
-    func updateLabelViews() {
+    // MARK: - updateViews()
+    func updateViews() {
+        if let billingType = billingType {
+            billingDetailsLabel.text = billingType.rawValue
+        }
         
-    }
-    
-    // MARK: - updateCheckBoxValue
-    func updateCheckBoxValue() {
+        if let billingDate = billingDate {
+            billingDetailsLabel.text = billingDate.rawValue
+        }
         
+        if let signatureType = signatureType {
+            billingDetailsLabel.text = signatureType.rawValue
+        }
     }
 }

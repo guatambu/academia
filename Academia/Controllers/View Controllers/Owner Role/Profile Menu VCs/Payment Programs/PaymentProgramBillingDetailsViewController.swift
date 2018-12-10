@@ -28,12 +28,17 @@ class PaymentProgramBillingDetailsViewController: UIViewController {
     var paymentProgramToEdit: PaymentProgram?
     
     let beltBuilder = BeltBuilder()
+    let billing = Billing()
     
     // welcome message outlets
     @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     // next button outlet
     @IBOutlet weak var nextButtonOutlet: DesignableButton!
+    // collection views
+    @IBOutlet weak var billingTypeCollectionView: UICollectionView!
+    @IBOutlet weak var billingDateCollectionView: UICollectionView!
+    @IBOutlet weak var signatureTypeCollectionView: UICollectionView!
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -51,6 +56,15 @@ class PaymentProgramBillingDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // set up collection views dataSources and delegates
+        billingTypeCollectionView.dataSource = self
+        billingTypeCollectionView.delegate = self
+        
+        billingDateCollectionView.dataSource = self
+        billingDateCollectionView.delegate = self
+        
+        signatureTypeCollectionView.dataSource = self
+        signatureTypeCollectionView.delegate = self
         //populateCompletedProfileInfo()
     }
     
@@ -78,7 +92,7 @@ class PaymentProgramBillingDetailsViewController: UIViewController {
         
         print("to agreement segue")
         // instantiate the relevant storyboard
-        let mainView: UIStoryboard = UIStoryboard(name: "OwnerPaymentProgramWorkFlow", bundle: nil)
+        let mainView: UIStoryboard = UIStoryboard(name: "OwnerPaymentProgramWorkflow", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
         let destViewController = mainView.instantiateViewController(withIdentifier: "toPaymentProgramAgreement") as! PaymentProgramAgreementViewController
         
@@ -150,17 +164,53 @@ extension PaymentProgramBillingDetailsViewController {
 
 // MARK: - UICollectionView Protocol Conformance & Methods
 extension PaymentProgramBillingDetailsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 0
-    }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        
+        if collectionView.tag == 5 {
+            return billing.types.count
+        } else if collectionView.tag == 10 {
+            return billing.dates.count
+        } else if collectionView.tag == 15 {
+            return billing.signatures.count
+        }
+        return 1
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        
+        if collectionView.tag == 5 {
+            let cell = billingTypeCollectionView.dequeueReusableCell(withReuseIdentifier: "TypeCollectionCell", for: indexPath) as! BillingDetailsCollectionViewCell
+            
+            return cell
+        } else if collectionView.tag == 10 {
+            let cell = billingDateCollectionView.dequeueReusableCell(withReuseIdentifier: "DateCollectionCell", for: indexPath) as! BillingDetailsCollectionViewCell
+            
+            return cell
+        } else if collectionView.tag == 15 {
+            let cell = signatureTypeCollectionView.dequeueReusableCell(withReuseIdentifier: "SignatureCollectionCell", for: indexPath) as! BillingDetailsCollectionViewCell
+            
+            return cell
+        }
+        
         return UICollectionViewCell()
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if collectionView.tag == 5 {
+            let text = billing.types[indexPath.row]
+            print("billing type: \(text)")
+            
+        } else if collectionView.tag == 10 {
+            let text = billing.dates[indexPath.row]
+            print("billing date: \(text)")
+            
+        } else if collectionView.tag == 15 {
+            let text = billing.signatures[indexPath.row]
+            print("signature type: \(text)")
+
+        }
+    }
 }

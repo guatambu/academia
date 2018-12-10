@@ -128,7 +128,7 @@
 		FABF85BF21BB09FC005CEBD4 /* Billing.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF85BE21BB09FC005CEBD4 /* Billing.swift */; };
 		FABF85C121BB3AA3005CEBD4 /* BillingDetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF85C021BB3AA3005CEBD4 /* BillingDetailsCollectionViewCell.swift */; };
 		FAC5D3C621BE25550083B417 /* OwnerLocationWorkFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC5D3C521BE25550083B417 /* OwnerLocationWorkFlow.storyboard */; };
-		FAC5D3C821BE25780083B417 /* OwnerPaymentProgramWorkflow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC5D3C721BE25780083B417 /* OwnerPaymentProgramWorkflow.storyboard */; };
+		FAC5D3CA21BF0F600083B417 /* OwnerPaymentProgramWorkflow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC5D3C921BF0F600083B417 /* OwnerPaymentProgramWorkflow.storyboard */; };
 		FACA3EAC21927C3F0099E620 /* profile_pic_placeholder_image.png in Resources */ = {isa = PBXBuildFile; fileRef = FACA3EAB21927C3F0099E620 /* profile_pic_placeholder_image.png */; };
 		FACA3EAE21927CEE0099E620 /* IBDesignables.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA3EAD21927CEE0099E620 /* IBDesignables.swift */; };
 		FACA3EB1219288CD0099E620 /* NameAndBeltViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA3EB0219288CD0099E620 /* NameAndBeltViewController.swift */; };
@@ -372,7 +372,7 @@
 		FABF85BE21BB09FC005CEBD4 /* Billing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Billing.swift; sourceTree = "<group>"; };
 		FABF85C021BB3AA3005CEBD4 /* BillingDetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingDetailsCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAC5D3C521BE25550083B417 /* OwnerLocationWorkFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerLocationWorkFlow.storyboard; sourceTree = "<group>"; };
-		FAC5D3C721BE25780083B417 /* OwnerPaymentProgramWorkflow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerPaymentProgramWorkflow.storyboard; sourceTree = "<group>"; };
+		FAC5D3C921BF0F600083B417 /* OwnerPaymentProgramWorkflow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerPaymentProgramWorkflow.storyboard; sourceTree = "<group>"; };
 		FACA3EAB21927C3F0099E620 /* profile_pic_placeholder_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile_pic_placeholder_image.png; sourceTree = "<group>"; };
 		FACA3EAD21927CEE0099E620 /* IBDesignables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignables.swift; sourceTree = "<group>"; };
 		FACA3EB0219288CD0099E620 /* NameAndBeltViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameAndBeltViewController.swift; sourceTree = "<group>"; };
@@ -567,7 +567,7 @@
 				FAAAC14C213E342600093D6C /* OwnerStudentsFlow.storyboard */,
 				FAAAC14F213E345900093D6C /* OwnerMessages.storyboard */,
 				FAAAC14A213E33E000093D6C /* OwnerProfileFlow.storyboard */,
-				FAC5D3C721BE25780083B417 /* OwnerPaymentProgramWorkflow.storyboard */,
+				FAC5D3C921BF0F600083B417 /* OwnerPaymentProgramWorkflow.storyboard */,
 				FAC5D3C521BE25550083B417 /* OwnerLocationWorkFlow.storyboard */,
 				FAAAC147213E337500093D6C /* OwnerBeltSystemFlow.storyboard */,
 				FAE67A2B2157453100822DCF /* StudentBaseCampFlow.storyboard */,
@@ -930,8 +930,8 @@
 				FAF29B62212BBB5000752414 /* SignUpLoginViewController.swift */,
 				FACA3EB6219289310099E620 /* TakeProfilePicViewController.swift */,
 				FA41CE6C21A5EBAA00EAD53A /* BirthdayViewController.swift */,
-				FACA3EB0219288CD0099E620 /* NameAndBeltViewController.swift */,
 				FACA3EB2219288EF0099E620 /* AddressViewController.swift */,
+				FACA3EB0219288CD0099E620 /* NameAndBeltViewController.swift */,
 				FACA3EB4219289140099E620 /* ContactInfoViewController.swift */,
 				FACA3EBA21928B150099E620 /* EmergencyContactViewController.swift */,
 				FACA3EB82192895C0099E620 /* CompletedProfileViewController.swift */,
@@ -1233,7 +1233,7 @@
 				FA5C5C28214DCE5E00BF62D5 /* kid_sample.jpg in Resources */,
 				FAF29BA1212E1EF700752414 /* camera_outline_white.png in Resources */,
 				FAE2FD752140BEC600815402 /* MobileTextFieldCell.xib in Resources */,
-				FAC5D3C821BE25780083B417 /* OwnerPaymentProgramWorkflow.storyboard in Resources */,
+				FAC5D3CA21BF0F600083B417 /* OwnerPaymentProgramWorkflow.storyboard in Resources */,
 				FAF29BC2212E21EA00752414 /* profile_red_32.png in Resources */,
 				FAF29B9C212E1EF700752414 /* profile_black_50.png in Resources */,
 				FAF29BC1212E21EA00752414 /* programs_red_32.png in Resources */,

@@ -32,9 +32,9 @@ class ReviewAndCreatePaymentProgramViewController: UIViewController {
     // program description textView
     @IBOutlet weak var programDescriptionTextView: UITextView!
     // billing details outlets
-    @IBOutlet weak var billingOptionsLabelOutlet: UILabel!
-    @IBOutlet weak var billingTypeLabelOutlet: UILabel!
-    @IBOutlet weak var signatureTypeLabelOutlet: UILabel!
+    @IBOutlet weak var billingTypesLabelOutlet: UILabel!
+    @IBOutlet weak var billingDatesLabelOutlet: UILabel!
+    @IBOutlet weak var signatureTypesLabelOutlet: UILabel!
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -62,7 +62,7 @@ class ReviewAndCreatePaymentProgramViewController: UIViewController {
         // programmatically performing the segue
         
         // instantiate the relevant storyboard
-        let mainView: UIStoryboard = UIStoryboard(name: "OwnerPaymentProgramWorkFlow", bundle: nil)
+        let mainView: UIStoryboard = UIStoryboard(name: "OwnerPaymentProgramWorkflow", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
         let destViewController = mainView.instantiateViewController(withIdentifier: "toViewPaymentProgramAgreement") as! ViewPaymentProgramAgreementViewController
         // create the segue programmatically - PUSH
@@ -90,8 +90,8 @@ extension ReviewAndCreatePaymentProgramViewController {
         var typesCounter = 0
         var signatureCounter = 0
         
-        var billingOptionsString = ""
         var billingTypesString = ""
+        var billingDatesString = ""
         var signatureTypesString = ""
         
         guard let paymentProgram = PaymentProgramModelController.shared.paymentPrograms.first else { return }
@@ -111,13 +111,13 @@ extension ReviewAndCreatePaymentProgramViewController {
         // billing details outlets
         for date in paymentProgram.billingDates {
             if datesCounter == paymentProgram.billingDates.count - 1 {
-                billingOptionsString += "\(date)"
+                billingDatesString += "\(date)"
             } else {
-                billingOptionsString += "\(date), "
+                billingDatesString += "\(date), "
             }
             datesCounter += 1
         }
-        billingOptionsLabelOutlet.text = billingOptionsString
+        billingTypesLabelOutlet.text = billingTypesString
         // billing options
         for type in paymentProgram.billingTypes {
            
@@ -128,7 +128,7 @@ extension ReviewAndCreatePaymentProgramViewController {
             }
             typesCounter += 1
         }
-        billingTypeLabelOutlet.text = billingTypesString
+        billingDatesLabelOutlet.text = billingTypesString
         // signature type
         for type in paymentProgram.signatureTypes {
             if signatureCounter == paymentProgram.signatureTypes.count - 1 {
@@ -138,7 +138,7 @@ extension ReviewAndCreatePaymentProgramViewController {
             }
             signatureCounter += 1
         }
-        signatureTypeLabelOutlet.text = signatureTypesString
+        signatureTypesLabelOutlet.text = signatureTypesString
     }
 }
 
