@@ -49,6 +49,20 @@ class PaymentProgramAgreementViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        guard let paymentProgramName = paymentProgramName, let active = active, let programDescription = programDescription else {
+            print("no paymentProgramName, active, or programDescription passed to: PaymentProgramBillingDetailsVC -> viewDidLoad() - line 53")
+            return
+        }
+        print("program name: \(paymentProgramName) \nactive: \(active) \ndescription: \(programDescription)")
+        
+        guard let billingTypes = billingTypes, let billingDates = billingDates, let signatureTypes = signatureTypes else {
+            print("no billingTypes, billingDates, or signatureTypes passed to: PaymentProgramAgreementVC -> viewDidLoad() - line 59")
+            return
+        }
+        print(billingTypes)
+        print(billingDates)
+        print(signatureTypes)
+        
         //populateCompletedProfileInfo()
     }
     
@@ -73,7 +87,7 @@ class PaymentProgramAgreementViewController: UIViewController {
         
         // programmatically performing the segue
         
-        print("to address segue")
+        print("to review and create program segue")
         // instantiate the relevant storyboard
         let mainView: UIStoryboard = UIStoryboard(name: "OwnerPaymentProgramWorkflow", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
@@ -85,6 +99,8 @@ class PaymentProgramAgreementViewController: UIViewController {
             welcomeInstructionsLabelOutlet.textColor = UIColor.red
             return
         }
+        
+        programAgreement = programAgreementTextView.text
         
         // create the segue programmatically
         self.navigationController?.pushViewController(destViewController, animated: true)

@@ -95,6 +95,8 @@ class PaymentProgramNameAndDescriptionViewController: UIViewController {
             return
         }
         
+        paymentProgramName = programNameTextField.text
+        programDescription = programDescriptionTextView.text
         // create the segue programmatically
         self.navigationController?.pushViewController(destViewController, animated: true)
         

@@ -19,6 +19,7 @@ class OwnerPaymentProgramsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.tintColor = UIColor(displayP3Red: 241.0, green: 0.0, blue: 0.0, alpha: 1.0)
         
+        tableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -49,8 +50,7 @@ class OwnerPaymentProgramsTableViewController: UITableViewController {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "generalMenuCell", for: indexPath) as? GeneralMenuTableViewCell {
             
-//            let myCell = PaymentProgramModelController.shared.paymentPrograms[indexPath.row]
-            let myCell = programs[indexPath.row]
+            let myCell = PaymentProgramModelController.shared.paymentPrograms[indexPath.row]
             
             cell.cellTitleOutlet.text = myCell.programName
             print("OwnerPaymentPRogramTVC -> GeneralMenuCell - cellTitleOutlet.text: \(myCell.programName)")

@@ -20,9 +20,9 @@ class PaymentProgramBillingDetailsViewController: UIViewController {
     var billingOptionsString = ""
     var billingTypeString = ""
     var signatureTypeString = ""
-    var billingTypes: [Billing.BillingType]?
-    var billingDates: [Billing.BillingDate]?
-    var signatureTypes: [Billing.BillingSignature]?
+    var billingTypes: [Billing.BillingType] = []
+    var billingDates: [Billing.BillingDate] = []
+    var signatureTypes: [Billing.BillingSignature] = []
     
     var inEditingMode: Bool?
     var paymentProgramToEdit: PaymentProgram?
@@ -66,6 +66,12 @@ class PaymentProgramBillingDetailsViewController: UIViewController {
         signatureTypeCollectionView.dataSource = self
         signatureTypeCollectionView.delegate = self
         //populateCompletedProfileInfo()
+        
+        guard let paymentProgramName = paymentProgramName, let active = active, let programDescription = programDescription else {
+            print("no paymentProgramName, active, or programDescription passed to: PaymentProgramBillingDetailsVC -> viewDidLoad() - line 71")
+            return
+        }
+        print("program name: \(paymentProgramName) \nactive: \(active) \ndescription: \(programDescription)")
     }
     
     
@@ -74,7 +80,7 @@ class PaymentProgramBillingDetailsViewController: UIViewController {
     @objc func saveButtonTapped() {
         
         // Location update profile info
-        if billingTypes?.count != 0 && billingDates?.count != 0 && signatureTypes?.count != 0 {
+        if billingTypes.count != 0 && billingDates.count != 0 && signatureTypes.count != 0 {
             
             updatePaymentProgramInfo()
             
@@ -97,7 +103,7 @@ class PaymentProgramBillingDetailsViewController: UIViewController {
         let destViewController = mainView.instantiateViewController(withIdentifier: "toPaymentProgramAgreement") as! PaymentProgramAgreementViewController
         
         // run check to see if billing details are properly selected/in place
-        guard billingTypes?.count != 0 && billingDates?.count != 0 && signatureTypes?.count != 0 else {
+        guard billingTypes.count != 0 && billingDates.count != 0 && signatureTypes.count != 0 else {
             
             welcomeInstructionsLabelOutlet.textColor = UIColor.red
             return
@@ -135,7 +141,7 @@ extension PaymentProgramBillingDetailsViewController {
     func updatePaymentProgramInfo() {
         guard let paymentProgram = paymentProgramToEdit else { return }
         // payment program update info
-        if billingTypes?.count != 0 && billingDates?.count != 0 && signatureTypes?.count != 0 {
+        if billingTypes.count != 0 && billingDates.count != 0 && signatureTypes.count != 0 {
             PaymentProgramModelController.shared.update(paymentProgram: paymentProgram, programName: paymentProgramName, active: active, paymentDescription: programDescription, billingTypes: nil, billingDates: nil, signatureTypes: nil, paymentAgreement: nil)
             print("update payment program name: \(PaymentProgramModelController.shared.paymentPrograms[0].programName)")
         }
@@ -183,13 +189,19 @@ extension PaymentProgramBillingDetailsViewController: UICollectionViewDelegate, 
         if collectionView.tag == 5 {
             let cell = billingTypeCollectionView.dequeueReusableCell(withReuseIdentifier: "TypeCollectionCell", for: indexPath) as! BillingDetailsCollectionViewCell
             
+            cell.billingType = billing.types[indexPath.row]
+            
             return cell
         } else if collectionView.tag == 10 {
             let cell = billingDateCollectionView.dequeueReusableCell(withReuseIdentifier: "DateCollectionCell", for: indexPath) as! BillingDetailsCollectionViewCell
             
+            cell.billingDate = billing.dates[indexPath.row]
+            
             return cell
         } else if collectionView.tag == 15 {
             let cell = signatureTypeCollectionView.dequeueReusableCell(withReuseIdentifier: "SignatureCollectionCell", for: indexPath) as! BillingDetailsCollectionViewCell
+            
+            cell.signatureType = billing.signatures[indexPath.row]
             
             return cell
         }
@@ -200,17 +212,17 @@ extension PaymentProgramBillingDetailsViewController: UICollectionViewDelegate, 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if collectionView.tag == 5 {
-            let text = billing.types[indexPath.row]
-            print("billing type: \(text)")
+        
+            billingTypes.append(billing.types[indexPath.row])
             
         } else if collectionView.tag == 10 {
-            let text = billing.dates[indexPath.row]
-            print("billing date: \(text)")
+            
+            billingDates.append(billing.dates[indexPath.row])
             
         } else if collectionView.tag == 15 {
-            let text = billing.signatures[indexPath.row]
-            print("signature type: \(text)")
-
+            
+            signatureTypes.append(billing.signatures[indexPath.row])
+            
         }
     }
 }

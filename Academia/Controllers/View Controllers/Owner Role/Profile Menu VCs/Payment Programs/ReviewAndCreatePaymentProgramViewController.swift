@@ -52,7 +52,26 @@ class ReviewAndCreatePaymentProgramViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //populateCompletedProfileInfo()
+        guard let paymentProgramName = paymentProgramName, let active = active, let programDescription = programDescription else {
+            print("no paymentProgramName, active, or programDescription passed to: PaymentProgramBillingDetailsVC -> viewDidLoad() - line 56")
+            return
+        }
+        print("program name: \(paymentProgramName) \nactive: \(active) \ndescription: \(programDescription)")
+        
+        guard let billingTypes = billingTypes, let billingDates = billingDates, let signatureTypes = signatureTypes else {
+            print("no billingTypes, billingDates, or signatureTypes passed to: PaymentProgramAgreementVC -> viewDidLoad() - line 62")
+            return
+        }
+        print(billingTypes)
+        print(billingDates)
+        print(signatureTypes)
+        
+        guard let programAgreement = programAgreement else {
+            print("no programAgreement passed to: ReviewAndCreatePaymentProgramVC -> viewDidLoad() - line 70")
+            return
+        }
+        print("agreement: \(programAgreement)")
+        
     }
     
     
@@ -77,7 +96,20 @@ class ReviewAndCreatePaymentProgramViewController: UIViewController {
     }
     
     @IBAction func createProgramButtonTapped(_ sender: DesignableButton) {
+        
+        // create the new location in the LocationModelController source of truth
         createPaymentProgram()
+        
+        // programmatic segue back to the MyLocations TVC to view the current locations
+        guard let viewControllers = self.navigationController?.viewControllers else { return }
+        
+        for viewController in viewControllers {
+            
+            if viewController is OwnerPaymentProgramsTableViewController {
+                self.navigationController?.popToViewController(viewController, animated: true)
+                
+            }
+        }
     }
 }
 
@@ -94,44 +126,53 @@ extension ReviewAndCreatePaymentProgramViewController {
         var billingDatesString = ""
         var signatureTypesString = ""
         
-        guard let paymentProgram = PaymentProgramModelController.shared.paymentPrograms.first else { return }
+        guard let paymentProgramName = paymentProgramName,
+            let active = active,
+            let paymentProgramDescription = programDescription,
+            let billingTypes = billingTypes,
+            let billingDates = billingDates,
+            let signatureTypes = signatureTypes
+            else {
+                print("there was a nil value in the payment program details passed to ReviewAndCreatePaymentProgramVC -> populateCompletedPaymentProgramInfo() - line 124")
+                return
+        }
         // name outlet
-        paymentProgramNameLabelOutlet.text = paymentProgram.programName
+        paymentProgramNameLabelOutlet.text = paymentProgramName
         // active outlet
-        if paymentProgram.active == true {
+        if active == true {
             
             activeLabelOutlet.text = "active: YES"
         } else {
             activeLabelOutlet.text = "active: NO"
         }
         // lastChanged outlet
-        lastChangedLabelOutlet.text = "\(paymentProgram.dateEdited)"
+        lastChangedLabelOutlet.text = "\(Date())"
         // payment program description
-        programDescriptionTextView.text = paymentProgram.paymentDescription
+        programDescriptionTextView.text = "\(paymentProgramDescription)"
         // billing details outlets
-        for date in paymentProgram.billingDates {
-            if datesCounter == paymentProgram.billingDates.count - 1 {
+        for date in billingDates {
+            if datesCounter == billingDates.count - 1 {
                 billingDatesString += "\(date)"
             } else {
                 billingDatesString += "\(date), "
             }
             datesCounter += 1
         }
-        billingTypesLabelOutlet.text = billingTypesString
+        billingDatesLabelOutlet.text = billingDatesString
         // billing options
-        for type in paymentProgram.billingTypes {
+        for type in billingTypes {
            
-            if typesCounter == paymentProgram.billingTypes.count - 1 {
+            if typesCounter == billingTypes.count - 1 {
                 billingTypesString += "\(type)"
             } else {
                 billingTypesString += "\(type), "
             }
             typesCounter += 1
         }
-        billingDatesLabelOutlet.text = billingTypesString
+        billingTypesLabelOutlet.text = billingTypesString
         // signature type
-        for type in paymentProgram.signatureTypes {
-            if signatureCounter == paymentProgram.signatureTypes.count - 1 {
+        for type in signatureTypes {
+            if signatureCounter == signatureTypes.count - 1 {
                 signatureTypesString += "\(type)"
             } else {
                 signatureTypesString += "\(type), "
@@ -156,6 +197,8 @@ extension ReviewAndCreatePaymentProgramViewController {
         guard let signatureTypes = signatureTypes else { print("fail signatureType"); return }
         
         PaymentProgramModelController.shared.addNew(active: active, programName: paymentProgramName, billingTypes: billingTypes, billingDates: billingDates, signatureTypes: signatureTypes, paymentDescription: programDescription, paymentAgreement: programAgreement)
+        
+        
     }
 }
 

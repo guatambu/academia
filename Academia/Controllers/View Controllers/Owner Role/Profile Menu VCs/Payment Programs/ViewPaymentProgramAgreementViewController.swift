@@ -32,19 +32,12 @@ class ViewPaymentProgramAgreementViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let programName = paymentProgramName else {
-            
-            print("programName has a nil value in ViewPaymentProgramAgreementVC -> viewDidLoad() - line 37")
-            return
-        }
-        self.title = "\(programName)"
-        
         guard let programAgreement = programAgreement else {
             
-            print("programAgreement has a nil value in ViewPaymentProgramAgreementVC -> viewDidLoad() - line 44")
+            print("programAgreement has a nil value in ViewPaymentProgramAgreementVC -> viewDidLoad() - line 37")
             return
         }
-        programAgreementTextView.text = programAgreement
+        programAgreementTextView.text = "\(programAgreement)"
     }
 }
 
