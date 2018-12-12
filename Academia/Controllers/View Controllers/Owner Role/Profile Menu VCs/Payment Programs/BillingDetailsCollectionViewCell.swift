@@ -30,6 +30,14 @@ class BillingDetailsCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    let beltBuilder = BeltBuilder()
+    
+    let uncheckedBox32 = UIImage(named: "unchecked_checkbox_32.png")
+    let uncheckedBox50 = UIImage(named: "unchecked_checkbox_50.png")
+    let checkedBox32 = UIImage(named: "checked_tickbox_32.png")
+    let checkedBox50 = UIImage(named: "checked_tickbox_50.png")
+    
+    @IBOutlet weak var collectionCellView: UIView!
     @IBOutlet weak var checkboxImageView: UIImageView!
     @IBOutlet weak var billingDetailsLabel: UILabel!
     
@@ -38,14 +46,28 @@ class BillingDetailsCollectionViewCell: UICollectionViewCell {
     func updateViews() {
         if let billingType = billingType {
             billingDetailsLabel.text = billingType.rawValue
+            checkboxImageView.image = uncheckedBox32
+            collectionCellView.layer.borderWidth = 1
+            collectionCellView.layer.borderColor = beltBuilder.grayBeltGray.cgColor
+            collectionCellView.layer.cornerRadius = 10
         }
         
         if let billingDate = billingDate {
             billingDetailsLabel.text = billingDate.rawValue
+            checkboxImageView.image = uncheckedBox32
+            checkboxImageView.image = uncheckedBox32
+            collectionCellView.layer.borderWidth = 1
+            collectionCellView.layer.borderColor = beltBuilder.grayBeltGray.cgColor
+            collectionCellView.layer.cornerRadius = 10
         }
         
         if let signatureType = signatureType {
             billingDetailsLabel.text = signatureType.rawValue
+            checkboxImageView.image = uncheckedBox32
+            checkboxImageView.image = uncheckedBox32
+            collectionCellView.layer.borderWidth = 1
+            collectionCellView.layer.borderColor = beltBuilder.grayBeltGray.cgColor
+            collectionCellView.layer.cornerRadius = 10
         }
     }
 }
