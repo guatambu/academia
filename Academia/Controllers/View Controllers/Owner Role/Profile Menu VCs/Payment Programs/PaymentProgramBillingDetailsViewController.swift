@@ -8,8 +8,7 @@
 
 import UIKit
 
-class PaymentProgramBillingDetailsViewController: UIViewController {
-    
+class PaymentProgramBillingDetailsViewController: UIViewController, BillingTypeDelegate, BillingDateDelegate, SignatureTypeDelegate {
     
 
     // MARK: - Properties
@@ -29,6 +28,11 @@ class PaymentProgramBillingDetailsViewController: UIViewController {
     
     let beltBuilder = BeltBuilder()
     let billing = Billing()
+    
+    let uncheckedBox32 = UIImage(named: "unchecked_checkbox_32.png")
+    let uncheckedBox50 = UIImage(named: "unchecked_checkbox_50.png")
+    let checkedBox32 = UIImage(named: "checked_tickbox_32.png")
+    let checkedBox50 = UIImage(named: "checked_tickbox_50.png")
     
     // welcome message outlets
     @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
@@ -185,27 +189,33 @@ extension PaymentProgramBillingDetailsViewController: UICollectionViewDelegate, 
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        
         if collectionView.tag == 5 {
-            let cell = billingTypeCollectionView.dequeueReusableCell(withReuseIdentifier: "TypeCollectionCell", for: indexPath) as! BillingDetailsCollectionViewCell
+            let cell = billingTypeCollectionView.dequeueReusableCell(withReuseIdentifier: "TypeCollectionCell", for: indexPath) as! TypeCollectionViewCell
             
             cell.billingType = billing.types[indexPath.row]
+            cell.delegate = self
             
             return cell
+            
         } else if collectionView.tag == 10 {
-            let cell = billingDateCollectionView.dequeueReusableCell(withReuseIdentifier: "DateCollectionCell", for: indexPath) as! BillingDetailsCollectionViewCell
+            
+            let cell = billingDateCollectionView.dequeueReusableCell(withReuseIdentifier: "DateCollectionCell", for: indexPath) as! DateCollectionViewCell
             
             cell.billingDate = billing.dates[indexPath.row]
+            cell.delegate = self
             
             return cell
+            
         } else if collectionView.tag == 15 {
-            let cell = signatureTypeCollectionView.dequeueReusableCell(withReuseIdentifier: "SignatureCollectionCell", for: indexPath) as! BillingDetailsCollectionViewCell
+            
+            let cell = signatureTypeCollectionView.dequeueReusableCell(withReuseIdentifier: "SignatureCollectionCell", for: indexPath) as! SignatureCollectionViewCell
             
             cell.signatureType = billing.signatures[indexPath.row]
+            cell.delegate = self
             
             return cell
-        }
         
+        }
         return UICollectionViewCell()
     }
     
@@ -222,7 +232,7 @@ extension PaymentProgramBillingDetailsViewController: UICollectionViewDelegate, 
         } else if collectionView.tag == 15 {
             
             signatureTypes.append(billing.signatures[indexPath.row])
-            
+    
         }
     }
 }

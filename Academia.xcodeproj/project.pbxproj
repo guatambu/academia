@@ -126,7 +126,6 @@
 		FABF85AD21B78C6F005CEBD4 /* ReviewAndCreatePaymentProgramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF85AC21B78C6F005CEBD4 /* ReviewAndCreatePaymentProgramViewController.swift */; };
 		FABF85AF21B78CB2005CEBD4 /* ViewPaymentProgramAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF85AE21B78CB2005CEBD4 /* ViewPaymentProgramAgreementViewController.swift */; };
 		FABF85BF21BB09FC005CEBD4 /* Billing.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF85BE21BB09FC005CEBD4 /* Billing.swift */; };
-		FABF85C121BB3AA3005CEBD4 /* BillingDetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF85C021BB3AA3005CEBD4 /* BillingDetailsCollectionViewCell.swift */; };
 		FAC5D3C621BE25550083B417 /* OwnerLocationWorkFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC5D3C521BE25550083B417 /* OwnerLocationWorkFlow.storyboard */; };
 		FAC5D3CA21BF0F600083B417 /* OwnerPaymentProgramWorkflow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC5D3C921BF0F600083B417 /* OwnerPaymentProgramWorkflow.storyboard */; };
 		FACA3EAC21927C3F0099E620 /* profile_pic_placeholder_image.png in Resources */ = {isa = PBXBuildFile; fileRef = FACA3EAB21927C3F0099E620 /* profile_pic_placeholder_image.png */; };
@@ -137,6 +136,10 @@
 		FACA3EB7219289310099E620 /* TakeProfilePicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA3EB6219289310099E620 /* TakeProfilePicViewController.swift */; };
 		FACA3EB92192895C0099E620 /* CompletedProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA3EB82192895C0099E620 /* CompletedProfileViewController.swift */; };
 		FACA3EBB21928B150099E620 /* EmergencyContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA3EBA21928B150099E620 /* EmergencyContactViewController.swift */; };
+		FAD2097521C1CFE700B9C622 /* TypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2097421C1CFE700B9C622 /* TypeCollectionViewCell.swift */; };
+		FAD2097721C1CFF400B9C622 /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2097621C1CFF400B9C622 /* DateCollectionViewCell.swift */; };
+		FAD2097921C1D00200B9C622 /* SignatureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2097821C1D00200B9C622 /* SignatureCollectionViewCell.swift */; };
+		FAD5B12D21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5B12C21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift */; };
 		FAE2C07F214ADD26002E9756 /* ClassDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE2C07E214ADD26002E9756 /* ClassDetailTableViewController.swift */; };
 		FAE2FD3C2140700F00815402 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE2FD3B2140700F00815402 /* MockData.swift */; };
 		FAE2FD652140BE4200815402 /* FirstNameTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAE2FD642140BE4200815402 /* FirstNameTextFieldCell.xib */; };
@@ -370,7 +373,6 @@
 		FABF85AC21B78C6F005CEBD4 /* ReviewAndCreatePaymentProgramViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewAndCreatePaymentProgramViewController.swift; sourceTree = "<group>"; };
 		FABF85AE21B78CB2005CEBD4 /* ViewPaymentProgramAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPaymentProgramAgreementViewController.swift; sourceTree = "<group>"; };
 		FABF85BE21BB09FC005CEBD4 /* Billing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Billing.swift; sourceTree = "<group>"; };
-		FABF85C021BB3AA3005CEBD4 /* BillingDetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingDetailsCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAC5D3C521BE25550083B417 /* OwnerLocationWorkFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerLocationWorkFlow.storyboard; sourceTree = "<group>"; };
 		FAC5D3C921BF0F600083B417 /* OwnerPaymentProgramWorkflow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerPaymentProgramWorkflow.storyboard; sourceTree = "<group>"; };
 		FACA3EAB21927C3F0099E620 /* profile_pic_placeholder_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile_pic_placeholder_image.png; sourceTree = "<group>"; };
@@ -381,6 +383,10 @@
 		FACA3EB6219289310099E620 /* TakeProfilePicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeProfilePicViewController.swift; sourceTree = "<group>"; };
 		FACA3EB82192895C0099E620 /* CompletedProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedProfileViewController.swift; sourceTree = "<group>"; };
 		FACA3EBA21928B150099E620 /* EmergencyContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyContactViewController.swift; sourceTree = "<group>"; };
+		FAD2097421C1CFE700B9C622 /* TypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeCollectionViewCell.swift; sourceTree = "<group>"; };
+		FAD2097621C1CFF400B9C622 /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
+		FAD2097821C1D00200B9C622 /* SignatureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignatureCollectionViewCell.swift; sourceTree = "<group>"; };
+		FAD5B12C21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProgramDelegateProtocols.swift; sourceTree = "<group>"; };
 		FAE2C07E214ADD26002E9756 /* ClassDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassDetailTableViewController.swift; sourceTree = "<group>"; };
 		FAE2FD3B2140700F00815402 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		FAE2FD642140BE4200815402 /* FirstNameTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstNameTextFieldCell.xib; sourceTree = "<group>"; };
@@ -520,7 +526,7 @@
 			isa = PBXGroup;
 			children = (
 				FAB20412216566E50034E1D4 /* ThingsToDoList.swift */,
-				FAAAC144213E22DB00093D6C /* Segue Protocols */,
+				FAAAC144213E22DB00093D6C /* Delegate Protocols */,
 				FA0C443A21278AE500B59194 /* Models */,
 				FA0C443921278AD500B59194 /* Views */,
 				FA0C443B21278AEC00B59194 /* Controllers */,
@@ -884,13 +890,14 @@
 			path = "Curriculum Model Controllers";
 			sourceTree = "<group>";
 		};
-		FAAAC144213E22DB00093D6C /* Segue Protocols */ = {
+		FAAAC144213E22DB00093D6C /* Delegate Protocols */ = {
 			isa = PBXGroup;
 			children = (
 				FA5C5C2F21506B7400BF62D5 /* InitialStudentSegueDelegate.swift */,
 				FA5C5C442153022300BF62D5 /* SegueFromSaveProfileNibCellDelegate.swift */,
+				FAD5B12C21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift */,
 			);
-			path = "Segue Protocols";
+			path = "Delegate Protocols";
 			sourceTree = "<group>";
 		};
 		FABF859421B22089005CEBD4 /* Locations */ = {
@@ -914,7 +921,9 @@
 				FABF85A221B78ABD005CEBD4 /* PaymentProgramInfoDetailsViewController.swift */,
 				FABF85A621B78B4C005CEBD4 /* PaymentProgramNameAndDescriptionViewController.swift */,
 				FABF85A821B78B99005CEBD4 /* PaymentProgramBillingDetailsViewController.swift */,
-				FABF85C021BB3AA3005CEBD4 /* BillingDetailsCollectionViewCell.swift */,
+				FAD2097421C1CFE700B9C622 /* TypeCollectionViewCell.swift */,
+				FAD2097621C1CFF400B9C622 /* DateCollectionViewCell.swift */,
+				FAD2097821C1D00200B9C622 /* SignatureCollectionViewCell.swift */,
 				FABF85AA21B78C36005CEBD4 /* PaymentProgramAgreementViewController.swift */,
 				FABF85AC21B78C6F005CEBD4 /* ReviewAndCreatePaymentProgramViewController.swift */,
 				FABF85AE21B78CB2005CEBD4 /* ViewPaymentProgramAgreementViewController.swift */,
@@ -1281,6 +1290,7 @@
 				FA9ADA2F2139EE940005E1F1 /* IsKidTableViewCell.swift in Sources */,
 				FABF85AB21B78C36005CEBD4 /* PaymentProgramAgreementViewController.swift in Sources */,
 				FA21D6842130BB7F006790E5 /* StudentListTableViewController.swift in Sources */,
+				FAD2097721C1CFF400B9C622 /* DateCollectionViewCell.swift in Sources */,
 				FA9ADA05213784720005E1F1 /* AboutAcademiaViewController.swift in Sources */,
 				FAF29B63212BBB5000752414 /* SignUpLoginViewController.swift in Sources */,
 				FAB203DE2161C9C40034E1D4 /* Weekdays.swift in Sources */,
@@ -1290,7 +1300,6 @@
 				FAE67A3A215C6EDD00822DCF /* StudentGroupGeneralMenuTableViewCell.swift in Sources */,
 				FA9ADA0F21378B140005E1F1 /* BeltsListTableViewController.swift in Sources */,
 				FA4DF32E218CCA1A00ECC167 /* CurriculumModule.swift in Sources */,
-				FABF85C121BB3AA3005CEBD4 /* BillingDetailsCollectionViewCell.swift in Sources */,
 				FAE2FDB02140C0C900815402 /* SocialNetworksTextFieldTableViewCell.swift in Sources */,
 				FAE2FD9E2140C02800815402 /* EmailTextFieldTableViewCell.swift in Sources */,
 				FABF859621B220B9005CEBD4 /* LocationInfoDetailsViewController.swift in Sources */,
@@ -1312,6 +1321,7 @@
 				FA9ADA172138C7030005E1F1 /* ProfilePicTableViewCell.swift in Sources */,
 				FAE2FD982140C00300815402 /* ZipCodeTextFieldTableViewCell.swift in Sources */,
 				FA7A12D2216AE57A00C03590 /* Academia.xcdatamodeld in Sources */,
+				FAD2097521C1CFE700B9C622 /* TypeCollectionViewCell.swift in Sources */,
 				FA5C5C56215499F300BF62D5 /* StudentProfileDetailTableViewController.swift in Sources */,
 				FA9ADA212138DBC30005E1F1 /* MyCells.swift in Sources */,
 				FABF85A021B5B668005CEBD4 /* ReviewAndCreateLocationViewController.swift in Sources */,
@@ -1335,6 +1345,7 @@
 				FA9ADA1B2138D6700005E1F1 /* ProfileTextFieldTableViewCell.swift in Sources */,
 				FA9AD9FD213783FE0005E1F1 /* OwnerPaymentProgramsTableViewController.swift in Sources */,
 				FAE2FDA62140C07600815402 /* EmergencyContactTextFieldTableViewCell.swift in Sources */,
+				FAD5B12D21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift in Sources */,
 				FA66A0162145CE4E002B0313 /* SubHeadingLabelTableViewCell.swift in Sources */,
 				FABF85A921B78B99005CEBD4 /* PaymentProgramBillingDetailsViewController.swift in Sources */,
 				FAA516DF2190CAC1009875CB /* CurriculumModelController.swift in Sources */,
@@ -1345,6 +1356,7 @@
 				FAA516DB2190CA8F009875CB /* TechniqueModelController.swift in Sources */,
 				FAB7E350212B7D47003E3B79 /* LandingPageViewController.swift in Sources */,
 				FAB20413216566E50034E1D4 /* ThingsToDoList.swift in Sources */,
+				FAD2097921C1D00200B9C622 /* SignatureCollectionViewCell.swift in Sources */,
 				FAA516D6218FEC5A009875CB /* ConfirmPasswordTextFieldTableViewCell.swift in Sources */,
 				FA23D2882166F5E400707056 /* GroupModelController.swift in Sources */,
 				FAF1BB8C21435BA900AD56AE /* AgreementTextViewTableViewCell.swift in Sources */,

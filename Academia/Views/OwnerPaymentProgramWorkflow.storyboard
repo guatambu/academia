@@ -758,45 +758,63 @@
                                             <constraint firstAttribute="height" constant="56" id="aXJ-0E-52H"/>
                                         </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="4" minimumInteritemSpacing="4" id="eek-bl-pGr">
-                                            <size key="itemSize" width="210" height="56"/>
+                                            <size key="itemSize" width="192" height="56"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TypeCollectionCell" id="tuX-Ng-7sj" customClass="BillingDetailsCollectionViewCell" customModule="Academia" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="210" height="56"/>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TypeCollectionCell" id="tuX-Ng-7sj" customClass="TypeCollectionViewCell" customModule="Academia" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="192" height="56"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                    <rect key="frame" x="0.0" y="0.0" width="210" height="56"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="192" height="56"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bZa-xl-SZs">
-                                                            <rect key="frame" x="0.0" y="0.0" width="210" height="56"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="192" height="56"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="(billing details label):" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="db7-JX-Yea">
-                                                                    <rect key="frame" x="8" y="20" width="146.5" height="16"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="(billing details label):" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="db7-JX-Yea">
+                                                                    <rect key="frame" x="8" y="20" width="152" height="16"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="152" id="kIc-KI-aNe"/>
+                                                                    </constraints>
                                                                     <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageView:C9n-zX-iJV:image" translatesAutoresizingMaskIntoConstraints="NO" id="C9n-zX-iJV">
-                                                                    <rect key="frame" x="170" y="12" width="32" height="32"/>
+                                                                    <rect key="frame" x="152" y="12" width="32" height="32"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="32" id="4ch-Wc-DiQ"/>
                                                                         <constraint firstAttribute="height" constant="32" id="T1E-6f-dAb"/>
                                                                     </constraints>
                                                                 </imageView>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F0o-sK-HlL" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="192" height="56"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                            <real key="value" value="10"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                    <connections>
+                                                                        <action selector="typeSelectionButtonTapped:" destination="tuX-Ng-7sj" eventType="touchUpInside" id="f1B-Jp-SIc"/>
+                                                                    </connections>
+                                                                </button>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstItem="C9n-zX-iJV" firstAttribute="top" secondItem="bZa-xl-SZs" secondAttribute="top" constant="12" id="3F8-7Q-c2B"/>
                                                                 <constraint firstAttribute="trailing" secondItem="C9n-zX-iJV" secondAttribute="trailing" constant="8" id="EPA-p3-nde"/>
                                                                 <constraint firstItem="db7-JX-Yea" firstAttribute="leading" secondItem="bZa-xl-SZs" secondAttribute="leading" constant="8" id="FjO-2E-0es"/>
+                                                                <constraint firstItem="F0o-sK-HlL" firstAttribute="leading" secondItem="bZa-xl-SZs" secondAttribute="leading" id="KgL-b1-RcH"/>
                                                                 <constraint firstAttribute="bottom" secondItem="C9n-zX-iJV" secondAttribute="bottom" constant="12" id="Nyt-0n-pWy"/>
                                                                 <constraint firstAttribute="bottom" secondItem="db7-JX-Yea" secondAttribute="bottom" constant="20" id="X8M-Ti-odY"/>
                                                                 <constraint firstItem="db7-JX-Yea" firstAttribute="top" secondItem="bZa-xl-SZs" secondAttribute="top" constant="20" id="aQU-85-MpS"/>
+                                                                <constraint firstItem="F0o-sK-HlL" firstAttribute="top" secondItem="bZa-xl-SZs" secondAttribute="top" id="jQh-YH-hrG"/>
                                                                 <constraint firstAttribute="height" constant="56" id="kSf-2Q-fpk"/>
+                                                                <constraint firstAttribute="bottom" secondItem="F0o-sK-HlL" secondAttribute="bottom" id="uuh-k9-nmi"/>
+                                                                <constraint firstAttribute="trailing" secondItem="F0o-sK-HlL" secondAttribute="trailing" id="vEA-Az-4b2"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>
@@ -807,11 +825,12 @@
                                                     <constraint firstAttribute="trailing" secondItem="bZa-xl-SZs" secondAttribute="trailing" id="Vuh-ET-eZ2"/>
                                                     <constraint firstItem="bZa-xl-SZs" firstAttribute="leading" secondItem="tuX-Ng-7sj" secondAttribute="leading" id="kbM-PM-qmi"/>
                                                 </constraints>
-                                                <size key="customSize" width="210" height="56"/>
+                                                <size key="customSize" width="192" height="56"/>
                                                 <connections>
-                                                    <outlet property="billingDetailsLabel" destination="db7-JX-Yea" id="jXa-MK-qkU"/>
-                                                    <outlet property="checkboxImageView" destination="C9n-zX-iJV" id="FU6-ID-q5F"/>
-                                                    <outlet property="collectionCellView" destination="bZa-xl-SZs" id="Qee-V0-rDo"/>
+                                                    <outlet property="billingDetailsLabel" destination="db7-JX-Yea" id="bKC-Uj-FOF"/>
+                                                    <outlet property="checkboxImageView" destination="C9n-zX-iJV" id="pkK-QP-okb"/>
+                                                    <outlet property="collectionCellView" destination="bZa-xl-SZs" id="LAU-Sp-POk"/>
+                                                    <outlet property="isSelectedButtonOutlet" destination="F0o-sK-HlL" id="Tlu-XE-Am9"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
@@ -835,45 +854,62 @@
                                             <constraint firstAttribute="height" constant="56" id="zCg-0D-SRq"/>
                                         </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="4" minimumInteritemSpacing="4" id="GXd-bB-Hju">
-                                            <size key="itemSize" width="210" height="56"/>
+                                            <size key="itemSize" width="192" height="56"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DateCollectionCell" id="Nti-ZM-ugG" customClass="BillingDetailsCollectionViewCell" customModule="Academia" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="210" height="56"/>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DateCollectionCell" id="Nti-ZM-ugG" customClass="DateCollectionViewCell" customModule="Academia" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="192" height="56"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                    <rect key="frame" x="0.0" y="0.0" width="210" height="56"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="192" height="56"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AoO-6s-RN2">
-                                                            <rect key="frame" x="0.0" y="0.0" width="210" height="56"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="192" height="56"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="(billing details label):" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QHF-Ba-Mgb">
-                                                                    <rect key="frame" x="8" y="20" width="146.5" height="16"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="(billing details label):" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QHF-Ba-Mgb">
+                                                                    <rect key="frame" x="8" y="20" width="152" height="16"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="152" id="qqD-F4-f2i"/>
+                                                                    </constraints>
                                                                     <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageView:C9n-zX-iJV:image" translatesAutoresizingMaskIntoConstraints="NO" id="Spj-vQ-6oj">
-                                                                    <rect key="frame" x="170" y="12" width="32" height="32"/>
+                                                                    <rect key="frame" x="152" y="12" width="32" height="32"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="32" id="UkO-f8-wgU"/>
                                                                         <constraint firstAttribute="width" constant="32" id="Y6A-oY-0Nc"/>
                                                                     </constraints>
                                                                 </imageView>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="al5-Aw-nuF" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="192" height="56"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                            <real key="value" value="10"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                    <connections>
+                                                                        <action selector="dateSelectionButtonTapped:" destination="Nti-ZM-ugG" eventType="touchUpInside" id="jyX-6j-eoC"/>
+                                                                    </connections>
+                                                                </button>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="trailing" secondItem="Spj-vQ-6oj" secondAttribute="trailing" constant="8" id="1YN-Hf-Wg8"/>
                                                                 <constraint firstItem="QHF-Ba-Mgb" firstAttribute="top" secondItem="AoO-6s-RN2" secondAttribute="top" constant="20" id="8rI-hi-PZ3"/>
+                                                                <constraint firstItem="al5-Aw-nuF" firstAttribute="leading" secondItem="AoO-6s-RN2" secondAttribute="leading" id="9nc-wl-tUs"/>
                                                                 <constraint firstAttribute="bottom" secondItem="QHF-Ba-Mgb" secondAttribute="bottom" constant="20" id="DcS-Nh-2ab"/>
-                                                                <constraint firstAttribute="width" constant="210" id="MXM-KO-Url"/>
+                                                                <constraint firstAttribute="bottom" secondItem="al5-Aw-nuF" secondAttribute="bottom" id="Mfw-Kf-zab"/>
                                                                 <constraint firstItem="QHF-Ba-Mgb" firstAttribute="leading" secondItem="AoO-6s-RN2" secondAttribute="leading" constant="8" id="ONr-qQ-plm"/>
                                                                 <constraint firstItem="Spj-vQ-6oj" firstAttribute="top" secondItem="AoO-6s-RN2" secondAttribute="top" constant="12" id="UBG-Vu-Dda"/>
                                                                 <constraint firstAttribute="height" constant="56" id="W3L-VB-IRQ"/>
+                                                                <constraint firstAttribute="trailing" secondItem="al5-Aw-nuF" secondAttribute="trailing" id="gQu-9F-lKx"/>
+                                                                <constraint firstItem="al5-Aw-nuF" firstAttribute="top" secondItem="AoO-6s-RN2" secondAttribute="top" id="kQN-cg-W72"/>
                                                                 <constraint firstAttribute="bottom" secondItem="Spj-vQ-6oj" secondAttribute="bottom" constant="12" id="rAM-ub-9Zq"/>
                                                             </constraints>
                                                         </view>
@@ -885,11 +921,12 @@
                                                     <constraint firstItem="AoO-6s-RN2" firstAttribute="leading" secondItem="Nti-ZM-ugG" secondAttribute="leading" id="ZOU-ul-BoB"/>
                                                     <constraint firstAttribute="bottom" secondItem="AoO-6s-RN2" secondAttribute="bottom" id="erD-UB-rLc"/>
                                                 </constraints>
-                                                <size key="customSize" width="210" height="56"/>
+                                                <size key="customSize" width="192" height="56"/>
                                                 <connections>
-                                                    <outlet property="billingDetailsLabel" destination="QHF-Ba-Mgb" id="ozl-sT-UQI"/>
-                                                    <outlet property="checkboxImageView" destination="Spj-vQ-6oj" id="ml8-4n-dYL"/>
-                                                    <outlet property="collectionCellView" destination="AoO-6s-RN2" id="Udl-ZC-VVH"/>
+                                                    <outlet property="billingDetailsLabel" destination="QHF-Ba-Mgb" id="TaU-bc-1fQ"/>
+                                                    <outlet property="checkboxImageView" destination="Spj-vQ-6oj" id="7xg-6z-75i"/>
+                                                    <outlet property="collectionCellView" destination="AoO-6s-RN2" id="CMA-E5-iuS"/>
+                                                    <outlet property="isSelectedButtonOutlet" destination="al5-Aw-nuF" id="Qda-qa-WBY"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
@@ -907,46 +944,63 @@
                                             <constraint firstAttribute="height" constant="56" id="q2D-AC-Ygx"/>
                                         </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="4" minimumInteritemSpacing="4" id="oyC-tP-BS7">
-                                            <size key="itemSize" width="210" height="56"/>
+                                            <size key="itemSize" width="192" height="56"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SignatureCollectionCell" id="RvG-nY-zPD" customClass="BillingDetailsCollectionViewCell" customModule="Academia" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="210" height="56"/>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SignatureCollectionCell" id="RvG-nY-zPD" customClass="SignatureCollectionViewCell" customModule="Academia" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="192" height="56"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                    <rect key="frame" x="0.0" y="0.0" width="210" height="56"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="192" height="56"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AuV-Fn-29b">
-                                                            <rect key="frame" x="0.0" y="0.0" width="210" height="56"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="192" height="56"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="(billing details label):" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbn-ui-fIW">
-                                                                    <rect key="frame" x="8" y="20" width="146.5" height="16"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="(billing details label):" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbn-ui-fIW">
+                                                                    <rect key="frame" x="8" y="20" width="152" height="16"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="152" id="2dM-ez-KcH"/>
+                                                                    </constraints>
                                                                     <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageView:vUS-CN-GGg:image" translatesAutoresizingMaskIntoConstraints="NO" id="vUS-CN-GGg">
-                                                                    <rect key="frame" x="170" y="12" width="32" height="32"/>
+                                                                    <rect key="frame" x="152" y="12" width="32" height="32"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="32" id="RSb-6Q-4LJ"/>
                                                                         <constraint firstAttribute="width" constant="32" id="uPH-KF-oYU"/>
                                                                     </constraints>
                                                                 </imageView>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QFl-Kw-qUQ" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="-0.5" width="192" height="56"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                            <real key="value" value="10"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                    <connections>
+                                                                        <action selector="signatureSelectionButtonTapped:" destination="RvG-nY-zPD" eventType="touchUpInside" id="RQV-Ff-GYu"/>
+                                                                    </connections>
+                                                                </button>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="56" id="46b-Qv-hRs"/>
+                                                                <constraint firstAttribute="bottom" secondItem="QFl-Kw-qUQ" secondAttribute="bottom" constant="0.5" id="SzT-nh-VNK"/>
                                                                 <constraint firstAttribute="trailing" secondItem="vUS-CN-GGg" secondAttribute="trailing" constant="8" id="VBE-TD-6f4"/>
                                                                 <constraint firstAttribute="bottom" secondItem="vUS-CN-GGg" secondAttribute="bottom" constant="12" id="Vrp-yy-pJf"/>
                                                                 <constraint firstItem="vUS-CN-GGg" firstAttribute="top" secondItem="AuV-Fn-29b" secondAttribute="top" constant="12" id="Z1e-vH-RSy"/>
-                                                                <constraint firstAttribute="width" constant="210" id="azH-3K-tgW"/>
                                                                 <constraint firstItem="rbn-ui-fIW" firstAttribute="top" secondItem="AuV-Fn-29b" secondAttribute="top" constant="20" id="lBG-gX-4w7"/>
+                                                                <constraint firstAttribute="trailing" secondItem="QFl-Kw-qUQ" secondAttribute="trailing" id="oVj-fE-Ve3"/>
                                                                 <constraint firstAttribute="bottom" secondItem="rbn-ui-fIW" secondAttribute="bottom" constant="20" id="pF4-4W-6yX"/>
                                                                 <constraint firstItem="rbn-ui-fIW" firstAttribute="leading" secondItem="AuV-Fn-29b" secondAttribute="leading" constant="8" id="q3m-Pf-y7J"/>
+                                                                <constraint firstItem="QFl-Kw-qUQ" firstAttribute="top" secondItem="AuV-Fn-29b" secondAttribute="top" constant="-0.5" id="qM7-O8-kxr"/>
+                                                                <constraint firstItem="QFl-Kw-qUQ" firstAttribute="leading" secondItem="AuV-Fn-29b" secondAttribute="leading" id="yDb-ek-noC"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>
@@ -957,11 +1011,12 @@
                                                     <constraint firstItem="AuV-Fn-29b" firstAttribute="top" secondItem="RvG-nY-zPD" secondAttribute="top" id="dTG-uv-tXx"/>
                                                     <constraint firstAttribute="trailing" secondItem="AuV-Fn-29b" secondAttribute="trailing" id="xVI-0T-xYb"/>
                                                 </constraints>
-                                                <size key="customSize" width="210" height="56"/>
+                                                <size key="customSize" width="192" height="56"/>
                                                 <connections>
-                                                    <outlet property="billingDetailsLabel" destination="rbn-ui-fIW" id="kw5-Jb-goS"/>
-                                                    <outlet property="checkboxImageView" destination="vUS-CN-GGg" id="4gE-bn-2V7"/>
-                                                    <outlet property="collectionCellView" destination="AuV-Fn-29b" id="hTC-50-pbZ"/>
+                                                    <outlet property="billingDetailsLabel" destination="rbn-ui-fIW" id="vw5-AI-VgL"/>
+                                                    <outlet property="checkboxImageView" destination="vUS-CN-GGg" id="4AL-3E-hFq"/>
+                                                    <outlet property="collectionCellView" destination="AuV-Fn-29b" id="fER-U3-PfB"/>
+                                                    <outlet property="isSelectedButtonOutlet" destination="QFl-Kw-qUQ" id="UWw-ZN-0Un"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
@@ -1394,14 +1449,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addressLine1LabelOutlet" destination="iEI-J1-Sjp" id="Ggh-cK-4hS"/>
-                        <outlet property="addressLine2LabelOutlet" destination="VBM-uE-3Kc" id="cWa-fZ-wmh"/>
-                        <outlet property="billingOptions" destination="iEI-J1-Sjp" id="Egq-Yv-9UT"/>
-                        <outlet property="cityLabelOutlet" destination="WGB-fu-UXD" id="TS6-7B-iAk"/>
-                        <outlet property="emailLabelOutlet" destination="Jlg-rn-CSP" id="loi-UK-A35"/>
-                        <outlet property="phoneLabelOutlet" destination="383-nd-lFd" id="D8x-4D-ZGn"/>
                         <outlet property="programDescriptionTextView" destination="Svg-6s-j4S" id="eVL-ak-eFV"/>
-                        <outlet property="websiteLabelOutlet" destination="CPq-jt-Akf" id="50F-ZF-h23"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="405-vf-qOS" userLabel="First Responder" sceneMemberID="firstResponder"/>
