@@ -6,8 +6,6 @@
 //  Copyright © 2018 DunDak, LLC. All rights reserved.
 //
 
-// TODO: set up delegate and necessary protocol and pass that around to PAymentProgramBillingDetailsVC so i can pass info around from this cell's button actions to host VC
-
 import UIKit
 
 class TypeCollectionViewCell: UICollectionViewCell {
