@@ -146,8 +146,8 @@ extension PaymentProgramBillingDetailsViewController {
         guard let paymentProgram = paymentProgramToEdit else { return }
         // payment program update info
         if billingTypes.count != 0 && billingDates.count != 0 && signatureTypes.count != 0 {
-            PaymentProgramModelController.shared.update(paymentProgram: paymentProgram, programName: paymentProgramName, active: active, paymentDescription: programDescription, billingTypes: nil, billingDates: nil, signatureTypes: nil, paymentAgreement: nil)
-            print("update payment program name: \(PaymentProgramModelController.shared.paymentPrograms[0].programName)")
+            PaymentProgramModelController.shared.update(paymentProgram: paymentProgram, programName: nil, active: nil, paymentDescription: nil, billingTypes: billingTypes, billingDates: billingDates, signatureTypes: signatureTypes, paymentAgreement: nil)
+            print("update payment program name: \(PaymentProgramModelController.shared.paymentPrograms[0].billingTypes)")
         }
     }
     func enterEditingMode(inEditingMode: Bool?) {
@@ -167,7 +167,8 @@ extension PaymentProgramBillingDetailsViewController {
         }
         welcomeMessageLabelOutlet.text = "Program: \(paymentProgramToEdit.programName)"
         
-        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
+        welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
+        welcomeInstructionsLabelOutlet.text = "you are in payment program editing mode"
     }
 }
 
@@ -219,20 +220,4 @@ extension PaymentProgramBillingDetailsViewController: UICollectionViewDelegate, 
         return UICollectionViewCell()
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        if collectionView.tag == 5 {
-        
-            billingTypes.append(billing.types[indexPath.row])
-            
-        } else if collectionView.tag == 10 {
-            
-            billingDates.append(billing.dates[indexPath.row])
-            
-        } else if collectionView.tag == 15 {
-            
-            signatureTypes.append(billing.signatures[indexPath.row])
-    
-        }
-    }
 }

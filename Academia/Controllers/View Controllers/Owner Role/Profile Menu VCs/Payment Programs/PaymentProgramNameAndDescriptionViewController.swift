@@ -128,7 +128,7 @@ extension PaymentProgramNameAndDescriptionViewController {
         guard let paymentProgram = paymentProgramToEdit else { return }
         // payment program update info
         if programNameTextField.text != "" {
-            PaymentProgramModelController.shared.update(paymentProgram: paymentProgram, programName: paymentProgramName, active: active, paymentDescription: programDescription, billingTypes: nil, billingDates: nil, signatureTypes: nil, paymentAgreement: nil)
+            PaymentProgramModelController.shared.update(paymentProgram: paymentProgram, programName: programNameTextField.text, active: active, paymentDescription: programDescriptionTextView.text, billingTypes: nil, billingDates: nil, signatureTypes: nil, paymentAgreement: nil)
             print("update payment program name: \(PaymentProgramModelController.shared.paymentPrograms[0].programName)")
         }
     }
@@ -156,7 +156,8 @@ extension PaymentProgramNameAndDescriptionViewController {
         
         welcomeLabelOutlet.text = "Program: \(paymentProgramToEdit.programName)"
         
-        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
+        welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
+        welcomeInstructionsLabelOutlet.text = "you are in payment program editing mode"
         
         programDescriptionTextView.text = paymentProgramToEdit.paymentDescription
         programNameTextField.text = paymentProgramToEdit.programName

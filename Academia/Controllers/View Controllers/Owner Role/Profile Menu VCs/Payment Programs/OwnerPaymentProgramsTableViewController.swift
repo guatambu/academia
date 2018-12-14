@@ -12,7 +12,7 @@ class OwnerPaymentProgramsTableViewController: UITableViewController {
     
     // MARK: Properties
     
-    var programs = [MockData.programA]
+    let beltBuilder = BeltBuilder()
 
     // MARK: - ViewController Lifecycle Functions
     
@@ -53,7 +53,7 @@ class OwnerPaymentProgramsTableViewController: UITableViewController {
             let myCell = PaymentProgramModelController.shared.paymentPrograms[indexPath.row]
             
             cell.cellTitleOutlet.text = myCell.programName
-            print("OwnerPaymentPRogramTVC -> GeneralMenuCell - cellTitleOutlet.text: \(myCell.programName)")
+            print("OwnerPaymentProgramTVC -> GeneralMenuCell - cellTitleOutlet.text: \(myCell.programName)")
             
             return cell
         }
@@ -85,5 +85,22 @@ class OwnerPaymentProgramsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // programmatically performing the segue
+        
+        // instantiate the relevant storyboard
+        let mainView: UIStoryboard = UIStoryboard(name: "OwnerPaymentProgramWorkflow", bundle: nil)
+        // instantiate the desired TableViewController as ViewController on relevant storyboard
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toPaymentProgramInfoDetails") as! PaymentProgramInfoDetailsViewController
+        // create the segue programmatically - PUSH
+        self.navigationController?.pushViewController(destViewController, animated: true)
+
+        // set the desired properties of the destinationVC's navgation Item
+        let backButtonItem = UIBarButtonItem()
+        backButtonItem.title = "Programs"
+        navigationItem.backBarButtonItem = backButtonItem
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
     }
 }

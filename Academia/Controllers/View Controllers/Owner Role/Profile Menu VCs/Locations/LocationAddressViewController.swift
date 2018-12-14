@@ -166,7 +166,7 @@ extension LocationAddressViewController {
         
         welcomeLabeOutlet.text = "Location: \(locationToEdit.locationName)"
         
-        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
+        welcomeInstructionsLabelOutlet.text = "you are in location editing mode"
         
         addressLine1TextField.text = locationToEdit.addressLine1
         addressLine2TextField.text = locationToEdit.addressLine2

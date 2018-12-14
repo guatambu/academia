@@ -46,7 +46,7 @@ class TypeCollectionViewCell: UICollectionViewCell {
         collectionCellView.layer.cornerRadius = 10
         
         guard let billingTypes = delegate?.billingTypes else {
-            print("ERROR:  nil value for billingTypes in TypeCollectionViewCell.swift -> updateViews() - line 83")
+            print("ERROR:  nil value for billingTypes in TypeCollectionViewCell.swift -> updateViews() - line 49")
             return
         }
     
@@ -70,12 +70,12 @@ class TypeCollectionViewCell: UICollectionViewCell {
     @IBAction func typeSelectionButtonTapped(_ sender: DesignableButton) {
         
         guard let billingType = billingType else {
-            print("ERROR:  nil value for billingType in TypeCollectionViewCell.swift -> typeSelectionButtonTapped() - line 85")
+            print("ERROR:  nil value for billingType in TypeCollectionViewCell.swift -> typeSelectionButtonTapped() - line 73")
             return
         }
         
         guard var billingTypes = delegate?.billingTypes else {
-            print("ERROR:  nil value for billingTypes in TypeCollectionViewCell.swift -> typeSelectionButtonTapped() - line 90")
+            print("ERROR:  nil value for billingTypes in TypeCollectionViewCell.swift -> typeSelectionButtonTapped() - line 78")
             return
         }
         

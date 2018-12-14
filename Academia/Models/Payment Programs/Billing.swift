@@ -23,15 +23,15 @@ struct Billing {
         case firstOfTheMonth = "1st of the month"
         case fifthOfTheMonth = "5th of the month"
         case fifteenthOfTheMonth = "15th of the month"
-        case twentiethOfTheMonth = "2oth of the month"
+        case twentiethOfTheMonth = "20th of the month"
         case registrationDay = "registration day"
-        case singleDay = "single day of classes"
+        case singleDay = "1 day of class"
     }
     
     enum BillingSignature: String {
         case digitallyTyped = "digital"
         case paperContract = "paper contract"
-        case digitalFingerSignature = "sign with your finger"
+        case digitalFingerSignature = "sign with finger"
         case touchID = "touchID"
         case faceID = "faceID"
         case otherBioMetric = "other BioMetric"

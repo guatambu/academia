@@ -32,7 +32,8 @@ class PaymentProgramAgreementViewController: UIViewController {
     @IBOutlet weak var paymentProgramAgreementLabelOutlet: UILabel!
     // program agreement textView
     @IBOutlet weak var programAgreementTextView: UITextView!
-
+    @IBOutlet weak var nextButtonOutlet: DesignableButton!
+    
     
     // MARK: - ViewController Lifecycle Functions
     
@@ -48,6 +49,9 @@ class PaymentProgramAgreementViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        nextButtonOutlet.isEnabled = true
+        nextButtonOutlet.isHidden = false
         
         guard let paymentProgramName = paymentProgramName, let active = active, let programDescription = programDescription else {
             print("no paymentProgramName, active, or programDescription passed to: PaymentProgramBillingDetailsVC -> viewDidLoad() - line 53")
@@ -137,8 +141,8 @@ extension PaymentProgramAgreementViewController {
         guard let paymentProgram = paymentProgramToEdit else { return }
         // payment program update info
         if programAgreementTextView.text != "" {
-            PaymentProgramModelController.shared.update(paymentProgram: paymentProgram, programName: nil, active: nil, paymentDescription: nil, billingTypes: nil, billingDates: nil, signatureTypes: nil, paymentAgreement: programAgreement)
-            print("update payment program name: \(PaymentProgramModelController.shared.paymentPrograms[0].programName)")
+            PaymentProgramModelController.shared.update(paymentProgram: paymentProgram, programName: nil, active: nil, paymentDescription: nil, billingTypes: nil, billingDates: nil, signatureTypes: nil, paymentAgreement: programAgreementTextView.text)
+            print("update payment program name: \(PaymentProgramModelController.shared.paymentPrograms[0].paymentAgreement)")
         }
     }
     
@@ -153,6 +157,9 @@ extension PaymentProgramAgreementViewController {
             paymentProgramEditingSetup()
         }
         
+        nextButtonOutlet.isHidden = true
+        nextButtonOutlet.isEnabled = false
+        
         print("PaymentProgramNameAndDescriptionVC -> inEditingMode: \(inEditingMode)")
     }
     
@@ -165,7 +172,8 @@ extension PaymentProgramAgreementViewController {
         
         welcomeLabelOutlet.text = "Program: \(paymentProgramToEdit.programName)"
         
-        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
+        welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
+        welcomeInstructionsLabelOutlet.text = "you are in payment program editing mode"
         
         programAgreementTextView.text = paymentProgramToEdit.paymentAgreement
     }

@@ -140,6 +140,7 @@
 		FAD2097721C1CFF400B9C622 /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2097621C1CFF400B9C622 /* DateCollectionViewCell.swift */; };
 		FAD2097921C1D00200B9C622 /* SignatureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2097821C1D00200B9C622 /* SignatureCollectionViewCell.swift */; };
 		FAD5B12D21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5B12C21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift */; };
+		FAD5B12F21C44BCA004ED286 /* ViewAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5B12E21C44BCA004ED286 /* ViewAgreementViewController.swift */; };
 		FAE2C07F214ADD26002E9756 /* ClassDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE2C07E214ADD26002E9756 /* ClassDetailTableViewController.swift */; };
 		FAE2FD3C2140700F00815402 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE2FD3B2140700F00815402 /* MockData.swift */; };
 		FAE2FD652140BE4200815402 /* FirstNameTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAE2FD642140BE4200815402 /* FirstNameTextFieldCell.xib */; };
@@ -387,6 +388,7 @@
 		FAD2097621C1CFF400B9C622 /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAD2097821C1D00200B9C622 /* SignatureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignatureCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAD5B12C21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProgramDelegateProtocols.swift; sourceTree = "<group>"; };
+		FAD5B12E21C44BCA004ED286 /* ViewAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAgreementViewController.swift; sourceTree = "<group>"; };
 		FAE2C07E214ADD26002E9756 /* ClassDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassDetailTableViewController.swift; sourceTree = "<group>"; };
 		FAE2FD3B2140700F00815402 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		FAE2FD642140BE4200815402 /* FirstNameTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstNameTextFieldCell.xib; sourceTree = "<group>"; };
@@ -919,6 +921,7 @@
 			children = (
 				FA9AD9FC213783FE0005E1F1 /* OwnerPaymentProgramsTableViewController.swift */,
 				FABF85A221B78ABD005CEBD4 /* PaymentProgramInfoDetailsViewController.swift */,
+				FAD5B12E21C44BCA004ED286 /* ViewAgreementViewController.swift */,
 				FABF85A621B78B4C005CEBD4 /* PaymentProgramNameAndDescriptionViewController.swift */,
 				FABF85A821B78B99005CEBD4 /* PaymentProgramBillingDetailsViewController.swift */,
 				FAD2097421C1CFE700B9C622 /* TypeCollectionViewCell.swift */,
@@ -1305,6 +1308,7 @@
 				FABF859621B220B9005CEBD4 /* LocationInfoDetailsViewController.swift in Sources */,
 				FAF1BB8E21435BD800AD56AE /* DescriptionTextViewTableViewCell.swift in Sources */,
 				FA23D28A2167E31200707056 /* BeltModelController.swift in Sources */,
+				FAD5B12F21C44BCA004ED286 /* ViewAgreementViewController.swift in Sources */,
 				FAF29BCE212E4CF200752414 /* OwnerModelController.swift in Sources */,
 				FABF859C21B38980005CEBD4 /* LocationContactInfoViewController.swift in Sources */,
 				FABF85A721B78B4C005CEBD4 /* PaymentProgramNameAndDescriptionViewController.swift in Sources */,
