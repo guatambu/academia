@@ -143,6 +143,8 @@ extension PaymentProgramInfoDetailsViewController {
     
     func populateCompletedProfileInfo() {
         
+        
+        
         guard let paymentProgram = PaymentProgramModelController.shared.paymentPrograms.first else { return }
         // name outlet
         paymentProgramNameLabelOutlet.text = paymentProgram.programName
@@ -160,21 +162,50 @@ extension PaymentProgramInfoDetailsViewController {
         
         // billing details outlets
         
+        billingTypes = ""
+        billingDates = ""
+        signatureTypes = ""
+        
         // billingTypes
         for type in paymentProgram.billingTypes {
-            billingTypes += type.rawValue
+            
+            if billingTypes == "" {
+                
+                billingTypes += type.rawValue
+                
+            } else {
+                
+                billingTypes += ", \(type.rawValue)"
+            }
         }
         billingTypeLabelOutlet.text = billingTypes
         
         //billingDates
         for date in paymentProgram.billingDates {
-            billingDates += date.rawValue
+            
+            if billingDates == "" {
+                
+                billingDates += date.rawValue
+                
+            } else {
+                
+                billingDates += ", \(date.rawValue)"
+            }
         }
         billingDateLabelOutlet.text = billingDates
         
         // signatureTypes
         for type in paymentProgram.signatureTypes {
-            signatureTypes += type.rawValue
+            
+            if signatureTypes == "" {
+                
+                signatureTypes += type.rawValue
+                
+            } else {
+                
+                signatureTypes += ", \(type.rawValue)"
+            }
+            
         }
         signatureTypeLabelOutlet.text = signatureTypes
     }

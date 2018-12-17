@@ -10,19 +10,20 @@ import Foundation
 
 // MARK: - PaymentProgramBillingDetailsVC to TypeCollectionViewCell Delegate protocol to access VC's billingTypes array property
 protocol BillingTypeDelegate: class {
-    var billingTypes: [Billing.BillingType] { get set }
-    
+    var billingTypes: [Billing.BillingType]? { get set }
+
 }
 
 
 // MARK: - PaymentProgramBillingDetailsVC to DateCollectionViewCell Delegate protocol to access VC's billingDates array property
 protocol BillingDateDelegate: class {
-    var billingDates: [Billing.BillingDate] { get set }
+    var billingDates: [Billing.BillingDate]? { get set }
     
 }
 
 
 // MARK: - PaymentProgramBillingDetailsVC to SignatureCollectionViewCell Delegate protocol to access VC's signatureTypes array property
 protocol SignatureTypeDelegate: class {
-    var signatureTypes: [Billing.BillingSignature] { get set }
+    var signatureTypes: [Billing.BillingSignature]? { get set }
+    
 }

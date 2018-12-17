@@ -22,6 +22,9 @@ class SignatureCollectionViewCell: UICollectionViewCell {
     
     let beltBuilder = BeltBuilder()
     
+//    var inEditingMode: Bool?
+    var selectedSignatureTypes: [Billing.BillingSignature]?
+    
     let uncheckedBox32 = UIImage(named: "unchecked_box_32")
     let checkedBox32 = UIImage(named: "checked_box_32")
     
@@ -49,7 +52,7 @@ class SignatureCollectionViewCell: UICollectionViewCell {
         collectionCellView.layer.cornerRadius = 10
         
         guard let signatureTypes = delegate?.signatureTypes else {
-            print("ERROR:  nil value for signatureTypes in SignatureCollectionViewCell.swift -> updateViews() - line 52")
+            print("ERROR:  nil value for signatureTypes in SignatureCollectionViewCell.swift -> updateViews() - line 55")
             return
         }
         
@@ -62,8 +65,6 @@ class SignatureCollectionViewCell: UICollectionViewCell {
             checkboxImageView.image = uncheckedBox32
             
         }
-        
-        print("cell: \(signatureType.rawValue) \nsignatureTypes: \(signatureTypes)")
         
     }
     
@@ -102,5 +103,5 @@ class SignatureCollectionViewCell: UICollectionViewCell {
             
         }
     }
-    
+
 }

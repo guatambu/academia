@@ -20,6 +20,10 @@ class TypeCollectionViewCell: UICollectionViewCell {
     
     let beltBuilder = BeltBuilder()
     
+//    var inEditingMode = false
+    var selectedBillingTypes: [Billing.BillingType]?
+    
+    
     let uncheckedBox32 = UIImage(named: "unchecked_box_32")
     let checkedBox32 = UIImage(named: "checked_box_32")
     
@@ -45,22 +49,22 @@ class TypeCollectionViewCell: UICollectionViewCell {
         collectionCellView.layer.borderColor = beltBuilder.grayBeltGray.cgColor
         collectionCellView.layer.cornerRadius = 10
         
+        // NOTE: this may have something to do with asynchronous threads 
+            
         guard let billingTypes = delegate?.billingTypes else {
-            print("ERROR:  nil value for billingTypes in TypeCollectionViewCell.swift -> updateViews() - line 49")
+            print("ERROR:  nil value for billingTypes in TypeCollectionViewCell.swift -> updateViews() - line 53")
             return
         }
-    
+        
         if billingTypes.contains(billingType) {
-    
-        checkboxImageView.image = checkedBox32
-    
+            
+            checkboxImageView.image = checkedBox32
+            
         } else {
-    
-        checkboxImageView.image = uncheckedBox32
-    
+            
+            checkboxImageView.image = uncheckedBox32
+            
         }
-    
-        print("cell: \(billingType.rawValue) \nbillingTypes: \(billingTypes)")
         
     }
     

@@ -22,6 +22,9 @@ class DateCollectionViewCell: UICollectionViewCell {
     
     let beltBuilder = BeltBuilder()
     
+//    var inEditingMode: Bool?
+    var selectedBillingDates: [Billing.BillingDate]?
+    
     let uncheckedBox32 = UIImage(named: "unchecked_box_32")
     let checkedBox32 = UIImage(named: "checked_box_32")
     
@@ -49,7 +52,7 @@ class DateCollectionViewCell: UICollectionViewCell {
         collectionCellView.layer.cornerRadius = 10
         
         guard let billingDates = delegate?.billingDates else {
-            print("ERROR:  nil value for billingDates in DateCollectionViewCell.swift -> updateViews() - line 52")
+            print("ERROR:  nil value for billingDates in DateCollectionViewCell.swift -> updateViews() - line 56")
             return
         }
         
@@ -62,9 +65,7 @@ class DateCollectionViewCell: UICollectionViewCell {
             checkboxImageView.image = uncheckedBox32
             
         }
-        
-        print("cell: \(billingDate.rawValue) \nbillingDates: \(billingDates)")
-        
+
     }
     
     

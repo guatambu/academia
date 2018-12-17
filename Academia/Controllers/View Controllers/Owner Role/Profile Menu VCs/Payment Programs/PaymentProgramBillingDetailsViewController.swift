@@ -19,9 +19,9 @@ class PaymentProgramBillingDetailsViewController: UIViewController, BillingTypeD
     var billingOptionsString = ""
     var billingTypeString = ""
     var signatureTypeString = ""
-    var billingTypes: [Billing.BillingType] = []
-    var billingDates: [Billing.BillingDate] = []
-    var signatureTypes: [Billing.BillingSignature] = []
+    var billingTypes: [Billing.BillingType]?
+    var billingDates: [Billing.BillingDate]?
+    var signatureTypes: [Billing.BillingSignature]?
     
     var inEditingMode: Bool?
     var paymentProgramToEdit: PaymentProgram?
@@ -75,13 +75,20 @@ class PaymentProgramBillingDetailsViewController: UIViewController, BillingTypeD
             print("no paymentProgramName, active, or programDescription passed to: PaymentProgramBillingDetailsVC -> viewDidLoad() - line 71")
             return
         }
+        
         print("program name: \(paymentProgramName) \nactive: \(active) \ndescription: \(programDescription)")
+    
     }
     
     
     // MARK: - Actions
     
     @objc func saveButtonTapped() {
+        
+        guard let billingTypes = billingTypes, let billingDates = billingDates, let signatureTypes = signatureTypes else {
+            print("ERROR: nil values for billingTypes, billingDates, and signatureTypes in PaymentProgramBillingDetailsVC -> saveButtonTapped() - line 89")
+            return
+        }
         
         // Location update profile info
         if billingTypes.count != 0 && billingDates.count != 0 && signatureTypes.count != 0 {
@@ -107,6 +114,10 @@ class PaymentProgramBillingDetailsViewController: UIViewController, BillingTypeD
         let destViewController = mainView.instantiateViewController(withIdentifier: "toPaymentProgramAgreement") as! PaymentProgramAgreementViewController
         
         // run check to see if billing details are properly selected/in place
+        guard let billingTypes = billingTypes, let billingDates = billingDates, let signatureTypes = signatureTypes else {
+            print("ERROR: nil values for billingTypes, billingDates, and signatureTypes in PaymentProgramBillingDetailsVC -> nextButtonTapped() - line 117")
+            return
+        }
         guard billingTypes.count != 0 && billingDates.count != 0 && signatureTypes.count != 0 else {
             
             welcomeInstructionsLabelOutlet.textColor = UIColor.red
@@ -144,10 +155,15 @@ extension PaymentProgramBillingDetailsViewController {
     // Update Function for case where want to update user info without a segue
     func updatePaymentProgramInfo() {
         guard let paymentProgram = paymentProgramToEdit else { return }
+        
+        guard let billingTypes = billingTypes, let billingDates = billingDates, let signatureTypes = signatureTypes else {
+            print("ERROR: nil values for billingTypes, billingDates, and signatureTypes in PaymentProgramBillingDetailsVC -> updatePaymentProgramInfo() - line 160")
+            return
+        }
         // payment program update info
         if billingTypes.count != 0 && billingDates.count != 0 && signatureTypes.count != 0 {
             PaymentProgramModelController.shared.update(paymentProgram: paymentProgram, programName: nil, active: nil, paymentDescription: nil, billingTypes: billingTypes, billingDates: billingDates, signatureTypes: signatureTypes, paymentAgreement: nil)
-            print("update payment program name: \(PaymentProgramModelController.shared.paymentPrograms[0].billingTypes)")
+            print("update payment program billingTypes: \(PaymentProgramModelController.shared.paymentPrograms[0].billingTypes)")
         }
     }
     func enterEditingMode(inEditingMode: Bool?) {
@@ -169,6 +185,16 @@ extension PaymentProgramBillingDetailsViewController {
         
         welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
         welcomeInstructionsLabelOutlet.text = "you are in payment program editing mode"
+        
+        billingTypes = paymentProgramToEdit.billingTypes
+        billingDates = paymentProgramToEdit.billingDates
+        signatureTypes = paymentProgramToEdit.signatureTypes
+        
+        billingTypeCollectionView.reloadData()
+        billingDateCollectionView.reloadData()
+        signatureTypeCollectionView.reloadData()
+        
+        print("the VC's billing details have been set to the existing billing details to be edited and the collection views have reloaded their data")
     }
 }
 
@@ -192,27 +218,33 @@ extension PaymentProgramBillingDetailsViewController: UICollectionViewDelegate, 
         
         if collectionView.tag == 5 {
             let cell = billingTypeCollectionView.dequeueReusableCell(withReuseIdentifier: "TypeCollectionCell", for: indexPath) as! TypeCollectionViewCell
+            // set the BillingTypeDelegate for the TypeCollectionViewCell
+            cell.delegate = self
             
             cell.billingType = billing.types[indexPath.row]
-            cell.delegate = self
+            cell.selectedBillingTypes = paymentProgramToEdit?.billingTypes
             
             return cell
             
         } else if collectionView.tag == 10 {
             
             let cell = billingDateCollectionView.dequeueReusableCell(withReuseIdentifier: "DateCollectionCell", for: indexPath) as! DateCollectionViewCell
+            // set the BillingDateDelegate for the DateCollectionViewCell
+            cell.delegate = self
             
             cell.billingDate = billing.dates[indexPath.row]
-            cell.delegate = self
+            cell.selectedBillingDates = paymentProgramToEdit?.billingDates
             
             return cell
             
         } else if collectionView.tag == 15 {
             
             let cell = signatureTypeCollectionView.dequeueReusableCell(withReuseIdentifier: "SignatureCollectionCell", for: indexPath) as! SignatureCollectionViewCell
+            // set the SignatureTypeDelegate for the SignatureCollectionViewCell
+            cell.delegate = self
             
             cell.signatureType = billing.signatures[indexPath.row]
-            cell.delegate = self
+            cell.selectedSignatureTypes = paymentProgramToEdit?.signatureTypes
             
             return cell
         
