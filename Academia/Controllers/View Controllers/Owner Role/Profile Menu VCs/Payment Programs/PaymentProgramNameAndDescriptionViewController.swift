@@ -82,9 +82,9 @@ class PaymentProgramNameAndDescriptionViewController: UIViewController {
         
         // programmatically performing the segue
         
-        print("to address segue")
+        print("to billing details segue")
         // instantiate the relevant storyboard
-        let mainView: UIStoryboard = UIStoryboard(name: "OwnerPaymentProgramWorkFlow", bundle: nil)
+        let mainView: UIStoryboard = UIStoryboard(name: "OwnerPaymentProgramWorkflow", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
         let destViewController = mainView.instantiateViewController(withIdentifier: "toPaymentProgramBillingDetails") as! PaymentProgramBillingDetailsViewController
         
@@ -95,6 +95,8 @@ class PaymentProgramNameAndDescriptionViewController: UIViewController {
             return
         }
         
+        paymentProgramName = programNameTextField.text
+        programDescription = programDescriptionTextView.text
         // create the segue programmatically
         self.navigationController?.pushViewController(destViewController, animated: true)
         
@@ -110,6 +112,9 @@ class PaymentProgramNameAndDescriptionViewController: UIViewController {
         
         destViewController.inEditingMode = inEditingMode
         destViewController.paymentProgramToEdit = paymentProgramToEdit
+        destViewController.billingTypes = paymentProgramToEdit?.billingTypes ?? []
+        destViewController.billingDates = paymentProgramToEdit?.billingDates ?? []
+        destViewController.signatureTypes = paymentProgramToEdit?.signatureTypes ?? []
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
         // ****  implement this across the other VCs in onboarding
@@ -126,7 +131,7 @@ extension PaymentProgramNameAndDescriptionViewController {
         guard let paymentProgram = paymentProgramToEdit else { return }
         // payment program update info
         if programNameTextField.text != "" {
-            PaymentProgramModelController.shared.update(paymentProgram: paymentProgram, programName: paymentProgramName, active: active, paymentDescription: programDescription, billingType: nil, billingOptions: nil, signatureType: nil, paymentAgreement: nil)
+            PaymentProgramModelController.shared.update(paymentProgram: paymentProgram, programName: programNameTextField.text, active: active, paymentDescription: programDescriptionTextView.text, billingTypes: nil, billingDates: nil, signatureTypes: nil, paymentAgreement: nil)
             print("update payment program name: \(PaymentProgramModelController.shared.paymentPrograms[0].programName)")
         }
     }
@@ -154,7 +159,8 @@ extension PaymentProgramNameAndDescriptionViewController {
         
         welcomeLabelOutlet.text = "Program: \(paymentProgramToEdit.programName)"
         
-        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
+        welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
+        welcomeInstructionsLabelOutlet.text = "you are in payment program editing mode"
         
         programDescriptionTextView.text = paymentProgramToEdit.paymentDescription
         programNameTextField.text = paymentProgramToEdit.programName

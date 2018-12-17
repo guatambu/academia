@@ -16,9 +16,9 @@ class PaymentProgramAgreementViewController: UIViewController {
     var active: Bool?
     var programDescription: String?
     var programAgreement: String?
-    var billingOptions: [String]?
-    var billingType: [String]?
-    var signatureType: [String]?
+    var billingTypes: [Billing.BillingType]?
+    var billingDates: [Billing.BillingDate]?
+    var signatureTypes: [Billing.BillingSignature]?
     
     var inEditingMode: Bool?
     var paymentProgramToEdit: PaymentProgram?
@@ -32,7 +32,8 @@ class PaymentProgramAgreementViewController: UIViewController {
     @IBOutlet weak var paymentProgramAgreementLabelOutlet: UILabel!
     // program agreement textView
     @IBOutlet weak var programAgreementTextView: UITextView!
-
+    @IBOutlet weak var nextButtonOutlet: DesignableButton!
+    
     
     // MARK: - ViewController Lifecycle Functions
     
@@ -48,6 +49,23 @@ class PaymentProgramAgreementViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        nextButtonOutlet.isEnabled = true
+        nextButtonOutlet.isHidden = false
+        
+        guard let paymentProgramName = paymentProgramName, let active = active, let programDescription = programDescription else {
+            print("no paymentProgramName, active, or programDescription passed to: PaymentProgramBillingDetailsVC -> viewDidLoad() - line 53")
+            return
+        }
+        print("program name: \(paymentProgramName) \nactive: \(active) \ndescription: \(programDescription)")
+        
+        guard let billingTypes = billingTypes, let billingDates = billingDates, let signatureTypes = signatureTypes else {
+            print("no billingTypes, billingDates, or signatureTypes passed to: PaymentProgramAgreementVC -> viewDidLoad() - line 59")
+            return
+        }
+        print(billingTypes)
+        print(billingDates)
+        print(signatureTypes)
         
         //populateCompletedProfileInfo()
     }
@@ -73,9 +91,9 @@ class PaymentProgramAgreementViewController: UIViewController {
         
         // programmatically performing the segue
         
-        print("to address segue")
+        print("to review and create program segue")
         // instantiate the relevant storyboard
-        let mainView: UIStoryboard = UIStoryboard(name: "OwnerPaymentProgramWorkFlow", bundle: nil)
+        let mainView: UIStoryboard = UIStoryboard(name: "OwnerPaymentProgramWorkflow", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
         let destViewController = mainView.instantiateViewController(withIdentifier: "toReviewAndCreatePaymentProgram") as! ReviewAndCreatePaymentProgramViewController
         
@@ -85,6 +103,8 @@ class PaymentProgramAgreementViewController: UIViewController {
             welcomeInstructionsLabelOutlet.textColor = UIColor.red
             return
         }
+        
+        programAgreement = programAgreementTextView.text
         
         // create the segue programmatically
         self.navigationController?.pushViewController(destViewController, animated: true)
@@ -98,9 +118,9 @@ class PaymentProgramAgreementViewController: UIViewController {
         destViewController.paymentProgramName = paymentProgramName
         destViewController.active = active
         destViewController.programDescription = programDescription
-        destViewController.billingOptions = billingOptions
-        destViewController.billingType = billingType
-        destViewController.signatureType = signatureType
+        destViewController.billingDates = billingDates
+        destViewController.billingTypes = billingTypes
+        destViewController.signatureTypes = signatureTypes
         destViewController.programAgreement = programAgreement
         
         destViewController.inEditingMode = inEditingMode
@@ -121,8 +141,8 @@ extension PaymentProgramAgreementViewController {
         guard let paymentProgram = paymentProgramToEdit else { return }
         // payment program update info
         if programAgreementTextView.text != "" {
-            PaymentProgramModelController.shared.update(paymentProgram: paymentProgram, programName: nil, active: nil, paymentDescription: nil, billingType: nil, billingOptions: nil, signatureType: nil, paymentAgreement: programAgreement)
-            print("update payment program name: \(PaymentProgramModelController.shared.paymentPrograms[0].programName)")
+            PaymentProgramModelController.shared.update(paymentProgram: paymentProgram, programName: nil, active: nil, paymentDescription: nil, billingTypes: nil, billingDates: nil, signatureTypes: nil, paymentAgreement: programAgreementTextView.text)
+            print("update payment program name: \(PaymentProgramModelController.shared.paymentPrograms[0].paymentAgreement)")
         }
     }
     
@@ -137,6 +157,9 @@ extension PaymentProgramAgreementViewController {
             paymentProgramEditingSetup()
         }
         
+        nextButtonOutlet.isHidden = true
+        nextButtonOutlet.isEnabled = false
+        
         print("PaymentProgramNameAndDescriptionVC -> inEditingMode: \(inEditingMode)")
     }
     
@@ -149,7 +172,8 @@ extension PaymentProgramAgreementViewController {
         
         welcomeLabelOutlet.text = "Program: \(paymentProgramToEdit.programName)"
         
-        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
+        welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
+        welcomeInstructionsLabelOutlet.text = "you are in payment program editing mode"
         
         programAgreementTextView.text = paymentProgramToEdit.paymentAgreement
     }

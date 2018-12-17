@@ -19,9 +19,9 @@ class PaymentProgramModelController {
     // MARK: - CRUD Functions
     
     // Create
-    func addNew(active: Bool, programName: String, billingType: [String], billingOptions: [String], paymentDescription: String, paymentAgreement: String, signatureType: [String]) {
+    func addNew(active: Bool, programName: String, billingTypes: [Billing.BillingType], billingDates: [Billing.BillingDate], signatureTypes: [Billing.BillingSignature], paymentDescription: String, paymentAgreement: String) {
         
-        let paymentProgram = PaymentProgram(paymentProgramUID: UUID(), active: active, programName: programName, dateCreated: Date(), dateEdited: Date(), billingType: billingType, billingOptions: billingOptions, paymentDescription: paymentDescription, paymentAgreement: paymentAgreement, signatureType: signatureType)
+        let paymentProgram = PaymentProgram(paymentProgramUID: UUID(), active: active, programName: programName, dateCreated: Date(), dateEdited: Date(), billingTypes: billingTypes, billingDates: billingDates, signatureTypes: signatureTypes,  paymentDescription: paymentDescription, paymentAgreement: paymentAgreement)
         
         paymentPrograms.append(paymentProgram)
     }
@@ -35,9 +35,9 @@ class PaymentProgramModelController {
                 programName: String?,
                 active: Bool?,
                 paymentDescription: String?,
-                billingType: [String]?,
-                billingOptions: [String]?,
-                signatureType: [String]?,
+                billingTypes: [Billing.BillingType]?,
+                billingDates: [Billing.BillingDate]?,
+                signatureTypes: [Billing.BillingSignature]?,
                 paymentAgreement: String?
         ) {
         
@@ -52,14 +52,14 @@ class PaymentProgramModelController {
         if let paymentDescription = paymentDescription {
             paymentProgram.paymentDescription = paymentDescription
         }
-        if let billingType = billingType {
-            paymentProgram.billingType = billingType
+        if let billingTypes = billingTypes {
+            paymentProgram.billingTypes = billingTypes
         }
-        if let billingOptions = billingOptions {
-            paymentProgram.billingOptions = billingOptions
+        if let billingDates = billingDates {
+            paymentProgram.billingDates = billingDates
         }
-        if let signatureType = signatureType {
-            paymentProgram.signatureType = signatureType
+        if let signatureTypes = signatureTypes {
+            paymentProgram.signatureTypes = signatureTypes
         }
         if let paymentAgreement = paymentAgreement {
             paymentProgram.paymentAgreement = paymentAgreement

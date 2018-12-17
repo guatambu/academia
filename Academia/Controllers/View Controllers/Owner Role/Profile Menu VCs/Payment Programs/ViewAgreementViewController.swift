@@ -1,22 +1,22 @@
 //
-//  ViewPaymentProgramAgreementViewController.swift
+//  ViewAgreementViewController.swift
 //  Academia
 //
-//  Created by Michael Guatambu Davis on 12/4/18.
+//  Created by Michael Guatambu Davis on 12/14/18.
 //  Copyright © 2018 DunDak, LLC. All rights reserved.
 //
 
 import UIKit
 
-class ViewPaymentProgramAgreementViewController: UIViewController {
+class ViewAgreementViewController: UIViewController {
 
     // MARK: - Properties
     
     var paymentProgramName: String?
-    var programAgreement: String?
+    var agreement: String?
     
     // program agreement textView
-    @IBOutlet weak var programAgreementTextView: UITextView!
+    @IBOutlet weak var agreementTextView: UITextView!
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -32,14 +32,13 @@ class ViewPaymentProgramAgreementViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let programAgreement = programAgreement else {
+        guard let agreement = agreement else {
             
             print("programAgreement has a nil value in ViewPaymentProgramAgreementVC -> viewDidLoad() - line 37")
             return
         }
-        programAgreementTextView.text = "\(programAgreement)"
+        agreementTextView.text = "\(agreement)"
+        
+        
     }
 }
-
-
-

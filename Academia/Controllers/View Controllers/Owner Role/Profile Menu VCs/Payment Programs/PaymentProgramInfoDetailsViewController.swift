@@ -16,9 +16,9 @@ class PaymentProgramInfoDetailsViewController: UIViewController {
     var active: Bool?
     var lastChanged: String?
     var programDescription: String?
-    var billingOptions: String = ""
-    var billingType: String = ""
-    var signatureType: String = ""
+    var billingTypes: String = ""
+    var billingDates: String = ""
+    var signatureTypes: String = ""
     
     var inEditingMode: Bool?
     var paymentProgramToEdit: PaymentProgram?
@@ -32,8 +32,8 @@ class PaymentProgramInfoDetailsViewController: UIViewController {
     // program description textView
     @IBOutlet weak var programDescriptionTextView: UITextView!
     // billing details outlets
-    @IBOutlet weak var billingOptionsLabelOutlet: UILabel!
     @IBOutlet weak var billingTypeLabelOutlet: UILabel!
+    @IBOutlet weak var billingDateLabelOutlet: UILabel!
     @IBOutlet weak var signatureTypeLabelOutlet: UILabel!
     
     
@@ -52,10 +52,12 @@ class PaymentProgramInfoDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let rightEditButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(self.editButtonTapped))
+        self.navigationItem.rightBarButtonItem = rightEditButton
+        
         //populateCompletedProfileInfo()
     }
-    
-    // TODO: decide whether to create a new review your location details VC or tweak current one to work when creating location button not needed
+
     
     // MARK: - Actions
     
@@ -63,11 +65,11 @@ class PaymentProgramInfoDetailsViewController: UIViewController {
         // programmatically performing the segue
         
         // instantiate the relevant storyboard
-        let mainView: UIStoryboard = UIStoryboard(name: "OwnerPaymentProgramWorkFlow", bundle: nil)
+        let mainView: UIStoryboard = UIStoryboard(name: "OwnerPaymentProgramWorkflow", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
-        let destViewController = mainView.instantiateViewController(withIdentifier: "toViewPaymentProgramAgreement") as! ViewPaymentProgramAgreementViewController
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toViewAgreement") as! ViewAgreementViewController
         // create the segue programmatically - PUSH
-    self.navigationController?.pushViewController(destViewController, animated: true)
+        self.navigationController?.pushViewController(destViewController, animated: true)
 
         // set the desired properties of the destinationVC's navgation Item
         let backButtonItem = UIBarButtonItem()
@@ -78,15 +80,47 @@ class PaymentProgramInfoDetailsViewController: UIViewController {
         guard let paymentProgram = PaymentProgramModelController.shared.paymentPrograms.first else { return }
         
         destViewController.paymentProgramName = paymentProgram.programName
-        destViewController.programAgreement = paymentProgram.paymentAgreement
+        destViewController.agreement = paymentProgram.paymentAgreement
     }
     
-    @IBAction func editButtonTapped(_ sender: Any) {
+    
+    @IBAction func deleteAccountButtonTapped(_ sender: UIButton) {
+        
+        let alertController = UIAlertController(title: "Delete Account", message: "are you sure you want to delete your account?", preferredStyle: UIAlertController.Style.alert)
+        
+        let cancel = UIAlertAction(title: "cancel", style: UIAlertAction.Style.cancel, handler: nil)
+        let deleteAccount = UIAlertAction(title: "delete account", style: UIAlertAction.Style.destructive) { (alert) in
+            
+            PaymentProgramModelController.shared.delete(paymentProgram: PaymentProgramModelController.shared.paymentPrograms[0])
+            
+            // programmatically performing the segue
+            guard let viewControllers = self.navigationController?.viewControllers else { return }
+            
+            for viewController in viewControllers {
+                
+                if viewController is OwnerPaymentProgramsTableViewController{
+                    self.navigationController?.popToViewController(viewController, animated: true)
+                }
+            }
+            
+            print("how many location we got now: \(PaymentProgramModelController.shared.paymentPrograms.count)")
+        }
+        
+        alertController.addAction(cancel)
+        alertController.addAction(deleteAccount)
+        
+        self.present(alertController, animated: true)
+        
+    }
+    
+    
+    // MARK: - editButtonTapped()
+    @objc func editButtonTapped() {
         
         // programmatically performing the segue
         
         // instantiate the relevant storyboard
-        let mainView: UIStoryboard = UIStoryboard(name: "OwnerPaymentProgramWorkFlow", bundle: nil)
+        let mainView: UIStoryboard = UIStoryboard(name: "OwnerPaymentProgramWorkflow", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
         let destViewController = mainView.instantiateViewController(withIdentifier: "toPaymentProgramNameAndDescription") as! PaymentProgramNameAndDescriptionViewController
         // create the segue programmatically - PUSH
@@ -99,45 +133,6 @@ class PaymentProgramInfoDetailsViewController: UIViewController {
         // set properties on destinationVC
         destViewController.inEditingMode = true
         destViewController.paymentProgramToEdit = PaymentProgramModelController.shared.paymentPrograms[0]
-        // TODO: set destinationVC properties to display user to be edited
-        // in destintaionVC unrwrap userToEdit? as either Owner, AdultStudent, or KidStudent and us this to display info, and be passed around for updating in each update function
-        // also need to build in programmatic segues for saveTapped to exit editing mode and return to OwnerProfileDetailsVC
-    }
-    
-    @IBAction func deleteAccountButtonTapped(_ sender: UIButton) {
-        
-        let alertController = UIAlertController(title: "Delete Account", message: "are you sure you want to delete your account?", preferredStyle: UIAlertController.Style.alert)
-        
-        let cancel = UIAlertAction(title: "cancel", style: UIAlertAction.Style.cancel, handler: nil)
-        let deleteAccount = UIAlertAction(title: "delete account", style: UIAlertAction.Style.destructive) { (alert) in
-            
-            LocationModelController.shared.delete(location: LocationModelController.shared.locations[0])
-            
-            // programmatically performing the segue
-            
-            // instantiate the relevant storyboard
-            let mainView: UIStoryboard = UIStoryboard(name: "OwnerLocationWorkFlow", bundle: nil)
-            // instantiate the desired TableViewController as ViewController on relevant storyboard
-            let destViewController = mainView.instantiateViewController(withIdentifier: "toOwnerLocationsList") as! MyLocationsTableViewController
-            // add to Navigation stack
-            let destVCNavigation = UINavigationController(rootViewController: destViewController)
-            // perform the segure - present viewController of choice
-            self.navigationController?.present(destVCNavigation, animated: true, completion: nil)
-            
-            // perform segue to specified viewController removing all others from Navigation Stack
-            //            self.navigationController?.popToViewController(destVCNavigation, animated: true)
-            // why can't i 'pop' to this VC?  if not the way to go, then, is navigation stack clean?
-            
-            self.navigationController?.navigationBar.tintColor = self.beltBuilder.redBeltRed
-            
-            print("how many location we got now: \(LocationModelController.shared.locations.count)")
-            
-        }
-        
-        alertController.addAction(cancel)
-        alertController.addAction(deleteAccount)
-        
-        self.present(alertController, animated: true)
         
     }
     
@@ -147,6 +142,8 @@ class PaymentProgramInfoDetailsViewController: UIViewController {
 extension PaymentProgramInfoDetailsViewController {
     
     func populateCompletedProfileInfo() {
+        
+        
         
         guard let paymentProgram = PaymentProgramModelController.shared.paymentPrograms.first else { return }
         // name outlet
@@ -162,29 +159,60 @@ extension PaymentProgramInfoDetailsViewController {
         lastChangedLabelOutlet.text = "\(paymentProgram.dateEdited)"
         // payment program description
         programDescriptionTextView.text = paymentProgram.paymentDescription
+        
         // billing details outlets
-        for option in paymentProgram.billingOptions {
-            billingOptions += option
+        
+        billingTypes = ""
+        billingDates = ""
+        signatureTypes = ""
+        
+        // billingTypes
+        for type in paymentProgram.billingTypes {
+            
+            if billingTypes == "" {
+                
+                billingTypes += type.rawValue
+                
+            } else {
+                
+                billingTypes += ", \(type.rawValue)"
+            }
         }
-        // billing options
-        for type in paymentProgram.billingType {
-//            guard let option = option else {
-//                print("no billing options present in payment program billing options PaymentProgramInfoDetailsViewController -> populateCompletedProfileInfo() - line 146")
-//                return
-//            }
-            billingType += type
+        billingTypeLabelOutlet.text = billingTypes
+        
+        //billingDates
+        for date in paymentProgram.billingDates {
+            
+            if billingDates == "" {
+                
+                billingDates += date.rawValue
+                
+            } else {
+                
+                billingDates += ", \(date.rawValue)"
+            }
         }
-        billingOptionsLabelOutlet.text = billingOptions
-        // signature type
-        for type in paymentProgram.signatureType {
-            signatureType += type
+        billingDateLabelOutlet.text = billingDates
+        
+        // signatureTypes
+        for type in paymentProgram.signatureTypes {
+            
+            if signatureTypes == "" {
+                
+                signatureTypes += type.rawValue
+                
+            } else {
+                
+                signatureTypes += ", \(type.rawValue)"
+            }
+            
         }
-        signatureTypeLabelOutlet.text = signatureType
+        signatureTypeLabelOutlet.text = signatureTypes
     }
 }
 
 
-// MARK: - Programmatic Segues to return to proper ProfileFlow storyboard and location profileVC
+// MARK: - Programmatic Segues to return to proper ProfileFlow storyboard and payment program profileVC
 extension UIViewController {
     
     func returnToPaymentProgramInfo() {

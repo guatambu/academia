@@ -149,7 +149,7 @@ extension LocationSocialLinksViewController {
         
         welcomeLabeOutlet.text = "Location: \(locationToEdit.locationName)"
         
-        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
+        welcomeInstructionsLabelOutlet.text = "you are in location editing mode"
         
         socialLink1TextField.text = locationToEdit.social1
         socialLink2TextField.text = locationToEdit.social2
