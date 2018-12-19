@@ -101,7 +101,6 @@
 		FAA550712145D03F00EC7860 /* HeadingLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA550702145D03F00EC7860 /* HeadingLabelTableViewCell.swift */; };
 		FAAAC149213E337500093D6C /* OwnerBeltSystemFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAAAC147213E337500093D6C /* OwnerBeltSystemFlow.storyboard */; };
 		FAAAC14B213E33E000093D6C /* OwnerProfileFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAAAC14A213E33E000093D6C /* OwnerProfileFlow.storyboard */; };
-		FAAAC14E213E342600093D6C /* OwnerStudentsFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAAAC14C213E342600093D6C /* OwnerStudentsFlow.storyboard */; };
 		FAAAC150213E345900093D6C /* OwnerMessages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAAAC14F213E345900093D6C /* OwnerMessages.storyboard */; };
 		FAAAC153213E348800093D6C /* OwnerBaseCampFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAAAC151213E348800093D6C /* OwnerBaseCampFlow.storyboard */; };
 		FAB203D4215EA8630034E1D4 /* LocationsImageMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB203D3215EA8630034E1D4 /* LocationsImageMenuTableViewCell.swift */; };
@@ -141,6 +140,7 @@
 		FAD2097921C1D00200B9C622 /* SignatureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2097821C1D00200B9C622 /* SignatureCollectionViewCell.swift */; };
 		FAD5B12D21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5B12C21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift */; };
 		FAD5B12F21C44BCA004ED286 /* ViewAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5B12E21C44BCA004ED286 /* ViewAgreementViewController.swift */; };
+		FAD5B13821CA1276004ED286 /* OwnerStudentsFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAD5B13621CA1276004ED286 /* OwnerStudentsFlow.storyboard */; };
 		FAE2C07F214ADD26002E9756 /* ClassDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE2C07E214ADD26002E9756 /* ClassDetailTableViewController.swift */; };
 		FAE2FD3C2140700F00815402 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE2FD3B2140700F00815402 /* MockData.swift */; };
 		FAE2FD652140BE4200815402 /* FirstNameTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAE2FD642140BE4200815402 /* FirstNameTextFieldCell.xib */; };
@@ -349,7 +349,6 @@
 		FAA550702145D03F00EC7860 /* HeadingLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadingLabelTableViewCell.swift; sourceTree = "<group>"; };
 		FAAAC148213E337500093D6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Academia/Views/Base.lproj/OwnerBeltSystemFlow.storyboard; sourceTree = "<group>"; };
 		FAAAC14A213E33E000093D6C /* OwnerProfileFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerProfileFlow.storyboard; sourceTree = "<group>"; };
-		FAAAC14D213E342600093D6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Academia/Views/Base.lproj/OwnerStudentsFlow.storyboard; sourceTree = "<group>"; };
 		FAAAC14F213E345900093D6C /* OwnerMessages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerMessages.storyboard; sourceTree = "<group>"; };
 		FAAAC152213E348800093D6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Academia/Views/Base.lproj/OwnerBaseCampFlow.storyboard; sourceTree = "<group>"; };
 		FAB203D3215EA8630034E1D4 /* LocationsImageMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsImageMenuTableViewCell.swift; sourceTree = "<group>"; };
@@ -389,6 +388,7 @@
 		FAD2097821C1D00200B9C622 /* SignatureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignatureCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAD5B12C21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProgramDelegateProtocols.swift; sourceTree = "<group>"; };
 		FAD5B12E21C44BCA004ED286 /* ViewAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAgreementViewController.swift; sourceTree = "<group>"; };
+		FAD5B13721CA1276004ED286 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Academia/Views/Academia/Views/Base.lproj/OwnerStudentsFlow.storyboard; sourceTree = "<group>"; };
 		FAE2C07E214ADD26002E9756 /* ClassDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassDetailTableViewController.swift; sourceTree = "<group>"; };
 		FAE2FD3B2140700F00815402 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		FAE2FD642140BE4200815402 /* FirstNameTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstNameTextFieldCell.xib; sourceTree = "<group>"; };
@@ -572,7 +572,7 @@
 				FA0C442121278A8F00B59194 /* LaunchScreen.storyboard */,
 				FA0C441921278A8F00B59194 /* Main.storyboard */,
 				FAAAC151213E348800093D6C /* OwnerBaseCampFlow.storyboard */,
-				FAAAC14C213E342600093D6C /* OwnerStudentsFlow.storyboard */,
+				FAD5B13621CA1276004ED286 /* OwnerStudentsFlow.storyboard */,
 				FAAAC14F213E345900093D6C /* OwnerMessages.storyboard */,
 				FAAAC14A213E33E000093D6C /* OwnerProfileFlow.storyboard */,
 				FAC5D3C921BF0F600083B417 /* OwnerPaymentProgramWorkflow.storyboard */,
@@ -686,7 +686,6 @@
 			children = (
 				FA21D6852130BB93006790E5 /* StudentsByListGroupingTableViewController.swift */,
 				FA21D6832130BB7F006790E5 /* StudentListTableViewController.swift */,
-				FA21D6A42134D72A006790E5 /* AddNewStudentGroupTableViewController.swift */,
 				FA21D6A22134BAC5006790E5 /* StudentDetailTableViewController.swift */,
 			);
 			path = "Owner Controlled Students";
@@ -955,6 +954,7 @@
 		FAD5B13121CA0172004ED286 /* Groups */ = {
 			isa = PBXGroup;
 			children = (
+				FA21D6A42134D72A006790E5 /* AddNewStudentGroupTableViewController.swift */,
 			);
 			path = Groups;
 			sourceTree = "<group>";
@@ -1214,7 +1214,6 @@
 				FAB7E35A212BA643003E3B79 /* BlairMdITC TT-Medium.ttf in Resources */,
 				FAF29BC0212E21EA00752414 /* camera_outline_white_32.png in Resources */,
 				FAF29BA4212E1EF700752414 /* unchecked_checkbox_50.png in Resources */,
-				FAAAC14E213E342600093D6C /* OwnerStudentsFlow.storyboard in Resources */,
 				FA66A00C2145CB42002B0313 /* HeadingLabelCell.xib in Resources */,
 				FAF29B9F212E1EF700752414 /* programs_black_50.png in Resources */,
 				FAAAC150213E345900093D6C /* OwnerMessages.storyboard in Resources */,
@@ -1240,6 +1239,7 @@
 				FAE2FD812140BF2A00815402 /* EmergencyContactPhoneTextFieldCell.xib in Resources */,
 				FA5C5C29214DCE5E00BF62D5 /* student_sample.jpg in Resources */,
 				FAF29B9E212E1EF700752414 /* profile_red_50.png in Resources */,
+				FAD5B13821CA1276004ED286 /* OwnerStudentsFlow.storyboard in Resources */,
 				FAF29BA7212E1EF700752414 /* classes_red_50.png in Resources */,
 				FAE2FD7B2140BEFA00815402 /* PaymentProgramTextFieldCell.xib in Resources */,
 				FA41CE6721A1336F00EAD53A /* BeltCellNib.xib in Resources */,
@@ -1485,20 +1485,20 @@
 			name = OwnerBeltSystemFlow.storyboard;
 			sourceTree = "<group>";
 		};
-		FAAAC14C213E342600093D6C /* OwnerStudentsFlow.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FAAAC14D213E342600093D6C /* Base */,
-			);
-			name = OwnerStudentsFlow.storyboard;
-			sourceTree = "<group>";
-		};
 		FAAAC151213E348800093D6C /* OwnerBaseCampFlow.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				FAAAC152213E348800093D6C /* Base */,
 			);
 			name = OwnerBaseCampFlow.storyboard;
+			sourceTree = "<group>";
+		};
+		FAD5B13621CA1276004ED286 /* OwnerStudentsFlow.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FAD5B13721CA1276004ED286 /* Base */,
+			);
+			name = OwnerStudentsFlow.storyboard;
 			sourceTree = "<group>";
 		};
 		FAE67A2B2157453100822DCF /* StudentBaseCampFlow.storyboard */ = {

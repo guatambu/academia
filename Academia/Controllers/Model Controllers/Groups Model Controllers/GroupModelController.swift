@@ -19,9 +19,9 @@ class GroupModelController {
     // MARK: - CRUD Functions
     
     // Create
-    func add(active: Bool, name: String, members: [Any]?) {
+    func add(active: Bool, name: String, description: String?, members: [Any]?) {
         
-        let group = Group(groupUID: UUID(), active: active, name: name, dateCreated: Date(), dateEdited: Date(), members: members)
+        let group = Group(groupUID: UUID(), active: active, name: name, description: description, dateCreated: Date(), dateEdited: Date(), members: members)
         
         groups.append(group)
     }
@@ -30,7 +30,7 @@ class GroupModelController {
     
     
     // Update
-    func update(group: Group, active: Bool?, name: String?, members: [Any]?) {
+    func update(group: Group, active: Bool?, name: String?, description: String?, members: [Any]?) {
         
         group.dateEdited = Date()
         
@@ -39,6 +39,9 @@ class GroupModelController {
         }
         if let name = name {
             group.name = name
+        }
+        if let description = description {
+            group.description = description
         }
         if let members = members {
             group.members = members
@@ -51,6 +54,5 @@ class GroupModelController {
         guard let index = self.groups.index(of: group) else { return }
         self.groups.remove(at: index)
     }
-    
     
 }

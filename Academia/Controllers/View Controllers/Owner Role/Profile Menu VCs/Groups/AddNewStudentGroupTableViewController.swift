@@ -12,12 +12,6 @@ class AddNewStudentGroupTableViewController: UITableViewController {
     
     // MARK: - Properties
     
-    @IBOutlet weak var statusMessageOutlet: UILabel!
-    @IBOutlet weak var groupNameTextFieldOutlet: UITextField!
-    
-    // would this be better as a dictionary? a struct?
-    // trying to think about properly organizing this data
-    
     var studentsInGroup: [[Any]] = [MockData.adultStudents, MockData.kidStudents]
     var groupNamePlaceholderText = "group name"
     
@@ -27,33 +21,21 @@ class AddNewStudentGroupTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         let avenirFontGray = [ NSAttributedString.Key.foregroundColor: UIColor.gray,
                            NSAttributedString.Key.font: UIFont(name: "Avenir-LightOblique", size: 16)! ]
-        let avenirFontBlack = [ NSAttributedString.Key.foregroundColor: UIColor.black,
-                               NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 24)! ]
         
         navigationController?.navigationBar.titleTextAttributes = avenirFontGray
         
-        self.tableView.sectionHeaderHeight = 48
+        self.tableView.sectionHeaderHeight = 56
         
         let nib = UINib(nibName: "ImageMenuCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "imageMenuCell")
-        
-        groupNameTextFieldOutlet.attributedPlaceholder = NSAttributedString(string: "\(groupNamePlaceholderText)", attributes: avenirFontGray)
+    
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
-    
-    
-    // MARK: - Actions
-    
-    @IBAction func activeGroupSwitchTapped(_ sender: UISwitch) {
-    }
-    
-    @IBAction func addStudentPickerWheelButtonTapped(_ sender: Any) {
-    }
-    
+
     
     // MARK: - Table view data source
     
