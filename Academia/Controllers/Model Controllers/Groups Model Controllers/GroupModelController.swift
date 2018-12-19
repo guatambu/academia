@@ -2,7 +2,7 @@
 //  GroupModelController.swift
 //  Academia
 //
-//  Created by Kelly JohnsonMichael Guatambu Davis
+//  Created by Michael Guatambu Davis
 //  Copyright © 2018 DunDak, LLC. All rights reserved.
 //
 
@@ -19,7 +19,7 @@ class GroupModelController {
     // MARK: - CRUD Functions
     
     // Create
-    func add(profilePic: UIImage?, active: Bool, name: String, members: [Any]?) {
+    func add(active: Bool, name: String, members: [Any]?) {
         
         let group = Group(groupUID: UUID(), active: active, name: name, dateCreated: Date(), dateEdited: Date(), members: members)
         
@@ -30,12 +30,19 @@ class GroupModelController {
     
     
     // Update
-    func update(group: Group, active: Bool, name: String, members: [Any]?) {
+    func update(group: Group, active: Bool?, name: String?, members: [Any]?) {
         
-        group.active = active
         group.dateEdited = Date()
-        group.members = members
-        group.name = name
+        
+        if let active = active {
+            group.active = active
+        }
+        if let name = name {
+            group.name = name
+        }
+        if let members = members {
+            group.members = members
+        }
     }
     
     

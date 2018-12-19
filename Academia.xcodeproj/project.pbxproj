@@ -594,6 +594,7 @@
 				FA21D6AA21362560006790E5 /* Belt Models */,
 				FA4DF332218CCA8A00ECC167 /* Payment Programs */,
 				FA4DF331218CCA6400ECC167 /* Location Models */,
+				FAD5B13521CA0209004ED286 /* Groups */,
 				FA4DF32A218CC9E100ECC167 /* Curriculum Models */,
 				FA9ADA202138DBC30005E1F1 /* MyCells.swift */,
 				FAE2FD3B2140700F00815402 /* MockData.swift */,
@@ -625,8 +626,9 @@
 				FA23D28F2167E36500707056 /* User Model Controllers */,
 				FAA516D72190C9E2009875CB /* Location Model Controllers */,
 				FAA516D82190CA48009875CB /* Payment Program Model Controllers */,
-				FAA516D92190CA5B009875CB /* Curriculum Model Controllers */,
 				FA23D2902167E38D00707056 /* Belt Model Controllers */,
+				FAD5B13221CA0194004ED286 /* Groups Model Controllers */,
+				FAA516D92190CA5B009875CB /* Curriculum Model Controllers */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -753,7 +755,6 @@
 			isa = PBXGroup;
 			children = (
 				FA23D2912167F9EF00707056 /* OnBoardingTaskModelController.swift */,
-				FA23D2872166F5E400707056 /* GroupModelController.swift */,
 				FAF29BCD212E4CF200752414 /* OwnerModelController.swift */,
 				FA5C5C31215170AE00BF62D5 /* AdultStudentModelController.swift */,
 				FA5C5C33215170BE00BF62D5 /* KidStudentModelController.swift */,
@@ -822,7 +823,6 @@
 				FA6FBA002149F33100558657 /* AdultStudent.swift */,
 				FA6FBA022149F36300558657 /* KidStudent.swift */,
 				FAF29B6A212D0E9E00752414 /* OnBoardingTask.swift */,
-				FA0C444921278CA900B59194 /* Group.swift */,
 				FA6FBA052149F3B700558657 /* UserPermissions.swift */,
 				FA6FBA072149F3C700558657 /* StudentStatus.swift */,
 			);
@@ -838,6 +838,7 @@
 				FA9ADA222139EDB60005E1F1 /* Belts */,
 				FABF859421B22089005CEBD4 /* Locations */,
 				FABF85A121B5F874005CEBD4 /* Payment Programs */,
+				FAD5B13121CA0172004ED286 /* Groups */,
 				FA21D69D21339E49006790E5 /* Aulas */,
 				FA9AD9F4213782070005E1F1 /* TutorialsTableViewController.swift */,
 				FA9ADA232139EDD30005E1F1 /* About & Privacy */,
@@ -949,6 +950,29 @@
 				FACA3EB82192895C0099E620 /* CompletedProfileViewController.swift */,
 			);
 			path = "User Onboarding";
+			sourceTree = "<group>";
+		};
+		FAD5B13121CA0172004ED286 /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Groups;
+			sourceTree = "<group>";
+		};
+		FAD5B13221CA0194004ED286 /* Groups Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FA23D2872166F5E400707056 /* GroupModelController.swift */,
+			);
+			path = "Groups Model Controllers";
+			sourceTree = "<group>";
+		};
+		FAD5B13521CA0209004ED286 /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				FA0C444921278CA900B59194 /* Group.swift */,
+			);
+			path = Groups;
 			sourceTree = "<group>";
 		};
 		FAE2FD3D2140BC0900815402 /* TextField nibs */ = {
