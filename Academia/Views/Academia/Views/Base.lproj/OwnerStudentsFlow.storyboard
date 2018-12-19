@@ -1,23 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XlK-pV-Udx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XlK-pV-Udx">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Avenir.ttc">
-            <string>Avenir-Book</string>
-            <string>Avenir-Medium</string>
-        </array>
-        <array key="GillSans.ttc">
-            <string>GillSans-Light</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Student Groups Table View Controller-->
         <scene sceneID="zua-g8-hQY">
@@ -121,13 +111,13 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="343" height="79.5"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="754" image="academia_sample_profile_pic.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="7FK-Ud-xkt">
-                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="79.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="80.5" height="79.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="7FK-Ud-xkt" secondAttribute="height" multiplier="80:79" id="DZ5-Gn-81z"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="748" text="Michael Gregory Gonçalves Davis, Jr." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="QsW-Rp-ned">
-                                                            <rect key="frame" x="88" y="0.0" width="255" height="79.5"/>
+                                                            <rect key="frame" x="88.5" y="0.0" width="254.5" height="79.5"/>
                                                             <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="24"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -242,7 +232,7 @@
                                             <rect key="frame" x="16" y="0.0" width="343" height="57"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="group name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7cw-bo-NDO" userLabel="group name">
-                                                    <rect key="frame" x="0.0" y="12" width="343" height="32"/>
+                                                    <rect key="frame" x="0.0" y="12.5" width="343" height="32"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="32" id="3Hn-RA-itB"/>
                                                     </constraints>
@@ -277,7 +267,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="do6-Oj-mwU">
-                                                            <rect key="frame" x="53.5" y="13.5" width="51" height="31"/>
+                                                            <rect key="frame" x="53.5" y="13" width="51" height="31"/>
                                                             <connections>
                                                                 <action selector="activeGroupSwitchTapped:" destination="x4c-Vv-24V" eventType="valueChanged" id="jak-eZ-gDG"/>
                                                             </connections>
@@ -457,7 +447,7 @@
         <image name="right_red_arrow_32.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rlL-eO-rbb"/>
+        <segue reference="gr4-dd-3uC"/>
         <segue reference="LSQ-3L-bBd"/>
     </inferredMetricsTieBreakers>
 </document>
