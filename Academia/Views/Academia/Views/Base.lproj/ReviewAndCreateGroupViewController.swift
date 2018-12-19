@@ -9,6 +9,31 @@
 import UIKit
 
 class ReviewAndCreateGroupViewController: UIViewController {
+    
+    // MARK: - Properties
+    
+    var groupName: String?
+    var active: Bool = true
+    var groupDescription: String?
+    var groupMembers: [Any]?
+    
+    var inEditingMode: Bool?
+    var groupToEdit: Group?
+    
+    let beltBuilder = BeltBuilder()
+    
+    
+    // MARK: - ViewController Lifecycle Functions
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
+                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
+        
+        navigationController?.navigationBar.titleTextAttributes = avenirFont
+        
+        enterEditingMode(inEditingMode: inEditingMode)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
