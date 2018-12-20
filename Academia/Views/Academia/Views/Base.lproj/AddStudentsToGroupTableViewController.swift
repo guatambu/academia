@@ -22,6 +22,10 @@ class AddStudentsToGroupTableViewController: UITableViewController {
     
     let beltBuilder = BeltBuilder()
     
+    // welcome label outlets
+    @IBOutlet weak var welcomeLabelOutlet: UILabel!
+    @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
+    
     
     // MARK: - ViewController Lifecycle Functions
     
@@ -46,7 +50,7 @@ class AddStudentsToGroupTableViewController: UITableViewController {
     @objc func saveButtonTapped() {
         
         // Location update profile info
-        if groupNameTextField.text != "" {
+        if groupMembers?.count != 0 {
             
             updateGroupInfo()
             
@@ -66,17 +70,15 @@ class AddStudentsToGroupTableViewController: UITableViewController {
         // instantiate the relevant storyboard
         let mainView: UIStoryboard = UIStoryboard(name: "OwnerStudentsFlow", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
-        let destViewController = mainView.instantiateViewController(withIdentifier: "toAddStudentsToGroup") as! AddStudentsToGroupTableViewController
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toReviewAndCreateGroup") as! ReviewAndCreateGroupTableViewController
         
         // run check to see is there is a paymentProgramName
-        guard groupNameTextField.text != "" else {
+        guard groupMembers?.count != 0 else {
             
             welcomeInstructionsLabelOutlet.textColor = UIColor.red
             return
         }
         
-        groupName = groupNameTextField.text
-        groupDescription = groupDescriptionTextView.text
         // create the segue programmatically
         self.navigationController?.pushViewController(destViewController, animated: true)
         
@@ -89,6 +91,7 @@ class AddStudentsToGroupTableViewController: UITableViewController {
         destViewController.groupName = groupName
         destViewController.active = active
         destViewController.groupDescription = groupDescription
+        destViewController.groupMembers = groupMembers
         
         destViewController.inEditingMode = inEditingMode
         destViewController.groupToEdit = groupToEdit
@@ -129,9 +132,9 @@ extension AddStudentsToGroupTableViewController {
     func updateGroupInfo() {
         guard let group = groupToEdit else { return }
         // group update info
-        if groupNameTextField.text != "" {
-            GroupModelController.shared.update(group: group, active: active, name: groupNameTextField.text, description: groupDescriptionTextView.text, members: nil)
-            print("update group name: \(GroupModelController.shared.groups[0].name)")
+        if groupMembers?.count != 0 {
+            GroupModelController.shared.update(group: group, active: nil, name: nil, description: nil, members: groupMembers)
+            print("how many members in the group: \(GroupModelController.shared.groups.count)")
         }
     }
     
@@ -156,13 +159,11 @@ extension AddStudentsToGroupTableViewController {
             return
         }
         
-        welcomeLabelOutlet.text = "Program: \(groupToEdit.name)"
+        welcomeLabelOutlet.text = "Group: \(groupToEdit.name)"
         
         welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
         welcomeInstructionsLabelOutlet.text = "you are in group editing mode"
         
-        groupDescriptionTextView.text = groupToEdit.description
-        groupNameTextField.text = groupToEdit.name
     }
 }
 

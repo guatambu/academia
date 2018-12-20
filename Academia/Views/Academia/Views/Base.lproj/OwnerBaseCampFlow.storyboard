@@ -625,7 +625,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="H1Q-Ge-gux" kind="show" id="Vfr-MI-Yyd"/>
+                        <segue destination="UTI-LT-J2S" kind="relationship" relationship="rootViewController" id="pN1-Zk-NVC"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1BA-qY-Tza" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -674,52 +674,70 @@
             <point key="canvasLocation" x="8954" y="1352"/>
         </scene>
         <!--UINavigationController-D1K-He-qkp-->
-        <scene sceneID="Wxi-Dw-J43">
+        <scene sceneID="zNT-8r-Pmc">
             <objects>
-                <viewControllerPlaceholder storyboardName="OwnerStudentsFlow" referencedIdentifier="UINavigationController-D1K-He-qkp" id="H1Q-Ge-gux" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0Ds-AU-OhZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardIdentifier="UINavigationController-D1K-He-qkp" storyboardName="OwnerStudentsFlow" referencedIdentifier="UINavigationController-D1K-He-qkp" id="UTI-LT-J2S" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Owp-ds-WNB"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zzZ-ZO-I08" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6480.8000000000002" y="2925.7871064467768"/>
+            <point key="canvasLocation" x="6481" y="3156"/>
         </scene>
-        <!--toReviewAndCreatePaymentProgram-->
-        <scene sceneID="4pB-t3-xxD">
+        <!--toAddStudentsToGroup-->
+        <scene sceneID="V4L-eY-y1k">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="toReviewAndCreatePaymentProgram" storyboardName="OwnerStudentsFlow" referencedIdentifier="toReviewAndCreatePaymentProgram" id="Jgc-24-vTR" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lz9-P2-m1b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardIdentifier="toAddStudentsToGroup" storyboardName="OwnerStudentsFlow" referencedIdentifier="toAddStudentsToGroup" id="JWn-aV-MK7" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qrP-ru-zfk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9146" y="3643"/>
+            <point key="canvasLocation" x="8465" y="4594"/>
+        </scene>
+        <!--toGroupNameAndDescription-->
+        <scene sceneID="dRw-P8-ycD">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="toGroupNameAndDescription" storyboardName="OwnerStudentsFlow" referencedIdentifier="toGroupNameAndDescription" id="aBh-3l-7jZ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZPy-55-Tvw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7612" y="4594"/>
+        </scene>
+        <!--toReviewAndCreateGroup-->
+        <scene sceneID="rFM-As-rDU">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="toReviewAndCreateGroup" storyboardName="OwnerStudentsFlow" referencedIdentifier="toReviewAndCreateGroup" id="GXI-Uq-rfd" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GKC-zN-ihx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9337" y="4594"/>
         </scene>
         <!--toOwnerGroups-->
-        <scene sceneID="TFH-4b-TZa">
+        <scene sceneID="KoL-6v-a0g">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="toOwnerGroups" storyboardName="OwnerStudentsFlow" referencedIdentifier="toOwnerGroups" id="g6T-kU-NsS" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="H9v-Rw-ehM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardIdentifier="toOwnerGroups" storyboardName="OwnerStudentsFlow" referencedIdentifier="toOwnerGroups" id="uj3-6z-kM6" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hEt-Q7-2Gc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7420" y="2925.7871064467768"/>
-        </scene>
-        <!--toPaymentProgramNameAndDescription-->
-        <scene sceneID="X9F-Gb-bfG">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="toPaymentProgramNameAndDescription" storyboardName="OwnerStudentsFlow" referencedIdentifier="toPaymentProgramNameAndDescription" id="gFt-Eu-mOx" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kwy-H9-BXp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="7420" y="3643"/>
+            <point key="canvasLocation" x="7612" y="3877"/>
         </scene>
         <!--toStudentsList-->
-        <scene sceneID="Acg-hJ-A9r">
+        <scene sceneID="atP-57-ui9">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="toStudentsList" storyboardName="OwnerStudentsFlow" referencedIdentifier="toStudentsList" id="ITF-kb-pCR" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cgT-a7-8PQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardIdentifier="toStudentsList" storyboardName="OwnerStudentsFlow" referencedIdentifier="toStudentsList" id="FsP-gz-dD7" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aDR-UL-Pub" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8308" y="2926"/>
+            <point key="canvasLocation" x="8465" y="3877"/>
         </scene>
-        <!--toStudentDetailTVC-->
-        <scene sceneID="5gt-cG-2qR">
+        <!--toGroupInfoDetails-->
+        <scene sceneID="LSg-rf-edm">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="toStudentDetailTVC" storyboardName="OwnerStudentsFlow" referencedIdentifier="toStudentDetailTVC" id="rnX-Lt-tSp" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8Ed-aU-IW1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardIdentifier="toGroupInfoDetails" storyboardName="OwnerStudentsFlow" referencedIdentifier="toGroupInfoDetails" id="uXM-gP-ozV" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0FK-tR-AbY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9146" y="2926"/>
+            <point key="canvasLocation" x="8465" y="3156"/>
+        </scene>
+        <!--toProfileComplete-->
+        <scene sceneID="MBT-E1-JbD">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="toProfileComplete" storyboardName="OwnerStudentsFlow" referencedIdentifier="toProfileComplete" id="ulv-ct-Jid" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6GP-Y4-BeX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9337" y="3877"/>
         </scene>
     </scenes>
     <resources>

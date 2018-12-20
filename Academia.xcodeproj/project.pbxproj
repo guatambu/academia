@@ -66,10 +66,10 @@
 		FA6FBA062149F3B700558657 /* UserPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6FBA052149F3B700558657 /* UserPermissions.swift */; };
 		FA6FBA082149F3C700558657 /* StudentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6FBA072149F3C700558657 /* StudentStatus.swift */; };
 		FA7A12D2216AE57A00C03590 /* Academia.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA7A12D0216AE57A00C03590 /* Academia.xcdatamodeld */; };
-		FA8B3CBC21CA215E003398FB /* OwnerStudentsFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8B3CBA21CA215E003398FB /* OwnerStudentsFlow.storyboard */; };
 		FA8B3CBF21CA22B7003398FB /* GroupNameAndDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B3CBD21CA22B7003398FB /* GroupNameAndDescriptionViewController.swift */; };
 		FA8B3CC221CA230B003398FB /* AddStudentsToGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B3CC021CA230B003398FB /* AddStudentsToGroupTableViewController.swift */; };
-		FA8B3CC521CA2353003398FB /* ReviewAndCreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B3CC321CA2353003398FB /* ReviewAndCreateGroupViewController.swift */; };
+		FA8B3CC721CB2366003398FB /* ReviewAndCreateGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B3CC621CB2366003398FB /* ReviewAndCreateGroupTableViewController.swift */; };
+		FA8B3CCA21CB246C003398FB /* OwnerStudentsFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8B3CC821CB246C003398FB /* OwnerStudentsFlow.storyboard */; };
 		FA9AD9F5213782070005E1F1 /* TutorialsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9AD9F4213782070005E1F1 /* TutorialsTableViewController.swift */; };
 		FA9AD9F72137839A0005E1F1 /* BeltSystemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9AD9F62137839A0005E1F1 /* BeltSystemsTableViewController.swift */; };
 		FA9AD9F9213783BA0005E1F1 /* MyLocationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9AD9F8213783BA0005E1F1 /* MyLocationsTableViewController.swift */; };
@@ -317,10 +317,10 @@
 		FA6FBA052149F3B700558657 /* UserPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPermissions.swift; sourceTree = "<group>"; };
 		FA6FBA072149F3C700558657 /* StudentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentStatus.swift; sourceTree = "<group>"; };
 		FA7A12D1216AE57A00C03590 /* Academia.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Academia.xcdatamodel; sourceTree = "<group>"; };
-		FA8B3CBB21CA215E003398FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Academia/Views/Academia/Views/Base.lproj/OwnerStudentsFlow.storyboard; sourceTree = "<group>"; };
 		FA8B3CBE21CA22B7003398FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Base; path = Academia/Views/Academia/Views/Base.lproj/GroupNameAndDescriptionViewController.swift; sourceTree = SOURCE_ROOT; };
 		FA8B3CC121CA230B003398FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Base; path = Academia/Views/Academia/Views/Base.lproj/AddStudentsToGroupTableViewController.swift; sourceTree = SOURCE_ROOT; };
-		FA8B3CC421CA2353003398FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Base; path = Academia/Views/Academia/Views/Base.lproj/ReviewAndCreateGroupViewController.swift; sourceTree = SOURCE_ROOT; };
+		FA8B3CC621CB2366003398FB /* ReviewAndCreateGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewAndCreateGroupTableViewController.swift; sourceTree = "<group>"; };
+		FA8B3CC921CB246C003398FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Academia/Views/Academia/Views/Base.lproj/OwnerStudentsFlow.storyboard; sourceTree = "<group>"; };
 		FA9AD9F4213782070005E1F1 /* TutorialsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialsTableViewController.swift; sourceTree = "<group>"; };
 		FA9AD9F62137839A0005E1F1 /* BeltSystemsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeltSystemsTableViewController.swift; sourceTree = "<group>"; };
 		FA9AD9F8213783BA0005E1F1 /* MyLocationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationsTableViewController.swift; sourceTree = "<group>"; };
@@ -578,7 +578,7 @@
 				FA0C442121278A8F00B59194 /* LaunchScreen.storyboard */,
 				FA0C441921278A8F00B59194 /* Main.storyboard */,
 				FAAAC151213E348800093D6C /* OwnerBaseCampFlow.storyboard */,
-				FA8B3CBA21CA215E003398FB /* OwnerStudentsFlow.storyboard */,
+				FA8B3CC821CB246C003398FB /* OwnerStudentsFlow.storyboard */,
 				FAAAC14F213E345900093D6C /* OwnerMessages.storyboard */,
 				FAAAC14A213E33E000093D6C /* OwnerProfileFlow.storyboard */,
 				FAC5D3C921BF0F600083B417 /* OwnerPaymentProgramWorkflow.storyboard */,
@@ -963,7 +963,7 @@
 			children = (
 				FA8B3CBD21CA22B7003398FB /* GroupNameAndDescriptionViewController.swift */,
 				FA8B3CC021CA230B003398FB /* AddStudentsToGroupTableViewController.swift */,
-				FA8B3CC321CA2353003398FB /* ReviewAndCreateGroupViewController.swift */,
+				FA8B3CC621CB2366003398FB /* ReviewAndCreateGroupTableViewController.swift */,
 			);
 			path = Groups;
 			sourceTree = "<group>";
@@ -1251,7 +1251,7 @@
 				FAF29BA7212E1EF700752414 /* classes_red_50.png in Resources */,
 				FAE2FD7B2140BEFA00815402 /* PaymentProgramTextFieldCell.xib in Resources */,
 				FA41CE6721A1336F00EAD53A /* BeltCellNib.xib in Resources */,
-				FA8B3CBC21CA215E003398FB /* OwnerStudentsFlow.storyboard in Resources */,
+				FA8B3CCA21CB246C003398FB /* OwnerStudentsFlow.storyboard in Resources */,
 				FA5C5C2C214EFCCC00BF62D5 /* location1.jpg in Resources */,
 				FAF29BC5212E21EA00752414 /* profile_black_32.png in Resources */,
 				FAAAC14B213E33E000093D6C /* OwnerProfileFlow.storyboard in Resources */,
@@ -1315,7 +1315,6 @@
 			files = (
 				FAE2FD902140BFD100815402 /* LastNameTextFieldTableViewCell.swift in Sources */,
 				FA9ADA01213784410005E1F1 /* PrivacyPolicyViewController.swift in Sources */,
-				FA8B3CC521CA2353003398FB /* ReviewAndCreateGroupViewController.swift in Sources */,
 				FAA550712145D03F00EC7860 /* HeadingLabelTableViewCell.swift in Sources */,
 				FABF85A321B78ABD005CEBD4 /* PaymentProgramInfoDetailsViewController.swift in Sources */,
 				FAB7E352212B7D73003E3B79 /* UserSelfIdentifyViewController.swift in Sources */,
@@ -1399,6 +1398,7 @@
 				FAA516D6218FEC5A009875CB /* ConfirmPasswordTextFieldTableViewCell.swift in Sources */,
 				FA23D2882166F5E400707056 /* GroupModelController.swift in Sources */,
 				FAF1BB8C21435BA900AD56AE /* AgreementTextViewTableViewCell.swift in Sources */,
+				FA8B3CC721CB2366003398FB /* ReviewAndCreateGroupTableViewController.swift in Sources */,
 				FACA3EB1219288CD0099E620 /* NameAndBeltViewController.swift in Sources */,
 				FAB203DA216187190034E1D4 /* StudentClassDetailViewController.swift in Sources */,
 				FA9AD9F72137839A0005E1F1 /* BeltSystemsTableViewController.swift in Sources */,
@@ -1489,14 +1489,6 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		FA8B3CBA21CA215E003398FB /* OwnerStudentsFlow.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FA8B3CBB21CA215E003398FB /* Base */,
-			);
-			name = OwnerStudentsFlow.storyboard;
-			sourceTree = "<group>";
-		};
 		FA8B3CBD21CA22B7003398FB /* GroupNameAndDescriptionViewController.swift */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1513,12 +1505,12 @@
 			name = AddStudentsToGroupTableViewController.swift;
 			sourceTree = "<group>";
 		};
-		FA8B3CC321CA2353003398FB /* ReviewAndCreateGroupViewController.swift */ = {
+		FA8B3CC821CB246C003398FB /* OwnerStudentsFlow.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				FA8B3CC421CA2353003398FB /* Base */,
+				FA8B3CC921CB246C003398FB /* Base */,
 			);
-			name = ReviewAndCreateGroupViewController.swift;
+			name = OwnerStudentsFlow.storyboard;
 			sourceTree = "<group>";
 		};
 		FAAAC147213E337500093D6C /* OwnerBeltSystemFlow.storyboard */ = {
