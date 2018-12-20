@@ -19,10 +19,8 @@
 		FA21D6802130BB1E006790E5 /* OwnerClassesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D67F2130BB1E006790E5 /* OwnerClassesTableViewController.swift */; };
 		FA21D6822130BB2D006790E5 /* OwnerProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6812130BB2D006790E5 /* OwnerProfileTableViewController.swift */; };
 		FA21D6842130BB7F006790E5 /* StudentListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6832130BB7F006790E5 /* StudentListTableViewController.swift */; };
-		FA21D6862130BB93006790E5 /* StudentsByListGroupingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6852130BB93006790E5 /* StudentsByListGroupingTableViewController.swift */; };
+		FA21D6862130BB93006790E5 /* OwnerGroupListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6852130BB93006790E5 /* OwnerGroupListTableViewController.swift */; };
 		FA21D6A12134B8D3006790E5 /* AddClassTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6A02134B8D3006790E5 /* AddClassTableViewController.swift */; };
-		FA21D6A32134BAC5006790E5 /* StudentDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6A22134BAC5006790E5 /* StudentDetailTableViewController.swift */; };
-		FA21D6A52134D72A006790E5 /* AddNewStudentGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6A42134D72A006790E5 /* AddNewStudentGroupTableViewController.swift */; };
 		FA23D2832166F5AE00707056 /* AulaModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23D2822166F5AE00707056 /* AulaModelController.swift */; };
 		FA23D2852166F5C900707056 /* PaymentProgramModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23D2842166F5C900707056 /* PaymentProgramModelController.swift */; };
 		FA23D2882166F5E400707056 /* GroupModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23D2872166F5E400707056 /* GroupModelController.swift */; };
@@ -70,6 +68,8 @@
 		FA8B3CC221CA230B003398FB /* AddStudentsToGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B3CC021CA230B003398FB /* AddStudentsToGroupTableViewController.swift */; };
 		FA8B3CC721CB2366003398FB /* ReviewAndCreateGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B3CC621CB2366003398FB /* ReviewAndCreateGroupTableViewController.swift */; };
 		FA8B3CCA21CB246C003398FB /* OwnerStudentsFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8B3CC821CB246C003398FB /* OwnerStudentsFlow.storyboard */; };
+		FA8B3CCC21CB276B003398FB /* OwnersStudentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B3CCB21CB276B003398FB /* OwnersStudentDetailViewController.swift */; };
+		FA8B3CCE21CB3901003398FB /* GroupInfoDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B3CCD21CB3901003398FB /* GroupInfoDetailsTableViewController.swift */; };
 		FA9AD9F5213782070005E1F1 /* TutorialsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9AD9F4213782070005E1F1 /* TutorialsTableViewController.swift */; };
 		FA9AD9F72137839A0005E1F1 /* BeltSystemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9AD9F62137839A0005E1F1 /* BeltSystemsTableViewController.swift */; };
 		FA9AD9F9213783BA0005E1F1 /* MyLocationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9AD9F8213783BA0005E1F1 /* MyLocationsTableViewController.swift */; };
@@ -270,10 +270,8 @@
 		FA21D67F2130BB1E006790E5 /* OwnerClassesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerClassesTableViewController.swift; sourceTree = "<group>"; };
 		FA21D6812130BB2D006790E5 /* OwnerProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerProfileTableViewController.swift; sourceTree = "<group>"; };
 		FA21D6832130BB7F006790E5 /* StudentListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentListTableViewController.swift; sourceTree = "<group>"; };
-		FA21D6852130BB93006790E5 /* StudentsByListGroupingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsByListGroupingTableViewController.swift; sourceTree = "<group>"; };
+		FA21D6852130BB93006790E5 /* OwnerGroupListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerGroupListTableViewController.swift; sourceTree = "<group>"; };
 		FA21D6A02134B8D3006790E5 /* AddClassTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClassTableViewController.swift; sourceTree = "<group>"; };
-		FA21D6A22134BAC5006790E5 /* StudentDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDetailTableViewController.swift; sourceTree = "<group>"; };
-		FA21D6A42134D72A006790E5 /* AddNewStudentGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewStudentGroupTableViewController.swift; sourceTree = "<group>"; };
 		FA23D2822166F5AE00707056 /* AulaModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AulaModelController.swift; sourceTree = "<group>"; };
 		FA23D2842166F5C900707056 /* PaymentProgramModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProgramModelController.swift; sourceTree = "<group>"; };
 		FA23D2872166F5E400707056 /* GroupModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupModelController.swift; sourceTree = "<group>"; };
@@ -321,6 +319,8 @@
 		FA8B3CC121CA230B003398FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Base; path = Academia/Views/Academia/Views/Base.lproj/AddStudentsToGroupTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		FA8B3CC621CB2366003398FB /* ReviewAndCreateGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewAndCreateGroupTableViewController.swift; sourceTree = "<group>"; };
 		FA8B3CC921CB246C003398FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Academia/Views/Academia/Views/Base.lproj/OwnerStudentsFlow.storyboard; sourceTree = "<group>"; };
+		FA8B3CCB21CB276B003398FB /* OwnersStudentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnersStudentDetailViewController.swift; sourceTree = "<group>"; };
+		FA8B3CCD21CB3901003398FB /* GroupInfoDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoDetailsTableViewController.swift; sourceTree = "<group>"; };
 		FA9AD9F4213782070005E1F1 /* TutorialsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialsTableViewController.swift; sourceTree = "<group>"; };
 		FA9AD9F62137839A0005E1F1 /* BeltSystemsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeltSystemsTableViewController.swift; sourceTree = "<group>"; };
 		FA9AD9F8213783BA0005E1F1 /* MyLocationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationsTableViewController.swift; sourceTree = "<group>"; };
@@ -670,7 +670,6 @@
 			isa = PBXGroup;
 			children = (
 				FA9AD9F3213780DD0005E1F1 /* Profile Menu VCs */,
-				FA21D69A21339E0B006790E5 /* Owner Controlled Students */,
 			);
 			path = "Owner Role";
 			sourceTree = "<group>";
@@ -685,17 +684,6 @@
 				FABF859221AF8370005CEBD4 /* StudentInfoDetailsViewController.swift */,
 			);
 			path = "Student Role";
-			sourceTree = "<group>";
-		};
-		FA21D69A21339E0B006790E5 /* Owner Controlled Students */ = {
-			isa = PBXGroup;
-			children = (
-				FA21D6852130BB93006790E5 /* StudentsByListGroupingTableViewController.swift */,
-				FA21D6832130BB7F006790E5 /* StudentListTableViewController.swift */,
-				FA21D6A42134D72A006790E5 /* AddNewStudentGroupTableViewController.swift */,
-				FA21D6A22134BAC5006790E5 /* StudentDetailTableViewController.swift */,
-			);
-			path = "Owner Controlled Students";
 			sourceTree = "<group>";
 		};
 		FA21D69B21339E29006790E5 /* Owner Profile */ = {
@@ -961,6 +949,10 @@
 		FAD5B13121CA0172004ED286 /* Groups */ = {
 			isa = PBXGroup;
 			children = (
+				FA21D6852130BB93006790E5 /* OwnerGroupListTableViewController.swift */,
+				FA8B3CCD21CB3901003398FB /* GroupInfoDetailsTableViewController.swift */,
+				FA21D6832130BB7F006790E5 /* StudentListTableViewController.swift */,
+				FA8B3CCB21CB276B003398FB /* OwnersStudentDetailViewController.swift */,
 				FA8B3CBD21CA22B7003398FB /* GroupNameAndDescriptionViewController.swift */,
 				FA8B3CC021CA230B003398FB /* AddStudentsToGroupTableViewController.swift */,
 				FA8B3CC621CB2366003398FB /* ReviewAndCreateGroupTableViewController.swift */,
@@ -1352,7 +1344,6 @@
 				FA531C26219630E700AE2C38 /* BeltBuilder.swift in Sources */,
 				FABF85BF21BB09FC005CEBD4 /* Billing.swift in Sources */,
 				FA6FBA062149F3B700558657 /* UserPermissions.swift in Sources */,
-				FA21D6A32134BAC5006790E5 /* StudentDetailTableViewController.swift in Sources */,
 				FA5C5C382151D3C600BF62D5 /* StudentHomeTableViewController.swift in Sources */,
 				FABF85AD21B78C6F005CEBD4 /* ReviewAndCreatePaymentProgramViewController.swift in Sources */,
 				FA9ADA172138C7030005E1F1 /* ProfilePicTableViewCell.swift in Sources */,
@@ -1360,6 +1351,7 @@
 				FA7A12D2216AE57A00C03590 /* Academia.xcdatamodeld in Sources */,
 				FAD2097521C1CFE700B9C622 /* TypeCollectionViewCell.swift in Sources */,
 				FA5C5C56215499F300BF62D5 /* StudentProfileDetailTableViewController.swift in Sources */,
+				FA8B3CCE21CB3901003398FB /* GroupInfoDetailsTableViewController.swift in Sources */,
 				FA9ADA212138DBC30005E1F1 /* MyCells.swift in Sources */,
 				FABF85A021B5B668005CEBD4 /* ReviewAndCreateLocationViewController.swift in Sources */,
 				FACA3EAE21927CEE0099E620 /* IBDesignables.swift in Sources */,
@@ -1388,7 +1380,6 @@
 				FABF85A921B78B99005CEBD4 /* PaymentProgramBillingDetailsViewController.swift in Sources */,
 				FAA516DF2190CAC1009875CB /* CurriculumModelController.swift in Sources */,
 				FA23D2832166F5AE00707056 /* AulaModelController.swift in Sources */,
-				FA21D6A52134D72A006790E5 /* AddNewStudentGroupTableViewController.swift in Sources */,
 				FA41CE6D21A5EBAA00EAD53A /* BirthdayViewController.swift in Sources */,
 				FA21D6A12134B8D3006790E5 /* AddClassTableViewController.swift in Sources */,
 				FAA516DB2190CA8F009875CB /* TechniqueModelController.swift in Sources */,
@@ -1417,6 +1408,7 @@
 				FABF859E21B38995005CEBD4 /* LocationSocialLinksViewController.swift in Sources */,
 				FAE67A3C215C714B00822DCF /* StudentListImageMenuTableViewCell.swift in Sources */,
 				FA5C5C32215170AE00BF62D5 /* AdultStudentModelController.swift in Sources */,
+				FA8B3CCC21CB276B003398FB /* OwnersStudentDetailViewController.swift in Sources */,
 				FAA516DD2190CAA7009875CB /* CurriculumModuleModelController.swift in Sources */,
 				FAF29BD1212F6FC800752414 /* OwnerDashboardTableViewCell.swift in Sources */,
 				FA5C5C3021506B7400BF62D5 /* InitialStudentSegueDelegate.swift in Sources */,
@@ -1431,7 +1423,7 @@
 				FACA3EB7219289310099E620 /* TakeProfilePicViewController.swift in Sources */,
 				FA6FBA012149F33100558657 /* AdultStudent.swift in Sources */,
 				FA41CE6B21A344B100EAD53A /* OwnerInfoDetailsViewController.swift in Sources */,
-				FA21D6862130BB93006790E5 /* StudentsByListGroupingTableViewController.swift in Sources */,
+				FA21D6862130BB93006790E5 /* OwnerGroupListTableViewController.swift in Sources */,
 				FA0C441621278A8F00B59194 /* AppDelegate.swift in Sources */,
 				FAF29BDD213087F600752414 /* GeneralMenuTableViewCell.swift in Sources */,
 				FAE67A36215C2DDF00822DCF /* StudentPaymentTableViewController.swift in Sources */,

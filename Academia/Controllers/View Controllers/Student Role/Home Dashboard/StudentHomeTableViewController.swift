@@ -107,7 +107,7 @@ class StudentHomeTableViewController: UITableViewController {
             // instantiate the relevant storyboard
             let ownerStudentsFlowView: UIStoryboard = UIStoryboard(name: "StudentBaseCampFlow", bundle: nil)
             // instantiate the desired TableViewController as ViewController on relevant storyboard
-            let destViewController = ownerStudentsFlowView.instantiateViewController(withIdentifier: "toOwnerGroups") as! StudentsByListGroupingTableViewController
+            let destViewController = ownerStudentsFlowView.instantiateViewController(withIdentifier: "toOwnerGroupList") as! OwnerGroupListTableViewController
             // create the segue programmatically
             self.navigationController?.pushViewController(destViewController, animated: true)
             // set the desired properties of the destinationVC's navgation Item

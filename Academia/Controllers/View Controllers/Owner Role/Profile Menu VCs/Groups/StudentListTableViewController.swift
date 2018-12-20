@@ -64,45 +64,21 @@ class StudentListTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         } 
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // programmatically performing the segue
         
-        // Get the new view controller using segue.destinationViewController.
-        if segue.identifier == "toStudentDetail" {
-            guard let studentDetailTVC = segue.destination as? StudentDetailTableViewController else {
-                print("this is printed from within the destination TVC guard statement fail case")
-            
-                return
-                
-            }
-            
-            guard let indexPath = tableView.indexPathForSelectedRow else {
-                return
-                
-            }
-            
-            let student = allStudents[indexPath.row]
-            
-            if student is AdultStudent {
-                
-                guard let adultStudent = student as? AdultStudent else { return }
-                studentDetailTVC.adultStudent = adultStudent
-                
-            } else if student is KidStudent {
-                
-                guard let kidStudent = student as? KidStudent else { return }
-                studentDetailTVC.kidStudent = kidStudent
-                
-            }
-            
-        } else if segue.identifier == "addNewStudent" {
-            
-        }
-        // Pass the selected object to the new view controller.
+        // instantiate the relevant storyboard
+        let mainView: UIStoryboard = UIStoryboard(name: "OwnersStudentsFlow", bundle: nil)
+        // instantiate the desired TableViewController as ViewController on relevant storyboard
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toOwnersStudentDetail") as! OwnersStudentDetailViewController
+        // create the segue programmatically - PUSH
+        self.navigationController?.pushViewController(destViewController, animated: true)
+        // set the desired properties of the destinationVC's navgation Item
+        let backButtonItem = UIBarButtonItem()
+        backButtonItem.title = " "
+        navigationItem.backBarButtonItem = backButtonItem
     }
- 
+    
 }

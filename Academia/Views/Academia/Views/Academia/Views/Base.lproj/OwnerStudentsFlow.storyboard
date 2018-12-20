@@ -13,7 +13,7 @@
         <!--Student Groups Table View Controller-->
         <scene sceneID="qdt-5n-UJA">
             <objects>
-                <tableViewController storyboardIdentifier="toOwnerGroups" id="JAt-Ua-bAI" userLabel="Student Groups Table View Controller" customClass="StudentsByListGroupingTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="toOwnerGroupList" id="JAt-Ua-bAI" userLabel="Student Groups Table View Controller" customClass="StudentsByListGroupingTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="yBX-ck-8dg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -194,7 +194,6 @@
                                 <connections>
                                     <outlet property="cellTitleOutlet" destination="klP-PW-kea" id="ODH-0N-52X"/>
                                     <outlet property="rightRedArrowImageViewOutlet" destination="oEW-aM-Yne" id="rH0-zX-PDt"/>
-                                    <segue destination="V6a-85-j8c" kind="show" id="CA4-BL-LzI"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -680,13 +679,13 @@
         <!--profile complete-->
         <scene sceneID="aBg-7w-Cu0">
             <objects>
-                <viewController storyboardIdentifier="toProfileComplete" id="V6a-85-j8c" userLabel="profile complete" customClass="CompletedProfileViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toProfileComplete" id="V6a-85-j8c" userLabel="profile complete" customClass="OwnersStudentDetailViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Gv1-Bh-NQl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="xiu-Eo-Rv5" userLabel="plese review and name Stack View">
-                                <rect key="frame" x="24" y="80" width="327" height="52"/>
+                                <rect key="frame" x="24" y="36" width="327" height="52"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Review Your Info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="He4-HS-LXa">
                                         <rect key="frame" x="0.0" y="0.0" width="327" height="24"/>
@@ -1360,7 +1359,7 @@
         <!--Add Students to Group Scene-->
         <scene sceneID="zJF-8z-t5p">
             <objects>
-                <tableViewController storyboardIdentifier="toGroupInfoDetails" id="f17-zm-W9F" userLabel="Add Students to Group Scene" customClass="AddStudentsToGroupTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="toGroupInfoDetails" id="f17-zm-W9F" userLabel="Add Students to Group Scene" customClass="GroupInfoDetailsTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" estimatedRowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="Gnm-Wb-reH" userLabel="students Table View">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1668,7 +1667,4 @@
         <image name="profile_pic_placeholder_image.png" width="256" height="256"/>
         <image name="right_red_arrow_32.png" width="32" height="32"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="CA4-BL-LzI"/>
-    </inferredMetricsTieBreakers>
 </document>

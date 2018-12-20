@@ -1,5 +1,5 @@
 //
-//  StudentsByListGroupingTableViewController.swift
+//  OwnerGroupListTableViewController.swift
 //  Academia
 //
 //  Created by Michael Guatambu Davis on 8/24/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StudentsByListGroupingTableViewController: UITableViewController {
+class OwnerGroupListTableViewController: UITableViewController {
     
     // MARK: - Properties
     
