@@ -33,7 +33,7 @@ class OwnerGroupListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return allGroups.count
+        return GroupModelController.shared.groups.count
     }
 
     
@@ -41,7 +41,7 @@ class OwnerGroupListTableViewController: UITableViewController {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ownerStudentGroupsMenuCell", for: indexPath) as? StudentGroupGeneralMenuTableViewCell else { return UITableViewCell() }
         
-        let group = allGroups[indexPath.row]
+        let group = GroupModelController.shared.groups[indexPath.row]
         
         // Configure the cell...
         cell.title = group.name
@@ -92,7 +92,7 @@ class OwnerGroupListTableViewController: UITableViewController {
             guard let destinationTVC = segue.destination as? StudentListTableViewController else { return }
             guard let indexPath = self.tableView.indexPathForSelectedRow else { return }
             
-            let studentGroup = allGroups[indexPath.row]
+            let studentGroup = GroupModelController.shared.groups[indexPath.row]
             
             // Pass the selected object to the new view controller.
             destinationTVC.studentGroup = studentGroup
