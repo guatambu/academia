@@ -13,7 +13,7 @@
         <!--Student Groups Table View Controller-->
         <scene sceneID="qdt-5n-UJA">
             <objects>
-                <tableViewController storyboardIdentifier="toOwnerGroupList" id="JAt-Ua-bAI" userLabel="Student Groups Table View Controller" customClass="StudentsByListGroupingTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="toOwnerGroupList" id="JAt-Ua-bAI" userLabel="Student Groups Table View Controller" customClass="OwnerGroupListTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="yBX-ck-8dg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
