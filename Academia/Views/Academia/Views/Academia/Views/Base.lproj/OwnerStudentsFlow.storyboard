@@ -366,12 +366,14 @@
                                                                 <constraint firstItem="heT-nu-EfF" firstAttribute="leading" secondItem="hgj-0K-eki" secondAttribute="leading" id="YzE-59-RME"/>
                                                                 <constraint firstAttribute="height" constant="80" id="hEn-if-xry"/>
                                                                 <constraint firstAttribute="trailing" secondItem="heT-nu-EfF" secondAttribute="trailing" id="l9A-GK-wx9"/>
-                                                                <constraint firstAttribute="width" secondItem="hgj-0K-eki" secondAttribute="height" multiplier="1:1" id="tRs-7g-VK3"/>
                                                                 <constraint firstAttribute="bottom" secondItem="heT-nu-EfF" secondAttribute="bottom" id="yTt-Rk-T6M"/>
                                                             </constraints>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                     <real key="value" value="60"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                    <real key="value" value="2"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </view>

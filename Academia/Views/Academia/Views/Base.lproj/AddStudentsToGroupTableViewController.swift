@@ -17,6 +17,8 @@ class AddStudentsToGroupTableViewController: UITableViewController {
     var groupDescription: String?
     var groupMembers: [Any]?
     
+    var addedToGroup = false
+    
     var inEditingMode: Bool?
     var groupToEdit: Group?
     
@@ -106,6 +108,7 @@ class AddStudentsToGroupTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
+       
         return 0
     }
 
@@ -120,6 +123,21 @@ class AddStudentsToGroupTableViewController: UITableViewController {
         // Configure the cell...
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        addedToGroup = !addedToGroup
+        
+        print(addedToGroup)
+        
+        
+        
+        
+        
+        
+        
+        
     }
 
 }
