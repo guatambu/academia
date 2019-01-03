@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddStudentsToGroupTableViewController: UITableViewController {
+class AddStudentsToGroupTableViewController: UITableViewController, GroupMembersDelegate {
     
     // MARK: - Properties
     
@@ -43,6 +43,9 @@ class AddStudentsToGroupTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // set up delegate relationship with AddNewStudentGRoupTableViewCell
+        tableView.delegate = self
 
     }
     
@@ -74,8 +77,12 @@ class AddStudentsToGroupTableViewController: UITableViewController {
         // instantiate the desired TableViewController as ViewController on relevant storyboard
         let destViewController = mainView.instantiateViewController(withIdentifier: "toReviewAndCreateGroup") as! ReviewAndCreateGroupTableViewController
         
-        // run check to see is there is a paymentProgramName
-        guard groupMembers?.count != 0 else {
+        // run check to see is there are groupMembers
+        guard let groupMembers = groupMembers else {
+            print("ERROR: groupMembers has a nil vlaue. AddStudentsToGroupTableViewController.swift -> nextButtonTapped(_ sender:) - line 79")
+            return
+        }
+        guard groupMembers.count != 0 else {
             
             welcomeInstructionsLabelOutlet.textColor = UIColor.red
             return
@@ -108,13 +115,20 @@ class AddStudentsToGroupTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-       
-        return 0
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        if section == 0 {
+            return KidStudentModelController.shared.kids.count
+            
+        } else if section == 1 {
+            return AdultStudentModelController.shared.adults.count
+            
+        } else {
+            return 0
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -123,21 +137,6 @@ class AddStudentsToGroupTableViewController: UITableViewController {
         // Configure the cell...
 
         return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        addedToGroup = !addedToGroup
-        
-        print(addedToGroup)
-        
-        
-        
-        
-        
-        
-        
-        
     }
 
 }

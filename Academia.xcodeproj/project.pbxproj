@@ -107,6 +107,8 @@
 		FAAAC14B213E33E000093D6C /* OwnerProfileFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAAAC14A213E33E000093D6C /* OwnerProfileFlow.storyboard */; };
 		FAAAC150213E345900093D6C /* OwnerMessages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAAAC14F213E345900093D6C /* OwnerMessages.storyboard */; };
 		FAAAC153213E348800093D6C /* OwnerBaseCampFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAAAC151213E348800093D6C /* OwnerBaseCampFlow.storyboard */; };
+		FAAEDB4E21DD7BBB00E1A04F /* ReviewAndCreateGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAEDB4D21DD7BBB00E1A04F /* ReviewAndCreateGroupTableViewCell.swift */; };
+		FAAEDB5021DDA27500E1A04F /* GroupMembersDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAEDB4F21DDA27500E1A04F /* GroupMembersDelegate.swift */; };
 		FAB203D4215EA8630034E1D4 /* LocationsImageMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB203D3215EA8630034E1D4 /* LocationsImageMenuTableViewCell.swift */; };
 		FAB203DA216187190034E1D4 /* StudentClassDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB203D9216187190034E1D4 /* StudentClassDetailViewController.swift */; };
 		FAB203DC216188C50034E1D4 /* StudentAulasListMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB203DB216188C50034E1D4 /* StudentAulasListMenuTableViewCell.swift */; };
@@ -358,6 +360,8 @@
 		FAAAC14A213E33E000093D6C /* OwnerProfileFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerProfileFlow.storyboard; sourceTree = "<group>"; };
 		FAAAC14F213E345900093D6C /* OwnerMessages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerMessages.storyboard; sourceTree = "<group>"; };
 		FAAAC152213E348800093D6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Academia/Views/Base.lproj/OwnerBaseCampFlow.storyboard; sourceTree = "<group>"; };
+		FAAEDB4D21DD7BBB00E1A04F /* ReviewAndCreateGroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewAndCreateGroupTableViewCell.swift; sourceTree = "<group>"; };
+		FAAEDB4F21DDA27500E1A04F /* GroupMembersDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMembersDelegate.swift; sourceTree = "<group>"; };
 		FAB203D3215EA8630034E1D4 /* LocationsImageMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsImageMenuTableViewCell.swift; sourceTree = "<group>"; };
 		FAB203D9216187190034E1D4 /* StudentClassDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentClassDetailViewController.swift; sourceTree = "<group>"; };
 		FAB203DB216188C50034E1D4 /* StudentAulasListMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentAulasListMenuTableViewCell.swift; sourceTree = "<group>"; };
@@ -893,6 +897,7 @@
 				FA5C5C2F21506B7400BF62D5 /* InitialStudentSegueDelegate.swift */,
 				FA5C5C442153022300BF62D5 /* SegueFromSaveProfileNibCellDelegate.swift */,
 				FAD5B12C21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift */,
+				FAAEDB4F21DDA27500E1A04F /* GroupMembersDelegate.swift */,
 			);
 			path = "Delegate Protocols";
 			sourceTree = "<group>";
@@ -956,6 +961,8 @@
 				FA8B3CBD21CA22B7003398FB /* GroupNameAndDescriptionViewController.swift */,
 				FA8B3CC021CA230B003398FB /* AddStudentsToGroupTableViewController.swift */,
 				FA8B3CC621CB2366003398FB /* ReviewAndCreateGroupTableViewController.swift */,
+				FAE67A3D215C733400822DCF /* AddNewStudentGroupImageMenuTableViewCell.swift */,
+				FAAEDB4D21DD7BBB00E1A04F /* ReviewAndCreateGroupTableViewCell.swift */,
 			);
 			path = Groups;
 			sourceTree = "<group>";
@@ -1096,7 +1103,6 @@
 				FA5C5C422152F11400BF62D5 /* StudentUserGeneralMenuTableViewCell.swift */,
 				FAF29BDE2130892B00752414 /* ImageMenuTableViewCell.swift */,
 				FAE67A3B215C714B00822DCF /* StudentListImageMenuTableViewCell.swift */,
-				FAE67A3D215C733400822DCF /* AddNewStudentGroupImageMenuTableViewCell.swift */,
 				FAB203D3215EA8630034E1D4 /* LocationsImageMenuTableViewCell.swift */,
 				FA9ADA162138C7030005E1F1 /* ProfilePicTableViewCell.swift */,
 				FA9ADA2A2139EE560005E1F1 /* StatusTableViewCell.swift */,
@@ -1389,6 +1395,7 @@
 				FAA516D6218FEC5A009875CB /* ConfirmPasswordTextFieldTableViewCell.swift in Sources */,
 				FA23D2882166F5E400707056 /* GroupModelController.swift in Sources */,
 				FAF1BB8C21435BA900AD56AE /* AgreementTextViewTableViewCell.swift in Sources */,
+				FAAEDB5021DDA27500E1A04F /* GroupMembersDelegate.swift in Sources */,
 				FA8B3CC721CB2366003398FB /* ReviewAndCreateGroupTableViewController.swift in Sources */,
 				FACA3EB1219288CD0099E620 /* NameAndBeltViewController.swift in Sources */,
 				FAB203DA216187190034E1D4 /* StudentClassDetailViewController.swift in Sources */,
@@ -1440,6 +1447,7 @@
 				FACA3EB92192895C0099E620 /* CompletedProfileViewController.swift in Sources */,
 				FAE2FD8C2140BFBA00815402 /* UsernameTextFieldTableViewCell.swift in Sources */,
 				FA6FBA082149F3C700558657 /* StudentStatus.swift in Sources */,
+				FAAEDB4E21DD7BBB00E1A04F /* ReviewAndCreateGroupTableViewCell.swift in Sources */,
 				FA8B3CC221CA230B003398FB /* AddStudentsToGroupTableViewController.swift in Sources */,
 				FAE2FDA42140C05B00815402 /* SchoolGroupTextFieldTableViewCell.swift in Sources */,
 				FA5C5C36215170D200BF62D5 /* LocationModelController.swift in Sources */,

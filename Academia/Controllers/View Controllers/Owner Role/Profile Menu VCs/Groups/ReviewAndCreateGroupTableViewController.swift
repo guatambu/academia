@@ -22,6 +22,15 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
     
     let beltBuilder = BeltBuilder()
     
+    @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
+    @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
+    @IBOutlet weak var groupNameLabelOutlet: UILabel!
+    @IBOutlet weak var activeLabelOutlet: UILabel!
+    @IBOutlet weak var lastChangedLabelOutlet: UILabel!
+    @IBOutlet weak var groupDescriptionLabelOutlet: UILabel!
+    @IBOutlet weak var groupDescriptionTextView: UITextView!
+    
+    
     
     // MARK: - ViewController Lifecycle Functions
     

@@ -220,11 +220,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="t0M-cD-bvt">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="104"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="frx-Ym-d1E" userLabel="Welcome Stack View">
-                                    <rect key="frame" x="0.0" y="12" width="375" height="60"/>
+                                    <rect key="frame" x="0.0" y="12" width="375" height="80"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Owner" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Kw-cf-nng">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="36"/>
@@ -235,21 +235,26 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="please add students to your group: " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HhG-rv-dfY">
-                                            <rect key="frame" x="0.0" y="36" width="375" height="24"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="24" id="SjI-bg-RoP"/>
-                                            </constraints>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="add a student:  please tap any student's pic" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HhG-rv-dfY">
+                                            <rect key="frame" x="16" y="36" width="343" height="22"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="view a profile:  please tap any student listing" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7A-ra-oSu">
+                                            <rect key="frame" x="16" y="58" width="343" height="22"/>
                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="HhG-rv-dfY" secondAttribute="trailing" id="5ip-pe-kyd"/>
-                                        <constraint firstItem="HhG-rv-dfY" firstAttribute="leading" secondItem="frx-Ym-d1E" secondAttribute="leading" id="7Hm-4T-wY0"/>
+                                        <constraint firstAttribute="trailing" secondItem="HhG-rv-dfY" secondAttribute="trailing" constant="16" id="5ip-pe-kyd"/>
+                                        <constraint firstItem="HhG-rv-dfY" firstAttribute="leading" secondItem="frx-Ym-d1E" secondAttribute="leading" constant="16" id="7Hm-4T-wY0"/>
                                         <constraint firstAttribute="trailing" secondItem="0Kw-cf-nng" secondAttribute="trailing" id="FWo-Vo-OA3"/>
                                         <constraint firstItem="0Kw-cf-nng" firstAttribute="leading" secondItem="frx-Ym-d1E" secondAttribute="leading" id="PZJ-yJ-EGn"/>
+                                        <constraint firstAttribute="trailing" secondItem="b7A-ra-oSu" secondAttribute="trailing" constant="16" id="dqg-9s-QRi"/>
+                                        <constraint firstItem="b7A-ra-oSu" firstAttribute="leading" secondItem="frx-Ym-d1E" secondAttribute="leading" constant="16" id="fSp-Vm-prS"/>
                                     </constraints>
                                 </stackView>
                             </subviews>
@@ -257,12 +262,12 @@
                             <constraints>
                                 <constraint firstItem="frx-Ym-d1E" firstAttribute="top" secondItem="t0M-cD-bvt" secondAttribute="top" constant="12" id="6eK-gb-BdF"/>
                                 <constraint firstItem="frx-Ym-d1E" firstAttribute="leading" secondItem="t0M-cD-bvt" secondAttribute="leading" id="Exj-pY-lpb"/>
-                                <constraint firstAttribute="bottom" secondItem="frx-Ym-d1E" secondAttribute="bottom" id="hjL-4l-YJO"/>
+                                <constraint firstAttribute="bottom" secondItem="frx-Ym-d1E" secondAttribute="bottom" constant="12" id="hjL-4l-YJO"/>
                                 <constraint firstAttribute="trailing" secondItem="frx-Ym-d1E" secondAttribute="trailing" id="wXe-Ng-HQI"/>
                             </constraints>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="r9e-zd-sjq">
-                            <rect key="frame" x="0.0" y="180" width="375" height="96"/>
+                            <rect key="frame" x="0.0" y="212" width="375" height="96"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EF0-xQ-JFX" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
@@ -340,7 +345,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="addNewGroupStudentImageMenuCell" rowHeight="80" id="KOI-e7-MjL" userLabel="student Table View Cell" customClass="AddNewStudentGroupImageMenuTableViewCell" customModule="Academia" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="100" width="375" height="80"/>
+                                <rect key="frame" x="0.0" y="132" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KOI-e7-MjL" id="3ml-WG-sGQ" userLabel="status Content View">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
@@ -355,6 +360,12 @@
                                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hgj-0K-eki" userLabel="Round Profile Pic View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                             <subviews>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ynE-bz-dCR">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                                    <connections>
+                                                                        <action selector="profilePicTapped:" destination="KOI-e7-MjL" eventType="touchUpInside" id="V6w-6u-tfy"/>
+                                                                    </connections>
+                                                                </button>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_pic_placeholder_image.png" translatesAutoresizingMaskIntoConstraints="NO" id="heT-nu-EfF" userLabel="Profile Pic Image View">
                                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                                 </imageView>
@@ -364,16 +375,23 @@
                                                                 <constraint firstAttribute="width" constant="80" id="9kc-Uv-3aW"/>
                                                                 <constraint firstItem="heT-nu-EfF" firstAttribute="top" secondItem="hgj-0K-eki" secondAttribute="top" id="KG5-vx-Zj1"/>
                                                                 <constraint firstItem="heT-nu-EfF" firstAttribute="leading" secondItem="hgj-0K-eki" secondAttribute="leading" id="YzE-59-RME"/>
+                                                                <constraint firstAttribute="trailing" secondItem="ynE-bz-dCR" secondAttribute="trailing" id="gmH-cf-sFp"/>
                                                                 <constraint firstAttribute="height" constant="80" id="hEn-if-xry"/>
                                                                 <constraint firstAttribute="trailing" secondItem="heT-nu-EfF" secondAttribute="trailing" id="l9A-GK-wx9"/>
+                                                                <constraint firstItem="ynE-bz-dCR" firstAttribute="top" secondItem="hgj-0K-eki" secondAttribute="top" id="qH5-ZL-iqu"/>
+                                                                <constraint firstAttribute="bottom" secondItem="ynE-bz-dCR" secondAttribute="bottom" id="qeq-3N-UGt"/>
                                                                 <constraint firstAttribute="bottom" secondItem="heT-nu-EfF" secondAttribute="bottom" id="yTt-Rk-T6M"/>
+                                                                <constraint firstItem="ynE-bz-dCR" firstAttribute="leading" secondItem="hgj-0K-eki" secondAttribute="leading" id="zga-Of-oea"/>
                                                             </constraints>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                    <real key="value" value="60"/>
+                                                                    <real key="value" value="40"/>
                                                                 </userDefinedRuntimeAttribute>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                                     <real key="value" value="2"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                    <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
@@ -423,6 +441,8 @@
                                 <connections>
                                     <outlet property="cellTitleOutlet" destination="Khm-cM-CSG" id="Ehp-la-peV"/>
                                     <outlet property="rightRedArrowImageViewOutlet" destination="HhV-xq-uvo" id="g54-jk-Tlu"/>
+                                    <outlet property="roundProfilePicView" destination="hgj-0K-eki" id="q5P-MM-7lB"/>
+                                    <outlet property="userThumbnailImageViewOutlet" destination="heT-nu-EfF" id="IBf-ks-6So"/>
                                     <segue destination="V6a-85-j8c" kind="show" id="4HH-zf-sIF"/>
                                 </connections>
                             </tableViewCell>
@@ -1262,7 +1282,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="addNewGroupStudentImageMenuCell" rowHeight="80" id="OFG-hM-GUX" userLabel="student Table View Cell" customClass="AddNewStudentGroupImageMenuTableViewCell" customModule="Academia" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="addNewGroupStudentImageMenuCell" rowHeight="80" id="OFG-hM-GUX" userLabel="student Table View Cell" customClass="ReviewAndCreateGroupTableViewCell" customModule="Academia" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="284" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OFG-hM-GUX" id="KSH-c8-AmW" userLabel="status Content View">
@@ -1339,8 +1359,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="cellTitleOutlet" destination="oBW-Zu-4HK" id="0VF-0U-OcJ"/>
-                                    <outlet property="rightRedArrowImageViewOutlet" destination="vnh-ee-8Qh" id="52h-Yh-cv2"/>
+                                    <outlet property="cellTitleOutlet" destination="oBW-Zu-4HK" id="HSa-Ex-vj8"/>
+                                    <outlet property="rightRedArrowImageViewOutlet" destination="vnh-ee-8Qh" id="7Dh-D3-WkA"/>
+                                    <outlet property="userThumbnailImageViewOutlet" destination="krw-9L-kON" id="T4t-Fa-kRZ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1353,6 +1374,15 @@
                     <navigationItem key="navigationItem" id="5Ic-io-yOl">
                         <barButtonItem key="backBarButtonItem" title=" " id="M12-pY-LNi"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="activeLabelOutlet" destination="k8v-c6-NMl" id="lPi-dX-QZU"/>
+                        <outlet property="groupDescriptionLabelOutlet" destination="V8y-P7-2Nm" id="r4c-6n-1bX"/>
+                        <outlet property="groupDescriptionTextView" destination="hmd-Ko-HFd" id="o35-YM-goK"/>
+                        <outlet property="groupNameLabelOutlet" destination="0nu-Wi-v0S" id="6FU-eE-DTK"/>
+                        <outlet property="lastChangedLabelOutlet" destination="wdp-va-Ji8" id="WcV-Kx-ors"/>
+                        <outlet property="welcomeInstructionsLabelOutlet" destination="KT0-G0-Uva" id="eGR-qE-w8k"/>
+                        <outlet property="welcomeMessageLabelOutlet" destination="4av-HA-ABE" id="06f-EQ-SLX"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Up-uf-kJb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

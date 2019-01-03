@@ -16,6 +16,8 @@ class AddNewStudentGroupImageMenuTableViewCell: UITableViewCell {
     
     let beltBuilder = BeltBuilder()
     
+    weak var delegate: GroupMembersDelegate?
+    
     @IBOutlet weak var roundProfilePicView: DesignableView!
     @IBOutlet weak var userThumbnailImageViewOutlet: UIImageView!
     @IBOutlet weak var cellTitleOutlet: UILabel!
@@ -61,15 +63,27 @@ class AddNewStudentGroupImageMenuTableViewCell: UITableViewCell {
         
         // add/remove student to appropriate model controller's source of truth
         if let adultStudent = adultStudent {
+            
+            guard var groupMembers = delegate?.groupMembers else {
+                print("ERROR:  nil value for groupMembers in AddNewStudentGroupImageMenuTableViewCell.swift -> profilePicTapped(_ sender: ) - line 69")
+                return
+            }
+            
             if isChosen {
-                AdultStudentModelController.shared.adults.append(adultStudent)
+                
+                
+                groupMembers.append(adultStudent)
+                
+                // maybe need to 6create more specific type arrays rather than [Any] ... more like a [KidStudent] and [AdultStudent]... or maybe better a protocol to link them all together like a macro Student protocol and make a [Student]? array for groupMembers rather than [Any]?
+                
+                // Solution to ^^^ ... two separate arrays, one for AdultStudents and one for KidStudents, and these will be used to keep the groupMembers array organized for secitons.  in other words the groupMembers array will just be an array of arrays that will be used to track the sections for the overall displayed data which we will always organize into adults and kids sections when displayed in tableView or collecitonView format
                 
             } else {
-                guard let index = AdultStudentModelController.shared.adults.index(of: adultStudent) else {
+                guard let index = groupMembers.index(of: adultStudent) else {
                     print("ERROR: no index value found for adultStudent in AdultStudentModelController.shared.adults.  AddNewStudentGroupImageMenuTableViewCell -> profilePicTapped(_ sender:) - line 62")
                     return
                 }
-                AdultStudentModelController.shared.adults.remove(at: index)
+                groupMembers.remove(at: index)
             }
             
             
