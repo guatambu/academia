@@ -1,15 +1,15 @@
 //
-//  AddNewStudentGroupImageMenuTableViewCell.swift
+//  ReviewAndCreateGroupTableViewCell.swift
 //  Academia
 //
-//  Created by Michael Guatambu Davis on 9/26/18.
-//  Copyright © 2018 DunDak, LLC. All rights reserved.
+//  Created by Michael Guatambu Davis on 1/2/19.
+//  Copyright © 2019 DunDak, LLC. All rights reserved.
 //
 
 import UIKit
 
-class AddNewStudentGroupImageMenuTableViewCell: UITableViewCell {
-
+class ReviewAndCreateGroupTableViewCell: UITableViewCell {
+    
     // MARK: - Properties
     
     @IBOutlet weak var userThumbnailImageViewOutlet: UIImageView!
@@ -23,12 +23,6 @@ class AddNewStudentGroupImageMenuTableViewCell: UITableViewCell {
     }
     
     var kidStudent: KidStudent? {
-        didSet {
-            updateViews()
-        }
-    }
-    
-    var location: Location? {
         didSet {
             updateViews()
         }
@@ -53,10 +47,7 @@ class AddNewStudentGroupImageMenuTableViewCell: UITableViewCell {
         } else if let kidStudent = kidStudent {
             userThumbnailImageViewOutlet.image = kidStudent.profilePic
             cellTitleOutlet.text = "\(kidStudent.firstName) \(kidStudent.lastName)"
-        } else if let location = location {
-            userThumbnailImageViewOutlet.image = location.locationPic
-            cellTitleOutlet.text = "\(location.locationName)"
         }
     }
-
+    
 }
