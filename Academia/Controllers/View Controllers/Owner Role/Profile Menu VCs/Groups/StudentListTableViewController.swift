@@ -34,28 +34,47 @@ class StudentListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        guard let students = studentGroup?.members else {
-            print("ERROR: nil value for the studentGroup.members array in StudentListTableViewController.swift -> tablewView(tableView:, numberOfRowsInSection:) - line 38 ")
+        guard let kidMembers = studentGroup?.kidMembers else {
+            print("ERROR: nil value for the studentGroup.kidMembers array in StudentListTableViewController.swift -> tablewView(tableView:, numberOfRowsInSection:) - line 38 ")
             return 0
         }
-
-        return students.count
+        
+        guard let adultMembers = studentGroup?.adultMembers else {
+            print("ERROR: nil value for the studentGroup.adultMembers array in StudentListTableViewController.swift -> tablewView(tableView:, numberOfRowsInSection:) - line 43 ")
+            return 0
+        }
+        
+        if section == 0 {
+            return kidMembers.count
+            
+        } else if section == 1 {
+            return adultMembers.count
+            
+        } else {
+            return 0
+        }
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "studentListImageMenuCell", for: indexPath) as? StudentListImageMenuTableViewCell else { return UITableViewCell() }
         
-        guard let students = studentGroup?.members else {
-            print("ERROR: nil value for the studentGroup.members array in StudentListTableViewController.swift -> tablewView(tableView:, cellForRowAt:) - line 50 ")
+        guard let kidMembers = studentGroup?.kidMembers else {
+            print("ERROR: nil value for the studentGroup.kidMembers array in StudentListTableViewController.swift -> tablewView(tableView:, cellForRowAt:) - line 60")
             return UITableViewCell()
         }
         
-        let student = students[indexPath.row]
+        guard let adultMembers = studentGroup?.adultMembers else {
+            print("ERROR: nil value for the studentGroup.adultMembers array in StudentListTableViewController.swift -> tablewView(tableView:, cellForRowAt:) - line 64")
+            return UITableViewCell()
+        }
+        
+        let adultMember = adultMembers[indexPath.row]
+        let kidMember = kidMembers[indexPath.row]
         
         // Configure the cell...
-        cell.adultStudent = student as? AdultStudent
-        cell.kidStudent = student as? KidStudent
+        cell.adultStudent = adultMember
+        cell.kidStudent = kidMember
 
         return cell
     }
@@ -74,6 +93,8 @@ class StudentListTableViewController: UITableViewController {
         } 
     }
     
+    
+    // *** TODO: research how to deal with sections and different type in each section or just acccount for it here ***
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // programmatically performing the segue
@@ -90,68 +111,70 @@ class StudentListTableViewController: UITableViewController {
         navigationItem.backBarButtonItem = backButtonItem
         
         // unwrap a students object
-        guard let students = studentGroup?.members else {
-            print("ERROR: nil value for the studentGroup.members array in StudentListTableViewController.swift -> tablewView(tableView:, didSelectRowAt:) - line 94 ")
+        guard let kidMembers = studentGroup?.kidMembers else {
+            print("ERROR: nil value for the studentGroup.kidMembers array in StudentListTableViewController.swift -> tablewView(tableView:, cellForRowAt:) - line 110")
             return
         }
         
-        let student = students[indexPath.row]
+        guard let adultMembers = studentGroup?.adultMembers else {
+            print("ERROR: nil value for the studentGroup.adultMembers array in StudentListTableViewController.swift -> tablewView(tableView:, cellForRowAt:) - line 115")
+            return
+        }
         
-        if student is AdultStudent {
-            
-            let adultStudent = student as! AdultStudent
+        let adultMember = adultMembers[indexPath.row]
+        let kidMember = kidMembers[indexPath.row]
+        
+        if adultMembers.isEmpty == false {
             
             // pass data to destViewController
             destViewController.isOwner = false
             destViewController.isKid = false
-            destViewController.username = adultStudent.username
-            destViewController.password = adultStudent.password
-            destViewController.firstName = adultStudent.firstName
-            destViewController.lastName = adultStudent.lastName
+            destViewController.username = adultMember.username
+            destViewController.password = adultMember.password
+            destViewController.firstName = adultMember.firstName
+            destViewController.lastName = adultMember.lastName
             destViewController.parentGuardian = nil
-            destViewController.profilePic = adultStudent.profilePic
-            destViewController.birthdate = adultStudent.birthdate
-            destViewController.beltLevel = adultStudent.belt.beltLevel
-            destViewController.numberOfStripes = adultStudent.belt.numberOfStripes
-            destViewController.addressLine1 = adultStudent.addressLine1
-            destViewController.addressLine2 = adultStudent.addressLine2
-            destViewController.city = adultStudent.city
-            destViewController.state = adultStudent.state
-            destViewController.zipCode = adultStudent.zipCode
-            destViewController.phone = adultStudent.phone
-            destViewController.mobile = adultStudent.mobile
-            destViewController.email = adultStudent.email
-            destViewController.emergencyContactName = adultStudent.emergencyContactName
-            destViewController.emergencyContactRelationship = adultStudent.emergencyContactRelationship
-            destViewController.emergencyContactPhone = adultStudent.emergencyContactPhone
+            destViewController.profilePic = adultMember.profilePic
+            destViewController.birthdate = adultMember.birthdate
+            destViewController.beltLevel = adultMember.belt.beltLevel
+            destViewController.numberOfStripes = adultMember.belt.numberOfStripes
+            destViewController.addressLine1 = adultMember.addressLine1
+            destViewController.addressLine2 = adultMember.addressLine2
+            destViewController.city = adultMember.city
+            destViewController.state = adultMember.state
+            destViewController.zipCode = adultMember.zipCode
+            destViewController.phone = adultMember.phone
+            destViewController.mobile = adultMember.mobile
+            destViewController.email = adultMember.email
+            destViewController.emergencyContactName = adultMember.emergencyContactName
+            destViewController.emergencyContactRelationship = adultMember.emergencyContactRelationship
+            destViewController.emergencyContactPhone = adultMember.emergencyContactPhone
             
-        } else if student is KidStudent {
-            
-            let kidStudent = student as! KidStudent
+        } else if kidMembers.isEmpty == false {
             
             // pass data to destViewController
             destViewController.isOwner = false
             destViewController.isKid = true
-            destViewController.username = kidStudent.username
-            destViewController.password = kidStudent.password
-            destViewController.firstName = kidStudent.firstName
-            destViewController.lastName = kidStudent.lastName
-            destViewController.parentGuardian = kidStudent.parentGuardian
-            destViewController.profilePic = kidStudent.profilePic
-            destViewController.birthdate = kidStudent.birthdate
-            destViewController.beltLevel = kidStudent.belt.beltLevel
-            destViewController.numberOfStripes = kidStudent.belt.numberOfStripes
-            destViewController.addressLine1 = kidStudent.addressLine1
-            destViewController.addressLine2 = kidStudent.addressLine2
-            destViewController.city = kidStudent.city
-            destViewController.state = kidStudent.state
-            destViewController.zipCode = kidStudent.zipCode
-            destViewController.phone = kidStudent.phone
-            destViewController.mobile = kidStudent.mobile
-            destViewController.email = kidStudent.email
-            destViewController.emergencyContactName = kidStudent.emergencyContactName
-            destViewController.emergencyContactRelationship = kidStudent.emergencyContactRelationship
-            destViewController.emergencyContactPhone = kidStudent.emergencyContactPhone
+            destViewController.username = kidMember.username
+            destViewController.password = kidMember.password
+            destViewController.firstName = kidMember.firstName
+            destViewController.lastName = kidMember.lastName
+            destViewController.parentGuardian = kidMember.parentGuardian
+            destViewController.profilePic = kidMember.profilePic
+            destViewController.birthdate = kidMember.birthdate
+            destViewController.beltLevel = kidMember.belt.beltLevel
+            destViewController.numberOfStripes = kidMember.belt.numberOfStripes
+            destViewController.addressLine1 = kidMember.addressLine1
+            destViewController.addressLine2 = kidMember.addressLine2
+            destViewController.city = kidMember.city
+            destViewController.state = kidMember.state
+            destViewController.zipCode = kidMember.zipCode
+            destViewController.phone = kidMember.phone
+            destViewController.mobile = kidMember.mobile
+            destViewController.email = kidMember.email
+            destViewController.emergencyContactName = kidMember.emergencyContactName
+            destViewController.emergencyContactRelationship = kidMember.emergencyContactRelationship
+            destViewController.emergencyContactPhone = kidMember.emergencyContactPhone
             
         }
     }

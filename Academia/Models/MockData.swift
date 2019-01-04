@@ -17,7 +17,7 @@ struct MockData {
     // 3. should be ready to go going forward
 
     // groups
-    static var allStudents = Group(groupUID: UUID(), active: true, name: "all students", description: "description", dateCreated: Date(), dateEdited: Date(), members: [owner, adultA])
+    static var allStudents = Group(groupUID: UUID(), active: true, name: "all students", description: "description", dateCreated: Date(), dateEdited: Date(), kidMembers: [kidA], adultMembers: [adultA])
 
     // location
     static var myLocation = Location(locationUID: UUID(), active: true, dateCreated: Date(), dateEdited: Date(), locationPic: #imageLiteral(resourceName: "owner_sample.png"), locationName: "my location", addressLine1: "1267 the spot blvd.", addressLine2: "", city: "you know", state: "LA", zipCode: "09854", phone: "987-876-1230", website: "www.theschool.gov", email: "email@theschool.gov", social1: nil, social2: nil, social3: nil)

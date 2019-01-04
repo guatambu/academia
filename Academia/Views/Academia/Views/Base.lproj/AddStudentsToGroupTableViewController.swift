@@ -10,12 +10,15 @@ import UIKit
 
 class AddStudentsToGroupTableViewController: UITableViewController, GroupMembersDelegate {
     
+    
+    
     // MARK: - Properties
     
     var groupName: String?
     var active: Bool = true
     var groupDescription: String?
-    var groupMembers: [Any]?
+    var kidMembers: [KidStudent] = []
+    var adultMembers: [AdultStudent] = []
     
     var addedToGroup = false
     
@@ -54,8 +57,8 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
     
     @objc func saveButtonTapped() {
         
-        // Location update profile info
-        if groupMembers?.count != 0 {
+        // Group update profile info
+        if kidMembers.isEmpty == false || adultMembers.isEmpty == false {
             
             updateGroupInfo()
             
@@ -78,11 +81,7 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
         let destViewController = mainView.instantiateViewController(withIdentifier: "toReviewAndCreateGroup") as! ReviewAndCreateGroupTableViewController
         
         // run check to see is there are groupMembers
-        guard let groupMembers = groupMembers else {
-            print("ERROR: groupMembers has a nil vlaue. AddStudentsToGroupTableViewController.swift -> nextButtonTapped(_ sender:) - line 79")
-            return
-        }
-        guard groupMembers.count != 0 else {
+        guard kidMembers.isEmpty == true && adultMembers.isEmpty == true else {
             
             welcomeInstructionsLabelOutlet.textColor = UIColor.red
             return
@@ -100,7 +99,8 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
         destViewController.groupName = groupName
         destViewController.active = active
         destViewController.groupDescription = groupDescription
-        destViewController.groupMembers = groupMembers
+        destViewController.kidMembers = kidMembers
+        destViewController.adultMembers = adultMembers
         
         destViewController.inEditingMode = inEditingMode
         destViewController.groupToEdit = groupToEdit
@@ -149,10 +149,8 @@ extension AddStudentsToGroupTableViewController {
     func updateGroupInfo() {
         guard let group = groupToEdit else { return }
         // group update info
-        if groupMembers?.count != 0 {
-            GroupModelController.shared.update(group: group, active: nil, name: nil, description: nil, members: groupMembers)
-            print("how many members in the group: \(GroupModelController.shared.groups.count)")
-        }
+        GroupModelController.shared.update(group: group, active: nil, name: nil, description: nil, kidMembers: kidMembers, adultMembers: adultMembers)
+        print("how many members in the group: \(GroupModelController.shared.groups.count)")
     }
     
     func enterEditingMode(inEditingMode: Bool?) {

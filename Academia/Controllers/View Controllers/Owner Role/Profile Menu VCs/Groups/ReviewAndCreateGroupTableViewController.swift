@@ -15,7 +15,8 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
     var groupName: String?
     var active: Bool = true
     var groupDescription: String?
-    var groupMembers: [Any]?
+    var kidMembers: [KidStudent]?
+    var adultMembers: [AdultStudent]?
     
     var inEditingMode: Bool?
     var groupToEdit: Group?

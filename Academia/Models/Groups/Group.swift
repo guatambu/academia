@@ -20,11 +20,12 @@ class Group {
     var description: String?
     var dateCreated: Date
     var dateEdited: Date
-    var members: [Any]?
+    var kidMembers: [KidStudent]?
+    var adultMembers: [AdultStudent]?
     
     // Memberwise Initializer
     
-    init(groupUID: UUID, active: Bool, name: String, description: String?, dateCreated: Date, dateEdited: Date, members: [Any]?) {
+    init(groupUID: UUID, active: Bool, name: String, description: String?, dateCreated: Date, dateEdited: Date, kidMembers: [KidStudent]?, adultMembers: [AdultStudent]?) {
         
         self.groupUID = groupUID
         self.active = active
@@ -32,7 +33,8 @@ class Group {
         self.description = description
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
-        self.members = members
+        self.kidMembers = kidMembers
+        self.adultMembers = adultMembers
     }
 }
 
@@ -45,6 +47,8 @@ extension Group: Equatable {
         if lhs.description != rhs.description { return false }
         if lhs.dateCreated != rhs.dateCreated { return false }
         if lhs.dateEdited != rhs.dateEdited { return false }
+        if lhs.kidMembers != rhs.kidMembers { return false }
+        if lhs.adultMembers != rhs.adultMembers { return false }
         
         return true
     }

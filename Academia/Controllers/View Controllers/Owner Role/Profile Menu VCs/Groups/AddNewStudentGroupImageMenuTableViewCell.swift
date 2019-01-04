@@ -64,39 +64,39 @@ class AddNewStudentGroupImageMenuTableViewCell: UITableViewCell {
         // add/remove student to appropriate model controller's source of truth
         if let adultStudent = adultStudent {
             
-            guard var groupMembers = delegate?.groupMembers else {
-                print("ERROR:  nil value for groupMembers in AddNewStudentGroupImageMenuTableViewCell.swift -> profilePicTapped(_ sender: ) - line 69")
+            guard var adultMembers = delegate?.adultMembers else {
+                print("ERROR:  nil value for adultMembers in AddNewStudentGroupImageMenuTableViewCell.swift -> profilePicTapped(_ sender: ) - line 68")
                 return
             }
             
             if isChosen {
-                
-                
-                groupMembers.append(adultStudent)
-                
-                // maybe need to 6create more specific type arrays rather than [Any] ... more like a [KidStudent] and [AdultStudent]... or maybe better a protocol to link them all together like a macro Student protocol and make a [Student]? array for groupMembers rather than [Any]?
-                
-                // Solution to ^^^ ... two separate arrays, one for AdultStudents and one for KidStudents, and these will be used to keep the groupMembers array organized for secitons.  in other words the groupMembers array will just be an array of arrays that will be used to track the sections for the overall displayed data which we will always organize into adults and kids sections when displayed in tableView or collecitonView format
+                adultMembers.append(adultStudent)
                 
             } else {
-                guard let index = groupMembers.index(of: adultStudent) else {
-                    print("ERROR: no index value found for adultStudent in AdultStudentModelController.shared.adults.  AddNewStudentGroupImageMenuTableViewCell -> profilePicTapped(_ sender:) - line 62")
+                guard let index = adultMembers.index(of: adultStudent) else {
+                    print("ERROR: no index value found for adultStudent in adultMembers. AddNewStudentGroupImageMenuTableViewCell -> profilePicTapped(_ sender:) - line 77")
                     return
                 }
-                groupMembers.remove(at: index)
+                adultMembers.remove(at: index)
             }
             
             
         } else if let kidStudent = kidStudent {
+            
+            guard var kidMembers = delegate?.kidMembers else {
+                print("ERROR:  nil value for kidMembers in AddNewStudentGroupImageMenuTableViewCell.swift -> profilePicTapped(_ sender: ) - line 87")
+                return
+            }
+            
             if isChosen {
-                KidStudentModelController.shared.kids.append(kidStudent)
+                kidMembers.append(kidStudent)
                 
             } else {
-                guard let index = KidStudentModelController.shared.kids.index(of: kidStudent) else {
-                    print("ERROR: no index value found for adultStudent in AdultStudentModelController.shared.adults.  AddNewStudentGroupImageMenuTableViewCell -> profilePicTapped(_ sender:) - line 62")
+                guard let index = kidMembers.index(of: kidStudent) else {
+                    print("ERROR: no index value found for kidStudent in kidMembers. AddNewStudentGroupImageMenuTableViewCell -> profilePicTapped(_ sender:) - line 96")
                     return
                 }
-                KidStudentModelController.shared.kids.remove(at: index)
+                kidMembers.remove(at: index)
             }
         }
         
