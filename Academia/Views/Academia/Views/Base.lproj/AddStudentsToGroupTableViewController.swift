@@ -13,7 +13,6 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
     // MARK: - Properties
     
     // Mock Data
-    
     var mockAdults = [MockData.adultA]
     var mockKids = [MockData.kidA]
     

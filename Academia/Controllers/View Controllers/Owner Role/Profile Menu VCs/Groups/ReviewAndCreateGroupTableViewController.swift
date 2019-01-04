@@ -55,70 +55,129 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        
+        return 2
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        
+        guard let kidMembers = kidMembers, let adultMembers = adultMembers else {
+            
+            print("ERROR: nil value for either kidMembers and/or adultMemebers array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, numberOfRowsInSection:) - line 68")
+            return 0
+        }
+        
+        if section == 0 {
+            return kidMembers.count
+            
+        } else if section == 1 {
+            return adultMembers.count
+            
+        } else {
+            return 0
+        }
     }
-
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "addNewGroupStudentImageMenuCell", for: indexPath) as! AddNewStudentGroupImageMenuTableViewCell
+        
+        guard let kidMembers = kidMembers, let adultMembers = adultMembers else {
+            
+            print("ERROR: nil value for either kidMembers and/or adultMemebers array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, cellForRowAt:) - line 89")
+            return UITableViewCell()
+        }
+        
         // Configure the cell...
-
+        if indexPath.section == 0 {
+            cell.kidStudent = kidMembers[indexPath.row]
+            
+        } else if indexPath.section == 1 {
+            cell.adultStudent = adultMembers[indexPath.row]
+            
+        }
+        
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let kidMembers = kidMembers, let adultMembers = adultMembers else {
+            
+            print("ERROR: nil value for either kidMembers and/or adultMemebers array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, didSelectRowAt:) - line 109")
+            return
+        }
+        
+        // programmatically performing the segue
+        
+        // instantiate the relevant storyboard
+        let mainView: UIStoryboard = UIStoryboard(name: "OwnerStudentsFlow", bundle: nil)
+        // instantiate the desired TableViewController as ViewController on relevant storyboard
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toProfileComplete") as! OwnersStudentDetailViewController
+        
+        // create the segue programmatically - PUSH
+        self.navigationController?.pushViewController(destViewController, animated: true)
+        
+        // set the desired properties of the destinationVC's navgation Item
+        let backButtonItem = UIBarButtonItem()
+        backButtonItem.title = " "
+        navigationItem.backBarButtonItem = backButtonItem
+        
+        if indexPath.section == 0 {
+            // kidStudent setup
+            let kid = kidMembers[indexPath.row]
+            
+            destViewController.isOwner = false
+            destViewController.isKid = true
+            destViewController.username = kid.username
+            destViewController.password = kid.password
+            destViewController.firstName = kid.firstName
+            destViewController.lastName = kid.lastName
+            destViewController.parentGuardian = kid.parentGuardian
+            destViewController.profilePic = kid.profilePic
+            destViewController.birthdate = kid.birthdate
+            destViewController.beltLevel = kid.belt.beltLevel
+            destViewController.numberOfStripes = kid.belt.numberOfStripes
+            destViewController.addressLine1 = kid.addressLine1
+            destViewController.addressLine2 = kid.addressLine2
+            destViewController.city = kid.city
+            destViewController.state = kid.state
+            destViewController.zipCode = kid.zipCode
+            destViewController.phone = kid.phone
+            destViewController.mobile = kid.mobile
+            destViewController.email = kid.email
+            destViewController.emergencyContactName = kid.emergencyContactName
+            destViewController.emergencyContactRelationship = kid.emergencyContactRelationship
+            destViewController.emergencyContactPhone = kid.emergencyContactPhone
+            
+        } else if indexPath.section == 1 {
+            // adultStudent setup
+            let adult = adultMembers[indexPath.row]
+            
+            destViewController.isOwner = false
+            destViewController.isKid = false
+            destViewController.username = adult.username
+            destViewController.password = adult.password
+            destViewController.firstName = adult.firstName
+            destViewController.lastName = adult.lastName
+            destViewController.profilePic = adult.profilePic
+            destViewController.birthdate = adult.birthdate
+            destViewController.beltLevel = adult.belt.beltLevel
+            destViewController.numberOfStripes = adult.belt.numberOfStripes
+            destViewController.addressLine1 = adult.addressLine1
+            destViewController.addressLine2 = adult.addressLine2
+            destViewController.city = adult.city
+            destViewController.state = adult.state
+            destViewController.zipCode = adult.zipCode
+            destViewController.phone = adult.phone
+            destViewController.mobile = adult.mobile
+            destViewController.email = adult.email
+            destViewController.emergencyContactName = adult.emergencyContactName
+            destViewController.emergencyContactRelationship = adult.emergencyContactRelationship
+            destViewController.emergencyContactPhone = adult.emergencyContactPhone
+            
+        }
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
