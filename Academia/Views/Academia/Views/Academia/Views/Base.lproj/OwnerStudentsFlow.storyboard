@@ -443,7 +443,6 @@
                                     <outlet property="rightRedArrowImageViewOutlet" destination="HhV-xq-uvo" id="g54-jk-Tlu"/>
                                     <outlet property="roundProfilePicView" destination="hgj-0K-eki" id="q5P-MM-7lB"/>
                                     <outlet property="userThumbnailImageViewOutlet" destination="heT-nu-EfF" id="IBf-ks-6So"/>
-                                    <segue destination="V6a-85-j8c" kind="show" id="4HH-zf-sIF"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -698,10 +697,10 @@
             </objects>
             <point key="canvasLocation" x="7612" y="4594"/>
         </scene>
-        <!--profile complete-->
+        <!--OwnersStudentDetail-->
         <scene sceneID="aBg-7w-Cu0">
             <objects>
-                <viewController storyboardIdentifier="toProfileComplete" id="V6a-85-j8c" userLabel="profile complete" customClass="OwnersStudentDetailViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toProfileComplete" id="V6a-85-j8c" userLabel="OwnersStudentDetail" customClass="OwnersStudentDetailViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Gv1-Bh-NQl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
