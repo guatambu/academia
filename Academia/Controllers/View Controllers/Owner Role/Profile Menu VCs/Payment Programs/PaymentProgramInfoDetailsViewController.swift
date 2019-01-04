@@ -86,10 +86,10 @@ class PaymentProgramInfoDetailsViewController: UIViewController {
     
     @IBAction func deleteAccountButtonTapped(_ sender: UIButton) {
         
-        let alertController = UIAlertController(title: "Delete Account", message: "are you sure you want to delete your account?", preferredStyle: UIAlertController.Style.alert)
+        let alertController = UIAlertController(title: "Delete Payment Program", message: "are you sure you want to delete this Payment Program?", preferredStyle: UIAlertController.Style.alert)
         
         let cancel = UIAlertAction(title: "cancel", style: UIAlertAction.Style.cancel, handler: nil)
-        let deleteAccount = UIAlertAction(title: "delete account", style: UIAlertAction.Style.destructive) { (alert) in
+        let deleteAccount = UIAlertAction(title: "delete", style: UIAlertAction.Style.destructive) { (alert) in
             
             PaymentProgramModelController.shared.delete(paymentProgram: PaymentProgramModelController.shared.paymentPrograms[0])
             
@@ -103,7 +103,7 @@ class PaymentProgramInfoDetailsViewController: UIViewController {
                 }
             }
             
-            print("how many location we got now: \(PaymentProgramModelController.shared.paymentPrograms.count)")
+            print("how many payment programs we got now: \(PaymentProgramModelController.shared.paymentPrograms.count)")
         }
         
         alertController.addAction(cancel)

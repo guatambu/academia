@@ -262,7 +262,7 @@ extension AddStudentsToGroupTableViewController {
             groupEditingSetup()
         }
         
-        print("GroupNameAndDescriptionVC -> inEditingMode: \(inEditingMode)")
+        print("AddStudentsToGroupTVC -> inEditingMode: \(inEditingMode)")
     }
     
     // owner setup for editing mode

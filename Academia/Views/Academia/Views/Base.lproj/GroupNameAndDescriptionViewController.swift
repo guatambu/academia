@@ -60,7 +60,7 @@ class GroupNameAndDescriptionViewController: UIViewController {
         
         active = !active
         
-        print("PaymentProgramNamdAndDescriptionVC active property: \(active)")
+        print("GroupNameAndDescriptionVC active property: \(active)")
     }
     
     
@@ -73,7 +73,7 @@ class GroupNameAndDescriptionViewController: UIViewController {
             
             self.returnToPaymentProgramInfo()
             
-            print("update payment program name: \(PaymentProgramModelController.shared.paymentPrograms[0].programName)")
+            print("update group name: \(PaymentProgramModelController.shared.paymentPrograms[0].programName)")
         }
         inEditingMode = false
     }
@@ -82,8 +82,7 @@ class GroupNameAndDescriptionViewController: UIViewController {
     @IBAction func nextButtonTapped(_ sender: DesignableButton) {
         
         // programmatically performing the segue
-        
-        print("to billing details segue")
+      
         // instantiate the relevant storyboard
         let mainView: UIStoryboard = UIStoryboard(name: "OwnerStudentsFlow", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
@@ -155,7 +154,7 @@ extension GroupNameAndDescriptionViewController {
             return
         }
         
-        welcomeLabelOutlet.text = "Program: \(groupToEdit.name)"
+        welcomeLabelOutlet.text = "Group: \(groupToEdit.name)"
         
         welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
         welcomeInstructionsLabelOutlet.text = "you are in group editing mode"

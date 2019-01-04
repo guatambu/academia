@@ -2,7 +2,7 @@
 //  ReviewAndCreateGroupTableViewController.swift
 //  Academia
 //
-//  Created by Kelly Johnson on 12/19/18.
+//  Created by Michael Guatambu Davis on 12/19/18.
 //  Copyright © 2018 DunDak, LLC. All rights reserved.
 //
 
@@ -42,16 +42,13 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
         
         navigationController?.navigationBar.titleTextAttributes = avenirFont
         
+        populateCompletedGroupInfo()
+        
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
@@ -180,4 +177,30 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
             
         }
     }
+}
+
+
+extension ReviewAndCreateGroupTableViewController {
+    
+    func populateCompletedGroupInfo() {
+        
+        guard let groupName = groupName, let groupDescription = groupDescription else {
+                print("there was a nil value in the groupName and/or groupDescription passed to ReviewAndCreateGroupTVC.swift -> populateCompletedGroupInfo() - line 205")
+                return
+        }
+        // name outlet
+        groupNameLabelOutlet.text = groupName
+        // active outlet
+        if active == true {
+            
+            activeLabelOutlet.text = "active: YES"
+        } else {
+            activeLabelOutlet.text = "active: NO"
+        }
+        // lastChanged outlet
+        lastChangedLabelOutlet.text = "\(Date())"
+        // payment program description
+        groupDescriptionTextView.text = "\(groupDescription)"
+    }
+    
 }

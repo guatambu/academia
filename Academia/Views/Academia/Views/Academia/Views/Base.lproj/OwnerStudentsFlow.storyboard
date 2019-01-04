@@ -1414,7 +1414,7 @@
                                                     <color key="textColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If correct, tap Create Group below" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvP-ou-CLp">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please tap Edit to update or make changes." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvP-ou-CLp">
                                                     <rect key="frame" x="0.0" y="24" width="343" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="JkE-c8-54h"/>
@@ -1522,78 +1522,25 @@
                                 <constraint firstItem="eoU-3H-Xfp" firstAttribute="leading" secondItem="h8O-QV-6So" secondAttribute="leading" constant="16" id="bBQ-Z2-ItL"/>
                             </constraints>
                         </view>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="n85-sX-eOd">
-                            <rect key="frame" x="0.0" y="364" width="375" height="96"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="zD2-bU-DE6">
+                            <rect key="frame" x="0.0" y="364" width="375" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3OF-AS-lWk" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
-                                    <rect key="frame" x="93" y="16" width="189" height="40"/>
-                                    <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="40" id="FKr-o1-S74"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                    <inset key="contentEdgeInsets" minX="32" minY="0.0" maxX="32" maxY="0.0"/>
-                                    <state key="normal" title="Create Group">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F5m-bN-lgg">
+                                    <rect key="frame" x="140.5" y="0.0" width="94" height="34"/>
+                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                    <state key="normal" title="delete group">
+                                        <color key="titleColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                            <real key="value" value="10"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="deleteAccountButtonTapped:" destination="f17-zm-W9F" eventType="touchUpInside" id="nGM-zf-0qm"/>
+                                    </connections>
                                 </button>
-                                <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="A3Q-jl-QnU" userLabel="Progress Stack View">
-                                    <rect key="frame" x="155.5" y="80" width="64" height="8"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qhl-bD-bwv" userLabel="Progress 2 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="8" height="8"/>
-                                            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="8" id="Fll-GY-Zzf"/>
-                                                <constraint firstAttribute="width" constant="8" id="myQ-iU-TRx"/>
-                                            </constraints>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <real key="value" value="4"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                        </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iSo-2t-DMZ" userLabel="Progress 3 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                            <rect key="frame" x="28" y="0.0" width="8" height="8"/>
-                                            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="8" id="JTr-BP-rkk"/>
-                                                <constraint firstAttribute="width" constant="8" id="ywY-Oe-z9V"/>
-                                            </constraints>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <real key="value" value="4"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                        </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CeG-0k-nV1" userLabel="Progress 4 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
-                                            <rect key="frame" x="56" y="0.0" width="8" height="8"/>
-                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="8" id="98E-L0-WUR"/>
-                                                <constraint firstAttribute="height" constant="8" id="PnQ-b2-KYL"/>
-                                            </constraints>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <real key="value" value="4"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                        </view>
-                                    </subviews>
-                                </stackView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="3OF-AS-lWk" firstAttribute="centerX" secondItem="n85-sX-eOd" secondAttribute="centerX" id="5rG-py-BsK"/>
-                                <constraint firstItem="A3Q-jl-QnU" firstAttribute="centerX" secondItem="n85-sX-eOd" secondAttribute="centerX" id="LiO-PM-HG0"/>
-                                <constraint firstItem="A3Q-jl-QnU" firstAttribute="top" secondItem="3OF-AS-lWk" secondAttribute="bottom" constant="24" id="OlQ-gs-OJj"/>
-                                <constraint firstItem="3OF-AS-lWk" firstAttribute="top" secondItem="n85-sX-eOd" secondAttribute="top" constant="16" id="eEe-r2-SAe"/>
+                                <constraint firstItem="F5m-bN-lgg" firstAttribute="centerX" secondItem="zD2-bU-DE6" secondAttribute="centerX" id="2Ek-Hi-6bc"/>
+                                <constraint firstItem="F5m-bN-lgg" firstAttribute="top" secondItem="zD2-bU-DE6" secondAttribute="top" id="cOk-up-L2l"/>
                             </constraints>
                         </view>
                         <prototypes>
@@ -1688,6 +1635,15 @@
                     <navigationItem key="navigationItem" id="aae-yV-EUg">
                         <barButtonItem key="backBarButtonItem" title=" " id="Mdc-FP-ihS"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="activeLabelOutlet" destination="3oV-bW-wN7" id="gcw-Ry-ga9"/>
+                        <outlet property="groupDescriptionLabelOutlet" destination="Ged-k2-sSg" id="gGe-YH-nvK"/>
+                        <outlet property="groupDescriptionTextView" destination="9a5-f1-7hv" id="9z9-VZ-6a5"/>
+                        <outlet property="groupNameLabelOutlet" destination="A2x-ga-SIQ" id="FZ9-cX-eV2"/>
+                        <outlet property="lastChangedLabelOutlet" destination="3Y3-Mm-5w4" id="sV4-cN-iNs"/>
+                        <outlet property="welcomeInstructionsLabelOutlet" destination="cvP-ou-CLp" id="mqE-Cl-62O"/>
+                        <outlet property="welcomeMessageLabelOutlet" destination="Db5-U9-HQI" id="sAN-dO-cbc"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DKr-1B-RVW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
