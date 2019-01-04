@@ -10,15 +10,18 @@ import UIKit
 
 class AddStudentsToGroupTableViewController: UITableViewController, GroupMembersDelegate {
     
-    
-    
     // MARK: - Properties
+    
+    // Mock Data
+    
+    var mockAdults = [MockData.adultA]
+    var mockKids = [MockData.kidA]
     
     var groupName: String?
     var active: Bool = true
     var groupDescription: String?
-    var kidMembers: [KidStudent] = []
-    var adultMembers: [AdultStudent] = []
+    var kidMembers: [KidStudent]?
+    var adultMembers: [AdultStudent]?
     
     var addedToGroup = false
     
@@ -47,7 +50,7 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // set up delegate relationship with AddNewStudentGRoupTableViewCell
+        // set up delegate relationship with AddNewStudentGroupTableViewCell
         tableView.delegate = self
 
     }
@@ -58,6 +61,10 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
     @objc func saveButtonTapped() {
         
         // Group update profile info
+        guard let kidMembers = kidMembers, let adultMembers = adultMembers else {
+            print("ERROR: fail to unwrap kidMembers and/or adultmembers. AddStudentsToGroupTableViewController.swift -> saveButtontapped() - line 63")
+            return
+        }
         if kidMembers.isEmpty == false || adultMembers.isEmpty == false {
             
             updateGroupInfo()
@@ -81,6 +88,12 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
         let destViewController = mainView.instantiateViewController(withIdentifier: "toReviewAndCreateGroup") as! ReviewAndCreateGroupTableViewController
         
         // run check to see is there are groupMembers
+        
+        guard let kidMembers = kidMembers, let adultMembers = adultMembers else {
+            print("ERROR: fail to unwrap kidMembers and/or adultmembers. AddStudentsToGroupTableViewController.swift -> saveButtontapped() - line 93")
+            return
+        }
+        
         guard kidMembers.isEmpty == true && adultMembers.isEmpty == true else {
             
             welcomeInstructionsLabelOutlet.textColor = UIColor.red
@@ -114,17 +127,17 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+        
         return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        
         if section == 0 {
-            return KidStudentModelController.shared.kids.count
+            return mockKids.count
             
         } else if section == 1 {
-            return AdultStudentModelController.shared.adults.count
+            return mockAdults.count
             
         } else {
             return 0
@@ -132,9 +145,20 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "addNewGroupStudentImageMenuCell", for: indexPath) as! AddNewStudentGroupImageMenuTableViewCell
+        
+        // set the delegate to communicate between the custom cell and the TVC
+        cell.delegate = self
 
         // Configure the cell...
+        if indexPath.section == 0 {
+            cell.adultStudent = mockAdults[indexPath.row]
+            
+        } else if indexPath.section == 1 {
+            cell.kidStudent = mockKids[indexPath.row]
+            
+        }
 
         return cell
     }

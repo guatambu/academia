@@ -69,8 +69,8 @@ class PaymentProgramBillingDetailsViewController: UIViewController, BillingTypeD
         
         signatureTypeCollectionView.dataSource = self
         signatureTypeCollectionView.delegate = self
-        //populateCompletedProfileInfo()
         
+        //populateCompletedProfileInfo()
         guard let paymentProgramName = paymentProgramName, let active = active, let programDescription = programDescription else {
             print("no paymentProgramName, active, or programDescription passed to: PaymentProgramBillingDetailsVC -> viewDidLoad() - line 71")
             return
