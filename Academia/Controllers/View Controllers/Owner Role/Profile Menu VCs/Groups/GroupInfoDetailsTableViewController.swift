@@ -139,8 +139,6 @@ class GroupInfoDetailsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "addNewGroupStudentImageMenuCell", for: indexPath) as! AddNewStudentGroupImageMenuTableViewCell
-        
         guard let kidMembers = kidMembers, let adultMembers = adultMembers else {
             
             print("ERROR: nil value for either kidMembers and/or adultMemebers array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, cellForRowAt:) - line 89")
@@ -149,14 +147,19 @@ class GroupInfoDetailsTableViewController: UITableViewController {
         
         // Configure the cell...
         if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "kidStudentCell", for: indexPath) as! KidStudentTableViewCell
+            
             cell.kidStudent = kidMembers[indexPath.row]
             
-        } else if indexPath.section == 1 {
+            return cell
+            
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "adultStudentCell", for: indexPath) as! AdultStudentTableViewCell
+            
             cell.adultStudent = adultMembers[indexPath.row]
             
+            return cell
         }
-        
-        return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

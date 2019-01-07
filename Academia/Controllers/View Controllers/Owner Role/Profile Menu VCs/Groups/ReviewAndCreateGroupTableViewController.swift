@@ -58,6 +58,29 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
         return 2
     }
     
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let avenirFont16 = [ NSAttributedString.Key.foregroundColor: UIColor.gray,
+                             NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 16)! ]
+        
+        let label = UILabel()
+        
+        label.backgroundColor = UIColor.lightGray
+        
+        if section == 0 {
+            label.attributedText = NSAttributedString(string: "  Kids", attributes: avenirFont16)
+            
+        } else if section == 1 {
+            label.attributedText = NSAttributedString(string: "  Adults", attributes: avenirFont16)
+        }
+        return label
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        return 32
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         guard let kidMembers = kidMembers, let adultMembers = adultMembers else {
@@ -77,9 +100,8 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
         }
     }
     
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "addNewGroupStudentImageMenuCell", for: indexPath) as! AddNewStudentGroupImageMenuTableViewCell
         
         guard let kidMembers = kidMembers, let adultMembers = adultMembers else {
             
@@ -89,16 +111,21 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
         
         // Configure the cell...
         if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "kidStudentCell", for: indexPath) as! KidStudentTableViewCell
+            
             cell.kidStudent = kidMembers[indexPath.row]
             
-        } else if indexPath.section == 1 {
+            return cell
+            
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "adultStudentCell", for: indexPath) as! AdultStudentTableViewCell
+            
             cell.adultStudent = adultMembers[indexPath.row]
             
+            return cell
         }
-        
-        return cell
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         guard let kidMembers = kidMembers, let adultMembers = adultMembers else {

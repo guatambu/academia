@@ -94,6 +94,7 @@
 		FA9ADA2D2139EE6C0005E1F1 /* IsInstructorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9ADA2C2139EE6C0005E1F1 /* IsInstructorTableViewCell.swift */; };
 		FA9ADA2F2139EE940005E1F1 /* IsKidTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9ADA2E2139EE940005E1F1 /* IsKidTableViewCell.swift */; };
 		FA9ADA31213B6BA90005E1F1 /* InternationalStandardBJJBelts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9ADA30213B6BA90005E1F1 /* InternationalStandardBJJBelts.swift */; };
+		FAA4BFB121E4007F007A011C /* AdultStudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA4BFB021E4007F007A011C /* AdultStudentTableViewCell.swift */; };
 		FAA516CE218D0234009875CB /* SpacerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA516CD218D0234009875CB /* SpacerCell.xib */; };
 		FAA516D0218FEBD1009875CB /* PasswordTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA516CF218FEBD1009875CB /* PasswordTextFieldCell.xib */; };
 		FAA516D2218FEBEE009875CB /* ConfirmPasswordTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA516D1218FEBEE009875CB /* ConfirmPasswordTextFieldCell.xib */; };
@@ -192,7 +193,7 @@
 		FAE67A38215C6C0F00822DCF /* AulasListMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE67A37215C6C0F00822DCF /* AulasListMenuTableViewCell.swift */; };
 		FAE67A3A215C6EDD00822DCF /* StudentGroupGeneralMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE67A39215C6EDD00822DCF /* StudentGroupGeneralMenuTableViewCell.swift */; };
 		FAE67A3C215C714B00822DCF /* StudentListImageMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE67A3B215C714B00822DCF /* StudentListImageMenuTableViewCell.swift */; };
-		FAE67A3E215C733400822DCF /* AddNewStudentGroupImageMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE67A3D215C733400822DCF /* AddNewStudentGroupImageMenuTableViewCell.swift */; };
+		FAE67A3E215C733400822DCF /* KidStudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE67A3D215C733400822DCF /* KidStudentTableViewCell.swift */; };
 		FAF1BB882143574400AD56AE /* DescriptionTextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAF1BB872143574400AD56AE /* DescriptionTextViewCell.xib */; };
 		FAF1BB8A2143575C00AD56AE /* AgreementTextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAF1BB892143575C00AD56AE /* AgreementTextViewCell.xib */; };
 		FAF1BB8C21435BA900AD56AE /* AgreementTextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF1BB8B21435BA900AD56AE /* AgreementTextViewTableViewCell.swift */; };
@@ -347,6 +348,7 @@
 		FA9ADA2C2139EE6C0005E1F1 /* IsInstructorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsInstructorTableViewCell.swift; sourceTree = "<group>"; };
 		FA9ADA2E2139EE940005E1F1 /* IsKidTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsKidTableViewCell.swift; sourceTree = "<group>"; };
 		FA9ADA30213B6BA90005E1F1 /* InternationalStandardBJJBelts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternationalStandardBJJBelts.swift; sourceTree = "<group>"; };
+		FAA4BFB021E4007F007A011C /* AdultStudentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdultStudentTableViewCell.swift; sourceTree = "<group>"; };
 		FAA516CD218D0234009875CB /* SpacerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpacerCell.xib; sourceTree = "<group>"; };
 		FAA516CF218FEBD1009875CB /* PasswordTextFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PasswordTextFieldCell.xib; sourceTree = "<group>"; };
 		FAA516D1218FEBEE009875CB /* ConfirmPasswordTextFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmPasswordTextFieldCell.xib; sourceTree = "<group>"; };
@@ -445,7 +447,7 @@
 		FAE67A37215C6C0F00822DCF /* AulasListMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AulasListMenuTableViewCell.swift; sourceTree = "<group>"; };
 		FAE67A39215C6EDD00822DCF /* StudentGroupGeneralMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentGroupGeneralMenuTableViewCell.swift; sourceTree = "<group>"; };
 		FAE67A3B215C714B00822DCF /* StudentListImageMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentListImageMenuTableViewCell.swift; sourceTree = "<group>"; };
-		FAE67A3D215C733400822DCF /* AddNewStudentGroupImageMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewStudentGroupImageMenuTableViewCell.swift; sourceTree = "<group>"; };
+		FAE67A3D215C733400822DCF /* KidStudentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidStudentTableViewCell.swift; sourceTree = "<group>"; };
 		FAF1BB872143574400AD56AE /* DescriptionTextViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DescriptionTextViewCell.xib; sourceTree = "<group>"; };
 		FAF1BB892143575C00AD56AE /* AgreementTextViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AgreementTextViewCell.xib; sourceTree = "<group>"; };
 		FAF1BB8B21435BA900AD56AE /* AgreementTextViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementTextViewTableViewCell.swift; sourceTree = "<group>"; };
@@ -961,7 +963,8 @@
 				FA8B3CBD21CA22B7003398FB /* GroupNameAndDescriptionViewController.swift */,
 				FA8B3CC021CA230B003398FB /* AddStudentsToGroupTableViewController.swift */,
 				FA8B3CC621CB2366003398FB /* ReviewAndCreateGroupTableViewController.swift */,
-				FAE67A3D215C733400822DCF /* AddNewStudentGroupImageMenuTableViewCell.swift */,
+				FAE67A3D215C733400822DCF /* KidStudentTableViewCell.swift */,
+				FAA4BFB021E4007F007A011C /* AdultStudentTableViewCell.swift */,
 				FAAEDB4D21DD7BBB00E1A04F /* ReviewAndCreateGroupTableViewCell.swift */,
 			);
 			path = Groups;
@@ -1349,6 +1352,7 @@
 				FACA3EBB21928B150099E620 /* EmergencyContactViewController.swift in Sources */,
 				FA531C26219630E700AE2C38 /* BeltBuilder.swift in Sources */,
 				FABF85BF21BB09FC005CEBD4 /* Billing.swift in Sources */,
+				FAA4BFB121E4007F007A011C /* AdultStudentTableViewCell.swift in Sources */,
 				FA6FBA062149F3B700558657 /* UserPermissions.swift in Sources */,
 				FA5C5C382151D3C600BF62D5 /* StudentHomeTableViewController.swift in Sources */,
 				FABF85AD21B78C6F005CEBD4 /* ReviewAndCreatePaymentProgramViewController.swift in Sources */,
@@ -1402,7 +1406,7 @@
 				FA9AD9F72137839A0005E1F1 /* BeltSystemsTableViewController.swift in Sources */,
 				FACA3EB5219289140099E620 /* ContactInfoViewController.swift in Sources */,
 				FAE2FD8E2140BFC700815402 /* FirstNameTextFieldTableViewCell.swift in Sources */,
-				FAE67A3E215C733400822DCF /* AddNewStudentGroupImageMenuTableViewCell.swift in Sources */,
+				FAE67A3E215C733400822DCF /* KidStudentTableViewCell.swift in Sources */,
 				FAA516D4218FEC47009875CB /* PasswordTextFieldTableViewCell.swift in Sources */,
 				FABF859321AF8370005CEBD4 /* StudentInfoDetailsViewController.swift in Sources */,
 				FA5C5C522154999C00BF62D5 /* StudentClassesTableViewController.swift in Sources */,

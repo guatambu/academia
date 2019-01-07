@@ -13,8 +13,8 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
     // MARK: - Properties
     
     // Mock Data
-    var mockAdults = [MockData.adultA]
-    var mockKids = [MockData.kidA]
+    var mockAdults = [MockData.adultA, MockData.adultA, MockData.adultA, MockData.adultA, MockData.adultA, MockData.adultA]
+    var mockKids = [MockData.kidA, MockData.kidA, MockData.kidA, MockData.kidA, MockData.kidA, MockData.kidA, MockData.kidA]
     
     var groupName: String?
     var active: Bool = true
@@ -22,12 +22,13 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
     var kidMembers: [KidStudent]?
     var adultMembers: [AdultStudent]?
     
-    var addedToGroup = false
-    
     var inEditingMode: Bool?
     var groupToEdit: Group?
     
     let beltBuilder = BeltBuilder()
+    
+    // tableView Sections Header Labels
+    let sectionHeaderLabels = ["  Kids", "  Adults"]
     
     // welcome label outlets
     @IBOutlet weak var welcomeLabelOutlet: UILabel!
@@ -48,9 +49,6 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // set up delegate relationship with AddNewStudentGroupTableViewCell
-        //tableView.delegate = self
 
     }
     
@@ -126,7 +124,30 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         
-        return 2
+        return sectionHeaderLabels.count
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let sectionHeaderView = UIView()
+        sectionHeaderView.backgroundColor = UIColor.white
+        
+        let avenirFont16 = [
+            NSAttributedString.Key.foregroundColor: UIColor.black,
+            NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 16)! ]
+        
+        let label = UILabel()
+        label.attributedText = NSAttributedString(string: sectionHeaderLabels[section], attributes: avenirFont16)
+        label.frame = CGRect(x: 8, y: 0, width: 80, height: 40)
+        
+        sectionHeaderView.addSubview(label)
+        
+        return sectionHeaderView
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        return 40
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -143,22 +164,26 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "addNewGroupStudentImageMenuCell", for: indexPath) as! AddNewStudentGroupImageMenuTableViewCell
-        
-        // set the delegate to communicate between the custom cell and the TVC
-        cell.delegate = self
 
         // Configure the cell...
         if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "kidStudentCell", for: indexPath) as! KidStudentTableViewCell
+            
+            // set delegate to communicate with AddNewStudentGroupImageMenuTableViewCell
+            cell.delegate = self
             cell.kidStudent = mockKids[indexPath.row]
             
-        } else if indexPath.section == 1 {
+            return cell
+            
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "adultStudentCell", for: indexPath) as! AdultStudentTableViewCell
+            
+            // set delegate to communicate with AddNewStudentGroupImageMenuTableViewCell
+            cell.delegate = self
             cell.adultStudent = mockAdults[indexPath.row]
             
+            return cell
         }
-
-        return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

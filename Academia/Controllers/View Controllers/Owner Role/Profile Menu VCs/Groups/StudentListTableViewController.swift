@@ -54,8 +54,33 @@ class StudentListTableViewController: UITableViewController {
             return 0
         }
     }
-
     
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let avenirFont16 = [ NSAttributedString.Key.foregroundColor: UIColor.white,
+                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 16)! ]
+        
+        tableView.sectionHeaderHeight = 40.0
+        
+        let label = UILabel()
+        
+        label.backgroundColor = UIColor.lightText
+        label.tintColor = UIColor.white
+        
+        if section == 0 {
+            label.attributedText = NSAttributedString(string: "  Kids", attributes: avenirFont16)
+            
+        } else if section == 1 {
+            label.attributedText = NSAttributedString(string: "  Adults", attributes: avenirFont16)
+        }
+        return label
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        return 32
+    }
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "studentListImageMenuCell", for: indexPath) as? StudentListImageMenuTableViewCell else { return UITableViewCell() }
         
@@ -181,44 +206,3 @@ class StudentListTableViewController: UITableViewController {
     
 }
 
-//
-//extension StudentListTableViewController {
-//
-//    func adultStudentCaster(studentGroup: Group?, indexPath: IndexPath) {
-//
-//        // unwrap a students object
-//        guard let students = studentGroup?.members else {
-//            print("ERROR: nil value for the studentGroup.members array in StudentListTableViewController.swift -> tablewView(tableView:, didSelectRowAt:) - line 94 ")
-//            return
-//        }
-//
-//
-//        // pass data to destViewController
-//        destViewController.isOwner = student.isOwner
-//        destViewController.isKid = student.isKid
-//        destViewController.username = student.username
-//        destViewController.password = student.password
-//        destViewController.firstName = student.firstName
-//        destViewController.lastName = student.lastName
-//        destViewController.parentGuardian = student.parentGuardian
-//        destViewController.profilePic = student.profilePic
-//        destViewController.birthdate = student.birthdate
-//        destViewController.beltLevel = student.beltLevel
-//        destViewController.numberOfStripes = student.numberOfStripes
-//        destViewController.addressLine1 = student.addressLine1
-//        destViewController.addressLine2 = student.addressLine2
-//        destViewController.city = student.city
-//        destViewController.state = student.state
-//        destViewController.zipCode = student.zipCode
-//        destViewController.phone = student.phone
-//        destViewController.mobile = student.mobile
-//        destViewController.email = student.email
-//        destViewController.emergencyContactName = student.emergencyContactName
-//        destViewController.emergencyContactRelationship = student.emergencyContactRelationship
-//        destViewController.emergencyContactPhone = student.emergencyContactPhone
-//    }
-//
-//    func kidStudentCaster(student: Any) -> KidStudent {
-//
-//    }
-//}

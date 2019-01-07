@@ -1,5 +1,5 @@
 //
-//  AddNewStudentGroupImageMenuTableViewCell.swift
+//  KidStudentTableViewCell.swift
 //  Academia
 //
 //  Created by Michael Guatambu Davis on 9/26/18.
@@ -10,7 +10,7 @@
 
 import UIKit
 
-class AddNewStudentGroupImageMenuTableViewCell: UITableViewCell {
+class KidStudentTableViewCell: UITableViewCell {
 
     // MARK: - Properties
 
@@ -20,17 +20,12 @@ class AddNewStudentGroupImageMenuTableViewCell: UITableViewCell {
     
     weak var delegate: GroupMembersDelegate?
     
+    // tableViewCell cell contents
     @IBOutlet weak var roundProfilePicView: DesignableView!
     @IBOutlet weak var userThumbnailImageViewOutlet: UIImageView!
     @IBOutlet weak var cellTitleOutlet: UILabel!
     @IBOutlet weak var rightRedArrowImageViewOutlet: UIImageView!
-    
-    var adultStudent: AdultStudent? {
-        didSet {
-            updateViews()
-        }
-    }
-    
+
     var kidStudent: KidStudent? {
         didSet {
             updateViews()
@@ -58,32 +53,27 @@ class AddNewStudentGroupImageMenuTableViewCell: UITableViewCell {
         } else {
             roundProfilePicView.borderColor = UIColor.clear
         }
-        
+
         // add/remove student to appropriate model controller's source of truth
-        if let adultStudent = adultStudent {
-            
-            if isChosen {
-                delegate?.adultMembers?.append(adultStudent)
-                
-            } else {
-                delegate?.adultMembers = delegate?.adultMembers?.filter({ $0 != adultStudent })
-            }
-            
-            
-        } else if let kidStudent = kidStudent {
-            
-            if isChosen {
-                delegate?.kidMembers?.append(kidStudent)
-                
-                
-            } else {
-                delegate?.kidMembers = delegate?.kidMembers?.filter({ $0 != kidStudent })
-            }
+        guard let kidStudent = kidStudent else {
+            print("ERROR: nil value found while attepting to unwrap optional kidStudent in KidStudentTableViewCell.swift -> profilePicTapped() - line 57.")
+            return
         }
         
-        print(delegate?.adultMembers ?? "unwrapping of delegate.adultMmebers fails with nil value")
-        print(delegate?.kidMembers ?? "unwrapping of delegate.kidMmebers fails with nil value")
-        
+        guard var kidMembers = delegate?.kidMembers else {
+            
+            print("ERRORL: nil value found while trying to unwrap kidMembers array via delegate in KidStudentTableViewCell.swift -> profilePicTapped() - line 65")
+            return
+        }
+            
+        if isChosen {
+            kidMembers.append(kidStudent)
+            delegate?.kidMembers? = kidMembers
+            print("kidMembers: \(String(describing: delegate?.kidMembers))")
+            
+        } else {
+            delegate?.kidMembers = delegate?.kidMembers?.filter({ $0 != kidStudent })
+        }
     }
     
     
@@ -91,13 +81,13 @@ class AddNewStudentGroupImageMenuTableViewCell: UITableViewCell {
     
     func updateViews() {
         
-        if let adultStudent = adultStudent {
-            userThumbnailImageViewOutlet.image = adultStudent.profilePic
-            cellTitleOutlet.text = "\(adultStudent.firstName) \(adultStudent.lastName)"
-        } else if let kidStudent = kidStudent {
-            userThumbnailImageViewOutlet.image = kidStudent.profilePic
-            cellTitleOutlet.text = "\(kidStudent.firstName) \(kidStudent.lastName)"
+        guard let kidStudent = kidStudent else {
+            print("ERROR: nil value found while attepting to unwrap optional adultStudent in KidStudentTableViewCell.swift -> updateViews() - line 85.")
+            return
         }
+        
+        userThumbnailImageViewOutlet.image = kidStudent.profilePic
+        cellTitleOutlet.text = "\(kidStudent.firstName) \(kidStudent.lastName)"
     }
 
 }
