@@ -85,7 +85,6 @@
 		FA9ADA192138D60E0005E1F1 /* ProfileTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9ADA182138D60E0005E1F1 /* ProfileTextFieldCell.xib */; };
 		FA9ADA1B2138D6700005E1F1 /* ProfileTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9ADA1A2138D6700005E1F1 /* ProfileTextFieldTableViewCell.swift */; };
 		FA9ADA1D2138D9C90005E1F1 /* SaveProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9ADA1C2138D9C90005E1F1 /* SaveProfileCell.xib */; };
-		FA9ADA1F2138DA530005E1F1 /* SaveProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9ADA1E2138DA530005E1F1 /* SaveProfileTableViewCell.swift */; };
 		FA9ADA212138DBC30005E1F1 /* MyCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9ADA202138DBC30005E1F1 /* MyCells.swift */; };
 		FA9ADA252139EE250005E1F1 /* StatusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9ADA242139EE250005E1F1 /* StatusCell.xib */; };
 		FA9ADA272139EE370005E1F1 /* IsInstructorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9ADA262139EE370005E1F1 /* IsInstructorCell.xib */; };
@@ -145,6 +144,7 @@
 		FAD2097521C1CFE700B9C622 /* TypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2097421C1CFE700B9C622 /* TypeCollectionViewCell.swift */; };
 		FAD2097721C1CFF400B9C622 /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2097621C1CFF400B9C622 /* DateCollectionViewCell.swift */; };
 		FAD2097921C1D00200B9C622 /* SignatureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2097821C1D00200B9C622 /* SignatureCollectionViewCell.swift */; };
+		FAD2A3A521E4216600364FC0 /* ClassTimeComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2A3A421E4216600364FC0 /* ClassTimeComponents.swift */; };
 		FAD5B12D21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5B12C21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift */; };
 		FAD5B12F21C44BCA004ED286 /* ViewAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5B12E21C44BCA004ED286 /* ViewAgreementViewController.swift */; };
 		FAE2C07F214ADD26002E9756 /* ClassDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE2C07E214ADD26002E9756 /* ClassDetailTableViewController.swift */; };
@@ -339,7 +339,6 @@
 		FA9ADA182138D60E0005E1F1 /* ProfileTextFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileTextFieldCell.xib; sourceTree = "<group>"; };
 		FA9ADA1A2138D6700005E1F1 /* ProfileTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		FA9ADA1C2138D9C90005E1F1 /* SaveProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SaveProfileCell.xib; sourceTree = "<group>"; };
-		FA9ADA1E2138DA530005E1F1 /* SaveProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveProfileTableViewCell.swift; sourceTree = "<group>"; };
 		FA9ADA202138DBC30005E1F1 /* MyCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCells.swift; sourceTree = "<group>"; };
 		FA9ADA242139EE250005E1F1 /* StatusCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatusCell.xib; sourceTree = "<group>"; };
 		FA9ADA262139EE370005E1F1 /* IsInstructorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IsInstructorCell.xib; sourceTree = "<group>"; };
@@ -399,6 +398,7 @@
 		FAD2097421C1CFE700B9C622 /* TypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAD2097621C1CFF400B9C622 /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAD2097821C1D00200B9C622 /* SignatureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignatureCollectionViewCell.swift; sourceTree = "<group>"; };
+		FAD2A3A421E4216600364FC0 /* ClassTimeComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassTimeComponents.swift; sourceTree = "<group>"; };
 		FAD5B12C21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProgramDelegateProtocols.swift; sourceTree = "<group>"; };
 		FAD5B12E21C44BCA004ED286 /* ViewAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAgreementViewController.swift; sourceTree = "<group>"; };
 		FAE2C07E214ADD26002E9756 /* ClassDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassDetailTableViewController.swift; sourceTree = "<group>"; };
@@ -540,7 +540,7 @@
 			isa = PBXGroup;
 			children = (
 				FAB20412216566E50034E1D4 /* ThingsToDoList.swift */,
-				FAAAC144213E22DB00093D6C /* Delegate Protocols */,
+				FAAAC144213E22DB00093D6C /* Protocols (Delegates and others)) */,
 				FA0C443A21278AE500B59194 /* Models */,
 				FA0C443921278AD500B59194 /* Views */,
 				FA0C443B21278AEC00B59194 /* Controllers */,
@@ -778,6 +778,7 @@
 				FA4DF32B218CCA0300ECC167 /* Technique.swift */,
 				FA4DF32D218CCA1A00ECC167 /* CurriculumModule.swift */,
 				FA4DF32F218CCA2400ECC167 /* Curriculum.swift */,
+				FAD2A3A421E4216600364FC0 /* ClassTimeComponents.swift */,
 			);
 			path = "Curriculum Models";
 			sourceTree = "<group>";
@@ -893,7 +894,7 @@
 			path = "Curriculum Model Controllers";
 			sourceTree = "<group>";
 		};
-		FAAAC144213E22DB00093D6C /* Delegate Protocols */ = {
+		FAAAC144213E22DB00093D6C /* Protocols (Delegates and others)) */ = {
 			isa = PBXGroup;
 			children = (
 				FA5C5C2F21506B7400BF62D5 /* InitialStudentSegueDelegate.swift */,
@@ -901,7 +902,7 @@
 				FAD5B12C21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift */,
 				FAAEDB4F21DDA27500E1A04F /* GroupMembersDelegate.swift */,
 			);
-			path = "Delegate Protocols";
+			path = "Protocols (Delegates and others))";
 			sourceTree = "<group>";
 		};
 		FABF859421B22089005CEBD4 /* Locations */ = {
@@ -1111,7 +1112,6 @@
 				FA9ADA2A2139EE560005E1F1 /* StatusTableViewCell.swift */,
 				FA9ADA2C2139EE6C0005E1F1 /* IsInstructorTableViewCell.swift */,
 				FA9ADA2E2139EE940005E1F1 /* IsKidTableViewCell.swift */,
-				FA9ADA1E2138DA530005E1F1 /* SaveProfileTableViewCell.swift */,
 				FA21D69521334E46006790E5 /* Belt TableViewCells */,
 			);
 			path = TableViewCells;
@@ -1336,6 +1336,7 @@
 				FA0C444A21278CA900B59194 /* Group.swift in Sources */,
 				FAE67A3A215C6EDD00822DCF /* StudentGroupGeneralMenuTableViewCell.swift in Sources */,
 				FA9ADA0F21378B140005E1F1 /* BeltsListTableViewController.swift in Sources */,
+				FAD2A3A521E4216600364FC0 /* ClassTimeComponents.swift in Sources */,
 				FA4DF32E218CCA1A00ECC167 /* CurriculumModule.swift in Sources */,
 				FAE2FDB02140C0C900815402 /* SocialNetworksTextFieldTableViewCell.swift in Sources */,
 				FAE2FD9E2140C02800815402 /* EmailTextFieldTableViewCell.swift in Sources */,
@@ -1375,7 +1376,6 @@
 				FA5C5C432152F11400BF62D5 /* StudentUserGeneralMenuTableViewCell.swift in Sources */,
 				FA66A00E2145CD42002B0313 /* DigitalSignatureTableViewCell.swift in Sources */,
 				FA6FBA032149F36300558657 /* KidStudent.swift in Sources */,
-				FA9ADA1F2138DA530005E1F1 /* SaveProfileTableViewCell.swift in Sources */,
 				FA9AD9F9213783BA0005E1F1 /* MyLocationsTableViewController.swift in Sources */,
 				FAF29BCA212E23E300752414 /* OwnerHomeTableViewController.swift in Sources */,
 				FA0C444821278C9A00B59194 /* PaymentProgram.swift in Sources */,

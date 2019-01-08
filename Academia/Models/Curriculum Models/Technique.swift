@@ -6,7 +6,7 @@
 //  Copyright © 2018 DunDak, LLC. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class Technique {
     
@@ -20,6 +20,7 @@ class Technique {
     var dateEdited: Date
     var descriptionDetail: String
     var skillLevel: InternationalStandardBJJBelts
+    var images: [UIImage]?
     
     // initialization
     init(techniqueUID: UUID,
@@ -27,7 +28,8 @@ class Technique {
          dateCreated: Date,
          dateEdited: Date,
          descriptionDetail: String,
-         skillLevel: InternationalStandardBJJBelts) {
+         skillLevel: InternationalStandardBJJBelts,
+         images: [UIImage]?) {
         
         self.techniqueUID = techniqueUID
         self.name = name
@@ -35,6 +37,7 @@ class Technique {
         self.dateEdited = dateEdited
         self.descriptionDetail = descriptionDetail
         self.skillLevel = skillLevel
+        self.images = images
     }
     
 }
@@ -48,6 +51,7 @@ extension Technique: Equatable {
         if lhs.dateEdited != rhs.dateEdited { return false }
         if lhs.descriptionDetail != rhs.descriptionDetail { return false }
         if lhs.skillLevel != rhs.skillLevel { return false }
+        if lhs.images != rhs.images { return false }
         
         return true
     }
