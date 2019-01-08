@@ -13,6 +13,9 @@ class StudentListTableViewController: UITableViewController {
     // MARK: - Properties
     
     var studentGroup: Group?
+    
+    // tableView Sections Header Labels
+    let sectionHeaderLabels = ["Kids", "Adults"]
 
     
     // MARK: - ViewController Lifecycle Functions
@@ -57,51 +60,50 @@ class StudentListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let avenirFont16 = [ NSAttributedString.Key.foregroundColor: UIColor.white,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 16)! ]
+        let sectionHeaderView = UIView()
+        sectionHeaderView.backgroundColor = UIColor.white
         
-        tableView.sectionHeaderHeight = 40.0
+        let avenirFont16 = [
+            NSAttributedString.Key.foregroundColor: UIColor.black,
+            NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 16)! ]
         
         let label = UILabel()
+        label.attributedText = NSAttributedString(string: sectionHeaderLabels[section], attributes: avenirFont16)
+        label.frame = CGRect(x: 16, y: 0, width: 80, height: 40)
         
-        label.backgroundColor = UIColor.lightText
-        label.tintColor = UIColor.white
+        sectionHeaderView.addSubview(label)
         
-        if section == 0 {
-            label.attributedText = NSAttributedString(string: "  Kids", attributes: avenirFont16)
-            
-        } else if section == 1 {
-            label.attributedText = NSAttributedString(string: "  Adults", attributes: avenirFont16)
-        }
-        return label
+        return sectionHeaderView
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
         return 32
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "studentListImageMenuCell", for: indexPath) as? StudentListImageMenuTableViewCell else { return UITableViewCell() }
         
-        guard let kidMembers = studentGroup?.kidMembers else {
-            print("ERROR: nil value for the studentGroup.kidMembers array in StudentListTableViewController.swift -> tablewView(tableView:, cellForRowAt:) - line 60")
+        guard let kidMembers = studentGroup?.kidMembers, let adultMembers = studentGroup?.adultMembers else {
+            
+            print("ERROR: nil value for either kidMembers and/or adultMemebers array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, cellForRowAt:) - line 89")
             return UITableViewCell()
         }
-        
-        guard let adultMembers = studentGroup?.adultMembers else {
-            print("ERROR: nil value for the studentGroup.adultMembers array in StudentListTableViewController.swift -> tablewView(tableView:, cellForRowAt:) - line 64")
-            return UITableViewCell()
-        }
-        
-        let adultMember = adultMembers[indexPath.row]
-        let kidMember = kidMembers[indexPath.row]
         
         // Configure the cell...
-        cell.adultStudent = adultMember
-        cell.kidStudent = kidMember
-
-        return cell
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "kidStudentCell", for: indexPath) as! KidStudentTableViewCell
+            
+            cell.kidStudent = kidMembers[indexPath.row]
+            
+            return cell
+            
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "adultStudentCell", for: indexPath) as! AdultStudentTableViewCell
+            
+            cell.adultStudent = adultMembers[indexPath.row]
+            
+            return cell
+        }
     }
 
     // Override to support conditional editing of the table view.

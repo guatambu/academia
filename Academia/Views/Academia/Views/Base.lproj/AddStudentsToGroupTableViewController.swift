@@ -28,7 +28,7 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
     let beltBuilder = BeltBuilder()
     
     // tableView Sections Header Labels
-    let sectionHeaderLabels = ["  Kids", "  Adults"]
+    let sectionHeaderLabels = ["Kids", "Adults"]
     
     // welcome label outlets
     @IBOutlet weak var welcomeLabelOutlet: UILabel!
@@ -138,7 +138,7 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
         
         let label = UILabel()
         label.attributedText = NSAttributedString(string: sectionHeaderLabels[section], attributes: avenirFont16)
-        label.frame = CGRect(x: 8, y: 0, width: 80, height: 40)
+        label.frame = CGRect(x: 16, y: 0, width: 80, height: 40)
         
         sectionHeaderView.addSubview(label)
         

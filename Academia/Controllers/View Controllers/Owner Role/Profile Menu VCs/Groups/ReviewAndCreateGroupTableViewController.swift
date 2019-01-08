@@ -23,6 +23,9 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
     
     let beltBuilder = BeltBuilder()
     
+    // tableView Sections Header Labels
+    let sectionHeaderLabels = ["Kids", "Adults"]
+    
     @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     @IBOutlet weak var groupNameLabelOutlet: UILabel!
@@ -60,20 +63,20 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let avenirFont16 = [ NSAttributedString.Key.foregroundColor: UIColor.gray,
-                             NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 16)! ]
+        let sectionHeaderView = UIView()
+        sectionHeaderView.backgroundColor = UIColor.white
+        
+        let avenirFont16 = [
+            NSAttributedString.Key.foregroundColor: UIColor.black,
+            NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 16)! ]
         
         let label = UILabel()
+        label.attributedText = NSAttributedString(string: sectionHeaderLabels[section], attributes: avenirFont16)
+        label.frame = CGRect(x: 16, y: 0, width: 80, height: 40)
         
-        label.backgroundColor = UIColor.lightGray
+        sectionHeaderView.addSubview(label)
         
-        if section == 0 {
-            label.attributedText = NSAttributedString(string: "  Kids", attributes: avenirFont16)
-            
-        } else if section == 1 {
-            label.attributedText = NSAttributedString(string: "  Adults", attributes: avenirFont16)
-        }
-        return label
+        return sectionHeaderView
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

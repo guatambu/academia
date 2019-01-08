@@ -300,7 +300,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="t0M-cD-bvt">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="104"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="178"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="frx-Ym-d1E" userLabel="Welcome Stack View">
@@ -337,21 +337,8 @@
                                         <constraint firstItem="b7A-ra-oSu" firstAttribute="leading" secondItem="frx-Ym-d1E" secondAttribute="leading" constant="16" id="fSp-Vm-prS"/>
                                     </constraints>
                                 </stackView>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstItem="frx-Ym-d1E" firstAttribute="top" secondItem="t0M-cD-bvt" secondAttribute="top" constant="12" id="6eK-gb-BdF"/>
-                                <constraint firstItem="frx-Ym-d1E" firstAttribute="leading" secondItem="t0M-cD-bvt" secondAttribute="leading" id="Exj-pY-lpb"/>
-                                <constraint firstAttribute="bottom" secondItem="frx-Ym-d1E" secondAttribute="bottom" constant="12" id="hjL-4l-YJO"/>
-                                <constraint firstAttribute="trailing" secondItem="frx-Ym-d1E" secondAttribute="trailing" id="wXe-Ng-HQI"/>
-                            </constraints>
-                        </view>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="r9e-zd-sjq">
-                            <rect key="frame" x="0.0" y="292" width="375" height="96"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EF0-xQ-JFX" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
-                                    <rect key="frame" x="133" y="16" width="109" height="40"/>
+                                    <rect key="frame" x="133" y="108" width="109" height="40"/>
                                     <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="CpH-H9-F8k"/>
@@ -371,7 +358,7 @@
                                     </connections>
                                 </button>
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="J5M-ZQ-LKN" userLabel="Progress Stack View">
-                                    <rect key="frame" x="155.5" y="80" width="64" height="8"/>
+                                    <rect key="frame" x="155.5" y="164" width="64" height="8"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g6r-8v-7nF" userLabel="Progress 2 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="8" height="8"/>
@@ -417,15 +404,18 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="J5M-ZQ-LKN" firstAttribute="top" secondItem="EF0-xQ-JFX" secondAttribute="bottom" constant="24" id="XC5-yj-LTy"/>
-                                <constraint firstItem="EF0-xQ-JFX" firstAttribute="top" secondItem="r9e-zd-sjq" secondAttribute="top" constant="16" id="Zv2-N9-vH6"/>
-                                <constraint firstItem="EF0-xQ-JFX" firstAttribute="centerX" secondItem="r9e-zd-sjq" secondAttribute="centerX" id="bkq-eb-PH4"/>
-                                <constraint firstItem="J5M-ZQ-LKN" firstAttribute="centerX" secondItem="r9e-zd-sjq" secondAttribute="centerX" id="j4F-Ra-mSa"/>
+                                <constraint firstItem="frx-Ym-d1E" firstAttribute="top" secondItem="t0M-cD-bvt" secondAttribute="top" constant="12" id="6eK-gb-BdF"/>
+                                <constraint firstItem="J5M-ZQ-LKN" firstAttribute="top" secondItem="EF0-xQ-JFX" secondAttribute="bottom" constant="16" id="7Ky-lP-iAZ"/>
+                                <constraint firstItem="EF0-xQ-JFX" firstAttribute="centerX" secondItem="t0M-cD-bvt" secondAttribute="centerX" id="Dk5-vs-FxP"/>
+                                <constraint firstItem="frx-Ym-d1E" firstAttribute="leading" secondItem="t0M-cD-bvt" secondAttribute="leading" id="Exj-pY-lpb"/>
+                                <constraint firstItem="EF0-xQ-JFX" firstAttribute="top" secondItem="frx-Ym-d1E" secondAttribute="bottom" constant="16" id="Iwm-Ex-x6r"/>
+                                <constraint firstItem="J5M-ZQ-LKN" firstAttribute="centerX" secondItem="t0M-cD-bvt" secondAttribute="centerX" id="eM6-Cf-rv9"/>
+                                <constraint firstAttribute="trailing" secondItem="frx-Ym-d1E" secondAttribute="trailing" id="wXe-Ng-HQI"/>
                             </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="kidStudentCell" rowHeight="80" id="KOI-e7-MjL" userLabel="kid Student Table View Cell" customClass="KidStudentTableViewCell" customModule="Academia" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="132" width="375" height="80"/>
+                                <rect key="frame" x="0.0" y="206" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KOI-e7-MjL" id="3ml-WG-sGQ" userLabel="status Content View">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
@@ -526,7 +516,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="adultStudentCell" rowHeight="80" id="Xa6-34-pf8" userLabel="adult Student Table View Cell" customClass="AdultStudentTableViewCell" customModule="Academia" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="212" width="375" height="80"/>
+                                <rect key="frame" x="0.0" y="286" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xa6-34-pf8" id="3n6-u9-HEr" userLabel="status Content View">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
