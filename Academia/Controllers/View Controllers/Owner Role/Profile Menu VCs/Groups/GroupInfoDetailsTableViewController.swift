@@ -11,7 +11,7 @@ import UIKit
 class GroupInfoDetailsTableViewController: UITableViewController {
 
     // MARK: - Properties
-    
+    var group: Group?
     var groupName: String?
     var active: Bool = true
     var groupDescription: String?
@@ -23,42 +23,40 @@ class GroupInfoDetailsTableViewController: UITableViewController {
     
     let beltBuilder = BeltBuilder()
     
-    @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
-    @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
-    @IBOutlet weak var groupNameLabelOutlet: UILabel!
     @IBOutlet weak var activeLabelOutlet: UILabel!
     @IBOutlet weak var lastChangedLabelOutlet: UILabel!
     @IBOutlet weak var groupDescriptionLabelOutlet: UILabel!
     @IBOutlet weak var groupDescriptionTextView: UITextView!
     
     
-    
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        populateCompletedGroupInfo()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        guard let group = group else {
+            print("ERROR: found nil value when unwrapping groupName property in StudentListTableViewController.swift -> viewDidLoad() - line 37.")
+            return
+        }
         
         let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
                            NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
         
         navigationController?.navigationBar.titleTextAttributes = avenirFont
         
-        populateCompletedGroupInfo()
-        
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // add Edit button to navBar
-        let rightEditButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(self.editButtonTapped))
-        self.navigationItem.rightBarButtonItem = rightEditButton
+        title = group.name
         
     }
     
     
     // MARK: - Actions
     
-    @IBAction func deleteAccountButtonTapped(_ sender: UIButton) {
+    @IBAction func deleteGroupButtonTapped(_ sender: UIButton) {
         
         let alertController = UIAlertController(title: "Delete Group", message: "are you sure you want to delete this group?", preferredStyle: UIAlertController.Style.alert)
         
@@ -89,7 +87,7 @@ class GroupInfoDetailsTableViewController: UITableViewController {
     
     
     // MARK: - editButtonTapped()
-    @objc func editButtonTapped() {
+    @IBAction func editButtonTapped(_ sender: Any) {
         
         // programmatically performing the segue
         
@@ -247,12 +245,12 @@ extension GroupInfoDetailsTableViewController {
     
     func populateCompletedGroupInfo() {
         
-        guard let groupName = groupName, let groupDescription = groupDescription else {
-            print("there was a nil value in the groupName and/or groupDescription passed to ReviewAndCreateGroupTVC.swift -> populateCompletedGroupInfo() - line 205")
+        guard let group = group else {
+            print("there was a nil value in the group passed to GroupInfoDetailsTableViewController.swift -> populateCompletedGroupInfo() - line 249")
             return
         }
-        // name outlet
-        groupNameLabelOutlet.text = groupName
+        // VC title
+        self.title = group.name
         // active outlet
         if active == true {
             
@@ -263,7 +261,6 @@ extension GroupInfoDetailsTableViewController {
         // lastChanged outlet
         lastChangedLabelOutlet.text = "\(Date())"
         // payment program description
-        groupDescriptionTextView.text = "\(groupDescription)"
+        groupDescriptionTextView.text = group.description
     }
-    
 }

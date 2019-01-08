@@ -84,7 +84,7 @@ class PaymentProgramInfoDetailsViewController: UIViewController {
     }
     
     
-    @IBAction func deleteAccountButtonTapped(_ sender: UIButton) {
+    @IBAction func deletePaymentProgramButtonTapped(_ sender: UIButton) {
         
         let alertController = UIAlertController(title: "Delete Payment Program", message: "are you sure you want to delete this Payment Program?", preferredStyle: UIAlertController.Style.alert)
         

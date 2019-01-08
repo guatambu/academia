@@ -74,7 +74,7 @@ class OwnerGroupListTableViewController: UITableViewController {
         // instantiate the relevant storyboard
         let ownerStudentFlowView: UIStoryboard = UIStoryboard(name: "OwnerStudentsFlow", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
-        let destViewController = ownerStudentFlowView.instantiateViewController(withIdentifier: "toStudentsList") as! StudentListTableViewController
+        let destViewController = ownerStudentFlowView.instantiateViewController(withIdentifier: "toGroupInfoDetails") as! GroupInfoDetailsTableViewController
         // create the segue programmatically
         self.navigationController?.pushViewController(destViewController, animated: true)
         // set the desired properties of the destinationVC's navgation Item
@@ -88,14 +88,14 @@ class OwnerGroupListTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         // Get the new view controller using segue.destinationViewController.
-        if segue.identifier == "toGroupOfStudents" {
-            guard let destinationTVC = segue.destination as? StudentListTableViewController else { return }
+        if segue.identifier == "toGroupInfoDetails" {
+            guard let destinationTVC = segue.destination as? GroupInfoDetailsTableViewController else { return }
             guard let indexPath = self.tableView.indexPathForSelectedRow else { return }
             
             let studentGroup = GroupModelController.shared.groups[indexPath.row]
             
             // Pass the selected object to the new view controller.
-            destinationTVC.studentGroup = studentGroup
+            destinationTVC.group = studentGroup
         }
     }
 }
