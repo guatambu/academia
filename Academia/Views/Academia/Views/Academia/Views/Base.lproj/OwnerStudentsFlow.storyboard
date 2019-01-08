@@ -116,7 +116,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="studentListImageMenuCell" rowHeight="80" id="PKf-VU-J8l" customClass="StudentListImageMenuTableViewCell" customModule="Academia" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="kidStudentCell" rowHeight="80" id="PKf-VU-J8l" userLabel="kid Student Table View Cell" customClass="ReviewKidStudentTableViewCell" customModule="Academia" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="95.5" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PKf-VU-J8l" id="nkq-Af-bto">
@@ -194,6 +194,86 @@
                                 <connections>
                                     <outlet property="cellTitleOutlet" destination="klP-PW-kea" id="ODH-0N-52X"/>
                                     <outlet property="rightRedArrowImageViewOutlet" destination="oEW-aM-Yne" id="rH0-zX-PDt"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="adultStudentCell" rowHeight="80" id="JFH-hd-ae5" userLabel="adult Student Table View Cell" customClass="ReviewAdultStudentTableViewCell" customModule="Academia" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="175.5" width="375" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JFH-hd-ae5" id="g51-Lx-5ju">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xbg-1w-HYx">
+                                            <rect key="frame" x="8" y="0.0" width="367" height="80"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Rox-yH-i6V">
+                                                    <rect key="frame" x="0.0" y="0.0" width="335" height="80"/>
+                                                    <subviews>
+                                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rmq-4q-N55" userLabel="Round Profile Pic View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_pic_placeholder_image.png" translatesAutoresizingMaskIntoConstraints="NO" id="ere-qU-TjL" userLabel="Profile Pic Image View">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstItem="ere-qU-TjL" firstAttribute="top" secondItem="rmq-4q-N55" secondAttribute="top" id="9PN-zK-uGa"/>
+                                                                <constraint firstAttribute="height" constant="80" id="Q6H-PV-Lm9"/>
+                                                                <constraint firstAttribute="trailing" secondItem="ere-qU-TjL" secondAttribute="trailing" id="Yvj-UI-n1B"/>
+                                                                <constraint firstAttribute="bottom" secondItem="ere-qU-TjL" secondAttribute="bottom" id="gdr-Xd-zkv"/>
+                                                                <constraint firstAttribute="width" secondItem="rmq-4q-N55" secondAttribute="height" multiplier="1:1" id="u0V-GI-cIz"/>
+                                                                <constraint firstItem="ere-qU-TjL" firstAttribute="leading" secondItem="rmq-4q-N55" secondAttribute="leading" id="utQ-Mn-uJU"/>
+                                                                <constraint firstAttribute="width" constant="80" id="xAq-56-XRK"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="60"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="748" text="Michael Gregory Gonçalves Davis, Jr." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="sfa-kq-kfE">
+                                                            <rect key="frame" x="88" y="0.0" width="247" height="80"/>
+                                                            <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="24"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="vtX-Jk-wAf">
+                                                    <rect key="frame" x="335" y="0.0" width="32" height="80"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cuv-hW-9VS">
+                                                            <rect key="frame" x="0.0" y="0.0" width="32" height="26.5"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </view>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" image="right_red_arrow_32.png" translatesAutoresizingMaskIntoConstraints="NO" id="gvW-ca-4Mh">
+                                                            <rect key="frame" x="0.0" y="26.5" width="32" height="27"/>
+                                                        </imageView>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SaL-CT-pF4">
+                                                            <rect key="frame" x="0.0" y="53.5" width="32" height="26.5"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </view>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="32" id="gMZ-st-YgF"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="vtX-Jk-wAf" secondAttribute="trailing" id="qdD-sX-N1b"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Xbg-1w-HYx" firstAttribute="leading" secondItem="g51-Lx-5ju" secondAttribute="leading" constant="8" id="6ps-Pj-kmJ"/>
+                                        <constraint firstAttribute="trailing" secondItem="Xbg-1w-HYx" secondAttribute="trailing" id="cEs-fe-hL4"/>
+                                        <constraint firstItem="Xbg-1w-HYx" firstAttribute="top" secondItem="g51-Lx-5ju" secondAttribute="top" id="gDf-ta-Cbi"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cellTitleOutlet" destination="sfa-kq-kfE" id="nc3-Dj-kvp"/>
+                                    <outlet property="rightRedArrowImageViewOutlet" destination="gvW-ca-4Mh" id="aXB-Qg-64L"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1197,7 +1277,7 @@
                             </constraints>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="gpH-Ct-3BX">
-                            <rect key="frame" x="0.0" y="364" width="375" height="96"/>
+                            <rect key="frame" x="0.0" y="444" width="375" height="96"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qQ9-w7-0VK" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
@@ -1271,7 +1351,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="addNewGroupStudentImageMenuCell" rowHeight="80" id="OFG-hM-GUX" userLabel="student Table View Cell" customClass="ReviewAndCreateGroupTableViewCell" customModule="Academia" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="KidStudentCell" rowHeight="80" id="OFG-hM-GUX" userLabel="kid Student Table View Cell" customClass="ReviewKidStudentTableViewCell" customModule="Academia" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="284" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OFG-hM-GUX" id="KSH-c8-AmW" userLabel="status Content View">
@@ -1351,6 +1431,88 @@
                                     <outlet property="cellTitleOutlet" destination="oBW-Zu-4HK" id="HSa-Ex-vj8"/>
                                     <outlet property="rightRedArrowImageViewOutlet" destination="vnh-ee-8Qh" id="7Dh-D3-WkA"/>
                                     <outlet property="userThumbnailImageViewOutlet" destination="krw-9L-kON" id="T4t-Fa-kRZ"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="adultStudentCell" rowHeight="80" id="tA7-lu-oW6" userLabel="adult Student Table View Cell" customClass="ReviewAdultStudentTableViewCell" customModule="Academia" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="364" width="375" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tA7-lu-oW6" id="LuK-0w-wiX" userLabel="status Content View">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VJN-bT-UTi">
+                                            <rect key="frame" x="8" y="0.0" width="367" height="80"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="KBN-fH-IFL">
+                                                    <rect key="frame" x="0.0" y="0.0" width="335" height="80"/>
+                                                    <subviews>
+                                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F1E-5U-dcK" userLabel="Round Profile Pic View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_pic_placeholder_image.png" translatesAutoresizingMaskIntoConstraints="NO" id="oVV-xx-xPD" userLabel="Profile Pic Image View">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="80" id="1ZT-7b-d08"/>
+                                                                <constraint firstAttribute="trailing" secondItem="oVV-xx-xPD" secondAttribute="trailing" id="HUV-fc-ScB"/>
+                                                                <constraint firstAttribute="bottom" secondItem="oVV-xx-xPD" secondAttribute="bottom" id="Uel-b7-2LG"/>
+                                                                <constraint firstAttribute="width" secondItem="F1E-5U-dcK" secondAttribute="height" multiplier="1:1" id="W85-Ep-2UA"/>
+                                                                <constraint firstAttribute="width" constant="80" id="cRC-37-g9V"/>
+                                                                <constraint firstItem="oVV-xx-xPD" firstAttribute="leading" secondItem="F1E-5U-dcK" secondAttribute="leading" id="kug-6X-iGB"/>
+                                                                <constraint firstItem="oVV-xx-xPD" firstAttribute="top" secondItem="F1E-5U-dcK" secondAttribute="top" id="sAq-h0-bHQ"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="60"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="748" text="Michael Gregory Gonçalves Davis, Jr." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" preferredMaxLayoutWidth="80" translatesAutoresizingMaskIntoConstraints="NO" id="AIe-O5-m8f">
+                                                            <rect key="frame" x="88" y="0.0" width="247" height="80"/>
+                                                            <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="24"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ep3-9S-rrm">
+                                                    <rect key="frame" x="335" y="0.0" width="32" height="80"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pvT-5m-YL9">
+                                                            <rect key="frame" x="0.0" y="0.0" width="32" height="26.5"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </view>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" image="right_red_arrow_32.png" translatesAutoresizingMaskIntoConstraints="NO" id="Njs-bP-GmV">
+                                                            <rect key="frame" x="0.0" y="26.5" width="32" height="27"/>
+                                                        </imageView>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d8F-yW-XgH">
+                                                            <rect key="frame" x="0.0" y="53.5" width="32" height="26.5"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </view>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="32" id="ra3-q7-9Sl"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="ep3-9S-rrm" secondAttribute="trailing" id="zMG-k7-wEo"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="VJN-bT-UTi" secondAttribute="bottom" id="6MW-cL-3yT"/>
+                                        <constraint firstItem="VJN-bT-UTi" firstAttribute="leading" secondItem="LuK-0w-wiX" secondAttribute="leading" constant="8" id="Oce-ax-3TZ"/>
+                                        <constraint firstItem="VJN-bT-UTi" firstAttribute="top" secondItem="LuK-0w-wiX" secondAttribute="top" id="Upy-uN-meS"/>
+                                        <constraint firstAttribute="trailing" secondItem="VJN-bT-UTi" secondAttribute="trailing" id="gO8-yx-UUE"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cellTitleOutlet" destination="AIe-O5-m8f" id="297-EJ-pUX"/>
+                                    <outlet property="rightRedArrowImageViewOutlet" destination="Njs-bP-GmV" id="45j-Ht-xGH"/>
+                                    <outlet property="userThumbnailImageViewOutlet" destination="oVV-xx-xPD" id="yq2-DG-UTr"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

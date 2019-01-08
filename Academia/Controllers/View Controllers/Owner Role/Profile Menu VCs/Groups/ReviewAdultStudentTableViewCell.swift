@@ -1,15 +1,15 @@
 //
-//  ReviewAndCreateGroupTableViewCell.swift
+//  ReviewAdultStudentTableViewCell.swift
 //  Academia
 //
-//  Created by Michael Guatambu Davis on 1/2/19.
+//  Created by Kelly Johnson on 1/7/19.
 //  Copyright © 2019 DunDak, LLC. All rights reserved.
 //
 
 import UIKit
 
-class ReviewAndCreateGroupTableViewCell: UITableViewCell {
-    
+class ReviewAdultStudentTableViewCell: UITableViewCell {
+
     // MARK: - Properties
     
     @IBOutlet weak var userThumbnailImageViewOutlet: UIImageView!
@@ -17,12 +17,6 @@ class ReviewAndCreateGroupTableViewCell: UITableViewCell {
     @IBOutlet weak var rightRedArrowImageViewOutlet: UIImageView!
     
     var adultStudent: AdultStudent? {
-        didSet {
-            updateViews()
-        }
-    }
-    
-    var kidStudent: KidStudent? {
         didSet {
             updateViews()
         }
@@ -44,10 +38,8 @@ class ReviewAndCreateGroupTableViewCell: UITableViewCell {
         if let adultStudent = adultStudent {
             userThumbnailImageViewOutlet.image = adultStudent.profilePic
             cellTitleOutlet.text = "\(adultStudent.firstName) \(adultStudent.lastName)"
-        } else if let kidStudent = kidStudent {
-            userThumbnailImageViewOutlet.image = kidStudent.profilePic
-            cellTitleOutlet.text = "\(kidStudent.firstName) \(kidStudent.lastName)"
         }
     }
     
 }
+

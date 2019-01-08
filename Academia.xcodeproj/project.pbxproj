@@ -107,12 +107,11 @@
 		FAAAC14B213E33E000093D6C /* OwnerProfileFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAAAC14A213E33E000093D6C /* OwnerProfileFlow.storyboard */; };
 		FAAAC150213E345900093D6C /* OwnerMessages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAAAC14F213E345900093D6C /* OwnerMessages.storyboard */; };
 		FAAAC153213E348800093D6C /* OwnerBaseCampFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAAAC151213E348800093D6C /* OwnerBaseCampFlow.storyboard */; };
-		FAAEDB4E21DD7BBB00E1A04F /* ReviewAndCreateGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAEDB4D21DD7BBB00E1A04F /* ReviewAndCreateGroupTableViewCell.swift */; };
+		FAAEDB4E21DD7BBB00E1A04F /* ReviewKidStudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAEDB4D21DD7BBB00E1A04F /* ReviewKidStudentTableViewCell.swift */; };
 		FAAEDB5021DDA27500E1A04F /* GroupMembersDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAEDB4F21DDA27500E1A04F /* GroupMembersDelegate.swift */; };
 		FAB203D4215EA8630034E1D4 /* LocationsImageMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB203D3215EA8630034E1D4 /* LocationsImageMenuTableViewCell.swift */; };
 		FAB203DA216187190034E1D4 /* StudentClassDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB203D9216187190034E1D4 /* StudentClassDetailViewController.swift */; };
 		FAB203DC216188C50034E1D4 /* StudentAulasListMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB203DB216188C50034E1D4 /* StudentAulasListMenuTableViewCell.swift */; };
-		FAB203DE2161C9C40034E1D4 /* Weekdays.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB203DD2161C9C40034E1D4 /* Weekdays.swift */; };
 		FAB20413216566E50034E1D4 /* ThingsToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB20412216566E50034E1D4 /* ThingsToDoList.swift */; };
 		FAB7E350212B7D47003E3B79 /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB7E34F212B7D47003E3B79 /* LandingPageViewController.swift */; };
 		FAB7E352212B7D73003E3B79 /* UserSelfIdentifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB7E351212B7D73003E3B79 /* UserSelfIdentifyViewController.swift */; };
@@ -145,6 +144,7 @@
 		FAD2097721C1CFF400B9C622 /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2097621C1CFF400B9C622 /* DateCollectionViewCell.swift */; };
 		FAD2097921C1D00200B9C622 /* SignatureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2097821C1D00200B9C622 /* SignatureCollectionViewCell.swift */; };
 		FAD2A3A521E4216600364FC0 /* ClassTimeComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2A3A421E4216600364FC0 /* ClassTimeComponents.swift */; };
+		FAD2A3A721E42D7A00364FC0 /* ReviewAdultStudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2A3A621E42D7A00364FC0 /* ReviewAdultStudentTableViewCell.swift */; };
 		FAD5B12D21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5B12C21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift */; };
 		FAD5B12F21C44BCA004ED286 /* ViewAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5B12E21C44BCA004ED286 /* ViewAgreementViewController.swift */; };
 		FAE2C07F214ADD26002E9756 /* ClassDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE2C07E214ADD26002E9756 /* ClassDetailTableViewController.swift */; };
@@ -361,12 +361,11 @@
 		FAAAC14A213E33E000093D6C /* OwnerProfileFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerProfileFlow.storyboard; sourceTree = "<group>"; };
 		FAAAC14F213E345900093D6C /* OwnerMessages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerMessages.storyboard; sourceTree = "<group>"; };
 		FAAAC152213E348800093D6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Academia/Views/Base.lproj/OwnerBaseCampFlow.storyboard; sourceTree = "<group>"; };
-		FAAEDB4D21DD7BBB00E1A04F /* ReviewAndCreateGroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewAndCreateGroupTableViewCell.swift; sourceTree = "<group>"; };
+		FAAEDB4D21DD7BBB00E1A04F /* ReviewKidStudentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewKidStudentTableViewCell.swift; sourceTree = "<group>"; };
 		FAAEDB4F21DDA27500E1A04F /* GroupMembersDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMembersDelegate.swift; sourceTree = "<group>"; };
 		FAB203D3215EA8630034E1D4 /* LocationsImageMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsImageMenuTableViewCell.swift; sourceTree = "<group>"; };
 		FAB203D9216187190034E1D4 /* StudentClassDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentClassDetailViewController.swift; sourceTree = "<group>"; };
 		FAB203DB216188C50034E1D4 /* StudentAulasListMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentAulasListMenuTableViewCell.swift; sourceTree = "<group>"; };
-		FAB203DD2161C9C40034E1D4 /* Weekdays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weekdays.swift; sourceTree = "<group>"; };
 		FAB20412216566E50034E1D4 /* ThingsToDoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThingsToDoList.swift; sourceTree = "<group>"; };
 		FAB7E34F212B7D47003E3B79 /* LandingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
 		FAB7E351212B7D73003E3B79 /* UserSelfIdentifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelfIdentifyViewController.swift; sourceTree = "<group>"; };
@@ -399,6 +398,7 @@
 		FAD2097621C1CFF400B9C622 /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAD2097821C1D00200B9C622 /* SignatureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignatureCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAD2A3A421E4216600364FC0 /* ClassTimeComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassTimeComponents.swift; sourceTree = "<group>"; };
+		FAD2A3A621E42D7A00364FC0 /* ReviewAdultStudentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewAdultStudentTableViewCell.swift; sourceTree = "<group>"; };
 		FAD5B12C21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProgramDelegateProtocols.swift; sourceTree = "<group>"; };
 		FAD5B12E21C44BCA004ED286 /* ViewAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAgreementViewController.swift; sourceTree = "<group>"; };
 		FAE2C07E214ADD26002E9756 /* ClassDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassDetailTableViewController.swift; sourceTree = "<group>"; };
@@ -773,7 +773,6 @@
 		FA4DF32A218CC9E100ECC167 /* Curriculum Models */ = {
 			isa = PBXGroup;
 			children = (
-				FAB203DD2161C9C40034E1D4 /* Weekdays.swift */,
 				FA0C444521278BBF00B59194 /* Aula.swift */,
 				FA4DF32B218CCA0300ECC167 /* Technique.swift */,
 				FA4DF32D218CCA1A00ECC167 /* CurriculumModule.swift */,
@@ -966,7 +965,8 @@
 				FA8B3CC621CB2366003398FB /* ReviewAndCreateGroupTableViewController.swift */,
 				FAE67A3D215C733400822DCF /* KidStudentTableViewCell.swift */,
 				FAA4BFB021E4007F007A011C /* AdultStudentTableViewCell.swift */,
-				FAAEDB4D21DD7BBB00E1A04F /* ReviewAndCreateGroupTableViewCell.swift */,
+				FAAEDB4D21DD7BBB00E1A04F /* ReviewKidStudentTableViewCell.swift */,
+				FAD2A3A621E42D7A00364FC0 /* ReviewAdultStudentTableViewCell.swift */,
 			);
 			path = Groups;
 			sourceTree = "<group>";
@@ -1330,7 +1330,6 @@
 				FAD2097721C1CFF400B9C622 /* DateCollectionViewCell.swift in Sources */,
 				FA9ADA05213784720005E1F1 /* AboutAcademiaViewController.swift in Sources */,
 				FAF29B63212BBB5000752414 /* SignUpLoginViewController.swift in Sources */,
-				FAB203DE2161C9C40034E1D4 /* Weekdays.swift in Sources */,
 				FA23D2852166F5C900707056 /* PaymentProgramModelController.swift in Sources */,
 				FAE2FDA02140C03900815402 /* ParentGuardianTextFieldTableViewCell.swift in Sources */,
 				FA0C444A21278CA900B59194 /* Group.swift in Sources */,
@@ -1432,6 +1431,7 @@
 				FA9ADA2D2139EE6C0005E1F1 /* IsInstructorTableViewCell.swift in Sources */,
 				FABF859A21B3895B005CEBD4 /* LocationAddressViewController.swift in Sources */,
 				FACA3EB7219289310099E620 /* TakeProfilePicViewController.swift in Sources */,
+				FAD2A3A721E42D7A00364FC0 /* ReviewAdultStudentTableViewCell.swift in Sources */,
 				FA6FBA012149F33100558657 /* AdultStudent.swift in Sources */,
 				FA41CE6B21A344B100EAD53A /* OwnerInfoDetailsViewController.swift in Sources */,
 				FA21D6862130BB93006790E5 /* OwnerGroupListTableViewController.swift in Sources */,
@@ -1451,7 +1451,7 @@
 				FACA3EB92192895C0099E620 /* CompletedProfileViewController.swift in Sources */,
 				FAE2FD8C2140BFBA00815402 /* UsernameTextFieldTableViewCell.swift in Sources */,
 				FA6FBA082149F3C700558657 /* StudentStatus.swift in Sources */,
-				FAAEDB4E21DD7BBB00E1A04F /* ReviewAndCreateGroupTableViewCell.swift in Sources */,
+				FAAEDB4E21DD7BBB00E1A04F /* ReviewKidStudentTableViewCell.swift in Sources */,
 				FA8B3CC221CA230B003398FB /* AddStudentsToGroupTableViewController.swift in Sources */,
 				FAE2FDA42140C05B00815402 /* SchoolGroupTextFieldTableViewCell.swift in Sources */,
 				FA5C5C36215170D200BF62D5 /* LocationModelController.swift in Sources */,

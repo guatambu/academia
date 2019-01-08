@@ -34,7 +34,7 @@ class StudentAulasListMenuTableViewCell: UITableViewCell {
         guard let cell = cell else { return }
         
         cellTitleOutlet.text = cell.aulaName
-        cellSubtitleOutlet.text = "\(cell.timeOfDay.rawValue):00"
+        cellSubtitleOutlet.text = "\(cell.timeOfDay):00"
         
     }
 }
