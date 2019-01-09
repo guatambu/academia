@@ -1,18 +1,14 @@
 //
-//  ClassDetailTableViewController.swift
+//  ReviewAndCreateClassTableViewController.swift
 //  Academia
 //
-//  Created by Michael Guatambu Davis on 9/13/18.
-//  Copyright © 2018 DunDak, LLC. All rights reserved.
+//  Created by Kelly Johnson on 1/9/19.
+//  Copyright © 2019 DunDak, LLC. All rights reserved.
 //
 
 import UIKit
 
-class ClassDetailTableViewController: UITableViewController {
-    
-    // MARK: - Properties
-    
-    var aula: Aula?
+class ReviewAndCreateClassTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,11 +18,6 @@ class ClassDetailTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
@@ -91,7 +82,7 @@ class ClassDetailTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
+        // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
     */

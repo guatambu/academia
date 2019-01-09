@@ -1,5 +1,5 @@
 //
-//  OwnerClassesTableViewController.swift
+//  OwnerClassListTableViewController.swift
 //  Academia
 //
 //  Created by Michael Guatambu Davis on 8/24/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OwnerClassesTableViewController: UITableViewController {
+class OwnerClassListTableViewController: UITableViewController {
     
     // MARK: - Properties
     
