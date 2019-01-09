@@ -24,6 +24,8 @@ class TakeProfilePicViewController: UIViewController {
     var inEditingMode: Bool?
     var userToEdit: Any?
     
+    var isOwnerAddingStudent: Bool?
+    
     let imagePickerController = UIImagePickerController()
     
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
@@ -152,6 +154,8 @@ class TakeProfilePicViewController: UIViewController {
         destViewController.lastName = lastName
         destViewController.parentGuardian = parentGuardian
         destViewController.profilePic = profilePic
+        
+        destViewController.isOwnerAddingStudent = isOwnerAddingStudent
         
         destViewController.inEditingMode = inEditingMode
         destViewController.userToEdit = userToEdit

@@ -12,11 +12,6 @@ class GroupInfoDetailsTableViewController: UITableViewController {
 
     // MARK: - Properties
     var group: Group?
-    var groupName: String?
-    var active: Bool = true
-    var groupDescription: String?
-    var kidMembers: [KidStudent]?
-    var adultMembers: [AdultStudent]?
     
     var inEditingMode: Bool?
     var groupToEdit: Group?
@@ -55,6 +50,26 @@ class GroupInfoDetailsTableViewController: UITableViewController {
     
     
     // MARK: - Actions
+    
+    @IBAction func addStudentButtonTapped(_ sender: DesignableButton) {
+        
+        // programmatically performing the segue
+        
+        // instantiate the relevant storyboard
+        let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        // instantiate the desired TableViewController as ViewController on relevant storyboard
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toStudentChoiceVC") as! StudentChoiceViewController
+        // create the segue programmatically - PUSH
+        self.navigationController?.pushViewController(destViewController, animated: true)
+        // set the desired properties of the destinationVC's navgation Item
+        let backButtonItem = UIBarButtonItem()
+        backButtonItem.title = " "
+        navigationItem.backBarButtonItem = backButtonItem
+        
+        // set properties on destinationVC
+        destViewController.isOwner = false
+        
+    }
     
     @IBAction func deleteGroupButtonTapped(_ sender: UIButton) {
         
@@ -104,7 +119,9 @@ class GroupInfoDetailsTableViewController: UITableViewController {
         
         // set properties on destinationVC
         destViewController.inEditingMode = true
-        destViewController.groupToEdit = GroupModelController.shared.groups[0]
+        
+        groupToEdit = group
+        destViewController.groupToEdit = groupToEdit
         
     }
     
@@ -118,9 +135,14 @@ class GroupInfoDetailsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        guard let kidMembers = kidMembers, let adultMembers = adultMembers else {
+        guard let group = group else {
+            print("ERROR: nil value for group property in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, numberOfRowsInSection:) - line 124")
+            return 0
+        }
+        
+        guard let kidMembers = group.kidMembers, let adultMembers = group.adultMembers else {
             
-            print("ERROR: nil value for either kidMembers and/or adultMemebers array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, numberOfRowsInSection:) - line 68")
+            print("ERROR: nil value for either kidMembers and/or adultMemebers array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, numberOfRowsInSection:) - line 130")
             return 0
         }
         
@@ -137,9 +159,14 @@ class GroupInfoDetailsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let kidMembers = kidMembers, let adultMembers = adultMembers else {
+        guard let group = group else {
+            print("ERROR: nil value for group property in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, cellForRowAt:) - line 143")
+            return UITableViewCell()
+        }
+        
+        guard let kidMembers = group.kidMembers, let adultMembers = group.adultMembers else {
             
-            print("ERROR: nil value for either kidMembers and/or adultMemebers array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, cellForRowAt:) - line 89")
+            print("ERROR: nil value for either kidMembers and/or adultMemebers array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, cellForRowAt:) - line 149")
             return UITableViewCell()
         }
         
@@ -162,9 +189,14 @@ class GroupInfoDetailsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        guard let kidMembers = kidMembers, let adultMembers = adultMembers else {
+        guard let group = group else {
+            print("ERROR: nil value for group property in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, didSelectRowAt:) - line 173")
+            return
+        }
+        
+        guard let kidMembers = group.kidMembers, let adultMembers = group.adultMembers else {
             
-            print("ERROR: nil value for either kidMembers and/or adultMemebers array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, didSelectRowAt:) - line 109")
+            print("ERROR: nil value for either kidMembers and/or adultMemebers array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, didSelectRowAt:) - line 179")
             return
         }
         
@@ -246,21 +278,39 @@ extension GroupInfoDetailsTableViewController {
     func populateCompletedGroupInfo() {
         
         guard let group = group else {
-            print("there was a nil value in the group passed to GroupInfoDetailsTableViewController.swift -> populateCompletedGroupInfo() - line 249")
+            print("there was a nil value in the group passed to GroupInfoDetailsTableViewController.swift -> populateCompletedGroupInfo() - line 256")
             return
         }
         // VC title
         self.title = group.name
         // active outlet
-        if active == true {
+        if group.active == true {
             
             activeLabelOutlet.text = "active: YES"
         } else {
             activeLabelOutlet.text = "active: NO"
         }
         // lastChanged outlet
-        lastChangedLabelOutlet.text = "\(Date())"
+        lastChangedLabelOutlet.text = "\(group.dateEdited)"
         // payment program description
         groupDescriptionTextView.text = group.description
+    }
+}
+
+
+// MARK: - Programmatic Segues to return to proper ProfileFlow storyboard and group profileVC
+extension UIViewController {
+    
+    func returnToGroupInfo() {
+        
+        guard let viewControllers = self.navigationController?.viewControllers else { return }
+        
+        for viewController in viewControllers {
+            
+            if viewController is GroupInfoDetailsTableViewController {
+                self.navigationController?.popToViewController(viewController, animated: true)
+                
+            }
+        }
     }
 }

@@ -23,8 +23,9 @@ class BirthdayViewController: UIViewController {
     var birthdate: Date?
     
     var inEditingMode: Bool?
-    
     var userToEdit: Any?
+    
+    var isOwnerAddingStudent: Bool?
     
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
@@ -123,6 +124,8 @@ class BirthdayViewController: UIViewController {
         destViewController.parentGuardian = parentGuardian
         destViewController.profilePic = profilePic
         destViewController.birthdate = birthdate
+        
+        destViewController.isOwnerAddingStudent = isOwnerAddingStudent
         
         destViewController.inEditingMode = inEditingMode
         destViewController.userToEdit = userToEdit

@@ -27,6 +27,8 @@ class NameAndBeltViewController: UIViewController {
     var inEditingMode: Bool?
     var userToEdit: Any?
     
+    var isOwnerAddingStudent: Bool?
+    
     let beltBuilder = BeltBuilder()
     
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
@@ -130,6 +132,8 @@ class NameAndBeltViewController: UIViewController {
         destViewController.birthdate = birthdate
         destViewController.beltLevel = beltLevel
         destViewController.numberOfStripes = numberOfStripes
+        
+        destViewController.isOwnerAddingStudent = isOwnerAddingStudent
         
         destViewController.inEditingMode = inEditingMode
         destViewController.userToEdit = userToEdit

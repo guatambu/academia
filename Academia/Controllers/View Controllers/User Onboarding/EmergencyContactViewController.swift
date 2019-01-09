@@ -38,6 +38,8 @@ class EmergencyContactViewController: UIViewController {
     var inEditingMode: Bool?
     var userToEdit: Any?
     
+    var isOwnerAddingStudent: Bool?
+    
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     @IBOutlet weak var emergencyContactNameLabelOutlet: UILabel!
@@ -164,6 +166,8 @@ class EmergencyContactViewController: UIViewController {
         destViewController.emergencyContactName = emergencyContactName
         destViewController.emergencyContactRelationship = emergencyContactRelationship
         destViewController.emergencyContactPhone = emergencyContactPhone
+        
+        destViewController.isOwnerAddingStudent = isOwnerAddingStudent
         
         
         guard let isOwner = isOwner else { print("fail isOwner"); return }

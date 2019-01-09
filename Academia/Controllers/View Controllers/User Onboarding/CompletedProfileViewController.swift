@@ -37,6 +37,8 @@ class CompletedProfileViewController: UIViewController {
     
     var belt: Belt?
     
+    var isOwnerAddingStudent: Bool?
+    
     let beltBuilder = BeltBuilder()
     
     // name / username outlets
@@ -91,12 +93,32 @@ class CompletedProfileViewController: UIViewController {
         // programmatically performing the segue
         guard let isOwner = isOwner else { return }
         if isOwner {
-            // instantiate the relevant storyboard for the Owner
-            let mainView: UIStoryboard = UIStoryboard(name: "OwnerBaseCampFlow", bundle: nil)
-            // create the UITabBarController segue programmatically - MODAL
-            if let tabBarDestViewController = (mainView.instantiateViewController(withIdentifier: "toOwnerBaseCamp") as? UITabBarController) {
-                self.present(tabBarDestViewController, animated: true, completion: nil)
+            
+            if isOwnerAddingStudent != nil {
+                guard let isOwnerAddingStudent = isOwnerAddingStudent else {
+                    
+                    print("ERROR: a nil value was found when trying to unwrap isOwnerAddingStudent in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 100.")
+                    
+                    return
+                }
+                
+                if isOwnerAddingStudent {
+                    
+                    // need to append the created user to the appropriate group and to the general student array which means we will need to know whether isKid is true or not
+                    
+                    returnToGroupInfo()
+                }
+                
+            } else {
+                
+                // instantiate the relevant storyboard for the Owner
+                let mainView: UIStoryboard = UIStoryboard(name: "OwnerBaseCampFlow", bundle: nil)
+                // create the UITabBarController segue programmatically - MODAL
+                if let tabBarDestViewController = (mainView.instantiateViewController(withIdentifier: "toOwnerBaseCamp") as? UITabBarController) {
+                    self.present(tabBarDestViewController, animated: true, completion: nil)
+                }
             }
+            
         } else {
             // instantiate the relevant storyboard for the Student (Kid or Adult... both are directed to the same TabBarController)
             let mainView: UIStoryboard = UIStoryboard(name: "StudentBaseCampFlow", bundle: nil)

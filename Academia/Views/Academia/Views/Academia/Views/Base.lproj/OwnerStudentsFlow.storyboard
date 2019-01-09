@@ -98,17 +98,38 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="SEc-Cf-y4b">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="232"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9q8-jE-rGe" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
+                                    <rect key="frame" x="120" y="4" width="135" height="38"/>
+                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                    <inset key="contentEdgeInsets" minX="24" minY="8" maxX="24" maxY="8"/>
+                                    <state key="normal" title="add student">
+                                        <color key="titleColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                            <color key="value" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="addStudentButtonTapped:" destination="CoR-IV-ISc" eventType="touchUpInside" id="pYN-vN-Igc"/>
+                                        <action selector="deleteButtonTapped:" destination="CoR-IV-ISc" eventType="touchUpInside" id="u0r-HH-9aU"/>
+                                        <action selector="deleteGroupButtonTapped:" destination="CoR-IV-ISc" eventType="touchUpInside" id="wSv-Pb-RZ7"/>
+                                    </connections>
+                                </button>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="tWz-te-TsB" userLabel="Group Details Stack View">
-                                    <rect key="frame" x="16" y="8" width="343" height="126"/>
+                                    <rect key="frame" x="16" y="46" width="343" height="129"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="gdb-43-QwF" userLabel="group stats Stack View">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="22"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="25"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="I59-ob-WAU">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="22"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="25"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="active: yes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MIb-us-t7d" userLabel="active Label Outlet">
                                                             <rect key="frame" x="0.0" y="0.0" width="171.5" height="22"/>
@@ -133,7 +154,7 @@
                                             </constraints>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="-8" translatesAutoresizingMaskIntoConstraints="NO" id="wnV-XQ-DTQ" userLabel="description Stack View">
-                                            <rect key="frame" x="0.0" y="22" width="343" height="104"/>
+                                            <rect key="frame" x="0.0" y="25" width="343" height="104"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="group description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="HVC-tM-xIB">
                                                     <rect key="frame" x="0.0" y="0.0" width="343" height="32"/>
@@ -171,8 +192,9 @@
                                     </constraints>
                                 </stackView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="waa-bl-cnf">
-                                    <rect key="frame" x="140.5" y="158" width="94" height="34"/>
-                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                    <rect key="frame" x="128.5" y="195" width="118" height="33"/>
+                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
+                                    <inset key="contentEdgeInsets" minX="24" minY="8" maxX="24" maxY="8"/>
                                     <state key="normal" title="delete group">
                                         <color key="titleColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
@@ -184,16 +206,19 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
+                                <constraint firstAttribute="bottom" secondItem="waa-bl-cnf" secondAttribute="bottom" constant="4" id="4Cw-aa-DvD"/>
                                 <constraint firstAttribute="trailing" secondItem="tWz-te-TsB" secondAttribute="trailing" constant="16" id="HVX-Tm-fxl"/>
                                 <constraint firstItem="tWz-te-TsB" firstAttribute="leading" secondItem="SEc-Cf-y4b" secondAttribute="leading" constant="16" id="Lzz-1a-Eg0"/>
-                                <constraint firstItem="tWz-te-TsB" firstAttribute="top" secondItem="SEc-Cf-y4b" secondAttribute="top" constant="8" id="T7L-Og-eaD"/>
-                                <constraint firstItem="waa-bl-cnf" firstAttribute="top" secondItem="tWz-te-TsB" secondAttribute="bottom" constant="24" id="WlM-Zd-eIt"/>
+                                <constraint firstItem="9q8-jE-rGe" firstAttribute="top" secondItem="SEc-Cf-y4b" secondAttribute="top" constant="4" id="MVF-82-iTN"/>
+                                <constraint firstItem="waa-bl-cnf" firstAttribute="top" secondItem="tWz-te-TsB" secondAttribute="bottom" constant="20" id="WlM-Zd-eIt"/>
+                                <constraint firstItem="tWz-te-TsB" firstAttribute="top" secondItem="9q8-jE-rGe" secondAttribute="bottom" constant="4" id="cts-ne-WHK"/>
                                 <constraint firstItem="waa-bl-cnf" firstAttribute="centerX" secondItem="SEc-Cf-y4b" secondAttribute="centerX" id="q3p-ON-iKN"/>
+                                <constraint firstItem="9q8-jE-rGe" firstAttribute="centerX" secondItem="SEc-Cf-y4b" secondAttribute="centerX" id="rb3-mv-vd4"/>
                             </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="kidStudentCell" rowHeight="80" id="PKf-VU-J8l" userLabel="kid Student Table View Cell" customClass="ReviewKidStudentTableViewCell" customModule="Academia" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="255.5" width="375" height="80"/>
+                                <rect key="frame" x="0.0" y="287.5" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PKf-VU-J8l" id="nkq-Af-bto">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
@@ -273,7 +298,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="adultStudentCell" rowHeight="80" id="JFH-hd-ae5" userLabel="adult Student Table View Cell" customClass="ReviewAdultStudentTableViewCell" customModule="Academia" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="335.5" width="375" height="80"/>
+                                <rect key="frame" x="0.0" y="367.5" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JFH-hd-ae5" id="g51-Lx-5ju">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>

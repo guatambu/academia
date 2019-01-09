@@ -81,7 +81,8 @@ class OwnerGroupListTableViewController: UITableViewController {
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
-
+        
+        destViewController.group = allGroups[indexPath.row]
     }
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

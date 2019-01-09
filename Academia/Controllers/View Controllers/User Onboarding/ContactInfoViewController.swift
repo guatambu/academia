@@ -35,6 +35,8 @@ class ContactInfoViewController: UIViewController {
     var inEditingMode: Bool?
     var userToEdit: Any?
     
+    var isOwnerAddingStudent: Bool?
+    
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     @IBOutlet weak var phoneLabelOutlet: UILabel!
@@ -144,6 +146,8 @@ class ContactInfoViewController: UIViewController {
         destViewController.phone = phone
         destViewController.mobile = mobile
         destViewController.email = email
+        
+        destViewController.isOwnerAddingStudent = isOwnerAddingStudent
         
         destViewController.inEditingMode = inEditingMode
         destViewController.userToEdit = userToEdit

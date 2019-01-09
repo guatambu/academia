@@ -32,6 +32,8 @@ class AddressViewController: UIViewController {
     var inEditingMode: Bool?
     var userToEdit: Any?
     
+    var isOwnerAddingStudent: Bool?
+    
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     @IBOutlet weak var addressLine1LabelOutlet: UILabel!
@@ -153,6 +155,8 @@ class AddressViewController: UIViewController {
         destViewController.city = city
         destViewController.state = state
         destViewController.zipCode = zipCode
+        
+        destViewController.isOwnerAddingStudent = isOwnerAddingStudent
         
         destViewController.inEditingMode = inEditingMode
         destViewController.userToEdit = userToEdit
