@@ -28,6 +28,7 @@ class NameAndBeltViewController: UIViewController {
     var userToEdit: Any?
     
     var isOwnerAddingStudent: Bool?
+    var group: Group?
     
     let beltBuilder = BeltBuilder()
     
@@ -134,6 +135,7 @@ class NameAndBeltViewController: UIViewController {
         destViewController.numberOfStripes = numberOfStripes
         
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
+        destViewController.group = group
         
         destViewController.inEditingMode = inEditingMode
         destViewController.userToEdit = userToEdit

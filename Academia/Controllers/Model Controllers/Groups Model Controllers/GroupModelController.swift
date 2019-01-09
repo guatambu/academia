@@ -30,7 +30,7 @@ class GroupModelController {
     
     
     // Update
-    func update(group: Group, active: Bool?, name: String?, description: String?, kidMembers: [KidStudent]?, adultMembers: [AdultStudent]?) {
+    func update(group: Group, active: Bool?, name: String?, description: String?, kidMembers: [KidStudent]?, adultMembers: [AdultStudent]?, kidStudent: KidStudent?, adultStudent: AdultStudent?) {
         
         group.dateEdited = Date()
         
@@ -49,6 +49,13 @@ class GroupModelController {
         if let adultMembers = adultMembers {
             group.adultMembers = adultMembers
         }
+        if let kidStudent = kidStudent {
+            group.kidMembers?.append(kidStudent)
+        }
+        if let adultStudent = adultStudent {
+            group.adultMembers?.append(adultStudent)
+        }
+        
     }
     
     

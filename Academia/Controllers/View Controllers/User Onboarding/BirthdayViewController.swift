@@ -26,6 +26,7 @@ class BirthdayViewController: UIViewController {
     var userToEdit: Any?
     
     var isOwnerAddingStudent: Bool?
+    var group: Group?
     
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
@@ -126,6 +127,7 @@ class BirthdayViewController: UIViewController {
         destViewController.birthdate = birthdate
         
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
+        destViewController.group = group
         
         destViewController.inEditingMode = inEditingMode
         destViewController.userToEdit = userToEdit

@@ -17,6 +17,7 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
     var password: String?
     
     var isOwnerAddingStudent: Bool?
+    var group: Group?
     
     var delegate: InitialStudentSegueDelegate!
     
@@ -163,6 +164,7 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
             destViewController.isKid = isKid
             destViewController.username = newUsername
             destViewController.isOwnerAddingStudent = isOwnerAddingStudent
+            destViewController.group = group
 
             return
         }
@@ -172,6 +174,7 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         destViewController.username = username
         destViewController.password = password
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
+        destViewController.group = group
         // if usermame/password - login
         
         // create the segue programmatically

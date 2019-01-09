@@ -68,6 +68,8 @@ class GroupInfoDetailsTableViewController: UITableViewController {
         
         // set properties on destinationVC
         destViewController.isOwner = false
+        destViewController.isOwnerAddingStudent = true
+        destViewController.group = group
         
     }
     

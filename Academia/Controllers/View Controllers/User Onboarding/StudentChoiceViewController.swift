@@ -18,6 +18,7 @@ class StudentChoiceViewController: UIViewController {
     var password: String?
     
     var isOwnerAddingStudent: Bool?
+    var group: Group?
     
     @IBOutlet weak var kidsProgramButtonOutlet: UIButton!
     @IBOutlet weak var adultsProgramButtonOutlet: UIButton!
@@ -89,6 +90,7 @@ class StudentChoiceViewController: UIViewController {
         destViewController.isOwner = self.isOwner
         destViewController.isKid = true
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
+        destViewController.group = group
         
     }
     

@@ -38,6 +38,7 @@ class CompletedProfileViewController: UIViewController {
     var belt: Belt?
     
     var isOwnerAddingStudent: Bool?
+    var group: Group?
     
     let beltBuilder = BeltBuilder()
     
@@ -104,7 +105,38 @@ class CompletedProfileViewController: UIViewController {
                 
                 if isOwnerAddingStudent {
                     
-                    // need to append the created user to the appropriate group and to the general student array which means we will need to know whether isKid is true or not
+                    // need to append the created user to the appropriate group
+                    
+                    guard let group = group else {
+                        
+                        print("ERROR: a nil value was found when trying to unwrap group property in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 112.")
+                        
+                        return
+                    }
+                    
+                    guard let isKid = isKid else {
+                        
+                        print("ERROR: a nil value was found when trying to unwrap isKid property in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 118.")
+                        
+                        return
+                    }
+                    
+                    if isKid {
+                        
+                        // get the kidStudent and update the group to include this student
+                        let kidStudent = KidStudentModelController.shared.kids.last
+                        
+                        // update the group to include this student
+                        GroupModelController.shared.update(group: group, active: nil, name: nil, description: nil, kidMembers: nil, adultMembers: nil, kidStudent: kidStudent, adultStudent: nil)
+                        
+                    } else {
+                        
+                        // get the adultStudent and update the group to include this student
+                        let adultStudent = AdultStudentModelController.shared.adults.last
+                        
+                        // update the group to include this student
+                        GroupModelController.shared.update(group: group, active: nil, name: nil, description: nil, kidMembers: nil, adultMembers: nil, kidStudent: nil, adultStudent: adultStudent)
+                    }
                     
                     returnToGroupInfo()
                 }

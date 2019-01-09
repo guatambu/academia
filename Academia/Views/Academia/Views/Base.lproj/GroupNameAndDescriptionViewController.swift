@@ -128,7 +128,7 @@ extension GroupNameAndDescriptionViewController {
         guard let group = groupToEdit else { return }
         // group update info
         if groupNameTextField.text != "" {
-            GroupModelController.shared.update(group: group, active: active, name: groupNameTextField.text, description: groupDescriptionTextView.text, kidMembers: nil, adultMembers: nil)
+            GroupModelController.shared.update(group: group, active: active, name: groupNameTextField.text, description: groupDescriptionTextView.text, kidMembers: nil, adultMembers: nil, kidStudent: nil, adultStudent: nil)
             print("update group name: \(GroupModelController.shared.groups[0].name)")
         }
     }

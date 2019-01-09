@@ -25,6 +25,7 @@ class TakeProfilePicViewController: UIViewController {
     var userToEdit: Any?
     
     var isOwnerAddingStudent: Bool?
+    var group: Group?
     
     let imagePickerController = UIImagePickerController()
     
@@ -156,6 +157,7 @@ class TakeProfilePicViewController: UIViewController {
         destViewController.profilePic = profilePic
         
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
+        destViewController.group = group
         
         destViewController.inEditingMode = inEditingMode
         destViewController.userToEdit = userToEdit

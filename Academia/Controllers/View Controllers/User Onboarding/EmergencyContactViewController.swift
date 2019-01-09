@@ -39,6 +39,7 @@ class EmergencyContactViewController: UIViewController {
     var userToEdit: Any?
     
     var isOwnerAddingStudent: Bool?
+    var group: Group?
     
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
@@ -168,6 +169,7 @@ class EmergencyContactViewController: UIViewController {
         destViewController.emergencyContactPhone = emergencyContactPhone
         
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
+        destViewController.group = group
         
         
         guard let isOwner = isOwner else { print("fail isOwner"); return }

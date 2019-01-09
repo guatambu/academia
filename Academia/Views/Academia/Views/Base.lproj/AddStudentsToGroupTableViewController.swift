@@ -272,7 +272,7 @@ extension AddStudentsToGroupTableViewController {
     func updateGroupInfo() {
         guard let group = groupToEdit else { return }
         // group update info
-        GroupModelController.shared.update(group: group, active: nil, name: nil, description: nil, kidMembers: kidMembers, adultMembers: adultMembers)
+        GroupModelController.shared.update(group: group, active: nil, name: nil, description: nil, kidMembers: kidMembers, adultMembers: adultMembers, kidStudent: nil, adultStudent: nil)
         print("how many members in the group: \(GroupModelController.shared.groups.count)")
     }
     

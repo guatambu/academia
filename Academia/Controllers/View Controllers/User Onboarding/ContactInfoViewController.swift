@@ -36,6 +36,7 @@ class ContactInfoViewController: UIViewController {
     var userToEdit: Any?
     
     var isOwnerAddingStudent: Bool?
+    var group: Group?
     
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
@@ -148,6 +149,7 @@ class ContactInfoViewController: UIViewController {
         destViewController.email = email
         
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
+        destViewController.group = group
         
         destViewController.inEditingMode = inEditingMode
         destViewController.userToEdit = userToEdit
