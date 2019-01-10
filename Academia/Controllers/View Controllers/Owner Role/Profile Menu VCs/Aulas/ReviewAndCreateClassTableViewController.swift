@@ -2,13 +2,28 @@
 //  ReviewAndCreateClassTableViewController.swift
 //  Academia
 //
-//  Created by Kelly Johnson on 1/9/19.
+//  Created by Michael Guatambu Davis on 1/9/19.
 //  Copyright © 2019 DunDak, LLC. All rights reserved.
 //
 
 import UIKit
 
 class ReviewAndCreateClassTableViewController: UITableViewController {
+    
+    // MARK: - Properties
+    
+    @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
+    @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
+    @IBOutlet weak var classNameLabelOutlet: UILabel!
+    @IBOutlet weak var activeLabelOutlet: UILabel!
+    @IBOutlet weak var lastChangedLabelOutlet: UILabel!
+    @IBOutlet weak var elligibleGroupsLabelOutlet: UILabel!
+    @IBOutlet weak var groupListLabelOutlet: UILabel!
+    @IBOutlet weak var classDescriptionLabelOutlet: UILabel!
+    @IBOutlet weak var classDescriptionTextView: UITextView!
+    
+    
+    // MARK: - ViewController Lifecycle Functions
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +34,14 @@ class ReviewAndCreateClassTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+    
+    
+    // MARK: - Actions
+    
+    @IBAction func createClassButtonTapped(_ sender: DesignableButton) {
+    }
+    
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

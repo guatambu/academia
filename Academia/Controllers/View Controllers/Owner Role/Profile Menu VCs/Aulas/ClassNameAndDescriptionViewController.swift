@@ -2,13 +2,28 @@
 //  ClassNameAndDescriptionViewController.swift
 //  Academia
 //
-//  Created by Kelly Johnson on 1/9/19.
+//  Created by Michael Guatambu Davis on 1/9/19.
 //  Copyright © 2019 DunDak, LLC. All rights reserved.
 //
 
 import UIKit
 
 class ClassNameAndDescriptionViewController: UIViewController {
+    
+    // MARK: - Properties
+    
+    @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
+    @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
+    @IBOutlet weak var classNameLabelOutlet: UILabel!
+    @IBOutlet weak var classNameTextField: UITextField!
+    @IBOutlet weak var activeLabelOutlet: UILabel!
+    @IBOutlet weak var activeSwitch: UISwitch!
+    @IBOutlet weak var lastChangedLabelOutlet: UILabel!
+    @IBOutlet weak var classDescriptionLabelOutlet: UILabel!
+    @IBOutlet weak var classDescriptionTextView: UITextView!
+    
+    
+    // MARK: - ViewController Lifecycle Functions
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,7 +31,12 @@ class ClassNameAndDescriptionViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    
+    // MARK: - Actions
+    
+    @IBAction func nextButtonTapped(_ sender: DesignableButton) {
+    }
+    
     /*
     // MARK: - Navigation
 

@@ -718,12 +718,12 @@
 			isa = PBXGroup;
 			children = (
 				FA21D67F2130BB1E006790E5 /* OwnerClassListTableViewController.swift */,
-				FAD2A3B221E6B93300364FC0 /* ReviewAndCreateClassTableViewController.swift */,
 				FAD2A3A821E6B7C700364FC0 /* ClassInfoDetailsTableViewController.swift */,
 				FAD2A3AA21E6B82A00364FC0 /* ClassNameAndDescriptionViewController.swift */,
 				FAD2A3AC21E6B84D00364FC0 /* ClassLocationAndTimeViewController.swift */,
 				FAD2A3AE21E6B87600364FC0 /* ClassInstructorsTableViewController.swift */,
 				FAD2A3B021E6B90D00364FC0 /* AddGroupToClassTableViewController.swift */,
+				FAD2A3B221E6B93300364FC0 /* ReviewAndCreateClassTableViewController.swift */,
 			);
 			path = Aulas;
 			sourceTree = "<group>";

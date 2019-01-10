@@ -2,7 +2,7 @@
 //  ClassInstructorsTableViewController.swift
 //  Academia
 //
-//  Created by Kelly Johnson on 1/9/19.
+//  Created by Michael Guatambu Davis on 1/9/19.
 //  Copyright © 2019 DunDak, LLC. All rights reserved.
 //
 
@@ -10,15 +10,27 @@ import UIKit
 
 class ClassInstructorsTableViewController: UITableViewController {
 
+    // MARK: - Properties
+    
+    @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
+    @IBOutlet weak var welcomeInstructions1LabelOutlet: UILabel!
+    @IBOutlet weak var welcomeInstructions2LabelOutlet: UILabel!
+    
+    
+    // MARK: - ViewController Lifecycle Functions
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        // Do any additional setup after loading the view.
     }
+    
+    
+    // MARK: - Actions
+    
+    @IBAction func nextButtonTapped(_ sender: DesignableButton) {
+    }
+    
 
     // MARK: - Table view data source
 
