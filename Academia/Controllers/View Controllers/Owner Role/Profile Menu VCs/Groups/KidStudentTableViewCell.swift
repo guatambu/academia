@@ -47,16 +47,9 @@ class KidStudentTableViewCell: UITableViewCell {
         // toggle isChosen Boolean value
         isChosen = !isChosen
         
-        // toggle roundProfilePicView borderColor
-        if isChosen {
-            roundProfilePicView.borderColor = beltBuilder.redBeltRed
-        } else {
-            roundProfilePicView.borderColor = UIColor.clear
-        }
-
         // add/remove student to appropriate model controller's source of truth
         guard let kidStudent = kidStudent else {
-            print("ERROR: nil value found while attepting to unwrap optional kidStudent in KidStudentTableViewCell.swift -> profilePicTapped() - line 57.")
+            print("ERROR: nil value found while attepting to unwrap optional kidStudent in KidStudentTableViewCell.swift -> profilePicTapped() - line 59.")
             return
         }
         
@@ -65,14 +58,19 @@ class KidStudentTableViewCell: UITableViewCell {
             print("ERRORL: nil value found while trying to unwrap kidMembers array via delegate in KidStudentTableViewCell.swift -> profilePicTapped() - line 65")
             return
         }
-            
+        
+        // toggle roundProfilePicView borderColor
         if isChosen {
+            
+            roundProfilePicView.borderColor = beltBuilder.redBeltRed
             kidMembers.append(kidStudent)
-            delegate?.kidMembers? = kidMembers
+            delegate?.kidMembers = kidMembers
             print("kidMembers: \(String(describing: delegate?.kidMembers))")
             
         } else {
-            delegate?.kidMembers = delegate?.kidMembers?.filter({ $0 != kidStudent })
+            
+            roundProfilePicView.borderColor = UIColor.clear
+            delegate!.kidMembers = delegate!.kidMembers.filter({ $0 != kidStudent })
         }
     }
     

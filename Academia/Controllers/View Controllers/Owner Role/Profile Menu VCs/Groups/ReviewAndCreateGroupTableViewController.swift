@@ -13,7 +13,7 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
     // MARK: - Properties
     
     var groupName: String?
-    var active: Bool = true
+    var active: Bool?
     var groupDescription: String?
     var kidMembers: [KidStudent]?
     var adultMembers: [AdultStudent]?
@@ -33,8 +33,8 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
     @IBOutlet weak var lastChangedLabelOutlet: UILabel!
     @IBOutlet weak var groupDescriptionLabelOutlet: UILabel!
     @IBOutlet weak var groupDescriptionTextView: UITextView!
-    
-    
+    @IBOutlet weak var studentAdvisoryLabelOutlet: UILabel!
+
     
     // MARK: - ViewController Lifecycle Functions
     
@@ -47,16 +47,58 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
         
         populateCompletedGroupInfo()
         
+        // run checks to produce advisory info to user regarding student types selected to a group
+        if let kidMembers = kidMembers, let adultMembers = adultMembers, kidMembers.isEmpty && adultMembers.isEmpty {
+            
+            studentAdvisoryLabelOutlet.isHidden = false
+            studentAdvisoryLabelOutlet.text = "no students added to group"
+        
+        } else if let kidMembers = kidMembers, kidMembers.isEmpty {
+            
+            studentAdvisoryLabelOutlet.isHidden = false
+            studentAdvisoryLabelOutlet.text = "no kids added to group"
+            
+        } else if let adultMembers = adultMembers, adultMembers.isEmpty {
+            
+            studentAdvisoryLabelOutlet.isHidden = false
+            studentAdvisoryLabelOutlet.text = "no adults added to group"
+            
+        } else {
+            
+            studentAdvisoryLabelOutlet.isHidden = true
+        }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
+    
+    
+    // MARK: - Actions
+    
+    @IBAction func createGroupButtonTapped(_ sender: DesignableButton) {
+            
+        // create the new location in the LocationModelController source of truth
+        createGroup()
+        
+        // programmatic segue back to the MyLocations TVC to view the current locations
+        guard let viewControllers = self.navigationController?.viewControllers else { return }
+        
+        for viewController in viewControllers {
+            
+            if viewController is OwnerGroupListTableViewController {
+                self.navigationController?.popToViewController(viewController, animated: true)
+                
+            }
+        }
+    }
+    
 
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
+        
         
         return sectionHeaderLabels.count
     }
@@ -88,14 +130,16 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
         
         guard let kidMembers = kidMembers, let adultMembers = adultMembers else {
             
-            print("ERROR: nil value for either kidMembers and/or adultMemebers array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, numberOfRowsInSection:) - line 68")
+            print("ERROR: nil value for either kidMembers and/or adultMemebers array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, numberOfRowsInSection:) - line 133")
             return 0
         }
         
         if section == 0 {
+            
             return kidMembers.count
             
         } else if section == 1 {
+
             return adultMembers.count
             
         } else {
@@ -103,28 +147,32 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
         }
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let kidMembers = kidMembers, let adultMembers = adultMembers else {
             
-            print("ERROR: nil value for either kidMembers and/or adultMemebers array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, cellForRowAt:) - line 89")
+            print("ERROR: nil value for either kidMembers and/or adultMemebers array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, cellForRowAt:) - line 154")
             return UITableViewCell()
         }
         
         // Configure the cell...
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "kidStudentCell", for: indexPath) as! KidStudentTableViewCell
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "reviewKidStudentCell", for: indexPath) as! ReviewKidStudentTableViewCell
             
             cell.kidStudent = kidMembers[indexPath.row]
             
             return cell
             
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "adultStudentCell", for: indexPath) as! AdultStudentTableViewCell
             
-            cell.adultStudent = adultMembers[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "reviewAdultStudentCell", for: indexPath) as! ReviewAdultStudentTableViewCell
             
+            if adultMembers.isEmpty {
+                cell.adultStudent = nil
+            } else {
+                cell.adultStudent = adultMembers[indexPath.row]
+            }
             return cell
         }
     }
@@ -133,7 +181,7 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
         
         guard let kidMembers = kidMembers, let adultMembers = adultMembers else {
             
-            print("ERROR: nil value for either kidMembers and/or adultMemebers array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, didSelectRowAt:) - line 109")
+            print("ERROR: nil value for either kidMembers and/or adultMemebers array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, didSelectRowAt:) - line 186")
             return
         }
         
@@ -210,12 +258,13 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
 }
 
 
+// MARK: - Helper Methods -> populateCompletedGroupInfo(), createGroup()
 extension ReviewAndCreateGroupTableViewController {
     
     func populateCompletedGroupInfo() {
         
         guard let groupName = groupName, let groupDescription = groupDescription else {
-                print("there was a nil value in the groupName and/or groupDescription passed to ReviewAndCreateGroupTVC.swift -> populateCompletedGroupInfo() - line 205")
+                print("there was a nil value in the groupName and/or groupDescription passed to ReviewAndCreateGroupTVC.swift -> populateCompletedGroupInfo() - line 267")
                 return
         }
         // name outlet
@@ -233,4 +282,14 @@ extension ReviewAndCreateGroupTableViewController {
         groupDescriptionTextView.text = "\(groupDescription)"
     }
     
+    func createGroup() {
+        
+        guard let groupName = groupName else { print("fail groupName"); return }
+        guard let active = active else { print("fail active");  return }
+        guard let groupDescription = groupDescription else { print("fail groupDescription"); return }
+        guard let kidMembers = kidMembers else { print("fail kidMembers"); return }
+        guard let adultMembers = adultMembers else { print("fail adultMembers"); return }
+        
+        GroupModelController.shared.add(active: active, name: groupName, description: groupDescription, kidMembers: kidMembers, adultMembers: adultMembers)
+    }
 }

@@ -19,8 +19,8 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
     var groupName: String?
     var active: Bool = true
     var groupDescription: String?
-    var kidMembers: [KidStudent]?
-    var adultMembers: [AdultStudent]?
+    var kidMembers: [KidStudent] = []
+    var adultMembers: [AdultStudent] = []
     
     var inEditingMode: Bool?
     var groupToEdit: Group?
@@ -58,10 +58,6 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
     @objc func saveButtonTapped() {
         
         // Group update profile info
-        guard let kidMembers = kidMembers, let adultMembers = adultMembers else {
-            print("ERROR: fail to unwrap kidMembers and/or adultmembers. AddStudentsToGroupTableViewController.swift -> saveButtontapped() - line 63")
-            return
-        }
         if kidMembers.isEmpty == false || adultMembers.isEmpty == false {
             
             updateGroupInfo()
@@ -82,19 +78,6 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
         let mainView: UIStoryboard = UIStoryboard(name: "OwnerStudentsFlow", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
         let destViewController = mainView.instantiateViewController(withIdentifier: "toReviewAndCreateGroup") as! ReviewAndCreateGroupTableViewController
-        
-        // run check to see is there are groupMembers
-        
-        guard let kidMembers = kidMembers, let adultMembers = adultMembers else {
-            print("ERROR: fail to unwrap kidMembers and/or adultmembers. AddStudentsToGroupTableViewController.swift -> nextButtontapped() - line 92")
-            return
-        }
-        
-        guard kidMembers.isEmpty == true && adultMembers.isEmpty == true else {
-            
-            welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
-            return
-        }
         
         // create the segue programmatically
         self.navigationController?.pushViewController(destViewController, animated: true)

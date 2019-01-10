@@ -11,6 +11,10 @@ import Foundation
 
 // THINGS TO DO
 
+    // more than likely will need to build in a way for owner to report and block users that post inappropriate content (especially around the kids)
+        // especially cuz, ya know... MESSAGING!!!!
+
+
     // User Account Deletion
         // for code reusability... will want to make a check when delting a student account to determine whether it is from the student or user side of the app
 

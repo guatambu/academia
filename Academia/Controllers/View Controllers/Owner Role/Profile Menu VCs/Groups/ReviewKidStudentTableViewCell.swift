@@ -35,10 +35,14 @@ class ReviewKidStudentTableViewCell: UITableViewCell {
     
     func updateViews() {
         
-        if let kidStudent = kidStudent {
-            userThumbnailImageViewOutlet.image = kidStudent.profilePic
-            cellTitleOutlet.text = "\(kidStudent.firstName) \(kidStudent.lastName)"
+        guard let kidStudent = kidStudent  else {
+            
+            print("ERROR: nil value found when unwrapping kidStudent in ReviewKidStudentTableViewCell.swift -> updateViews() - line 40")
+            
+            return
         }
+        userThumbnailImageViewOutlet.image = kidStudent.profilePic
+        cellTitleOutlet.text = "\(kidStudent.firstName) \(kidStudent.lastName)"
     }
     
 }

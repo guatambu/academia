@@ -2,7 +2,7 @@
 //  AdultStudentTableViewCell.swift
 //  Academia
 //
-//  Created by Kelly Johnson on 1/7/19.
+//  Created by Michael Guatambu Davis on 1/7/19.
 //  Copyright © 2019 DunDak, LLC. All rights reserved.
 //
 
@@ -65,13 +65,15 @@ class AdultStudentTableViewCell: UITableViewCell {
         }
         
         if isChosen {
+            
             adultMembers.append(adultStudent)
-            delegate?.adultMembers? = adultMembers
-            delegate?.adultMembers?.append(adultStudent)
+            delegate?.adultMembers = adultMembers
+
             print("adultMembers: \(String(describing: delegate?.adultMembers))")
             
         } else {
-            delegate?.adultMembers = delegate?.adultMembers?.filter({ $0 != adultStudent })
+            
+            delegate?.adultMembers = adultMembers.filter({ $0 != adultStudent })
         }
     }
     

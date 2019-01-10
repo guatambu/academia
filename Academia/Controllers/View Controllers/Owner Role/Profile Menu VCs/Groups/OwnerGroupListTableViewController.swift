@@ -14,6 +14,7 @@ class OwnerGroupListTableViewController: UITableViewController {
     
     var allGroups = [MockData.allStudents]
     
+    
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
@@ -21,12 +22,34 @@ class OwnerGroupListTableViewController: UITableViewController {
                            NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 24)! ]
         
         navigationController?.navigationBar.titleTextAttributes = avenirFont
+        
+        tableView.reloadData()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
  
     }
+    
+    
+    // MARK: - Actions
+    
+    @IBAction func addNewGroupButtonTapped(_ sender: UIBarButtonItem) {
+        // programmatically performing the group segue
+        
+        // instantiate the relevant storyboard
+        let ownerStudentFlowView: UIStoryboard = UIStoryboard(name: "OwnerStudentsFlow", bundle: nil)
+        // instantiate the desired TableViewController as ViewController on relevant storyboard
+        let destViewController = ownerStudentFlowView.instantiateViewController(withIdentifier: "toGroupNameAndDescription") as! GroupNameAndDescriptionViewController
+        // create the segue programmatically
+        self.navigationController?.pushViewController(destViewController, animated: true)
+        // set the desired properties of the destinationVC's navgation Item
+        let backButtonItem = UIBarButtonItem()
+        backButtonItem.title = " "
+        navigationItem.backBarButtonItem = backButtonItem
+        
+    }
+    
 
     
     // MARK: - Table view data source
@@ -49,8 +72,6 @@ class OwnerGroupListTableViewController: UITableViewController {
         return cell
     }
 
-
-
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
@@ -64,9 +85,6 @@ class OwnerGroupListTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
-
-
-    // MARK: - Navigation
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // programmatically performing the group segue
@@ -77,26 +95,36 @@ class OwnerGroupListTableViewController: UITableViewController {
         let destViewController = ownerStudentFlowView.instantiateViewController(withIdentifier: "toGroupInfoDetails") as! GroupInfoDetailsTableViewController
         // create the segue programmatically
         self.navigationController?.pushViewController(destViewController, animated: true)
+        
         // set the desired properties of the destinationVC's navgation Item
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
         
-        destViewController.group = allGroups[indexPath.row]
+        destViewController.group = GroupModelController.shared.groups[indexPath.row]
     }
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
+    
+    // MARK: - Navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        // Get the new view controller using segue.destinationViewController.
-        if segue.identifier == "toGroupInfoDetails" {
-            guard let destinationTVC = segue.destination as? GroupInfoDetailsTableViewController else { return }
-            guard let indexPath = self.tableView.indexPathForSelectedRow else { return }
+        if segue.identifier == "toGroupDetails" {
             
-            let studentGroup = GroupModelController.shared.groups[indexPath.row]
+            guard let destination = segue.destination as? GroupInfoDetailsTableViewController else { return }
             
-            // Pass the selected object to the new view controller.
-            destinationTVC.group = studentGroup
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            
+            let group = GroupModelController.shared.groups[indexPath.row]
+            
+            destination.group = group
         }
     }
 }
+
+
+
+
+
+
+

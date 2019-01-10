@@ -154,6 +154,8 @@
 		FAD2A3B921E6E1E100364FC0 /* ReviewInstructorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2A3B821E6E1E100364FC0 /* ReviewInstructorTableViewCell.swift */; };
 		FAD2A3BB21E6E1F900364FC0 /* ReviewOwnerInstructorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2A3BA21E6E1F900364FC0 /* ReviewOwnerInstructorTableViewCell.swift */; };
 		FAD2A3BD21E6E42000364FC0 /* InstructorsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2A3BC21E6E42000364FC0 /* InstructorsDelegate.swift */; };
+		FAD2A3BF21E810BE00364FC0 /* KidGroupInfoDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2A3BE21E810BE00364FC0 /* KidGroupInfoDetailsTableViewCell.swift */; };
+		FAD2A3C121E810DD00364FC0 /* AdultGroupInfoDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2A3C021E810DD00364FC0 /* AdultGroupInfoDetailsTableViewCell.swift */; };
 		FAD5B12D21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5B12C21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift */; };
 		FAD5B12F21C44BCA004ED286 /* ViewAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5B12E21C44BCA004ED286 /* ViewAgreementViewController.swift */; };
 		FAE2FD3C2140700F00815402 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE2FD3B2140700F00815402 /* MockData.swift */; };
@@ -416,6 +418,8 @@
 		FAD2A3B821E6E1E100364FC0 /* ReviewInstructorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewInstructorTableViewCell.swift; sourceTree = "<group>"; };
 		FAD2A3BA21E6E1F900364FC0 /* ReviewOwnerInstructorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewOwnerInstructorTableViewCell.swift; sourceTree = "<group>"; };
 		FAD2A3BC21E6E42000364FC0 /* InstructorsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructorsDelegate.swift; sourceTree = "<group>"; };
+		FAD2A3BE21E810BE00364FC0 /* KidGroupInfoDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidGroupInfoDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		FAD2A3C021E810DD00364FC0 /* AdultGroupInfoDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdultGroupInfoDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		FAD5B12C21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProgramDelegateProtocols.swift; sourceTree = "<group>"; };
 		FAD5B12E21C44BCA004ED286 /* ViewAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAgreementViewController.swift; sourceTree = "<group>"; };
 		FAE2FD3B2140700F00815402 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
@@ -991,6 +995,8 @@
 				FAA4BFB021E4007F007A011C /* AdultStudentTableViewCell.swift */,
 				FAAEDB4D21DD7BBB00E1A04F /* ReviewKidStudentTableViewCell.swift */,
 				FAD2A3A621E42D7A00364FC0 /* ReviewAdultStudentTableViewCell.swift */,
+				FAD2A3BE21E810BE00364FC0 /* KidGroupInfoDetailsTableViewCell.swift */,
+				FAD2A3C021E810DD00364FC0 /* AdultGroupInfoDetailsTableViewCell.swift */,
 			);
 			path = Groups;
 			sourceTree = "<group>";
@@ -1403,6 +1409,7 @@
 				FA66A00E2145CD42002B0313 /* DigitalSignatureTableViewCell.swift in Sources */,
 				FA6FBA032149F36300558657 /* KidStudent.swift in Sources */,
 				FA9AD9F9213783BA0005E1F1 /* MyLocationsTableViewController.swift in Sources */,
+				FAD2A3C121E810DD00364FC0 /* AdultGroupInfoDetailsTableViewCell.swift in Sources */,
 				FAD2A3BB21E6E1F900364FC0 /* ReviewOwnerInstructorTableViewCell.swift in Sources */,
 				FAF29BCA212E23E300752414 /* OwnerHomeTableViewController.swift in Sources */,
 				FA0C444821278C9A00B59194 /* PaymentProgram.swift in Sources */,
@@ -1453,6 +1460,7 @@
 				FAA516DD2190CAA7009875CB /* CurriculumModuleModelController.swift in Sources */,
 				FAF29BD1212F6FC800752414 /* OwnerDashboardTableViewCell.swift in Sources */,
 				FA5C5C3021506B7400BF62D5 /* InitialStudentSegueDelegate.swift in Sources */,
+				FAD2A3BF21E810BE00364FC0 /* KidGroupInfoDetailsTableViewCell.swift in Sources */,
 				FA9ADA31213B6BA90005E1F1 /* InternationalStandardBJJBelts.swift in Sources */,
 				FA4DF330218CCA2400ECC167 /* Curriculum.swift in Sources */,
 				FAE2FDA82140C07F00815402 /* EmergencyContactPhoneTextFieldTableViewCell.swift in Sources */,

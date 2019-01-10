@@ -200,14 +200,22 @@ class GroupInfoDetailsTableViewController: UITableViewController {
         
         // Configure the cell...
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "kidStudentCell", for: indexPath) as! KidStudentTableViewCell
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "kidStudentCell", for: indexPath) as? ReviewKidStudentTableViewCell else {
+                
+                return UITableViewCell()
+            }
             
             cell.kidStudent = kidMembers[indexPath.row]
             
             return cell
             
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "adultStudentCell", for: indexPath) as! AdultStudentTableViewCell
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "adultStudentCell", for: indexPath) as? ReviewAdultStudentTableViewCell else {
+                
+                return UITableViewCell()
+            }
             
             cell.adultStudent = adultMembers[indexPath.row]
             
