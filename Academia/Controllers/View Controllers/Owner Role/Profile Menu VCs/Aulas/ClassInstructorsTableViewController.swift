@@ -8,9 +8,20 @@
 
 import UIKit
 
-class ClassInstructorsTableViewController: UITableViewController {
-
+class ClassInstructorsTableViewController: UITableViewController, InstructorsDelegate {
+    
     // MARK: - Properties
+    
+    var instructors: [AdultStudent]?
+    var ownerInstructors: [Owner]?
+    
+    var inEditingMode: Bool?
+    var aulaToEdit: Aula?
+    
+    // tableView Sections Header Labels
+    let sectionHeaderLabels = ["Kids", "Adults"]
+    
+    let beltBuilder = BeltBuilder()
     
     @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
     @IBOutlet weak var welcomeInstructions1LabelOutlet: UILabel!

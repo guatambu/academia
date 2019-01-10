@@ -115,7 +115,7 @@ class OwnerHomeTableViewController: UITableViewController {
             // instantiate the relevant storyboard
             let ownerBaseCampFlowView: UIStoryboard = UIStoryboard(name: "OwnerBaseCampFlow", bundle: nil)
             // instantiate the desired TableViewController as ViewController on relevant storyboard
-            let destViewController = ownerBaseCampFlowView.instantiateViewController(withIdentifier: "toOwnerClasses") as! OwnerClassesTableViewController
+            let destViewController = ownerBaseCampFlowView.instantiateViewController(withIdentifier: "toOwnerClassList") as! OwnerClassListTableViewController
             // create the segue programmatically
             self.navigationController?.pushViewController(destViewController, animated: true)
             // set the desired properties of the destinationVC's navgation Item

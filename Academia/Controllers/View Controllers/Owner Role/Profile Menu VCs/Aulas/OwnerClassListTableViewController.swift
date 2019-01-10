@@ -14,8 +14,13 @@ class OwnerClassListTableViewController: UITableViewController {
     
     let weekdays: [ClassTimeComponents.Weekdays] = [.Sunday, .Monday, .Tuesday, .Wednesday, .Thursday, .Friday, .Saturday]
     
-    
     var classes = [MockData.adultClassA]
+    
+    // tableView Sections Header Labels
+    let sectionHeaderLabels = ["Kids", "Adults"]
+    
+    let beltBuilder = BeltBuilder()
+    
     
     // MARK: - ViewController Lifecycle Functions
     
@@ -106,7 +111,7 @@ class OwnerClassListTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         if segue.identifier == "" {
-            guard let destinationTVC = segue.destination as? ClassDetailTableViewController else { return }
+            guard let destinationTVC = segue.destination as? ClassInfoDetailsTableViewController else { return }
             guard let indexPath = self.tableView.indexPathForSelectedRow else { return }
             let aula = classes[indexPath.row]
             

@@ -16,6 +16,9 @@ class GroupInfoDetailsTableViewController: UITableViewController {
     var inEditingMode: Bool?
     var groupToEdit: Group?
     
+    // tableView Sections Header Labels
+    let sectionHeaderLabels = ["Kids", "Adults"]
+    
     let beltBuilder = BeltBuilder()
     
     @IBOutlet weak var activeLabelOutlet: UILabel!
@@ -35,7 +38,7 @@ class GroupInfoDetailsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         guard let group = group else {
-            print("ERROR: found nil value when unwrapping groupName property in StudentListTableViewController.swift -> viewDidLoad() - line 37.")
+            print("ERROR: found nil value when unwrapping group property in StudentListTableViewController.swift -> viewDidLoad() - line 37.")
             return
         }
         
@@ -132,7 +135,30 @@ class GroupInfoDetailsTableViewController: UITableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         
-        return 2
+        return sectionHeaderLabels.count
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let sectionHeaderView = UIView()
+        sectionHeaderView.backgroundColor = UIColor.white
+        
+        let avenirFont16 = [
+            NSAttributedString.Key.foregroundColor: UIColor.black,
+            NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 16)! ]
+        
+        let label = UILabel()
+        label.attributedText = NSAttributedString(string: sectionHeaderLabels[section], attributes: avenirFont16)
+        label.frame = CGRect(x: 16, y: 0, width: 80, height: 40)
+        
+        sectionHeaderView.addSubview(label)
+        
+        return sectionHeaderView
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        return 40
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

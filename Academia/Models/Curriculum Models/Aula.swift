@@ -21,12 +21,13 @@ class Aula {
     var daysOfTheWeek: [ClassTimeComponents.Weekdays]
     var timeOfDay: String
     var location: Location?
-    var students: [Any]?
-    var instructor: [Any]?
+    var kidAttendees: [KidStudent]?
+    var adultAttendees: [AdultStudent]?
+    var instructor: [AdultStudent]?
+    var ownerInstructor: [Owner]?
     var currentDate: Date
     var dateCreated: Date
     var dateEdited: Date
-    var attendees: [Any]?
     
     // Memberwise Initializer
     init(aulaUID: UUID,
@@ -36,12 +37,13 @@ class Aula {
          daysOfTheWeek: [ClassTimeComponents.Weekdays],
          timeOfDay: String,
          location: Location?,
-         students: [Any]?,
-         instructor: [Any]?,
+         kidAttendees: [KidStudent]?,
+         adultAttendees: [AdultStudent]?,
+         instructor: [AdultStudent]?,
+         ownerInstructor: [Owner]?,
          currentDate: Date,
          dateCreated: Date,
-         dateEdited: Date,
-         attendees: [Any]?
+         dateEdited: Date
         ) {
         
         self.aulaUID = aulaUID
@@ -51,12 +53,13 @@ class Aula {
         self.daysOfTheWeek = daysOfTheWeek
         self.timeOfDay = timeOfDay
         self.location = location
-        self.students = students
+        self.kidAttendees = kidAttendees
+        self.adultAttendees = adultAttendees
         self.instructor = instructor
+        self.ownerInstructor = ownerInstructor
         self.currentDate = currentDate
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
-        self.attendees = attendees
     }
     
 }
@@ -64,15 +67,21 @@ class Aula {
 extension Aula: Equatable {
     
     static func ==(lhs: Aula, rhs: Aula) -> Bool {
-        if lhs.active != rhs.active { return false }
         if lhs.aulaUID != rhs.aulaUID{ return false }
-        if lhs.aulaDescription != rhs.aulaDescription { return false }
+        if lhs.active != rhs.active { return false }
         if lhs.aulaName != rhs.aulaName { return false }
+        if lhs.aulaDescription != rhs.aulaDescription { return false }
+        if lhs.daysOfTheWeek != rhs.daysOfTheWeek { return false }
+        if lhs.timeOfDay != rhs.timeOfDay { return false }
+        if lhs.location != rhs.location { return false }
+        if lhs.kidAttendees != rhs.kidAttendees { return false }
+        if lhs.adultAttendees != rhs.adultAttendees { return false }
+        if lhs.instructor != rhs.instructor { return false }
+        if lhs.ownerInstructor != rhs.ownerInstructor { return false }
         if lhs.currentDate != rhs.currentDate { return false }
         if lhs.dateCreated != rhs.dateCreated { return false }
         if lhs.dateEdited != rhs.dateEdited { return false }
-        if lhs.daysOfTheWeek != rhs.daysOfTheWeek { return false }
-        if lhs.timeOfDay != rhs.timeOfDay { return false }
+        
         
         return true
     }

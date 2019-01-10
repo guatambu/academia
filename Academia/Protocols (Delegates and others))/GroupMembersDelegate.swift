@@ -8,7 +8,7 @@
 
 import Foundation
 
-// MARK: - AddStudentToGroupTVC to AddNewStudentGroupImageMenuTableViewCell Delegate protocol to access TVC's groupMembers array property
+// MARK: - AddStudentToGroupTVC to KidStudent... and AdultStudentTableViewCell Delegate protocol to access TVC's kidMembers and adultMembers array properties
 protocol GroupMembersDelegate: class {
     var kidMembers: [KidStudent]? { get set }
     var adultMembers: [AdultStudent]? { get set }

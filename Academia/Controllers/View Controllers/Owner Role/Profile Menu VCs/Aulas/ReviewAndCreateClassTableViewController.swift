@@ -12,6 +12,14 @@ class ReviewAndCreateClassTableViewController: UITableViewController {
     
     // MARK: - Properties
     
+    var inEditingMode: Bool?
+    var aulaToEdit: Aula?
+    
+    // tableView Sections Header Labels
+    let sectionHeaderLabels = ["Kids", "Adults"]
+    
+    let beltBuilder = BeltBuilder()
+    
     @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     @IBOutlet weak var classNameLabelOutlet: UILabel!

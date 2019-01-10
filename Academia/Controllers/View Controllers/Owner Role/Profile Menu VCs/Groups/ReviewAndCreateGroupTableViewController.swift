@@ -58,7 +58,7 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         
-        return 2
+        return sectionHeaderLabels.count
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
