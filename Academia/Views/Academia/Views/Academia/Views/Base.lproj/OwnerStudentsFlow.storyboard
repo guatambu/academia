@@ -89,10 +89,10 @@
             </objects>
             <point key="canvasLocation" x="7612" y="3877"/>
         </scene>
-        <!--Student List Table View Controller-->
+        <!--Group Info Details Table View Controller-->
         <scene sceneID="73P-zI-umn">
             <objects>
-                <tableViewController storyboardIdentifier="toGroupInfoDetails" id="CoR-IV-ISc" userLabel="Student List Table View Controller" customClass="GroupInfoDetailsTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="toGroupInfoDetails" id="CoR-IV-ISc" userLabel="Group Info Details Table View Controller" customClass="GroupInfoDetailsTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="80" estimatedRowHeight="80" sectionHeaderHeight="18" sectionFooterHeight="18" id="VaY-xN-VzC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -214,7 +214,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="kidStudentCell" rowHeight="80" id="PKf-VU-J8l" userLabel="kid Student Table View Cell" customClass="ReviewKidStudentTableViewCell" customModule="Academia" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="kidStudentCell" rowHeight="80" id="PKf-VU-J8l" userLabel="kid Student Table View Cell" customClass="KidGroupInfoDetailsTableViewCell" customModule="Academia" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="295.5" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PKf-VU-J8l" id="nkq-Af-bto">
@@ -292,9 +292,10 @@
                                 <connections>
                                     <outlet property="cellTitleOutlet" destination="klP-PW-kea" id="ODH-0N-52X"/>
                                     <outlet property="rightRedArrowImageViewOutlet" destination="oEW-aM-Yne" id="rH0-zX-PDt"/>
+                                    <outlet property="userThumbnailImageViewOutlet" destination="33E-Rc-e8p" id="DYR-jJ-err"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="adultStudentCell" rowHeight="80" id="JFH-hd-ae5" userLabel="adult Student Table View Cell" customClass="ReviewAdultStudentTableViewCell" customModule="Academia" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="adultStudentCell" rowHeight="80" id="JFH-hd-ae5" userLabel="adult Student Table View Cell" customClass="AdultGroupInfoDetailsTableViewCell" customModule="Academia" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="375.5" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JFH-hd-ae5" id="g51-Lx-5ju">
@@ -372,6 +373,7 @@
                                 <connections>
                                     <outlet property="cellTitleOutlet" destination="sfa-kq-kfE" id="nc3-Dj-kvp"/>
                                     <outlet property="rightRedArrowImageViewOutlet" destination="gvW-ca-4Mh" id="aXB-Qg-64L"/>
+                                    <outlet property="userThumbnailImageViewOutlet" destination="ere-qU-TjL" id="THE-Et-dxv"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

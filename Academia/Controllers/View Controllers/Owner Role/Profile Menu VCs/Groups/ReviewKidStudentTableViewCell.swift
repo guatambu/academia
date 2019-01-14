@@ -41,8 +41,12 @@ class ReviewKidStudentTableViewCell: UITableViewCell {
             
             return
         }
-        userThumbnailImageViewOutlet.image = kidStudent.profilePic
+        
         cellTitleOutlet.text = "\(kidStudent.firstName) \(kidStudent.lastName)"
+        userThumbnailImageViewOutlet.image = kidStudent.profilePic ?? UIImage(contentsOfFile: "user_placeholder")
+        
+        print("cell: \(kidStudent.firstName)")
+        print("cell: \(String(describing: kidStudent.profilePic?.size))")
     }
     
 }

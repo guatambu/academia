@@ -2,7 +2,7 @@
 //  AdultGroupInfoDetailsTableViewCell.swift
 //  Academia
 //
-//  Created by Kelly Johnson on 1/10/19.
+//  Created by Michael Guatambu Davis on 1/10/19.
 //  Copyright © 2019 DunDak, LLC. All rights reserved.
 //
 
@@ -10,15 +10,40 @@ import UIKit
 
 class AdultGroupInfoDetailsTableViewCell: UITableViewCell {
 
+    // MARK: - Properties
+    
+    @IBOutlet weak var userThumbnailImageViewOutlet: UIImageView!
+    @IBOutlet weak var cellTitleOutlet: UILabel!
+    @IBOutlet weak var rightRedArrowImageViewOutlet: UIImageView!
+    
+    var adultStudent: AdultStudent? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    
+    // MARK: - awakeFromNib()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    
+    // MARK: - updateViews()
+    
+    func updateViews() {
+        
+        guard let adultStudent = adultStudent  else {
+            
+            print("ERROR: nil value found when unwrapping adultStudent in ReviewKidStudentTableViewCell.swift -> updateViews() - line 40")
+            
+            return
+        }
+        
+        userThumbnailImageViewOutlet.image = adultStudent.profilePic
+        cellTitleOutlet.text = "\(adultStudent.firstName) \(adultStudent.lastName)"
     }
-
 }
+
