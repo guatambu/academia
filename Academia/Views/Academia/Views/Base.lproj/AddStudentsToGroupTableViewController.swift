@@ -33,6 +33,7 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
     // welcome label outlets
     @IBOutlet weak var welcomeLabelOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
+    @IBOutlet weak var nextButtonOutlet: DesignableButton!
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -268,6 +269,10 @@ extension AddStudentsToGroupTableViewController {
             navigationItem.rightBarButtonItem = saveButtonItem
             
             groupEditingSetup()
+            
+        } else {
+            nextButtonOutlet.isHidden = false
+            nextButtonOutlet.isEnabled = true
         }
         
         print("AddStudentsToGroupTVC -> inEditingMode: \(inEditingMode)")
@@ -284,6 +289,11 @@ extension AddStudentsToGroupTableViewController {
         
         welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
         welcomeInstructionsLabelOutlet.text = "you are in group editing mode"
+        
+        nextButtonOutlet.isHidden = true
+        nextButtonOutlet.isEnabled = false
+        
+        // here we can loop through the source of truth and compare that array's contents to the group's members array contents,  where there is a match, we can toggle the isslected red border to be displayed around the profile pic
         
     }
 }

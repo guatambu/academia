@@ -737,6 +737,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="LFX-1o-HaR"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="nextButtonOutlet" destination="EF0-xQ-JFX" id="r5J-gC-U8i"/>
                         <outlet property="welcomeInstructionsLabelOutlet" destination="HhG-rv-dfY" id="vqU-lv-Bj0"/>
                         <outlet property="welcomeLabelOutlet" destination="0Kw-cf-nng" id="xnP-Qo-8zf"/>
                     </connections>
