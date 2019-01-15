@@ -32,6 +32,8 @@ class GroupInfoDetailsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         populateCompletedGroupInfo()
+        
+        tableView.reloadData()
     }
     
     override func viewDidLoad() {

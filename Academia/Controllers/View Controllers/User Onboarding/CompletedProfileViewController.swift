@@ -95,70 +95,55 @@ class CompletedProfileViewController: UIViewController {
         guard let isOwner = isOwner else { return }
         if isOwner {
             
-            if isOwnerAddingStudent != nil {
-                guard let isOwnerAddingStudent = isOwnerAddingStudent else {
-                    
-                    print("ERROR: a nil value was found when trying to unwrap isOwnerAddingStudent in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 100.")
-                    
-                    return
-                }
-                
-                if isOwnerAddingStudent {
-                    
-                    // need to append the created user to the appropriate group
-                    
-                    guard let group = group else {
-                        
-                        print("ERROR: a nil value was found when trying to unwrap group property in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 112.")
-                        
-                        return
-                    }
-                    
-                    guard let isKid = isKid else {
-                        
-                        print("ERROR: a nil value was found when trying to unwrap isKid property in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 118.")
-                        
-                        return
-                    }
-                    
-                    if isKid {
-                        
-                        // get the kidStudent and update the group to include this student
-                        let kidStudent = KidStudentModelController.shared.kids.last
-                        
-                        // update the group to include this student
-                        GroupModelController.shared.update(group: group, active: nil, name: nil, description: nil, kidMembers: nil, adultMembers: nil, kidStudent: kidStudent, adultStudent: nil)
-                        
-                    } else {
-                        
-                        // get the adultStudent and update the group to include this student
-                        let adultStudent = AdultStudentModelController.shared.adults.last
-                        
-                        // update the group to include this student
-                        GroupModelController.shared.update(group: group, active: nil, name: nil, description: nil, kidMembers: nil, adultMembers: nil, kidStudent: nil, adultStudent: adultStudent)
-                    }
-                    
-                    returnToGroupInfo()
-                }
-                
-            } else {
-                
-                // instantiate the relevant storyboard for the Owner
-                let mainView: UIStoryboard = UIStoryboard(name: "OwnerBaseCampFlow", bundle: nil)
-                // create the UITabBarController segue programmatically - MODAL
-                if let tabBarDestViewController = (mainView.instantiateViewController(withIdentifier: "toOwnerBaseCamp") as? UITabBarController) {
-                    self.present(tabBarDestViewController, animated: true, completion: nil)
-                }
-            }
-            
-        } else {
-            // instantiate the relevant storyboard for the Student (Kid or Adult... both are directed to the same TabBarController)
-            let mainView: UIStoryboard = UIStoryboard(name: "StudentBaseCampFlow", bundle: nil)
+            // instantiate the relevant storyboard for the Owner
+            let mainView: UIStoryboard = UIStoryboard(name: "OwnerBaseCampFlow", bundle: nil)
             // create the UITabBarController segue programmatically - MODAL
-            if let tabBarDestViewController = (mainView.instantiateViewController(withIdentifier: "toStudentDashbooard") as? UITabBarController) {
+            if let tabBarDestViewController = (mainView.instantiateViewController(withIdentifier: "toOwnerBaseCamp") as? UITabBarController) {
                 self.present(tabBarDestViewController, animated: true, completion: nil)
             }
             
+        } else if isOwner == false {
+            // unwrap isOwnerAddingStudent? 
+            guard let isOwnerAddingStudent = isOwnerAddingStudent else {
+                print("ERROR: a nil value was found when trying to unwrap isOwnerAddingStudent in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 100.")
+                
+                // instantiate the relevant storyboard for the Student (Kid or Adult... both are directed to the same TabBarController)
+                let mainView: UIStoryboard = UIStoryboard(name: "StudentBaseCampFlow", bundle: nil)
+                // create the UITabBarController segue programmatically - MODAL
+                if let tabBarDestViewController = (mainView.instantiateViewController(withIdentifier: "toStudentDashbooard") as? UITabBarController) {
+                    self.present(tabBarDestViewController, animated: true, completion: nil)
+                }
+                
+                return
+            }
+            
+            if isOwnerAddingStudent {
+                // need to append the created user to the appropriate group
+                guard let group = group else {
+                    print("ERROR: a nil value was found when trying to unwrap group property in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 112.")
+                    return
+                }
+                guard let isKid = isKid else {
+                    print("ERROR: a nil value was found when trying to unwrap isKid property in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 118.")
+                    return
+                }
+                if isKid {
+                    // get the kidStudent and update the group to include this student
+                    let kidStudent = KidStudentModelController.shared.kids.last
+                    // update the group to include this student
+                    GroupModelController.shared.update(group: group, active: nil, name: nil, description: nil, kidMembers: nil, adultMembers: nil, kidStudent: kidStudent, adultStudent: nil)
+                } else {
+                    // get the adultStudent and update the group to include this student
+                    let adultStudent = AdultStudentModelController.shared.adults.last
+                    // update the group to include this student
+                    GroupModelController.shared.update(group: group, active: nil, name: nil, description: nil, kidMembers: nil, adultMembers: nil, kidStudent: nil, adultStudent: adultStudent)
+                }
+                
+                returnToGroupInfo()
+                
+            } else if isOwnerAddingStudent == false {
+                print("ERROR:  we have a non nil value of isOwnerAddingStudent = false... isOwnerAdding student should only be nil or true.  CompletedProfileViewController.swift -> createAccountButtonTapped(_ sender:) - line 141.")
+            }
         }
     }
 }
