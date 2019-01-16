@@ -13,8 +13,8 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
     // MARK: - Properties
     
     // Mock Data
-    var mockAdults = [MockData.adultA, MockData.adultA, MockData.adultA, MockData.adultA, MockData.adultA, MockData.adultA]
-    var mockKids = [MockData.kidA, MockData.kidA, MockData.kidA, MockData.kidA, MockData.kidA, MockData.kidA, MockData.kidA]
+    var mockAdults = [MockData.adultA, MockData.adultB]
+    var mockKids = [MockData.kidA, MockData.kidB]
     
     var groupName: String?
     var active: Bool = true
@@ -59,14 +59,12 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
     @objc func saveButtonTapped() {
         
         // Group update profile info
-        if kidMembers.isEmpty == false || adultMembers.isEmpty == false {
-            
-            updateGroupInfo()
-            
-            self.returnToGroupInfo()
-            
-            print("update... \nkidsMembers.count = \(String(describing: self.groupToEdit?.kidMembers?.count))\nadultMembers.count = \(String(describing: self.groupToEdit?.adultMembers?.count))")
-        }
+        updateGroupInfo()
+        
+        self.returnToGroupInfo()
+        
+        print("update... \nkidsMembers.count = \(String(describing: self.groupToEdit?.kidMembers?.count))\nadultMembers.count = \(String(describing: self.groupToEdit?.adultMembers?.count))")
+        
         inEditingMode = false
     }
     
@@ -99,7 +97,6 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
         destViewController.groupToEdit = groupToEdit
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
-        // ****  implement this across the other VCs in onboarding
         updateGroupInfo()
     }
     
@@ -156,12 +153,20 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
             // set delegate to communicate with AddNewStudentGroupImageMenuTableViewCell
             cell.delegate = self
             
-            // set the isChosen to true if inEditingMode == true to display the student as chosen
-            // TODO: - need to add a check for whether this individual student is present in the groupToEdit.kidMembers array, then this means this individual cell passes the isChosen = true value through to the cell... likely use the generated UUID
+            // set the isChosen to true if inEditingMode == true and current student is present in groupToEdit.kidMembers array to display the student as chosen
             if let inEditingMode = inEditingMode {
                 
                 if inEditingMode {
-                    cell.isChosen = true
+                    
+                    guard let kidsToEdit = groupToEdit?.kidMembers else {
+                        print("ERROR: nil value for groupToEdit in AddStudentsToGroupTableViewController.swift -> tableView(tableView:, cellForRowAt:) - line 166")
+                        return UITableViewCell()
+                    }
+                    
+                    if kidsToEdit.contains(mockKids[indexPath.row]) {
+                        
+                        cell.isChosen = true
+                    }
                 }
             }
             
@@ -175,11 +180,20 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
             // set delegate to communicate with AddNewStudentGroupImageMenuTableViewCell
             cell.delegate = self
             
-            // set the isChosen to true if inEditingMode == true to display the student as chosen
+            // set the isChosen to true if inEditingMode == true and current student is present in groupToEdit.adultMembers array to display the student as chosen
             if let inEditingMode = inEditingMode {
                 
                 if inEditingMode {
-                    cell.isChosen = true
+                    
+                    guard let adultsToEdit = groupToEdit?.adultMembers else {
+                        print("ERROR: nil value for groupToEdit.adultMembers in AddStudentsToGroupTableViewController.swift -> tableView(tableView:, cellForRowAt:) - line 191")
+                        return UITableViewCell()
+                    }
+                    
+                    if adultsToEdit.contains(mockAdults[indexPath.row]) {
+                        
+                        cell.isChosen = true
+                    }
                 }
             }
             
@@ -269,6 +283,7 @@ extension AddStudentsToGroupTableViewController {
     // Update Function for case where want to update user info without a segue
     func updateGroupInfo() {
         guard let group = groupToEdit else { return }
+        
         // group update info
         GroupModelController.shared.update(group: group, active: nil, name: nil, description: nil, kidMembers: kidMembers, adultMembers: adultMembers, kidStudent: nil, adultStudent: nil)
         print("how many members in the group: \(GroupModelController.shared.groups.count)")
@@ -307,7 +322,9 @@ extension AddStudentsToGroupTableViewController {
         nextButtonOutlet.isHidden = true
         nextButtonOutlet.isEnabled = false
         
-        
+        // sync up the grouptoEdit students with this TVC's properties when inEditingMode == true
+        kidMembers = groupToEdit.kidMembers ?? []
+        adultMembers = groupToEdit.adultMembers ?? []
     }
 }
 

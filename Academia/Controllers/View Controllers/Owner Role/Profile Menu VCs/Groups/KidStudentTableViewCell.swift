@@ -65,9 +65,11 @@ class KidStudentTableViewCell: UITableViewCell {
         if isChosen {
             
             roundProfilePicView.borderColor = beltBuilder.redBeltRed
+            print("kidMembers: \(kidMembers)")
             kidMembers.append(kidStudent)
+            print("kidMembers: \(kidMembers)")
             delegate?.kidMembers = kidMembers
-            print("kidMembers: \(String(describing: delegate?.kidMembers))")
+            print("delegate kidMembers: \(String(describing: delegate?.kidMembers))")
             
         } else {
             

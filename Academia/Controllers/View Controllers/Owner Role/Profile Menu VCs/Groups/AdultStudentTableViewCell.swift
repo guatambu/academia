@@ -45,35 +45,34 @@ class AdultStudentTableViewCell: UITableViewCell {
         // toggle isChosen Boolean value
         isChosen = !isChosen
         
-        // toggle roundProfilePicView borderColor
-        if isChosen {
-            roundProfilePicView.borderColor = beltBuilder.redBeltRed
-        } else {
-            roundProfilePicView.borderColor = UIColor.clear
-        }
+        print(isChosen)
         
         // add/remove student to appropriate model controller's source of truth
         guard let adultStudent = adultStudent else {
-            print("ERROR: nil value found while attepting to unwrap optional adultStudent in AdultStudentTableViewCell.swift -> profilePicTapped - line 57.")
-            return
-        }
-            
-        guard var adultMembers = delegate?.adultMembers else {
-                
-            print("ERRORL: nil value found while trying to unwrap adultMembers array via delegate in AdultStudentTableViewCell.swift -> profilePicTapped() - line 63")
+            print("ERROR: nil value found while attepting to unwrap optional adultStudent in AdultStudentTableViewCell.swift -> profilePicTapped() - line 52.")
             return
         }
         
+        guard var adultMembers = delegate?.adultMembers else {
+            
+            print("ERRORL: nil value found while trying to unwrap adultMembers array via delegate in AdultStudentTableViewCell.swift -> profilePicTapped() - line 58")
+            return
+        }
+        
+        // toggle roundProfilePicView borderColor
         if isChosen {
             
+            roundProfilePicView.borderColor = beltBuilder.redBeltRed
+            print("adultMembers: \(adultMembers)")
             adultMembers.append(adultStudent)
+            print("adultMembers: \(adultMembers)")
             delegate?.adultMembers = adultMembers
-
-            print("adultMembers: \(String(describing: delegate?.adultMembers))")
+            print("delegate adultMembers: \(String(describing: delegate?.adultMembers))")
             
         } else {
             
-            delegate?.adultMembers = adultMembers.filter({ $0 != adultStudent })
+            roundProfilePicView.borderColor = UIColor.clear
+            delegate!.adultMembers = delegate!.adultMembers.filter({ $0 != adultStudent })
         }
     }
     
