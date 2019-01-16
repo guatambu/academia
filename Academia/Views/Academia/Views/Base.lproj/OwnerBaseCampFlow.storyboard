@@ -529,9 +529,7 @@
                         <outlet property="classLocationTimePickerView" destination="Gnf-Lu-EGD" id="1V2-5P-ua6"/>
                         <outlet property="classTimeDetailsLabelOutlet" destination="JRc-7b-LIH" id="O9Y-Mc-Hr8"/>
                         <outlet property="classTimeLabelOutlet" destination="6vE-7y-MN5" id="RG5-Oc-TTW"/>
-                        <outlet property="nextButtonOutlet" destination="aMw-U6-eY7" id="ZBM-X2-gT1"/>
                         <outlet property="welcomeInstructionsLabelOutlet" destination="J6d-ul-aCj" id="wCP-ap-NMv"/>
-                        <outlet property="welcomeLabeOutlet" destination="f7F-lG-bOb" id="lTo-0W-ONK"/>
                         <outlet property="welcomeMessageLabelOutlet" destination="f7F-lG-bOb" id="lU3-Wl-waW"/>
                     </connections>
                 </viewController>
@@ -604,9 +602,6 @@
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rJF-FR-qsZ">
                                         <rect key="frame" x="63" y="0.0" width="83" height="22"/>
-                                        <connections>
-                                            <action selector="activeSwitchToggled:" destination="qMa-B9-a4e" eventType="valueChanged" id="Hyi-U7-Q7H"/>
-                                        </connections>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="changed: 06/09/18" textAlignment="right" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CuR-hK-fNN">
                                         <rect key="frame" x="152" y="0.0" width="136" height="22"/>
@@ -777,11 +772,7 @@
                         <outlet property="classNameLabelOutlet" destination="fmw-4a-YfP" id="AFZ-LM-YPf"/>
                         <outlet property="classNameTextField" destination="SJ9-gH-gac" id="AD8-eP-MSI"/>
                         <outlet property="lastChangedLabelOutlet" destination="CuR-hK-fNN" id="hj5-Iq-eYg"/>
-                        <outlet property="paymentProgramNameLabelOutlet" destination="fmw-4a-YfP" id="Hwp-hC-GOH"/>
-                        <outlet property="programDescriptionTextView" destination="AqD-il-k5a" id="udO-uv-Rok"/>
-                        <outlet property="programNameTextField" destination="SJ9-gH-gac" id="ww3-FJ-Fv8"/>
                         <outlet property="welcomeInstructionsLabelOutlet" destination="Lto-gO-RM2" id="1Qz-HP-hYh"/>
-                        <outlet property="welcomeLabelOutlet" destination="8QN-Hf-NWA" id="jYz-Eg-i2b"/>
                         <outlet property="welcomeMessageLabelOutlet" destination="8QN-Hf-NWA" id="7C0-Ay-aab"/>
                     </connections>
                 </viewController>
@@ -1161,9 +1152,8 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="uYG-kc-5QE"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="welcomeInstructions1LabelOutlet" destination="Kk1-OH-PGL" id="rNL-Aj-Z8F"/>
                         <outlet property="welcomeInstructions2LabelOutlet" destination="JtB-QK-PjF" id="chu-28-Wvd"/>
-                        <outlet property="welcomeInstructionsLabelOutlet" destination="Kk1-OH-PGL" id="5uz-Br-oZX"/>
-                        <outlet property="welcomeLabelOutlet" destination="mho-Su-ttm" id="66Z-B0-eJj"/>
                         <outlet property="welcomeMessageLabelOutlet" destination="mho-Su-ttm" id="95Z-2N-A9z"/>
                     </connections>
                 </tableViewController>
@@ -1385,7 +1375,8 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Home" id="IRz-IW-YYW"/>
                     <connections>
-                        <outlet property="welcomeInstructions1LabelOutlet" destination="rBh-0E-nUY" id="C8l-8e-AdE"/>
+                        <outlet property="welcomeInstructions1LabelOutlet" destination="rBh-0E-nUY" id="w1Q-BG-Xxu"/>
+                        <outlet property="welcomeInstructions2LabelOutlet" destination="7WC-Bl-eud" id="lH0-rB-YKK"/>
                         <outlet property="welcomeMessageLabelOutlet" destination="Dh7-R4-uQw" id="m5K-m0-qKC"/>
                     </connections>
                 </tableViewController>
@@ -1553,7 +1544,7 @@
                             </constraints>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="0Eb-OS-Zzj">
-                            <rect key="frame" x="0.0" y="380" width="320" height="96"/>
+                            <rect key="frame" x="0.0" y="460" width="320" height="96"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ktq-ry-9AE" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
@@ -1656,7 +1647,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="adultStudentCell" rowHeight="80" id="9l6-wp-WyX" userLabel="adult Student Table View Cell" customClass="AdultStudentTableViewCell" customModule="Academia" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reviewInsructorCell" rowHeight="80" id="9l6-wp-WyX" userLabel="instructor review Table View Cell" customClass="ReviewInstructorTableViewCell" customModule="Academia" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="300" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9l6-wp-WyX" id="W8L-qn-qZW" userLabel="status Content View">
@@ -1736,6 +1727,88 @@
                                     <outlet property="cellTitleOutlet" destination="XBy-ge-bcr" id="pMh-It-rTi"/>
                                     <outlet property="rightRedArrowImageViewOutlet" destination="1VH-Ey-7uY" id="cOs-3i-rgU"/>
                                     <outlet property="userThumbnailImageViewOutlet" destination="wcq-gL-TJT" id="2ai-Qb-xvs"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reviewOwnerInstructorCell" rowHeight="80" id="J7a-im-2dF" userLabel="owner instructor review Table View Cell" customClass="ReviewOwnerInstructorTableViewCell" customModule="Academia" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="380" width="320" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="J7a-im-2dF" id="00Q-cM-eWI" userLabel="status Content View">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kih-zz-TJ5">
+                                            <rect key="frame" x="8" y="0.0" width="312" height="80"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Zj4-9D-eRl">
+                                                    <rect key="frame" x="0.0" y="0.0" width="280" height="80"/>
+                                                    <subviews>
+                                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HhM-wN-YjP" userLabel="Round Profile Pic View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_pic_placeholder_image.png" translatesAutoresizingMaskIntoConstraints="NO" id="J3Q-Vm-8WQ" userLabel="Profile Pic Image View">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="80" id="BsL-2s-UNU"/>
+                                                                <constraint firstAttribute="width" constant="80" id="PpJ-MU-aWS"/>
+                                                                <constraint firstItem="J3Q-Vm-8WQ" firstAttribute="top" secondItem="HhM-wN-YjP" secondAttribute="top" id="aFT-c5-cSO"/>
+                                                                <constraint firstAttribute="width" secondItem="HhM-wN-YjP" secondAttribute="height" multiplier="1:1" id="gzE-lv-t7I"/>
+                                                                <constraint firstAttribute="trailing" secondItem="J3Q-Vm-8WQ" secondAttribute="trailing" id="jXT-KG-Wk0"/>
+                                                                <constraint firstItem="J3Q-Vm-8WQ" firstAttribute="leading" secondItem="HhM-wN-YjP" secondAttribute="leading" id="kSs-Vy-fie"/>
+                                                                <constraint firstAttribute="bottom" secondItem="J3Q-Vm-8WQ" secondAttribute="bottom" id="xrz-u6-noo"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="40"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="748" text="Michael Gregory Gonçalves Davis, Jr." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" preferredMaxLayoutWidth="80" translatesAutoresizingMaskIntoConstraints="NO" id="CJ9-7F-ck4">
+                                                            <rect key="frame" x="88" y="0.0" width="192" height="80"/>
+                                                            <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="24"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="uz6-YL-R3m">
+                                                    <rect key="frame" x="280" y="0.0" width="32" height="80"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HXd-oN-Vsn">
+                                                            <rect key="frame" x="0.0" y="0.0" width="32" height="26.5"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </view>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" image="right_red_arrow_32.png" translatesAutoresizingMaskIntoConstraints="NO" id="xwf-WM-bd8">
+                                                            <rect key="frame" x="0.0" y="26.5" width="32" height="27"/>
+                                                        </imageView>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X9g-Za-ZAm">
+                                                            <rect key="frame" x="0.0" y="53.5" width="32" height="26.5"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </view>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="32" id="gf7-WI-JTa"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="uz6-YL-R3m" secondAttribute="trailing" id="wRF-OU-Eg8"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Kih-zz-TJ5" firstAttribute="leading" secondItem="00Q-cM-eWI" secondAttribute="leading" constant="8" id="FNS-8s-2dD"/>
+                                        <constraint firstAttribute="trailing" secondItem="Kih-zz-TJ5" secondAttribute="trailing" id="Mbe-rb-VvU"/>
+                                        <constraint firstItem="Kih-zz-TJ5" firstAttribute="top" secondItem="00Q-cM-eWI" secondAttribute="top" id="Qyk-3u-6Dh"/>
+                                        <constraint firstAttribute="bottom" secondItem="Kih-zz-TJ5" secondAttribute="bottom" id="UI9-78-Np9"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cellTitleOutlet" destination="CJ9-7F-ck4" id="cOE-4F-lu5"/>
+                                    <outlet property="rightRedArrowImageViewOutlet" destination="xwf-WM-bd8" id="xb2-gv-fR5"/>
+                                    <outlet property="userThumbnailImageViewOutlet" destination="J3Q-Vm-8WQ" id="SrJ-GN-xmJ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1927,7 +2000,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="instructorCell" rowHeight="80" id="Bej-X6-7BF" userLabel="instructor Table View Cell" customClass="ReviewInstructorTableViewCell" customModule="Academia" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reviewInstructorCell" rowHeight="80" id="Bej-X6-7BF" userLabel="instructor Table View Cell" customClass="ReviewInstructorTableViewCell" customModule="Academia" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="300" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Bej-X6-7BF" id="1a2-Mh-s1e" userLabel="status Content View">
@@ -2010,7 +2083,7 @@
                                     <outlet property="userThumbnailImageViewOutlet" destination="9uI-JP-WpS" id="wE8-sV-0AM"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ownerInstructorCell" rowHeight="80" id="paT-WR-Egk" userLabel="owner instructor Table View Cell" customClass="ReviewOwnerInstructorTableViewCell" customModule="Academia" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reviewOwnerInstructorCell" rowHeight="80" id="paT-WR-Egk" userLabel="owner instructor Table View Cell" customClass="ReviewOwnerInstructorTableViewCell" customModule="Academia" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="380" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="paT-WR-Egk" id="MgA-5d-h5m" userLabel="status Content View">
@@ -2109,10 +2182,7 @@
                         <outlet property="classDescriptionTextView" destination="XHg-eN-K1a" id="VM5-XT-urG"/>
                         <outlet property="classNameLabelOutlet" destination="ghj-Bn-AW5" id="1Bj-0K-5K2"/>
                         <outlet property="elligibleGroupsLabelOutlet" destination="uyQ-Fw-qR8" id="R25-Jt-9Jk"/>
-                        <outlet property="groupDescriptionLabelOutlet" destination="aVg-Ny-rM7" id="sXX-wP-G8m"/>
-                        <outlet property="groupDescriptionTextView" destination="XHg-eN-K1a" id="esu-xo-VOC"/>
                         <outlet property="groupListLabelOutlet" destination="NME-Bl-Kvx" id="ssS-1h-666"/>
-                        <outlet property="groupNameLabelOutlet" destination="ghj-Bn-AW5" id="LzD-Z7-5kV"/>
                         <outlet property="lastChangedLabelOutlet" destination="F3o-r0-Wyl" id="clz-u6-t8A"/>
                         <outlet property="welcomeInstructionsLabelOutlet" destination="9jl-EZ-3KK" id="xqX-ph-Su7"/>
                         <outlet property="welcomeMessageLabelOutlet" destination="ayB-30-FGB" id="ag2-3E-PzQ"/>

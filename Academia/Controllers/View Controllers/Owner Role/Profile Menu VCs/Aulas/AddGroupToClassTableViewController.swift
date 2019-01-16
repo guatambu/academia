@@ -21,7 +21,8 @@ class AddGroupToClassTableViewController: UITableViewController {
     let beltBuilder = BeltBuilder()
     
     @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
-    @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
+    @IBOutlet weak var welcomeInstructions1LabelOutlet: UILabel!
+    @IBOutlet weak var welcomeInstructions2LabelOutlet: UILabel!
     
     
     // MARK: - ViewController Lifecycle Functions

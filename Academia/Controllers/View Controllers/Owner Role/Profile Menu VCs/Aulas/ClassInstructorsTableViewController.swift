@@ -19,7 +19,7 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
     var aulaToEdit: Aula?
     
     // tableView Sections Header Labels
-    let sectionHeaderLabels = ["Kids", "Adults"]
+    let sectionHeaderLabels = ["Owners", "Instructors"]
     
     let beltBuilder = BeltBuilder()
     
