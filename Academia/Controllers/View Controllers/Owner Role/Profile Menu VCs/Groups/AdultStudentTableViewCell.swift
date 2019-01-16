@@ -89,6 +89,11 @@ class AdultStudentTableViewCell: UITableViewCell {
 
         userThumbnailImageViewOutlet.image = adultStudent.profilePic
         cellTitleOutlet.text = "\(adultStudent.firstName) \(adultStudent.lastName)"
+        
+        // if inEditingMode == true and this student is present in groupToEdit.adultMembers array, we should see the propfile pic selected
+        if isChosen {
+            roundProfilePicView.borderColor = beltBuilder.redBeltRed
+        }
     }
     
 }

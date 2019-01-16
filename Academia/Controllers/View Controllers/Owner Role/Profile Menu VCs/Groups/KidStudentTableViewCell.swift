@@ -47,6 +47,8 @@ class KidStudentTableViewCell: UITableViewCell {
         // toggle isChosen Boolean value
         isChosen = !isChosen
         
+        print(isChosen)
+        
         // add/remove student to appropriate model controller's source of truth
         guard let kidStudent = kidStudent else {
             print("ERROR: nil value found while attepting to unwrap optional kidStudent in KidStudentTableViewCell.swift -> profilePicTapped() - line 59.")
@@ -86,6 +88,11 @@ class KidStudentTableViewCell: UITableViewCell {
         
         userThumbnailImageViewOutlet.image = kidStudent.profilePic
         cellTitleOutlet.text = "\(kidStudent.firstName) \(kidStudent.lastName)"
+        
+        // if inEditingMode == true and this student is present in groupToEdit.kidMembers array, we should see the propfile pic selected
+        if isChosen {
+            roundProfilePicView.borderColor = beltBuilder.redBeltRed
+        }
     }
 
 }

@@ -71,9 +71,9 @@ class GroupNameAndDescriptionViewController: UIViewController {
             
             updateGroupInfo()
             
-            self.returnToPaymentProgramInfo()
+            self.returnToGroupInfo()
             
-            print("update group name: \(PaymentProgramModelController.shared.paymentPrograms[0].programName)")
+            print("update group name: \(String(describing: self.groupToEdit?.name))")
         }
         inEditingMode = false
     }

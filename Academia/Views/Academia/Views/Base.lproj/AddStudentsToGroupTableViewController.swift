@@ -63,9 +63,9 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
             
             updateGroupInfo()
             
-            self.returnToPaymentProgramInfo()
+            self.returnToGroupInfo()
             
-            print("update payment program name: \(PaymentProgramModelController.shared.paymentPrograms[0].programName)")
+            print("update... \nkidsMembers.count = \(String(describing: self.groupToEdit?.kidMembers?.count))\nadultMembers.count = \(String(describing: self.groupToEdit?.adultMembers?.count))")
         }
         inEditingMode = false
     }
@@ -155,6 +155,16 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
             
             // set delegate to communicate with AddNewStudentGroupImageMenuTableViewCell
             cell.delegate = self
+            
+            // set the isChosen to true if inEditingMode == true to display the student as chosen
+            // TODO: - need to add a check for whether this individual student is present in the groupToEdit.kidMembers array, then this means this individual cell passes the isChosen = true value through to the cell... likely use the generated UUID
+            if let inEditingMode = inEditingMode {
+                
+                if inEditingMode {
+                    cell.isChosen = true
+                }
+            }
+            
             cell.kidStudent = mockKids[indexPath.row]
             
             return cell
@@ -164,6 +174,15 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
             
             // set delegate to communicate with AddNewStudentGroupImageMenuTableViewCell
             cell.delegate = self
+            
+            // set the isChosen to true if inEditingMode == true to display the student as chosen
+            if let inEditingMode = inEditingMode {
+                
+                if inEditingMode {
+                    cell.isChosen = true
+                }
+            }
+            
             cell.adultStudent = mockAdults[indexPath.row]
             
             return cell
@@ -239,13 +258,8 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
             destViewController.emergencyContactName = adult.emergencyContactName
             destViewController.emergencyContactRelationship = adult.emergencyContactRelationship
             destViewController.emergencyContactPhone = adult.emergencyContactPhone
-            
         }
-        
     }
-    
-    
-
 }
 
 
@@ -293,7 +307,6 @@ extension AddStudentsToGroupTableViewController {
         nextButtonOutlet.isHidden = true
         nextButtonOutlet.isEnabled = false
         
-        // here we can loop through the source of truth and compare that array's contents to the group's members array contents,  where there is a match, we can toggle the isslected red border to be displayed around the profile pic
         
     }
 }
