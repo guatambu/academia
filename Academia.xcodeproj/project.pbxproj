@@ -684,6 +684,45 @@
 			path = fonts;
 			sourceTree = "<group>";
 		};
+		FA1CEF2A21EFE6E4004498BC /* Aulas */ = {
+			isa = PBXGroup;
+			children = (
+				FA21D67F2130BB1E006790E5 /* OwnerClassListTableViewController.swift */,
+				FAD2A3A821E6B7C700364FC0 /* ClassInfoDetailsTableViewController.swift */,
+				FAD2A3AA21E6B82A00364FC0 /* ClassNameAndDescriptionViewController.swift */,
+				FAD2A3AC21E6B84D00364FC0 /* ClassLocationAndTimeViewController.swift */,
+				FAD2A3AE21E6B87600364FC0 /* ClassInstructorsTableViewController.swift */,
+				FAD2A3B021E6B90D00364FC0 /* AddGroupToClassTableViewController.swift */,
+				FAD2A3B221E6B93300364FC0 /* ReviewAndCreateClassTableViewController.swift */,
+				FAD2A3B421E6E1AF00364FC0 /* InstructorTableViewCell.swift */,
+				FAD2A3B621E6E1C600364FC0 /* OwnerInstructorTableViewCell.swift */,
+				FAD2A3B821E6E1E100364FC0 /* ReviewInstructorTableViewCell.swift */,
+				FAD2A3BA21E6E1F900364FC0 /* ReviewOwnerInstructorTableViewCell.swift */,
+			);
+			path = Aulas;
+			sourceTree = "<group>";
+		};
+		FA1CEF2B21EFE702004498BC /* Techniques */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Techniques;
+			sourceTree = "<group>";
+		};
+		FA1CEF2C21EFE70C004498BC /* CurriculumModule */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CurriculumModule;
+			sourceTree = "<group>";
+		};
+		FA1CEF2D21EFE718004498BC /* Curriculum */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Curriculum;
+			sourceTree = "<group>";
+		};
 		FA21D69521334E46006790E5 /* Belt TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -728,22 +767,15 @@
 			path = "Home Dashboard";
 			sourceTree = "<group>";
 		};
-		FA21D69D21339E49006790E5 /* Aulas */ = {
+		FA21D69D21339E49006790E5 /* Curriculum */ = {
 			isa = PBXGroup;
 			children = (
-				FA21D67F2130BB1E006790E5 /* OwnerClassListTableViewController.swift */,
-				FAD2A3A821E6B7C700364FC0 /* ClassInfoDetailsTableViewController.swift */,
-				FAD2A3AA21E6B82A00364FC0 /* ClassNameAndDescriptionViewController.swift */,
-				FAD2A3AC21E6B84D00364FC0 /* ClassLocationAndTimeViewController.swift */,
-				FAD2A3AE21E6B87600364FC0 /* ClassInstructorsTableViewController.swift */,
-				FAD2A3B021E6B90D00364FC0 /* AddGroupToClassTableViewController.swift */,
-				FAD2A3B221E6B93300364FC0 /* ReviewAndCreateClassTableViewController.swift */,
-				FAD2A3B421E6E1AF00364FC0 /* InstructorTableViewCell.swift */,
-				FAD2A3B621E6E1C600364FC0 /* OwnerInstructorTableViewCell.swift */,
-				FAD2A3B821E6E1E100364FC0 /* ReviewInstructorTableViewCell.swift */,
-				FAD2A3BA21E6E1F900364FC0 /* ReviewOwnerInstructorTableViewCell.swift */,
+				FA1CEF2D21EFE718004498BC /* Curriculum */,
+				FA1CEF2C21EFE70C004498BC /* CurriculumModule */,
+				FA1CEF2B21EFE702004498BC /* Techniques */,
+				FA1CEF2A21EFE6E4004498BC /* Aulas */,
 			);
-			path = Aulas;
+			path = Curriculum;
 			sourceTree = "<group>";
 		};
 		FA21D69F2134B874006790E5 /* Menu cell nibs */ = {
@@ -867,7 +899,7 @@
 				FABF859421B22089005CEBD4 /* Locations */,
 				FABF85A121B5F874005CEBD4 /* Payment Programs */,
 				FAD5B13121CA0172004ED286 /* Groups */,
-				FA21D69D21339E49006790E5 /* Aulas */,
+				FA21D69D21339E49006790E5 /* Curriculum */,
 				FA9AD9F4213782070005E1F1 /* TutorialsTableViewController.swift */,
 				FA9ADA232139EDD30005E1F1 /* About & Privacy */,
 				FA9ADA082137861B0005E1F1 /* OwnerPaymentInfoTableViewController.swift */,
