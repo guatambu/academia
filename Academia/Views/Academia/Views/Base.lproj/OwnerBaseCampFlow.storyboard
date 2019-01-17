@@ -602,6 +602,9 @@
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rJF-FR-qsZ">
                                         <rect key="frame" x="63" y="0.0" width="83" height="22"/>
+                                        <connections>
+                                            <action selector="activeSwitchToggled:" destination="qMa-B9-a4e" eventType="valueChanged" id="DAR-6W-pzk"/>
+                                        </connections>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="changed: 06/09/18" textAlignment="right" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CuR-hK-fNN">
                                         <rect key="frame" x="152" y="0.0" width="136" height="22"/>

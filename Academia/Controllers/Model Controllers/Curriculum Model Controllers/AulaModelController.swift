@@ -19,7 +19,7 @@ class AulaModelController {
     // MARK: - CRUD Functions
     
     // Create
-    func addNew(active: Bool, className: String, classDescription: String, daysOfTheWeek: [ClassTimeComponents.Weekdays], timeOfDay: String, location: Location?, kidAttendees: [KidStudent]?, adultAttendees: [AdultStudent]?, instructor: [AdultStudent]?, ownerInstructor: [Owner]?) {
+    func add(active: Bool, className: String, classDescription: String, daysOfTheWeek: [ClassTimeComponents.Weekdays], timeOfDay: String, location: Location?, kidAttendees: [KidStudent]?, adultAttendees: [AdultStudent]?, instructor: [AdultStudent]?, ownerInstructor: [Owner]?) {
         
         let aula = Aula(aulaUID: UUID(), active: active, aulaName: className, aulaDescription: classDescription, daysOfTheWeek: daysOfTheWeek, timeOfDay: timeOfDay, location: location, kidAttendees: kidAttendees, adultAttendees: adultAttendees, instructor: instructor, ownerInstructor: ownerInstructor, currentDate: Date(), dateCreated: Date(), dateEdited: Date())
         
@@ -30,19 +30,40 @@ class AulaModelController {
     
     
     // Update
-    func update(aula: Aula, active: Bool, kidAttendees: [KidStudent]?, adultAttendees: [AdultStudent]?, aulaDescription: String, aulaName: String, daysOfTheWeek: [ClassTimeComponents.Weekdays], instructor: [AdultStudent]?, ownerInstructor: [Owner]?, location: Location?, students: [Any]?, timeOfDay: String) {
+    func update(aula: Aula, active: Bool?, kidAttendees: [KidStudent]?, adultAttendees: [AdultStudent]?, aulaDescription: String?, aulaName: String?, daysOfTheWeek: [ClassTimeComponents.Weekdays]?, instructor: [AdultStudent]?, ownerInstructor: [Owner]?, location: Location?, students: [Any]?, timeOfDay: String?) {
         
-        aula.active = active
-        aula.kidAttendees = kidAttendees
-        aula.adultAttendees = adultAttendees
-        aula.aulaDescription = aulaDescription
-        aula.aulaName = aulaName
         aula.dateEdited = Date()
-        aula.daysOfTheWeek = daysOfTheWeek
-        aula.instructor = instructor
-        aula.ownerInstructor = ownerInstructor
-        aula.location = location
-        aula.timeOfDay = timeOfDay
+        
+        if let active = active {
+            aula.active = active
+        }
+        if let kidAttendees = kidAttendees {
+            aula.kidAttendees = kidAttendees
+        }
+        if let adultAttendees = adultAttendees {
+            aula.adultAttendees = adultAttendees
+        }
+        if let aulaDescription = aulaDescription {
+            aula.aulaDescription = aulaDescription
+        }
+        if let aulaName = aulaName {
+            aula.aulaName = aulaName
+        }
+        if let daysOfTheWeek = daysOfTheWeek {
+            aula.daysOfTheWeek = daysOfTheWeek
+        }
+        if let instructor = instructor {
+            aula.instructor = instructor
+        }
+        if let ownerInstructor = ownerInstructor {
+            aula.ownerInstructor = ownerInstructor
+        }
+        if let location = location {
+            aula.location = location
+        }
+        if let timeOfDay = timeOfDay {
+            aula.timeOfDay = timeOfDay
+        }
     }
     
     

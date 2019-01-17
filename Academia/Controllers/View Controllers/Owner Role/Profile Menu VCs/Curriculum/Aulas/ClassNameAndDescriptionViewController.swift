@@ -20,10 +20,7 @@ class ClassNameAndDescriptionViewController: UIViewController {
     
     var inEditingMode: Bool?
     var aulaToEdit: Aula?
-    
-    // tableView Sections Header Labels
-    let sectionHeaderLabels = ["Kids", "Adults"]
-    
+
     let beltBuilder = BeltBuilder()
     
     @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
@@ -69,13 +66,13 @@ class ClassNameAndDescriptionViewController: UIViewController {
     @objc func saveButtonTapped() {
         
         // Location update profile info
-        if groupNameTextField.text != "" {
+        if classNameTextField.text != "" {
             
             updateGroupInfo()
             
-            self.returnToGroupInfo()
+            self.returnToClassInfo()
             
-            print("update group name: \(String(describing: self.groupToEdit?.name))")
+            print("update group name: \(String(describing: self.aulaToEdit?.aulaName))")
         }
         inEditingMode = false
     }
@@ -86,19 +83,19 @@ class ClassNameAndDescriptionViewController: UIViewController {
         // programmatically performing the segue
         
         // instantiate the relevant storyboard
-        let mainView: UIStoryboard = UIStoryboard(name: "OwnerStudentsFlow", bundle: nil)
+        let mainView: UIStoryboard = UIStoryboard(name: "OwnerBaseCampFlow", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
-        let destViewController = mainView.instantiateViewController(withIdentifier: "toAddStudentsToGroup") as! AddStudentsToGroupTableViewController
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toClassLocationAndTime") as! ClassLocationAndTimeViewController
         
         // run check to see is there is a paymentProgramName
-        guard groupNameTextField.text != "" else {
+        guard classNameTextField.text != "" else {
             
             welcomeInstructionsLabelOutlet.textColor = UIColor.red
             return
         }
         
-        groupName = groupNameTextField.text
-        groupDescription = groupDescriptionTextView.text
+        aulaName = classNameTextField.text
+        aulaDescription = classDescriptionTextView.text
         // create the segue programmatically
         self.navigationController?.pushViewController(destViewController, animated: true)
         
@@ -108,12 +105,12 @@ class ClassNameAndDescriptionViewController: UIViewController {
         navigationItem.backBarButtonItem = backButtonItem
         
         // pass data to destViewController
-        destViewController.groupName = groupName
+        destViewController.aulaName = aulaName
         destViewController.active = active
-        destViewController.groupDescription = groupDescription
+        destViewController.aulaDescription = aulaDescription
         
         destViewController.inEditingMode = inEditingMode
-        destViewController.groupToEdit = groupToEdit
+        destViewController.aulaToEdit = aulaToEdit
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
         updateGroupInfo()
@@ -122,14 +119,14 @@ class ClassNameAndDescriptionViewController: UIViewController {
 
 
 // MARK: - Editing Mode for Individual User case specific setup
-extension GroupNameAndDescriptionViewController {
+extension ClassNameAndDescriptionViewController {
     
     // Update Function for case where want to update user info without a segue
     func updateGroupInfo() {
-        guard let group = groupToEdit else { return }
+        guard let aula = aulaToEdit else { return }
         // group update info
-        if groupNameTextField.text != "" {
-            GroupModelController.shared.update(group: group, active: active, name: groupNameTextField.text, description: groupDescriptionTextView.text, kidMembers: nil, adultMembers: nil, kidStudent: nil, adultStudent: nil)
+        if classNameTextField.text != "" {
+            AulaModelController.shared.update(aula: aula, active: active, kidAttendees: nil, adultAttendees: nil, aulaDescription: classDescriptionTextView.text, aulaName: classNameTextField.text, daysOfTheWeek: nil, instructor: nil, ownerInstructor: nil, location: nil, students: nil, timeOfDay: nil)
             print("update group name: \(GroupModelController.shared.groups[0].name)")
         }
     }
@@ -142,25 +139,25 @@ extension GroupNameAndDescriptionViewController {
             let saveButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveButtonTapped))
             navigationItem.rightBarButtonItem = saveButtonItem
             
-            groupEditingSetup()
+            aulaEditingSetup()
         }
         
         print("GroupNameAndDescriptionVC -> inEditingMode: \(inEditingMode)")
     }
     
     // owner setup for editing mode
-    func groupEditingSetup() {
+    func aulaEditingSetup() {
         
-        guard let groupToEdit = groupToEdit else {
+        guard let aulaToEdit = aulaToEdit else {
             return
         }
         
-        welcomeLabelOutlet.text = "Group: \(groupToEdit.name)"
+        welcomeMessageLabelOutlet.text = "Aula: \(aulaToEdit.aulaName)"
         
         welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
         welcomeInstructionsLabelOutlet.text = "you are in group editing mode"
         
-        groupDescriptionTextView.text = groupToEdit.description
-        groupNameTextField.text = groupToEdit.name
+        classDescriptionTextView.text = aulaToEdit.aulaDescription
+        classNameTextField.text = aulaToEdit.aulaName
     }
 }
