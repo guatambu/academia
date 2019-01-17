@@ -10,14 +10,14 @@ import Foundation
 
 class ClassTimeComponents {
     
-    enum Weekdays {
-        case Monday
-        case Tuesday
-        case Wednesday
-        case Thursday
-        case Friday
-        case Saturday
-        case Sunday
+    enum Weekdays: String {
+        case Monday = "Monday"
+        case Tuesday  = "Tuesday"
+        case Wednesday = "Wednesday"
+        case Thursday = "Thursday"
+        case Friday = "Friday"
+        case Saturday = "Saturday"
+        case Sunday = "Sunday"
     }
     
     enum Hours: Int {

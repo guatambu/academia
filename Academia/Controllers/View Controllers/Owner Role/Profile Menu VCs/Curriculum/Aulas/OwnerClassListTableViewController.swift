@@ -14,14 +14,12 @@ class OwnerClassListTableViewController: UITableViewController {
     
     // MARK: - Properties
     
-    let weekdays: [ClassTimeComponents.Weekdays] = [.Sunday, .Monday, .Tuesday, .Wednesday, .Thursday, .Friday, .Saturday]
-    
     var classes = [MockData.adultClassA]
     
-    // tableView Sections Header Labels
-    let sectionHeaderLabels = ["Kids", "Adults"]
-    
     let beltBuilder = BeltBuilder()
+    
+    // tableView Sections Header Labels
+    let weekdays: [ClassTimeComponents.Weekdays] = [.Sunday, .Monday, .Tuesday, .Wednesday, .Thursday, .Friday, .Saturday]
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -51,18 +49,20 @@ class OwnerClassListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let sectionTitle = UILabel()
+        let sectionHeaderView = UIView()
+        sectionHeaderView.backgroundColor = UIColor.white
         
-        sectionTitle.backgroundColor = UIColor.white
+        let avenirFont16 = [
+            NSAttributedString.Key.foregroundColor: UIColor.black,
+            NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 16)! ]
         
-        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.lightGray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 24)! ]
+        let label = UILabel()
+        label.attributedText = NSAttributedString(string: weekdays[section].rawValue, attributes: avenirFont16)
+        label.frame = CGRect(x: 16, y: 0, width: 80, height: 40)
         
-        let weekday = weekdays[section]
+        sectionHeaderView.addSubview(label)
         
-        sectionTitle.attributedText = NSAttributedString(string: "  \(weekday)", attributes: avenirFont)
-        
-        return sectionTitle
+        return sectionHeaderView
     }
 
 
@@ -76,43 +76,13 @@ class OwnerClassListTableViewController: UITableViewController {
         return cell
     }
 
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-    }
-
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
  
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
-        if segue.identifier == "" {
+        if segue.identifier == "toAulaInfoDetailsSegue" {
             guard let destinationTVC = segue.destination as? ClassInfoDetailsTableViewController else { return }
             guard let indexPath = self.tableView.indexPathForSelectedRow else { return }
             let aula = classes[indexPath.row]

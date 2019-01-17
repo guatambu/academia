@@ -134,7 +134,7 @@
                                 <connections>
                                     <outlet property="cellTitleOutlet" destination="m9l-dH-Dve" id="EDR-yK-ggx"/>
                                     <outlet property="rightRedArrowImageViewOutlet" destination="qNY-Fa-LdU" id="dxJ-je-jhj"/>
-                                    <segue destination="XKD-Vs-RDn" kind="show" id="Bbv-17-72h"/>
+                                    <segue destination="XKD-Vs-RDn" kind="show" identifier="toAulaInfoDetailsSegue" id="Bbv-17-72h"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
