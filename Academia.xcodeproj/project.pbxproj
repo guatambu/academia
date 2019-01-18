@@ -16,6 +16,10 @@
 		FA0C444621278BBF00B59194 /* Aula.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0C444521278BBF00B59194 /* Aula.swift */; };
 		FA0C444821278C9A00B59194 /* PaymentProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0C444721278C9A00B59194 /* PaymentProgram.swift */; };
 		FA0C444A21278CA900B59194 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0C444921278CA900B59194 /* Group.swift */; };
+		FA1CEF2F21F19EC1004498BC /* DaysOfTheWeekCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CEF2E21F19EC1004498BC /* DaysOfTheWeekCollectionViewCell.swift */; };
+		FA1CEF3121F19EDA004498BC /* TimeOfDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CEF3021F19EDA004498BC /* TimeOfDayCollectionViewCell.swift */; };
+		FA1CEF3321F19EEF004498BC /* LocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CEF3221F19EEF004498BC /* LocationCollectionViewCell.swift */; };
+		FA1CEF3521F1A43A004498BC /* AulaDelegateProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CEF3421F1A43A004498BC /* AulaDelegateProtocols.swift */; };
 		FA21D6802130BB1E006790E5 /* OwnerClassListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D67F2130BB1E006790E5 /* OwnerClassListTableViewController.swift */; };
 		FA21D6822130BB2D006790E5 /* OwnerProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6812130BB2D006790E5 /* OwnerProfileTableViewController.swift */; };
 		FA21D6862130BB93006790E5 /* OwnerGroupListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6852130BB93006790E5 /* OwnerGroupListTableViewController.swift */; };
@@ -280,6 +284,10 @@
 		FA0C444521278BBF00B59194 /* Aula.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aula.swift; sourceTree = "<group>"; };
 		FA0C444721278C9A00B59194 /* PaymentProgram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProgram.swift; sourceTree = "<group>"; };
 		FA0C444921278CA900B59194 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		FA1CEF2E21F19EC1004498BC /* DaysOfTheWeekCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysOfTheWeekCollectionViewCell.swift; sourceTree = "<group>"; };
+		FA1CEF3021F19EDA004498BC /* TimeOfDayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfDayCollectionViewCell.swift; sourceTree = "<group>"; };
+		FA1CEF3221F19EEF004498BC /* LocationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCollectionViewCell.swift; sourceTree = "<group>"; };
+		FA1CEF3421F1A43A004498BC /* AulaDelegateProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AulaDelegateProtocols.swift; sourceTree = "<group>"; };
 		FA21D67F2130BB1E006790E5 /* OwnerClassListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerClassListTableViewController.swift; sourceTree = "<group>"; };
 		FA21D6812130BB2D006790E5 /* OwnerProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerProfileTableViewController.swift; sourceTree = "<group>"; };
 		FA21D6852130BB93006790E5 /* OwnerGroupListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerGroupListTableViewController.swift; sourceTree = "<group>"; };
@@ -698,6 +706,9 @@
 				FAD2A3B621E6E1C600364FC0 /* OwnerInstructorTableViewCell.swift */,
 				FAD2A3B821E6E1E100364FC0 /* ReviewInstructorTableViewCell.swift */,
 				FAD2A3BA21E6E1F900364FC0 /* ReviewOwnerInstructorTableViewCell.swift */,
+				FA1CEF2E21F19EC1004498BC /* DaysOfTheWeekCollectionViewCell.swift */,
+				FA1CEF3021F19EDA004498BC /* TimeOfDayCollectionViewCell.swift */,
+				FA1CEF3221F19EEF004498BC /* LocationCollectionViewCell.swift */,
 			);
 			path = Aulas;
 			sourceTree = "<group>";
@@ -961,6 +972,7 @@
 				FAD5B12C21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift */,
 				FAAEDB4F21DDA27500E1A04F /* GroupMembersDelegate.swift */,
 				FAD2A3BC21E6E42000364FC0 /* InstructorsDelegate.swift */,
+				FA1CEF3421F1A43A004498BC /* AulaDelegateProtocols.swift */,
 			);
 			path = "Protocols (Delegates and others))";
 			sourceTree = "<group>";
@@ -1435,7 +1447,9 @@
 				FAE2FD9C2140C01B00815402 /* MobileTextFieldTableViewCell.swift in Sources */,
 				FA23D2922167F9EF00707056 /* OnBoardingTaskModelController.swift in Sources */,
 				FA6FB9FF2149F32200558657 /* Owner.swift in Sources */,
+				FA1CEF3121F19EDA004498BC /* TimeOfDayCollectionViewCell.swift in Sources */,
 				FA531C2421954E2C00AE2C38 /* Belt.swift in Sources */,
+				FA1CEF3521F1A43A004498BC /* AulaDelegateProtocols.swift in Sources */,
 				FAE2FD922140BFE200815402 /* StreetAddressTextFieldTableViewCell.swift in Sources */,
 				FA5C5C432152F11400BF62D5 /* StudentUserGeneralMenuTableViewCell.swift in Sources */,
 				FA66A00E2145CD42002B0313 /* DigitalSignatureTableViewCell.swift in Sources */,
@@ -1443,6 +1457,7 @@
 				FA9AD9F9213783BA0005E1F1 /* MyLocationsTableViewController.swift in Sources */,
 				FAD2A3C121E810DD00364FC0 /* AdultGroupInfoDetailsTableViewCell.swift in Sources */,
 				FAD2A3BB21E6E1F900364FC0 /* ReviewOwnerInstructorTableViewCell.swift in Sources */,
+				FA1CEF3321F19EEF004498BC /* LocationCollectionViewCell.swift in Sources */,
 				FAF29BCA212E23E300752414 /* OwnerHomeTableViewController.swift in Sources */,
 				FA0C444821278C9A00B59194 /* PaymentProgram.swift in Sources */,
 				FAE2FD942140BFED00815402 /* CityTextFieldTableViewCell.swift in Sources */,
@@ -1506,6 +1521,7 @@
 				FA6FBA012149F33100558657 /* AdultStudent.swift in Sources */,
 				FA41CE6B21A344B100EAD53A /* OwnerInfoDetailsViewController.swift in Sources */,
 				FA21D6862130BB93006790E5 /* OwnerGroupListTableViewController.swift in Sources */,
+				FA1CEF2F21F19EC1004498BC /* DaysOfTheWeekCollectionViewCell.swift in Sources */,
 				FA0C441621278A8F00B59194 /* AppDelegate.swift in Sources */,
 				FAF29BDD213087F600752414 /* GeneralMenuTableViewCell.swift in Sources */,
 				FAE67A36215C2DDF00822DCF /* StudentPaymentTableViewController.swift in Sources */,

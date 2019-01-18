@@ -41,7 +41,7 @@ class DateCollectionViewCell: UICollectionViewCell {
     func updateViews() {
         
         guard let billingDate = billingDate else {
-            print("ERROR:  nil value for billingDate in DateCollectionViewCell.swift -> updateViews() - line 41")
+            print("ERROR:  nil value for billingDate in DateCollectionViewCell.swift -> updateViews() - line 44")
             return
         }
         
@@ -52,7 +52,7 @@ class DateCollectionViewCell: UICollectionViewCell {
         collectionCellView.layer.cornerRadius = 10
         
         guard let billingDates = delegate?.billingDates else {
-            print("ERROR:  nil value for billingDates in DateCollectionViewCell.swift -> updateViews() - line 56")
+            print("ERROR:  nil value for billingDates in DateCollectionViewCell.swift -> updateViews() - line 55")
             return
         }
         
@@ -74,12 +74,12 @@ class DateCollectionViewCell: UICollectionViewCell {
     @IBAction func dateSelectionButtonTapped(_ sender: DesignableButton) {
         
         guard let billingDate = billingDate else {
-            print("ERROR:  nil value for billingDate in DateCollectionViewCell.swift -> dateSelectionButtonTapped() - line 76")
+            print("ERROR:  nil value for billingDate in DateCollectionViewCell.swift -> dateSelectionButtonTapped() - line 77")
             return
         }
         
         guard var billingDates = delegate?.billingDates else {
-            print("ERROR:  nil value for billingDates in DateCollectionViewCell.swift -> dateSelectionButtonTapped() - line 81")
+            print("ERROR:  nil value for billingDates in DateCollectionViewCell.swift -> dateSelectionButtonTapped() - line 82")
             return
         }
         

@@ -41,7 +41,7 @@ class SignatureCollectionViewCell: UICollectionViewCell {
     func updateViews() {
         
         guard let signatureType = signatureType else {
-            print("ERROR:  nil value for signatureType in SignatureCollectionViewCell.swift -> updateViews() - line 41")
+            print("ERROR:  nil value for signatureType in SignatureCollectionViewCell.swift -> updateViews() - line 44")
             return
         }
         
@@ -74,12 +74,12 @@ class SignatureCollectionViewCell: UICollectionViewCell {
     @IBAction func signatureSelectionButtonTapped(_ sender: DesignableButton) {
         
         guard let signatureType = signatureType else {
-            print("ERROR:  nil value for signatureType in SignatureCollectionViewCell.swift -> signatureSelectionButtonTapped() - line 76")
+            print("ERROR:  nil value for signatureType in SignatureCollectionViewCell.swift -> signatureSelectionButtonTapped() - line 77")
             return
         }
         
         guard var signatureTypes = delegate?.signatureTypes else {
-            print("ERROR:  nil value for billingTypes in SignatureCollectionViewCell.swift -> signatureSelectionButtonTapped() - line 81")
+            print("ERROR:  nil value for billingTypes in SignatureCollectionViewCell.swift -> signatureSelectionButtonTapped() - line 82")
             return
         }
         

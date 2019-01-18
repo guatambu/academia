@@ -19,8 +19,8 @@ class Aula {
     var aulaName: String
     var aulaDescription: String
     var daysOfTheWeek: [ClassTimeComponents.Weekdays]
-    var timeOfDay: String
-    var location: Location?
+    var times: [String]?
+    var locations: [Location]?
     var kidAttendees: [KidStudent]?
     var adultAttendees: [AdultStudent]?
     var instructor: [AdultStudent]?
@@ -35,8 +35,8 @@ class Aula {
          aulaName: String,
          aulaDescription: String,
          daysOfTheWeek: [ClassTimeComponents.Weekdays],
-         timeOfDay: String,
-         location: Location?,
+         times: [String]?,
+         locations: [Location]?,
          kidAttendees: [KidStudent]?,
          adultAttendees: [AdultStudent]?,
          instructor: [AdultStudent]?,
@@ -51,8 +51,8 @@ class Aula {
         self.aulaName = aulaName
         self.aulaDescription = aulaDescription
         self.daysOfTheWeek = daysOfTheWeek
-        self.timeOfDay = timeOfDay
-        self.location = location
+        self.times = times
+        self.locations = locations
         self.kidAttendees = kidAttendees
         self.adultAttendees = adultAttendees
         self.instructor = instructor
@@ -72,8 +72,8 @@ extension Aula: Equatable {
         if lhs.aulaName != rhs.aulaName { return false }
         if lhs.aulaDescription != rhs.aulaDescription { return false }
         if lhs.daysOfTheWeek != rhs.daysOfTheWeek { return false }
-        if lhs.timeOfDay != rhs.timeOfDay { return false }
-        if lhs.location != rhs.location { return false }
+        if lhs.times != rhs.times { return false }
+        if lhs.locations != rhs.locations { return false }
         if lhs.kidAttendees != rhs.kidAttendees { return false }
         if lhs.adultAttendees != rhs.adultAttendees { return false }
         if lhs.instructor != rhs.instructor { return false }

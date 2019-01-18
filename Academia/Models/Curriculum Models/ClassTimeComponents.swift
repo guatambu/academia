@@ -21,10 +21,6 @@ class ClassTimeComponents {
     }
     
     enum Hours: Int {
-        case one = 01
-        case two = 02
-        case three = 03
-        case four = 04
         case five = 05
         case six = 06
         case seven = 07
@@ -61,4 +57,9 @@ class ClassTimeComponents {
         case fiftyfive = 55
     }
     
+    let weekdaysArray: [Weekdays] = [.Sunday, .Monday, .Tuesday, .Wednesday, .Thursday, .Friday, .Saturday]
+    
+    let hoursArray: [Hours] = [.five, .six, .seven, .eight, .nine, .ten, .eleven, .twelve, .thirteen, .fourteen, .fifteen, .sixteen, .seventeen, .eighteen, .nineteen, .twenty, .twentyone, .twentytwo, .twentythree, .twentyfour]
+    
+    let minutesArray: [Minutes] = [.five, .ten, .fifteen, .twenty, .twentyfive, .thirty, .thirtyfive, .forty, .fortyfive, .fifty, .fiftyfive]
 }
