@@ -20,9 +20,7 @@ class TypeCollectionViewCell: UICollectionViewCell {
     
     let beltBuilder = BeltBuilder()
     
-//    var inEditingMode = false
     var selectedBillingTypes: [Billing.BillingType]?
-    
     
     let uncheckedBox32 = UIImage(named: "unchecked_box_32")
     let checkedBox32 = UIImage(named: "checked_box_32")
@@ -103,5 +101,4 @@ class TypeCollectionViewCell: UICollectionViewCell {
 
         }
     }
-    
 }

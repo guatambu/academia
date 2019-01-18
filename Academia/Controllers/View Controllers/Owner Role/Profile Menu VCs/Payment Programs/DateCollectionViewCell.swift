@@ -17,12 +17,9 @@ class DateCollectionViewCell: UICollectionViewCell {
             updateViews()
         }
     }
-    
-    var isDateCurrentlySelected = false
-    
+
     let beltBuilder = BeltBuilder()
-    
-//    var inEditingMode: Bool?
+ 
     var selectedBillingDates: [Billing.BillingDate]?
     
     let uncheckedBox32 = UIImage(named: "unchecked_box_32")
@@ -103,5 +100,4 @@ class DateCollectionViewCell: UICollectionViewCell {
             
         }
     }
-    
 }

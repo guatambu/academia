@@ -15,11 +15,14 @@ class ClassLocationAndTimeViewController: UIViewController, DaysOfTheWeekDelegat
     // MARK: - Properties
     
     var aulaName: String?
-    var active: Bool = true
+    var active: Bool?
     var aulaDescription: String?
-    var daysOfTheWeek: [ClassTimeComponents.Weekdays]?
-    var times: [String]?
-    var locations: [Location]?
+    var daysOfTheWeek: [ClassTimeComponents.Weekdays] = []
+    var times: [String] = []
+    var locations: [Location] = []
+    
+    // mock data for locations' local surce of truth
+    let mockLocations = [MockData.myLocation, MockData.myLocation]
     
     var inEditingMode: Bool?
     var aulaToEdit: Aula?
@@ -42,14 +45,60 @@ class ClassLocationAndTimeViewController: UIViewController, DaysOfTheWeekDelegat
 
     // MARK: - ViewController Lifecycle Functions
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
+                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
+        
+        navigationController?.navigationBar.titleTextAttributes = avenirFont
+        
+        enterEditingMode(inEditingMode: inEditingMode)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        // set up collection views dataSources and delegates
+        daysOfTheWeekCollectionView.dataSource = self
+        daysOfTheWeekCollectionView.delegate = self
+        
+        timeOfDayCollectionView.dataSource = self
+        timeOfDayCollectionView.delegate = self
+        
+        locationCollectionView.dataSource = self
+        locationCollectionView.delegate = self
+        
+        //populateCompletedProfileInfo()
+        guard let aulaName = aulaName, let active = active, let aulaDescription = aulaDescription else {
+            print("no aulaName, active, or aulaDescription passed to: ClassLocationAndTimeVC -> viewDidLoad() - line 73")
+            return
+        }
+        
+        print("program name: \(aulaName) \nactive: \(active) \ndescription: \(aulaDescription)")
+        
     }
     
     
     // MARK: - Actions
+    
+    @objc func saveButtonTapped() {
+        
+        // Location update profile info
+        guard daysOfTheWeek.isEmpty != true && times.isEmpty != true && locations.isEmpty != true else {
+            
+            print("ERROR: daysOfTheWeek, times, or locations isEmpty")
+            
+            return
+        }
+            
+        updateAulaInfo()
+        
+        self.returnToPaymentProgramInfo()
+        
+        print("update payment program name: \(PaymentProgramModelController.shared.paymentPrograms[0].programName)")
+        
+        inEditingMode = false
+    }
     
     @IBAction func nextButtonTapped(_ sender: DesignableButton) {
         // programmatically performing the segue
@@ -60,7 +109,7 @@ class ClassLocationAndTimeViewController: UIViewController, DaysOfTheWeekDelegat
         let destViewController = mainView.instantiateViewController(withIdentifier: "toClassInsructors") as! ClassInstructorsTableViewController
         
         // run check to see is there is a aula day of the week, time of day, and location
-        guard classLocationDetailsLabelOutlet.text != "", daysOfTheWeekLabelOutlet.text != "" else {
+        guard daysOfTheWeek.isEmpty != true, times.isEmpty != true, locations.isEmpty != true else {
             
             welcomeInstructionsLabelOutlet.textColor = UIColor.red
             return
@@ -100,11 +149,6 @@ extension ClassLocationAndTimeViewController {
     func updateAulaInfo() {
         
         guard let aula = aulaToEdit else { return }
-        
-        guard let daysOfTheWeek = daysOfTheWeek, let times = times, let locations = locations else {
-            print("ERROR: nil values for daysOfTheWeek, timeOfDay, and location in ClassLocationAndTimeVC.swift -> updateAulaInfo() - line 100")
-            return
-        }
 
         // class update info
        
@@ -140,8 +184,8 @@ extension ClassLocationAndTimeViewController {
         welcomeInstructionsLabelOutlet.text = "you are in group editing mode"
         
         daysOfTheWeek = aulaToEdit.daysOfTheWeek
-        times = aulaToEdit.times
-        locations = aulaToEdit.locations
+        times = aulaToEdit.times ?? []
+        locations = aulaToEdit.locations ?? []
         
         daysOfTheWeekCollectionView.reloadData()
         timeOfDayCollectionView.reloadData()
@@ -157,53 +201,68 @@ extension ClassLocationAndTimeViewController: UICollectionViewDelegate, UICollec
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
+        // day of the week collecitonView
         if collectionView.tag == 20 {
             return classTimeComponents.weekdaysArray.count
+        // time of day collectionView
         } else if collectionView.tag == 30 {
             return classTimeComponents.hoursArray.count
+        // locations collectionView
         } else if collectionView.tag == 40 {
-            return classTimeComponents.minutesArray.count
+            return mockLocations.count
         }
         return 1
     }
     
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//
-//        if collectionView.tag == 5 {
-//            let cell = billingTypeCollectionView.dequeueReusableCell(withReuseIdentifier: "TypeCollectionCell", for: indexPath) as! TypeCollectionViewCell
-//            // set the BillingTypeDelegate for the TypeCollectionViewCell
-//            cell.delegate = self
-//
-//            cell.billingType = billing.types[indexPath.row]
-//            cell.selectedBillingTypes = paymentProgramToEdit?.billingTypes
-//
-//            return cell
-//
-//        } else if collectionView.tag == 10 {
-//
-//            let cell = billingDateCollectionView.dequeueReusableCell(withReuseIdentifier: "DateCollectionCell", for: indexPath) as! DateCollectionViewCell
-//            // set the BillingDateDelegate for the DateCollectionViewCell
-//            cell.delegate = self
-//
-//            cell.billingDate = billing.dates[indexPath.row]
-//            cell.selectedBillingDates = paymentProgramToEdit?.billingDates
-//
-//            return cell
-//
-//        } else if collectionView.tag == 15 {
-//
-//            let cell = signatureTypeCollectionView.dequeueReusableCell(withReuseIdentifier: "SignatureCollectionCell", for: indexPath) as! SignatureCollectionViewCell
-//            // set the SignatureTypeDelegate for the SignatureCollectionViewCell
-//            cell.delegate = self
-//
-//            cell.signatureType = billing.signatures[indexPath.row]
-//            cell.selectedSignatureTypes = paymentProgramToEdit?.signatureTypes
-//
-//            return cell
-//
-//        }
-//        return UICollectionViewCell()
-//    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        // day of the week collecitonView
+        if collectionView.tag == 20 {
+            guard let cell = daysOfTheWeekCollectionView.dequeueReusableCell(withReuseIdentifier: "daysOfTheWeekCollectionCell", for: indexPath) as? DaysOfTheWeekCollectionViewCell else {
+                print("ERROR: failure to create dayOfTheWeek collection cell")
+                return UICollectionViewCell()
+            }
+            // set the DaysOfTheWeekDelegate for the DaysOfTheWeekCollectionViewCell
+            cell.delegate = self
+
+            cell.day = classTimeComponents.weekdaysArray[indexPath.row]
+            cell.selectedDaysOfTheWeek = aulaToEdit?.daysOfTheWeek
+
+            return cell
+
+        // time of day collectionView
+        } else if collectionView.tag == 30 {
+
+            guard let cell = timeOfDayCollectionView.dequeueReusableCell(withReuseIdentifier: "timeOfDayCollectionCell", for: indexPath) as? TimeOfDayCollectionViewCell else {
+                print("ERROR: failure to create timeOfDay collection cell")
+                return UICollectionViewCell()
+            }
+            // set the TimeOfDayDelegate for the TimeOfDayCollectionViewCell
+            cell.delegate = self
+
+            cell.timeOfDay = classTimeComponents.hoursArray[indexPath.row]
+            cell.selectedTimesOfDay = aulaToEdit?.times
+
+            return cell
+
+        // locations collectionView
+        } else if collectionView.tag == 40 {
+
+            guard let cell = locationCollectionView.dequeueReusableCell(withReuseIdentifier: "locationCollectionCell", for: indexPath) as? LocationCollectionViewCell else {
+                print("ERROR: failure to create locations collection cell")
+                return UICollectionViewCell()
+            }
+            // set the LocationDelegate for the LocationCollectionViewCell
+            cell.delegate = self
+
+            cell.location = mockLocations[indexPath.row]
+            cell.selectedLocations = aulaToEdit?.locations
+
+            return cell
+
+        }
+        return UICollectionViewCell()
+    }
     
 }
 

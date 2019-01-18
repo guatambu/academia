@@ -21,8 +21,7 @@ class TimeOfDayCollectionViewCell: UICollectionViewCell {
     let beltBuilder = BeltBuilder()
     
     //    var inEditingMode = false
-    var selectedTimesOfDay: [ClassTimeComponents.Hours]?
-    
+    var selectedTimesOfDay: [String]?
     
     let uncheckedBox32 = UIImage(named: "unchecked_box_32")
     let checkedBox32 = UIImage(named: "checked_box_32")
@@ -43,7 +42,7 @@ class TimeOfDayCollectionViewCell: UICollectionViewCell {
             return
         }
         
-        timeOfDayLabelOutlet.text = "\(timeOfDay.rawValue)"
+        timeOfDayLabelOutlet.text = "\(timeOfDay.rawValue):00"
         checkboxImageView.image = uncheckedBox32
         collectionCellView.layer.borderWidth = 1
         collectionCellView.layer.borderColor = beltBuilder.grayBeltGray.cgColor
@@ -52,7 +51,7 @@ class TimeOfDayCollectionViewCell: UICollectionViewCell {
         // NOTE: this may have something to do with asynchronous threads
         
         guard let times = delegate?.times else {
-            print("ERROR:  nil value for times in TimeOfDayCollectionViewCell.swift -> updateViews() - line 55")
+            print("ERROR:  nil value for delegate.times in TimeOfDayCollectionViewCell.swift -> updateViews() - line 55")
             return
         }
         
@@ -65,7 +64,6 @@ class TimeOfDayCollectionViewCell: UICollectionViewCell {
             checkboxImageView.image = uncheckedBox32
             
         }
-        
     }
     
     
@@ -74,12 +72,12 @@ class TimeOfDayCollectionViewCell: UICollectionViewCell {
     @IBAction func timeOfDaySelectionButtonTapped(_ sender: DesignableButton) {
         
         guard let timeOfDay = timeOfDay else {
-            print("ERROR:  nil value for timeOfDay in TimeOfDayCollectionViewCell.swift -> timeOfDaySelectionButtonTapped() - line 77")
+            print("ERROR:  nil value for timeOfDay in TimeOfDayCollectionViewCell.swift -> timeOfDaySelectionButtonTapped() - line 75")
             return
         }
         
         guard var times = delegate?.times else {
-            print("ERROR:  nil value for times in TimeOfDayCollectionViewCell.swift -> timeOfDaySelectionButtonTapped() - line 82")
+            print("ERROR:  nil value for delegate.times in TimeOfDayCollectionViewCell.swift -> timeOfDaySelectionButtonTapped() - line 80")
             return
         }
         
@@ -103,6 +101,5 @@ class TimeOfDayCollectionViewCell: UICollectionViewCell {
             
         }
     }
-    
 }
 

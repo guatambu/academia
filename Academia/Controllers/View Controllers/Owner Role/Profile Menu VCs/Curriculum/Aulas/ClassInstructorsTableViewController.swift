@@ -15,11 +15,11 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
     // MARK: - Properties
     
     var aulaName: String?
-    var active: Bool = true
+    var active: Bool?
     var aulaDescription: String?
     var daysOfTheWeek: [ClassTimeComponents.Weekdays]?
-    var timeOfDay: String?
-    var location: Location?
+    var timeOfDay: [String]?
+    var location: [Location]?
 
     var instructors: [AdultStudent]?
     var ownerInstructors: [Owner]?

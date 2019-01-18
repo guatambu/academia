@@ -151,6 +151,7 @@ class PaymentProgramBillingDetailsViewController: UIViewController, BillingTypeD
 
 // MARK: - Editing Mode for Individual User case specific setup
 extension PaymentProgramBillingDetailsViewController {
+    
     // Update Function for case where want to update user info without a segue
     func updatePaymentProgramInfo() {
         guard let paymentProgram = paymentProgramToEdit else { return }
@@ -165,6 +166,7 @@ extension PaymentProgramBillingDetailsViewController {
             print("update payment program billingTypes: \(PaymentProgramModelController.shared.paymentPrograms[0].billingTypes)")
         }
     }
+    
     func enterEditingMode(inEditingMode: Bool?) {
         guard let inEditingMode = inEditingMode else { return }
         if inEditingMode {
@@ -175,6 +177,7 @@ extension PaymentProgramBillingDetailsViewController {
         }
         print("PaymentProgramNameAndDescriptionVC -> inEditingMode: \(inEditingMode)")
     }
+    
     // owner setup for editing mode
     func paymentProgramEditingSetup() {
         guard let paymentProgramToEdit = paymentProgramToEdit else {
@@ -215,6 +218,7 @@ extension PaymentProgramBillingDetailsViewController: UICollectionViewDelegate, 
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+        // billingType collectionView
         if collectionView.tag == 5 {
             let cell = billingTypeCollectionView.dequeueReusableCell(withReuseIdentifier: "TypeCollectionCell", for: indexPath) as! TypeCollectionViewCell
             // set the BillingTypeDelegate for the TypeCollectionViewCell
@@ -225,6 +229,7 @@ extension PaymentProgramBillingDetailsViewController: UICollectionViewDelegate, 
             
             return cell
             
+        // billingDate CollectionView
         } else if collectionView.tag == 10 {
             
             let cell = billingDateCollectionView.dequeueReusableCell(withReuseIdentifier: "DateCollectionCell", for: indexPath) as! DateCollectionViewCell
@@ -236,6 +241,7 @@ extension PaymentProgramBillingDetailsViewController: UICollectionViewDelegate, 
             
             return cell
             
+        // signatureType collectionView
         } else if collectionView.tag == 15 {
             
             let cell = signatureTypeCollectionView.dequeueReusableCell(withReuseIdentifier: "SignatureCollectionCell", for: indexPath) as! SignatureCollectionViewCell

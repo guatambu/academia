@@ -406,6 +406,42 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wai-mo-ex4" userLabel="class description Stack View">
+                                <rect key="frame" x="16" y="290" width="288" height="93"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="class description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F4w-LX-oKV" userLabel="payment program Name Label Outlet">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="22"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AqD-il-k5a" userLabel="program description Text View" customClass="DesignableTextView" customModule="Academia" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="22" width="288" height="71"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="F4w-LX-oKV" secondAttribute="trailing" id="09u-0w-wZr"/>
+                                    <constraint firstAttribute="bottom" secondItem="AqD-il-k5a" secondAttribute="bottom" id="IXc-gd-1fb"/>
+                                    <constraint firstItem="AqD-il-k5a" firstAttribute="leading" secondItem="wai-mo-ex4" secondAttribute="leading" id="dER-7R-6jf"/>
+                                    <constraint firstItem="F4w-LX-oKV" firstAttribute="leading" secondItem="wai-mo-ex4" secondAttribute="leading" id="fon-Uj-XAI"/>
+                                    <constraint firstAttribute="trailing" secondItem="AqD-il-k5a" secondAttribute="trailing" id="n91-nr-qgE"/>
+                                </constraints>
+                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ul2-jn-FY4" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
                                 <rect key="frame" x="105.5" y="423" width="109" height="40"/>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -495,39 +531,6 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wai-mo-ex4" userLabel="class description Stack View">
-                                <rect key="frame" x="16" y="290" width="288" height="93"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="class description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F4w-LX-oKV" userLabel="payment program Name Label Outlet">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="22"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AqD-il-k5a" userLabel="program description Text View" customClass="DesignableTextView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="22" width="288" height="71"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="1"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </textView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="F4w-LX-oKV" secondAttribute="trailing" id="09u-0w-wZr"/>
-                                    <constraint firstItem="F4w-LX-oKV" firstAttribute="leading" secondItem="wai-mo-ex4" secondAttribute="leading" id="fon-Uj-XAI"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2012,7 +2015,7 @@
         <!--class location and time-->
         <scene sceneID="27f-k1-gvi">
             <objects>
-                <viewController storyboardIdentifier="toPaymentProgramBillingDetails" id="Rnw-3k-Xps" userLabel="class location and time" customClass="ClassLocationAndTimeViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toClassLocationAndTime" id="Rnw-3k-Xps" userLabel="class location and time" customClass="ClassLocationAndTimeViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uw6-dU-yvg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2047,7 +2050,7 @@
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="owF-JL-rPZ" userLabel="class time and location View">
-                                <rect key="frame" x="16" y="136" width="288" height="288"/>
+                                <rect key="frame" x="16" y="120" width="288" height="300"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="day(s) of the week:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dVo-tU-0OI">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="22"/>
@@ -2068,7 +2071,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TypeCollectionCell" id="gH8-52-whr" userLabel="DaysOfTheWeekCollectionCell" customClass="DaysOfTheWeekCollectionViewCell" customModule="Academia" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="daysOfTheWeekCollectionCell" id="gH8-52-whr" userLabel="DaysOfTheWeekCollectionCell" customClass="DaysOfTheWeekCollectionViewCell" customModule="Academia" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="192" height="56"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -2103,7 +2106,6 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="daySelectionButtonTapped:" destination="gH8-52-whr" eventType="touchUpInside" id="Fac-fm-949"/>
-                                                                        <action selector="typeSelectionButtonTapped:" destination="gH8-52-whr" eventType="touchUpInside" id="duH-1Q-bFR"/>
                                                                     </connections>
                                                                 </button>
                                                             </subviews>
@@ -2132,7 +2134,6 @@
                                                 </constraints>
                                                 <size key="customSize" width="192" height="56"/>
                                                 <connections>
-                                                    <outlet property="billingDetailsLabel" destination="Gni-OT-MV2" id="yFA-dp-K0g"/>
                                                     <outlet property="checkboxImageView" destination="JCz-rh-qTY" id="dCN-1Q-dMD"/>
                                                     <outlet property="collectionCellView" destination="WGw-eA-zQn" id="P6y-1y-A4z"/>
                                                     <outlet property="daysOfTheWeekLabelOutlet" destination="Gni-OT-MV2" id="PVI-RR-52f"/>
@@ -2160,7 +2161,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DateCollectionCell" id="ph2-Uh-S0t" userLabel="TimeOfDayCollectionCell" customClass="TimeOfDayCollectionViewCell" customModule="Academia" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="timeOfDayCollectionCell" id="ph2-Uh-S0t" userLabel="TimeOfDayCollectionCell" customClass="TimeOfDayCollectionViewCell" customModule="Academia" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="192" height="56"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -2194,7 +2195,6 @@
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
                                                                     <connections>
-                                                                        <action selector="dateSelectionButtonTapped:" destination="ph2-Uh-S0t" eventType="touchUpInside" id="Y7g-qI-xPq"/>
                                                                         <action selector="timeOfDaySelectionButtonTapped:" destination="ph2-Uh-S0t" eventType="touchUpInside" id="ZiX-N4-fD3"/>
                                                                     </connections>
                                                                 </button>
@@ -2224,7 +2224,6 @@
                                                 </constraints>
                                                 <size key="customSize" width="192" height="56"/>
                                                 <connections>
-                                                    <outlet property="billingDetailsLabel" destination="aOL-ir-OpL" id="UgX-d1-3Pf"/>
                                                     <outlet property="checkboxImageView" destination="t7W-16-30d" id="8nk-qF-6AT"/>
                                                     <outlet property="collectionCellView" destination="N53-Xs-wdr" id="5bO-T6-yuh"/>
                                                     <outlet property="isSelectedButtonOutlet" destination="AAA-fb-cGU" id="YbF-7A-KIZ"/>
@@ -2252,7 +2251,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SignatureCollectionCell" id="sFP-D8-SW4" userLabel="LocationCollectionCell" customClass="LocationCollectionViewCell" customModule="Academia" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="locationCollectionCell" id="sFP-D8-SW4" userLabel="LocationCollectionCell" customClass="LocationCollectionViewCell" customModule="Academia" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="192" height="56"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -2287,7 +2286,6 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="locationSelectionButtonTapped:" destination="sFP-D8-SW4" eventType="touchUpInside" id="63f-zQ-FYf"/>
-                                                                        <action selector="signatureSelectionButtonTapped:" destination="sFP-D8-SW4" eventType="touchUpInside" id="elD-Ep-Jrp"/>
                                                                     </connections>
                                                                 </button>
                                                             </subviews>
@@ -2316,7 +2314,6 @@
                                                 </constraints>
                                                 <size key="customSize" width="192" height="56"/>
                                                 <connections>
-                                                    <outlet property="billingDetailsLabel" destination="VaE-Pg-Bpc" id="J7t-G4-aeY"/>
                                                     <outlet property="checkboxImageView" destination="lN4-4W-nbX" id="BKf-34-6hL"/>
                                                     <outlet property="collectionCellView" destination="vCM-mw-wgh" id="ZLm-D0-wIa"/>
                                                     <outlet property="isSelectedButtonOutlet" destination="uH9-2v-uRu" id="eHu-IL-iBt"/>
@@ -2428,18 +2425,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="owF-JL-rPZ" firstAttribute="centerY" secondItem="QED-dj-THx" secondAttribute="centerY" constant="-14" id="3FU-w7-17Q"/>
                             <constraint firstItem="SsJ-yy-j5b" firstAttribute="centerX" secondItem="Uw6-dU-yvg" secondAttribute="centerX" id="3WS-Ny-AN7"/>
                             <constraint firstItem="Q3I-la-xdf" firstAttribute="leading" secondItem="QED-dj-THx" secondAttribute="leading" constant="24" id="3uC-6t-TYt"/>
                             <constraint firstItem="QED-dj-THx" firstAttribute="bottom" secondItem="lnM-io-vIS" secondAttribute="bottom" constant="24" id="CGi-QA-DIp"/>
                             <constraint firstItem="Q3I-la-xdf" firstAttribute="centerX" secondItem="Uw6-dU-yvg" secondAttribute="centerX" id="Gn4-Bj-gyi"/>
+                            <constraint firstItem="owF-JL-rPZ" firstAttribute="centerY" secondItem="Uw6-dU-yvg" secondAttribute="centerY" constant="-14" id="M99-X3-L5B"/>
                             <constraint firstItem="owF-JL-rPZ" firstAttribute="leading" secondItem="Uw6-dU-yvg" secondAttribute="leading" constant="16" id="ZQO-ND-ED1"/>
                             <constraint firstAttribute="trailing" secondItem="owF-JL-rPZ" secondAttribute="trailing" constant="16" id="eVz-fU-6OK"/>
                             <constraint firstItem="Q3I-la-xdf" firstAttribute="top" secondItem="QED-dj-THx" secondAttribute="top" constant="16" id="kVS-qo-h7q"/>
                             <constraint firstItem="lnM-io-vIS" firstAttribute="centerX" secondItem="Uw6-dU-yvg" secondAttribute="centerX" id="lfL-Um-HLG"/>
                             <constraint firstItem="QED-dj-THx" firstAttribute="trailing" secondItem="Q3I-la-xdf" secondAttribute="trailing" constant="24" id="mmj-VA-XpI"/>
                             <constraint firstItem="lnM-io-vIS" firstAttribute="top" secondItem="SsJ-yy-j5b" secondAttribute="bottom" constant="24" id="vZL-GJ-xfg"/>
-                            <constraint firstItem="owF-JL-rPZ" firstAttribute="top" secondItem="Q3I-la-xdf" secondAttribute="bottom" constant="40" id="x1p-7j-rYF"/>
+                            <constraint firstItem="owF-JL-rPZ" firstAttribute="top" secondItem="Q3I-la-xdf" secondAttribute="bottom" constant="24" id="x1p-7j-rYF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QED-dj-THx"/>
                     </view>
@@ -2447,15 +2444,11 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="o8x-aI-o2D"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="billingDateCollectionView" destination="aOa-xd-fDR" id="iug-Ta-pXz"/>
-                        <outlet property="billingTypeCollectionView" destination="8vH-PG-cYC" id="yEt-Ag-2WQ"/>
                         <outlet property="classLocationLabelOutlet" destination="nv6-tk-xbe" id="t8G-gv-OAx"/>
                         <outlet property="classTimeDetailsLabelOutlet" destination="naF-Yv-SEk" id="fuh-fc-0eW"/>
                         <outlet property="daysOfTheWeekCollectionView" destination="8vH-PG-cYC" id="vtl-Bm-0A7"/>
                         <outlet property="daysOfTheWeekLabelOutlet" destination="dVo-tU-0OI" id="GXv-ro-96R"/>
                         <outlet property="locationCollectionView" destination="41O-9O-2OH" id="rJ8-Wg-xB8"/>
-                        <outlet property="nextButtonOutlet" destination="SsJ-yy-j5b" id="GTI-KX-crX"/>
-                        <outlet property="signatureTypeCollectionView" destination="41O-9O-2OH" id="h9n-4D-Twr"/>
                         <outlet property="timeOfDayCollectionView" destination="aOa-xd-fDR" id="Gca-ZK-T0a"/>
                         <outlet property="welcomeInstructionsLabelOutlet" destination="Gub-yU-D86" id="0VA-Fj-KC8"/>
                         <outlet property="welcomeMessageLabelOutlet" destination="Ti5-Be-paF" id="lrb-Sc-bv7"/>
@@ -2463,7 +2456,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ibK-uY-RPV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1697" y="2925"/>
+            <point key="canvasLocation" x="1688" y="2925"/>
         </scene>
     </scenes>
     <resources>

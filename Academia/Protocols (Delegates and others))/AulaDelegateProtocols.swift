@@ -11,20 +11,20 @@ import Foundation
 
 // MARK: - ClassLocationAndTimeVC to DaysOfTheWeekCollectionViewCell Delegate protocol to access VC's days array property
 protocol DaysOfTheWeekDelegate: class {
-    var daysOfTheWeek: [ClassTimeComponents.Weekdays]? { get set }
+    var daysOfTheWeek: [ClassTimeComponents.Weekdays] { get set }
     
 }
 
 
 // MARK: - ClassLocationAndTimeVC to TimeOfDayCollectionViewCell Delegate protocol to access VC's timeOfDay property
 protocol TimeOfDayDelegate: class {
-    var times: [String]? { get set }
+    var times: [String] { get set }
     
 }
 
 
 // MARK: - ClassLocationAndTimeVC to LocationCollectionViewCell Delegate protocol to access VC's location property
 protocol AulaLocationDelegate: class {
-    var locations: [Location]? { get set }
+    var locations: [Location] { get set }
     
 }

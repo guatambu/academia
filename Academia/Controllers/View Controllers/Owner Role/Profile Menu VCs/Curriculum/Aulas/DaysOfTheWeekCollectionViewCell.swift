@@ -2,7 +2,7 @@
 //  DaysOfTheWeekCollectionViewCell.swift
 //  Academia
 //
-//  Created by Kelly Johnson on 1/17/19.
+//  Created by Michael Guatambu Davis on 1/17/19.
 //  Copyright © 2019 DunDak, LLC. All rights reserved.
 //
 
@@ -52,7 +52,7 @@ class DaysOfTheWeekCollectionViewCell: UICollectionViewCell {
         // NOTE: this may have something to do with asynchronous threads
         
         guard let days = delegate?.daysOfTheWeek else {
-            print("ERROR:  nil value for days in DaysOfTheWeekCollectionViewCell.swift -> updateViews() - line 55")
+            print("ERROR:  nil value for delegate.daysOfTheWeek in DaysOfTheWeekCollectionViewCell.swift -> updateViews() - line 55")
             return
         }
         
@@ -79,7 +79,7 @@ class DaysOfTheWeekCollectionViewCell: UICollectionViewCell {
         }
         
         guard var days = delegate?.daysOfTheWeek else {
-            print("ERROR:  nil value for billingTypes in TypeCollectionViewCell.swift -> typeSelectionButtonTapped() - line 82")
+            print("ERROR:  nil value for delegate?.daysOfTheWeek in DaysOfTheWeekCollectionViewCell.swift -> daySelectionButtonTapped() - line 82")
             return
         }
         

@@ -17,12 +17,9 @@ class SignatureCollectionViewCell: UICollectionViewCell {
             updateViews()
         }
     }
-    
-    var isSignatureCurrentlySelected = false
-    
+
     let beltBuilder = BeltBuilder()
-    
-//    var inEditingMode: Bool?
+
     var selectedSignatureTypes: [Billing.BillingSignature]?
     
     let uncheckedBox32 = UIImage(named: "unchecked_box_32")
@@ -65,7 +62,6 @@ class SignatureCollectionViewCell: UICollectionViewCell {
             checkboxImageView.image = uncheckedBox32
             
         }
-        
     }
     
     
@@ -103,5 +99,4 @@ class SignatureCollectionViewCell: UICollectionViewCell {
             
         }
     }
-
 }

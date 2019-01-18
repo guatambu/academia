@@ -699,6 +699,9 @@
 				FAD2A3A821E6B7C700364FC0 /* ClassInfoDetailsTableViewController.swift */,
 				FAD2A3AA21E6B82A00364FC0 /* ClassNameAndDescriptionViewController.swift */,
 				FAD2A3AC21E6B84D00364FC0 /* ClassLocationAndTimeViewController.swift */,
+				FA1CEF2E21F19EC1004498BC /* DaysOfTheWeekCollectionViewCell.swift */,
+				FA1CEF3021F19EDA004498BC /* TimeOfDayCollectionViewCell.swift */,
+				FA1CEF3221F19EEF004498BC /* LocationCollectionViewCell.swift */,
 				FAD2A3AE21E6B87600364FC0 /* ClassInstructorsTableViewController.swift */,
 				FAD2A3B021E6B90D00364FC0 /* AddGroupToClassTableViewController.swift */,
 				FAD2A3B221E6B93300364FC0 /* ReviewAndCreateClassTableViewController.swift */,
@@ -706,9 +709,6 @@
 				FAD2A3B621E6E1C600364FC0 /* OwnerInstructorTableViewCell.swift */,
 				FAD2A3B821E6E1E100364FC0 /* ReviewInstructorTableViewCell.swift */,
 				FAD2A3BA21E6E1F900364FC0 /* ReviewOwnerInstructorTableViewCell.swift */,
-				FA1CEF2E21F19EC1004498BC /* DaysOfTheWeekCollectionViewCell.swift */,
-				FA1CEF3021F19EDA004498BC /* TimeOfDayCollectionViewCell.swift */,
-				FA1CEF3221F19EEF004498BC /* LocationCollectionViewCell.swift */,
 			);
 			path = Aulas;
 			sourceTree = "<group>";

@@ -21,8 +21,7 @@ class LocationCollectionViewCell: UICollectionViewCell {
     let beltBuilder = BeltBuilder()
     
     //    var inEditingMode = false
-    var locations: [Location]?
-    
+    var selectedLocations: [Location]?
     
     let uncheckedBox32 = UIImage(named: "unchecked_box_32")
     let checkedBox32 = UIImage(named: "checked_box_32")
@@ -36,6 +35,7 @@ class LocationCollectionViewCell: UICollectionViewCell {
     
     
     // MARK: - updateViews()
+    
     func updateViews() {
         
         guard let location = location else {
@@ -52,7 +52,7 @@ class LocationCollectionViewCell: UICollectionViewCell {
         // NOTE: this may have something to do with asynchronous threads
         
         guard let locations = delegate?.locations else {
-            print("ERROR:  nil value for location in LocationCollectionViewCell.swift -> updateViews() - line 55")
+            print("ERROR:  nil value for delegate.locations in LocationCollectionViewCell.swift -> updateViews() - line 55")
             return
         }
         
@@ -63,9 +63,7 @@ class LocationCollectionViewCell: UICollectionViewCell {
         } else {
             
             checkboxImageView.image = uncheckedBox32
-            
         }
-        
     }
     
     
@@ -74,12 +72,12 @@ class LocationCollectionViewCell: UICollectionViewCell {
     @IBAction func locationSelectionButtonTapped(_ sender: DesignableButton) {
         
         guard let location = location else {
-            print("ERROR:  nil value for location in LocationCollectionViewCell.swift -> locationSelectionButtonTapped() - line 77")
+            print("ERROR:  nil value for location in LocationCollectionViewCell.swift -> locationSelectionButtonTapped() - line 75")
             return
         }
         
         guard var locations = delegate?.locations else {
-            print("ERROR:  nil value for billingTypes in TypeCollectionViewCell.swift -> typeSelectionButtonTapped() - line 78")
+            print("ERROR:  nil value for delegate.locations in LocationCollectionViewCell.swift -> locationSelectionButtonTapped() - line 80")
             return
         }
         
@@ -100,9 +98,7 @@ class LocationCollectionViewCell: UICollectionViewCell {
             delegate?.locations = locations
             
             print("\(String(describing: delegate?.locations))")
-            
         }
     }
-    
 }
 
