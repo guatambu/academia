@@ -68,52 +68,53 @@ class ClassNameAndDescriptionViewController: UIViewController {
         // Location update profile info
         if classNameTextField.text != "" {
             
-            updateGroupInfo()
+            updateAulaInfo()
             
             self.returnToClassInfo()
             
-            print("update group name: \(String(describing: self.aulaToEdit?.aulaName))")
+            print("update aula name: \(String(describing: self.aulaToEdit?.aulaName))")
         }
         inEditingMode = false
     }
     
     
-    @IBAction func nextButtonTapped(_ sender: DesignableButton) {
-        
-        // programmatically performing the segue
-        
-        // instantiate the relevant storyboard
-        let mainView: UIStoryboard = UIStoryboard(name: "OwnerBaseCampFlow", bundle: nil)
-        // instantiate the desired TableViewController as ViewController on relevant storyboard
-        let destViewController = mainView.instantiateViewController(withIdentifier: "toClassTime") as! ClassTimeViewController
-        
-        // run check to see is there is a paymentProgramName
-        guard classNameTextField.text != "" else {
+    // MARK: - Navigation
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        // check for errors before performing segue, and if error, block navigation
+        if aulaName == nil {
             
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
-            return
+            welcomeMessageLabelOutlet.textColor = beltBuilder.redBeltRed
+            
+            return false
+            
+        } else {
+            
+            return true
+        }
+    }
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // confirm appropriate segue via segue.identifier
+        if segue.identifier == "toAulaTime" {
+            
+            // Get the ClassTimeViewController using segue.destination.
+            guard let destViewController = segue.destination as? ClassTimeViewController else { return }
+            
+            // pass data to destViewController
+            destViewController.aulaName = aulaName
+            destViewController.active = active
+            destViewController.aulaDescription = aulaDescription
+            
+            destViewController.inEditingMode = inEditingMode
+            destViewController.aulaToEdit = aulaToEdit
         }
         
-        aulaName = classNameTextField.text
-        aulaDescription = classDescriptionTextView.text
-        // create the segue programmatically
-        self.navigationController?.pushViewController(destViewController, animated: true)
-        
-        // set the desired properties of the destinationVC's navgation Item
-        let backButtonItem = UIBarButtonItem()
-        backButtonItem.title = " "
-        navigationItem.backBarButtonItem = backButtonItem
-        
-        // pass data to destViewController
-        destViewController.aulaName = aulaName
-        destViewController.active = active
-        destViewController.aulaDescription = aulaDescription
-        
-        destViewController.inEditingMode = inEditingMode
-        destViewController.aulaToEdit = aulaToEdit
-        
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
-        updateGroupInfo()
+        updateAulaInfo()
+        
     }
 }
 
@@ -122,12 +123,12 @@ class ClassNameAndDescriptionViewController: UIViewController {
 extension ClassNameAndDescriptionViewController {
     
     // Update Function for case where want to update user info without a segue
-    func updateGroupInfo() {
+    func updateAulaInfo() {
         guard let aula = aulaToEdit else { return }
         // group update info
         if classNameTextField.text != "" {
-            AulaModelController.shared.update(aula: aula, active: active, kidAttendees: nil, adultAttendees: nil, aulaDescription: classDescriptionTextView.text, aulaName: classNameTextField.text, daysOfTheWeek: nil, instructor: nil, ownerInstructor: nil, locations: nil, students: nil, times: nil)
-            print("update group name: \(GroupModelController.shared.groups[0].name)")
+            AulaModelController.shared.update(aula: aula, active: active, kidAttendees: nil, adultAttendees: nil, aulaDescription: classDescriptionTextView.text, aulaName: classNameTextField.text, daysOfTheWeek: nil, instructor: nil, ownerInstructor: nil, location: nil, students: nil, time: nil)
+            print("update aula name: \(AulaModelController.shared.aulas[0].aulaName)")
         }
     }
     
@@ -142,7 +143,7 @@ extension ClassNameAndDescriptionViewController {
             aulaEditingSetup()
         }
         
-        print("GroupNameAndDescriptionVC -> inEditingMode: \(inEditingMode)")
+        print("ClassNameAndDescriptionVC -> inEditingMode: \(inEditingMode)")
     }
     
     // owner setup for editing mode
@@ -155,7 +156,7 @@ extension ClassNameAndDescriptionViewController {
         welcomeMessageLabelOutlet.text = "Aula: \(aulaToEdit.aulaName)"
         
         welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
-        welcomeInstructionsLabelOutlet.text = "you are in group editing mode"
+        welcomeInstructionsLabelOutlet.text = "you are in aula editing mode"
         
         classDescriptionTextView.text = aulaToEdit.aulaDescription
         classNameTextField.text = aulaToEdit.aulaName

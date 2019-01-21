@@ -17,9 +17,9 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
     var aulaName: String?
     var active: Bool?
     var aulaDescription: String?
-    var daysOfTheWeek: [ClassTimeComponents.Weekdays]?
-    var timeOfDay: [String]?
-    var location: [Location]?
+    var daysOfTheWeek: [ClassTimeComponents.Weekdays] = []
+    var time: String?
+    var location:Location?
 
     var instructors: [AdultStudent] = []
     var ownerInstructors: [Owner] = []

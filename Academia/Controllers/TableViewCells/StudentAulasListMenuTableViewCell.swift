@@ -36,7 +36,7 @@ class StudentAulasListMenuTableViewCell: UITableViewCell {
         
         cellTitleOutlet.text = aula.aulaName
         
-        guard let times = aula.times else { return }
+        guard let times = aula.time else { return }
         cellSubtitleOutlet.text = "\(times):00"
         
     }

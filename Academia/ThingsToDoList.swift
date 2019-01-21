@@ -15,6 +15,14 @@ import Foundation
         // especially cuz, ya know... MESSAGING!!!!
 
 
+    // REGARDING CLASS CREATION:  allow user to first choose time of day, then days of the week... user may choose as many days of the week as they wish for that time, the days go into an array that is later looped through to create each individual class object for all tracking of attendance purposes, time of day will be the limitin actor in that an owner needs to go through the aula creation workflow for each time of day
+
+            // in the future perhaps it might be useful to create week/day (depending which is better UI/UX -wise) at a glance visual/graphical interface with 15 minute blocks that the owner can select and highlight and then create all the classes they want of a given type at once and schedulethem accordingly, this could be handled by creating a temporary holding dictionary where the key is day and the valus is the time for that respective day, then this would be looped through to create individual class objects
+        // KEY TAKEAWAY RE: CLASS CREATION... KISS -> the class object itself, each individual one should be simple with one day of the week and one time of day associated with it
+        // for multipe locations... go through workflow for each location because want to give the granular control to the owner for each location,
+            // possible to allow to add all at once, in other words, multiple locations at once, and follow the workflow as is with location set after day, time by creating temporary array to loop through for each locstion... this would be predicated on the idea that the weekly schedule for a type of class would be identical across locations in this scenRIO
+
+
     // User Account Deletion
         // for code reusability... will want to make a check when delting a student account to determine whether it is from the student or user side of the app
 

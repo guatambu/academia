@@ -147,7 +147,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="t2S-F0-XLA"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="7u7-Aa-kQM">
                             <connections>
-                                <segue destination="qMa-B9-a4e" kind="show" id="4CR-2Y-KUI"/>
+                                <segue destination="qMa-B9-a4e" kind="show" identifier="toAddClassNameAndDescription" id="4CR-2Y-KUI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -460,7 +460,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="nextButtonTapped:" destination="qMa-B9-a4e" eventType="touchUpInside" id="Pde-jD-Z2d"/>
-                                    <segue destination="Rnw-3k-Xps" kind="show" id="s3s-iF-P4V"/>
+                                    <segue destination="Rnw-3k-Xps" kind="show" identifier="toClassDayOfTheWeek" id="s3s-iF-P4V"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YL9-5E-SDC" userLabel="Progress Stack View">
@@ -679,7 +679,7 @@
                                     </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="nextButtonTapped:" destination="CKL-zS-Sbf" eventType="touchUpInside" id="qd7-eN-rlO"/>
-                                        <segue destination="Vm0-8r-JFt" kind="show" id="teF-4N-txA"/>
+                                        <segue destination="Vm0-8r-JFt" kind="show" identifier="toClassGroups" id="teF-4N-txA"/>
                                     </connections>
                                 </button>
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="veN-Q4-OXN" userLabel="Progress Stack View">
@@ -1088,7 +1088,7 @@
                                     <connections>
                                         <action selector="nextButtonTapped:" destination="CKL-zS-Sbf" eventType="touchUpInside" id="7YY-cJ-aJ0"/>
                                         <action selector="nextButtonTapped:" destination="Vm0-8r-JFt" eventType="touchUpInside" id="a0Q-Cf-36h"/>
-                                        <segue destination="qfm-k8-E0n" kind="show" id="MLo-Z7-aAl"/>
+                                        <segue destination="qfm-k8-E0n" kind="show" identifier="toClassReviewAndCreate" id="MLo-Z7-aAl"/>
                                     </connections>
                                 </button>
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="KnD-pF-8yK" userLabel="Progress Stack View">
@@ -1753,8 +1753,10 @@
                         <outlet property="classDescriptionLabelOutlet" destination="ZGy-mf-z6l" id="XkE-Br-BaY"/>
                         <outlet property="classDescriptionTextView" destination="6Xw-kt-p3J" id="dGX-Nn-dZn"/>
                         <outlet property="classNameLabelOutlet" destination="RDx-HH-fjD" id="fjN-49-qGA"/>
+                        <outlet property="elligibleGroupsLabelOutlet" destination="8qc-uT-N5Z" id="MqF-ue-1JT"/>
                         <outlet property="groupDescriptionLabelOutlet" destination="ZGy-mf-z6l" id="D5k-zY-z6g"/>
                         <outlet property="groupDescriptionTextView" destination="6Xw-kt-p3J" id="G1J-GO-WLY"/>
+                        <outlet property="groupListLabelOutlet" destination="Cap-DH-vP2" id="Xe1-HW-Hy4"/>
                         <outlet property="groupNameLabelOutlet" destination="RDx-HH-fjD" id="cgF-Qv-WkG"/>
                         <outlet property="lastChangedLabelOutlet" destination="ZVi-CR-foy" id="Bua-Wt-hhz"/>
                         <outlet property="welcomeInstructionsLabelOutlet" destination="KWD-Ih-7KW" id="nFG-Uh-gcN"/>
@@ -2346,7 +2348,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="nextButtonTapped:" destination="Rnw-3k-Xps" eventType="touchUpInside" id="8P9-X1-lfs"/>
-                                    <segue destination="uTk-xe-PN2" kind="show" id="bw5-g6-5Or"/>
+                                    <segue destination="uTk-xe-PN2" kind="show" identifier="toClassTime" id="bw5-g6-5Or"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="lnM-io-vIS" userLabel="Progress Stack View">
@@ -2467,6 +2469,20 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="o8x-aI-o2D"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="fridayButtonOutlet" destination="ACJ-eq-6ku" id="gmW-6x-Gi9"/>
+                        <outlet property="fridayLabelOutlet" destination="RIb-bl-NFw" id="hT2-Yt-ZL9"/>
+                        <outlet property="mondayButtonOutlet" destination="TK1-C3-kAL" id="c1n-fs-diU"/>
+                        <outlet property="mondayLabelOutlet" destination="OEl-l1-ncK" id="MWV-d2-bjx"/>
+                        <outlet property="saturdayButtonOutlet" destination="r2W-pN-3t3" id="iKw-Bw-grY"/>
+                        <outlet property="saturdayLabelOutlet" destination="Ka2-MY-xJI" id="FBQ-ug-Cfq"/>
+                        <outlet property="sundayButtonOutlet" destination="8wT-dx-Vml" id="w1R-Ui-Fko"/>
+                        <outlet property="sundayLabelOutlet" destination="vRj-Tu-RYx" id="iN3-9w-kl9"/>
+                        <outlet property="thursdayButtonOutlet" destination="gLO-65-C1W" id="smD-jG-uij"/>
+                        <outlet property="thursdayLabelOutlet" destination="ATB-4w-w1D" id="ByO-r4-isR"/>
+                        <outlet property="tuesdayButtonOutlet" destination="Sbk-bQ-uMh" id="W69-MT-1El"/>
+                        <outlet property="tuesdayLabelOutlet" destination="iim-Sc-WVF" id="ic3-N2-mPM"/>
+                        <outlet property="wednesdayButtonOutlet" destination="NoE-T9-V39" id="voe-i5-CvR"/>
+                        <outlet property="wednesdayLabelOutlet" destination="mon-Wy-4SZ" id="Kqf-Wm-D1f"/>
                         <outlet property="welcomeInstructionsLabelOutlet" destination="Gub-yU-D86" id="0VA-Fj-KC8"/>
                         <outlet property="welcomeMessageLabelOutlet" destination="Ti5-Be-paF" id="lrb-Sc-bv7"/>
                     </connections>
@@ -2516,13 +2532,13 @@
                                 <rect key="frame" x="16" y="148" width="288" height="244"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(class day)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajH-NZ-eFk">
-                                        <rect key="frame" x="16" y="0.0" width="272" height="33"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="24"/>
+                                        <rect key="frame" x="16" y="0.0" width="272" height="27.5"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JAa-E5-3ce">
-                                        <rect key="frame" x="0.0" y="41" width="288" height="216"/>
+                                        <rect key="frame" x="0.0" y="35.5" width="288" height="216"/>
                                     </pickerView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2553,7 +2569,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="nextButtonTapped:" destination="uTk-xe-PN2" eventType="touchUpInside" id="Yyy-yy-sVU"/>
-                                    <segue destination="xbv-Rs-BjJ" kind="show" id="FGV-5D-TBt"/>
+                                    <segue destination="xbv-Rs-BjJ" kind="show" identifier="toClassLocation" id="FGV-5D-TBt"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Dnq-qY-CCc" userLabel="Progress Stack View">
@@ -2675,6 +2691,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="classTimeDetailsLabelOutlet" destination="ajH-NZ-eFk" id="c3Z-mv-EbW"/>
+                        <outlet property="classTimePickerView" destination="JAa-E5-3ce" id="vZM-al-ASy"/>
+                        <outlet property="daysOfTheWeekLabelOutlet" destination="ajH-NZ-eFk" id="zJo-Rq-0AK"/>
                         <outlet property="welcomeInstructionsLabelOutlet" destination="20X-xL-y1L" id="W8m-sq-Tan"/>
                         <outlet property="welcomeMessageLabelOutlet" destination="NQH-rd-6Ey" id="xbH-zz-h9J"/>
                     </connections>
@@ -2752,7 +2770,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="nextButtonTapped:" destination="xbv-Rs-BjJ" eventType="touchUpInside" id="LcA-nw-fHu"/>
-                                    <segue destination="CKL-zS-Sbf" kind="show" id="V78-pp-F2o"/>
+                                    <segue destination="CKL-zS-Sbf" kind="show" identifier="toClassInstructors" id="V78-pp-F2o"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Trk-aP-Tb4" userLabel="Progress Stack View">
@@ -2873,6 +2891,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="1dl-i9-mCl"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="classLocationPickerView" destination="bWh-1J-que" id="EU1-75-rjL"/>
                         <outlet property="welcomeInstructionsLabelOutlet" destination="Rbj-N9-6P4" id="JMW-GP-DfQ"/>
                         <outlet property="welcomeMessageLabelOutlet" destination="xWK-Ab-3am" id="Qnl-NN-fh6"/>
                     </connections>

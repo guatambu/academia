@@ -18,11 +18,7 @@ class ClassTimeViewController: UIViewController  {
     var active: Bool?
     var aulaDescription: String?
     var daysOfTheWeek: [ClassTimeComponents.Weekdays] = []
-    var times: [String] = []
-    var locations: [Location] = []
-    
-    // mock data for locations' local surce of truth
-    let mockLocations = [MockData.myLocation, MockData.myLocation]
+    var time: String?
     
     var inEditingMode: Bool?
     var aulaToEdit: Aula?
@@ -35,10 +31,9 @@ class ClassTimeViewController: UIViewController  {
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     @IBOutlet weak var daysOfTheWeekLabelOutlet: UILabel!
     @IBOutlet weak var classTimeDetailsLabelOutlet: UILabel!
-    @IBOutlet weak var classLocationLabelOutlet: UILabel!
     
-    // textField for PickerView result
-    @IBOutlet weak var classTimePickerResultTextField: UITextField!
+    // class time UIPickerView
+    @IBOutlet weak var classTimePickerView: UIPickerView!
     
     
 
@@ -73,9 +68,9 @@ class ClassTimeViewController: UIViewController  {
     @objc func saveButtonTapped() {
         
         // Location update profile info
-        guard daysOfTheWeek.isEmpty != true && times.isEmpty != true && locations.isEmpty != true else {
+        guard let _ = time else {
             
-            print("ERROR: daysOfTheWeek, times, or locations isEmpty")
+            print("ERROR: nil value found for time property in ClassTimeViewController.swift -> saveButtonTapped() - line 72.")
             
             return
         }
@@ -84,48 +79,51 @@ class ClassTimeViewController: UIViewController  {
         
         self.returnToPaymentProgramInfo()
         
-        print("update payment program name: \(PaymentProgramModelController.shared.paymentPrograms[0].programName)")
+        print("update class time: \(String(describing: AulaModelController.shared.aulas[0].time))")
         
         inEditingMode = false
     }
     
-    @IBAction func nextButtonTapped(_ sender: DesignableButton) {
-        // programmatically performing the segue
-        
-        // instantiate the relevant storyboard
-        let mainView: UIStoryboard = UIStoryboard(name: "OwnerBaseCampFlow", bundle: nil)
-        // instantiate the desired TableViewController as ViewController on relevant storyboard
-        let destViewController = mainView.instantiateViewController(withIdentifier: "toClassInsructors") as! ClassInstructorsTableViewController
-        
-        // run check to see is there is a aula day of the week, time of day, and location
-        guard daysOfTheWeek.isEmpty != true, times.isEmpty != true, locations.isEmpty != true else {
+    
+    // MARK: - Navigation
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        // check for errors before performing segue, and if error, block navigation
+        if time == nil {
             
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
-            return
+            welcomeMessageLabelOutlet.textColor = beltBuilder.redBeltRed
+            
+            return false
+            
+        } else {
+            
+            return true
         }
+    }
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-//        daysOfTheWeek =
-//        timeOfDay =
-//        location =
-        
-        // create the segue programmatically
-        self.navigationController?.pushViewController(destViewController, animated: true)
-        
-        // set the desired properties of the destinationVC's navgation Item
-        let backButtonItem = UIBarButtonItem()
-        backButtonItem.title = " "
-        navigationItem.backBarButtonItem = backButtonItem
-        
-        // pass data to destViewController
-        destViewController.aulaName = aulaName
-        destViewController.active = active
-        destViewController.aulaDescription = aulaDescription
-        
-        destViewController.inEditingMode = inEditingMode
-        destViewController.aulaToEdit = aulaToEdit
+        // confirm appropriate segue via segue.identifier
+        if segue.identifier == "toAulaTime" {
+            
+            // Get the ClassTimeViewController using segue.destination.
+            guard let destViewController = segue.destination as? ClassTimeViewController else { return }
+            
+            // pass data to destViewController
+            destViewController.time = time
+            destViewController.daysOfTheWeek = daysOfTheWeek
+            destViewController.aulaName = aulaName
+            destViewController.active = active
+            destViewController.aulaDescription = aulaDescription
+            
+            destViewController.inEditingMode = inEditingMode
+            destViewController.aulaToEdit = aulaToEdit
+        }
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
         updateAulaInfo()
+        
     }
 
 }
@@ -141,7 +139,7 @@ extension ClassTimeViewController {
 
         // class update info
        
-        AulaModelController.shared.update(aula: aula, active: nil, kidAttendees: nil, adultAttendees: nil, aulaDescription: nil, aulaName: nil, daysOfTheWeek: daysOfTheWeek, instructor: nil, ownerInstructor: nil, locations: locations, students: nil, times: times)
+        AulaModelController.shared.update(aula: aula, active: nil, kidAttendees: nil, adultAttendees: nil, aulaDescription: nil, aulaName: nil, daysOfTheWeek: daysOfTheWeek, instructor: nil, ownerInstructor: nil, location: nil, students: nil, time: time)
         print("update class day of the week: \(AulaModelController.shared.aulas[0].daysOfTheWeek)")
         
     }
@@ -173,8 +171,7 @@ extension ClassTimeViewController {
         welcomeInstructionsLabelOutlet.text = "you are in group editing mode"
         
         daysOfTheWeek = aulaToEdit.daysOfTheWeek
-        times = aulaToEdit.times ?? []
-        locations = aulaToEdit.locations ?? []
+        time = aulaToEdit.time ?? ""
         
         print("the VC's aula timeOfDay, location, and daysOfTheWeek have been set to the existing aula's coresponding details to be edited and the collection views have reloaded their data")
     }
