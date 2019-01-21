@@ -57,9 +57,16 @@ class ClassTimeComponents {
         case fiftyfive = 55
     }
     
+    enum AMPM: String {
+        case am = "AM"
+        case pm = "PM"
+    }
+    
     let weekdaysArray: [Weekdays] = [.Sunday, .Monday, .Tuesday, .Wednesday, .Thursday, .Friday, .Saturday]
     
     let hoursArray: [Hours] = [.five, .six, .seven, .eight, .nine, .ten, .eleven, .twelve, .thirteen, .fourteen, .fifteen, .sixteen, .seventeen, .eighteen, .nineteen, .twenty, .twentyone, .twentytwo, .twentythree, .twentyfour]
     
     let minutesArray: [Minutes] = [.five, .ten, .fifteen, .twenty, .twentyfive, .thirty, .thirtyfive, .forty, .fortyfive, .fifty, .fiftyfive]
+    
+    let amPmArray: [AMPM] = [.am,.pm]
 }

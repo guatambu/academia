@@ -10,8 +10,8 @@ import Foundation
 
 // MARK: - ClassInstructorsTVC to Instructor... & OwnerInstructorTableViewCell Delegate protocol to access TVC's instructors and ownerInstructors array properties
 protocol InstructorsDelegate: class {
-    var instructors: [AdultStudent]? { get set }
-    var ownerInstructors: [Owner]? { get set }
+    var instructors: [AdultStudent] { get set }
+    var ownerInstructors: [Owner] { get set }
     
 }
 

@@ -85,7 +85,7 @@ class ClassNameAndDescriptionViewController: UIViewController {
         // instantiate the relevant storyboard
         let mainView: UIStoryboard = UIStoryboard(name: "OwnerBaseCampFlow", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
-        let destViewController = mainView.instantiateViewController(withIdentifier: "toClassLocationAndTime") as! ClassLocationAndTimeViewController
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toClassTime") as! ClassTimeViewController
         
         // run check to see is there is a paymentProgramName
         guard classNameTextField.text != "" else {

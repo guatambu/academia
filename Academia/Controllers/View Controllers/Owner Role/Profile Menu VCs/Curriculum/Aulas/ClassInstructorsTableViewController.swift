@@ -21,8 +21,8 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
     var timeOfDay: [String]?
     var location: [Location]?
 
-    var instructors: [AdultStudent]?
-    var ownerInstructors: [Owner]?
+    var instructors: [AdultStudent] = []
+    var ownerInstructors: [Owner] = []
     
     var inEditingMode: Bool?
     var aulaToEdit: Aula?

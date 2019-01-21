@@ -1,5 +1,5 @@
 //
-//  ClassLocationAndTimeViewController.swift
+//  ClassTimeViewController.swift
 //  Academia
 //
 //  Created by Michael Guatambu Davis on 1/9/19.
@@ -10,7 +10,7 @@
 
 import UIKit
 
-class ClassLocationAndTimeViewController: UIViewController, DaysOfTheWeekDelegate, TimeOfDayDelegate, AulaLocationDelegate  {
+class ClassTimeViewController: UIViewController  {
 
     // MARK: - Properties
     
@@ -37,10 +37,9 @@ class ClassLocationAndTimeViewController: UIViewController, DaysOfTheWeekDelegat
     @IBOutlet weak var classTimeDetailsLabelOutlet: UILabel!
     @IBOutlet weak var classLocationLabelOutlet: UILabel!
     
-    // collectionViews
-    @IBOutlet weak var daysOfTheWeekCollectionView: UICollectionView!
-    @IBOutlet weak var timeOfDayCollectionView: UICollectionView!
-    @IBOutlet weak var locationCollectionView: UICollectionView!
+    // textField for PickerView result
+    @IBOutlet weak var classTimePickerResultTextField: UITextField!
+    
     
 
     // MARK: - ViewController Lifecycle Functions
@@ -57,16 +56,6 @@ class ClassLocationAndTimeViewController: UIViewController, DaysOfTheWeekDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // set up collection views dataSources and delegates
-        daysOfTheWeekCollectionView.dataSource = self
-        daysOfTheWeekCollectionView.delegate = self
-        
-        timeOfDayCollectionView.dataSource = self
-        timeOfDayCollectionView.delegate = self
-        
-        locationCollectionView.dataSource = self
-        locationCollectionView.delegate = self
         
         //populateCompletedProfileInfo()
         guard let aulaName = aulaName, let active = active, let aulaDescription = aulaDescription else {
@@ -143,7 +132,7 @@ class ClassLocationAndTimeViewController: UIViewController, DaysOfTheWeekDelegat
 
 
 // MARK: - Editing Mode for Individual User case specific setup
-extension ClassLocationAndTimeViewController {
+extension ClassTimeViewController {
     
     // Update Function for case where want to update user info without a segue
     func updateAulaInfo() {
@@ -187,84 +176,19 @@ extension ClassLocationAndTimeViewController {
         times = aulaToEdit.times ?? []
         locations = aulaToEdit.locations ?? []
         
-        daysOfTheWeekCollectionView.reloadData()
-        timeOfDayCollectionView.reloadData()
-        locationCollectionView.reloadData()
-        
         print("the VC's aula timeOfDay, location, and daysOfTheWeek have been set to the existing aula's coresponding details to be edited and the collection views have reloaded their data")
     }
 }
 
 
-// MARK: - UICollectionView Protocol Conformance & Methods
-extension ClassLocationAndTimeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+// MARK: - UIPickerView Protocol Conformance & Methods
+extension ClassTimeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        // day of the week collecitonView
-        if collectionView.tag == 20 {
-            return classTimeComponents.weekdaysArray.count
-        // time of day collectionView
-        } else if collectionView.tag == 30 {
-            return classTimeComponents.hoursArray.count
-        // locations collectionView
-        } else if collectionView.tag == 40 {
-            return mockLocations.count
-        }
-        return 1
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 0
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        // day of the week collecitonView
-        if collectionView.tag == 20 {
-            guard let cell = daysOfTheWeekCollectionView.dequeueReusableCell(withReuseIdentifier: "daysOfTheWeekCollectionCell", for: indexPath) as? DaysOfTheWeekCollectionViewCell else {
-                print("ERROR: failure to create dayOfTheWeek collection cell")
-                return UICollectionViewCell()
-            }
-            // set the DaysOfTheWeekDelegate for the DaysOfTheWeekCollectionViewCell
-            cell.delegate = self
-
-            cell.day = classTimeComponents.weekdaysArray[indexPath.row]
-            cell.selectedDaysOfTheWeek = aulaToEdit?.daysOfTheWeek
-
-            return cell
-
-        // time of day collectionView
-        } else if collectionView.tag == 30 {
-
-            guard let cell = timeOfDayCollectionView.dequeueReusableCell(withReuseIdentifier: "timeOfDayCollectionCell", for: indexPath) as? TimeOfDayCollectionViewCell else {
-                print("ERROR: failure to create timeOfDay collection cell")
-                return UICollectionViewCell()
-            }
-            // set the TimeOfDayDelegate for the TimeOfDayCollectionViewCell
-            cell.delegate = self
-
-            cell.timeOfDay = classTimeComponents.hoursArray[indexPath.row]
-            cell.selectedTimesOfDay = aulaToEdit?.times
-
-            return cell
-
-        // locations collectionView
-        } else if collectionView.tag == 40 {
-
-            guard let cell = locationCollectionView.dequeueReusableCell(withReuseIdentifier: "locationCollectionCell", for: indexPath) as? LocationCollectionViewCell else {
-                print("ERROR: failure to create locations collection cell")
-                return UICollectionViewCell()
-            }
-            // set the LocationDelegate for the LocationCollectionViewCell
-            cell.delegate = self
-
-            cell.location = mockLocations[indexPath.row]
-            cell.selectedLocations = aulaToEdit?.locations
-
-            return cell
-
-        }
-        return UICollectionViewCell()
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 0
     }
-    
 }
-
-
-

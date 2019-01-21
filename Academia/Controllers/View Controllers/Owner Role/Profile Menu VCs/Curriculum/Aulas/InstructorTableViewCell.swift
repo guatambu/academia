@@ -68,11 +68,11 @@ class InstructorTableViewCell: UITableViewCell {
         
         if isChosen {
             instructors.append(instructor)
-            delegate?.instructors? = instructors
+            delegate?.instructors = instructors
             print("instructorss: \(String(describing: delegate?.instructors))")
             
         } else {
-            delegate?.instructors = delegate?.instructors?.filter({ $0 != instructor })
+            delegate?.instructors = delegate?.instructors.filter({ $0 != instructor }) ?? []
         }
     }
     

@@ -23,8 +23,7 @@ class AddGroupToClassTableViewController: UITableViewController {
     
     var instructors: [AdultStudent]?
     var ownerInstructors: [Owner]?
-    
-    var classGroups: [Group]?
+    var classGroups: [Group] = []
     
     var inEditingMode: Bool?
     var aulaToEdit: Aula?
