@@ -82,9 +82,9 @@ class ClassNameAndDescriptionViewController: UIViewController {
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         // check for errors before performing segue, and if error, block navigation
-        if aulaName == nil {
+        if classNameTextField.text == "" {
             
-            welcomeMessageLabelOutlet.textColor = beltBuilder.redBeltRed
+            welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
             
             return false
             
@@ -98,7 +98,7 @@ class ClassNameAndDescriptionViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         // confirm appropriate segue via segue.identifier
-        if segue.identifier == "toAulaTime" {
+        if segue.identifier == "toClassTime" {
             
             // Get the ClassTimeViewController using segue.destination.
             guard let destViewController = segue.destination as? ClassTimeViewController else { return }

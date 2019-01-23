@@ -12,6 +12,8 @@ class Aula {
     
     // MARK: - Properties
     
+    // to think about... one version of a class 
+    
     // UID
     let aulaUID: UUID
     

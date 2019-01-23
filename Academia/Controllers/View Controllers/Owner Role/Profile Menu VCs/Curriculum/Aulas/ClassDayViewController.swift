@@ -57,6 +57,8 @@ class ClassDayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setUpButtons()
+        
         //populateCompletedProfileInfo()
     }
     
@@ -81,6 +83,48 @@ class ClassDayViewController: UIViewController {
             
             inEditingMode = false
         }
+    }
+    
+    @IBAction func sundayButtonTapped(_ sender: UIButton) {
+        
+        sundayButtonOutlet.isSelected = !sundayButtonOutlet.isSelected
+        addDayofTheWeek(day: .Sunday)
+    }
+    
+    @IBAction func mondayButtonTapped(_ sender: UIButton) {
+        
+        mondayButtonOutlet.isSelected = !mondayButtonOutlet.isSelected
+        addDayofTheWeek(day: .Monday)
+    }
+    
+    @IBAction func tuesdayButtonTapped(_ sender: UIButton) {
+        
+        tuesdayButtonOutlet.isSelected = !tuesdayButtonOutlet.isSelected
+        addDayofTheWeek(day: .Tuesday)
+    }
+    
+    @IBAction func wednesdayButtonTapped(_ sender: UIButton) {
+        
+        wednesdayButtonOutlet.isSelected = !wednesdayButtonOutlet.isSelected
+        addDayofTheWeek(day: .Wednesday)
+    }
+    
+    @IBAction func thursdayButtonTapped(_ sender: UIButton) {
+        
+        thursdayButtonOutlet.isSelected = !thursdayButtonOutlet.isSelected
+        addDayofTheWeek(day: .Thursday)
+    }
+    
+    @IBAction func fridayButtonTapped(_ sender: UIButton) {
+        
+        fridayButtonOutlet.isSelected = !fridayButtonOutlet.isSelected
+        addDayofTheWeek(day: .Friday)
+    }
+    
+    @IBAction func saturdayButtonTapped(_ sender: UIButton) {
+        
+        saturdayButtonOutlet.isSelected = !saturdayButtonOutlet.isSelected
+        addDayofTheWeek(day: .Saturday)
     }
     
     
@@ -168,5 +212,52 @@ extension ClassDayViewController {
         
         // TODO: build a switch statement to check the weekday, and set the day of the week button to checked if the corresponding day of the week
 
+    }
+}
+
+
+// MARK: - Helper Functions
+extension ClassDayViewController {
+    
+    func setUpButtons() {
+        let normalImage = UIImage(named: "unchecked_box_100.png")
+        let selectedImage = UIImage(named: "checked_box_100.png")
+        
+        sundayButtonOutlet.setImage(normalImage, for: .normal)
+        sundayButtonOutlet.setImage(selectedImage, for: .selected)
+        
+        mondayButtonOutlet.setImage(normalImage, for: .normal)
+        mondayButtonOutlet.setImage(selectedImage, for: .selected)
+        
+        tuesdayButtonOutlet.setImage(normalImage, for: .normal)
+        tuesdayButtonOutlet.setImage(selectedImage, for: .selected)
+        
+        wednesdayButtonOutlet.setImage(normalImage, for: .normal)
+        wednesdayButtonOutlet.setImage(selectedImage, for: .selected)
+        
+        thursdayButtonOutlet.setImage(normalImage, for: .normal)
+        thursdayButtonOutlet.setImage(selectedImage, for: .selected)
+        
+        fridayButtonOutlet.setImage(normalImage, for: .normal)
+        fridayButtonOutlet.setImage(selectedImage, for: .selected)
+        
+        saturdayButtonOutlet.setImage(normalImage, for: .normal)
+        saturdayButtonOutlet.setImage(selectedImage, for: .selected)
+    }
+    
+    func addDayofTheWeek(day: ClassTimeComponents.Weekdays) {
+        
+        if daysOfTheWeek.contains(day) {
+            
+            daysOfTheWeek = daysOfTheWeek.filter({ $0 != day })
+            
+            print(daysOfTheWeek)
+            
+        } else {
+            
+            daysOfTheWeek.append(day)
+            
+            print(daysOfTheWeek)
+        }
     }
 }

@@ -52,6 +52,9 @@ class ClassTimeViewController: UIViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        classTimePickerView.delegate = self
+        classTimePickerView.dataSource = self
+        
         //populateCompletedProfileInfo()
         guard let aulaName = aulaName, let active = active, let aulaDescription = aulaDescription else {
             print("no aulaName, active, or aulaDescription passed to: ClassLocationAndTimeVC -> viewDidLoad() - line 73")
@@ -182,10 +185,79 @@ extension ClassTimeViewController {
 extension ClassTimeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 0
+        return 3
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
+        // hours component
+        if component == 0 {
+            return classTimeComponents.hoursStandardArray.count
+            
+        // minutes component
+        } else if component == 1 {
+            return classTimeComponents.minutesArray.count
+            
+        // AM/PM component
+        } else if component == 2 {
+            return classTimeComponents.amPmArray.count
+        }
         return 0
     }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        // hours component
+        if component == 0 {
+            return "\(classTimeComponents.hoursStandardArray[row].rawValue)"
+            
+            // minutes component
+        } else if component == 1 {
+            
+            let minutes = classTimeComponents.minutesArray[row]
+            
+            switch minutes {
+            case .zero: return ": \(minutes.rawValue)"
+            case .five: return ": \(minutes.rawValue)"
+            case .ten: return ": \(minutes.rawValue)"
+            case .fifteen: return ": \(minutes.rawValue)"
+            case .twenty: return ": \(minutes.rawValue)"
+            case .twentyfive: return ": \(minutes.rawValue)"
+            case .thirty: return ": \(minutes.rawValue)"
+            case .thirtyfive: return ": \(minutes.rawValue)"
+            case .forty: return ": \(minutes.rawValue)"
+            case .fortyfive: return ": \(minutes.rawValue)"
+            case .fifty: return ": \(minutes.rawValue)"
+            case .fiftyfive: return ": \(minutes.rawValue)"
+            }
+            
+            // AM/PM component
+        } else if component == 2 {
+            return "\(classTimeComponents.amPmArray[row].rawValue)"
+        }
+        return ""
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        if pickerView.selectedRow(inComponent: 0) >= 11  {
+            pickerView.selectRow(1, inComponent: 2, animated: true)
+        } else if pickerView.selectedRow(inComponent: 0) < 11  {
+            pickerView.selectRow(0, inComponent: 2, animated: true)
+        }
+        
+        let hourSelected = classTimeComponents.hoursStandardArray[pickerView.selectedRow(inComponent: 0)]
+        
+        let minutesSelected = classTimeComponents.minutesArray[pickerView.selectedRow(inComponent: 1)]
+        
+        let amPmSelected = classTimeComponents.amPmArray[pickerView.selectedRow(inComponent: 2)]
+        
+        time = "\(hourSelected.rawValue):\(minutesSelected.rawValue) \(amPmSelected.rawValue)"
+        
+        if let time = time {
+            print(time)
+        }
+        
+    }
+
 }

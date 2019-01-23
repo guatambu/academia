@@ -459,8 +459,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="nextButtonTapped:" destination="qMa-B9-a4e" eventType="touchUpInside" id="Pde-jD-Z2d"/>
-                                    <segue destination="Rnw-3k-Xps" kind="show" identifier="toClassDayOfTheWeek" id="s3s-iF-P4V"/>
+                                    <segue destination="Rnw-3k-Xps" kind="show" identifier="toClassDayOfTheWeek" id="sOb-55-pXc"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YL9-5E-SDC" userLabel="Progress Stack View">
@@ -678,7 +677,6 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                     <connections>
-                                        <action selector="nextButtonTapped:" destination="CKL-zS-Sbf" eventType="touchUpInside" id="qd7-eN-rlO"/>
                                         <segue destination="Vm0-8r-JFt" kind="show" identifier="toClassGroups" id="teF-4N-txA"/>
                                     </connections>
                                 </button>
@@ -1086,8 +1084,6 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                     <connections>
-                                        <action selector="nextButtonTapped:" destination="CKL-zS-Sbf" eventType="touchUpInside" id="7YY-cJ-aJ0"/>
-                                        <action selector="nextButtonTapped:" destination="Vm0-8r-JFt" eventType="touchUpInside" id="a0Q-Cf-36h"/>
                                         <segue destination="qfm-k8-E0n" kind="show" identifier="toClassReviewAndCreate" id="MLo-Z7-aAl"/>
                                     </connections>
                                 </button>
@@ -2203,6 +2199,9 @@
                                                             <constraint firstAttribute="width" constant="32" id="Ops-3k-VcB"/>
                                                         </constraints>
                                                         <state key="normal" image="unchecked_checkbox_32.png"/>
+                                                        <connections>
+                                                            <action selector="sundayButtonTapped:" destination="Rnw-3k-Xps" eventType="touchUpInside" id="Fye-Ml-tn2"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -2222,6 +2221,9 @@
                                                             <constraint firstAttribute="width" constant="32" id="p9c-Nl-Xaa"/>
                                                         </constraints>
                                                         <state key="normal" image="unchecked_checkbox_32.png"/>
+                                                        <connections>
+                                                            <action selector="mondayButtonTapped:" destination="Rnw-3k-Xps" eventType="touchUpInside" id="pok-Xh-n6o"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -2241,6 +2243,9 @@
                                                             <constraint firstAttribute="width" constant="32" id="Rhs-mg-k7j"/>
                                                         </constraints>
                                                         <state key="normal" image="unchecked_checkbox_32.png"/>
+                                                        <connections>
+                                                            <action selector="tuesdayButtonTapped:" destination="Rnw-3k-Xps" eventType="touchUpInside" id="jt9-Rm-zlP"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -2260,6 +2265,9 @@
                                                             <constraint firstAttribute="height" constant="32" id="u6l-BM-O0m"/>
                                                         </constraints>
                                                         <state key="normal" image="unchecked_checkbox_32.png"/>
+                                                        <connections>
+                                                            <action selector="wednesdayButtonTapped:" destination="Rnw-3k-Xps" eventType="touchUpInside" id="jpW-vP-q4y"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -2279,6 +2287,9 @@
                                                             <constraint firstAttribute="width" constant="32" id="R0G-5m-1RY"/>
                                                         </constraints>
                                                         <state key="normal" image="unchecked_checkbox_32.png"/>
+                                                        <connections>
+                                                            <action selector="thursdayButtonTapped:" destination="Rnw-3k-Xps" eventType="touchUpInside" id="F1U-t9-JPD"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -2298,6 +2309,9 @@
                                                             <constraint firstAttribute="height" constant="32" id="Q8r-pF-x9R"/>
                                                         </constraints>
                                                         <state key="normal" image="unchecked_checkbox_32.png"/>
+                                                        <connections>
+                                                            <action selector="fridayButtonTapped:" destination="Rnw-3k-Xps" eventType="touchUpInside" id="bas-gI-cOI"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -2317,17 +2331,22 @@
                                                             <constraint firstAttribute="height" constant="32" id="siI-nW-I3o"/>
                                                         </constraints>
                                                         <state key="normal" image="unchecked_checkbox_32.png"/>
+                                                        <connections>
+                                                            <action selector="saturdayButtonTapped:" destination="Rnw-3k-Xps" eventType="touchUpInside" id="HxV-tf-PDe"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="208" id="8ZM-rG-7ET"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="dcC-PE-O8i" firstAttribute="centerY" secondItem="owF-JL-rPZ" secondAttribute="centerY" id="3k2-Ml-qNQ"/>
-                                    <constraint firstAttribute="trailing" secondItem="dcC-PE-O8i" secondAttribute="trailing" constant="40" id="Umr-wT-9W7"/>
-                                    <constraint firstItem="dcC-PE-O8i" firstAttribute="leading" secondItem="owF-JL-rPZ" secondAttribute="leading" constant="40" id="yIh-o7-ybN"/>
+                                    <constraint firstItem="dcC-PE-O8i" firstAttribute="centerX" secondItem="owF-JL-rPZ" secondAttribute="centerX" id="7Wp-0B-Sxl"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SsJ-yy-j5b" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
@@ -2347,7 +2366,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="nextButtonTapped:" destination="Rnw-3k-Xps" eventType="touchUpInside" id="8P9-X1-lfs"/>
                                     <segue destination="uTk-xe-PN2" kind="show" identifier="toClassTime" id="bw5-g6-5Or"/>
                                 </connections>
                             </button>
@@ -2538,7 +2556,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JAa-E5-3ce">
-                                        <rect key="frame" x="0.0" y="35.5" width="288" height="216"/>
+                                        <rect key="frame" x="0.0" y="36" width="288" height="216"/>
                                     </pickerView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2568,7 +2586,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="nextButtonTapped:" destination="uTk-xe-PN2" eventType="touchUpInside" id="Yyy-yy-sVU"/>
                                     <segue destination="xbv-Rs-BjJ" kind="show" identifier="toClassLocation" id="FGV-5D-TBt"/>
                                 </connections>
                             </button>
@@ -2769,7 +2786,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="nextButtonTapped:" destination="xbv-Rs-BjJ" eventType="touchUpInside" id="LcA-nw-fHu"/>
                                     <segue destination="CKL-zS-Sbf" kind="show" identifier="toClassInstructors" id="V78-pp-F2o"/>
                                 </connections>
                             </button>

@@ -66,15 +66,15 @@ class ClassLocationViewController: UIViewController {
     @objc func saveButtonTapped() {
         
         // Location update profile info
-        if classNameTextField.text != "" {
-            
-            updateAulaInfo()
-            
-            self.returnToClassInfo()
-            
-            print("update aula name: \(String(describing: self.aulaToEdit?.aulaName))")
-        }
-        inEditingMode = false
+//        if classNameTextField.text != "" {
+//
+//            updateAulaInfo()
+//
+//            self.returnToClassInfo()
+//              
+//            print("update aula name: \(String(describing: self.aulaToEdit?.aulaName))")
+//        }
+//        inEditingMode = false
     }
     
     
