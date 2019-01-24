@@ -12,12 +12,18 @@ class ClassLocationViewController: UIViewController {
 
     // MARK: - Properties
     
+    // MOCK DATA
+    var locations = [MockData.myLocation, MockData.myLocation, MockData.myLocation, MockData.myLocation, MockData.myLocation, MockData.myLocation, MockData.myLocation, MockData.myLocation]
+    
     var aulaName: String?
     var active: Bool?
     var aulaDescription: String?
-    var daysOfTheWeek: [ClassTimeComponents.Weekdays] = []
+    var daysOfTheWeek: [ClassTimeComponents.Weekdays]?
     var time: String?
     var location:Location?
+    
+    // to hold the compiled string for the classLocationLabelOutlet
+    var locationString = ""
     
     var inEditingMode: Bool?
     var aulaToEdit: Aula?
@@ -50,9 +56,13 @@ class ClassLocationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //populateCompletedProfileInfo()
+        classLocationPickerView.delegate = self
+        classLocationPickerView.dataSource = self
+        
+        classLocationLabelOutlet.text = locations[classLocationPickerView.selectedRow(inComponent: 0)].locationName
+        
         guard let aulaName = aulaName, let active = active, let aulaDescription = aulaDescription else {
-            print("no aulaName, active, or aulaDescription passed to: ClassLocationAndTimeVC -> viewDidLoad() - line 73")
+            print("no aulaName, active, or aulaDescription passed to: ClassLocationVC -> viewDidLoad() - line 61")
             return
         }
         
@@ -66,15 +76,15 @@ class ClassLocationViewController: UIViewController {
     @objc func saveButtonTapped() {
         
         // Location update profile info
-//        if classNameTextField.text != "" {
-//
-//            updateAulaInfo()
-//
-//            self.returnToClassInfo()
-//              
-//            print("update aula name: \(String(describing: self.aulaToEdit?.aulaName))")
-//        }
-//        inEditingMode = false
+        if classLocationLabelOutlet.text != "" {
+
+            updateAulaInfo()
+
+            self.returnToClassInfo()
+            
+            print("update aula location: \(String(describing: self.aulaToEdit?.location?.locationName))")
+        }
+        inEditingMode = false
     }
     
     
@@ -99,12 +109,13 @@ class ClassLocationViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         // confirm appropriate segue via segue.identifier
-        if segue.identifier == "toAulaTime" {
+        if segue.identifier == "toClassInstructors" {
             
             // Get the ClassTimeViewController using segue.destination.
-            guard let destViewController = segue.destination as? ClassTimeViewController else { return }
+            guard let destViewController = segue.destination as? ClassInstructorsTableViewController else { return }
             
             // pass data to destViewController
+            destViewController.location = location
             destViewController.time = time
             destViewController.daysOfTheWeek = daysOfTheWeek
             destViewController.aulaName = aulaName
@@ -169,4 +180,47 @@ extension ClassLocationViewController {
         print("the VC's aula timeOfDay, location, and daysOfTheWeek have been set to the existing aula's coresponding details to be edited and the collection views have reloaded their data")
     }
 }
+
+
+// MARK: - UIPickerView Protocol Conformance & Methods
+extension ClassLocationViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
+        // locations component
+        if component == 0 {
+            return locations.count
+
+        }
+        return 0
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        // locations component
+        if component == 0 {
+            return "\(locations[row].locationName)"
+        }
+        return ""
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+
+        let locationSelected = locations[pickerView.selectedRow(inComponent: 0)]
+        
+        locationString = "\(locationSelected.locationName)"
+        
+        classLocationLabelOutlet.text = locationString
+        
+        if let location = location {
+            print(location.locationName)
+        }
+    }
+}
+
+
 

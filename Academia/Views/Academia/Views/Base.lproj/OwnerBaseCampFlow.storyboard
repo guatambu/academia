@@ -2549,14 +2549,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eMv-R5-hxk" userLabel="class time and location View">
                                 <rect key="frame" x="16" y="148" width="288" height="244"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(class day)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajH-NZ-eFk">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(class day)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajH-NZ-eFk" userLabel="Class Days Label Outlet">
                                         <rect key="frame" x="16" y="0.0" width="272" height="27.5"/>
                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JAa-E5-3ce">
-                                        <rect key="frame" x="0.0" y="36" width="288" height="216"/>
+                                        <rect key="frame" x="0.0" y="35.5" width="288" height="216"/>
                                     </pickerView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2707,7 +2707,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="MDQ-dq-XPQ"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="classTimeDetailsLabelOutlet" destination="ajH-NZ-eFk" id="c3Z-mv-EbW"/>
+                        <outlet property="classDaysLabelOutlet" destination="ajH-NZ-eFk" id="Wyt-bs-oxu"/>
                         <outlet property="classTimePickerView" destination="JAa-E5-3ce" id="vZM-al-ASy"/>
                         <outlet property="daysOfTheWeekLabelOutlet" destination="ajH-NZ-eFk" id="zJo-Rq-0AK"/>
                         <outlet property="welcomeInstructionsLabelOutlet" destination="20X-xL-y1L" id="W8m-sq-Tan"/>
@@ -2758,6 +2758,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XFi-a1-nmP" userLabel="class time and location View">
                                 <rect key="frame" x="16" y="164" width="288" height="212"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(class locaiton)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNT-ay-G5N" userLabel="Class Days Label Outlet">
+                                        <rect key="frame" x="8" y="0.0" width="280" height="27.5"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bWh-1J-que">
                                         <rect key="frame" x="0.0" y="-2" width="288" height="216"/>
                                     </pickerView>
@@ -2766,6 +2772,9 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="bWh-1J-que" secondAttribute="trailing" id="4Mf-e0-K3D"/>
                                     <constraint firstItem="bWh-1J-que" firstAttribute="leading" secondItem="XFi-a1-nmP" secondAttribute="leading" id="J6N-Jm-DQR"/>
+                                    <constraint firstItem="aNT-ay-G5N" firstAttribute="leading" secondItem="XFi-a1-nmP" secondAttribute="leading" constant="8" id="Kxc-8R-iam"/>
+                                    <constraint firstItem="aNT-ay-G5N" firstAttribute="top" secondItem="XFi-a1-nmP" secondAttribute="top" id="M8b-lV-FkO"/>
+                                    <constraint firstAttribute="trailing" secondItem="aNT-ay-G5N" secondAttribute="trailing" id="WBj-WZ-vO5"/>
                                     <constraint firstItem="bWh-1J-que" firstAttribute="centerY" secondItem="XFi-a1-nmP" secondAttribute="centerY" id="y1a-cQ-8JY"/>
                                 </constraints>
                             </view>
@@ -2907,6 +2916,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="1dl-i9-mCl"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="classLocationLabelOutlet" destination="aNT-ay-G5N" id="kW0-Po-S2r"/>
                         <outlet property="classLocationPickerView" destination="bWh-1J-que" id="EU1-75-rjL"/>
                         <outlet property="welcomeInstructionsLabelOutlet" destination="Rbj-N9-6P4" id="JMW-GP-DfQ"/>
                         <outlet property="welcomeMessageLabelOutlet" destination="xWK-Ab-3am" id="Qnl-NN-fh6"/>

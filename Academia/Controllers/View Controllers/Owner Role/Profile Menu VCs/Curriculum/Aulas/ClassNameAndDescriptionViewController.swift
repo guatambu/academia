@@ -98,10 +98,13 @@ class ClassNameAndDescriptionViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         // confirm appropriate segue via segue.identifier
-        if segue.identifier == "toClassTime" {
+        if segue.identifier == "toClassDayOfTheWeek" {
             
             // Get the ClassTimeViewController using segue.destination.
-            guard let destViewController = segue.destination as? ClassTimeViewController else { return }
+            guard let destViewController = segue.destination as? ClassDayViewController else { return }
+            
+            aulaName = classNameLabelOutlet.text
+            aulaDescription = classDescriptionTextView.text
             
             // pass data to destViewController
             destViewController.aulaName = aulaName

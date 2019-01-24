@@ -13,7 +13,7 @@ class ClassDayViewController: UIViewController {
     // MARK: - Properties
     
     var aulaName: String?
-    var active: Bool = true
+    var active: Bool?
     var aulaDescription: String?
     var daysOfTheWeek: [ClassTimeComponents.Weekdays] = []
     
@@ -58,6 +58,13 @@ class ClassDayViewController: UIViewController {
         super.viewDidLoad()
         
         setUpButtons()
+        
+        guard let aulaName = aulaName, let active = active, let aulaDescription = aulaDescription else {
+            print("no aulaName, active, or aulaDescription passed to: ClassDayVC -> viewDidLoad() - line 80")
+            return
+        }
+        
+        print("program name: \(aulaName) \nactive: \(active) \ndescription: \(aulaDescription)")
         
         //populateCompletedProfileInfo()
     }
@@ -148,7 +155,7 @@ class ClassDayViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             
         // confirm appropriate segue via segue.identifier
-        if segue.identifier == "toAulaTime" {
+        if segue.identifier == "toClassTime" {
             
             // Get the ClassTimeViewController using segue.destination.
             guard let destViewController = segue.destination as? ClassTimeViewController else { return }

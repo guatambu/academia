@@ -17,11 +17,14 @@ class ClassTimeViewController: UIViewController  {
     var aulaName: String?
     var active: Bool?
     var aulaDescription: String?
-    var daysOfTheWeek: [ClassTimeComponents.Weekdays] = []
+    var daysOfTheWeek: [ClassTimeComponents.Weekdays]?
     var time: String?
     
     var inEditingMode: Bool?
     var aulaToEdit: Aula?
+    
+    // to hold the compiled strings for the classDaysLabelOutlet
+    var daysListString = ""
     
     // instances
     let beltBuilder = BeltBuilder()
@@ -30,7 +33,7 @@ class ClassTimeViewController: UIViewController  {
     @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     @IBOutlet weak var daysOfTheWeekLabelOutlet: UILabel!
-    @IBOutlet weak var classTimeDetailsLabelOutlet: UILabel!
+    @IBOutlet weak var classDaysLabelOutlet: UILabel!
     
     // class time UIPickerView
     @IBOutlet weak var classTimePickerView: UIPickerView!
@@ -46,6 +49,24 @@ class ClassTimeViewController: UIViewController  {
         
         navigationController?.navigationBar.titleTextAttributes = avenirFont
         
+        // populate the classDaysLabelOutlet with the previously selected daysOfTheWeek
+        guard let daysOfTheWeek = daysOfTheWeek else {
+            
+            print("ERROR: nil value found for daysOfTheWeek array in ClassTimeViewController.swift -> viewWillAppear() - line 50.")
+            return
+        }
+        for day in daysOfTheWeek {
+            
+            if day == daysOfTheWeek.last {
+                daysListString += "\(day)"
+            } else {
+                daysListString += "\(day), "
+            }
+            
+            daysOfTheWeekLabelOutlet.text = daysListString
+        }
+        
+        // handle inEditingMode setup
         enterEditingMode(inEditingMode: inEditingMode)
     }
     
@@ -57,7 +78,7 @@ class ClassTimeViewController: UIViewController  {
         
         //populateCompletedProfileInfo()
         guard let aulaName = aulaName, let active = active, let aulaDescription = aulaDescription else {
-            print("no aulaName, active, or aulaDescription passed to: ClassLocationAndTimeVC -> viewDidLoad() - line 73")
+            print("no aulaName, active, or aulaDescription passed to: ClassTimeVC -> viewDidLoad() - line 80")
             return
         }
         
@@ -73,7 +94,7 @@ class ClassTimeViewController: UIViewController  {
         // Location update profile info
         guard let _ = time else {
             
-            print("ERROR: nil value found for time property in ClassTimeViewController.swift -> saveButtonTapped() - line 72.")
+            print("ERROR: nil value found for time property in ClassTimeViewController.swift -> saveButtonTapped() - line 96.")
             
             return
         }
@@ -108,10 +129,10 @@ class ClassTimeViewController: UIViewController  {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         // confirm appropriate segue via segue.identifier
-        if segue.identifier == "toAulaTime" {
+        if segue.identifier == "toClassLocation" {
             
             // Get the ClassTimeViewController using segue.destination.
-            guard let destViewController = segue.destination as? ClassTimeViewController else { return }
+            guard let destViewController = segue.destination as? ClassLocationViewController else { return }
             
             // pass data to destViewController
             destViewController.time = time
@@ -259,5 +280,4 @@ extension ClassTimeViewController: UIPickerViewDelegate, UIPickerViewDataSource 
         }
         
     }
-
 }
