@@ -6,7 +6,7 @@
 //  Copyright © 2019 DunDak, LLC. All rights reserved.
 //
 
-// NOTE:  "aula" means "class" in Portguese. "aula" stands in for the word "class" throughout this workflow as the word "class" is already used as a Swift keyword.
+// NOTE:  "aula" means "class" in Portuguese. "aula" stands in for the word "class" throughout this workflow as the word "class" is already used as a Swift keyword.
 
 import UIKit
 
@@ -43,12 +43,28 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
     
     // MARK: - ViewController Lifecycle Functions
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
+                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
+        
+        navigationController?.navigationBar.titleTextAttributes = avenirFont
+        
+        enterEditingMode(inEditingMode: inEditingMode)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        guard let aulaName = aulaName, let active = active, let aulaDescription = aulaDescription else {
+            print("no aulaName, active, or aulaDescription passed to: ClassLocationVC -> viewDidLoad() - line 61")
+            return
+        }
+        
+        print("program name: \(aulaName) \nactive: \(active) \ndescription: \(aulaDescription)")
+        
     }
-
+    
     
     // MARK: - Actions
     

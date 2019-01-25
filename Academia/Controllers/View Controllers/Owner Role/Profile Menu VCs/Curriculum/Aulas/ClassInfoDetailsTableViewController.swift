@@ -6,7 +6,7 @@
 //  Copyright © 2019 DunDak, LLC. All rights reserved.
 //
 
-// NOTE:  "aula" means "class" in Portguese. "aula" stands in for the word "class" throughout this workflow as the word "class" is already used as a Swift keyword.
+// NOTE:  "aula" means "class" in Portuguese. "aula" stands in for the word "class" throughout this workflow as the word "class" is already used as a Swift keyword.
 
 
 import UIKit
