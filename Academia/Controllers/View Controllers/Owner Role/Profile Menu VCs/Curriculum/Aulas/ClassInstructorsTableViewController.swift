@@ -70,15 +70,20 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
     
     @objc func saveButtonTapped() {
         
-        // Location update profile info
-        if instructors.isEmpty && ownerInstructors.isEmpty {
+        // class update info
+        guard instructors.isEmpty && ownerInstructors.isEmpty else {
             
-            updateAulaInfo()
+            welcomeInstructions1LabelOutlet.textColor = beltBuilder.redBeltRed
             
-            self.returnToClassInfo()
-            
-            print("update aula location: \(String(describing: self.aulaToEdit?.location?.locationName))")
+            return
         }
+    
+        updateAulaInfo()
+        
+        self.returnToClassInfo()
+        
+        print("update aula instructors: \(String(describing: self.aulaToEdit?.instructor)) + \(String(describing: self.aulaToEdit?.ownerInstructor))")
+        
         inEditingMode = false
     }
     
@@ -295,7 +300,7 @@ extension ClassInstructorsTableViewController {
         
         // class update info
         
-        AulaModelController.shared.update(aula: aula, active: nil, kidAttendees: nil, adultAttendees: nil, aulaDescription: nil, aulaName: nil, daysOfTheWeek: daysOfTheWeek, instructor: nil, ownerInstructor: nil, location: location, students: nil, time: nil)
+        AulaModelController.shared.update(aula: aula, active: nil, kidAttendees: nil, adultAttendees: nil, aulaDescription: nil, aulaName: nil, daysOfTheWeek: daysOfTheWeek, instructor: nil, ownerInstructor: nil, location: location, students: nil, time: nil, classGroups: nil)
         print("update class location: \(String(describing: AulaModelController.shared.aulas[0].location?.locationName))")
         
     }

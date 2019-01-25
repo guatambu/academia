@@ -39,7 +39,7 @@ class ReviewInstructorTableViewCell: UITableViewCell {
     func updateViews() {
         
         guard let instructor = instructor else {
-            print("ERROR: nil value found while attepting to unwrap optional adultStudent in AdultStudentTableViewCell.swift -> profilePicTapped - line 84.")
+            print("ERROR: nil value found while attepting to unwrap optional adultStudent in AdultStudentTableViewCell.swift -> updateViews() - line 42.")
             return
         }
         

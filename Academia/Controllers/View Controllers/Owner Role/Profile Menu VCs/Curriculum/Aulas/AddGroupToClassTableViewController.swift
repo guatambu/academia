@@ -10,9 +10,11 @@
 
 import UIKit
 
-class AddGroupToClassTableViewController: UITableViewController {
+class AddGroupToClassTableViewController: UITableViewController, ClassGroupDelegate {
 
     // MARK: - Properties
+    
+    var mockDatGroups = [MockData.allStudents, MockData.allStudents, MockData.allStudents, MockData.allStudents ]
     
     var aulaName: String?
     var active: Bool?
@@ -28,9 +30,6 @@ class AddGroupToClassTableViewController: UITableViewController {
     var inEditingMode: Bool?
     var aulaToEdit: Aula?
     
-    // tableView Sections Header Labels
-    let sectionHeaderLabels = ["Owners", "Instructors"]
-    
     let beltBuilder = BeltBuilder()
     
     @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
@@ -40,84 +39,186 @@ class AddGroupToClassTableViewController: UITableViewController {
     
     // MARK: - ViewController Lifecycle Functions
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
+                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
+        
+        navigationController?.navigationBar.titleTextAttributes = avenirFont
+        
+        enterEditingMode(inEditingMode: inEditingMode)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        guard let aulaName = aulaName, let active = active, let aulaDescription = aulaDescription else {
+            print("no aulaName, active, or aulaDescription passed to: ClassLocationVC -> viewDidLoad() - line 61")
+            return
+        }
+        
+        print("program name: \(aulaName) \nactive: \(active) \ndescription: \(aulaDescription)")
+        
     }
     
     
     // MARK: - Actions
     
-    @IBAction func nextButtonTapped(_ sender: DesignableButton) {
+    @objc func saveButtonTapped() {
+        
+        // class group update info
+        guard classGroups.isEmpty else {
+            
+            welcomeInstructions1LabelOutlet.textColor = beltBuilder.redBeltRed
+            
+            return
+        }
+            
+        updateAulaInfo()
+        
+        self.returnToClassInfo()
+        
+        print("update aula location: \(String(describing: self.aulaToEdit?.location?.locationName))")
+        
+        inEditingMode = false
     }
     
-
+    
     // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        
+        return mockDatGroups.count
     }
-
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
+        
         // Configure the cell...
-
-        return cell
+        
+            let cell = tableView.dequeueReusableCell(withIdentifier: "classGroupCell", for: indexPath) as! ClassGroupTableViewCell
+            
+            // set delegate to communicate with AddNewStudentGroupImageMenuTableViewCell
+            cell.delegate = self
+            
+            // set the isChosen to true if inEditingMode == true and current student is present in groupToEdit.kidMembers array to display the student as chosen
+            if let inEditingMode = inEditingMode {
+                
+                if inEditingMode {
+                    
+                    guard let classGroupsToEdit = aulaToEdit?.classGroups else {
+                        print("ERROR: nil value for aulaToEdit.classGroups in AddGroupToClassTableViewController.swift -> tableView(tableView:, cellForRowAt:) - line 109")
+                        return UITableViewCell()
+                    }
+                    
+                    if classGroupsToEdit.contains(classGroups[indexPath.row]) {
+                        
+                        cell.isChosen = true
+                    }
+                }
+            }
+            
+            cell.group = mockDatGroups[indexPath.row]
+            
+            return cell
+            
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // programmatically performing the segue
+        
+        // instantiate the relevant storyboard
+        let mainView: UIStoryboard = UIStoryboard(name: "OwnerStudentsFlow", bundle: nil)
+        // instantiate the desired TableViewController as ViewController on relevant storyboard
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toGroupInfoDetails") as! GroupInfoDetailsTableViewController
+        
+        // create the segue programmatically - PUSH
+        self.navigationController?.pushViewController(destViewController, animated: true)
+        
+        // set the desired properties of the destinationVC's navgation Item
+        let backButtonItem = UIBarButtonItem()
+        backButtonItem.title = " "
+        navigationItem.backBarButtonItem = backButtonItem
+        
+        let group = mockDatGroups[indexPath.row]
+        
+        destViewController.group = group
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
+    
+    
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "toClassReviewAndCreate" {
+            
+            // Get the ClassTimeViewController using segue.destination.
+            guard let destViewController = segue.destination as? AddGroupToClassTableViewController else { return }
+            
+            // pass data to destViewController
+            destViewController.classGroups = classGroups
+            destViewController.location = location
+            destViewController.time = time
+            destViewController.daysOfTheWeek = daysOfTheWeek
+            destViewController.aulaName = aulaName
+            destViewController.active = active
+            destViewController.aulaDescription = aulaDescription
+            
+            destViewController.inEditingMode = inEditingMode
+            destViewController.aulaToEdit = aulaToEdit
+        }
+        
+        // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
+        updateAulaInfo()
     }
-    */
+}
 
+
+// MARK: - Editing Mode for Individual Class case specific setup
+extension AddGroupToClassTableViewController {
+    
+    // Update Function for case where want to update user info without a segue
+    func updateAulaInfo() {
+        
+        guard let aula = aulaToEdit else { return }
+        
+        // class update info
+        
+        AulaModelController.shared.update(aula: aula, active: nil, kidAttendees: nil, adultAttendees: nil, aulaDescription: nil, aulaName: nil, daysOfTheWeek: nil, instructor: nil, ownerInstructor: nil, location: nil, students: nil, time: nil, classGroups: classGroups)
+        print("update class location: \(String(describing: AulaModelController.shared.aulas[0].classGroups))")
+        
+    }
+    
+    func enterEditingMode(inEditingMode: Bool?) {
+        
+        guard let inEditingMode = inEditingMode else { return }
+        
+        if inEditingMode {
+            let saveButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveButtonTapped))
+            navigationItem.rightBarButtonItem = saveButtonItem
+            
+            aulaEditingSetup()
+        }
+        
+        print("ClassLocationAndTimeVC -> inEditingMode: \(inEditingMode)")
+    }
+    
+    // owner setup for editing mode
+    func aulaEditingSetup() {
+        
+        guard let aulaToEdit = aulaToEdit else {
+            return
+        }
+        
+        welcomeMessageLabelOutlet.text = "Aula: \(aulaToEdit.aulaName)"
+        
+        welcomeInstructions1LabelOutlet.textColor = beltBuilder.redBeltRed
+        welcomeInstructions1LabelOutlet.text = "you are in group editing mode"
+        
+        daysOfTheWeek = aulaToEdit.daysOfTheWeek
+        time = aulaToEdit.time ?? ""
+        
+        print("the VC's aula timeOfDay, location, and daysOfTheWeek have been set to the existing aula's coresponding details to be edited and the collection views have reloaded their data")
+    }
 }

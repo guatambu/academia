@@ -18,6 +18,8 @@
 		FA0C444A21278CA900B59194 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0C444921278CA900B59194 /* Group.swift */; };
 		FA1CEF3921F588D2004498BC /* ClassLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CEF3821F588D2004498BC /* ClassLocationViewController.swift */; };
 		FA1CEF3B21F5900E004498BC /* ClassDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CEF3A21F5900E004498BC /* ClassDayViewController.swift */; };
+		FA1CEF3D21FBA7F6004498BC /* ClassGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CEF3C21FBA7F6004498BC /* ClassGroupTableViewCell.swift */; };
+		FA1CEF3F21FBAD68004498BC /* ClassGroupDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CEF3E21FBAD68004498BC /* ClassGroupDelegate.swift */; };
 		FA21D6802130BB1E006790E5 /* OwnerClassListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D67F2130BB1E006790E5 /* OwnerClassListTableViewController.swift */; };
 		FA21D6822130BB2D006790E5 /* OwnerProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6812130BB2D006790E5 /* OwnerProfileTableViewController.swift */; };
 		FA21D6862130BB93006790E5 /* OwnerGroupListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6852130BB93006790E5 /* OwnerGroupListTableViewController.swift */; };
@@ -284,6 +286,8 @@
 		FA0C444921278CA900B59194 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		FA1CEF3821F588D2004498BC /* ClassLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassLocationViewController.swift; sourceTree = "<group>"; };
 		FA1CEF3A21F5900E004498BC /* ClassDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassDayViewController.swift; sourceTree = "<group>"; };
+		FA1CEF3C21FBA7F6004498BC /* ClassGroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassGroupTableViewCell.swift; sourceTree = "<group>"; };
+		FA1CEF3E21FBAD68004498BC /* ClassGroupDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassGroupDelegate.swift; sourceTree = "<group>"; };
 		FA21D67F2130BB1E006790E5 /* OwnerClassListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerClassListTableViewController.swift; sourceTree = "<group>"; };
 		FA21D6812130BB2D006790E5 /* OwnerProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerProfileTableViewController.swift; sourceTree = "<group>"; };
 		FA21D6852130BB93006790E5 /* OwnerGroupListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerGroupListTableViewController.swift; sourceTree = "<group>"; };
@@ -702,6 +706,7 @@
 				FAD2A3B221E6B93300364FC0 /* ReviewAndCreateClassTableViewController.swift */,
 				FAD2A3B421E6E1AF00364FC0 /* InstructorTableViewCell.swift */,
 				FAD2A3B621E6E1C600364FC0 /* OwnerInstructorTableViewCell.swift */,
+				FA1CEF3C21FBA7F6004498BC /* ClassGroupTableViewCell.swift */,
 				FAD2A3B821E6E1E100364FC0 /* ReviewInstructorTableViewCell.swift */,
 				FAD2A3BA21E6E1F900364FC0 /* ReviewOwnerInstructorTableViewCell.swift */,
 			);
@@ -967,6 +972,7 @@
 				FAD5B12C21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift */,
 				FAAEDB4F21DDA27500E1A04F /* GroupMembersDelegate.swift */,
 				FAD2A3BC21E6E42000364FC0 /* InstructorsDelegate.swift */,
+				FA1CEF3E21FBAD68004498BC /* ClassGroupDelegate.swift */,
 			);
 			path = "Protocols (Delegates and others))";
 			sourceTree = "<group>";
@@ -1458,6 +1464,7 @@
 				FA8B3CBF21CA22B7003398FB /* GroupNameAndDescriptionViewController.swift in Sources */,
 				FA9ADA1B2138D6700005E1F1 /* ProfileTextFieldTableViewCell.swift in Sources */,
 				FA9AD9FD213783FE0005E1F1 /* OwnerPaymentProgramsTableViewController.swift in Sources */,
+				FA1CEF3D21FBA7F6004498BC /* ClassGroupTableViewCell.swift in Sources */,
 				FAE2FDA62140C07600815402 /* EmergencyContactTextFieldTableViewCell.swift in Sources */,
 				FAD5B12D21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift in Sources */,
 				FA66A0162145CE4E002B0313 /* SubHeadingLabelTableViewCell.swift in Sources */,
@@ -1519,6 +1526,7 @@
 				FAE67A36215C2DDF00822DCF /* StudentPaymentTableViewController.swift in Sources */,
 				FAF29B6B212D0E9E00752414 /* OnBoardingTask.swift in Sources */,
 				FAE2FD3C2140700F00815402 /* MockData.swift in Sources */,
+				FA1CEF3F21FBAD68004498BC /* ClassGroupDelegate.swift in Sources */,
 				FA5C5C452153022300BF62D5 /* SegueFromSaveProfileNibCellDelegate.swift in Sources */,
 				FA9ADA2B2139EE560005E1F1 /* StatusTableViewCell.swift in Sources */,
 				FA21D6822130BB2D006790E5 /* OwnerProfileTableViewController.swift in Sources */,

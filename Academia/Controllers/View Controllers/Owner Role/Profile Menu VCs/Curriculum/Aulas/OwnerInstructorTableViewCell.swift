@@ -82,7 +82,7 @@ class OwnerInstructorTableViewCell: UITableViewCell {
     func updateViews() {
         
         guard let ownerInstructor = ownerInstructor else {
-            print("ERROR: nil value found while attepting to unwrap optional adultStudent in AdultStudentTableViewCell.swift -> profilePicTapped - line 84.")
+            print("ERROR: nil value found while attepting to unwrap optional adultStudent in AdultStudentTableViewCell.swift -> updateViews() - line 85.")
             return
         }
         

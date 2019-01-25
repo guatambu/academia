@@ -27,6 +27,7 @@ class Aula {
     var adultAttendees: [AdultStudent]?
     var instructor: [AdultStudent]?
     var ownerInstructor: [Owner]?
+    var classGroups: [Group]?
     var currentDate: Date
     var dateCreated: Date
     var dateEdited: Date
@@ -43,6 +44,7 @@ class Aula {
          adultAttendees: [AdultStudent]?,
          instructor: [AdultStudent]?,
          ownerInstructor: [Owner]?,
+         classGroups: [Group]?,
          currentDate: Date,
          dateCreated: Date,
          dateEdited: Date
@@ -59,6 +61,7 @@ class Aula {
         self.adultAttendees = adultAttendees
         self.instructor = instructor
         self.ownerInstructor = ownerInstructor
+        self.classGroups = classGroups
         self.currentDate = currentDate
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
@@ -80,10 +83,10 @@ extension Aula: Equatable {
         if lhs.adultAttendees != rhs.adultAttendees { return false }
         if lhs.instructor != rhs.instructor { return false }
         if lhs.ownerInstructor != rhs.ownerInstructor { return false }
+        if lhs.classGroups != rhs.classGroups { return false }
         if lhs.currentDate != rhs.currentDate { return false }
         if lhs.dateCreated != rhs.dateCreated { return false }
         if lhs.dateEdited != rhs.dateEdited { return false }
-        
         
         return true
     }

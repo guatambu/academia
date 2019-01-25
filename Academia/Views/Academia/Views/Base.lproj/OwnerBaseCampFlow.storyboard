@@ -1032,7 +1032,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="please choose elligible class groups" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rBh-0E-nUY">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="please tap any box to add group(s)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rBh-0E-nUY">
                                             <rect key="frame" x="16" y="36" width="288" height="22"/>
                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                             <nil key="textColor"/>
@@ -1193,31 +1193,35 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ownerProfileMenuCell" rowHeight="80" id="elS-0V-JH8" customClass="GeneralMenuTableViewCell" customModule="Academia" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="classGroupCell" rowHeight="80" id="elS-0V-JH8" userLabel="class group Cell" customClass="ClassGroupTableViewCell" customModule="Academia" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="132" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="elS-0V-JH8" id="8WE-Jt-vtj">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zdd-1L-T55">
-                                            <rect key="frame" x="16" y="0.0" width="288" height="79.5"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Zdd-1L-T55">
+                                            <rect key="frame" x="0.0" y="0.0" width="304" height="79.5"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDa-tG-fq7">
                                                     <rect key="frame" x="0.0" y="0.0" width="79.5" height="79.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="vDa-tG-fq7" secondAttribute="height" multiplier="1:1" id="nnw-8a-hxE"/>
                                                     </constraints>
-                                                    <state key="normal" image="unchecked_checkbox_32.png"/>
+                                                    <state key="normal" image="unchecked_box_50"/>
+                                                    <connections>
+                                                        <action selector="groupSelectionButtonOutlet:" destination="Ad0-D9-Swm" eventType="touchUpInside" id="hxf-vE-8ft"/>
+                                                        <action selector="groupSelectionButtonTapped:" destination="elS-0V-JH8" eventType="touchUpInside" id="QC5-nG-d9b"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adults" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="jQr-U1-bXE" userLabel="Kids Program A Class 6PM">
-                                                    <rect key="frame" x="79.5" y="0.0" width="176.5" height="79.5"/>
+                                                    <rect key="frame" x="87.5" y="0.0" width="176.5" height="79.5"/>
                                                     <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="24"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="PT3-pL-7K1">
-                                                    <rect key="frame" x="256" y="0.0" width="32" height="79.5"/>
+                                                    <rect key="frame" x="272" y="0.0" width="32" height="79.5"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fhq-m3-Tul">
                                                             <rect key="frame" x="0.0" y="0.0" width="32" height="26.5"/>
@@ -1239,12 +1243,17 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="Zdd-1L-T55" firstAttribute="leading" secondItem="8WE-Jt-vtj" secondAttribute="leading" constant="16" id="3bF-rU-5iL"/>
+                                        <constraint firstItem="Zdd-1L-T55" firstAttribute="leading" secondItem="8WE-Jt-vtj" secondAttribute="leading" id="3bF-rU-5iL"/>
                                         <constraint firstItem="Zdd-1L-T55" firstAttribute="top" secondItem="8WE-Jt-vtj" secondAttribute="top" id="Ylb-Bd-PLD"/>
                                         <constraint firstAttribute="bottom" secondItem="Zdd-1L-T55" secondAttribute="bottom" id="agc-pK-NHb"/>
                                         <constraint firstAttribute="trailing" secondItem="Zdd-1L-T55" secondAttribute="trailing" constant="16" id="zxu-e2-sRi"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="groupNameLabelOutlet" destination="jQr-U1-bXE" id="YxZ-Tr-zzy"/>
+                                    <outlet property="groupSelectionButtonOutlet" destination="vDa-tG-fq7" id="2dY-GX-yiF"/>
+                                    <outlet property="redArrowImage" destination="USQ-Ne-jHh" id="RzO-ms-kIi"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -1262,6 +1271,7 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eIY-wt-oFi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Ad0-D9-Swm" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1404" y="2925"/>
         </scene>
@@ -2933,6 +2943,7 @@
         <image name="profile_pic_placeholder_image.png" width="256" height="256"/>
         <image name="right_red_arrow_32.png" width="32" height="32"/>
         <image name="students_red_32.png" width="32" height="32"/>
+        <image name="unchecked_box_50" width="37.5" height="37.5"/>
         <image name="unchecked_checkbox_32.png" width="32" height="32"/>
     </resources>
 </document>
