@@ -113,6 +113,6 @@ class StudentChoiceViewController: UIViewController {
         destViewController.isOwner = isOwner
         destViewController.isKid = isKid
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
-        
+        destViewController.group = group
     }
 }

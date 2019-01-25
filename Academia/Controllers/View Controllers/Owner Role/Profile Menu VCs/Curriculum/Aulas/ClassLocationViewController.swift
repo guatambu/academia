@@ -133,7 +133,7 @@ class ClassLocationViewController: UIViewController {
 }
 
 
-// MARK: - Editing Mode for Individual User case specific setup
+// MARK: - Editing Mode for Individual Class case specific setup
 extension ClassLocationViewController {
     
     // Update Function for case where want to update user info without a segue

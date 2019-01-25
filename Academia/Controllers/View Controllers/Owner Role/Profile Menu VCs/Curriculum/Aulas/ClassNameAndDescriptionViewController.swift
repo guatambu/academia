@@ -122,7 +122,7 @@ class ClassNameAndDescriptionViewController: UIViewController {
 }
 
 
-// MARK: - Editing Mode for Individual User case specific setup
+// MARK: - Editing Mode for Individual Class case specific setup
 extension ClassNameAndDescriptionViewController {
     
     // Update Function for case where want to update user info without a segue

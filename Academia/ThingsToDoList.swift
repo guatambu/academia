@@ -11,6 +11,10 @@ import Foundation
 
 // THINGS TO DO
 
+    // how to give owner option to choose instructors...
+        // go through adult students array and select and then append those to an instructors array which can be edited
+        // this array will be handled in the OwnerModelController as source of truth
+
     // more than likely will need to build in a way for owner to report and block users that post inappropriate content (especially around the kids)
         // especially cuz, ya know... MESSAGING!!!!
 
