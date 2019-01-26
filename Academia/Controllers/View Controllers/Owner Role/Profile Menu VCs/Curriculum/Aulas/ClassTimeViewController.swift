@@ -82,7 +82,7 @@ class ClassTimeViewController: UIViewController  {
             return
         }
         
-        print("program name: \(aulaName) \nactive: \(active) \ndescription: \(aulaDescription)")
+        print("ClassTimeVC \naula name: \(aulaName) \nactive: \(active) \ndescription: \(aulaDescription)")
         
     }
     

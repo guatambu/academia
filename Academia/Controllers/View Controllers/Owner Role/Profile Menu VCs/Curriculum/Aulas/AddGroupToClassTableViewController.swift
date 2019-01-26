@@ -57,7 +57,7 @@ class AddGroupToClassTableViewController: UITableViewController, ClassGroupDeleg
             return
         }
         
-        print("program name: \(aulaName) \nactive: \(active) \ndescription: \(aulaDescription)")
+        print("AddGroupToClassTVC \naula name: \(aulaName) \nactive: \(active) \ndescription: \(aulaDescription)")
         
     }
     
@@ -154,10 +154,12 @@ class AddGroupToClassTableViewController: UITableViewController, ClassGroupDeleg
         if segue.identifier == "toClassReviewAndCreate" {
             
             // Get the ClassTimeViewController using segue.destination.
-            guard let destViewController = segue.destination as? AddGroupToClassTableViewController else { return }
+            guard let destViewController = segue.destination as? ReviewAndCreateClassTableViewController else { return }
             
             // pass data to destViewController
             destViewController.classGroups = classGroups
+            destViewController.instructors = instructors
+            destViewController.ownerInstructors = ownerInstructors
             destViewController.location = location
             destViewController.time = time
             destViewController.daysOfTheWeek = daysOfTheWeek

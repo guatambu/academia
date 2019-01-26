@@ -66,7 +66,7 @@ class ClassDayViewController: UIViewController {
             return
         }
         
-        print("program name: \(aulaName) \nactive: \(active) \ndescription: \(aulaDescription)")
+        print("ClassDayVC \naula name: \(aulaName) \nactive: \(active) \ndescription: \(aulaDescription)")
         
         //populateCompletedProfileInfo()
     }
@@ -170,6 +170,7 @@ class ClassDayViewController: UIViewController {
             
             destViewController.inEditingMode = inEditingMode
             destViewController.aulaToEdit = aulaToEdit
+            
         }
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller

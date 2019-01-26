@@ -68,7 +68,7 @@ class ClassLocationViewController: UIViewController {
             return
         }
         
-        print("program name: \(aulaName) \nactive: \(active) \ndescription: \(aulaDescription)")
+        print("ClassLocationVC \naula name: \(aulaName) \nactive: \(active) \ndescription: \(aulaDescription)")
         
     }
     
@@ -217,6 +217,8 @@ extension ClassLocationViewController: UIPickerViewDelegate, UIPickerViewDataSou
         locationString = "\(locationSelected.locationName)"
         
         classLocationLabelOutlet.text = locationString
+        
+        location = locationSelected
         
         if let location = location {
             print(location.locationName)

@@ -103,13 +103,10 @@ class ClassNameAndDescriptionViewController: UIViewController {
             // Get the ClassTimeViewController using segue.destination.
             guard let destViewController = segue.destination as? ClassDayViewController else { return }
             
-            aulaName = classNameLabelOutlet.text
-            aulaDescription = classDescriptionTextView.text
-            
             // pass data to destViewController
-            destViewController.aulaName = aulaName
+            destViewController.aulaName = classNameTextField.text
             destViewController.active = active
-            destViewController.aulaDescription = aulaDescription
+            destViewController.aulaDescription = classDescriptionTextView.text
             
             destViewController.inEditingMode = inEditingMode
             destViewController.aulaToEdit = aulaToEdit
@@ -117,7 +114,6 @@ class ClassNameAndDescriptionViewController: UIViewController {
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
         updateAulaInfo()
-        
     }
 }
 

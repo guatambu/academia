@@ -61,7 +61,7 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
             return
         }
         
-        print("program name: \(aulaName) \nactive: \(active) \ndescription: \(aulaDescription)")
+        print("ClassInstructorsTVC \naula name: \(aulaName) \nactive: \(active) \ndescription: \(aulaDescription)")
         
     }
     
@@ -273,6 +273,8 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
             guard let destViewController = segue.destination as? AddGroupToClassTableViewController else { return }
             
             // pass data to destViewController
+            destViewController.instructors = instructors
+            destViewController.ownerInstructors = ownerInstructors
             destViewController.location = location
             destViewController.time = time
             destViewController.daysOfTheWeek = daysOfTheWeek
