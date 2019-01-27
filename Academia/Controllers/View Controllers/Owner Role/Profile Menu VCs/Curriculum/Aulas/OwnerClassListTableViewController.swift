@@ -14,8 +14,6 @@ class OwnerClassListTableViewController: UITableViewController {
     
     // MARK: - Properties
     
-    var classes = [MockData.adultClassA]
-    
     let beltBuilder = BeltBuilder()
     
     // tableView Sections Header Labels
@@ -29,6 +27,8 @@ class OwnerClassListTableViewController: UITableViewController {
                            NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 24)! ]
         
         navigationController?.navigationBar.titleTextAttributes = avenirFont
+        
+        tableView.reloadData()
     }
 
     override func viewDidLoad() {
@@ -41,10 +41,6 @@ class OwnerClassListTableViewController: UITableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         // may want to have sections with titles here
         return weekdays.count
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return classes.count
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -64,14 +60,119 @@ class OwnerClassListTableViewController: UITableViewController {
         
         return sectionHeaderView
     }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        return 40
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        // Sunday
+        if section == 0 {
+            
+            var sundays: [Aula] = []
+            
+            for aula in AulaModelController.shared.aulas {
+                
+                if aula.daysOfTheWeek.contains(.Sunday) {
+                    sundays.append(aula)
+                }
+            }
 
+            return sundays.count
+          
+        // Monday
+        } else if section == 1 {
+            
+            var mondays: [Aula] = []
+            
+            for aula in AulaModelController.shared.aulas {
+                
+                if aula.daysOfTheWeek.contains(.Monday) {
+                    mondays.append(aula)
+                }
+            }
+            return mondays.count
+        
+        // Tuesday
+        } else if section == 2 {
+            
+            var tuesdays: [Aula] = []
+            
+            for aula in AulaModelController.shared.aulas {
+                
+                if aula.daysOfTheWeek.contains(.Tuesday) {
+                    tuesdays.append(aula)
+                }
+            }
+            return tuesdays.count
+        
+        // Wednesday
+        } else if section == 3 {
+            
+            var wednesdays: [Aula] = []
+            
+            for aula in AulaModelController.shared.aulas {
+                
+                if aula.daysOfTheWeek.contains(.Wednesday) {
+                    wednesdays.append(aula)
+                }
+            }
+            return wednesdays.count
+        
+        // Thursday
+        } else if section == 4 {
+            
+            var thursdays: [Aula] = []
+            
+            for aula in AulaModelController.shared.aulas {
+                
+                if aula.daysOfTheWeek.contains(.Thursday) {
+                    thursdays.append(aula)
+                }
+            }
+            return thursdays.count
+         
+        // Friday
+        } else if section == 5 {
+            
+            var fridays: [Aula] = []
+            
+            for aula in AulaModelController.shared.aulas {
+                
+                if aula.daysOfTheWeek.contains(.Friday) {
+                    fridays.append(aula)
+                }
+            }
+            return fridays.count
+         
+        // Saturday
+        } else if section == 6 {
+            
+            var saturdays: [Aula] = []
+            
+            for aula in AulaModelController.shared.aulas {
+                
+                if aula.daysOfTheWeek.contains(.Saturday) {
+                    saturdays.append(aula)
+                }
+            }
+            return saturdays.count
+        
+        // error case where some random section were to be displayed
+        } else {
+            print("ERROR: unexpected UITableView section created in OwnerClassListTableViewController.swift -> tableView(tableView:, numberOfRowsInSection:) - line 165")
+            return 0
+        }
+    }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "classesMenuCell", for: indexPath) as? AulasListMenuTableViewCell else { return UITableViewCell() }
         
-        let classTitle = classes[indexPath.row].aulaName
+        let aula = AulaModelController.shared.aulas[indexPath.row]
         // Configure the cell...
-        cell.title = classTitle
+        cell.aula = aula
         
         return cell
     }
@@ -85,7 +186,7 @@ class OwnerClassListTableViewController: UITableViewController {
         if segue.identifier == "toAulaInfoDetailsSegue" {
             guard let destinationTVC = segue.destination as? ClassInfoDetailsTableViewController else { return }
             guard let indexPath = self.tableView.indexPathForSelectedRow else { return }
-            let aula = classes[indexPath.row]
+            let aula = AulaModelController.shared.aulas[indexPath.row]
             
             // Pass the selected object to the new view controller.
             destinationTVC.aula = aula

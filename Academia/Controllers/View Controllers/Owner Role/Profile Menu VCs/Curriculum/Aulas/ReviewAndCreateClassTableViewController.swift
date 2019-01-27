@@ -96,13 +96,16 @@ class ReviewAndCreateClassTableViewController: UITableViewController {
         createClass()
         
         // programmatic segue back to the MyLocations TVC to view the current locations
-        guard let viewControllers = self.navigationController?.viewControllers else { return }
+        guard let viewControllers = self.navigationController?.viewControllers else {
+            print("ERROR: nil value for viewControllers in ReviewAndCreateClassTableViewController.swift -> createClassButtonTapped(sender:) - line 100")
+            return
+        }
         
         for viewController in viewControllers {
             
             if viewController is OwnerClassListTableViewController {
                 self.navigationController?.popToViewController(viewController, animated: true)
-            }
+            } 
         }
     }
     
@@ -125,7 +128,7 @@ class ReviewAndCreateClassTableViewController: UITableViewController {
         
         let label = UILabel()
         label.attributedText = NSAttributedString(string: sectionHeaderLabels[section], attributes: avenirFont16)
-        label.frame = CGRect(x: 16, y: 0, width: 80, height: 40)
+        label.frame = CGRect(x: 16, y: 0, width: 120, height: 40)
         
         sectionHeaderView.addSubview(label)
         
@@ -157,7 +160,7 @@ class ReviewAndCreateClassTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let ownerInstructors = ownerInstructors, let instructors = instructors else {
-            print("ERROR: nil value for sownerInstructor and/or instructors in ReviewAndCreateClassTableViewController.swift -> tableView(tableView:, cellForRowAt:) - line 160")
+            print("ERROR: nil value for ownerInstructor and/or instructors in ReviewAndCreateClassTableViewController.swift -> tableView(tableView:, cellForRowAt:) - line 160")
             return UITableViewCell()
         }
         
@@ -181,7 +184,7 @@ class ReviewAndCreateClassTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         guard let ownerInstructors = ownerInstructors, let instructors = instructors else {
-            print("ERROR: nil value for sownerInstructor and/or instructors in ReviewAndCreateClassTableViewController.swift -> tableView(tableView:, didSelectRowAt:) - line 185")
+            print("ERROR: nil value for ownerInstructor and/or instructors in ReviewAndCreateClassTableViewController.swift -> tableView(tableView:, didSelectRowAt:) - line 185")
             return
         }
         
@@ -369,7 +372,11 @@ extension ReviewAndCreateClassTableViewController {
             return
         }
         
-        AulaModelController.shared.add(active: active, className: aulaName, classDescription: aulaDescription, daysOfTheWeek: daysOfTheWeek, time: time, location: location, kidAttendees: nil, adultAttendees: nil, instructor: instructors, ownerInstructor: ownerInstructors, classGroups: classGroups)
+        for day in daysOfTheWeek {
+            
+            AulaModelController.shared.add(active: active, className: aulaName, classDescription: aulaDescription, daysOfTheWeek: [day], time: time, location: location, kidAttendees: nil, adultAttendees: nil, instructor: instructors, ownerInstructor: ownerInstructors, classGroups: classGroups)
+            
+        }
     }
 }
 
