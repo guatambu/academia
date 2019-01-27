@@ -29,19 +29,51 @@ class ClassInfoDetailsTableViewController: UITableViewController {
     @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     @IBOutlet weak var classNameLabelOutlet: UILabel!
+    @IBOutlet weak var daysOfTheWeekLabelOutlet: UILabel!
+    @IBOutlet weak var timeLabelOutlet: UILabel!
     @IBOutlet weak var activeLabelOutlet: UILabel!
     @IBOutlet weak var lastChangedLabelOutlet: UILabel!
     @IBOutlet weak var elligibleGroupsLabelOutlet: UILabel!
     @IBOutlet weak var groupListLabelOutlet: UILabel!
+    @IBOutlet weak var locationLabelOutlet: UILabel!
+    @IBOutlet weak var locationNameLabelOutlet: UILabel!
     @IBOutlet weak var classDescriptionLabelOutlet: UILabel!
     @IBOutlet weak var classDescriptionTextView: UITextView!
+    @IBOutlet weak var instructorAdvisoryLabelOutlet: UILabel!
     
     
     // MARK: - ViewController Lifecycle Functions
 
     override func viewWillAppear(_ animated: Bool) {
         
+        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
+                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
+        
+        navigationController?.navigationBar.titleTextAttributes = avenirFont
+        
         populateCompletedAulaInfo()
+        
+        // run checks to produce advisory info to user regarding student types selected to a group
+        if let instructors = aula?.instructor, let ownerInstructors = aula?.ownerInstructor, instructors.isEmpty && ownerInstructors.isEmpty {
+            
+            instructorAdvisoryLabelOutlet.isHidden = false
+            instructorAdvisoryLabelOutlet.text = "no owner instructors added to class"
+            
+        } else if let instructors = aula?.instructor, instructors.isEmpty {
+            
+            instructorAdvisoryLabelOutlet.isHidden = false
+            instructorAdvisoryLabelOutlet.text = "no student instructors added to group"
+            
+        } else if let  ownerInstructors = aula?.ownerInstructor, ownerInstructors.isEmpty {
+            
+            instructorAdvisoryLabelOutlet.isHidden = false
+            instructorAdvisoryLabelOutlet.text = "no owner added to group as instructors"
+            
+        } else {
+            
+            instructorAdvisoryLabelOutlet.isHidden = true
+        }
+        
     }
     
     override func viewDidLoad() {
@@ -58,6 +90,8 @@ class ClassInfoDetailsTableViewController: UITableViewController {
         navigationController?.navigationBar.titleTextAttributes = avenirFont
         
         title = aula.aulaName
+        
+        print("daysOfTheWeek: \(aula.daysOfTheWeek)")
         
     }
     
@@ -188,15 +222,18 @@ class ClassInfoDetailsTableViewController: UITableViewController {
         
         // Configure the cell...
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "instructorCell", for: indexPath) as! InstructorTableViewCell
             
-            cell.instructor = instructors[indexPath.row]
-            
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ownerInstructorCell", for: indexPath) as! OwnerInstructorTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "reviewOwnerInstructorCell", for: indexPath) as! ReviewOwnerInstructorTableViewCell
             
             cell.ownerInstructor = ownerInstructors[indexPath.row]
+            
+            return cell
+            
+        } else {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "reviewInstructorCell", for: indexPath) as! ReviewInstructorTableViewCell
+            
+            cell.instructor = instructors[indexPath.row]
             
             return cell
         }
@@ -292,11 +329,40 @@ extension ClassInfoDetailsTableViewController {
     func populateCompletedAulaInfo() {
         
         guard let aula = aula else {
-            print("there was a nil value for aula property passed to ClassInfoDetailsTableViewController.swift -> populateCompletedGroupInfo() - line 289")
+            print("ERROR: nil value for aula property in ClassInfoDetailsTableViewController.swift -> populateCompletedAulaInfo() - line 327")
             return
         }
-        // VC title
-        self.title = aula.aulaName
+        
+        var daysOfTheWeekString = ""
+        var groupNamesString = ""
+        
+        
+        guard let time = aula.time else {
+            print("there was a nil value in the time passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 285")
+            return
+        }
+        guard let location = aula.location else {
+            print("there was a nil value in the location passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 289")
+            return
+        }
+        guard let classGroups = aula.classGroups else {
+            print("there was a nil value in the classGroups array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 293")
+            return
+        }
+        
+        // name outlet
+        classNameLabelOutlet.text = aula.aulaName
+        // days of th week outlet
+        for day in aula.daysOfTheWeek {
+            if day == aula.daysOfTheWeek.last {
+                daysOfTheWeekString += "\(day.rawValue)"
+            } else {
+                daysOfTheWeekString += "\(day.rawValue), "
+            }
+        }
+        daysOfTheWeekLabelOutlet.text = daysOfTheWeekString
+        // time of day outlet
+        timeLabelOutlet.text = "\(time)"
         // active outlet
         if aula.active == true {
             
@@ -305,9 +371,20 @@ extension ClassInfoDetailsTableViewController {
             activeLabelOutlet.text = "active: NO"
         }
         // lastChanged outlet
-        lastChangedLabelOutlet.text = "\(aula.dateEdited)"
-        // payment program description
-        classDescriptionTextView.text = aula.aulaDescription
+        lastChangedLabelOutlet.text = "\(Date())"
+        // group list outlet
+        for group in classGroups {
+            if group == classGroups.last {
+                groupNamesString += "\(group.name)"
+            } else {
+                groupNamesString += "\(group.name), "
+            }
+        }
+        groupListLabelOutlet.text = groupNamesString
+        // location outlet
+        locationNameLabelOutlet.text = "\(location.locationName)"
+        // class description
+        classDescriptionTextView.text = "\(aula.aulaDescription)"
     }
 }
 

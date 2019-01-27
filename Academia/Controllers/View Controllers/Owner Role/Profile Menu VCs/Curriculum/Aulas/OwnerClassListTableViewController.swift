@@ -170,6 +170,8 @@ class OwnerClassListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "classesMenuCell", for: indexPath) as? AulasListMenuTableViewCell else { return UITableViewCell() }
         
+        // TODO: - add in sections functionality as above in numberOfRowsInSection
+        
         let aula = AulaModelController.shared.aulas[indexPath.row]
         // Configure the cell...
         cell.aula = aula
