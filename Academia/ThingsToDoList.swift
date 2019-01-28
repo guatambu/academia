@@ -11,9 +11,11 @@ import Foundation
 
 // THINGS TO DO
 
-    // how to give owner option to choose instructors...
-        // go through adult students array and select and then append those to an instructors array which can be edited
-        // this array will be handled in the OwnerModelController as source of truth
+    // for OwnerClassListTVC... need to craete sort function to allow for the classes time to have a numeric value that i can sort by.  sorting the dataSource for each day of the week section will then allow the schedule to be displayed properly
+
+    // for ClassInfoDetailsTVC... need to format the raw date value output in last changed for desired time and day format to be displayed
+
+
 
     // more than likely will need to build in a way for owner to report and block users that post inappropriate content (especially around the kids)
         // especially cuz, ya know... MESSAGING!!!!
@@ -125,11 +127,11 @@ import Foundation
         // owner would have the option to choose in settings whether they want to save and upload a batch or save and upload a batch later... batch later - this would be for quick response on the mat... batch same time if you are confident in your wifi
 
     // Picker Wheels
-        // Owner New Payment Program
-        // Owner Add class
+        // Owner New Payment Program - ***** COMPLETE
+        // Owner Add class - ***** COMPLETE
         // Belt Creation?  - ***** COMPLETE
 
-    // Add new Students to group Button fucntionality
+    // Add Students to group Button functionality
         // collection view add
 
     // Stripe integration for monthly payments per agreement terms

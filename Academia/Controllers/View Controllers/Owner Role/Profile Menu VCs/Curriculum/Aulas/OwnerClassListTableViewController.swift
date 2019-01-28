@@ -187,6 +187,10 @@ class OwnerClassListTableViewController: UITableViewController {
                 }
             }
             
+            // sort sundays array to display classes by time
+            // need to create numeric value for time of day to sort by
+            // sundays.sort(by: {$0.time < $1.time})
+            
             let aula = sundays[indexPath.row]
         
             // Configure the cell
