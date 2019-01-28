@@ -377,6 +377,8 @@ extension ReviewAndCreateClassTableViewController {
             AulaModelController.shared.add(active: active, className: aulaName, classDescription: aulaDescription, daysOfTheWeek: [day], time: time, location: location, kidAttendees: nil, adultAttendees: nil, instructor: instructors, ownerInstructor: ownerInstructors, classGroups: classGroups)
             
         }
+        
+        print("class daysOfTheWeek array: \(daysOfTheWeek)")
     }
 }
 

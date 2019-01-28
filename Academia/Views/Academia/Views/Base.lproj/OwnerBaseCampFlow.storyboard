@@ -1995,7 +1995,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="256" height="92"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="class description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="ak4-zL-f1s" userLabel="class description Label Outlet">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="32"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="256" height="32"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="32" id="0uK-Rh-sYc"/>
                                                                     </constraints>
@@ -2012,7 +2012,9 @@
                                                                 </textView>
                                                             </subviews>
                                                             <constraints>
+                                                                <constraint firstItem="ak4-zL-f1s" firstAttribute="leading" secondItem="Tiv-fw-KaL" secondAttribute="leading" id="RTy-4s-Anl"/>
                                                                 <constraint firstAttribute="trailing" secondItem="oVU-LA-egP" secondAttribute="trailing" id="WGm-H8-fK6"/>
+                                                                <constraint firstAttribute="trailing" secondItem="ak4-zL-f1s" secondAttribute="trailing" id="bNL-KM-RSl"/>
                                                                 <constraint firstItem="oVU-LA-egP" firstAttribute="leading" secondItem="Tiv-fw-KaL" secondAttribute="leading" id="gw4-vt-Hxf"/>
                                                             </constraints>
                                                         </stackView>
@@ -2028,7 +2030,9 @@
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="xGh-Xw-z5A" firstAttribute="leading" secondItem="yKR-xw-ECe" secondAttribute="leading" id="3FV-Z8-0hX"/>
+                                                        <constraint firstItem="Tiv-fw-KaL" firstAttribute="leading" secondItem="yKR-xw-ECe" secondAttribute="leading" id="Bs6-3s-VLU"/>
                                                         <constraint firstAttribute="trailing" secondItem="xGh-Xw-z5A" secondAttribute="trailing" id="ijM-6g-Ser"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Tiv-fw-KaL" secondAttribute="trailing" id="ryq-UP-3hn"/>
                                                     </constraints>
                                                 </stackView>
                                             </subviews>

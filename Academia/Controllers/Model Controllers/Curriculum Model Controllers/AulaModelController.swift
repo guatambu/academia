@@ -13,7 +13,7 @@ class AulaModelController {
     
     static let shared = AulaModelController()
     
-    var aulas = [Aula]()
+    var aulas : [Aula] = []
     
     
     // MARK: - CRUD Functions

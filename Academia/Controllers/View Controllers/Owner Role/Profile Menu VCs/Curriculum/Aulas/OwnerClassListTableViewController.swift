@@ -33,6 +33,8 @@ class OwnerClassListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("aulas array in AulaModelController:\(AulaModelController.shared.aulas)")
 
     }
 
@@ -162,21 +164,170 @@ class OwnerClassListTableViewController: UITableViewController {
         
         // error case where some random section were to be displayed
         } else {
-            print("ERROR: unexpected UITableView section created in OwnerClassListTableViewController.swift -> tableView(tableView:, numberOfRowsInSection:) - line 165")
+            print("ERROR: unexpected UITableView section created in OwnerClassListTableViewController.swift -> tableView(tableView:, numberOfRowsInSection:) - line 167")
             return 0
         }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "classesMenuCell", for: indexPath) as? AulasListMenuTableViewCell else { return UITableViewCell() }
-        
-        // TODO: - add in sections functionality as above in numberOfRowsInSection
-        
-        let aula = AulaModelController.shared.aulas[indexPath.row]
+
         // Configure the cell...
-        cell.aula = aula
         
-        return cell
+        // Sunday
+        if indexPath.section == 0 {
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "classesMenuCell", for: indexPath) as? AulasListMenuTableViewCell else { return UITableViewCell() }
+            
+            var sundays: [Aula] = []
+            
+            for aula in AulaModelController.shared.aulas {
+                
+                if aula.daysOfTheWeek.contains(.Sunday) {
+                    sundays.append(aula)
+                }
+            }
+            
+            let aula = sundays[indexPath.row]
+        
+            // Configure the cell
+            cell.aula = aula
+            
+            return cell
+            
+        // Monday
+        } else if indexPath.section == 1 {
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "classesMenuCell", for: indexPath) as? AulasListMenuTableViewCell else { return UITableViewCell() }
+            
+            var mondays: [Aula] = []
+            
+            for aula in AulaModelController.shared.aulas {
+                
+                if aula.daysOfTheWeek.contains(.Monday) {
+                    mondays.append(aula)
+                }
+            }
+            
+            let aula = mondays[indexPath.row]
+            
+            // Configure the cell...
+            cell.aula = aula
+            
+            return cell
+            
+        // Tuesday
+        } else if indexPath.section == 2 {
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "classesMenuCell", for: indexPath) as? AulasListMenuTableViewCell else { return UITableViewCell() }
+            
+            var tuesdays: [Aula] = []
+            
+            for aula in AulaModelController.shared.aulas {
+                
+                if aula.daysOfTheWeek.contains(.Tuesday) {
+                    tuesdays.append(aula)
+                }
+            }
+            
+            let aula = tuesdays[indexPath.row]
+            
+            // Configure the cell...
+            cell.aula = aula
+            
+            return cell
+            
+        // Wednesday
+        } else if indexPath.section == 3 {
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "classesMenuCell", for: indexPath) as? AulasListMenuTableViewCell else { return UITableViewCell() }
+            
+            var wednesdays: [Aula] = []
+            
+            for aula in AulaModelController.shared.aulas {
+                
+                if aula.daysOfTheWeek.contains(.Wednesday) {
+                    wednesdays.append(aula)
+                }
+            }
+            
+            let aula = wednesdays[indexPath.row]
+            
+            // Configure the cell...
+            cell.aula = aula
+            
+            return cell
+            
+        // Thursday
+        } else if indexPath.section == 4 {
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "classesMenuCell", for: indexPath) as? AulasListMenuTableViewCell else { return UITableViewCell() }
+            
+            var thursdays: [Aula] = []
+            
+            for aula in AulaModelController.shared.aulas {
+                
+                if aula.daysOfTheWeek.contains(.Thursday) {
+                    thursdays.append(aula)
+                }
+            }
+            
+            let aula = thursdays[indexPath.row]
+            
+            // Configure the cell...
+            cell.aula = aula
+            
+            return cell
+        
+        // Friday
+        } else if indexPath.section == 5 {
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "classesMenuCell", for: indexPath) as? AulasListMenuTableViewCell else { return UITableViewCell() }
+            
+            var fridays: [Aula] = []
+            
+            for aula in AulaModelController.shared.aulas {
+                
+                if aula.daysOfTheWeek.contains(.Friday) {
+                    fridays.append(aula)
+                }
+            }
+            
+            let aula = fridays[indexPath.row]
+            
+            // Configure the cell...
+            cell.aula = aula
+            
+            return cell
+        
+        // Saturday
+        } else if indexPath.section == 6 {
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "classesMenuCell", for: indexPath) as? AulasListMenuTableViewCell else { return UITableViewCell() }
+            
+            var saturdays: [Aula] = []
+            
+            for aula in AulaModelController.shared.aulas {
+                
+                if aula.daysOfTheWeek.contains(.Saturday) {
+                    saturdays.append(aula)
+                }
+            }
+            
+            let aula = saturdays[indexPath.row]
+            
+            // Configure the cell...
+            cell.aula = aula
+            
+            return cell
+            
+        } else {
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "classesMenuCell", for: indexPath) as? AulasListMenuTableViewCell else { return UITableViewCell() }
+            
+            print("ERROR: unexpected UITableView section created in OwnerClassListTableViewController.swift -> tableView(tableView:, cellForRowAt:) - line 249")
+            
+            return cell
+        }
     }
 
  
@@ -188,10 +339,130 @@ class OwnerClassListTableViewController: UITableViewController {
         if segue.identifier == "toAulaInfoDetailsSegue" {
             guard let destinationTVC = segue.destination as? ClassInfoDetailsTableViewController else { return }
             guard let indexPath = self.tableView.indexPathForSelectedRow else { return }
-            let aula = AulaModelController.shared.aulas[indexPath.row]
             
-            // Pass the selected object to the new view controller.
-            destinationTVC.aula = aula
+            // Sunday
+            if indexPath.section == 0 {
+                
+                var sundays: [Aula] = []
+                
+                for aula in AulaModelController.shared.aulas {
+                    
+                    if aula.daysOfTheWeek.contains(.Sunday) {
+                        sundays.append(aula)
+                    }
+                }
+                
+                let aula = sundays[indexPath.row]
+                
+                // Pass the selected object to the new view controller.
+                destinationTVC.aula = aula
+                
+            // Monday
+            } else if indexPath.section == 1 {
+                
+                var mondays: [Aula] = []
+                
+                for aula in AulaModelController.shared.aulas {
+                    
+                    if aula.daysOfTheWeek.contains(.Monday) {
+                        mondays.append(aula)
+                    }
+                }
+                
+                let aula = mondays[indexPath.row]
+                
+                // Pass the selected object to the new view controller.
+                destinationTVC.aula = aula
+                
+            // Tuesday
+            } else if indexPath.section == 2 {
+                
+                var tuesdays: [Aula] = []
+                
+                for aula in AulaModelController.shared.aulas {
+                    
+                    if aula.daysOfTheWeek.contains(.Tuesday) {
+                        tuesdays.append(aula)
+                    }
+                }
+                
+                let aula = tuesdays[indexPath.row]
+                
+                // Pass the selected object to the new view controller.
+                destinationTVC.aula = aula
+                
+            // Wednesday
+            } else if indexPath.section == 3 {
+                
+                var wednesdays: [Aula] = []
+                
+                for aula in AulaModelController.shared.aulas {
+                    
+                    if aula.daysOfTheWeek.contains(.Wednesday) {
+                        wednesdays.append(aula)
+                    }
+                }
+                
+                let aula = wednesdays[indexPath.row]
+                
+                // Pass the selected object to the new view controller.
+                destinationTVC.aula = aula
+                
+            // Thursday
+            } else if indexPath.section == 4 {
+                
+                var thursdays: [Aula] = []
+                
+                for aula in AulaModelController.shared.aulas {
+                    
+                    if aula.daysOfTheWeek.contains(.Thursday) {
+                        thursdays.append(aula)
+                    }
+                }
+                
+                let aula = thursdays[indexPath.row]
+                
+                // Pass the selected object to the new view controller.
+                destinationTVC.aula = aula
+                
+            // Friday
+            } else if indexPath.section == 5 {
+                
+                var fridays: [Aula] = []
+                
+                for aula in AulaModelController.shared.aulas {
+                    
+                    if aula.daysOfTheWeek.contains(.Friday) {
+                        fridays.append(aula)
+                    }
+                }
+                
+                let aula = fridays[indexPath.row]
+                
+                // Pass the selected object to the new view controller.
+                destinationTVC.aula = aula
+                
+            // Saturday
+            } else if indexPath.section == 6 {
+                
+                var saturdays: [Aula] = []
+                
+                for aula in AulaModelController.shared.aulas {
+                    
+                    if aula.daysOfTheWeek.contains(.Saturday) {
+                        saturdays.append(aula)
+                    }
+                }
+                
+                let aula = saturdays[indexPath.row]
+                
+                // Pass the selected object to the new view controller.
+                destinationTVC.aula = aula
+                
+                
+            } else {
+                print("ERROR: unexpected UITableView section with day of the week we don't have in OwnerClassListTableViewController.swift -> prepare(for segue:) - line 464")
+            }
         }
     }
 

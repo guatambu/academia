@@ -223,19 +223,38 @@ class ClassInfoDetailsTableViewController: UITableViewController {
         // Configure the cell...
         if indexPath.section == 0 {
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "reviewOwnerInstructorCell", for: indexPath) as! ReviewOwnerInstructorTableViewCell
+            if ownerInstructors.isEmpty {
+                
+                let cell = tableView.dequeueReusableCell(withIdentifier: "reviewOwnerInstructorCell", for: indexPath) as! ReviewOwnerInstructorTableViewCell
+                
+                return cell
+                
+            } else {
+                
+                let cell = tableView.dequeueReusableCell(withIdentifier: "reviewOwnerInstructorCell", for: indexPath) as! ReviewOwnerInstructorTableViewCell
+                
+                cell.ownerInstructor = ownerInstructors[indexPath.row]
+                
+                return cell
+            }
             
-            cell.ownerInstructor = ownerInstructors[indexPath.row]
-            
-            return cell
             
         } else {
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "reviewInstructorCell", for: indexPath) as! ReviewInstructorTableViewCell
-            
-            cell.instructor = instructors[indexPath.row]
-            
-            return cell
+            if instructors.isEmpty {
+                
+                let cell = tableView.dequeueReusableCell(withIdentifier: "reviewOwnerInstructorCell", for: indexPath) as! ReviewOwnerInstructorTableViewCell
+                
+                return cell
+                
+            } else {
+                
+                let cell = tableView.dequeueReusableCell(withIdentifier: "reviewInstructorCell", for: indexPath) as! ReviewInstructorTableViewCell
+                
+                cell.instructor = instructors[indexPath.row]
+                
+                return cell
+            }
         }
     }
     
@@ -371,7 +390,7 @@ extension ClassInfoDetailsTableViewController {
             activeLabelOutlet.text = "active: NO"
         }
         // lastChanged outlet
-        lastChangedLabelOutlet.text = "\(Date())"
+        lastChangedLabelOutlet.text = "last changed: \(Date())"
         // group list outlet
         for group in classGroups {
             if group == classGroups.last {
