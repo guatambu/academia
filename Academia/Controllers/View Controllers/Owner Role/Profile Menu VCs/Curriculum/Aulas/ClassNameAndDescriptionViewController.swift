@@ -126,7 +126,7 @@ extension ClassNameAndDescriptionViewController {
         guard let aula = aulaToEdit else { return }
         // group update info
         if classNameTextField.text != "" {
-            AulaModelController.shared.update(aula: aula, active: active, kidAttendees: nil, adultAttendees: nil, aulaDescription: classDescriptionTextView.text, aulaName: classNameTextField.text, daysOfTheWeek: nil, instructor: nil, ownerInstructor: nil, location: nil, students: nil, time: nil, classGroups: nil)
+            AulaModelController.shared.update(aula: aula, active: active, kidAttendees: nil, adultAttendees: nil, aulaDescription: classDescriptionTextView.text, aulaName: classNameTextField.text, daysOfTheWeek: nil, instructor: nil, ownerInstructor: nil, location: nil, students: nil, time: nil, timeCode: nil, classGroups: nil)
             print("update aula name: \(AulaModelController.shared.aulas[0].aulaName)")
         }
     }

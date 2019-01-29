@@ -23,6 +23,7 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
     var aulaDescription: String?
     var daysOfTheWeek: [ClassTimeComponents.Weekdays]?
     var time: String?
+    var timeCode: Int?
     var location: Location?
 
     var instructors: [AdultStudent] = []
@@ -277,6 +278,7 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
             destViewController.ownerInstructors = ownerInstructors
             destViewController.location = location
             destViewController.time = time
+            destViewController.timeCode = timeCode
             destViewController.daysOfTheWeek = daysOfTheWeek
             destViewController.aulaName = aulaName
             destViewController.active = active
@@ -302,7 +304,7 @@ extension ClassInstructorsTableViewController {
         
         // class update info
         
-        AulaModelController.shared.update(aula: aula, active: nil, kidAttendees: nil, adultAttendees: nil, aulaDescription: nil, aulaName: nil, daysOfTheWeek: daysOfTheWeek, instructor: nil, ownerInstructor: nil, location: location, students: nil, time: nil, classGroups: nil)
+        AulaModelController.shared.update(aula: aula, active: nil, kidAttendees: nil, adultAttendees: nil, aulaDescription: nil, aulaName: nil, daysOfTheWeek: daysOfTheWeek, instructor: nil, ownerInstructor: nil, location: location, students: nil, time: nil, timeCode: nil, classGroups: nil)
         print("update class location: \(String(describing: AulaModelController.shared.aulas[0].location?.locationName))")
         
     }

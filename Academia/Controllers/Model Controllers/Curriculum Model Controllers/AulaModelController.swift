@@ -19,9 +19,9 @@ class AulaModelController {
     // MARK: - CRUD Functions
     
     // Create
-    func add(active: Bool, className: String, classDescription: String, daysOfTheWeek: [ClassTimeComponents.Weekdays], time: String?, location: Location?, kidAttendees: [KidStudent]?, adultAttendees: [AdultStudent]?, instructor: [AdultStudent]?, ownerInstructor: [Owner]?, classGroups: [Group]?) {
+    func add(active: Bool, className: String, classDescription: String, daysOfTheWeek: [ClassTimeComponents.Weekdays], time: String?, timeCode: Int?, location: Location?, kidAttendees: [KidStudent]?, adultAttendees: [AdultStudent]?, instructor: [AdultStudent]?, ownerInstructor: [Owner]?, classGroups: [Group]?) {
         
-        let aula = Aula(aulaUID: UUID(), active: active, aulaName: className, aulaDescription: classDescription, daysOfTheWeek: daysOfTheWeek, time: time, location: location, kidAttendees: kidAttendees, adultAttendees: adultAttendees, instructor: instructor, ownerInstructor: ownerInstructor, classGroups: classGroups, currentDate: Date(), dateCreated: Date(), dateEdited: Date())
+        let aula = Aula(aulaUID: UUID(), active: active, aulaName: className, aulaDescription: classDescription, daysOfTheWeek: daysOfTheWeek, time: time, timeCode: timeCode, location: location, kidAttendees: kidAttendees, adultAttendees: adultAttendees, instructor: instructor, ownerInstructor: ownerInstructor, classGroups: classGroups, currentDate: Date(), dateCreated: Date(), dateEdited: Date())
         
         aulas.append(aula)
     }
@@ -30,7 +30,7 @@ class AulaModelController {
     
     
     // Update
-    func update(aula: Aula, active: Bool?, kidAttendees: [KidStudent]?, adultAttendees: [AdultStudent]?, aulaDescription: String?, aulaName: String?, daysOfTheWeek: [ClassTimeComponents.Weekdays]?, instructor: [AdultStudent]?, ownerInstructor: [Owner]?, location: Location?, students: [Any]?, time: String?, classGroups: [Group]?) {
+    func update(aula: Aula, active: Bool?, kidAttendees: [KidStudent]?, adultAttendees: [AdultStudent]?, aulaDescription: String?, aulaName: String?, daysOfTheWeek: [ClassTimeComponents.Weekdays]?, instructor: [AdultStudent]?, ownerInstructor: [Owner]?, location: Location?, students: [Any]?, time: String?, timeCode: Int?, classGroups: [Group]?) {
         
         aula.dateEdited = Date()
         
@@ -63,6 +63,9 @@ class AulaModelController {
         }
         if let time = time {
             aula.time = time
+        }
+        if let timeCode = timeCode {
+            aula.timeCode = timeCode
         }
         if let classGroups = classGroups {
             aula.classGroups = classGroups

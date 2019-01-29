@@ -188,7 +188,7 @@ extension ClassDayViewController {
         guard let aula = aulaToEdit else { return }
         // group update info
         if daysOfTheWeek.isEmpty != true {
-            AulaModelController.shared.update(aula: aula, active: nil, kidAttendees: nil, adultAttendees: nil, aulaDescription: nil, aulaName: nil, daysOfTheWeek: daysOfTheWeek, instructor: nil, ownerInstructor: nil, location: nil, students: nil, time: nil, classGroups: nil)
+            AulaModelController.shared.update(aula: aula, active: nil, kidAttendees: nil, adultAttendees: nil, aulaDescription: nil, aulaName: nil, daysOfTheWeek: daysOfTheWeek, instructor: nil, ownerInstructor: nil, location: nil, students: nil, time: nil, timeCode: nil, classGroups: nil)
             print("update group name: \(AulaModelController.shared.aulas[0].aulaName)")
         }
     }

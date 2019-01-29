@@ -22,6 +22,7 @@ class Aula {
     var aulaDescription: String
     var daysOfTheWeek: [ClassTimeComponents.Weekdays]
     var time: String?
+    var timeCode: Int?
     var location: Location?
     var kidAttendees: [KidStudent]?
     var adultAttendees: [AdultStudent]?
@@ -39,6 +40,7 @@ class Aula {
          aulaDescription: String,
          daysOfTheWeek: [ClassTimeComponents.Weekdays],
          time: String?,
+         timeCode: Int?,
          location: Location?,
          kidAttendees: [KidStudent]?,
          adultAttendees: [AdultStudent]?,
@@ -56,6 +58,7 @@ class Aula {
         self.aulaDescription = aulaDescription
         self.daysOfTheWeek = daysOfTheWeek
         self.time = time
+        self.timeCode = timeCode
         self.location = location
         self.kidAttendees = kidAttendees
         self.adultAttendees = adultAttendees
@@ -78,6 +81,7 @@ extension Aula: Equatable {
         if lhs.aulaDescription != rhs.aulaDescription { return false }
         if lhs.daysOfTheWeek != rhs.daysOfTheWeek { return false }
         if lhs.time != rhs.time { return false }
+        if lhs.timeCode != rhs.timeCode { return false }
         if lhs.location != rhs.location { return false }
         if lhs.kidAttendees != rhs.kidAttendees { return false }
         if lhs.adultAttendees != rhs.adultAttendees { return false }

@@ -60,10 +60,39 @@ struct ClassTimeComponents {
         case ten = 10
         case eleven = 11
         case twelve = 12
-        
     }
     
-    enum Minutes: String {
+    enum HourCodes: Int {
+        case one = 100
+        case two = 200
+        case three = 300
+        case four = 400
+        case five = 500
+        case six = 600
+        case seven = 700
+        case eight = 800
+        case nine = 900
+        case ten = 1000
+        case eleven = 1100
+        case twelve = 1200
+    }
+    
+    enum MinuteCodes: Int {
+        case zero = 1
+        case five = 2
+        case ten = 3
+        case fifteen = 4
+        case twenty = 5
+        case twentyfive = 6
+        case thirty = 7
+        case thirtyfive = 8
+        case forty = 9
+        case fortyfive = 10
+        case fifty = 11
+        case fiftyfive = 12
+    }
+    
+    enum MinuteStrings: String {
         case zero = "00"
         case five = "05"
         case ten = "10"
@@ -83,13 +112,17 @@ struct ClassTimeComponents {
         case pm = "PM"
     }
     
+    enum AMPMCode: Int {
+        case am = 0
+        case pm = 10000    }
+    
     let weekdaysArray: [Weekdays] = [.Sunday, .Monday, .Tuesday, .Wednesday, .Thursday, .Friday, .Saturday]
     
     let hours24Array: [Hours24] = [.one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .ten, .eleven, .twelve, .thirteen, .fourteen, .fifteen, .sixteen, .seventeen, .eighteen, .nineteen, .twenty, .twentyone, .twentytwo, .twentythree, .twentyfour]
     
     let hoursStandardArray: [HoursStandard] = [.one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .ten, .eleven, .twelve, .one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .ten, .eleven, .twelve]
     
-    let minutesArray: [Minutes] = [.zero, .five, .ten, .fifteen, .twenty, .twentyfive, .thirty, .thirtyfive, .forty, .fortyfive, .fifty, .fiftyfive]
+    let minuteStringsArray: [MinuteStrings] = [.zero, .five, .ten, .fifteen, .twenty, .twentyfive, .thirty, .thirtyfive, .forty, .fortyfive, .fifty, .fiftyfive]
     
     let amPmArray: [AMPM] = [.am,.pm]
 }

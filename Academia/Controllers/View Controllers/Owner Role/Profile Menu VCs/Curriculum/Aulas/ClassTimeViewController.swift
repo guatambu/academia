@@ -19,6 +19,7 @@ class ClassTimeViewController: UIViewController  {
     var aulaDescription: String?
     var daysOfTheWeek: [ClassTimeComponents.Weekdays]?
     var time: String?
+    var timeCode: Int?
     
     var inEditingMode: Bool?
     var aulaToEdit: Aula?
@@ -136,6 +137,7 @@ class ClassTimeViewController: UIViewController  {
             
             // pass data to destViewController
             destViewController.time = time
+            destViewController.timeCode = timeCode
             destViewController.daysOfTheWeek = daysOfTheWeek
             destViewController.aulaName = aulaName
             destViewController.active = active
@@ -163,7 +165,7 @@ extension ClassTimeViewController {
 
         // class update info
        
-        AulaModelController.shared.update(aula: aula, active: nil, kidAttendees: nil, adultAttendees: nil, aulaDescription: nil, aulaName: nil, daysOfTheWeek: daysOfTheWeek, instructor: nil, ownerInstructor: nil, location: nil, students: nil, time: time, classGroups: nil)
+        AulaModelController.shared.update(aula: aula, active: nil, kidAttendees: nil, adultAttendees: nil, aulaDescription: nil, aulaName: nil, daysOfTheWeek: daysOfTheWeek, instructor: nil, ownerInstructor: nil, location: nil, students: nil, time: time, timeCode: timeCode, classGroups: nil)
         print("update class day of the week: \(AulaModelController.shared.aulas[0].daysOfTheWeek)")
         
     }
@@ -217,7 +219,7 @@ extension ClassTimeViewController: UIPickerViewDelegate, UIPickerViewDataSource 
             
         // minutes component
         } else if component == 1 {
-            return classTimeComponents.minutesArray.count
+            return classTimeComponents.minuteStringsArray.count
             
         // AM/PM component
         } else if component == 2 {
@@ -228,6 +230,8 @@ extension ClassTimeViewController: UIPickerViewDelegate, UIPickerViewDataSource 
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
+        // TODO: add in the creation of time code across the pickerView selection process
+        
         // hours component
         if component == 0 {
             return "\(classTimeComponents.hoursStandardArray[row].rawValue)"
@@ -235,7 +239,7 @@ extension ClassTimeViewController: UIPickerViewDelegate, UIPickerViewDataSource 
             // minutes component
         } else if component == 1 {
             
-            let minutes = classTimeComponents.minutesArray[row]
+            let minutes = classTimeComponents.minuteStringsArray[row]
             
             switch minutes {
             case .zero: return ": \(minutes.rawValue)"
@@ -269,7 +273,7 @@ extension ClassTimeViewController: UIPickerViewDelegate, UIPickerViewDataSource 
         
         let hourSelected = classTimeComponents.hoursStandardArray[pickerView.selectedRow(inComponent: 0)]
         
-        let minutesSelected = classTimeComponents.minutesArray[pickerView.selectedRow(inComponent: 1)]
+        let minutesSelected = classTimeComponents.minuteStringsArray[pickerView.selectedRow(inComponent: 1)]
         
         let amPmSelected = classTimeComponents.amPmArray[pickerView.selectedRow(inComponent: 2)]
         

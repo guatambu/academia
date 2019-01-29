@@ -21,6 +21,7 @@ class AddGroupToClassTableViewController: UITableViewController, ClassGroupDeleg
     var aulaDescription: String?
     var daysOfTheWeek: [ClassTimeComponents.Weekdays]?
     var time: String?
+    var timeCode: Int?
     var location:Location?
     
     var instructors: [AdultStudent]?
@@ -162,6 +163,7 @@ class AddGroupToClassTableViewController: UITableViewController, ClassGroupDeleg
             destViewController.ownerInstructors = ownerInstructors
             destViewController.location = location
             destViewController.time = time
+            destViewController.timeCode = timeCode
             destViewController.daysOfTheWeek = daysOfTheWeek
             destViewController.aulaName = aulaName
             destViewController.active = active
@@ -187,7 +189,7 @@ extension AddGroupToClassTableViewController {
         
         // class update info
         
-        AulaModelController.shared.update(aula: aula, active: nil, kidAttendees: nil, adultAttendees: nil, aulaDescription: nil, aulaName: nil, daysOfTheWeek: nil, instructor: nil, ownerInstructor: nil, location: nil, students: nil, time: nil, classGroups: classGroups)
+        AulaModelController.shared.update(aula: aula, active: nil, kidAttendees: nil, adultAttendees: nil, aulaDescription: nil, aulaName: nil, daysOfTheWeek: nil, instructor: nil, ownerInstructor: nil, location: nil, students: nil, time: nil, timeCode: nil, classGroups: classGroups)
         print("update class location: \(String(describing: AulaModelController.shared.aulas[0].classGroups))")
         
     }

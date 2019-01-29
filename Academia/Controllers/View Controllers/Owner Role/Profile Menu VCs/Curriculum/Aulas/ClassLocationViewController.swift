@@ -22,6 +22,7 @@ class ClassLocationViewController: UIViewController {
     var aulaDescription: String?
     var daysOfTheWeek: [ClassTimeComponents.Weekdays]?
     var time: String?
+    var timeCode: Int?
     var location:Location?
     
     // to hold the compiled string for the classLocationLabelOutlet
@@ -119,6 +120,7 @@ class ClassLocationViewController: UIViewController {
             // pass data to destViewController
             destViewController.location = location
             destViewController.time = time
+            destViewController.timeCode = timeCode
             destViewController.daysOfTheWeek = daysOfTheWeek
             destViewController.aulaName = aulaName
             destViewController.active = active
@@ -145,7 +147,7 @@ extension ClassLocationViewController {
         
         // class update info
         
-        AulaModelController.shared.update(aula: aula, active: nil, kidAttendees: nil, adultAttendees: nil, aulaDescription: nil, aulaName: nil, daysOfTheWeek: daysOfTheWeek, instructor: nil, ownerInstructor: nil, location: location, students: nil, time: nil, classGroups: nil)
+        AulaModelController.shared.update(aula: aula, active: nil, kidAttendees: nil, adultAttendees: nil, aulaDescription: nil, aulaName: nil, daysOfTheWeek: daysOfTheWeek, instructor: nil, ownerInstructor: nil, location: location, students: nil, time: nil, timeCode: nil, classGroups: nil)
         print("update class location: \(String(describing: AulaModelController.shared.aulas[0].location?.locationName))")
         
     }

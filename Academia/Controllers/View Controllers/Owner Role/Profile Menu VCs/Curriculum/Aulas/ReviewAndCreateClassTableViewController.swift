@@ -19,6 +19,7 @@ class ReviewAndCreateClassTableViewController: UITableViewController {
     var aulaDescription: String?
     var daysOfTheWeek: [ClassTimeComponents.Weekdays]?
     var time: String?
+    var timeCode: Int?
     var location:Location?
     
     var instructors: [AdultStudent]?
@@ -355,26 +356,30 @@ extension ReviewAndCreateClassTableViewController {
             print("there was a nil value in the time passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 353")
             return
         }
+        guard let timeCode = timeCode else {
+            print("there was a nil value in the timeCode passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 359")
+            return
+        }
         guard let location = location else {
-            print("there was a nil value in the location passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 357")
+            print("there was a nil value in the location passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 363")
             return
         }
         guard let instructors = instructors else {
-            print("there was a nil value in the instructors array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 361")
+            print("there was a nil value in the instructors array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 367")
             return
         }
         guard let ownerInstructors = ownerInstructors else {
-            print("there was a nil value in the ownerInstructors array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 365")
+            print("there was a nil value in the ownerInstructors array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 371")
             return
         }
         guard let classGroups = classGroups else {
-            print("there was a nil value in the classGroups array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 369")
+            print("there was a nil value in the classGroups array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 375")
             return
         }
         
         for day in daysOfTheWeek {
             
-            AulaModelController.shared.add(active: active, className: aulaName, classDescription: aulaDescription, daysOfTheWeek: [day], time: time, location: location, kidAttendees: nil, adultAttendees: nil, instructor: instructors, ownerInstructor: ownerInstructors, classGroups: classGroups)
+            AulaModelController.shared.add(active: active, className: aulaName, classDescription: aulaDescription, daysOfTheWeek: [day], time: time, timeCode: timeCode, location: location, kidAttendees: nil, adultAttendees: nil, instructor: instructors, ownerInstructor: ownerInstructors, classGroups: classGroups)
             
         }
         
