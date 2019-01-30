@@ -96,7 +96,7 @@ class ClassLocationViewController: UIViewController {
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         // check for errors before performing segue, and if error, block navigation
-        if time == nil {
+        if location == nil {
             
             welcomeMessageLabelOutlet.textColor = beltBuilder.redBeltRed
             

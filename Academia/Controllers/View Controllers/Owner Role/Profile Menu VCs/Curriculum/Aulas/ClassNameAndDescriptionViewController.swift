@@ -49,7 +49,9 @@ class ClassNameAndDescriptionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //populateCompletedProfileInfo()
+        // populate lastChangedLabelOutlet with formatted current date and time at time of aula creation
+        let currentDateAndTime = Date()
+        formatLastChanged(lastChanged: currentDateAndTime)
     }
     
     
@@ -161,3 +163,25 @@ extension ClassNameAndDescriptionViewController {
         classNameTextField.text = aulaToEdit.aulaName
     }
 }
+
+
+// MARK: - date formatter setup for lastChanged display
+extension ClassNameAndDescriptionViewController {
+    
+    func formatLastChanged(lastChanged: Date) {
+        
+        // set up date format
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateStyle = DateFormatter.Style.short
+        dateFormatter.timeStyle = DateFormatter.Style.short
+        dateFormatter.locale = Locale(identifier: "en_US")
+        
+        let lastChangedString = dateFormatter.string(from: lastChanged)
+        
+        print(lastChangedString)
+        
+        self.lastChangedLabelOutlet.text = "last change: " + lastChangedString
+    }
+}
+

@@ -197,10 +197,10 @@ class ClassInfoDetailsTableViewController: UITableViewController {
         }
         
         if section == 0 {
-            return instructors.count
+            return ownerInstructors.count
             
         } else if section == 1 {
-            return ownerInstructors.count
+            return instructors.count
             
         } else {
             return 0
@@ -390,7 +390,7 @@ extension ClassInfoDetailsTableViewController {
             activeLabelOutlet.text = "active: NO"
         }
         // lastChanged outlet
-        lastChangedLabelOutlet.text = "last changed: \(Date())"
+        formatLastChanged(lastChanged: aula.dateEdited)
         // group list outlet
         for group in classGroups {
             if group == classGroups.last {
@@ -425,3 +425,23 @@ extension UIViewController {
     }
 }
 
+
+// MARK: - date formatter setup for lastChanged display
+extension ClassInfoDetailsTableViewController {
+    
+    func formatLastChanged(lastChanged: Date) {
+        
+        // set up date format
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateStyle = DateFormatter.Style.short
+        dateFormatter.timeStyle = DateFormatter.Style.short
+        dateFormatter.locale = Locale(identifier: "en_US")
+        
+        let lastChangedString = dateFormatter.string(from: lastChanged)
+        
+        print(lastChangedString)
+        
+        self.lastChangedLabelOutlet.text = "last change: " + lastChangedString
+    }
+}

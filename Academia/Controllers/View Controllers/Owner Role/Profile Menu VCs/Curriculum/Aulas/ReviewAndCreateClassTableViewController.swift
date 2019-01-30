@@ -318,7 +318,8 @@ extension ReviewAndCreateClassTableViewController {
             activeLabelOutlet.text = "active: NO"
         }
         // lastChanged outlet
-        lastChangedLabelOutlet.text = "\(Date())"
+        let currentDayAndTime = Date()
+        formatLastChanged(lastChanged: currentDayAndTime)
         // group list outlet
         for group in classGroups {
             if group == classGroups.last {
@@ -387,6 +388,24 @@ extension ReviewAndCreateClassTableViewController {
     }
 }
 
-
+// MARK: - date formatter setup for lastChanged display
+extension ReviewAndCreateClassTableViewController {
+    
+    func formatLastChanged(lastChanged: Date) {
+        
+        // set up date format
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateStyle = DateFormatter.Style.short
+        dateFormatter.timeStyle = DateFormatter.Style.short
+        dateFormatter.locale = Locale(identifier: "en_US")
+        
+        let lastChangedString = dateFormatter.string(from: lastChanged)
+        
+        print(lastChangedString)
+        
+        self.lastChangedLabelOutlet.text = "last change: " + lastChangedString
+    }
+}
 
 
