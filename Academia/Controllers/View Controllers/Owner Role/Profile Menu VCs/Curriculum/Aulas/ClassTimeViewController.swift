@@ -279,9 +279,104 @@ extension ClassTimeViewController: UIPickerViewDelegate, UIPickerViewDataSource 
         
         time = "\(hourSelected.rawValue):\(minutesSelected.rawValue) \(amPmSelected.rawValue)"
         
+        timeCode = timeCodeBuilder(hourStandard: hourSelected, minutes: minutesSelected, amPmChoice: amPmSelected)
+        
         if let time = time {
-            print(time)
+            print("time property: \(time)")
+        }
+        if let timeCode = timeCode {
+            print("timeCode property: \(timeCode)")
+        }
+    }
+    
+    // MARK: - timeCodeBuilder()
+    // the timeCode property is generated to give a sortable value to the aula object that can and will be used to display the various aula objects in OwnerClassListTVC.swift as the class schedule for a given owner's academy(ies)
+    func timeCodeBuilder(hourStandard: ClassTimeComponents.HoursStandard, minutes: ClassTimeComponents.MinuteStrings, amPmChoice: ClassTimeComponents.AMPMStrings) -> Int {
+        
+        var timeCode = 0
+        
+        switch amPmChoice {
+            
+        case ClassTimeComponents.AMPMStrings.am:
+            timeCode += ClassTimeComponents.AMPMCode.am.rawValue
+            
+        case ClassTimeComponents.AMPMStrings.pm:
+            timeCode += ClassTimeComponents.AMPMCode.pm.rawValue
         }
         
+        print("****** AMPM portion of timecode: \(timeCode)")
+        
+        switch minutes {
+            
+        case ClassTimeComponents.MinuteStrings.zero:
+            timeCode += ClassTimeComponents.MinuteCodes.zero.rawValue
+            
+        case ClassTimeComponents.MinuteStrings.five :
+            timeCode += ClassTimeComponents.MinuteCodes.five.rawValue
+            
+        case ClassTimeComponents.MinuteStrings.ten :
+            timeCode += ClassTimeComponents.MinuteCodes.ten.rawValue
+            
+        case ClassTimeComponents.MinuteStrings.fifteen :
+            timeCode += ClassTimeComponents.MinuteCodes.fifteen.rawValue
+            
+        case ClassTimeComponents.MinuteStrings.twenty :
+            timeCode += ClassTimeComponents.MinuteCodes.twenty.rawValue
+            
+        case ClassTimeComponents.MinuteStrings.twentyfive :
+            timeCode += ClassTimeComponents.MinuteCodes.twentyfive.rawValue
+            
+        case ClassTimeComponents.MinuteStrings.thirty :
+            timeCode += ClassTimeComponents.MinuteCodes.thirty.rawValue
+            
+        case ClassTimeComponents.MinuteStrings.thirtyfive :
+            timeCode += ClassTimeComponents.MinuteCodes.thirtyfive.rawValue
+            
+        case ClassTimeComponents.MinuteStrings.forty :
+            timeCode += ClassTimeComponents.MinuteCodes.forty.rawValue
+            
+        case ClassTimeComponents.MinuteStrings.fortyfive :
+            timeCode += ClassTimeComponents.MinuteCodes.fortyfive.rawValue
+            
+        case ClassTimeComponents.MinuteStrings.fifty :
+            timeCode += ClassTimeComponents.MinuteCodes.fifty.rawValue
+            
+        case ClassTimeComponents.MinuteStrings.fiftyfive :
+            timeCode += ClassTimeComponents.MinuteCodes.fiftyfive.rawValue
+        }
+        
+        print("****** minutes portion + AMPM portion of timecode: \(timeCode)")
+        
+        switch hourStandard {
+        case ClassTimeComponents.HoursStandard.twelve:
+            timeCode += ClassTimeComponents.HourCodes.twelve.rawValue
+        case ClassTimeComponents.HoursStandard.one:
+            timeCode += ClassTimeComponents.HourCodes.one.rawValue
+        case ClassTimeComponents.HoursStandard.two:
+            timeCode += ClassTimeComponents.HourCodes.two.rawValue
+        case ClassTimeComponents.HoursStandard.three:
+            timeCode += ClassTimeComponents.HourCodes.three.rawValue
+        case ClassTimeComponents.HoursStandard.four:
+            timeCode += ClassTimeComponents.HourCodes.four.rawValue
+        case ClassTimeComponents.HoursStandard.five:
+            timeCode += ClassTimeComponents.HourCodes.five.rawValue
+        case ClassTimeComponents.HoursStandard.six:
+            timeCode += ClassTimeComponents.HourCodes.six.rawValue
+        case ClassTimeComponents.HoursStandard.seven:
+            timeCode += ClassTimeComponents.HourCodes.seven.rawValue
+        case ClassTimeComponents.HoursStandard.eight:
+            timeCode += ClassTimeComponents.HourCodes.eight.rawValue
+        case ClassTimeComponents.HoursStandard.nine:
+            timeCode += ClassTimeComponents.HourCodes.nine.rawValue
+        case ClassTimeComponents.HoursStandard.ten:
+            timeCode += ClassTimeComponents.HourCodes.ten.rawValue
+        case ClassTimeComponents.HoursStandard.eleven:
+            timeCode += ClassTimeComponents.HourCodes.eleven.rawValue
+        }
+        
+        print("****** hour portion + minutes portion + AMPM portion  of timecode: \(timeCode)")
+        
+        return timeCode
     }
+    
 }

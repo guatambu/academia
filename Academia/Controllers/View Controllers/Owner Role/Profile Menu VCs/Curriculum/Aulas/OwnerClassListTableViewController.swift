@@ -187,10 +187,9 @@ class OwnerClassListTableViewController: UITableViewController {
                 }
             }
             
-            // sort sundays array to display classes by time
-            // need to create numeric value for time of day to sort by
-            // sundays.sort(by: {$0.time < $1.time})
-            
+            // sort sundays array to display classes by timeCode
+            sundays.sort(by: {$0.timeCode ?? 0 < $1.timeCode ?? 0})
+            print(sundays)
             let aula = sundays[indexPath.row]
         
             // Configure the cell
@@ -211,6 +210,10 @@ class OwnerClassListTableViewController: UITableViewController {
                     mondays.append(aula)
                 }
             }
+            
+            // sort mondays array to display classes by timeCode
+            mondays.sort(by: {$0.timeCode ?? 0 < $1.timeCode ?? 0})
+            print(mondays)
             
             let aula = mondays[indexPath.row]
             
@@ -233,6 +236,10 @@ class OwnerClassListTableViewController: UITableViewController {
                 }
             }
             
+            // sort tuesdays array to display classes by timeCode
+            tuesdays.sort(by: {$0.timeCode ?? 0 < $1.timeCode ?? 0})
+            print(tuesdays)
+            
             let aula = tuesdays[indexPath.row]
             
             // Configure the cell...
@@ -253,6 +260,10 @@ class OwnerClassListTableViewController: UITableViewController {
                     wednesdays.append(aula)
                 }
             }
+            
+            // sort wednesdays array to display classes by timeCode
+            wednesdays.sort(by: {$0.timeCode ?? 0 < $1.timeCode ?? 0})
+            print(wednesdays)
             
             let aula = wednesdays[indexPath.row]
             
@@ -275,6 +286,10 @@ class OwnerClassListTableViewController: UITableViewController {
                 }
             }
             
+            // sort thursdays array to display classes by timeCode
+            thursdays.sort(by: {$0.timeCode ?? 0 < $1.timeCode ?? 0})
+            print(thursdays)
+            
             let aula = thursdays[indexPath.row]
             
             // Configure the cell...
@@ -296,6 +311,10 @@ class OwnerClassListTableViewController: UITableViewController {
                 }
             }
             
+            // sort fridays array to display classes by timeCode
+            fridays.sort(by: {$0.timeCode ?? 0 < $1.timeCode ?? 0})
+            print(fridays)
+            
             let aula = fridays[indexPath.row]
             
             // Configure the cell...
@@ -316,6 +335,10 @@ class OwnerClassListTableViewController: UITableViewController {
                     saturdays.append(aula)
                 }
             }
+            
+            // sort saturdays array to display classes by timeCode
+            saturdays.sort(by: {$0.timeCode ?? 0 < $1.timeCode ?? 0})
+            print(saturdays)
             
             let aula = saturdays[indexPath.row]
             
@@ -356,6 +379,10 @@ class OwnerClassListTableViewController: UITableViewController {
                     }
                 }
                 
+                // sort sundays array to display classes by timeCode
+                sundays.sort(by: {$0.timeCode ?? 0 < $1.timeCode ?? 0})
+                print(sundays)
+                
                 let aula = sundays[indexPath.row]
                 
                 // Pass the selected object to the new view controller.
@@ -372,6 +399,10 @@ class OwnerClassListTableViewController: UITableViewController {
                         mondays.append(aula)
                     }
                 }
+                
+                // sort mondays array to display classes by timeCode
+                mondays.sort(by: {$0.timeCode ?? 0 < $1.timeCode ?? 0})
+                print(mondays)
                 
                 let aula = mondays[indexPath.row]
                 
@@ -390,6 +421,10 @@ class OwnerClassListTableViewController: UITableViewController {
                     }
                 }
                 
+                // sort tuesdays array to display classes by timeCode
+                tuesdays.sort(by: {$0.timeCode ?? 0 < $1.timeCode ?? 0})
+                print(tuesdays)
+                
                 let aula = tuesdays[indexPath.row]
                 
                 // Pass the selected object to the new view controller.
@@ -406,6 +441,10 @@ class OwnerClassListTableViewController: UITableViewController {
                         wednesdays.append(aula)
                     }
                 }
+                
+                // sort wednesdays array to display classes by timeCode
+                wednesdays.sort(by: {$0.timeCode ?? 0 < $1.timeCode ?? 0})
+                print(wednesdays)
                 
                 let aula = wednesdays[indexPath.row]
                 
@@ -424,6 +463,10 @@ class OwnerClassListTableViewController: UITableViewController {
                     }
                 }
                 
+                // sort thursdays array to display classes by timeCode
+                thursdays.sort(by: {$0.timeCode ?? 0 < $1.timeCode ?? 0})
+                print(thursdays)
+                
                 let aula = thursdays[indexPath.row]
                 
                 // Pass the selected object to the new view controller.
@@ -441,6 +484,10 @@ class OwnerClassListTableViewController: UITableViewController {
                     }
                 }
                 
+                // sort fridays array to display classes by timeCode
+                fridays.sort(by: {$0.timeCode ?? 0 < $1.timeCode ?? 0})
+                print(fridays)
+                
                 let aula = fridays[indexPath.row]
                 
                 // Pass the selected object to the new view controller.
@@ -457,6 +504,10 @@ class OwnerClassListTableViewController: UITableViewController {
                         saturdays.append(aula)
                     }
                 }
+                
+                // sort saturdays array to display classes by timeCode
+                saturdays.sort(by: {$0.timeCode ?? 0 < $1.timeCode ?? 0})
+                print(saturdays)
                 
                 let aula = saturdays[indexPath.row]
                 

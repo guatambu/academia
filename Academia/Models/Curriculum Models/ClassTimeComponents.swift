@@ -63,6 +63,7 @@ struct ClassTimeComponents {
     }
     
     enum HourCodes: Int {
+        case twelve = 000
         case one = 100
         case two = 200
         case three = 300
@@ -74,22 +75,6 @@ struct ClassTimeComponents {
         case nine = 900
         case ten = 1000
         case eleven = 1100
-        case twelve = 1200
-    }
-    
-    enum MinuteCodes: Int {
-        case zero = 1
-        case five = 2
-        case ten = 3
-        case fifteen = 4
-        case twenty = 5
-        case twentyfive = 6
-        case thirty = 7
-        case thirtyfive = 8
-        case forty = 9
-        case fortyfive = 10
-        case fifty = 11
-        case fiftyfive = 12
     }
     
     enum MinuteStrings: String {
@@ -107,7 +92,23 @@ struct ClassTimeComponents {
         case fiftyfive = "55"
     }
     
-    enum AMPM: String {
+    enum MinuteCodes: Int {
+        case zero = 1
+        case five = 2
+        case ten = 3
+        case fifteen = 4
+        case twenty = 5
+        case twentyfive = 6
+        case thirty = 7
+        case thirtyfive = 8
+        case forty = 9
+        case fortyfive = 10
+        case fifty = 11
+        case fiftyfive = 12
+    }
+    
+    
+    enum AMPMStrings: String {
         case am = "AM"
         case pm = "PM"
     }
@@ -124,5 +125,5 @@ struct ClassTimeComponents {
     
     let minuteStringsArray: [MinuteStrings] = [.zero, .five, .ten, .fifteen, .twenty, .twentyfive, .thirty, .thirtyfive, .forty, .fortyfive, .fifty, .fiftyfive]
     
-    let amPmArray: [AMPM] = [.am,.pm]
+    let amPmArray: [AMPMStrings] = [.am,.pm]
 }

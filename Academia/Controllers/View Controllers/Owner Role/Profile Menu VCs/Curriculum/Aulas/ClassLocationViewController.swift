@@ -23,7 +23,7 @@ class ClassLocationViewController: UIViewController {
     var daysOfTheWeek: [ClassTimeComponents.Weekdays]?
     var time: String?
     var timeCode: Int?
-    var location:Location?
+    var location: Location = MockData.myLocation
     
     // to hold the compiled string for the classLocationLabelOutlet
     var locationString = ""
@@ -222,9 +222,8 @@ extension ClassLocationViewController: UIPickerViewDelegate, UIPickerViewDataSou
         
         location = locationSelected
         
-        if let location = location {
-            print(location.locationName)
-        }
+        print(location.locationName)
+        
     }
 }
 
