@@ -154,13 +154,21 @@ extension ClassNameAndDescriptionViewController {
             return
         }
         
-        welcomeMessageLabelOutlet.text = "Aula: \(aulaToEdit.aulaName)"
+        welcomeMessageLabelOutlet.text = "\(aulaToEdit.aulaName)"
         
         welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
-        welcomeInstructionsLabelOutlet.text = "you are in aula editing mode"
+        welcomeInstructionsLabelOutlet.text = "you are in class editing mode"
         
         classDescriptionTextView.text = aulaToEdit.aulaDescription
         classNameTextField.text = aulaToEdit.aulaName
+        
+        active = aulaToEdit.active
+        
+        if aulaToEdit.active {
+            activeSwitch.isOn = true
+        } else {
+            activeSwitch.isOn = false
+        }
     }
 }
 

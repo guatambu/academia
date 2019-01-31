@@ -150,10 +150,13 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
                         print("ERROR: nil value for aulaToEdit.ownerInstructor in ClassInstructorsTableViewController.swift -> tableView(tableView:, cellForRowAt:) - line 117")
                         return UITableViewCell()
                     }
-                    
-                    if ownerInstructorsToEdit.contains(ownerInstructors[indexPath.row]) {
+
+                    if ownerInstructorsToEdit.isEmpty == false {
                         
-                        cell.isChosen = true
+                        if availableOwners.contains(ownerInstructorsToEdit[indexPath.row]) {
+                            
+                            cell.isChosen = true
+                        }
                     }
                 }
             }
@@ -177,10 +180,12 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
                         print("ERROR: nil value for aulaToEdit.instructor in ClassInstructorsTableViewController.swift -> tableView(tableView:, cellForRowAt:) - line 144")
                         return UITableViewCell()
                     }
-                    
-                    if instructorsToEdit.contains(possibleInstructors[indexPath.row]) {
-                        
-                        cell.isChosen = true
+                    if instructorsToEdit.isEmpty == false {
+
+                        if possibleInstructors.contains(instructorsToEdit[indexPath.row])  {
+                            
+                            cell.isChosen = true
+                        }
                     }
                 }
             }
@@ -304,8 +309,8 @@ extension ClassInstructorsTableViewController {
         
         // class update info
         
-        AulaModelController.shared.update(aula: aula, active: nil, kidAttendees: nil, adultAttendees: nil, aulaDescription: nil, aulaName: nil, daysOfTheWeek: daysOfTheWeek, instructor: nil, ownerInstructor: nil, location: location, students: nil, time: nil, timeCode: nil, classGroups: nil)
-        print("update class location: \(String(describing: AulaModelController.shared.aulas[0].location?.locationName))")
+        AulaModelController.shared.update(aula: aula, active: nil, kidAttendees: nil, adultAttendees: nil, aulaDescription: nil, aulaName: nil, daysOfTheWeek: nil, instructor: instructors, ownerInstructor: ownerInstructors, location: nil, students: nil, time: nil, timeCode: nil, classGroups: nil)
+        print("update class location: \(String(describing: AulaModelController.shared.aulas[0].instructor)) \n\(String(describing: AulaModelController.shared.aulas[0].ownerInstructor))")
         
     }
     
@@ -327,6 +332,15 @@ extension ClassInstructorsTableViewController {
     func aulaEditingSetup() {
         
         guard let aulaToEdit = aulaToEdit else {
+            print("ERROR: nil value for aulaToEdit in ClassInstructorsTableViewController.swift -> aulaEditingSetup() - line 337")
+            return
+        }
+        guard let instructorsToEdit = aulaToEdit.instructor else {
+            print("ERROR: nil value for aulaToEdit.instructor in ClassInstructorsTableViewController.swift -> aulaEditingSetup() - line 341")
+            return
+        }
+        guard let ownerInstructorsToEdit = aulaToEdit.ownerInstructor else {
+            print("ERROR: nil value for aulaToEdit.ownerInstructor in ClassInstructorsTableViewController.swift -> aulaEditingSetup() - line 345")
             return
         }
         
@@ -337,6 +351,9 @@ extension ClassInstructorsTableViewController {
         
         daysOfTheWeek = aulaToEdit.daysOfTheWeek
         time = aulaToEdit.time ?? ""
+        
+        instructors = instructorsToEdit
+        ownerInstructors = ownerInstructorsToEdit
         
         print("the VC's aula timeOfDay, location, and daysOfTheWeek have been set to the existing aula's coresponding details to be edited and the collection views have reloaded their data")
     }

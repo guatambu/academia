@@ -88,6 +88,13 @@ class OwnerInstructorTableViewCell: UITableViewCell {
         
         userThumbnailImageViewOutlet.image = ownerInstructor.profilePic
         cellTitleOutlet.text = "\(ownerInstructor.firstName) \(ownerInstructor.lastName)"
+        
+        // when inEditingMode = true for ClassInstrcuctorsTVC, toggle roundProfilePicView borderColor
+        if isChosen {
+            roundProfilePicView.borderColor = beltBuilder.redBeltRed
+        } else {
+            roundProfilePicView.borderColor = UIColor.clear
+        }
     }
     
 }

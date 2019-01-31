@@ -217,11 +217,37 @@ extension ClassDayViewController {
         welcomeMessageLabelOutlet.text = "Aula: \(aulaToEdit.aulaName)"
         
         welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
-        welcomeInstructionsLabelOutlet.text = "you are in group editing mode"
+        welcomeInstructionsLabelOutlet.text = "you are in class editing mode"
         
         
         // TODO: build a switch statement to check the weekday, and set the day of the week button to checked if the corresponding day of the week
-
+        
+        for day in aulaToEdit.daysOfTheWeek {
+            
+            switch day {
+            case .Sunday :
+                sundayButtonOutlet.isSelected = true
+                daysOfTheWeek = [.Sunday]
+            case .Monday:
+                mondayButtonOutlet.isSelected = true
+                daysOfTheWeek = [.Monday]
+            case .Tuesday:
+                tuesdayButtonOutlet.isSelected = true
+                daysOfTheWeek = [.Tuesday]
+            case .Wednesday:
+                wednesdayButtonOutlet.isSelected = true
+                daysOfTheWeek = [.Wednesday]
+            case .Thursday:
+                thursdayButtonOutlet.isSelected = true
+                daysOfTheWeek = [.Thursday]
+            case .Friday:
+                fridayButtonOutlet.isSelected = true
+                daysOfTheWeek = [.Friday]
+            case .Saturday:
+                saturdayButtonOutlet.isSelected = true
+                daysOfTheWeek = [.Saturday]
+            }
+        }
     }
 }
 

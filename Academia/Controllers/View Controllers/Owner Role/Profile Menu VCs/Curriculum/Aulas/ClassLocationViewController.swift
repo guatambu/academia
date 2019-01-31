@@ -65,7 +65,7 @@ class ClassLocationViewController: UIViewController {
         classLocationLabelOutlet.text = locations[classLocationPickerView.selectedRow(inComponent: 0)].locationName
         
         guard let aulaName = aulaName, let active = active, let aulaDescription = aulaDescription else {
-            print("no aulaName, active, or aulaDescription passed to: ClassLocationVC -> viewDidLoad() - line 61")
+            print("ERROR: no aulaName, active, or aulaDescription passed to: ClassLocationVC -> viewDidLoad() - line 61")
             return
         }
         
@@ -173,6 +173,11 @@ extension ClassLocationViewController {
             return
         }
         
+        guard let locationToEdit = aulaToEdit.location else {
+            print("ERROR: nil value found for aula property in  ClassLocationVC -> aulaEditingSetup() - line 177")
+            return
+        }
+        
         welcomeMessageLabelOutlet.text = "Aula: \(aulaToEdit.aulaName)"
         
         welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
@@ -180,6 +185,15 @@ extension ClassLocationViewController {
         
         daysOfTheWeek = aulaToEdit.daysOfTheWeek
         time = aulaToEdit.time ?? ""
+        location = locationToEdit
+        
+        // in the classLocationPickerView datasource array, search for the locationToEdit value
+        guard let indexPath = locations.firstIndex(of: locationToEdit) else {
+            
+            print("ERROR: nil value found for indexPath for aulaToeDit.location in  ClassLocationVC -> aulaEditingSetup() - line 193")
+            return
+        }
+        classLocationPickerView.selectRow(indexPath, inComponent: 0, animated: true)
         
         print("the VC's aula timeOfDay, location, and daysOfTheWeek have been set to the existing aula's coresponding details to be edited and the collection views have reloaded their data")
     }

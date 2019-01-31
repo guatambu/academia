@@ -62,21 +62,6 @@ struct ClassTimeComponents {
         case twelve = 12
     }
     
-    enum HourCodes: Int {
-        case twelve = 000
-        case one = 100
-        case two = 200
-        case three = 300
-        case four = 400
-        case five = 500
-        case six = 600
-        case seven = 700
-        case eight = 800
-        case nine = 900
-        case ten = 1000
-        case eleven = 1100
-    }
-    
     enum MinuteStrings: String {
         case zero = "00"
         case five = "05"
@@ -92,6 +77,26 @@ struct ClassTimeComponents {
         case fiftyfive = "55"
     }
     
+    enum AMPMStrings: String {
+        case am = "AM"
+        case pm = "PM"
+    }
+    
+    enum HourCodes: Int {
+        case twelve = 000
+        case one = 100
+        case two = 200
+        case three = 300
+        case four = 400
+        case five = 500
+        case six = 600
+        case seven = 700
+        case eight = 800
+        case nine = 900
+        case ten = 1000
+        case eleven = 1100
+    }
+    
     enum MinuteCodes: Int {
         case zero = 1
         case five = 2
@@ -105,12 +110,6 @@ struct ClassTimeComponents {
         case fortyfive = 10
         case fifty = 11
         case fiftyfive = 12
-    }
-    
-    
-    enum AMPMStrings: String {
-        case am = "AM"
-        case pm = "PM"
     }
     
     enum AMPMCode: Int {

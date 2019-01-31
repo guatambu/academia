@@ -191,13 +191,17 @@ extension ClassTimeViewController {
             return
         }
         
-        welcomeMessageLabelOutlet.text = "Aula: \(aulaToEdit.aulaName)"
+        welcomeMessageLabelOutlet.text = "\(aulaToEdit.aulaName)"
         
         welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
-        welcomeInstructionsLabelOutlet.text = "you are in group editing mode"
+        welcomeInstructionsLabelOutlet.text = "you are in class editing mode"
         
         daysOfTheWeek = aulaToEdit.daysOfTheWeek
         time = aulaToEdit.time ?? ""
+        timeCode = aulaToEdit.timeCode
+        timeCodeReader(timeCode: aulaToEdit.timeCode)
+        
+        print("time: \(time ?? "ERROR: unexpected nil value for time property in ClassTimeVC.swift -> aulaEditingSetup() - line 204")")
         
         print("the VC's aula timeOfDay, location, and daysOfTheWeek have been set to the existing aula's coresponding details to be edited and the collection views have reloaded their data")
     }
@@ -265,7 +269,9 @@ extension ClassTimeViewController: UIPickerViewDelegate, UIPickerViewDataSource 
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        if pickerView.selectedRow(inComponent: 0) >= 11  {
+        if pickerView.selectedRow(inComponent: 0) == 23  {
+            pickerView.selectRow(0, inComponent: 2, animated: true)
+        } else if pickerView.selectedRow(inComponent: 0) >= 11  {
             pickerView.selectRow(1, inComponent: 2, animated: true)
         } else if pickerView.selectedRow(inComponent: 0) < 11  {
             pickerView.selectRow(0, inComponent: 2, animated: true)
@@ -378,5 +384,222 @@ extension ClassTimeViewController: UIPickerViewDelegate, UIPickerViewDataSource 
         
         return timeCode
     }
+    
+    
+    // MARK: - timeCodeReader()
+    // the timeCode property can be used to determine the various values needed to set the classTimePickerView to allow the user to edit the time and timeCode properties efficiently
+    func timeCodeReader(timeCode: Int?) {
+        
+        guard let timeCode = timeCode else {
+            
+            print("ERROR: unexpected nil value for aulaToEdit.timeCode in ClassTimeViewController.swift -> timeCodeReader(timeCode:) - line 391")
+            
+            return
+        }
+        
+        // this value will allow me to parse the original timeCode without it
+        var parsedTimeCode = 0
+        
+        // set the AM/PM value in the pickerView
+        if timeCode > ClassTimeComponents.AMPMCode.pm.rawValue {
+            classTimePickerView.selectRow(1, inComponent: 2, animated: true)
+            
+            parsedTimeCode = timeCode - ClassTimeComponents.AMPMCode.pm.rawValue
+        } else {
+            classTimePickerView.selectRow(0, inComponent: 2, animated: true)
+        }
+        
+        // set the hour value in the pickerView
+        if parsedTimeCode < ClassTimeComponents.HourCodes.one.rawValue {
+            
+            if timeCode > ClassTimeComponents.AMPMCode.pm.rawValue {
+                // for 12PM
+                classTimePickerView.selectRow((ClassTimeComponents.HoursStandard.twelve.rawValue - 1), inComponent: 0, animated: true)
+                
+            } else {
+                // for 12AM
+                classTimePickerView.selectRow((ClassTimeComponents.HoursStandard.twelve.rawValue - 1), inComponent: 0, animated: true)
+            }
+            
+            parsedTimeCode = parsedTimeCode - ClassTimeComponents.HoursStandard.twelve.rawValue
+            
+        
+        } else if parsedTimeCode < ClassTimeComponents.HourCodes.two.rawValue {
+            
+            if timeCode > ClassTimeComponents.AMPMCode.pm.rawValue {
+                // for 1PM
+                classTimePickerView.selectRow(((12 + ClassTimeComponents.HoursStandard.one.rawValue) - 1), inComponent: 0, animated: true)
+                
+            } else {
+                // for 1AM
+                classTimePickerView.selectRow((ClassTimeComponents.HoursStandard.one.rawValue - 1), inComponent: 0, animated: true)
+            }
+
+            parsedTimeCode = timeCode - ClassTimeComponents.HoursStandard.one.rawValue
+            
+        } else if parsedTimeCode < ClassTimeComponents.HourCodes.three.rawValue {
+            
+            if timeCode > ClassTimeComponents.AMPMCode.pm.rawValue {
+                // for 2PM
+                classTimePickerView.selectRow((12 + (ClassTimeComponents.HoursStandard.two.rawValue - 1)), inComponent: 0, animated: true)
+                
+            } else {
+                // for 2AM
+                classTimePickerView.selectRow((ClassTimeComponents.HoursStandard.two.rawValue - 1), inComponent: 0, animated: true)
+            }
+            
+            parsedTimeCode = timeCode - ClassTimeComponents.HoursStandard.two.rawValue
+            
+        } else if parsedTimeCode < ClassTimeComponents.HourCodes.four.rawValue {
+            
+            if timeCode > ClassTimeComponents.AMPMCode.pm.rawValue {
+                // for 3PM
+                classTimePickerView.selectRow((12 + (ClassTimeComponents.HoursStandard.three.rawValue - 1)), inComponent: 0, animated: true)
+                
+            } else {
+                // for 3AM
+                classTimePickerView.selectRow((ClassTimeComponents.HoursStandard.three.rawValue - 1), inComponent: 0, animated: true)
+            }
+            
+            parsedTimeCode = timeCode - ClassTimeComponents.HoursStandard.three.rawValue
+            
+        } else if parsedTimeCode < ClassTimeComponents.HourCodes.five.rawValue {
+            
+            if timeCode > ClassTimeComponents.AMPMCode.pm.rawValue {
+                // for 4PM
+                classTimePickerView.selectRow((12 + (ClassTimeComponents.HoursStandard.four.rawValue - 1)), inComponent: 0, animated: true)
+                
+            } else {
+                // for 4AM
+                classTimePickerView.selectRow((ClassTimeComponents.HoursStandard.four.rawValue - 1), inComponent: 0, animated: true)
+            }
+            
+            parsedTimeCode = timeCode - ClassTimeComponents.HoursStandard.four.rawValue
+            
+        } else if parsedTimeCode < ClassTimeComponents.HourCodes.six.rawValue {
+            
+            if timeCode > ClassTimeComponents.AMPMCode.pm.rawValue {
+                // for 5PM
+                classTimePickerView.selectRow((12 + (ClassTimeComponents.HoursStandard.five.rawValue - 1)), inComponent: 0, animated: true)
+                
+            } else {
+                // for 5AM
+                classTimePickerView.selectRow((ClassTimeComponents.HoursStandard.five.rawValue - 1), inComponent: 0, animated: true)
+            }
+            
+            parsedTimeCode = timeCode - ClassTimeComponents.HoursStandard.five.rawValue
+            
+        } else if parsedTimeCode < ClassTimeComponents.HourCodes.seven.rawValue {
+            
+            if timeCode > ClassTimeComponents.AMPMCode.pm.rawValue {
+                // for 6PM
+                classTimePickerView.selectRow((12 + (ClassTimeComponents.HoursStandard.six.rawValue - 1)), inComponent: 0, animated: true)
+                
+            } else {
+                // for 6AM
+                classTimePickerView.selectRow((ClassTimeComponents.HoursStandard.six.rawValue - 1), inComponent: 0, animated: true)
+            }
+            
+            parsedTimeCode = timeCode - ClassTimeComponents.HoursStandard.six.rawValue
+            
+        } else if parsedTimeCode < ClassTimeComponents.HourCodes.eight.rawValue {
+            
+            if timeCode > ClassTimeComponents.AMPMCode.pm.rawValue {
+                // for 7PM
+                classTimePickerView.selectRow((12 + (ClassTimeComponents.HoursStandard.seven.rawValue - 1)), inComponent: 0, animated: true)
+                
+            } else {
+                // for 7AM
+                classTimePickerView.selectRow((ClassTimeComponents.HoursStandard.seven.rawValue - 1), inComponent: 0, animated: true)
+            }
+            
+            parsedTimeCode = timeCode - ClassTimeComponents.HoursStandard.seven.rawValue
+            
+        } else if parsedTimeCode < ClassTimeComponents.HourCodes.nine.rawValue {
+            
+            if timeCode > ClassTimeComponents.AMPMCode.pm.rawValue {
+                // for 8PM
+                classTimePickerView.selectRow((12 + (ClassTimeComponents.HoursStandard.eight.rawValue - 1)), inComponent: 0, animated: true)
+                
+            } else {
+                // for 8AM
+                classTimePickerView.selectRow((ClassTimeComponents.HoursStandard.eight.rawValue - 1), inComponent: 0, animated: true)
+            }
+            
+            parsedTimeCode = timeCode - ClassTimeComponents.HoursStandard.eight.rawValue
+            
+        } else if parsedTimeCode < ClassTimeComponents.HourCodes.ten.rawValue {
+            
+            if timeCode > ClassTimeComponents.AMPMCode.pm.rawValue {
+                // for 9PM
+                classTimePickerView.selectRow((12 + (ClassTimeComponents.HoursStandard.nine.rawValue - 1)), inComponent: 0, animated: true)
+                
+            } else {
+                // for 9AM
+                classTimePickerView.selectRow((ClassTimeComponents.HoursStandard.nine.rawValue - 1), inComponent: 0, animated: true)
+            }
+            
+            parsedTimeCode = timeCode - ClassTimeComponents.HoursStandard.nine.rawValue
+            
+        } else if parsedTimeCode < ClassTimeComponents.HourCodes.eleven.rawValue {
+            
+            if timeCode > ClassTimeComponents.AMPMCode.pm.rawValue {
+                // for 10PM
+                classTimePickerView.selectRow((12 + (ClassTimeComponents.HoursStandard.ten.rawValue - 1)), inComponent: 0, animated: true)
+                
+            } else {
+                // for 10AM
+                classTimePickerView.selectRow((ClassTimeComponents.HoursStandard.ten.rawValue - 1), inComponent: 0, animated: true)
+            }
+            
+            parsedTimeCode = timeCode - ClassTimeComponents.HoursStandard.ten.rawValue
+            
+        } else {
+            
+            if timeCode > ClassTimeComponents.AMPMCode.pm.rawValue {
+                // for 11PM
+                classTimePickerView.selectRow((12 + (ClassTimeComponents.HoursStandard.eleven.rawValue - 1)), inComponent: 0, animated: true)
+                
+            } else {
+                // for 11AM
+                classTimePickerView.selectRow((ClassTimeComponents.HoursStandard.eleven.rawValue - 1), inComponent: 0, animated: true)
+            }
+            
+            parsedTimeCode = timeCode - ClassTimeComponents.HoursStandard.eleven.rawValue
+            
+        }
+        
+        switch parsedTimeCode {
+        case 1:
+            classTimePickerView.selectRow((ClassTimeComponents.MinuteCodes.zero.rawValue - 1), inComponent: 1, animated: true)
+        case 2:
+            classTimePickerView.selectRow((ClassTimeComponents.MinuteCodes.five.rawValue - 1), inComponent: 1, animated: true)
+        case 3:
+            classTimePickerView.selectRow((ClassTimeComponents.MinuteCodes.ten.rawValue - 1), inComponent: 1, animated: true)
+        case 4:
+            classTimePickerView.selectRow((ClassTimeComponents.MinuteCodes.fifteen.rawValue - 1), inComponent: 1, animated: true)
+        case 5:
+            classTimePickerView.selectRow((ClassTimeComponents.MinuteCodes.twenty.rawValue - 1), inComponent: 1, animated: true)
+        case 6:
+            classTimePickerView.selectRow((ClassTimeComponents.MinuteCodes.twentyfive.rawValue - 1), inComponent: 1, animated: true)
+        case 7:
+            classTimePickerView.selectRow((ClassTimeComponents.MinuteCodes.thirty.rawValue - 1), inComponent: 1, animated: true)
+        case 8:
+            classTimePickerView.selectRow((ClassTimeComponents.MinuteCodes.thirtyfive.rawValue - 1), inComponent: 1, animated: true)
+        case 9:
+            classTimePickerView.selectRow((ClassTimeComponents.MinuteCodes.forty.rawValue - 1), inComponent: 1, animated: true)
+        case 10:
+            classTimePickerView.selectRow((ClassTimeComponents.MinuteCodes.fortyfive.rawValue - 1), inComponent: 1, animated: true)
+        case 11:
+            classTimePickerView.selectRow((ClassTimeComponents.MinuteCodes.fifty.rawValue - 1), inComponent: 1, animated: true)
+        case 12:
+            classTimePickerView.selectRow((ClassTimeComponents.MinuteCodes.fiftyfive.rawValue - 1), inComponent: 1, animated: true)
+        default:
+            print("ERROR: unexpected value for MinutesCode in ClassTimeViewController.swift -> timeCodeReader(timeCode:) - line 573")
+        }
+        
+        
+    }
+
     
 }
