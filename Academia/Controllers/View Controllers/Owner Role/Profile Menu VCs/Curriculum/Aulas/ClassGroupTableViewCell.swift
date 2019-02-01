@@ -68,6 +68,13 @@ class ClassGroupTableViewCell: UITableViewCell {
         }
 
         groupNameLabelOutlet.text = "\(group.name)"
+        
+        // when inEditingMode = true for ClassInstrcuctorsTVC, toggle roundProfilePicView borderColor
+        if isChosen {
+            groupSelectionButtonOutlet.isSelected = true
+        } else {
+            groupSelectionButtonOutlet.isSelected = false
+        }
     }
 
 

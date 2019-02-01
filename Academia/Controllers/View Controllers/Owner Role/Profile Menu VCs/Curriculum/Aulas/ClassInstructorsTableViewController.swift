@@ -71,14 +71,7 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
     
     @objc func saveButtonTapped() {
         
-        // class update info
-        guard instructors.isEmpty && ownerInstructors.isEmpty else {
-            
-            welcomeInstructions1LabelOutlet.textColor = beltBuilder.redBeltRed
-            
-            return
-        }
-    
+        // class update instrcutors info
         updateAulaInfo()
         
         self.returnToClassInfo()
@@ -147,11 +140,11 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
                 if inEditingMode {
                     
                     guard let ownerInstructorsToEdit = aulaToEdit?.ownerInstructor else {
-                        print("ERROR: nil value for aulaToEdit.ownerInstructor in ClassInstructorsTableViewController.swift -> tableView(tableView:, cellForRowAt:) - line 117")
+                        print("ERROR: nil value for aulaToEdit.ownerInstructor in ClassInstructorsTableViewController.swift -> tableView(tableView:, cellForRowAt:) - line 143")
                         return UITableViewCell()
                     }
 
-                    if ownerInstructorsToEdit.isEmpty == false {
+                    if ownerInstructorsToEdit.isEmpty == false && (ownerInstructorsToEdit.count - 1) >= indexPath.row {
                         
                         if availableOwners.contains(ownerInstructorsToEdit[indexPath.row]) {
                             
@@ -165,7 +158,8 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
             
             return cell
             
-        } else {
+        } else if indexPath.section == 1 {
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "instructorCell", for: indexPath) as! InstructorTableViewCell
             
             // set delegate to communicate with AddNewStudentGroupImageMenuTableViewCell
@@ -177,10 +171,10 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
                 if inEditingMode {
                     
                     guard let instructorsToEdit = aulaToEdit?.instructor else {
-                        print("ERROR: nil value for aulaToEdit.instructor in ClassInstructorsTableViewController.swift -> tableView(tableView:, cellForRowAt:) - line 144")
+                        print("ERROR: nil value for aulaToEdit.instructor in ClassInstructorsTableViewController.swift -> tableView(tableView:, cellForRowAt:) - line 173")
                         return UITableViewCell()
                     }
-                    if instructorsToEdit.isEmpty == false {
+                    if instructorsToEdit.isEmpty == false && (instructorsToEdit.count - 1) >= indexPath.row {
 
                         if possibleInstructors.contains(instructorsToEdit[indexPath.row])  {
                             
@@ -193,6 +187,8 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
             cell.instructor = possibleInstructors[indexPath.row]
             
             return cell
+        } else {
+            return UITableViewCell()
         }
     }
     
@@ -310,7 +306,7 @@ extension ClassInstructorsTableViewController {
         // class update info
         
         AulaModelController.shared.update(aula: aula, active: nil, kidAttendees: nil, adultAttendees: nil, aulaDescription: nil, aulaName: nil, daysOfTheWeek: nil, instructor: instructors, ownerInstructor: ownerInstructors, location: nil, students: nil, time: nil, timeCode: nil, classGroups: nil)
-        print("update class location: \(String(describing: AulaModelController.shared.aulas[0].instructor)) \n\(String(describing: AulaModelController.shared.aulas[0].ownerInstructor))")
+        print("update class instructors: \(String(describing: AulaModelController.shared.aulas[0].instructor)) \n\(String(describing: AulaModelController.shared.aulas[0].ownerInstructor))")
         
     }
     
@@ -332,22 +328,22 @@ extension ClassInstructorsTableViewController {
     func aulaEditingSetup() {
         
         guard let aulaToEdit = aulaToEdit else {
-            print("ERROR: nil value for aulaToEdit in ClassInstructorsTableViewController.swift -> aulaEditingSetup() - line 337")
+            print("ERROR: nil value for aulaToEdit in ClassInstructorsTableViewController.swift -> aulaEditingSetup() - line 330")
             return
         }
         guard let instructorsToEdit = aulaToEdit.instructor else {
-            print("ERROR: nil value for aulaToEdit.instructor in ClassInstructorsTableViewController.swift -> aulaEditingSetup() - line 341")
+            print("ERROR: nil value for aulaToEdit.instructor in ClassInstructorsTableViewController.swift -> aulaEditingSetup() - line 334")
             return
         }
         guard let ownerInstructorsToEdit = aulaToEdit.ownerInstructor else {
-            print("ERROR: nil value for aulaToEdit.ownerInstructor in ClassInstructorsTableViewController.swift -> aulaEditingSetup() - line 345")
+            print("ERROR: nil value for aulaToEdit.ownerInstructor in ClassInstructorsTableViewController.swift -> aulaEditingSetup() - line 338")
             return
         }
         
-        welcomeMessageLabelOutlet.text = "Aula: \(aulaToEdit.aulaName)"
+        welcomeMessageLabelOutlet.text = "\(aulaToEdit.aulaName)"
         
         welcomeInstructions1LabelOutlet.textColor = beltBuilder.redBeltRed
-        welcomeInstructions1LabelOutlet.text = "you are in group editing mode"
+        welcomeInstructions1LabelOutlet.text = "you are in class editing mode"
         
         daysOfTheWeek = aulaToEdit.daysOfTheWeek
         time = aulaToEdit.time ?? ""

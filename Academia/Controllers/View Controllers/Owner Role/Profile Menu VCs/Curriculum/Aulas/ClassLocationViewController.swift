@@ -147,7 +147,7 @@ extension ClassLocationViewController {
         
         // class update info
         
-        AulaModelController.shared.update(aula: aula, active: nil, kidAttendees: nil, adultAttendees: nil, aulaDescription: nil, aulaName: nil, daysOfTheWeek: daysOfTheWeek, instructor: nil, ownerInstructor: nil, location: location, students: nil, time: nil, timeCode: nil, classGroups: nil)
+        AulaModelController.shared.update(aula: aula, active: nil, kidAttendees: nil, adultAttendees: nil, aulaDescription: nil, aulaName: nil, daysOfTheWeek: nil, instructor: nil, ownerInstructor: nil, location: location, students: nil, time: nil, timeCode: nil, classGroups: nil)
         print("update class location: \(String(describing: AulaModelController.shared.aulas[0].location?.locationName))")
         
     }
@@ -178,10 +178,10 @@ extension ClassLocationViewController {
             return
         }
         
-        welcomeMessageLabelOutlet.text = "Aula: \(aulaToEdit.aulaName)"
+        welcomeMessageLabelOutlet.text = "\(aulaToEdit.aulaName)"
         
         welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
-        welcomeInstructionsLabelOutlet.text = "you are in group editing mode"
+        welcomeInstructionsLabelOutlet.text = "you are in class editing mode"
         
         daysOfTheWeek = aulaToEdit.daysOfTheWeek
         time = aulaToEdit.time ?? ""

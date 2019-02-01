@@ -74,6 +74,8 @@ class ClassInfoDetailsTableViewController: UITableViewController {
             instructorAdvisoryLabelOutlet.isHidden = true
         }
         
+        tableView.reloadData()
+        
     }
     
     override func viewDidLoad() {

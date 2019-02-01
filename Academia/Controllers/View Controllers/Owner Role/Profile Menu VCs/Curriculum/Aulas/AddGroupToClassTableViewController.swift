@@ -68,13 +68,7 @@ class AddGroupToClassTableViewController: UITableViewController, ClassGroupDeleg
     @objc func saveButtonTapped() {
         
         // class group update info
-        guard classGroups.isEmpty else {
-            
-            welcomeInstructions1LabelOutlet.textColor = beltBuilder.redBeltRed
-            
-            return
-        }
-            
+
         updateAulaInfo()
         
         self.returnToClassInfo()
@@ -111,9 +105,12 @@ class AddGroupToClassTableViewController: UITableViewController, ClassGroupDeleg
                         return UITableViewCell()
                     }
                     
-                    if classGroupsToEdit.contains(classGroups[indexPath.row]) {
+                    if classGroupsToEdit.isEmpty == false && (classGroupsToEdit.count - 1) >= indexPath.row {
                         
-                        cell.isChosen = true
+                        if classGroups.contains(classGroupsToEdit[indexPath.row]) {
+                            
+                            cell.isChosen = true
+                        }
                     }
                 }
             }
@@ -190,7 +187,7 @@ extension AddGroupToClassTableViewController {
         // class update info
         
         AulaModelController.shared.update(aula: aula, active: nil, kidAttendees: nil, adultAttendees: nil, aulaDescription: nil, aulaName: nil, daysOfTheWeek: nil, instructor: nil, ownerInstructor: nil, location: nil, students: nil, time: nil, timeCode: nil, classGroups: classGroups)
-        print("update class location: \(String(describing: AulaModelController.shared.aulas[0].classGroups))")
+        print("update class groups: \(String(describing: AulaModelController.shared.aulas[0].classGroups))")
         
     }
     
@@ -215,13 +212,19 @@ extension AddGroupToClassTableViewController {
             return
         }
         
-        welcomeMessageLabelOutlet.text = "Aula: \(aulaToEdit.aulaName)"
+        guard let groupsToEdit = aulaToEdit.classGroups else {
+            print("ERROR: nil value for aulaToEdit.classGroups in AddGroupToClassTableViewController.swift -> aulaEditingSetup() - line 222")
+            return
+        }
+        
+        welcomeMessageLabelOutlet.text = "\(aulaToEdit.aulaName)"
         
         welcomeInstructions1LabelOutlet.textColor = beltBuilder.redBeltRed
-        welcomeInstructions1LabelOutlet.text = "you are in group editing mode"
+        welcomeInstructions1LabelOutlet.text = "you are in class editing mode"
         
         daysOfTheWeek = aulaToEdit.daysOfTheWeek
         time = aulaToEdit.time ?? ""
+        classGroups = groupsToEdit
         
         print("the VC's aula timeOfDay, location, and daysOfTheWeek have been set to the existing aula's coresponding details to be edited and the collection views have reloaded their data")
     }

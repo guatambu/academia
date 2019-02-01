@@ -102,9 +102,9 @@ class ClassTimeViewController: UIViewController  {
             
         updateAulaInfo()
         
-        self.returnToPaymentProgramInfo()
+        self.returnToClassInfo()
         
-        print("update class time: \(String(describing: AulaModelController.shared.aulas[0].time))")
+        print("saved edited class time and timeCode: \(String(describing: AulaModelController.shared.aulas[0].time)) \n\(String(describing: AulaModelController.shared.aulas[0].timeCode)))")
         
         inEditingMode = false
     }
@@ -165,8 +165,8 @@ extension ClassTimeViewController {
 
         // class update info
        
-        AulaModelController.shared.update(aula: aula, active: nil, kidAttendees: nil, adultAttendees: nil, aulaDescription: nil, aulaName: nil, daysOfTheWeek: daysOfTheWeek, instructor: nil, ownerInstructor: nil, location: nil, students: nil, time: time, timeCode: timeCode, classGroups: nil)
-        print("update class day of the week: \(AulaModelController.shared.aulas[0].daysOfTheWeek)")
+        AulaModelController.shared.update(aula: aula, active: nil, kidAttendees: nil, adultAttendees: nil, aulaDescription: nil, aulaName: nil, daysOfTheWeek: nil, instructor: nil, ownerInstructor: nil, location: nil, students: nil, time: time, timeCode: timeCode, classGroups: nil)
+        print("update class time and timeCode: \(String(describing: AulaModelController.shared.aulas[0].time)) \n\(String(describing: AulaModelController.shared.aulas[0].timeCode)))")
         
     }
     
@@ -421,7 +421,7 @@ extension ClassTimeViewController: UIPickerViewDelegate, UIPickerViewDataSource 
                 classTimePickerView.selectRow((ClassTimeComponents.HoursStandard.twelve.rawValue - 1), inComponent: 0, animated: true)
             }
             
-            parsedTimeCode = parsedTimeCode - ClassTimeComponents.HoursStandard.twelve.rawValue
+            parsedTimeCode = parsedTimeCode - ClassTimeComponents.HourCodes.twelve.rawValue
             
         
         } else if parsedTimeCode < ClassTimeComponents.HourCodes.two.rawValue {
@@ -435,7 +435,7 @@ extension ClassTimeViewController: UIPickerViewDelegate, UIPickerViewDataSource 
                 classTimePickerView.selectRow((ClassTimeComponents.HoursStandard.one.rawValue - 1), inComponent: 0, animated: true)
             }
 
-            parsedTimeCode = timeCode - ClassTimeComponents.HoursStandard.one.rawValue
+            parsedTimeCode = parsedTimeCode - ClassTimeComponents.HourCodes.one.rawValue
             
         } else if parsedTimeCode < ClassTimeComponents.HourCodes.three.rawValue {
             
@@ -448,7 +448,7 @@ extension ClassTimeViewController: UIPickerViewDelegate, UIPickerViewDataSource 
                 classTimePickerView.selectRow((ClassTimeComponents.HoursStandard.two.rawValue - 1), inComponent: 0, animated: true)
             }
             
-            parsedTimeCode = timeCode - ClassTimeComponents.HoursStandard.two.rawValue
+            parsedTimeCode = parsedTimeCode - ClassTimeComponents.HourCodes.two.rawValue
             
         } else if parsedTimeCode < ClassTimeComponents.HourCodes.four.rawValue {
             
@@ -461,7 +461,7 @@ extension ClassTimeViewController: UIPickerViewDelegate, UIPickerViewDataSource 
                 classTimePickerView.selectRow((ClassTimeComponents.HoursStandard.three.rawValue - 1), inComponent: 0, animated: true)
             }
             
-            parsedTimeCode = timeCode - ClassTimeComponents.HoursStandard.three.rawValue
+            parsedTimeCode = parsedTimeCode - ClassTimeComponents.HourCodes.three.rawValue
             
         } else if parsedTimeCode < ClassTimeComponents.HourCodes.five.rawValue {
             
@@ -474,7 +474,7 @@ extension ClassTimeViewController: UIPickerViewDelegate, UIPickerViewDataSource 
                 classTimePickerView.selectRow((ClassTimeComponents.HoursStandard.four.rawValue - 1), inComponent: 0, animated: true)
             }
             
-            parsedTimeCode = timeCode - ClassTimeComponents.HoursStandard.four.rawValue
+            parsedTimeCode = parsedTimeCode - ClassTimeComponents.HourCodes.four.rawValue
             
         } else if parsedTimeCode < ClassTimeComponents.HourCodes.six.rawValue {
             
@@ -487,7 +487,7 @@ extension ClassTimeViewController: UIPickerViewDelegate, UIPickerViewDataSource 
                 classTimePickerView.selectRow((ClassTimeComponents.HoursStandard.five.rawValue - 1), inComponent: 0, animated: true)
             }
             
-            parsedTimeCode = timeCode - ClassTimeComponents.HoursStandard.five.rawValue
+            parsedTimeCode = parsedTimeCode - ClassTimeComponents.HourCodes.five.rawValue
             
         } else if parsedTimeCode < ClassTimeComponents.HourCodes.seven.rawValue {
             
@@ -500,7 +500,7 @@ extension ClassTimeViewController: UIPickerViewDelegate, UIPickerViewDataSource 
                 classTimePickerView.selectRow((ClassTimeComponents.HoursStandard.six.rawValue - 1), inComponent: 0, animated: true)
             }
             
-            parsedTimeCode = timeCode - ClassTimeComponents.HoursStandard.six.rawValue
+            parsedTimeCode = parsedTimeCode - ClassTimeComponents.HourCodes.six.rawValue
             
         } else if parsedTimeCode < ClassTimeComponents.HourCodes.eight.rawValue {
             
@@ -513,7 +513,7 @@ extension ClassTimeViewController: UIPickerViewDelegate, UIPickerViewDataSource 
                 classTimePickerView.selectRow((ClassTimeComponents.HoursStandard.seven.rawValue - 1), inComponent: 0, animated: true)
             }
             
-            parsedTimeCode = timeCode - ClassTimeComponents.HoursStandard.seven.rawValue
+            parsedTimeCode = parsedTimeCode - ClassTimeComponents.HourCodes.seven.rawValue
             
         } else if parsedTimeCode < ClassTimeComponents.HourCodes.nine.rawValue {
             
@@ -526,7 +526,7 @@ extension ClassTimeViewController: UIPickerViewDelegate, UIPickerViewDataSource 
                 classTimePickerView.selectRow((ClassTimeComponents.HoursStandard.eight.rawValue - 1), inComponent: 0, animated: true)
             }
             
-            parsedTimeCode = timeCode - ClassTimeComponents.HoursStandard.eight.rawValue
+            parsedTimeCode = parsedTimeCode - ClassTimeComponents.HourCodes.eight.rawValue
             
         } else if parsedTimeCode < ClassTimeComponents.HourCodes.ten.rawValue {
             
@@ -539,7 +539,7 @@ extension ClassTimeViewController: UIPickerViewDelegate, UIPickerViewDataSource 
                 classTimePickerView.selectRow((ClassTimeComponents.HoursStandard.nine.rawValue - 1), inComponent: 0, animated: true)
             }
             
-            parsedTimeCode = timeCode - ClassTimeComponents.HoursStandard.nine.rawValue
+            parsedTimeCode = parsedTimeCode - ClassTimeComponents.HourCodes.nine.rawValue
             
         } else if parsedTimeCode < ClassTimeComponents.HourCodes.eleven.rawValue {
             
@@ -552,7 +552,7 @@ extension ClassTimeViewController: UIPickerViewDelegate, UIPickerViewDataSource 
                 classTimePickerView.selectRow((ClassTimeComponents.HoursStandard.ten.rawValue - 1), inComponent: 0, animated: true)
             }
             
-            parsedTimeCode = timeCode - ClassTimeComponents.HoursStandard.ten.rawValue
+            parsedTimeCode = parsedTimeCode - ClassTimeComponents.HourCodes.ten.rawValue
             
         } else {
             
@@ -565,7 +565,7 @@ extension ClassTimeViewController: UIPickerViewDelegate, UIPickerViewDataSource 
                 classTimePickerView.selectRow((ClassTimeComponents.HoursStandard.eleven.rawValue - 1), inComponent: 0, animated: true)
             }
             
-            parsedTimeCode = timeCode - ClassTimeComponents.HoursStandard.eleven.rawValue
+            parsedTimeCode = parsedTimeCode - ClassTimeComponents.HourCodes.eleven.rawValue
             
         }
         
