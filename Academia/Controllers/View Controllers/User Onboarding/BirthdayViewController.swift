@@ -159,7 +159,7 @@ extension BirthdayViewController {
         guard let owner = userToEdit as? Owner else { return }
         // Owner update profile info
         if birthdate != nil {
-            OwnerModelController.shared.updateProfileInfo(owner: owner, isInstructor: nil, birthdate: birthdate, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+            OwnerModelController.shared.updateProfileInfo(owner: owner, isInstructor: nil, birthdate: birthdate, groups: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
         }
         print("update owner name: \(OwnerModelController.shared.owners[0].firstName) \(OwnerModelController.shared.owners[0].lastName)")
     }
@@ -168,7 +168,7 @@ extension BirthdayViewController {
         guard let kidStudent = userToEdit as? KidStudent else { return }
         // kidStudent update profile info
         if birthdate != nil {
-            KidStudentModelController.shared.updateProfileInfo(kidStudent: kidStudent,birthdate: birthdate, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, parentGuardian: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+            KidStudentModelController.shared.updateProfileInfo(kidStudent: kidStudent,birthdate: birthdate, groups: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, parentGuardian: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
         }
     }
     
@@ -176,7 +176,7 @@ extension BirthdayViewController {
         guard let adultStudent = userToEdit as? AdultStudent else { return }
         // adultStudent update profile info
         if birthdate != nil {
-            AdultStudentModelController.shared.updateProfileInfo(adultStudent: adultStudent, birthdate: birthdate, groups: nil, permission: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+            AdultStudentModelController.shared.updateProfileInfo(adultStudent: adultStudent, birthdate: birthdate, groups: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
         }
     }
     

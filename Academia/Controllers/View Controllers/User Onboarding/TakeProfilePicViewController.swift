@@ -187,7 +187,7 @@ extension TakeProfilePicViewController {
         guard let owner = userToEdit as? Owner else { return }
             // Owner update profile info
         if firstNameTextField.text != "" && lastNameTextField.text != "" && profilePicImageViewOutlet.image != UIImage(contentsOfFile: "user_placeholder") {
-            OwnerModelController.shared.updateProfileInfo(owner: owner, isInstructor: nil, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: profilePicImageViewOutlet.image, username: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+            OwnerModelController.shared.updateProfileInfo(owner: owner, isInstructor: nil, birthdate: nil, groups: nil, belt: nil, profilePic: profilePicImageViewOutlet.image, username: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
             print("update owner name: \(OwnerModelController.shared.owners[0].firstName) \(OwnerModelController.shared.owners[0].lastName)")
         }
     }
@@ -196,7 +196,7 @@ extension TakeProfilePicViewController {
         guard let kidStudent = userToEdit as? KidStudent else { return }
             // kidStudent update profile info
         if firstNameTextField.text != "" && lastNameTextField.text != "" && parentGuardianTextField.text != "" && profilePicImageViewOutlet.image != UIImage(contentsOfFile: "user_placeholder") {
-            KidStudentModelController.shared.updateProfileInfo(kidStudent: kidStudent, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: profilePicImageViewOutlet.image, username: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, parentGuardian: parentGuardianTextField.text, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+            KidStudentModelController.shared.updateProfileInfo(kidStudent: kidStudent, birthdate: nil, groups: nil, belt: nil, profilePic: profilePicImageViewOutlet.image, username: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, parentGuardian: parentGuardianTextField.text, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
         }
     }
     
@@ -205,7 +205,7 @@ extension TakeProfilePicViewController {
         
         // adultStudent update profile info
         if firstNameTextField.text != "" && lastNameTextField.text != "" && profilePicImageViewOutlet.image != UIImage(contentsOfFile: "user_placeholder") {
-            AdultStudentModelController.shared.updateProfileInfo(adultStudent: adultStudent, birthdate: nil, groups: nil, permission: nil, belt: nil, profilePic: profilePicImageViewOutlet.image, username: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+            AdultStudentModelController.shared.updateProfileInfo(adultStudent: adultStudent, birthdate: nil, groups: nil, belt: nil, profilePic: profilePicImageViewOutlet.image, username: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
         }
     }
     

@@ -66,7 +66,6 @@ class OwnerModelController {
                           mostRecentPromotion: nil,
                           attendance: nil,
                           groups: nil,
-                          permission: UserPermissions.owner,
                           belt: belt,
                           profilePic: profilePic,
                           username: username,
@@ -95,7 +94,6 @@ class OwnerModelController {
                            isInstructor: Bool?,
                            birthdate: Date?,
                            groups: [Group]?,
-                           permission: UserPermissions?,
                            belt: Belt?,
                            profilePic: UIImage?,
                            username: String?,
@@ -123,9 +121,6 @@ class OwnerModelController {
         }
         if let groups = groups {
             owner.groups = groups
-        }
-        if let permission = permission {
-            owner.permission = permission
         }
         if let belt = belt {
             owner.belt = belt

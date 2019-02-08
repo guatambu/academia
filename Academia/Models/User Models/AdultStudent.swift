@@ -32,7 +32,6 @@ class AdultStudent {
     // Data Model related
     var groups: [Group]?
     var paymentProgram: PaymentProgram?
-    var permission: [UserPermissions]
     var belt: Belt
     
     // Images
@@ -68,7 +67,6 @@ class AdultStudent {
          studentStatus: [StudentStatus],
          groups: [Group]?,
          paymentProgram: PaymentProgram?,
-         permission: [UserPermissions],
          belt: Belt,
          profilePic: UIImage?,
          username: String,
@@ -100,7 +98,6 @@ class AdultStudent {
         self.belt = belt
         self.groups = groups
         self.paymentProgram = paymentProgram
-        self.permission = permission
         self.profilePic = profilePic
         self.username = username
         self.password = password
@@ -128,7 +125,6 @@ extension AdultStudent: Equatable {
         if lhs.dateCreated != rhs.dateCreated { return false }
         if lhs.dateEdited != rhs.dateEdited { return false }
         if lhs.birthdate != rhs.birthdate { return false }
-        if lhs.permission != rhs.permission { return false }
         if lhs.belt != rhs.belt { return false }
         if lhs.username != rhs.username { return false }
         if lhs.firstName != rhs.firstName { return false }

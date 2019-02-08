@@ -26,7 +26,6 @@ class Owner {
     var attendance: [Date]?
     
     // Data Model related
-    var permission: UserPermissions
     var belt: Belt
     var groups: [Group]?
     
@@ -61,7 +60,6 @@ class Owner {
          mostRecentPromotion: Date?,
          attendance: [Date]?,
          groups: [Group]?,
-         permission: UserPermissions,
          belt: Belt,
          profilePic: UIImage?,
          username: String,
@@ -91,7 +89,6 @@ class Owner {
         self.attendance = attendance
         self.belt = belt
         self.groups = groups
-        self.permission = permission
         self.profilePic = profilePic
         self.username = username
         self.password = password
@@ -120,7 +117,6 @@ extension Owner: Equatable {
         if lhs.dateCreated != rhs.dateCreated { return false }
         if lhs.dateEdited != rhs.dateEdited { return false }
         if lhs.birthdate != rhs.birthdate { return false }
-        if lhs.permission != rhs.permission { return false }
         if lhs.belt != rhs.belt { return false }
         if lhs.username != rhs.username { return false }
         if lhs.password != rhs.password { return false }

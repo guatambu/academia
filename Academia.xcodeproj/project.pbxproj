@@ -63,9 +63,7 @@
 		FA6FB9FF2149F32200558657 /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6FB9FE2149F32200558657 /* Owner.swift */; };
 		FA6FBA012149F33100558657 /* AdultStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6FBA002149F33100558657 /* AdultStudent.swift */; };
 		FA6FBA032149F36300558657 /* KidStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6FBA022149F36300558657 /* KidStudent.swift */; };
-		FA6FBA062149F3B700558657 /* UserPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6FBA052149F3B700558657 /* UserPermissions.swift */; };
 		FA6FBA082149F3C700558657 /* StudentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6FBA072149F3C700558657 /* StudentStatus.swift */; };
-		FA7A12D2216AE57A00C03590 /* Academia.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA7A12D0216AE57A00C03590 /* Academia.xcdatamodeld */; };
 		FA8B3CBF21CA22B7003398FB /* GroupNameAndDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B3CBD21CA22B7003398FB /* GroupNameAndDescriptionViewController.swift */; };
 		FA8B3CC221CA230B003398FB /* AddStudentsToGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B3CC021CA230B003398FB /* AddStudentsToGroupTableViewController.swift */; };
 		FA8B3CC721CB2366003398FB /* ReviewAndCreateGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B3CC621CB2366003398FB /* ReviewAndCreateGroupTableViewController.swift */; };
@@ -331,7 +329,6 @@
 		FA6FB9FE2149F32200558657 /* Owner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
 		FA6FBA002149F33100558657 /* AdultStudent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdultStudent.swift; sourceTree = "<group>"; };
 		FA6FBA022149F36300558657 /* KidStudent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidStudent.swift; sourceTree = "<group>"; };
-		FA6FBA052149F3B700558657 /* UserPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPermissions.swift; sourceTree = "<group>"; };
 		FA6FBA072149F3C700558657 /* StudentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentStatus.swift; sourceTree = "<group>"; };
 		FA7A12D1216AE57A00C03590 /* Academia.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Academia.xcdatamodel; sourceTree = "<group>"; };
 		FA8B3CBE21CA22B7003398FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Base; path = Academia/Views/Academia/Views/Base.lproj/GroupNameAndDescriptionViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -895,7 +892,6 @@
 				FA6FBA002149F33100558657 /* AdultStudent.swift */,
 				FA6FBA022149F36300558657 /* KidStudent.swift */,
 				FAF29B6A212D0E9E00752414 /* OnBoardingTask.swift */,
-				FA6FBA052149F3B700558657 /* UserPermissions.swift */,
 				FA6FBA072149F3C700558657 /* StudentStatus.swift */,
 			);
 			path = "User Models";
@@ -1431,12 +1427,10 @@
 				FA531C26219630E700AE2C38 /* BeltBuilder.swift in Sources */,
 				FABF85BF21BB09FC005CEBD4 /* Billing.swift in Sources */,
 				FAA4BFB121E4007F007A011C /* AdultStudentTableViewCell.swift in Sources */,
-				FA6FBA062149F3B700558657 /* UserPermissions.swift in Sources */,
 				FA5C5C382151D3C600BF62D5 /* StudentHomeTableViewController.swift in Sources */,
 				FABF85AD21B78C6F005CEBD4 /* ReviewAndCreatePaymentProgramViewController.swift in Sources */,
 				FA9ADA172138C7030005E1F1 /* ProfilePicTableViewCell.swift in Sources */,
 				FAE2FD982140C00300815402 /* ZipCodeTextFieldTableViewCell.swift in Sources */,
-				FA7A12D2216AE57A00C03590 /* Academia.xcdatamodeld in Sources */,
 				FAD2097521C1CFE700B9C622 /* TypeCollectionViewCell.swift in Sources */,
 				FA5C5C56215499F300BF62D5 /* StudentProfileDetailTableViewController.swift in Sources */,
 				FA8B3CCE21CB3901003398FB /* GroupInfoDetailsTableViewController.swift in Sources */,

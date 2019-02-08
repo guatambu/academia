@@ -63,7 +63,6 @@ class AdultStudentModelController {
                                  studentStatus: [StudentStatus.active],
                                  groups: nil,
                                  paymentProgram: nil,
-                                 permission: [UserPermissions.adultStudent],
                                  belt: belt,
                                  profilePic: profilePic,
                                  username: username,
@@ -92,7 +91,6 @@ class AdultStudentModelController {
     func updateProfileInfo(adultStudent: AdultStudent,
                            birthdate: Date?,
                            groups: [Group]?,
-                           permission: [UserPermissions]?,
                            belt: Belt?,
                            profilePic: UIImage?,
                            username: String?,
@@ -117,9 +115,6 @@ class AdultStudentModelController {
         }
         if let groups = groups {
             adultStudent.groups = groups
-        }
-        if let permission = permission {
-            adultStudent.permission = permission
         }
         if let belt = belt {
             adultStudent.belt = belt
