@@ -13,10 +13,12 @@ class StudentChoiceViewController: UIViewController {
     // MARK: - Properties
     
     var isOwner: Bool?
+    var isKid = false
     var username: String?
     var password: String?
     
-    var isKid = false
+    var isOwnerAddingStudent: Bool?
+    var group: Group?
     
     @IBOutlet weak var kidsProgramButtonOutlet: UIButton!
     @IBOutlet weak var adultsProgramButtonOutlet: UIButton!
@@ -87,6 +89,8 @@ class StudentChoiceViewController: UIViewController {
         // pass desired data to relevant view controller
         destViewController.isOwner = self.isOwner
         destViewController.isKid = true
+        destViewController.isOwnerAddingStudent = isOwnerAddingStudent
+        destViewController.group = group
         
     }
     
@@ -108,6 +112,7 @@ class StudentChoiceViewController: UIViewController {
         // pass desired data to relevant view controller
         destViewController.isOwner = isOwner
         destViewController.isKid = isKid
-        
+        destViewController.isOwnerAddingStudent = isOwnerAddingStudent
+        destViewController.group = group
     }
 }

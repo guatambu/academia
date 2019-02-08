@@ -69,8 +69,8 @@ class PaymentProgramBillingDetailsViewController: UIViewController, BillingTypeD
         
         signatureTypeCollectionView.dataSource = self
         signatureTypeCollectionView.delegate = self
-        //populateCompletedProfileInfo()
         
+        //populateCompletedProfileInfo()
         guard let paymentProgramName = paymentProgramName, let active = active, let programDescription = programDescription else {
             print("no paymentProgramName, active, or programDescription passed to: PaymentProgramBillingDetailsVC -> viewDidLoad() - line 71")
             return
@@ -144,7 +144,6 @@ class PaymentProgramBillingDetailsViewController: UIViewController, BillingTypeD
         destViewController.paymentProgramToEdit = paymentProgramToEdit
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
-        // ****  implement this across the other VCs in onboarding
         updatePaymentProgramInfo()
     }
 }
@@ -152,6 +151,7 @@ class PaymentProgramBillingDetailsViewController: UIViewController, BillingTypeD
 
 // MARK: - Editing Mode for Individual User case specific setup
 extension PaymentProgramBillingDetailsViewController {
+    
     // Update Function for case where want to update user info without a segue
     func updatePaymentProgramInfo() {
         guard let paymentProgram = paymentProgramToEdit else { return }
@@ -166,6 +166,7 @@ extension PaymentProgramBillingDetailsViewController {
             print("update payment program billingTypes: \(PaymentProgramModelController.shared.paymentPrograms[0].billingTypes)")
         }
     }
+    
     func enterEditingMode(inEditingMode: Bool?) {
         guard let inEditingMode = inEditingMode else { return }
         if inEditingMode {
@@ -176,6 +177,7 @@ extension PaymentProgramBillingDetailsViewController {
         }
         print("PaymentProgramNameAndDescriptionVC -> inEditingMode: \(inEditingMode)")
     }
+    
     // owner setup for editing mode
     func paymentProgramEditingSetup() {
         guard let paymentProgramToEdit = paymentProgramToEdit else {
@@ -216,6 +218,7 @@ extension PaymentProgramBillingDetailsViewController: UICollectionViewDelegate, 
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+        // billingType collectionView
         if collectionView.tag == 5 {
             let cell = billingTypeCollectionView.dequeueReusableCell(withReuseIdentifier: "TypeCollectionCell", for: indexPath) as! TypeCollectionViewCell
             // set the BillingTypeDelegate for the TypeCollectionViewCell
@@ -226,6 +229,7 @@ extension PaymentProgramBillingDetailsViewController: UICollectionViewDelegate, 
             
             return cell
             
+        // billingDate CollectionView
         } else if collectionView.tag == 10 {
             
             let cell = billingDateCollectionView.dequeueReusableCell(withReuseIdentifier: "DateCollectionCell", for: indexPath) as! DateCollectionViewCell
@@ -237,6 +241,7 @@ extension PaymentProgramBillingDetailsViewController: UICollectionViewDelegate, 
             
             return cell
             
+        // signatureType collectionView
         } else if collectionView.tag == 15 {
             
             let cell = signatureTypeCollectionView.dequeueReusableCell(withReuseIdentifier: "SignatureCollectionCell", for: indexPath) as! SignatureCollectionViewCell

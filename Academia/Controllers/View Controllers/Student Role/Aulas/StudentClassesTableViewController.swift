@@ -12,7 +12,7 @@ class StudentClassesTableViewController: UITableViewController {
     
     // MARK: - Properties
     
-    let weekdays: [Weekdays] = [.Sunday, .Monday, .Tuesday, .Wednesday, .Thursday, .Friday, .Saturday]
+    let weekdays: [ClassTimeComponents.Weekdays] = [.Sunday, .Monday, .Tuesday, .Wednesday, .Thursday, .Friday, .Saturday]
 
     override func viewDidLoad() {
         super.viewDidLoad()

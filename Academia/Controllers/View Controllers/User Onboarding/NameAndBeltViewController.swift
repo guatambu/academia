@@ -27,6 +27,9 @@ class NameAndBeltViewController: UIViewController {
     var inEditingMode: Bool?
     var userToEdit: Any?
     
+    var isOwnerAddingStudent: Bool?
+    var group: Group?
+    
     let beltBuilder = BeltBuilder()
     
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
@@ -131,11 +134,13 @@ class NameAndBeltViewController: UIViewController {
         destViewController.beltLevel = beltLevel
         destViewController.numberOfStripes = numberOfStripes
         
+        destViewController.isOwnerAddingStudent = isOwnerAddingStudent
+        destViewController.group = group
+        
         destViewController.inEditingMode = inEditingMode
         destViewController.userToEdit = userToEdit
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
-        // ****  implement this across the other VCs in onbaording after lunch
         if let isOwner = isOwner {
             if isOwner {
                 updateOwnerInfo()

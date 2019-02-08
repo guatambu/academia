@@ -17,6 +17,7 @@ class OwnerModelController {
     
     var owners = [Owner]()
     var ownerAttendance = [Date]()
+    var instructors = [AdultStudent]()
     
     var numberTasksCompleted: Int = 0
     

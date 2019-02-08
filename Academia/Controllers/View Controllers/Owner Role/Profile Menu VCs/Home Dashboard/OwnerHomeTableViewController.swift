@@ -12,6 +12,8 @@ class OwnerHomeTableViewController: UITableViewController {
     
     // MARK: - Properties
     
+    let beltBuilder = BeltBuilder()
+    
     
     // MARK: - ViewController Lifecycle Functions
     
@@ -58,7 +60,7 @@ class OwnerHomeTableViewController: UITableViewController {
             
             // instantiate the relevant storyboard
             let ownerProfileFlowView: UIStoryboard = UIStoryboard(name: "OwnerProfileFlow", bundle: nil)
-             // instantiate the desired TableViewController as ViewController on relevant storyboard
+             // instantiate the desired TableViewController on relevant storyboard
             let destViewController = ownerProfileFlowView.instantiateViewController(withIdentifier: "toOwnerPaymentInfo") as! OwnerPaymentInfoTableViewController
             // create the segue programmatically
             self.navigationController?.pushViewController(destViewController, animated: true)
@@ -66,13 +68,13 @@ class OwnerHomeTableViewController: UITableViewController {
             let backButtonItem = UIBarButtonItem()
             backButtonItem.title = " "
             navigationItem.backBarButtonItem = backButtonItem
-            navigationController?.navigationBar.tintColor = UIColor(red: 241/255, green: 0/255, blue: 0/255, alpha: 1.0)
+            navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
             
         } else if OwnerModelController.shared.ownerOnboardingTasks[indexPath.item].name == "setUpPaymentPrograms" {
             
             // instantiate the relevant storyboard
             let ownerProfileFlowView: UIStoryboard = UIStoryboard(name: "OwnerProfileFlow", bundle: nil)
-            // instantiate the desired TableViewController as ViewController on relevant storyboard
+            // instantiate the desired TableViewController on relevant storyboard
             let destViewController = ownerProfileFlowView.instantiateViewController(withIdentifier: "toOwnerPaymentPrograms") as! OwnerPaymentProgramsTableViewController
             // create the segue programmatically
             self.navigationController?.pushViewController(destViewController, animated: true)
@@ -80,13 +82,13 @@ class OwnerHomeTableViewController: UITableViewController {
             let backButtonItem = UIBarButtonItem()
             backButtonItem.title = " "
             navigationItem.backBarButtonItem = backButtonItem
-            navigationController?.navigationBar.tintColor = UIColor(red: 241/255, green: 0/255, blue: 0/255, alpha: 1.0)
+            navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
             
         } else if OwnerModelController.shared.ownerOnboardingTasks[indexPath.item].name == "locationsSetUp" {
             
             // instantiate the relevant storyboard
             let ownerProfileFlowView: UIStoryboard = UIStoryboard(name: "OwnerProfileFlow", bundle: nil)
-            // instantiate the desired TableViewController as ViewController on relevant storyboard
+            // instantiate the desired TableViewController on relevant storyboard
             let destViewController = ownerProfileFlowView.instantiateViewController(withIdentifier: "toOwnerLocationsList") as! MyLocationsTableViewController
             // create the segue programmatically
             self.navigationController?.pushViewController(destViewController, animated: true)
@@ -94,35 +96,35 @@ class OwnerHomeTableViewController: UITableViewController {
             let backButtonItem = UIBarButtonItem()
             backButtonItem.title = " "
             navigationItem.backBarButtonItem = backButtonItem
-            navigationController?.navigationBar.tintColor = UIColor(red: 241/255, green: 0/255, blue: 0/255, alpha: 1.0)
+            navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
             
         } else if OwnerModelController.shared.ownerOnboardingTasks[indexPath.item].name == "messagingGroups" {
             
             // instantiate the relevant storyboard
             let ownerStudentsFlowView: UIStoryboard = UIStoryboard(name: "OwnerStudentsFlow", bundle: nil)
-            // instantiate the desired TableViewController as ViewController on relevant storyboard
-            let destViewController = ownerStudentsFlowView.instantiateViewController(withIdentifier: "toOwnerGroups") as! StudentsByListGroupingTableViewController
+            // instantiate the desired TableViewController on relevant storyboard
+            let destViewController = ownerStudentsFlowView.instantiateViewController(withIdentifier: "toOwnerGroupList") as! OwnerGroupListTableViewController
             // create the segue programmatically
             self.navigationController?.pushViewController(destViewController, animated: true)
             // set the desired properties of the destinationVC's navgation Item
             let backButtonItem = UIBarButtonItem()
             backButtonItem.title = " "
             navigationItem.backBarButtonItem = backButtonItem
-            navigationController?.navigationBar.tintColor = UIColor(red: 241/255, green: 0/255, blue: 0/255, alpha: 1.0)
+            navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
             
         } else if OwnerModelController.shared.ownerOnboardingTasks[indexPath.item].name == "createClassSchedule" {
             
             // instantiate the relevant storyboard
             let ownerBaseCampFlowView: UIStoryboard = UIStoryboard(name: "OwnerBaseCampFlow", bundle: nil)
-            // instantiate the desired TableViewController as ViewController on relevant storyboard
-            let destViewController = ownerBaseCampFlowView.instantiateViewController(withIdentifier: "toOwnerClasses") as! OwnerClassesTableViewController
+            // instantiate the desired TableViewController on relevant storyboard
+            let destViewController = ownerBaseCampFlowView.instantiateViewController(withIdentifier: "toOwnerClassList") as! OwnerClassListTableViewController
             // create the segue programmatically
             self.navigationController?.pushViewController(destViewController, animated: true)
             // set the desired properties of the destinationVC's navgation Item
             let backButtonItem = UIBarButtonItem()
             backButtonItem.title = " "
             navigationItem.backBarButtonItem = backButtonItem
-            navigationController?.navigationBar.tintColor = UIColor(red: 241/255, green: 0/255, blue: 0/255, alpha: 1.0)
+            navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
             
         } else if OwnerModelController.shared.ownerOnboardingTasks[indexPath.item].name == "reviewBeltSystems" {
             
@@ -136,7 +138,7 @@ class OwnerHomeTableViewController: UITableViewController {
             let backButtonItem = UIBarButtonItem()
             backButtonItem.title = " "
             navigationItem.backBarButtonItem = backButtonItem
-            navigationController?.navigationBar.tintColor = UIColor(red: 241/255, green: 0/255, blue: 0/255, alpha: 1.0)
+            navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
         }
     }
 

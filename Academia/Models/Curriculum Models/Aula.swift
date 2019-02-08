@@ -12,64 +12,44 @@ class Aula {
     
     // MARK: - Properties
     
+    // to think about... one version of a class 
+    
     // UID
     let aulaUID: UUID
     
     var active: Bool
     var aulaName: String
     var aulaDescription: String
-    var daysOfTheWeek: [Weekdays]
-    var timeOfDay: ClassTimes
+    var daysOfTheWeek: [ClassTimeComponents.Weekdays]
+    var time: String?
+    var timeCode: Int?
     var location: Location?
-    var students: [Any]?
-    var instructor: [Any]?
+    var kidAttendees: [KidStudent]?
+    var adultAttendees: [AdultStudent]?
+    var instructor: [AdultStudent]?
+    var ownerInstructor: [Owner]?
+    var classGroups: [Group]?
     var currentDate: Date
     var dateCreated: Date
     var dateEdited: Date
-    var attendees: [Any]?
-    
-    enum ClassTimes: Int {
-        case one = 01
-        case two = 02
-        case three = 03
-        case four = 04
-        case five = 05
-        case six = 06
-        case seven = 07
-        case eight = 08
-        case nine = 09
-        case ten = 10
-        case eleven = 11
-        case twelve = 12
-        case thirteen = 13
-        case fourteen = 14
-        case fifteen = 15
-        case sixteen = 16
-        case seventeen = 17
-        case eighteen = 18
-        case nineteen = 19
-        case twenty = 20
-        case twentyone = 21
-        case twentytwo = 22
-        case twentythree = 23
-        case twentyfour = 24
-    }
     
     // Memberwise Initializer
-    
     init(aulaUID: UUID,
          active: Bool,
          aulaName: String,
          aulaDescription: String,
-         daysOfTheWeek: [Weekdays],
-         timeOfDay: ClassTimes,
+         daysOfTheWeek: [ClassTimeComponents.Weekdays],
+         time: String?,
+         timeCode: Int?,
          location: Location?,
-         students: [Any]?,
-         instructor: [Any]?,
+         kidAttendees: [KidStudent]?,
+         adultAttendees: [AdultStudent]?,
+         instructor: [AdultStudent]?,
+         ownerInstructor: [Owner]?,
+         classGroups: [Group]?,
          currentDate: Date,
          dateCreated: Date,
-         dateEdited: Date,
-         attendees: [Any]?
+         dateEdited: Date
         ) {
         
         self.aulaUID = aulaUID
@@ -77,14 +57,17 @@ class Aula {
         self.aulaName = aulaName
         self.aulaDescription = aulaDescription
         self.daysOfTheWeek = daysOfTheWeek
-        self.timeOfDay = timeOfDay
+        self.time = time
+        self.timeCode = timeCode
         self.location = location
-        self.students = students
+        self.kidAttendees = kidAttendees
+        self.adultAttendees = adultAttendees
         self.instructor = instructor
+        self.ownerInstructor = ownerInstructor
+        self.classGroups = classGroups
         self.currentDate = currentDate
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
-        self.attendees = attendees
     }
     
 }
@@ -92,15 +75,22 @@ class Aula {
 extension Aula: Equatable {
     
     static func ==(lhs: Aula, rhs: Aula) -> Bool {
-        if lhs.active != rhs.active { return false }
         if lhs.aulaUID != rhs.aulaUID{ return false }
-        if lhs.aulaDescription != rhs.aulaDescription { return false }
+        if lhs.active != rhs.active { return false }
         if lhs.aulaName != rhs.aulaName { return false }
+        if lhs.aulaDescription != rhs.aulaDescription { return false }
+        if lhs.daysOfTheWeek != rhs.daysOfTheWeek { return false }
+        if lhs.time != rhs.time { return false }
+        if lhs.timeCode != rhs.timeCode { return false }
+        if lhs.location != rhs.location { return false }
+        if lhs.kidAttendees != rhs.kidAttendees { return false }
+        if lhs.adultAttendees != rhs.adultAttendees { return false }
+        if lhs.instructor != rhs.instructor { return false }
+        if lhs.ownerInstructor != rhs.ownerInstructor { return false }
+        if lhs.classGroups != rhs.classGroups { return false }
         if lhs.currentDate != rhs.currentDate { return false }
         if lhs.dateCreated != rhs.dateCreated { return false }
         if lhs.dateEdited != rhs.dateEdited { return false }
-        if lhs.daysOfTheWeek != rhs.daysOfTheWeek { return false }
-        if lhs.timeOfDay != rhs.timeOfDay { return false }
         
         return true
     }

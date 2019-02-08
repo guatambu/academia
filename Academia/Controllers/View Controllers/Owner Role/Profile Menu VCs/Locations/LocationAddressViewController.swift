@@ -123,7 +123,6 @@ class LocationAddressViewController: UIViewController {
         destViewController.locationToEdit = locationToEdit
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
-        // ****  implement this across the other VCs in loaction onboarding
         updateLocationInfo()
     }
 }

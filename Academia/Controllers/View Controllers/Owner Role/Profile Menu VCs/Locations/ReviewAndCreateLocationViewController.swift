@@ -65,11 +65,7 @@ class ReviewAndCreateLocationViewController: UIViewController {
         super.viewDidLoad()
         
         addressLine2LabelOutlet.isHidden = false
-        
-        //populateCompletedProfileInfo()
     }
-    
-    // TODO: decide whether to create a new review your location details VC or tweak current one to work when creating location button not needed
     
     // MARK: - Actions
     

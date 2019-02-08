@@ -24,6 +24,9 @@ class TakeProfilePicViewController: UIViewController {
     var inEditingMode: Bool?
     var userToEdit: Any?
     
+    var isOwnerAddingStudent: Bool?
+    var group: Group?
+    
     let imagePickerController = UIImagePickerController()
     
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
@@ -153,11 +156,13 @@ class TakeProfilePicViewController: UIViewController {
         destViewController.parentGuardian = parentGuardian
         destViewController.profilePic = profilePic
         
+        destViewController.isOwnerAddingStudent = isOwnerAddingStudent
+        destViewController.group = group
+        
         destViewController.inEditingMode = inEditingMode
         destViewController.userToEdit = userToEdit
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
-        // ****  implement this across the other VCs in onbaording after lunch
         if let isOwner = isOwner {
             if isOwner {
                 updateOwnerInfo()

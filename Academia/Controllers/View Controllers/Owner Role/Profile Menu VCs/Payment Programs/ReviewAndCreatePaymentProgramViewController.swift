@@ -152,9 +152,9 @@ extension ReviewAndCreatePaymentProgramViewController {
         // billing details outlets
         for date in billingDates {
             if datesCounter == billingDates.count - 1 {
-                billingDatesString += "\(date)"
+                billingDatesString += "\(date.rawValue)"
             } else {
-                billingDatesString += "\(date), "
+                billingDatesString += "\(date.rawValue), "
             }
             datesCounter += 1
         }
@@ -163,9 +163,9 @@ extension ReviewAndCreatePaymentProgramViewController {
         for type in billingTypes {
            
             if typesCounter == billingTypes.count - 1 {
-                billingTypesString += "\(type)"
+                billingTypesString += "\(type.rawValue)"
             } else {
-                billingTypesString += "\(type), "
+                billingTypesString += "\(type.rawValue), "
             }
             typesCounter += 1
         }
@@ -173,9 +173,9 @@ extension ReviewAndCreatePaymentProgramViewController {
         // signature type
         for type in signatureTypes {
             if signatureCounter == signatureTypes.count - 1 {
-                signatureTypesString += "\(type)"
+                signatureTypesString += "\(type.rawValue)"
             } else {
-                signatureTypesString += "\(type), "
+                signatureTypesString += "\(type.rawValue), "
             }
             signatureCounter += 1
         }

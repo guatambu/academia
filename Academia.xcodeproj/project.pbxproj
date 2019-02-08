@@ -16,13 +16,13 @@
 		FA0C444621278BBF00B59194 /* Aula.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0C444521278BBF00B59194 /* Aula.swift */; };
 		FA0C444821278C9A00B59194 /* PaymentProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0C444721278C9A00B59194 /* PaymentProgram.swift */; };
 		FA0C444A21278CA900B59194 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0C444921278CA900B59194 /* Group.swift */; };
-		FA21D6802130BB1E006790E5 /* OwnerClassesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D67F2130BB1E006790E5 /* OwnerClassesTableViewController.swift */; };
+		FA1CEF3921F588D2004498BC /* ClassLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CEF3821F588D2004498BC /* ClassLocationViewController.swift */; };
+		FA1CEF3B21F5900E004498BC /* ClassDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CEF3A21F5900E004498BC /* ClassDayViewController.swift */; };
+		FA1CEF3D21FBA7F6004498BC /* ClassGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CEF3C21FBA7F6004498BC /* ClassGroupTableViewCell.swift */; };
+		FA1CEF3F21FBAD68004498BC /* ClassGroupDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CEF3E21FBAD68004498BC /* ClassGroupDelegate.swift */; };
+		FA21D6802130BB1E006790E5 /* OwnerClassListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D67F2130BB1E006790E5 /* OwnerClassListTableViewController.swift */; };
 		FA21D6822130BB2D006790E5 /* OwnerProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6812130BB2D006790E5 /* OwnerProfileTableViewController.swift */; };
-		FA21D6842130BB7F006790E5 /* StudentListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6832130BB7F006790E5 /* StudentListTableViewController.swift */; };
-		FA21D6862130BB93006790E5 /* StudentsByListGroupingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6852130BB93006790E5 /* StudentsByListGroupingTableViewController.swift */; };
-		FA21D6A12134B8D3006790E5 /* AddClassTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6A02134B8D3006790E5 /* AddClassTableViewController.swift */; };
-		FA21D6A32134BAC5006790E5 /* StudentDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6A22134BAC5006790E5 /* StudentDetailTableViewController.swift */; };
-		FA21D6A52134D72A006790E5 /* AddNewStudentGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6A42134D72A006790E5 /* AddNewStudentGroupTableViewController.swift */; };
+		FA21D6862130BB93006790E5 /* OwnerGroupListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D6852130BB93006790E5 /* OwnerGroupListTableViewController.swift */; };
 		FA23D2832166F5AE00707056 /* AulaModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23D2822166F5AE00707056 /* AulaModelController.swift */; };
 		FA23D2852166F5C900707056 /* PaymentProgramModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23D2842166F5C900707056 /* PaymentProgramModelController.swift */; };
 		FA23D2882166F5E400707056 /* GroupModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23D2872166F5E400707056 /* GroupModelController.swift */; };
@@ -66,6 +66,12 @@
 		FA6FBA062149F3B700558657 /* UserPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6FBA052149F3B700558657 /* UserPermissions.swift */; };
 		FA6FBA082149F3C700558657 /* StudentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6FBA072149F3C700558657 /* StudentStatus.swift */; };
 		FA7A12D2216AE57A00C03590 /* Academia.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA7A12D0216AE57A00C03590 /* Academia.xcdatamodeld */; };
+		FA8B3CBF21CA22B7003398FB /* GroupNameAndDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B3CBD21CA22B7003398FB /* GroupNameAndDescriptionViewController.swift */; };
+		FA8B3CC221CA230B003398FB /* AddStudentsToGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B3CC021CA230B003398FB /* AddStudentsToGroupTableViewController.swift */; };
+		FA8B3CC721CB2366003398FB /* ReviewAndCreateGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B3CC621CB2366003398FB /* ReviewAndCreateGroupTableViewController.swift */; };
+		FA8B3CCA21CB246C003398FB /* OwnerStudentsFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8B3CC821CB246C003398FB /* OwnerStudentsFlow.storyboard */; };
+		FA8B3CCC21CB276B003398FB /* OwnersStudentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B3CCB21CB276B003398FB /* OwnersStudentDetailViewController.swift */; };
+		FA8B3CCE21CB3901003398FB /* GroupInfoDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B3CCD21CB3901003398FB /* GroupInfoDetailsTableViewController.swift */; };
 		FA9AD9F5213782070005E1F1 /* TutorialsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9AD9F4213782070005E1F1 /* TutorialsTableViewController.swift */; };
 		FA9AD9F72137839A0005E1F1 /* BeltSystemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9AD9F62137839A0005E1F1 /* BeltSystemsTableViewController.swift */; };
 		FA9AD9F9213783BA0005E1F1 /* MyLocationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9AD9F8213783BA0005E1F1 /* MyLocationsTableViewController.swift */; };
@@ -81,7 +87,6 @@
 		FA9ADA192138D60E0005E1F1 /* ProfileTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9ADA182138D60E0005E1F1 /* ProfileTextFieldCell.xib */; };
 		FA9ADA1B2138D6700005E1F1 /* ProfileTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9ADA1A2138D6700005E1F1 /* ProfileTextFieldTableViewCell.swift */; };
 		FA9ADA1D2138D9C90005E1F1 /* SaveProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9ADA1C2138D9C90005E1F1 /* SaveProfileCell.xib */; };
-		FA9ADA1F2138DA530005E1F1 /* SaveProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9ADA1E2138DA530005E1F1 /* SaveProfileTableViewCell.swift */; };
 		FA9ADA212138DBC30005E1F1 /* MyCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9ADA202138DBC30005E1F1 /* MyCells.swift */; };
 		FA9ADA252139EE250005E1F1 /* StatusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9ADA242139EE250005E1F1 /* StatusCell.xib */; };
 		FA9ADA272139EE370005E1F1 /* IsInstructorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9ADA262139EE370005E1F1 /* IsInstructorCell.xib */; };
@@ -90,6 +95,7 @@
 		FA9ADA2D2139EE6C0005E1F1 /* IsInstructorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9ADA2C2139EE6C0005E1F1 /* IsInstructorTableViewCell.swift */; };
 		FA9ADA2F2139EE940005E1F1 /* IsKidTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9ADA2E2139EE940005E1F1 /* IsKidTableViewCell.swift */; };
 		FA9ADA31213B6BA90005E1F1 /* InternationalStandardBJJBelts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9ADA30213B6BA90005E1F1 /* InternationalStandardBJJBelts.swift */; };
+		FAA4BFB121E4007F007A011C /* AdultStudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA4BFB021E4007F007A011C /* AdultStudentTableViewCell.swift */; };
 		FAA516CE218D0234009875CB /* SpacerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA516CD218D0234009875CB /* SpacerCell.xib */; };
 		FAA516D0218FEBD1009875CB /* PasswordTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA516CF218FEBD1009875CB /* PasswordTextFieldCell.xib */; };
 		FAA516D2218FEBEE009875CB /* ConfirmPasswordTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA516D1218FEBEE009875CB /* ConfirmPasswordTextFieldCell.xib */; };
@@ -101,13 +107,13 @@
 		FAA550712145D03F00EC7860 /* HeadingLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA550702145D03F00EC7860 /* HeadingLabelTableViewCell.swift */; };
 		FAAAC149213E337500093D6C /* OwnerBeltSystemFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAAAC147213E337500093D6C /* OwnerBeltSystemFlow.storyboard */; };
 		FAAAC14B213E33E000093D6C /* OwnerProfileFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAAAC14A213E33E000093D6C /* OwnerProfileFlow.storyboard */; };
-		FAAAC14E213E342600093D6C /* OwnerStudentsFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAAAC14C213E342600093D6C /* OwnerStudentsFlow.storyboard */; };
 		FAAAC150213E345900093D6C /* OwnerMessages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAAAC14F213E345900093D6C /* OwnerMessages.storyboard */; };
 		FAAAC153213E348800093D6C /* OwnerBaseCampFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAAAC151213E348800093D6C /* OwnerBaseCampFlow.storyboard */; };
+		FAAEDB4E21DD7BBB00E1A04F /* ReviewKidStudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAEDB4D21DD7BBB00E1A04F /* ReviewKidStudentTableViewCell.swift */; };
+		FAAEDB5021DDA27500E1A04F /* GroupMembersDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAEDB4F21DDA27500E1A04F /* GroupMembersDelegate.swift */; };
 		FAB203D4215EA8630034E1D4 /* LocationsImageMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB203D3215EA8630034E1D4 /* LocationsImageMenuTableViewCell.swift */; };
 		FAB203DA216187190034E1D4 /* StudentClassDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB203D9216187190034E1D4 /* StudentClassDetailViewController.swift */; };
 		FAB203DC216188C50034E1D4 /* StudentAulasListMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB203DB216188C50034E1D4 /* StudentAulasListMenuTableViewCell.swift */; };
-		FAB203DE2161C9C40034E1D4 /* Weekdays.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB203DD2161C9C40034E1D4 /* Weekdays.swift */; };
 		FAB20413216566E50034E1D4 /* ThingsToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB20412216566E50034E1D4 /* ThingsToDoList.swift */; };
 		FAB7E350212B7D47003E3B79 /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB7E34F212B7D47003E3B79 /* LandingPageViewController.swift */; };
 		FAB7E352212B7D73003E3B79 /* UserSelfIdentifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB7E351212B7D73003E3B79 /* UserSelfIdentifyViewController.swift */; };
@@ -139,9 +145,23 @@
 		FAD2097521C1CFE700B9C622 /* TypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2097421C1CFE700B9C622 /* TypeCollectionViewCell.swift */; };
 		FAD2097721C1CFF400B9C622 /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2097621C1CFF400B9C622 /* DateCollectionViewCell.swift */; };
 		FAD2097921C1D00200B9C622 /* SignatureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2097821C1D00200B9C622 /* SignatureCollectionViewCell.swift */; };
+		FAD2A3A521E4216600364FC0 /* ClassTimeComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2A3A421E4216600364FC0 /* ClassTimeComponents.swift */; };
+		FAD2A3A721E42D7A00364FC0 /* ReviewAdultStudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2A3A621E42D7A00364FC0 /* ReviewAdultStudentTableViewCell.swift */; };
+		FAD2A3A921E6B7C700364FC0 /* ClassInfoDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2A3A821E6B7C700364FC0 /* ClassInfoDetailsTableViewController.swift */; };
+		FAD2A3AB21E6B82A00364FC0 /* ClassNameAndDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2A3AA21E6B82A00364FC0 /* ClassNameAndDescriptionViewController.swift */; };
+		FAD2A3AD21E6B84D00364FC0 /* ClassTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2A3AC21E6B84D00364FC0 /* ClassTimeViewController.swift */; };
+		FAD2A3AF21E6B87600364FC0 /* ClassInstructorsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2A3AE21E6B87600364FC0 /* ClassInstructorsTableViewController.swift */; };
+		FAD2A3B121E6B90D00364FC0 /* AddGroupToClassTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2A3B021E6B90D00364FC0 /* AddGroupToClassTableViewController.swift */; };
+		FAD2A3B321E6B93300364FC0 /* ReviewAndCreateClassTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2A3B221E6B93300364FC0 /* ReviewAndCreateClassTableViewController.swift */; };
+		FAD2A3B521E6E1AF00364FC0 /* InstructorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2A3B421E6E1AF00364FC0 /* InstructorTableViewCell.swift */; };
+		FAD2A3B721E6E1C600364FC0 /* OwnerInstructorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2A3B621E6E1C600364FC0 /* OwnerInstructorTableViewCell.swift */; };
+		FAD2A3B921E6E1E100364FC0 /* ReviewInstructorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2A3B821E6E1E100364FC0 /* ReviewInstructorTableViewCell.swift */; };
+		FAD2A3BB21E6E1F900364FC0 /* ReviewOwnerInstructorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2A3BA21E6E1F900364FC0 /* ReviewOwnerInstructorTableViewCell.swift */; };
+		FAD2A3BD21E6E42000364FC0 /* InstructorsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2A3BC21E6E42000364FC0 /* InstructorsDelegate.swift */; };
+		FAD2A3BF21E810BE00364FC0 /* KidGroupInfoDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2A3BE21E810BE00364FC0 /* KidGroupInfoDetailsTableViewCell.swift */; };
+		FAD2A3C121E810DD00364FC0 /* AdultGroupInfoDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2A3C021E810DD00364FC0 /* AdultGroupInfoDetailsTableViewCell.swift */; };
 		FAD5B12D21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5B12C21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift */; };
 		FAD5B12F21C44BCA004ED286 /* ViewAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5B12E21C44BCA004ED286 /* ViewAgreementViewController.swift */; };
-		FAE2C07F214ADD26002E9756 /* ClassDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE2C07E214ADD26002E9756 /* ClassDetailTableViewController.swift */; };
 		FAE2FD3C2140700F00815402 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE2FD3B2140700F00815402 /* MockData.swift */; };
 		FAE2FD652140BE4200815402 /* FirstNameTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAE2FD642140BE4200815402 /* FirstNameTextFieldCell.xib */; };
 		FAE2FD672140BE4D00815402 /* LastNameTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAE2FD662140BE4D00815402 /* LastNameTextFieldCell.xib */; };
@@ -187,7 +207,7 @@
 		FAE67A38215C6C0F00822DCF /* AulasListMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE67A37215C6C0F00822DCF /* AulasListMenuTableViewCell.swift */; };
 		FAE67A3A215C6EDD00822DCF /* StudentGroupGeneralMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE67A39215C6EDD00822DCF /* StudentGroupGeneralMenuTableViewCell.swift */; };
 		FAE67A3C215C714B00822DCF /* StudentListImageMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE67A3B215C714B00822DCF /* StudentListImageMenuTableViewCell.swift */; };
-		FAE67A3E215C733400822DCF /* AddNewStudentGroupImageMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE67A3D215C733400822DCF /* AddNewStudentGroupImageMenuTableViewCell.swift */; };
+		FAE67A3E215C733400822DCF /* KidStudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE67A3D215C733400822DCF /* KidStudentTableViewCell.swift */; };
 		FAF1BB882143574400AD56AE /* DescriptionTextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAF1BB872143574400AD56AE /* DescriptionTextViewCell.xib */; };
 		FAF1BB8A2143575C00AD56AE /* AgreementTextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAF1BB892143575C00AD56AE /* AgreementTextViewCell.xib */; };
 		FAF1BB8C21435BA900AD56AE /* AgreementTextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF1BB8B21435BA900AD56AE /* AgreementTextViewTableViewCell.swift */; };
@@ -264,13 +284,13 @@
 		FA0C444521278BBF00B59194 /* Aula.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aula.swift; sourceTree = "<group>"; };
 		FA0C444721278C9A00B59194 /* PaymentProgram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProgram.swift; sourceTree = "<group>"; };
 		FA0C444921278CA900B59194 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
-		FA21D67F2130BB1E006790E5 /* OwnerClassesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerClassesTableViewController.swift; sourceTree = "<group>"; };
+		FA1CEF3821F588D2004498BC /* ClassLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassLocationViewController.swift; sourceTree = "<group>"; };
+		FA1CEF3A21F5900E004498BC /* ClassDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassDayViewController.swift; sourceTree = "<group>"; };
+		FA1CEF3C21FBA7F6004498BC /* ClassGroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassGroupTableViewCell.swift; sourceTree = "<group>"; };
+		FA1CEF3E21FBAD68004498BC /* ClassGroupDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassGroupDelegate.swift; sourceTree = "<group>"; };
+		FA21D67F2130BB1E006790E5 /* OwnerClassListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerClassListTableViewController.swift; sourceTree = "<group>"; };
 		FA21D6812130BB2D006790E5 /* OwnerProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerProfileTableViewController.swift; sourceTree = "<group>"; };
-		FA21D6832130BB7F006790E5 /* StudentListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentListTableViewController.swift; sourceTree = "<group>"; };
-		FA21D6852130BB93006790E5 /* StudentsByListGroupingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsByListGroupingTableViewController.swift; sourceTree = "<group>"; };
-		FA21D6A02134B8D3006790E5 /* AddClassTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClassTableViewController.swift; sourceTree = "<group>"; };
-		FA21D6A22134BAC5006790E5 /* StudentDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDetailTableViewController.swift; sourceTree = "<group>"; };
-		FA21D6A42134D72A006790E5 /* AddNewStudentGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewStudentGroupTableViewController.swift; sourceTree = "<group>"; };
+		FA21D6852130BB93006790E5 /* OwnerGroupListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerGroupListTableViewController.swift; sourceTree = "<group>"; };
 		FA23D2822166F5AE00707056 /* AulaModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AulaModelController.swift; sourceTree = "<group>"; };
 		FA23D2842166F5C900707056 /* PaymentProgramModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProgramModelController.swift; sourceTree = "<group>"; };
 		FA23D2872166F5E400707056 /* GroupModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupModelController.swift; sourceTree = "<group>"; };
@@ -314,6 +334,12 @@
 		FA6FBA052149F3B700558657 /* UserPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPermissions.swift; sourceTree = "<group>"; };
 		FA6FBA072149F3C700558657 /* StudentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentStatus.swift; sourceTree = "<group>"; };
 		FA7A12D1216AE57A00C03590 /* Academia.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Academia.xcdatamodel; sourceTree = "<group>"; };
+		FA8B3CBE21CA22B7003398FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Base; path = Academia/Views/Academia/Views/Base.lproj/GroupNameAndDescriptionViewController.swift; sourceTree = SOURCE_ROOT; };
+		FA8B3CC121CA230B003398FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Base; path = Academia/Views/Academia/Views/Base.lproj/AddStudentsToGroupTableViewController.swift; sourceTree = SOURCE_ROOT; };
+		FA8B3CC621CB2366003398FB /* ReviewAndCreateGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewAndCreateGroupTableViewController.swift; sourceTree = "<group>"; };
+		FA8B3CC921CB246C003398FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Academia/Views/Academia/Views/Base.lproj/OwnerStudentsFlow.storyboard; sourceTree = "<group>"; };
+		FA8B3CCB21CB276B003398FB /* OwnersStudentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnersStudentDetailViewController.swift; sourceTree = "<group>"; };
+		FA8B3CCD21CB3901003398FB /* GroupInfoDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoDetailsTableViewController.swift; sourceTree = "<group>"; };
 		FA9AD9F4213782070005E1F1 /* TutorialsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialsTableViewController.swift; sourceTree = "<group>"; };
 		FA9AD9F62137839A0005E1F1 /* BeltSystemsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeltSystemsTableViewController.swift; sourceTree = "<group>"; };
 		FA9AD9F8213783BA0005E1F1 /* MyLocationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationsTableViewController.swift; sourceTree = "<group>"; };
@@ -329,7 +355,6 @@
 		FA9ADA182138D60E0005E1F1 /* ProfileTextFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileTextFieldCell.xib; sourceTree = "<group>"; };
 		FA9ADA1A2138D6700005E1F1 /* ProfileTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		FA9ADA1C2138D9C90005E1F1 /* SaveProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SaveProfileCell.xib; sourceTree = "<group>"; };
-		FA9ADA1E2138DA530005E1F1 /* SaveProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveProfileTableViewCell.swift; sourceTree = "<group>"; };
 		FA9ADA202138DBC30005E1F1 /* MyCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCells.swift; sourceTree = "<group>"; };
 		FA9ADA242139EE250005E1F1 /* StatusCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatusCell.xib; sourceTree = "<group>"; };
 		FA9ADA262139EE370005E1F1 /* IsInstructorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IsInstructorCell.xib; sourceTree = "<group>"; };
@@ -338,6 +363,7 @@
 		FA9ADA2C2139EE6C0005E1F1 /* IsInstructorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsInstructorTableViewCell.swift; sourceTree = "<group>"; };
 		FA9ADA2E2139EE940005E1F1 /* IsKidTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsKidTableViewCell.swift; sourceTree = "<group>"; };
 		FA9ADA30213B6BA90005E1F1 /* InternationalStandardBJJBelts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternationalStandardBJJBelts.swift; sourceTree = "<group>"; };
+		FAA4BFB021E4007F007A011C /* AdultStudentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdultStudentTableViewCell.swift; sourceTree = "<group>"; };
 		FAA516CD218D0234009875CB /* SpacerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpacerCell.xib; sourceTree = "<group>"; };
 		FAA516CF218FEBD1009875CB /* PasswordTextFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PasswordTextFieldCell.xib; sourceTree = "<group>"; };
 		FAA516D1218FEBEE009875CB /* ConfirmPasswordTextFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmPasswordTextFieldCell.xib; sourceTree = "<group>"; };
@@ -349,13 +375,13 @@
 		FAA550702145D03F00EC7860 /* HeadingLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadingLabelTableViewCell.swift; sourceTree = "<group>"; };
 		FAAAC148213E337500093D6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Academia/Views/Base.lproj/OwnerBeltSystemFlow.storyboard; sourceTree = "<group>"; };
 		FAAAC14A213E33E000093D6C /* OwnerProfileFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerProfileFlow.storyboard; sourceTree = "<group>"; };
-		FAAAC14D213E342600093D6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Academia/Views/Base.lproj/OwnerStudentsFlow.storyboard; sourceTree = "<group>"; };
 		FAAAC14F213E345900093D6C /* OwnerMessages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerMessages.storyboard; sourceTree = "<group>"; };
 		FAAAC152213E348800093D6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Academia/Views/Base.lproj/OwnerBaseCampFlow.storyboard; sourceTree = "<group>"; };
+		FAAEDB4D21DD7BBB00E1A04F /* ReviewKidStudentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewKidStudentTableViewCell.swift; sourceTree = "<group>"; };
+		FAAEDB4F21DDA27500E1A04F /* GroupMembersDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMembersDelegate.swift; sourceTree = "<group>"; };
 		FAB203D3215EA8630034E1D4 /* LocationsImageMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsImageMenuTableViewCell.swift; sourceTree = "<group>"; };
 		FAB203D9216187190034E1D4 /* StudentClassDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentClassDetailViewController.swift; sourceTree = "<group>"; };
 		FAB203DB216188C50034E1D4 /* StudentAulasListMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentAulasListMenuTableViewCell.swift; sourceTree = "<group>"; };
-		FAB203DD2161C9C40034E1D4 /* Weekdays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weekdays.swift; sourceTree = "<group>"; };
 		FAB20412216566E50034E1D4 /* ThingsToDoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThingsToDoList.swift; sourceTree = "<group>"; };
 		FAB7E34F212B7D47003E3B79 /* LandingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
 		FAB7E351212B7D73003E3B79 /* UserSelfIdentifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelfIdentifyViewController.swift; sourceTree = "<group>"; };
@@ -387,9 +413,23 @@
 		FAD2097421C1CFE700B9C622 /* TypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAD2097621C1CFF400B9C622 /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAD2097821C1D00200B9C622 /* SignatureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignatureCollectionViewCell.swift; sourceTree = "<group>"; };
+		FAD2A3A421E4216600364FC0 /* ClassTimeComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassTimeComponents.swift; sourceTree = "<group>"; };
+		FAD2A3A621E42D7A00364FC0 /* ReviewAdultStudentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewAdultStudentTableViewCell.swift; sourceTree = "<group>"; };
+		FAD2A3A821E6B7C700364FC0 /* ClassInfoDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassInfoDetailsTableViewController.swift; sourceTree = "<group>"; };
+		FAD2A3AA21E6B82A00364FC0 /* ClassNameAndDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassNameAndDescriptionViewController.swift; sourceTree = "<group>"; };
+		FAD2A3AC21E6B84D00364FC0 /* ClassTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassTimeViewController.swift; sourceTree = "<group>"; };
+		FAD2A3AE21E6B87600364FC0 /* ClassInstructorsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassInstructorsTableViewController.swift; sourceTree = "<group>"; };
+		FAD2A3B021E6B90D00364FC0 /* AddGroupToClassTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupToClassTableViewController.swift; sourceTree = "<group>"; };
+		FAD2A3B221E6B93300364FC0 /* ReviewAndCreateClassTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewAndCreateClassTableViewController.swift; sourceTree = "<group>"; };
+		FAD2A3B421E6E1AF00364FC0 /* InstructorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructorTableViewCell.swift; sourceTree = "<group>"; };
+		FAD2A3B621E6E1C600364FC0 /* OwnerInstructorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerInstructorTableViewCell.swift; sourceTree = "<group>"; };
+		FAD2A3B821E6E1E100364FC0 /* ReviewInstructorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewInstructorTableViewCell.swift; sourceTree = "<group>"; };
+		FAD2A3BA21E6E1F900364FC0 /* ReviewOwnerInstructorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewOwnerInstructorTableViewCell.swift; sourceTree = "<group>"; };
+		FAD2A3BC21E6E42000364FC0 /* InstructorsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructorsDelegate.swift; sourceTree = "<group>"; };
+		FAD2A3BE21E810BE00364FC0 /* KidGroupInfoDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidGroupInfoDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		FAD2A3C021E810DD00364FC0 /* AdultGroupInfoDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdultGroupInfoDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		FAD5B12C21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProgramDelegateProtocols.swift; sourceTree = "<group>"; };
 		FAD5B12E21C44BCA004ED286 /* ViewAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAgreementViewController.swift; sourceTree = "<group>"; };
-		FAE2C07E214ADD26002E9756 /* ClassDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassDetailTableViewController.swift; sourceTree = "<group>"; };
 		FAE2FD3B2140700F00815402 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		FAE2FD642140BE4200815402 /* FirstNameTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstNameTextFieldCell.xib; sourceTree = "<group>"; };
 		FAE2FD662140BE4D00815402 /* LastNameTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LastNameTextFieldCell.xib; sourceTree = "<group>"; };
@@ -435,7 +475,7 @@
 		FAE67A37215C6C0F00822DCF /* AulasListMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AulasListMenuTableViewCell.swift; sourceTree = "<group>"; };
 		FAE67A39215C6EDD00822DCF /* StudentGroupGeneralMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentGroupGeneralMenuTableViewCell.swift; sourceTree = "<group>"; };
 		FAE67A3B215C714B00822DCF /* StudentListImageMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentListImageMenuTableViewCell.swift; sourceTree = "<group>"; };
-		FAE67A3D215C733400822DCF /* AddNewStudentGroupImageMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewStudentGroupImageMenuTableViewCell.swift; sourceTree = "<group>"; };
+		FAE67A3D215C733400822DCF /* KidStudentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidStudentTableViewCell.swift; sourceTree = "<group>"; };
 		FAF1BB872143574400AD56AE /* DescriptionTextViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DescriptionTextViewCell.xib; sourceTree = "<group>"; };
 		FAF1BB892143575C00AD56AE /* AgreementTextViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AgreementTextViewCell.xib; sourceTree = "<group>"; };
 		FAF1BB8B21435BA900AD56AE /* AgreementTextViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementTextViewTableViewCell.swift; sourceTree = "<group>"; };
@@ -528,7 +568,7 @@
 			isa = PBXGroup;
 			children = (
 				FAB20412216566E50034E1D4 /* ThingsToDoList.swift */,
-				FAAAC144213E22DB00093D6C /* Delegate Protocols */,
+				FAAAC144213E22DB00093D6C /* Protocols (Delegates and others)) */,
 				FA0C443A21278AE500B59194 /* Models */,
 				FA0C443921278AD500B59194 /* Views */,
 				FA0C443B21278AEC00B59194 /* Controllers */,
@@ -572,7 +612,7 @@
 				FA0C442121278A8F00B59194 /* LaunchScreen.storyboard */,
 				FA0C441921278A8F00B59194 /* Main.storyboard */,
 				FAAAC151213E348800093D6C /* OwnerBaseCampFlow.storyboard */,
-				FAAAC14C213E342600093D6C /* OwnerStudentsFlow.storyboard */,
+				FA8B3CC821CB246C003398FB /* OwnerStudentsFlow.storyboard */,
 				FAAAC14F213E345900093D6C /* OwnerMessages.storyboard */,
 				FAAAC14A213E33E000093D6C /* OwnerProfileFlow.storyboard */,
 				FAC5D3C921BF0F600083B417 /* OwnerPaymentProgramWorkflow.storyboard */,
@@ -594,6 +634,7 @@
 				FA21D6AA21362560006790E5 /* Belt Models */,
 				FA4DF332218CCA8A00ECC167 /* Payment Programs */,
 				FA4DF331218CCA6400ECC167 /* Location Models */,
+				FAD5B13521CA0209004ED286 /* Groups */,
 				FA4DF32A218CC9E100ECC167 /* Curriculum Models */,
 				FA9ADA202138DBC30005E1F1 /* MyCells.swift */,
 				FAE2FD3B2140700F00815402 /* MockData.swift */,
@@ -625,8 +666,9 @@
 				FA23D28F2167E36500707056 /* User Model Controllers */,
 				FAA516D72190C9E2009875CB /* Location Model Controllers */,
 				FAA516D82190CA48009875CB /* Payment Program Model Controllers */,
-				FAA516D92190CA5B009875CB /* Curriculum Model Controllers */,
 				FA23D2902167E38D00707056 /* Belt Model Controllers */,
+				FAD5B13221CA0194004ED286 /* Groups Model Controllers */,
+				FAA516D92190CA5B009875CB /* Curriculum Model Controllers */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -650,6 +692,49 @@
 			path = fonts;
 			sourceTree = "<group>";
 		};
+		FA1CEF2A21EFE6E4004498BC /* Aulas */ = {
+			isa = PBXGroup;
+			children = (
+				FA21D67F2130BB1E006790E5 /* OwnerClassListTableViewController.swift */,
+				FAD2A3A821E6B7C700364FC0 /* ClassInfoDetailsTableViewController.swift */,
+				FAD2A3AA21E6B82A00364FC0 /* ClassNameAndDescriptionViewController.swift */,
+				FA1CEF3A21F5900E004498BC /* ClassDayViewController.swift */,
+				FAD2A3AC21E6B84D00364FC0 /* ClassTimeViewController.swift */,
+				FA1CEF3821F588D2004498BC /* ClassLocationViewController.swift */,
+				FAD2A3AE21E6B87600364FC0 /* ClassInstructorsTableViewController.swift */,
+				FAD2A3B021E6B90D00364FC0 /* AddGroupToClassTableViewController.swift */,
+				FAD2A3B221E6B93300364FC0 /* ReviewAndCreateClassTableViewController.swift */,
+				FAE67A37215C6C0F00822DCF /* AulasListMenuTableViewCell.swift */,
+				FAD2A3B421E6E1AF00364FC0 /* InstructorTableViewCell.swift */,
+				FAD2A3B621E6E1C600364FC0 /* OwnerInstructorTableViewCell.swift */,
+				FA1CEF3C21FBA7F6004498BC /* ClassGroupTableViewCell.swift */,
+				FAD2A3B821E6E1E100364FC0 /* ReviewInstructorTableViewCell.swift */,
+				FAD2A3BA21E6E1F900364FC0 /* ReviewOwnerInstructorTableViewCell.swift */,
+			);
+			path = Aulas;
+			sourceTree = "<group>";
+		};
+		FA1CEF2B21EFE702004498BC /* Techniques */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Techniques;
+			sourceTree = "<group>";
+		};
+		FA1CEF2C21EFE70C004498BC /* CurriculumModule */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CurriculumModule;
+			sourceTree = "<group>";
+		};
+		FA1CEF2D21EFE718004498BC /* Curriculum */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Curriculum;
+			sourceTree = "<group>";
+		};
 		FA21D69521334E46006790E5 /* Belt TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -662,7 +747,6 @@
 			isa = PBXGroup;
 			children = (
 				FA9AD9F3213780DD0005E1F1 /* Profile Menu VCs */,
-				FA21D69A21339E0B006790E5 /* Owner Controlled Students */,
 			);
 			path = "Owner Role";
 			sourceTree = "<group>";
@@ -677,17 +761,6 @@
 				FABF859221AF8370005CEBD4 /* StudentInfoDetailsViewController.swift */,
 			);
 			path = "Student Role";
-			sourceTree = "<group>";
-		};
-		FA21D69A21339E0B006790E5 /* Owner Controlled Students */ = {
-			isa = PBXGroup;
-			children = (
-				FA21D6852130BB93006790E5 /* StudentsByListGroupingTableViewController.swift */,
-				FA21D6832130BB7F006790E5 /* StudentListTableViewController.swift */,
-				FA21D6A42134D72A006790E5 /* AddNewStudentGroupTableViewController.swift */,
-				FA21D6A22134BAC5006790E5 /* StudentDetailTableViewController.swift */,
-			);
-			path = "Owner Controlled Students";
 			sourceTree = "<group>";
 		};
 		FA21D69B21339E29006790E5 /* Owner Profile */ = {
@@ -706,14 +779,15 @@
 			path = "Home Dashboard";
 			sourceTree = "<group>";
 		};
-		FA21D69D21339E49006790E5 /* Aulas */ = {
+		FA21D69D21339E49006790E5 /* Curriculum */ = {
 			isa = PBXGroup;
 			children = (
-				FA21D67F2130BB1E006790E5 /* OwnerClassesTableViewController.swift */,
-				FA21D6A02134B8D3006790E5 /* AddClassTableViewController.swift */,
-				FAE2C07E214ADD26002E9756 /* ClassDetailTableViewController.swift */,
+				FA1CEF2D21EFE718004498BC /* Curriculum */,
+				FA1CEF2C21EFE70C004498BC /* CurriculumModule */,
+				FA1CEF2B21EFE702004498BC /* Techniques */,
+				FA1CEF2A21EFE6E4004498BC /* Aulas */,
 			);
-			path = Aulas;
+			path = Curriculum;
 			sourceTree = "<group>";
 		};
 		FA21D69F2134B874006790E5 /* Menu cell nibs */ = {
@@ -753,7 +827,6 @@
 			isa = PBXGroup;
 			children = (
 				FA23D2912167F9EF00707056 /* OnBoardingTaskModelController.swift */,
-				FA23D2872166F5E400707056 /* GroupModelController.swift */,
 				FAF29BCD212E4CF200752414 /* OwnerModelController.swift */,
 				FA5C5C31215170AE00BF62D5 /* AdultStudentModelController.swift */,
 				FA5C5C33215170BE00BF62D5 /* KidStudentModelController.swift */,
@@ -772,11 +845,11 @@
 		FA4DF32A218CC9E100ECC167 /* Curriculum Models */ = {
 			isa = PBXGroup;
 			children = (
-				FAB203DD2161C9C40034E1D4 /* Weekdays.swift */,
 				FA0C444521278BBF00B59194 /* Aula.swift */,
 				FA4DF32B218CCA0300ECC167 /* Technique.swift */,
 				FA4DF32D218CCA1A00ECC167 /* CurriculumModule.swift */,
 				FA4DF32F218CCA2400ECC167 /* Curriculum.swift */,
+				FAD2A3A421E4216600364FC0 /* ClassTimeComponents.swift */,
 			);
 			path = "Curriculum Models";
 			sourceTree = "<group>";
@@ -822,7 +895,6 @@
 				FA6FBA002149F33100558657 /* AdultStudent.swift */,
 				FA6FBA022149F36300558657 /* KidStudent.swift */,
 				FAF29B6A212D0E9E00752414 /* OnBoardingTask.swift */,
-				FA0C444921278CA900B59194 /* Group.swift */,
 				FA6FBA052149F3B700558657 /* UserPermissions.swift */,
 				FA6FBA072149F3C700558657 /* StudentStatus.swift */,
 			);
@@ -838,7 +910,8 @@
 				FA9ADA222139EDB60005E1F1 /* Belts */,
 				FABF859421B22089005CEBD4 /* Locations */,
 				FABF85A121B5F874005CEBD4 /* Payment Programs */,
-				FA21D69D21339E49006790E5 /* Aulas */,
+				FAD5B13121CA0172004ED286 /* Groups */,
+				FA21D69D21339E49006790E5 /* Curriculum */,
 				FA9AD9F4213782070005E1F1 /* TutorialsTableViewController.swift */,
 				FA9ADA232139EDD30005E1F1 /* About & Privacy */,
 				FA9ADA082137861B0005E1F1 /* OwnerPaymentInfoTableViewController.swift */,
@@ -892,14 +965,17 @@
 			path = "Curriculum Model Controllers";
 			sourceTree = "<group>";
 		};
-		FAAAC144213E22DB00093D6C /* Delegate Protocols */ = {
+		FAAAC144213E22DB00093D6C /* Protocols (Delegates and others)) */ = {
 			isa = PBXGroup;
 			children = (
 				FA5C5C2F21506B7400BF62D5 /* InitialStudentSegueDelegate.swift */,
 				FA5C5C442153022300BF62D5 /* SegueFromSaveProfileNibCellDelegate.swift */,
 				FAD5B12C21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift */,
+				FAAEDB4F21DDA27500E1A04F /* GroupMembersDelegate.swift */,
+				FAD2A3BC21E6E42000364FC0 /* InstructorsDelegate.swift */,
+				FA1CEF3E21FBAD68004498BC /* ClassGroupDelegate.swift */,
 			);
-			path = "Delegate Protocols";
+			path = "Protocols (Delegates and others))";
 			sourceTree = "<group>";
 		};
 		FABF859421B22089005CEBD4 /* Locations */ = {
@@ -949,6 +1025,41 @@
 				FACA3EB82192895C0099E620 /* CompletedProfileViewController.swift */,
 			);
 			path = "User Onboarding";
+			sourceTree = "<group>";
+		};
+		FAD5B13121CA0172004ED286 /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				FA21D6852130BB93006790E5 /* OwnerGroupListTableViewController.swift */,
+				FA8B3CCD21CB3901003398FB /* GroupInfoDetailsTableViewController.swift */,
+				FA8B3CCB21CB276B003398FB /* OwnersStudentDetailViewController.swift */,
+				FA8B3CBD21CA22B7003398FB /* GroupNameAndDescriptionViewController.swift */,
+				FA8B3CC021CA230B003398FB /* AddStudentsToGroupTableViewController.swift */,
+				FA8B3CC621CB2366003398FB /* ReviewAndCreateGroupTableViewController.swift */,
+				FAE67A3D215C733400822DCF /* KidStudentTableViewCell.swift */,
+				FAA4BFB021E4007F007A011C /* AdultStudentTableViewCell.swift */,
+				FAAEDB4D21DD7BBB00E1A04F /* ReviewKidStudentTableViewCell.swift */,
+				FAD2A3A621E42D7A00364FC0 /* ReviewAdultStudentTableViewCell.swift */,
+				FAD2A3BE21E810BE00364FC0 /* KidGroupInfoDetailsTableViewCell.swift */,
+				FAD2A3C021E810DD00364FC0 /* AdultGroupInfoDetailsTableViewCell.swift */,
+			);
+			path = Groups;
+			sourceTree = "<group>";
+		};
+		FAD5B13221CA0194004ED286 /* Groups Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FA23D2872166F5E400707056 /* GroupModelController.swift */,
+			);
+			path = "Groups Model Controllers";
+			sourceTree = "<group>";
+		};
+		FAD5B13521CA0209004ED286 /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				FA0C444921278CA900B59194 /* Group.swift */,
+			);
+			path = Groups;
 			sourceTree = "<group>";
 		};
 		FAE2FD3D2140BC0900815402 /* TextField nibs */ = {
@@ -1065,19 +1176,16 @@
 				FAE2FD8A2140BF8A00815402 /* TextField Cells */,
 				FAF29BD0212F6FC800752414 /* OwnerDashboardTableViewCell.swift */,
 				FAF29BDC213087F600752414 /* GeneralMenuTableViewCell.swift */,
-				FAE67A37215C6C0F00822DCF /* AulasListMenuTableViewCell.swift */,
 				FAB203DB216188C50034E1D4 /* StudentAulasListMenuTableViewCell.swift */,
 				FAE67A39215C6EDD00822DCF /* StudentGroupGeneralMenuTableViewCell.swift */,
 				FA5C5C422152F11400BF62D5 /* StudentUserGeneralMenuTableViewCell.swift */,
 				FAF29BDE2130892B00752414 /* ImageMenuTableViewCell.swift */,
 				FAE67A3B215C714B00822DCF /* StudentListImageMenuTableViewCell.swift */,
-				FAE67A3D215C733400822DCF /* AddNewStudentGroupImageMenuTableViewCell.swift */,
 				FAB203D3215EA8630034E1D4 /* LocationsImageMenuTableViewCell.swift */,
 				FA9ADA162138C7030005E1F1 /* ProfilePicTableViewCell.swift */,
 				FA9ADA2A2139EE560005E1F1 /* StatusTableViewCell.swift */,
 				FA9ADA2C2139EE6C0005E1F1 /* IsInstructorTableViewCell.swift */,
 				FA9ADA2E2139EE940005E1F1 /* IsKidTableViewCell.swift */,
-				FA9ADA1E2138DA530005E1F1 /* SaveProfileTableViewCell.swift */,
 				FA21D69521334E46006790E5 /* Belt TableViewCells */,
 			);
 			path = TableViewCells;
@@ -1190,7 +1298,6 @@
 				FAB7E35A212BA643003E3B79 /* BlairMdITC TT-Medium.ttf in Resources */,
 				FAF29BC0212E21EA00752414 /* camera_outline_white_32.png in Resources */,
 				FAF29BA4212E1EF700752414 /* unchecked_checkbox_50.png in Resources */,
-				FAAAC14E213E342600093D6C /* OwnerStudentsFlow.storyboard in Resources */,
 				FA66A00C2145CB42002B0313 /* HeadingLabelCell.xib in Resources */,
 				FAF29B9F212E1EF700752414 /* programs_black_50.png in Resources */,
 				FAAAC150213E345900093D6C /* OwnerMessages.storyboard in Resources */,
@@ -1219,6 +1326,7 @@
 				FAF29BA7212E1EF700752414 /* classes_red_50.png in Resources */,
 				FAE2FD7B2140BEFA00815402 /* PaymentProgramTextFieldCell.xib in Resources */,
 				FA41CE6721A1336F00EAD53A /* BeltCellNib.xib in Resources */,
+				FA8B3CCA21CB246C003398FB /* OwnerStudentsFlow.storyboard in Resources */,
 				FA5C5C2C214EFCCC00BF62D5 /* location1.jpg in Resources */,
 				FAF29BC5212E21EA00752414 /* profile_black_32.png in Resources */,
 				FAAAC14B213E33E000093D6C /* OwnerProfileFlow.storyboard in Resources */,
@@ -1283,43 +1391,47 @@
 				FAE2FD902140BFD100815402 /* LastNameTextFieldTableViewCell.swift in Sources */,
 				FA9ADA01213784410005E1F1 /* PrivacyPolicyViewController.swift in Sources */,
 				FAA550712145D03F00EC7860 /* HeadingLabelTableViewCell.swift in Sources */,
+				FAD2A3B521E6E1AF00364FC0 /* InstructorTableViewCell.swift in Sources */,
 				FABF85A321B78ABD005CEBD4 /* PaymentProgramInfoDetailsViewController.swift in Sources */,
 				FAB7E352212B7D73003E3B79 /* UserSelfIdentifyViewController.swift in Sources */,
-				FA21D6802130BB1E006790E5 /* OwnerClassesTableViewController.swift in Sources */,
+				FA21D6802130BB1E006790E5 /* OwnerClassListTableViewController.swift in Sources */,
 				FAE2FDA22140C04A00815402 /* PaymentProgramTextFieldTableViewCell.swift in Sources */,
 				FAE2FD962140BFF600815402 /* StateTextFieldTableViewCell.swift in Sources */,
 				FABF859821B38934005CEBD4 /* LocationPicAndNameViewController.swift in Sources */,
 				FA0C444621278BBF00B59194 /* Aula.swift in Sources */,
+				FAD2A3BD21E6E42000364FC0 /* InstructorsDelegate.swift in Sources */,
 				FA9ADA2F2139EE940005E1F1 /* IsKidTableViewCell.swift in Sources */,
 				FABF85AB21B78C36005CEBD4 /* PaymentProgramAgreementViewController.swift in Sources */,
-				FA21D6842130BB7F006790E5 /* StudentListTableViewController.swift in Sources */,
 				FAD2097721C1CFF400B9C622 /* DateCollectionViewCell.swift in Sources */,
 				FA9ADA05213784720005E1F1 /* AboutAcademiaViewController.swift in Sources */,
 				FAF29B63212BBB5000752414 /* SignUpLoginViewController.swift in Sources */,
-				FAB203DE2161C9C40034E1D4 /* Weekdays.swift in Sources */,
 				FA23D2852166F5C900707056 /* PaymentProgramModelController.swift in Sources */,
 				FAE2FDA02140C03900815402 /* ParentGuardianTextFieldTableViewCell.swift in Sources */,
 				FA0C444A21278CA900B59194 /* Group.swift in Sources */,
 				FAE67A3A215C6EDD00822DCF /* StudentGroupGeneralMenuTableViewCell.swift in Sources */,
 				FA9ADA0F21378B140005E1F1 /* BeltsListTableViewController.swift in Sources */,
+				FAD2A3A521E4216600364FC0 /* ClassTimeComponents.swift in Sources */,
 				FA4DF32E218CCA1A00ECC167 /* CurriculumModule.swift in Sources */,
 				FAE2FDB02140C0C900815402 /* SocialNetworksTextFieldTableViewCell.swift in Sources */,
 				FAE2FD9E2140C02800815402 /* EmailTextFieldTableViewCell.swift in Sources */,
 				FABF859621B220B9005CEBD4 /* LocationInfoDetailsViewController.swift in Sources */,
 				FAF1BB8E21435BD800AD56AE /* DescriptionTextViewTableViewCell.swift in Sources */,
 				FA23D28A2167E31200707056 /* BeltModelController.swift in Sources */,
+				FAD2A3B721E6E1C600364FC0 /* OwnerInstructorTableViewCell.swift in Sources */,
 				FAD5B12F21C44BCA004ED286 /* ViewAgreementViewController.swift in Sources */,
 				FAF29BCE212E4CF200752414 /* OwnerModelController.swift in Sources */,
 				FABF859C21B38980005CEBD4 /* LocationContactInfoViewController.swift in Sources */,
+				FAD2A3AD21E6B84D00364FC0 /* ClassTimeViewController.swift in Sources */,
 				FABF85A721B78B4C005CEBD4 /* PaymentProgramNameAndDescriptionViewController.swift in Sources */,
 				FABF85AF21B78CB2005CEBD4 /* ViewPaymentProgramAgreementViewController.swift in Sources */,
+				FA1CEF3921F588D2004498BC /* ClassLocationViewController.swift in Sources */,
 				FA5C5C3E2152CB3200BF62D5 /* StudentChoiceViewController.swift in Sources */,
 				FA0C444421278B8D00B59194 /* Location.swift in Sources */,
 				FACA3EBB21928B150099E620 /* EmergencyContactViewController.swift in Sources */,
 				FA531C26219630E700AE2C38 /* BeltBuilder.swift in Sources */,
 				FABF85BF21BB09FC005CEBD4 /* Billing.swift in Sources */,
+				FAA4BFB121E4007F007A011C /* AdultStudentTableViewCell.swift in Sources */,
 				FA6FBA062149F3B700558657 /* UserPermissions.swift in Sources */,
-				FA21D6A32134BAC5006790E5 /* StudentDetailTableViewController.swift in Sources */,
 				FA5C5C382151D3C600BF62D5 /* StudentHomeTableViewController.swift in Sources */,
 				FABF85AD21B78C6F005CEBD4 /* ReviewAndCreatePaymentProgramViewController.swift in Sources */,
 				FA9ADA172138C7030005E1F1 /* ProfilePicTableViewCell.swift in Sources */,
@@ -1327,6 +1439,7 @@
 				FA7A12D2216AE57A00C03590 /* Academia.xcdatamodeld in Sources */,
 				FAD2097521C1CFE700B9C622 /* TypeCollectionViewCell.swift in Sources */,
 				FA5C5C56215499F300BF62D5 /* StudentProfileDetailTableViewController.swift in Sources */,
+				FA8B3CCE21CB3901003398FB /* GroupInfoDetailsTableViewController.swift in Sources */,
 				FA9ADA212138DBC30005E1F1 /* MyCells.swift in Sources */,
 				FABF85A021B5B668005CEBD4 /* ReviewAndCreateLocationViewController.swift in Sources */,
 				FACA3EAE21927CEE0099E620 /* IBDesignables.swift in Sources */,
@@ -1340,40 +1453,48 @@
 				FA5C5C432152F11400BF62D5 /* StudentUserGeneralMenuTableViewCell.swift in Sources */,
 				FA66A00E2145CD42002B0313 /* DigitalSignatureTableViewCell.swift in Sources */,
 				FA6FBA032149F36300558657 /* KidStudent.swift in Sources */,
-				FA9ADA1F2138DA530005E1F1 /* SaveProfileTableViewCell.swift in Sources */,
 				FA9AD9F9213783BA0005E1F1 /* MyLocationsTableViewController.swift in Sources */,
+				FA1CEF3B21F5900E004498BC /* ClassDayViewController.swift in Sources */,
+				FAD2A3C121E810DD00364FC0 /* AdultGroupInfoDetailsTableViewCell.swift in Sources */,
+				FAD2A3BB21E6E1F900364FC0 /* ReviewOwnerInstructorTableViewCell.swift in Sources */,
 				FAF29BCA212E23E300752414 /* OwnerHomeTableViewController.swift in Sources */,
 				FA0C444821278C9A00B59194 /* PaymentProgram.swift in Sources */,
 				FAE2FD942140BFED00815402 /* CityTextFieldTableViewCell.swift in Sources */,
 				FAE2FDAE2140C0A600815402 /* WebsiteTextFieldTableViewCell.swift in Sources */,
+				FA8B3CBF21CA22B7003398FB /* GroupNameAndDescriptionViewController.swift in Sources */,
 				FA9ADA1B2138D6700005E1F1 /* ProfileTextFieldTableViewCell.swift in Sources */,
 				FA9AD9FD213783FE0005E1F1 /* OwnerPaymentProgramsTableViewController.swift in Sources */,
+				FA1CEF3D21FBA7F6004498BC /* ClassGroupTableViewCell.swift in Sources */,
 				FAE2FDA62140C07600815402 /* EmergencyContactTextFieldTableViewCell.swift in Sources */,
 				FAD5B12D21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift in Sources */,
 				FA66A0162145CE4E002B0313 /* SubHeadingLabelTableViewCell.swift in Sources */,
 				FABF85A921B78B99005CEBD4 /* PaymentProgramBillingDetailsViewController.swift in Sources */,
 				FAA516DF2190CAC1009875CB /* CurriculumModelController.swift in Sources */,
 				FA23D2832166F5AE00707056 /* AulaModelController.swift in Sources */,
-				FA21D6A52134D72A006790E5 /* AddNewStudentGroupTableViewController.swift in Sources */,
+				FAD2A3A921E6B7C700364FC0 /* ClassInfoDetailsTableViewController.swift in Sources */,
 				FA41CE6D21A5EBAA00EAD53A /* BirthdayViewController.swift in Sources */,
-				FA21D6A12134B8D3006790E5 /* AddClassTableViewController.swift in Sources */,
 				FAA516DB2190CA8F009875CB /* TechniqueModelController.swift in Sources */,
+				FAD2A3B321E6B93300364FC0 /* ReviewAndCreateClassTableViewController.swift in Sources */,
 				FAB7E350212B7D47003E3B79 /* LandingPageViewController.swift in Sources */,
 				FAB20413216566E50034E1D4 /* ThingsToDoList.swift in Sources */,
 				FAD2097921C1D00200B9C622 /* SignatureCollectionViewCell.swift in Sources */,
 				FAA516D6218FEC5A009875CB /* ConfirmPasswordTextFieldTableViewCell.swift in Sources */,
 				FA23D2882166F5E400707056 /* GroupModelController.swift in Sources */,
 				FAF1BB8C21435BA900AD56AE /* AgreementTextViewTableViewCell.swift in Sources */,
+				FAAEDB5021DDA27500E1A04F /* GroupMembersDelegate.swift in Sources */,
+				FA8B3CC721CB2366003398FB /* ReviewAndCreateGroupTableViewController.swift in Sources */,
 				FACA3EB1219288CD0099E620 /* NameAndBeltViewController.swift in Sources */,
 				FAB203DA216187190034E1D4 /* StudentClassDetailViewController.swift in Sources */,
 				FA9AD9F72137839A0005E1F1 /* BeltSystemsTableViewController.swift in Sources */,
 				FACA3EB5219289140099E620 /* ContactInfoViewController.swift in Sources */,
 				FAE2FD8E2140BFC700815402 /* FirstNameTextFieldTableViewCell.swift in Sources */,
-				FAE67A3E215C733400822DCF /* AddNewStudentGroupImageMenuTableViewCell.swift in Sources */,
+				FAE67A3E215C733400822DCF /* KidStudentTableViewCell.swift in Sources */,
 				FAA516D4218FEC47009875CB /* PasswordTextFieldTableViewCell.swift in Sources */,
 				FABF859321AF8370005CEBD4 /* StudentInfoDetailsViewController.swift in Sources */,
 				FA5C5C522154999C00BF62D5 /* StudentClassesTableViewController.swift in Sources */,
+				FAD2A3AF21E6B87600364FC0 /* ClassInstructorsTableViewController.swift in Sources */,
 				FAE67A38215C6C0F00822DCF /* AulasListMenuTableViewCell.swift in Sources */,
+				FAD2A3AB21E6B82A00364FC0 /* ClassNameAndDescriptionViewController.swift in Sources */,
 				FAB203D4215EA8630034E1D4 /* LocationsImageMenuTableViewCell.swift in Sources */,
 				FA9AD9F5213782070005E1F1 /* TutorialsTableViewController.swift in Sources */,
 				FAE2FD9A2140C01100815402 /* PhoneTextFieldTableViewCell.swift in Sources */,
@@ -1382,9 +1503,11 @@
 				FABF859E21B38995005CEBD4 /* LocationSocialLinksViewController.swift in Sources */,
 				FAE67A3C215C714B00822DCF /* StudentListImageMenuTableViewCell.swift in Sources */,
 				FA5C5C32215170AE00BF62D5 /* AdultStudentModelController.swift in Sources */,
+				FA8B3CCC21CB276B003398FB /* OwnersStudentDetailViewController.swift in Sources */,
 				FAA516DD2190CAA7009875CB /* CurriculumModuleModelController.swift in Sources */,
 				FAF29BD1212F6FC800752414 /* OwnerDashboardTableViewCell.swift in Sources */,
 				FA5C5C3021506B7400BF62D5 /* InitialStudentSegueDelegate.swift in Sources */,
+				FAD2A3BF21E810BE00364FC0 /* KidGroupInfoDetailsTableViewCell.swift in Sources */,
 				FA9ADA31213B6BA90005E1F1 /* InternationalStandardBJJBelts.swift in Sources */,
 				FA4DF330218CCA2400ECC167 /* Curriculum.swift in Sources */,
 				FAE2FDA82140C07F00815402 /* EmergencyContactPhoneTextFieldTableViewCell.swift in Sources */,
@@ -1394,16 +1517,17 @@
 				FA9ADA2D2139EE6C0005E1F1 /* IsInstructorTableViewCell.swift in Sources */,
 				FABF859A21B3895B005CEBD4 /* LocationAddressViewController.swift in Sources */,
 				FACA3EB7219289310099E620 /* TakeProfilePicViewController.swift in Sources */,
+				FAD2A3A721E42D7A00364FC0 /* ReviewAdultStudentTableViewCell.swift in Sources */,
 				FA6FBA012149F33100558657 /* AdultStudent.swift in Sources */,
 				FA41CE6B21A344B100EAD53A /* OwnerInfoDetailsViewController.swift in Sources */,
-				FA21D6862130BB93006790E5 /* StudentsByListGroupingTableViewController.swift in Sources */,
+				FA21D6862130BB93006790E5 /* OwnerGroupListTableViewController.swift in Sources */,
 				FA0C441621278A8F00B59194 /* AppDelegate.swift in Sources */,
 				FAF29BDD213087F600752414 /* GeneralMenuTableViewCell.swift in Sources */,
 				FAE67A36215C2DDF00822DCF /* StudentPaymentTableViewController.swift in Sources */,
 				FAF29B6B212D0E9E00752414 /* OnBoardingTask.swift in Sources */,
 				FAE2FD3C2140700F00815402 /* MockData.swift in Sources */,
+				FA1CEF3F21FBAD68004498BC /* ClassGroupDelegate.swift in Sources */,
 				FA5C5C452153022300BF62D5 /* SegueFromSaveProfileNibCellDelegate.swift in Sources */,
-				FAE2C07F214ADD26002E9756 /* ClassDetailTableViewController.swift in Sources */,
 				FA9ADA2B2139EE560005E1F1 /* StatusTableViewCell.swift in Sources */,
 				FA21D6822130BB2D006790E5 /* OwnerProfileTableViewController.swift in Sources */,
 				FA66A0122145CD83002B0313 /* CheckMarkBoxTableViewCell.swift in Sources */,
@@ -1412,7 +1536,11 @@
 				FA4DF32C218CCA0300ECC167 /* Technique.swift in Sources */,
 				FACA3EB92192895C0099E620 /* CompletedProfileViewController.swift in Sources */,
 				FAE2FD8C2140BFBA00815402 /* UsernameTextFieldTableViewCell.swift in Sources */,
+				FAD2A3B121E6B90D00364FC0 /* AddGroupToClassTableViewController.swift in Sources */,
 				FA6FBA082149F3C700558657 /* StudentStatus.swift in Sources */,
+				FAAEDB4E21DD7BBB00E1A04F /* ReviewKidStudentTableViewCell.swift in Sources */,
+				FA8B3CC221CA230B003398FB /* AddStudentsToGroupTableViewController.swift in Sources */,
+				FAD2A3B921E6E1E100364FC0 /* ReviewInstructorTableViewCell.swift in Sources */,
 				FAE2FDA42140C05B00815402 /* SchoolGroupTextFieldTableViewCell.swift in Sources */,
 				FA5C5C36215170D200BF62D5 /* LocationModelController.swift in Sources */,
 			);
@@ -1453,20 +1581,36 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		FA8B3CBD21CA22B7003398FB /* GroupNameAndDescriptionViewController.swift */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA8B3CBE21CA22B7003398FB /* Base */,
+			);
+			name = GroupNameAndDescriptionViewController.swift;
+			sourceTree = "<group>";
+		};
+		FA8B3CC021CA230B003398FB /* AddStudentsToGroupTableViewController.swift */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA8B3CC121CA230B003398FB /* Base */,
+			);
+			name = AddStudentsToGroupTableViewController.swift;
+			sourceTree = "<group>";
+		};
+		FA8B3CC821CB246C003398FB /* OwnerStudentsFlow.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA8B3CC921CB246C003398FB /* Base */,
+			);
+			name = OwnerStudentsFlow.storyboard;
+			sourceTree = "<group>";
+		};
 		FAAAC147213E337500093D6C /* OwnerBeltSystemFlow.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				FAAAC148213E337500093D6C /* Base */,
 			);
 			name = OwnerBeltSystemFlow.storyboard;
-			sourceTree = "<group>";
-		};
-		FAAAC14C213E342600093D6C /* OwnerStudentsFlow.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FAAAC14D213E342600093D6C /* Base */,
-			);
-			name = OwnerStudentsFlow.storyboard;
 			sourceTree = "<group>";
 		};
 		FAAAC151213E348800093D6C /* OwnerBaseCampFlow.storyboard */ = {
@@ -1614,13 +1758,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6SVX4F8DMT;
+				DEVELOPMENT_TEAM = N9FXT6FZ5X;
 				INFOPLIST_FILE = "$(SRCROOT)/Academia/App Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.dundak.Academia;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dundak.academi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1629,13 +1773,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6SVX4F8DMT;
+				DEVELOPMENT_TEAM = N9FXT6FZ5X;
 				INFOPLIST_FILE = "$(SRCROOT)/Academia/App Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.dundak.Academia;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dundak.academi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

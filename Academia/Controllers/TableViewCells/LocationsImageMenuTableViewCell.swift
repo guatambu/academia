@@ -12,7 +12,7 @@ class LocationsImageMenuTableViewCell: UITableViewCell {
 
     // MARK: - Properties
     
-    @IBOutlet weak var locationThumbnailImageViewOutlet: UIImageView!
+    @IBOutlet weak var locationThumbnailImageView: UIImageView!
     @IBOutlet weak var cellTitleOutlet: UILabel!
     @IBOutlet weak var rightRedArrowImageViewOutlet: UIImageView!
     
@@ -43,7 +43,7 @@ class LocationsImageMenuTableViewCell: UITableViewCell {
         }
         print("LocationsImageMenuTVCell location object: \(location)")
         
-        locationThumbnailImageViewOutlet.image = location.locationPic
+        locationThumbnailImageView.image = location.locationPic
         cellTitleOutlet.text = "\(location.locationName)"
         
     }

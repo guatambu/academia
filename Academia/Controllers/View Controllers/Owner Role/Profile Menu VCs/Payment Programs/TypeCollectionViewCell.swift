@@ -20,9 +20,7 @@ class TypeCollectionViewCell: UICollectionViewCell {
     
     let beltBuilder = BeltBuilder()
     
-//    var inEditingMode = false
     var selectedBillingTypes: [Billing.BillingType]?
-    
     
     let uncheckedBox32 = UIImage(named: "unchecked_box_32")
     let checkedBox32 = UIImage(named: "checked_box_32")
@@ -39,7 +37,7 @@ class TypeCollectionViewCell: UICollectionViewCell {
     func updateViews() {
         
         guard let billingType = billingType else {
-            print("ERROR:  nil value for billingType in TypeCollectionViewCell.swift -> updateViews() - line 73")
+            print("ERROR:  nil value for billingType in TypeCollectionViewCell.swift -> updateViews() - line 42")
             return
         }
             
@@ -52,7 +50,7 @@ class TypeCollectionViewCell: UICollectionViewCell {
         // NOTE: this may have something to do with asynchronous threads 
             
         guard let billingTypes = delegate?.billingTypes else {
-            print("ERROR:  nil value for billingTypes in TypeCollectionViewCell.swift -> updateViews() - line 53")
+            print("ERROR:  nil value for billingTypes in TypeCollectionViewCell.swift -> updateViews() - line 55")
             return
         }
         
@@ -74,12 +72,12 @@ class TypeCollectionViewCell: UICollectionViewCell {
     @IBAction func typeSelectionButtonTapped(_ sender: DesignableButton) {
         
         guard let billingType = billingType else {
-            print("ERROR:  nil value for billingType in TypeCollectionViewCell.swift -> typeSelectionButtonTapped() - line 73")
+            print("ERROR:  nil value for billingType in TypeCollectionViewCell.swift -> typeSelectionButtonTapped() - line 77")
             return
         }
         
         guard var billingTypes = delegate?.billingTypes else {
-            print("ERROR:  nil value for billingTypes in TypeCollectionViewCell.swift -> typeSelectionButtonTapped() - line 78")
+            print("ERROR:  nil value for billingTypes in TypeCollectionViewCell.swift -> typeSelectionButtonTapped() - line 82")
             return
         }
         
@@ -103,5 +101,4 @@ class TypeCollectionViewCell: UICollectionViewCell {
 
         }
     }
-    
 }
