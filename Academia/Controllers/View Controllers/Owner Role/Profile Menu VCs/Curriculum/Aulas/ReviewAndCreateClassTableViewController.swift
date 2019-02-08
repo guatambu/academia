@@ -380,7 +380,7 @@ extension ReviewAndCreateClassTableViewController {
         
         for day in daysOfTheWeek {
             
-            AulaModelController.shared.add(active: active, className: aulaName, classDescription: aulaDescription, daysOfTheWeek: [day], time: time, timeCode: timeCode, location: location, kidAttendees: nil, adultAttendees: nil, instructor: instructors, ownerInstructor: ownerInstructors, classGroups: classGroups)
+            AulaModelController.shared.add(active: active, className: aulaName, classDescription: aulaDescription, daysOfTheWeek: [day], time: time, timeCode: timeCode, location: location, instructor: instructors, ownerInstructor: ownerInstructors, classGroups: classGroups)
             
         }
         

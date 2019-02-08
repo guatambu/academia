@@ -19,9 +19,9 @@ class AulaModelController {
     // MARK: - CRUD Functions
     
     // Create
-    func add(active: Bool, className: String, classDescription: String, daysOfTheWeek: [ClassTimeComponents.Weekdays], time: String?, timeCode: Int?, location: Location?, kidAttendees: [KidStudent]?, adultAttendees: [AdultStudent]?, instructor: [AdultStudent]?, ownerInstructor: [Owner]?, classGroups: [Group]?) {
+    func add(active: Bool, className: String, classDescription: String, daysOfTheWeek: [ClassTimeComponents.Weekdays], time: String?, timeCode: Int?, location: Location?, instructor: [AdultStudent]?, ownerInstructor: [Owner]?, classGroups: [Group]?) {
         
-        let aula = Aula(aulaUID: UUID(), active: active, aulaName: className, aulaDescription: classDescription, daysOfTheWeek: daysOfTheWeek, time: time, timeCode: timeCode, location: location, kidAttendees: kidAttendees, adultAttendees: adultAttendees, instructor: instructor, ownerInstructor: ownerInstructor, classGroups: classGroups, currentDate: Date(), dateCreated: Date(), dateEdited: Date())
+        let aula = Aula(aulaUID: UUID(), active: active, aulaName: className, aulaDescription: classDescription, daysOfTheWeek: daysOfTheWeek, time: time, timeCode: timeCode, location: location, instructor: instructor, ownerInstructor: ownerInstructor, classGroups: classGroups, dateCreated: Date(), dateEdited: Date())
         
         aulas.append(aula)
     }
@@ -36,12 +36,6 @@ class AulaModelController {
         
         if let active = active {
             aula.active = active
-        }
-        if let kidAttendees = kidAttendees {
-            aula.kidAttendees = kidAttendees
-        }
-        if let adultAttendees = adultAttendees {
-            aula.adultAttendees = adultAttendees
         }
         if let aulaDescription = aulaDescription {
             aula.aulaDescription = aulaDescription

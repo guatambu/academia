@@ -63,7 +63,6 @@ class KidStudentModelController {
                              studentStatus: [StudentStatus.active],
                              groups: nil,
                              paymentProgram: nil,
-                             permission: [UserPermissions.parentGuardian],
                              belt: belt,
                              profilePic: profilePic,
                              username: username,
@@ -92,7 +91,6 @@ class KidStudentModelController {
     // Update
     func updateProfileInfo(kidStudent: KidStudent, birthdate: Date?,
                            groups: [Group]?,
-                           permission: [UserPermissions]?,
                            belt: Belt?,
                            profilePic: UIImage?,
                            username: String?,
@@ -118,9 +116,6 @@ class KidStudentModelController {
         }
         if let groups = groups {
             kidStudent.groups = groups
-        }
-        if let permission = permission {
-            kidStudent.permission = permission
         }
         if let belt = belt {
             kidStudent.belt = belt

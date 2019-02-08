@@ -12,8 +12,6 @@ class Aula {
     
     // MARK: - Properties
     
-    // to think about... one version of a class 
-    
     // UID
     let aulaUID: UUID
     
@@ -24,12 +22,9 @@ class Aula {
     var time: String?
     var timeCode: Int?
     var location: Location?
-    var kidAttendees: [KidStudent]?
-    var adultAttendees: [AdultStudent]?
     var instructor: [AdultStudent]?
     var ownerInstructor: [Owner]?
     var classGroups: [Group]?
-    var currentDate: Date
     var dateCreated: Date
     var dateEdited: Date
     
@@ -42,12 +37,9 @@ class Aula {
          time: String?,
          timeCode: Int?,
          location: Location?,
-         kidAttendees: [KidStudent]?,
-         adultAttendees: [AdultStudent]?,
          instructor: [AdultStudent]?,
          ownerInstructor: [Owner]?,
          classGroups: [Group]?,
-         currentDate: Date,
          dateCreated: Date,
          dateEdited: Date
         ) {
@@ -60,12 +52,9 @@ class Aula {
         self.time = time
         self.timeCode = timeCode
         self.location = location
-        self.kidAttendees = kidAttendees
-        self.adultAttendees = adultAttendees
         self.instructor = instructor
         self.ownerInstructor = ownerInstructor
         self.classGroups = classGroups
-        self.currentDate = currentDate
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
     }
@@ -83,12 +72,9 @@ extension Aula: Equatable {
         if lhs.time != rhs.time { return false }
         if lhs.timeCode != rhs.timeCode { return false }
         if lhs.location != rhs.location { return false }
-        if lhs.kidAttendees != rhs.kidAttendees { return false }
-        if lhs.adultAttendees != rhs.adultAttendees { return false }
         if lhs.instructor != rhs.instructor { return false }
         if lhs.ownerInstructor != rhs.ownerInstructor { return false }
         if lhs.classGroups != rhs.classGroups { return false }
-        if lhs.currentDate != rhs.currentDate { return false }
         if lhs.dateCreated != rhs.dateCreated { return false }
         if lhs.dateEdited != rhs.dateEdited { return false }
         

@@ -28,7 +28,6 @@ class KidStudent {
     // Data Model related
     var groups: [Group]?
     var paymentProgram: PaymentProgram?
-    var permission: [UserPermissions]
     var belt: Belt
     
     // Images
@@ -64,7 +63,6 @@ class KidStudent {
          studentStatus: [StudentStatus],
          groups: [Group]?,
          paymentProgram: PaymentProgram?,
-         permission: [UserPermissions],
          belt: Belt,
          profilePic: UIImage?,
          username: String,
@@ -96,7 +94,6 @@ class KidStudent {
         self.belt = belt
         self.groups = groups
         self.paymentProgram = paymentProgram
-        self.permission = permission
         self.profilePic = profilePic
         self.username = username
         self.password = password
@@ -133,7 +130,6 @@ extension KidStudent: Equatable {
         if lhs.firstName != rhs.firstName { return false }
         if lhs.kidUID != rhs.kidUID { return false }
         if lhs.lastName != rhs.lastName { return false }
-        if lhs.permission != rhs.permission { return false }
         if lhs.state != rhs.state { return false }
         if lhs.addressLine1 != rhs.addressLine1 { return false }
         if lhs.addressLine2 != rhs.addressLine2 { return false }
