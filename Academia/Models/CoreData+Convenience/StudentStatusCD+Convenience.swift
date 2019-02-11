@@ -12,5 +12,24 @@ import CoreData
 
 extension StudentStatusCD {
     
+    // convenience initializer to allow creation of an StudentStatusCD object via Academia CoreDataStack's managedObjectContext
+    convenience init(active: Bool,
+                     medicalMembershipPaused: Bool,
+                     membershipPaused: Bool,
+                     paid: Bool,
+                     adultStudent: AdultStudentCD,
+                     kidStudent: KidStudentCD,
+                     context: NSManagedObjectContext = CoreDataStack.context) {
+        
+        self.init(context: context)
+        
+        self.active = active
+        self.medicalMembershipPause = medicalMembershipPaused
+        self.membershipPaused = membershipPaused
+        self.paid = paid
+        self.adultStudent = adultStudent
+        self.kidStudent = kidStudent
+    }
+    
 }
 
