@@ -657,6 +657,7 @@
 		FA0C443A21278AE500B59194 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FADA615122112AC100BB3302 /* CoreDataStack.swift */,
 				FA55E170220E4B0400E1A839 /* CoreData+Convenience */,
 				FA7A12D0216AE57A00C03590 /* Academia.xcdatamodeld */,
 				FA6FBA042149F37000558657 /* User Models */,
@@ -667,7 +668,6 @@
 				FA4DF32A218CC9E100ECC167 /* Curriculum Models */,
 				FA9ADA202138DBC30005E1F1 /* MyCells.swift */,
 				FAE2FD3B2140700F00815402 /* MockData.swift */,
-				FADA615122112AC100BB3302 /* CoreDataStack.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
