@@ -77,6 +77,11 @@ class LocationPicAndNameViewController: UIViewController {
     
     
     @objc func saveButtonTapped() {
+        
+        // dismiss keyboard when leaving VC scene
+        if locationNameTextField.isFirstResponder {
+            locationNameTextField.resignFirstResponder()
+        } 
     
         // Location update profile info
         if locationNameTextField.text != "" && locationPicImageViewOutlet.image != UIImage(contentsOfFile: "user_placeholder") {

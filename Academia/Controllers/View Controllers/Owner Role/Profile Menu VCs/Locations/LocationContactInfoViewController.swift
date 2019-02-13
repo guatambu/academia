@@ -67,6 +67,15 @@ class LocationContactInfoViewController: UIViewController {
     
     @objc func saveButtonTapped() {
         
+        // dismiss keyboard when leaving VC scene
+        if phoneTextField.isFirstResponder {
+            phoneTextField.resignFirstResponder()
+        } else if websiteTextField.isFirstResponder {
+            websiteTextField.resignFirstResponder()
+        } else if emailTextField.isFirstResponder {
+            emailTextField.resignFirstResponder()
+        }
+        
         // Location update profile info
         updateLocationInfo()
         

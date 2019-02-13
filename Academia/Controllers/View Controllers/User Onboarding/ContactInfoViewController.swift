@@ -84,6 +84,15 @@ class ContactInfoViewController: UIViewController {
     
     @objc func saveButtonTapped() {
         
+        // dismiss keyboard when leaving VC scene
+        if phoneTextField.isFirstResponder {
+            phoneTextField.resignFirstResponder()
+        } else if mobileTextField.isFirstResponder {
+            mobileTextField.resignFirstResponder()
+        } else if emailTextField.isFirstResponder {
+            emailTextField.resignFirstResponder()
+        }
+        
         if let isOwner = isOwner {
             if isOwner {
                 // Owner update profile info

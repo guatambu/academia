@@ -96,6 +96,15 @@ class EmergencyContactViewController: UIViewController {
     
     @objc func saveButtonTapped() {
         
+        // dismiss keyboard when leaving VC scene
+        if emergencyContactNameTextField.isFirstResponder {
+            emergencyContactNameTextField.resignFirstResponder()
+        } else if emergencyContactPhoneTextField.isFirstResponder {
+            emergencyContactPhoneTextField.resignFirstResponder()
+        } else if emergencyContactRelationshipTextField.isFirstResponder {
+            emergencyContactRelationshipTextField.resignFirstResponder()
+        }
+        
         if let isOwner = isOwner {
             if isOwner {
                 // Owner update profile info

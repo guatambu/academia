@@ -84,6 +84,15 @@ class TakeProfilePicViewController: UIViewController {
     
     @objc func saveButtonTapped() {
         
+        // dismiss keyboard when leaving VC scene
+        if firstNameTextField.isFirstResponder {
+            firstNameTextField.resignFirstResponder()
+        } else if lastNameTextField.isFirstResponder {
+            lastNameTextField.resignFirstResponder()
+        } else if parentGuardianTextField.isFirstResponder {
+            parentGuardianTextField.resignFirstResponder()
+        }
+        
         if let isOwner = isOwner {
             
             if isOwner {

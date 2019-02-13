@@ -74,6 +74,15 @@ class LocationSocialLinksViewController: UIViewController {
     
     @objc func saveButtonTapped() {
         
+        // dismiss keyboard when leaving VC scene
+        if socialLink1TextField.isFirstResponder {
+            socialLink1TextField.resignFirstResponder()
+        } else if socialLink2TextField.isFirstResponder {
+            socialLink2TextField.resignFirstResponder()
+        } else if socialLink3TextField.isFirstResponder {
+            socialLink3TextField.resignFirstResponder()
+        } 
+        
         // Location update profile info
         updateLocationInfo()
         
