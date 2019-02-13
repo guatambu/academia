@@ -10,10 +10,7 @@ import UIKit
 
 class OwnerProfileTableViewController: UITableViewController {
     
-    // Properties
-
-    
-    
+    // MARK: - Properties
     
     
     // MARK: - ViewController Lifecycle Functions

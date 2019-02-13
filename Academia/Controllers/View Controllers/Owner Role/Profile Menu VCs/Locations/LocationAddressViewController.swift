@@ -41,13 +41,27 @@ class LocationAddressViewController: UIViewController {
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        subscribeToKeyboardNotifications()
+        
         // check to see if enter editing mode
         enterEditingMode(inEditingMode: inEditingMode)
         
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        unsubscribeToKeyboardNotifications()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        addressLine1TextField.delegate = self
+        addressLine2TextField.delegate = self
+        cityTextField.delegate = self
+        stateTextField.delegate = self
+        zipCodeTextField.delegate = self
         
     }
     
@@ -67,6 +81,19 @@ class LocationAddressViewController: UIViewController {
     }
     
     @IBAction func nextButtonTapped(_ sender: DesignableButton) {
+        
+        // dismiss keyboard when leaving VC scene
+        if addressLine1TextField.isFirstResponder {
+            addressLine1TextField.resignFirstResponder()
+        } else if addressLine2TextField.isFirstResponder {
+            addressLine2TextField.resignFirstResponder()
+        } else if cityTextField.isFirstResponder {
+            cityTextField.resignFirstResponder()
+        } else if stateTextField.isFirstResponder {
+            stateTextField.resignFirstResponder()
+        } else if zipCodeTextField.isFirstResponder {
+            zipCodeTextField.resignFirstResponder()
+        }
         
         // programmatically performing segue
         
@@ -174,5 +201,82 @@ extension LocationAddressViewController {
         zipCodeTextField.text = locationToEdit.zipCode
         
         
+    }
+}
+
+
+// MARK: - UITextField Delegate methods and Keyboard handling
+extension LocationAddressViewController: UITextFieldDelegate {
+    
+    // method to call in viewWillAppear() to subscribe to desired UIResponder keyboard notifications
+    func subscribeToKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
+    
+    // method to be called in viewWillDisappear() to unsubscribe from desired UIResponder keyboard notifications
+    func unsubscribeToKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
+    
+    // keyboardWillChange to handle Keyboard Notifications
+    @objc func keyboardWillChange(notification: Notification) {
+        
+        // uncomment for print statement ensuring this method is properly called
+        // print("Keyboard will change: \(notification.name.rawValue) - \(notification.description)")
+        
+        // get the size of the keyboard
+        guard let keyboardCGRectValue = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            print("ERROR: nil value for notification.userInfo[UIKeyboardFrameEndUserInfoKey] in SignUpLoginViewController.swift -> keyboardWillChange(notification:) - line 225")
+            return
+        }
+        
+        // move view up the height of keyboard and back down to original position
+        if notification.name == UIResponder.keyboardWillShowNotification || notification.name == UIResponder.keyboardWillChangeFrameNotification {
+            
+            // check to see if physical screen includes iPhoneX__ form factor
+            if #available(iOS 11.0, *) {
+                let bottomPadding = view.safeAreaInsets.bottom
+                
+                self.view.frame.origin.y = -(keyboardCGRectValue.height - bottomPadding)
+                
+            } else {
+                
+                self.view.frame.origin.y = -keyboardCGRectValue.height
+            }
+            
+        } else {
+            
+            self.view.frame.origin.y = 0
+        }
+    }
+    
+    // UITextField Delegate methods
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if textField == addressLine1TextField {
+            addressLine2TextField.becomeFirstResponder()
+            print("Next button tapped")
+            
+        } else if textField == addressLine2TextField {
+            cityTextField.becomeFirstResponder()
+            print("Next button tapped")
+            
+        } else if textField == cityTextField {
+            stateTextField.becomeFirstResponder()
+            print("Next button tapped")
+            
+        } else if textField == stateTextField {
+            zipCodeTextField.becomeFirstResponder()
+            print("Next button tapped")
+            
+        } else if textField == zipCodeTextField {
+            zipCodeTextField.resignFirstResponder()
+            print("Done button tapped")
+        }
+        return true
     }
 }

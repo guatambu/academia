@@ -394,7 +394,7 @@ extension UIImage {
 // MARK: - UITextField Delegate methods and Keyboard handling
 extension TakeProfilePicViewController: UITextFieldDelegate {
     
-    // method to call in viewDidLoad() to subscribe to desired UIResponder keyboard notifications
+    // method to call in viewWillAppear() to subscribe to desired UIResponder keyboard notifications
     func subscribeToKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
