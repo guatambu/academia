@@ -42,8 +42,6 @@ class BirthdayViewController: UIViewController {
     
     // MARK: - ViewController Lifecycle Functions
     
-    // TODO:  set up all the rest of the editing mode funcitonality for this and future VCs in owner profile eidting mode flow
-    
     override func viewWillAppear(_ animated: Bool) {
         // check to see if enter editing mode
         enterEditingMode(inEditingMode: inEditingMode)
@@ -52,6 +50,13 @@ class BirthdayViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // set birthdayPickerView maxDate to today current date
+        let currentDate = Date()
+        var dateComponents = DateComponents()
+        let calendar = Calendar(identifier: .gregorian)
+        dateComponents.year = -3 // students have to be at least 3 years old
+        birthdayDatePickerView.maximumDate = calendar.date(byAdding: dateComponents, to: currentDate)
         
         guard let isOwner = isOwner else { return }
         

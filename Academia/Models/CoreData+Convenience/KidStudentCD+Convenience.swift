@@ -49,14 +49,14 @@ extension KidStudentCD {
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
         self.birthdate = birthdate
-        self.promotions = promotions
+        //self.promotions = promotions
         self.mostRecentPromotion = mostRecentPromotion
         self.attendanceKidStudent = attendanceKidStudent
         self.studentStatus = studentStatus
         self.belt = belt
         self.groups = groups
         self.paymentProgram = paymentProgram
-        self.profilePic = profilePic
+        //self.profilePic = profilePic
         self.username = username
         self.password = password
         self.firstName = firstName

@@ -38,7 +38,7 @@ extension LocationCD {
         self.locationUUID = locationUUID
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
-        self.locationPic = locationPic
+        //self.locationPic = locationPic
         self.locationName = locationName
         self.addressLine1 = addressLine1
         self.addressLine2 = addressLine2

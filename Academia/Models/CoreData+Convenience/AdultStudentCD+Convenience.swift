@@ -21,7 +21,7 @@ extension AdultStudentCD {
                      mostRecentPromotion: Date?,
                      attendanceAdultStudent: AttendanceCD?,
                      studentStatus: StudentStatusCD?,
-                     groups: NSSet?,
+                     groups: NSOrderedSet?,
                      paymentProgram: PaymentProgramCD?,
                      belt: BeltCD,
                      profilePic: UIImage?,
@@ -49,14 +49,14 @@ extension AdultStudentCD {
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
         self.birthdate = birthdate
-        self.promotions = promotions
+        //self.promotions = promotions
         self.mostRecentPromotion = mostRecentPromotion
         self.attendanceAdultStudent = attendanceAdultStudent
         self.studentStatus = studentStatus
         self.belt = belt
         self.groups = groups
         self.paymentProgram = paymentProgram
-        self.profilePic = profilePic
+        //self.profilePic = profilePic
         self.username = username
         self.password = password
         self.firstName = firstName

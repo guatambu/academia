@@ -50,12 +50,12 @@ extension OwnerCD {
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
         self.birthdate = birthdate
-        self.promotions = promotions
+        //self.promotions = promotions
         self.mostRecentPromotion = mostRecentPromotion
         self.attendanceOwner = attendanceOwner
         self.belt = belt
         self.groups = groups
-        self.profilePic = profilePic
+        //self.profilePic = profilePic
         self.username = username
         self.password = password
         self.firstName = firstName
