@@ -39,12 +39,19 @@ class GroupNameAndDescriptionViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
+        subscribeToKeyboardNotifications()
+        
         let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
                            NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
         
         navigationController?.navigationBar.titleTextAttributes = avenirFont
         
         enterEditingMode(inEditingMode: inEditingMode)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        unsubscribeToKeyboardNotifications()
     }
     
     override func viewDidLoad() {
@@ -63,8 +70,19 @@ class GroupNameAndDescriptionViewController: UIViewController {
         print("GroupNameAndDescriptionVC active property: \(active)")
     }
     
+    @IBAction func tapAnywhereToDismissTapped(_ sender: Any) {
+        view.endEditing(true)
+        groupDescriptionTextView.resignFirstResponder()
+    }
     
     @objc func saveButtonTapped() {
+        
+        // dismiss keyboard when leaving VC scene
+        if groupNameTextField.isFirstResponder {
+            groupNameTextField.resignFirstResponder()
+        } else if groupDescriptionTextView.isFirstResponder {
+            groupDescriptionTextView.resignFirstResponder()
+        }
         
         // Location update profile info
         if groupNameTextField.text != "" {
@@ -77,9 +95,14 @@ class GroupNameAndDescriptionViewController: UIViewController {
         }
         inEditingMode = false
     }
-    
+
     
     @IBAction func nextButtonTapped(_ sender: DesignableButton) {
+        
+        // dismiss keyboard when leaving VC scene
+        if groupNameTextField.isFirstResponder {
+            groupNameTextField.resignFirstResponder()
+        }
         
         // programmatically performing the segue
       
@@ -160,5 +183,66 @@ extension GroupNameAndDescriptionViewController {
         
         groupDescriptionTextView.text = groupToEdit.description
         groupNameTextField.text = groupToEdit.name
+    }
+}
+
+
+// MARK: - UITextField Delegate methods and Keyboard handling
+extension GroupNameAndDescriptionViewController: UITextFieldDelegate, UITextViewDelegate {
+    
+    // method to call in viewWillAppear() to subscribe to desired UIResponder keyboard notifications
+    func subscribeToKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
+    
+    // method to be called in viewWillDisappear() to unsubscribe from desired UIResponder keyboard notifications
+    func unsubscribeToKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
+    
+    // keyboardWillChange to handle Keyboard Notifications
+    @objc func keyboardWillChange(notification: Notification) {
+        
+        // uncomment for print statement ensuring this method is properly called
+        // print("Keyboard will change: \(notification.name.rawValue) - \(notification.description)")
+        
+        // get the size of the keyboard
+        guard let keyboardCGRectValue = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            print("ERROR: nil value for notification.userInfo[UIKeyboardFrameEndUserInfoKey] in SignUpLoginViewController.swift -> keyboardWillChange(notification:) - line 225")
+            return
+        }
+        
+        // move view up the height of keyboard and back down to original position
+        if notification.name == UIResponder.keyboardWillShowNotification || notification.name == UIResponder.keyboardWillChangeFrameNotification {
+            
+            // check to see if physical screen includes iPhoneX__ form factor
+            if #available(iOS 11.0, *) {
+                let bottomPadding = view.safeAreaInsets.bottom
+                
+                self.view.frame.origin.y = -(keyboardCGRectValue.height - bottomPadding)
+                
+            } else {
+                
+                self.view.frame.origin.y = -keyboardCGRectValue.height
+            }
+            
+        } else {
+            
+            self.view.frame.origin.y = 0
+        }
+    }
+    
+    // UITextField Delegate methods
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if textField == groupNameTextField {
+            groupNameTextField.resignFirstResponder()
+            print("Next button tapped")
+        }
+        return true
     }
 }

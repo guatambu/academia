@@ -806,7 +806,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="RSm-XJ-nUJ" userLabel="group name Stack View">
-                                <rect key="frame" x="16" y="112" width="343" height="56"/>
+                                <rect key="frame" x="16" y="252" width="343" height="56"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="pP1-ND-jNy" userLabel="group name Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="56"/>
@@ -833,7 +833,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="chb-jT-lnA" userLabel="active switch Stack View">
-                                <rect key="frame" x="16" y="184" width="343" height="31"/>
+                                <rect key="frame" x="16" y="324" width="343" height="31"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="active:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eeI-5m-zsG">
                                         <rect key="frame" x="0.0" y="0.0" width="65.5" height="31"/>
@@ -859,8 +859,11 @@
                                 </subviews>
                             </stackView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zqE-NX-rQs" userLabel="program description Text View" customClass="DesignableTextView" customModule="Academia" customModuleProvider="target">
-                                <rect key="frame" x="16" y="231" width="343" height="300"/>
+                                <rect key="frame" x="16" y="371" width="343" height="160"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="NP8-vN-K0O"/>
+                                </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
@@ -939,11 +942,11 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="RSm-XJ-nUJ" firstAttribute="leading" secondItem="vLU-CW-UF1" secondAttribute="leading" constant="16" id="0gQ-hL-16i"/>
                             <constraint firstItem="zqE-NX-rQs" firstAttribute="leading" secondItem="vLU-CW-UF1" secondAttribute="leading" constant="16" id="2Sl-ga-fSQ"/>
                             <constraint firstAttribute="trailing" secondItem="chb-jT-lnA" secondAttribute="trailing" constant="16" id="2ez-rw-WiV"/>
-                            <constraint firstItem="RSm-XJ-nUJ" firstAttribute="top" secondItem="d8S-vv-7Oz" secondAttribute="bottom" constant="16" id="53A-8b-IRz"/>
                             <constraint firstItem="fXM-rK-BsO" firstAttribute="centerX" secondItem="pS5-yB-e9x" secondAttribute="centerX" id="AqF-xO-hd8"/>
                             <constraint firstItem="d8S-vv-7Oz" firstAttribute="leading" secondItem="vLU-CW-UF1" secondAttribute="leading" constant="24" id="Brz-i3-CIe"/>
                             <constraint firstItem="zqE-NX-rQs" firstAttribute="top" secondItem="chb-jT-lnA" secondAttribute="bottom" constant="16" id="DhZ-tP-zfm"/>
@@ -960,6 +963,9 @@
                             <constraint firstItem="d8S-vv-7Oz" firstAttribute="centerX" secondItem="pS5-yB-e9x" secondAttribute="centerX" id="sK0-EG-FiR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vLU-CW-UF1"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="cpo-dS-w5D" appends="YES" id="bk5-mA-4BU"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title=" " id="4VY-7j-iua">
                         <barButtonItem key="backBarButtonItem" title=" " id="0dA-JS-bYu"/>
@@ -976,6 +982,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5jN-A1-SQ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="cpo-dS-w5D">
+                    <connections>
+                        <action selector="tapAnywhereToDismissTapped:" destination="Nf9-ol-7GN" id="G9g-xG-cMX"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="7612" y="4594"/>
         </scene>
