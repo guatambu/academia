@@ -38,6 +38,8 @@ class ClassNameAndDescriptionViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
+        subscribeToKeyboardNotifications()
+        
         let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
                            NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
         
@@ -46,8 +48,16 @@ class ClassNameAndDescriptionViewController: UIViewController {
         enterEditingMode(inEditingMode: inEditingMode)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        unsubscribeToKeyboardNotifications()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        classNameTextField.delegate = self
+        classDescriptionTextView.delegate = self
         
         // populate lastChangedLabelOutlet with formatted current date and time at time of aula creation
         let currentDateAndTime = Date()
@@ -64,8 +74,19 @@ class ClassNameAndDescriptionViewController: UIViewController {
         print("GroupNameAndDescriptionVC active property: \(active)")
     }
     
+    @IBAction func tapAnywhereToDismissTapped(_ sender: Any) {
+        view.endEditing(true)
+        classDescriptionTextView.resignFirstResponder()
+    }
     
     @objc func saveButtonTapped() {
+        
+        // dismiss keyboard when leaving VC scene
+        if classNameTextField.isFirstResponder {
+            classNameTextField.resignFirstResponder()
+        } else if classDescriptionTextView.isFirstResponder {
+            classDescriptionTextView.resignFirstResponder()
+        }
         
         // Location update profile info
         if classNameTextField.text != "" {
@@ -112,7 +133,15 @@ class ClassNameAndDescriptionViewController: UIViewController {
             
             destViewController.inEditingMode = inEditingMode
             destViewController.aulaToEdit = aulaToEdit
+            
+            // dismiss keyboard when leaving VC scene
+            if classNameTextField.isFirstResponder {
+                classNameTextField.resignFirstResponder()
+            } else if classDescriptionTextView.isFirstResponder {
+                classDescriptionTextView.resignFirstResponder()
+            }
         }
+        
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
         updateAulaInfo()
@@ -193,3 +222,63 @@ extension ClassNameAndDescriptionViewController {
     }
 }
 
+
+// MARK: - UITextField Delegate methods and Keyboard handling
+extension ClassNameAndDescriptionViewController: UITextFieldDelegate, UITextViewDelegate {
+    
+    // method to call in viewWillAppear() to subscribe to desired UIResponder keyboard notifications
+    func subscribeToKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
+    
+    // method to be called in viewWillDisappear() to unsubscribe from desired UIResponder keyboard notifications
+    func unsubscribeToKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
+    
+    // keyboardWillChange to handle Keyboard Notifications
+    @objc func keyboardWillChange(notification: Notification) {
+        
+        // uncomment for print statement ensuring this method is properly called
+        // print("Keyboard will change: \(notification.name.rawValue) - \(notification.description)")
+        
+        // get the size of the keyboard
+        guard let keyboardCGRectValue = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            print("ERROR: nil value for notification.userInfo[UIKeyboardFrameEndUserInfoKey] in SignUpLoginViewController.swift -> keyboardWillChange(notification:) - line 225")
+            return
+        }
+        
+        // move view up the height of keyboard and back down to original position
+        if notification.name == UIResponder.keyboardWillShowNotification || notification.name == UIResponder.keyboardWillChangeFrameNotification {
+            
+            // check to see if physical screen includes iPhoneX__ form factor
+            if #available(iOS 11.0, *) {
+                let bottomPadding = view.safeAreaInsets.bottom
+                
+                self.view.frame.origin.y = -(keyboardCGRectValue.height - bottomPadding)
+                
+            } else {
+                
+                self.view.frame.origin.y = -keyboardCGRectValue.height
+            }
+            
+        } else {
+            
+            self.view.frame.origin.y = 0
+        }
+    }
+    
+    // UITextField Delegate methods
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if textField == classNameTextField {
+            classNameTextField.resignFirstResponder()
+            print("Next button tapped")
+        }
+        return true
+    }
+}

@@ -102,6 +102,8 @@ class GroupNameAndDescriptionViewController: UIViewController {
         // dismiss keyboard when leaving VC scene
         if groupNameTextField.isFirstResponder {
             groupNameTextField.resignFirstResponder()
+        } else if groupDescriptionTextView.isFirstResponder {
+            groupDescriptionTextView.resignFirstResponder()
         }
         
         // programmatically performing the segue

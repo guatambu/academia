@@ -374,7 +374,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="CzB-dS-Hfk" userLabel="class name Stack View">
-                                <rect key="frame" x="16" y="156" width="288" height="57"/>
+                                <rect key="frame" x="16" y="155" width="288" height="57"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="class name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmw-4a-YfP" userLabel="class name Label Outlet">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="22"/>
@@ -394,7 +394,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ou7-C1-oNy" userLabel="last changed + active Stack View">
-                                <rect key="frame" x="16" y="221" width="288" height="61"/>
+                                <rect key="frame" x="16" y="220" width="288" height="61"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="last changed: 06/09/18 10:15 AM" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CuR-hK-fNN">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="22"/>
@@ -422,7 +422,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wai-mo-ex4" userLabel="class description Stack View">
-                                <rect key="frame" x="16" y="290" width="288" height="101"/>
+                                <rect key="frame" x="16" y="289" width="288" height="102"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="class description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F4w-LX-oKV" userLabel="payment program Name Label Outlet">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="22"/>
@@ -430,10 +430,12 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AqD-il-k5a" userLabel="program description Text View" customClass="DesignableTextView" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="22" width="288" height="79"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="please enter a description for this class" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AqD-il-k5a" userLabel="program description Text View" customClass="DesignableTextView" customModule="Academia" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="22" width="288" height="80"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="IvO-iX-MmQ"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                         <userDefinedRuntimeAttributes>
@@ -575,6 +577,7 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="CzB-dS-Hfk" firstAttribute="leading" secondItem="mdu-l9-lr9" secondAttribute="leading" constant="16" id="1gA-1T-hhW"/>
                             <constraint firstItem="4FF-xe-2cL" firstAttribute="centerX" secondItem="RmB-Mg-vcS" secondAttribute="centerX" id="1pT-wM-MZa"/>
@@ -592,10 +595,12 @@
                             <constraint firstItem="ou7-C1-oNy" firstAttribute="top" secondItem="CzB-dS-Hfk" secondAttribute="bottom" constant="8" id="oE3-J8-gxI"/>
                             <constraint firstItem="YL9-5E-SDC" firstAttribute="top" secondItem="Ul2-jn-FY4" secondAttribute="bottom" constant="24" id="tvs-Ex-o4t"/>
                             <constraint firstItem="mdu-l9-lr9" firstAttribute="trailing" secondItem="wai-mo-ex4" secondAttribute="trailing" constant="16" id="w3y-dB-UBC"/>
-                            <constraint firstItem="CzB-dS-Hfk" firstAttribute="top" secondItem="4FF-xe-2cL" secondAttribute="bottom" constant="16" id="wDO-ty-LIr"/>
                             <constraint firstItem="4FF-xe-2cL" firstAttribute="top" secondItem="mdu-l9-lr9" secondAttribute="top" constant="16" id="z6T-Rx-hbL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mdu-l9-lr9"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="wR2-Fm-XEA" appends="YES" id="V8Z-5r-qCt"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title=" " id="ZSn-1h-1M1">
                         <barButtonItem key="backBarButtonItem" title=" " id="hy3-fE-cJs"/>
@@ -613,6 +618,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FA6-op-AP7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="wR2-Fm-XEA">
+                    <connections>
+                        <action selector="tapAnywhereToDismissTapped:" destination="qMa-B9-a4e" id="E63-iQ-7li"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2429.5999999999999" y="2925.7871064467768"/>
         </scene>
