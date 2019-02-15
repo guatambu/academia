@@ -118,10 +118,9 @@ class StudentHomeTableViewController: UITableViewController {
             
         } else if AdultStudentModelController.shared.adultStudentOnboardingTasks[indexPath.item].name == "viewClassSchedule" {
             
-            // instantiate the relevant storyboard
-            let studentBaseCampFlowView: UIStoryboard = UIStoryboard(name: "StudentBaseCampFlow", bundle: nil)
-            // instantiate the desired TableViewController as ViewController on relevant storyboard
-            let destViewController = studentBaseCampFlowView.instantiateViewController(withIdentifier: "toStudentClasses") as! StudentClassesTableViewController
+            let ownerBaseCampFlowView: UIStoryboard = UIStoryboard(name: "StudentBaseCampFlow", bundle: nil)
+            // instantiate the desired TableViewController on relevant storyboard
+            let destViewController = ownerBaseCampFlowView.instantiateViewController(withIdentifier: "toStudentClasses") as! StudentClassesTableViewController
             // create the segue programmatically
             self.navigationController?.pushViewController(destViewController, animated: true)
             // set the desired properties of the destinationVC's navgation Item

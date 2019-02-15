@@ -74,7 +74,7 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
         // programmatically performing the segue
         
         // instantiate the relevant storyboard
-        let mainView: UIStoryboard = UIStoryboard(name: "OwnerStudentsFlow", bundle: nil)
+        let mainView: UIStoryboard = UIStoryboard(name: "OwnerBaseCampFlow", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
         let destViewController = mainView.instantiateViewController(withIdentifier: "toReviewAndCreateGroup") as! ReviewAndCreateGroupTableViewController
         
@@ -208,7 +208,7 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
         // programmatically performing the segue
         
         // instantiate the relevant storyboard
-        let mainView: UIStoryboard = UIStoryboard(name: "OwnerStudentsFlow", bundle: nil)
+        let mainView: UIStoryboard = UIStoryboard(name: "OwnerBaseCampFlow", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
         let destViewController = mainView.instantiateViewController(withIdentifier: "toProfileComplete") as! OwnersStudentDetailViewController
         
