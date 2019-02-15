@@ -16,6 +16,9 @@ class OwnerClassListTableViewController: UITableViewController {
     
     let beltBuilder = BeltBuilder()
     
+    @IBOutlet weak var addClassRightBarButtonOutlet: UIBarButtonItem!
+    
+    
     // tableView Sections Header Labels
     let weekdays: [ClassTimeComponents.Weekdays] = [.Sunday, .Monday, .Tuesday, .Wednesday, .Thursday, .Friday, .Saturday]
     
@@ -23,6 +26,7 @@ class OwnerClassListTableViewController: UITableViewController {
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
+        
         let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.gray,
                            NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 24)! ]
         

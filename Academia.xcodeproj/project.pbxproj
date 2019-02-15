@@ -109,7 +109,7 @@
 		FAAEDB4E21DD7BBB00E1A04F /* ReviewKidStudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAEDB4D21DD7BBB00E1A04F /* ReviewKidStudentTableViewCell.swift */; };
 		FAAEDB5021DDA27500E1A04F /* GroupMembersDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAEDB4F21DDA27500E1A04F /* GroupMembersDelegate.swift */; };
 		FAB203D4215EA8630034E1D4 /* LocationsImageMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB203D3215EA8630034E1D4 /* LocationsImageMenuTableViewCell.swift */; };
-		FAB203DA216187190034E1D4 /* StudentClassDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB203D9216187190034E1D4 /* StudentClassDetailViewController.swift */; };
+		FAB203DA216187190034E1D4 /* StudentClassDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB203D9216187190034E1D4 /* StudentClassDetailTableViewController.swift */; };
 		FAB203DC216188C50034E1D4 /* StudentAulasListMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB203DB216188C50034E1D4 /* StudentAulasListMenuTableViewCell.swift */; };
 		FAB20413216566E50034E1D4 /* ThingsToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB20412216566E50034E1D4 /* ThingsToDoList.swift */; };
 		FAB7E350212B7D47003E3B79 /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB7E34F212B7D47003E3B79 /* LandingPageViewController.swift */; };
@@ -391,7 +391,7 @@
 		FAAEDB4D21DD7BBB00E1A04F /* ReviewKidStudentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewKidStudentTableViewCell.swift; sourceTree = "<group>"; };
 		FAAEDB4F21DDA27500E1A04F /* GroupMembersDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMembersDelegate.swift; sourceTree = "<group>"; };
 		FAB203D3215EA8630034E1D4 /* LocationsImageMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsImageMenuTableViewCell.swift; sourceTree = "<group>"; };
-		FAB203D9216187190034E1D4 /* StudentClassDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentClassDetailViewController.swift; sourceTree = "<group>"; };
+		FAB203D9216187190034E1D4 /* StudentClassDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentClassDetailTableViewController.swift; sourceTree = "<group>"; };
 		FAB203DB216188C50034E1D4 /* StudentAulasListMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentAulasListMenuTableViewCell.swift; sourceTree = "<group>"; };
 		FAB20412216566E50034E1D4 /* ThingsToDoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThingsToDoList.swift; sourceTree = "<group>"; };
 		FAB7E34F212B7D47003E3B79 /* LandingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
@@ -931,7 +931,7 @@
 			isa = PBXGroup;
 			children = (
 				FA5C5C512154999C00BF62D5 /* StudentClassesTableViewController.swift */,
-				FAB203D9216187190034E1D4 /* StudentClassDetailViewController.swift */,
+				FAB203D9216187190034E1D4 /* StudentClassDetailTableViewController.swift */,
 			);
 			path = Aulas;
 			sourceTree = "<group>";
@@ -1538,7 +1538,7 @@
 				FAAEDB5021DDA27500E1A04F /* GroupMembersDelegate.swift in Sources */,
 				FA8B3CC721CB2366003398FB /* ReviewAndCreateGroupTableViewController.swift in Sources */,
 				FACA3EB1219288CD0099E620 /* NameAndBeltViewController.swift in Sources */,
-				FAB203DA216187190034E1D4 /* StudentClassDetailViewController.swift in Sources */,
+				FAB203DA216187190034E1D4 /* StudentClassDetailTableViewController.swift in Sources */,
 				FA9AD9F72137839A0005E1F1 /* BeltSystemsTableViewController.swift in Sources */,
 				FACA3EB5219289140099E620 /* ContactInfoViewController.swift in Sources */,
 				FAE2FD8E2140BFC700815402 /* FirstNameTextFieldTableViewCell.swift in Sources */,
