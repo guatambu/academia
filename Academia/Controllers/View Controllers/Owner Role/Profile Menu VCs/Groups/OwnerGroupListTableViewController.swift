@@ -38,7 +38,7 @@ class OwnerGroupListTableViewController: UITableViewController {
         // programmatically performing the group segue
         
         // instantiate the relevant storyboard
-        let ownerStudentFlowView: UIStoryboard = UIStoryboard(name: "OwnerStudentsFlow", bundle: nil)
+        let ownerStudentFlowView: UIStoryboard = UIStoryboard(name: "OwnerBaseCampFlow", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
         let destViewController = ownerStudentFlowView.instantiateViewController(withIdentifier: "toGroupNameAndDescription") as! GroupNameAndDescriptionViewController
         // create the segue programmatically
@@ -90,7 +90,7 @@ class OwnerGroupListTableViewController: UITableViewController {
         // programmatically performing the group segue
         
         // instantiate the relevant storyboard
-        let ownerStudentFlowView: UIStoryboard = UIStoryboard(name: "OwnerStudentsFlow", bundle: nil)
+        let ownerStudentFlowView: UIStoryboard = UIStoryboard(name: "OwnerBaseCampFlow", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
         let destViewController = ownerStudentFlowView.instantiateViewController(withIdentifier: "toGroupInfoDetails") as! GroupInfoDetailsTableViewController
         // create the segue programmatically

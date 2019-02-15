@@ -67,7 +67,6 @@
 		FA8B3CBF21CA22B7003398FB /* GroupNameAndDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B3CBD21CA22B7003398FB /* GroupNameAndDescriptionViewController.swift */; };
 		FA8B3CC221CA230B003398FB /* AddStudentsToGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B3CC021CA230B003398FB /* AddStudentsToGroupTableViewController.swift */; };
 		FA8B3CC721CB2366003398FB /* ReviewAndCreateGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B3CC621CB2366003398FB /* ReviewAndCreateGroupTableViewController.swift */; };
-		FA8B3CCA21CB246C003398FB /* OwnerStudentsFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8B3CC821CB246C003398FB /* OwnerStudentsFlow.storyboard */; };
 		FA8B3CCC21CB276B003398FB /* OwnersStudentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B3CCB21CB276B003398FB /* OwnersStudentDetailViewController.swift */; };
 		FA8B3CCE21CB3901003398FB /* GroupInfoDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B3CCD21CB3901003398FB /* GroupInfoDetailsTableViewController.swift */; };
 		FA9AD9F5213782070005E1F1 /* TutorialsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9AD9F4213782070005E1F1 /* TutorialsTableViewController.swift */; };
@@ -350,7 +349,6 @@
 		FA8B3CBE21CA22B7003398FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Base; path = Academia/Views/Academia/Views/Base.lproj/GroupNameAndDescriptionViewController.swift; sourceTree = SOURCE_ROOT; };
 		FA8B3CC121CA230B003398FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Base; path = Academia/Views/Academia/Views/Base.lproj/AddStudentsToGroupTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		FA8B3CC621CB2366003398FB /* ReviewAndCreateGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewAndCreateGroupTableViewController.swift; sourceTree = "<group>"; };
-		FA8B3CC921CB246C003398FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Academia/Views/Academia/Views/Base.lproj/OwnerStudentsFlow.storyboard; sourceTree = "<group>"; };
 		FA8B3CCB21CB276B003398FB /* OwnersStudentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnersStudentDetailViewController.swift; sourceTree = "<group>"; };
 		FA8B3CCD21CB3901003398FB /* GroupInfoDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoDetailsTableViewController.swift; sourceTree = "<group>"; };
 		FA9AD9F4213782070005E1F1 /* TutorialsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialsTableViewController.swift; sourceTree = "<group>"; };
@@ -640,7 +638,6 @@
 				FA0C442121278A8F00B59194 /* LaunchScreen.storyboard */,
 				FA0C441921278A8F00B59194 /* Main.storyboard */,
 				FAAAC151213E348800093D6C /* OwnerBaseCampFlow.storyboard */,
-				FA8B3CC821CB246C003398FB /* OwnerStudentsFlow.storyboard */,
 				FAAAC14F213E345900093D6C /* OwnerMessages.storyboard */,
 				FAAAC14A213E33E000093D6C /* OwnerProfileFlow.storyboard */,
 				FAC5D3C921BF0F600083B417 /* OwnerPaymentProgramWorkflow.storyboard */,
@@ -1376,7 +1373,6 @@
 				FAF29BA7212E1EF700752414 /* classes_red_50.png in Resources */,
 				FAE2FD7B2140BEFA00815402 /* PaymentProgramTextFieldCell.xib in Resources */,
 				FA41CE6721A1336F00EAD53A /* BeltCellNib.xib in Resources */,
-				FA8B3CCA21CB246C003398FB /* OwnerStudentsFlow.storyboard in Resources */,
 				FA5C5C2C214EFCCC00BF62D5 /* location1.jpg in Resources */,
 				FAF29BC5212E21EA00752414 /* profile_black_32.png in Resources */,
 				FAAAC14B213E33E000093D6C /* OwnerProfileFlow.storyboard in Resources */,
@@ -1659,14 +1655,6 @@
 				FA8B3CC121CA230B003398FB /* Base */,
 			);
 			name = AddStudentsToGroupTableViewController.swift;
-			sourceTree = "<group>";
-		};
-		FA8B3CC821CB246C003398FB /* OwnerStudentsFlow.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FA8B3CC921CB246C003398FB /* Base */,
-			);
-			name = OwnerStudentsFlow.storyboard;
 			sourceTree = "<group>";
 		};
 		FAAAC147213E337500093D6C /* OwnerBeltSystemFlow.storyboard */ = {
