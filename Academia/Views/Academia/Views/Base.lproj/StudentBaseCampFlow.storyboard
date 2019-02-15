@@ -145,7 +145,7 @@
         <!--Class List Table View Controller-->
         <scene sceneID="yOD-SA-xdc">
             <objects>
-                <tableViewController storyboardIdentifier="toOwnerClassList" id="tNP-2S-x5H" userLabel="Class List Table View Controller" customClass="StudentClassesTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="toStudentClasses" id="tNP-2S-x5H" userLabel="Class List Table View Controller" customClass="StudentClassesTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="XlO-fb-chS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
