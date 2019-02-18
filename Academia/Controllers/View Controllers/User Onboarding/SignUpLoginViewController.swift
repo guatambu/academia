@@ -21,6 +21,9 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
     
     var delegate: InitialStudentSegueDelegate!
     
+    let beltBuilder = BeltBuilder()
+    var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
+    
     @IBOutlet weak var welcomeMessageOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsOutlet: UILabel!
     @IBOutlet weak var usernameLabelOutlet: UILabel!
@@ -151,21 +154,34 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
                 // pass new username & confirmed password to destViewController
             // check to see if there is valid username
             guard let newUsername = self.usernameTextField.text, self.usernameTextField.text != "" else {
-                welcomeInstructionsOutlet.textColor = UIColor.red
+                // warning to user where welcome instructions text changes to red
+                welcomeInstructionsOutlet.textColor = beltBuilder.redBeltRed
+                // fire haptic feedback for error
+                hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+                hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
                 return
             }
             // check to see if there is a valid and matching password
             if self.passwordTextField.text == "" {
                 welcomeInstructionsOutlet.text = "please create a password"
-                welcomeInstructionsOutlet.textColor = UIColor.red
+                welcomeInstructionsOutlet.textColor = beltBuilder.redBeltRed
+                // fire haptic feedback for error
+                hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+                hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
                 return
             } else if self.confirmPasswordTextField.text == "" {
                 welcomeInstructionsOutlet.text = "please confirm your password"
-                welcomeInstructionsOutlet.textColor = UIColor.red
+                welcomeInstructionsOutlet.textColor = beltBuilder.redBeltRed
+                // fire haptic feedback for error
+                hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+                hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
                 return
             } else if self.passwordTextField.text != self.confirmPasswordTextField.text {
-                welcomeInstructionsOutlet.text = "your passwords do not match. please try again."
-                welcomeInstructionsOutlet.textColor = UIColor.red
+                welcomeInstructionsOutlet.text = "your passwords do not match."
+                welcomeInstructionsOutlet.textColor = beltBuilder.redBeltRed
+                // fire haptic feedback for error
+                hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+                hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
                 return
             } else if self.passwordTextField.text == self.confirmPasswordTextField.text {
                 // if valid password, pass it to destViewController
@@ -186,6 +202,10 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
             destViewController.username = newUsername
             destViewController.isOwnerAddingStudent = isOwnerAddingStudent
             destViewController.group = group
+            
+            // reset welcome instructions text color and message upon succesful save
+            welcomeInstructionsOutlet.textColor = beltBuilder.blackBeltBlack
+            welcomeInstructionsOutlet.text = "please enter the following"
 
             return
         }
@@ -204,6 +224,11 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        
+        // reset welcome instructions text color and message upon succesful save
+        welcomeInstructionsOutlet.textColor = beltBuilder.blackBeltBlack
+        welcomeInstructionsOutlet.text = "please enter the following"
+        
     }
 }
 

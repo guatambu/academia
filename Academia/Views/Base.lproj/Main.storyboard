@@ -1520,7 +1520,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="UE8-FX-1DO"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="emailOutlet" destination="oYP-P4-Ybd" id="4xg-CU-fd5"/>
+                        <outlet property="emailLabelOutlet" destination="oYP-P4-Ybd" id="849-Te-ycX"/>
                         <outlet property="emailTextField" destination="oGV-bI-vdD" id="ZSs-Zn-hp9"/>
                         <outlet property="mobileLabelOutlet" destination="R4k-TD-VhF" id="tWb-wM-iUV"/>
                         <outlet property="mobileTextField" destination="Shd-Oj-k9N" id="tAJ-wt-sCS"/>
@@ -2599,7 +2599,7 @@
                         <outlet property="emergencyContactNameTextField" destination="fN9-Ga-Wdw" id="wlv-9q-GTF"/>
                         <outlet property="emergencyContactPhoneLabelOutlet" destination="odr-98-k92" id="EDF-PS-GwB"/>
                         <outlet property="emergencyContactPhoneTextField" destination="zFT-Nr-eSM" id="xcc-lU-5KE"/>
-                        <outlet property="emergencyContactRelationshipOutlet" destination="Omz-k9-fgv" id="Lwk-dy-UOD"/>
+                        <outlet property="emergencyContactRelationshipLabelOutlet" destination="Omz-k9-fgv" id="HOH-aK-Hrj"/>
                         <outlet property="emergencyContactRelationshipTextField" destination="plq-5q-JLg" id="rOG-Ms-2J0"/>
                         <outlet property="firstProgressDotOutlet" destination="zdb-pR-tOs" id="MQA-eQ-bz5"/>
                         <outlet property="nextButtonOutlet" destination="peg-9k-muy" id="hma-g1-Duf"/>
