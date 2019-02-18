@@ -35,6 +35,9 @@ class AddressViewController: UIViewController {
     var isOwnerAddingStudent: Bool?
     var group: Group?
     
+    let beltBuilder = BeltBuilder()
+    var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
+    
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     @IBOutlet weak var addressLine1LabelOutlet: UILabel!
@@ -100,6 +103,46 @@ class AddressViewController: UIViewController {
             zipCodeTextField.resignFirstResponder()
         }
         
+        // check for required information being left blank by user
+        if addressLine1TextField.text == "" || cityTextField.text == "" || stateTextField.text == "" || zipCodeTextField.text == "" {
+            
+            // warning to user where welcome instructions text changes to red
+            welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
+            
+            // fire haptic feedback for error
+            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+            
+            // warnings for specific textfield being left blank by user
+            if addressLine1TextField.text == "" {
+                addressLine1LabelOutlet.textColor = beltBuilder.redBeltRed
+            } else {
+                addressLine1LabelOutlet.textColor = beltBuilder.blackBeltBlack
+            }
+            
+            if cityTextField.text == "" {
+                cityLabelOutlet.textColor = beltBuilder.redBeltRed
+            } else {
+                cityLabelOutlet.textColor = beltBuilder.blackBeltBlack
+            }
+            
+            if stateTextField.text == "" {
+                stateLabelOutlet.textColor = beltBuilder.redBeltRed
+            } else {
+                stateLabelOutlet.textColor = beltBuilder.blackBeltBlack
+            }
+            
+            if zipCodeTextField.text == "" {
+                zipCodeLabelOutlet.textColor = beltBuilder.redBeltRed
+            } else {
+                zipCodeLabelOutlet.textColor = beltBuilder.blackBeltBlack
+            }
+            
+            // save not allowed, so we exit function
+            return
+        }
+        
+        // if successful input from user, then we proceed on to save
         if let isOwner = isOwner {
             if isOwner {
                 // Owner update profile info
@@ -120,6 +163,15 @@ class AddressViewController: UIViewController {
         }
         
         inEditingMode = false
+        
+        // reset label text color to black upon succesful save
+        addressLine1LabelOutlet.textColor = beltBuilder.blackBeltBlack
+        cityLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        stateLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        zipCodeLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        // reset welcome instructions text color and message upon succesful save
+        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        welcomeInstructionsLabelOutlet.text = "please enter the following"
     }
     
     @IBAction func nextButtonTapped(_ sender: DesignableButton) {
@@ -137,6 +189,45 @@ class AddressViewController: UIViewController {
             zipCodeTextField.resignFirstResponder()
         }
         
+        // check for required information being left blank by user
+        if addressLine1TextField.text == "" || cityTextField.text == "" || stateTextField.text == "" || zipCodeTextField.text == "" {
+            
+            // warning to user where welcome instructions text changes to red
+            welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
+            
+            // fire haptic feedback for error
+            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+            
+            // warnings for specific textfield being left blank by user
+            if addressLine1TextField.text == "" {
+                addressLine1LabelOutlet.textColor = beltBuilder.redBeltRed
+            } else {
+                addressLine1LabelOutlet.textColor = beltBuilder.blackBeltBlack
+            }
+            
+            if cityTextField.text == "" {
+                cityLabelOutlet.textColor = beltBuilder.redBeltRed
+            }  else {
+                cityLabelOutlet.textColor = beltBuilder.blackBeltBlack
+            }
+            
+            if stateTextField.text == "" {
+                stateLabelOutlet.textColor = beltBuilder.redBeltRed
+            } else {
+                stateLabelOutlet.textColor = beltBuilder.blackBeltBlack
+            }
+            
+            if zipCodeTextField.text == "" {
+                zipCodeLabelOutlet.textColor = beltBuilder.redBeltRed
+            } else {
+                zipCodeLabelOutlet.textColor = beltBuilder.blackBeltBlack
+            }
+            
+            // save not allowed, so we exit function
+            return
+        }
+        
         // programmatically performing segue
         
         // instantiate the relevant storyboard
@@ -151,31 +242,12 @@ class AddressViewController: UIViewController {
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
         
-        // run check to see is there is addressline1, city, state, and zipCode
-        guard let addressLine1 = addressLine1TextField.text, addressLine1TextField.text != "" else {
-            
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
-            return
-        }
-        
-        guard let city = cityTextField.text, cityTextField.text != "" else {
-            
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
-            return
-        }
-        
-        guard let state = stateTextField.text, stateTextField.text != "" else {
-            
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
-            return
-        }
-        
-        guard let zipCode = zipCodeTextField.text, zipCodeTextField.text != "" else {
-            
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
-            return
-        }
-        
+        // required fields
+        let addressLine1 = addressLine1TextField.text
+        let city = cityTextField.text
+        let state = stateTextField.text
+        let zipCode = zipCodeTextField.text
+        // not a required field
         let addressLine2 = addressLine2TextField.text
         
         // pass data to destViewController
@@ -215,6 +287,15 @@ class AddressViewController: UIViewController {
                 updateAdultStudentInfo()
             }
         }
+        
+        // reset label text color to black upon succesful save
+        addressLine1LabelOutlet.textColor = beltBuilder.blackBeltBlack
+        cityLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        stateLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        zipCodeLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        // reset welcome instructions text color and message upon succesful save
+        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        welcomeInstructionsLabelOutlet.text = "please enter the following"
     }
 }
 

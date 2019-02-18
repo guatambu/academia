@@ -101,7 +101,7 @@ class OwnerHomeTableViewController: UITableViewController {
         } else if OwnerModelController.shared.ownerOnboardingTasks[indexPath.item].name == "messagingGroups" {
             
             // instantiate the relevant storyboard
-            let ownerStudentsFlowView: UIStoryboard = UIStoryboard(name: "OwnerStudentsFlow", bundle: nil)
+            let ownerStudentsFlowView: UIStoryboard = UIStoryboard(name: "OwnerBaseCampFlow", bundle: nil)
             // instantiate the desired TableViewController on relevant storyboard
             let destViewController = ownerStudentsFlowView.instantiateViewController(withIdentifier: "toOwnerGroupList") as! OwnerGroupListTableViewController
             // create the segue programmatically

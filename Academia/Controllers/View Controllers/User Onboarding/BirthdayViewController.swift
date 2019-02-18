@@ -28,6 +28,8 @@ class BirthdayViewController: UIViewController {
     var isOwnerAddingStudent: Bool?
     var group: Group?
     
+    var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
+    
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     @IBOutlet weak var whenIsYourBirthdayLabelOutlet: UILabel!
@@ -74,6 +76,16 @@ class BirthdayViewController: UIViewController {
     
     @objc func saveButtonTapped() {
         
+        guard birthdate != nil else {
+            // warning to user where welcome instructions text changes to red
+            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+
+            // fire haptic feedback for error
+            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+            return
+        }
+        
         if let isOwner = isOwner {
             if isOwner {
                 // Owner update profile info
@@ -106,6 +118,16 @@ class BirthdayViewController: UIViewController {
 
     
     @IBAction func nextButtonTapped(_ sender: Any) {
+        
+        guard birthdate != nil else {
+            // warning to user where welcome instructions text changes to red
+            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+
+            // fire haptic feedback for error
+            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+            return
+        }
         
         // programmatically performing the segue
         

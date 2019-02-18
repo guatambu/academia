@@ -41,13 +41,16 @@ class EmergencyContactViewController: UIViewController {
     var isOwnerAddingStudent: Bool?
     var group: Group?
     
+    let beltBuilder = BeltBuilder()
+    var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
+    
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     @IBOutlet weak var emergencyContactNameLabelOutlet: UILabel!
     @IBOutlet weak var emergencyContactNameTextField: UITextField!
     @IBOutlet weak var emergencyContactPhoneLabelOutlet: UILabel!
     @IBOutlet weak var emergencyContactPhoneTextField: UITextField!
-    @IBOutlet weak var emergencyContactRelationshipOutlet: UILabel!
+    @IBOutlet weak var emergencyContactRelationshipLabelOutlet: UILabel!
     @IBOutlet weak var emergencyContactRelationshipTextField: UITextField!
     
     @IBOutlet weak var nextButtonOutlet: DesignableButton!
@@ -99,10 +102,43 @@ class EmergencyContactViewController: UIViewController {
         // dismiss keyboard when leaving VC scene
         if emergencyContactNameTextField.isFirstResponder {
             emergencyContactNameTextField.resignFirstResponder()
-        } else if emergencyContactPhoneTextField.isFirstResponder {
+        } else if emergencyContactNameTextField.isFirstResponder {
             emergencyContactPhoneTextField.resignFirstResponder()
         } else if emergencyContactRelationshipTextField.isFirstResponder {
             emergencyContactRelationshipTextField.resignFirstResponder()
+        }
+        
+        // check for required information being left blank by user
+        if emergencyContactNameTextField.text == "" || emergencyContactNameTextField.text == "" || emergencyContactRelationshipTextField.text == "" {
+            
+            // warning to user where welcome instructions text changes to red
+            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+           
+            // fire haptic feedback for error
+            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+            
+            // warnings for specific textfield being left blank by user
+            if emergencyContactNameTextField.text == "" {
+                emergencyContactNameLabelOutlet.textColor = UIColor.red
+            } else {
+                emergencyContactNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
+            }
+            
+            if emergencyContactPhoneTextField.text == "" {
+                emergencyContactPhoneLabelOutlet.textColor = UIColor.red
+            } else {
+                emergencyContactPhoneLabelOutlet.textColor = beltBuilder.blackBeltBlack
+            }
+            
+            if emergencyContactRelationshipTextField.text == "" {
+                emergencyContactRelationshipLabelOutlet.textColor = UIColor.red
+            } else {
+                emergencyContactRelationshipLabelOutlet.textColor = beltBuilder.blackBeltBlack
+            }
+            
+            // save not allowed, so we exit function
+            return
         }
         
         if let isOwner = isOwner {
@@ -126,7 +162,13 @@ class EmergencyContactViewController: UIViewController {
         
         inEditingMode = false
         
-        
+        // reset label text color to black upon succesful save
+        emergencyContactNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        emergencyContactPhoneLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        emergencyContactRelationshipLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        // reset welcome instructions text color and message upon succesful save
+        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        welcomeInstructionsLabelOutlet.text = "please enter the following"
     }
     
     @IBAction func nextButtonTapped(_ sender: DesignableButton) {
@@ -138,6 +180,39 @@ class EmergencyContactViewController: UIViewController {
             emergencyContactPhoneTextField.resignFirstResponder()
         } else if emergencyContactRelationshipTextField.isFirstResponder {
             emergencyContactRelationshipTextField.resignFirstResponder()
+        }
+        
+        // check for required information being left blank by user
+        if emergencyContactNameTextField.text == "" || emergencyContactPhoneTextField.text == "" || emergencyContactRelationshipTextField.text == "" {
+            
+            // warning to user where welcome instructions text changes to red
+            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+            
+            // fire haptic feedback for error
+            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+            
+            // warnings for specific textfield being left blank by user
+            if emergencyContactNameTextField.text == "" {
+                emergencyContactNameLabelOutlet.textColor = UIColor.red
+            } else {
+                emergencyContactNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
+            }
+            
+            if emergencyContactPhoneTextField.text == "" {
+                emergencyContactPhoneLabelOutlet.textColor = UIColor.red
+            } else {
+                emergencyContactPhoneLabelOutlet.textColor = beltBuilder.blackBeltBlack
+            }
+            
+            if emergencyContactRelationshipTextField.text == "" {
+                emergencyContactRelationshipLabelOutlet.textColor = UIColor.red
+            } else {
+                emergencyContactRelationshipLabelOutlet.textColor = beltBuilder.blackBeltBlack
+            }
+            
+            // save not allowed, so we exit function
+            return
         }
         
         // programmatically performing segue
@@ -154,25 +229,18 @@ class EmergencyContactViewController: UIViewController {
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
         
-        // run check to see is there is emergency contact name, relationship, phone
-        guard let emergencyContactName = emergencyContactNameTextField.text, emergencyContactNameTextField.text != "" else {
-            
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
-            return
-        }
+        // reset label text color to black upon succesful save
+        emergencyContactNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        emergencyContactPhoneLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        emergencyContactRelationshipLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        // reset welcome instructions text color and message upon succesful save
+        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        welcomeInstructionsLabelOutlet.text = "please enter the following"
         
-        guard let emergencyContactRelationship = emergencyContactRelationshipTextField.text, emergencyContactRelationshipTextField.text != "" else {
-            
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
-            return
-        }
-        
-        guard let emergencyContactPhone = emergencyContactPhoneTextField.text, emergencyContactPhoneTextField.text != "" else {
-            
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
-            return
-        }
-        
+        // required fields
+        guard let emergencyContactName = emergencyContactNameTextField.text else { print("fail emergencyContactName"); return }
+        guard let emergencyContactRelationship = emergencyContactRelationshipTextField.text else { print("fail emergencyContactRelationship"); return }
+        guard let emergencyContactPhone = emergencyContactPhoneTextField.text else { print("fail emergencyContactPhone"); return }
         
         // pass data to destViewController
         destViewController.isOwner = isOwner
@@ -200,7 +268,6 @@ class EmergencyContactViewController: UIViewController {
         
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
         destViewController.group = group
-        
         
         guard let isOwner = isOwner else { print("fail isOwner"); return }
         guard let isKid = isKid else { print("fail isKid"); return }

@@ -38,13 +38,16 @@ class ContactInfoViewController: UIViewController {
     var isOwnerAddingStudent: Bool?
     var group: Group?
     
+    let beltBuilder = BeltBuilder()
+    var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
+    
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     @IBOutlet weak var phoneLabelOutlet: UILabel!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var mobileLabelOutlet: UILabel!
     @IBOutlet weak var mobileTextField: UITextField!
-    @IBOutlet weak var emailOutlet: UILabel!
+    @IBOutlet weak var emailLabelOutlet: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
 
     
@@ -93,6 +96,33 @@ class ContactInfoViewController: UIViewController {
             emailTextField.resignFirstResponder()
         }
         
+        // check for required information being left blank by user
+        if phoneTextField.text == "" || emailTextField.text == "" {
+            
+            // warning to user where welcome instructions text changes to red
+            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+            
+            // fire haptic feedback for error
+            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+            
+            // warnings for specific textfield being left blank by user
+            if phoneTextField.text == "" {
+                phoneLabelOutlet.textColor = UIColor.red
+            } else {
+                phoneLabelOutlet.textColor = beltBuilder.blackBeltBlack
+            }
+            
+            if emailTextField.text == "" {
+                emailLabelOutlet.textColor = UIColor.red
+            } else {
+                emailLabelOutlet.textColor = beltBuilder.blackBeltBlack
+            }
+            
+            // save not allowed, so we exit function
+            return
+        }
+        
         if let isOwner = isOwner {
             if isOwner {
                 // Owner update profile info
@@ -113,6 +143,14 @@ class ContactInfoViewController: UIViewController {
         }
         
         inEditingMode = false
+        
+        // reset label text color to black upon succesful save
+        phoneLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        emailLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        // reset welcome instructions text color and message upon succesful save
+        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        welcomeInstructionsLabelOutlet.text = "please enter the following"
+
     }
     
     @IBAction func nextButtonTapped(_ sender: DesignableButton) {
@@ -124,6 +162,33 @@ class ContactInfoViewController: UIViewController {
             mobileTextField.resignFirstResponder()
         } else if emailTextField.isFirstResponder {
             emailTextField.resignFirstResponder()
+        }
+        
+        // check for required information being left blank by user
+        if phoneTextField.text == "" || emailTextField.text == "" {
+            
+            // warning to user where welcome instructions text changes to red
+            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+            
+            // fire haptic feedback for error
+            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+            
+            // warnings for specific textfield being left blank by user
+            if phoneTextField.text == "" {
+                phoneLabelOutlet.textColor = UIColor.red
+            } else {
+                phoneLabelOutlet.textColor = beltBuilder.blackBeltBlack
+            }
+            
+            if emailTextField.text == "" {
+                emailLabelOutlet.textColor = UIColor.red
+            } else {
+                emailLabelOutlet.textColor = beltBuilder.blackBeltBlack
+            }
+            
+            // save not allowed, so we exit function
+            return
         }
         
         // programmatically performing segue
@@ -140,21 +205,11 @@ class ContactInfoViewController: UIViewController {
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
         
-        // run check to see is there is phone, mobile, email
-        guard let phone = phoneTextField.text, phoneTextField.text != "" else {
-            
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
-            return
-        }
-        
+        // required fields
+        let phone = phoneTextField.text
+        let email = emailTextField.text
         // not a required field
         let mobile = mobileTextField.text
-        
-        guard let email = emailTextField.text, emailTextField.text != "" else {
-            
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
-            return
-        }
         
         // pass data to destViewController
         destViewController.isOwner = isOwner
@@ -196,6 +251,13 @@ class ContactInfoViewController: UIViewController {
                 updateAdultStudentInfo()
             }
         }
+        
+        // reset label text color to black upon succesful save
+        phoneLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        emailLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        // reset welcome instructions text color and message upon succesful save
+        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        welcomeInstructionsLabelOutlet.text = "please enter the following"
     }
 }
 

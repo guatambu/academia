@@ -27,7 +27,9 @@ class TakeProfilePicViewController: UIViewController {
     var isOwnerAddingStudent: Bool?
     var group: Group?
     
+    let beltBuilder = BeltBuilder()
     let imagePickerController = UIImagePickerController()
+    var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
     
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
@@ -93,6 +95,33 @@ class TakeProfilePicViewController: UIViewController {
             parentGuardianTextField.resignFirstResponder()
         }
         
+        // check for required information being left blank by user
+        if firstNameTextField.text == "" || lastNameTextField.text == "" {
+            
+            // warning to user where welcome instructions text changes to red
+            welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
+            
+            // fire haptic feedback for error
+            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+            
+            // warnings for specific textfield being left blank by user
+            if firstNameTextField.text == "" {
+                firstNameLabelOutlet.textColor = beltBuilder.redBeltRed
+            } else {
+                firstNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
+            }
+            
+            if lastNameTextField.text == "" {
+                lastNameLabelOutlet.textColor = beltBuilder.redBeltRed
+            } else {
+                lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
+            }
+            
+            // save not allowed, so we exit function
+            return
+        }
+        
         if let isOwner = isOwner {
             
             if isOwner {
@@ -104,6 +133,10 @@ class TakeProfilePicViewController: UIViewController {
                     self.returnToOwnerInfo()
                   
                     print("update owner name: \(OwnerModelController.shared.owners[0].firstName) \(OwnerModelController.shared.owners[0].lastName)")
+                } else {
+                    // warning to user where welcome instructions text changes to red
+                    self.welcomeInstructionsLabelOutlet.textColor = UIColor.red
+                    // TODO: - place haptic feedback here
                 }
             }
         }
@@ -129,6 +162,13 @@ class TakeProfilePicViewController: UIViewController {
         }
 
         inEditingMode = false
+        
+        // reset label text color to black upon succesful save
+        firstNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        // reset welcome instructions text color and message upon succesful save
+        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        welcomeInstructionsLabelOutlet.text = "please enter the following"
     }
     
     @IBAction func nextButtonTapped(_ sender: DesignableButton) {
@@ -150,21 +190,34 @@ class TakeProfilePicViewController: UIViewController {
         // instantiate the desired TableViewController as ViewController on relevant storyboard
         let destViewController = mainView.instantiateViewController(withIdentifier: "toUserBirthday") as! BirthdayViewController
     
-        // run check to see is there is firstName, lastName, and profilePic
-        guard let firstName = firstNameTextField.text, firstNameTextField.text != "" else {
+        // check for required information being left blank by user
+        if firstNameTextField.text == "" || lastNameTextField.text == "" {
             
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
-            return
-        }
-        
-        guard let lastName = lastNameTextField.text, lastNameTextField.text != "" else {
+            // warning to user where welcome instructions text changes to red
+            welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
+
+            // fire haptic feedback for error
+            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
             
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+            // warnings for specific textfield being left blank by user
+            if firstNameTextField.text == "" {
+                firstNameLabelOutlet.textColor = beltBuilder.redBeltRed
+            }
+            if lastNameTextField.text == "" {
+                lastNameLabelOutlet.textColor = beltBuilder.redBeltRed
+            }
+            
+            // save not allowed, so we exit function
             return
         }
         
         guard let profilePic = profilePicImageViewOutlet.image else { return }
         
+        // required fields
+        let firstName = firstNameTextField.text
+        let lastName = lastNameTextField.text
+        // not a required field
         let parentGuardian = parentGuardianTextField.text
     
         // create the segue programmatically
@@ -204,6 +257,14 @@ class TakeProfilePicViewController: UIViewController {
                 updateAdultStudentInfo()
             }
         }
+        
+        // reset label text color to black upon succesful save
+        firstNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        // reset welcome instructions text color and message upon succesful save
+        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        welcomeInstructionsLabelOutlet.text = "please enter the following"
+        
     }
 }
 
