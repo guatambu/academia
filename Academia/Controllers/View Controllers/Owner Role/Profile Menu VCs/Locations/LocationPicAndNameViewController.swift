@@ -21,7 +21,10 @@ class LocationPicAndNameViewController: UIViewController {
     var inEditingMode: Bool?
     var locationToEdit: Location?
     
+    let beltBuilder = BeltBuilder()
     let imagePickerController = UIImagePickerController()
+    var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
+    
     
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
@@ -81,7 +84,24 @@ class LocationPicAndNameViewController: UIViewController {
         // dismiss keyboard when leaving VC scene
         if locationNameTextField.isFirstResponder {
             locationNameTextField.resignFirstResponder()
-        } 
+        }
+        
+        // check for required information being left blank by user
+        if locationNameTextField.text == "" {
+            
+            // warning to user where welcome instructions text changes to red
+            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+            
+            // fire haptic feedback for error
+            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+            
+            // warnings for specific textfield being left blank by user
+            locationNameLabelOutlet.textColor = UIColor.red
+            
+            // save not allowed, so we exit function
+            return
+        }
     
         // Location update profile info
         if locationNameTextField.text != "" && locationPicImageViewOutlet.image != UIImage(contentsOfFile: "user_placeholder") {
@@ -92,7 +112,14 @@ class LocationPicAndNameViewController: UIViewController {
             
             print("update location name: \(LocationModelController.shared.locations[0].locationName)")
         }
+        
         inEditingMode = false
+        
+        // reset label text color to black upon succesful save
+        locationNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        // reset welcome instructions text color and message upon succesful save
+        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        welcomeInstructionsLabelOutlet.text = "please enter the following"
     }
     
     
@@ -101,7 +128,24 @@ class LocationPicAndNameViewController: UIViewController {
         // dismiss keyboard when leaving VC scene
         if locationNameTextField.isFirstResponder {
             locationNameTextField.resignFirstResponder()
-        } 
+        }
+        
+        // check for required information being left blank by user
+        if locationNameTextField.text == "" {
+            
+            // warning to user where welcome instructions text changes to red
+            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+            
+            // fire haptic feedback for error
+            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+            
+            // warnings for specific textfield being left blank by user
+            locationNameLabelOutlet.textColor = UIColor.red
+            
+            // save not allowed, so we exit function
+            return
+        }
         
         // programmatically performing the segue
         
@@ -110,6 +154,12 @@ class LocationPicAndNameViewController: UIViewController {
         let mainView: UIStoryboard = UIStoryboard(name: "OwnerLocationWorkFlow", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
         let destViewController = mainView.instantiateViewController(withIdentifier: "toLocationAddress") as! LocationAddressViewController
+        
+        // reset label text color to black upon succesful save
+        locationNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        // reset welcome instructions text color and message upon succesful save
+        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        welcomeInstructionsLabelOutlet.text = "please enter the following"
         
         // run check to see is there is firstName, lastName, and profilePic
         guard let locationName = locationNameTextField.text, locationNameTextField.text != "" else {
