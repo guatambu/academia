@@ -1134,7 +1134,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="uBw-4m-QIh"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="emailOutlet" destination="Hnc-m2-VH8" id="GWH-CQ-wtW"/>
+                        <outlet property="emailLabelOutlet" destination="Hnc-m2-VH8" id="a10-Yj-JAX"/>
                         <outlet property="emailTextField" destination="GfP-GW-BAj" id="QtR-jp-OdM"/>
                         <outlet property="phoneLabelOutlet" destination="5q5-WU-D0N" id="ocw-so-D0b"/>
                         <outlet property="phoneTextField" destination="u0c-Pe-iTN" id="bMW-lf-7RC"/>

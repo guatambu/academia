@@ -108,6 +108,9 @@ class EmergencyContactViewController: UIViewController {
             emergencyContactRelationshipTextField.resignFirstResponder()
         }
         
+        // ADD TO Properties
+        var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
+        
         // check for required information being left blank by user
         if emergencyContactNameTextField.text == "" || emergencyContactNameTextField.text == "" || emergencyContactRelationshipTextField.text == "" {
             

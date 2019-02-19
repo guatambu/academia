@@ -30,7 +30,9 @@ class ClassTimeViewController: UIViewController  {
     // instances
     let beltBuilder = BeltBuilder()
     let classTimeComponents = ClassTimeComponents()
+    var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
     
+    // IBOutlets
     @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     @IBOutlet weak var daysOfTheWeekLabelOutlet: UILabel!
@@ -95,7 +97,15 @@ class ClassTimeViewController: UIViewController  {
         // Location update profile info
         guard let _ = time else {
             
-            print("ERROR: nil value found for time property in ClassTimeViewController.swift -> saveButtonTapped() - line 96.")
+            // warning to user where welcome instructions text changes to red
+            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+            
+            // fire haptic feedback for error
+            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+
+            
+            print("ERROR: nil value found for time property in ClassTimeViewController.swift -> saveButtonTapped() - line 108.")
             
             return
         }
@@ -103,6 +113,9 @@ class ClassTimeViewController: UIViewController  {
         updateAulaInfo()
         
         self.returnToClassInfo()
+        
+        // reset welcome instructions text color and message upon succesful save
+        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
         
         print("saved edited class time and timeCode: \(String(describing: AulaModelController.shared.aulas[0].time)) \n\(String(describing: AulaModelController.shared.aulas[0].timeCode)))")
         
@@ -116,7 +129,12 @@ class ClassTimeViewController: UIViewController  {
         // check for errors before performing segue, and if error, block navigation
         if time == nil {
             
-            welcomeMessageLabelOutlet.textColor = beltBuilder.redBeltRed
+            // warning to user where welcome instructions text changes to red
+            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+            
+            // fire haptic feedback for error
+            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
             
             return false
             
@@ -149,6 +167,9 @@ class ClassTimeViewController: UIViewController  {
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
         updateAulaInfo()
+        
+        // reset welcome instructions text color and message upon succesful save
+        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
         
     }
 

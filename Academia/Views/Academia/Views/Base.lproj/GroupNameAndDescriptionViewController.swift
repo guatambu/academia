@@ -20,6 +20,7 @@ class GroupNameAndDescriptionViewController: UIViewController {
     var groupToEdit: Group?
     
     let beltBuilder = BeltBuilder()
+    var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
     
     // welcome label outlets
     @IBOutlet weak var welcomeLabelOutlet: UILabel!
@@ -84,6 +85,29 @@ class GroupNameAndDescriptionViewController: UIViewController {
             groupDescriptionTextView.resignFirstResponder()
         }
         
+        // check for required information being left blank by user
+        if groupNameTextField.text == "" {
+            
+            // warning to user where welcome instructions text changes to red
+            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+            
+            // fire haptic feedback for error
+            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+            
+            // warnings for specific textfield being left blank by user
+            groupNameLabelOutlet.textColor = UIColor.red
+            
+            // save not allowed, so we exit function
+            return
+        }
+        
+        // reset label text color to black upon succesful save
+        groupNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        // reset welcome instructions text color and message upon succesful save
+        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        welcomeInstructionsLabelOutlet.text = "please enter the following"
+        
         // Location update profile info
         if groupNameTextField.text != "" {
             
@@ -106,6 +130,29 @@ class GroupNameAndDescriptionViewController: UIViewController {
             groupDescriptionTextView.resignFirstResponder()
         }
         
+        // check for required information being left blank by user
+        if groupNameTextField.text == "" {
+            
+            // warning to user where welcome instructions text changes to red
+            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+            
+            // fire haptic feedback for error
+            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+            
+            // warnings for specific textfield being left blank by user
+            groupNameLabelOutlet.textColor = UIColor.red
+            
+            // save not allowed, so we exit function
+            return
+        }
+        
+        // reset label text color to black upon succesful save
+        groupNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        // reset welcome instructions text color and message upon succesful save
+        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        welcomeInstructionsLabelOutlet.text = "please enter the following"
+        
         // programmatically performing the segue
       
         // instantiate the relevant storyboard
@@ -113,15 +160,11 @@ class GroupNameAndDescriptionViewController: UIViewController {
         // instantiate the desired TableViewController as ViewController on relevant storyboard
         let destViewController = mainView.instantiateViewController(withIdentifier: "toAddStudentsToGroup") as! AddStudentsToGroupTableViewController
         
-        // run check to see is there is a paymentProgramName
-        guard groupNameTextField.text != "" else {
-            
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
-            return
-        }
+        // required field
+        let groupName = groupNameTextField.text
+        // not a required field
+        let groupDescription = groupDescriptionTextView.text
         
-        groupName = groupNameTextField.text
-        groupDescription = groupDescriptionTextView.text
         // create the segue programmatically
         self.navigationController?.pushViewController(destViewController, animated: true)
         
