@@ -23,7 +23,9 @@ class ClassDayViewController: UIViewController {
     var aulaToEdit: Aula?
     
     let beltBuilder = BeltBuilder()
+    var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
     
+    // IBOutlets
     @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     // day of the week labels
@@ -76,11 +78,15 @@ class ClassDayViewController: UIViewController {
     
     @objc func saveButtonTapped() {
         
-        // TODO: - run desired checks for the days of the week selected
-        
+        // check for required information being left blank by user
         if daysOfTheWeek.isEmpty {
             
-            welcomeMessageLabelOutlet.textColor = beltBuilder.redBeltRed
+            // warning to user where welcome instructions text changes to red
+            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+            
+            // fire haptic feedback for error
+            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
             
         } else {
             
@@ -91,6 +97,9 @@ class ClassDayViewController: UIViewController {
             print("update group name: \(String(describing: self.aulaToEdit?.aulaName))")
             
             inEditingMode = false
+            
+            // reset welcome instructions text color and message upon succesful save
+            welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
         }
     }
     
@@ -143,7 +152,12 @@ class ClassDayViewController: UIViewController {
         // check for errors before performing segue, and if error, block navigation
         if daysOfTheWeek.isEmpty {
             
-            welcomeMessageLabelOutlet.textColor = beltBuilder.redBeltRed
+            // warning to user where welcome instructions text changes to red
+            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+            
+            // fire haptic feedback for error
+            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
             
             return false
             
@@ -176,6 +190,8 @@ class ClassDayViewController: UIViewController {
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
         updateAulaInfo()
         
+        // reset welcome instructions text color and message upon succesful save
+        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
     }
 }
 

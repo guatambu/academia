@@ -22,7 +22,9 @@ class ClassNameAndDescriptionViewController: UIViewController {
     var aulaToEdit: Aula?
 
     let beltBuilder = BeltBuilder()
-    
+    var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
+
+    // IBOutlets
     @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     @IBOutlet weak var classNameLabelOutlet: UILabel!
@@ -88,6 +90,29 @@ class ClassNameAndDescriptionViewController: UIViewController {
             classDescriptionTextView.resignFirstResponder()
         }
         
+        // check for required information being left blank by user
+        if classNameTextField.text == "" {
+            
+            // warning to user where welcome instructions text changes to red
+            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+            
+            // fire haptic feedback for error
+            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+            
+            // warnings for specific textfield being left blank by user
+            classNameLabelOutlet.textColor = UIColor.red
+
+            // save not allowed, so we exit function
+            return
+        }
+        
+        // reset label text color to black upon succesful save
+        classNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        // reset welcome instructions text color and message upon succesful save
+        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        welcomeInstructionsLabelOutlet.text = "please enter the following"
+        
         // Location update profile info
         if classNameTextField.text != "" {
             
@@ -104,11 +129,21 @@ class ClassNameAndDescriptionViewController: UIViewController {
     // MARK: - Navigation
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        // check for errors before performing segue, and if error, block navigation
+        
+        // check for required information being left blank by user
         if classNameTextField.text == "" {
             
-            welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
+            // warning to user where welcome instructions text changes to red
+            welcomeInstructionsLabelOutlet.textColor = UIColor.red
             
+            // fire haptic feedback for error
+            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+            
+            // warnings for specific textfield being left blank by user
+            classNameLabelOutlet.textColor = UIColor.red
+            
+            // save not allowed, so we exit function
             return false
             
         } else {
@@ -145,6 +180,12 @@ class ClassNameAndDescriptionViewController: UIViewController {
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
         updateAulaInfo()
+        
+        // reset label text color to black upon succesful save
+        classNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        // reset welcome instructions text color and message upon succesful save
+        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        welcomeInstructionsLabelOutlet.text = "please enter the following"
     }
 }
 
