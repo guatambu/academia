@@ -20,6 +20,7 @@ class PaymentProgramNameAndDescriptionViewController: UIViewController {
     var paymentProgramToEdit: PaymentProgram?
     
     let beltBuilder = BeltBuilder()
+    var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
     
     // welcome label outlets
     @IBOutlet weak var welcomeLabelOutlet: UILabel!
@@ -85,18 +86,39 @@ class PaymentProgramNameAndDescriptionViewController: UIViewController {
         } else if programDescriptionTextView.isFirstResponder {
             programDescriptionTextView.resignFirstResponder()
         }
-
         
-        // Location update profile info
-        if programNameTextField.text != "" {
+        // check for required information being left blank by user
+        if programNameTextField.text == "" {
             
+            // warning to user where welcome instructions text changes to red
+            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+            
+            // fire haptic feedback for error
+            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+        
+            paymentProgramNameLabelOutlet.textColor = beltBuilder.redBeltRed
+            
+            // save not allowed, so we exit function
+            return
+            
+        } else {
+            
+            // Location update profile info
             updatePaymentProgramInfo()
             
             self.returnToPaymentProgramInfo()
             
             print("update payment program name: \(PaymentProgramModelController.shared.paymentPrograms[0].programName)")
         }
+        
         inEditingMode = false
+        
+        // reset label text color to black upon succesful save
+        paymentProgramNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        // reset welcome instructions text color and message upon succesful save
+        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        welcomeInstructionsLabelOutlet.text = "please enter the following"
     }
     
     
@@ -105,6 +127,23 @@ class PaymentProgramNameAndDescriptionViewController: UIViewController {
         // dismiss keyboard when leaving VC scene
         if programNameTextField.isFirstResponder {
             programNameTextField.resignFirstResponder()
+        }
+        
+        // check for required information being left blank by user
+        if programNameTextField.text == "" {
+            
+            // warning to user where welcome instructions text changes to red
+            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+            
+            // fire haptic feedback for error
+            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+            
+            paymentProgramNameLabelOutlet.textColor = beltBuilder.redBeltRed
+            
+            // save not allowed, so we exit function
+            return
+            
         }
         
         // programmatically performing the segue
@@ -145,6 +184,12 @@ class PaymentProgramNameAndDescriptionViewController: UIViewController {
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
         updatePaymentProgramInfo()
+        
+        // reset label text color to black upon succesful save
+        paymentProgramNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        // reset welcome instructions text color and message upon succesful save
+        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        welcomeInstructionsLabelOutlet.text = "please enter the following"
     }
 }
 
