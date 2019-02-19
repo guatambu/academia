@@ -34,11 +34,11 @@ class TakeProfilePicViewController: UIViewController {
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     @IBOutlet weak var profilePicImageViewOutlet: UIImageView!
-    @IBOutlet weak var firstNameLabelOutlet: UILabel!
+//    @IBOutlet weak var firstNameLabelOutlet: UILabel!
     @IBOutlet weak var firstNameTextField: UITextField!
-    @IBOutlet weak var lastNameLabelOutlet: UILabel!
+//    @IBOutlet weak var lastNameLabelOutlet: UILabel!
     @IBOutlet weak var lastNameTextField: UITextField!
-    @IBOutlet weak var parentGuardianLabelOutlet: UILabel!
+//    @IBOutlet weak var parentGuardianLabelOutlet: UILabel!
     @IBOutlet weak var parentGuardianTextField: UITextField!
     
     
@@ -56,6 +56,12 @@ class TakeProfilePicViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.avenirFont
+        
+        firstNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your first name", attributes: beltBuilder.avenirFont)
+        lastNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your last name", attributes: beltBuilder.avenirFont)
+        parentGuardianTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter parent/guardian name", attributes: beltBuilder.avenirFont)
         
         firstNameTextField.delegate = self
         lastNameTextField.delegate = self
@@ -107,15 +113,27 @@ class TakeProfilePicViewController: UIViewController {
             
             // warnings for specific textfield being left blank by user
             if firstNameTextField.text == "" {
-                firstNameLabelOutlet.textColor = beltBuilder.redBeltRed
+                
+                firstNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your first name", attributes: beltBuilder.errorAvenirFont)
+                
+//                firstNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
-                firstNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
+                
+                firstNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your first name", attributes: beltBuilder.avenirFont)
+                
+//                firstNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             if lastNameTextField.text == "" {
-                lastNameLabelOutlet.textColor = beltBuilder.redBeltRed
+                
+                lastNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your last name", attributes: beltBuilder.errorAvenirFont)
+                
+//                lastNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
-                lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
+                
+                lastNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your last name", attributes: beltBuilder.avenirFont)
+                
+//                lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             // save not allowed, so we exit function
@@ -163,9 +181,9 @@ class TakeProfilePicViewController: UIViewController {
 
         inEditingMode = false
         
-        // reset label text color to black upon succesful save
-        firstNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
-        lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        // reset textfield placeholder text color to gray upon succesful save
+        firstNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your last name", attributes: beltBuilder.avenirFont)
+        lastNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your last name", attributes: beltBuilder.avenirFont)
         // reset welcome instructions text color and message upon succesful save
         welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
         welcomeInstructionsLabelOutlet.text = "please enter the following"
@@ -195,17 +213,34 @@ class TakeProfilePicViewController: UIViewController {
             
             // warning to user where welcome instructions text changes to red
             welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
-
+            
             // fire haptic feedback for error
             hapticFeedbackGenerator = UINotificationFeedbackGenerator()
             hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
             
             // warnings for specific textfield being left blank by user
             if firstNameTextField.text == "" {
-                firstNameLabelOutlet.textColor = beltBuilder.redBeltRed
+                
+                firstNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your first name", attributes: beltBuilder.errorAvenirFont)
+                
+                //                firstNameLabelOutlet.textColor = beltBuilder.redBeltRed
+            } else {
+                
+                firstNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your first name", attributes: beltBuilder.avenirFont)
+                
+                //                firstNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
+            
             if lastNameTextField.text == "" {
-                lastNameLabelOutlet.textColor = beltBuilder.redBeltRed
+                
+                lastNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your last name", attributes: beltBuilder.errorAvenirFont)
+                
+                //                lastNameLabelOutlet.textColor = beltBuilder.redBeltRed
+            } else {
+                
+                lastNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your last name", attributes: beltBuilder.avenirFont)
+                
+                //                lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             // save not allowed, so we exit function
@@ -258,9 +293,9 @@ class TakeProfilePicViewController: UIViewController {
             }
         }
         
-        // reset label text color to black upon succesful save
-        firstNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
-        lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        // reset textfield placeholder text color to gray upon succesful save
+        firstNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your last name", attributes: beltBuilder.avenirFont)
+        lastNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your last name", attributes: beltBuilder.avenirFont)
         // reset welcome instructions text color and message upon succesful save
         welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
         welcomeInstructionsLabelOutlet.text = "please enter the following"

@@ -26,12 +26,12 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
     
     @IBOutlet weak var welcomeMessageOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsOutlet: UILabel!
-    @IBOutlet weak var usernameLabelOutlet: UILabel!
+//    @IBOutlet weak var usernameLabelOutlet: UILabel!
     @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var passwordLabelOutlet: UILabel!
+//    @IBOutlet weak var passwordLabelOutlet: UILabel!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
-    @IBOutlet weak var confirmPasswordLabelOutlet: UILabel!
+//    @IBOutlet weak var confirmPasswordLabelOutlet: UILabel!
     @IBOutlet weak var signUpButtonOutlet: UIButton!
     
     
@@ -77,30 +77,27 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         
         confirmPasswordTextField.isEnabled = true
         confirmPasswordTextField.isHidden = false
-        confirmPasswordLabelOutlet.isHidden = false
+//        confirmPasswordLabelOutlet.isHidden = false
         
-        welcomeMessageOutlet.textColor = UIColor.black
+        welcomeMessageOutlet.textColor = beltBuilder.blackBeltBlack
         
-        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.gray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-LightOblique", size: 16)! ]
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.avenirFont
         
-        navigationController?.navigationBar.titleTextAttributes = avenirFont
-        
-        usernameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter username", attributes: avenirFont)
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter password", attributes: avenirFont)
-        confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: "tap to re-enter password", attributes: avenirFont)
+        usernameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter username", attributes: beltBuilder.avenirFont)
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter password", attributes: beltBuilder.avenirFont)
+        confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: "tap to re-enter password", attributes: beltBuilder.avenirFont)
         
         guard let _ = username, let _ = password else {
             
             if isOwner {
                 welcomeMessageOutlet.text = "Welcome New Owner"
                 welcomeInstructionsOutlet.text = "please create a username and password"
-                passwordLabelOutlet.text = "create password"
+//                passwordLabelOutlet.text = "create password"
                 signUpButtonOutlet.setTitle("Sign Up", for: UIControl.State.normal)
             } else {
                 welcomeMessageOutlet.text = "Welcome New Student"
                 welcomeInstructionsOutlet.text = "please create a username and password"
-                passwordLabelOutlet.text = "create password"
+//                passwordLabelOutlet.text = "create password"
                 signUpButtonOutlet.setTitle("Sign Up", for: UIControl.State.normal)
             }
             
@@ -110,19 +107,19 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         if isOwner {
             welcomeMessageOutlet.text = "Welcome Owner"
             welcomeInstructionsOutlet.text = "please login"
-            passwordLabelOutlet.text = "password"
+//            passwordLabelOutlet.text = "password"
             confirmPasswordTextField.isEnabled = false
             confirmPasswordTextField.isHidden = true
-            confirmPasswordLabelOutlet.isHidden = true
+//            confirmPasswordLabelOutlet.isHidden = true
             signUpButtonOutlet.setTitle("Login", for: UIControl.State.normal)
             
         } else {
             welcomeMessageOutlet.text = "Welcome Student"
             welcomeInstructionsOutlet.text = "please login"
-            passwordLabelOutlet.text = "password"
+//            passwordLabelOutlet.text = "password"
             confirmPasswordTextField.isEnabled = false
             confirmPasswordTextField.isHidden = true
-            confirmPasswordLabelOutlet.isHidden = true
+//            confirmPasswordLabelOutlet.isHidden = true
             signUpButtonOutlet.setTitle("Login", for: UIControl.State.normal)
         }
     }
@@ -148,6 +145,57 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         // instantiate the desired TableViewController as ViewController on relevant storyboard
         let destViewController = mainView.instantiateViewController(withIdentifier: "toTakeProfilePic") as! TakeProfilePicViewController
         
+        // check for required information being left blank by user
+        if usernameTextField.text == "" || passwordTextField.text == "" || confirmPasswordTextField.text == "" {
+            
+            // warning to user where welcome instructions text changes to red
+            welcomeInstructionsOutlet.textColor = beltBuilder.redBeltRed
+            
+            // fire haptic feedback for error
+            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+            
+            // warnings for specific textfield being left blank by user
+            if usernameTextField.text == "" {
+                
+                usernameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter username", attributes: beltBuilder.errorAvenirFont)
+                
+                //                firstNameLabelOutlet.textColor = beltBuilder.redBeltRed
+            } else {
+                
+                usernameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter username", attributes: beltBuilder.avenirFont)
+                
+                //                firstNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
+            }
+            
+            if passwordTextField.text == "" {
+                
+                passwordTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter password", attributes: beltBuilder.errorAvenirFont)
+                
+                //                lastNameLabelOutlet.textColor = beltBuilder.redBeltRed
+            } else {
+                
+                passwordTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter password", attributes: beltBuilder.avenirFont)
+                
+                //                lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
+            }
+            
+            if confirmPasswordTextField.text == "" {
+                
+                confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: "tap to confirm password", attributes: beltBuilder.errorAvenirFont)
+                
+                //                lastNameLabelOutlet.textColor = beltBuilder.redBeltRed
+            } else {
+                
+                confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: "tap to confirm password", attributes: beltBuilder.avenirFont)
+                
+                //                lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
+            }
+            
+            // save not allowed, so we exit function
+            return
+        }
+        
         // run check to see is there is username/password
         guard let username = username, let password = password else {
             // if no username/password -
@@ -159,6 +207,9 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
                 // fire haptic feedback for error
                 hapticFeedbackGenerator = UINotificationFeedbackGenerator()
                 hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+                
+                usernameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter username", attributes: beltBuilder.errorAvenirFont)
+                
                 return
             }
             // check to see if there is a valid and matching password
@@ -168,6 +219,9 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
                 // fire haptic feedback for error
                 hapticFeedbackGenerator = UINotificationFeedbackGenerator()
                 hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+                
+                passwordTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter password", attributes: beltBuilder.errorAvenirFont)
+                
                 return
             } else if self.confirmPasswordTextField.text == "" {
                 welcomeInstructionsOutlet.text = "please confirm your password"
@@ -175,6 +229,9 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
                 // fire haptic feedback for error
                 hapticFeedbackGenerator = UINotificationFeedbackGenerator()
                 hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+                
+                confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: "tap to re-enter password", attributes: beltBuilder.errorAvenirFont)
+                
                 return
             } else if self.passwordTextField.text != self.confirmPasswordTextField.text {
                 welcomeInstructionsOutlet.text = "your passwords do not match."
@@ -209,6 +266,7 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
 
             return
         }
+        
         // pass data to destViewController
         destViewController.isOwner = isOwner
         destViewController.isKid = isKid
@@ -228,6 +286,10 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         // reset welcome instructions text color and message upon succesful save
         welcomeInstructionsOutlet.textColor = beltBuilder.blackBeltBlack
         welcomeInstructionsOutlet.text = "please enter the following"
+        // reset textfield placeholder text color to gray upon succesful save
+        usernameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter username", attributes: beltBuilder.avenirFont)
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter password", attributes: beltBuilder.avenirFont)
+        confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: "tap to re-enter password", attributes: beltBuilder.avenirFont)
         
     }
 }
@@ -273,7 +335,7 @@ extension SignUpLoginViewController: UITextFieldDelegate {
 
             } else {
                 
-                self.view.frame.origin.y = -keyboardCGRectValue.height
+                self.view.frame.origin.y = -(keyboardCGRectValue.height)
             }
         
         } else {
