@@ -175,6 +175,7 @@
 		FAD5B12D21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5B12C21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift */; };
 		FAD5B12F21C44BCA004ED286 /* ViewAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5B12E21C44BCA004ED286 /* ViewAgreementViewController.swift */; };
 		FADA615222112AC100BB3302 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADA615122112AC100BB3302 /* CoreDataStack.swift */; };
+		FADA6157221B98B800BB3302 /* PromotionCD+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADA6156221B98B800BB3302 /* PromotionCD+Convenience.swift */; };
 		FAE2FD3C2140700F00815402 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE2FD3B2140700F00815402 /* MockData.swift */; };
 		FAE2FD652140BE4200815402 /* FirstNameTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAE2FD642140BE4200815402 /* FirstNameTextFieldCell.xib */; };
 		FAE2FD672140BE4D00815402 /* LastNameTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAE2FD662140BE4D00815402 /* LastNameTextFieldCell.xib */; };
@@ -456,6 +457,7 @@
 		FAD5B12C21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProgramDelegateProtocols.swift; sourceTree = "<group>"; };
 		FAD5B12E21C44BCA004ED286 /* ViewAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAgreementViewController.swift; sourceTree = "<group>"; };
 		FADA615122112AC100BB3302 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		FADA6156221B98B800BB3302 /* PromotionCD+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PromotionCD+Convenience.swift"; sourceTree = "<group>"; };
 		FAE2FD3B2140700F00815402 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		FAE2FD642140BE4200815402 /* FirstNameTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstNameTextFieldCell.xib; sourceTree = "<group>"; };
 		FAE2FD662140BE4D00815402 /* LastNameTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LastNameTextFieldCell.xib; sourceTree = "<group>"; };
@@ -915,6 +917,7 @@
 				FAB806D02210E87200124EBA /* OwnerCD+Convenience.swift */,
 				FAB806D22210E88B00124EBA /* PaymentProgramCD+Convenience.swift */,
 				FAB806D42210E8B900124EBA /* StudentStatusCD+Convenience.swift */,
+				FADA6156221B98B800BB3302 /* PromotionCD+Convenience.swift */,
 			);
 			path = "CoreData+Convenience";
 			sourceTree = "<group>";
@@ -1594,6 +1597,7 @@
 				FAB806BF2210E74400124EBA /* AulaCD+Convenience.swift in Sources */,
 				FACA3EB3219288EF0099E620 /* AddressViewController.swift in Sources */,
 				FA4DF32C218CCA0300ECC167 /* Technique.swift in Sources */,
+				FADA6157221B98B800BB3302 /* PromotionCD+Convenience.swift in Sources */,
 				FACA3EB92192895C0099E620 /* CompletedProfileViewController.swift in Sources */,
 				FAE2FD8C2140BFBA00815402 /* UsernameTextFieldTableViewCell.swift in Sources */,
 				FAD2A3B121E6B90D00364FC0 /* AddGroupToClassTableViewController.swift in Sources */,
