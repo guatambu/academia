@@ -29,14 +29,16 @@ class LocationSocialLinksViewController: UIViewController {
     
     var inEditingMode: Bool?
     var locationToEdit: Location?
+    
+    let beltBuilder = BeltBuilder()
 
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
-    @IBOutlet weak var socialLink1LabelOutlet: UILabel!
+//    @IBOutlet weak var socialLink1LabelOutlet: UILabel!
     @IBOutlet weak var socialLink1TextField: UITextField!
-    @IBOutlet weak var socialLink2LabelOutlet: UILabel!
+//    @IBOutlet weak var socialLink2LabelOutlet: UILabel!
     @IBOutlet weak var socialLink2TextField: UITextField!
-    @IBOutlet weak var socialLink3Outlet: UILabel!
+//    @IBOutlet weak var socialLink3Outlet: UILabel!
     @IBOutlet weak var socialLink3TextField: UITextField!
     
     @IBOutlet weak var nextButtonOutlet: DesignableButton!
@@ -59,6 +61,10 @@ class LocationSocialLinksViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        socialLink1TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter Instagram link", attributes: beltBuilder.avenirFont)
+        socialLink2TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter facebook link", attributes: beltBuilder.avenirFont)
+        socialLink3TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter twitter link", attributes: beltBuilder.avenirFont)
         
         socialLink1TextField.delegate = self
         socialLink2TextField.delegate = self
@@ -81,7 +87,7 @@ class LocationSocialLinksViewController: UIViewController {
             socialLink2TextField.resignFirstResponder()
         } else if socialLink3TextField.isFirstResponder {
             socialLink3TextField.resignFirstResponder()
-        } 
+        }
         
         // Location update profile info
         updateLocationInfo()

@@ -27,6 +27,7 @@ class LocationAddressViewController: UIViewController {
     let beltBuilder = BeltBuilder()
     var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
 
+    @IBOutlet weak var signUpElementsStackView: UIStackView!
     @IBOutlet weak var welcomeLabeOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     @IBOutlet weak var addressLine1LabelOutlet: UILabel!
@@ -59,6 +60,12 @@ class LocationAddressViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        addressLine1TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
+        addressLine2TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
+        cityTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter city", attributes: beltBuilder.avenirFont)
+        stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter state", attributes: beltBuilder.avenirFont)
+        zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter zip code", attributes: beltBuilder.avenirFont)
         
         addressLine1TextField.delegate = self
         addressLine2TextField.delegate = self
@@ -98,38 +105,63 @@ class LocationAddressViewController: UIViewController {
             
             // warnings for specific textfield being left blank by user
             if addressLine1TextField.text == "" {
-                addressLine1LabelOutlet.textColor = UIColor.red
+                
+                addressLine1TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.errorAvenirFont)
+                
+                //                firstNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
-                addressLine1LabelOutlet.textColor = beltBuilder.blackBeltBlack
+                
+                addressLine1TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
+                
+                //                firstNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             if cityTextField.text == "" {
-                cityLabelOutlet.textColor = UIColor.red
+                
+                cityTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter city", attributes: beltBuilder.errorAvenirFont)
+                
+                //                lastNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
-                cityLabelOutlet.textColor = beltBuilder.blackBeltBlack
+                
+                cityTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter city", attributes: beltBuilder.avenirFont)
+                
+                //                lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             if stateTextField.text == "" {
-                stateLabelOutlet.textColor = UIColor.red
+                
+                stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter state", attributes: beltBuilder.errorAvenirFont)
+                
+                //                lastNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
-                stateLabelOutlet.textColor = beltBuilder.blackBeltBlack
+                
+                stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter state", attributes: beltBuilder.avenirFont)
+                
+                //                lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             if zipCodeTextField.text == "" {
-                zipCodeLabelOutlet.textColor = UIColor.red
+                
+                zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter zip code", attributes: beltBuilder.errorAvenirFont)
+                
+                //                lastNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
-                zipCodeLabelOutlet.textColor = beltBuilder.blackBeltBlack
+                
+                zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter zip code", attributes: beltBuilder.avenirFont)
+                
+                //                lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             // save not allowed, so we exit function
             return
         }
         
-        // reset label text color to black upon succesful save
-        addressLine1LabelOutlet.textColor = beltBuilder.blackBeltBlack
-        cityLabelOutlet.textColor = beltBuilder.blackBeltBlack
-        stateLabelOutlet.textColor = beltBuilder.blackBeltBlack
-        zipCodeLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        // reset textField placeholder text color to gray upon succesful save
+        addressLine1TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
+        addressLine2TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
+        cityTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
+        stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
+        zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
         // reset welcome instructions text color and message upon succesful save
         welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
         welcomeInstructionsLabelOutlet.text = "please enter the following"
@@ -172,38 +204,63 @@ class LocationAddressViewController: UIViewController {
             
             // warnings for specific textfield being left blank by user
             if addressLine1TextField.text == "" {
-                addressLine1LabelOutlet.textColor = UIColor.red
+                
+                addressLine1TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.errorAvenirFont)
+                
+                //                firstNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
-                addressLine1LabelOutlet.textColor = beltBuilder.blackBeltBlack
+                
+                addressLine1TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
+                
+                //                firstNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             if cityTextField.text == "" {
-                cityLabelOutlet.textColor = UIColor.red
+                
+                cityTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter city", attributes: beltBuilder.errorAvenirFont)
+                
+                //                lastNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
-                cityLabelOutlet.textColor = beltBuilder.blackBeltBlack
+                
+                cityTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter city", attributes: beltBuilder.avenirFont)
+                
+                //                lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             if stateTextField.text == "" {
-                stateLabelOutlet.textColor = UIColor.red
+                
+                stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter state", attributes: beltBuilder.errorAvenirFont)
+                
+                //                lastNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
-                stateLabelOutlet.textColor = beltBuilder.blackBeltBlack
+                
+                stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter state", attributes: beltBuilder.avenirFont)
+                
+                //                lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             if zipCodeTextField.text == "" {
-                zipCodeLabelOutlet.textColor = UIColor.red
+                
+                zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter zip code", attributes: beltBuilder.errorAvenirFont)
+                
+                //                lastNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
-                zipCodeLabelOutlet.textColor = beltBuilder.blackBeltBlack
+                
+                zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter zip code", attributes: beltBuilder.avenirFont)
+                
+                //                lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             // save not allowed, so we exit function
             return
         }
         
-        // reset label text color to black upon succesful save
-        addressLine1LabelOutlet.textColor = beltBuilder.blackBeltBlack
-        cityLabelOutlet.textColor = beltBuilder.blackBeltBlack
-        stateLabelOutlet.textColor = beltBuilder.blackBeltBlack
-        zipCodeLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        // reset textField placeholder text color to gray upon succesful save
+        addressLine1TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
+        addressLine2TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
+        cityTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
+        stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
+        zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
         // reset welcome instructions text color and message upon succesful save
         welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
         welcomeInstructionsLabelOutlet.text = "please enter the following"
@@ -337,6 +394,7 @@ extension LocationAddressViewController: UITextFieldDelegate {
                 let bottomPadding = view.safeAreaInsets.bottom
                 
                 self.view.frame.origin.y = -(keyboardCGRectValue.height - bottomPadding)
+                self.signUpElementsStackView.spacing = 16
                 
             } else {
                 
@@ -346,6 +404,7 @@ extension LocationAddressViewController: UITextFieldDelegate {
         } else {
             
             self.view.frame.origin.y = 0
+            self.signUpElementsStackView.spacing = 48
         }
     }
     

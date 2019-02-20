@@ -30,7 +30,7 @@ class LocationPicAndNameViewController: UIViewController {
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     @IBOutlet weak var locationPicImageViewOutlet: UIImageView!
     @IBOutlet weak var activeSwitch: UISwitch!
-    @IBOutlet weak var locationNameLabelOutlet: UILabel!
+//    @IBOutlet weak var locationNameLabelOutlet: UILabel!
     @IBOutlet weak var locationNameTextField: UITextField!
 
     
@@ -52,6 +52,8 @@ class LocationPicAndNameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        locationNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter location name", attributes: beltBuilder.avenirFont)
         
         locationNameTextField.delegate = self
         
@@ -97,7 +99,7 @@ class LocationPicAndNameViewController: UIViewController {
             hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
             
             // warnings for specific textfield being left blank by user
-            locationNameLabelOutlet.textColor = UIColor.red
+            locationNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter location name", attributes: beltBuilder.errorAvenirFont)
             
             // save not allowed, so we exit function
             return
@@ -115,8 +117,8 @@ class LocationPicAndNameViewController: UIViewController {
         
         inEditingMode = false
         
-        // reset label text color to black upon succesful save
-        locationNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        // reset textField placeholder text to gray upon succesful save
+        locationNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter location name", attributes: beltBuilder.avenirFont)
         // reset welcome instructions text color and message upon succesful save
         welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
         welcomeInstructionsLabelOutlet.text = "please enter the following"
@@ -141,7 +143,7 @@ class LocationPicAndNameViewController: UIViewController {
             hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
             
             // warnings for specific textfield being left blank by user
-            locationNameLabelOutlet.textColor = UIColor.red
+            locationNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter emergency contact name", attributes: beltBuilder.errorAvenirFont)
             
             // save not allowed, so we exit function
             return
@@ -155,18 +157,14 @@ class LocationPicAndNameViewController: UIViewController {
         // instantiate the desired TableViewController as ViewController on relevant storyboard
         let destViewController = mainView.instantiateViewController(withIdentifier: "toLocationAddress") as! LocationAddressViewController
         
-        // reset label text color to black upon succesful save
-        locationNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        // reset textField placeholder text to gray upon succesful save
+        locationNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter emergency contact name", attributes: beltBuilder.avenirFont)
         // reset welcome instructions text color and message upon succesful save
         welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
         welcomeInstructionsLabelOutlet.text = "please enter the following"
         
         // run check to see is there is firstName, lastName, and profilePic
-        guard let locationName = locationNameTextField.text, locationNameTextField.text != "" else {
-            
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
-            return
-        }
+        guard let locationName = locationNameTextField.text else { return }
         
         guard let locationPic = locationPicImageViewOutlet.image else { return }
         
