@@ -76,7 +76,7 @@ class BeltBuilder {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.red
-        view.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        view.widthAnchor.constraint(equalToConstant: 80).isActive = true
         return view
     }()
     
