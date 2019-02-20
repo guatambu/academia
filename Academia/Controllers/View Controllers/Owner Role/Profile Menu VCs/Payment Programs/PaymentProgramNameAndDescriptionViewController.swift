@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PaymentProgramNameAndDescriptionViewController: UIViewController {
+class PaymentProgramNameAndDescriptionViewController: UIViewController, UITextInputTraits {
 
     // MARK: - Properties
     
@@ -26,7 +26,7 @@ class PaymentProgramNameAndDescriptionViewController: UIViewController {
     @IBOutlet weak var welcomeLabelOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     // payment program info outlets
-    @IBOutlet weak var paymentProgramNameLabelOutlet: UILabel!
+//    @IBOutlet weak var paymentProgramNameLabelOutlet: UILabel!
     @IBOutlet weak var programNameTextField: UITextField!
     // active switch + details
     @IBOutlet weak var activeLabelOutlet: UILabel!
@@ -42,8 +42,10 @@ class PaymentProgramNameAndDescriptionViewController: UIViewController {
         
         subscribeToKeyboardNotifications()
         
+        programNameTextField.autocorrectionType = UITextAutocorrectionType.no
+        
         let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
+                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 16)! ]
         
         navigationController?.navigationBar.titleTextAttributes = avenirFont
         
@@ -57,6 +59,9 @@ class PaymentProgramNameAndDescriptionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        programNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter program name", attributes: beltBuilder.avenirFont)
+        programDescriptionTextView.attributedText = NSAttributedString(string: "tap to enter program description", attributes: beltBuilder.avenirFont)
         
         programNameTextField.delegate = self
         programDescriptionTextView.delegate = self
@@ -97,7 +102,7 @@ class PaymentProgramNameAndDescriptionViewController: UIViewController {
             hapticFeedbackGenerator = UINotificationFeedbackGenerator()
             hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
         
-            paymentProgramNameLabelOutlet.textColor = beltBuilder.redBeltRed
+            programNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter program name", attributes: beltBuilder.errorAvenirFont)
             
             // save not allowed, so we exit function
             return
@@ -114,8 +119,8 @@ class PaymentProgramNameAndDescriptionViewController: UIViewController {
         
         inEditingMode = false
         
-        // reset label text color to black upon succesful save
-        paymentProgramNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        // reset textField placeholder text color to gray upon succesful save
+        programNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter payment program name", attributes: beltBuilder.avenirFont)
         // reset welcome instructions text color and message upon succesful save
         welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
         welcomeInstructionsLabelOutlet.text = "please enter the following"
@@ -127,6 +132,8 @@ class PaymentProgramNameAndDescriptionViewController: UIViewController {
         // dismiss keyboard when leaving VC scene
         if programNameTextField.isFirstResponder {
             programNameTextField.resignFirstResponder()
+        } else if programDescriptionTextView.isFirstResponder {
+            programDescriptionTextView.resignFirstResponder()
         }
         
         // check for required information being left blank by user
@@ -139,7 +146,7 @@ class PaymentProgramNameAndDescriptionViewController: UIViewController {
             hapticFeedbackGenerator = UINotificationFeedbackGenerator()
             hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
             
-            paymentProgramNameLabelOutlet.textColor = beltBuilder.redBeltRed
+            programNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter phone", attributes: beltBuilder.errorAvenirFont)
             
             // save not allowed, so we exit function
             return
@@ -185,8 +192,8 @@ class PaymentProgramNameAndDescriptionViewController: UIViewController {
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
         updatePaymentProgramInfo()
         
-        // reset label text color to black upon succesful save
-        paymentProgramNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        // reset textField placeholder text color to gray upon succesful save
+        programNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter phone", attributes: beltBuilder.avenirFont)
         // reset welcome instructions text color and message upon succesful save
         welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
         welcomeInstructionsLabelOutlet.text = "please enter the following"

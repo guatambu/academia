@@ -31,10 +31,8 @@ class NameAndBeltViewController: UIViewController {
     var group: Group?
     
     let beltBuilder = BeltBuilder()
-    
-    @IBOutlet weak var welcomeLabeOutlet: UILabel!
-    @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
-    
+
+    @IBOutlet weak var chooseYourBeltLabelOutlet: UILabel!
     // view that holds belt to be instantiated and displayed
     @IBOutlet weak var beltHolderViewOutlet: UIView!
     // belt level pickerView
@@ -53,14 +51,6 @@ class NameAndBeltViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        guard let isOwner = isOwner else { return }
-        
-        if isOwner{
-            welcomeLabeOutlet.text = "Welcome Owner"
-        } else {
-            welcomeLabeOutlet.text = "Welcome New Student"
-        }
         
         beltLevelPickerView.delegate = self
         beltLevelPickerView.dataSource = self
@@ -484,9 +474,7 @@ extension NameAndBeltViewController {
             return
         }
         
-        welcomeLabeOutlet.text = "Welcome \(ownerToEdit.firstName)"
-        
-        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
+        chooseYourBeltLabelOutlet.text = "Welcome \(ownerToEdit.firstName)"
         
         beltLevel = ownerToEdit.belt.beltLevel
         numberOfStripes = ownerToEdit.belt.numberOfStripes
@@ -503,9 +491,7 @@ extension NameAndBeltViewController {
             return
         }
         
-        welcomeLabeOutlet.text = "Welcome \(kidToEdit.firstName)"
-        
-        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
+        chooseYourBeltLabelOutlet.text = "Welcome \(kidToEdit.firstName)"
         
         beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: kidToEdit.belt.beltLevel, numberOfStripes: kidToEdit.belt.numberOfStripes)
         
@@ -519,9 +505,7 @@ extension NameAndBeltViewController {
             return
         }
         
-        welcomeLabeOutlet.text = "Welcome \(adultToEdit.firstName)"
-        
-        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
+        chooseYourBeltLabelOutlet.text = "Welcome \(adultToEdit.firstName)"
         
         beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: adultToEdit.belt.beltLevel, numberOfStripes: adultToEdit.belt.numberOfStripes)
         

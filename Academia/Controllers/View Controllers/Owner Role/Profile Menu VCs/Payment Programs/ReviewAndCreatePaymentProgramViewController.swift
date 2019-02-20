@@ -137,7 +137,7 @@ extension ReviewAndCreatePaymentProgramViewController {
                 return
         }
         // name outlet
-        paymentProgramNameLabelOutlet.text = paymentProgramName
+        title = paymentProgramName
         // active outlet
         if active == true {
             

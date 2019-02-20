@@ -39,18 +39,12 @@ class AddressViewController: UIViewController {
     var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
     
     // IBOutlets
+    @IBOutlet weak var whatIsYourAddressLabelOutlet: UILabel!
     @IBOutlet weak var signUpElementsStackView: UIStackView!
-    @IBOutlet weak var welcomeLabeOutlet: UILabel!
-    @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
-//    @IBOutlet weak var addressLine1LabelOutlet: UILabel!
     @IBOutlet weak var addressLine1TextField: UITextField!
-//    @IBOutlet weak var addressLine2LabelOutlet: UILabel!
     @IBOutlet weak var addressLine2TextField: UITextField!
-//    @IBOutlet weak var cityLabelOutlet: UILabel!
     @IBOutlet weak var cityTextField: UITextField!
-//    @IBOutlet weak var stateLabelOutlet: UILabel!
     @IBOutlet weak var stateTextField: UITextField!
-//    @IBOutlet weak var zipCodeLabelOutlet: UILabel!
     @IBOutlet weak var zipCodeTextField: UITextField!
     
     
@@ -79,14 +73,6 @@ class AddressViewController: UIViewController {
         cityTextField.delegate = self
         stateTextField.delegate = self
         zipCodeTextField.delegate = self
-        
-        guard let isOwner = isOwner else { return }
-        
-        if isOwner{
-            welcomeLabeOutlet.text = "Welcome Owner"
-        } else {
-            welcomeLabeOutlet.text = "Welcome New Student"
-        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -113,9 +99,6 @@ class AddressViewController: UIViewController {
         
         // check for required information being left blank by user
         if addressLine1TextField.text == "" || cityTextField.text == "" || stateTextField.text == "" || zipCodeTextField.text == "" {
-            
-            // warning to user where welcome instructions text changes to red
-            welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
             
             // fire haptic feedback for error
             hapticFeedbackGenerator = UINotificationFeedbackGenerator()
@@ -201,9 +184,7 @@ class AddressViewController: UIViewController {
         cityTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter city", attributes: beltBuilder.avenirFont)
         stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter state", attributes: beltBuilder.avenirFont)
         zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter zip code", attributes: beltBuilder.avenirFont)
-        // reset welcome instructions text color and message upon succesful save
-        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
-        welcomeInstructionsLabelOutlet.text = "please enter the following"
+        
     }
     
     @IBAction func nextButtonTapped(_ sender: DesignableButton) {
@@ -224,9 +205,6 @@ class AddressViewController: UIViewController {
         // check for required information being left blank by user
         if addressLine1TextField.text == "" || cityTextField.text == "" || stateTextField.text == "" || zipCodeTextField.text == "" {
             
-            // warning to user where welcome instructions text changes to red
-            welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
-            
             // fire haptic feedback for error
             hapticFeedbackGenerator = UINotificationFeedbackGenerator()
             hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
@@ -236,48 +214,40 @@ class AddressViewController: UIViewController {
                 
                 addressLine1TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.errorAvenirFont)
                 
-                //                firstNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
                 
                 addressLine1TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
                 
-                //                firstNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             if cityTextField.text == "" {
                 
                 cityTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter city", attributes: beltBuilder.errorAvenirFont)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
                 
                 cityTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter city", attributes: beltBuilder.avenirFont)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             if stateTextField.text == "" {
                 
                 stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter state", attributes: beltBuilder.errorAvenirFont)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
                 
                 stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter state", attributes: beltBuilder.avenirFont)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             if zipCodeTextField.text == "" {
                 
                 zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter zip code", attributes: beltBuilder.errorAvenirFont)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
                 
                 zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter zip code", attributes: beltBuilder.avenirFont)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             // save not allowed, so we exit function
@@ -349,9 +319,7 @@ class AddressViewController: UIViewController {
         cityTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter city", attributes: beltBuilder.avenirFont)
         stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter state", attributes: beltBuilder.avenirFont)
         zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter zip code", attributes: beltBuilder.avenirFont)
-        // reset welcome instructions text color and message upon succesful save
-        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
-        welcomeInstructionsLabelOutlet.text = "please enter the following"
+        
     }
 }
 
@@ -420,10 +388,7 @@ extension AddressViewController {
             return
         }
         
-        welcomeLabeOutlet.text = "Welcome \(ownerToEdit.firstName)"
-        
-        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
-        
+        whatIsYourAddressLabelOutlet.text = "Welcome \(ownerToEdit.firstName)"
         
         addressLine1TextField.text = ownerToEdit.addressLine1
         addressLine2TextField.text = ownerToEdit.addressLine2
@@ -441,9 +406,7 @@ extension AddressViewController {
             return
         }
         
-        welcomeLabeOutlet.text = "Welcome \(kidToEdit.firstName)"
-        
-        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
+        whatIsYourAddressLabelOutlet.text = "Welcome \(kidToEdit.firstName)"
         
         addressLine1TextField.text = kidToEdit.addressLine1
         addressLine2TextField.text = kidToEdit.addressLine2
@@ -459,9 +422,7 @@ extension AddressViewController {
             return
         }
         
-        welcomeLabeOutlet.text = "Welcome \(adultToEdit.firstName)"
-        
-        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
+        whatIsYourAddressLabelOutlet.text = "Welcome \(adultToEdit.firstName)"
         
         addressLine1TextField.text = adultToEdit.addressLine1
         addressLine2TextField.text = adultToEdit.addressLine2

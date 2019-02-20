@@ -44,13 +44,9 @@ class EmergencyContactViewController: UIViewController {
     let beltBuilder = BeltBuilder()
     var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
     
-    @IBOutlet weak var welcomeLabeOutlet: UILabel!
-    @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
-//    @IBOutlet weak var emergencyContactNameLabelOutlet: UILabel!
+    @IBOutlet weak var whoIsYourEmergencyContactLabelOutlet: UILabel!
     @IBOutlet weak var emergencyContactNameTextField: UITextField!
-//    @IBOutlet weak var emergencyContactPhoneLabelOutlet: UILabel!
     @IBOutlet weak var emergencyContactPhoneTextField: UITextField!
-//    @IBOutlet weak var emergencyContactRelationshipLabelOutlet: UILabel!
     @IBOutlet weak var emergencyContactRelationshipTextField: UITextField!
     
     @IBOutlet weak var nextButtonOutlet: DesignableButton!
@@ -82,14 +78,6 @@ class EmergencyContactViewController: UIViewController {
         emergencyContactPhoneTextField.delegate = self
         emergencyContactRelationshipTextField.delegate = self
         
-        guard let isOwner = isOwner else { return }
-        
-        if isOwner{
-            welcomeLabeOutlet.text = "Welcome Owner"
-        } else {
-            welcomeLabeOutlet.text = "Welcome New Student"
-        }
-        
         nextButtonOutlet.isHidden = false
         nextButtonOutlet.isEnabled = true
     }
@@ -118,9 +106,6 @@ class EmergencyContactViewController: UIViewController {
         // check for required information being left blank by user
         if emergencyContactNameTextField.text == "" || emergencyContactNameTextField.text == "" || emergencyContactRelationshipTextField.text == "" {
             
-            // warning to user where welcome instructions text changes to red
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
-           
             // fire haptic feedback for error
             hapticFeedbackGenerator = UINotificationFeedbackGenerator()
             hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
@@ -130,36 +115,30 @@ class EmergencyContactViewController: UIViewController {
                 
                 emergencyContactNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter emergency contact name", attributes: beltBuilder.errorAvenirFont)
                 
-                //                firstNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
                 
                 emergencyContactNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter emergency contact name", attributes: beltBuilder.avenirFont)
                 
-                //                firstNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             if emergencyContactPhoneTextField.text == "" {
                 
                 emergencyContactPhoneTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter emergency contact phone", attributes: beltBuilder.errorAvenirFont)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
                 
                 emergencyContactPhoneTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter emergency contact phone", attributes: beltBuilder.avenirFont)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             if emergencyContactRelationshipTextField.text == "" {
                 
                 emergencyContactRelationshipTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter realtionship w/ emergency contact", attributes: beltBuilder.errorAvenirFont)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
                 
                 emergencyContactRelationshipTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter realtionship w/ emergency contact", attributes: beltBuilder.avenirFont)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             // save not allowed, so we exit function
@@ -191,9 +170,7 @@ class EmergencyContactViewController: UIViewController {
         emergencyContactNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter emergency contact name", attributes: beltBuilder.avenirFont)
         emergencyContactPhoneTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter emergency contact phone", attributes: beltBuilder.avenirFont)
         emergencyContactRelationshipTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter realtionship w/ emergency contact", attributes: beltBuilder.avenirFont)
-        // reset welcome instructions text color and message upon succesful save
-        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
-        welcomeInstructionsLabelOutlet.text = "please enter the following"
+    
     }
     
     @IBAction func nextButtonTapped(_ sender: DesignableButton) {
@@ -210,9 +187,6 @@ class EmergencyContactViewController: UIViewController {
         // check for required information being left blank by user
         if emergencyContactNameTextField.text == "" || emergencyContactPhoneTextField.text == "" || emergencyContactRelationshipTextField.text == "" {
             
-            // warning to user where welcome instructions text changes to red
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
-            
             // fire haptic feedback for error
             hapticFeedbackGenerator = UINotificationFeedbackGenerator()
             hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
@@ -222,36 +196,30 @@ class EmergencyContactViewController: UIViewController {
                 
                 emergencyContactNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter emergency contact name", attributes: beltBuilder.errorAvenirFont)
                 
-                //                firstNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
                 
                 emergencyContactNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter emergency contact name", attributes: beltBuilder.avenirFont)
                 
-                //                firstNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             if emergencyContactPhoneTextField.text == "" {
                 
                emergencyContactPhoneTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter emergency contact phone", attributes: beltBuilder.errorAvenirFont)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
                 
                 emergencyContactPhoneTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter emergency contact phone", attributes: beltBuilder.avenirFont)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             if emergencyContactRelationshipTextField.text == "" {
                 
                 emergencyContactRelationshipTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter realtionship w/ emergency contact", attributes: beltBuilder.errorAvenirFont)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
                 
                 emergencyContactRelationshipTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter realtionship w/ emergency contact", attributes: beltBuilder.avenirFont)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             // save not allowed, so we exit function
@@ -276,9 +244,6 @@ class EmergencyContactViewController: UIViewController {
         emergencyContactNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter emergency contact name", attributes: beltBuilder.avenirFont)
         emergencyContactPhoneTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter emergency contact phone", attributes: beltBuilder.avenirFont)
         emergencyContactRelationshipTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter realtionship w/ emergency contact", attributes: beltBuilder.avenirFont)
-        // reset welcome instructions text color and message upon succesful save
-        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
-        welcomeInstructionsLabelOutlet.text = "please enter the following"
         
         // required fields
         guard let emergencyContactName = emergencyContactNameTextField.text else { print("fail emergencyContactName"); return }
@@ -402,9 +367,7 @@ extension EmergencyContactViewController {
             return
         }
         
-        welcomeLabeOutlet.text = "Welcome \(ownerToEdit.firstName)"
-        
-        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
+        whoIsYourEmergencyContactLabelOutlet.text = "Welcome \(ownerToEdit.firstName)"
         
         emergencyContactNameTextField.text = ownerToEdit.emergencyContactName
         emergencyContactPhoneTextField.text = ownerToEdit.emergencyContactPhone
@@ -418,9 +381,7 @@ extension EmergencyContactViewController {
             return
         }
         
-        welcomeLabeOutlet.text = "Welcome \(kidToEdit.firstName)"
-        
-        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
+        whoIsYourEmergencyContactLabelOutlet.text = "Welcome \(kidToEdit.firstName)"
         
         emergencyContactNameTextField.text = kidToEdit.emergencyContactName
         emergencyContactPhoneTextField.text = kidToEdit.emergencyContactPhone
@@ -434,9 +395,7 @@ extension EmergencyContactViewController {
             return
         }
         
-        welcomeLabeOutlet.text = "Welcome \(adultToEdit.firstName)"
-        
-        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
+        whoIsYourEmergencyContactLabelOutlet.text = "Welcome \(adultToEdit.firstName)"
         
         emergencyContactNameTextField.text = adultToEdit.emergencyContactName
         emergencyContactPhoneTextField.text = adultToEdit.emergencyContactPhone

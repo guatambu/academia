@@ -26,12 +26,9 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
     
     @IBOutlet weak var welcomeMessageOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsOutlet: UILabel!
-//    @IBOutlet weak var usernameLabelOutlet: UILabel!
     @IBOutlet weak var usernameTextField: UITextField!
-//    @IBOutlet weak var passwordLabelOutlet: UILabel!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
-//    @IBOutlet weak var confirmPasswordLabelOutlet: UILabel!
     @IBOutlet weak var signUpButtonOutlet: UIButton!
     
     
