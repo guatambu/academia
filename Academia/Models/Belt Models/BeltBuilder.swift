@@ -45,6 +45,15 @@ class BeltBuilder {
     let blackBeltBlack = UIColor.black
     let redBeltRed = UIColor(red: 255/255, green: 38/255, blue: 0/255, alpha: 1.0)
     
+    // fonts
+    // grey avenir font using gregyBeltGrey
+    let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor(red: 146/255, green: 146/255, blue: 146/255, alpha: 1.0),
+                       NSAttributedString.Key.font: UIFont(name: "Avenir-LightOblique", size: 16)! ]
+    
+    // error red avenit font using redBeltRed
+    let errorAvenirFont = [ NSAttributedString.Key.foregroundColor: UIColor(red: 255/255, green: 38/255, blue: 0/255, alpha: 1.0),
+                            NSAttributedString.Key.font: UIFont(name: "Avenir-LightOblique", size: 16)! ]
+    
     // graduation bar specs
     let kidsBeltGraduationBarWidth: CGFloat = 232.0
     let adultGraduationBarWidth: CGFloat = 120.0
@@ -67,7 +76,7 @@ class BeltBuilder {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.red
-        view.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        view.widthAnchor.constraint(equalToConstant: 80).isActive = true
         return view
     }()
     

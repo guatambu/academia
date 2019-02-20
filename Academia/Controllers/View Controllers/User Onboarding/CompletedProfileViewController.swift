@@ -42,8 +42,7 @@ class CompletedProfileViewController: UIViewController {
     
     let beltBuilder = BeltBuilder()
     
-    // name / username outlets
-    @IBOutlet weak var nameLabelOutlet: UILabel!
+    // username outlet
     @IBOutlet weak var usernameLabelOutlet: UILabel!
     // birthdate outlet
     @IBOutlet weak var birthdateLabelOutlet: UILabel!
@@ -220,7 +219,7 @@ extension CompletedProfileViewController {
         print("isOwner: \(isOwner) \nisKid: \(isKid) \nusername: \(username) \npassword: \(password) \nfirstName: \(firstName) \nlastName: \(lastName) \nbirthdate: \(birthdate) \nbeltLevel: \(beltLevel.rawValue) \nnumberOfStripes: \(numberOfStripes) \naddressLine1: \(addressLine1) \naddressLine2: \(String(describing: addressLine2)) \ncity: \(city) \nstate: \(state) \nzipCode: \(zipCode) \nphone: \(phone) \nmobile: \(String(describing: mobile)) \nemail: \(email) \nemergencyContactName: \(emergencyContactName) \nemergencyContactRelationship: \(emergencyContactRelationship) \nemergencyContactPhone: \(emergencyContactPhone) \nparentGuardian: \(String(describing: parentGuardian))")
         
         // populate UI elements in VC
-        nameLabelOutlet.text = "\(firstName) \(lastName)"
+        title = "\(firstName) \(lastName)"
         usernameLabelOutlet.text = "user: " + username
         // contact info outlets
         phoneLabelOutlet.text = "p: " + phone
