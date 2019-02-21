@@ -372,7 +372,7 @@ extension ClassInfoDetailsTableViewController {
         }
         
         // name outlet
-        classNameLabelOutlet.text = aula.aulaName
+        title = aula.aulaName
         // days of th week outlet
         for day in aula.daysOfTheWeek {
             if day == aula.daysOfTheWeek.last {

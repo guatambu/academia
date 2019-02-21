@@ -32,13 +32,9 @@ class LocationSocialLinksViewController: UIViewController {
     
     let beltBuilder = BeltBuilder()
 
-    @IBOutlet weak var welcomeLabeOutlet: UILabel!
-    @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
-//    @IBOutlet weak var socialLink1LabelOutlet: UILabel!
+    @IBOutlet weak var anySocialMediaLinksToAddLabelOutlet: UILabel!
     @IBOutlet weak var socialLink1TextField: UITextField!
-//    @IBOutlet weak var socialLink2LabelOutlet: UILabel!
     @IBOutlet weak var socialLink2TextField: UITextField!
-//    @IBOutlet weak var socialLink3Outlet: UILabel!
     @IBOutlet weak var socialLink3TextField: UITextField!
     
     @IBOutlet weak var nextButtonOutlet: DesignableButton!
@@ -182,13 +178,11 @@ extension LocationSocialLinksViewController {
             return
         }
         
-        welcomeLabeOutlet.text = "Location: \(locationToEdit.locationName)"
+        anySocialMediaLinksToAddLabelOutlet.text = "Location: \(locationToEdit.locationName)"
         
-        welcomeInstructionsLabelOutlet.text = "you are in location editing mode"
-        
-        socialLink1TextField.text = locationToEdit.social1
-        socialLink2TextField.text = locationToEdit.social2
-        socialLink3TextField.text = locationToEdit.social3
+        socialLink1TextField.text = "Instagram: \(locationToEdit.social1 ?? "")"
+        socialLink2TextField.text = "facebook: \(locationToEdit.social2 ?? "")"
+        socialLink3TextField.text = "Twitter: \(locationToEdit.social3 ?? "")"
     }
 }
 

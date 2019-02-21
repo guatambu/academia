@@ -298,7 +298,7 @@ extension ReviewAndCreateClassTableViewController {
         }
     
         // name outlet
-        classNameLabelOutlet.text = aulaName
+        title = aulaName
         // days of th week outlet
         for day in daysOfTheWeek {
             if day == daysOfTheWeek.last {

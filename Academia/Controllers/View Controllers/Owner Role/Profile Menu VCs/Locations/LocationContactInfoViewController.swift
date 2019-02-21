@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LocationContactInfoViewController: UIViewController {
+class LocationContactInfoViewController: UIViewController, UITextInputTraits {
     
     // MARK: - Properties
     
@@ -30,13 +30,9 @@ class LocationContactInfoViewController: UIViewController {
     let beltBuilder = BeltBuilder()
     var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
 
-    @IBOutlet weak var welcomeLabeOutlet: UILabel!
-    @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
-//    @IBOutlet weak var phoneLabelOutlet: UILabel!
+    @IBOutlet weak var contactInformationForLocationLabelOutlet: UILabel!
     @IBOutlet weak var phoneTextField: UITextField!
-//    @IBOutlet weak var websiteLabelOutlet: UILabel!
     @IBOutlet weak var websiteTextField: UITextField!
-//    @IBOutlet weak var emailLabelOutlet: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
     
     
@@ -45,6 +41,16 @@ class LocationContactInfoViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         subscribeToKeyboardNotifications()
+        
+        // turns off auto-correct in these UITextFields
+        phoneTextField.autocorrectionType = UITextAutocorrectionType.no
+        websiteTextField.autocorrectionType = UITextAutocorrectionType.no
+        emailTextField.autocorrectionType = UITextAutocorrectionType.no
+        
+        // turns off auto-capitalization in these UITextFields
+        phoneTextField.autocapitalizationType = UITextAutocapitalizationType.none
+        websiteTextField.autocapitalizationType = UITextAutocapitalizationType.none
+        emailTextField.autocapitalizationType = UITextAutocapitalizationType.none
         
         // check to see if enter editing mode
         enterEditingMode(inEditingMode: inEditingMode)
@@ -86,9 +92,6 @@ class LocationContactInfoViewController: UIViewController {
         // check for required information being left blank by user
         if phoneTextField.text == "" || emailTextField.text == "" {
             
-            // warning to user where welcome instructions text changes to red
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
-            
             // fire haptic feedback for error
             hapticFeedbackGenerator = UINotificationFeedbackGenerator()
             hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
@@ -98,24 +101,20 @@ class LocationContactInfoViewController: UIViewController {
                 
                 phoneTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter phone", attributes: beltBuilder.errorAvenirFont)
                 
-                //                firstNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
                 
                 phoneTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter phone", attributes: beltBuilder.avenirFont)
                 
-                //                firstNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             if emailTextField.text == "" {
                 
                 emailTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter email", attributes: beltBuilder.errorAvenirFont)
                 
-                //                firstNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
                 
                 emailTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter email", attributes: beltBuilder.avenirFont)
                 
-                //                firstNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             // save not allowed, so we exit function
@@ -125,9 +124,6 @@ class LocationContactInfoViewController: UIViewController {
         // reset label text color to black upon succesful save
         phoneTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter phone", attributes: beltBuilder.avenirFont)
         emailTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter email", attributes: beltBuilder.avenirFont)
-        // reset welcome instructions text color and message upon succesful save
-        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
-        welcomeInstructionsLabelOutlet.text = "please enter the following"
         
         // Location update profile info
         updateLocationInfo()
@@ -153,9 +149,6 @@ class LocationContactInfoViewController: UIViewController {
         // check for required information being left blank by user
         if phoneTextField.text == "" || emailTextField.text == "" {
             
-            // warning to user where welcome instructions text changes to red
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
-            
             // fire haptic feedback for error
             hapticFeedbackGenerator = UINotificationFeedbackGenerator()
             hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
@@ -165,24 +158,20 @@ class LocationContactInfoViewController: UIViewController {
                 
                 phoneTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter phone", attributes: beltBuilder.errorAvenirFont)
                 
-                //                firstNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
                 
                 phoneTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter phone", attributes: beltBuilder.avenirFont)
                 
-                //                firstNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             if emailTextField.text == "" {
                 
                 emailTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter email", attributes: beltBuilder.errorAvenirFont)
                 
-                //                firstNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
                 
                 emailTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter email", attributes: beltBuilder.avenirFont)
                 
-                //                firstNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             // save not allowed, so we exit function
@@ -192,9 +181,6 @@ class LocationContactInfoViewController: UIViewController {
         // reset label text color to black upon succesful save
         phoneTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter phone", attributes: beltBuilder.avenirFont)
         emailTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter email", attributes: beltBuilder.avenirFont)
-        // reset welcome instructions text color and message upon succesful save
-        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
-        welcomeInstructionsLabelOutlet.text = "please enter the following"
         
         // programmatically performing segue
         
@@ -272,9 +258,7 @@ extension LocationContactInfoViewController {
             return
         }
         
-        welcomeLabeOutlet.text = "Location: \(locationToEdit.locationName)"
-        
-        welcomeInstructionsLabelOutlet.text = "you are in location editing mode"
+        contactInformationForLocationLabelOutlet.text = "Location: \(locationToEdit.locationName)"
         
         phoneTextField.text = locationToEdit.phone
         websiteTextField.text = locationToEdit.website

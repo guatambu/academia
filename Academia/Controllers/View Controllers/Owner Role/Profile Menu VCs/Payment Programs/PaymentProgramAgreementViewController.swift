@@ -25,11 +25,10 @@ class PaymentProgramAgreementViewController: UIViewController {
     
     let beltBuilder = BeltBuilder()
     
-    // welcome label outlets
-    @IBOutlet weak var welcomeLabelOutlet: UILabel!
-    @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
-    // payment program info outlets
-    @IBOutlet weak var paymentProgramAgreementLabelOutlet: UILabel!
+    let programAgreementTextViewPlaceholderString = "tap to enter program agreement"
+    
+    // label outlets
+    @IBOutlet weak var addPaymentProgramAgreementLabelOutlet: UILabel!
     // program agreement textView
     @IBOutlet weak var programAgreementTextView: UITextView!
     @IBOutlet weak var nextButtonOutlet: DesignableButton!
@@ -57,6 +56,8 @@ class PaymentProgramAgreementViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        programAgreementTextView.attributedText = NSAttributedString(string: programAgreementTextViewPlaceholderString, attributes: beltBuilder.avenirFont)
+        
         programAgreementTextView.delegate = self
         
         nextButtonOutlet.isEnabled = true
@@ -83,6 +84,10 @@ class PaymentProgramAgreementViewController: UIViewController {
     
     @objc func saveButtonTapped() {
         
+        if programAgreementTextView.isFirstResponder {
+            programAgreementTextView.resignFirstResponder()
+        }
+        
         // Location update profile info
         if programAgreementTextView.text != "" {
             
@@ -102,6 +107,10 @@ class PaymentProgramAgreementViewController: UIViewController {
     
     @IBAction func nextButtonTapped(_ sender: DesignableButton) {
         
+        if programAgreementTextView.isFirstResponder {
+            programAgreementTextView.resignFirstResponder()
+        }
+        
         // programmatically performing the segue
         
         print("to review and create program segue")
@@ -113,7 +122,7 @@ class PaymentProgramAgreementViewController: UIViewController {
         // run check to see is there is a paymentProgramName
         guard programAgreementTextView.text != "" else {
             
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+            addPaymentProgramAgreementLabelOutlet.textColor = beltBuilder.redBeltRed
             return
         }
         
@@ -182,10 +191,7 @@ extension PaymentProgramAgreementViewController {
             return
         }
         
-        welcomeLabelOutlet.text = "Program: \(paymentProgramToEdit.programName)"
-        
-        welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
-        welcomeInstructionsLabelOutlet.text = "you are in payment program editing mode"
+        addPaymentProgramAgreementLabelOutlet.text = "Program: \(paymentProgramToEdit.programName)"
         
         programAgreementTextView.text = paymentProgramToEdit.paymentAgreement
     }
@@ -197,16 +203,46 @@ extension PaymentProgramAgreementViewController: UITextViewDelegate {
     
     // method to call in viewWillAppear() to subscribe to desired UIResponder keyboard notifications
     func subscribeToKeyboardNotifications() {
+        
+        // notifications unique to keyboard itself
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        
+        // notifications unique to editing of programDescriptionTextView text
+        NotificationCenter.default.addObserver(self, selector: #selector(texfViewWillEdit(notificaiton:)), name: UITextView.textDidBeginEditingNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(texfViewWillEdit(notificaiton:)), name: UITextView.textDidEndEditingNotification, object: nil)
     }
     
     // method to be called in viewWillDisappear() to unsubscribe from desired UIResponder keyboard notifications
     func unsubscribeToKeyboardNotifications() {
+        
+        // notifications unique to keyboard itself
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        
+        // notifications unique to editing of programDescriptionTextView text
+        NotificationCenter.default.removeObserver(self, name: UITextView.textDidBeginEditingNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UITextView.textDidEndEditingNotification, object: nil)
+    }
+    
+    // funciton to handle UITextView user editing
+    @objc func texfViewWillEdit(notificaiton: Notification) {
+        
+        // check for start of editing with placeholder text in place
+        if notificaiton.name == UITextView.textDidBeginEditingNotification && programAgreementTextView.text == programAgreementTextViewPlaceholderString {
+            
+            // change to input fontstyle and empty textView.text ready for user input
+            programAgreementTextView.font = UIFont(name: "Avenir-Light", size: 16)
+            programAgreementTextView.text = ""
+            
+            // check for end of editing and no user input
+        } else if notificaiton.name == UITextView.textDidEndEditingNotification && programAgreementTextView.text == "" {
+            
+            // reset to placeholder text
+            programAgreementTextView.attributedText = NSAttributedString(string: programAgreementTextViewPlaceholderString, attributes: beltBuilder.avenirFont)
+        }
     }
     
     // keyboardWillChange to handle Keyboard Notifications
@@ -221,23 +257,33 @@ extension PaymentProgramAgreementViewController: UITextViewDelegate {
             return
         }
         
+        // *******
+        
+        // TODO: - fix agreement TextView to accommodate small screen when keyboard comes up
+        
+        // *******
+        let bottomPadding = view.safeAreaInsets.bottom
+        
         // move view up the height of keyboard and back down to original position
         if notification.name == UIResponder.keyboardWillShowNotification || notification.name == UIResponder.keyboardWillChangeFrameNotification {
             
             // check to see if physical screen includes iPhoneX__ form factor
             if #available(iOS 11.0, *) {
-                let bottomPadding = view.safeAreaInsets.bottom
                 
                 self.view.frame.origin.y = -(keyboardCGRectValue.height - bottomPadding)
+                self.programAgreementTextView.heightAnchor.constraint(equalToConstant: (keyboardCGRectValue.height - bottomPadding)).isActive = true
                 
             } else {
                 
                 self.view.frame.origin.y = -keyboardCGRectValue.height
+                self.programAgreementTextView.heightAnchor.constraint(equalToConstant: (keyboardCGRectValue.height - bottomPadding)).isActive = false
             }
             
         } else {
             
             self.view.frame.origin.y = 0
+            
+            self.programAgreementTextView.heightAnchor.constraint(equalToConstant: (keyboardCGRectValue.height - bottomPadding)).isActive = false
         }
     }
 }

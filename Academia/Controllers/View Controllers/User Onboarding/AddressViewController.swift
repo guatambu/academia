@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddressViewController: UIViewController {
+class AddressViewController: UIViewController, UITextInputTraits {
     
     // MARK: - Properties
     
@@ -53,6 +53,20 @@ class AddressViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         subscribeToKeyboardNotifications()
+        
+        // turns off auto-correct in these UITextFields
+        addressLine1TextField.autocorrectionType = UITextAutocorrectionType.no
+        addressLine2TextField.autocorrectionType = UITextAutocorrectionType.no
+        cityTextField.autocorrectionType = UITextAutocorrectionType.no
+        stateTextField.autocorrectionType = UITextAutocorrectionType.no
+        zipCodeTextField.autocorrectionType = UITextAutocorrectionType.no
+        
+        // turns off auto-capitalization in these UITextFields
+        addressLine1TextField.autocapitalizationType = UITextAutocapitalizationType.none
+        addressLine2TextField.autocapitalizationType = UITextAutocapitalizationType.none
+        cityTextField.autocapitalizationType = UITextAutocapitalizationType.none
+        stateTextField.autocapitalizationType = UITextAutocapitalizationType.none
+        zipCodeTextField.autocapitalizationType = UITextAutocapitalizationType.none
         
         // check to see if enter editing mode
         enterEditingMode(inEditingMode: inEditingMode)

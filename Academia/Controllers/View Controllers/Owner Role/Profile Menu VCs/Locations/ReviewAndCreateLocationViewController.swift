@@ -114,10 +114,10 @@ extension ReviewAndCreateLocationViewController {
         cityLabelOutlet.text = city
         stateLabelOutlet.text = state
         zipCodeLabelOutlet.text = zipCode
-        // emergency contact info outlets
-        socialLink1LabelOutlet.text = social1
-        socialLink2LabelOutlet.text = social2
-        socialLink3LabelOutlet.text = social3
+        // social media links outlets
+        socialLink1LabelOutlet.text = "Instagram: \(social1 ?? "")"
+        socialLink2LabelOutlet.text = "facebook: \(social2 ?? "")"
+        socialLink3LabelOutlet.text = "Twitter: \(social3 ?? "")"
         // profile pic imageView
         locationPicImageView.image = locationPic
     }

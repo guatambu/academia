@@ -23,7 +23,7 @@ class ClassLocationViewController: UIViewController {
     var daysOfTheWeek: [ClassTimeComponents.Weekdays]?
     var time: String?
     var timeCode: Int?
-    var location: Location = MockData.myLocation
+    var location: Location?
     
     // to hold the compiled string for the classLocationLabelOutlet
     var locationString = ""
@@ -35,8 +35,7 @@ class ClassLocationViewController: UIViewController {
     let beltBuilder = BeltBuilder()
     let classTimeComponents = ClassTimeComponents()
     
-    @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
-    @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
+    @IBOutlet weak var addClassLabelOutlet: UILabel!
     @IBOutlet weak var classLocationLabelOutlet: UILabel!
     
     // class time UIPickerView
@@ -96,15 +95,15 @@ class ClassLocationViewController: UIViewController {
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         // check for errors before performing segue, and if error, block navigation
-        if location == nil {
+        if location != nil {
             
-            welcomeMessageLabelOutlet.textColor = beltBuilder.redBeltRed
-            
-            return false
+            return true
             
         } else {
             
-            return true
+            addClassLabelOutlet.textColor = beltBuilder.redBeltRed
+            
+            return false
         }
     }
     
@@ -132,6 +131,9 @@ class ClassLocationViewController: UIViewController {
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
         updateAulaInfo()
+        
+        // reset addlassLabelOutlet text to black
+        addClassLabelOutlet.textColor = beltBuilder.blackBeltBlack
         
     }
 }
@@ -178,10 +180,7 @@ extension ClassLocationViewController {
             return
         }
         
-        welcomeMessageLabelOutlet.text = "\(aulaToEdit.aulaName)"
-        
-        welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
-        welcomeInstructionsLabelOutlet.text = "you are in class editing mode"
+        addClassLabelOutlet.text = "\(aulaToEdit.aulaName)"
         
         daysOfTheWeek = aulaToEdit.daysOfTheWeek
         time = aulaToEdit.time ?? ""
@@ -236,7 +235,11 @@ extension ClassLocationViewController: UIPickerViewDelegate, UIPickerViewDataSou
         
         location = locationSelected
         
-        print(location.locationName)
+        guard let location = location else {
+            print("nil found for location property in ClassLocationViewController.swift -> pickerView(pickerView: didSelectRow:) - line 238.")
+            return
+        }
+        print("location name: \(location.locationName)")
         
     }
 }

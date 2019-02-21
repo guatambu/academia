@@ -157,10 +157,10 @@ extension LocationInfoDetailsViewController {
         cityLabelOutlet.text = location.city
         stateLabelOutlet.text = location.state
         zipCodeLabelOutlet.text = location.zipCode
-        // emergency contact info outlets
-        socialLink1LabelOutlet.text = location.social1
-        socialLink2LabelOutlet.text = location.social2
-        socialLink3LabelOutlet.text = location.social3
+        // social media links outlets
+        socialLink1LabelOutlet.text = "Instagram: \(location.social1 ?? "")"
+        socialLink2LabelOutlet.text = "facebook: \(location.social2 ?? "")"
+        socialLink3LabelOutlet.text = "Twitter: \(location.social3 ?? "")"
         // profile pic imageView
         locationPicImageView.image = location.locationPic
     }

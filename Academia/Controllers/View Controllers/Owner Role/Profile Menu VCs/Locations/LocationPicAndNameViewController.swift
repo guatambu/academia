@@ -25,12 +25,9 @@ class LocationPicAndNameViewController: UIViewController {
     let imagePickerController = UIImagePickerController()
     var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
     
-    
-    @IBOutlet weak var welcomeLabeOutlet: UILabel!
-    @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
+    @IBOutlet weak var locationNameAndPicLabelOutlet: UILabel!
     @IBOutlet weak var locationPicImageViewOutlet: UIImageView!
     @IBOutlet weak var activeSwitch: UISwitch!
-//    @IBOutlet weak var locationNameLabelOutlet: UILabel!
     @IBOutlet weak var locationNameTextField: UITextField!
 
     
@@ -91,9 +88,6 @@ class LocationPicAndNameViewController: UIViewController {
         // check for required information being left blank by user
         if locationNameTextField.text == "" {
             
-            // warning to user where welcome instructions text changes to red
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
-            
             // fire haptic feedback for error
             hapticFeedbackGenerator = UINotificationFeedbackGenerator()
             hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
@@ -119,9 +113,6 @@ class LocationPicAndNameViewController: UIViewController {
         
         // reset textField placeholder text to gray upon succesful save
         locationNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter location name", attributes: beltBuilder.avenirFont)
-        // reset welcome instructions text color and message upon succesful save
-        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
-        welcomeInstructionsLabelOutlet.text = "please enter the following"
     }
     
     
@@ -134,9 +125,6 @@ class LocationPicAndNameViewController: UIViewController {
         
         // check for required information being left blank by user
         if locationNameTextField.text == "" {
-            
-            // warning to user where welcome instructions text changes to red
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
             
             // fire haptic feedback for error
             hapticFeedbackGenerator = UINotificationFeedbackGenerator()
@@ -159,9 +147,6 @@ class LocationPicAndNameViewController: UIViewController {
         
         // reset textField placeholder text to gray upon succesful save
         locationNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter emergency contact name", attributes: beltBuilder.avenirFont)
-        // reset welcome instructions text color and message upon succesful save
-        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
-        welcomeInstructionsLabelOutlet.text = "please enter the following"
         
         // run check to see is there is firstName, lastName, and profilePic
         guard let locationName = locationNameTextField.text else { return }
@@ -226,9 +211,7 @@ extension LocationPicAndNameViewController {
         
         self.title = locationToEdit.locationName
         
-        welcomeLabeOutlet.text = "Location: \(locationToEdit.locationName)"
-        
-        welcomeInstructionsLabelOutlet.text = "you are in location editing mode"
+        locationNameAndPicLabelOutlet.text = "Location: \(locationToEdit.locationName)"
         
         locationPicImageViewOutlet.image = locationToEdit.locationPic
         locationNameTextField.text = locationToEdit.locationName

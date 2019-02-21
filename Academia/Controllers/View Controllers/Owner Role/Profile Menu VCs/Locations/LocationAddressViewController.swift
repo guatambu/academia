@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LocationAddressViewController: UIViewController {
+class LocationAddressViewController: UIViewController, UITextInputTraits{
     
     // MARK: - Properties
     
@@ -27,18 +27,12 @@ class LocationAddressViewController: UIViewController {
     let beltBuilder = BeltBuilder()
     var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
 
+    @IBOutlet weak var whatIsLocationAddressLabelOutlet: UILabel!
     @IBOutlet weak var signUpElementsStackView: UIStackView!
-    @IBOutlet weak var welcomeLabeOutlet: UILabel!
-    @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
-    @IBOutlet weak var addressLine1LabelOutlet: UILabel!
     @IBOutlet weak var addressLine1TextField: UITextField!
-    @IBOutlet weak var addressLine2LabelOutlet: UILabel!
     @IBOutlet weak var addressLine2TextField: UITextField!
-    @IBOutlet weak var cityLabelOutlet: UILabel!
     @IBOutlet weak var cityTextField: UITextField!
-    @IBOutlet weak var stateLabelOutlet: UILabel!
     @IBOutlet weak var stateTextField: UITextField!
-    @IBOutlet weak var zipCodeLabelOutlet: UILabel!
     @IBOutlet weak var zipCodeTextField: UITextField!
     
     
@@ -47,6 +41,20 @@ class LocationAddressViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         subscribeToKeyboardNotifications()
+        
+        // turns off auto-correct in these UITextFields
+        addressLine1TextField.autocorrectionType = UITextAutocorrectionType.no
+        addressLine2TextField.autocorrectionType = UITextAutocorrectionType.no
+        cityTextField.autocorrectionType = UITextAutocorrectionType.no
+        stateTextField.autocorrectionType = UITextAutocorrectionType.no
+        zipCodeTextField.autocorrectionType = UITextAutocorrectionType.no
+        
+        // turns off auto-capitalization in these UITextFields
+        addressLine1TextField.autocapitalizationType = UITextAutocapitalizationType.none
+        addressLine2TextField.autocapitalizationType = UITextAutocapitalizationType.none
+        cityTextField.autocapitalizationType = UITextAutocapitalizationType.none
+        stateTextField.autocapitalizationType = UITextAutocapitalizationType.none
+        zipCodeTextField.autocapitalizationType = UITextAutocapitalizationType.none
         
         // check to see if enter editing mode
         enterEditingMode(inEditingMode: inEditingMode)
@@ -96,9 +104,6 @@ class LocationAddressViewController: UIViewController {
         // check for required information being left blank by user
         if addressLine1TextField.text == "" || cityTextField.text == "" || stateTextField.text == "" || zipCodeTextField.text == "" {
             
-            // warning to user where welcome instructions text changes to red
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
-            
             // fire haptic feedback for error
             hapticFeedbackGenerator = UINotificationFeedbackGenerator()
             hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
@@ -108,48 +113,40 @@ class LocationAddressViewController: UIViewController {
                 
                 addressLine1TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.errorAvenirFont)
                 
-                //                firstNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
                 
                 addressLine1TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
                 
-                //                firstNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             if cityTextField.text == "" {
                 
                 cityTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter city", attributes: beltBuilder.errorAvenirFont)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
                 
                 cityTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter city", attributes: beltBuilder.avenirFont)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             if stateTextField.text == "" {
                 
                 stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter state", attributes: beltBuilder.errorAvenirFont)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
                 
                 stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter state", attributes: beltBuilder.avenirFont)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             if zipCodeTextField.text == "" {
                 
                 zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter zip code", attributes: beltBuilder.errorAvenirFont)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
                 
                 zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter zip code", attributes: beltBuilder.avenirFont)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             // save not allowed, so we exit function
@@ -162,10 +159,6 @@ class LocationAddressViewController: UIViewController {
         cityTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
         stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
         zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
-        // reset welcome instructions text color and message upon succesful save
-        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
-        welcomeInstructionsLabelOutlet.text = "please enter the following"
-
         
         // Location update profile info
         updateLocationInfo()
@@ -195,9 +188,6 @@ class LocationAddressViewController: UIViewController {
         // check for required information being left blank by user
         if addressLine1TextField.text == "" || cityTextField.text == "" || stateTextField.text == "" || zipCodeTextField.text == "" {
             
-            // warning to user where welcome instructions text changes to red
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
-            
             // fire haptic feedback for error
             hapticFeedbackGenerator = UINotificationFeedbackGenerator()
             hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
@@ -207,48 +197,40 @@ class LocationAddressViewController: UIViewController {
                 
                 addressLine1TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.errorAvenirFont)
                 
-                //                firstNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
                 
                 addressLine1TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
                 
-                //                firstNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             if cityTextField.text == "" {
                 
                 cityTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter city", attributes: beltBuilder.errorAvenirFont)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
                 
                 cityTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter city", attributes: beltBuilder.avenirFont)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             if stateTextField.text == "" {
                 
                 stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter state", attributes: beltBuilder.errorAvenirFont)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
                 
                 stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter state", attributes: beltBuilder.avenirFont)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             if zipCodeTextField.text == "" {
                 
                 zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter zip code", attributes: beltBuilder.errorAvenirFont)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
                 
                 zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter zip code", attributes: beltBuilder.avenirFont)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             // save not allowed, so we exit function
@@ -261,9 +243,6 @@ class LocationAddressViewController: UIViewController {
         cityTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
         stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
         zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
-        // reset welcome instructions text color and message upon succesful save
-        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
-        welcomeInstructionsLabelOutlet.text = "please enter the following"
         
         // programmatically performing segue
         
@@ -342,9 +321,7 @@ extension LocationAddressViewController {
             return
         }
         
-        welcomeLabeOutlet.text = "Location: \(locationToEdit.locationName)"
-        
-        welcomeInstructionsLabelOutlet.text = "you are in location editing mode"
+        whatIsLocationAddressLabelOutlet.text = "Location: \(locationToEdit.locationName)"
         
         addressLine1TextField.text = locationToEdit.addressLine1
         addressLine2TextField.text = locationToEdit.addressLine2

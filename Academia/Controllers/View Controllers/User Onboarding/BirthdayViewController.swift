@@ -28,6 +28,7 @@ class BirthdayViewController: UIViewController {
     var isOwnerAddingStudent: Bool?
     var group: Group?
     
+    let beltBuiler = BeltBuilder()
     var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
     
     @IBOutlet weak var whenIsYourBirthdayLabelOutlet: UILabel!
@@ -66,8 +67,8 @@ class BirthdayViewController: UIViewController {
     @objc func saveButtonTapped() {
         
         guard birthdate != nil else {
-            // warning to user where welcome instructions text changes to red
-            whenIsYourBirthdayLabelOutlet.textColor = UIColor.red
+            // warning to user where instructions text changes to red
+            whenIsYourBirthdayLabelOutlet.textColor = beltBuiler.redBeltRed
 
             // fire haptic feedback for error
             hapticFeedbackGenerator = UINotificationFeedbackGenerator()
@@ -96,6 +97,9 @@ class BirthdayViewController: UIViewController {
         }
         
         inEditingMode = false
+        
+        // reset instructions text changes to black
+        whenIsYourBirthdayLabelOutlet.textColor = beltBuiler.blackBeltBlack
     }
     
     @IBAction func birthdayPicked(_ sender: UIDatePicker) {
@@ -110,13 +114,16 @@ class BirthdayViewController: UIViewController {
         
         guard birthdate != nil else {
             // warning to user where welcome instructions text changes to red
-            whenIsYourBirthdayLabelOutlet.textColor = UIColor.red
+            whenIsYourBirthdayLabelOutlet.textColor = beltBuiler.redBeltRed
 
             // fire haptic feedback for error
             hapticFeedbackGenerator = UINotificationFeedbackGenerator()
             hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
             return
         }
+        
+        // reset instructions text changes to black
+        whenIsYourBirthdayLabelOutlet.textColor = beltBuiler.blackBeltBlack
         
         // programmatically performing the segue
         

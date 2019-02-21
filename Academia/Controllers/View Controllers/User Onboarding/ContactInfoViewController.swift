@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContactInfoViewController: UIViewController {
+class ContactInfoViewController: UIViewController, UITextInputTraits {
 
     // MARK: - Properties
     
@@ -52,6 +52,16 @@ class ContactInfoViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         subscribeToKeyboardNotifications()
+        
+        // turns off auto-correct in these UITextFields
+        phoneTextField.autocorrectionType = UITextAutocorrectionType.no
+        mobileTextField.autocorrectionType = UITextAutocorrectionType.no
+        emailTextField.autocorrectionType = UITextAutocorrectionType.no
+        
+        // turns off auto-capitalization in these UITextFields
+        phoneTextField.autocapitalizationType = UITextAutocapitalizationType.none
+        mobileTextField.autocapitalizationType = UITextAutocapitalizationType.none
+        emailTextField.autocapitalizationType = UITextAutocapitalizationType.none
         
         // check to see if enter editing mode
         enterEditingMode(inEditingMode: inEditingMode)

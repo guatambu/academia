@@ -28,15 +28,15 @@ class PaymentProgramBillingDetailsViewController: UIViewController, BillingTypeD
     
     let beltBuilder = BeltBuilder()
     let billing = Billing()
+    var hapticFeedbackGenerator : UINotificationFeedbackGenerator?
     
     let uncheckedBox32 = UIImage(named: "unchecked_checkbox_32.png")
     let uncheckedBox50 = UIImage(named: "unchecked_checkbox_50.png")
     let checkedBox32 = UIImage(named: "checked_tickbox_32.png")
     let checkedBox50 = UIImage(named: "checked_tickbox_50.png")
     
-    // welcome message outlets
-    @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
-    @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
+    // label outlet
+    @IBOutlet weak var addBillingDetailsLabelOutlet: UILabel!
     // next button outlet
     @IBOutlet weak var nextButtonOutlet: DesignableButton!
     // collection views
@@ -98,8 +98,22 @@ class PaymentProgramBillingDetailsViewController: UIViewController, BillingTypeD
             self.returnToPaymentProgramInfo()
             
             print("update payment program name: \(PaymentProgramModelController.shared.paymentPrograms[0].programName)")
+        } else {
+            
+            // fire haptic feedback for error
+            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+            
+            addBillingDetailsLabelOutlet.textColor = beltBuilder.redBeltRed
+            
+            // save not allowed, so we exit function
+            return
+            
         }
         inEditingMode = false
+        
+        // reset addBillingDetailsLabelOutlet text back to black for successful save
+        addBillingDetailsLabelOutlet.textColor = beltBuilder.blackBeltBlack
     }
     
     
@@ -113,14 +127,20 @@ class PaymentProgramBillingDetailsViewController: UIViewController, BillingTypeD
         // instantiate the desired TableViewController as ViewController on relevant storyboard
         let destViewController = mainView.instantiateViewController(withIdentifier: "toPaymentProgramAgreement") as! PaymentProgramAgreementViewController
         
-        // run check to see if billing details are properly selected/in place
+        // run check to see if billing details are properly selectedby user
         guard let billingTypes = billingTypes, let billingDates = billingDates, let signatureTypes = signatureTypes else {
             print("ERROR: nil values for billingTypes, billingDates, and signatureTypes in PaymentProgramBillingDetailsVC -> nextButtonTapped() - line 117")
             return
         }
-        guard billingTypes.count != 0 && billingDates.count != 0 && signatureTypes.count != 0 else {
+        guard billingTypes.count != 0 || billingDates.count != 0 || signatureTypes.count != 0 else {
             
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+            // fire haptic feedback for error
+            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+            
+            addBillingDetailsLabelOutlet.textColor = beltBuilder.redBeltRed
+            
+            // user data lacking, segue not allowed, so we exit function
             return
         }
         
@@ -145,6 +165,9 @@ class PaymentProgramBillingDetailsViewController: UIViewController, BillingTypeD
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
         updatePaymentProgramInfo()
+        
+        // reset addBillingDetailsLabelOutlet text back to black for successful save
+        addBillingDetailsLabelOutlet.textColor = beltBuilder.blackBeltBlack
     }
 }
 
@@ -183,10 +206,7 @@ extension PaymentProgramBillingDetailsViewController {
         guard let paymentProgramToEdit = paymentProgramToEdit else {
             return
         }
-        welcomeMessageLabelOutlet.text = "Program: \(paymentProgramToEdit.programName)"
-        
-        welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
-        welcomeInstructionsLabelOutlet.text = "you are in payment program editing mode"
+        addBillingDetailsLabelOutlet.text = "Program: \(paymentProgramToEdit.programName)"
         
         billingTypes = paymentProgramToEdit.billingTypes
         billingDates = paymentProgramToEdit.billingDates

@@ -147,7 +147,7 @@ extension PaymentProgramInfoDetailsViewController {
         
         guard let paymentProgram = PaymentProgramModelController.shared.paymentPrograms.first else { return }
         // name outlet
-        paymentProgramNameLabelOutlet.text = paymentProgram.programName
+        title = paymentProgram.programName
         // active outlet
         if paymentProgram.active == true {
             
