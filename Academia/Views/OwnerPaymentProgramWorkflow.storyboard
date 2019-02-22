@@ -300,7 +300,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="i2s-AE-KUy" userLabel="Program Stack View">
-                                <rect key="frame" x="16" y="36" width="288" height="436"/>
+                                <rect key="frame" x="16" y="36" width="288" height="476"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="O9a-lF-E3o" userLabel="plese review and name Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="48"/>
@@ -332,7 +332,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7jG-HO-ent" userLabel="Program Details Stack View">
-                                        <rect key="frame" x="16" y="56" width="256" height="292"/>
+                                        <rect key="frame" x="16" y="56" width="256" height="332"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="8d3-ba-R7q" userLabel="program stats Stack View">
                                                 <rect key="frame" x="0.0" y="0.0" width="151" height="44"/>
@@ -350,23 +350,11 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="-8" translatesAutoresizingMaskIntoConstraints="NO" id="3k9-hu-m7X" userLabel="description Stack View">
-                                                <rect key="frame" x="0.0" y="52" width="256" height="144"/>
+                                                <rect key="frame" x="0.0" y="52" width="256" height="184"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="program description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="FzP-cd-nTu">
-                                                        <rect key="frame" x="0.0" y="0.0" width="148.5" height="32"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="32" id="A7O-u1-Kew"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fU3-qf-EnK">
-                                                        <rect key="frame" x="0.0" y="24" width="256" height="120"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="256" height="184"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="120" id="0Uf-FR-ogV"/>
-                                                        </constraints>
                                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -378,9 +366,9 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="oFl-Ai-LXF" userLabel="billing options Stack View">
-                                                <rect key="frame" x="0.0" y="204" width="240" height="88"/>
+                                                <rect key="frame" x="0.0" y="244" width="240" height="88"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="billing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="THx-Jj-lep" userLabel="billing">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="billing details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="THx-Jj-lep" userLabel="billing">
                                                         <rect key="frame" x="0.0" y="0.0" width="240" height="22"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                                         <nil key="textColor"/>
@@ -408,6 +396,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="THx-Jj-lep" secondAttribute="trailing" id="Bio-Rc-l3g"/>
                                                     <constraint firstAttribute="trailing" secondItem="uS3-Cs-ezc" secondAttribute="trailing" id="TQC-Z7-vQf"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="88" id="jbN-3h-F8n"/>
                                                     <constraint firstAttribute="trailing" secondItem="Vs6-YE-9qk" secondAttribute="trailing" id="mUU-2p-4OW"/>
                                                     <constraint firstAttribute="trailing" secondItem="uTU-mH-oa1" secondAttribute="trailing" id="qrV-vM-Ow8"/>
                                                 </constraints>
@@ -420,7 +409,7 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nNi-JA-Mh4" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="12" y="356" width="264" height="32"/>
+                                        <rect key="frame" x="12" y="396" width="264" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="4mP-VX-4t8"/>
                                         </constraints>
@@ -445,7 +434,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iko-fO-dfF" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="39.5" y="396" width="209" height="40"/>
+                                        <rect key="frame" x="39.5" y="436" width="209" height="40"/>
                                         <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="cqk-CT-FmZ"/>
@@ -537,7 +526,7 @@
                             <constraint firstItem="i2s-AE-KUy" firstAttribute="leading" secondItem="BxR-aF-49P" secondAttribute="leading" constant="16" id="V8t-X2-0DW"/>
                             <constraint firstItem="i2s-AE-KUy" firstAttribute="top" secondItem="BxR-aF-49P" secondAttribute="top" constant="16" id="Xtw-Ha-HIr"/>
                             <constraint firstAttribute="trailing" secondItem="i2s-AE-KUy" secondAttribute="trailing" constant="16" id="YX6-iR-dyg"/>
-                            <constraint firstItem="cyg-D9-yui" firstAttribute="top" secondItem="i2s-AE-KUy" secondAttribute="bottom" constant="64" id="sIU-Cu-5ZI"/>
+                            <constraint firstItem="cyg-D9-yui" firstAttribute="top" secondItem="i2s-AE-KUy" secondAttribute="bottom" constant="24" id="sIU-Cu-5ZI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BxR-aF-49P"/>
                     </view>
@@ -565,34 +554,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cJa-7i-pph" userLabel="Welcome Stack View">
-                                <rect key="frame" x="24" y="113" width="272" height="66"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cJa-7i-pph" userLabel="agreement Stack View">
+                                <rect key="frame" x="16" y="84" width="288" height="348"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="add payment program agreement" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RaG-VW-FgH">
-                                        <rect key="frame" x="28.5" y="0.0" width="215" height="66"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="add payment program agreement" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RaG-VW-FgH">
+                                        <rect key="frame" x="36.5" y="0.0" width="215" height="72"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="72" id="xAv-SQ-upu"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" text="please enter the complete agreement text for this payement program" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="L7p-gS-dFa" userLabel="program description Text View" customClass="DesignableTextView" customModule="Academia" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="80" width="288" height="268"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textView>
                                 </subviews>
-                            </stackView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="please enter the complete agreement text for this payement program" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="L7p-gS-dFa" userLabel="program description Text View" customClass="DesignableTextView" customModule="Academia" customModuleProvider="target">
-                                <rect key="frame" x="16" y="216" width="288" height="240"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="240" id="7SY-QS-n2n"/>
+                                    <constraint firstItem="L7p-gS-dFa" firstAttribute="top" secondItem="RaG-VW-FgH" secondAttribute="bottom" constant="8" id="aag-hc-Hdb"/>
+                                    <constraint firstItem="L7p-gS-dFa" firstAttribute="leading" secondItem="cJa-7i-pph" secondAttribute="leading" id="foM-7W-H0p"/>
+                                    <constraint firstAttribute="bottom" secondItem="L7p-gS-dFa" secondAttribute="bottom" id="soQ-GC-AZ5"/>
+                                    <constraint firstAttribute="trailing" secondItem="L7p-gS-dFa" secondAttribute="trailing" id="uh3-Mz-vvM"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="0.5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textView>
+                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ZC-6o-GF3" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
                                 <rect key="frame" x="105.5" y="472" width="109" height="40"/>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -674,16 +669,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="cJa-7i-pph" firstAttribute="top" secondItem="N84-dD-yro" secondAttribute="top" constant="64" id="95m-vW-UWV"/>
                             <constraint firstItem="5ZC-6o-GF3" firstAttribute="centerX" secondItem="itF-1Z-h2l" secondAttribute="centerX" id="OW5-w2-DBq"/>
-                            <constraint firstItem="L7p-gS-dFa" firstAttribute="top" secondItem="cJa-7i-pph" secondAttribute="bottom" constant="37" id="ReK-Jv-eIv"/>
-                            <constraint firstItem="L7p-gS-dFa" firstAttribute="leading" secondItem="N84-dD-yro" secondAttribute="leading" constant="16" id="aK0-ib-hIR"/>
+                            <constraint firstItem="5ZC-6o-GF3" firstAttribute="top" secondItem="cJa-7i-pph" secondAttribute="bottom" constant="40" id="QMI-eQ-NY7"/>
                             <constraint firstItem="TT6-mh-sbt" firstAttribute="top" secondItem="5ZC-6o-GF3" secondAttribute="bottom" constant="24" id="dRx-ej-Ed8"/>
                             <constraint firstItem="TT6-mh-sbt" firstAttribute="centerX" secondItem="itF-1Z-h2l" secondAttribute="centerX" id="gH9-KJ-Wje"/>
                             <constraint firstItem="N84-dD-yro" firstAttribute="bottom" secondItem="TT6-mh-sbt" secondAttribute="bottom" constant="24" id="jWg-DX-Mu4"/>
-                            <constraint firstItem="5ZC-6o-GF3" firstAttribute="top" secondItem="L7p-gS-dFa" secondAttribute="bottom" constant="16" id="mb0-fK-Mip"/>
-                            <constraint firstItem="N84-dD-yro" firstAttribute="trailing" secondItem="L7p-gS-dFa" secondAttribute="trailing" constant="16" id="sO1-6a-3Xe"/>
-                            <constraint firstItem="N84-dD-yro" firstAttribute="trailing" secondItem="cJa-7i-pph" secondAttribute="trailing" constant="24" id="yFf-fA-cy5"/>
-                            <constraint firstItem="cJa-7i-pph" firstAttribute="leading" secondItem="N84-dD-yro" secondAttribute="leading" constant="24" id="yZ5-2U-aDC"/>
+                            <constraint firstItem="N84-dD-yro" firstAttribute="trailing" secondItem="cJa-7i-pph" secondAttribute="trailing" constant="16" id="yFf-fA-cy5"/>
+                            <constraint firstItem="cJa-7i-pph" firstAttribute="leading" secondItem="N84-dD-yro" secondAttribute="leading" constant="16" id="yZ5-2U-aDC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="N84-dD-yro"/>
                         <connections>
@@ -695,7 +688,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addPaymentProgramAgreementLabelOutlet" destination="RaG-VW-FgH" id="IBj-vy-AVh"/>
+                        <outlet property="agreementStackViewTopToSafeAreaConstraintOutlet" destination="95m-vW-UWV" id="6az-Nl-593"/>
                         <outlet property="nextButtonOutlet" destination="5ZC-6o-GF3" id="79d-ua-TJz"/>
+                        <outlet property="nextButtonToBottomAgreementStackViewConstraintOutlet" destination="QMI-eQ-NY7" id="ymr-Xh-VJ1"/>
                         <outlet property="programAgreementTextView" destination="L7p-gS-dFa" id="LIz-uK-Z8H"/>
                     </connections>
                 </viewController>

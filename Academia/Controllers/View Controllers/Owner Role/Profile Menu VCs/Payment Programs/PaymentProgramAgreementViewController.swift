@@ -27,6 +27,10 @@ class PaymentProgramAgreementViewController: UIViewController {
     
     let programAgreementTextViewPlaceholderString = "tap to enter program agreement"
     
+    let agreementStackViewTopToSafeAreaConstraintOriginalValue: CGFloat = 72.0
+    // constraint outlets
+    @IBOutlet weak var nextButtonToBottomAgreementStackViewConstraintOutlet: NSLayoutConstraint!
+    @IBOutlet weak var agreementStackViewTopToSafeAreaConstraintOutlet: NSLayoutConstraint!
     // label outlets
     @IBOutlet weak var addPaymentProgramAgreementLabelOutlet: UILabel!
     // program agreement textView
@@ -271,19 +275,24 @@ extension PaymentProgramAgreementViewController: UITextViewDelegate {
             if #available(iOS 11.0, *) {
                 
                 self.view.frame.origin.y = -(keyboardCGRectValue.height - bottomPadding)
-                self.programAgreementTextView.heightAnchor.constraint(equalToConstant: (keyboardCGRectValue.height - bottomPadding)).isActive = true
+                self.agreementStackViewTopToSafeAreaConstraintOutlet.constant = (agreementStackViewTopToSafeAreaConstraintOriginalValue + 56.0)
+                self.nextButtonToBottomAgreementStackViewConstraintOutlet.constant = 8.0
                 
             } else {
                 
                 self.view.frame.origin.y = -keyboardCGRectValue.height
-                self.programAgreementTextView.heightAnchor.constraint(equalToConstant: (keyboardCGRectValue.height - bottomPadding)).isActive = false
+                self.agreementStackViewTopToSafeAreaConstraintOutlet.constant = (agreementStackViewTopToSafeAreaConstraintOriginalValue)
+                
+                self.nextButtonToBottomAgreementStackViewConstraintOutlet.constant = 40.0
             }
             
         } else {
             
             self.view.frame.origin.y = 0
             
-            self.programAgreementTextView.heightAnchor.constraint(equalToConstant: (keyboardCGRectValue.height - bottomPadding)).isActive = false
+            self.agreementStackViewTopToSafeAreaConstraintOutlet.constant = (agreementStackViewTopToSafeAreaConstraintOriginalValue)
+            
+            self.nextButtonToBottomAgreementStackViewConstraintOutlet.constant = 40
         }
     }
 }
