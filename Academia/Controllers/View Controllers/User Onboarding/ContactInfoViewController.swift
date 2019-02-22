@@ -214,6 +214,10 @@ class ContactInfoViewController: UIViewController, UITextInputTraits {
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        // set nav bar controller appearance
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+        navigationController?.navigationBar.shadowImage = UIImage()
         
         // required fields
         let phone = phoneTextField.text

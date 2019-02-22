@@ -21,8 +21,9 @@ class LandingPageViewController: UIViewController {
         super.viewDidLoad()
         
         // need to get rid of that lil border line at the bottom of the navigation bar
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
         navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.tintColor = self.beltBuilder.redBeltRed
         
         // following code allows tracking of howmany VCs are present in the current Navigaiton Stack in case have stray VCs out there at any point
         print("how many viewControllers we got at LandingPageVC: \(String(describing: self.navigationController?.viewControllers.count))")

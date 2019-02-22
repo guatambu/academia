@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GroupNameAndDescriptionViewController: UIViewController {
+class GroupNameAndDescriptionViewController: UIViewController, UITextInputTraits  {
 
     // MARK: - Properties
     
@@ -22,11 +22,12 @@ class GroupNameAndDescriptionViewController: UIViewController {
     let beltBuilder = BeltBuilder()
     var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
     
+    let groupDescriptionTextViewPlaceholderString = "tap to enter group description"
+    
     // welcome label outlets
     @IBOutlet weak var welcomeLabelOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     // payment program info outlets
-    @IBOutlet weak var groupNameLabelOutlet: UILabel!
     @IBOutlet weak var groupNameTextField: UITextField!
     // active switch + details
     @IBOutlet weak var activeLabelOutlet: UILabel!
@@ -41,6 +42,12 @@ class GroupNameAndDescriptionViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         subscribeToKeyboardNotifications()
+        
+        // turns off auto-correct in these UITextFields
+        groupNameTextField.autocorrectionType = UITextAutocorrectionType.no
+        
+        // turns off auto-capitalization in these UITextFields
+        groupNameTextField.autocapitalizationType = UITextAutocapitalizationType.none
         
         let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
                            NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
@@ -57,6 +64,12 @@ class GroupNameAndDescriptionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        groupNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter group name", attributes: beltBuilder.avenirFont)
+        groupDescriptionTextView.attributedText = NSAttributedString(string: groupDescriptionTextViewPlaceholderString, attributes: beltBuilder.avenirFont)
+        
+        groupNameTextField.delegate = self
+        groupDescriptionTextView.delegate = self
         
         //populateCompletedProfileInfo()
     }
@@ -88,25 +101,18 @@ class GroupNameAndDescriptionViewController: UIViewController {
         // check for required information being left blank by user
         if groupNameTextField.text == "" {
             
-            // warning to user where welcome instructions text changes to red
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
-            
             // fire haptic feedback for error
             hapticFeedbackGenerator = UINotificationFeedbackGenerator()
             hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
             
-            // warnings for specific textfield being left blank by user
-            groupNameLabelOutlet.textColor = UIColor.red
+            groupNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter program name", attributes: beltBuilder.errorAvenirFont)
             
             // save not allowed, so we exit function
             return
         }
         
-        // reset label text color to black upon succesful save
-        groupNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
-        // reset welcome instructions text color and message upon succesful save
-        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
-        welcomeInstructionsLabelOutlet.text = "please enter the following"
+        // reset textField placeholder text color to gray upon succesful save
+        groupNameTextField.attributedPlaceholder = NSAttributedString(string: groupDescriptionTextViewPlaceholderString, attributes: beltBuilder.avenirFont)
         
         // Location update profile info
         if groupNameTextField.text != "" {
@@ -140,18 +146,14 @@ class GroupNameAndDescriptionViewController: UIViewController {
             hapticFeedbackGenerator = UINotificationFeedbackGenerator()
             hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
             
-            // warnings for specific textfield being left blank by user
-            groupNameLabelOutlet.textColor = UIColor.red
+            groupNameTextField.attributedPlaceholder = NSAttributedString(string: groupDescriptionTextViewPlaceholderString, attributes: beltBuilder.errorAvenirFont)
             
             // save not allowed, so we exit function
             return
         }
         
-        // reset label text color to black upon succesful save
-        groupNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
-        // reset welcome instructions text color and message upon succesful save
-        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
-        welcomeInstructionsLabelOutlet.text = "please enter the following"
+        // reset textField placeholder text color to gray upon succesful save
+        groupNameTextField.attributedPlaceholder = NSAttributedString(string: groupDescriptionTextViewPlaceholderString, attributes: beltBuilder.avenirFont)
         
         // programmatically performing the segue
       
@@ -172,6 +174,10 @@ class GroupNameAndDescriptionViewController: UIViewController {
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        // set nav bar controller appearance
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+        navigationController?.navigationBar.shadowImage = UIImage()
         
         // pass data to destViewController
         destViewController.groupName = groupName
@@ -237,16 +243,28 @@ extension GroupNameAndDescriptionViewController: UITextFieldDelegate, UITextView
     
     // method to call in viewWillAppear() to subscribe to desired UIResponder keyboard notifications
     func subscribeToKeyboardNotifications() {
+        
+        // notifications unique to keyboard itself
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        
+        // notifications unique to editing of programDescriptionTextView text
+        NotificationCenter.default.addObserver(self, selector: #selector(texfViewWillEdit(notificaiton:)), name: UITextView.textDidBeginEditingNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(texfViewWillEdit(notificaiton:)), name: UITextView.textDidEndEditingNotification, object: nil)
     }
     
     // method to be called in viewWillDisappear() to unsubscribe from desired UIResponder keyboard notifications
     func unsubscribeToKeyboardNotifications() {
+        
+        // notifications unique to keyboard itself
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        
+        // notifications unique to editing of programDescriptionTextView text
+        NotificationCenter.default.removeObserver(self, name: UITextView.textDidBeginEditingNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UITextView.textDidEndEditingNotification, object: nil)
     }
     
     // keyboardWillChange to handle Keyboard Notifications
@@ -278,6 +296,24 @@ extension GroupNameAndDescriptionViewController: UITextFieldDelegate, UITextView
         } else {
             
             self.view.frame.origin.y = 0
+        }
+    }
+    
+    // funciton to handle UITextView user editing
+    @objc func texfViewWillEdit(notificaiton: Notification) {
+        
+        // check for start of editing with placeholder text in place
+        if notificaiton.name == UITextView.textDidBeginEditingNotification && groupDescriptionTextView.text == groupDescriptionTextViewPlaceholderString {
+            
+            // change to input fontstyle and empty textView.text ready for user input
+            groupDescriptionTextView.font = UIFont(name: "Avenir-Light", size: 16)
+            groupDescriptionTextView.text = ""
+            
+            // check for end of editing and no user input
+        } else if notificaiton.name == UITextView.textDidEndEditingNotification && groupDescriptionTextView.text == "" {
+            
+            // reset to placeholder text
+            groupDescriptionTextView.attributedText = NSAttributedString(string: groupDescriptionTextViewPlaceholderString, attributes: beltBuilder.avenirFont)
         }
     }
     

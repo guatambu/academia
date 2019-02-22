@@ -70,6 +70,10 @@ class GroupInfoDetailsTableViewController: UITableViewController {
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        // set nav bar controller appearance
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+        navigationController?.navigationBar.shadowImage = UIImage()
         
         // set properties on destinationVC
         destViewController.isOwner = false
@@ -123,6 +127,10 @@ class GroupInfoDetailsTableViewController: UITableViewController {
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        // set nav bar controller appearance
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+        navigationController?.navigationBar.shadowImage = UIImage()
         
         // set properties on destinationVC
         destViewController.inEditingMode = true
@@ -254,6 +262,10 @@ class GroupInfoDetailsTableViewController: UITableViewController {
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        // set nav bar controller appearance
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+        navigationController?.navigationBar.shadowImage = UIImage()
         
         if indexPath.section == 0 {
             // kidStudent setup

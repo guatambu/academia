@@ -12,6 +12,8 @@ class BeltSystemsTableViewController: UITableViewController {
     
     // MARK: - Properties
     
+    let beltBuilder = BeltBuilder()
+    
     var beltSystems: [InternationalStandardBJJBelts] = [.kidBelts, .adultBelts]
     
 
@@ -66,11 +68,21 @@ class BeltSystemsTableViewController: UITableViewController {
             let destViewController = storyboard?.instantiateViewController(withIdentifier: "toBeltsList") as! BeltsListTableViewController
             destViewController.beltSystem = beltSystems[indexPath.item]
             self.navigationController?.pushViewController(destViewController, animated: true)
+            
+            // set nav bar controller appearance
+            navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+            navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+            navigationController?.navigationBar.shadowImage = UIImage()
         }
         else if beltSystems[indexPath.item] == .kidBelts {
             let destViewController = storyboard?.instantiateViewController(withIdentifier: "toBeltsList") as! BeltsListTableViewController
             destViewController.beltSystem = beltSystems[indexPath.item]
             self.navigationController?.pushViewController(destViewController, animated: true)
+            
+            // set nav bar controller appearance
+            navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+            navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+            navigationController?.navigationBar.shadowImage = UIImage()
         }
     }
 }

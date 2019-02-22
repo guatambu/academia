@@ -208,6 +208,9 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+        navigationController?.navigationBar.shadowImage = UIImage(contentsOfFile: "")
         
         if indexPath.section == 0 {
             // kidStudent setup
@@ -270,6 +273,11 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "toClassGroups" {
+            
+            // set nav bar controller appearance
+            navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+            navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+            navigationController?.navigationBar.shadowImage = UIImage()
             
             // Get the ClassTimeViewController using segue.destination.
             guard let destViewController = segue.destination as? AddGroupToClassTableViewController else { return }

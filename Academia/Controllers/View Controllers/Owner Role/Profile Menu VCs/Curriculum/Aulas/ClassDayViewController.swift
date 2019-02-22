@@ -172,6 +172,11 @@ class ClassDayViewController: UIViewController {
         // confirm appropriate segue via segue.identifier
         if segue.identifier == "toClassTime" {
             
+            // set nav bar controller appearance
+            navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+            navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+            navigationController?.navigationBar.shadowImage = UIImage()
+            
             // Get the ClassTimeViewController using segue.destination.
             guard let destViewController = segue.destination as? ClassTimeViewController else { return }
             

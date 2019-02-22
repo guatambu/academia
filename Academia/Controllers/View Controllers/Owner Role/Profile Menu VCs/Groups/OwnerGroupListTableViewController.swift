@@ -12,6 +12,8 @@ class OwnerGroupListTableViewController: UITableViewController {
     
     // MARK: - Properties
     
+    let beltBuilder = BeltBuilder()
+    
     var allGroups = [MockData.allStudents]
     
     
@@ -47,6 +49,10 @@ class OwnerGroupListTableViewController: UITableViewController {
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        // set nav bar controller appearance
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+        navigationController?.navigationBar.shadowImage = UIImage()
         
     }
     
@@ -100,6 +106,9 @@ class OwnerGroupListTableViewController: UITableViewController {
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+        navigationController?.navigationBar.shadowImage = UIImage(contentsOfFile: "")
         
         destViewController.group = GroupModelController.shared.groups[indexPath.row]
     }
@@ -110,6 +119,11 @@ class OwnerGroupListTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "toGroupDetails" {
+            
+            // set nav bar controller appearance
+            navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+            navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+            navigationController?.navigationBar.shadowImage = UIImage()
             
             guard let destination = segue.destination as? GroupInfoDetailsTableViewController else { return }
             

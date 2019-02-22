@@ -137,6 +137,10 @@ class AddGroupToClassTableViewController: UITableViewController, ClassGroupDeleg
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        // set nav bar controller appearance
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+        navigationController?.navigationBar.shadowImage = UIImage()
         
         let group = mockDatGroups[indexPath.row]
         
@@ -150,6 +154,11 @@ class AddGroupToClassTableViewController: UITableViewController, ClassGroupDeleg
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "toClassReviewAndCreate" {
+            
+            // set nav bar controller appearance
+            navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+            navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+            navigationController?.navigationBar.shadowImage = UIImage()
             
             // Get the ClassTimeViewController using segue.destination.
             guard let destViewController = segue.destination as? ReviewAndCreateClassTableViewController else { return }

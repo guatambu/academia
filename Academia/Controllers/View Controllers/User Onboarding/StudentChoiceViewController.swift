@@ -20,6 +20,8 @@ class StudentChoiceViewController: UIViewController {
     var isOwnerAddingStudent: Bool?
     var group: Group?
     
+    let beltBuilder = BeltBuilder()
+    
     @IBOutlet weak var kidsProgramButtonOutlet: UIButton!
     @IBOutlet weak var adultsProgramButtonOutlet: UIButton!
     @IBOutlet weak var confirmKidsProgramButtonOutlet: UIButton!
@@ -85,6 +87,10 @@ class StudentChoiceViewController: UIViewController {
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        // set nav bar controller appearance
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+        navigationController?.navigationBar.shadowImage = UIImage()
         
         // pass desired data to relevant view controller
         destViewController.isOwner = self.isOwner
@@ -108,6 +114,12 @@ class StudentChoiceViewController: UIViewController {
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        // set nav bar controller appearance
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+//        navigationController?.navigationBar.isTranslucent = false
+//        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
         
         // pass desired data to relevant view controller
         destViewController.isOwner = isOwner

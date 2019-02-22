@@ -239,6 +239,10 @@ class EmergencyContactViewController: UIViewController {
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        // set nav bar controller appearance
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+        navigationController?.navigationBar.shadowImage = UIImage()
         
         // reset textfield placeholder text color to gray upon succesful save
         emergencyContactNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter emergency contact name", attributes: beltBuilder.avenirFont)

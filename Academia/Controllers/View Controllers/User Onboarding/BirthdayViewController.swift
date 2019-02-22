@@ -28,7 +28,7 @@ class BirthdayViewController: UIViewController {
     var isOwnerAddingStudent: Bool?
     var group: Group?
     
-    let beltBuiler = BeltBuilder()
+    let beltBuilder = BeltBuilder()
     var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
     
     @IBOutlet weak var whenIsYourBirthdayLabelOutlet: UILabel!
@@ -68,7 +68,7 @@ class BirthdayViewController: UIViewController {
         
         guard birthdate != nil else {
             // warning to user where instructions text changes to red
-            whenIsYourBirthdayLabelOutlet.textColor = beltBuiler.redBeltRed
+            whenIsYourBirthdayLabelOutlet.textColor = beltBuilder.redBeltRed
 
             // fire haptic feedback for error
             hapticFeedbackGenerator = UINotificationFeedbackGenerator()
@@ -99,7 +99,7 @@ class BirthdayViewController: UIViewController {
         inEditingMode = false
         
         // reset instructions text changes to black
-        whenIsYourBirthdayLabelOutlet.textColor = beltBuiler.blackBeltBlack
+        whenIsYourBirthdayLabelOutlet.textColor = beltBuilder.blackBeltBlack
     }
     
     @IBAction func birthdayPicked(_ sender: UIDatePicker) {
@@ -114,7 +114,7 @@ class BirthdayViewController: UIViewController {
         
         guard birthdate != nil else {
             // warning to user where welcome instructions text changes to red
-            whenIsYourBirthdayLabelOutlet.textColor = beltBuiler.redBeltRed
+            whenIsYourBirthdayLabelOutlet.textColor = beltBuilder.redBeltRed
 
             // fire haptic feedback for error
             hapticFeedbackGenerator = UINotificationFeedbackGenerator()
@@ -123,7 +123,7 @@ class BirthdayViewController: UIViewController {
         }
         
         // reset instructions text changes to black
-        whenIsYourBirthdayLabelOutlet.textColor = beltBuiler.blackBeltBlack
+        whenIsYourBirthdayLabelOutlet.textColor = beltBuilder.blackBeltBlack
         
         // programmatically performing the segue
         
@@ -137,6 +137,10 @@ class BirthdayViewController: UIViewController {
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        // set nav bar controller appearance
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+        navigationController?.navigationBar.shadowImage = UIImage()
         
         // pass data to destViewController
         destViewController.isOwner = isOwner

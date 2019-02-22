@@ -96,13 +96,20 @@ class OwnersStudentDetailViewController: UIViewController {
             // create the UITabBarController segue programmatically - MODAL
             if let tabBarDestViewController = (mainView.instantiateViewController(withIdentifier: "toOwnerBaseCamp") as? UITabBarController) {
                 self.present(tabBarDestViewController, animated: true, completion: nil)
-            }
+                // set nav bar controller appearance
+                navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+                navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+                navigationController?.navigationBar.shadowImage = UIImage()            }
         } else {
             // instantiate the relevant storyboard for the Student (Kid or Adult... both are directed to the same TabBarController)
             let mainView: UIStoryboard = UIStoryboard(name: "StudentBaseCampFlow", bundle: nil)
             // create the UITabBarController segue programmatically - MODAL
             if let tabBarDestViewController = (mainView.instantiateViewController(withIdentifier: "toStudentDashbooard") as? UITabBarController) {
                 self.present(tabBarDestViewController, animated: true, completion: nil)
+                // set nav bar controller appearance
+                navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+                navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+                navigationController?.navigationBar.shadowImage = UIImage()
             }
             
         }

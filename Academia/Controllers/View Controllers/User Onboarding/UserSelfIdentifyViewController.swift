@@ -11,6 +11,8 @@ import UIKit
 class UserSelfIdentifyViewController: UIViewController {
     
     // MARK: - Properties
+    
+    let beltBuilder = BeltBuilder()
 
     @IBOutlet weak var iAmOwnerButtonOutlet: UIButton!
     @IBOutlet weak var iAmStudentButtonOutlet: UIButton!
@@ -78,6 +80,10 @@ class UserSelfIdentifyViewController: UIViewController {
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        // set nav bar controller appearance
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+        navigationController?.navigationBar.shadowImage = UIImage()
         
         // pass desired data to relevant view controller
         destViewController.isOwner = self.isOwner
@@ -98,6 +104,10 @@ class UserSelfIdentifyViewController: UIViewController {
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        // set nav bar controller appearance
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+        navigationController?.navigationBar.shadowImage = UIImage()
         
         // pass desired data to relevant view controller
         destViewController.isOwner = self.isOwner

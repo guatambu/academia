@@ -12,6 +12,8 @@ class StudentProfileDetailTableViewController: UITableViewController {
     
     //MARK: - Properties
     
+    let beltBuilder = BeltBuilder()
+    
     @IBOutlet weak var studentProfileMenuCell: UITableViewCell!
     @IBOutlet weak var beltSystemsMenuCell: UITableViewCell!
     @IBOutlet weak var studentPaymentDetailsMenuCell: UITableViewCell!
@@ -45,6 +47,10 @@ class StudentProfileDetailTableViewController: UITableViewController {
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        // set nav bar controller appearance
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+        navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     @IBAction func studentPaymentDetailsButtonTapped(_ sender: UIButton) {
@@ -58,7 +64,10 @@ class StudentProfileDetailTableViewController: UITableViewController {
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
-        navigationController?.navigationBar.tintColor = UIColor(red: 241.0, green: 0.0, blue: 0.0, alpha: 1.0)
+        // set nav bar controller appearance
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+        navigationController?.navigationBar.shadowImage = UIImage()
         
         destViewController.adultStudent = adultStudent
         destViewController.kidStudent = kidStudent
@@ -79,6 +88,10 @@ class StudentProfileDetailTableViewController: UITableViewController {
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        // set nav bar controller appearance
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+        navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     @IBAction func privacyInfoButtonTapped(_ sender: UIButton) {
@@ -92,6 +105,10 @@ class StudentProfileDetailTableViewController: UITableViewController {
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        // set nav bar controller appearance
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+        navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     @IBAction func aboutAcademiaButtonTapped(_ sender: UIButton) {
@@ -105,6 +122,10 @@ class StudentProfileDetailTableViewController: UITableViewController {
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        // set nav bar controller appearance
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+        navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     @IBAction func aboutAcademiaServicesButtonTapped(_ sender: UIButton) {
@@ -118,5 +139,9 @@ class StudentProfileDetailTableViewController: UITableViewController {
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        // set nav bar controller appearance
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+        navigationController?.navigationBar.shadowImage = UIImage()
     }
 }

@@ -249,6 +249,10 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
             let backButtonItem = UIBarButtonItem()
             backButtonItem.title = " "
             navigationItem.backBarButtonItem = backButtonItem
+            // set nav bar controller appearance
+            navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+            navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+            navigationController?.navigationBar.shadowImage = UIImage()
             
             // pass data to destViewController
             destViewController.isOwner = isOwner
@@ -279,6 +283,10 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        // set nav bar controller appearance
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+        navigationController?.navigationBar.shadowImage = UIImage()
         
         // reset welcome instructions text color and message upon succesful save
         welcomeInstructionsOutlet.textColor = beltBuilder.blackBeltBlack

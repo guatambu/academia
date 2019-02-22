@@ -1138,20 +1138,16 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ivj-vJ-FMa" userLabel="Welcome Stack View">
                                 <rect key="frame" x="24" y="36" width="272" height="24"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="please enter the following: " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R4v-5G-Mqa">
-                                        <rect key="frame" x="0.0" y="0.0" width="272" height="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Review Your Info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rM-o0-bI5">
+                                        <rect key="frame" x="25" y="0.0" width="222.5" height="24"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="Oh6-py-s1F"/>
+                                            <constraint firstAttribute="height" constant="24" id="6Z5-M4-iRs"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
-                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="24"/>
+                                        <color key="textColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="R4v-5G-Mqa" secondAttribute="trailing" id="Wn8-HO-x6g"/>
-                                    <constraint firstItem="R4v-5G-Mqa" firstAttribute="leading" secondItem="ivj-vJ-FMa" secondAttribute="leading" id="ZPk-Ly-jlC"/>
-                                </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="payment program agreement" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9QK-LQ-rtU" userLabel="payment program Name Label Outlet">
                                 <rect key="frame" x="16" y="76" width="288" height="22"/>
