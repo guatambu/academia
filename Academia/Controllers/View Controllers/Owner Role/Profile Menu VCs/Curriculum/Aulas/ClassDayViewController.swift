@@ -26,8 +26,7 @@ class ClassDayViewController: UIViewController {
     var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
     
     // IBOutlets
-    @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
-    @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
+    @IBOutlet weak var addClassDaysLabelOutlet: UILabel!
     // day of the week labels
     @IBOutlet weak var sundayLabelOutlet: UILabel!
     @IBOutlet weak var mondayLabelOutlet: UILabel!
@@ -82,7 +81,7 @@ class ClassDayViewController: UIViewController {
         if daysOfTheWeek.isEmpty {
             
             // warning to user where welcome instructions text changes to red
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+            addClassDaysLabelOutlet.textColor = beltBuilder.redBeltRed
             
             // fire haptic feedback for error
             hapticFeedbackGenerator = UINotificationFeedbackGenerator()
@@ -99,7 +98,7 @@ class ClassDayViewController: UIViewController {
             inEditingMode = false
             
             // reset welcome instructions text color and message upon succesful save
-            welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
+            addClassDaysLabelOutlet.textColor = beltBuilder.blackBeltBlack
         }
     }
     
@@ -153,7 +152,7 @@ class ClassDayViewController: UIViewController {
         if daysOfTheWeek.isEmpty {
             
             // warning to user where welcome instructions text changes to red
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+            addClassDaysLabelOutlet.textColor = beltBuilder.redBeltRed
             
             // fire haptic feedback for error
             hapticFeedbackGenerator = UINotificationFeedbackGenerator()
@@ -173,6 +172,11 @@ class ClassDayViewController: UIViewController {
         // confirm appropriate segue via segue.identifier
         if segue.identifier == "toClassTime" {
             
+            // set nav bar controller appearance
+            navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+            navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+            navigationController?.navigationBar.shadowImage = UIImage()
+            
             // Get the ClassTimeViewController using segue.destination.
             guard let destViewController = segue.destination as? ClassTimeViewController else { return }
             
@@ -191,7 +195,7 @@ class ClassDayViewController: UIViewController {
         updateAulaInfo()
         
         // reset welcome instructions text color and message upon succesful save
-        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        addClassDaysLabelOutlet.textColor = beltBuilder.blackBeltBlack
     }
 }
 
@@ -230,13 +234,7 @@ extension ClassDayViewController {
             return
         }
         
-        welcomeMessageLabelOutlet.text = "\(aulaToEdit.aulaName)"
-        
-        welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
-        welcomeInstructionsLabelOutlet.text = "you are in class editing mode"
-        
-        
-        // TODO: build a switch statement to check the weekday, and set the day of the week button to checked if the corresponding day of the week
+        addClassDaysLabelOutlet.text = "\(aulaToEdit.aulaName)"
         
         for day in aulaToEdit.daysOfTheWeek {
             

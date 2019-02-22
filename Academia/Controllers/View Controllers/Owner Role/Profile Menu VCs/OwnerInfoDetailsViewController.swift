@@ -78,6 +78,10 @@ class OwnerInfoDetailsViewController: UIViewController {
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        // set nav bar controller appearance
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+        navigationController?.navigationBar.shadowImage = UIImage()
         
         // set properties on destinationVC
         destViewController.inEditingMode = true
@@ -113,7 +117,10 @@ class OwnerInfoDetailsViewController: UIViewController {
 //            self.navigationController?.popToViewController(destVCNavigation, animated: true)
             // why can't i 'pop' to this VC?  if not the way to go, then, is navigation stack clean?
             
+            // set nav bar controller appearance
             self.navigationController?.navigationBar.tintColor = self.beltBuilder.redBeltRed
+            self.navigationController?.navigationBar.backgroundColor = self.beltBuilder.kidsWhiteCenterRibbonColor
+            self.navigationController?.navigationBar.shadowImage = UIImage()
             
             print("how many owners we got now: \(OwnerModelController.shared.owners.count)")
             

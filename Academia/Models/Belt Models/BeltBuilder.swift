@@ -46,6 +46,9 @@ class BeltBuilder {
     let redBeltRed = UIColor(red: 255/255, green: 38/255, blue: 0/255, alpha: 1.0)
     
     // fonts
+    // black avenir font using blackBeltBlack
+    let avenirFontBlack = [ NSAttributedString.Key.foregroundColor: UIColor.black,
+                       NSAttributedString.Key.font: UIFont(name: "Avenir-Light", size: 16)! ]
     // grey avenir font using gregyBeltGrey
     let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor(red: 146/255, green: 146/255, blue: 146/255, alpha: 1.0),
                        NSAttributedString.Key.font: UIFont(name: "Avenir-LightOblique", size: 16)! ]

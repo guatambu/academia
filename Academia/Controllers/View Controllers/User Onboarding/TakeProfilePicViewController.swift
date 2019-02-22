@@ -31,14 +31,10 @@ class TakeProfilePicViewController: UIViewController {
     let imagePickerController = UIImagePickerController()
     var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
     
-    @IBOutlet weak var welcomeLabeOutlet: UILabel!
-    @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
+    @IBOutlet weak var nameAndProfilePicLabeltOutlet: UILabel!
     @IBOutlet weak var profilePicImageViewOutlet: UIImageView!
-//    @IBOutlet weak var firstNameLabelOutlet: UILabel!
     @IBOutlet weak var firstNameTextField: UITextField!
-//    @IBOutlet weak var lastNameLabelOutlet: UILabel!
     @IBOutlet weak var lastNameTextField: UITextField!
-//    @IBOutlet weak var parentGuardianLabelOutlet: UILabel!
     @IBOutlet weak var parentGuardianTextField: UITextField!
     
     
@@ -66,14 +62,6 @@ class TakeProfilePicViewController: UIViewController {
         firstNameTextField.delegate = self
         lastNameTextField.delegate = self
         parentGuardianTextField.delegate = self
-        
-        guard let isOwner = isOwner else { return }
-        
-        if isOwner{
-            welcomeLabeOutlet.text = "Welcome Owner"
-        } else {
-            welcomeLabeOutlet.text = "Welcome New Student"
-        }
         
         // instantiate tapGestureRecognizer for the profilePicImageViewOutet
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TakeProfilePicViewController.profilePicImageTapped))
@@ -104,9 +92,6 @@ class TakeProfilePicViewController: UIViewController {
         // check for required information being left blank by user
         if firstNameTextField.text == "" || lastNameTextField.text == "" {
             
-            // warning to user where welcome instructions text changes to red
-            welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
-            
             // fire haptic feedback for error
             hapticFeedbackGenerator = UINotificationFeedbackGenerator()
             hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
@@ -116,24 +101,20 @@ class TakeProfilePicViewController: UIViewController {
                 
                 firstNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your first name", attributes: beltBuilder.errorAvenirFont)
                 
-//                firstNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
                 
                 firstNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your first name", attributes: beltBuilder.avenirFont)
                 
-//                firstNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             if lastNameTextField.text == "" {
                 
                 lastNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your last name", attributes: beltBuilder.errorAvenirFont)
                 
-//                lastNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
                 
                 lastNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your last name", attributes: beltBuilder.avenirFont)
                 
-//                lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             // save not allowed, so we exit function
@@ -153,8 +134,11 @@ class TakeProfilePicViewController: UIViewController {
                     print("update owner name: \(OwnerModelController.shared.owners[0].firstName) \(OwnerModelController.shared.owners[0].lastName)")
                 } else {
                     // warning to user where welcome instructions text changes to red
-                    self.welcomeInstructionsLabelOutlet.textColor = UIColor.red
-                    // TODO: - place haptic feedback here
+                    self.firstNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your first name", attributes: beltBuilder.errorAvenirFont)
+                    self.lastNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your first name", attributes: beltBuilder.errorAvenirFont)
+                    // fire haptic feedback for error
+                    hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+                    hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
                 }
             }
         }
@@ -184,9 +168,6 @@ class TakeProfilePicViewController: UIViewController {
         // reset textfield placeholder text color to gray upon succesful save
         firstNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your last name", attributes: beltBuilder.avenirFont)
         lastNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your last name", attributes: beltBuilder.avenirFont)
-        // reset welcome instructions text color and message upon succesful save
-        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
-        welcomeInstructionsLabelOutlet.text = "please enter the following"
     }
     
     @IBAction func nextButtonTapped(_ sender: DesignableButton) {
@@ -211,9 +192,6 @@ class TakeProfilePicViewController: UIViewController {
         // check for required information being left blank by user
         if firstNameTextField.text == "" || lastNameTextField.text == "" {
             
-            // warning to user where welcome instructions text changes to red
-            welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
-            
             // fire haptic feedback for error
             hapticFeedbackGenerator = UINotificationFeedbackGenerator()
             hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
@@ -223,24 +201,20 @@ class TakeProfilePicViewController: UIViewController {
                 
                 firstNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your first name", attributes: beltBuilder.errorAvenirFont)
                 
-                //                firstNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
                 
                 firstNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your first name", attributes: beltBuilder.avenirFont)
                 
-                //                firstNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             if lastNameTextField.text == "" {
                 
                 lastNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your last name", attributes: beltBuilder.errorAvenirFont)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
                 
                 lastNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your last name", attributes: beltBuilder.avenirFont)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             // save not allowed, so we exit function
@@ -262,6 +236,10 @@ class TakeProfilePicViewController: UIViewController {
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        // set nav bar controller appearance
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+        navigationController?.navigationBar.shadowImage = UIImage()
     
         // pass data to destViewController
         destViewController.isOwner = isOwner
@@ -296,10 +274,7 @@ class TakeProfilePicViewController: UIViewController {
         // reset textfield placeholder text color to gray upon succesful save
         firstNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your last name", attributes: beltBuilder.avenirFont)
         lastNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your last name", attributes: beltBuilder.avenirFont)
-        // reset welcome instructions text color and message upon succesful save
-        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
-        welcomeInstructionsLabelOutlet.text = "please enter the following"
-        
+
     }
 }
 
@@ -366,9 +341,7 @@ extension TakeProfilePicViewController {
             return
         }
         
-        welcomeLabeOutlet.text = "Welcome \(ownerToEdit.firstName)"
-        
-        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
+        nameAndProfilePicLabeltOutlet.text = "Welcome \(ownerToEdit.firstName)"
         
         profilePicImageViewOutlet.image = ownerToEdit.profilePic
         firstNameTextField.text = ownerToEdit.firstName
@@ -382,9 +355,7 @@ extension TakeProfilePicViewController {
             return
         }
         
-        welcomeLabeOutlet.text = "Welcome \(kidToEdit.firstName)"
-        
-        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
+        nameAndProfilePicLabeltOutlet.text = "Welcome \(kidToEdit.firstName)"
         
         profilePicImageViewOutlet.image = kidToEdit.profilePic
         firstNameTextField.text = kidToEdit.firstName
@@ -399,9 +370,7 @@ extension TakeProfilePicViewController {
             return
         }
         
-        welcomeLabeOutlet.text = "Welcome \(adultToEdit.firstName)"
-        
-        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
+        nameAndProfilePicLabeltOutlet.text = "Welcome \(adultToEdit.firstName)"
         
         profilePicImageViewOutlet.image = adultToEdit.profilePic
         firstNameTextField.text = adultToEdit.firstName

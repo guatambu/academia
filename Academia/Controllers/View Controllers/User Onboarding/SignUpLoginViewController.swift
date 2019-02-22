@@ -26,12 +26,9 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
     
     @IBOutlet weak var welcomeMessageOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsOutlet: UILabel!
-//    @IBOutlet weak var usernameLabelOutlet: UILabel!
     @IBOutlet weak var usernameTextField: UITextField!
-//    @IBOutlet weak var passwordLabelOutlet: UILabel!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
-//    @IBOutlet weak var confirmPasswordLabelOutlet: UILabel!
     @IBOutlet weak var signUpButtonOutlet: UIButton!
     
     
@@ -252,6 +249,10 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
             let backButtonItem = UIBarButtonItem()
             backButtonItem.title = " "
             navigationItem.backBarButtonItem = backButtonItem
+            // set nav bar controller appearance
+            navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+            navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+            navigationController?.navigationBar.shadowImage = UIImage()
             
             // pass data to destViewController
             destViewController.isOwner = isOwner
@@ -282,6 +283,10 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        // set nav bar controller appearance
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+        navigationController?.navigationBar.shadowImage = UIImage()
         
         // reset welcome instructions text color and message upon succesful save
         welcomeInstructionsOutlet.textColor = beltBuilder.blackBeltBlack

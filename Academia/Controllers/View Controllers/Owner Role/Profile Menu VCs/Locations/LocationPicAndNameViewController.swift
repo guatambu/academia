@@ -25,12 +25,9 @@ class LocationPicAndNameViewController: UIViewController {
     let imagePickerController = UIImagePickerController()
     var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
     
-    
-    @IBOutlet weak var welcomeLabeOutlet: UILabel!
-    @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
+    @IBOutlet weak var locationNameAndPicLabelOutlet: UILabel!
     @IBOutlet weak var locationPicImageViewOutlet: UIImageView!
     @IBOutlet weak var activeSwitch: UISwitch!
-    @IBOutlet weak var locationNameLabelOutlet: UILabel!
     @IBOutlet weak var locationNameTextField: UITextField!
 
     
@@ -52,6 +49,8 @@ class LocationPicAndNameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        locationNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter location name", attributes: beltBuilder.avenirFont)
         
         locationNameTextField.delegate = self
         
@@ -89,15 +88,12 @@ class LocationPicAndNameViewController: UIViewController {
         // check for required information being left blank by user
         if locationNameTextField.text == "" {
             
-            // warning to user where welcome instructions text changes to red
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
-            
             // fire haptic feedback for error
             hapticFeedbackGenerator = UINotificationFeedbackGenerator()
             hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
             
             // warnings for specific textfield being left blank by user
-            locationNameLabelOutlet.textColor = UIColor.red
+            locationNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter location name", attributes: beltBuilder.errorAvenirFont)
             
             // save not allowed, so we exit function
             return
@@ -115,11 +111,8 @@ class LocationPicAndNameViewController: UIViewController {
         
         inEditingMode = false
         
-        // reset label text color to black upon succesful save
-        locationNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
-        // reset welcome instructions text color and message upon succesful save
-        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
-        welcomeInstructionsLabelOutlet.text = "please enter the following"
+        // reset textField placeholder text to gray upon succesful save
+        locationNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter location name", attributes: beltBuilder.avenirFont)
     }
     
     
@@ -133,15 +126,12 @@ class LocationPicAndNameViewController: UIViewController {
         // check for required information being left blank by user
         if locationNameTextField.text == "" {
             
-            // warning to user where welcome instructions text changes to red
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
-            
             // fire haptic feedback for error
             hapticFeedbackGenerator = UINotificationFeedbackGenerator()
             hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
             
             // warnings for specific textfield being left blank by user
-            locationNameLabelOutlet.textColor = UIColor.red
+            locationNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter emergency contact name", attributes: beltBuilder.errorAvenirFont)
             
             // save not allowed, so we exit function
             return
@@ -155,18 +145,11 @@ class LocationPicAndNameViewController: UIViewController {
         // instantiate the desired TableViewController as ViewController on relevant storyboard
         let destViewController = mainView.instantiateViewController(withIdentifier: "toLocationAddress") as! LocationAddressViewController
         
-        // reset label text color to black upon succesful save
-        locationNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
-        // reset welcome instructions text color and message upon succesful save
-        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
-        welcomeInstructionsLabelOutlet.text = "please enter the following"
+        // reset textField placeholder text to gray upon succesful save
+        locationNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter emergency contact name", attributes: beltBuilder.avenirFont)
         
         // run check to see is there is firstName, lastName, and profilePic
-        guard let locationName = locationNameTextField.text, locationNameTextField.text != "" else {
-            
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
-            return
-        }
+        guard let locationName = locationNameTextField.text else { return }
         
         guard let locationPic = locationPicImageViewOutlet.image else { return }
         
@@ -177,6 +160,10 @@ class LocationPicAndNameViewController: UIViewController {
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        // set nav bar controller appearance
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+        navigationController?.navigationBar.shadowImage = UIImage()
         
         // pass data to destViewController
         destViewController.locationName = locationName
@@ -228,9 +215,7 @@ extension LocationPicAndNameViewController {
         
         self.title = locationToEdit.locationName
         
-        welcomeLabeOutlet.text = "Location: \(locationToEdit.locationName)"
-        
-        welcomeInstructionsLabelOutlet.text = "you are in location editing mode"
+        locationNameAndPicLabelOutlet.text = "Location: \(locationToEdit.locationName)"
         
         locationPicImageViewOutlet.image = locationToEdit.locationPic
         locationNameTextField.text = locationToEdit.locationName

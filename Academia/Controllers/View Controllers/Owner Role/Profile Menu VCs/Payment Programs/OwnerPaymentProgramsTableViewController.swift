@@ -101,6 +101,9 @@ class OwnerPaymentProgramsTableViewController: UITableViewController {
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = "Programs"
         navigationItem.backBarButtonItem = backButtonItem
+        // set nav bar controller appearance
         navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+        navigationController?.navigationBar.shadowImage = UIImage()
     }
 }

@@ -28,7 +28,6 @@ class ClassInfoDetailsTableViewController: UITableViewController {
     // outlets
     @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
-    @IBOutlet weak var classNameLabelOutlet: UILabel!
     @IBOutlet weak var daysOfTheWeekLabelOutlet: UILabel!
     @IBOutlet weak var timeLabelOutlet: UILabel!
     @IBOutlet weak var activeLabelOutlet: UILabel!
@@ -37,7 +36,6 @@ class ClassInfoDetailsTableViewController: UITableViewController {
     @IBOutlet weak var groupListLabelOutlet: UILabel!
     @IBOutlet weak var locationLabelOutlet: UILabel!
     @IBOutlet weak var locationNameLabelOutlet: UILabel!
-    @IBOutlet weak var classDescriptionLabelOutlet: UILabel!
     @IBOutlet weak var classDescriptionTextView: UITextView!
     @IBOutlet weak var instructorAdvisoryLabelOutlet: UILabel!
     
@@ -145,6 +143,10 @@ class ClassInfoDetailsTableViewController: UITableViewController {
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        // set nav bar controller appearance
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+        navigationController?.navigationBar.shadowImage = UIImage()
         
         // set properties on destinationVC
         destViewController.inEditingMode = true
@@ -287,6 +289,10 @@ class ClassInfoDetailsTableViewController: UITableViewController {
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        // set nav bar controller appearance
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+        navigationController?.navigationBar.shadowImage = UIImage()
         
         if indexPath.section == 0 {
             // kidStudent setup
@@ -372,7 +378,7 @@ extension ClassInfoDetailsTableViewController {
         }
         
         // name outlet
-        classNameLabelOutlet.text = aula.aulaName
+        title = aula.aulaName
         // days of th week outlet
         for day in aula.daysOfTheWeek {
             if day == aula.daysOfTheWeek.last {

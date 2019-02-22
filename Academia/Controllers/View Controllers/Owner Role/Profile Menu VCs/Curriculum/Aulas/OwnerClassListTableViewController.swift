@@ -371,6 +371,11 @@ class OwnerClassListTableViewController: UITableViewController {
             guard let destinationTVC = segue.destination as? ClassInfoDetailsTableViewController else { return }
             guard let indexPath = self.tableView.indexPathForSelectedRow else { return }
             
+            // set nav bar controller appearance
+            navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+            navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+            navigationController?.navigationBar.shadowImage = UIImage()
+            
             // Sunday
             if indexPath.section == 0 {
                 

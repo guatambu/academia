@@ -33,8 +33,7 @@ class ClassTimeViewController: UIViewController  {
     var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
     
     // IBOutlets
-    @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
-    @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
+    @IBOutlet weak var addClassTimeLabelOutlet: UILabel!
     @IBOutlet weak var daysOfTheWeekLabelOutlet: UILabel!
     @IBOutlet weak var classDaysLabelOutlet: UILabel!
     
@@ -98,7 +97,7 @@ class ClassTimeViewController: UIViewController  {
         guard let _ = time else {
             
             // warning to user where welcome instructions text changes to red
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+            addClassTimeLabelOutlet.textColor = beltBuilder.redBeltRed
             
             // fire haptic feedback for error
             hapticFeedbackGenerator = UINotificationFeedbackGenerator()
@@ -115,7 +114,7 @@ class ClassTimeViewController: UIViewController  {
         self.returnToClassInfo()
         
         // reset welcome instructions text color and message upon succesful save
-        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        addClassTimeLabelOutlet.textColor = beltBuilder.blackBeltBlack
         
         print("saved edited class time and timeCode: \(String(describing: AulaModelController.shared.aulas[0].time)) \n\(String(describing: AulaModelController.shared.aulas[0].timeCode)))")
         
@@ -130,7 +129,7 @@ class ClassTimeViewController: UIViewController  {
         if time == nil {
             
             // warning to user where welcome instructions text changes to red
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+            addClassTimeLabelOutlet.textColor = beltBuilder.redBeltRed
             
             // fire haptic feedback for error
             hapticFeedbackGenerator = UINotificationFeedbackGenerator()
@@ -149,6 +148,11 @@ class ClassTimeViewController: UIViewController  {
         
         // confirm appropriate segue via segue.identifier
         if segue.identifier == "toClassLocation" {
+            
+            // set nav bar controller appearance
+            navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+            navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+            navigationController?.navigationBar.shadowImage = UIImage()
             
             // Get the ClassTimeViewController using segue.destination.
             guard let destViewController = segue.destination as? ClassLocationViewController else { return }
@@ -169,7 +173,7 @@ class ClassTimeViewController: UIViewController  {
         updateAulaInfo()
         
         // reset welcome instructions text color and message upon succesful save
-        welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        addClassTimeLabelOutlet.textColor = beltBuilder.blackBeltBlack
         
     }
 
@@ -212,10 +216,7 @@ extension ClassTimeViewController {
             return
         }
         
-        welcomeMessageLabelOutlet.text = "\(aulaToEdit.aulaName)"
-        
-        welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
-        welcomeInstructionsLabelOutlet.text = "you are in class editing mode"
+        addClassTimeLabelOutlet.text = "\(aulaToEdit.aulaName)"
         
         daysOfTheWeek = aulaToEdit.daysOfTheWeek
         time = aulaToEdit.time ?? ""

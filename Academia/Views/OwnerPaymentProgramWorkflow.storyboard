@@ -93,63 +93,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ekj-MI-9t8" userLabel="Welcome Stack View">
-                                <rect key="frame" x="24" y="36" width="272" height="60"/>
+                                <rect key="frame" x="24" y="113" width="272" height="66"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Owner" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="thW-9e-ezB">
-                                        <rect key="frame" x="0.0" y="0.0" width="272" height="36"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="36" id="kzh-k8-4MX"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="32"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="add payment program name and description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Nh-4g-5NH">
+                                        <rect key="frame" x="13" y="0.0" width="246" height="66"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="please enter the following: " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4h4-gD-XZT">
-                                        <rect key="frame" x="0.0" y="36" width="272" height="24"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="cOH-Hh-roI"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="thW-9e-ezB" secondAttribute="trailing" id="2W3-MV-NJp"/>
-                                    <constraint firstAttribute="trailing" secondItem="4h4-gD-XZT" secondAttribute="trailing" id="F7g-1t-y39"/>
-                                    <constraint firstItem="thW-9e-ezB" firstAttribute="leading" secondItem="ekj-MI-9t8" secondAttribute="leading" id="JY4-F3-3Ta"/>
-                                    <constraint firstItem="4h4-gD-XZT" firstAttribute="leading" secondItem="ekj-MI-9t8" secondAttribute="leading" id="Ra0-E1-5QH"/>
-                                </constraints>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="lMN-Ww-jMh" userLabel="payment program name Stack View">
-                                <rect key="frame" x="16" y="193" width="288" height="56"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="2m2-cF-6Bf" userLabel="payment program name Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="56"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="payment program name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rIX-Ay-cCB" userLabel="payment program Name Label Outlet">
-                                                <rect key="frame" x="4" y="0.0" width="280" height="22"/>
-                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NAS-zx-sKq" userLabel="payment program Name Text Field">
-                                                <rect key="frame" x="0.0" y="26" width="288" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                            </textField>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="NAS-zx-sKq" secondAttribute="trailing" id="E4n-98-i2C"/>
-                                            <constraint firstItem="NAS-zx-sKq" firstAttribute="leading" secondItem="2m2-cF-6Bf" secondAttribute="leading" id="Ibd-Rh-NyX"/>
-                                            <constraint firstItem="rIX-Ay-cCB" firstAttribute="leading" secondItem="2m2-cF-6Bf" secondAttribute="leading" constant="4" id="lZW-ch-ZqW"/>
-                                        </constraints>
-                                    </stackView>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="E60-AA-dtn" userLabel="active switch Stack View">
-                                <rect key="frame" x="16" y="265" width="288" height="31"/>
+                                <rect key="frame" x="16" y="243" width="288" height="31"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="active:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xAB-Hc-z8z">
                                         <rect key="frame" x="0.0" y="0.0" width="55" height="31"/>
@@ -174,11 +129,31 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="lMN-Ww-jMh" userLabel="payment program name Stack View">
+                                <rect key="frame" x="16" y="290" width="288" height="30"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="2m2-cF-6Bf" userLabel="payment program name Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="30"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NAS-zx-sKq" userLabel="payment program Name Text Field">
+                                                <rect key="frame" x="0.0" y="0.0" width="288" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="NAS-zx-sKq" secondAttribute="trailing" id="E4n-98-i2C"/>
+                                            <constraint firstItem="NAS-zx-sKq" firstAttribute="leading" secondItem="2m2-cF-6Bf" secondAttribute="leading" id="Ibd-Rh-NyX"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="please enter a description of this program" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jjR-63-Qh2" userLabel="program description Text View" customClass="DesignableTextView" customModule="Academia" customModuleProvider="target">
-                                <rect key="frame" x="16" y="312" width="288" height="144"/>
+                                <rect key="frame" x="16" y="336" width="288" height="120"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="144" id="lNq-r8-pYb"/>
+                                    <constraint firstAttribute="height" constant="120" id="lNq-r8-pYb"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -275,12 +250,10 @@
                             <constraint firstItem="MtN-sE-se8" firstAttribute="top" secondItem="9oF-Mh-3WG" secondAttribute="bottom" constant="24" id="0e4-mB-myT"/>
                             <constraint firstItem="ekj-MI-9t8" firstAttribute="centerX" secondItem="Tnf-jM-82U" secondAttribute="centerX" id="5Il-mH-ICq"/>
                             <constraint firstItem="9oF-Mh-3WG" firstAttribute="centerX" secondItem="Tnf-jM-82U" secondAttribute="centerX" id="85q-68-Hhn"/>
-                            <constraint firstItem="E60-AA-dtn" firstAttribute="top" secondItem="lMN-Ww-jMh" secondAttribute="bottom" constant="16" id="EgG-qQ-Inf"/>
                             <constraint firstItem="lMN-Ww-jMh" firstAttribute="leading" secondItem="KyY-kH-JPx" secondAttribute="leading" constant="16" id="KKs-sB-SHQ"/>
+                            <constraint firstItem="E60-AA-dtn" firstAttribute="top" secondItem="ekj-MI-9t8" secondAttribute="bottom" constant="64" id="Nnz-II-1Oo"/>
                             <constraint firstItem="KyY-kH-JPx" firstAttribute="trailing" secondItem="jjR-63-Qh2" secondAttribute="trailing" constant="16" id="P0E-oB-0wR"/>
-                            <constraint firstItem="ekj-MI-9t8" firstAttribute="top" secondItem="KyY-kH-JPx" secondAttribute="top" constant="16" id="RFn-gr-NgD"/>
                             <constraint firstItem="MtN-sE-se8" firstAttribute="centerX" secondItem="Tnf-jM-82U" secondAttribute="centerX" id="Upk-YB-Z0x"/>
-                            <constraint firstItem="jjR-63-Qh2" firstAttribute="top" secondItem="E60-AA-dtn" secondAttribute="bottom" constant="16" id="WfN-Y7-3Gl"/>
                             <constraint firstItem="ekj-MI-9t8" firstAttribute="leading" secondItem="KyY-kH-JPx" secondAttribute="leading" constant="24" id="Wwd-g9-xtI"/>
                             <constraint firstItem="E60-AA-dtn" firstAttribute="leading" secondItem="KyY-kH-JPx" secondAttribute="leading" constant="16" id="ZVh-Rp-dff"/>
                             <constraint firstItem="jjR-63-Qh2" firstAttribute="leading" secondItem="KyY-kH-JPx" secondAttribute="leading" constant="16" id="aRW-mo-n1Y"/>
@@ -288,7 +261,9 @@
                             <constraint firstItem="KyY-kH-JPx" firstAttribute="trailing" secondItem="lMN-Ww-jMh" secondAttribute="trailing" constant="16" id="ikn-Ek-iLC"/>
                             <constraint firstItem="9oF-Mh-3WG" firstAttribute="top" secondItem="jjR-63-Qh2" secondAttribute="bottom" constant="16" id="k5I-kk-ZuK"/>
                             <constraint firstItem="KyY-kH-JPx" firstAttribute="trailing" secondItem="ekj-MI-9t8" secondAttribute="trailing" constant="24" id="muj-FB-jtw"/>
+                            <constraint firstItem="jjR-63-Qh2" firstAttribute="top" secondItem="NAS-zx-sKq" secondAttribute="bottom" constant="16" id="oa0-BQ-KyT"/>
                             <constraint firstAttribute="trailing" secondItem="E60-AA-dtn" secondAttribute="trailing" constant="16" id="pac-Ou-sBU"/>
+                            <constraint firstItem="lMN-Ww-jMh" firstAttribute="top" secondItem="E60-AA-dtn" secondAttribute="bottom" constant="16" id="vkc-7n-bi6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KyY-kH-JPx"/>
                         <connections>
@@ -301,12 +276,10 @@
                     <connections>
                         <outlet property="activeLabelOutlet" destination="xAB-Hc-z8z" id="sQ6-sB-J3s"/>
                         <outlet property="activeSwitch" destination="uzg-jE-4zM" id="xiG-hj-Opb"/>
+                        <outlet property="addPaymentProgramNameDescriptionLabelOutlet" destination="7Nh-4g-5NH" id="hnz-pi-PH2"/>
                         <outlet property="lastChangedLabelOutlet" destination="jv5-6Z-sNt" id="6lR-OA-2dd"/>
-                        <outlet property="paymentProgramNameLabelOutlet" destination="rIX-Ay-cCB" id="Njf-f6-Y8D"/>
                         <outlet property="programDescriptionTextView" destination="jjR-63-Qh2" id="hpB-XE-Z7B"/>
                         <outlet property="programNameTextField" destination="NAS-zx-sKq" id="TWc-uS-1un"/>
-                        <outlet property="welcomeInstructionsLabelOutlet" destination="4h4-gD-XZT" id="Ssf-CY-EqH"/>
-                        <outlet property="welcomeLabelOutlet" destination="thW-9e-ezB" id="S0R-rh-8cG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2YS-WI-2Ar" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -326,7 +299,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="i2s-AE-KUy" userLabel="Program Stack View">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="i2s-AE-KUy" userLabel="Program Stack View">
                                 <rect key="frame" x="16" y="36" width="288" height="476"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="O9a-lF-E3o" userLabel="plese review and name Stack View">
@@ -359,46 +332,28 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7jG-HO-ent" userLabel="Program Details Stack View">
-                                        <rect key="frame" x="16" y="68" width="256" height="296"/>
+                                        <rect key="frame" x="16" y="56" width="256" height="332"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="8d3-ba-R7q" userLabel="program stats Stack View">
-                                                <rect key="frame" x="0.0" y="0.0" width="151" height="66"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="151" height="44"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(program name)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="cLc-Jm-QQz" userLabel="program name Label Outlet">
-                                                        <rect key="frame" x="0.0" y="0.0" width="151" height="22"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="active: yes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XeF-hh-mqD" userLabel="active Label Outlet">
-                                                        <rect key="frame" x="0.0" y="22" width="73" height="22"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="73" height="22"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="last change: 09/30/18" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="ajv-Qw-UUx" userLabel="last change Label Outlet">
-                                                        <rect key="frame" x="0.0" y="44" width="151" height="22"/>
+                                                        <rect key="frame" x="0.0" y="22" width="151" height="22"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="cLc-Jm-QQz" secondAttribute="trailing" id="UN7-J9-oRE"/>
-                                                    <constraint firstItem="cLc-Jm-QQz" firstAttribute="leading" secondItem="8d3-ba-R7q" secondAttribute="leading" id="XJd-ax-Hvk"/>
-                                                </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="-8" translatesAutoresizingMaskIntoConstraints="NO" id="3k9-hu-m7X" userLabel="description Stack View">
-                                                <rect key="frame" x="0.0" y="74" width="256" height="126"/>
+                                                <rect key="frame" x="0.0" y="52" width="256" height="184"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="program description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="FzP-cd-nTu">
-                                                        <rect key="frame" x="0.0" y="0.0" width="148.5" height="32"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="32" id="A7O-u1-Kew"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fU3-qf-EnK">
-                                                        <rect key="frame" x="0.0" y="24" width="256" height="102"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="256" height="184"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
@@ -411,9 +366,9 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="oFl-Ai-LXF" userLabel="billing options Stack View">
-                                                <rect key="frame" x="0.0" y="208" width="240" height="88"/>
+                                                <rect key="frame" x="0.0" y="244" width="240" height="88"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="billing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="THx-Jj-lep" userLabel="billing">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="billing details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="THx-Jj-lep" userLabel="billing">
                                                         <rect key="frame" x="0.0" y="0.0" width="240" height="22"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                                         <nil key="textColor"/>
@@ -441,6 +396,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="THx-Jj-lep" secondAttribute="trailing" id="Bio-Rc-l3g"/>
                                                     <constraint firstAttribute="trailing" secondItem="uS3-Cs-ezc" secondAttribute="trailing" id="TQC-Z7-vQf"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="88" id="jbN-3h-F8n"/>
                                                     <constraint firstAttribute="trailing" secondItem="Vs6-YE-9qk" secondAttribute="trailing" id="mUU-2p-4OW"/>
                                                     <constraint firstAttribute="trailing" secondItem="uTU-mH-oa1" secondAttribute="trailing" id="qrV-vM-Ow8"/>
                                                 </constraints>
@@ -453,7 +409,7 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nNi-JA-Mh4" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="12" y="384" width="264" height="32"/>
+                                        <rect key="frame" x="12" y="396" width="264" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="4mP-VX-4t8"/>
                                         </constraints>
@@ -582,7 +538,6 @@
                         <outlet property="billingDatesLabelOutlet" destination="uTU-mH-oa1" id="P7s-fa-lBR"/>
                         <outlet property="billingTypesLabelOutlet" destination="uS3-Cs-ezc" id="fdS-BV-2Qc"/>
                         <outlet property="lastChangedLabelOutlet" destination="ajv-Qw-UUx" id="9Nk-ME-ou7"/>
-                        <outlet property="paymentProgramNameLabelOutlet" destination="cLc-Jm-QQz" id="hhL-xM-8T0"/>
                         <outlet property="programDescriptionTextView" destination="fU3-qf-EnK" id="zQ3-Oh-Bd2"/>
                         <outlet property="signatureTypesLabelOutlet" destination="Vs6-YE-9qk" id="fgb-77-KBr"/>
                     </connections>
@@ -599,58 +554,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cJa-7i-pph" userLabel="Welcome Stack View">
-                                <rect key="frame" x="24" y="36" width="272" height="60"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cJa-7i-pph" userLabel="agreement Stack View">
+                                <rect key="frame" x="16" y="84" width="288" height="348"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Owner" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="WDm-Hc-OWN">
-                                        <rect key="frame" x="0.0" y="0.0" width="272" height="36"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="add payment program agreement" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RaG-VW-FgH">
+                                        <rect key="frame" x="36.5" y="0.0" width="215" height="72"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="36" id="KGd-2l-lTV"/>
+                                            <constraint firstAttribute="height" constant="72" id="xAv-SQ-upu"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="32"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="please enter the following: " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="45a-yE-34f">
-                                        <rect key="frame" x="0.0" y="36" width="272" height="24"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="TaP-3I-gpV"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" text="please enter the complete agreement text for this payement program" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="L7p-gS-dFa" userLabel="program description Text View" customClass="DesignableTextView" customModule="Academia" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="80" width="288" height="268"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="45a-yE-34f" secondAttribute="trailing" id="18f-zu-yQE"/>
-                                    <constraint firstAttribute="trailing" secondItem="WDm-Hc-OWN" secondAttribute="trailing" id="Bzw-yX-Duz"/>
-                                    <constraint firstItem="45a-yE-34f" firstAttribute="leading" secondItem="cJa-7i-pph" secondAttribute="leading" id="cud-uk-9oT"/>
-                                    <constraint firstItem="WDm-Hc-OWN" firstAttribute="leading" secondItem="cJa-7i-pph" secondAttribute="leading" id="nnr-ce-tIw"/>
+                                    <constraint firstItem="L7p-gS-dFa" firstAttribute="top" secondItem="RaG-VW-FgH" secondAttribute="bottom" constant="8" id="aag-hc-Hdb"/>
+                                    <constraint firstItem="L7p-gS-dFa" firstAttribute="leading" secondItem="cJa-7i-pph" secondAttribute="leading" id="foM-7W-H0p"/>
+                                    <constraint firstAttribute="bottom" secondItem="L7p-gS-dFa" secondAttribute="bottom" id="soQ-GC-AZ5"/>
+                                    <constraint firstAttribute="trailing" secondItem="L7p-gS-dFa" secondAttribute="trailing" id="uh3-Mz-vvM"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="payment program agreement" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xT3-tE-M34" userLabel="payment program Name Label Outlet">
-                                <rect key="frame" x="16" y="178" width="288" height="22"/>
-                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="please enter the complete agreement text for this payement program" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="L7p-gS-dFa" userLabel="program description Text View" customClass="DesignableTextView" customModule="Academia" customModuleProvider="target">
-                                <rect key="frame" x="16" y="216" width="288" height="240"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="240" id="7SY-QS-n2n"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="0.5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ZC-6o-GF3" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
                                 <rect key="frame" x="105.5" y="472" width="109" height="40"/>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -732,20 +669,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="N84-dD-yro" firstAttribute="trailing" secondItem="xT3-tE-M34" secondAttribute="trailing" constant="16" id="8Oa-JJ-SyS"/>
-                            <constraint firstItem="cJa-7i-pph" firstAttribute="top" secondItem="N84-dD-yro" secondAttribute="top" constant="16" id="CKf-tT-2nF"/>
+                            <constraint firstItem="cJa-7i-pph" firstAttribute="top" secondItem="N84-dD-yro" secondAttribute="top" constant="64" id="95m-vW-UWV"/>
                             <constraint firstItem="5ZC-6o-GF3" firstAttribute="centerX" secondItem="itF-1Z-h2l" secondAttribute="centerX" id="OW5-w2-DBq"/>
-                            <constraint firstItem="L7p-gS-dFa" firstAttribute="top" secondItem="xT3-tE-M34" secondAttribute="bottom" constant="16" id="WiQ-bO-CLC"/>
-                            <constraint firstItem="L7p-gS-dFa" firstAttribute="leading" secondItem="N84-dD-yro" secondAttribute="leading" constant="16" id="aK0-ib-hIR"/>
+                            <constraint firstItem="5ZC-6o-GF3" firstAttribute="top" secondItem="cJa-7i-pph" secondAttribute="bottom" constant="40" id="QMI-eQ-NY7"/>
                             <constraint firstItem="TT6-mh-sbt" firstAttribute="top" secondItem="5ZC-6o-GF3" secondAttribute="bottom" constant="24" id="dRx-ej-Ed8"/>
                             <constraint firstItem="TT6-mh-sbt" firstAttribute="centerX" secondItem="itF-1Z-h2l" secondAttribute="centerX" id="gH9-KJ-Wje"/>
-                            <constraint firstItem="xT3-tE-M34" firstAttribute="leading" secondItem="N84-dD-yro" secondAttribute="leading" constant="16" id="ibW-eC-6qI"/>
                             <constraint firstItem="N84-dD-yro" firstAttribute="bottom" secondItem="TT6-mh-sbt" secondAttribute="bottom" constant="24" id="jWg-DX-Mu4"/>
-                            <constraint firstItem="5ZC-6o-GF3" firstAttribute="top" secondItem="L7p-gS-dFa" secondAttribute="bottom" constant="16" id="mb0-fK-Mip"/>
-                            <constraint firstItem="cJa-7i-pph" firstAttribute="centerX" secondItem="itF-1Z-h2l" secondAttribute="centerX" id="mu3-JY-Oeu"/>
-                            <constraint firstItem="N84-dD-yro" firstAttribute="trailing" secondItem="L7p-gS-dFa" secondAttribute="trailing" constant="16" id="sO1-6a-3Xe"/>
-                            <constraint firstItem="N84-dD-yro" firstAttribute="trailing" secondItem="cJa-7i-pph" secondAttribute="trailing" constant="24" id="yFf-fA-cy5"/>
-                            <constraint firstItem="cJa-7i-pph" firstAttribute="leading" secondItem="N84-dD-yro" secondAttribute="leading" constant="24" id="yZ5-2U-aDC"/>
+                            <constraint firstItem="N84-dD-yro" firstAttribute="trailing" secondItem="cJa-7i-pph" secondAttribute="trailing" constant="16" id="yFf-fA-cy5"/>
+                            <constraint firstItem="cJa-7i-pph" firstAttribute="leading" secondItem="N84-dD-yro" secondAttribute="leading" constant="16" id="yZ5-2U-aDC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="N84-dD-yro"/>
                         <connections>
@@ -756,11 +687,11 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="uBI-Ac-5m6"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="addPaymentProgramAgreementLabelOutlet" destination="RaG-VW-FgH" id="IBj-vy-AVh"/>
+                        <outlet property="agreementStackViewTopToSafeAreaConstraintOutlet" destination="95m-vW-UWV" id="6az-Nl-593"/>
                         <outlet property="nextButtonOutlet" destination="5ZC-6o-GF3" id="79d-ua-TJz"/>
-                        <outlet property="paymentProgramAgreementLabelOutlet" destination="xT3-tE-M34" id="rOu-NB-kNG"/>
+                        <outlet property="nextButtonToBottomAgreementStackViewConstraintOutlet" destination="QMI-eQ-NY7" id="ymr-Xh-VJ1"/>
                         <outlet property="programAgreementTextView" destination="L7p-gS-dFa" id="LIz-uK-Z8H"/>
-                        <outlet property="welcomeInstructionsLabelOutlet" destination="45a-yE-34f" id="mh1-H3-Aog"/>
-                        <outlet property="welcomeLabelOutlet" destination="WDm-Hc-OWN" id="cjN-yq-dES"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X7T-B9-6kb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -781,45 +712,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="17L-c9-Vem" userLabel="Welcome Stack View">
-                                <rect key="frame" x="24" y="36" width="272" height="60"/>
+                                <rect key="frame" x="24" y="113" width="272" height="33"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Owner" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="bpd-O0-DI7">
-                                        <rect key="frame" x="0.0" y="0.0" width="272" height="36"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="36" id="Imz-iw-Ncv"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="32"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="please enter the following: " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ypu-HH-0cO">
-                                        <rect key="frame" x="0.0" y="36" width="272" height="24"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="ijS-8z-8Bv"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="add billing details" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="15e-jb-8Xz">
+                                        <rect key="frame" x="41" y="0.0" width="190.5" height="33"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="Ypu-HH-0cO" firstAttribute="leading" secondItem="17L-c9-Vem" secondAttribute="leading" id="2Qa-81-mTp"/>
-                                    <constraint firstAttribute="trailing" secondItem="bpd-O0-DI7" secondAttribute="trailing" id="2aN-tr-MS6"/>
-                                    <constraint firstItem="bpd-O0-DI7" firstAttribute="leading" secondItem="17L-c9-Vem" secondAttribute="leading" id="KaF-L4-CRb"/>
-                                    <constraint firstAttribute="trailing" secondItem="Ypu-HH-0cO" secondAttribute="trailing" id="jnl-XS-Yed"/>
-                                </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eaN-wI-Kna" userLabel="billing details View">
-                                <rect key="frame" x="16" y="136" width="288" height="288"/>
+                                <rect key="frame" x="16" y="152" width="288" height="288"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="billing type:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63P-P5-xiu">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="22"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="16.5"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="5" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eJc-bv-nKK" userLabel="billing type Collection View">
-                                        <rect key="frame" x="0.0" y="30" width="288" height="56"/>
+                                        <rect key="frame" x="0.0" y="24.5" width="288" height="56"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="aXJ-0E-52H"/>
@@ -903,13 +816,13 @@
                                         </cells>
                                     </collectionView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="billing date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4h-Xb-NPv">
-                                        <rect key="frame" x="0.0" y="118" width="288" height="22"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                        <rect key="frame" x="0.0" y="96.5" width="288" height="16.5"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="10" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="t66-pd-MVT" userLabel="billing date Collection View">
-                                        <rect key="frame" x="0.0" y="148" width="288" height="56"/>
+                                        <rect key="frame" x="0.0" y="121" width="288" height="56"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="zCg-0D-SRq"/>
@@ -993,13 +906,13 @@
                                         </cells>
                                     </collectionView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="signature type:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgW-Nd-R9Z">
-                                        <rect key="frame" x="0.0" y="236" width="288" height="22"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                        <rect key="frame" x="0.0" y="193" width="288" height="16.5"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="15" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="20K-zo-sgY" userLabel="signature type Collection View">
-                                        <rect key="frame" x="0.0" y="266" width="288" height="56"/>
+                                        <rect key="frame" x="0.0" y="217.5" width="288" height="56"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="q2D-AC-Ygx"/>
@@ -1093,15 +1006,16 @@
                                     <constraint firstItem="t66-pd-MVT" firstAttribute="top" secondItem="P4h-Xb-NPv" secondAttribute="bottom" constant="8" id="LRm-gT-oo4"/>
                                     <constraint firstAttribute="trailing" secondItem="t66-pd-MVT" secondAttribute="trailing" id="QUd-Wa-mYR"/>
                                     <constraint firstAttribute="trailing" secondItem="63P-P5-xiu" secondAttribute="trailing" id="YKL-ef-NM6"/>
-                                    <constraint firstItem="P4h-Xb-NPv" firstAttribute="top" secondItem="eJc-bv-nKK" secondAttribute="bottom" constant="32" id="acA-3I-6HW"/>
+                                    <constraint firstItem="P4h-Xb-NPv" firstAttribute="top" secondItem="eJc-bv-nKK" secondAttribute="bottom" constant="16" id="acA-3I-6HW"/>
                                     <constraint firstAttribute="trailing" secondItem="P4h-Xb-NPv" secondAttribute="trailing" id="fCb-Af-pZi"/>
                                     <constraint firstItem="P4h-Xb-NPv" firstAttribute="leading" secondItem="eaN-wI-Kna" secondAttribute="leading" id="gd3-Ow-0vK"/>
                                     <constraint firstItem="t66-pd-MVT" firstAttribute="leading" secondItem="eaN-wI-Kna" secondAttribute="leading" id="jcN-F1-FG4"/>
                                     <constraint firstAttribute="trailing" secondItem="20K-zo-sgY" secondAttribute="trailing" id="jnj-2v-P4p"/>
+                                    <constraint firstAttribute="height" constant="288" id="kwG-4q-6hb"/>
                                     <constraint firstAttribute="trailing" secondItem="eJc-bv-nKK" secondAttribute="trailing" id="rGO-F4-U8d"/>
                                     <constraint firstItem="20K-zo-sgY" firstAttribute="top" secondItem="rgW-Nd-R9Z" secondAttribute="bottom" constant="8" id="rJB-az-w7C"/>
                                     <constraint firstItem="63P-P5-xiu" firstAttribute="top" secondItem="eaN-wI-Kna" secondAttribute="top" id="sS2-oo-7pE"/>
-                                    <constraint firstItem="rgW-Nd-R9Z" firstAttribute="top" secondItem="t66-pd-MVT" secondAttribute="bottom" constant="32" id="vCo-Hm-Wfv"/>
+                                    <constraint firstItem="rgW-Nd-R9Z" firstAttribute="top" secondItem="t66-pd-MVT" secondAttribute="bottom" constant="16" id="vCo-Hm-Wfv"/>
                                     <constraint firstItem="eJc-bv-nKK" firstAttribute="leading" secondItem="eaN-wI-Kna" secondAttribute="leading" id="xWD-YK-IsE"/>
                                 </constraints>
                             </view>
@@ -1185,18 +1099,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="17L-c9-Vem" firstAttribute="centerX" secondItem="aMK-Q0-Xaz" secondAttribute="centerX" id="1Yc-fL-ApR"/>
                             <constraint firstItem="17L-c9-Vem" firstAttribute="leading" secondItem="d7A-hE-AGW" secondAttribute="leading" constant="24" id="3lm-R2-iKz"/>
+                            <constraint firstItem="eaN-wI-Kna" firstAttribute="top" secondItem="17L-c9-Vem" secondAttribute="bottom" constant="6" id="3n5-JM-lFC"/>
                             <constraint firstItem="d7A-hE-AGW" firstAttribute="trailing" secondItem="17L-c9-Vem" secondAttribute="trailing" constant="24" id="7xK-tB-8bi"/>
-                            <constraint firstItem="eaN-wI-Kna" firstAttribute="centerY" secondItem="d7A-hE-AGW" secondAttribute="centerY" constant="-14" id="ABT-qQ-tNw"/>
                             <constraint firstItem="POt-J2-icz" firstAttribute="centerX" secondItem="aMK-Q0-Xaz" secondAttribute="centerX" id="B3I-bA-2gu"/>
+                            <constraint firstItem="MT3-PV-gOo" firstAttribute="top" secondItem="eaN-wI-Kna" secondAttribute="bottom" constant="32" id="O2A-no-HQe"/>
                             <constraint firstItem="eaN-wI-Kna" firstAttribute="leading" secondItem="aMK-Q0-Xaz" secondAttribute="leading" constant="16" id="Rqb-Vh-Dcg"/>
                             <constraint firstItem="d7A-hE-AGW" firstAttribute="bottom" secondItem="POt-J2-icz" secondAttribute="bottom" constant="24" id="UDr-da-RT8"/>
                             <constraint firstItem="MT3-PV-gOo" firstAttribute="centerX" secondItem="aMK-Q0-Xaz" secondAttribute="centerX" id="fZp-sG-Kzv"/>
                             <constraint firstAttribute="trailing" secondItem="eaN-wI-Kna" secondAttribute="trailing" constant="16" id="mPD-aV-Pfu"/>
-                            <constraint firstItem="eaN-wI-Kna" firstAttribute="top" secondItem="17L-c9-Vem" secondAttribute="bottom" constant="40" id="pY5-HM-Xmq"/>
                             <constraint firstItem="POt-J2-icz" firstAttribute="top" secondItem="MT3-PV-gOo" secondAttribute="bottom" constant="24" id="ptr-ql-k6f"/>
-                            <constraint firstItem="17L-c9-Vem" firstAttribute="top" secondItem="d7A-hE-AGW" secondAttribute="top" constant="16" id="q5h-IH-Oms"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="d7A-hE-AGW"/>
                     </view>
@@ -1204,12 +1116,11 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="vFu-pF-3Kq"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="addBillingDetailsLabelOutlet" destination="15e-jb-8Xz" id="jRi-iy-bfh"/>
                         <outlet property="billingDateCollectionView" destination="t66-pd-MVT" id="yXT-EM-I5Q"/>
                         <outlet property="billingTypeCollectionView" destination="eJc-bv-nKK" id="6Xv-Dg-OrK"/>
                         <outlet property="nextButtonOutlet" destination="MT3-PV-gOo" id="8KV-vh-1m1"/>
                         <outlet property="signatureTypeCollectionView" destination="20K-zo-sgY" id="F0W-nX-wLE"/>
-                        <outlet property="welcomeInstructionsLabelOutlet" destination="Ypu-HH-0cO" id="DcD-zK-SAX"/>
-                        <outlet property="welcomeMessageLabelOutlet" destination="bpd-O0-DI7" id="Oyi-Ao-FZT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QQy-h5-v4g" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1225,42 +1136,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ivj-vJ-FMa" userLabel="Welcome Stack View">
-                                <rect key="frame" x="24" y="36" width="272" height="60"/>
+                                <rect key="frame" x="24" y="36" width="272" height="24"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Owner" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="nVt-Cs-aR0">
-                                        <rect key="frame" x="0.0" y="0.0" width="272" height="36"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Review Your Info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rM-o0-bI5">
+                                        <rect key="frame" x="25" y="0.0" width="222.5" height="24"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="36" id="9Hf-97-IdZ"/>
+                                            <constraint firstAttribute="height" constant="24" id="6Z5-M4-iRs"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="32"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="please enter the following: " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R4v-5G-Mqa">
-                                        <rect key="frame" x="0.0" y="36" width="272" height="24"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="Oh6-py-s1F"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
-                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="24"/>
+                                        <color key="textColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="nVt-Cs-aR0" secondAttribute="trailing" id="JoS-iv-Jmt"/>
-                                    <constraint firstItem="nVt-Cs-aR0" firstAttribute="leading" secondItem="ivj-vJ-FMa" secondAttribute="leading" id="Pgp-P8-EbU"/>
-                                    <constraint firstAttribute="trailing" secondItem="R4v-5G-Mqa" secondAttribute="trailing" id="Wn8-HO-x6g"/>
-                                    <constraint firstItem="R4v-5G-Mqa" firstAttribute="leading" secondItem="ivj-vJ-FMa" secondAttribute="leading" id="ZPk-Ly-jlC"/>
-                                </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="payment program agreement" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9QK-LQ-rtU" userLabel="payment program Name Label Outlet">
-                                <rect key="frame" x="16" y="112" width="288" height="22"/>
+                                <rect key="frame" x="16" y="76" width="288" height="22"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TyM-n0-PgU" userLabel="program agreement Text View" customClass="DesignableTextView" customModule="Academia" customModuleProvider="target">
-                                <rect key="frame" x="16" y="150" width="288" height="402"/>
+                                <rect key="frame" x="16" y="114" width="288" height="390"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
@@ -1281,7 +1177,7 @@
                             <constraint firstItem="ivj-vJ-FMa" firstAttribute="leading" secondItem="jxj-Yj-Jco" secondAttribute="leading" constant="24" id="GyE-Ju-7sl"/>
                             <constraint firstItem="ivj-vJ-FMa" firstAttribute="centerX" secondItem="WYD-ht-Jhw" secondAttribute="centerX" id="J3F-lp-EnJ"/>
                             <constraint firstItem="TyM-n0-PgU" firstAttribute="top" secondItem="9QK-LQ-rtU" secondAttribute="bottom" constant="16" id="LiX-qj-c7c"/>
-                            <constraint firstItem="jxj-Yj-Jco" firstAttribute="bottom" secondItem="TyM-n0-PgU" secondAttribute="bottom" constant="16" id="NHw-MW-fMh"/>
+                            <constraint firstItem="jxj-Yj-Jco" firstAttribute="bottom" secondItem="TyM-n0-PgU" secondAttribute="bottom" constant="64" id="NHw-MW-fMh"/>
                             <constraint firstItem="jxj-Yj-Jco" firstAttribute="trailing" secondItem="ivj-vJ-FMa" secondAttribute="trailing" constant="24" id="Xu1-qZ-Ff5"/>
                             <constraint firstItem="jxj-Yj-Jco" firstAttribute="trailing" secondItem="TyM-n0-PgU" secondAttribute="trailing" constant="16" id="eJW-dV-Dac"/>
                             <constraint firstItem="9QK-LQ-rtU" firstAttribute="top" secondItem="ivj-vJ-FMa" secondAttribute="bottom" constant="16" id="gVk-Fd-uPv"/>
@@ -1310,7 +1206,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="dBA-mB-lfU" userLabel="Program Stack View">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="dBA-mB-lfU" userLabel="Program Stack View">
                                 <rect key="frame" x="16" y="36" width="288" height="468"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="LYy-X0-V4j" userLabel="plese review and name Stack View">
@@ -1343,34 +1239,25 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="drn-xd-VvA" userLabel="Program Details Stack View">
-                                        <rect key="frame" x="16" y="88" width="256" height="230"/>
+                                        <rect key="frame" x="16" y="72" width="256" height="246"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="2Ub-yY-RaD" userLabel="program stats Stack View">
-                                                <rect key="frame" x="0.0" y="0.0" width="151" height="66"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="151" height="44"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(program name)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="Jlg-rn-CSP" userLabel="program name Label Outlet">
-                                                        <rect key="frame" x="0.0" y="0.0" width="151" height="22"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="active: yes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="383-nd-lFd" userLabel="active Label Outlet">
-                                                        <rect key="frame" x="0.0" y="22" width="73" height="22"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="73" height="22"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="last change: 09/30/18" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="CPq-jt-Akf" userLabel="last change Label Outlet">
-                                                        <rect key="frame" x="0.0" y="44" width="151" height="22"/>
+                                                        <rect key="frame" x="0.0" y="22" width="151" height="22"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="Jlg-rn-CSP" firstAttribute="leading" secondItem="2Ub-yY-RaD" secondAttribute="leading" id="cML-7U-2hD"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Jlg-rn-CSP" secondAttribute="trailing" id="kGT-7l-ANs"/>
-                                                </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="NP2-fv-mom" userLabel="description Stack View">
-                                                <rect key="frame" x="0.0" y="82" width="256" height="82"/>
+                                                <rect key="frame" x="0.0" y="60" width="256" height="82"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="program description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="KD9-Dv-aJU">
                                                         <rect key="frame" x="0.0" y="0.0" width="148.5" height="32"/>
@@ -1395,28 +1282,28 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="jy2-5R-Rvn" userLabel="billing options Stack View">
-                                                <rect key="frame" x="0.0" y="180" width="240" height="50"/>
+                                                <rect key="frame" x="0.0" y="158" width="240" height="88"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="program billing details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="HeE-mK-A6O">
-                                                        <rect key="frame" x="0.0" y="0.0" width="240" height="12.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="240" height="22"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(billing type)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="iEI-J1-Sjp" userLabel="billing type Label Outlet">
-                                                        <rect key="frame" x="0.0" y="12.5" width="240" height="12.5"/>
+                                                        <rect key="frame" x="0.0" y="22" width="240" height="22"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(billing date)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="VBM-uE-3Kc">
-                                                        <rect key="frame" x="0.0" y="25" width="240" height="12.5"/>
+                                                        <rect key="frame" x="0.0" y="44" width="240" height="22"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(signature type)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="WGB-fu-UXD">
-                                                        <rect key="frame" x="0.0" y="37.5" width="240" height="12.5"/>
+                                                        <rect key="frame" x="0.0" y="66" width="240" height="22"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -1437,7 +1324,7 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRZ-ij-6q5" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="12" y="358" width="264" height="40"/>
+                                        <rect key="frame" x="12" y="342" width="264" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="5zc-Ip-nmi"/>
                                         </constraints>
@@ -1462,12 +1349,12 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q83-cc-1vX" userLabel="delete payment program">
-                                        <rect key="frame" x="59.5" y="438" width="169" height="30"/>
+                                        <rect key="frame" x="59.5" y="406" width="169" height="62"/>
                                         <state key="normal" title="delete payment program">
                                             <color key="titleColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="deleteAccountButtonTapped:" destination="zzf-5f-dsL" eventType="touchUpInside" id="SFD-o6-Kio"/>
+                                            <action selector="deletePaymentProgramButtonTapped:" destination="zzf-5f-dsL" eventType="touchUpInside" id="nEk-KO-ME3"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1496,7 +1383,6 @@
                         <outlet property="billingDateLabelOutlet" destination="VBM-uE-3Kc" id="CYA-39-PIx"/>
                         <outlet property="billingTypeLabelOutlet" destination="iEI-J1-Sjp" id="zCx-Zo-UyF"/>
                         <outlet property="lastChangedLabelOutlet" destination="CPq-jt-Akf" id="n8e-4J-1W7"/>
-                        <outlet property="paymentProgramNameLabelOutlet" destination="Jlg-rn-CSP" id="6PA-jO-jBP"/>
                         <outlet property="programDescriptionTextView" destination="Svg-6s-j4S" id="eVL-ak-eFV"/>
                         <outlet property="signatureTypeLabelOutlet" destination="WGB-fu-UXD" id="lJL-P4-qOb"/>
                     </connections>
@@ -1514,19 +1400,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Biq-fv-AJH" userLabel="Welcome Stack View">
-                                <rect key="frame" x="24" y="36" width="272" height="60"/>
+                                <rect key="frame" x="24" y="36" width="272" height="24"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Owner" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nVb-if-eS6">
-                                        <rect key="frame" x="0.0" y="0.0" width="272" height="36"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="36" id="3oA-1O-XaY"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="32"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="please review the following: " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6e-dy-rzv">
-                                        <rect key="frame" x="0.0" y="36" width="272" height="24"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="272" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="UiU-lr-zQz"/>
                                         </constraints>
@@ -1536,20 +1413,18 @@
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="nVb-if-eS6" firstAttribute="leading" secondItem="Biq-fv-AJH" secondAttribute="leading" id="6Cv-MD-hXu"/>
                                     <constraint firstItem="L6e-dy-rzv" firstAttribute="leading" secondItem="Biq-fv-AJH" secondAttribute="leading" id="Czs-DU-P3p"/>
                                     <constraint firstAttribute="trailing" secondItem="L6e-dy-rzv" secondAttribute="trailing" id="In7-c4-jlt"/>
-                                    <constraint firstAttribute="trailing" secondItem="nVb-if-eS6" secondAttribute="trailing" id="gmn-kx-tpy"/>
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="payment program agreement" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9tz-8C-e57" userLabel="payment program Name Label Outlet">
-                                <rect key="frame" x="16" y="112" width="288" height="22"/>
+                                <rect key="frame" x="16" y="76" width="288" height="22"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GiW-fv-6bt" userLabel="program agreement Text View" customClass="DesignableTextView" customModule="Academia" customModuleProvider="target">
-                                <rect key="frame" x="16" y="150" width="288" height="402"/>
+                                <rect key="frame" x="16" y="114" width="288" height="406"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
@@ -1566,7 +1441,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="96x-UV-jl0" firstAttribute="bottom" secondItem="GiW-fv-6bt" secondAttribute="bottom" constant="16" id="1xZ-6S-rvR"/>
+                            <constraint firstItem="96x-UV-jl0" firstAttribute="bottom" secondItem="GiW-fv-6bt" secondAttribute="bottom" constant="48" id="1xZ-6S-rvR"/>
                             <constraint firstItem="9tz-8C-e57" firstAttribute="top" secondItem="Biq-fv-AJH" secondAttribute="bottom" constant="16" id="CNK-p6-WDQ"/>
                             <constraint firstItem="Biq-fv-AJH" firstAttribute="top" secondItem="96x-UV-jl0" secondAttribute="top" constant="16" id="Eqt-iR-DoT"/>
                             <constraint firstItem="9tz-8C-e57" firstAttribute="leading" secondItem="96x-UV-jl0" secondAttribute="leading" constant="16" id="Mev-vk-1hu"/>

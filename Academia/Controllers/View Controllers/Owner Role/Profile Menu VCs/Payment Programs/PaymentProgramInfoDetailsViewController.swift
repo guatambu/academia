@@ -75,6 +75,10 @@ class PaymentProgramInfoDetailsViewController: UIViewController {
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        // set nav bar controller appearance
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+        navigationController?.navigationBar.shadowImage = UIImage()
         
         // pass the current payment program name and agreeemnt to destVC
         guard let paymentProgram = PaymentProgramModelController.shared.paymentPrograms.first else { return }
@@ -129,6 +133,10 @@ class PaymentProgramInfoDetailsViewController: UIViewController {
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        // set nav bar controller appearance
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+        navigationController?.navigationBar.shadowImage = UIImage()
         
         // set properties on destinationVC
         destViewController.inEditingMode = true
@@ -143,11 +151,9 @@ extension PaymentProgramInfoDetailsViewController {
     
     func populateCompletedProfileInfo() {
         
-        
-        
         guard let paymentProgram = PaymentProgramModelController.shared.paymentPrograms.first else { return }
         // name outlet
-        paymentProgramNameLabelOutlet.text = paymentProgram.programName
+        title = paymentProgram.programName
         // active outlet
         if paymentProgram.active == true {
             

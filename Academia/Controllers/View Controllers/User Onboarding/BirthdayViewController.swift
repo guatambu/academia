@@ -28,12 +28,10 @@ class BirthdayViewController: UIViewController {
     var isOwnerAddingStudent: Bool?
     var group: Group?
     
+    let beltBuilder = BeltBuilder()
     var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
     
-    @IBOutlet weak var welcomeLabeOutlet: UILabel!
-    @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     @IBOutlet weak var whenIsYourBirthdayLabelOutlet: UILabel!
-    
     // birthday date pickerView
     @IBOutlet weak var birthdayDatePickerView: UIDatePicker!
 
@@ -60,14 +58,6 @@ class BirthdayViewController: UIViewController {
         dateComponents.year = -3 // students have to be at least 3 years old
         birthdayDatePickerView.maximumDate = calendar.date(byAdding: dateComponents, to: currentDate)
         
-        guard let isOwner = isOwner else { return }
-        
-        if isOwner{
-            welcomeLabeOutlet.text = "Welcome Owner"
-        } else {
-            welcomeLabeOutlet.text = "Welcome New Student"
-        }
-        
         birthdayDatePickerView.addTarget(self, action: #selector(birthdayPicked(_:)), for: UIControl.Event.valueChanged)
 
     }
@@ -77,8 +67,8 @@ class BirthdayViewController: UIViewController {
     @objc func saveButtonTapped() {
         
         guard birthdate != nil else {
-            // warning to user where welcome instructions text changes to red
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+            // warning to user where instructions text changes to red
+            whenIsYourBirthdayLabelOutlet.textColor = beltBuilder.redBeltRed
 
             // fire haptic feedback for error
             hapticFeedbackGenerator = UINotificationFeedbackGenerator()
@@ -107,6 +97,9 @@ class BirthdayViewController: UIViewController {
         }
         
         inEditingMode = false
+        
+        // reset instructions text changes to black
+        whenIsYourBirthdayLabelOutlet.textColor = beltBuilder.blackBeltBlack
     }
     
     @IBAction func birthdayPicked(_ sender: UIDatePicker) {
@@ -121,13 +114,16 @@ class BirthdayViewController: UIViewController {
         
         guard birthdate != nil else {
             // warning to user where welcome instructions text changes to red
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+            whenIsYourBirthdayLabelOutlet.textColor = beltBuilder.redBeltRed
 
             // fire haptic feedback for error
             hapticFeedbackGenerator = UINotificationFeedbackGenerator()
             hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
             return
         }
+        
+        // reset instructions text changes to black
+        whenIsYourBirthdayLabelOutlet.textColor = beltBuilder.blackBeltBlack
         
         // programmatically performing the segue
         
@@ -141,6 +137,10 @@ class BirthdayViewController: UIViewController {
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        // set nav bar controller appearance
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+        navigationController?.navigationBar.shadowImage = UIImage()
         
         // pass data to destViewController
         destViewController.isOwner = isOwner
@@ -237,9 +237,7 @@ extension BirthdayViewController {
         
         guard let ownerToEdit = userToEdit as? Owner else { return }
         
-        welcomeLabeOutlet.text = "Welcome \(ownerToEdit.firstName)"
-        
-        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
+        whenIsYourBirthdayLabelOutlet.text = "Welcome \(ownerToEdit.firstName)"
         
         print("BirthdayVC birthdate choice: \(ownerToEdit.birthdate)")
         birthdayDatePickerView.date = ownerToEdit.birthdate
@@ -251,9 +249,7 @@ extension BirthdayViewController {
         
         guard let kidToEdit = userToEdit as? KidStudent else { return }
         
-        welcomeLabeOutlet.text = "Welcome \(kidToEdit.firstName)"
-        
-        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
+        whenIsYourBirthdayLabelOutlet.text = "Welcome \(kidToEdit.firstName)"
 
         print("BirthdayVC birthdate choice: \(kidToEdit.birthdate)")
         birthdayDatePickerView.date = kidToEdit.birthdate
@@ -264,9 +260,7 @@ extension BirthdayViewController {
         
         guard let adultToEdit = userToEdit as? AdultStudent else { return }
         
-        welcomeLabeOutlet.text = "Welcome \(adultToEdit.firstName)"
-        
-        welcomeInstructionsLabelOutlet.text = "you are in profile editing mode"
+        whenIsYourBirthdayLabelOutlet.text = "Welcome \(adultToEdit.firstName)"
     
         print("BirthdayVC birthdate choice: \(adultToEdit.birthdate)")
         birthdayDatePickerView.date = adultToEdit.birthdate

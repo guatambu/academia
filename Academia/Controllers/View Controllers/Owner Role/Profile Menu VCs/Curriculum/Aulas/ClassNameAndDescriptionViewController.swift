@@ -27,12 +27,10 @@ class ClassNameAndDescriptionViewController: UIViewController {
     // IBOutlets
     @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
-    @IBOutlet weak var classNameLabelOutlet: UILabel!
     @IBOutlet weak var classNameTextField: UITextField!
     @IBOutlet weak var activeLabelOutlet: UILabel!
     @IBOutlet weak var activeSwitch: UISwitch!
     @IBOutlet weak var lastChangedLabelOutlet: UILabel!
-    @IBOutlet weak var classDescriptionLabelOutlet: UILabel!
     @IBOutlet weak var classDescriptionTextView: UITextView!
     
     
@@ -57,6 +55,9 @@ class ClassNameAndDescriptionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        classNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter program name", attributes: beltBuilder.avenirFont)
+        classDescriptionTextView.attributedText = NSAttributedString(string: "tap to enter program description", attributes: beltBuilder.avenirFont)
         
         classNameTextField.delegate = self
         classDescriptionTextView.delegate = self
@@ -94,21 +95,21 @@ class ClassNameAndDescriptionViewController: UIViewController {
         if classNameTextField.text == "" {
             
             // warning to user where welcome instructions text changes to red
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+            welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
             
             // fire haptic feedback for error
             hapticFeedbackGenerator = UINotificationFeedbackGenerator()
             hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
             
             // warnings for specific textfield being left blank by user
-            classNameLabelOutlet.textColor = UIColor.red
+            classNameTextField.textColor = beltBuilder.redBeltRed
 
             // save not allowed, so we exit function
             return
         }
         
-        // reset label text color to black upon succesful save
-        classNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        // reset textField placeholder text color to gray upon succesful save
+        classNameTextField.textColor = beltBuilder.grayBeltGray
         // reset welcome instructions text color and message upon succesful save
         welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
         welcomeInstructionsLabelOutlet.text = "please enter the following"
@@ -134,14 +135,14 @@ class ClassNameAndDescriptionViewController: UIViewController {
         if classNameTextField.text == "" {
             
             // warning to user where welcome instructions text changes to red
-            welcomeInstructionsLabelOutlet.textColor = UIColor.red
+            welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
             
             // fire haptic feedback for error
             hapticFeedbackGenerator = UINotificationFeedbackGenerator()
             hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
             
             // warnings for specific textfield being left blank by user
-            classNameLabelOutlet.textColor = UIColor.red
+            classNameTextField.textColor = beltBuilder.redBeltRed
             
             // save not allowed, so we exit function
             return false
@@ -157,6 +158,11 @@ class ClassNameAndDescriptionViewController: UIViewController {
         
         // confirm appropriate segue via segue.identifier
         if segue.identifier == "toClassDayOfTheWeek" {
+            
+            // set nav bar controller appearance
+            navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+            navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+            navigationController?.navigationBar.shadowImage = UIImage()
             
             // Get the ClassTimeViewController using segue.destination.
             guard let destViewController = segue.destination as? ClassDayViewController else { return }
@@ -181,8 +187,8 @@ class ClassNameAndDescriptionViewController: UIViewController {
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
         updateAulaInfo()
         
-        // reset label text color to black upon succesful save
-        classNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        // reset textField placeholder text color to gray upon succesful save
+        classNameTextField.textColor = beltBuilder.grayBeltGray
         // reset welcome instructions text color and message upon succesful save
         welcomeInstructionsLabelOutlet.textColor = beltBuilder.blackBeltBlack
         welcomeInstructionsLabelOutlet.text = "please enter the following"
