@@ -66,7 +66,7 @@ class LocationContactInfoViewController: UIViewController, UITextInputTraits {
         super.viewDidLoad()
         
         phoneTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter phone", attributes: beltBuilder.avenirFont)
-        websiteTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter mobile", attributes: beltBuilder.avenirFont)
+        websiteTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter website", attributes: beltBuilder.avenirFont)
         emailTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter email", attributes: beltBuilder.avenirFont)
         
         phoneTextField.delegate = self

@@ -498,7 +498,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="tcw-gZ-fsh" userLabel="Progress Stack View">
-                                <rect key="frame" x="114" y="536" width="92" height="8"/>
+                                <rect key="frame" x="100" y="536" width="120" height="8"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XV3-K0-qHL" userLabel="Progress 2 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="8" height="8"/>
@@ -545,6 +545,19 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="8" id="9M6-nm-nhn"/>
                                             <constraint firstAttribute="width" constant="8" id="cPL-NV-Hyr"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O1Q-zE-VZ7" userLabel="Progress 6 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
+                                        <rect key="frame" x="112" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="8" id="8Rw-db-05J"/>
+                                            <constraint firstAttribute="width" constant="8" id="GQH-CI-eyW"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -713,7 +726,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="953-75-h1z" userLabel="Progress Stack View">
-                                <rect key="frame" x="114" y="536" width="92" height="8"/>
+                                <rect key="frame" x="100" y="536" width="120" height="8"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="alu-Qx-h3X" userLabel="Progress 2 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="8" height="8"/>
@@ -760,6 +773,19 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="8" id="Tvy-pd-5OE"/>
                                             <constraint firstAttribute="width" constant="8" id="dUg-zb-Rvq"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2xF-eP-iME" userLabel="Progress 6 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
+                                        <rect key="frame" x="112" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="8" id="XOv-qk-jfk"/>
+                                            <constraint firstAttribute="height" constant="8" id="eXJ-2B-Csn"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -895,7 +921,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="56f-dL-K2E" userLabel="Progress Stack View">
-                                <rect key="frame" x="114" y="536" width="92" height="8"/>
+                                <rect key="frame" x="100" y="536" width="120" height="8"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a7N-Rq-raB" userLabel="Progress 2 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="8" height="8"/>
@@ -942,6 +968,19 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="8" id="09s-56-Unv"/>
                                             <constraint firstAttribute="height" constant="8" id="CTr-8G-krA"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ckt-iG-GAe" userLabel="Progress 6 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
+                                        <rect key="frame" x="112" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="8" id="fyz-nI-JqT"/>
+                                            <constraint firstAttribute="height" constant="8" id="pVu-ze-139"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -1080,7 +1119,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="zgn-qi-Gjt" userLabel="Progress Stack View">
-                                <rect key="frame" x="114" y="536" width="92" height="8"/>
+                                <rect key="frame" x="100" y="536" width="120" height="8"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yM8-ZV-bTB" userLabel="Progress 2 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="8" height="8"/>
@@ -1134,6 +1173,19 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ztu-Wq-9lO" userLabel="Progress 6 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
+                                        <rect key="frame" x="112" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="8" id="gsw-dc-NAc"/>
+                                            <constraint firstAttribute="height" constant="8" id="oN3-6T-XOG"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -1173,8 +1225,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="N3j-Zo-Gcp" userLabel="Location Stack View">
-                                <rect key="frame" x="0.0" y="28" width="320" height="410"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="N3j-Zo-Gcp" userLabel="Location Stack View">
+                                <rect key="frame" x="0.0" y="28" width="320" height="484"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XdK-0h-AOW" userLabel="plese review and name Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
@@ -1206,7 +1258,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ISl-Le-eVS" userLabel="Location Stack View">
-                                        <rect key="frame" x="16" y="72" width="288" height="282"/>
+                                        <rect key="frame" x="16" y="104" width="288" height="292"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="eD1-bb-8Ez" userLabel="profile Stack View">
                                                 <rect key="frame" x="0.0" y="0.0" width="288" height="120"/>
@@ -1264,37 +1316,37 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Qx3-ag-ZY3" userLabel="address Stack View">
-                                                <rect key="frame" x="16" y="128" width="256" height="154"/>
+                                                <rect key="frame" x="16" y="128" width="256" height="164"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(address line 1)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="6aM-Qc-vo2">
-                                                        <rect key="frame" x="0.0" y="0.0" width="256" height="22"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="256" height="23.5"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(address line 2)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="PF0-CQ-UMy">
-                                                        <rect key="frame" x="0.0" y="22" width="256" height="22"/>
+                                                        <rect key="frame" x="0.0" y="23.5" width="256" height="23.5"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(city)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="Drp-cO-JW7">
-                                                        <rect key="frame" x="0.0" y="44" width="256" height="22"/>
+                                                        <rect key="frame" x="0.0" y="47" width="256" height="23.5"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VMw-1K-XoO">
-                                                        <rect key="frame" x="0.0" y="66" width="120" height="22"/>
+                                                        <rect key="frame" x="0.0" y="70.5" width="120" height="23"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(state)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="P3i-1B-NBX">
-                                                                <rect key="frame" x="0.0" y="0.0" width="43" height="22"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="43" height="23"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(zip code)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="Loj-bg-aeg" userLabel="Zip Code Label Outlet">
-                                                                <rect key="frame" x="51" y="0.0" width="69" height="22"/>
+                                                                <rect key="frame" x="51" y="0.0" width="69" height="23"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -1302,19 +1354,19 @@
                                                         </subviews>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(social link 1)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="o29-BH-aVS" userLabel="Social Link 1">
-                                                        <rect key="frame" x="0.0" y="88" width="256" height="22"/>
+                                                        <rect key="frame" x="0.0" y="93.5" width="256" height="23.5"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(social link 2)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="BzS-ge-o3o" userLabel="Social Link 2">
-                                                        <rect key="frame" x="0.0" y="110" width="256" height="22"/>
+                                                        <rect key="frame" x="0.0" y="117" width="256" height="23.5"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(social link 3)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="DoY-In-f31" userLabel="Social Link 3">
-                                                        <rect key="frame" x="0.0" y="132" width="256" height="22"/>
+                                                        <rect key="frame" x="0.0" y="140.5" width="256" height="23.5"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -1338,7 +1390,7 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f2F-Ts-Nw2" userLabel="Create Location" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="55.5" y="370" width="209" height="40"/>
+                                        <rect key="frame" x="55.5" y="444" width="209" height="40"/>
                                         <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="NCI-cw-dBZ"/>
@@ -1365,11 +1417,83 @@
                                     <constraint firstItem="ISl-Le-eVS" firstAttribute="leading" secondItem="N3j-Zo-Gcp" secondAttribute="leading" constant="16" id="e1R-MZ-Enh"/>
                                 </constraints>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Tum-is-4Pd" userLabel="Progress Stack View">
+                                <rect key="frame" x="100" y="536" width="120" height="8"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mUf-6U-leG" userLabel="Progress 2 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="8" id="cNM-xo-GSj"/>
+                                            <constraint firstAttribute="width" constant="8" id="m27-yQ-nXt"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1w0-pL-afW" userLabel="Progress 3 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
+                                        <rect key="frame" x="28" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="8" id="fVO-aG-FRY"/>
+                                            <constraint firstAttribute="height" constant="8" id="kyd-sv-lZE"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Tm-Ib-DLY" userLabel="Progress 4 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
+                                        <rect key="frame" x="56" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="8" id="Uta-3W-6k3"/>
+                                            <constraint firstAttribute="height" constant="8" id="Xnm-Qm-thA"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7a3-u3-OIb" userLabel="Progress 5 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
+                                        <rect key="frame" x="84" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="8" id="7d0-zt-ypk"/>
+                                            <constraint firstAttribute="height" constant="8" id="D2Z-P6-hYX"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ir-Lb-OPM" userLabel="Progress 6 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
+                                        <rect key="frame" x="112" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="8" id="9ts-NC-Klj"/>
+                                            <constraint firstAttribute="height" constant="8" id="c8U-RW-whb"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="XK8-9b-clD" firstAttribute="trailing" secondItem="N3j-Zo-Gcp" secondAttribute="trailing" id="1rm-Aj-dGi"/>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="N3j-Zo-Gcp" secondAttribute="bottom" constant="40" id="Ue0-m6-6hZ"/>
+                            <constraint firstItem="Tum-is-4Pd" firstAttribute="top" secondItem="N3j-Zo-Gcp" secondAttribute="bottom" constant="24" id="2FS-oa-EOn"/>
+                            <constraint firstItem="Tum-is-4Pd" firstAttribute="centerX" secondItem="zcm-dy-PPN" secondAttribute="centerX" id="Ow9-PR-A3P"/>
+                            <constraint firstItem="XK8-9b-clD" firstAttribute="bottom" secondItem="Tum-is-4Pd" secondAttribute="bottom" constant="24" id="iew-Fx-tjH"/>
                             <constraint firstItem="N3j-Zo-Gcp" firstAttribute="top" secondItem="XK8-9b-clD" secondAttribute="top" constant="8" id="pnc-qd-cPr"/>
                             <constraint firstItem="N3j-Zo-Gcp" firstAttribute="leading" secondItem="zcm-dy-PPN" secondAttribute="leading" id="qVE-wO-jeC"/>
                         </constraints>
@@ -1377,9 +1501,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="oqY-3t-39K">
                         <barButtonItem key="backBarButtonItem" title=" " id="bZ2-3l-RUY"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="bYx-or-Lp9">
-                            <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="addressLine1LabelOutlet" destination="6aM-Qc-vo2" id="ahj-Cd-Y7k"/>

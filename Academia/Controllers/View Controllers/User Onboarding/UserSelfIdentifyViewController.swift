@@ -14,8 +14,8 @@ class UserSelfIdentifyViewController: UIViewController {
     
     let beltBuilder = BeltBuilder()
 
-    @IBOutlet weak var iAmOwnerButtonOutlet: UIButton!
-    @IBOutlet weak var iAmStudentButtonOutlet: UIButton!
+    @IBOutlet weak var iAmOwnerButtonOutlet: DesignableButton!
+    @IBOutlet weak var iAmStudentButtonOutlet: DesignableButton!
     @IBOutlet weak var confirmStudentButtonOutlet: UIButton!
     @IBOutlet weak var confirmOwnerButtonOutlet: UIButton!
     
@@ -38,30 +38,94 @@ class UserSelfIdentifyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // set button titleColor values
+        
+        // iAmOwnerButton
+        iAmOwnerButtonOutlet.setTitleColor(beltBuilder.redBeltRed, for: UIControl.State.selected)
+        iAmOwnerButtonOutlet.setTitleColor(beltBuilder.redBeltRed, for: UIControl.State.normal)
+        iAmOwnerButtonOutlet.setTitleColor(beltBuilder.grayBeltGray, for: UIControl.State.disabled)
+        
+        // iAmStudent
+        iAmStudentButtonOutlet.setTitleColor(beltBuilder.redBeltRed, for: UIControl.State.selected)
+        iAmStudentButtonOutlet.setTitleColor(beltBuilder.redBeltRed, for: UIControl.State.normal)
+        iAmStudentButtonOutlet.setTitleColor(beltBuilder.grayBeltGray, for: UIControl.State.disabled)
+        
     }
     
     
     // MARK: - Actions
     
     @IBAction func ownerButtonTapped(_ sender: UIButton) {
-        confirmOwnerButtonOutlet.isHidden = false
-        confirmOwnerButtonOutlet.isEnabled = true
         
-        confirmStudentButtonOutlet.isHidden = true
-        confirmStudentButtonOutlet.isEnabled = false
+        if !iAmStudentButtonOutlet.isEnabled {
+            
+            iAmStudentButtonOutlet.isEnabled = true
+            
+            confirmOwnerButtonOutlet.isHidden = true
+            confirmOwnerButtonOutlet.isEnabled = false
+            
+            confirmStudentButtonOutlet.isHidden = true
+            confirmStudentButtonOutlet.isEnabled = false
+            
+            iAmStudentButtonOutlet.borderColor = beltBuilder.redBeltRed
+            
+            isOwner = false
+            
+        } else {
+            
+            confirmOwnerButtonOutlet.isHidden = false
+            confirmOwnerButtonOutlet.isEnabled = true
+            
+            confirmStudentButtonOutlet.isHidden = true
+            confirmStudentButtonOutlet.isEnabled = false
+            
+            // set color of selected button border
+            iAmOwnerButtonOutlet.borderColor = beltBuilder.redBeltRed
+            
+            // set color of button NOT selected border
+            iAmStudentButtonOutlet.isEnabled = false
+            iAmStudentButtonOutlet.borderColor = beltBuilder.grayBeltGray
+            
+            isOwner = true
+        }
         
-        isOwner = true
         print("UserSelfIdentifyVC -> ownerButtonTapped(sender:) - isOwner = \(self.isOwner)")
     }
     
     @IBAction func studentButtonTapped(_ sender: UIButton) {
-        confirmStudentButtonOutlet.isHidden = false
-        confirmStudentButtonOutlet.isEnabled = true
         
-        confirmOwnerButtonOutlet.isHidden = true
-        confirmOwnerButtonOutlet.isEnabled = false
+        if !iAmOwnerButtonOutlet.isEnabled {
+            
+            iAmOwnerButtonOutlet.isEnabled = true
+            
+            confirmOwnerButtonOutlet.isHidden = true
+            confirmOwnerButtonOutlet.isEnabled = false
+            
+            confirmStudentButtonOutlet.isHidden = true
+            confirmStudentButtonOutlet.isEnabled = false
+            
+            iAmOwnerButtonOutlet.borderColor = beltBuilder.redBeltRed
+            
+            isOwner = false
+            
+        } else {
+            
+            confirmStudentButtonOutlet.isHidden = false
+            confirmStudentButtonOutlet.isEnabled = true
+            
+            confirmOwnerButtonOutlet.isHidden = true
+            confirmOwnerButtonOutlet.isEnabled = false
+            
+            // set color of selected button
+            iAmStudentButtonOutlet.borderColor = beltBuilder.redBeltRed
+            
+            // set color of button NOT selected
+            iAmOwnerButtonOutlet.isEnabled = false
+            iAmOwnerButtonOutlet.borderColor = beltBuilder.grayBeltGray
+            
+            isOwner = false
+        }
         
-        isOwner = false
         print("UserSelfIdentifyVC -> studentButtonTapped(sender:) - isOwner = \(self.isOwner)")
     }
     
@@ -88,6 +152,12 @@ class UserSelfIdentifyViewController: UIViewController {
         // pass desired data to relevant view controller
         destViewController.isOwner = self.isOwner
         destViewController.isKid = self.isKid
+        
+//        // reset color of buttons
+//        iAmStudentButtonOutlet.tintColor = beltBuilder.redBeltRed
+//        iAmStudentButtonOutlet.borderColor = beltBuilder.redBeltRed
+//        iAmOwnerButtonOutlet.tintColor = beltBuilder.redBeltRed
+//        iAmOwnerButtonOutlet.borderColor = beltBuilder.redBeltRed
 
     }
     
@@ -112,6 +182,12 @@ class UserSelfIdentifyViewController: UIViewController {
         // pass desired data to relevant view controller
         destViewController.isOwner = self.isOwner
         destViewController.isKid = self.isKid
+        
+        //        // reset color of buttons
+        //        iAmStudentButtonOutlet.tintColor = beltBuilder.redBeltRed
+        //        iAmStudentButtonOutlet.borderColor = beltBuilder.redBeltRed
+        //        iAmOwnerButtonOutlet.tintColor = beltBuilder.redBeltRed
+        //        iAmOwnerButtonOutlet.borderColor = beltBuilder.redBeltRed
 
     }
 

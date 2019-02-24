@@ -22,8 +22,8 @@ class StudentChoiceViewController: UIViewController {
     
     let beltBuilder = BeltBuilder()
     
-    @IBOutlet weak var kidsProgramButtonOutlet: UIButton!
-    @IBOutlet weak var adultsProgramButtonOutlet: UIButton!
+    @IBOutlet weak var kidsProgramButtonOutlet: DesignableButton!
+    @IBOutlet weak var adultsProgramButtonOutlet: DesignableButton!
     @IBOutlet weak var confirmKidsProgramButtonOutlet: UIButton!
     @IBOutlet weak var confirmAdultsProgramButtonOutlet: UIButton!
     
@@ -43,9 +43,19 @@ class StudentChoiceViewController: UIViewController {
         
         guard let isOwner = isOwner, let username = username, let password = password else { return }
         
-        
-        
         print("isOwner: \(isOwner) \nusername: \(username) \npassword: \(password)")
+        
+        // set button titleColor values
+        
+        // iAmOwnerButton
+        kidsProgramButtonOutlet.setTitleColor(beltBuilder.redBeltRed, for: UIControl.State.selected)
+        kidsProgramButtonOutlet.setTitleColor(beltBuilder.redBeltRed, for: UIControl.State.normal)
+        kidsProgramButtonOutlet.setTitleColor(beltBuilder.grayBeltGray, for: UIControl.State.disabled)
+        
+        // iAmStudent
+        adultsProgramButtonOutlet.setTitleColor(beltBuilder.redBeltRed, for: UIControl.State.selected)
+        adultsProgramButtonOutlet.setTitleColor(beltBuilder.redBeltRed, for: UIControl.State.normal)
+        adultsProgramButtonOutlet.setTitleColor(beltBuilder.grayBeltGray, for: UIControl.State.disabled)
     }
     
     
@@ -59,6 +69,12 @@ class StudentChoiceViewController: UIViewController {
         confirmAdultsProgramButtonOutlet.isHidden = true
         confirmAdultsProgramButtonOutlet.isEnabled = false
         
+        // set color of selected button
+        kidsProgramButtonOutlet.borderColor = beltBuilder.redBeltRed
+        
+        // set color of button NOT selected
+        adultsProgramButtonOutlet.borderColor = beltBuilder.grayBeltGray
+        
         isKid = true
     }
     
@@ -69,6 +85,14 @@ class StudentChoiceViewController: UIViewController {
         
         confirmAdultsProgramButtonOutlet.isHidden = false
         confirmAdultsProgramButtonOutlet.isEnabled = true
+        
+        // set color of selected button
+        adultsProgramButtonOutlet.tintColor = beltBuilder.redBeltRed
+        adultsProgramButtonOutlet.borderColor = beltBuilder.redBeltRed
+        
+        // set color of button NOT selected
+        kidsProgramButtonOutlet.tintColor = beltBuilder.grayBeltGray
+        kidsProgramButtonOutlet.borderColor = beltBuilder.grayBeltGray
         
         isKid = false
     }
@@ -98,6 +122,12 @@ class StudentChoiceViewController: UIViewController {
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
         destViewController.group = group
         
+//        // reset color of buttons
+//        adultsProgramButtonOutlet.tintColor = beltBuilder.redBeltRed
+//        adultsProgramButtonOutlet.borderColor = beltBuilder.redBeltRed
+//        kidsProgramButtonOutlet.tintColor = beltBuilder.redBeltRed
+//        kidsProgramButtonOutlet.borderColor = beltBuilder.redBeltRed
+        
     }
     
     @IBAction func confirmAdultsProgramButtonTapped(_ sender: UIButton) {
@@ -126,5 +156,11 @@ class StudentChoiceViewController: UIViewController {
         destViewController.isKid = isKid
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
         destViewController.group = group
+        
+//        // reset color of buttons
+//        adultsProgramButtonOutlet.tintColor = beltBuilder.redBeltRed
+//        adultsProgramButtonOutlet.borderColor = beltBuilder.redBeltRed
+//        kidsProgramButtonOutlet.tintColor = beltBuilder.redBeltRed
+//        kidsProgramButtonOutlet.borderColor = beltBuilder.redBeltRed
     }
 }
