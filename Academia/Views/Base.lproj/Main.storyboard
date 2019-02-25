@@ -135,7 +135,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="HLh-2o-jGg">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="HLh-2o-jGg" userLabel="self identify buttons Stack View">
                                 <rect key="frame" x="16" y="86" width="288" height="396.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Choose" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUB-nx-jdZ">
@@ -156,7 +156,7 @@
                                         </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="1"/>
+                                                <real key="value" value="2"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                 <color key="value" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -184,7 +184,7 @@
                                                 <color key="value" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="1"/>
+                                                <real key="value" value="2"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="10"/>
@@ -238,6 +238,9 @@
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="kOz-bT-Prb"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <constraints>
@@ -245,11 +248,35 @@
                                     <constraint firstAttribute="trailing" secondItem="gD2-Q6-B1k" secondAttribute="trailing" constant="24" id="eJT-p2-XsL"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G7N-rD-u8S" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
+                                <rect key="frame" x="103.5" y="498.5" width="113" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="v4C-I5-Wxv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                <inset key="contentEdgeInsets" minX="32" minY="0.0" maxX="32" maxY="0.0"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="ZNH-ok-J1f" eventType="touchUpInside" id="hwX-lf-5sV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="opb-Kb-AfJ" firstAttribute="trailing" secondItem="HLh-2o-jGg" secondAttribute="trailing" constant="16" id="1xl-Gu-KUp"/>
                             <constraint firstItem="HLh-2o-jGg" firstAttribute="leading" secondItem="opb-Kb-AfJ" secondAttribute="leading" constant="16" id="Hjf-kf-SoM"/>
+                            <constraint firstItem="G7N-rD-u8S" firstAttribute="top" secondItem="HLh-2o-jGg" secondAttribute="bottom" constant="16" id="Qdw-Pl-LRY"/>
+                            <constraint firstItem="G7N-rD-u8S" firstAttribute="centerX" secondItem="qXc-9L-Ct9" secondAttribute="centerX" id="RYK-Ug-5Wx"/>
                             <constraint firstItem="HLh-2o-jGg" firstAttribute="centerY" secondItem="qXc-9L-Ct9" secondAttribute="centerY" id="Rdb-gQ-APA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="opb-Kb-AfJ"/>
@@ -258,6 +285,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="adn-jh-VRN"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelButtonOutlet" destination="G7N-rD-u8S" id="AA3-uS-5Cf"/>
                         <outlet property="confirmOwnerButtonOutlet" destination="rWb-VE-Qt4" id="MBC-LX-f8M"/>
                         <outlet property="confirmStudentButtonOutlet" destination="FFK-VC-oAq" id="uK3-Q9-y0i"/>
                         <outlet property="iAmOwnerButtonOutlet" destination="9y4-bA-Bq2" id="Jaj-cK-Zvf"/>
@@ -277,7 +305,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="4bv-0j-ExZ" userLabel="Welcome Stack View">
-                                <rect key="frame" x="24" y="36" width="272" height="60"/>
+                                <rect key="frame" x="24" y="108" width="272" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Owner" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="Met-Vb-e07">
                                         <rect key="frame" x="0.0" y="0.0" width="272" height="36"/>
@@ -500,10 +528,9 @@
                             <constraint firstItem="ntL-hc-WSZ" firstAttribute="centerX" secondItem="yJ7-23-i4y" secondAttribute="centerX" id="6QS-82-PQk"/>
                             <constraint firstItem="ksL-RA-ZxE" firstAttribute="trailing" secondItem="lWL-Ql-B6J" secondAttribute="trailing" constant="16" id="6cc-QW-I7E"/>
                             <constraint firstItem="lWL-Ql-B6J" firstAttribute="leading" secondItem="ksL-RA-ZxE" secondAttribute="leading" constant="16" id="Od9-Cm-G7c"/>
-                            <constraint firstItem="4bv-0j-ExZ" firstAttribute="top" secondItem="ksL-RA-ZxE" secondAttribute="top" constant="16" id="R9Y-rj-FhA"/>
                             <constraint firstItem="ntL-hc-WSZ" firstAttribute="top" secondItem="lWL-Ql-B6J" secondAttribute="bottom" constant="24" id="SyS-mh-kOg"/>
                             <constraint firstItem="4bv-0j-ExZ" firstAttribute="leading" secondItem="ksL-RA-ZxE" secondAttribute="leading" constant="24" id="dpV-z4-ZqW"/>
-                            <constraint firstItem="4bv-0j-ExZ" firstAttribute="centerX" secondItem="yJ7-23-i4y" secondAttribute="centerX" id="pBe-Wz-Lw7"/>
+                            <constraint firstItem="lWL-Ql-B6J" firstAttribute="top" secondItem="4bv-0j-ExZ" secondAttribute="bottom" constant="150" id="s5o-bZ-D7d"/>
                             <constraint firstItem="ksL-RA-ZxE" firstAttribute="bottom" secondItem="ntL-hc-WSZ" secondAttribute="bottom" constant="24" id="xYm-ML-IYP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ksL-RA-ZxE"/>
@@ -556,15 +583,15 @@
             </objects>
             <point key="canvasLocation" x="-740" y="4701"/>
         </scene>
-        <!--Student Choice Scene-->
+        <!--Student Choice-->
         <scene sceneID="1Jq-Rh-ahZ">
             <objects>
-                <viewController storyboardIdentifier="toStudentChoiceVC" id="Rmh-VZ-Ycm" userLabel="Student Choice Scene" customClass="StudentChoiceViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toStudentChoiceVC" id="Rmh-VZ-Ycm" userLabel="Student Choice" customClass="StudentChoiceViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dtC-zT-nuw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="zZe-sn-BFk">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="zZe-sn-BFk" userLabel="student choice buttons Stack View">
                                 <rect key="frame" x="16" y="86" width="288" height="396.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Choose" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYq-iY-Cbe">
@@ -585,7 +612,7 @@
                                         </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="1"/>
+                                                <real key="value" value="2"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                 <color key="value" red="0.94534217980000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -613,7 +640,7 @@
                                                 <color key="value" red="0.94534217980000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="1"/>
+                                                <real key="value" value="2"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="10"/>
@@ -667,6 +694,9 @@
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="aWJ-l8-ctp"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <constraints>
@@ -674,12 +704,36 @@
                                     <constraint firstItem="EDQ-s6-Bmy" firstAttribute="leading" secondItem="zZe-sn-BFk" secondAttribute="leading" id="rUx-bZ-xP2"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8zG-Vc-A0a" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
+                                <rect key="frame" x="103.5" y="498.5" width="113" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="zGT-8O-xx4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                <inset key="contentEdgeInsets" minX="32" minY="0.0" maxX="32" maxY="0.0"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="Rmh-VZ-Ycm" eventType="touchUpInside" id="VqL-4e-XAk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="zZe-sn-BFk" firstAttribute="leading" secondItem="X07-eP-ZFV" secondAttribute="leading" constant="16" id="YtJ-9k-vwy"/>
                             <constraint firstItem="X07-eP-ZFV" firstAttribute="trailing" secondItem="zZe-sn-BFk" secondAttribute="trailing" constant="16" id="dLe-wK-zYX"/>
                             <constraint firstItem="zZe-sn-BFk" firstAttribute="centerY" secondItem="dtC-zT-nuw" secondAttribute="centerY" id="hTH-EV-g4U"/>
+                            <constraint firstItem="8zG-Vc-A0a" firstAttribute="top" secondItem="zZe-sn-BFk" secondAttribute="bottom" constant="16" id="ibP-O5-f5x"/>
+                            <constraint firstItem="8zG-Vc-A0a" firstAttribute="centerX" secondItem="dtC-zT-nuw" secondAttribute="centerX" id="rxJ-wM-zZa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="X07-eP-ZFV"/>
                     </view>
@@ -688,6 +742,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="adultsProgramButtonOutlet" destination="W5y-f9-oz7" id="Q0R-k5-zeH"/>
+                        <outlet property="cancelButtonOutlet" destination="8zG-Vc-A0a" id="YeT-mt-nH2"/>
                         <outlet property="confirmAdultsProgramButtonOutlet" destination="ged-74-kY0" id="pIq-gG-Pxg"/>
                         <outlet property="confirmKidsProgramButtonOutlet" destination="EMe-4e-xkS" id="qae-It-JhF"/>
                         <outlet property="kidsProgramButtonOutlet" destination="FTs-XE-JpF" id="fjI-OT-DUp"/>

@@ -79,8 +79,8 @@ class AddressViewController: UIViewController, UITextInputTraits {
         addressLine1TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
         addressLine2TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
         cityTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter city", attributes: beltBuilder.avenirFont)
-        stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter state", attributes: beltBuilder.avenirFont)
-        zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter zip code", attributes: beltBuilder.avenirFont)
+        stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter state", attributes: beltBuilder.avenirFontSmall)
+        zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter zip code", attributes: beltBuilder.avenirFontSmall)
         
         addressLine1TextField.delegate = self
         addressLine2TextField.delegate = self
@@ -123,48 +123,39 @@ class AddressViewController: UIViewController, UITextInputTraits {
                 
                 addressLine1TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.errorAvenirFont)
                 
-                //                firstNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
                 
                 addressLine1TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
                 
-                //                firstNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             if cityTextField.text == "" {
                 
                 cityTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter city", attributes: beltBuilder.errorAvenirFont)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
                 
                 cityTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter city", attributes: beltBuilder.avenirFont)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             if stateTextField.text == "" {
                 
-                stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter state", attributes: beltBuilder.errorAvenirFont)
+                stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter state", attributes: beltBuilder.errorAvenirFontSmall)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
                 
-                stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter state", attributes: beltBuilder.avenirFont)
+                stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter state", attributes: beltBuilder.avenirFontSmall)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             if zipCodeTextField.text == "" {
                 
-                zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter zip code", attributes: beltBuilder.errorAvenirFont)
+                zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter zip code", attributes: beltBuilder.errorAvenirFontSmall)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
                 
-                zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter zip code", attributes: beltBuilder.avenirFont)
-                
-                //                lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
+                zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter zip code", attributes: beltBuilder.avenirFontSmall)
             }
             
             // save not allowed, so we exit function
@@ -196,8 +187,8 @@ class AddressViewController: UIViewController, UITextInputTraits {
         // reset textfield placeholder text color to gray upon succesful save
         addressLine1TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
         cityTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter city", attributes: beltBuilder.avenirFont)
-        stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter state", attributes: beltBuilder.avenirFont)
-        zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter zip code", attributes: beltBuilder.avenirFont)
+        stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter state", attributes: beltBuilder.avenirFontSmall)
+        zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter zip code", attributes: beltBuilder.avenirFontSmall)
         
     }
     
@@ -246,21 +237,21 @@ class AddressViewController: UIViewController, UITextInputTraits {
             
             if stateTextField.text == "" {
                 
-                stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter state", attributes: beltBuilder.errorAvenirFont)
+                stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter state", attributes: beltBuilder.errorAvenirFontSmall)
                 
             } else {
                 
-                stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter state", attributes: beltBuilder.avenirFont)
+                stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter state", attributes: beltBuilder.avenirFontSmall)
                 
             }
             
             if zipCodeTextField.text == "" {
                 
-                zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter zip code", attributes: beltBuilder.errorAvenirFont)
+                zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter zip code", attributes: beltBuilder.errorAvenirFontSmall)
                 
             } else {
                 
-                zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter zip code", attributes: beltBuilder.avenirFont)
+                zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter zip code", attributes: beltBuilder.avenirFontSmall)
                 
             }
             
@@ -335,8 +326,8 @@ class AddressViewController: UIViewController, UITextInputTraits {
         // reset textfield placeholder text color to gray upon succesful save
         addressLine1TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
         cityTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter city", attributes: beltBuilder.avenirFont)
-        stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter state", attributes: beltBuilder.avenirFont)
-        zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter zip code", attributes: beltBuilder.avenirFont)
+        stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter state", attributes: beltBuilder.avenirFontSmall)
+        zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter zip code", attributes: beltBuilder.avenirFontSmall)
         
     }
 }
