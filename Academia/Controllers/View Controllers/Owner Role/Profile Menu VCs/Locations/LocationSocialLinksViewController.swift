@@ -58,9 +58,9 @@ class LocationSocialLinksViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        socialLink1TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter Instagram link", attributes: beltBuilder.avenirFont)
-        socialLink2TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter facebook link", attributes: beltBuilder.avenirFont)
-        socialLink3TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter twitter link", attributes: beltBuilder.avenirFont)
+        socialLink1TextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.instagram.rawValue, attributes: beltBuilder.avenirFont)
+        socialLink2TextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.facebook.rawValue, attributes: beltBuilder.avenirFont)
+        socialLink3TextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.twitter.rawValue, attributes: beltBuilder.avenirFont)
         
         socialLink1TextField.delegate = self
         socialLink2TextField.delegate = self

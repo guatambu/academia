@@ -69,11 +69,11 @@ class LocationAddressViewController: UIViewController, UITextInputTraits{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addressLine1TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
-        addressLine2TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
-        cityTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter city", attributes: beltBuilder.avenirFont)
-        stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter state", attributes: beltBuilder.avenirFont)
-        zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter zip code", attributes: beltBuilder.avenirFont)
+        addressLine1TextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.streetAddress.rawValue, attributes: beltBuilder.avenirFont)
+        addressLine2TextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.additionalAddress.rawValue, attributes: beltBuilder.avenirFont)
+        cityTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.city.rawValue, attributes: beltBuilder.avenirFont)
+        stateTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.state.rawValue, attributes: beltBuilder.avenirFont)
+        zipCodeTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.zipCode.rawValue, attributes: beltBuilder.avenirFont)
         
         addressLine1TextField.delegate = self
         addressLine2TextField.delegate = self
@@ -111,41 +111,41 @@ class LocationAddressViewController: UIViewController, UITextInputTraits{
             // warnings for specific textfield being left blank by user
             if addressLine1TextField.text == "" {
                 
-                addressLine1TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.errorAvenirFont)
+                addressLine1TextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.streetAddress.rawValue, attributes: beltBuilder.errorAvenirFont)
                 
             } else {
                 
-                addressLine1TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
+                addressLine1TextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.streetAddress.rawValue, attributes: beltBuilder.avenirFont)
                 
             }
             
             if cityTextField.text == "" {
                 
-                cityTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter city", attributes: beltBuilder.errorAvenirFont)
+                cityTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.city.rawValue, attributes: beltBuilder.errorAvenirFont)
                 
             } else {
                 
-                cityTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter city", attributes: beltBuilder.avenirFont)
+                cityTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.city.rawValue, attributes: beltBuilder.avenirFont)
                 
             }
             
             if stateTextField.text == "" {
                 
-                stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter state", attributes: beltBuilder.errorAvenirFont)
+                stateTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.state.rawValue, attributes: beltBuilder.errorAvenirFont)
                 
             } else {
                 
-                stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter state", attributes: beltBuilder.avenirFont)
+                stateTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.state.rawValue, attributes: beltBuilder.avenirFont)
                 
             }
             
             if zipCodeTextField.text == "" {
                 
-                zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter zip code", attributes: beltBuilder.errorAvenirFont)
+                zipCodeTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.zipCode.rawValue, attributes: beltBuilder.errorAvenirFont)
                 
             } else {
                 
-                zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter zip code", attributes: beltBuilder.avenirFont)
+                zipCodeTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.zipCode.rawValue, attributes: beltBuilder.avenirFont)
                 
             }
             
@@ -154,11 +154,11 @@ class LocationAddressViewController: UIViewController, UITextInputTraits{
         }
         
         // reset textField placeholder text color to gray upon succesful save
-        addressLine1TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
-        addressLine2TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
-        cityTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
-        stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
-        zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
+        addressLine1TextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.streetAddress.rawValue, attributes: beltBuilder.avenirFont)
+        addressLine2TextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.additionalAddress.rawValue, attributes: beltBuilder.avenirFont)
+        cityTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.city.rawValue, attributes: beltBuilder.avenirFont)
+        stateTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.state.rawValue, attributes: beltBuilder.avenirFont)
+        zipCodeTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.zipCode.rawValue, attributes: beltBuilder.avenirFont)
         
         // Location update profile info
         updateLocationInfo()
@@ -195,41 +195,41 @@ class LocationAddressViewController: UIViewController, UITextInputTraits{
             // warnings for specific textfield being left blank by user
             if addressLine1TextField.text == "" {
                 
-                addressLine1TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.errorAvenirFont)
+                addressLine1TextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.streetAddress.rawValue, attributes: beltBuilder.errorAvenirFont)
                 
             } else {
                 
-                addressLine1TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
+                addressLine1TextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.streetAddress.rawValue, attributes: beltBuilder.avenirFont)
                 
             }
             
             if cityTextField.text == "" {
                 
-                cityTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter city", attributes: beltBuilder.errorAvenirFont)
+                cityTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.city.rawValue, attributes: beltBuilder.errorAvenirFont)
                 
             } else {
                 
-                cityTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter city", attributes: beltBuilder.avenirFont)
+                cityTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.city.rawValue, attributes: beltBuilder.avenirFont)
                 
             }
             
             if stateTextField.text == "" {
                 
-                stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter state", attributes: beltBuilder.errorAvenirFont)
+                stateTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.state.rawValue, attributes: beltBuilder.errorAvenirFont)
                 
             } else {
                 
-                stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter state", attributes: beltBuilder.avenirFont)
+                stateTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.state.rawValue, attributes: beltBuilder.avenirFont)
                 
             }
             
             if zipCodeTextField.text == "" {
                 
-                zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter zip code", attributes: beltBuilder.errorAvenirFont)
+                zipCodeTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.zipCode.rawValue, attributes: beltBuilder.errorAvenirFont)
                 
             } else {
                 
-                zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter zip code", attributes: beltBuilder.avenirFont)
+                zipCodeTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.zipCode.rawValue, attributes: beltBuilder.avenirFont)
                 
             }
             
@@ -238,11 +238,11 @@ class LocationAddressViewController: UIViewController, UITextInputTraits{
         }
         
         // reset textField placeholder text color to gray upon succesful save
-        addressLine1TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
-        addressLine2TextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
-        cityTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
-        stateTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
-        zipCodeTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter address", attributes: beltBuilder.avenirFont)
+        addressLine1TextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.streetAddress.rawValue, attributes: beltBuilder.avenirFont)
+        addressLine2TextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.additionalAddress.rawValue, attributes: beltBuilder.avenirFont)
+        cityTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.city.rawValue, attributes: beltBuilder.avenirFont)
+        stateTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.state.rawValue, attributes: beltBuilder.avenirFont)
+        zipCodeTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.zipCode.rawValue, attributes: beltBuilder.avenirFont)
         
         // programmatically performing segue
         

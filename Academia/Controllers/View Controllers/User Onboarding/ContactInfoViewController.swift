@@ -71,9 +71,9 @@ class ContactInfoViewController: UIViewController, UITextInputTraits {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        phoneTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter phone", attributes: beltBuilder.avenirFont)
-        mobileTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter mobile", attributes: beltBuilder.avenirFont)
-        emailTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter email", attributes: beltBuilder.avenirFont)
+        phoneTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.phone.rawValue, attributes: beltBuilder.avenirFont)
+        mobileTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.mobile.rawValue, attributes: beltBuilder.avenirFont)
+        emailTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.email.rawValue, attributes: beltBuilder.avenirFont)
         
         phoneTextField.delegate = self
         mobileTextField.delegate = self
@@ -109,21 +109,21 @@ class ContactInfoViewController: UIViewController, UITextInputTraits {
             // warnings for specific textfield being left blank by user
             if phoneTextField.text == "" {
                 
-                phoneTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter phone", attributes: beltBuilder.errorAvenirFont)
+                phoneTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.phone.rawValue, attributes: beltBuilder.errorAvenirFont)
             
             } else {
                 
-                phoneTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter phone", attributes: beltBuilder.avenirFont)
+                phoneTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.phone.rawValue, attributes: beltBuilder.avenirFont)
                 
             }
             
             if emailTextField.text == "" {
                 
-                emailTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter email", attributes: beltBuilder.errorAvenirFont)
+                emailTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.email.rawValue, attributes: beltBuilder.errorAvenirFont)
                 
             } else {
                 
-                emailTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter email", attributes: beltBuilder.avenirFont)
+                emailTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.email.rawValue, attributes: beltBuilder.avenirFont)
                 
             }
             
@@ -153,8 +153,8 @@ class ContactInfoViewController: UIViewController, UITextInputTraits {
         inEditingMode = false
         
         // reset textfield placeholder text color to gray upon succesful save
-        phoneTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter phone", attributes: beltBuilder.avenirFont)
-        emailTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter email", attributes: beltBuilder.avenirFont)
+        phoneTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.phone.rawValue, attributes: beltBuilder.avenirFont)
+        emailTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.email.rawValue, attributes: beltBuilder.avenirFont)
 
     }
     
@@ -179,21 +179,21 @@ class ContactInfoViewController: UIViewController, UITextInputTraits {
             // warnings for specific textfield being left blank by user
             if phoneTextField.text == "" {
                 
-                phoneTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter phone", attributes: beltBuilder.errorAvenirFont)
+                phoneTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.phone.rawValue, attributes: beltBuilder.errorAvenirFont)
                 
             } else {
                 
-                phoneTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter phone", attributes: beltBuilder.avenirFont)
+                phoneTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.phone.rawValue, attributes: beltBuilder.avenirFont)
                 
             }
             
             if emailTextField.text == "" {
                 
-                emailTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter email", attributes: beltBuilder.errorAvenirFont)
+                emailTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.email.rawValue, attributes: beltBuilder.errorAvenirFont)
                 
             } else {
                 
-                emailTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter email", attributes: beltBuilder.avenirFont)
+                emailTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.email.rawValue, attributes: beltBuilder.avenirFont)
                 
             }
             
@@ -267,8 +267,8 @@ class ContactInfoViewController: UIViewController, UITextInputTraits {
         }
         
         // reset textfield placeholder text color to gray upon succesful save
-        phoneTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter phone", attributes: beltBuilder.avenirFont)
-        emailTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter email", attributes: beltBuilder.avenirFont)
+        phoneTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.phone.rawValue, attributes: beltBuilder.avenirFont)
+        emailTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.email.rawValue, attributes: beltBuilder.avenirFont)
         
     }
 }

@@ -70,9 +70,9 @@ class EmergencyContactViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        emergencyContactNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter emergency contact name", attributes: beltBuilder.avenirFont)
-        emergencyContactPhoneTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter emergency contact phone", attributes: beltBuilder.avenirFont)
-        emergencyContactRelationshipTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter realtionship w/ emergency contact", attributes: beltBuilder.avenirFont)
+        emergencyContactNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactName.rawValue, attributes: beltBuilder.avenirFont)
+        emergencyContactPhoneTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactPhone.rawValue, attributes: beltBuilder.avenirFont)
+        emergencyContactRelationshipTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactRelationship.rawValue, attributes: beltBuilder.avenirFont)
         
         emergencyContactNameTextField.delegate = self
         emergencyContactPhoneTextField.delegate = self
@@ -113,31 +113,31 @@ class EmergencyContactViewController: UIViewController {
             // warnings for specific textfield being left blank by user
             if emergencyContactNameTextField.text == "" {
                 
-                emergencyContactNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter emergency contact name", attributes: beltBuilder.errorAvenirFont)
+                emergencyContactNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactName.rawValue, attributes: beltBuilder.errorAvenirFont)
                 
             } else {
                 
-                emergencyContactNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter emergency contact name", attributes: beltBuilder.avenirFont)
+                emergencyContactNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactName.rawValue, attributes: beltBuilder.avenirFont)
                 
             }
             
             if emergencyContactPhoneTextField.text == "" {
                 
-                emergencyContactPhoneTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter emergency contact phone", attributes: beltBuilder.errorAvenirFont)
+                emergencyContactPhoneTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactPhone.rawValue, attributes: beltBuilder.errorAvenirFont)
                 
             } else {
                 
-                emergencyContactPhoneTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter emergency contact phone", attributes: beltBuilder.avenirFont)
+                emergencyContactPhoneTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactPhone.rawValue, attributes: beltBuilder.avenirFont)
                 
             }
             
             if emergencyContactRelationshipTextField.text == "" {
                 
-                emergencyContactRelationshipTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter realtionship w/ emergency contact", attributes: beltBuilder.errorAvenirFont)
+                emergencyContactRelationshipTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactRelationship.rawValue, attributes: beltBuilder.errorAvenirFont)
                 
             } else {
                 
-                emergencyContactRelationshipTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter realtionship w/ emergency contact", attributes: beltBuilder.avenirFont)
+                emergencyContactRelationshipTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactRelationship.rawValue, attributes: beltBuilder.avenirFont)
                 
             }
             
@@ -167,9 +167,9 @@ class EmergencyContactViewController: UIViewController {
         inEditingMode = false
         
         // reset textfield placeholder text color to gray upon succesful save
-        emergencyContactNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter emergency contact name", attributes: beltBuilder.avenirFont)
-        emergencyContactPhoneTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter emergency contact phone", attributes: beltBuilder.avenirFont)
-        emergencyContactRelationshipTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter realtionship w/ emergency contact", attributes: beltBuilder.avenirFont)
+        emergencyContactNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactName.rawValue, attributes: beltBuilder.avenirFont)
+        emergencyContactPhoneTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactPhone.rawValue, attributes: beltBuilder.avenirFont)
+        emergencyContactRelationshipTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactRelationship.rawValue, attributes: beltBuilder.avenirFont)
     
     }
     
@@ -194,31 +194,31 @@ class EmergencyContactViewController: UIViewController {
             // warnings for specific textfield being left blank by user
             if emergencyContactNameTextField.text == "" {
                 
-                emergencyContactNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter emergency contact name", attributes: beltBuilder.errorAvenirFont)
+                emergencyContactNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactName.rawValue, attributes: beltBuilder.errorAvenirFont)
                 
             } else {
                 
-                emergencyContactNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter emergency contact name", attributes: beltBuilder.avenirFont)
+                emergencyContactNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactName.rawValue, attributes: beltBuilder.avenirFont)
                 
             }
             
             if emergencyContactPhoneTextField.text == "" {
                 
-               emergencyContactPhoneTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter emergency contact phone", attributes: beltBuilder.errorAvenirFont)
+               emergencyContactPhoneTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactPhone.rawValue, attributes: beltBuilder.errorAvenirFont)
                 
             } else {
                 
-                emergencyContactPhoneTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter emergency contact phone", attributes: beltBuilder.avenirFont)
+                emergencyContactPhoneTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactPhone.rawValue, attributes: beltBuilder.avenirFont)
                 
             }
             
             if emergencyContactRelationshipTextField.text == "" {
                 
-                emergencyContactRelationshipTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter realtionship w/ emergency contact", attributes: beltBuilder.errorAvenirFont)
+                emergencyContactRelationshipTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactRelationship.rawValue, attributes: beltBuilder.errorAvenirFont)
                 
             } else {
                 
-                emergencyContactRelationshipTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter realtionship w/ emergency contact", attributes: beltBuilder.avenirFont)
+                emergencyContactRelationshipTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactRelationship.rawValue, attributes: beltBuilder.avenirFont)
                 
             }
             
@@ -245,9 +245,9 @@ class EmergencyContactViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         
         // reset textfield placeholder text color to gray upon succesful save
-        emergencyContactNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter emergency contact name", attributes: beltBuilder.avenirFont)
-        emergencyContactPhoneTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter emergency contact phone", attributes: beltBuilder.avenirFont)
-        emergencyContactRelationshipTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter realtionship w/ emergency contact", attributes: beltBuilder.avenirFont)
+        emergencyContactNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactName.rawValue, attributes: beltBuilder.avenirFont)
+        emergencyContactPhoneTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactPhone.rawValue, attributes: beltBuilder.avenirFont)
+        emergencyContactRelationshipTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactRelationship.rawValue, attributes: beltBuilder.avenirFont)
         
         // required fields
         guard let emergencyContactName = emergencyContactNameTextField.text else { print("fail emergencyContactName"); return }

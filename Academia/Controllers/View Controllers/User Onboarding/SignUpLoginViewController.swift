@@ -80,9 +80,9 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         
         navigationController?.navigationBar.titleTextAttributes = beltBuilder.avenirFont
         
-        usernameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter username", attributes: beltBuilder.avenirFont)
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter password", attributes: beltBuilder.avenirFont)
-        confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: "tap to re-enter password", attributes: beltBuilder.avenirFont)
+        usernameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.username.rawValue, attributes: beltBuilder.avenirFont)
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.password.rawValue, attributes: beltBuilder.avenirFont)
+        confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.confirmPassword.rawValue, attributes: beltBuilder.avenirFont)
         
         guard let _ = username, let _ = password else {
             
@@ -155,38 +155,32 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
             // warnings for specific textfield being left blank by user
             if usernameTextField.text == "" {
                 
-                usernameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter username", attributes: beltBuilder.errorAvenirFont)
+                usernameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.username.rawValue, attributes: beltBuilder.errorAvenirFont)
                 
-                //                firstNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
                 
-                usernameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter username", attributes: beltBuilder.avenirFont)
+                usernameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.username.rawValue, attributes: beltBuilder.avenirFont)
                 
-                //                firstNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             if passwordTextField.text == "" {
                 
-                passwordTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter password", attributes: beltBuilder.errorAvenirFont)
+                passwordTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.password.rawValue, attributes: beltBuilder.errorAvenirFont)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
                 
-                passwordTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter password", attributes: beltBuilder.avenirFont)
+                passwordTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.password.rawValue, attributes: beltBuilder.avenirFont)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             if confirmPasswordTextField.text == "" {
                 
-                confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: "tap to confirm password", attributes: beltBuilder.errorAvenirFont)
+                confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.confirmPassword.rawValue, attributes: beltBuilder.errorAvenirFont)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.redBeltRed
             } else {
                 
-                confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: "tap to confirm password", attributes: beltBuilder.avenirFont)
+                confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.confirmPassword.rawValue, attributes: beltBuilder.avenirFont)
                 
-                //                lastNameLabelOutlet.textColor = beltBuilder.blackBeltBlack
             }
             
             // save not allowed, so we exit function
@@ -205,7 +199,7 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
                 hapticFeedbackGenerator = UINotificationFeedbackGenerator()
                 hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
                 
-                usernameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter username", attributes: beltBuilder.errorAvenirFont)
+                usernameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.username.rawValue, attributes: beltBuilder.errorAvenirFont)
                 
                 return
             }
@@ -217,7 +211,7 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
                 hapticFeedbackGenerator = UINotificationFeedbackGenerator()
                 hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
                 
-                passwordTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter password", attributes: beltBuilder.errorAvenirFont)
+                passwordTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.password.rawValue, attributes: beltBuilder.errorAvenirFont)
                 
                 return
             } else if self.confirmPasswordTextField.text == "" {
@@ -227,7 +221,7 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
                 hapticFeedbackGenerator = UINotificationFeedbackGenerator()
                 hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
                 
-                confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: "tap to re-enter password", attributes: beltBuilder.errorAvenirFont)
+                confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.confirmPassword.rawValue, attributes: beltBuilder.errorAvenirFont)
                 
                 return
             } else if self.passwordTextField.text != self.confirmPasswordTextField.text {
@@ -292,9 +286,9 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         welcomeInstructionsOutlet.textColor = beltBuilder.blackBeltBlack
         welcomeInstructionsOutlet.text = "please enter the following"
         // reset textfield placeholder text color to gray upon succesful save
-        usernameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter username", attributes: beltBuilder.avenirFont)
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter password", attributes: beltBuilder.avenirFont)
-        confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: "tap to re-enter password", attributes: beltBuilder.avenirFont)
+        usernameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.username.rawValue, attributes: beltBuilder.avenirFont)
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.password.rawValue, attributes: beltBuilder.avenirFont)
+        confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.confirmPassword.rawValue, attributes: beltBuilder.avenirFont)
         
     }
 }

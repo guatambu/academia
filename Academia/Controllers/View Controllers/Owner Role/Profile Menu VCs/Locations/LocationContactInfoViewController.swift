@@ -65,9 +65,9 @@ class LocationContactInfoViewController: UIViewController, UITextInputTraits {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        phoneTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter phone", attributes: beltBuilder.avenirFont)
-        websiteTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter website", attributes: beltBuilder.avenirFont)
-        emailTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter email", attributes: beltBuilder.avenirFont)
+        phoneTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.phone.rawValue, attributes: beltBuilder.avenirFont)
+        websiteTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.website.rawValue, attributes: beltBuilder.avenirFont)
+        emailTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.email.rawValue, attributes: beltBuilder.avenirFont)
         
         phoneTextField.delegate = self
         websiteTextField.delegate = self
@@ -99,21 +99,21 @@ class LocationContactInfoViewController: UIViewController, UITextInputTraits {
             // warnings for specific textfield being left blank by user
             if phoneTextField.text == "" {
                 
-                phoneTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter phone", attributes: beltBuilder.errorAvenirFont)
+                phoneTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.phone.rawValue, attributes: beltBuilder.errorAvenirFont)
                 
             } else {
                 
-                phoneTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter phone", attributes: beltBuilder.avenirFont)
+                phoneTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.phone.rawValue, attributes: beltBuilder.avenirFont)
                 
             }
             
             if emailTextField.text == "" {
                 
-                emailTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter email", attributes: beltBuilder.errorAvenirFont)
+                emailTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.email.rawValue, attributes: beltBuilder.errorAvenirFont)
                 
             } else {
                 
-                emailTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter email", attributes: beltBuilder.avenirFont)
+                emailTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.email.rawValue, attributes: beltBuilder.avenirFont)
                 
             }
             
@@ -122,8 +122,8 @@ class LocationContactInfoViewController: UIViewController, UITextInputTraits {
         }
         
         // reset label text color to black upon succesful save
-        phoneTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter phone", attributes: beltBuilder.avenirFont)
-        emailTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter email", attributes: beltBuilder.avenirFont)
+        phoneTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.phone.rawValue, attributes: beltBuilder.avenirFont)
+        emailTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.email.rawValue, attributes: beltBuilder.avenirFont)
         
         // Location update profile info
         updateLocationInfo()
@@ -156,21 +156,21 @@ class LocationContactInfoViewController: UIViewController, UITextInputTraits {
             // warnings for specific textfield being left blank by user
             if phoneTextField.text == "" {
                 
-                phoneTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter phone", attributes: beltBuilder.errorAvenirFont)
+                phoneTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.phone.rawValue, attributes: beltBuilder.errorAvenirFont)
                 
             } else {
                 
-                phoneTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter phone", attributes: beltBuilder.avenirFont)
+                phoneTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.phone.rawValue, attributes: beltBuilder.avenirFont)
                 
             }
             
             if emailTextField.text == "" {
                 
-                emailTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter email", attributes: beltBuilder.errorAvenirFont)
+                emailTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.email.rawValue, attributes: beltBuilder.errorAvenirFont)
                 
             } else {
                 
-                emailTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter email", attributes: beltBuilder.avenirFont)
+                emailTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.email.rawValue, attributes: beltBuilder.avenirFont)
                 
             }
             
@@ -179,8 +179,8 @@ class LocationContactInfoViewController: UIViewController, UITextInputTraits {
         }
         
         // reset label text color to black upon succesful save
-        phoneTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter phone", attributes: beltBuilder.avenirFont)
-        emailTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter email", attributes: beltBuilder.avenirFont)
+        phoneTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.phone.rawValue, attributes: beltBuilder.avenirFont)
+        emailTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.email.rawValue, attributes: beltBuilder.avenirFont)
         
         // programmatically performing segue
         

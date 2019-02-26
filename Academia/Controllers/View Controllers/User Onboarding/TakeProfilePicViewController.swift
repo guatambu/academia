@@ -55,9 +55,9 @@ class TakeProfilePicViewController: UIViewController {
         
         navigationController?.navigationBar.titleTextAttributes = beltBuilder.avenirFont
         
-        firstNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your first name", attributes: beltBuilder.avenirFont)
-        lastNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your last name", attributes: beltBuilder.avenirFont)
-        parentGuardianTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter parent/guardian name", attributes: beltBuilder.avenirFont)
+        firstNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.firstName.rawValue, attributes: beltBuilder.avenirFont)
+        lastNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.lastName.rawValue, attributes: beltBuilder.avenirFont)
+        parentGuardianTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.parentGuardian.rawValue, attributes: beltBuilder.avenirFont)
         
         firstNameTextField.delegate = self
         lastNameTextField.delegate = self
@@ -99,21 +99,21 @@ class TakeProfilePicViewController: UIViewController {
             // warnings for specific textfield being left blank by user
             if firstNameTextField.text == "" {
                 
-                firstNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your first name", attributes: beltBuilder.errorAvenirFont)
+                firstNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.firstName.rawValue, attributes: beltBuilder.errorAvenirFont)
                 
             } else {
                 
-                firstNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your first name", attributes: beltBuilder.avenirFont)
+                firstNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.firstName.rawValue, attributes: beltBuilder.avenirFont)
                 
             }
             
             if lastNameTextField.text == "" {
                 
-                lastNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your last name", attributes: beltBuilder.errorAvenirFont)
+                lastNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.lastName.rawValue, attributes: beltBuilder.errorAvenirFont)
                 
             } else {
                 
-                lastNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your last name", attributes: beltBuilder.avenirFont)
+                lastNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.lastName.rawValue, attributes: beltBuilder.avenirFont)
                 
             }
             
@@ -134,8 +134,8 @@ class TakeProfilePicViewController: UIViewController {
                     print("update owner name: \(OwnerModelController.shared.owners[0].firstName) \(OwnerModelController.shared.owners[0].lastName)")
                 } else {
                     // warning to user where welcome instructions text changes to red
-                    self.firstNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your first name", attributes: beltBuilder.errorAvenirFont)
-                    self.lastNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your first name", attributes: beltBuilder.errorAvenirFont)
+                    self.firstNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.firstName.rawValue, attributes: beltBuilder.errorAvenirFont)
+                    self.lastNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.lastName.rawValue, attributes: beltBuilder.errorAvenirFont)
                     // fire haptic feedback for error
                     hapticFeedbackGenerator = UINotificationFeedbackGenerator()
                     hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
@@ -166,8 +166,8 @@ class TakeProfilePicViewController: UIViewController {
         inEditingMode = false
         
         // reset textfield placeholder text color to gray upon succesful save
-        firstNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your last name", attributes: beltBuilder.avenirFont)
-        lastNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your last name", attributes: beltBuilder.avenirFont)
+        firstNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.firstName.rawValue, attributes: beltBuilder.avenirFont)
+        lastNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.lastName.rawValue, attributes: beltBuilder.avenirFont)
     }
     
     @IBAction func nextButtonTapped(_ sender: DesignableButton) {
@@ -199,21 +199,21 @@ class TakeProfilePicViewController: UIViewController {
             // warnings for specific textfield being left blank by user
             if firstNameTextField.text == "" {
                 
-                firstNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your first name", attributes: beltBuilder.errorAvenirFont)
+                firstNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.firstName.rawValue, attributes: beltBuilder.errorAvenirFont)
                 
             } else {
                 
-                firstNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your first name", attributes: beltBuilder.avenirFont)
+                firstNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.firstName.rawValue, attributes: beltBuilder.avenirFont)
                 
             }
             
             if lastNameTextField.text == "" {
                 
-                lastNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your last name", attributes: beltBuilder.errorAvenirFont)
+                lastNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.lastName.rawValue, attributes: beltBuilder.errorAvenirFont)
                 
             } else {
                 
-                lastNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your last name", attributes: beltBuilder.avenirFont)
+                lastNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.lastName.rawValue, attributes: beltBuilder.avenirFont)
                 
             }
             
@@ -272,8 +272,8 @@ class TakeProfilePicViewController: UIViewController {
         }
         
         // reset textfield placeholder text color to gray upon succesful save
-        firstNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your last name", attributes: beltBuilder.avenirFont)
-        lastNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter your last name", attributes: beltBuilder.avenirFont)
+        firstNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.firstName.rawValue, attributes: beltBuilder.avenirFont)
+        lastNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.lastName.rawValue, attributes: beltBuilder.avenirFont)
 
     }
 }
