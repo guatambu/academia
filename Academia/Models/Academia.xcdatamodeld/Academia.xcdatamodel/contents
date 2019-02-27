@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18D109" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AddressCD" representedClassName="AddressCD" syncable="YES" codeGenerationType="class">
+        <attribute name="addressLine1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="addressLine2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zipCode" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="adultStudent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AdultStudentCD" inverseName="address" inverseEntity="AdultStudentCD" syncable="YES"/>
+        <relationship name="kidStudent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KidStudentCD" inverseName="address" inverseEntity="KidStudentCD" syncable="YES"/>
+        <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LocationCD" inverseName="address" inverseEntity="LocationCD" syncable="YES"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OwnerCD" inverseName="address" inverseEntity="OwnerCD" syncable="YES"/>
+    </entity>
     <entity name="AdultStudentCD" representedClassName="AdultStudentCD" syncable="YES" codeGenerationType="class">
         <attribute name="addressLine1" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="addressLine2" optional="YES" attributeType="String" syncable="YES"/>
@@ -23,6 +34,7 @@
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zipCode" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AddressCD" inverseName="adultStudent" inverseEntity="AddressCD" syncable="YES"/>
         <relationship name="adultMembers" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GroupCD" inverseName="adultMembers" inverseEntity="GroupCD" syncable="YES"/>
         <relationship name="attendanceAdultStudent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AttendanceCD" inverseName="adultStudentAttendance" inverseEntity="AttendanceCD" syncable="YES"/>
         <relationship name="aulaAdultStudentInstructors" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AulaCD" inverseName="adultStudentInstructorsAula" inverseEntity="AulaCD" syncable="YES"/>
@@ -156,6 +168,7 @@
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zipCode" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AddressCD" inverseName="kidStudent" inverseEntity="AddressCD" syncable="YES"/>
         <relationship name="attendanceKidStudent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AttendanceCD" inverseName="kidStudentAttendance" inverseEntity="AttendanceCD" syncable="YES"/>
         <relationship name="belt" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="BeltCD" inverseName="kidStudentCD" inverseEntity="BeltCD" syncable="YES"/>
         <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GroupCD" inverseName="kidStudentGroups" inverseEntity="GroupCD" syncable="YES"/>
@@ -182,6 +195,7 @@
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zipCode" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AddressCD" inverseName="location" inverseEntity="AddressCD" syncable="YES"/>
         <relationship name="aulaCD" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AulaCD" inverseName="location" inverseEntity="AulaCD" syncable="YES"/>
         <relationship name="ownerCD" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OwnerCD" inverseName="locations" inverseEntity="OwnerCD" syncable="YES"/>
     </entity>
@@ -208,6 +222,7 @@
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zipCode" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AddressCD" inverseName="owner" inverseEntity="AddressCD" syncable="YES"/>
         <relationship name="attendanceOwner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AttendanceCD" inverseName="ownerAttendance" inverseEntity="AttendanceCD" syncable="YES"/>
         <relationship name="aulaOwnerInstructor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AulaCD" inverseName="ownerInstructorAula" inverseEntity="AulaCD" syncable="YES"/>
         <relationship name="belt" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BeltCD" inverseName="ownerCD" inverseEntity="BeltCD" syncable="YES"/>
@@ -246,7 +261,7 @@
         <relationship name="kidStudent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KidStudentCD" inverseName="studentStatus" inverseEntity="KidStudentCD" syncable="YES"/>
     </entity>
     <elements>
-        <element name="AdultStudentCD" positionX="-2.69921875" positionY="-545.51953125" width="128" height="495"/>
+        <element name="AdultStudentCD" positionX="-2.69921875" positionY="-545.51953125" width="128" height="510"/>
         <element name="AttendanceCD" positionX="-669.02734375" positionY="192.5234375" width="128" height="120"/>
         <element name="AulaCD" positionX="-733.0078125" positionY="18.625" width="128" height="270"/>
         <element name="BeltCD" positionX="-193.765625" positionY="-356.95703125" width="128" height="403"/>
@@ -255,11 +270,12 @@
         <element name="BillingTypeCD" positionX="554.09375" positionY="-169.73046875" width="128" height="58"/>
         <element name="DaysOfTheWeekCD" positionX="-952.91015625" positionY="9.2734375" width="128" height="58"/>
         <element name="GroupCD" positionX="-803.0234375" positionY="-194.1015625" width="128" height="133"/>
-        <element name="KidStudentCD" positionX="8.1484375" positionY="-179.87890625" width="128" height="480"/>
-        <element name="LocationCD" positionX="-949.203125" positionY="168.14453125" width="128" height="330"/>
-        <element name="OwnerCD" positionX="-494.6796875" positionY="-356.46484375" width="128" height="465"/>
+        <element name="KidStudentCD" positionX="8.1484375" positionY="-179.87890625" width="128" height="495"/>
+        <element name="LocationCD" positionX="-949.203125" positionY="168.14453125" width="128" height="345"/>
+        <element name="OwnerCD" positionX="-494.6796875" positionY="-356.46484375" width="128" height="480"/>
         <element name="PaymentProgramCD" positionX="310.90234375" positionY="-291.76953125" width="128" height="118"/>
-        <element name="StudentStatusCD" positionX="31.05078125" positionY="-322.66796875" width="128" height="73"/>
         <element name="PromotionCD" positionX="-747" positionY="-396" width="128" height="135"/>
+        <element name="StudentStatusCD" positionX="31.05078125" positionY="-322.66796875" width="128" height="73"/>
+        <element name="AddressCD" positionX="-747" positionY="-396" width="128" height="180"/>
     </elements>
 </model>

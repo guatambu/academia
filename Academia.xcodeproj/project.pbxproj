@@ -70,6 +70,7 @@
 		FA8B3CCC21CB276B003398FB /* OwnersStudentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B3CCB21CB276B003398FB /* OwnersStudentDetailViewController.swift */; };
 		FA8B3CCE21CB3901003398FB /* GroupInfoDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B3CCD21CB3901003398FB /* GroupInfoDetailsTableViewController.swift */; };
 		FA9724052224B3C2001247CA /* PlaceholderStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9724042224B3C2001247CA /* PlaceholderStrings.swift */; };
+		FA97240722265C00001247CA /* Address+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97240622265C00001247CA /* Address+Convenience.swift */; };
 		FA9AD9F5213782070005E1F1 /* TutorialsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9AD9F4213782070005E1F1 /* TutorialsTableViewController.swift */; };
 		FA9AD9F72137839A0005E1F1 /* BeltSystemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9AD9F62137839A0005E1F1 /* BeltSystemsTableViewController.swift */; };
 		FA9AD9F9213783BA0005E1F1 /* MyLocationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9AD9F8213783BA0005E1F1 /* MyLocationsTableViewController.swift */; };
@@ -354,6 +355,7 @@
 		FA8B3CCB21CB276B003398FB /* OwnersStudentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnersStudentDetailViewController.swift; sourceTree = "<group>"; };
 		FA8B3CCD21CB3901003398FB /* GroupInfoDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoDetailsTableViewController.swift; sourceTree = "<group>"; };
 		FA9724042224B3C2001247CA /* PlaceholderStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderStrings.swift; sourceTree = "<group>"; };
+		FA97240622265C00001247CA /* Address+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Address+Convenience.swift"; sourceTree = "<group>"; };
 		FA9AD9F4213782070005E1F1 /* TutorialsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialsTableViewController.swift; sourceTree = "<group>"; };
 		FA9AD9F62137839A0005E1F1 /* BeltSystemsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeltSystemsTableViewController.swift; sourceTree = "<group>"; };
 		FA9AD9F8213783BA0005E1F1 /* MyLocationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationsTableViewController.swift; sourceTree = "<group>"; };
@@ -906,6 +908,7 @@
 		FA55E170220E4B0400E1A839 /* CoreData+Convenience */ = {
 			isa = PBXGroup;
 			children = (
+				FA97240622265C00001247CA /* Address+Convenience.swift */,
 				FAB806BA2210E71100124EBA /* AdultStudentCD+Convenience.swift */,
 				FAB806BC2210E72B00124EBA /* AttendanceCD+Convenience.swift */,
 				FAB806BE2210E74400124EBA /* AulaCD+Convenience.swift */,
@@ -919,8 +922,8 @@
 				FAB806CE2210E85A00124EBA /* LocationCD+Convenience.swift */,
 				FAB806D02210E87200124EBA /* OwnerCD+Convenience.swift */,
 				FAB806D22210E88B00124EBA /* PaymentProgramCD+Convenience.swift */,
-				FAB806D42210E8B900124EBA /* StudentStatusCD+Convenience.swift */,
 				FADA6156221B98B800BB3302 /* PromotionCD+Convenience.swift */,
+				FAB806D42210E8B900124EBA /* StudentStatusCD+Convenience.swift */,
 			);
 			path = "CoreData+Convenience";
 			sourceTree = "<group>";
@@ -1538,6 +1541,7 @@
 				FAB7E350212B7D47003E3B79 /* LandingPageViewController.swift in Sources */,
 				FAB20413216566E50034E1D4 /* ThingsToDoList.swift in Sources */,
 				FAD2097921C1D00200B9C622 /* SignatureCollectionViewCell.swift in Sources */,
+				FA97240722265C00001247CA /* Address+Convenience.swift in Sources */,
 				FAA516D6218FEC5A009875CB /* ConfirmPasswordTextFieldTableViewCell.swift in Sources */,
 				FA23D2882166F5E400707056 /* GroupModelController.swift in Sources */,
 				FAF1BB8C21435BA900AD56AE /* AgreementTextViewTableViewCell.swift in Sources */,
