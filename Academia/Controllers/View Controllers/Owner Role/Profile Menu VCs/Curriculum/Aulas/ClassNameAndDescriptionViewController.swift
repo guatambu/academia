@@ -56,8 +56,8 @@ class ClassNameAndDescriptionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        classNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter program name", attributes: beltBuilder.avenirFont)
-        classDescriptionTextView.attributedText = NSAttributedString(string: "tap to enter program description", attributes: beltBuilder.avenirFont)
+        classNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.className.rawValue, attributes: beltBuilder.avenirFont)
+        classDescriptionTextView.attributedText = NSAttributedString(string: PlaceholderStrings.classDescription.rawValue, attributes: beltBuilder.avenirFont)
         
         classNameTextField.delegate = self
         classDescriptionTextView.delegate = self

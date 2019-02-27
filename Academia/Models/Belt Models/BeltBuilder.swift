@@ -53,8 +53,16 @@ class BeltBuilder {
     let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor(red: 146/255, green: 146/255, blue: 146/255, alpha: 1.0),
                        NSAttributedString.Key.font: UIFont(name: "Avenir-LightOblique", size: 16)! ]
     
+    // smaller grey avenir font using gregyBeltGrey
+    let avenirFontSmall = [ NSAttributedString.Key.foregroundColor: UIColor(red: 146/255, green: 146/255, blue: 146/255, alpha: 1.0),
+                       NSAttributedString.Key.font: UIFont(name: "Avenir-LightOblique", size: 16)! ]
+    
     // error red avenit font using redBeltRed
     let errorAvenirFont = [ NSAttributedString.Key.foregroundColor: UIColor(red: 255/255, green: 38/255, blue: 0/255, alpha: 1.0),
+                            NSAttributedString.Key.font: UIFont(name: "Avenir-LightOblique", size: 16)! ]
+    
+    // smaller error red avenit font using redBeltRed
+    let errorAvenirFontSmall = [ NSAttributedString.Key.foregroundColor: UIColor(red: 255/255, green: 38/255, blue: 0/255, alpha: 1.0),
                             NSAttributedString.Key.font: UIFont(name: "Avenir-LightOblique", size: 16)! ]
     
     // graduation bar specs

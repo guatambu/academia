@@ -22,7 +22,7 @@ class PaymentProgramNameAndDescriptionViewController: UIViewController, UITextIn
     let beltBuilder = BeltBuilder()
     var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
     
-    let programDescriptionTextViewPlaceholderString = "tap to enter program description"
+    let programDescriptionTextViewPlaceholderString = PlaceholderStrings.paymentProgramDescription.rawValue
     
     // label outlets
     @IBOutlet weak var addPaymentProgramNameDescriptionLabelOutlet: UILabel!
@@ -64,7 +64,7 @@ class PaymentProgramNameAndDescriptionViewController: UIViewController, UITextIn
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        programNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter program name", attributes: beltBuilder.avenirFont)
+        programNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.paymentProgramName.rawValue, attributes: beltBuilder.avenirFont)
         programDescriptionTextView.attributedText = NSAttributedString(string: programDescriptionTextViewPlaceholderString, attributes: beltBuilder.avenirFont)
         
         programNameTextField.delegate = self
@@ -103,7 +103,7 @@ class PaymentProgramNameAndDescriptionViewController: UIViewController, UITextIn
             hapticFeedbackGenerator = UINotificationFeedbackGenerator()
             hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
         
-            programNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter program name", attributes: beltBuilder.errorAvenirFont)
+            programNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.paymentProgramName.rawValue, attributes: beltBuilder.errorAvenirFont)
             
             // save not allowed, so we exit function
             return
@@ -121,7 +121,7 @@ class PaymentProgramNameAndDescriptionViewController: UIViewController, UITextIn
         inEditingMode = false
         
         // reset textField placeholder text color to gray upon succesful save
-        programNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter payment program name", attributes: beltBuilder.avenirFont)
+        programNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.paymentProgramName.rawValue, attributes: beltBuilder.avenirFont)
     }
     
     
@@ -141,7 +141,7 @@ class PaymentProgramNameAndDescriptionViewController: UIViewController, UITextIn
             hapticFeedbackGenerator = UINotificationFeedbackGenerator()
             hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
             
-            programNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter phone", attributes: beltBuilder.errorAvenirFont)
+            programNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.paymentProgramName.rawValue, attributes: beltBuilder.errorAvenirFont)
             
             // save not allowed, so we exit function
             return
@@ -185,7 +185,7 @@ class PaymentProgramNameAndDescriptionViewController: UIViewController, UITextIn
         updatePaymentProgramInfo()
         
         // reset textField placeholder text color to gray upon succesful save
-        programNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter phone", attributes: beltBuilder.avenirFont)
+        programNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.paymentProgramName.rawValue, attributes: beltBuilder.avenirFont)
     }
 }
 

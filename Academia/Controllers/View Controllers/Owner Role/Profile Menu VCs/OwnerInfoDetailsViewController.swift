@@ -143,7 +143,7 @@ extension OwnerInfoDetailsViewController {
         guard let owner = OwnerModelController.shared.owners.first else { return }
         // populate UI elements in VC
         self.title = "\(owner.firstName) \(owner.lastName)"
-        usernameLabelOutlet.text = "username: \(owner.username)"
+        usernameLabelOutlet.text = "user: \(owner.username)"
         // populate birthdate outlet
         formatBirthdate(birthdate: owner.birthdate)
         // contact info outlets

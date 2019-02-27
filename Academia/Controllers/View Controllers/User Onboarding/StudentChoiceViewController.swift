@@ -22,28 +22,41 @@ class StudentChoiceViewController: UIViewController {
     
     let beltBuilder = BeltBuilder()
     
-    @IBOutlet weak var kidsProgramButtonOutlet: UIButton!
-    @IBOutlet weak var adultsProgramButtonOutlet: UIButton!
-    @IBOutlet weak var confirmKidsProgramButtonOutlet: UIButton!
-    @IBOutlet weak var confirmAdultsProgramButtonOutlet: UIButton!
+    @IBOutlet weak var kidsProgramButtonOutlet: DesignableButton!
+    @IBOutlet weak var adultsProgramButtonOutlet: DesignableButton!
+    @IBOutlet weak var confirmKidsProgramButtonOutlet: DesignableButton!
+    @IBOutlet weak var confirmAdultsProgramButtonOutlet: DesignableButton!
+    @IBOutlet weak var cancelButtonOutlet: UIButton!
     
     
     // MARK: - ViewController Lifecycle Functions
-    
-    override func viewWillAppear(_ animated: Bool) {
-        confirmKidsProgramButtonOutlet.isHidden = true
-        confirmAdultsProgramButtonOutlet.isHidden = true
-        
-        confirmAdultsProgramButtonOutlet.isEnabled = false
-        confirmKidsProgramButtonOutlet.isEnabled = false
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // hide and disable confirmation buttons
+        confirmKidsProgramButtonOutlet.isHidden = true
+        confirmKidsProgramButtonOutlet.isEnabled = false
+        
+        confirmAdultsProgramButtonOutlet.isHidden = true
+        confirmAdultsProgramButtonOutlet.isEnabled = false
+        
+        // hide and disable cancel button
+        cancelButtonOutlet.isHidden = true
+        cancelButtonOutlet.isEnabled = false
+        
+        // set button titleColor values
+        // kidsProgramButton
+        kidsProgramButtonOutlet.setTitleColor(beltBuilder.redBeltRed, for: UIControl.State.selected)
+        kidsProgramButtonOutlet.setTitleColor(beltBuilder.redBeltRed, for: UIControl.State.normal)
+        kidsProgramButtonOutlet.setTitleColor(UIColor.lightGray, for: UIControl.State.disabled)
+        // adultsProgramButton
+        adultsProgramButtonOutlet.setTitleColor(beltBuilder.redBeltRed, for: UIControl.State.selected)
+        adultsProgramButtonOutlet.setTitleColor(beltBuilder.redBeltRed, for: UIControl.State.normal)
+        adultsProgramButtonOutlet.setTitleColor(UIColor.lightGray, for: UIControl.State.disabled)
+        
+        // properties check
         guard let isOwner = isOwner, let username = username, let password = password else { return }
-        
-        
         
         print("isOwner: \(isOwner) \nusername: \(username) \npassword: \(password)")
     }
@@ -59,7 +72,15 @@ class StudentChoiceViewController: UIViewController {
         confirmAdultsProgramButtonOutlet.isHidden = true
         confirmAdultsProgramButtonOutlet.isEnabled = false
         
+        // set color of button NOT selected
+        adultsProgramButtonOutlet.isEnabled = false
+        adultsProgramButtonOutlet.borderColor = UIColor.lightGray
+        
         isKid = true
+        
+        // show and enable cancel button
+        cancelButtonOutlet.isHidden = false
+        cancelButtonOutlet.isEnabled = true
     }
     
     @IBAction func adultsProgramButtonTapped(_ sender: UIButton) {
@@ -70,13 +91,20 @@ class StudentChoiceViewController: UIViewController {
         confirmAdultsProgramButtonOutlet.isHidden = false
         confirmAdultsProgramButtonOutlet.isEnabled = true
         
+        // set color of button NOT selected
+        kidsProgramButtonOutlet.isEnabled = false
+        kidsProgramButtonOutlet.borderColor = UIColor.lightGray
+        
         isKid = false
+        
+        // show and enable cancel button
+        cancelButtonOutlet.isHidden = false
+        cancelButtonOutlet.isEnabled = true
     }
     
     @IBAction func confirmKidsProgramButtonTapped(_ sender: UIButton) {
         
         // programmatically performing the Kid Student segue
-        
         // instantiate the relevant storyboard
         let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
@@ -97,13 +125,11 @@ class StudentChoiceViewController: UIViewController {
         destViewController.isKid = true
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
         destViewController.group = group
-        
     }
     
     @IBAction func confirmAdultsProgramButtonTapped(_ sender: UIButton) {
         
         // programmatically performing the adult student segue
-        
         // instantiate the relevant storyboard
         let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
@@ -117,8 +143,6 @@ class StudentChoiceViewController: UIViewController {
         // set nav bar controller appearance
         navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
         navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
-//        navigationController?.navigationBar.isTranslucent = false
-//        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         
         // pass desired data to relevant view controller
@@ -127,4 +151,31 @@ class StudentChoiceViewController: UIViewController {
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
         destViewController.group = group
     }
+    
+    @IBAction func cancelButtonTapped(_ sender: UIButton) {
+        
+        print("cancel button fired")
+        
+        // enable self identify buttons
+        kidsProgramButtonOutlet.isEnabled = true
+        adultsProgramButtonOutlet.isEnabled = true
+        
+        kidsProgramButtonOutlet.borderColor = beltBuilder.redBeltRed
+        adultsProgramButtonOutlet.borderColor = beltBuilder.redBeltRed
+        
+        // hide and disable confirmation buttons
+        confirmKidsProgramButtonOutlet.isHidden = true
+        confirmKidsProgramButtonOutlet.isEnabled = false
+        
+        confirmAdultsProgramButtonOutlet.isHidden = true
+        confirmAdultsProgramButtonOutlet.isEnabled = false
+        
+        // hide and disable cancel button
+        cancelButtonOutlet.isEnabled = false
+        cancelButtonOutlet.isHidden = true
+        
+        // reset isKid to default
+        isKid = false
+    }
+    
 }

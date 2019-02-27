@@ -50,7 +50,7 @@ class LocationPicAndNameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        locationNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter location name", attributes: beltBuilder.avenirFont)
+        locationNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.locationName.rawValue, attributes: beltBuilder.avenirFont)
         
         locationNameTextField.delegate = self
         
@@ -93,7 +93,7 @@ class LocationPicAndNameViewController: UIViewController {
             hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
             
             // warnings for specific textfield being left blank by user
-            locationNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter location name", attributes: beltBuilder.errorAvenirFont)
+            locationNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.locationName.rawValue, attributes: beltBuilder.errorAvenirFont)
             
             // save not allowed, so we exit function
             return
@@ -112,7 +112,7 @@ class LocationPicAndNameViewController: UIViewController {
         inEditingMode = false
         
         // reset textField placeholder text to gray upon succesful save
-        locationNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter location name", attributes: beltBuilder.avenirFont)
+        locationNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.locationName.rawValue, attributes: beltBuilder.avenirFont)
     }
     
     
@@ -131,7 +131,7 @@ class LocationPicAndNameViewController: UIViewController {
             hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
             
             // warnings for specific textfield being left blank by user
-            locationNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter emergency contact name", attributes: beltBuilder.errorAvenirFont)
+            locationNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.locationName.rawValue, attributes: beltBuilder.errorAvenirFont)
             
             // save not allowed, so we exit function
             return
@@ -146,7 +146,7 @@ class LocationPicAndNameViewController: UIViewController {
         let destViewController = mainView.instantiateViewController(withIdentifier: "toLocationAddress") as! LocationAddressViewController
         
         // reset textField placeholder text to gray upon succesful save
-        locationNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter emergency contact name", attributes: beltBuilder.avenirFont)
+        locationNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.locationName.rawValue, attributes: beltBuilder.avenirFont)
         
         // run check to see is there is firstName, lastName, and profilePic
         guard let locationName = locationNameTextField.text else { return }

@@ -22,7 +22,7 @@ class GroupNameAndDescriptionViewController: UIViewController, UITextInputTraits
     let beltBuilder = BeltBuilder()
     var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
     
-    let groupDescriptionTextViewPlaceholderString = "tap to enter group description"
+    let groupDescriptionTextViewPlaceholderString = PlaceholderStrings.groupDescription.rawValue
     
     // welcome label outlets
     @IBOutlet weak var welcomeLabelOutlet: UILabel!
@@ -65,7 +65,7 @@ class GroupNameAndDescriptionViewController: UIViewController, UITextInputTraits
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        groupNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter group name", attributes: beltBuilder.avenirFont)
+        groupNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.groupName.rawValue, attributes: beltBuilder.avenirFont)
         groupDescriptionTextView.attributedText = NSAttributedString(string: groupDescriptionTextViewPlaceholderString, attributes: beltBuilder.avenirFont)
         
         groupNameTextField.delegate = self
@@ -105,7 +105,7 @@ class GroupNameAndDescriptionViewController: UIViewController, UITextInputTraits
             hapticFeedbackGenerator = UINotificationFeedbackGenerator()
             hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
             
-            groupNameTextField.attributedPlaceholder = NSAttributedString(string: "tap to enter program name", attributes: beltBuilder.errorAvenirFont)
+            groupNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.groupName.rawValue, attributes: beltBuilder.errorAvenirFont)
             
             // save not allowed, so we exit function
             return

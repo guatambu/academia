@@ -25,7 +25,7 @@ class PaymentProgramAgreementViewController: UIViewController {
     
     let beltBuilder = BeltBuilder()
     
-    let programAgreementTextViewPlaceholderString = "tap to enter program agreement"
+    let programAgreementTextViewPlaceholderString = PlaceholderStrings.paymentProgramAgreement.rawValue
     
     let agreementStackViewTopToSafeAreaConstraintOriginalValue: CGFloat = 72.0
     // constraint outlets
