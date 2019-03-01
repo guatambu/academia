@@ -1040,7 +1040,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="136" height="30"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                                             </textField>
                                                         </subviews>
                                                         <constraints>
@@ -2627,7 +2627,205 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z1D-gk-pdJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4686" y="206"/>
+            <point key="canvasLocation" x="4667" y="205"/>
+        </scene>
+        <!--birthday-->
+        <scene sceneID="sFP-iv-ix3">
+            <objects>
+                <viewController storyboardIdentifier="toStudentChooseYourSchool" id="oGc-Rq-HhK" userLabel="birthday" customClass="FindYourAcademyViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NbT-kn-kfG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="please find your academy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CjM-bO-Vfh" userLabel="please find your academy Label Outlet">
+                                <rect key="frame" x="16" y="135" width="288" height="33"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hCZ-05-Sj7" userLabel="Next Button Outlet" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
+                                <rect key="frame" x="105.5" y="472" width="109" height="40"/>
+                                <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="iTN-DQ-uXS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                <inset key="contentEdgeInsets" minX="32" minY="0.0" maxX="32" maxY="0.0"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="nextButtonTapped:" destination="oGc-Rq-HhK" eventType="touchUpInside" id="Phc-Mm-92c"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Caa-yw-h1d" userLabel="Progress Stack View">
+                                <rect key="frame" x="44" y="536" width="232" height="8"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="23i-Sm-afA" userLabel="Progress 1 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="8" id="mTG-ft-24L"/>
+                                            <constraint firstAttribute="width" constant="8" id="tTG-dV-wuv"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jQQ-82-2KH" userLabel="Progress 2 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
+                                        <rect key="frame" x="28" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="8" id="KUw-up-1Od"/>
+                                            <constraint firstAttribute="height" constant="8" id="MD0-jS-oA9"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xv1-Pw-N26" userLabel="Progress 3 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
+                                        <rect key="frame" x="56" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="8" id="LCk-9Z-ESX"/>
+                                            <constraint firstAttribute="width" constant="8" id="sbc-Gh-RPn"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hok-tU-gKR" userLabel="Progress 4 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
+                                        <rect key="frame" x="84" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="8" id="Yc0-Ks-Cmi"/>
+                                            <constraint firstAttribute="width" constant="8" id="aoe-gA-Hc3"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Lj-mg-S5O" userLabel="Progress 5 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
+                                        <rect key="frame" x="112" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="8" id="Ec3-6V-FH5"/>
+                                            <constraint firstAttribute="height" constant="8" id="M9S-pJ-YYu"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FQM-xZ-NpJ" userLabel="Progress 6 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
+                                        <rect key="frame" x="140" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="8" id="2kj-4i-9jg"/>
+                                            <constraint firstAttribute="height" constant="8" id="Ii9-ma-KPu"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lMh-E0-zHr" userLabel="Progress 7 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
+                                        <rect key="frame" x="168" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="8" id="Uda-MC-oyA"/>
+                                            <constraint firstAttribute="width" constant="8" id="iin-d8-ukg"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yOE-pu-16L" userLabel="Progress 8 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
+                                        <rect key="frame" x="196" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="8" id="FbS-gr-udF"/>
+                                            <constraint firstAttribute="height" constant="8" id="kpl-68-8DE"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sth-yJ-mP1" userLabel="Progress 9 View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
+                                        <rect key="frame" x="224" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="8" id="mjA-hv-Prx"/>
+                                            <constraint firstAttribute="height" constant="8" id="mva-Bg-pvO"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="hko-dA-B8o">
+                                <rect key="frame" x="0.0" y="256" width="320" height="56"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CjM-bO-Vfh" firstAttribute="leading" secondItem="MzX-PJ-pPG" secondAttribute="leading" constant="16" id="1HB-P1-PRs"/>
+                            <constraint firstItem="Caa-yw-h1d" firstAttribute="top" secondItem="hCZ-05-Sj7" secondAttribute="bottom" constant="24" id="Be2-Ra-fL0"/>
+                            <constraint firstItem="Caa-yw-h1d" firstAttribute="centerX" secondItem="NbT-kn-kfG" secondAttribute="centerX" id="Jk4-vO-NtZ"/>
+                            <constraint firstItem="hko-dA-B8o" firstAttribute="top" secondItem="CjM-bO-Vfh" secondAttribute="bottom" constant="88" id="Mjq-FZ-Zef"/>
+                            <constraint firstItem="MzX-PJ-pPG" firstAttribute="trailing" secondItem="CjM-bO-Vfh" secondAttribute="trailing" constant="16" id="csX-w4-Jrt"/>
+                            <constraint firstItem="hko-dA-B8o" firstAttribute="leading" secondItem="MzX-PJ-pPG" secondAttribute="leading" id="dVj-0a-Sm7"/>
+                            <constraint firstItem="hCZ-05-Sj7" firstAttribute="top" secondItem="hko-dA-B8o" secondAttribute="bottom" constant="160" id="oHQ-kz-egq"/>
+                            <constraint firstItem="hko-dA-B8o" firstAttribute="trailing" secondItem="MzX-PJ-pPG" secondAttribute="trailing" id="pAV-fB-Hog"/>
+                            <constraint firstItem="hCZ-05-Sj7" firstAttribute="centerX" secondItem="NbT-kn-kfG" secondAttribute="centerX" id="ung-Lm-31p"/>
+                            <constraint firstItem="MzX-PJ-pPG" firstAttribute="bottom" secondItem="Caa-yw-h1d" secondAttribute="bottom" constant="24" id="ztp-Cz-EE0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="MzX-PJ-pPG"/>
+                    </view>
+                    <navigationItem key="navigationItem" title=" " id="di5-MZ-S3d">
+                        <barButtonItem key="backBarButtonItem" title=" " id="3RA-H0-fah"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="firstProgressDotOutlet" destination="23i-Sm-afA" id="eFy-cd-Wy5"/>
+                        <outlet property="nextButtonOutlet" destination="hCZ-05-Sj7" id="bnq-Yc-xD5"/>
+                        <outlet property="searchDisplayController" destination="tvV-gj-sdk" id="X8R-qk-bRy"/>
+                        <outlet property="whenIsYourBirthdayLabelOutlet" destination="CjM-bO-Vfh" id="R9F-IW-U8r"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wOv-QL-vqr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="tvV-gj-sdk">
+                    <connections>
+                        <outlet property="delegate" destination="oGc-Rq-HhK" id="I3O-kT-aoO"/>
+                        <outlet property="searchContentsController" destination="oGc-Rq-HhK" id="gBA-Th-qAj"/>
+                        <outlet property="searchResultsDataSource" destination="oGc-Rq-HhK" id="hHv-bi-FGu"/>
+                        <outlet property="searchResultsDelegate" destination="oGc-Rq-HhK" id="ZxV-Jb-6e1"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="3516" y="905"/>
         </scene>
     </scenes>
     <resources>

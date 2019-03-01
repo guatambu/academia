@@ -69,6 +69,7 @@
 		FA8B3CC721CB2366003398FB /* ReviewAndCreateGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B3CC621CB2366003398FB /* ReviewAndCreateGroupTableViewController.swift */; };
 		FA8B3CCC21CB276B003398FB /* OwnersStudentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B3CCB21CB276B003398FB /* OwnersStudentDetailViewController.swift */; };
 		FA8B3CCE21CB3901003398FB /* GroupInfoDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B3CCD21CB3901003398FB /* GroupInfoDetailsTableViewController.swift */; };
+		FA9463FC2229D0F10063B34C /* FindYourAcademyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9463FB2229D0F10063B34C /* FindYourAcademyViewController.swift */; };
 		FA9724052224B3C2001247CA /* PlaceholderStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9724042224B3C2001247CA /* PlaceholderStrings.swift */; };
 		FA97240722265C00001247CA /* Address+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97240622265C00001247CA /* Address+Convenience.swift */; };
 		FA9AD9F5213782070005E1F1 /* TutorialsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9AD9F4213782070005E1F1 /* TutorialsTableViewController.swift */; };
@@ -354,6 +355,7 @@
 		FA8B3CC621CB2366003398FB /* ReviewAndCreateGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewAndCreateGroupTableViewController.swift; sourceTree = "<group>"; };
 		FA8B3CCB21CB276B003398FB /* OwnersStudentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnersStudentDetailViewController.swift; sourceTree = "<group>"; };
 		FA8B3CCD21CB3901003398FB /* GroupInfoDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoDetailsTableViewController.swift; sourceTree = "<group>"; };
+		FA9463FB2229D0F10063B34C /* FindYourAcademyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindYourAcademyViewController.swift; sourceTree = "<group>"; };
 		FA9724042224B3C2001247CA /* PlaceholderStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderStrings.swift; sourceTree = "<group>"; };
 		FA97240622265C00001247CA /* Address+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Address+Convenience.swift"; sourceTree = "<group>"; };
 		FA9AD9F4213782070005E1F1 /* TutorialsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialsTableViewController.swift; sourceTree = "<group>"; };
@@ -1072,6 +1074,7 @@
 				FAB7E351212B7D73003E3B79 /* UserSelfIdentifyViewController.swift */,
 				FA5C5C3D2152CB3200BF62D5 /* StudentChoiceViewController.swift */,
 				FAF29B62212BBB5000752414 /* SignUpLoginViewController.swift */,
+				FA9463FB2229D0F10063B34C /* FindYourAcademyViewController.swift */,
 				FACA3EB6219289310099E620 /* TakeProfilePicViewController.swift */,
 				FA41CE6C21A5EBAA00EAD53A /* BirthdayViewController.swift */,
 				FACA3EB0219288CD0099E620 /* NameAndBeltViewController.swift */,
@@ -1502,6 +1505,7 @@
 				FAB806D12210E87200124EBA /* OwnerCD+Convenience.swift in Sources */,
 				FAE2FDAC2140C09A00815402 /* LocationNameTextFieldTableViewCell.swift in Sources */,
 				FA9ADA07213784870005E1F1 /* AboutAcademiaServicesViewController.swift in Sources */,
+				FA9463FC2229D0F10063B34C /* FindYourAcademyViewController.swift in Sources */,
 				FAE2FD9C2140C01B00815402 /* MobileTextFieldTableViewCell.swift in Sources */,
 				FA23D2922167F9EF00707056 /* OnBoardingTaskModelController.swift in Sources */,
 				FAB806CD2210E84400124EBA /* KidStudentCD+Convenience.swift in Sources */,
