@@ -48,10 +48,7 @@ class PaymentProgramNameAndDescriptionViewController: UIViewController, UITextIn
         // turns off auto-capitalization in these UITextFields
         programNameTextField.autocapitalizationType = UITextAutocapitalizationType.none
         
-        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 16)! ]
-        
-        navigationController?.navigationBar.titleTextAttributes = avenirFont
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
         
         enterEditingMode(inEditingMode: inEditingMode)
     }
@@ -70,7 +67,6 @@ class PaymentProgramNameAndDescriptionViewController: UIViewController, UITextIn
         programNameTextField.delegate = self
         programDescriptionTextView.delegate = self
         
-        //populateCompletedProfileInfo()
     }
     
     // MARK: - Actions

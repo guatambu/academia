@@ -24,6 +24,8 @@ class ClassNameAndDescriptionViewController: UIViewController {
     let beltBuilder = BeltBuilder()
     var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
 
+    let classDescriptionTextViewPlaceholderString = PlaceholderStrings.classDescription.rawValue
+    
     // IBOutlets
     @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
@@ -40,10 +42,7 @@ class ClassNameAndDescriptionViewController: UIViewController {
         
         subscribeToKeyboardNotifications()
         
-        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
-        
-        navigationController?.navigationBar.titleTextAttributes = avenirFont
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
         
         enterEditingMode(inEditingMode: inEditingMode)
     }
@@ -78,7 +77,9 @@ class ClassNameAndDescriptionViewController: UIViewController {
     }
     
     @IBAction func tapAnywhereToDismissTapped(_ sender: Any) {
+        
         view.endEditing(true)
+        
         // dismiss keyboard when leaving VC scene
         if classNameTextField.isFirstResponder {
             classNameTextField.resignFirstResponder()
@@ -280,16 +281,28 @@ extension ClassNameAndDescriptionViewController: UITextFieldDelegate, UITextView
     
     // method to call in viewWillAppear() to subscribe to desired UIResponder keyboard notifications
     func subscribeToKeyboardNotifications() {
+        
+        // notifications unique to keyboard itself
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        
+        // notifications unique to editing of classDescriptionTextView text
+        NotificationCenter.default.addObserver(self, selector: #selector(texfViewWillEdit(notificaiton:)), name: UITextView.textDidBeginEditingNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(texfViewWillEdit(notificaiton:)), name: UITextView.textDidEndEditingNotification, object: nil)
     }
     
     // method to be called in viewWillDisappear() to unsubscribe from desired UIResponder keyboard notifications
     func unsubscribeToKeyboardNotifications() {
+        
+        // notifications unique to keyboard itself
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        
+        // notifications unique to editing of classDescriptionTextView text
+        NotificationCenter.default.removeObserver(self, name: UITextView.textDidBeginEditingNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UITextView.textDidEndEditingNotification, object: nil)
     }
     
     // keyboardWillChange to handle Keyboard Notifications
@@ -321,6 +334,24 @@ extension ClassNameAndDescriptionViewController: UITextFieldDelegate, UITextView
         } else {
             
             self.view.frame.origin.y = 0
+        }
+    }
+    
+    // funciton to handle UITextView user editing
+    @objc func texfViewWillEdit(notificaiton: Notification) {
+        
+        // check for start of editing with placeholder text in place
+        if notificaiton.name == UITextView.textDidBeginEditingNotification && classDescriptionTextView.text == classDescriptionTextViewPlaceholderString {
+            
+            // change to input fontstyle and empty textView.text ready for user input
+            classDescriptionTextView.font = UIFont(name: "Avenir-Light", size: 16)
+            classDescriptionTextView.text = ""
+            
+            // check for end of editing and no user input
+        } else if notificaiton.name == UITextView.textDidEndEditingNotification && classDescriptionTextView.text == "" {
+            
+            // reset to placeholder text
+            classDescriptionTextView.attributedText = NSAttributedString(string: classDescriptionTextViewPlaceholderString, attributes: beltBuilder.avenirFont)
         }
     }
     

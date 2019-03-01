@@ -47,6 +47,10 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         usernameTextField.autocapitalizationType = UITextAutocapitalizationType.none
         passwordTextField.autocapitalizationType = UITextAutocapitalizationType.none
         confirmPasswordTextField.autocapitalizationType = UITextAutocapitalizationType.none
+        
+        // turns on secure text entry in password and confirm password textFields
+        passwordTextField.isSecureTextEntry = true
+        confirmPasswordTextField.isSecureTextEntry = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -78,7 +82,7 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         
         welcomeMessageOutlet.textColor = beltBuilder.blackBeltBlack
         
-        navigationController?.navigationBar.titleTextAttributes = beltBuilder.avenirFont
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
         
         usernameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.username.rawValue, attributes: beltBuilder.avenirFont)
         passwordTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.password.rawValue, attributes: beltBuilder.avenirFont)
