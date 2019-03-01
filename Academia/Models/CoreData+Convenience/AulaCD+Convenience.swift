@@ -22,11 +22,11 @@ extension AulaCD {
                      aulaDescription: String,
                      time: String,
                      timeCode: Int16,
-                     adultStudentInstructorsAula: NSSet?,
+                     adultStudentInstructorsAula: NSOrderedSet?,
                      ownerInstructorsAula: NSSet?,
-                     attendance: AttendanceCD?,
-                     daysOfTheWeek: DaysOfTheWeekCD?,
-                     groupsAula: NSSet?,
+                     attendance: AulaAttendanceCD?,
+                     daysOfTheWeek: AulaDaysOfTheWeekCD?,
+                     groupsAula: NSOrderedSet?,
                      location: LocationCD?,
                      context: NSManagedObjectContext = CoreDataStack.context) {
         

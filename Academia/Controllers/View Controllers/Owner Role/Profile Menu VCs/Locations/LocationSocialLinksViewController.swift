@@ -74,6 +74,20 @@ class LocationSocialLinksViewController: UIViewController {
     
     // MARK: - Actions
     
+    @IBAction func tapAnywhereToDismissKeyboardTapped(_ sender: UITapGestureRecognizer) {
+        
+        view.endEditing(true)
+        
+        // dismiss keyboard when leaving VC scene
+        if socialLink1TextField.isFirstResponder {
+            socialLink1TextField.resignFirstResponder()
+        } else if socialLink2TextField.isFirstResponder {
+            socialLink2TextField.resignFirstResponder()
+        } else if socialLink3TextField.isFirstResponder {
+            socialLink3TextField.resignFirstResponder()
+        }
+    }
+    
     @objc func saveButtonTapped() {
         
         // dismiss keyboard when leaving VC scene

@@ -41,17 +41,18 @@ class ReviewAndCreatePaymentProgramViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
-        
-        navigationController?.navigationBar.titleTextAttributes = avenirFont
-        
         populateCompletedPaymentProgramInfo()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
+        
+        title = "Please Review Your Info"
+        
+        // run user input checks
         guard let paymentProgramName = paymentProgramName, let active = active, let programDescription = programDescription else {
             print("no paymentProgramName, active, or programDescription passed to: PaymentProgramBillingDetailsVC -> viewDidLoad() - line 56")
             return
@@ -141,7 +142,7 @@ extension ReviewAndCreatePaymentProgramViewController {
                 return
         }
         // name outlet
-        title = paymentProgramName
+        paymentProgramNameLabelOutlet.text = paymentProgramName
         // active outlet
         if active == true {
             

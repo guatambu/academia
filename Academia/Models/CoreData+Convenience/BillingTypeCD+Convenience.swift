@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-extension BillingTypeCD {
+extension PaymentBillingTypeCD {
     
     // convenience initializer to allow creation of an BillingTypeCD object via Academia CoreDataStack's managedObjectContext
     convenience init(dropIn: Bool,

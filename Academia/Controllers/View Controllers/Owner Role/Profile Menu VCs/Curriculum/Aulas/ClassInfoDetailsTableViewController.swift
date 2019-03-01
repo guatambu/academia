@@ -26,7 +26,7 @@ class ClassInfoDetailsTableViewController: UITableViewController {
     let beltBuilder = BeltBuilder()
     
     // outlets
-    @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
+    @IBOutlet weak var classNameLabelOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     @IBOutlet weak var daysOfTheWeekLabelOutlet: UILabel!
     @IBOutlet weak var timeLabelOutlet: UILabel!
@@ -43,11 +43,6 @@ class ClassInfoDetailsTableViewController: UITableViewController {
     // MARK: - ViewController Lifecycle Functions
 
     override func viewWillAppear(_ animated: Bool) {
-        
-        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
-        
-        navigationController?.navigationBar.titleTextAttributes = avenirFont
         
         populateCompletedAulaInfo()
         
@@ -79,17 +74,15 @@ class ClassInfoDetailsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
+        
+        title = "Please Review Your Info"
+        
         guard let aula = aula else {
             print("ERROR: found nil value when unwrapping aula property in ClassInfoDetailsTableViewController.swift -> viewDidLoad() - line 48.")
             return
         }
-        
-        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
-        
-        navigationController?.navigationBar.titleTextAttributes = avenirFont
-        
-        title = aula.aulaName
         
         print("daysOfTheWeek: \(aula.daysOfTheWeek)")
         
@@ -378,7 +371,7 @@ extension ClassInfoDetailsTableViewController {
         }
         
         // name outlet
-        title = aula.aulaName
+        classNameLabelOutlet.text = aula.aulaName
         // days of th week outlet
         for day in aula.daysOfTheWeek {
             if day == aula.daysOfTheWeek.last {

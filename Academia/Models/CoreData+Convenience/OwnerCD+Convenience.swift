@@ -20,7 +20,7 @@ extension OwnerCD {
                      birthdate: Date,
                      promotions: [String: Date]?,
                      mostRecentPromotion: Date?,
-                     attendanceOwner: AttendanceCD?,
+                     attendanceOwner: NSSet?,
                      studentStatus: StudentStatusCD?,
                      groups: NSSet?,
                      paymentProgram: PaymentProgramCD?,
@@ -30,17 +30,11 @@ extension OwnerCD {
                      password: String,
                      firstName: String,
                      lastName: String,
-                     addressLine1: String,
-                     addressLine2: String,
-                     city: String,
-                     state: String,
-                     zipCode: String,
+                     address: AddressCD,
                      phone: String?,
                      mobile: String?,
                      email: String,
-                     emergencyContactName: String,
-                     emergencyContactPhone: String,
-                     emergencyContactRelationship: String,
+                     emergencyContactInfo: EmergencyContactInfoCD,
                      context: NSManagedObjectContext = CoreDataStack.context) {
         
         self.init(context: context)
@@ -60,18 +54,10 @@ extension OwnerCD {
         self.password = password
         self.firstName = firstName
         self.lastName = lastName
-        self.addressLine1 = addressLine1
-        self.addressLine2 = addressLine2
-        self.city = city
-        self.state = state
-        self.zipCode = zipCode
+        self.address = address
         self.phone = phone
         self.mobile = mobile
         self.email = email
-        self.emergencyContactName = emergencyContactName
-        self.emergencyContactPhone = emergencyContactPhone
-        self.emergencyContactRelationship = emergencyContactRelationship
-        
+        self.emergencyContactInfo = emergencyContactInfo
     }
-    
 }

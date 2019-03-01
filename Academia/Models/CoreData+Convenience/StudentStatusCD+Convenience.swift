@@ -17,8 +17,8 @@ extension StudentStatusCD {
                      medicalMembershipPaused: Bool,
                      membershipPaused: Bool,
                      paid: Bool,
-                     adultStudent: AdultStudentCD,
-                     kidStudent: KidStudentCD,
+                     studentAdult: StudentAdultCD,
+                     studentKid: StudentKidCD,
                      context: NSManagedObjectContext = CoreDataStack.context) {
         
         self.init(context: context)
@@ -27,8 +27,8 @@ extension StudentStatusCD {
         self.medicalMembershipPause = medicalMembershipPaused
         self.membershipPaused = membershipPaused
         self.paid = paid
-        self.adultStudent = adultStudent
-        self.kidStudent = kidStudent
+        self.studentAdult = studentAdult
+        self.studentKid = studentKid
     }
     
 }

@@ -30,6 +30,7 @@ class ReviewAndCreateLocationViewController: UIViewController {
     let beltBuilder = BeltBuilder()
     
     // profile pic imageView
+    @IBOutlet weak var locationNameLabelOutlet: UILabel!
     @IBOutlet weak var locationPicImageView: UIImageView!
     // contact info outlets
     @IBOutlet weak var phoneLabelOutlet: UILabel!
@@ -53,11 +54,6 @@ class ReviewAndCreateLocationViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
-        
-        navigationController?.navigationBar.titleTextAttributes = avenirFont
-        
         populateCompletedProfileInfo()
     }
     
@@ -65,6 +61,11 @@ class ReviewAndCreateLocationViewController: UIViewController {
         super.viewDidLoad()
         
         addressLine2LabelOutlet.isHidden = false
+        
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
+        
+        title = "Please Review Your Info"
     }
     
     // MARK: - Actions
@@ -97,7 +98,7 @@ extension ReviewAndCreateLocationViewController {
             print("in ReviewAndCreateLocationVC -> populateCompletedProfile() there is no locationName!!! - line 101")
             return
         }
-        self.title = "\(locationName)"
+        locationNameLabelOutlet.text = locationName
         // phone outlet
         phoneLabelOutlet.text = phone
         // mobile is not a required field

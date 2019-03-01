@@ -86,7 +86,12 @@ class GroupNameAndDescriptionViewController: UIViewController, UITextInputTraits
     
     @IBAction func tapAnywhereToDismissTapped(_ sender: Any) {
         view.endEditing(true)
-        groupDescriptionTextView.resignFirstResponder()
+        // dismiss keyboard when leaving VC scene
+        if groupNameTextField.isFirstResponder {
+            groupNameTextField.resignFirstResponder()
+        } else if groupDescriptionTextView.isFirstResponder {
+            groupDescriptionTextView.resignFirstResponder()
+        }
     }
     
     @objc func saveButtonTapped() {

@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-extension BillingSignatureCD {
+extension PaymentBillingSignatureCD {
     
     // convenience initializer to allow creation of an BillingSignatureCD  object via Academia CoreDataStack's managedObjectContext
     convenience init(biometricEyeIris: Bool,

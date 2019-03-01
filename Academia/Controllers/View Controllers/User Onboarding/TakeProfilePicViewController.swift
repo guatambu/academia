@@ -78,6 +78,19 @@ class TakeProfilePicViewController: UIViewController {
     
     // MARK: - Actions
     
+    @IBAction func tapAnywhereToDismissKeyboardTapped(_ sender: UITapGestureRecognizer) {
+            view.endEditing(true)
+        // dismiss keyboard when leaving VC scene
+        if firstNameTextField.isFirstResponder {
+            firstNameTextField.resignFirstResponder()
+        } else if lastNameTextField.isFirstResponder {
+            lastNameTextField.resignFirstResponder()
+        } else if parentGuardianTextField.isFirstResponder {
+            parentGuardianTextField.resignFirstResponder()
+        }
+    }
+    
+    
     @objc func saveButtonTapped() {
         
         // dismiss keyboard when leaving VC scene

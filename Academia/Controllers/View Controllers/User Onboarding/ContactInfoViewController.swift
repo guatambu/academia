@@ -88,6 +88,20 @@ class ContactInfoViewController: UIViewController, UITextInputTraits {
     
     // MARK: - Actions
     
+    @IBAction func tapAnywhereToDismissKeyboardTapped(_ sender: UITapGestureRecognizer) {
+        
+        view.endEditing(true)
+        
+        // dismiss keyboard when leaving VC scene
+        if phoneTextField.isFirstResponder {
+            phoneTextField.resignFirstResponder()
+        } else if mobileTextField.isFirstResponder {
+            mobileTextField.resignFirstResponder()
+        } else if emailTextField.isFirstResponder {
+            emailTextField.resignFirstResponder()
+        }
+    }
+    
     @objc func saveButtonTapped() {
         
         // dismiss keyboard when leaving VC scene

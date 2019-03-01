@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-extension PromotionCD {
+extension BeltPromotionCD {
     
     // convenience initializer to allow creation of an PromotionCD object via Academia CoreDataStack's managedObjectContext
     convenience init(promotionDate: Date = Date(), // do i want to manually set the date?

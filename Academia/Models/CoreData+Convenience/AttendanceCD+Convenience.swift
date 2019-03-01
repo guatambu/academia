@@ -10,12 +10,12 @@ import Foundation
 import CoreData
 
 
-extension AttendanceCD {
+extension AulaAttendanceCD {
     
     // convenience initializer to allow creation of a AttendanceCD object via Academia CoreDataStack's managedObjectContext
     convenience init(currentDate: Date?,
-                     adultStudentAttendance: AdultStudentCD?,
-                     kidStudentAttendance: KidStudentCD?,
+                     studentAdultAttendance: StudentAdultCD?,
+                     studentKidAttendance: StudentKidCD?,
                      ownerAttendance: OwnerCD?,
                      aula: AulaCD?,
                      context: NSManagedObjectContext = CoreDataStack.context) {
@@ -23,8 +23,8 @@ extension AttendanceCD {
         self.init(context: context)
         
         self.currentDate = currentDate
-        self.adultStudentAttendance = adultStudentAttendance
-        self.kidStudentAttendance = kidStudentAttendance
+        self.studentKidAttendance = studentKidAttendance
+        self.studentAdultAttendance = studentAdultAttendance
         self.ownerAttendance = ownerAttendance
         self.aula = aula
     }

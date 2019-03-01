@@ -26,7 +26,6 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
     // tableView Sections Header Labels
     let sectionHeaderLabels = ["Kids", "Adults"]
     
-    @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     @IBOutlet weak var groupNameLabelOutlet: UILabel!
     @IBOutlet weak var activeLabelOutlet: UILabel!
@@ -39,11 +38,6 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
-        
-        navigationController?.navigationBar.titleTextAttributes = avenirFont
         
         populateCompletedGroupInfo()
         
@@ -71,7 +65,11 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
+        
+        title = "Please Review Your Info"
     }
     
     

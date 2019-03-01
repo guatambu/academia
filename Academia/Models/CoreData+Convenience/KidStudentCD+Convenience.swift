@@ -10,16 +10,16 @@ import UIKit
 import CoreData
 
 
-extension KidStudentCD {
+extension StudentKidCD {
     
     // convenience initializer to allow creation of a KidStudentCD object via Academia CoreDataStack's managedObjectContext
     convenience init(kidStudentUUID: UUID,
                      dateCreated: Date,
                      dateEdited: Date,
                      birthdate: Date,
-                     promotions: [String: Date]?,
+                     promotions: BeltPromotionCD?,
                      mostRecentPromotion: Date?,
-                     attendanceKidStudent: AttendanceCD?,
+                     attendanceStudentKid: NSSet?,
                      studentStatus: StudentStatusCD?,
                      groups: NSSet?,
                      paymentProgram: PaymentProgramCD?,
@@ -30,17 +30,11 @@ extension KidStudentCD {
                      firstName: String,
                      lastName: String,
                      parentGuardian: String,
-                     addressLine1: String,
-                     addressLine2: String,
-                     city: String,
-                     state: String,
-                     zipCode: String,
+                     address: AddressCD,
                      phone: String?,
                      mobile: String?,
                      email: String,
-                     emergencyContactName: String,
-                     emergencyContactPhone: String,
-                     emergencyContactRelationship: String,
+                     emergencyContactInfo: EmergencyContactInfoCD,
                      context: NSManagedObjectContext = CoreDataStack.context) {
         
         self.init(context: context)
@@ -51,7 +45,7 @@ extension KidStudentCD {
         self.birthdate = birthdate
         //self.promotions = promotions
         self.mostRecentPromotion = mostRecentPromotion
-        self.attendanceKidStudent = attendanceKidStudent
+        self.attendanceStudentKid = attendanceStudentKid
         self.studentStatus = studentStatus
         self.belt = belt
         self.groups = groups
@@ -62,19 +56,10 @@ extension KidStudentCD {
         self.firstName = firstName
         self.lastName = lastName
         self.parentGuardian = parentGuardian
-        self.addressLine1 = addressLine1
-        self.addressLine2 = addressLine2
-        self.city = city
-        self.state = state
-        self.zipCode = zipCode
+        self.address = address
         self.phone = phone
         self.mobile = mobile
         self.email = email
-        self.emergencyContactName = emergencyContactName
-        self.emergencyContactPhone = emergencyContactPhone
-        self.emergencyContactRelationship = emergencyContactRelationship
-        
+        self.emergencyContactInfo = emergencyContactInfo
     }
-    
-    
 }

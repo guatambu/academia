@@ -79,7 +79,12 @@ class ClassNameAndDescriptionViewController: UIViewController {
     
     @IBAction func tapAnywhereToDismissTapped(_ sender: Any) {
         view.endEditing(true)
-        classDescriptionTextView.resignFirstResponder()
+        // dismiss keyboard when leaving VC scene
+        if classNameTextField.isFirstResponder {
+            classNameTextField.resignFirstResponder()
+        } else if classDescriptionTextView.isFirstResponder {
+            classDescriptionTextView.resignFirstResponder()
+        }
     }
     
     @objc func saveButtonTapped() {

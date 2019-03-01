@@ -70,6 +70,15 @@ class LocationPicAndNameViewController: UIViewController {
     
     
     // MARK: - Actions
+    @IBAction func tapAnywhereToDismissKeyboardTapped(_ sender: UITapGestureRecognizer) {
+        
+        view.endEditing(true)
+        
+        // dismiss keyboard when leaving VC scene
+        if locationNameTextField.isFirstResponder {
+            locationNameTextField.resignFirstResponder()
+        }
+    }
     
     @IBAction func activeSwitchToggled(_ sender: UISwitch) {
         active = !active

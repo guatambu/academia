@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-extension DaysOfTheWeekCD {
+extension AulaDaysOfTheWeekCD {
     
     // convenience initializer to allow creation of a DaysOfTheWeekCD object via Academia CoreDataStack's managedObjectContext
     convenience init(sunday: String,

@@ -78,6 +78,20 @@ class LocationContactInfoViewController: UIViewController, UITextInputTraits {
     
     // MARK: - Actions
     
+    @IBAction func tapAnywhereToDismissKeyboard(_ sender: UITapGestureRecognizer) {
+        
+        view.endEditing(true)
+        
+        // dismiss keyboard when leaving VC scene
+        if phoneTextField.isFirstResponder {
+            phoneTextField.resignFirstResponder()
+        } else if websiteTextField.isFirstResponder {
+            websiteTextField.resignFirstResponder()
+        } else if emailTextField.isFirstResponder {
+            emailTextField.resignFirstResponder()
+        }
+    }
+    
     @objc func saveButtonTapped() {
         
         // dismiss keyboard when leaving VC scene

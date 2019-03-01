@@ -19,7 +19,8 @@ extension GroupCD {
                      dateEdited: Date,
                      name: String,
                      groupDescription: String,
-                     adultStudentGroups: AdultStudentCD,
+                     studentAdultGroups: StudentAdultCD,
+                     studentKidGroups: StudentKidCD,
                      adultMembers: NSSet?,
                      kidMembers: NSSet?,
                      aulaGroups: AulaCD,
@@ -32,7 +33,8 @@ extension GroupCD {
         self.dateEdited = dateEdited
         self.name = name
         self.groupDescription = groupDescription
-        self.adultStudentGroups = adultStudentGroups
+        self.studentAdultGroups = studentAdultGroups
+        self.studentKidGroups = studentKidGroups
         self.adultMembers = adultMembers
         self.kidMembers = kidMembers
         self.aulaGroups = aulaGroups

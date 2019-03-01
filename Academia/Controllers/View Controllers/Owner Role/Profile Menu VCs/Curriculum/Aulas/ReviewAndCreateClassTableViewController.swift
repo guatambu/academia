@@ -34,7 +34,6 @@ class ReviewAndCreateClassTableViewController: UITableViewController {
     
     let beltBuilder = BeltBuilder()
     
-    @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     @IBOutlet weak var classNameLabelOutlet: UILabel!
     @IBOutlet weak var daysOfTheWeekLabelOutlet: UILabel!
@@ -52,11 +51,6 @@ class ReviewAndCreateClassTableViewController: UITableViewController {
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
-        
-        navigationController?.navigationBar.titleTextAttributes = avenirFont
         
         populateCompletedClassInfo()
         
@@ -85,6 +79,10 @@ class ReviewAndCreateClassTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
+        
+        title = "Please Review Your Info"
     }
     
     
@@ -301,7 +299,7 @@ extension ReviewAndCreateClassTableViewController {
         }
     
         // name outlet
-        title = aulaName
+        classNameLabelOutlet.text = aulaName
         // days of th week outlet
         for day in daysOfTheWeek {
             if day == daysOfTheWeek.last {

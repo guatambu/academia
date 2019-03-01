@@ -30,6 +30,7 @@ class LocationInfoDetailsViewController: UIViewController {
     let beltBuilder = BeltBuilder()
     
     // profile pic imageView
+    @IBOutlet weak var locationNameLabelOutlet: UILabel!
     @IBOutlet weak var locationPicImageView: UIImageView!
     // contact info outlets
     @IBOutlet weak var phoneLabelOutlet: UILabel!
@@ -51,11 +52,6 @@ class LocationInfoDetailsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
-        
-        navigationController?.navigationBar.titleTextAttributes = avenirFont
-        
         populateCompletedProfileInfo()
     }
     
@@ -64,7 +60,10 @@ class LocationInfoDetailsViewController: UIViewController {
         
         addressLine2LabelOutlet.isHidden = false
 
-        //populateCompletedProfileInfo()
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
+        
+        title = "Please Review Your Info"
     }
 
     // MARK: - Actions
@@ -145,7 +144,7 @@ extension LocationInfoDetailsViewController {
         
         guard let location = LocationModelController.shared.locations.first else { return }
         // populate UI elements in VC
-        self.title = "\(location.locationName)"
+        locationNameLabelOutlet.text = location.locationName
         // phone outlet
         phoneLabelOutlet.text = location.phone
         // mobile is not a required field

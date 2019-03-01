@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-extension BillingDateCD {
+extension PaymentBillingDateCD {
     
     // convenience initializer to allow creation of an BillingDateCD object via Academia CoreDataStack's managedObjectContext
     convenience init(fifteenthOfTheMonth: Bool,

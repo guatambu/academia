@@ -19,23 +19,11 @@ extension BeltCD {
                      dateCreated: Date,
                      dateEdited: Date,
                      beltLevel: String,
-                     beltTime: String,
-                     minAgeRequirement: String,
-                     iStripeTime: String,
-                     iiStripeTime: String,
-                     iiiStripeTime: String,
-                     ivStripeTime: String,
-                     vStripeTime: String,
-                     viStripeTime: String,
-                     viiStripeTime: String,
-                     viiiStripeTime: String,
-                     ixStripeTime: String,
-                     xStripeTime: String,
-                     xiStripeTime: String,
+                     beltStripeAgeDetails: BeltStripeAgeDetailsCD,
                      classesToNextPromotion: Int16,
                      numberOfStripes: Int16,
-                     adultStudentCD: AdultStudentCD,
-                     kidStudentCD: KidStudentCD,
+                     adultStudentCD: StudentAdultCD,
+                     kidStudentCD: StudentKidCD,
                      ownerCD: OwnerCD,
                      context: NSManagedObjectContext = CoreDataStack.context) {
         
@@ -47,19 +35,7 @@ extension BeltCD {
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
         self.beltLevel = beltLevel
-        self.beltTime = beltTime
-        self.minAgeRequirement = minAgeRequirement
-        self.iStripeTime = iStripeTime
-        self.iiStripeTime = iiStripeTime
-        self.iiiStripeTime = iiiStripeTime
-        self.ivStripeTime = ivStripeTime
-        self.vStripeTime = vStripeTime
-        self.viStripeTime = viStripeTime
-        self.viiStripeTime = viiStripeTime
-        self.viiiStripeTime = viiiStripeTime
-        self.ixStripeTime = ixStripeTime
-        self.xStripeTime = xStripeTime
-        self.xiStripeTime = xiStripeTime
+        self.beltStripeAgeDetails = beltStripeAgeDetails
         self.classesToNextPromotion = classesToNextPromotion
         self.adultStudentCD = adultStudentCD
         self.kidStudentCD = kidStudentCD

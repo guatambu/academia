@@ -136,25 +136,24 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="ZGZ-JK-ufq" userLabel="Location Stack View">
                                 <rect key="frame" x="0.0" y="36" width="320" height="384"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zPo-qz-pxD" userLabel="plese review and name Stack View">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zPo-qz-pxD" userLabel="instructions and name Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Review Your Info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gA-0Z-ZEQ">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="24"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="24" id="g68-Lr-L8g"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="24"/>
-                                                <color key="textColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap Edit above to make changes" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mza-4M-UJJ">
-                                                <rect key="frame" x="0.0" y="32" width="320" height="24"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="MoD-8s-psz"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                 <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(location name)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gA-0Z-ZEQ">
+                                                <rect key="frame" x="0.0" y="32" width="320" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="24" id="g68-Lr-L8g"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -350,6 +349,7 @@
                         <outlet property="addressLine2LabelOutlet" destination="w3F-Rt-6cr" id="bN4-iH-oFC"/>
                         <outlet property="cityLabelOutlet" destination="D9K-vz-4Yn" id="REc-Ul-sed"/>
                         <outlet property="emailLabelOutlet" destination="Zez-ab-cra" id="AjP-nP-X1a"/>
+                        <outlet property="locationNameLabelOutlet" destination="5gA-0Z-ZEQ" id="uY7-mR-yVY"/>
                         <outlet property="locationPicImageView" destination="D0z-Fs-0hN" id="2U9-mF-M4m"/>
                         <outlet property="phoneLabelOutlet" destination="XW0-yJ-IYP" id="gcy-kt-SvO"/>
                         <outlet property="socialLink1LabelOutlet" destination="rPO-LI-GmX" id="NCq-yT-yb5"/>
@@ -569,6 +569,7 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="qw3-gm-8DH" firstAttribute="trailing" secondItem="KhT-xa-Qwu" secondAttribute="trailing" constant="16" id="21G-RZ-vMy"/>
                             <constraint firstItem="K2B-C0-yrC" firstAttribute="centerX" secondItem="qOR-3M-9Tr" secondAttribute="centerX" id="9Td-8O-dBx"/>
@@ -587,6 +588,9 @@
                             <constraint firstItem="MjA-9n-Iba" firstAttribute="top" secondItem="mVP-X9-2vk" secondAttribute="bottom" constant="16" id="ygV-CZ-C0z"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qw3-gm-8DH"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="qIk-QV-vm6" appends="YES" id="P7t-oq-oJg"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title=" " id="mVf-4h-JLt">
                         <barButtonItem key="backBarButtonItem" title=" " id="Rir-3H-VfZ"/>
@@ -599,6 +603,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bLQ-HH-jmi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="qIk-QV-vm6">
+                    <connections>
+                        <action selector="tapAnywhereToDismissKeyboardTapped:" destination="Edk-tC-DBu" id="krK-f1-059"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="8051" y="6576"/>
         </scene>
@@ -803,6 +812,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="953-75-h1z" firstAttribute="centerX" secondItem="PJ1-zr-TSf" secondAttribute="centerX" id="2K4-o7-PxE"/>
                             <constraint firstItem="QL7-dH-a9X" firstAttribute="top" secondItem="bv8-rf-wKN" secondAttribute="bottom" constant="109" id="AMs-jP-8Ia"/>
@@ -814,6 +824,9 @@
                             <constraint firstItem="953-75-h1z" firstAttribute="top" secondItem="QL7-dH-a9X" secondAttribute="bottom" constant="24" id="uj3-wb-63W"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ert-Sf-eMA"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Kuq-qt-cgx" appends="YES" id="mI9-xJ-yRQ"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title=" " id="2Ly-dl-KZr">
                         <barButtonItem key="backBarButtonItem" title=" " id="3um-Fj-aDt"/>
@@ -829,6 +842,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b4e-I4-5ug" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Kuq-qt-cgx">
+                    <connections>
+                        <action selector="tapAnywhereToDismissKeyboardTapped:" destination="xcx-ex-mCY" id="5v5-E1-mlJ"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="8866.875" y="6577.8169014084506"/>
         </scene>
@@ -998,6 +1016,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="7Ze-Mg-UHh" firstAttribute="trailing" secondItem="vcS-yR-eX1" secondAttribute="trailing" constant="16" id="0Jw-PF-g2Y"/>
                             <constraint firstItem="56f-dL-K2E" firstAttribute="top" secondItem="3zL-eH-BHw" secondAttribute="bottom" constant="24" id="DP4-Hf-IUr"/>
@@ -1009,6 +1028,9 @@
                             <constraint firstItem="7Ze-Mg-UHh" firstAttribute="trailing" secondItem="9zw-RF-FKv" secondAttribute="trailing" constant="16" id="wN6-qw-uAD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7Ze-Mg-UHh"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="GDp-nB-Yie" appends="YES" id="LvK-aR-D5u"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title=" " id="ZJp-LL-cGo">
                         <barButtonItem key="backBarButtonItem" title=" " id="uBw-4m-QIh"/>
@@ -1021,6 +1043,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zri-Th-TZi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="GDp-nB-Yie">
+                    <connections>
+                        <action selector="tapAnywhereToDismissKeyboard:" destination="xH0-qT-BgJ" id="N93-lx-SjZ"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="9697.5" y="6577.8169014084506"/>
         </scene>
@@ -1190,6 +1217,7 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="zgn-qi-Gjt" firstAttribute="top" secondItem="6KD-Cc-k5L" secondAttribute="bottom" constant="24" id="1p3-Ct-zpo"/>
                             <constraint firstItem="fvU-zS-zS3" firstAttribute="leading" secondItem="7Oj-cL-OWO" secondAttribute="leading" constant="16" id="3Ux-cL-D1u"/>
@@ -1201,6 +1229,9 @@
                             <constraint firstItem="zgn-qi-Gjt" firstAttribute="centerX" secondItem="fIe-za-QtS" secondAttribute="centerX" id="yqZ-Ep-oJ3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7Oj-cL-OWO"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="mfH-ym-mzB" appends="YES" id="viB-3b-wMx"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title=" " id="wFQ-So-0ub">
                         <barButtonItem key="backBarButtonItem" title=" " id="gdn-hv-BwU"/>
@@ -1214,6 +1245,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pVE-n7-Ik8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="mfH-ym-mzB">
+                    <connections>
+                        <action selector="tapAnywhereToDismissKeyboardTapped:" destination="Rsa-ir-YS0" id="Bju-eq-dYx"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="10477.5" y="6575.7042253521131"/>
         </scene>
@@ -1231,22 +1267,21 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XdK-0h-AOW" userLabel="plese review and name Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Review Your Info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MDf-c3-g6Q">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="24"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="24" id="IIE-q8-igV"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="24"/>
-                                                <color key="textColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If correct, tap Create Locaiton below" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X8F-nv-mcP">
-                                                <rect key="frame" x="0.0" y="32" width="320" height="24"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="M9h-HW-Dn5"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                 <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(location name)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MDf-c3-g6Q">
+                                                <rect key="frame" x="0.0" y="32" width="320" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="24" id="IIE-q8-igV"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -1508,6 +1543,7 @@
                         <outlet property="cityLabelOutlet" destination="Drp-cO-JW7" id="j3g-Zp-bpV"/>
                         <outlet property="createAccountButtonOutlet" destination="f2F-Ts-Nw2" id="KuK-BS-1ge"/>
                         <outlet property="emailLabelOutlet" destination="EdM-f3-Jjz" id="neU-55-Ywl"/>
+                        <outlet property="locationNameLabelOutlet" destination="MDf-c3-g6Q" id="SPW-Rz-9VR"/>
                         <outlet property="locationPicImageView" destination="fDN-Ho-VXK" id="Hl6-pw-gMT"/>
                         <outlet property="phoneLabelOutlet" destination="Iex-sF-RBb" id="bpd-Uo-9G1"/>
                         <outlet property="socialLink1LabelOutlet" destination="o29-BH-aVS" id="OgC-oT-GML"/>

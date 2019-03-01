@@ -124,6 +124,17 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
     
     // MARK: - Actions
     
+    @IBAction func tapAnywhereToDismissKeyboard(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+        // dismiss keyboard when leaving VC scene
+        if usernameTextField.isFirstResponder {
+            usernameTextField.resignFirstResponder()
+        } else if passwordTextField.isFirstResponder {
+            passwordTextField.resignFirstResponder()
+        } else if confirmPasswordTextField.isFirstResponder {
+            confirmPasswordTextField.resignFirstResponder()
+        }
+    }
     @IBAction func signUpButtonTapped(_ sender: UIButton) {
         
         // dismiss keyboard when leaving VC scene

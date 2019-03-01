@@ -21,6 +21,7 @@ class GroupInfoDetailsTableViewController: UITableViewController {
     
     let beltBuilder = BeltBuilder()
     
+    @IBOutlet weak var groupNameLabelOutlet: UILabel!
     @IBOutlet weak var activeLabelOutlet: UILabel!
     @IBOutlet weak var lastChangedLabelOutlet: UILabel!
     @IBOutlet weak var groupDescriptionLabelOutlet: UILabel!
@@ -39,17 +40,10 @@ class GroupInfoDetailsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let group = group else {
-            print("ERROR: found nil value when unwrapping group property in StudentListTableViewController.swift -> viewDidLoad() - line 37.")
-            return
-        }
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
         
-        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
-        
-        navigationController?.navigationBar.titleTextAttributes = avenirFont
-        
-        title = group.name
+        title = "Please Review Your Info"
         
     }
     
@@ -334,7 +328,7 @@ extension GroupInfoDetailsTableViewController {
             return
         }
         // VC title
-        self.title = group.name
+        groupNameLabelOutlet.text = group.name
         // active outlet
         if group.active == true {
             

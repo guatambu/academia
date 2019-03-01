@@ -83,8 +83,15 @@ class PaymentProgramNameAndDescriptionViewController: UIViewController, UITextIn
     }
     
     @IBAction func tapAnywhereToDismissTapped(_ sender: Any) {
+        
         view.endEditing(true)
-        programDescriptionTextView.resignFirstResponder()
+        
+        // dismiss keyboard when leaving VC scene
+        if programNameTextField.isFirstResponder {
+            programNameTextField.resignFirstResponder()
+        } else if programDescriptionTextView.isFirstResponder {
+            programDescriptionTextView.resignFirstResponder()
+        }
     }
     
     @objc func saveButtonTapped() {

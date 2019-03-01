@@ -12,6 +12,9 @@ class ViewAgreementViewController: UIViewController {
 
     // MARK: - Properties
     
+    let beltBuilder = BeltBuilder()
+    
+    
     var paymentProgramName: String?
     var agreement: String?
     
@@ -21,16 +24,13 @@ class ViewAgreementViewController: UIViewController {
     
     // MARK: - ViewController Lifecycle Functions
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
-        
-        navigationController?.navigationBar.titleTextAttributes = avenirFont
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
+        
+        title = "Please Review Your Info"
         
         guard let agreement = agreement else {
             

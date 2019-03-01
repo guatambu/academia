@@ -23,7 +23,7 @@ class BeltsListTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        self.navigationController?.navigationBar.tintColor = UIColor(red: 241/255, green: 0/255, blue: 0/255, alpha: 1.0)
+        self.navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
         
         beltDisclaimerLabelOutlet.text = InternationalStandardBJJBelts.beltDisclaimer.rawValue
         

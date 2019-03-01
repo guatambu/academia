@@ -159,10 +159,13 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="value" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="0.5"/>
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textView>
@@ -302,25 +305,24 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="i2s-AE-KUy" userLabel="Program Stack View">
                                 <rect key="frame" x="16" y="36" width="288" height="476"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="O9a-lF-E3o" userLabel="plese review and name Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="48"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="O9a-lF-E3o" userLabel="plese review and name Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="56"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Review Your Info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="og5-1r-Zro">
-                                                <rect key="frame" x="0.0" y="0.0" width="288" height="24"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="24" id="3d8-5P-0Sb"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="24"/>
-                                                <color key="textColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If correct, tap Create Program below" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzD-4C-D5x">
-                                                <rect key="frame" x="0.0" y="24" width="288" height="24"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="288" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="VKe-5o-phQ"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                 <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(payment program name)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="og5-1r-Zro">
+                                                <rect key="frame" x="0.0" y="32" width="288" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="24" id="3d8-5P-0Sb"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -331,8 +333,8 @@
                                             <constraint firstItem="qzD-4C-D5x" firstAttribute="leading" secondItem="O9a-lF-E3o" secondAttribute="leading" id="y3e-Td-ShB"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7jG-HO-ent" userLabel="Program Details Stack View">
-                                        <rect key="frame" x="16" y="56" width="256" height="332"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="7jG-HO-ent" userLabel="Program Details Stack View">
+                                        <rect key="frame" x="16" y="64" width="256" height="324"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="8d3-ba-R7q" userLabel="program stats Stack View">
                                                 <rect key="frame" x="0.0" y="0.0" width="151" height="44"/>
@@ -350,7 +352,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="-8" translatesAutoresizingMaskIntoConstraints="NO" id="3k9-hu-m7X" userLabel="description Stack View">
-                                                <rect key="frame" x="0.0" y="52" width="256" height="184"/>
+                                                <rect key="frame" x="0.0" y="48" width="256" height="184"/>
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fU3-qf-EnK">
                                                         <rect key="frame" x="0.0" y="0.0" width="256" height="184"/>
@@ -366,7 +368,7 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="oFl-Ai-LXF" userLabel="billing options Stack View">
-                                                <rect key="frame" x="0.0" y="244" width="240" height="88"/>
+                                                <rect key="frame" x="0.0" y="236" width="240" height="88"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="billing details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="THx-Jj-lep" userLabel="billing">
                                                         <rect key="frame" x="0.0" y="0.0" width="240" height="22"/>
@@ -538,6 +540,7 @@
                         <outlet property="billingDatesLabelOutlet" destination="uTU-mH-oa1" id="P7s-fa-lBR"/>
                         <outlet property="billingTypesLabelOutlet" destination="uS3-Cs-ezc" id="fdS-BV-2Qc"/>
                         <outlet property="lastChangedLabelOutlet" destination="ajv-Qw-UUx" id="9Nk-ME-ou7"/>
+                        <outlet property="paymentProgramNameLabelOutlet" destination="og5-1r-Zro" id="gxX-x0-Y6s"/>
                         <outlet property="programDescriptionTextView" destination="fU3-qf-EnK" id="zQ3-Oh-Bd2"/>
                         <outlet property="signatureTypesLabelOutlet" destination="Vs6-YE-9qk" id="fgb-77-KBr"/>
                     </connections>
@@ -573,10 +576,13 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="value" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="0.5"/>
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textView>
@@ -1135,38 +1141,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ivj-vJ-FMa" userLabel="Welcome Stack View">
-                                <rect key="frame" x="24" y="36" width="272" height="24"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Review Your Info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rM-o0-bI5">
-                                        <rect key="frame" x="25" y="0.0" width="222.5" height="24"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="6Z5-M4-iRs"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="24"/>
-                                        <color key="textColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="payment program agreement" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9QK-LQ-rtU" userLabel="payment program Name Label Outlet">
-                                <rect key="frame" x="16" y="76" width="288" height="22"/>
+                                <rect key="frame" x="16" y="44" width="288" height="22"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TyM-n0-PgU" userLabel="program agreement Text View" customClass="DesignableTextView" customModule="Academia" customModuleProvider="target">
-                                <rect key="frame" x="16" y="114" width="288" height="390"/>
+                                <rect key="frame" x="16" y="82" width="288" height="422"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="value" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="0.5"/>
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textView>
@@ -1174,16 +1169,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="jxj-Yj-Jco" firstAttribute="trailing" secondItem="9QK-LQ-rtU" secondAttribute="trailing" constant="16" id="1mD-v7-3eZ"/>
-                            <constraint firstItem="ivj-vJ-FMa" firstAttribute="leading" secondItem="jxj-Yj-Jco" secondAttribute="leading" constant="24" id="GyE-Ju-7sl"/>
-                            <constraint firstItem="ivj-vJ-FMa" firstAttribute="centerX" secondItem="WYD-ht-Jhw" secondAttribute="centerX" id="J3F-lp-EnJ"/>
                             <constraint firstItem="TyM-n0-PgU" firstAttribute="top" secondItem="9QK-LQ-rtU" secondAttribute="bottom" constant="16" id="LiX-qj-c7c"/>
                             <constraint firstItem="jxj-Yj-Jco" firstAttribute="bottom" secondItem="TyM-n0-PgU" secondAttribute="bottom" constant="64" id="NHw-MW-fMh"/>
-                            <constraint firstItem="jxj-Yj-Jco" firstAttribute="trailing" secondItem="ivj-vJ-FMa" secondAttribute="trailing" constant="24" id="Xu1-qZ-Ff5"/>
+                            <constraint firstItem="9QK-LQ-rtU" firstAttribute="top" secondItem="jxj-Yj-Jco" secondAttribute="top" constant="24" id="Yic-QV-hpp"/>
                             <constraint firstItem="jxj-Yj-Jco" firstAttribute="trailing" secondItem="TyM-n0-PgU" secondAttribute="trailing" constant="16" id="eJW-dV-Dac"/>
-                            <constraint firstItem="9QK-LQ-rtU" firstAttribute="top" secondItem="ivj-vJ-FMa" secondAttribute="bottom" constant="16" id="gVk-Fd-uPv"/>
                             <constraint firstItem="9QK-LQ-rtU" firstAttribute="leading" secondItem="jxj-Yj-Jco" secondAttribute="leading" constant="16" id="hLH-ro-kFO"/>
                             <constraint firstItem="TyM-n0-PgU" firstAttribute="leading" secondItem="jxj-Yj-Jco" secondAttribute="leading" constant="16" id="vvj-Pr-Atz"/>
-                            <constraint firstItem="ivj-vJ-FMa" firstAttribute="top" secondItem="jxj-Yj-Jco" secondAttribute="top" constant="16" id="yje-Wp-QJC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jxj-Yj-Jco"/>
                     </view>
@@ -1209,25 +1200,24 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="dBA-mB-lfU" userLabel="Program Stack View">
                                 <rect key="frame" x="16" y="36" width="288" height="468"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="LYy-X0-V4j" userLabel="plese review and name Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="48"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LYy-X0-V4j" userLabel="plese review and name Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="56"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Review Your Info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZi-x8-Q3L">
-                                                <rect key="frame" x="0.0" y="0.0" width="288" height="24"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="24" id="Zax-HH-zWa"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="24"/>
-                                                <color key="textColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tap Edit to make any changes" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVR-jp-YqD">
-                                                <rect key="frame" x="0.0" y="24" width="288" height="24"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="288" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="M6x-sg-WDc"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                 <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(payment program name)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZi-x8-Q3L">
+                                                <rect key="frame" x="0.0" y="32" width="288" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="24" id="Zax-HH-zWa"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -1239,7 +1229,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="drn-xd-VvA" userLabel="Program Details Stack View">
-                                        <rect key="frame" x="16" y="72" width="256" height="246"/>
+                                        <rect key="frame" x="16" y="80" width="256" height="214"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="2Ub-yY-RaD" userLabel="program stats Stack View">
                                                 <rect key="frame" x="0.0" y="0.0" width="151" height="44"/>
@@ -1257,19 +1247,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="NP2-fv-mom" userLabel="description Stack View">
-                                                <rect key="frame" x="0.0" y="60" width="256" height="82"/>
+                                                <rect key="frame" x="0.0" y="60" width="256" height="50"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="program description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="KD9-Dv-aJU">
-                                                        <rect key="frame" x="0.0" y="0.0" width="148.5" height="32"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="32" id="4nm-p6-YhV"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Svg-6s-j4S">
-                                                        <rect key="frame" x="0.0" y="32" width="256" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="256" height="50"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
@@ -1282,7 +1263,7 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="jy2-5R-Rvn" userLabel="billing options Stack View">
-                                                <rect key="frame" x="0.0" y="158" width="240" height="88"/>
+                                                <rect key="frame" x="0.0" y="126" width="240" height="88"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="program billing details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="HeE-mK-A6O">
                                                         <rect key="frame" x="0.0" y="0.0" width="240" height="22"/>
@@ -1324,7 +1305,7 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRZ-ij-6q5" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="12" y="342" width="264" height="40"/>
+                                        <rect key="frame" x="12" y="318" width="264" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="5zc-Ip-nmi"/>
                                         </constraints>
@@ -1349,7 +1330,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q83-cc-1vX" userLabel="delete payment program">
-                                        <rect key="frame" x="59.5" y="406" width="169" height="62"/>
+                                        <rect key="frame" x="59.5" y="382" width="169" height="86"/>
                                         <state key="normal" title="delete payment program">
                                             <color key="titleColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -1383,6 +1364,7 @@
                         <outlet property="billingDateLabelOutlet" destination="VBM-uE-3Kc" id="CYA-39-PIx"/>
                         <outlet property="billingTypeLabelOutlet" destination="iEI-J1-Sjp" id="zCx-Zo-UyF"/>
                         <outlet property="lastChangedLabelOutlet" destination="CPq-jt-Akf" id="n8e-4J-1W7"/>
+                        <outlet property="paymentProgramNameLabelOutlet" destination="mZi-x8-Q3L" id="8Z2-32-86f"/>
                         <outlet property="programDescriptionTextView" destination="Svg-6s-j4S" id="eVL-ak-eFV"/>
                         <outlet property="signatureTypeLabelOutlet" destination="WGB-fu-UXD" id="lJL-P4-qOb"/>
                     </connections>
@@ -1399,42 +1381,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Biq-fv-AJH" userLabel="Welcome Stack View">
-                                <rect key="frame" x="24" y="36" width="272" height="24"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="please review the following: " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6e-dy-rzv">
-                                        <rect key="frame" x="0.0" y="0.0" width="272" height="24"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="UiU-lr-zQz"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="L6e-dy-rzv" firstAttribute="leading" secondItem="Biq-fv-AJH" secondAttribute="leading" id="Czs-DU-P3p"/>
-                                    <constraint firstAttribute="trailing" secondItem="L6e-dy-rzv" secondAttribute="trailing" id="In7-c4-jlt"/>
-                                </constraints>
-                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="payment program agreement" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9tz-8C-e57" userLabel="payment program Name Label Outlet">
-                                <rect key="frame" x="16" y="76" width="288" height="22"/>
+                                <rect key="frame" x="16" y="44" width="288" height="22"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GiW-fv-6bt" userLabel="program agreement Text View" customClass="DesignableTextView" customModule="Academia" customModuleProvider="target">
-                                <rect key="frame" x="16" y="114" width="288" height="406"/>
+                                <rect key="frame" x="16" y="82" width="288" height="438"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="value" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="0.5"/>
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textView>
@@ -1442,16 +1409,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="96x-UV-jl0" firstAttribute="bottom" secondItem="GiW-fv-6bt" secondAttribute="bottom" constant="48" id="1xZ-6S-rvR"/>
-                            <constraint firstItem="9tz-8C-e57" firstAttribute="top" secondItem="Biq-fv-AJH" secondAttribute="bottom" constant="16" id="CNK-p6-WDQ"/>
-                            <constraint firstItem="Biq-fv-AJH" firstAttribute="top" secondItem="96x-UV-jl0" secondAttribute="top" constant="16" id="Eqt-iR-DoT"/>
                             <constraint firstItem="9tz-8C-e57" firstAttribute="leading" secondItem="96x-UV-jl0" secondAttribute="leading" constant="16" id="Mev-vk-1hu"/>
-                            <constraint firstItem="96x-UV-jl0" firstAttribute="trailing" secondItem="Biq-fv-AJH" secondAttribute="trailing" constant="24" id="PWg-rh-Bu2"/>
-                            <constraint firstItem="Biq-fv-AJH" firstAttribute="leading" secondItem="96x-UV-jl0" secondAttribute="leading" constant="24" id="V22-wG-xVs"/>
                             <constraint firstItem="GiW-fv-6bt" firstAttribute="top" secondItem="9tz-8C-e57" secondAttribute="bottom" constant="16" id="eu5-Vq-CGv"/>
                             <constraint firstItem="96x-UV-jl0" firstAttribute="trailing" secondItem="GiW-fv-6bt" secondAttribute="trailing" constant="16" id="htk-uh-tLq"/>
+                            <constraint firstItem="9tz-8C-e57" firstAttribute="top" secondItem="96x-UV-jl0" secondAttribute="top" constant="24" id="ivz-KD-nEA"/>
                             <constraint firstItem="96x-UV-jl0" firstAttribute="trailing" secondItem="9tz-8C-e57" secondAttribute="trailing" constant="16" id="tVg-QR-JZB"/>
                             <constraint firstItem="GiW-fv-6bt" firstAttribute="leading" secondItem="96x-UV-jl0" secondAttribute="leading" constant="16" id="vrD-BW-zug"/>
-                            <constraint firstItem="Biq-fv-AJH" firstAttribute="centerX" secondItem="J5v-lm-dTi" secondAttribute="centerX" id="xeZ-JY-hNm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="96x-UV-jl0"/>
                     </view>

@@ -89,6 +89,19 @@ class EmergencyContactViewController: UIViewController {
     
     // MARK: - Actions
     
+    @IBAction func tapAnywhereToDismissKeyboardTapped(_ sender: UITapGestureRecognizer) {
+        
+        view.endEditing(true)
+        
+        // dismiss keyboard when leaving VC scene
+        if emergencyContactNameTextField.isFirstResponder {
+            emergencyContactNameTextField.resignFirstResponder()
+        } else if emergencyContactNameTextField.isFirstResponder {
+            emergencyContactPhoneTextField.resignFirstResponder()
+        } else if emergencyContactRelationshipTextField.isFirstResponder {
+            emergencyContactRelationshipTextField.resignFirstResponder()
+        }
+    }
     @objc func saveButtonTapped() {
         
         // dismiss keyboard when leaving VC scene

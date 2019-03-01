@@ -15,6 +15,7 @@ class OwnerInfoDetailsViewController: UIViewController {
     let beltBuilder = BeltBuilder()
     
     // username outlet
+    @IBOutlet weak var ownerNameLabelOutlet: UILabel!
     @IBOutlet weak var usernameLabelOutlet: UILabel!
     // birthdate outlet
     @IBOutlet weak var birthdateLabelOutlets: UILabel!
@@ -42,11 +43,6 @@ class OwnerInfoDetailsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
-        
-        navigationController?.navigationBar.titleTextAttributes = avenirFont
-        
         populateCompletedProfileInfo()
     }
 
@@ -56,7 +52,10 @@ class OwnerInfoDetailsViewController: UIViewController {
         addressLine2LabelOutlet.isHidden = false
         mobileLabelOutlet.isHidden = false
         
-        //populateCompletedProfileInfo()
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
+        
+        title = "Please Review Your Info"
     }
     
 
@@ -142,7 +141,7 @@ extension OwnerInfoDetailsViewController {
     
         guard let owner = OwnerModelController.shared.owners.first else { return }
         // populate UI elements in VC
-        self.title = "\(owner.firstName) \(owner.lastName)"
+        ownerNameLabelOutlet.text = "\(owner.firstName) \(owner.lastName)"
         usernameLabelOutlet.text = "user: \(owner.username)"
         // populate birthdate outlet
         formatBirthdate(birthdate: owner.birthdate)

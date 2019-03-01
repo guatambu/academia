@@ -523,6 +523,7 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="ksL-RA-ZxE" firstAttribute="trailing" secondItem="4bv-0j-ExZ" secondAttribute="trailing" constant="24" id="1HL-Wy-hdq"/>
                             <constraint firstItem="ntL-hc-WSZ" firstAttribute="centerX" secondItem="yJ7-23-i4y" secondAttribute="centerX" id="6QS-82-PQk"/>
@@ -534,6 +535,9 @@
                             <constraint firstItem="ksL-RA-ZxE" firstAttribute="bottom" secondItem="ntL-hc-WSZ" secondAttribute="bottom" constant="24" id="xYm-ML-IYP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ksL-RA-ZxE"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Cs2-sH-GdI" appends="YES" id="SQG-XU-t7n"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title=" " id="mHx-Mt-JHo">
                         <barButtonItem key="backBarButtonItem" title=" " id="74a-Qe-M6R"/>
@@ -548,6 +552,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Srz-1x-ptd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Cs2-sH-GdI">
+                    <connections>
+                        <action selector="tapAnywhereToDismissKeyboard:" destination="VkD-Ki-GOj" id="M0L-wT-kIZ"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3032" y="205"/>
         </scene>
@@ -1181,6 +1190,7 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="PdY-Ny-qZk" firstAttribute="trailing" secondItem="RPU-lZ-CTq" secondAttribute="trailing" constant="16" id="51U-ze-vub"/>
                             <constraint firstItem="CQY-pR-AxX" firstAttribute="centerX" secondItem="Nza-qM-EcD" secondAttribute="centerX" id="6gi-lw-JWI"/>
@@ -1192,6 +1202,9 @@
                             <constraint firstItem="ca9-ym-M4X" firstAttribute="top" secondItem="RPU-lZ-CTq" secondAttribute="bottom" constant="112" id="qPh-NK-EXy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PdY-Ny-qZk"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="xDG-P7-8mk" appends="YES" id="9rP-Qg-UeK"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title=" " id="PTr-6e-rS0">
                         <barButtonItem key="backBarButtonItem" title=" " id="bye-SA-Zsb"/>
@@ -1207,6 +1220,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oFd-ez-81t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="xDG-P7-8mk">
+                    <connections>
+                        <action selector="tapAnywhereToDismissKeyboardTapped:" destination="Gda-mL-WGC" id="l9i-XS-nkp"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="6246" y="205"/>
         </scene>
@@ -1415,6 +1433,7 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="VMe-g6-7tp" firstAttribute="top" secondItem="1Cn-dC-EO8" secondAttribute="bottom" constant="24" id="9tp-qZ-JbH"/>
                             <constraint firstItem="Cin-2m-isF" firstAttribute="bottom" secondItem="VMe-g6-7tp" secondAttribute="bottom" constant="24" id="AJu-hq-H0i"/>
@@ -1426,6 +1445,9 @@
                             <constraint firstItem="Cin-2m-isF" firstAttribute="trailing" secondItem="1Cn-dC-EO8" secondAttribute="trailing" constant="16" id="kDT-Mv-B9x"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Cin-2m-isF"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="d2A-AA-JsU" appends="YES" id="NCK-c7-heX"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title=" " id="tZr-fa-83O">
                         <barButtonItem key="backBarButtonItem" title=" " id="UE8-FX-1DO"/>
@@ -1438,6 +1460,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tcv-2y-Y6q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="d2A-AA-JsU">
+                    <connections>
+                        <action selector="tapAnywhereToDismissKeyboardTapped:" destination="H0v-p9-n7k" id="gyX-RV-evI"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="7029" y="206"/>
         </scene>
@@ -1720,6 +1747,7 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="4MF-hh-4Ck" firstAttribute="leading" secondItem="VgI-ZN-JcM" secondAttribute="leading" id="7TW-1A-qmc"/>
                             <constraint firstItem="VgI-ZN-JcM" firstAttribute="bottom" secondItem="V9l-LX-z4N" secondAttribute="bottom" constant="24" id="9bh-xI-XVm"/>
@@ -1728,6 +1756,9 @@
                             <constraint firstItem="VgI-ZN-JcM" firstAttribute="trailing" secondItem="4MF-hh-4Ck" secondAttribute="trailing" id="spB-XY-CFG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VgI-ZN-JcM"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="4xA-pp-lhh" appends="YES" id="Zzr-MC-Fil"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title=" " id="CFI-dW-zN3">
                         <barButtonItem key="backBarButtonItem" title=" " id="93e-jO-l1G"/>
@@ -1764,6 +1795,11 @@
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="Wk4-iS-SK6"/>
                 </view>
+                <tapGestureRecognizer id="4xA-pp-lhh">
+                    <connections>
+                        <action selector="tapAnywhereToDismissKeyboardTapped:" destination="lbT-YZ-VcJ" id="TFY-SO-60C"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3892.5" y="204.92957746478874"/>
         </scene>
@@ -1776,15 +1812,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="1d5-nP-CLP" userLabel="plese review and name Stack View">
-                                <rect key="frame" x="24" y="20" width="272" height="24"/>
+                                <rect key="frame" x="24" y="60" width="272" height="24"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Review Your Info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozi-T8-xFp">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(name)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozi-T8-xFp">
                                         <rect key="frame" x="0.0" y="0.0" width="272" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="u5t-Hb-ELU"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="24"/>
-                                        <color key="textColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -2106,13 +2141,12 @@
                         <constraints>
                             <constraint firstItem="ejW-s2-G3u" firstAttribute="trailing" secondItem="zJJ-h9-Zyy" secondAttribute="trailing" constant="16" id="3V9-mF-CnT"/>
                             <constraint firstItem="wa1-MA-k3x" firstAttribute="centerX" secondItem="zSq-YM-t9n" secondAttribute="centerX" id="55c-Hh-lEu"/>
-                            <constraint firstItem="1d5-nP-CLP" firstAttribute="top" secondItem="ejW-s2-G3u" secondAttribute="top" id="5yk-A1-Zbs"/>
-                            <constraint firstItem="1d5-nP-CLP" firstAttribute="centerX" secondItem="zSq-YM-t9n" secondAttribute="centerX" id="N18-UO-zkZ"/>
                             <constraint firstItem="ejW-s2-G3u" firstAttribute="bottom" secondItem="xav-Vo-Q5d" secondAttribute="bottom" constant="16" id="cuI-aW-V07"/>
                             <constraint firstItem="ejW-s2-G3u" firstAttribute="trailing" secondItem="1d5-nP-CLP" secondAttribute="trailing" constant="24" id="hLU-FH-Xvb"/>
                             <constraint firstItem="xav-Vo-Q5d" firstAttribute="centerX" secondItem="zSq-YM-t9n" secondAttribute="centerX" id="jkh-YQ-w2S"/>
                             <constraint firstItem="wa1-MA-k3x" firstAttribute="top" secondItem="zJJ-h9-Zyy" secondAttribute="bottom" constant="16" id="naO-sD-r3V"/>
                             <constraint firstItem="zJJ-h9-Zyy" firstAttribute="leading" secondItem="zSq-YM-t9n" secondAttribute="leading" constant="16" id="t41-Cv-290"/>
+                            <constraint firstItem="zJJ-h9-Zyy" firstAttribute="top" secondItem="1d5-nP-CLP" secondAttribute="bottom" constant="8" id="tXQ-J8-ciE"/>
                             <constraint firstItem="zJJ-h9-Zyy" firstAttribute="centerY" secondItem="zSq-YM-t9n" secondAttribute="centerY" constant="-8" id="u2X-3W-W5s"/>
                             <constraint firstItem="1d5-nP-CLP" firstAttribute="leading" secondItem="ejW-s2-G3u" secondAttribute="leading" constant="24" id="vZW-9Y-JW3"/>
                         </constraints>
@@ -2132,6 +2166,7 @@
                         <outlet property="emergencyContactPhoneLabelOutlet" destination="sTP-1K-S3P" id="blt-UM-DiX"/>
                         <outlet property="emergencyContactRelationshipLabelOutlet" destination="Vwc-qP-AtJ" id="YVQ-Sr-IIk"/>
                         <outlet property="mobileLabelOutlet" destination="0NJ-jb-0G8" id="NNs-wd-yx9"/>
+                        <outlet property="nameLabelOutlet" destination="ozi-T8-xFp" id="fJ1-Sf-jYX"/>
                         <outlet property="parentGuardianLabelOutlet" destination="qnC-na-AIg" id="KPn-tY-xmc"/>
                         <outlet property="phoneLabelOutlet" destination="1Dk-JI-M0e" id="SAw-zY-uqc"/>
                         <outlet property="profilePicImageView" destination="mO9-Kg-Exx" id="yuI-tq-9k6"/>
@@ -2362,6 +2397,7 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Vmx-fN-27M" firstAttribute="top" secondItem="KtE-4y-EfR" secondAttribute="bottom" constant="24" id="BFp-YV-6f3"/>
                             <constraint firstItem="7mc-0F-3fF" firstAttribute="trailing" secondItem="KtE-4y-EfR" secondAttribute="trailing" constant="16" id="C81-gz-NVH"/>
@@ -2373,6 +2409,9 @@
                             <constraint firstItem="KtE-4y-EfR" firstAttribute="leading" secondItem="7mc-0F-3fF" secondAttribute="leading" constant="16" id="eqy-DQ-9dT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7mc-0F-3fF"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="9r9-XO-SJy" appends="YES" id="W7X-Zb-w5t"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title=" " id="SX0-9D-3yp">
                         <barButtonItem key="backBarButtonItem" title=" " id="e7P-Sr-Ocd"/>
@@ -2387,6 +2426,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KO3-RA-G13" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="9r9-XO-SJy">
+                    <connections>
+                        <action selector="tapAnywhereToDismissKeyboardTapped:" destination="XLp-YJ-uEk" id="7G5-Ts-ach"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="7836" y="206"/>
         </scene>

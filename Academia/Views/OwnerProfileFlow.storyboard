@@ -471,7 +471,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Profile" id="ONp-eR-Zj1">
-                        <barButtonItem key="backBarButtonItem" title="Profile" id="q5H-TM-ddZ"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="q5H-TM-ddZ"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qCt-FN-Ii0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -492,22 +492,21 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="z0C-b0-dDY" userLabel="plese review and name Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Review Your Info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edJ-hb-z3g">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="24"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="24" id="4FK-Go-SO1"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="24"/>
-                                                <color key="textColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap Edit above to make changes" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uVL-Ej-Ltc">
-                                                <rect key="frame" x="0.0" y="32" width="320" height="24"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="BIU-RD-Vzo"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                 <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(name)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edJ-hb-z3g">
+                                                <rect key="frame" x="0.0" y="32" width="320" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="24" id="4FK-Go-SO1"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -734,6 +733,7 @@
                         <outlet property="emergencyContactPhoneLabelOutlet" destination="bJt-QM-A0l" id="iQZ-WM-8ca"/>
                         <outlet property="emergencyContactRelationshipLabelOutlet" destination="SfN-mv-cYN" id="VPk-K3-ref"/>
                         <outlet property="mobileLabelOutlet" destination="TZL-lg-rTk" id="7JM-4g-Zyb"/>
+                        <outlet property="ownerNameLabelOutlet" destination="edJ-hb-z3g" id="yRC-6f-QbV"/>
                         <outlet property="phoneLabelOutlet" destination="XgR-t5-9hw" id="wZh-va-Slc"/>
                         <outlet property="profilePicImageView" destination="4qd-wA-4eV" id="QVN-r0-A2h"/>
                         <outlet property="stateLabelOutlet" destination="3wO-ZI-5gL" id="4M0-xg-Mm3"/>

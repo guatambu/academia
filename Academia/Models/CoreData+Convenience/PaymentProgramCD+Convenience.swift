@@ -20,11 +20,11 @@ extension PaymentProgramCD {
                      programName: String,
                      paymentDescription: String,
                      paymentAgreement: String,
-                     adultStudent: AdultStudentCD,
-                     kidStudent: KidStudentCD,
-                     billingDate: BillingDateCD,
-                     billingSignature: BillingSignatureCD,
-                     billingType: BillingTypeCD,
+                     studentAdult: StudentAdultCD,
+                     studentKid: StudentKidCD,
+                     paymentBillingDate: NSOrderedSet,
+                     paymentBillingSignature: NSOrderedSet,
+                     paymentBillingType: NSOrderedSet,
                      context: NSManagedObjectContext = CoreDataStack.context) {
         
         self.init(context: context)
@@ -35,9 +35,9 @@ extension PaymentProgramCD {
         self.programName = programName
         self.paymentDescription = paymentDescription
         self.paymentAgreement = paymentAgreement
-        self.billingDate = billingDate
-        self.billingSignature = billingSignature
-        self.billingType = billingType
+        self.paymentBillingDate = paymentBillingDate
+        self.paymentBillingSignature = paymentBillingSignature
+        self.paymentBillingType = paymentBillingType
     }
     
 }

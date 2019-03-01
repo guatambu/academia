@@ -86,6 +86,24 @@ class LocationAddressViewController: UIViewController, UITextInputTraits{
     
     // MARK: - Actions
     
+    @IBAction func tapAnywhereToDismissKeyboardTapped(_ sender: UITapGestureRecognizer) {
+        
+        view.endEditing(true)
+        
+        // dismiss keyboard when leaving VC scene
+        if addressLine1TextField.isFirstResponder {
+            addressLine1TextField.resignFirstResponder()
+        } else if addressLine2TextField.isFirstResponder {
+            addressLine2TextField.resignFirstResponder()
+        } else if cityTextField.isFirstResponder {
+            cityTextField.resignFirstResponder()
+        } else if stateTextField.isFirstResponder {
+            stateTextField.resignFirstResponder()
+        } else if zipCodeTextField.isFirstResponder {
+            zipCodeTextField.resignFirstResponder()
+        }
+    }
+    
     @objc func saveButtonTapped() {
         
         // dismiss keyboard when leaving VC scene

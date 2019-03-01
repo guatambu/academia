@@ -41,11 +41,6 @@ class PaymentProgramInfoDetailsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
-        
-        navigationController?.navigationBar.titleTextAttributes = avenirFont
-        
         populateCompletedProfileInfo()
     }
     
@@ -55,7 +50,10 @@ class PaymentProgramInfoDetailsViewController: UIViewController {
         let rightEditButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(self.editButtonTapped))
         self.navigationItem.rightBarButtonItem = rightEditButton
         
-        //populateCompletedProfileInfo()
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
+        
+        title = "Please Review Your Info"
     }
 
     
@@ -153,7 +151,7 @@ extension PaymentProgramInfoDetailsViewController {
         
         guard let paymentProgram = PaymentProgramModelController.shared.paymentPrograms.first else { return }
         // name outlet
-        title = paymentProgram.programName
+        paymentProgramNameLabelOutlet.text = paymentProgram.programName
         // active outlet
         if paymentProgram.active == true {
             
