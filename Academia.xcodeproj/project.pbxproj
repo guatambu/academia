@@ -70,6 +70,10 @@
 		FA8B3CCC21CB276B003398FB /* OwnersStudentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B3CCB21CB276B003398FB /* OwnersStudentDetailViewController.swift */; };
 		FA8B3CCE21CB3901003398FB /* GroupInfoDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B3CCD21CB3901003398FB /* GroupInfoDetailsTableViewController.swift */; };
 		FA9463FC2229D0F10063B34C /* FindYourAcademyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9463FB2229D0F10063B34C /* FindYourAcademyViewController.swift */; };
+		FA9463FF222CEE220063B34C /* OwnerCDModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9463FE222CEE220063B34C /* OwnerCDModelController.swift */; };
+		FA946401222CF5A00063B34C /* StudentAdultCDModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA946400222CF5A00063B34C /* StudentAdultCDModelController.swift */; };
+		FA946403222CF7E50063B34C /* StudentKidCDModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA946402222CF7E50063B34C /* StudentKidCDModelController.swift */; };
+		FA946406222CF9310063B34C /* LocationCDModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA946405222CF9310063B34C /* LocationCDModelController.swift */; };
 		FA9724052224B3C2001247CA /* PlaceholderStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9724042224B3C2001247CA /* PlaceholderStrings.swift */; };
 		FA97240722265C00001247CA /* Address+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97240622265C00001247CA /* Address+Convenience.swift */; };
 		FA9AD9F5213782070005E1F1 /* TutorialsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9AD9F4213782070005E1F1 /* TutorialsTableViewController.swift */; };
@@ -356,6 +360,10 @@
 		FA8B3CCB21CB276B003398FB /* OwnersStudentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnersStudentDetailViewController.swift; sourceTree = "<group>"; };
 		FA8B3CCD21CB3901003398FB /* GroupInfoDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoDetailsTableViewController.swift; sourceTree = "<group>"; };
 		FA9463FB2229D0F10063B34C /* FindYourAcademyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindYourAcademyViewController.swift; sourceTree = "<group>"; };
+		FA9463FE222CEE220063B34C /* OwnerCDModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerCDModelController.swift; sourceTree = "<group>"; };
+		FA946400222CF5A00063B34C /* StudentAdultCDModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentAdultCDModelController.swift; sourceTree = "<group>"; };
+		FA946402222CF7E50063B34C /* StudentKidCDModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentKidCDModelController.swift; sourceTree = "<group>"; };
+		FA946405222CF9310063B34C /* LocationCDModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCDModelController.swift; sourceTree = "<group>"; };
 		FA9724042224B3C2001247CA /* PlaceholderStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderStrings.swift; sourceTree = "<group>"; };
 		FA97240622265C00001247CA /* Address+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Address+Convenience.swift"; sourceTree = "<group>"; };
 		FA9AD9F4213782070005E1F1 /* TutorialsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialsTableViewController.swift; sourceTree = "<group>"; };
@@ -862,6 +870,7 @@
 		FA23D28F2167E36500707056 /* User Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FA9463FD222CEDDE0063B34C /* CoreData Model Controllers */,
 				FA23D2912167F9EF00707056 /* OnBoardingTaskModelController.swift */,
 				FAF29BCD212E4CF200752414 /* OwnerModelController.swift */,
 				FA5C5C31215170AE00BF62D5 /* AdultStudentModelController.swift */,
@@ -959,6 +968,24 @@
 			path = "User Models";
 			sourceTree = "<group>";
 		};
+		FA9463FD222CEDDE0063B34C /* CoreData Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FA9463FE222CEE220063B34C /* OwnerCDModelController.swift */,
+				FA946400222CF5A00063B34C /* StudentAdultCDModelController.swift */,
+				FA946402222CF7E50063B34C /* StudentKidCDModelController.swift */,
+			);
+			path = "CoreData Model Controllers";
+			sourceTree = "<group>";
+		};
+		FA946404222CF90E0063B34C /* CoreData Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FA946405222CF9310063B34C /* LocationCDModelController.swift */,
+			);
+			path = "CoreData Model Controller";
+			sourceTree = "<group>";
+		};
 		FA9AD9F3213780DD0005E1F1 /* Profile Menu VCs */ = {
 			isa = PBXGroup;
 			children = (
@@ -999,6 +1026,7 @@
 		FAA516D72190C9E2009875CB /* Location Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FA946404222CF90E0063B34C /* CoreData Model Controller */,
 				FA5C5C35215170D200BF62D5 /* LocationModelController.swift */,
 			);
 			path = "Location Model Controllers";
@@ -1489,6 +1517,7 @@
 				FA0C444421278B8D00B59194 /* Location.swift in Sources */,
 				FACA3EBB21928B150099E620 /* EmergencyContactViewController.swift in Sources */,
 				FA531C26219630E700AE2C38 /* BeltBuilder.swift in Sources */,
+				FA946401222CF5A00063B34C /* StudentAdultCDModelController.swift in Sources */,
 				FAB806CB2210E83300124EBA /* GroupCD+Convenience.swift in Sources */,
 				FABF85BF21BB09FC005CEBD4 /* Billing.swift in Sources */,
 				FAA4BFB121E4007F007A011C /* AdultStudentTableViewCell.swift in Sources */,
@@ -1518,6 +1547,7 @@
 				FA9AD9F9213783BA0005E1F1 /* MyLocationsTableViewController.swift in Sources */,
 				FA1CEF3B21F5900E004498BC /* ClassDayViewController.swift in Sources */,
 				FAD2A3C121E810DD00364FC0 /* AdultGroupInfoDetailsTableViewCell.swift in Sources */,
+				FA9463FF222CEE220063B34C /* OwnerCDModelController.swift in Sources */,
 				FADA615222112AC100BB3302 /* CoreDataStack.swift in Sources */,
 				FAD2A3BB21E6E1F900364FC0 /* ReviewOwnerInstructorTableViewCell.swift in Sources */,
 				FAF29BCA212E23E300752414 /* OwnerHomeTableViewController.swift in Sources */,
@@ -1561,6 +1591,7 @@
 				FABF859321AF8370005CEBD4 /* StudentInfoDetailsViewController.swift in Sources */,
 				FA5C5C522154999C00BF62D5 /* StudentClassesTableViewController.swift in Sources */,
 				FAD2A3AF21E6B87600364FC0 /* ClassInstructorsTableViewController.swift in Sources */,
+				FA946403222CF7E50063B34C /* StudentKidCDModelController.swift in Sources */,
 				FAE67A38215C6C0F00822DCF /* AulasListMenuTableViewCell.swift in Sources */,
 				FAB806BB2210E71100124EBA /* AdultStudentCD+Convenience.swift in Sources */,
 				FAD2A3AB21E6B82A00364FC0 /* ClassNameAndDescriptionViewController.swift in Sources */,
@@ -1582,6 +1613,7 @@
 				FA4DF330218CCA2400ECC167 /* Curriculum.swift in Sources */,
 				FAE2FDA82140C07F00815402 /* EmergencyContactPhoneTextFieldTableViewCell.swift in Sources */,
 				FAF29BDF2130892B00752414 /* ImageMenuTableViewCell.swift in Sources */,
+				FA946406222CF9310063B34C /* LocationCDModelController.swift in Sources */,
 				FA9ADA092137861B0005E1F1 /* OwnerPaymentInfoTableViewController.swift in Sources */,
 				FA5C5C34215170BE00BF62D5 /* KidStudentModelController.swift in Sources */,
 				FA9ADA2D2139EE6C0005E1F1 /* IsInstructorTableViewCell.swift in Sources */,
