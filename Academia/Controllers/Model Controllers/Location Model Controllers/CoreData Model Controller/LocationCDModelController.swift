@@ -56,7 +56,9 @@ class LocationCDModelController {
                 socialLinks: LocationSocialLinksCD?) {
         
         location.dateEdited = Date()
-        
+        if let locationPic = locationPic {
+            location.locationPic = locationPic
+        }
         if let locationName = locationName {
             location.locationName = locationName
         }

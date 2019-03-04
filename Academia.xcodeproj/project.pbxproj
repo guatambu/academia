@@ -74,6 +74,10 @@
 		FA946401222CF5A00063B34C /* StudentAdultCDModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA946400222CF5A00063B34C /* StudentAdultCDModelController.swift */; };
 		FA946403222CF7E50063B34C /* StudentKidCDModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA946402222CF7E50063B34C /* StudentKidCDModelController.swift */; };
 		FA946406222CF9310063B34C /* LocationCDModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA946405222CF9310063B34C /* LocationCDModelController.swift */; };
+		FA946409222CFC810063B34C /* PaymentProgramCDModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA946408222CFC810063B34C /* PaymentProgramCDModelController.swift */; };
+		FA94640C222CFF3D0063B34C /* BeltCDModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA94640B222CFF3D0063B34C /* BeltCDModelController.swift */; };
+		FA94640F222D00740063B34C /* GroupCDModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA94640E222D00740063B34C /* GroupCDModelController.swift */; };
+		FA946412222D01C20063B34C /* AulaCDModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA946411222D01C20063B34C /* AulaCDModelController.swift */; };
 		FA9724052224B3C2001247CA /* PlaceholderStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9724042224B3C2001247CA /* PlaceholderStrings.swift */; };
 		FA97240722265C00001247CA /* Address+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97240622265C00001247CA /* Address+Convenience.swift */; };
 		FA9AD9F5213782070005E1F1 /* TutorialsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9AD9F4213782070005E1F1 /* TutorialsTableViewController.swift */; };
@@ -364,6 +368,10 @@
 		FA946400222CF5A00063B34C /* StudentAdultCDModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentAdultCDModelController.swift; sourceTree = "<group>"; };
 		FA946402222CF7E50063B34C /* StudentKidCDModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentKidCDModelController.swift; sourceTree = "<group>"; };
 		FA946405222CF9310063B34C /* LocationCDModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCDModelController.swift; sourceTree = "<group>"; };
+		FA946408222CFC810063B34C /* PaymentProgramCDModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProgramCDModelController.swift; sourceTree = "<group>"; };
+		FA94640B222CFF3D0063B34C /* BeltCDModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeltCDModelController.swift; sourceTree = "<group>"; };
+		FA94640E222D00740063B34C /* GroupCDModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCDModelController.swift; sourceTree = "<group>"; };
+		FA946411222D01C20063B34C /* AulaCDModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AulaCDModelController.swift; sourceTree = "<group>"; };
 		FA9724042224B3C2001247CA /* PlaceholderStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderStrings.swift; sourceTree = "<group>"; };
 		FA97240622265C00001247CA /* Address+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Address+Convenience.swift"; sourceTree = "<group>"; };
 		FA9AD9F4213782070005E1F1 /* TutorialsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialsTableViewController.swift; sourceTree = "<group>"; };
@@ -882,6 +890,7 @@
 		FA23D2902167E38D00707056 /* Belt Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FA94640A222CFF1B0063B34C /* CoreData Model Controller */,
 				FA23D2892167E31200707056 /* BeltModelController.swift */,
 			);
 			path = "Belt Model Controllers";
@@ -986,6 +995,38 @@
 			path = "CoreData Model Controller";
 			sourceTree = "<group>";
 		};
+		FA946407222CFC5A0063B34C /* CoreData Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FA946408222CFC810063B34C /* PaymentProgramCDModelController.swift */,
+			);
+			path = "CoreData Model Controller";
+			sourceTree = "<group>";
+		};
+		FA94640A222CFF1B0063B34C /* CoreData Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FA94640B222CFF3D0063B34C /* BeltCDModelController.swift */,
+			);
+			path = "CoreData Model Controller";
+			sourceTree = "<group>";
+		};
+		FA94640D222D00500063B34C /* CoreData Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FA94640E222D00740063B34C /* GroupCDModelController.swift */,
+			);
+			path = "CoreData Model Controllers";
+			sourceTree = "<group>";
+		};
+		FA946410222D019C0063B34C /* CoreDataModelController */ = {
+			isa = PBXGroup;
+			children = (
+				FA946411222D01C20063B34C /* AulaCDModelController.swift */,
+			);
+			path = CoreDataModelController;
+			sourceTree = "<group>";
+		};
 		FA9AD9F3213780DD0005E1F1 /* Profile Menu VCs */ = {
 			isa = PBXGroup;
 			children = (
@@ -1035,6 +1076,7 @@
 		FAA516D82190CA48009875CB /* Payment Program Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FA946407222CFC5A0063B34C /* CoreData Model Controller */,
 				FA23D2842166F5C900707056 /* PaymentProgramModelController.swift */,
 			);
 			path = "Payment Program Model Controllers";
@@ -1043,6 +1085,7 @@
 		FAA516D92190CA5B009875CB /* Curriculum Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FA946410222D019C0063B34C /* CoreDataModelController */,
 				FA23D2822166F5AE00707056 /* AulaModelController.swift */,
 				FAA516DA2190CA8F009875CB /* TechniqueModelController.swift */,
 				FAA516DC2190CAA7009875CB /* CurriculumModuleModelController.swift */,
@@ -1136,6 +1179,7 @@
 		FAD5B13221CA0194004ED286 /* Groups Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FA94640D222D00500063B34C /* CoreData Model Controllers */,
 				FA23D2872166F5E400707056 /* GroupModelController.swift */,
 			);
 			path = "Groups Model Controllers";
@@ -1560,6 +1604,7 @@
 				FA9AD9FD213783FE0005E1F1 /* OwnerPaymentProgramsTableViewController.swift in Sources */,
 				FA1CEF3D21FBA7F6004498BC /* ClassGroupTableViewCell.swift in Sources */,
 				FAE2FDA62140C07600815402 /* EmergencyContactTextFieldTableViewCell.swift in Sources */,
+				FA946409222CFC810063B34C /* PaymentProgramCDModelController.swift in Sources */,
 				FAD5B12D21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift in Sources */,
 				FA66A0162145CE4E002B0313 /* SubHeadingLabelTableViewCell.swift in Sources */,
 				FAB806C52210E7CE00124EBA /* BillingSignatureCD+Convenience.swift in Sources */,
@@ -1602,6 +1647,7 @@
 				FA463DE4219F4343001CDDD7 /* BeltTableViewCell.swift in Sources */,
 				FAE2FDAA2140C08900815402 /* EmergencyContactRelationshipTextFieldTableViewCell.swift in Sources */,
 				FABF859E21B38995005CEBD4 /* LocationSocialLinksViewController.swift in Sources */,
+				FA94640C222CFF3D0063B34C /* BeltCDModelController.swift in Sources */,
 				FAE67A3C215C714B00822DCF /* StudentListImageMenuTableViewCell.swift in Sources */,
 				FA5C5C32215170AE00BF62D5 /* AdultStudentModelController.swift in Sources */,
 				FA8B3CCC21CB276B003398FB /* OwnersStudentDetailViewController.swift in Sources */,
@@ -1612,6 +1658,7 @@
 				FA9ADA31213B6BA90005E1F1 /* InternationalStandardBJJBelts.swift in Sources */,
 				FA4DF330218CCA2400ECC167 /* Curriculum.swift in Sources */,
 				FAE2FDA82140C07F00815402 /* EmergencyContactPhoneTextFieldTableViewCell.swift in Sources */,
+				FA94640F222D00740063B34C /* GroupCDModelController.swift in Sources */,
 				FAF29BDF2130892B00752414 /* ImageMenuTableViewCell.swift in Sources */,
 				FA946406222CF9310063B34C /* LocationCDModelController.swift in Sources */,
 				FA9ADA092137861B0005E1F1 /* OwnerPaymentInfoTableViewController.swift in Sources */,
@@ -1630,6 +1677,7 @@
 				FAB806D32210E88B00124EBA /* PaymentProgramCD+Convenience.swift in Sources */,
 				FAE67A36215C2DDF00822DCF /* StudentPaymentTableViewController.swift in Sources */,
 				FAF29B6B212D0E9E00752414 /* OnBoardingTask.swift in Sources */,
+				FA946412222D01C20063B34C /* AulaCDModelController.swift in Sources */,
 				FAE2FD3C2140700F00815402 /* MockData.swift in Sources */,
 				FAB806D52210E8B900124EBA /* StudentStatusCD+Convenience.swift in Sources */,
 				FA1CEF3F21FBAD68004498BC /* ClassGroupDelegate.swift in Sources */,
