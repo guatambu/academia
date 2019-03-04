@@ -715,6 +715,7 @@
 		FA0C443D21278B2500B59194 /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FA9463FD222CEDDE0063B34C /* CoreData Model Controllers */,
 				FA23D28F2167E36500707056 /* User Model Controllers */,
 				FAA516D72190C9E2009875CB /* Location Model Controllers */,
 				FAA516D82190CA48009875CB /* Payment Program Model Controllers */,
@@ -878,7 +879,6 @@
 		FA23D28F2167E36500707056 /* User Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FA9463FD222CEDDE0063B34C /* CoreData Model Controllers */,
 				FA23D2912167F9EF00707056 /* OnBoardingTaskModelController.swift */,
 				FAF29BCD212E4CF200752414 /* OwnerModelController.swift */,
 				FA5C5C31215170AE00BF62D5 /* AdultStudentModelController.swift */,
@@ -890,7 +890,6 @@
 		FA23D2902167E38D00707056 /* Belt Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FA94640A222CFF1B0063B34C /* CoreData Model Controller */,
 				FA23D2892167E31200707056 /* BeltModelController.swift */,
 			);
 			path = "Belt Model Controllers";
@@ -980,51 +979,16 @@
 		FA9463FD222CEDDE0063B34C /* CoreData Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FA94640B222CFF3D0063B34C /* BeltCDModelController.swift */,
+				FA94640E222D00740063B34C /* GroupCDModelController.swift */,
+				FA946408222CFC810063B34C /* PaymentProgramCDModelController.swift */,
+				FA946405222CF9310063B34C /* LocationCDModelController.swift */,
 				FA9463FE222CEE220063B34C /* OwnerCDModelController.swift */,
 				FA946400222CF5A00063B34C /* StudentAdultCDModelController.swift */,
+				FA946411222D01C20063B34C /* AulaCDModelController.swift */,
 				FA946402222CF7E50063B34C /* StudentKidCDModelController.swift */,
 			);
 			path = "CoreData Model Controllers";
-			sourceTree = "<group>";
-		};
-		FA946404222CF90E0063B34C /* CoreData Model Controller */ = {
-			isa = PBXGroup;
-			children = (
-				FA946405222CF9310063B34C /* LocationCDModelController.swift */,
-			);
-			path = "CoreData Model Controller";
-			sourceTree = "<group>";
-		};
-		FA946407222CFC5A0063B34C /* CoreData Model Controller */ = {
-			isa = PBXGroup;
-			children = (
-				FA946408222CFC810063B34C /* PaymentProgramCDModelController.swift */,
-			);
-			path = "CoreData Model Controller";
-			sourceTree = "<group>";
-		};
-		FA94640A222CFF1B0063B34C /* CoreData Model Controller */ = {
-			isa = PBXGroup;
-			children = (
-				FA94640B222CFF3D0063B34C /* BeltCDModelController.swift */,
-			);
-			path = "CoreData Model Controller";
-			sourceTree = "<group>";
-		};
-		FA94640D222D00500063B34C /* CoreData Model Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				FA94640E222D00740063B34C /* GroupCDModelController.swift */,
-			);
-			path = "CoreData Model Controllers";
-			sourceTree = "<group>";
-		};
-		FA946410222D019C0063B34C /* CoreDataModelController */ = {
-			isa = PBXGroup;
-			children = (
-				FA946411222D01C20063B34C /* AulaCDModelController.swift */,
-			);
-			path = CoreDataModelController;
 			sourceTree = "<group>";
 		};
 		FA9AD9F3213780DD0005E1F1 /* Profile Menu VCs */ = {
@@ -1067,7 +1031,6 @@
 		FAA516D72190C9E2009875CB /* Location Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FA946404222CF90E0063B34C /* CoreData Model Controller */,
 				FA5C5C35215170D200BF62D5 /* LocationModelController.swift */,
 			);
 			path = "Location Model Controllers";
@@ -1076,7 +1039,6 @@
 		FAA516D82190CA48009875CB /* Payment Program Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FA946407222CFC5A0063B34C /* CoreData Model Controller */,
 				FA23D2842166F5C900707056 /* PaymentProgramModelController.swift */,
 			);
 			path = "Payment Program Model Controllers";
@@ -1085,7 +1047,6 @@
 		FAA516D92190CA5B009875CB /* Curriculum Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FA946410222D019C0063B34C /* CoreDataModelController */,
 				FA23D2822166F5AE00707056 /* AulaModelController.swift */,
 				FAA516DA2190CA8F009875CB /* TechniqueModelController.swift */,
 				FAA516DC2190CAA7009875CB /* CurriculumModuleModelController.swift */,
@@ -1179,7 +1140,6 @@
 		FAD5B13221CA0194004ED286 /* Groups Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FA94640D222D00500063B34C /* CoreData Model Controllers */,
 				FA23D2872166F5E400707056 /* GroupModelController.swift */,
 			);
 			path = "Groups Model Controllers";
