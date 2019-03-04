@@ -17,7 +17,7 @@ extension LocationCD {
                      active: Bool,
                      dateCreated: Date,
                      dateEdited: Date,
-                     locationPic: UIImage?,
+                     locationPic: Data?,
                      locationName: String,
                      phone: String?,
                      website: String?,
@@ -32,7 +32,7 @@ extension LocationCD {
         self.locationUUID = locationUUID
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
-        //self.locationPic = locationPic
+        self.locationPic = locationPic
         self.locationName = locationName
         self.address = address
         self.phone = phone

@@ -61,7 +61,7 @@ class StudentKidCDModelController {
                 phone: String?,
                 mobile: String?,
                 email: String?,
-                emergencyContactInfo: EmergencyContactInfoCD?) {
+                emergencyContact: EmergencyContactCD?) {
         
         studentKid.dateEdited = Date()
         
@@ -101,8 +101,8 @@ class StudentKidCDModelController {
         if let email = email {
             studentKid.email = email
         }
-        if let emergencyContactInfo = emergencyContactInfo {
-            studentKid.emergencyContactInfo = emergencyContactInfo
+        if let emergencyContact = emergencyContact {
+            studentKid.emergencyContact = emergencyContact
         }
         
         OwnerCDModelController.shared.saveToPersistentStorage()

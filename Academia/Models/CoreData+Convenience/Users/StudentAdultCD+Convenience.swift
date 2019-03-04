@@ -1,5 +1,5 @@
 //
-//  KidStudentCD+Convenience.swift
+//  StudentAdultCD+Convenience.swift
 //  Academia
 //
 //  Created by Michael Guatambu Davis on 2/10/19.
@@ -9,19 +9,19 @@
 import UIKit
 import CoreData
 
-
-extension StudentKidCD {
+extension StudentAdultCD {
     
-    // convenience initializer to allow creation of a KidStudentCD object via Academia CoreDataStack's managedObjectContext
-    convenience init(kidStudentUUID: UUID,
+    // convenience initializer to allow creation of an AdultStudentCD object via Academia CoreDataStack's managedObjectContext
+    convenience init(adultStudentUUID: UUID,
+                     isInstructor: Bool,
                      dateCreated: Date,
                      dateEdited: Date,
                      birthdate: Date,
-                     promotions: BeltPromotionCD?,
+                     promotions: [String: Date]?,
                      mostRecentPromotion: Date?,
-                     attendanceStudentKid: NSSet?,
+                     attendanceStudentAdult: NSSet?,
                      studentStatus: StudentStatusCD?,
-                     groups: NSSet?,
+                     groups: NSOrderedSet?,
                      paymentProgram: PaymentProgramCD?,
                      belt: BeltCD,
                      profilePic: UIImage?,
@@ -29,23 +29,23 @@ extension StudentKidCD {
                      password: String,
                      firstName: String,
                      lastName: String,
-                     parentGuardian: String,
                      address: AddressCD,
                      phone: String?,
                      mobile: String?,
                      email: String,
-                     emergencyContactInfo: EmergencyContactInfoCD,
+                     emergencyContact: EmergencyContactCD,
                      context: NSManagedObjectContext = CoreDataStack.context) {
         
         self.init(context: context)
         
-        self.kidStudentUUID = kidStudentUUID
+        self.adultStudentUUID = adultStudentUUID
+        self.isInstructor = isInstructor
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
         self.birthdate = birthdate
         //self.promotions = promotions
         self.mostRecentPromotion = mostRecentPromotion
-        self.attendanceStudentKid = attendanceStudentKid
+        self.attendanceStudentAdult = attendanceStudentAdult
         self.studentStatus = studentStatus
         self.belt = belt
         self.groups = groups
@@ -55,11 +55,12 @@ extension StudentKidCD {
         self.password = password
         self.firstName = firstName
         self.lastName = lastName
-        self.parentGuardian = parentGuardian
         self.address = address
         self.phone = phone
         self.mobile = mobile
         self.email = email
-        self.emergencyContactInfo = emergencyContactInfo
+        self.emergencyContact = emergencyContact
     }
 }
+
+

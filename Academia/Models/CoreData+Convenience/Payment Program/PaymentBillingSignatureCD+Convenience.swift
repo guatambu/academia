@@ -1,5 +1,5 @@
 //
-//  BillingSignatureCD+Convenience.swift
+//  PaymentBillingSignatureCD+Convenience.swift
 //  Academia
 //
 //  Created by Michael Guatambu Davis on 2/10/19.
@@ -16,9 +16,9 @@ extension PaymentBillingSignatureCD {
     convenience init(biometricEyeIris: Bool,
                      biometricFace: Bool,
                      biometricFinger: Bool,
+                     biometricOther: Bool,
                      digitalFingerSignature: Bool,
                      digitallyTyped: Bool,
-                     otherBiometric: Bool,
                      paperContract: Bool,
                      paymentProgram: PaymentProgramCD,
                      context: NSManagedObjectContext = CoreDataStack.context) {
@@ -28,9 +28,9 @@ extension PaymentBillingSignatureCD {
         self.biometricEyeIris = biometricEyeIris
         self.biometricFace = biometricFace
         self.biometricFinger = biometricFinger
+        self.biometricOther = biometricOther
         self.digitalFingerSignature = digitalFingerSignature
         self.digitallyTyped = digitallyTyped
-        self.otherBiometric = otherBiometric
         self.paperContract = paperContract
         self.paymentProgram = paymentProgram
     }

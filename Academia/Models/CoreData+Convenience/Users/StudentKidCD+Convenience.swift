@@ -1,5 +1,5 @@
 //
-//  OwnerCD+Convenience.swift
+//  StudentKidCD+Convenience.swift
 //  Academia
 //
 //  Created by Michael Guatambu Davis on 2/10/19.
@@ -10,54 +10,56 @@ import UIKit
 import CoreData
 
 
-extension OwnerCD {
+extension StudentKidCD {
     
-    // convenience initializer to allow creation of an OwnerCD object via Academia CoreDataStack's managedObjectContext
-    convenience init(ownerUUID: UUID = UUID(),
-                     isInstructor: Bool = true,
-                     dateCreated: Date = Date(),
-                     dateEdited: Date = Date(),
+    // convenience initializer to allow creation of a KidStudentCD object via Academia CoreDataStack's managedObjectContext
+    convenience init(studentKidUUID: UUID,
+                     dateCreated: Date,
+                     dateEdited: Date,
                      birthdate: Date,
-                     // promotions: NSSet?,
+                     promotions: BeltPromotionCD?,
                      mostRecentPromotion: Date?,
-                     // attendanceOwner: NSSet?,
+                     attendanceStudentKid: NSSet?,
                      studentStatus: StudentStatusCD?,
-                     // groups: NSSet?,
-                     // paymentProgram: PaymentProgramCD?,
+                     groups: NSSet?,
+                     paymentProgram: PaymentProgramCD?,
                      belt: BeltCD,
-                     profilePic: Data?,
+                     profilePic: UIImage?,
                      username: String,
                      password: String,
                      firstName: String,
                      lastName: String,
+                     parentGuardian: String,
                      address: AddressCD,
                      phone: String?,
                      mobile: String?,
                      email: String,
-                     emergencyContactInfo: EmergencyContactInfoCD,
+                     emergencyContact: EmergencyContactCD,
                      context: NSManagedObjectContext = CoreDataStack.context) {
         
         self.init(context: context)
         
-        self.ownerUUID = ownerUUID
-        self.isInstructor = isInstructor
+        self.kidStudentUUID = studentKidUUID
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
         self.birthdate = birthdate
-        // self.promotions = promotions
+        //self.promotions = promotions
         self.mostRecentPromotion = mostRecentPromotion
-        // self.attendanceOwner = attendanceOwner
+        self.attendanceStudentKid = attendanceStudentKid
+        self.studentStatus = studentStatus
         self.belt = belt
-        // self.groups = groups
-        self.profilePic = profilePic
+        self.groups = groups
+        self.paymentProgram = paymentProgram
+        //self.profilePic = profilePic
         self.username = username
         self.password = password
         self.firstName = firstName
         self.lastName = lastName
+        self.parentGuardian = parentGuardian
         self.address = address
         self.phone = phone
         self.mobile = mobile
         self.email = email
-        self.emergencyContactInfo = emergencyContactInfo
+        self.emergencyContact = emergencyContact
     }
 }

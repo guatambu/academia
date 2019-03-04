@@ -1,5 +1,5 @@
 //
-//  AdultStudentCD+Convenience.swift
+//  OwnerCD+Convenience.swift
 //  Academia
 //
 //  Created by Michael Guatambu Davis on 2/10/19.
@@ -9,22 +9,23 @@
 import UIKit
 import CoreData
 
-extension StudentAdultCD {
+
+extension OwnerCD {
     
-    // convenience initializer to allow creation of an AdultStudentCD object via Academia CoreDataStack's managedObjectContext
-    convenience init(adultStudentUUID: UUID,
-                     isInstructor: Bool,
-                     dateCreated: Date,
-                     dateEdited: Date,
+    // convenience initializer to allow creation of an OwnerCD object via Academia CoreDataStack's managedObjectContext
+    convenience init(ownerUUID: UUID = UUID(),
+                     isInstructor: Bool = true,
+                     dateCreated: Date = Date(),
+                     dateEdited: Date = Date(),
                      birthdate: Date,
-                     promotions: [String: Date]?,
+                     // promotions: NSSet?,
                      mostRecentPromotion: Date?,
-                     attendanceStudentAdult: NSSet?,
+                     // attendanceOwner: NSSet?,
                      studentStatus: StudentStatusCD?,
-                     groups: NSOrderedSet?,
-                     paymentProgram: PaymentProgramCD?,
+                     // groups: NSSet?,
+                     // paymentProgram: PaymentProgramCD?,
                      belt: BeltCD,
-                     profilePic: UIImage?,
+                     profilePic: Data?,
                      username: String,
                      password: String,
                      firstName: String,
@@ -33,24 +34,22 @@ extension StudentAdultCD {
                      phone: String?,
                      mobile: String?,
                      email: String,
-                     emergencyContactInfo: EmergencyContactInfoCD,
+                     emergencyContact: EmergencyContactCD,
                      context: NSManagedObjectContext = CoreDataStack.context) {
         
         self.init(context: context)
         
-        self.adultStudentUUID = adultStudentUUID
+        self.ownerUUID = ownerUUID
         self.isInstructor = isInstructor
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
         self.birthdate = birthdate
-        //self.promotions = promotions
+        // self.promotions = promotions
         self.mostRecentPromotion = mostRecentPromotion
-        self.attendanceStudentAdult = attendanceStudentAdult
-        self.studentStatus = studentStatus
+        // self.attendanceOwner = attendanceOwner
         self.belt = belt
-        self.groups = groups
-        self.paymentProgram = paymentProgram
-        //self.profilePic = profilePic
+        // self.groups = groups
+        self.profilePic = profilePic
         self.username = username
         self.password = password
         self.firstName = firstName
@@ -59,8 +58,6 @@ extension StudentAdultCD {
         self.phone = phone
         self.mobile = mobile
         self.email = email
-        self.emergencyContactInfo = emergencyContactInfo
+        self.emergencyContact = emergencyContact
     }
 }
-
-

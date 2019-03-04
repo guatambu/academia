@@ -1,5 +1,5 @@
 //
-//  PromotionCD+Convenience.swift
+//  BeltPromotionCD+Convenience.swift
 //  Academia
 //
 //  Created by Michael Guatambu Davis on 2/18/19.

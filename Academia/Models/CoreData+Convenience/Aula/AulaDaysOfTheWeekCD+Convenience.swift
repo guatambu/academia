@@ -1,5 +1,5 @@
 //
-//  DaysOfTheWeekCD+Convenience.swift
+//  AulaDaysOfTheWeekCD+Convenience.swift
 //  Academia
 //
 //  Created by Michael Guatambu Davis on 2/10/19.

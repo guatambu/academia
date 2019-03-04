@@ -1,5 +1,5 @@
 //
-//  AttendanceCD+Convenience.swift
+//  AulaAttendanceCD+Convenience.swift
 //  Academia
 //
 //  Created by Michael Guatambu Davis on 2/10/19.

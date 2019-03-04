@@ -17,6 +17,8 @@ extension AddressCD {
                      city: String,
                      state: String,
                      zipCode: String,
+                     dateCreated: Date = Date(),
+                     dateEdited: Date = Date(),
                      context: NSManagedObjectContext = CoreDataStack.context) {
         
         self.init(context: context)
@@ -26,6 +28,8 @@ extension AddressCD {
         self.city = city
         self.state = state
         self.zipCode = zipCode
+        self.dateCreated = dateCreated
+        self.dateEdited = dateEdited
     }
 }
 

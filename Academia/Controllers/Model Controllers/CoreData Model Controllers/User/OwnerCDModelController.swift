@@ -60,7 +60,7 @@ class OwnerCDModelController {
                 phone: String?,
                 mobile: String?,
                 email: String?,
-                emergencyContactInfo: EmergencyContactInfoCD?) {
+                emergencyContact: EmergencyContactCD?) {
         
         owner.dateEdited = Date()
         
@@ -100,8 +100,8 @@ class OwnerCDModelController {
         if let email = email {
             owner.email = email
         }
-        if let emergencyContactInfo = emergencyContactInfo {
-            owner.emergencyContactInfo = emergencyContactInfo
+        if let emergencyContact = emergencyContact {
+            owner.emergencyContact = emergencyContact
         }
         
         saveToPersistentStorage()
