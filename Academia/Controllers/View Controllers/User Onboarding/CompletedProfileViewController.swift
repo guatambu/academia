@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class CompletedProfileViewController: UIViewController {
     
@@ -85,6 +86,10 @@ class CompletedProfileViewController: UIViewController {
         
         // set VC title font styling
         navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
+        
+        if OwnerCDModelController.shared.owners.count > 1 {
+            checkIfMoreThanOneOwnerAccountAllowedByOwner()
+        } 
     
     }
     
@@ -92,6 +97,9 @@ class CompletedProfileViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func createAccountButtonTapped(_ sender: DesignableButton) {
+        
+        // CoreData save
+        OwnerCDModelController.shared.saveToPersistentStorage()
         
         // create data models
         createBelt()
@@ -389,8 +397,18 @@ extension CompletedProfileViewController {
                                                       emergencyContactRelationship: emergencyContactRelationship)
         }
     }
-    
 }
 
-
-
+// MARK: - AlertController to check if more than one owner account allowed by actual owner
+extension CompletedProfileViewController {
+    func checkIfMoreThanOneOwnerAccountAllowedByOwner() {
+        
+        let alertController = UIAlertController(title: "Attention", message: "are you sure you want to add more than one owner to this account?", preferredStyle: UIAlertController.Style.alert)
+        
+        let deleteAccount = UIAlertAction(title: "Thanks for the heads up!", style: UIAlertAction.Style.default, handler: nil)
+        
+        alertController.addAction(deleteAccount)
+        
+        self.present(alertController, animated: true)
+    }
+}

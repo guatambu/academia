@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class LandingPageViewController: UIViewController {
     
@@ -37,6 +38,25 @@ class LandingPageViewController: UIViewController {
             print("\(vc) at navStack index: \(index)")
             index += 1
         }
+        
+//        OwnerCDModelController.shared.remove(owner: OwnerCDModelController.shared.owners[0])
+        
+        print("***** CoreData Persistence Check - begin - *****")
+        print("")
+        if !OwnerCDModelController.shared.owners.isEmpty {
+            for owner in OwnerCDModelController.shared.owners {
+                print("")
+                print("owner.firstName = \(owner.firstName ?? "owner object present but has no first name :'{ ")")
+                print("")
+                print("owner.address.addressLine1 = \(owner.address?.addressLine1 ?? "owner address object present but has no addressLine1 :'{ ")")
+                print("")
+                print("owner.belt.beltLevel = \(owner.belt?.beltLevel ?? "owner belt object present but has no beltLevel :'{ ")")
+            }
+        } else {
+            print("Nothing found in OwnerCDModelController.shared.owners... Persistence fail?")
+        }
+        print("")
+        print("***** CoreData Persistence Check - end - *****")
     }
 
 
