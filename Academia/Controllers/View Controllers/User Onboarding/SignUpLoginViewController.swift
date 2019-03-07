@@ -31,6 +31,11 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var signUpButtonOutlet: UIButton!
     
+    // CoreData Properties
+    var owner: OwnerCD?
+    var studentAdult: StudentAdultCD?
+    var studentKid: StudentKidCD?
+    
     
     // MARK: - ViewController Lifecycle Functions
     
@@ -252,7 +257,7 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
                 destViewController.password = newPassword
             }
             
-            // create the segue programmatically
+            // create the segue programmatically to TakeProfilePicViewController
             self.navigationController?.pushViewController(destViewController, animated: true)
             // set the desired properties of the destinationVC's navgation Item
             let backButtonItem = UIBarButtonItem()
@@ -269,6 +274,22 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
             destViewController.username = newUsername
             destViewController.isOwnerAddingStudent = isOwnerAddingStudent
             destViewController.group = group
+            // pass CoreData Properties
+            if let owner = owner {
+                
+                owner.username = newUsername
+                destViewController.owner = owner
+                
+            } else if let studentAdult = studentAdult  {
+                
+                studentAdult.username = newUsername
+                destViewController.studentAdult = studentAdult
+                
+            } else if let studentKid = studentKid  {
+                
+                studentKid.username = newUsername
+                destViewController.studentKid = studentKid
+            }
             
             // reset welcome instructions text color and message upon succesful save
             welcomeInstructionsOutlet.textColor = beltBuilder.blackBeltBlack
@@ -284,9 +305,29 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         destViewController.password = password
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
         destViewController.group = group
+        // pass CoreData Properties
+        if let owner = owner {
+            
+            owner.username = username
+            owner.password = password
+            destViewController.owner = owner
+            
+        } else if let studentAdult = studentAdult  {
+            
+            studentAdult.username = username
+            studentAdult.password = password
+            destViewController.studentAdult = studentAdult
+            
+        } else if let studentKid = studentKid  {
+            
+            studentKid.username = username
+            studentKid.password = password
+            destViewController.studentKid = studentKid
+        }
+        
         // if usermame/password - login
         
-        // create the segue programmatically
+        // create the segue programmatically to TakeProfilePicViewController
         self.navigationController?.pushViewController(destViewController, animated: true)
         // set the desired properties of the destinationVC's navgation Item
         let backButtonItem = UIBarButtonItem()

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class UserSelfIdentifyViewController: UIViewController {
     
@@ -145,7 +146,11 @@ class UserSelfIdentifyViewController: UIViewController {
         // pass desired data to relevant view controller
         destViewController.isOwner = self.isOwner
         destViewController.isKid = self.isKid
-
+        
+        // MARK: - CoreData implementaiton
+        let owner = OwnerCD(context: CoreDataStack.context)
+        owner.ownerUUID = UUID()
+        destViewController.owner = owner
     }
 
     @IBAction func cancelButtonTapped(_ sender: UIButton) {

@@ -25,7 +25,6 @@
         <attribute name="aulaDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="aulaName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="aulaUUID" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="currentDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="dateEdited" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="time" optional="YES" attributeType="String" syncable="YES"/>
@@ -51,15 +50,30 @@
         <attribute name="active" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="beltLevel" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="beltUUID" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="classesToNextPromotion" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="dateEdited" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="elligibleForNextBelt" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="numberOfStripes" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="adultStudentCD" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="StudentAdultCD" inverseName="belt" inverseEntity="StudentAdultCD" syncable="YES"/>
+        <relationship name="beltPromotionAttendanceCriteria" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BeltPromotionAttendanceCriteriaCD" inverseName="belt" inverseEntity="BeltPromotionAttendanceCriteriaCD" syncable="YES"/>
         <relationship name="beltStripeAgeDetails" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BeltStripeAgeDetailsCD" inverseName="belt" inverseEntity="BeltStripeAgeDetailsCD" syncable="YES"/>
         <relationship name="kidStudentCD" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="StudentKidCD" inverseName="belt" inverseEntity="StudentKidCD" syncable="YES"/>
         <relationship name="ownerCD" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="OwnerCD" inverseName="belt" inverseEntity="OwnerCD" syncable="YES"/>
+    </entity>
+    <entity name="BeltPromotionAttendanceCriteriaCD" representedClassName="BeltPromotionAttendanceCriteriaCD" syncable="YES" codeGenerationType="class">
+        <attribute name="nextBelt" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="stripe1" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="stripe2" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="stripe3" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="stripe4" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="stripe5" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="stripe6" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="stripe7" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="stripe8" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="stripe9" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="stripe10" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="stripe11" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="belt" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BeltCD" inverseName="beltPromotionAttendanceCriteria" inverseEntity="BeltCD" syncable="YES"/>
     </entity>
     <entity name="BeltPromotionCD" representedClassName="BeltPromotionCD" syncable="YES" codeGenerationType="class">
         <attribute name="beltLevel" optional="YES" attributeType="String" syncable="YES"/>
@@ -261,7 +275,7 @@
     <elements>
         <element name="AddressCD" positionX="-747" positionY="-396" width="128" height="210"/>
         <element name="AulaAttendanceCD" positionX="-669.02734375" positionY="192.5234375" width="128" height="120"/>
-        <element name="AulaCD" positionX="-733.0078125" positionY="18.625" width="128" height="270"/>
+        <element name="AulaCD" positionX="-733.0078125" positionY="18.625" width="128" height="255"/>
         <element name="AulaDaysOfTheWeekCD" positionX="-952.91015625" positionY="9.2734375" width="128" height="165"/>
         <element name="BeltCD" positionX="-193.765625" positionY="-356.95703125" width="128" height="225"/>
         <element name="BeltPromotionCD" positionX="-747" positionY="-396" width="128" height="135"/>
@@ -278,5 +292,6 @@
         <element name="StudentAdultCD" positionX="-2.69921875" positionY="-545.51953125" width="128" height="405"/>
         <element name="StudentKidCD" positionX="8.1484375" positionY="-179.87890625" width="128" height="390"/>
         <element name="StudentStatusCD" positionX="31.05078125" positionY="-322.66796875" width="128" height="135"/>
+        <element name="BeltPromotionAttendanceCriteriaCD" positionX="-747" positionY="-396" width="128" height="240"/>
     </elements>
 </model>

@@ -15,16 +15,17 @@ extension BeltCD {
     // convenience initializer to allow creation of a BeltCD object via Academia CoreDataStack's managedObjectContext
     convenience init(beltUUID: UUID,
                      active: Bool,
-                     elligibleForNextBelt: Bool,
+                     elligibleForNextBelt: Bool = false,
                      dateCreated: Date,
                      dateEdited: Date,
                      beltLevel: String,
-                     beltStripeAgeDetails: BeltStripeAgeDetailsCD,
-                     classesToNextPromotion: Int16,
-                     numberOfStripes: Int16,
-                     adultStudentCD: StudentAdultCD,
-                     kidStudentCD: StudentKidCD,
-                     ownerCD: OwnerCD,
+                     beltPromotionAttendanceCriteria: BeltPromotionAttendanceCriteriaCD?,
+                     beltStripeAgeDetails: BeltStripeAgeDetailsCD?,
+                     classesToNextPromotion: Int16?,
+                     numberOfStripes: Int16?,
+                     adultStudentCD: StudentAdultCD?,
+                     kidStudentCD: StudentKidCD?,
+                     ownerCD: OwnerCD?,
                      context: NSManagedObjectContext = CoreDataStack.context) {
         
         self.init(context: context)
@@ -35,8 +36,8 @@ extension BeltCD {
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
         self.beltLevel = beltLevel
+        self.beltPromotionAttendanceCriteria = beltPromotionAttendanceCriteria
         self.beltStripeAgeDetails = beltStripeAgeDetails
-        self.classesToNextPromotion = classesToNextPromotion
         self.adultStudentCD = adultStudentCD
         self.kidStudentCD = kidStudentCD
         self.ownerCD = ownerCD

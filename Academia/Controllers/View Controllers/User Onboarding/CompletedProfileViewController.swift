@@ -68,6 +68,11 @@ class CompletedProfileViewController: UIViewController {
     @IBOutlet weak var emergencyContactRelationshipLabelOutlet: UILabel!
     @IBOutlet weak var emergencyContactPhoneLabelOutlet: UILabel!
     
+    // CoreData Properties
+    var owner: OwnerCD?
+    var studentAdult: StudentAdultCD?
+    var studentKid: StudentKidCD?
+    
     
     // MARK: - ViewController Lifecycle Functions
     

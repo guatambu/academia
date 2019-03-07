@@ -13,7 +13,7 @@ import CoreData
 extension AulaAttendanceCD {
     
     // convenience initializer to allow creation of a AttendanceCD object via Academia CoreDataStack's managedObjectContext
-    convenience init(currentDate: Date?,
+    convenience init(currentDate: Date = Date(),
                      studentAdultAttendance: StudentAdultCD?,
                      studentKidAttendance: StudentKidCD?,
                      ownerAttendance: OwnerCD?,

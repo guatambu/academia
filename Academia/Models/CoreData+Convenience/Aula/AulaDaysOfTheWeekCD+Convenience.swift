@@ -13,13 +13,13 @@ import CoreData
 extension AulaDaysOfTheWeekCD {
     
     // convenience initializer to allow creation of a DaysOfTheWeekCD object via Academia CoreDataStack's managedObjectContext
-    convenience init(sunday: String,
-                     monday: String,
-                     tuesday: String,
-                     wednesday: String,
-                     thursday: String,
-                     friday: String,
-                     saturday: String,
+    convenience init(sunday: String = ClassTimeComponents.Weekdays.Sunday.rawValue,
+                     monday: String = ClassTimeComponents.Weekdays.Monday.rawValue,
+                     tuesday: String = ClassTimeComponents.Weekdays.Tuesday.rawValue,
+                     wednesday: String = ClassTimeComponents.Weekdays.Wednesday.rawValue,
+                     thursday: String = ClassTimeComponents.Weekdays.Thursday.rawValue,
+                     friday: String = ClassTimeComponents.Weekdays.Friday.rawValue,
+                     saturday: String = ClassTimeComponents.Weekdays.Saturday.rawValue,
                      aula: AulaCD,
                      context: NSManagedObjectContext = CoreDataStack.context) {
         

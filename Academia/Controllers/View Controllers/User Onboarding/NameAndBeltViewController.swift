@@ -40,6 +40,11 @@ class NameAndBeltViewController: UIViewController {
     
     @IBOutlet weak var nextButtonOutlet: DesignableButton!
     
+    // CoreData Properties
+    var owner: OwnerCD?
+    var studentAdult: StudentAdultCD?
+    var studentKid: StudentKidCD?
+    
     
     // MARK: - ViewController Lifecycle Functions
     
@@ -146,6 +151,30 @@ class NameAndBeltViewController: UIViewController {
             } else {
                 updateAdultStudentInfo()
             }
+        }
+        
+        // pass CoreData belt properties
+        
+        // convert numberOfStripes to Int16
+        let stripesInt16 = Int16(exactly: numberOfStripes)
+        // pass CoreData Properties
+        if let owner = owner {
+            // initalize the BeltCD object
+            let belt = BeltCD(beltUUID: UUID(), active: true, dateCreated: Date(), dateEdited: Date(), beltLevel: beltLevel.rawValue, beltPromotionAttendanceCriteria: nil, beltStripeAgeDetails: nil, classesToNextPromotion: nil, numberOfStripes: stripesInt16, adultStudentCD: nil, kidStudentCD: nil, ownerCD: owner)
+            owner.belt = belt
+            destViewController.owner = owner
+            
+        } else if let studentAdult = studentAdult  {
+            // initalize the BeltCD object
+            let belt = BeltCD(beltUUID: UUID(), active: true, dateCreated: Date(), dateEdited: Date(), beltLevel: beltLevel.rawValue, beltPromotionAttendanceCriteria: nil, beltStripeAgeDetails: nil, classesToNextPromotion: nil, numberOfStripes: stripesInt16, adultStudentCD: studentAdult, kidStudentCD: nil, ownerCD: nil)
+            studentAdult.belt = belt
+            destViewController.studentAdult = studentAdult
+            
+        } else if let studentKid = studentKid  {
+            // initalize the BeltCD object
+            let belt = BeltCD(beltUUID: UUID(), active: true, dateCreated: Date(), dateEdited: Date(), beltLevel: beltLevel.rawValue, beltPromotionAttendanceCriteria: nil, beltStripeAgeDetails: nil, classesToNextPromotion: nil, numberOfStripes: stripesInt16, adultStudentCD: nil, kidStudentCD: studentKid, ownerCD: nil)
+            studentKid.belt = belt
+            destViewController.studentKid = studentKid
         }
     }
 }
@@ -434,16 +463,37 @@ extension NameAndBeltViewController {
     func updateOwnerInfo() {
         guard let owner = userToEdit as? Owner else { return }
         BeltModelController.shared.update(belt: owner.belt, active: nil, elligibleForNextBelt: nil, classesToNextPromotion: nil, beltLevel: beltLevel, numberOfStripes: numberOfStripes)
+        
+        // CoreData Belt property update
+        guard let ownerCD = userToEdit as? OwnerCD else { return }
+        guard let belt = ownerCD.belt else { return }
+        let stripesInt16 = Int16(exactly: numberOfStripes)
+        
+        BeltCDModelController.shared.update(belt: belt, active: nil, elligibleForNextBelt: nil, beltLevel: beltLevel.rawValue, numberOfStripes: stripesInt16)
     }
     
     func updateKidStudentInfo() {
         guard let kidStudent = userToEdit as? KidStudent else { return }
         BeltModelController.shared.update(belt: kidStudent.belt, active: nil, elligibleForNextBelt: nil, classesToNextPromotion: nil, beltLevel: beltLevel, numberOfStripes: numberOfStripes)
+        
+        // CoreData Belt property update
+        guard let studentKidCD = userToEdit as? StudentKidCD else { return }
+        guard let belt = studentKidCD.belt else { return }
+        let stripesInt16 = Int16(exactly: numberOfStripes)
+        
+        BeltCDModelController.shared.update(belt: belt, active: nil, elligibleForNextBelt: nil, beltLevel: beltLevel.rawValue, numberOfStripes: stripesInt16)
     }
     
     func updateAdultStudentInfo() {
         guard let adultStudent = userToEdit as? AdultStudent else { return }
         BeltModelController.shared.update(belt: adultStudent.belt, active: nil, elligibleForNextBelt: nil, classesToNextPromotion: nil, beltLevel: beltLevel, numberOfStripes: numberOfStripes)
+        
+        // CoreData Belt property update
+        guard let studentAdultCD = userToEdit as? StudentAdultCD else { return }
+        guard let belt = studentAdultCD.belt else { return }
+        let stripesInt16 = Int16(exactly: numberOfStripes)
+        
+        BeltCDModelController.shared.update(belt: belt, active: nil, elligibleForNextBelt: nil, beltLevel: beltLevel.rawValue, numberOfStripes: stripesInt16)
     }
     
     func enterEditingMode(inEditingMode: Bool?) {

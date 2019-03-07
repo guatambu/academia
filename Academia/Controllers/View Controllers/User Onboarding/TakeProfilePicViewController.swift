@@ -37,6 +37,11 @@ class TakeProfilePicViewController: UIViewController {
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var parentGuardianTextField: UITextField!
     
+    // CoreData Properties
+    var owner: OwnerCD?
+    var studentAdult: StudentAdultCD?
+    var studentKid: StudentKidCD?
+    
     
     // MARK: - ViewController Lifecycle Functions
     
@@ -287,7 +292,36 @@ class TakeProfilePicViewController: UIViewController {
         // reset textfield placeholder text color to gray upon succesful save
         firstNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.firstName.rawValue, attributes: beltBuilder.avenirFont)
         lastNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.lastName.rawValue, attributes: beltBuilder.avenirFont)
-
+        
+        
+        // pass CoreData name etc., profilePic properties
+        // convert profilePic to Data
+        
+        if let profilePicData = profilePicImageViewOutlet.image?.jpegData(compressionQuality: 1) {
+            
+            // pass CoreData Properties
+            if let owner = owner {
+                
+                owner.firstName = firstNameTextField.text
+                owner.lastName = lastNameTextField.text
+                owner.profilePic = profilePicData
+                destViewController.owner = owner
+                
+            } else if let studentAdult = studentAdult  {
+                
+                studentAdult.firstName = firstNameTextField.text
+                studentAdult.lastName = lastNameTextField.text
+                studentAdult.profilePic = profilePicData
+                destViewController.studentAdult = studentAdult
+                
+            } else if let studentKid = studentKid  {
+                
+                studentKid.firstName = firstNameTextField.text
+                studentKid.lastName = lastNameTextField.text
+                studentKid.profilePic = profilePicData
+                destViewController.studentKid = studentKid
+            }
+        }
     }
 }
 
@@ -302,6 +336,16 @@ extension TakeProfilePicViewController {
         if firstNameTextField.text != "" && lastNameTextField.text != "" && profilePicImageViewOutlet.image != UIImage(contentsOfFile: "user_placeholder") {
             OwnerModelController.shared.updateProfileInfo(owner: owner, isInstructor: nil, birthdate: nil, groups: nil, belt: nil, profilePic: profilePicImageViewOutlet.image, username: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
             print("update owner name: \(OwnerModelController.shared.owners[0].firstName) \(OwnerModelController.shared.owners[0].lastName)")
+            
+            // CoreData Owner update profile info
+            guard let ownerCD = userToEdit as? OwnerCD else { return }
+            
+            // convert profilePic to Data
+            let profilePic = profilePicImageViewOutlet.image
+            if let profilePicData = profilePic?.jpegData(compressionQuality: 1) {
+                
+                OwnerCDModelController.shared.update(owner: ownerCD, isInstructor: nil, birthdate: nil, mostRecentPromotion: nil, belt: nil, profilePic: profilePicData, username: nil, password: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: nil, phone: nil, mobile: nil, email: nil, emergencyContact: nil)
+            }
         }
     }
     
@@ -311,6 +355,16 @@ extension TakeProfilePicViewController {
         if firstNameTextField.text != "" && lastNameTextField.text != "" && parentGuardianTextField.text != "" && profilePicImageViewOutlet.image != UIImage(contentsOfFile: "user_placeholder") {
             KidStudentModelController.shared.updateProfileInfo(kidStudent: kidStudent, birthdate: nil, groups: nil, belt: nil, profilePic: profilePicImageViewOutlet.image, username: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, parentGuardian: parentGuardianTextField.text, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
         }
+        
+        // CoreData Owner update profile info
+        guard let studentKidCD = userToEdit as? StudentKidCD else { return }
+        
+        // convert profilePic to Data
+        let profilePic = profilePicImageViewOutlet.image
+        if let profilePicData = profilePic?.jpegData(compressionQuality: 1) {
+            
+            StudentKidCDModelController.shared.update(studentKid: studentKidCD, birthdate: nil, mostRecentPromotion: nil, studentStatus: nil, belt: nil, profilePic: profilePicData, username: nil, password: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, parentGuardian: parentGuardianTextField.text, address: nil, phone: nil, mobile: nil, email: nil, emergencyContact: nil)
+        }
     }
     
     func updateAdultStudentInfo() {
@@ -319,6 +373,16 @@ extension TakeProfilePicViewController {
         // adultStudent update profile info
         if firstNameTextField.text != "" && lastNameTextField.text != "" && profilePicImageViewOutlet.image != UIImage(contentsOfFile: "user_placeholder") {
             AdultStudentModelController.shared.updateProfileInfo(adultStudent: adultStudent, birthdate: nil, groups: nil, belt: nil, profilePic: profilePicImageViewOutlet.image, username: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+        }
+        
+        // CoreData Owner update profile info
+        guard let studentAdultCD = userToEdit as? StudentAdultCD else { return }
+        
+        // convert profilePic to Data
+        let profilePic = profilePicImageViewOutlet.image
+        if let profilePicData = profilePic?.jpegData(compressionQuality: 1) {
+            
+            StudentAdultCDModelController.shared.update(studentAdult: studentAdultCD, isInstructor: nil, birthdate: nil, mostRecentPromotion: nil, studentStatus: nil, belt: nil, profilePic: profilePicData, username: nil, password: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: nil, phone: nil, mobile: nil, email: nil, emergencyContact: nil)
         }
     }
     
@@ -544,5 +608,14 @@ extension TakeProfilePicViewController: UITextFieldDelegate {
             print("Done button tapped")
         }
         return true
+    }
+}
+
+// MARK: Data to UIImageextension
+
+// To convert back to Image from Data you just need to use UIImage(data:) initializer:
+extension Data {
+    var uiImage: UIImage? {
+        return UIImage(data: self)
     }
 }

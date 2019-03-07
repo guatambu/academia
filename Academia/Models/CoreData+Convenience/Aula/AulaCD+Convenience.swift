@@ -15,8 +15,7 @@ extension AulaCD {
     // convenience initializer to allow creation of a AulaCD object via Academia CoreDataStack's managedObjectContext
     convenience init(aulaUUID: UUID,
                      active: Bool,
-                     currentDate: Data,
-                     dateCreated: Date,
+                     dateCreated: Date = Date(),
                      dateEdited: Date,
                      aulaName: String,
                      aulaDescription: String,

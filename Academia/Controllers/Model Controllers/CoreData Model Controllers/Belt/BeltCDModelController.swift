@@ -48,23 +48,22 @@ class BeltCDModelController {
     // MARK: - Update
     func update(belt: BeltCD,
                 active: Bool?,
-                elligibleForNextBelt: Bool?, classesToNextPromotion: Int16?, beltLevel: InternationalStandardBJJBelts, numberOfStripes: Int16) {
+                elligibleForNextBelt: Bool?, beltLevel: String?, numberOfStripes: Int16?) {
         
         belt.dateEdited = Date()
         
         if let active = active {
             belt.active = active
-            
-        } else if let elligibleForNextBelt = elligibleForNextBelt {
-            belt.elligibleForNextBelt = elligibleForNextBelt
-            
-        } else if let classesToNextPromotion = classesToNextPromotion {
-            belt.classesToNextPromotion = classesToNextPromotion
-            
         }
-        
-        belt.beltLevel = beltLevel.rawValue
-        belt.numberOfStripes = numberOfStripes
+        if let elligibleForNextBelt = elligibleForNextBelt {
+            belt.elligibleForNextBelt = elligibleForNextBelt
+        }
+        if let beltLevel = beltLevel {
+            belt.beltLevel = beltLevel
+        }
+        if let numberOfStripes = numberOfStripes {
+            belt.numberOfStripes = numberOfStripes
+        }
         
         OwnerCDModelController.shared.saveToPersistentStorage()
     }
