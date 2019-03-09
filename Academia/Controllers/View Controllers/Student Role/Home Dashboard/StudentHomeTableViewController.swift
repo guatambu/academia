@@ -22,6 +22,7 @@ class StudentHomeTableViewController: UITableViewController {
     var adultStudent: AdultStudent?
     var kidStudent: KidStudent?
     var isKid: Bool?
+    var uuid: UUID?
     
     
     // MARK: - ViewController Lifecycle Functions

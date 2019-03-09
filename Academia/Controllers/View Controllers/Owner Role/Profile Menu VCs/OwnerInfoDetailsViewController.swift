@@ -12,6 +12,7 @@ class OwnerInfoDetailsViewController: UIViewController {
     
     // MARK: - Properties
     
+    // create and owner computed property that goes to CoreData and the request predicate pulls the owner that isLoggedOn == true amd also matches the UUID of the current user... so we can pass that through the VC scenes to here
     let beltBuilder = BeltBuilder()
     
     // username outlet

@@ -155,6 +155,7 @@
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isInstructor" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isLoggedOn" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mobile" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mostRecentPromotion" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -221,6 +222,7 @@
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isInstructor" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isLoggedOn" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mobile" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mostRecentPromotion" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -245,6 +247,7 @@
         <attribute name="dateEdited" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isLoggedOn" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="kidStudentUUID" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mobile" optional="YES" attributeType="String" syncable="YES"/>
@@ -278,20 +281,20 @@
         <element name="AulaCD" positionX="-733.0078125" positionY="18.625" width="128" height="255"/>
         <element name="AulaDaysOfTheWeekCD" positionX="-952.91015625" positionY="9.2734375" width="128" height="165"/>
         <element name="BeltCD" positionX="-193.765625" positionY="-356.95703125" width="128" height="225"/>
+        <element name="BeltPromotionAttendanceCriteriaCD" positionX="-747" positionY="-396" width="128" height="240"/>
         <element name="BeltPromotionCD" positionX="-747" positionY="-396" width="128" height="135"/>
         <element name="BeltStripeAgeDetailsCD" positionX="-738" positionY="-387" width="128" height="285"/>
         <element name="EmergencyContactCD" positionX="-729" positionY="-378" width="128" height="165"/>
         <element name="GroupCD" positionX="-803.0234375" positionY="-194.1015625" width="128" height="225"/>
         <element name="LocationCD" positionX="-949.203125" positionY="168.14453125" width="128" height="240"/>
         <element name="LocationSocialLinksCD" positionX="-720" positionY="-369" width="128" height="135"/>
-        <element name="OwnerCD" positionX="-494.6796875" positionY="-356.46484375" width="128" height="375"/>
+        <element name="OwnerCD" positionX="-494.6796875" positionY="-356.46484375" width="128" height="390"/>
         <element name="PaymentBillingDateCD" positionX="551.6640625" positionY="-347.15625" width="128" height="150"/>
         <element name="PaymentBillingSignatureCD" positionX="550.7109375" positionY="-264.40234375" width="128" height="165"/>
         <element name="PaymentBillingTypeCD" positionX="554.09375" positionY="-169.73046875" width="128" height="135"/>
         <element name="PaymentProgramCD" positionX="310.90234375" positionY="-291.76953125" width="128" height="225"/>
-        <element name="StudentAdultCD" positionX="-2.69921875" positionY="-545.51953125" width="128" height="405"/>
-        <element name="StudentKidCD" positionX="8.1484375" positionY="-179.87890625" width="128" height="390"/>
+        <element name="StudentAdultCD" positionX="-2.69921875" positionY="-545.51953125" width="128" height="420"/>
+        <element name="StudentKidCD" positionX="8.1484375" positionY="-179.87890625" width="128" height="405"/>
         <element name="StudentStatusCD" positionX="31.05078125" positionY="-322.66796875" width="128" height="135"/>
-        <element name="BeltPromotionAttendanceCriteriaCD" positionX="-747" positionY="-396" width="128" height="240"/>
     </elements>
 </model>

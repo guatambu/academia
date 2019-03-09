@@ -12,6 +12,8 @@ class OwnerProfileTableViewController: UITableViewController {
     
     // MARK: - Properties
     
+    var uuid: UUID?
+    
     
     // MARK: - ViewController Lifecycle Functions
     

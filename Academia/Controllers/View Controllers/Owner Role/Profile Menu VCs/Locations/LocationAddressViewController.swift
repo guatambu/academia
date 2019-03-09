@@ -35,6 +35,9 @@ class LocationAddressViewController: UIViewController, UITextInputTraits{
     @IBOutlet weak var stateTextField: UITextField!
     @IBOutlet weak var zipCodeTextField: UITextField!
     
+    // CoreData properties
+    var location: LocationCD?
+    
     
     // MARK: - ViewController Lifecycle Functions
     
@@ -281,10 +284,10 @@ class LocationAddressViewController: UIViewController, UITextInputTraits{
         navigationController?.navigationBar.shadowImage = UIImage()
         
         // required fields
-        let addressLine1 = addressLine1TextField.text
-        let city = cityTextField.text
-        let state = stateTextField.text
-        let zipCode = zipCodeTextField.text
+        guard let addressLine1 = addressLine1TextField.text else { return }
+        guard let city = cityTextField.text else { return }
+        guard let state = stateTextField.text else { return }
+        guard let zipCode = zipCodeTextField.text else { return }
         
         // not required field
         let addressLine2 = addressLine2TextField.text
@@ -301,6 +304,15 @@ class LocationAddressViewController: UIViewController, UITextInputTraits{
         
         destViewController.inEditingMode = inEditingMode
         destViewController.locationToEdit = locationToEdit
+        
+        // MARK: - CoreData implementaiton
+        // create address object in CoreData
+        let address = AddressCD(addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode)
+        // pass CoreData Properties
+        if let location = location {
+            location.address = address
+            destViewController.location = location
+        }
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
         updateLocationInfo()

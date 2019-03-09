@@ -73,6 +73,7 @@ class CompletedProfileViewController: UIViewController {
     var owner: OwnerCD?
     var studentAdult: StudentAdultCD?
     var studentKid: StudentKidCD?
+    var uuid: UUID?
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -82,13 +83,42 @@ class CompletedProfileViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         
-        populateCompletedProfileInfo(isOwner: isOwner, isKid: isKid, username: username, password: password, firstName: firstName, lastName: lastName, profilePic: profilePic, birthdate: birthdate, beltLevel: beltLevel, numberOfStripes: numberOfStripes, parentGuardian: parentGuardian, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, phone: phone, mobile: mobile, email: email, emergencyContactName: emergencyContactName, emergencyContactPhone: emergencyContactPhone, emergencyContactRelationship: emergencyContactRelationship)
+//        populateCompletedProfileInfo(isOwner: isOwner, isKid: isKid, username: username, password: password, firstName: firstName, lastName: lastName, profilePic: profilePic, birthdate: birthdate, beltLevel: beltLevel, numberOfStripes: numberOfStripes, parentGuardian: parentGuardian, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, phone: phone, mobile: mobile, email: email, emergencyContactName: emergencyContactName, emergencyContactPhone: emergencyContactPhone, emergencyContactRelationship: emergencyContactRelationship)
+        
+        if let owner = owner {
+            
+            if let profilePicData = owner.profilePic {
+                
+                let profilePic = UIImage(data: profilePicData)
+                
+                populateCompletedProfileInfo(username: owner.username, firstName: owner.firstName, lastName: owner.lastName, profilePic: profilePic, birthdate: owner.birthdate, beltLevel: owner.belt?.beltLevel, numberOfStripes: owner.belt?.numberOfStripes, parentGuardian: nil, addressLine1: owner.address?.addressLine1, addressLine2: owner.address?.addressLine2, city: owner.address?.city, state: owner.address?.state, zipCode: owner.address?.zipCode, phone: owner.phone, mobile: owner.mobile, email: owner.email, emergencyContactName: owner.emergencyContact?.name, emergencyContactPhone: owner.emergencyContact?.phone, emergencyContactRelationship: owner.emergencyContact?.relationship)
+            }
+            
+        } else if let studentAdult = studentAdult {
+            
+            if let profilePicData = studentAdult.profilePic {
+                
+                let profilePic = UIImage(data: profilePicData)
+                
+                populateCompletedProfileInfo(username: studentAdult.username, firstName: studentAdult.firstName, lastName: studentAdult.lastName, profilePic: profilePic, birthdate: studentAdult.birthdate, beltLevel: studentAdult.belt?.beltLevel, numberOfStripes: studentAdult.belt?.numberOfStripes, parentGuardian: nil, addressLine1: studentAdult.address?.addressLine1, addressLine2: studentAdult.address?.addressLine2, city: studentAdult.address?.city, state: studentAdult.address?.state, zipCode: studentAdult.address?.zipCode, phone: studentAdult.phone, mobile: studentAdult.mobile, email: studentAdult.email, emergencyContactName: studentAdult.emergencyContact?.name, emergencyContactPhone: studentAdult.emergencyContact?.phone, emergencyContactRelationship: studentAdult.emergencyContact?.relationship)
+            }
+            
+        } else if let studentKid = studentKid {
+            
+            if let profilePicData = studentKid.profilePic {
+                
+                let profilePic = UIImage(data: profilePicData)
+                
+                populateCompletedProfileInfo(username: studentKid.username, firstName: studentKid.firstName, lastName: studentKid.lastName, profilePic: profilePic, birthdate: studentKid.birthdate, beltLevel: studentKid.belt?.beltLevel, numberOfStripes: studentKid.belt?.numberOfStripes, parentGuardian: studentKid.parentGuardian, addressLine1: studentKid.address?.addressLine1, addressLine2: studentKid.address?.addressLine2, city: studentKid.address?.city, state: studentKid.address?.state, zipCode: studentKid.address?.zipCode, phone: studentKid.phone, mobile: studentKid.mobile, email: studentKid.email, emergencyContactName: studentKid.emergencyContact?.name, emergencyContactPhone: studentKid.emergencyContact?.phone, emergencyContactRelationship: studentKid.emergencyContact?.relationship)
+            }
+        }
         
         // set VC title font styling
         navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
         
         if OwnerCDModelController.shared.owners.count > 1 {
             checkIfMoreThanOneOwnerAccountAllowedByOwner()
+            print("owners count: \(OwnerCDModelController.shared.owners.count)")
         } 
     
     }
@@ -117,6 +147,14 @@ class CompletedProfileViewController: UIViewController {
             // create the UITabBarController segue programmatically - MODAL
             if let tabBarDestViewController = (mainView.instantiateViewController(withIdentifier: "toOwnerBaseCamp") as? UITabBarController) {
                 self.present(tabBarDestViewController, animated: true, completion: nil)
+                // instantiate destination ViewController same as above tabBarDestViewController
+                let destinationViewController = mainView.instantiateViewController(withIdentifier: "toOwnerBaseCamo") as! OwnerHomeTableViewController
+                // pass UUID value through
+                destinationViewController.uuid = uuid
+                // set owner isLoggedOn property
+                owner?.isLoggedOn = true
+                // exit funciton
+                return
             }
             
         } else if isOwner == false {
@@ -130,7 +168,19 @@ class CompletedProfileViewController: UIViewController {
                 if let tabBarDestViewController = (mainView.instantiateViewController(withIdentifier: "toStudentDashbooard") as? UITabBarController) {
                     self.present(tabBarDestViewController, animated: true, completion: nil)
                 }
-                
+                // instantiate destination ViewController same as above tabBarDestViewController
+                let destinationViewController = mainView.instantiateViewController(withIdentifier: "toStudentDashbooard") as! StudentHomeTableViewController
+                // pass UUID value through
+                destinationViewController.uuid = uuid
+                // set student isLoggedOn property
+                if let studentAdult = studentAdult {
+                    
+                    studentAdult.isLoggedOn = true
+                    
+                } else if let studentKid = studentKid {
+                    studentKid.isLoggedOn = true
+                }
+                // exit function
                 return
             }
             
@@ -189,16 +239,13 @@ extension CompletedProfileViewController {
 //MARK: - populate CompletedProfileVC with user info for display at viewDidLoad()
 extension CompletedProfileViewController {
     
-    func populateCompletedProfileInfo(isOwner: Bool?,
-                                      isKid: Bool?,
-                                      username: String?,
-                                      password: String?,
+    func populateCompletedProfileInfo(username: String?,
                                       firstName: String?,
                                       lastName: String?,
                                       profilePic: UIImage?,
                                       birthdate: Date?,
-                                      beltLevel: InternationalStandardBJJBelts?,
-                                      numberOfStripes: Int?,
+                                      beltLevel: String?,
+                                      numberOfStripes: Int16?,
                                       parentGuardian: String?,
                                       addressLine1: String?,
                                       addressLine2: String?,
@@ -212,8 +259,6 @@ extension CompletedProfileViewController {
                                       emergencyContactPhone: String?,
                                       emergencyContactRelationship: String?) {
         
-        guard let isOwner = isOwner else { print("fail isOwner"); return }
-        guard let isKid = isKid else { print("fail isKid"); return }
         guard let profilePic = profilePic else { print("fail profilePic"); return }
         guard let username = username else { print("fail username"); return }
         guard let password = password else { print("fail password"); return }
@@ -234,7 +279,7 @@ extension CompletedProfileViewController {
         
         
         // print to console for developer verification
-        print("isOwner: \(isOwner) \nisKid: \(isKid) \nusername: \(username) \npassword: \(password) \nfirstName: \(firstName) \nlastName: \(lastName) \nbirthdate: \(birthdate) \nbeltLevel: \(beltLevel.rawValue) \nnumberOfStripes: \(numberOfStripes) \naddressLine1: \(addressLine1) \naddressLine2: \(String(describing: addressLine2)) \ncity: \(city) \nstate: \(state) \nzipCode: \(zipCode) \nphone: \(phone) \nmobile: \(String(describing: mobile)) \nemail: \(email) \nemergencyContactName: \(emergencyContactName) \nemergencyContactRelationship: \(emergencyContactRelationship) \nemergencyContactPhone: \(emergencyContactPhone) \nparentGuardian: \(String(describing: parentGuardian))")
+        print("username: \(username) \npassword: \(password) \nfirstName: \(firstName) \nlastName: \(lastName) \nbirthdate: \(birthdate) \nbeltLevel: \(beltLevel) \nnumberOfStripes: \(numberOfStripes) \naddressLine1: \(addressLine1) \naddressLine2: \(String(describing: addressLine2)) \ncity: \(city) \nstate: \(state) \nzipCode: \(zipCode) \nphone: \(phone) \nmobile: \(String(describing: mobile)) \nemail: \(email) \nemergencyContactName: \(emergencyContactName) \nemergencyContactRelationship: \(emergencyContactRelationship) \nemergencyContactPhone: \(emergencyContactPhone) \nparentGuardian: \(String(describing: parentGuardian))")
         
         // populate UI elements in VC
         title = "Please Review Your Info"
@@ -265,7 +310,83 @@ extension CompletedProfileViewController {
         formatBirthdate(birthdate: birthdate)
         
         // belt holder UIView
-        beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: numberOfStripes)
+        
+        // convert Int16 to Int
+        let stripesInt = Int(exactly: numberOfStripes)
+        guard let stripes = stripesInt else { return }
+        
+        switch beltLevel {
+            
+        // ADULTS
+        case InternationalStandardBJJBelts.adultWhiteBelt.rawValue:
+            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .adultWhiteBelt, numberOfStripes: stripes)
+            
+        case InternationalStandardBJJBelts.adultBlueBelt.rawValue:
+            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .adultBlueBelt, numberOfStripes: stripes)
+            
+        case InternationalStandardBJJBelts.adultPurpleBelt.rawValue:
+            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .adultPurpleBelt, numberOfStripes: stripes)
+            
+        case InternationalStandardBJJBelts.adultBrownBelt.rawValue:
+            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .adultBrownBelt, numberOfStripes: stripes)
+            
+        case InternationalStandardBJJBelts.adultBlackBelt.rawValue:
+            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .adultBlackBelt, numberOfStripes: stripes)
+            
+        case InternationalStandardBJJBelts.adultRedBlackBelt.rawValue:
+            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .adultRedBlackBelt, numberOfStripes: stripes)
+            
+        case InternationalStandardBJJBelts.adultRedWhiteBelt.rawValue:
+            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .adultRedWhiteBelt, numberOfStripes: stripes)
+            
+        case InternationalStandardBJJBelts.adultRedBelt.rawValue:
+            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .adultRedBelt, numberOfStripes: stripes)
+            
+        // KIDS
+        case InternationalStandardBJJBelts.kidsWhiteBelt.rawValue:
+            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .kidsWhiteBelt, numberOfStripes: stripes)
+            
+        case InternationalStandardBJJBelts.kidsGreyWhiteBelt.rawValue:
+            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .kidsGreyWhiteBelt, numberOfStripes: stripes)
+            
+        case InternationalStandardBJJBelts.kidsGreyBelt.rawValue:
+            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .kidsGreyBelt, numberOfStripes: stripes)
+            
+        case InternationalStandardBJJBelts.kidsGreyBlackBelt.rawValue:
+            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .kidsGreyBlackBelt, numberOfStripes: stripes)
+            
+        case InternationalStandardBJJBelts.kidsYellowWhiteBelt.rawValue:
+            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .kidsYellowWhiteBelt, numberOfStripes: stripes)
+            
+        case InternationalStandardBJJBelts.kidsYellowBelt.rawValue:
+            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .kidsYellowBelt, numberOfStripes: stripes)
+            
+        case InternationalStandardBJJBelts.kidsYellowBlackBelt.rawValue:
+            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .kidsYellowBlackBelt, numberOfStripes: stripes)
+            
+        case InternationalStandardBJJBelts.kidsOrangeWhiteBelt.rawValue:
+            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .kidsOrangeWhiteBelt, numberOfStripes: stripes)
+            
+        case InternationalStandardBJJBelts.kidsOrangeBelt.rawValue:
+            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .kidsOrangeBelt, numberOfStripes: stripes)
+            
+        case InternationalStandardBJJBelts.kidsOrangeBlackBelt.rawValue:
+            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .kidsOrangeBlackBelt, numberOfStripes: stripes)
+            
+        case InternationalStandardBJJBelts.kidsGreenWhiteBelt.rawValue:
+            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .kidsGreenWhiteBelt, numberOfStripes: stripes)
+            
+        case InternationalStandardBJJBelts.kidsGreenBelt.rawValue:
+            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .kidsGreenBelt, numberOfStripes: stripes)
+            
+        case InternationalStandardBJJBelts.kidsGreyBlackBelt.rawValue:
+            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .kidsGreenBlackBelt, numberOfStripes: stripes)
+            
+        default:
+            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .adultWhiteBelt, numberOfStripes: stripes)
+        }
+        // this is set up below to directly accept a value from InternationalStandarBJJBelts
+//        beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: numberOfStripes)
     }
 }
 

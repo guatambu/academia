@@ -15,9 +15,11 @@ class LandingPageViewController: UIViewController {
     
     let beltBuilder = BeltBuilder()
     
+    @IBOutlet weak var letsGoButtonOutlet: DesignableButton!
+    
     
     // MARK: ViewController Lifecycle Functions
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,35 +41,66 @@ class LandingPageViewController: UIViewController {
             index += 1
         }
         
-//        OwnerCDModelController.shared.remove(owner: OwnerCDModelController.shared.owners[0])
         
         print("***** CoreData Persistence Check - begin - *****")
         print("")
+        print("owners count: \(OwnerCDModelController.shared.owners.count)")
+        print("")
+        
         if !OwnerCDModelController.shared.owners.isEmpty {
+            
+            
             for owner in OwnerCDModelController.shared.owners {
+                
+                // OwnerCDModelController.shared.remove(owner: owner)
+                
+                
+                print("owner.username = \(owner.username ?? "owner object present but has no first name :'{ ")")
+                print("owner.password = \(owner.password ?? "owner object present but has no first name :'{ ")")
                 print("")
                 print("owner.firstName = \(owner.firstName ?? "owner object present but has no first name :'{ ")")
                 print("")
                 print("owner.address.addressLine1 = \(owner.address?.addressLine1 ?? "owner address object present but has no addressLine1 :'{ ")")
                 print("")
                 print("owner.belt.beltLevel = \(owner.belt?.beltLevel ?? "owner belt object present but has no beltLevel :'{ ")")
+                
+                print("")
+                print("***** CoreData Persistence Check - end - *****")
+                
             }
+            
         } else {
             print("Nothing found in OwnerCDModelController.shared.owners... Persistence fail?")
+            
+            print("")
+            print("***** CoreData Persistence Check - end - *****")
         }
-        print("")
-        print("***** CoreData Persistence Check - end - *****")
     }
 
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // MARK: - Actions
+    
+    @IBAction func letsGoButtonTapped(_ sender: DesignableButton) {
+        
+        // programmatically performing the segue
+    
+        // instantiate the relevant storyboard
+        let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        // instantiate the desired TableViewController as ViewController on relevant storyboard
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toNewUserLogin") as! NewUserLoginViewController
+        // create the segue programmatically - PUSH
+        self.navigationController?.pushViewController(destViewController, animated: true)
+        
+        // set the desired properties of the destinationVC's navgation Item
+        let backButtonItem = UIBarButtonItem()
+        backButtonItem.title = " "
+        navigationItem.backBarButtonItem = backButtonItem
+        // set nav bar controller appearance
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
     }
-    */
+    
 
 }

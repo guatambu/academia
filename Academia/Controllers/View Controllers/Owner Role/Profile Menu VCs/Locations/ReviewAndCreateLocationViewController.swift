@@ -49,6 +49,9 @@ class ReviewAndCreateLocationViewController: UIViewController {
     
     @IBOutlet weak var createAccountButtonOutlet: DesignableButton!
     
+    // CoreData properties
+    var location: LocationCD?
+    
     
     // MARK: - ViewController Lifecycle Functions
     
@@ -93,34 +96,72 @@ extension ReviewAndCreateLocationViewController {
     
     func populateCompletedProfileInfo() {
         
-        // populate UI elements in VC
-        guard let locationName = locationName else {
-            print("in ReviewAndCreateLocationVC -> populateCompletedProfile() there is no locationName!!! - line 101")
-            return
+        if let location = location {
+            
+            if let locationPicData = location.locationPic {
+                
+                let locationPic = UIImage(data: locationPicData)
+                // profile pic imageView
+                locationPicImageView.image = locationPic
+                
+                locationNameLabelOutlet.text = location.locationName
+                // phone outlet
+                phoneLabelOutlet.text = location.phone
+                // mobile is not a required field
+                websiteLabelOutlet.text = location.website
+                emailLabelOutlet.text = location.email
+                // address outlets
+                if let address = location.address {
+                    
+                    addressLine1LabelOutlet.text = address.addressLine1
+                    // addressLine2 is not a required field
+                    if addressLine2 != "" {
+                        addressLine2LabelOutlet.text = address.addressLine2
+                    } else {
+                        addressLine2LabelOutlet.isHidden = true
+                    }
+                    cityLabelOutlet.text = address.city
+                    stateLabelOutlet.text = address.state
+                    zipCodeLabelOutlet.text = address.zipCode
+                }
+                // social media links outlets
+                if let socialLinks = location.socialLinks {
+                    
+                    socialLink1LabelOutlet.text = "Instagram: \(socialLinks.socialLink1 ?? "")"
+                    socialLink2LabelOutlet.text = "facebook: \(socialLinks.socialLink2 ?? "")"
+                    socialLink3LabelOutlet.text = "Twitter: \(socialLinks.socialLink3 ?? "")"
+                }
+            }
         }
-        locationNameLabelOutlet.text = locationName
-        // phone outlet
-        phoneLabelOutlet.text = phone
-        // mobile is not a required field
-        websiteLabelOutlet.text = website
-        emailLabelOutlet.text = email
-        // address outlets
-        addressLine1LabelOutlet.text = addressLine1
-        // addressLine2 is not a required field
-        if addressLine2 != "" {
-            addressLine2LabelOutlet.text = addressLine2
-        } else {
-            addressLine2LabelOutlet.isHidden = true
-        }
-        cityLabelOutlet.text = city
-        stateLabelOutlet.text = state
-        zipCodeLabelOutlet.text = zipCode
-        // social media links outlets
-        socialLink1LabelOutlet.text = "Instagram: \(social1 ?? "")"
-        socialLink2LabelOutlet.text = "facebook: \(social2 ?? "")"
-        socialLink3LabelOutlet.text = "Twitter: \(social3 ?? "")"
-        // profile pic imageView
-        locationPicImageView.image = locationPic
+        
+//        // populate UI elements in VC
+//        guard let locationName = locationName else {
+//            print("in ReviewAndCreateLocationVC -> populateCompletedProfile() there is no locationName!!! - line 101")
+//            return
+//        }
+//        locationNameLabelOutlet.text = locationName
+//        // phone outlet
+//        phoneLabelOutlet.text = phone
+//        // mobile is not a required field
+//        websiteLabelOutlet.text = website
+//        emailLabelOutlet.text = email
+//        // address outlets
+//        addressLine1LabelOutlet.text = addressLine1
+//        // addressLine2 is not a required field
+//        if addressLine2 != "" {
+//            addressLine2LabelOutlet.text = addressLine2
+//        } else {
+//            addressLine2LabelOutlet.isHidden = true
+//        }
+//        cityLabelOutlet.text = city
+//        stateLabelOutlet.text = state
+//        zipCodeLabelOutlet.text = zipCode
+//        // social media links outlets
+//        socialLink1LabelOutlet.text = "Instagram: \(social1 ?? "")"
+//        socialLink2LabelOutlet.text = "facebook: \(social2 ?? "")"
+//        socialLink3LabelOutlet.text = "Twitter: \(social3 ?? "")"
+//        // profile pic imageView
+//        locationPicImageView.image = locationPic
     }
 }
 

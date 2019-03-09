@@ -79,12 +79,8 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
             welcomeMessageOutlet.text = "Welcome New Student"
         }
         
-//        username = "guatambu"
-//        password = "1998Gwbic"
-        
         confirmPasswordTextField.isEnabled = true
         confirmPasswordTextField.isHidden = false
-//        confirmPasswordLabelOutlet.isHidden = false
         
         welcomeMessageOutlet.textColor = beltBuilder.blackBeltBlack
         
@@ -109,25 +105,6 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
             }
             
             return
-        }
-        
-        if isOwner {
-            welcomeMessageOutlet.text = "Welcome Owner"
-            welcomeInstructionsOutlet.text = "please login"
-//            passwordLabelOutlet.text = "password"
-            confirmPasswordTextField.isEnabled = false
-            confirmPasswordTextField.isHidden = true
-//            confirmPasswordLabelOutlet.isHidden = true
-            signUpButtonOutlet.setTitle("Login", for: UIControl.State.normal)
-            
-        } else {
-            welcomeMessageOutlet.text = "Welcome Student"
-            welcomeInstructionsOutlet.text = "please login"
-//            passwordLabelOutlet.text = "password"
-            confirmPasswordTextField.isEnabled = false
-            confirmPasswordTextField.isHidden = true
-//            confirmPasswordLabelOutlet.isHidden = true
-            signUpButtonOutlet.setTitle("Login", for: UIControl.State.normal)
         }
     }
     
@@ -275,20 +252,26 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
             destViewController.username = newUsername
             destViewController.isOwnerAddingStudent = isOwnerAddingStudent
             destViewController.group = group
+            
             // pass CoreData Properties
+            guard let newPassword = self.passwordTextField.text else { return }
+            
             if let owner = owner {
                 
                 owner.username = newUsername
+                owner.password = newPassword
                 destViewController.owner = owner
                 
             } else if let studentAdult = studentAdult  {
                 
                 studentAdult.username = newUsername
+                studentAdult.password = newPassword
                 destViewController.studentAdult = studentAdult
                 
             } else if let studentKid = studentKid  {
                 
                 studentKid.username = newUsername
+                studentKid.password = newPassword
                 destViewController.studentKid = studentKid
             }
             
@@ -306,6 +289,7 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         destViewController.password = password
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
         destViewController.group = group
+        
         // pass CoreData Properties
         if let owner = owner {
             

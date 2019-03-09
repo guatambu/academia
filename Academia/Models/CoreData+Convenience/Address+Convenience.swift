@@ -13,7 +13,7 @@ extension AddressCD {
     
     // convenience initializer to allow creation of a AddressCD object via Academia CoreDataStack's managedObjectContext
     convenience init(addressLine1: String,
-                     addressLine2: String,
+                     addressLine2: String?,
                      city: String,
                      state: String,
                      zipCode: String,

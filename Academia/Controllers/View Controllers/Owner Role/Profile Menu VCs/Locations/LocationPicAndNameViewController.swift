@@ -29,6 +29,9 @@ class LocationPicAndNameViewController: UIViewController {
     @IBOutlet weak var locationPicImageViewOutlet: UIImageView!
     @IBOutlet weak var activeSwitch: UISwitch!
     @IBOutlet weak var locationNameTextField: UITextField!
+    
+    // CoreData properties
+    var location: LocationCD?
 
     
     // MARK: - ViewController Lifecycle Functions
@@ -116,6 +119,8 @@ class LocationPicAndNameViewController: UIViewController {
             self.returnToLocationInfo()
             
             print("update location name: \(LocationModelController.shared.locations[0].locationName)")
+            
+            
         }
         
         inEditingMode = false
@@ -181,6 +186,17 @@ class LocationPicAndNameViewController: UIViewController {
         
         destViewController.inEditingMode = inEditingMode
         destViewController.locationToEdit = locationToEdit
+        
+        // MARK: - CoreData implementaiton
+        // convert profilePic to Data
+        if let locationPicData = locationPic.jpegData(compressionQuality: 1) {
+            // pass CoreData Properties
+            let location = LocationCD(context: CoreDataStack.context)
+            location.locationUUID = UUID()
+            location.locationName = locationName
+            location.locationPic = locationPicData
+            destViewController.location = location
+        }
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
         updateLocationInfo()

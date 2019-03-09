@@ -37,6 +37,8 @@
 		FA4DF330218CCA2400ECC167 /* Curriculum.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4DF32F218CCA2400ECC167 /* Curriculum.swift */; };
 		FA531C2421954E2C00AE2C38 /* Belt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA531C2321954E2C00AE2C38 /* Belt.swift */; };
 		FA531C26219630E700AE2C38 /* BeltBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA531C25219630E700AE2C38 /* BeltBuilder.swift */; };
+		FA56FCC5223232A6005621AF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA56FCC4223232A6005621AF /* LoginViewController.swift */; };
+		FA56FCC722323AD7005621AF /* NewUserLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA56FCC622323AD7005621AF /* NewUserLoginViewController.swift */; };
 		FA5C5C28214DCE5E00BF62D5 /* kid_sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA5C5C25214DCE5D00BF62D5 /* kid_sample.jpg */; };
 		FA5C5C29214DCE5E00BF62D5 /* student_sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA5C5C26214DCE5E00BF62D5 /* student_sample.jpg */; };
 		FA5C5C2A214DCE5E00BF62D5 /* owner_sample.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5C5C27214DCE5E00BF62D5 /* owner_sample.png */; };
@@ -344,6 +346,8 @@
 		FA4DF32F218CCA2400ECC167 /* Curriculum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Curriculum.swift; sourceTree = "<group>"; };
 		FA531C2321954E2C00AE2C38 /* Belt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Belt.swift; sourceTree = "<group>"; };
 		FA531C25219630E700AE2C38 /* BeltBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeltBuilder.swift; sourceTree = "<group>"; };
+		FA56FCC4223232A6005621AF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		FA56FCC622323AD7005621AF /* NewUserLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserLoginViewController.swift; sourceTree = "<group>"; };
 		FA5C5C25214DCE5D00BF62D5 /* kid_sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kid_sample.jpg; sourceTree = "<group>"; };
 		FA5C5C26214DCE5E00BF62D5 /* student_sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = student_sample.jpg; sourceTree = "<group>"; };
 		FA5C5C27214DCE5E00BF62D5 /* owner_sample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = owner_sample.png; sourceTree = "<group>"; };
@@ -758,6 +762,8 @@
 			isa = PBXGroup;
 			children = (
 				FAB7E34F212B7D47003E3B79 /* LandingPageViewController.swift */,
+				FA56FCC622323AD7005621AF /* NewUserLoginViewController.swift */,
+				FA56FCC4223232A6005621AF /* LoginViewController.swift */,
 				FACA3EAF219288480099E620 /* User Onboarding */,
 				FA21D69621336073006790E5 /* Owner Role */,
 				FA21D6972133607E006790E5 /* Student Role */,
@@ -1712,6 +1718,7 @@
 				FAD2097921C1D00200B9C622 /* SignatureCollectionViewCell.swift in Sources */,
 				FA97240722265C00001247CA /* Address+Convenience.swift in Sources */,
 				FAA516D6218FEC5A009875CB /* ConfirmPasswordTextFieldTableViewCell.swift in Sources */,
+				FA56FCC5223232A6005621AF /* LoginViewController.swift in Sources */,
 				FA23D2882166F5E400707056 /* GroupModelController.swift in Sources */,
 				FAF1BB8C21435BA900AD56AE /* AgreementTextViewTableViewCell.swift in Sources */,
 				FAAEDB5021DDA27500E1A04F /* GroupMembersDelegate.swift in Sources */,
@@ -1766,6 +1773,7 @@
 				FAB806BD2210E72B00124EBA /* AulaAttendanceCD+Convenience.swift in Sources */,
 				FAB806D32210E88B00124EBA /* PaymentProgramCD+Convenience.swift in Sources */,
 				FAE67A36215C2DDF00822DCF /* StudentPaymentTableViewController.swift in Sources */,
+				FA56FCC722323AD7005621AF /* NewUserLoginViewController.swift in Sources */,
 				FAF29B6B212D0E9E00752414 /* OnBoardingTask.swift in Sources */,
 				FA946412222D01C20063B34C /* AulaCDModelController.swift in Sources */,
 				FA94642E222DB9850063B34C /* StudentStatusCDModelController.swift in Sources */,

@@ -13,6 +13,8 @@ class OwnerHomeTableViewController: UITableViewController {
     // MARK: - Properties
     
     let beltBuilder = BeltBuilder()
+    // CoreData properties
+    var uuid: UUID?
     
     
     // MARK: - ViewController Lifecycle Functions
