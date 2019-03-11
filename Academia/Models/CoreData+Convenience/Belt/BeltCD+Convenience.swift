@@ -22,10 +22,7 @@ extension BeltCD {
                      beltPromotionAttendanceCriteria: BeltPromotionAttendanceCriteriaCD?,
                      beltStripeAgeDetails: BeltStripeAgeDetailsCD?,
                      classesToNextPromotion: Int16?,
-                     numberOfStripes: Int16?,
-                     adultStudentCD: StudentAdultCD?,
-                     kidStudentCD: StudentKidCD?,
-                     ownerCD: OwnerCD?,
+                     numberOfStripes: Int16,
                      context: NSManagedObjectContext = CoreDataStack.context) {
         
         self.init(context: context)
@@ -38,9 +35,7 @@ extension BeltCD {
         self.beltLevel = beltLevel
         self.beltPromotionAttendanceCriteria = beltPromotionAttendanceCriteria
         self.beltStripeAgeDetails = beltStripeAgeDetails
-        self.adultStudentCD = adultStudentCD
-        self.kidStudentCD = kidStudentCD
-        self.ownerCD = ownerCD
+        self.numberOfStripes = numberOfStripes
     }
     
 }

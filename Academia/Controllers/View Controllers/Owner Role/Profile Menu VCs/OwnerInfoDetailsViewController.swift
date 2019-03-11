@@ -12,7 +12,8 @@ class OwnerInfoDetailsViewController: UIViewController {
     
     // MARK: - Properties
     
-    // create and owner computed property that goes to CoreData and the request predicate pulls the owner that isLoggedOn == true amd also matches the UUID of the current user... so we can pass that through the VC scenes to here
+    // create a computed property with a fetchedRequestController predicate to grab the current logged in user by using the ActiveUserModelController.shared.activeUser array contents and isLogged on properties... use this property as the source for the populateCompletedProfileInfo() method
+
     let beltBuilder = BeltBuilder()
     
     // username outlet
@@ -140,6 +141,7 @@ extension OwnerInfoDetailsViewController {
     
     func populateCompletedProfileInfo() {
     
+        
         guard let owner = OwnerModelController.shared.owners.first else { return }
         // populate UI elements in VC
         ownerNameLabelOutlet.text = "\(owner.firstName) \(owner.lastName)"

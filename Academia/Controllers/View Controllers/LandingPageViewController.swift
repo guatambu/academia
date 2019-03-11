@@ -52,8 +52,7 @@ class LandingPageViewController: UIViewController {
             
             for owner in OwnerCDModelController.shared.owners {
                 
-                // OwnerCDModelController.shared.remove(owner: owner)
-                
+                OwnerCDModelController.shared.remove(owner: owner)
                 
                 print("owner.username = \(owner.username ?? "owner object present but has no first name :'{ ")")
                 print("owner.password = \(owner.password ?? "owner object present but has no first name :'{ ")")

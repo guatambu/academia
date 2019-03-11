@@ -158,15 +158,6 @@ class LocationSocialLinksViewController: UIViewController {
         destViewController.social2 = socialLink2TextField.text
         destViewController.social3 = socialLink3TextField.text
         
-        // MARK: - CoreData implementaiton
-        // create address object in CoreData
-        let socialLinks = LocationSocialLinksCD(socialLink1: socialLink1TextField.text, socialLink2: socialLink2TextField.text, socialLink3: socialLink3TextField.text)
-        // pass CoreData Properties
-        if let location = location {
-            location.socialLinks = socialLinks
-            destViewController.location = location
-        }
-        
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
         updateLocationInfo()
     }

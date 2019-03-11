@@ -178,24 +178,6 @@ class BirthdayViewController: UIViewController {
                 updateAdultStudentInfo()
             }
         }
-        
-        // pass CoreData birthdate properties
-        if let owner = owner {
-            
-            owner.birthdate = birthdate
-            destViewController.owner = owner
-            
-        } else if let studentAdult = studentAdult  {
-            
-            studentAdult.birthdate = birthdate
-            destViewController.studentAdult = studentAdult
-            
-        } else if let studentKid = studentKid  {
-            
-            studentKid.birthdate = birthdate
-            destViewController.studentKid = studentKid
-        }
-        
     }
 }
 

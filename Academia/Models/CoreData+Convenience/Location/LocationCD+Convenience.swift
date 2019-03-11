@@ -24,7 +24,7 @@ extension LocationCD {
                      email: String,
                      address: AddressCD,
                      socialLinks: LocationSocialLinksCD,
-                     aula: AulaCD,
+                     aula: AulaCD?,
                      context: NSManagedObjectContext = CoreDataStack.context) {
         
         self.init(context: context)

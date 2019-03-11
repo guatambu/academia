@@ -18,12 +18,8 @@ extension OwnerCD {
                      dateCreated: Date = Date(),
                      dateEdited: Date = Date(),
                      birthdate: Date,
-                     // promotions: NSSet?,
                      mostRecentPromotion: Date?,
-                     // attendanceOwner: NSSet?,
                      studentStatus: StudentStatusCD?,
-                     // groups: NSSet?,
-                     // paymentProgram: PaymentProgramCD?,
                      belt: BeltCD,
                      profilePic: Data?,
                      username: String,
@@ -44,11 +40,8 @@ extension OwnerCD {
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
         self.birthdate = birthdate
-        // self.promotions = promotions
         self.mostRecentPromotion = mostRecentPromotion
-        // self.attendanceOwner = attendanceOwner
         self.belt = belt
-        // self.groups = groups
         self.profilePic = profilePic
         self.username = username
         self.password = password

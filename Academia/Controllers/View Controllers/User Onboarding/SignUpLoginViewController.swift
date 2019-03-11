@@ -290,26 +290,6 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
         destViewController.group = group
         
-        // pass CoreData Properties
-        if let owner = owner {
-            
-            owner.username = username
-            owner.password = password
-            destViewController.owner = owner
-            
-        } else if let studentAdult = studentAdult  {
-            
-            studentAdult.username = username
-            studentAdult.password = password
-            destViewController.studentAdult = studentAdult
-            
-        } else if let studentKid = studentKid  {
-            
-            studentKid.username = username
-            studentKid.password = password
-            destViewController.studentKid = studentKid
-        }
-        
         // if usermame/password - login
         
         // create the segue programmatically to TakeProfilePicViewController

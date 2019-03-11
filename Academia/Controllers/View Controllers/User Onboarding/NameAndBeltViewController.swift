@@ -153,30 +153,6 @@ class NameAndBeltViewController: UIViewController {
                 updateAdultStudentInfo()
             }
         }
-        
-        // pass CoreData belt properties
-        
-        // convert numberOfStripes to Int16
-        let stripesInt16 = Int16(exactly: numberOfStripes)
-        // pass CoreData Properties
-        if let owner = owner {
-            // initalize the BeltCD object
-            let belt = BeltCD(beltUUID: UUID(), active: true, dateCreated: Date(), dateEdited: Date(), beltLevel: beltLevel.rawValue, beltPromotionAttendanceCriteria: nil, beltStripeAgeDetails: nil, classesToNextPromotion: nil, numberOfStripes: stripesInt16, adultStudentCD: nil, kidStudentCD: nil, ownerCD: owner)
-            owner.belt = belt
-            destViewController.owner = owner
-            
-        } else if let studentAdult = studentAdult  {
-            // initalize the BeltCD object
-            let belt = BeltCD(beltUUID: UUID(), active: true, dateCreated: Date(), dateEdited: Date(), beltLevel: beltLevel.rawValue, beltPromotionAttendanceCriteria: nil, beltStripeAgeDetails: nil, classesToNextPromotion: nil, numberOfStripes: stripesInt16, adultStudentCD: studentAdult, kidStudentCD: nil, ownerCD: nil)
-            studentAdult.belt = belt
-            destViewController.studentAdult = studentAdult
-            
-        } else if let studentKid = studentKid  {
-            // initalize the BeltCD object
-            let belt = BeltCD(beltUUID: UUID(), active: true, dateCreated: Date(), dateEdited: Date(), beltLevel: beltLevel.rawValue, beltPromotionAttendanceCriteria: nil, beltStripeAgeDetails: nil, classesToNextPromotion: nil, numberOfStripes: stripesInt16, adultStudentCD: nil, kidStudentCD: studentKid, ownerCD: nil)
-            studentKid.belt = belt
-            destViewController.studentKid = studentKid
-        }
     }
 }
 

@@ -39,6 +39,7 @@
 		FA531C26219630E700AE2C38 /* BeltBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA531C25219630E700AE2C38 /* BeltBuilder.swift */; };
 		FA56FCC5223232A6005621AF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA56FCC4223232A6005621AF /* LoginViewController.swift */; };
 		FA56FCC722323AD7005621AF /* NewUserLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA56FCC622323AD7005621AF /* NewUserLoginViewController.swift */; };
+		FA56FCC922362D7B005621AF /* ActiveUserModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA56FCC822362D7B005621AF /* ActiveUserModelController.swift */; };
 		FA5C5C28214DCE5E00BF62D5 /* kid_sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA5C5C25214DCE5D00BF62D5 /* kid_sample.jpg */; };
 		FA5C5C29214DCE5E00BF62D5 /* student_sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA5C5C26214DCE5E00BF62D5 /* student_sample.jpg */; };
 		FA5C5C2A214DCE5E00BF62D5 /* owner_sample.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5C5C27214DCE5E00BF62D5 /* owner_sample.png */; };
@@ -348,6 +349,7 @@
 		FA531C25219630E700AE2C38 /* BeltBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeltBuilder.swift; sourceTree = "<group>"; };
 		FA56FCC4223232A6005621AF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FA56FCC622323AD7005621AF /* NewUserLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserLoginViewController.swift; sourceTree = "<group>"; };
+		FA56FCC822362D7B005621AF /* ActiveUserModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveUserModelController.swift; sourceTree = "<group>"; };
 		FA5C5C25214DCE5D00BF62D5 /* kid_sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kid_sample.jpg; sourceTree = "<group>"; };
 		FA5C5C26214DCE5E00BF62D5 /* student_sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = student_sample.jpg; sourceTree = "<group>"; };
 		FA5C5C27214DCE5E00BF62D5 /* owner_sample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = owner_sample.png; sourceTree = "<group>"; };
@@ -1044,6 +1046,7 @@
 				FA9463FE222CEE220063B34C /* OwnerCDModelController.swift */,
 				FA946400222CF5A00063B34C /* StudentAdultCDModelController.swift */,
 				FA946402222CF7E50063B34C /* StudentKidCDModelController.swift */,
+				FA56FCC822362D7B005621AF /* ActiveUserModelController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1780,6 +1783,7 @@
 				FAE2FD3C2140700F00815402 /* MockData.swift in Sources */,
 				FAB806D52210E8B900124EBA /* StudentStatusCD+Convenience.swift in Sources */,
 				FA1CEF3F21FBAD68004498BC /* ClassGroupDelegate.swift in Sources */,
+				FA56FCC922362D7B005621AF /* ActiveUserModelController.swift in Sources */,
 				FA5C5C452153022300BF62D5 /* SegueFromSaveProfileNibCellDelegate.swift in Sources */,
 				FA9ADA2B2139EE560005E1F1 /* StatusTableViewCell.swift in Sources */,
 				FA21D6822130BB2D006790E5 /* OwnerProfileTableViewController.swift in Sources */,

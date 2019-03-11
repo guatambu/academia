@@ -13,7 +13,7 @@
         <!--Profile Table View Controller-->
         <scene sceneID="oRZ-Yf-Yuk">
             <objects>
-                <tableViewController id="viL-Zh-6Uc" userLabel="Profile Table View Controller" customClass="OwnerProfileTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="toOwnerProfile" useStoryboardIdentifierAsRestorationIdentifier="YES" id="viL-Zh-6Uc" userLabel="Profile Table View Controller" customClass="OwnerProfileTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="VJC-HT-zTC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -67,7 +67,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="cDB-5R-ULH" kind="show" id="tZf-rd-v1P"/>
+                                            <segue destination="cDB-5R-ULH" kind="show" identifier="toLoggedInOwnerInfoDetails" id="tZf-rd-v1P"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="srl-J7-qxO" userLabel="My Locations Table View Cell">

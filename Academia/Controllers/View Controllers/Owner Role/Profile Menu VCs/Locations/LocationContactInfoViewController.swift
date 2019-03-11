@@ -239,15 +239,6 @@ class LocationContactInfoViewController: UIViewController, UITextInputTraits {
         destViewController.inEditingMode = inEditingMode
         destViewController.locationToEdit = locationToEdit
         
-        // MARK: - CoreData implementaiton
-        // pass CoreData Properties
-        if let location = location {
-            location.phone = phone
-            location.website = website
-            location.email = email
-            destViewController.location = location
-        }
-        
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
         updateLocationInfo()
     }

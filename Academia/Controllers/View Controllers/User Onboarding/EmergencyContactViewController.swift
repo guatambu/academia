@@ -300,25 +300,6 @@ class EmergencyContactViewController: UIViewController {
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
         destViewController.group = group
         
-        // initalize the AddressCD object
-        let emergencyContact = EmergencyContactCD(name: emergencyContactName, phone: emergencyContactPhone, relationship: emergencyContactRelationship)
-        // pass CoreData Properties
-        if let owner = owner {
-            
-            owner.emergencyContact = emergencyContact
-            destViewController.owner = owner
-            
-        } else if let studentAdult = studentAdult  {
-            
-            studentAdult.emergencyContact = emergencyContact
-            destViewController.studentAdult = studentAdult
-            
-        } else if let studentKid = studentKid  {
-            
-            studentKid.emergencyContact = emergencyContact
-            destViewController.studentKid = studentKid
-        }
-        
         guard let isOwner = isOwner else { print("fail isOwner"); return }
         guard let isKid = isKid else { print("fail isKid"); return }
         guard profilePic != nil else { print("fail profilePic"); return }

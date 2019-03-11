@@ -38,6 +38,10 @@ class CompletedProfileViewController: UIViewController {
     
     var belt: Belt?
     
+    var beltCD: BeltCD?
+    var addressCD: AddressCD?
+    var emergencyContactCD: EmergencyContactCD?
+    
     var isOwnerAddingStudent: Bool?
     var group: Group?
     
@@ -69,12 +73,6 @@ class CompletedProfileViewController: UIViewController {
     @IBOutlet weak var emergencyContactRelationshipLabelOutlet: UILabel!
     @IBOutlet weak var emergencyContactPhoneLabelOutlet: UILabel!
     
-    // CoreData Properties
-    var owner: OwnerCD?
-    var studentAdult: StudentAdultCD?
-    var studentKid: StudentKidCD?
-    var uuid: UUID?
-    
     
     // MARK: - ViewController Lifecycle Functions
     
@@ -83,35 +81,7 @@ class CompletedProfileViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         
-//        populateCompletedProfileInfo(isOwner: isOwner, isKid: isKid, username: username, password: password, firstName: firstName, lastName: lastName, profilePic: profilePic, birthdate: birthdate, beltLevel: beltLevel, numberOfStripes: numberOfStripes, parentGuardian: parentGuardian, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, phone: phone, mobile: mobile, email: email, emergencyContactName: emergencyContactName, emergencyContactPhone: emergencyContactPhone, emergencyContactRelationship: emergencyContactRelationship)
-        
-        if let owner = owner {
-            
-            if let profilePicData = owner.profilePic {
-                
-                let profilePic = UIImage(data: profilePicData)
-                
-                populateCompletedProfileInfo(username: owner.username, firstName: owner.firstName, lastName: owner.lastName, profilePic: profilePic, birthdate: owner.birthdate, beltLevel: owner.belt?.beltLevel, numberOfStripes: owner.belt?.numberOfStripes, parentGuardian: nil, addressLine1: owner.address?.addressLine1, addressLine2: owner.address?.addressLine2, city: owner.address?.city, state: owner.address?.state, zipCode: owner.address?.zipCode, phone: owner.phone, mobile: owner.mobile, email: owner.email, emergencyContactName: owner.emergencyContact?.name, emergencyContactPhone: owner.emergencyContact?.phone, emergencyContactRelationship: owner.emergencyContact?.relationship)
-            }
-            
-        } else if let studentAdult = studentAdult {
-            
-            if let profilePicData = studentAdult.profilePic {
-                
-                let profilePic = UIImage(data: profilePicData)
-                
-                populateCompletedProfileInfo(username: studentAdult.username, firstName: studentAdult.firstName, lastName: studentAdult.lastName, profilePic: profilePic, birthdate: studentAdult.birthdate, beltLevel: studentAdult.belt?.beltLevel, numberOfStripes: studentAdult.belt?.numberOfStripes, parentGuardian: nil, addressLine1: studentAdult.address?.addressLine1, addressLine2: studentAdult.address?.addressLine2, city: studentAdult.address?.city, state: studentAdult.address?.state, zipCode: studentAdult.address?.zipCode, phone: studentAdult.phone, mobile: studentAdult.mobile, email: studentAdult.email, emergencyContactName: studentAdult.emergencyContact?.name, emergencyContactPhone: studentAdult.emergencyContact?.phone, emergencyContactRelationship: studentAdult.emergencyContact?.relationship)
-            }
-            
-        } else if let studentKid = studentKid {
-            
-            if let profilePicData = studentKid.profilePic {
-                
-                let profilePic = UIImage(data: profilePicData)
-                
-                populateCompletedProfileInfo(username: studentKid.username, firstName: studentKid.firstName, lastName: studentKid.lastName, profilePic: profilePic, birthdate: studentKid.birthdate, beltLevel: studentKid.belt?.beltLevel, numberOfStripes: studentKid.belt?.numberOfStripes, parentGuardian: studentKid.parentGuardian, addressLine1: studentKid.address?.addressLine1, addressLine2: studentKid.address?.addressLine2, city: studentKid.address?.city, state: studentKid.address?.state, zipCode: studentKid.address?.zipCode, phone: studentKid.phone, mobile: studentKid.mobile, email: studentKid.email, emergencyContactName: studentKid.emergencyContact?.name, emergencyContactPhone: studentKid.emergencyContact?.phone, emergencyContactRelationship: studentKid.emergencyContact?.relationship)
-            }
-        }
+        populateCompletedProfileInfo(username: username, firstName: firstName, lastName: lastName, profilePic: profilePic, birthdate: birthdate, beltLevel: beltLevel, numberOfStripes: numberOfStripes, parentGuardian: parentGuardian, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, phone: phone, mobile: mobile, email: email, emergencyContactName: emergencyContactName, emergencyContactPhone: emergencyContactPhone, emergencyContactRelationship: emergencyContactRelationship)
         
         // set VC title font styling
         navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
@@ -128,8 +98,8 @@ class CompletedProfileViewController: UIViewController {
     
     @IBAction func createAccountButtonTapped(_ sender: DesignableButton) {
         
-        // CoreData save
-        OwnerCDModelController.shared.saveToPersistentStorage()
+        // create and save new user account to CoreData
+        createAndSaveNewUser()
         
         // create data models
         createBelt()
@@ -146,13 +116,9 @@ class CompletedProfileViewController: UIViewController {
             let mainView: UIStoryboard = UIStoryboard(name: "OwnerBaseCampFlow", bundle: nil)
             // create the UITabBarController segue programmatically - MODAL
             if let tabBarDestViewController = (mainView.instantiateViewController(withIdentifier: "toOwnerBaseCamp") as? UITabBarController) {
+                
                 self.present(tabBarDestViewController, animated: true, completion: nil)
-                // instantiate destination ViewController same as above tabBarDestViewController
-                let destinationViewController = mainView.instantiateViewController(withIdentifier: "toOwnerBaseCamo") as! OwnerHomeTableViewController
-                // pass UUID value through
-                destinationViewController.uuid = uuid
-                // set owner isLoggedOn property
-                owner?.isLoggedOn = true
+                
                 // exit funciton
                 return
             }
@@ -160,26 +126,18 @@ class CompletedProfileViewController: UIViewController {
         } else if isOwner == false {
             // unwrap isOwnerAddingStudent? 
             guard let isOwnerAddingStudent = isOwnerAddingStudent else {
+                
                 print("ERROR: a nil value was found when trying to unwrap isOwnerAddingStudent in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 100.")
                 
                 // instantiate the relevant storyboard for the Student (Kid or Adult... both are directed to the same TabBarController)
                 let mainView: UIStoryboard = UIStoryboard(name: "StudentBaseCampFlow", bundle: nil)
                 // create the UITabBarController segue programmatically - MODAL
                 if let tabBarDestViewController = (mainView.instantiateViewController(withIdentifier: "toStudentDashbooard") as? UITabBarController) {
+                    
                     self.present(tabBarDestViewController, animated: true, completion: nil)
-                }
-                // instantiate destination ViewController same as above tabBarDestViewController
-                let destinationViewController = mainView.instantiateViewController(withIdentifier: "toStudentDashbooard") as! StudentHomeTableViewController
-                // pass UUID value through
-                destinationViewController.uuid = uuid
-                // set student isLoggedOn property
-                if let studentAdult = studentAdult {
                     
-                    studentAdult.isLoggedOn = true
-                    
-                } else if let studentKid = studentKid {
-                    studentKid.isLoggedOn = true
                 }
+                
                 // exit function
                 return
             }
@@ -244,8 +202,8 @@ extension CompletedProfileViewController {
                                       lastName: String?,
                                       profilePic: UIImage?,
                                       birthdate: Date?,
-                                      beltLevel: String?,
-                                      numberOfStripes: Int16?,
+                                      beltLevel: InternationalStandardBJJBelts?,
+                                      numberOfStripes: Int?,
                                       parentGuardian: String?,
                                       addressLine1: String?,
                                       addressLine2: String?,
@@ -310,83 +268,8 @@ extension CompletedProfileViewController {
         formatBirthdate(birthdate: birthdate)
         
         // belt holder UIView
-        
-        // convert Int16 to Int
-        let stripesInt = Int(exactly: numberOfStripes)
-        guard let stripes = stripesInt else { return }
-        
-        switch beltLevel {
-            
-        // ADULTS
-        case InternationalStandardBJJBelts.adultWhiteBelt.rawValue:
-            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .adultWhiteBelt, numberOfStripes: stripes)
-            
-        case InternationalStandardBJJBelts.adultBlueBelt.rawValue:
-            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .adultBlueBelt, numberOfStripes: stripes)
-            
-        case InternationalStandardBJJBelts.adultPurpleBelt.rawValue:
-            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .adultPurpleBelt, numberOfStripes: stripes)
-            
-        case InternationalStandardBJJBelts.adultBrownBelt.rawValue:
-            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .adultBrownBelt, numberOfStripes: stripes)
-            
-        case InternationalStandardBJJBelts.adultBlackBelt.rawValue:
-            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .adultBlackBelt, numberOfStripes: stripes)
-            
-        case InternationalStandardBJJBelts.adultRedBlackBelt.rawValue:
-            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .adultRedBlackBelt, numberOfStripes: stripes)
-            
-        case InternationalStandardBJJBelts.adultRedWhiteBelt.rawValue:
-            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .adultRedWhiteBelt, numberOfStripes: stripes)
-            
-        case InternationalStandardBJJBelts.adultRedBelt.rawValue:
-            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .adultRedBelt, numberOfStripes: stripes)
-            
-        // KIDS
-        case InternationalStandardBJJBelts.kidsWhiteBelt.rawValue:
-            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .kidsWhiteBelt, numberOfStripes: stripes)
-            
-        case InternationalStandardBJJBelts.kidsGreyWhiteBelt.rawValue:
-            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .kidsGreyWhiteBelt, numberOfStripes: stripes)
-            
-        case InternationalStandardBJJBelts.kidsGreyBelt.rawValue:
-            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .kidsGreyBelt, numberOfStripes: stripes)
-            
-        case InternationalStandardBJJBelts.kidsGreyBlackBelt.rawValue:
-            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .kidsGreyBlackBelt, numberOfStripes: stripes)
-            
-        case InternationalStandardBJJBelts.kidsYellowWhiteBelt.rawValue:
-            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .kidsYellowWhiteBelt, numberOfStripes: stripes)
-            
-        case InternationalStandardBJJBelts.kidsYellowBelt.rawValue:
-            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .kidsYellowBelt, numberOfStripes: stripes)
-            
-        case InternationalStandardBJJBelts.kidsYellowBlackBelt.rawValue:
-            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .kidsYellowBlackBelt, numberOfStripes: stripes)
-            
-        case InternationalStandardBJJBelts.kidsOrangeWhiteBelt.rawValue:
-            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .kidsOrangeWhiteBelt, numberOfStripes: stripes)
-            
-        case InternationalStandardBJJBelts.kidsOrangeBelt.rawValue:
-            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .kidsOrangeBelt, numberOfStripes: stripes)
-            
-        case InternationalStandardBJJBelts.kidsOrangeBlackBelt.rawValue:
-            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .kidsOrangeBlackBelt, numberOfStripes: stripes)
-            
-        case InternationalStandardBJJBelts.kidsGreenWhiteBelt.rawValue:
-            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .kidsGreenWhiteBelt, numberOfStripes: stripes)
-            
-        case InternationalStandardBJJBelts.kidsGreenBelt.rawValue:
-            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .kidsGreenBelt, numberOfStripes: stripes)
-            
-        case InternationalStandardBJJBelts.kidsGreyBlackBelt.rawValue:
-            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .kidsGreenBlackBelt, numberOfStripes: stripes)
-            
-        default:
-            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: .adultWhiteBelt, numberOfStripes: stripes)
-        }
         // this is set up below to directly accept a value from InternationalStandarBJJBelts
-//        beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: numberOfStripes)
+        beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: numberOfStripes)
     }
 }
 
@@ -520,8 +403,10 @@ extension CompletedProfileViewController {
     }
 }
 
+
 // MARK: - AlertController to check if more than one owner account allowed by actual owner
 extension CompletedProfileViewController {
+    
     func checkIfMoreThanOneOwnerAccountAllowedByOwner() {
         
         let alertController = UIAlertController(title: "Attention", message: "are you sure you want to add more than one owner to this account?", preferredStyle: UIAlertController.Style.alert)
@@ -531,5 +416,152 @@ extension CompletedProfileViewController {
         alertController.addAction(deleteAccount)
         
         self.present(alertController, animated: true)
+    }
+}
+
+
+// MARK: - function to initiate user account model creation process and save the user in CoreData
+extension CompletedProfileViewController {
+    
+    func createAndSaveNewUser() {
+        
+        // create belt model in CoreData
+        createBeltCoreDataModel()
+        // create address model in CoreData
+        createAddressCoreDataModel()
+        // create emergency contact model in CoreData
+        createEmergencyContactCoreDataModel()
+        // create new user account in CoreData
+        createUserAccountAndLoginCoreDataModel()
+        // CoreData save
+        OwnerCDModelController.shared.saveToPersistentStorage()
+        
+    }
+}
+
+// MARK: - function to create user account model in CoreData
+extension CompletedProfileViewController {
+    
+    // create User model
+    func createUserAccountAndLoginCoreDataModel() {
+        
+        guard let isOwner = isOwner else { print("fail isOwner"); return }
+        guard let isKid = isKid else { print("fail isKid"); return }
+        
+        guard let username = username else { print("fail username"); return }
+        guard let password = password else { print("fail password"); return }
+        
+        guard let firstName = firstName else { print("fail firtsName"); return }
+        guard let lastName = lastName else { print("fail lastName"); return }
+        guard let parentGuardian = parentGuardian else { print("fail parentGuardian"); return }
+        guard let profilePic = profilePic else { print("fail profilePic"); return }
+        
+        guard let birthdate = birthdate else { print("fail birthdate"); return }
+        
+        guard let beltCD = beltCD else { print("fail beltCD"); return }
+        
+        guard let addressCD = addressCD else { print("fail addressCD"); return }
+        
+        guard let phone = phone else { print("fail phone"); return }
+        guard let email = email else { print("fail email"); return }
+        
+        guard let emergencyContactCD = emergencyContactCD else { print("fail emergencyContactCD"); return }
+        
+        let mobileCD = mobile ?? ""
+        
+        // convert profilePic to Data
+        guard let profilePicData = profilePic.jpegData(compressionQuality: 1) else { print("fail profilePicData"); return }
+        
+        
+        
+        if isOwner{
+            
+            let newOwner = OwnerCD(birthdate: birthdate, mostRecentPromotion: nil, studentStatus: nil, belt: beltCD, profilePic: profilePicData, username: username, password: password, firstName: firstName, lastName: lastName, address: addressCD, phone: phone, mobile: mobileCD, email: email, emergencyContact: emergencyContactCD)
+            
+            OwnerCDModelController.shared.add(owner: newOwner)
+            
+            if let id = newOwner.ownerUUID {
+                ActiveUserModelController.shared.activeUser.append(id)
+            }
+        
+            newOwner.isLoggedOn = true
+            
+        } else if isKid {
+            
+            let newStudentKid = StudentKidCD(dateCreated: Date(), dateEdited: Date(), birthdate: birthdate, studentStatus: nil, belt: beltCD, profilePic: profilePicData, username: username, password: password, firstName: firstName, lastName: lastName, parentGuardian: parentGuardian, address: addressCD, phone: phone, mobile: mobileCD, email: email, emergencyContact: emergencyContactCD)
+            
+            StudentKidCDModelController.shared.add(studentKid: newStudentKid)
+            
+            if let id = newStudentKid.kidStudentUUID {
+                ActiveUserModelController.shared.activeUser.append(id)
+            }
+            
+            newStudentKid.isLoggedOn = true
+            
+        } else if !isKid {
+            
+            let newStudentAdult = StudentAdultCD(isInstructor: false, dateCreated: Date(), dateEdited: Date(), birthdate: birthdate, studentStatus: nil, belt: beltCD, profilePic: profilePicData, username: username, password: password, firstName: firstName, lastName: lastName, address: addressCD, phone: phone, mobile: mobileCD, email: email, emergencyContact: emergencyContactCD)
+
+            StudentAdultCDModelController.shared.add(studentAdult: newStudentAdult)
+            
+            if let id = newStudentAdult.adultStudentUUID {
+                ActiveUserModelController.shared.activeUser.append(id)
+            }
+            
+            newStudentAdult.isLoggedOn = true
+        }
+    }
+}
+
+
+// MARK: - function to create belt data model in CoreData
+extension CompletedProfileViewController {
+    
+    func createBeltCoreDataModel() {
+        
+        // pass CoreData belt properties
+        guard let numberOfStripes = numberOfStripes else { return }
+        guard let beltLevel = beltLevel?.rawValue else { return }
+        // convert numberOfStripes to Int16
+        guard let stripesInt16 = Int16(exactly: numberOfStripes) else { return }
+        
+        beltCD = BeltCD(beltUUID: UUID(), active: true, dateCreated: Date(), dateEdited: Date(), beltLevel: beltLevel, beltPromotionAttendanceCriteria: nil, beltStripeAgeDetails: nil, classesToNextPromotion: nil, numberOfStripes: stripesInt16)
+    }
+}
+
+
+// MARK: - function to create address data model in CoreData
+extension CompletedProfileViewController {
+    
+    func createAddressCoreDataModel() {
+        
+        guard let addressLine1 = addressLine1 else { print("fail addressLine1"); return }
+        
+        let addressLine2CD = addressLine2 ?? ""
+        
+        guard let city = city else { print("fail city"); return }
+        
+        guard let state = state else { print("fail state"); return }
+        
+        guard let zipCode = zipCode else { print("fail zip"); return }
+        
+        addressCD = AddressCD(addressLine1: addressLine1, addressLine2: addressLine2CD, city: city, state: state, zipCode: zipCode)
+        
+    }
+}
+
+
+// MARK: - function to create emergency contact data model in CoreData
+extension CompletedProfileViewController {
+    
+    func createEmergencyContactCoreDataModel() {
+        
+        guard let name = emergencyContactName else { print("fail emergencyContactName"); return }
+        
+        guard let phone = emergencyContactPhone else { print("fail emergencyContactPhone"); return }
+        
+        guard let relationship = emergencyContactRelationship else { print("fail emergencyContactRelationship"); return }
+        
+        emergencyContactCD = EmergencyContactCD(name: name, phone: phone, relationship: relationship)
     }
 }

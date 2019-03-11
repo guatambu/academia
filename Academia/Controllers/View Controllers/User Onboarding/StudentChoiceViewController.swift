@@ -127,10 +127,7 @@ class StudentChoiceViewController: UIViewController {
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
         destViewController.group = group
         
-        // MARK: - CoreData implementaiton
-        let studentKid = StudentKidCD(context: CoreDataStack.context)
-        studentKid.kidStudentUUID = UUID()
-        destViewController.studentKid = studentKid
+        
     }
     
     @IBAction func confirmAdultsProgramButtonTapped(_ sender: UIButton) {

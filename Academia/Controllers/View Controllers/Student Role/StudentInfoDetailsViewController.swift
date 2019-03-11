@@ -12,6 +12,8 @@ class StudentInfoDetailsViewController: UIViewController {
 
     // MARK: - Properties
     
+     // create a computed property with a fetchedRequestController predicate to grab the current logged in user by using the ActiveUserModelController.shared.activeUser array contents and isLogged on properties... use this property as the source for the populateCompletedProfileInfo() method
+    
     let beltBuilder = BeltBuilder()
     
     var isKid: Bool?

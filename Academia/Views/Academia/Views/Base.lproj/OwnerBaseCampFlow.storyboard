@@ -13,7 +13,7 @@
         <!--Owner Home Table View Controller-->
         <scene sceneID="l9J-A2-2fL">
             <objects>
-                <tableViewController storyboardIdentifier="toOwnerBaseCampHome" id="6o4-3v-Z2p" userLabel="Owner Home Table View Controller" customClass="OwnerHomeTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="toOwnerBaseCampHome" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6o4-3v-Z2p" userLabel="Owner Home Table View Controller" customClass="OwnerHomeTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="bQY-Zu-Jgn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -80,7 +80,7 @@
         <!--Class List Table View Controller-->
         <scene sceneID="lJA-kf-fm7">
             <objects>
-                <tableViewController storyboardIdentifier="toOwnerClassList" id="Hpt-fy-Thc" userLabel="Class List Table View Controller" customClass="OwnerClassListTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="toOwnerClassList" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Hpt-fy-Thc" userLabel="Class List Table View Controller" customClass="OwnerClassListTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="qRW-JA-OhL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2887,7 +2887,7 @@
         <!--Student Groups Table View Controller-->
         <scene sceneID="GFy-bw-GQl">
             <objects>
-                <tableViewController storyboardIdentifier="toOwnerGroupList" id="Hzl-Tc-Hdb" userLabel="Student Groups Table View Controller" customClass="OwnerGroupListTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="toOwnerGroupList" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Hzl-Tc-Hdb" userLabel="Student Groups Table View Controller" customClass="OwnerGroupListTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="5az-Rw-KNq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

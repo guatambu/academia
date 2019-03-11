@@ -29,6 +29,9 @@ class ReviewAndCreateLocationViewController: UIViewController {
     
     let beltBuilder = BeltBuilder()
     
+    var addressCD: AddressCD?
+    var socialLinksCD: LocationSocialLinksCD?
+    
     // profile pic imageView
     @IBOutlet weak var locationNameLabelOutlet: UILabel!
     @IBOutlet weak var locationPicImageView: UIImageView!
@@ -48,9 +51,6 @@ class ReviewAndCreateLocationViewController: UIViewController {
     @IBOutlet weak var socialLink3LabelOutlet: UILabel!
     
     @IBOutlet weak var createAccountButtonOutlet: DesignableButton!
-    
-    // CoreData properties
-    var location: LocationCD?
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -96,72 +96,34 @@ extension ReviewAndCreateLocationViewController {
     
     func populateCompletedProfileInfo() {
         
-        if let location = location {
-            
-            if let locationPicData = location.locationPic {
-                
-                let locationPic = UIImage(data: locationPicData)
-                // profile pic imageView
-                locationPicImageView.image = locationPic
-                
-                locationNameLabelOutlet.text = location.locationName
-                // phone outlet
-                phoneLabelOutlet.text = location.phone
-                // mobile is not a required field
-                websiteLabelOutlet.text = location.website
-                emailLabelOutlet.text = location.email
-                // address outlets
-                if let address = location.address {
-                    
-                    addressLine1LabelOutlet.text = address.addressLine1
-                    // addressLine2 is not a required field
-                    if addressLine2 != "" {
-                        addressLine2LabelOutlet.text = address.addressLine2
-                    } else {
-                        addressLine2LabelOutlet.isHidden = true
-                    }
-                    cityLabelOutlet.text = address.city
-                    stateLabelOutlet.text = address.state
-                    zipCodeLabelOutlet.text = address.zipCode
-                }
-                // social media links outlets
-                if let socialLinks = location.socialLinks {
-                    
-                    socialLink1LabelOutlet.text = "Instagram: \(socialLinks.socialLink1 ?? "")"
-                    socialLink2LabelOutlet.text = "facebook: \(socialLinks.socialLink2 ?? "")"
-                    socialLink3LabelOutlet.text = "Twitter: \(socialLinks.socialLink3 ?? "")"
-                }
-            }
+        // populate UI elements in VC
+        guard let locationName = locationName else {
+            print("in ReviewAndCreateLocationVC -> populateCompletedProfile() there is no locationName!!! - line 101")
+            return
         }
-        
-//        // populate UI elements in VC
-//        guard let locationName = locationName else {
-//            print("in ReviewAndCreateLocationVC -> populateCompletedProfile() there is no locationName!!! - line 101")
-//            return
-//        }
-//        locationNameLabelOutlet.text = locationName
-//        // phone outlet
-//        phoneLabelOutlet.text = phone
-//        // mobile is not a required field
-//        websiteLabelOutlet.text = website
-//        emailLabelOutlet.text = email
-//        // address outlets
-//        addressLine1LabelOutlet.text = addressLine1
-//        // addressLine2 is not a required field
-//        if addressLine2 != "" {
-//            addressLine2LabelOutlet.text = addressLine2
-//        } else {
-//            addressLine2LabelOutlet.isHidden = true
-//        }
-//        cityLabelOutlet.text = city
-//        stateLabelOutlet.text = state
-//        zipCodeLabelOutlet.text = zipCode
-//        // social media links outlets
-//        socialLink1LabelOutlet.text = "Instagram: \(social1 ?? "")"
-//        socialLink2LabelOutlet.text = "facebook: \(social2 ?? "")"
-//        socialLink3LabelOutlet.text = "Twitter: \(social3 ?? "")"
-//        // profile pic imageView
-//        locationPicImageView.image = locationPic
+        locationNameLabelOutlet.text = locationName
+        // phone outlet
+        phoneLabelOutlet.text = phone
+        // mobile is not a required field
+        websiteLabelOutlet.text = website
+        emailLabelOutlet.text = email
+        // address outlets
+        addressLine1LabelOutlet.text = addressLine1
+        // addressLine2 is not a required field
+        if addressLine2 != "" {
+            addressLine2LabelOutlet.text = addressLine2
+        } else {
+            addressLine2LabelOutlet.isHidden = true
+        }
+        cityLabelOutlet.text = city
+        stateLabelOutlet.text = state
+        zipCodeLabelOutlet.text = zipCode
+        // social media links outlets
+        socialLink1LabelOutlet.text = "Instagram: \(social1 ?? "")"
+        socialLink2LabelOutlet.text = "facebook: \(social2 ?? "")"
+        socialLink3LabelOutlet.text = "Twitter: \(social3 ?? "")"
+        // profile pic imageView
+        locationPicImageView.image = locationPic
     }
 }
 
@@ -191,10 +153,64 @@ extension ReviewAndCreateLocationViewController {
 }
 
 
+// MARK: - create location model in CoreData
+extension ReviewAndCreateLocationViewController {
+    
+    func createLocationCoreDataModel() {
+        
+        guard let locationPic = locationPic else { print("fail locationPic"); return }
+        guard let locationPicData = locationPic.jpegData(compressionQuality: 1) else { print("fail locationPicData"); return }
+        
+        guard let locationName = locationName else { print("fail locationName"); return }
+        guard let active = active else { print("fail active");  return }
+        
+        guard let addressCD = addressCD else { print("fail address");  return }
+        
+        guard let phone = phone else { print("fail phone"); return }
+        guard let email = email else { print("fail email"); return }
+        
+        guard let socialLinksCD = socialLinksCD else { print("fail socialLinksCD"); return }
+        
+        let website = self.website ?? ""
+        
+        let newLocation = LocationCD(locationUUID: UUID(), active: active, dateCreated: Date(), dateEdited: Date(), locationPic: locationPicData, locationName: locationName, phone: phone, website: website, email: email, address: addressCD, socialLinks: socialLinksCD, aula: nil)
+        
+        LocationCDModelController.shared.add(location: newLocation)
+    }
+}
 
 
+// MARK: - create address model in CoreData
+extension ReviewAndCreateLocationViewController {
+    
+    func createAddressCoreDataModel() {
+        
+        guard let addressLine1 = addressLine1 else { print("fail addressLine1"); return }
+        guard let city = city else { print("fail city"); return }
+        guard let state = state else { print("fail state"); return }
+        guard let zipCode = zipCode else { print("fail zip"); return }
+        
+        let addressLine2 = self.addressLine2 ?? ""
+        
+        addressCD = AddressCD(addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode)
+    }
+    
+}
 
 
+// MARK: - create social links model in CoreData
+extension ReviewAndCreateLocationViewController {
+    
+    func createSocialLinksCoreDataModel() {
+        
+        let social1 = self.social1 ?? ""
+        let social2 = self.social2 ?? ""
+        let social3 = self.social3 ?? ""
+        
+        socialLinksCD = LocationSocialLinksCD(socialLink1: social1, socialLink2: social2, socialLink3: social3)
+    }
+    
+}
 
 
 

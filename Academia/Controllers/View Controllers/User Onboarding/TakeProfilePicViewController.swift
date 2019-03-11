@@ -293,36 +293,7 @@ class TakeProfilePicViewController: UIViewController {
         // reset textfield placeholder text color to gray upon succesful save
         firstNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.firstName.rawValue, attributes: beltBuilder.avenirFont)
         lastNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.lastName.rawValue, attributes: beltBuilder.avenirFont)
-        
-        
-        // pass CoreData name etc., profilePic properties
-        // convert profilePic to Data
-        
-        if let profilePicData = profilePicImageViewOutlet.image?.jpegData(compressionQuality: 1) {
-            
-            // pass CoreData Properties
-            if let owner = owner {
-                
-                owner.firstName = firstNameTextField.text
-                owner.lastName = lastNameTextField.text
-                owner.profilePic = profilePicData
-                destViewController.owner = owner
-                
-            } else if let studentAdult = studentAdult  {
-                
-                studentAdult.firstName = firstNameTextField.text
-                studentAdult.lastName = lastNameTextField.text
-                studentAdult.profilePic = profilePicData
-                destViewController.studentAdult = studentAdult
-                
-            } else if let studentKid = studentKid  {
-                
-                studentKid.firstName = firstNameTextField.text
-                studentKid.lastName = lastNameTextField.text
-                studentKid.profilePic = profilePicData
-                destViewController.studentKid = studentKid
-            }
-        }
+
     }
 }
 

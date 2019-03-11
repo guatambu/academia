@@ -272,29 +272,6 @@ class ContactInfoViewController: UIViewController, UITextInputTraits {
         destViewController.inEditingMode = inEditingMode
         destViewController.userToEdit = userToEdit
         
-        // pass CoreData Properties
-        if let owner = owner {
-            
-            owner.phone = phone
-            owner.mobile = mobile
-            owner.email = email
-            destViewController.owner = owner
-            
-        } else if let studentAdult = studentAdult  {
-            
-            studentAdult.phone = phone
-            studentAdult.mobile = mobile
-            studentAdult.email = email
-            destViewController.studentAdult = studentAdult
-            
-        } else if let studentKid = studentKid  {
-            
-            studentKid.phone = phone
-            studentKid.mobile = mobile
-            studentKid.email = email
-            destViewController.studentKid = studentKid
-        }
-        
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
         if let isOwner = isOwner {
             if isOwner {

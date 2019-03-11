@@ -147,10 +147,6 @@ class UserSelfIdentifyViewController: UIViewController {
         destViewController.isOwner = self.isOwner
         destViewController.isKid = self.isKid
         
-        // MARK: - CoreData implementaiton
-        let owner = OwnerCD(context: CoreDataStack.context)
-        owner.ownerUUID = UUID()
-        destViewController.owner = owner
     }
 
     @IBAction func cancelButtonTapped(_ sender: UIButton) {

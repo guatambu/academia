@@ -13,18 +13,13 @@ import CoreData
 extension StudentKidCD {
     
     // convenience initializer to allow creation of a KidStudentCD object via Academia CoreDataStack's managedObjectContext
-    convenience init(studentKidUUID: UUID,
+    convenience init(studentKidUUID: UUID = UUID(),
                      dateCreated: Date,
                      dateEdited: Date,
                      birthdate: Date,
-                     promotions: BeltPromotionCD?,
-                     mostRecentPromotion: Date?,
-                     attendanceStudentKid: NSSet?,
                      studentStatus: StudentStatusCD?,
-                     groups: NSSet?,
-                     paymentProgram: PaymentProgramCD?,
                      belt: BeltCD,
-                     profilePic: UIImage?,
+                     profilePic: Data?,
                      username: String,
                      password: String,
                      firstName: String,
@@ -43,14 +38,9 @@ extension StudentKidCD {
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
         self.birthdate = birthdate
-        //self.promotions = promotions
-        self.mostRecentPromotion = mostRecentPromotion
-        self.attendanceStudentKid = attendanceStudentKid
         self.studentStatus = studentStatus
         self.belt = belt
-        self.groups = groups
-        self.paymentProgram = paymentProgram
-        //self.profilePic = profilePic
+        self.profilePic = profilePic
         self.username = username
         self.password = password
         self.firstName = firstName

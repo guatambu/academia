@@ -346,25 +346,6 @@ class AddressViewController: UIViewController, UITextInputTraits {
             }
         }
         
-        // initalize the AddressCD object
-        let address = AddressCD(addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode)
-        // pass CoreData Properties
-        if let owner = owner {
-            
-            owner.address = address
-            destViewController.owner = owner
-            
-        } else if let studentAdult = studentAdult  {
-            
-            studentAdult.address = address
-            destViewController.studentAdult = studentAdult
-            
-        } else if let studentKid = studentKid  {
-
-            studentKid.address = address
-            destViewController.studentKid = studentKid
-        }
-        
         // reset textfield placeholder text color to gray upon succesful save
         addressLine1TextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.streetAddress.rawValue, attributes: beltBuilder.avenirFont)
         cityTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.city.rawValue, attributes: beltBuilder.avenirFont)
