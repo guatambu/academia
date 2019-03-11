@@ -47,30 +47,10 @@ class PaymentBillingDateCDModelController {
     
     // MARK: - Update
     func update(paymentBillingDate: PaymentBillingDateCD,
-                firstOfTheMonth: Bool?,
-                fifthOfTheMonth: Bool?,
-                fifteenthOfTheMonth: Bool?,
-                twentiethOfTheMonth: Bool?,
-                registrationDay: Bool?,
-                singleDay: Bool?) {
+                billingDate: String?) {
         
-        if let firstOfTheMonth = firstOfTheMonth {
-            paymentBillingDate.firstOfTheMonth = firstOfTheMonth
-        }
-        if let fifthOfTheMonth = fifthOfTheMonth {
-            paymentBillingDate.fifthOfTheMonth = fifthOfTheMonth
-        }
-        if let fifteenthOfTheMonth = fifteenthOfTheMonth {
-            paymentBillingDate.fifteenthOfTheMonth = fifteenthOfTheMonth
-        }
-        if let twentiethOfTheMonth = twentiethOfTheMonth {
-            paymentBillingDate.twentiethOfTheMonth = twentiethOfTheMonth
-        }
-        if let registrationDay = registrationDay {
-            paymentBillingDate.registrationDay = registrationDay
-        }
-        if let singleDay = singleDay {
-            paymentBillingDate.singleDay = singleDay
+        if let billingDate = billingDate {
+            paymentBillingDate.billingDate = billingDate
         }
         
         OwnerCDModelController.shared.saveToPersistentStorage()

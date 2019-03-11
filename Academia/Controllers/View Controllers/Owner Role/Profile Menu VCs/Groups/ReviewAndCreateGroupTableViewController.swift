@@ -23,6 +23,8 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
     
     let beltBuilder = BeltBuilder()
     
+    var groupCD: GroupCD?
+    
     // tableView Sections Header Labels
     let sectionHeaderLabels = ["Kids", "Adults"]
     
@@ -295,3 +297,23 @@ extension ReviewAndCreateGroupTableViewController {
         GroupModelController.shared.add(active: active, name: groupName, description: groupDescription, kidMembers: kidMembers, adultMembers: adultMembers)
     }
 }
+
+
+// MARK: - funciton to create and save group to CoreData
+extension ReviewAndCreateGroupTableViewController {
+    
+    func createAndSaveGroupCoreDataModel() {
+        
+        guard let groupName = groupName else { print("fail groupName"); return }
+        guard let active = active else { print("fail active");  return }
+        guard let groupDescription = groupDescription else { print("fail groupDescription"); return }
+        
+        let newGroup = GroupCD(active: active, name: groupName, groupDescription: groupDescription)
+        
+        groupCD = newGroup
+        
+        // save to CoreData
+        OwnerCDModelController.shared.saveToPersistentStorage()
+    }
+}
+

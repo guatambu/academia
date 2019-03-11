@@ -13,18 +13,13 @@ import CoreData
 extension PaymentProgramCD {
     
     // convenience initializer to allow creation of a PaymentProgramCD object via Academia CoreDataStack's managedObjectContext
-    convenience init(paymentProgramUUID: UUID,
+    convenience init(paymentProgramUUID: UUID = UUID(),
                      active: Bool,
                      dateCreated: Date,
                      dateEdited: Date,
                      programName: String,
                      paymentDescription: String,
                      paymentAgreement: String,
-                     studentAdult: StudentAdultCD,
-                     studentKid: StudentKidCD,
-                     paymentBillingDate: NSOrderedSet,
-                     paymentBillingSignature: NSOrderedSet,
-                     paymentBillingType: NSOrderedSet,
                      context: NSManagedObjectContext = CoreDataStack.context) {
         
         self.init(context: context)
@@ -35,9 +30,5 @@ extension PaymentProgramCD {
         self.programName = programName
         self.paymentDescription = paymentDescription
         self.paymentAgreement = paymentAgreement
-        self.paymentBillingDate = paymentBillingDate
-        self.paymentBillingSignature = paymentBillingSignature
-        self.paymentBillingType = paymentBillingType
     }
-    
 }

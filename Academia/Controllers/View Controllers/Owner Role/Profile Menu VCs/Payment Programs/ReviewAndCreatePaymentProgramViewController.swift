@@ -102,7 +102,11 @@ class ReviewAndCreatePaymentProgramViewController: UIViewController {
     
     @IBAction func createProgramButtonTapped(_ sender: DesignableButton) {
         
-        // create the new location in the LocationModelController source of truth
+        // create new payment program and save to CoreData
+        createPaymentProgramCoreDataModel()
+        
+        
+        // create the new paymentProgram in the LocationModelController source of truth
         createPaymentProgram()
         
         // programmatic segue back to the MyLocations TVC to view the current locations
@@ -207,3 +211,64 @@ extension ReviewAndCreatePaymentProgramViewController {
     }
 }
 
+
+// MARK: - funciton to create and save payment program to CoreData
+extension ReviewAndCreatePaymentProgramViewController {
+    
+    func createPaymentProgramCoreDataModel() {
+        
+        guard let paymentProgramName = paymentProgramName else { print("fail paymentProgramName"); return }
+        guard let active = active else { print("fail active"); return }
+        guard let programDescription = programDescription else { print("fail programDescription"); return }
+        guard let programAgreement = programAgreement else { print("fail programAgreement"); return }
+        
+        let newPaymentProgram = PaymentProgramCD(active: active, dateCreated: Date(), dateEdited: Date(), programName: paymentProgramName, paymentDescription: programDescription, paymentAgreement: programAgreement)
+        
+        // create corresponding BillingDates
+        createPaymentBillingDatesCoreDataModel(paymentProgram: newPaymentProgram)
+        // create corresponding BillingTypes
+        createPaymentBillingTypesCoreDataModel(paymentProgram: newPaymentProgram)
+        // create corresponding BillingSignatures
+        createPaymentBillingSignatureCoreDataModel(paymentProgram: newPaymentProgram)
+        // save to CoreData
+        OwnerCDModelController.shared.saveToPersistentStorage()
+    }
+}
+
+
+// MARK: - functions to create Billing Details in CoreData
+extension ReviewAndCreatePaymentProgramViewController {
+    
+    func createPaymentBillingTypesCoreDataModel(paymentProgram: PaymentProgramCD) {
+        
+        guard let billingTypes = billingTypes else { print("fail billingTypes"); return }
+        
+        for bt in billingTypes {
+            
+            let newBillingType = PaymentBillingTypeCD(billingType: bt.rawValue, paymentProgram: paymentProgram)
+            PaymentBillingTypeCDModelController.shared.add(paymentBillingType: newBillingType)
+        }
+    }
+
+    func createPaymentBillingDatesCoreDataModel(paymentProgram: PaymentProgramCD) {
+        
+        guard let billingDates = billingDates else { print("fail billingDates"); return }
+        
+        for bd in billingDates {
+            
+            let newBillingDate = PaymentBillingDateCD(billingDate: bd.rawValue, paymentProgram: paymentProgram)
+            PaymentBillingDateCDModelController.shared.add(paymentBillingDate: newBillingDate)
+        }
+    }
+    
+    func createPaymentBillingSignatureCoreDataModel(paymentProgram: PaymentProgramCD) {
+        
+        guard let signatureTypes = signatureTypes else { print("fail signatureType"); return }
+        
+        for st in signatureTypes {
+            
+            let newBillingSignature = PaymentBillingSignatureCD(billingSignature: st.rawValue, paymentProgram: paymentProgram)
+        PaymentBillingSignatureCDModelController.shared.add(paymentBillingSignature: newBillingSignature)
+        }
+    }
+}

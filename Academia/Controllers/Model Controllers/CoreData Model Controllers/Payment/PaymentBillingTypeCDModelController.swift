@@ -47,26 +47,10 @@ class PaymentBillingTypeCDModelController {
     
     // MARK: - Update
     func update(paymentBillingType: PaymentBillingTypeCD,
-                dropIn: Bool?,
-                monthly: Bool?,
-                threeMonths: Bool?,
-                sixMonths: Bool?,
-                twelveMonths: Bool?) {
+                billingType: String?) {
         
-        if let dropIn = dropIn {
-            paymentBillingType.dropIn = dropIn
-        }
-        if let monthly = monthly {
-            paymentBillingType.monthly = monthly
-        }
-        if let threeMonths = threeMonths {
-            paymentBillingType.threeMonths = threeMonths
-        }
-        if let sixMonths = sixMonths {
-            paymentBillingType.sixMonths = sixMonths
-        }
-        if let twelveMonths = twelveMonths {
-            paymentBillingType.twelveMonths = twelveMonths
+        if let billingType = billingType {
+            paymentBillingType.billingType = billingType
         }
         
         OwnerCDModelController.shared.saveToPersistentStorage()

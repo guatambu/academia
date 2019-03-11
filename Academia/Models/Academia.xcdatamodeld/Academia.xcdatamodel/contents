@@ -119,9 +119,9 @@
         <attribute name="groupUUID" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="adultMembers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StudentAdultCD" inverseName="adultMembers" inverseEntity="StudentAdultCD" syncable="YES"/>
-        <relationship name="aulaGroups" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AulaCD" inverseName="groupsAula" inverseEntity="AulaCD" syncable="YES"/>
+        <relationship name="aulaGroups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AulaCD" inverseName="groupsAula" inverseEntity="AulaCD" syncable="YES"/>
         <relationship name="kidMembers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StudentKidCD" inverseName="kidMembers" inverseEntity="StudentKidCD" syncable="YES"/>
-        <relationship name="ownerGroups" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OwnerCD" inverseName="groups" inverseEntity="OwnerCD" syncable="YES"/>
+        <relationship name="ownerGroups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="OwnerCD" inverseName="groups" inverseEntity="OwnerCD" syncable="YES"/>
         <relationship name="studentAdultGroups" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StudentAdultCD" inverseName="groups" inverseEntity="StudentAdultCD" syncable="YES"/>
         <relationship name="studentKidGroups" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StudentKidCD" inverseName="groups" inverseEntity="StudentKidCD" syncable="YES"/>
     </entity>
@@ -174,30 +174,15 @@
         <relationship name="promotions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BeltPromotionCD" inverseName="owner" inverseEntity="BeltPromotionCD" syncable="YES"/>
     </entity>
     <entity name="PaymentBillingDateCD" representedClassName="PaymentBillingDateCD" syncable="YES" codeGenerationType="class">
-        <attribute name="fifteenthOfTheMonth" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="fifthOfTheMonth" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="firstOfTheMonth" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="registrationDay" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="singleDay" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="twentiethOfTheMonth" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="billingDate" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="paymentProgram" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PaymentProgramCD" inverseName="paymentBillingDate" inverseEntity="PaymentProgramCD" syncable="YES"/>
     </entity>
     <entity name="PaymentBillingSignatureCD" representedClassName="PaymentBillingSignatureCD" syncable="YES" codeGenerationType="class">
-        <attribute name="biometricEyeIris" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="biometricFace" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="biometricFinger" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="biometricOther" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="digitalFingerSignature" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="digitallyTyped" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="paperContract" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="billingSignature" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="paymentProgram" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PaymentProgramCD" inverseName="paymentBillingSignature" inverseEntity="PaymentProgramCD" syncable="YES"/>
     </entity>
     <entity name="PaymentBillingTypeCD" representedClassName="PaymentBillingTypeCD" syncable="YES" codeGenerationType="class">
-        <attribute name="dropIn" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="monthly" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="sixMonths" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="threeMonths" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="twelveMonths" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="billingType" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="paymentProgram" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PaymentProgramCD" inverseName="paymentBillingType" inverseEntity="PaymentProgramCD" syncable="YES"/>
     </entity>
     <entity name="PaymentProgramCD" representedClassName="PaymentProgramCD" syncable="YES" codeGenerationType="class">
@@ -289,9 +274,9 @@
         <element name="LocationCD" positionX="-949.203125" positionY="168.14453125" width="128" height="240"/>
         <element name="LocationSocialLinksCD" positionX="-720" positionY="-369" width="128" height="135"/>
         <element name="OwnerCD" positionX="-494.6796875" positionY="-356.46484375" width="128" height="390"/>
-        <element name="PaymentBillingDateCD" positionX="551.6640625" positionY="-347.15625" width="128" height="150"/>
-        <element name="PaymentBillingSignatureCD" positionX="550.7109375" positionY="-264.40234375" width="128" height="165"/>
-        <element name="PaymentBillingTypeCD" positionX="554.09375" positionY="-169.73046875" width="128" height="135"/>
+        <element name="PaymentBillingDateCD" positionX="551.6640625" positionY="-347.15625" width="128" height="75"/>
+        <element name="PaymentBillingSignatureCD" positionX="550.7109375" positionY="-264.40234375" width="128" height="75"/>
+        <element name="PaymentBillingTypeCD" positionX="554.09375" positionY="-169.73046875" width="128" height="75"/>
         <element name="PaymentProgramCD" positionX="310.90234375" positionY="-291.76953125" width="128" height="225"/>
         <element name="StudentAdultCD" positionX="-2.69921875" positionY="-545.51953125" width="128" height="420"/>
         <element name="StudentKidCD" positionX="8.1484375" positionY="-179.87890625" width="128" height="405"/>

@@ -13,17 +13,12 @@ import CoreData
 extension GroupCD {
     
     // convenience initializer to allow creation of a GroupCD object via Academia CoreDataStack's managedObjectContext
-    convenience init(groupUUID: UUID,
+    convenience init(groupUUID: UUID = UUID(),
                      active: Bool,
-                     dateCreated: Date,
-                     dateEdited: Date,
+                     dateCreated: Date = Date(),
+                     dateEdited: Date = Date(),
                      name: String,
                      groupDescription: String,
-                     studentAdultGroups: StudentAdultCD,
-                     studentKidGroups: StudentKidCD,
-                     adultMembers: NSSet?,
-                     kidMembers: NSSet?,
-                     aulaGroups: AulaCD,
                      context: NSManagedObjectContext = CoreDataStack.context) {
         
         self.init(context: context)
@@ -33,10 +28,5 @@ extension GroupCD {
         self.dateEdited = dateEdited
         self.name = name
         self.groupDescription = groupDescription
-        self.studentAdultGroups = studentAdultGroups
-        self.studentKidGroups = studentKidGroups
-        self.adultMembers = adultMembers
-        self.kidMembers = kidMembers
-        self.aulaGroups = aulaGroups
     }
 }

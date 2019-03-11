@@ -13,23 +13,13 @@ import CoreData
 extension PaymentBillingDateCD {
     
     // convenience initializer to allow creation of an BillingDateCD object via Academia CoreDataStack's managedObjectContext
-    convenience init(fifteenthOfTheMonth: Bool,
-                     fifthOfTheMonth: Bool,
-                     firstOfTheMonth: Bool,
-                     registrationDay: Bool,
-                     singleDay: Bool,
-                     twentiethOfTheMonth: Bool,
+    convenience init(billingDate: String?,
                      paymentProgram: PaymentProgramCD,
                      context: NSManagedObjectContext = CoreDataStack.context) {
         
         self.init(context: context)
         
-        self.fifteenthOfTheMonth = fifteenthOfTheMonth
-        self.fifthOfTheMonth = fifthOfTheMonth
-        self.firstOfTheMonth = firstOfTheMonth
-        self.registrationDay = registrationDay
-        self.singleDay = singleDay
-        self.twentiethOfTheMonth = twentiethOfTheMonth
+        self.billingDate = billingDate
         self.paymentProgram = paymentProgram
     }
 }

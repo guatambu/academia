@@ -47,34 +47,10 @@ class PaymentBillingSignatureCDModelController {
     
     // MARK: - Update
     func update(paymentBillingSignature: PaymentBillingSignatureCD,
-                biometricEyeIris: Bool?,
-                biometricFinger: Bool?,
-                biometricFace: Bool?,
-                biometricOther: Bool?,
-                paperContract: Bool?,
-                digitallyTyped: Bool?,
-                digitalFingerSignature: Bool?) {
+                billingSignature: String?) {
         
-        if let biometricEyeIris = biometricEyeIris {
-            paymentBillingSignature.biometricEyeIris = biometricEyeIris
-        }
-        if let biometricFinger = biometricFinger {
-            paymentBillingSignature.biometricFinger = biometricFinger
-        }
-        if let biometricFace = biometricFace {
-            paymentBillingSignature.biometricFace = biometricFace
-        }
-        if let biometricOther = biometricOther {
-            paymentBillingSignature.biometricOther = biometricOther
-        }
-        if let paperContract = paperContract {
-            paymentBillingSignature.paperContract = paperContract
-        }
-        if let digitallyTyped = digitallyTyped {
-            paymentBillingSignature.digitallyTyped = digitallyTyped
-        }
-        if let digitalFingerSignature = digitalFingerSignature {
-            paymentBillingSignature.digitalFingerSignature = digitalFingerSignature
+        if let billingSignature = billingSignature {
+            paymentBillingSignature.billingSignature = billingSignature
         }
         
         OwnerCDModelController.shared.saveToPersistentStorage()

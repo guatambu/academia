@@ -13,21 +13,13 @@ import CoreData
 extension PaymentBillingTypeCD {
     
     // convenience initializer to allow creation of an BillingTypeCD object via Academia CoreDataStack's managedObjectContext
-    convenience init(dropIn: Bool,
-                     monthly: Bool,
-                     sixMonths: Bool,
-                     threeMonths: Bool,
-                     twelveMonths: Bool,
+    convenience init(billingType: String?,
                      paymentProgram: PaymentProgramCD,
                      context: NSManagedObjectContext = CoreDataStack.context) {
         
         self.init(context: context)
         
-        self.dropIn = dropIn
-        self.monthly = monthly
-        self.sixMonths = sixMonths
-        self.threeMonths = threeMonths
-        self.twelveMonths = twelveMonths
+        self.billingType = billingType
         self.paymentProgram = paymentProgram
     }
     
