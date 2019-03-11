@@ -17,13 +17,13 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
     var groupDescription: String?
     var kidMembers: [KidStudent]?
     var adultMembers: [AdultStudent]?
+    var kidMembersCD: [StudentKidCD]?
+    var adultMembersCD: [StudentAdultCD]?
     
     var inEditingMode: Bool?
     var groupToEdit: Group?
     
     let beltBuilder = BeltBuilder()
-    
-    var groupCD: GroupCD?
     
     // tableView Sections Header Labels
     let sectionHeaderLabels = ["Kids", "Adults"]
@@ -310,8 +310,22 @@ extension ReviewAndCreateGroupTableViewController {
         
         let newGroup = GroupCD(active: active, name: groupName, groupDescription: groupDescription)
         
-        groupCD = newGroup
-        
+        // configure newGroup's "to-many" properties
+        if let kidMembersCD = kidMembersCD {
+            // if present in kidMembersCD array, add kids to newGroup's kidMembers
+            if !kidMembersCD.isEmpty {
+                for kid in kidMembersCD {
+                    newGroup.addToKidMembers(kid)
+                }
+            }
+        } else if let adultMembersCD = adultMembersCD {
+            // if present in adultMembersCD array, add adults to newGroup's adultMembers
+            if !adultMembersCD.isEmpty {
+                for adult in adultMembersCD {
+                    newGroup.addToAdultMembers(adult)
+                }
+            }
+        }
         // save to CoreData
         OwnerCDModelController.shared.saveToPersistentStorage()
     }

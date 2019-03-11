@@ -222,6 +222,7 @@ extension ReviewAndCreatePaymentProgramViewController {
         guard let programDescription = programDescription else { print("fail programDescription"); return }
         guard let programAgreement = programAgreement else { print("fail programAgreement"); return }
         
+        // create new payment program data model object
         let newPaymentProgram = PaymentProgramCD(active: active, dateCreated: Date(), dateEdited: Date(), programName: paymentProgramName, paymentDescription: programDescription, paymentAgreement: programAgreement)
         
         // create corresponding BillingDates

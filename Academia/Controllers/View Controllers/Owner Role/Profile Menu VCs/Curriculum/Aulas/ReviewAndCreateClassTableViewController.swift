@@ -17,14 +17,20 @@ class ReviewAndCreateClassTableViewController: UITableViewController {
     var aulaName: String?
     var active: Bool?
     var aulaDescription: String?
-    var daysOfTheWeek: [ClassTimeComponents.Weekdays]?
     var time: String?
     var timeCode: Int?
-    var location:Location?
+    var location: Location?
+    var daysOfTheWeek: [ClassTimeComponents.Weekdays]?
     
+    var locationCD: LocationCD?
     var instructors: [AdultStudent]?
     var ownerInstructors: [Owner]?
     var classGroups: [Group]?
+    
+    var instructorsCD: [StudentAdultCD]?
+    var ownerInstructorsCD: [OwnerCD]?
+    var classGroupsCD: [GroupCD]?
+
     
     var inEditingMode: Bool?
     var aulaToEdit: Aula?
@@ -409,4 +415,134 @@ extension ReviewAndCreateClassTableViewController {
     }
 }
 
+
+// MARK: - functions to create, configure, and save AulaCD data model to CoreData
+extension ReviewAndCreateClassTableViewController {
+    
+    func createAulaCoreDataModel() {
+        
+        guard let aulaName = aulaName else {
+            print("there was a nil value in the aulaName passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 425")
+            return
+        }
+        guard let active = active else {
+            print("there was a nil value in the active passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 429")
+            return
+        }
+        guard let aulaDescription = aulaDescription else {
+            print("there was a nil value in the aulaDescription passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 433")
+            return
+        }
+        guard let time = time else {
+            print("there was a nil value in the time passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 441")
+            return
+        }
+        guard let timeCode = timeCode else {
+            print("there was a nil value in the timeCode passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 445")
+            return
+        }
+        guard let daysOfTheWeek = daysOfTheWeek else {
+            print("there was a nil value in the daysOfTheWeek array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 497")
+            return
+        }
+        guard let locationCD = locationCD else {
+            print("there was a nil value in the locationCD passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 449")
+            return
+        }
+        guard let instructorsCD = instructorsCD else {
+            print("there was a nil value in the instructorsCD array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 453")
+            return
+        }
+        guard let ownerInstructorsCD = ownerInstructorsCD else {
+            print("there was a nil value in the ownerInstructorsCD array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 457")
+            return
+        }
+        guard let classGroupsCD = classGroupsCD else {
+            print("there was a nil value in the classGroupsCD array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 461")
+            return
+        }
+        
+        // convert timeCode Int value to Int16
+        guard let timeCodeInt16 = Int16(exactly: timeCode) else { return }
+        // create newAula data model object
+        let newAula = AulaCD(active: active, aulaName: aulaName, aulaDescription: aulaDescription, time: time, timeCode: timeCodeInt16, location: locationCD)
+        
+        // configure newAula "to-many" properties
+        // days of the week
+        for day in daysOfTheWeek {
+            switch day {
+            case .Sunday:
+                let sunday = AulaDaysOfTheWeekCD(day: day.rawValue)
+                newAula.addToDaysOfTheWeek(sunday)
+            case .Monday:
+                let monday = AulaDaysOfTheWeekCD(day: day.rawValue)
+                newAula.addToDaysOfTheWeek(monday)
+            case .Tuesday:
+                let tuesday = AulaDaysOfTheWeekCD(day: day.rawValue)
+                newAula.addToDaysOfTheWeek(tuesday)
+            case .Wednesday:
+                let wednesday = AulaDaysOfTheWeekCD(day: day.rawValue)
+                newAula.addToDaysOfTheWeek(wednesday)
+            case .Thursday:
+                let thursday = AulaDaysOfTheWeekCD(day: day.rawValue)
+                newAula.addToDaysOfTheWeek(thursday)
+            case .Friday:
+                let friday = AulaDaysOfTheWeekCD(day: day.rawValue)
+                newAula.addToDaysOfTheWeek(friday)
+            case .Saturday:
+                let saturday = AulaDaysOfTheWeekCD(day: day.rawValue)
+                newAula.addToDaysOfTheWeek(saturday)
+            }
+        }
+        // instructors
+        if !instructorsCD.isEmpty {
+            // add instructors to newAula
+            for instructor in instructorsCD {
+                newAula.addToAdultStudentInstructorsAula(instructor)
+            }
+        }
+        // owner instructors
+        if !ownerInstructorsCD.isEmpty {
+            // add instructors to newAula
+            for ownerInstructor in ownerInstructorsCD {
+                newAula.addToOwnerInstructorAula(ownerInstructor)
+            }
+        }
+        // groups associated with newAula
+        if !classGroupsCD.isEmpty {
+            // add groups to newAula
+            for group in classGroupsCD {
+                newAula.addToGroupsAula(group)
+            }
+        }
+        
+    }
+    
+    func createDayOfTheWeekCoreDataModel(aula: AulaCD) {
+        
+        guard let daysOfTheWeek = daysOfTheWeek else {
+            print("there was a nil value in the daysOfTheWeek array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 497")
+            return
+        }
+        
+        for day in daysOfTheWeek {
+            switch day {
+            case .Sunday:
+                let _ = AulaDaysOfTheWeekCD(day: day.rawValue)
+            case .Monday:
+                let _ = AulaDaysOfTheWeekCD(day: day.rawValue)
+            case .Tuesday:
+                let _ = AulaDaysOfTheWeekCD(day: day.rawValue)
+            case .Wednesday:
+                let _ = AulaDaysOfTheWeekCD(day: day.rawValue)
+            case .Thursday:
+                let _ = AulaDaysOfTheWeekCD(day: day.rawValue)
+            case .Friday:
+                let _ = AulaDaysOfTheWeekCD(day: day.rawValue)
+            case .Saturday:
+                let _ = AulaDaysOfTheWeekCD(day: day.rawValue)
+            }
+        }
+    }
+}
 

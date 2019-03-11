@@ -47,34 +47,10 @@ class AulaDaysOfTheWeekCDModelController {
     
     // MARK: - Update
     func update(aulaDaysOfTheWeek: AulaDaysOfTheWeekCD,
-                sunday: String?,
-                monday: String?,
-                tuesday: String?,
-                wednesday: String?,
-                thursday: String?,
-                friday: String?,
-                saturday: String?) {
+                day: String?) {
         
-        if let sunday = sunday {
-            aulaDaysOfTheWeek.sunday = sunday
-        }
-        if let monday = monday {
-            aulaDaysOfTheWeek.monday = monday
-        }
-        if let tuesday = tuesday {
-            aulaDaysOfTheWeek.tuesday = tuesday
-        }
-        if let wednesday = wednesday {
-            aulaDaysOfTheWeek.wednesday = wednesday
-        }
-        if let thursday = thursday {
-            aulaDaysOfTheWeek.thursday = thursday
-        }
-        if let friday = friday {
-            aulaDaysOfTheWeek.friday = friday
-        }
-        if let saturday = saturday {
-            aulaDaysOfTheWeek.saturday = saturday
+        if let day = day {
+            aulaDaysOfTheWeek.day = day
         }
         
         OwnerCDModelController.shared.saveToPersistentStorage()

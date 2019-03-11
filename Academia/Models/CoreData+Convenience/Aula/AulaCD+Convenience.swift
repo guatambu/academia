@@ -13,19 +13,14 @@ import CoreData
 extension AulaCD {
     
     // convenience initializer to allow creation of a AulaCD object via Academia CoreDataStack's managedObjectContext
-    convenience init(aulaUUID: UUID,
+    convenience init(aulaUUID: UUID = UUID(),
                      active: Bool,
                      dateCreated: Date = Date(),
-                     dateEdited: Date,
+                     dateEdited: Date = Date(),
                      aulaName: String,
                      aulaDescription: String,
                      time: String,
                      timeCode: Int16,
-                     adultStudentInstructorsAula: NSOrderedSet?,
-                     ownerInstructorsAula: NSSet?,
-                     attendance: AulaAttendanceCD?,
-                     daysOfTheWeek: AulaDaysOfTheWeekCD?,
-                     groupsAula: NSOrderedSet?,
                      location: LocationCD?,
                      context: NSManagedObjectContext = CoreDataStack.context) {
         
@@ -39,11 +34,6 @@ extension AulaCD {
         self.aulaDescription = aulaDescription
         self.time = time
         self.timeCode = timeCode
-        self.adultStudentInstructorsAula = adultStudentInstructorsAula
-        self.attendance = attendance
-        self.daysOfTheWeek = daysOfTheWeek
-        self.groupsAula = groupsAula
         self.location = location
     }
-    
 }
