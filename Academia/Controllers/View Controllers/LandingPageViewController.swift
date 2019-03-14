@@ -52,21 +52,80 @@ class LandingPageViewController: UIViewController {
             
             for owner in OwnerCDModelController.shared.owners {
                 
-                OwnerCDModelController.shared.remove(owner: owner)
+//                OwnerCDModelController.shared.remove(owner: owner)
                 
                 print("owner.username = \(owner.username ?? "owner object present but has no first name :'{ ")")
                 print("owner.password = \(owner.password ?? "owner object present but has no first name :'{ ")")
                 print("")
-                print("owner.firstName = \(owner.firstName ?? "owner object present but has no first name :'{ ")")
+                print("owner.beltLevel = \(owner.belt?.beltLevel ?? "no belt level present")")
                 print("")
-                print("owner.address.addressLine1 = \(owner.address?.addressLine1 ?? "owner address object present but has no addressLine1 :'{ ")")
-                print("")
-                print("owner.belt.beltLevel = \(owner.belt?.beltLevel ?? "owner belt object present but has no beltLevel :'{ ")")
-                
-                print("")
-                print("***** CoreData Persistence Check - end - *****")
-                
+    
             }
+            
+            if !LocationCDModelController.shared.locations.isEmpty {
+                
+                for location in LocationCDModelController.shared.locations {
+                    
+//                    LocationCDModelController.shared.remove(location: location)
+                    
+                    print("location.locationName = \(location.locationName ?? "location object present but has no location name :'{ ")")
+                    print("location.address.city = \(location.address?.city ?? "owner object present but has no first name :'{ ")")
+                    print("")
+                    
+                }
+            }else {
+                print("no locations in the source of truth")
+            }
+            
+            if !PaymentProgramCDModelController.shared.paymentPrograms.isEmpty {
+                
+                for paymentProgram in PaymentProgramCDModelController.shared.paymentPrograms {
+                    
+//                    PaymentProgramCDModelController.shared.remove(paymentProgram: paymentProgram)
+                    
+                    print("paymentProgram.programName = \(paymentProgram.programName ?? "payment program object present but has no location name :'{ ")")
+                    print("paymentProgram.billingDates.count = \(paymentProgram.paymentBillingDate?.count ?? 3000)")
+                    print("")
+                    
+                }
+            }else {
+                print("no paymentPrograms in the source of truth")
+            }
+            
+            if !GroupCDModelController.shared.groups.isEmpty {
+                
+                for group in GroupCDModelController.shared.groups {
+                    
+//                    GroupCDModelController.shared.remove(group: group)
+                    
+                    print("group.name = \(group.name ?? "no group name found")")
+                    print("")
+                    print("group.adultMembers = \(group.adultMembers?.count ?? 4000)")
+                    print("")
+                    
+                }
+            }else {
+                print("no groups in the source of truth")
+            }
+            
+            if !AulaCDModelController.shared.aulas.isEmpty {
+                
+                for aula in AulaCDModelController.shared.aulas {
+                    
+//                    AulaCDModelController.shared.remove(aula: aula)
+                    
+                    print("aula.name = \(aula.aulaName ?? "no aula name present")")
+                    print("")
+                    print("aula.timeCode = \(aula.timeCode)")
+                    print("")
+                    print("aula.daysOfTheWeek = \(aula.daysOfTheWeek?.count ?? 10000)")
+                }
+            } else {
+                print("no aulas in the source of truth")
+            }
+            
+            print("")
+            print("***** CoreData Persistence Check - end - *****")
             
         } else {
             print("Nothing found in OwnerCDModelController.shared.owners... Persistence fail?")

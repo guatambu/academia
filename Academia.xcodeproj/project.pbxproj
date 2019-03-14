@@ -1203,6 +1203,7 @@
 			isa = PBXGroup;
 			children = (
 				FA9AD9F8213783BA0005E1F1 /* MyLocationsTableViewController.swift */,
+				FAB203D3215EA8630034E1D4 /* LocationsImageMenuTableViewCell.swift */,
 				FABF859521B220B9005CEBD4 /* LocationInfoDetailsViewController.swift */,
 				FABF859721B38934005CEBD4 /* LocationPicAndNameViewController.swift */,
 				FABF859921B3895B005CEBD4 /* LocationAddressViewController.swift */,
@@ -1403,7 +1404,6 @@
 				FA5C5C422152F11400BF62D5 /* StudentUserGeneralMenuTableViewCell.swift */,
 				FAF29BDE2130892B00752414 /* ImageMenuTableViewCell.swift */,
 				FAE67A3B215C714B00822DCF /* StudentListImageMenuTableViewCell.swift */,
-				FAB203D3215EA8630034E1D4 /* LocationsImageMenuTableViewCell.swift */,
 				FA9ADA162138C7030005E1F1 /* ProfilePicTableViewCell.swift */,
 				FA9ADA2A2139EE560005E1F1 /* StatusTableViewCell.swift */,
 				FA9ADA2C2139EE6C0005E1F1 /* IsInstructorTableViewCell.swift */,

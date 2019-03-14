@@ -96,6 +96,9 @@ class ReviewAndCreateClassTableViewController: UITableViewController {
     
     @IBAction func createClassButtonTapped(_ sender: DesignableButton) {
         
+        // create AulaCD data model object
+        createAulaCoreDataModel()
+        
         // create the new location in the LocationModelController source of truth
         createClass()
         
@@ -445,7 +448,7 @@ extension ReviewAndCreateClassTableViewController {
             print("there was a nil value in the daysOfTheWeek array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 497")
             return
         }
-        guard let locationCD = locationCD else {
+        guard let location = location else {
             print("there was a nil value in the locationCD passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 449")
             return
         }
@@ -466,6 +469,16 @@ extension ReviewAndCreateClassTableViewController {
         guard let timeCodeInt16 = Int16(exactly: timeCode) else { return }
         // create newAula data model object
         let newAula = AulaCD(active: active, aulaName: aulaName, aulaDescription: aulaDescription, time: time, timeCode: timeCodeInt16, location: locationCD)
+        
+        // create AddressCD data model object
+        let addressCD = AddressCD(addressLine1: location.addressLine1, addressLine2: location.addressLine2, city: location.city, state: location.state, zipCode: location.zipCode)
+        // create SocialLinksCD data model object
+        let socialLinks = LocationSocialLinksCD(socialLink1: location.social1, socialLink2: location.social2, socialLink3: location.social3)
+        // properly format location pic to Data type
+        guard let locationPicData = location.locationPic?.jpegData(compressionQuality: 1) else { print("fail locationPicData"); return }
+        // create LocationCD data model object and assign it to newAula
+        locationCD = LocationCD(locationUUID: UUID(), active: true
+            , dateCreated: Date(), dateEdited: Date(), locationPic: locationPicData, locationName: location.locationName, phone: location.phone, website: location.website, email: location.email ?? "no email in aula location", address: addressCD, socialLinks: socialLinks, aula: newAula)
         
         // configure newAula "to-many" properties
         // days of the week
@@ -516,33 +529,14 @@ extension ReviewAndCreateClassTableViewController {
             }
         }
         
-    }
-    
-    func createDayOfTheWeekCoreDataModel(aula: AulaCD) {
-        
-        guard let daysOfTheWeek = daysOfTheWeek else {
-            print("there was a nil value in the daysOfTheWeek array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 497")
-            return
-        }
-        
-        for day in daysOfTheWeek {
-            switch day {
-            case .Sunday:
-                let _ = AulaDaysOfTheWeekCD(day: day.rawValue)
-            case .Monday:
-                let _ = AulaDaysOfTheWeekCD(day: day.rawValue)
-            case .Tuesday:
-                let _ = AulaDaysOfTheWeekCD(day: day.rawValue)
-            case .Wednesday:
-                let _ = AulaDaysOfTheWeekCD(day: day.rawValue)
-            case .Thursday:
-                let _ = AulaDaysOfTheWeekCD(day: day.rawValue)
-            case .Friday:
-                let _ = AulaDaysOfTheWeekCD(day: day.rawValue)
-            case .Saturday:
-                let _ = AulaDaysOfTheWeekCD(day: day.rawValue)
-            }
-        }
+        // add the created and configured aulato the source of truth
+        AulaCDModelController.shared.add(aula: newAula)
+        // save to CoreData
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
 }
 
+
+
+
+// TODO:  set the entire data models throughout the app to CoreData sources of truth for next step in testing.  that goes for all the Data Model Object types: Owner, students, location, payment program, aula, groups across their respective creation workflows

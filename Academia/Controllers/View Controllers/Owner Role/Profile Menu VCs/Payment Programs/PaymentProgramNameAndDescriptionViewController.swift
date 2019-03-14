@@ -35,6 +35,10 @@ class PaymentProgramNameAndDescriptionViewController: UIViewController, UITextIn
     // program description textView
     @IBOutlet weak var programDescriptionTextView: UITextView!
     
+    // CoreData properties
+    var paymentProgramCD: PaymentProgramCD?
+    var paymentProgramCDToEdit: PaymentProgramCD?
+    
     
     // MARK: - ViewController Lifecycle Functions
     
@@ -186,6 +190,7 @@ class PaymentProgramNameAndDescriptionViewController: UIViewController, UITextIn
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
         updatePaymentProgramInfo()
+        destViewController.paymentProgramCD = paymentProgramCD
         
         // reset textField placeholder text color to gray upon succesful save
         programNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.paymentProgramName.rawValue, attributes: beltBuilder.avenirFont)
@@ -203,7 +208,13 @@ extension PaymentProgramNameAndDescriptionViewController {
         if programNameTextField.text != "" {
             PaymentProgramModelController.shared.update(paymentProgram: paymentProgram, programName: programNameTextField.text, active: active, paymentDescription: programDescriptionTextView.text, billingTypes: nil, billingDates: nil, signatureTypes: nil, paymentAgreement: nil)
             print("update payment program name: \(PaymentProgramModelController.shared.paymentPrograms[0].programName)")
+            
+            // CoreData LocationCD update info
+            guard let paymentProgramCD = paymentProgramCDToEdit else { return }
+            
+            PaymentProgramCDModelController.shared.update(paymentProgramn: paymentProgramCD, active: active, programName: programNameTextField.text, paymentAgreement: nil, paymentDescription: programDescriptionTextView.text)
         }
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func enterEditingMode(inEditingMode: Bool?) {

@@ -24,6 +24,9 @@ class PaymentProgramInfoDetailsViewController: UIViewController {
     var paymentProgramToEdit: PaymentProgram?
     
     let beltBuilder = BeltBuilder()
+    
+    // CoreData properties
+    var paymentProgramCD: PaymentProgramCD?
 
     // payment program info outlets
     @IBOutlet weak var paymentProgramNameLabelOutlet: UILabel!
@@ -78,11 +81,20 @@ class PaymentProgramInfoDetailsViewController: UIViewController {
         navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
         navigationController?.navigationBar.shadowImage = UIImage()
         
-        // pass the current payment program name and agreeemnt to destVC
-        guard let paymentProgram = PaymentProgramModelController.shared.paymentPrograms.first else { return }
+//        // pass the current payment program name and agreeemnt to destVC
+//        guard let paymentProgram = PaymentProgramModelController.shared.paymentPrograms.first else { return }
+//
+//        destViewController.paymentProgramName = paymentProgram.programName
+//        destViewController.agreement = paymentProgram.paymentAgreement
         
-        destViewController.paymentProgramName = paymentProgram.programName
-        destViewController.agreement = paymentProgram.paymentAgreement
+        // pass the current CoreData payment program name and agreeemnt to destVC
+        guard let paymentProgramCD = paymentProgramCD else {
+            print("ERROR: nil value found for paymentProgramCD in PaymentProgramInfoDetailsViewController.swift -> reviewAgreementTextButtonTapped(sender:) - line 92.")
+            return
+        }
+        
+        destViewController.paymentProgramName = paymentProgramCD.programName
+        destViewController.agreement = paymentProgramCD.paymentAgreement
     }
     
     
@@ -93,7 +105,13 @@ class PaymentProgramInfoDetailsViewController: UIViewController {
         let cancel = UIAlertAction(title: "cancel", style: UIAlertAction.Style.cancel, handler: nil)
         let deleteAccount = UIAlertAction(title: "delete", style: UIAlertAction.Style.destructive) { (alert) in
             
-            PaymentProgramModelController.shared.delete(paymentProgram: PaymentProgramModelController.shared.paymentPrograms[0])
+//            PaymentProgramModelController.shared.delete(paymentProgram: PaymentProgramModelController.shared.paymentPrograms[0])
+            
+            guard let paymentProgram = self.paymentProgramCD else {
+                print("ERROR: nil value found for paymentProgramCD in PaymentProgramInfoDetailsViewController.swift -> deletePaymentProgramButtonTapped(sender:) - line 111.")
+                return
+            }
+            PaymentProgramCDModelController.shared.remove(paymentProgram: paymentProgram)
             
             // programmatically performing the segue
             guard let viewControllers = self.navigationController?.viewControllers else { return }
@@ -137,8 +155,9 @@ class PaymentProgramInfoDetailsViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         
         // set properties on destinationVC
+        //        destViewController.paymentProgramToEdit = PaymentProgramModelController.shared.paymentPrograms[0]
         destViewController.inEditingMode = true
-        destViewController.paymentProgramToEdit = PaymentProgramModelController.shared.paymentPrograms[0]
+        destViewController.paymentProgramCDToEdit = paymentProgramCD
         
     }
     

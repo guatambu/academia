@@ -27,6 +27,10 @@ class PaymentProgramAgreementViewController: UIViewController {
     
     let programAgreementTextViewPlaceholderString = PlaceholderStrings.paymentProgramAgreement.rawValue
     
+    // CoreData properties
+    var paymentProgramCD: PaymentProgramCD?
+    var paymentProgramCDToEdit: PaymentProgramCD?
+    
     let agreementStackViewTopToSafeAreaConstraintOriginalValue: CGFloat = 72.0
     // constraint outlets
     @IBOutlet weak var nextButtonToBottomAgreementStackViewConstraintOutlet: NSLayoutConstraint!

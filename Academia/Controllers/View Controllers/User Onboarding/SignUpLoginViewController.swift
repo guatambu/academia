@@ -260,19 +260,19 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
                 
                 owner.username = newUsername
                 owner.password = newPassword
-                destViewController.owner = owner
+                destViewController.ownerCD = owner
                 
             } else if let studentAdult = studentAdult  {
                 
                 studentAdult.username = newUsername
                 studentAdult.password = newPassword
-                destViewController.studentAdult = studentAdult
+                destViewController.studentAdultCD = studentAdult
                 
             } else if let studentKid = studentKid  {
                 
                 studentKid.username = newUsername
                 studentKid.password = newPassword
-                destViewController.studentKid = studentKid
+                destViewController.studentKidCD = studentKid
             }
             
             // reset welcome instructions text color and message upon succesful save

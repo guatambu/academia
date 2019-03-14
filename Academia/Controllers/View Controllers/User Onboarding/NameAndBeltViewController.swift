@@ -447,6 +447,7 @@ extension NameAndBeltViewController {
         let stripesInt16 = Int16(exactly: numberOfStripes)
         
         BeltCDModelController.shared.update(belt: belt, active: nil, elligibleForNextBelt: nil, beltLevel: beltLevel.rawValue, numberOfStripes: stripesInt16)
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func updateKidStudentInfo() {
@@ -459,6 +460,7 @@ extension NameAndBeltViewController {
         let stripesInt16 = Int16(exactly: numberOfStripes)
         
         BeltCDModelController.shared.update(belt: belt, active: nil, elligibleForNextBelt: nil, beltLevel: beltLevel.rawValue, numberOfStripes: stripesInt16)
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func updateAdultStudentInfo() {
@@ -471,6 +473,7 @@ extension NameAndBeltViewController {
         let stripesInt16 = Int16(exactly: numberOfStripes)
         
         BeltCDModelController.shared.update(belt: belt, active: nil, elligibleForNextBelt: nil, beltLevel: beltLevel.rawValue, numberOfStripes: stripesInt16)
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func enterEditingMode(inEditingMode: Bool?) {

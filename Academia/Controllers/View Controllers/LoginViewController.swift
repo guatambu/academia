@@ -146,6 +146,11 @@ class LoginViewController: UIViewController {
                         resetViewControllerLoginSuccessful()
                         // toggle owner.isLoggedOn
                         owner.isLoggedOn = true
+                        // unwrap owner.uuid value
+                        if let uuid = owner.ownerUUID {
+                            // pass uuid to ActiveUserModelController.activeUsers
+                            ActiveUserModelController.shared.activeUser.append(uuid)                            
+                        }
                         // login successful, leave function
                         return
                         
@@ -171,6 +176,11 @@ class LoginViewController: UIViewController {
                         resetViewControllerLoginSuccessful()
                         // toggle owner.isLoggedOn
                         studentAdult.isLoggedOn = true
+                        // unwrap studentAdult.uuid value
+                        if let uuid = studentAdult.adultStudentUUID {
+                            // pass uuid to ActiveUserModelController.activeUsers
+                            ActiveUserModelController.shared.activeUser.append(uuid)
+                        }
                         // login successful, leave function
                         return
                         
@@ -196,6 +206,11 @@ class LoginViewController: UIViewController {
                         resetViewControllerLoginSuccessful()
                         // toggle owner.isLoggedOn
                         studentKid.isLoggedOn = true
+                        // unwrap studentKid.uuid value
+                        if let uuid = studentKid.kidStudentUUID {
+                            // pass uuid to ActiveUserModelController.activeUsers
+                            ActiveUserModelController.shared.activeUser.append(uuid)
+                        }
                         // login successful, leave function
                         return
                         

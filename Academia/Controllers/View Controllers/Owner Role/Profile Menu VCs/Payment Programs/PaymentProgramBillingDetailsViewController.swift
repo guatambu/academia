@@ -35,6 +35,10 @@ class PaymentProgramBillingDetailsViewController: UIViewController, BillingTypeD
     let checkedBox32 = UIImage(named: "checked_tickbox_32.png")
     let checkedBox50 = UIImage(named: "checked_tickbox_50.png")
     
+    // CoreData properties
+    var paymentProgramCD: PaymentProgramCD?
+    var paymentProgramCDToEdit: PaymentProgramCD?
+    
     // label outlet
     @IBOutlet weak var addBillingDetailsLabelOutlet: UILabel!
     // next button outlet

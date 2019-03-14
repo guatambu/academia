@@ -41,6 +41,7 @@ class LocationSocialLinksViewController: UIViewController {
     
     // CoreData properties
     var location: LocationCD?
+    var locationCDToEdit: LocationCD?
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -173,6 +174,18 @@ extension LocationSocialLinksViewController {
         guard let location = locationToEdit else { return }
         
         LocationModelController.shared.update(location: location, active: nil, locationPic: nil, locationName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, website: nil, email: nil, social1: socialLink1TextField.text, social2: socialLink2TextField.text, social3: socialLink3TextField.text)
+        
+        // CoreData LocationCD update info
+        guard let locationCD = locationCDToEdit else { return }
+        guard let socialLinks = locationCD.socialLinks else { return }
+        
+        LocationSocialLinksCDModelController.shared.update(locationSocialLinks: socialLinks, socialLink1: socialLinks.socialLink1, socialLink2: socialLinks.socialLink2, socialLink3: socialLinks.socialLink3)
+        
+        // MARK: - vvv is this necessary? vvv
+        LocationCDModelController.shared.update(location: locationCD, locationPic: nil, locationName: nil, address: nil, phone: nil, website: nil, email: nil, socialLinks: socialLinks)
+        
+    
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func enterEditingMode(inEditingMode: Bool?) {

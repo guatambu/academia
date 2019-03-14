@@ -204,6 +204,7 @@ extension BirthdayViewController {
         } else {
             print("EROR: birthdate value is nil.  BirthdayViewController.swift -> updateAdultStudentInfo() - line 223.")
         }
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func updateKidStudentInfo() {
@@ -221,6 +222,7 @@ extension BirthdayViewController {
         } else {
             print("EROR: birthdate value is nil.  BirthdayViewController.swift -> updateAdultStudentInfo() - line 240.")
         }
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func updateAdultStudentInfo() {
@@ -238,6 +240,7 @@ extension BirthdayViewController {
         } else {
             print("EROR: birthdate value is nil.  BirthdayViewController.swift -> updateAdultStudentInfo() - line 257.")
         }
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func enterEditingMode(inEditingMode: Bool?) {

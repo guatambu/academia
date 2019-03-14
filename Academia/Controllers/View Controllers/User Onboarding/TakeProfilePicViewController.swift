@@ -39,9 +39,9 @@ class TakeProfilePicViewController: UIViewController {
     @IBOutlet weak var parentGuardianTextField: UITextField!
     
     // CoreData Properties
-    var owner: OwnerCD?
-    var studentAdult: StudentAdultCD?
-    var studentKid: StudentKidCD?
+    var ownerCD: OwnerCD?
+    var studentAdultCD: StudentAdultCD?
+    var studentKidCD: StudentKidCD?
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -318,6 +318,7 @@ extension TakeProfilePicViewController {
                 
                 OwnerCDModelController.shared.update(owner: ownerCD, isInstructor: nil, birthdate: nil, mostRecentPromotion: nil, belt: nil, profilePic: profilePicData, username: nil, password: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: nil, phone: nil, mobile: nil, email: nil, emergencyContact: nil)
             }
+            OwnerCDModelController.shared.saveToPersistentStorage()
         }
     }
     
@@ -337,6 +338,7 @@ extension TakeProfilePicViewController {
             
             StudentKidCDModelController.shared.update(studentKid: studentKidCD, birthdate: nil, mostRecentPromotion: nil, studentStatus: nil, belt: nil, profilePic: profilePicData, username: nil, password: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, parentGuardian: parentGuardianTextField.text, address: nil, phone: nil, mobile: nil, email: nil, emergencyContact: nil)
         }
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func updateAdultStudentInfo() {
@@ -356,6 +358,7 @@ extension TakeProfilePicViewController {
             
             StudentAdultCDModelController.shared.update(studentAdult: studentAdultCD, isInstructor: nil, birthdate: nil, mostRecentPromotion: nil, studentStatus: nil, belt: nil, profilePic: profilePicData, username: nil, password: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: nil, phone: nil, mobile: nil, email: nil, emergencyContact: nil)
         }
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func enterEditingMode(inEditingMode: Bool?) {
@@ -591,3 +594,5 @@ extension Data {
         return UIImage(data: self)
     }
 }
+
+

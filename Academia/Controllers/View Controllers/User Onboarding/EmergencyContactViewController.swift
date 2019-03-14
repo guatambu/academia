@@ -55,9 +55,9 @@ class EmergencyContactViewController: UIViewController {
     @IBOutlet weak var firstProgressDotOutlet: DesignableView!
     
     // CoreData Properties
-    var owner: OwnerCD?
-    var studentAdult: StudentAdultCD?
-    var studentKid: StudentKidCD?
+    var ownerCD: OwnerCD?
+    var studentAdultCD: StudentAdultCD?
+    var studentKidCD: StudentKidCD?
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -343,6 +343,7 @@ extension EmergencyContactViewController {
             
             EmergencyContactCDModelController.shared.update(emergencyContact: emergencyContact, name: name, phone: phone, relationship: relationship)
         }
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func updateKidStudentInfo() {
@@ -361,6 +362,7 @@ extension EmergencyContactViewController {
             
             EmergencyContactCDModelController.shared.update(emergencyContact: emergencyContact, name: name, phone: phone, relationship: relationship)
         }
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func updateAdultStudentInfo() {
@@ -380,6 +382,7 @@ extension EmergencyContactViewController {
             
             EmergencyContactCDModelController.shared.update(emergencyContact: emergencyContact, name: name, phone: phone, relationship: relationship)
         }
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func enterEditingMode(inEditingMode: Bool?) {

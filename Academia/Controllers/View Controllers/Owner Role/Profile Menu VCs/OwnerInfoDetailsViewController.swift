@@ -7,14 +7,18 @@
 //
 
 import UIKit
+import CoreData
 
 class OwnerInfoDetailsViewController: UIViewController {
     
     // MARK: - Properties
     
-    // create a computed property with a fetchedRequestController predicate to grab the current logged in user by using the ActiveUserModelController.shared.activeUser array contents and isLogged on properties... use this property as the source for the populateCompletedProfileInfo() method
+    // create a fetchedRequestController with predicate to grab the current logged in user by using the ActiveUserModelController.shared.activeUser array contents and isLogged on properties... use this property as the source for the populateCompletedProfileInfo() method
+    var fetchedResultsController: NSFetchedResultsController<OwnerCD>!
 
     let beltBuilder = BeltBuilder()
+    
+    var activeOwner: OwnerCD?
     
     // username outlet
     @IBOutlet weak var ownerNameLabelOutlet: UILabel!
@@ -45,7 +49,13 @@ class OwnerInfoDetailsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
+        // create fetch request and initialize results
+        initializeFetchedResultsController()
+        // search fetch results to find activeOwner
+        findActiveUser()
+        // populate activeOwner details to UI
         populateCompletedProfileInfo()
+        
     }
 
     override func viewDidLoad() {
@@ -88,7 +98,7 @@ class OwnerInfoDetailsViewController: UIViewController {
         destViewController.inEditingMode = true
         destViewController.isOwner = true
         destViewController.isKid = false
-        destViewController.userToEdit = OwnerModelController.shared.owners[0]
+        destViewController.userToEdit = activeOwner
         // TODO: set destinationVC properties to display user to be edited
             // in destintaionVC unrwrap userToEdit? as either Owner, AdultStudent, or KidStudent and us this to display info, and be passed around for updating in each update function
             // also need to build in programmatic segues for saveTapped to exit editing mode and return to OwnerProfileDetailsVC
@@ -101,7 +111,13 @@ class OwnerInfoDetailsViewController: UIViewController {
         let cancel = UIAlertAction(title: "cancel", style: UIAlertAction.Style.cancel, handler: nil)
         let deleteAccount = UIAlertAction(title: "delete account", style: UIAlertAction.Style.destructive) { (alert) in
             
-            OwnerModelController.shared.delete(owner: OwnerModelController.shared.owners[0])
+//            OwnerModelController.shared.delete(owner: OwnerModelController.shared.owners[0])
+            
+            guard let owner = self.activeOwner else {
+                print("ERROR: nil value found for activeOwner in OwnerInfoDetailsViewController.swift -> deleteAccountButtonTapped(sender:) - line 117.")
+                return
+            }
+            OwnerCDModelController.shared.remove(owner: owner)
             
             // programmatically performing the segue if "resetting" the app to beginning with no saved user
             
@@ -123,7 +139,7 @@ class OwnerInfoDetailsViewController: UIViewController {
             self.navigationController?.navigationBar.backgroundColor = self.beltBuilder.kidsWhiteCenterRibbonColor
             self.navigationController?.navigationBar.shadowImage = UIImage()
             
-            print("how many owners we got now: \(OwnerModelController.shared.owners.count)")
+            print("how many owners we got now: \(OwnerCDModelController.shared.owners.count)")
             
         }
         
@@ -142,10 +158,30 @@ extension OwnerInfoDetailsViewController {
     func populateCompletedProfileInfo() {
     
         
-        guard let owner = OwnerModelController.shared.owners.first else { return }
+//        guard let owner = OwnerModelController.shared.owners.first else { return }
+        guard let owner = activeOwner else {
+            print("ERROR: nil value found for activeOwner in OwnerInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 157.")
+            return
+        }
+        guard let address = owner.address else {
+            print("ERROR: nil value found for owner.address in OwnerInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 161.")
+            return
+        }
+        guard let belt = owner.belt else {
+            print("ERROR: nil value found for owner.belt in OwnerInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 165.")
+            return
+        }
+        guard let emergencyContact = owner.emergencyContact else {
+            print("ERROR: nil value found for owner.emergencyContact in OwnerInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 169.")
+            return
+        }
+        
+        guard let firstName = owner.firstName else { print("fail firstName"); return }
+        guard let lastName = owner.lastName else { print("fail lastName"); return }
+        guard let username = owner.username else { print("fails username"); return }
         // populate UI elements in VC
-        ownerNameLabelOutlet.text = "\(owner.firstName) \(owner.lastName)"
-        usernameLabelOutlet.text = "user: \(owner.username)"
+        ownerNameLabelOutlet.text = "\(firstName) \(lastName)"
+        usernameLabelOutlet.text = "user: \(username)"
         // populate birthdate outlet
         formatBirthdate(birthdate: owner.birthdate)
         // contact info outlets
@@ -158,31 +194,52 @@ extension OwnerInfoDetailsViewController {
         }
         emailLabelOutlet.text = owner.email
         // address outlets
-        addressLine1LabelOutlet.text = owner.addressLine1
+        addressLine1LabelOutlet.text = address.addressLine1
         // addressLine2 is not a required field
-        if owner.addressLine2 != "" {
-            addressLine2LabelOutlet.text = owner.addressLine2
+        if address.addressLine2 != "" {
+            addressLine2LabelOutlet.text = address.addressLine2
         } else {
             addressLine2LabelOutlet.isHidden = true
         }
-        cityLabelOutlet.text = owner.city
-        stateLabelOutlet.text = owner.state
-        zipCodeLabelOutlet.text = owner.zipCode
+        cityLabelOutlet.text = address.city
+        stateLabelOutlet.text = address.state
+        zipCodeLabelOutlet.text = address.zipCode
         // emergency contact info outlets
-        emergencyContactNameLabelOutlet.text = owner.emergencyContactName
-        emergencyContactRelationshipLabelOutlet.text = owner.emergencyContactRelationship
-        emergencyContactPhoneLabelOutlet.text = owner.emergencyContactPhone
+        emergencyContactNameLabelOutlet.text = emergencyContact.name
+        emergencyContactRelationshipLabelOutlet.text = emergencyContact.relationship
+        emergencyContactPhoneLabelOutlet.text = emergencyContact.phone
         
+        // convert owner.profilePic to UIImage from Data
+        
+        guard let profilePicData = owner.profilePic else {
+            print("ERROR: nil value found for owner.profilePic as Data in OwnerInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 205.")
+            return
+        }
         // profile pic imageView
-        profilePicImageView.image = owner.profilePic
+        profilePicImageView.image = UIImage(data: profilePicData)
         
-        // belt holder UIView
-        print("OwnersProfileVC -> beltLevel: \(owner.belt.beltLevel)")
-        print("OwnersProfileVC -> numberOfStripes: \(owner.belt.numberOfStripes)")
-        beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: owner.belt.beltLevel, numberOfStripes: owner.belt.numberOfStripes)
+        // construct InternationalStandardBJJBelts object from owner.belt.beltLevel.rawValue
+        guard let beltLevel = InternationalStandardBJJBelts(rawValue: belt.beltLevel!) else {
+            print("ERROR: no value found for beltLevel in OwnerInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 215.")
+            return
+        }
+        // convert numberOfStripes Int16 to Int value
+        guard let numberOfStripes = Int(exactly: belt.numberOfStripes) else {
+            print("ERROR: no value found for numberOfStripes in OwnerInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 220.")
+            return
+        }
+        print("OwnersProfileVC -> beltLevel: \(beltLevel.rawValue)")
+        print("OwnersProfileVC -> numberOfStripes: \(numberOfStripes)")
+        // build the belt for the belt holder UIView
+        beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: numberOfStripes)
     }
     
-    func formatBirthdate(birthdate: Date) {
+    func formatBirthdate(birthdate: Date?) {
+        
+        guard let birthdate = birthdate else {
+            print("ERROR: no birthdate returned in OwnerInfoDetailsViewController.swift -> formatBirthdate(birthdate:) - line 202.")
+            return
+        }
         
         // set up date format
         let dateFormatter = DateFormatter()
@@ -196,6 +253,50 @@ extension OwnerInfoDetailsViewController {
         print(birthdateString)
         
         self.birthdateLabelOutlets.text = "birthdate: " + birthdateString
+    }
+}
+
+
+// MARK: - NSFetchedREsultsController initializer method
+extension OwnerInfoDetailsViewController: NSFetchedResultsControllerDelegate {
+    
+    func initializeFetchedResultsController() {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "OwnerCD")
+        let uuidSort = NSSortDescriptor(key: "ownerUUID", ascending: true)
+        request.sortDescriptors = [uuidSort]
+        
+        let moc = CoreDataStack.context
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil) as? NSFetchedResultsController<OwnerCD>
+        fetchedResultsController.delegate = self
+        
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            fatalError("Failed to initialize FetchedResultsController: \(error)")
+        }
+    }
+    
+    func findActiveUser() {
+        
+        // get active user uuid
+        guard let uuid = ActiveUserModelController.shared.activeUser.first else {
+            print("ERROR: no uuid returned by ActiveUserModelController.shared.activeUser.first in OwnerInfoDetailsViewController.swift -> findActiveUser() - line 232.")
+            return
+        }
+        
+        // get array of fetched objects from fetchedResultsController content(s)
+        guard let activeOwners = fetchedResultsController.fetchedObjects else {
+            print("ERROR: no owners returned by fetchedResultsController in OwnerInfoDetailsViewController.swift -> findActiveUser() - line 235.")
+            return
+        }
+        // match owner with activeUser UUID
+        for owner in activeOwners {
+            if owner.ownerUUID == uuid {
+                activeOwner = owner
+                print("SUCCESS: activeOwner uuid matches an owner")
+                return
+            }
+        }
     }
 }
 
@@ -226,5 +327,5 @@ extension UIViewController {
             }
         }
     }
-    
 }
+

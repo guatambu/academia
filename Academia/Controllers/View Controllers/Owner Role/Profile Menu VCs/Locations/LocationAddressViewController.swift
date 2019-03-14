@@ -36,7 +36,8 @@ class LocationAddressViewController: UIViewController, UITextInputTraits{
     @IBOutlet weak var zipCodeTextField: UITextField!
     
     // CoreData properties
-    var location: LocationCD?
+    var locationCD: LocationCD?
+    var locationCDToEdit: LocationCD?
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -307,6 +308,7 @@ class LocationAddressViewController: UIViewController, UITextInputTraits{
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
         updateLocationInfo()
+        destViewController.locationCDToEdit = locationCDToEdit
     }
 }
 
@@ -321,7 +323,19 @@ extension LocationAddressViewController {
             guard let location = locationToEdit else { return }
             
             LocationModelController.shared.update(location: location, active: nil, locationPic: nil, locationName: nil, addressLine1: addressLine1TextField.text, addressLine2: addressLine2TextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: zipCodeTextField.text, phone: nil, website: nil, email: nil, social1: nil, social2: nil, social3: nil)
+        
+            // CoreData LocationCD property update
+            guard let locationCD = locationCDToEdit else { return }
+            guard let address = locationCD.address else { return }
+            
+            AddressCDModelController.shared.update(address: address, addressLine1: addressLine1TextField.text, addressLine2: addressLine2TextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: zipCodeTextField.text)
+            
+            // MARK: - vvv is this necessary? vvv
+            LocationCDModelController.shared.update(location: locationCD, locationPic: nil, locationName: nil, address: address, phone: nil, website: nil, email: nil, socialLinks: nil)
         }
+        OwnerCDModelController.shared.saveToPersistentStorage()
+        
+        
     }
     
     func enterEditingMode(inEditingMode: Bool?) {

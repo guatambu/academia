@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class LocationInfoDetailsViewController: UIViewController {
 
@@ -26,6 +27,8 @@ class LocationInfoDetailsViewController: UIViewController {
     var social1: String?
     var social2: String?
     var social3: String?
+    
+    var locationCD: LocationCD?
     
     let beltBuilder = BeltBuilder()
     
@@ -88,11 +91,10 @@ class LocationInfoDetailsViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         
         // set properties on destinationVC
+//        destViewController.locationToEdit = location
         destViewController.inEditingMode = true
-        destViewController.locationToEdit = LocationModelController.shared.locations[0]
-        // TODO: set destinationVC properties to display user to be edited
-        // in destintaionVC unrwrap userToEdit? as either Owner, AdultStudent, or KidStudent and us this to display info, and be passed around for updating in each update function
-        // also need to build in programmatic segues for saveTapped to exit editing mode and return to OwnerProfileDetailsVC
+        destViewController.locationCDToEdit = locationCD
+        
     }
     
     @IBAction func deleteAccountButtonTapped(_ sender: UIButton) {
@@ -102,7 +104,13 @@ class LocationInfoDetailsViewController: UIViewController {
         let cancel = UIAlertAction(title: "cancel", style: UIAlertAction.Style.cancel, handler: nil)
         let deleteAccount = UIAlertAction(title: "delete account", style: UIAlertAction.Style.destructive) { (alert) in
             
-            LocationModelController.shared.delete(location: LocationModelController.shared.locations[0])
+//            LocationModelController.shared.delete(location: LocationModelController.shared.locations[0])
+            
+            guard let location = self.locationCD else {
+                print("ERROR: nil value found for location in LocationInfoDetailsViewController.swift -> deleteAccountButtonTapped(sender:) - line 110.")
+                return
+            }
+            LocationCDModelController.shared.remove(location: location)
             
             // programmatically performing the segue
             
@@ -124,7 +132,7 @@ class LocationInfoDetailsViewController: UIViewController {
             self.navigationController?.navigationBar.backgroundColor = self.beltBuilder.kidsWhiteCenterRibbonColor
             self.navigationController?.navigationBar.shadowImage = UIImage()
             
-            print("how many location we got now: \(LocationModelController.shared.locations.count)")
+            print("how many location we got now: \(LocationCDModelController.shared.locations.count)")
             
         }
         
@@ -142,7 +150,24 @@ extension LocationInfoDetailsViewController {
     
     func populateCompletedProfileInfo() {
         
-        guard let location = LocationModelController.shared.locations.first else { return }
+//        guard let location = LocationModelController.shared.locations.first else { return }
+        guard let location = locationCD else {
+            print("ERROR: nil value found for locationCD in LocationInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 155.")
+            return
+        }
+        guard let address = location.address else {
+            print("ERROR: nil value found for location.address in LocationInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 159.")
+            return
+        }
+        guard let socialLinks = location.socialLinks else {
+            print("ERROR: nil value found for location.socalLinks in LocationInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 163.")
+            return
+        }
+        guard let locationPicData = location.locationPic else {
+            print("ERROR: nil value found for location.locationPic in LocationInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 167.")
+            return
+        }
+        
         // populate UI elements in VC
         locationNameLabelOutlet.text = location.locationName
         // phone outlet
@@ -151,22 +176,22 @@ extension LocationInfoDetailsViewController {
         websiteLabelOutlet.text = location.website
         emailLabelOutlet.text = location.email
         // address outlets
-        addressLine1LabelOutlet.text = location.addressLine1
+        addressLine1LabelOutlet.text = address.addressLine1
         // addressLine2 is not a required field
-        if location.addressLine2 != "" {
-            addressLine2LabelOutlet.text = location.addressLine2
+        if address.addressLine2 != "" {
+            addressLine2LabelOutlet.text = address.addressLine2
         } else {
             addressLine2LabelOutlet.isHidden = true
         }
-        cityLabelOutlet.text = location.city
-        stateLabelOutlet.text = location.state
-        zipCodeLabelOutlet.text = location.zipCode
+        cityLabelOutlet.text = address.city
+        stateLabelOutlet.text = address.state
+        zipCodeLabelOutlet.text = address.zipCode
         // social media links outlets
-        socialLink1LabelOutlet.text = "Instagram: \(location.social1 ?? "")"
-        socialLink2LabelOutlet.text = "facebook: \(location.social2 ?? "")"
-        socialLink3LabelOutlet.text = "Twitter: \(location.social3 ?? "")"
+        socialLink1LabelOutlet.text = "Instagram: \(socialLinks.socialLink1 ?? "")"
+        socialLink2LabelOutlet.text = "facebook: \(socialLinks.socialLink2 ?? "")"
+        socialLink3LabelOutlet.text = "Twitter: \(socialLinks.socialLink3 ?? "")"
         // profile pic imageView
-        locationPicImageView.image = location.locationPic
+        locationPicImageView.image = UIImage(data: locationPicData)
     }
 }
 
@@ -187,3 +212,5 @@ extension UIViewController {
         }
     }
 }
+
+

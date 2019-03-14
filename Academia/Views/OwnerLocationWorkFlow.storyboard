@@ -103,7 +103,7 @@
                                     <outlet property="cellTitleOutlet" destination="poH-Vd-YNA" id="iQB-Xw-gBE"/>
                                     <outlet property="locationThumbnailImageView" destination="pXk-TQ-W21" id="Lqa-37-qlf"/>
                                     <outlet property="rightRedArrowImageViewOutlet" destination="1uw-4e-HYm" id="pfP-50-MRY"/>
-                                    <segue destination="rRA-bc-8gc" kind="show" id="59c-5F-cp8"/>
+                                    <segue destination="rRA-bc-8gc" kind="show" identifier="toLocationInfoDetails" id="59c-5F-cp8"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -116,7 +116,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="J1A-zN-52O"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="2HL-Gy-opV">
                             <connections>
-                                <segue destination="Edk-tC-DBu" kind="show" id="jwb-3X-CT5"/>
+                                <segue destination="Edk-tC-DBu" kind="show" identifier="toAddLocation" id="jwb-3X-CT5"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

@@ -25,6 +25,9 @@ class ReviewAndCreatePaymentProgramViewController: UIViewController {
     
     let beltBuilder = BeltBuilder()
     
+    // CoreData properties
+    var paymentProgramCD: PaymentProgramCD?
+    
     // payment program info outlets
     @IBOutlet weak var paymentProgramNameLabelOutlet: UILabel!
     @IBOutlet weak var activeLabelOutlet: UILabel!
@@ -104,7 +107,6 @@ class ReviewAndCreatePaymentProgramViewController: UIViewController {
         
         // create new payment program and save to CoreData
         createPaymentProgramCoreDataModel()
-        
         
         // create the new paymentProgram in the LocationModelController source of truth
         createPaymentProgram()
@@ -225,12 +227,15 @@ extension ReviewAndCreatePaymentProgramViewController {
         // create new payment program data model object
         let newPaymentProgram = PaymentProgramCD(active: active, dateCreated: Date(), dateEdited: Date(), programName: paymentProgramName, paymentDescription: programDescription, paymentAgreement: programAgreement)
         
+        // TODO: borrow from AulaCD creation in AulaReviewAndCreateVC
         // create corresponding BillingDates
         createPaymentBillingDatesCoreDataModel(paymentProgram: newPaymentProgram)
         // create corresponding BillingTypes
         createPaymentBillingTypesCoreDataModel(paymentProgram: newPaymentProgram)
         // create corresponding BillingSignatures
         createPaymentBillingSignatureCoreDataModel(paymentProgram: newPaymentProgram)
+        // add the created and configured paymentProgram to the source of truth
+        PaymentProgramCDModelController.shared.add(paymentProgram: newPaymentProgram)
         // save to CoreData
         OwnerCDModelController.shared.saveToPersistentStorage()
     }
@@ -247,7 +252,8 @@ extension ReviewAndCreatePaymentProgramViewController {
         for bt in billingTypes {
             
             let newBillingType = PaymentBillingTypeCD(billingType: bt.rawValue, paymentProgram: paymentProgram)
-            PaymentBillingTypeCDModelController.shared.add(paymentBillingType: newBillingType)
+            
+            paymentProgram.addToPaymentBillingType(newBillingType)
         }
     }
 
@@ -258,7 +264,8 @@ extension ReviewAndCreatePaymentProgramViewController {
         for bd in billingDates {
             
             let newBillingDate = PaymentBillingDateCD(billingDate: bd.rawValue, paymentProgram: paymentProgram)
-            PaymentBillingDateCDModelController.shared.add(paymentBillingDate: newBillingDate)
+            
+            paymentProgram.addToPaymentBillingDate(newBillingDate)
         }
     }
     
@@ -269,7 +276,7 @@ extension ReviewAndCreatePaymentProgramViewController {
         for st in signatureTypes {
             
             let newBillingSignature = PaymentBillingSignatureCD(billingSignature: st.rawValue, paymentProgram: paymentProgram)
-        PaymentBillingSignatureCDModelController.shared.add(paymentBillingSignature: newBillingSignature)
+            paymentProgram.addToPaymentBillingSignature(newBillingSignature)
         }
     }
 }

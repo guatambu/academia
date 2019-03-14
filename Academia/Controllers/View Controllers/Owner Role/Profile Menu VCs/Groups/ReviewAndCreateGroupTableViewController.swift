@@ -78,6 +78,9 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
     // MARK: - Actions
     
     @IBAction func createGroupButtonTapped(_ sender: DesignableButton) {
+        
+        // create GroupCD data model object
+        createAndSaveGroupCoreDataModel()
             
         // create the new location in the LocationModelController source of truth
         createGroup()
@@ -326,6 +329,9 @@ extension ReviewAndCreateGroupTableViewController {
                 }
             }
         }
+        
+        // add the created and configured group to the source of truth
+        GroupCDModelController.shared.add(group: newGroup)
         // save to CoreData
         OwnerCDModelController.shared.saveToPersistentStorage()
     }

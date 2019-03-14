@@ -75,6 +75,15 @@ class ReviewAndCreateLocationViewController: UIViewController {
     
     @IBAction func createAccountButtonTapped(_ sender: DesignableButton) {
         
+        // create the AddressCD data model object
+        createAddressCoreDataModel()
+        
+        // create SocialLinksCD data model object
+        createSocialLinksCoreDataModel()
+        
+        // create and save LocationCD data model object
+        createLocationCoreDataModel()
+        
         // create the new location in the LocationModelController source of truth
         createLocation()
         
@@ -173,9 +182,13 @@ extension ReviewAndCreateLocationViewController {
         
         let website = self.website ?? ""
         
+        
+        
         let newLocation = LocationCD(locationUUID: UUID(), active: active, dateCreated: Date(), dateEdited: Date(), locationPic: locationPicData, locationName: locationName, phone: phone, website: website, email: email, address: addressCD, socialLinks: socialLinksCD, aula: nil)
         
         LocationCDModelController.shared.add(location: newLocation)
+        
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
 }
 
@@ -209,7 +222,6 @@ extension ReviewAndCreateLocationViewController {
         
         socialLinksCD = LocationSocialLinksCD(socialLink1: social1, socialLink2: social2, socialLink3: social3)
     }
-    
 }
 
 

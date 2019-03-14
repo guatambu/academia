@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class LocationContactInfoViewController: UIViewController, UITextInputTraits {
     
@@ -37,6 +38,7 @@ class LocationContactInfoViewController: UIViewController, UITextInputTraits {
     
     // CoreData properties
     var location: LocationCD?
+    var locationCDToEdit: LocationCD?
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -241,6 +243,7 @@ class LocationContactInfoViewController: UIViewController, UITextInputTraits {
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
         updateLocationInfo()
+        destViewController.locationCDToEdit = locationCDToEdit
     }
 }
 
@@ -255,7 +258,14 @@ extension LocationContactInfoViewController {
             guard let location = locationToEdit else { return }
             
             LocationModelController.shared.update(location: location, active: nil, locationPic: nil, locationName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: phoneTextField.text, website: websiteTextField.text, email: emailTextField.text, social1: nil, social2: nil, social3: nil)
+            
+            // CoreData LocationCD update info
+            guard let locationCD = locationCDToEdit else { return }
+            
+            LocationCDModelController.shared.update(location: locationCD, locationPic: nil, locationName: nil, address: nil, phone: phoneTextField.text, website: websiteTextField.text, email: emailTextField.text, socialLinks: nil)
+            
         }
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func enterEditingMode(inEditingMode: Bool?) {

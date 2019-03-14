@@ -50,8 +50,7 @@ class PaymentProgramCDModelController {
                 active: Bool?,
                 programName: String?,
                 paymentAgreement: String?,
-                paymentDescription: String?,
-                socialLinks: LocationSocialLinksCD?) {
+                paymentDescription: String?) {
         
         paymentProgramn.dateEdited = Date()
         
