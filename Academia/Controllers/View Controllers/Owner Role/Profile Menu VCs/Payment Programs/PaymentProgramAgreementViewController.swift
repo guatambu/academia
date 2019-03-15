@@ -171,12 +171,21 @@ extension PaymentProgramAgreementViewController {
     
     // Update Function for case where want to update user info without a segue
     func updatePaymentProgramInfo() {
-        guard let paymentProgram = paymentProgramToEdit else { return }
+        guard let paymentProgramToEdit = paymentProgramToEdit else { return }
         // payment program update info
         if programAgreementTextView.text != "" {
-            PaymentProgramModelController.shared.update(paymentProgram: paymentProgram, programName: nil, active: nil, paymentDescription: nil, billingTypes: nil, billingDates: nil, signatureTypes: nil, paymentAgreement: programAgreementTextView.text)
+            PaymentProgramModelController.shared.update(paymentProgram: paymentProgramToEdit, programName: nil, active: nil, paymentDescription: nil, billingTypes: nil, billingDates: nil, signatureTypes: nil, paymentAgreement: programAgreementTextView.text)
             print("update payment program name: \(PaymentProgramModelController.shared.paymentPrograms[0].paymentAgreement)")
+            
+            
+            // CoreData PaymentProgramCD update info
+            guard let paymentProgramCDToEdit = paymentProgramCDToEdit else { return }
+            
+            PaymentProgramCDModelController.shared.update(paymentProgramn: paymentProgramCDToEdit, active: nil, programName: nil, paymentAgreement: programAgreementTextView.text, paymentDescription: nil)
         }
+        
+    
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func enterEditingMode(inEditingMode: Bool?) {

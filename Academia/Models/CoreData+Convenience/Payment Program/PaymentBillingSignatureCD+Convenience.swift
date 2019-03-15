@@ -23,4 +23,13 @@ extension PaymentBillingSignatureCD {
         self.paymentProgram = paymentProgram
     }
     
+    // convenience initializer to simply create and initialize the PaymentBillingSignatureCD object with its string value
+    convenience init(billingSignature: String?,
+                     context: NSManagedObjectContext = CoreDataStack.context) {
+        
+        self.init(context: context)
+        
+        self.billingSignature = billingSignature
+    }
+
 }

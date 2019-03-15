@@ -190,7 +190,7 @@ class PaymentProgramNameAndDescriptionViewController: UIViewController, UITextIn
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
         updatePaymentProgramInfo()
-        destViewController.paymentProgramCD = paymentProgramCD
+        destViewController.paymentProgramCDToEdit = paymentProgramCDToEdit
         
         // reset textField placeholder text color to gray upon succesful save
         programNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.paymentProgramName.rawValue, attributes: beltBuilder.avenirFont)
@@ -203,16 +203,16 @@ extension PaymentProgramNameAndDescriptionViewController {
     
     // Update Function for case where want to update user info without a segue
     func updatePaymentProgramInfo() {
-        guard let paymentProgram = paymentProgramToEdit else { return }
+        guard let paymentProgramToeEdit = paymentProgramToEdit else { return }
         // payment program update info
         if programNameTextField.text != "" {
-            PaymentProgramModelController.shared.update(paymentProgram: paymentProgram, programName: programNameTextField.text, active: active, paymentDescription: programDescriptionTextView.text, billingTypes: nil, billingDates: nil, signatureTypes: nil, paymentAgreement: nil)
+            PaymentProgramModelController.shared.update(paymentProgram: paymentProgramToeEdit, programName: programNameTextField.text, active: active, paymentDescription: programDescriptionTextView.text, billingTypes: nil, billingDates: nil, signatureTypes: nil, paymentAgreement: nil)
             print("update payment program name: \(PaymentProgramModelController.shared.paymentPrograms[0].programName)")
             
-            // CoreData LocationCD update info
-            guard let paymentProgramCD = paymentProgramCDToEdit else { return }
+            // CoreData PaymentProgramCD update info
+            guard let paymentProgramCDToEdit = paymentProgramCDToEdit else { return }
             
-            PaymentProgramCDModelController.shared.update(paymentProgramn: paymentProgramCD, active: active, programName: programNameTextField.text, paymentAgreement: nil, paymentDescription: programDescriptionTextView.text)
+            PaymentProgramCDModelController.shared.update(paymentProgramn: paymentProgramCDToEdit, active: active, programName: programNameTextField.text, paymentAgreement: nil, paymentDescription: programDescriptionTextView.text)
         }
         OwnerCDModelController.shared.saveToPersistentStorage()
     }

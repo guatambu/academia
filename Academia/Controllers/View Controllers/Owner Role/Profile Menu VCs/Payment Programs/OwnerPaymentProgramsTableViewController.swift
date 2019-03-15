@@ -13,7 +13,7 @@ class OwnerPaymentProgramsTableViewController: UITableViewController {
     
     // MARK: Properties
     
-    // create a fetchedRequestController with predicate to grab the current LocationsCD objects... use these as the source for the populateCompletedProfileInfo() method
+    // create a fetchedRequestController with predicate to grab the current PaymentProgramCD objects... use these as the source for the tableView DataSource  methods
     var fetchedResultsController: NSFetchedResultsController<PaymentProgramCD>!
     
     let beltBuilder = BeltBuilder()
@@ -105,8 +105,6 @@ class OwnerPaymentProgramsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let paymentProgramCD = fetchedResultsController.object(at: indexPath)
-        
         // programmatically performing the segue
         
         // instantiate the relevant storyboard
@@ -125,6 +123,8 @@ class OwnerPaymentProgramsTableViewController: UITableViewController {
         navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
         navigationController?.navigationBar.shadowImage = UIImage()
         
+        // get the desired paymentProgramCD for the selected cell
+        let paymentProgramCD = fetchedResultsController.object(at: indexPath)
         // pass CoreData payment program on to InfoDetails view
         destViewController.paymentProgramCD = paymentProgramCD
     }
@@ -136,8 +136,8 @@ extension OwnerPaymentProgramsTableViewController: NSFetchedResultsControllerDel
     
     func initializeFetchedResultsController() {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "PaymentProgramCD")
-        let locationNameSort = NSSortDescriptor(key: "programName", ascending: true)
-        request.sortDescriptors = [locationNameSort]
+        let programNameSort = NSSortDescriptor(key: "programName", ascending: true)
+        request.sortDescriptors = [programNameSort]
         
         let moc = CoreDataStack.context
         fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil) as? NSFetchedResultsController<PaymentProgramCD>

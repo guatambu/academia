@@ -13,7 +13,7 @@ class MyLocationsTableViewController: UITableViewController {
     
     // MARK: - Properties
     
-    // create a fetchedRequestController with predicate to grab the current LocationsCD objects... use these as the source for the populateCompletedProfileInfo() method
+    // create a fetchedRequestController with predicate to grab the current LocationsCD objects... use these as the source for the tableView DataSource  methods
     var fetchedResultsController: NSFetchedResultsController<LocationCD>!
     
     

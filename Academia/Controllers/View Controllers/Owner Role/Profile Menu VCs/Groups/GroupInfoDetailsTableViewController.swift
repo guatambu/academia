@@ -27,6 +27,10 @@ class GroupInfoDetailsTableViewController: UITableViewController {
     @IBOutlet weak var groupDescriptionLabelOutlet: UILabel!
     @IBOutlet weak var groupDescriptionTextView: UITextView!
     
+    // CoreData Properties
+    var groupCD: GroupCD?
+    var groupCDToEdit: GroupCD?
+    
     
     // MARK: - ViewController Lifecycle Functions
     

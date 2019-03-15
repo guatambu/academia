@@ -23,4 +23,13 @@ extension PaymentBillingTypeCD {
         self.paymentProgram = paymentProgram
     }
     
+    // convenience initializer to simply create and initialize the PaymentBillingTypeCD object with its string value
+    convenience init(billingType: String?,
+                     context: NSManagedObjectContext = CoreDataStack.context) {
+        
+        self.init(context: context)
+        
+        self.billingType = billingType
+    }
+    
 }
