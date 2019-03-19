@@ -41,6 +41,9 @@ class CompletedProfileViewController: UIViewController {
     var beltCD: BeltCD?
     var addressCD: AddressCD?
     var emergencyContactCD: EmergencyContactCD?
+    var groupCD: GroupCD?
+    var newStudentKidCD: StudentKidCD?
+    var newStudentAdultCD: StudentAdultCD?
     
     var isOwnerAddingStudent: Bool?
     var group: Group?
@@ -101,7 +104,7 @@ class CompletedProfileViewController: UIViewController {
         // create and save new user account to CoreData
         createAndSaveNewUser()
         
-        // create data models
+        // create data models - NOT CoreData
         createBelt()
         
         createUser(isOwner: isOwner, isKid: isKid, birthdate: birthdate, username: username, password: password, firstName: firstName, lastName: lastName, profilePic: profilePic, belt: belt, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, phone: phone, mobile: mobile, email: email, emergencyContactName: emergencyContactName, emergencyContactPhone: emergencyContactPhone, emergencyContactRelationship: emergencyContactRelationship, parentGuardian: parentGuardian)
@@ -145,23 +148,43 @@ class CompletedProfileViewController: UIViewController {
             if isOwnerAddingStudent {
                 // need to append the created user to the appropriate group
                 guard let group = group else {
-                    print("ERROR: a nil value was found when trying to unwrap group property in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 112.")
+                    print("ERROR: a nil value was found when trying to unwrap group property in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 149.")
                     return
                 }
                 guard let isKid = isKid else {
-                    print("ERROR: a nil value was found when trying to unwrap isKid property in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 118.")
+                    print("ERROR: a nil value was found when trying to unwrap isKid property in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 153.")
                     return
                 }
+                guard let groupCD = groupCD else {
+                    print("ERROR: a nil value was found when trying to unwrap groupCD property in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 157.")
+                    return
+                }
+        
                 if isKid {
                     // get the kidStudent and update the group to include this student
                     let kidStudent = KidStudentModelController.shared.kids.last
                     // update the group to include this student
                     GroupModelController.shared.update(group: group, active: nil, name: nil, description: nil, kidMembers: nil, adultMembers: nil, kidStudent: kidStudent, adultStudent: nil)
+                    
+                    // CoreData - update the group to include this student
+                    guard let newStudentKidCD = newStudentKidCD else {
+                        print("ERROR: a nil value was found when trying to unwrap newStudentKidCD property in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 171.")
+                        return
+                    }
+                    groupCD.addToKidMembers(newStudentKidCD)
+                    
                 } else {
                     // get the adultStudent and update the group to include this student
                     let adultStudent = AdultStudentModelController.shared.adults.last
                     // update the group to include this student
                     GroupModelController.shared.update(group: group, active: nil, name: nil, description: nil, kidMembers: nil, adultMembers: nil, kidStudent: nil, adultStudent: adultStudent)
+                    
+                    // CoreData - update the group to include this student
+                    guard let newStudentAdultCD = newStudentAdultCD else {
+                        print("ERROR: a nil value was found when trying to unwrap newStudentAdultCD property in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 171.")
+                        return
+                    }
+                    groupCD.addToAdultMembers(newStudentAdultCD)
                 }
                 
                 returnToGroupInfo()
@@ -498,6 +521,15 @@ extension CompletedProfileViewController {
             
             newStudentKid.isLoggedOn = true
             
+            // if isOwnerAddingStudent == true, then we update the local newStudentKidCD property to the newly created newStudentKid
+            if let isOwnerAddingStudent = isOwnerAddingStudent {
+                
+                if isOwnerAddingStudent {
+                    // pass to CoreData local property
+                    newStudentKidCD = newStudentKid
+                }
+            }
+            
         } else if !isKid {
             
             let newStudentAdult = StudentAdultCD(isInstructor: false, dateCreated: Date(), dateEdited: Date(), birthdate: birthdate, studentStatus: nil, belt: beltCD, profilePic: profilePicData, username: username, password: password, firstName: firstName, lastName: lastName, address: addressCD, phone: phone, mobile: mobileCD, email: email, emergencyContact: emergencyContactCD)
@@ -509,6 +541,15 @@ extension CompletedProfileViewController {
             }
             
             newStudentAdult.isLoggedOn = true
+            
+            // if isOwnerAddingStudent == true, then we update the local newStudentAdultCD property to the newly created newStudentAdult
+            if let isOwnerAddingStudent = isOwnerAddingStudent {
+                
+                if isOwnerAddingStudent {
+                    // pass to CoreData local property
+                    newStudentAdultCD = newStudentAdult
+                }
+            }
         }
     }
 }

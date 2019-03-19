@@ -224,56 +224,96 @@ class StudentClassDetailTableViewController: UITableViewController {
         
         if indexPath.section == 0 {
             // kidStudent setup
-            let owner = ownerInstructors[indexPath.row]
+            //            let kid = mockKids[indexPath.row]
+            //
+            //            destViewController.isOwner = false
+            //            destViewController.isKid = true
+            //            destViewController.username = kid.username
+            //            destViewController.password = kid.password
+            //            destViewController.firstName = kid.firstName
+            //            destViewController.lastName = kid.lastName
+            //            destViewController.parentGuardian = kid.parentGuardian
+            //            destViewController.profilePic = kid.profilePic
+            //            destViewController.birthdate = kid.birthdate
+            //            destViewController.beltLevel = kid.belt.beltLevel
+            //            destViewController.numberOfStripes = kid.belt.numberOfStripes
+            //            destViewController.addressLine1 = kid.addressLine1
+            //            destViewController.addressLine2 = kid.addressLine2
+            //            destViewController.city = kid.city
+            //            destViewController.state = kid.state
+            //            destViewController.zipCode = kid.zipCode
+            //            destViewController.phone = kid.phone
+            //            destViewController.mobile = kid.mobile
+            //            destViewController.email = kid.email
+            //            destViewController.emergencyContactName = kid.emergencyContactName
+            //            destViewController.emergencyContactRelationship = kid.emergencyContactRelationship
+            //            destViewController.emergencyContactPhone = kid.emergencyContactPhone
             
-            destViewController.isOwner = true
-            destViewController.isKid = false
-            destViewController.username = owner.username
-            destViewController.password = owner.password
-            destViewController.firstName = owner.firstName
-            destViewController.lastName = owner.lastName
-            destViewController.profilePic = owner.profilePic
-            destViewController.birthdate = owner.birthdate
-            destViewController.beltLevel = owner.belt.beltLevel
-            destViewController.numberOfStripes = owner.belt.numberOfStripes
-            destViewController.addressLine1 = owner.addressLine1
-            destViewController.addressLine2 = owner.addressLine2
-            destViewController.city = owner.city
-            destViewController.state = owner.state
-            destViewController.zipCode = owner.zipCode
-            destViewController.phone = owner.phone
-            destViewController.mobile = owner.mobile
-            destViewController.email = owner.email
-            destViewController.emergencyContactName = owner.emergencyContactName
-            destViewController.emergencyContactRelationship = owner.emergencyContactRelationship
-            destViewController.emergencyContactPhone = owner.emergencyContactPhone
+            
+            // CoreData version
+            guard let ownerInstructorsCD = ownersCD else {
+                
+                print("ERROR: nil value for kidMembersCD array in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 242.")
+                return
+            }
+            
+            let ownerInstructorsCDSet = NSSet(array: ownerInstructorsCD)
+            
+            let nameSort = NSSortDescriptor(key: "firstName", ascending: true)
+            let kids = ownerInstructorsCDSet.sortedArray(using: [nameSort])
+            
+            guard let studentKidCD = kids[indexPath.row] as? StudentKidCD else {
+                print("ERROR: nil value for studentKidCD in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 252.")
+                return
+            }
+            
+            destViewController.studentKidCD = studentKidCD
             
         } else if indexPath.section == 1 {
             // adultStudent setup
-            let adult = instructors[indexPath.row]
+            //            let adult = mockAdults[indexPath.row]
+            //
+            //            destViewController.isOwner = false
+            //            destViewController.isKid = false
+            //            destViewController.username = adult.username
+            //            destViewController.password = adult.password
+            //            destViewController.firstName = adult.firstName
+            //            destViewController.lastName = adult.lastName
+            //            destViewController.profilePic = adult.profilePic
+            //            destViewController.birthdate = adult.birthdate
+            //            destViewController.beltLevel = adult.belt.beltLevel
+            //            destViewController.numberOfStripes = adult.belt.numberOfStripes
+            //            destViewController.addressLine1 = adult.addressLine1
+            //            destViewController.addressLine2 = adult.addressLine2
+            //            destViewController.city = adult.city
+            //            destViewController.state = adult.state
+            //            destViewController.zipCode = adult.zipCode
+            //            destViewController.phone = adult.phone
+            //            destViewController.mobile = adult.mobile
+            //            destViewController.email = adult.email
+            //            destViewController.emergencyContactName = adult.emergencyContactName
+            //            destViewController.emergencyContactRelationship = adult.emergencyContactRelationship
+            //            destViewController.emergencyContactPhone = adult.emergencyContactPhone
             
-            destViewController.isOwner = false
-            destViewController.isKid = false
-            destViewController.username = adult.username
-            destViewController.password = adult.password
-            destViewController.firstName = adult.firstName
-            destViewController.lastName = adult.lastName
-            destViewController.profilePic = adult.profilePic
-            destViewController.birthdate = adult.birthdate
-            destViewController.beltLevel = adult.belt.beltLevel
-            destViewController.numberOfStripes = adult.belt.numberOfStripes
-            destViewController.addressLine1 = adult.addressLine1
-            destViewController.addressLine2 = adult.addressLine2
-            destViewController.city = adult.city
-            destViewController.state = adult.state
-            destViewController.zipCode = adult.zipCode
-            destViewController.phone = adult.phone
-            destViewController.mobile = adult.mobile
-            destViewController.email = adult.email
-            destViewController.emergencyContactName = adult.emergencyContactName
-            destViewController.emergencyContactRelationship = adult.emergencyContactRelationship
-            destViewController.emergencyContactPhone = adult.emergencyContactPhone
             
+            // CoreData version
+            guard let adultInstructorsCD = adultInstructorsCD else {
+                
+                print("ERROR: nil value for adultMembersCD array in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 288.")
+                return
+            }
+            
+            let adultInstructorsCDSet = NSSet(array: adultInstructorsCD)
+            
+            let nameSort = NSSortDescriptor(key: "firstName", ascending: true)
+            let adults = adultInstructorsCDSet.sortedArray(using: [nameSort])
+            
+            guard let studentAdultCD = adults[indexPath.row] as? StudentAdultCD else {
+                print("ERROR: nil value for studentAdultCD in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 298.")
+                return
+            }
+            
+            destViewController.studentAdultCD = studentAdultCD
         }
     }
 }

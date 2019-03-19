@@ -36,6 +36,7 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
     var owner: OwnerCD?
     var studentAdult: StudentAdultCD?
     var studentKid: StudentKidCD?
+    var groupCD: GroupCD?
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -255,6 +256,8 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
             
             // pass CoreData Properties
             guard let newPassword = self.passwordTextField.text else { return }
+            
+            destViewController.groupCD = groupCD
             
             if let owner = owner {
                 

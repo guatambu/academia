@@ -42,6 +42,7 @@ class TakeProfilePicViewController: UIViewController {
     var ownerCD: OwnerCD?
     var studentAdultCD: StudentAdultCD?
     var studentKidCD: StudentKidCD?
+    var groupCD: GroupCD?
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -272,9 +273,12 @@ class TakeProfilePicViewController: UIViewController {
         
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
         destViewController.group = group
+        destViewController.groupCD = groupCD
         
         destViewController.inEditingMode = inEditingMode
         destViewController.userToEdit = userToEdit
+        
+        
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
         if let isOwner = isOwner {

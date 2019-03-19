@@ -182,11 +182,11 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        guard let kidMembers = kidMembers, let adultMembers = adultMembers else {
-            
-            print("ERROR: nil value for either kidMembers and/or adultMemebers array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, didSelectRowAt:) - line 186")
-            return
-        }
+//        guard let kidMembers = kidMembers, let adultMembers = adultMembers else {
+//            
+//            print("ERROR: nil value for either kidMembers and/or adultMemebers array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, didSelectRowAt:) - line 186")
+//            return
+//        }
         
         // programmatically performing the segue
         
@@ -209,56 +209,97 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
         
         if indexPath.section == 0 {
             // kidStudent setup
-            let kid = kidMembers[indexPath.row]
             
-            destViewController.isOwner = false
-            destViewController.isKid = true
-            destViewController.username = kid.username
-            destViewController.password = kid.password
-            destViewController.firstName = kid.firstName
-            destViewController.lastName = kid.lastName
-            destViewController.parentGuardian = kid.parentGuardian
-            destViewController.profilePic = kid.profilePic
-            destViewController.birthdate = kid.birthdate
-            destViewController.beltLevel = kid.belt.beltLevel
-            destViewController.numberOfStripes = kid.belt.numberOfStripes
-            destViewController.addressLine1 = kid.addressLine1
-            destViewController.addressLine2 = kid.addressLine2
-            destViewController.city = kid.city
-            destViewController.state = kid.state
-            destViewController.zipCode = kid.zipCode
-            destViewController.phone = kid.phone
-            destViewController.mobile = kid.mobile
-            destViewController.email = kid.email
-            destViewController.emergencyContactName = kid.emergencyContactName
-            destViewController.emergencyContactRelationship = kid.emergencyContactRelationship
-            destViewController.emergencyContactPhone = kid.emergencyContactPhone
+//            let kid = kidMembers[indexPath.row]
+//
+//            destViewController.isOwner = false
+//            destViewController.isKid = true
+//            destViewController.username = kid.username
+//            destViewController.password = kid.password
+//            destViewController.firstName = kid.firstName
+//            destViewController.lastName = kid.lastName
+//            destViewController.parentGuardian = kid.parentGuardian
+//            destViewController.profilePic = kid.profilePic
+//            destViewController.birthdate = kid.birthdate
+//            destViewController.beltLevel = kid.belt.beltLevel
+//            destViewController.numberOfStripes = kid.belt.numberOfStripes
+//            destViewController.addressLine1 = kid.addressLine1
+//            destViewController.addressLine2 = kid.addressLine2
+//            destViewController.city = kid.city
+//            destViewController.state = kid.state
+//            destViewController.zipCode = kid.zipCode
+//            destViewController.phone = kid.phone
+//            destViewController.mobile = kid.mobile
+//            destViewController.email = kid.email
+//            destViewController.emergencyContactName = kid.emergencyContactName
+//            destViewController.emergencyContactRelationship = kid.emergencyContactRelationship
+//            destViewController.emergencyContactPhone = kid.emergencyContactPhone
+            
+            
+            // CoreData version
+            guard let kidMembersCD = kidMembersCD else {
+                
+                print("ERROR: nil value for kidMembersCD array in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 242.")
+                return
+            }
+            
+            let kidMembersCDSet = NSSet(array: kidMembersCD)
+            
+            let nameSort = NSSortDescriptor(key: "firstName", ascending: true)
+            let kids = kidMembersCDSet.sortedArray(using: [nameSort])
+            
+            guard let studentKidCD = kids[indexPath.row] as? StudentKidCD else {
+                print("ERROR: nil value for studentKidCD in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 252.")
+                return
+            }
+            
+            destViewController.studentKidCD = studentKidCD
             
         } else if indexPath.section == 1 {
             // adultStudent setup
-            let adult = adultMembers[indexPath.row]
+//            let adult = adultMembers[indexPath.row]
+//
+//            destViewController.isOwner = false
+//            destViewController.isKid = false
+//            destViewController.username = adult.username
+//            destViewController.password = adult.password
+//            destViewController.firstName = adult.firstName
+//            destViewController.lastName = adult.lastName
+//            destViewController.profilePic = adult.profilePic
+//            destViewController.birthdate = adult.birthdate
+//            destViewController.beltLevel = adult.belt.beltLevel
+//            destViewController.numberOfStripes = adult.belt.numberOfStripes
+//            destViewController.addressLine1 = adult.addressLine1
+//            destViewController.addressLine2 = adult.addressLine2
+//            destViewController.city = adult.city
+//            destViewController.state = adult.state
+//            destViewController.zipCode = adult.zipCode
+//            destViewController.phone = adult.phone
+//            destViewController.mobile = adult.mobile
+//            destViewController.email = adult.email
+//            destViewController.emergencyContactName = adult.emergencyContactName
+//            destViewController.emergencyContactRelationship = adult.emergencyContactRelationship
+//            destViewController.emergencyContactPhone = adult.emergencyContactPhone
             
-            destViewController.isOwner = false
-            destViewController.isKid = false
-            destViewController.username = adult.username
-            destViewController.password = adult.password
-            destViewController.firstName = adult.firstName
-            destViewController.lastName = adult.lastName
-            destViewController.profilePic = adult.profilePic
-            destViewController.birthdate = adult.birthdate
-            destViewController.beltLevel = adult.belt.beltLevel
-            destViewController.numberOfStripes = adult.belt.numberOfStripes
-            destViewController.addressLine1 = adult.addressLine1
-            destViewController.addressLine2 = adult.addressLine2
-            destViewController.city = adult.city
-            destViewController.state = adult.state
-            destViewController.zipCode = adult.zipCode
-            destViewController.phone = adult.phone
-            destViewController.mobile = adult.mobile
-            destViewController.email = adult.email
-            destViewController.emergencyContactName = adult.emergencyContactName
-            destViewController.emergencyContactRelationship = adult.emergencyContactRelationship
-            destViewController.emergencyContactPhone = adult.emergencyContactPhone
+            
+            // CoreData version
+            guard let adultMembersCD = adultMembersCD else {
+                
+                print("ERROR: nil value for adultMembersCD array in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 288.")
+                return
+            }
+            
+            let adultMembersCDSet = NSSet(array: adultMembersCD)
+            
+            let nameSort = NSSortDescriptor(key: "firstName", ascending: true)
+            let adults = adultMembersCDSet.sortedArray(using: [nameSort])
+            
+            guard let studentAdultCD = adults[indexPath.row] as? StudentAdultCD else {
+                print("ERROR: nil value for studentAdultCD in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 298.")
+                return
+            }
+            
+            destViewController.studentAdultCD = studentAdultCD
             
         }
     }

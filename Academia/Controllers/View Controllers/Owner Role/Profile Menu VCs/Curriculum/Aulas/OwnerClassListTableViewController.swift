@@ -9,10 +9,14 @@
 // NOTE:  "aula" means "class" in Portuguese. "aula" stands in for the word "class" throughout this workflow as the word "class" is already used as a Swift keyword.
 
 import UIKit
+import CoreData
 
 class OwnerClassListTableViewController: UITableViewController {
     
     // MARK: - Properties
+    
+    // create a fetchedRequestController with predicate to grab the current AulaCD objects... use these as the source for the tableView DataSource  methods
+    var fetchedResultsController: NSFetchedResultsController<AulaCD>!
     
     let beltBuilder = BeltBuilder()
     
@@ -31,6 +35,9 @@ class OwnerClassListTableViewController: UITableViewController {
                            NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 24)! ]
         
         navigationController?.navigationBar.titleTextAttributes = avenirFont
+        
+        // create fetch request and initialize results
+        initializeFetchedResultsController()
         
         tableView.reloadData()
     }
@@ -531,3 +538,25 @@ class OwnerClassListTableViewController: UITableViewController {
     }
 
 }
+
+
+// MARK: - NSFetchedREsultsController initializer method
+extension OwnerClassListTableViewController: NSFetchedResultsControllerDelegate {
+    
+    func initializeFetchedResultsController() {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "AulaCD")
+        let aulaNameSort = NSSortDescriptor(key: "aulaName", ascending: true)
+        request.sortDescriptors = [aulaNameSort]
+        
+        let moc = CoreDataStack.context
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil) as? NSFetchedResultsController<AulaCD>
+        fetchedResultsController.delegate = self
+        
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            fatalError("Failed to initialize FetchedResultsController: \(error)")
+        }
+    }
+}
+

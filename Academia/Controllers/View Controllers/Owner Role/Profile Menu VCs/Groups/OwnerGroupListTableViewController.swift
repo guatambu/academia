@@ -151,8 +151,10 @@ class OwnerGroupListTableViewController: UITableViewController {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
             
             let group = GroupModelController.shared.groups[indexPath.row]
-            
             destination.group = group
+            
+            let groupCD = fetchedResultsController.object(at: indexPath)
+            destination.groupCD = groupCD
         }
     }
 }

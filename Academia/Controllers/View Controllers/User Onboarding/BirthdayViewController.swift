@@ -44,6 +44,7 @@ class BirthdayViewController: UIViewController {
     var owner: OwnerCD?
     var studentAdult: StudentAdultCD?
     var studentKid: StudentKidCD?
+    var groupCD: GroupCD?
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -161,6 +162,7 @@ class BirthdayViewController: UIViewController {
         
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
         destViewController.group = group
+        destViewController.groupCD = groupCD
         
         destViewController.inEditingMode = inEditingMode
         destViewController.userToEdit = userToEdit

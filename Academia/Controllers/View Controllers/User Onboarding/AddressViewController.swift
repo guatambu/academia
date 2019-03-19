@@ -52,6 +52,7 @@ class AddressViewController: UIViewController, UITextInputTraits {
     var owner: OwnerCD?
     var studentAdult: StudentAdultCD?
     var studentKid: StudentKidCD?
+    var groupCD: GroupCD?
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -328,6 +329,7 @@ class AddressViewController: UIViewController, UITextInputTraits {
         
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
         destViewController.group = group
+        destViewController.groupCD = groupCD
         
         destViewController.inEditingMode = inEditingMode
         destViewController.userToEdit = userToEdit

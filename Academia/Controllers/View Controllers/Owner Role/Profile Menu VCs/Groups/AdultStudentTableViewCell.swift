@@ -30,6 +30,12 @@ class AdultStudentTableViewCell: UITableViewCell {
         }
     }
     
+    var studentAdultCD: StudentAdultCD? {
+        didSet {
+            updateViews()
+        }
+    }
+    
 
     // MARK: - awakeFromNib()
     
@@ -59,6 +65,17 @@ class AdultStudentTableViewCell: UITableViewCell {
             return
         }
         
+        guard let studentAdultCD = studentAdultCD else {
+            print("ERROR: nil value found while attepting to unwrap optional adultStudentCD in KidStudentTableViewCell.swift -> profilePicTapped() - line 63.")
+            return
+        }
+        
+        guard var adultMembersCD = delegate?.adultMembersCD else {
+            
+            print("ERRORL: nil value found while trying to unwrap adultMembersCD array via delegate in KidStudentTableViewCell.swift -> profilePicTapped() - line 69.")
+            return
+        }
+        
         // toggle roundProfilePicView borderColor
         if isChosen {
             
@@ -69,10 +86,20 @@ class AdultStudentTableViewCell: UITableViewCell {
             delegate?.adultMembers = adultMembers
             print("delegate adultMembers: \(String(describing: delegate?.adultMembers))")
             
+            // CoreData version
+            print("adultMembersCD: \(adultMembersCD)")
+            adultMembersCD.append(studentAdultCD)
+            print("adultMembersCD: \(adultMembersCD)")
+            delegate?.adultMembersCD = adultMembersCD
+            print("delegate adultMembersCD: \(String(describing: delegate?.adultMembersCD))")
+            
         } else {
             
             roundProfilePicView.borderColor = UIColor.clear
             delegate!.adultMembers = delegate!.adultMembers.filter({ $0 != adultStudent })
+            
+            // CoreData version
+            delegate!.adultMembersCD = delegate!.adultMembersCD.filter({ $0 != studentAdultCD })
         }
     }
     

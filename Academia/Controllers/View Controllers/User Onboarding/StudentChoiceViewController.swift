@@ -29,6 +29,9 @@ class StudentChoiceViewController: UIViewController {
     @IBOutlet weak var confirmAdultsProgramButtonOutlet: DesignableButton!
     @IBOutlet weak var cancelButtonOutlet: UIButton!
     
+    // CoreData Properties
+    var groupCD: GroupCD?
+    
     
     // MARK: - ViewController Lifecycle Functions
 

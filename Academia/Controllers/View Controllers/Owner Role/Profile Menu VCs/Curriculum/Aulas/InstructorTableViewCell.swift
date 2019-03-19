@@ -32,6 +32,12 @@ class InstructorTableViewCell: UITableViewCell {
         }
     }
     
+    var instructorCD: StudentAdultCD? {
+        didSet {
+            updateViews()
+        }
+    }
+    
     
     // MARK: - awakeFromNib()
     
@@ -74,6 +80,27 @@ class InstructorTableViewCell: UITableViewCell {
         } else {
             delegate?.instructors = delegate?.instructors.filter({ $0 != instructor }) ?? []
         }
+        
+        // CoreData version
+        guard let instructorCD = instructorCD else {
+            print("ERROR: nil value found while attepting to unwrap instructor in InstructorTableViewCell.swift -> profilePicTapped - line 86.")
+            return
+        }
+        
+        guard var instructorsCD = delegate?.instructorsCD else {
+            
+            print("ERRORL: nil value found while trying to unwrap instructors array via delegate in InstructorTableViewCell.swift -> profilePicTapped() - line 92")
+            return
+        }
+        
+        if isChosen {
+            instructorsCD.append(instructorCD)
+            delegate?.instructorsCD = instructorsCD
+            print("instructorss: \(String(describing: delegate?.instructorsCD))")
+            
+        } else {
+            delegate?.instructorsCD = delegate?.instructorsCD.filter({ $0 != instructorCD }) ?? []
+        }
     }
     
     
@@ -88,6 +115,17 @@ class InstructorTableViewCell: UITableViewCell {
         
         userThumbnailImageViewOutlet.image = instructor.profilePic
         cellTitleOutlet.text = "\(instructor.firstName) \(instructor.lastName)"
+        
+        // CoreData version
+        guard let instructorCD = instructorCD else {
+            print("ERROR: nil value found while attepting to unwrap optional ownerInstructorCD in OwnerInstructorTableViewCell.swift -> updateViews() - line 121.")
+            return
+        }
+        
+        if let profilePicData = instructorCD.profilePic {
+            userThumbnailImageViewOutlet.image = UIImage(data: profilePicData)
+        }
+        cellTitleOutlet.text = "\(instructorCD.firstName ?? "") \(instructorCD.lastName ?? "")"
         
         // when inEditingMode = true for ClassInstrcuctorsTVC, toggle roundProfilePicView borderColor
         if isChosen {

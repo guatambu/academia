@@ -21,6 +21,8 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
     var groupDescription: String?
     var kidMembers: [KidStudent] = []
     var adultMembers: [AdultStudent] = []
+    var kidMembersCD: [StudentKidCD] = []
+    var adultMembersCD: [StudentAdultCD] = []
     
     var inEditingMode: Bool?
     var groupToEdit: Group?
@@ -34,6 +36,10 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
     @IBOutlet weak var welcomeLabelOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     @IBOutlet weak var nextButtonOutlet: DesignableButton!
+    
+    // CoreData Properties
+    var groupCD: GroupCD?
+    var groupCDToEdit: GroupCD?
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -230,56 +236,86 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
         
         if indexPath.section == 0 {
             // kidStudent setup
-            let kid = mockKids[indexPath.row]
+//            let kid = mockKids[indexPath.row]
+//
+//            destViewController.isOwner = false
+//            destViewController.isKid = true
+//            destViewController.username = kid.username
+//            destViewController.password = kid.password
+//            destViewController.firstName = kid.firstName
+//            destViewController.lastName = kid.lastName
+//            destViewController.parentGuardian = kid.parentGuardian
+//            destViewController.profilePic = kid.profilePic
+//            destViewController.birthdate = kid.birthdate
+//            destViewController.beltLevel = kid.belt.beltLevel
+//            destViewController.numberOfStripes = kid.belt.numberOfStripes
+//            destViewController.addressLine1 = kid.addressLine1
+//            destViewController.addressLine2 = kid.addressLine2
+//            destViewController.city = kid.city
+//            destViewController.state = kid.state
+//            destViewController.zipCode = kid.zipCode
+//            destViewController.phone = kid.phone
+//            destViewController.mobile = kid.mobile
+//            destViewController.email = kid.email
+//            destViewController.emergencyContactName = kid.emergencyContactName
+//            destViewController.emergencyContactRelationship = kid.emergencyContactRelationship
+//            destViewController.emergencyContactPhone = kid.emergencyContactPhone
             
-            destViewController.isOwner = false
-            destViewController.isKid = true
-            destViewController.username = kid.username
-            destViewController.password = kid.password
-            destViewController.firstName = kid.firstName
-            destViewController.lastName = kid.lastName
-            destViewController.parentGuardian = kid.parentGuardian
-            destViewController.profilePic = kid.profilePic
-            destViewController.birthdate = kid.birthdate
-            destViewController.beltLevel = kid.belt.beltLevel
-            destViewController.numberOfStripes = kid.belt.numberOfStripes
-            destViewController.addressLine1 = kid.addressLine1
-            destViewController.addressLine2 = kid.addressLine2
-            destViewController.city = kid.city
-            destViewController.state = kid.state
-            destViewController.zipCode = kid.zipCode
-            destViewController.phone = kid.phone
-            destViewController.mobile = kid.mobile
-            destViewController.email = kid.email
-            destViewController.emergencyContactName = kid.emergencyContactName
-            destViewController.emergencyContactRelationship = kid.emergencyContactRelationship
-            destViewController.emergencyContactPhone = kid.emergencyContactPhone
+            
+            // CoreData version
+            
+            let kidMembersCDSet = NSSet(array: kidMembersCD)
+            
+            let nameSort = NSSortDescriptor(key: "firstName", ascending: true)
+            let kids = kidMembersCDSet.sortedArray(using: [nameSort])
+            
+            guard let studentKidCD = kids[indexPath.row] as? StudentKidCD else {
+                print("ERROR: nil value for studentKidCD in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 252.")
+                return
+            }
+            
+            destViewController.studentKidCD = studentKidCD
             
         } else if indexPath.section == 1 {
             // adultStudent setup
-            let adult = mockAdults[indexPath.row]
+//            let adult = mockAdults[indexPath.row]
+//
+//            destViewController.isOwner = false
+//            destViewController.isKid = false
+//            destViewController.username = adult.username
+//            destViewController.password = adult.password
+//            destViewController.firstName = adult.firstName
+//            destViewController.lastName = adult.lastName
+//            destViewController.profilePic = adult.profilePic
+//            destViewController.birthdate = adult.birthdate
+//            destViewController.beltLevel = adult.belt.beltLevel
+//            destViewController.numberOfStripes = adult.belt.numberOfStripes
+//            destViewController.addressLine1 = adult.addressLine1
+//            destViewController.addressLine2 = adult.addressLine2
+//            destViewController.city = adult.city
+//            destViewController.state = adult.state
+//            destViewController.zipCode = adult.zipCode
+//            destViewController.phone = adult.phone
+//            destViewController.mobile = adult.mobile
+//            destViewController.email = adult.email
+//            destViewController.emergencyContactName = adult.emergencyContactName
+//            destViewController.emergencyContactRelationship = adult.emergencyContactRelationship
+//            destViewController.emergencyContactPhone = adult.emergencyContactPhone
             
-            destViewController.isOwner = false
-            destViewController.isKid = false
-            destViewController.username = adult.username
-            destViewController.password = adult.password
-            destViewController.firstName = adult.firstName
-            destViewController.lastName = adult.lastName
-            destViewController.profilePic = adult.profilePic
-            destViewController.birthdate = adult.birthdate
-            destViewController.beltLevel = adult.belt.beltLevel
-            destViewController.numberOfStripes = adult.belt.numberOfStripes
-            destViewController.addressLine1 = adult.addressLine1
-            destViewController.addressLine2 = adult.addressLine2
-            destViewController.city = adult.city
-            destViewController.state = adult.state
-            destViewController.zipCode = adult.zipCode
-            destViewController.phone = adult.phone
-            destViewController.mobile = adult.mobile
-            destViewController.email = adult.email
-            destViewController.emergencyContactName = adult.emergencyContactName
-            destViewController.emergencyContactRelationship = adult.emergencyContactRelationship
-            destViewController.emergencyContactPhone = adult.emergencyContactPhone
+            
+            // CoreData version
+    
+            let adultMembersCDSet = NSSet(array: adultMembersCD)
+            
+            let nameSort = NSSortDescriptor(key: "firstName", ascending: true)
+            let adults = adultMembersCDSet.sortedArray(using: [nameSort])
+            
+            guard let studentAdultCD = adults[indexPath.row] as? StudentAdultCD else {
+                print("ERROR: nil value for studentAdultCD in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 298.")
+                return
+            }
+            
+            destViewController.studentAdultCD = studentAdultCD
         }
     }
 }
@@ -295,6 +331,39 @@ extension AddStudentsToGroupTableViewController {
         // group update info
         GroupModelController.shared.update(group: group, active: nil, name: nil, description: nil, kidMembers: kidMembers, adultMembers: adultMembers, kidStudent: nil, adultStudent: nil)
         print("how many members in the group: \(GroupModelController.shared.groups.count)")
+        
+        
+        // CoreData GroupCD update info
+        guard let groupCDToEdit = groupCDToEdit else { return }
+        
+        guard let kidsExisting = groupCDToEdit.kidMembers else { return }
+        
+        guard let adultsExisting = groupCDToEdit.adultMembers else { return }
+        
+        // here we want to loop through the membersCD arrays and check the existing corresponding group members NSSet to see if it contains the current iterated member object and if it does NOT, then add that iterated member object to the group members NSSet
+        
+        for kid in kidMembersCD {
+            // check to see if current kidMembersCD actually has kid, this should not fail
+            let containsKid =  kidsExisting.contains(kid)
+            // if the kid is not present, add it to the groupCDToEdit object
+            if containsKid == false {
+                
+                groupCDToEdit.addToKidMembers(kid)
+            }
+        }
+        
+        for adult in adultMembersCD {
+            
+            // check to see if current adultMembersCD actually has adult, this should not fail
+            let containsAdult =  adultsExisting.contains(adult) 
+            // if the adult is not present, add it to the groupCDToEdit object
+            if containsAdult == false {
+                
+                groupCDToEdit.addToAdultMembers(adult)
+            }
+        }
+    
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func enterEditingMode(inEditingMode: Bool?) {

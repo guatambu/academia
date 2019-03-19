@@ -58,6 +58,7 @@ class EmergencyContactViewController: UIViewController {
     var ownerCD: OwnerCD?
     var studentAdultCD: StudentAdultCD?
     var studentKidCD: StudentKidCD?
+    var groupCD: GroupCD?
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -299,6 +300,7 @@ class EmergencyContactViewController: UIViewController {
         
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
         destViewController.group = group
+        destViewController.groupCD = groupCD
         
         guard let isOwner = isOwner else { print("fail isOwner"); return }
         guard let isKid = isKid else { print("fail isKid"); return }

@@ -36,6 +36,10 @@ class GroupNameAndDescriptionViewController: UIViewController, UITextInputTraits
     // program description textView
     @IBOutlet weak var groupDescriptionTextView: UITextView!
     
+    // CoreData Properties
+    var groupCD: GroupCD?
+    var groupCDToEdit: GroupCD?
+    
     
     // MARK: - ViewController Lifecycle Functions
     
@@ -208,7 +212,14 @@ extension GroupNameAndDescriptionViewController {
         if groupNameTextField.text != "" {
             GroupModelController.shared.update(group: group, active: active, name: groupNameTextField.text, description: groupDescriptionTextView.text, kidMembers: nil, adultMembers: nil, kidStudent: nil, adultStudent: nil)
             print("update group name: \(GroupModelController.shared.groups[0].name)")
+        
+            // CoreData PaymentProgramCD update info
+            guard let groupCDToEdit = groupCDToEdit else { return }
+            
+            GroupCDModelController.shared.update(group: groupCDToEdit, active: active, name: groupNameTextField.text, groupDescription: groupDescriptionTextView.text)
         }
+        OwnerCDModelController.shared.saveToPersistentStorage()
+
     }
     
     func enterEditingMode(inEditingMode: Bool?) {
