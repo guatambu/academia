@@ -27,11 +27,6 @@ class ReviewAndCreateClassTableViewController: UITableViewController {
     var ownerInstructors: [Owner]?
     var classGroups: [Group]?
     
-    var instructorsCD: [StudentAdultCD]?
-    var ownerInstructorsCD: [OwnerCD]?
-    var classGroupsCD: [GroupCD]?
-
-    
     var inEditingMode: Bool?
     var aulaToEdit: Aula?
     
@@ -52,6 +47,13 @@ class ReviewAndCreateClassTableViewController: UITableViewController {
     @IBOutlet weak var locationNameLabelOutlet: UILabel!
     @IBOutlet weak var classDescriptionTextView: UITextView!
     @IBOutlet weak var instructorAdvisoryLabelOutlet: UILabel!
+    
+    // CoreData properties
+    var instructorsCD: [StudentAdultCD]?
+    var ownerInstructorsCD: [OwnerCD]?
+    var classGroupsCD: [GroupCD]?
+    
+    
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -190,10 +192,10 @@ class ReviewAndCreateClassTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        guard let ownerInstructors = ownerInstructors, let instructors = instructors else {
-            print("ERROR: nil value for ownerInstructor and/or instructors in ReviewAndCreateClassTableViewController.swift -> tableView(tableView:, didSelectRowAt:) - line 185")
-            return
-        }
+//        guard let ownerInstructors = ownerInstructors, let instructors = instructors else {
+//            print("ERROR: nil value for ownerInstructor and/or instructors in ReviewAndCreateClassTableViewController.swift -> tableView(tableView:, didSelectRowAt:) - line 185")
+//            return
+//        }
         
         // programmatically performing the segue
         
@@ -243,7 +245,7 @@ class ReviewAndCreateClassTableViewController: UITableViewController {
             
             
             // CoreData version
-            guard let ownerInstructorsCD = ownersCD else {
+            guard let ownerInstructorsCD = ownerInstructorsCD else {
                 
                 print("ERROR: nil value for kidMembersCD array in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 242.")
                 return
@@ -289,7 +291,7 @@ class ReviewAndCreateClassTableViewController: UITableViewController {
             
             
             // CoreData version
-            guard let adultInstructorsCD = adultInstructorsCD else {
+            guard let adultInstructorsCD = instructorsCD else {
                 
                 print("ERROR: nil value for adultMembersCD array in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 288.")
                 return

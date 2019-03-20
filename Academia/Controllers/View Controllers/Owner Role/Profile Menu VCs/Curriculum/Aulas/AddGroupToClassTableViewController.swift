@@ -37,6 +37,10 @@ class AddGroupToClassTableViewController: UITableViewController, ClassGroupDeleg
     @IBOutlet weak var welcomeInstructions1LabelOutlet: UILabel!
     @IBOutlet weak var welcomeInstructions2LabelOutlet: UILabel!
     
+    // CoreData properties
+    var instructorsCD: [StudentAdultCD] = []
+    var ownerInstructorsCD: [OwnerCD] = []
+    
     
     // MARK: - ViewController Lifecycle Functions
     

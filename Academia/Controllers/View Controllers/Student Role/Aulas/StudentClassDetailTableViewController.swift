@@ -29,6 +29,9 @@ class StudentClassDetailTableViewController: UITableViewController {
     @IBOutlet weak var classDescriptionTextView: UITextView!
     @IBOutlet weak var instructorAdvisoryLabelOutlet: UILabel!
     
+    // CoreData properties
+    var aulaCD: AulaCD?
+    
     
     // MARK: - ViewController Lifecycle Functions
     
@@ -53,6 +56,27 @@ class StudentClassDetailTableViewController: UITableViewController {
             instructorAdvisoryLabelOutlet.text = "no student instructors added to group"
             
         } else if let  ownerInstructors = aula?.ownerInstructor, ownerInstructors.isEmpty {
+            
+            instructorAdvisoryLabelOutlet.isHidden = false
+            instructorAdvisoryLabelOutlet.text = "no owner added to group as instructors"
+            
+        } else {
+            
+            instructorAdvisoryLabelOutlet.isHidden = true
+        }
+        
+        // CoreData version
+        if let instructorsCD = aulaCD?.adultStudentInstructorsAula, let ownerInstructorsCD = aulaCD?.ownerInstructorAula, instructorsCD.count == 0 && ownerInstructorsCD.count == 0 {
+            
+            instructorAdvisoryLabelOutlet.isHidden = false
+            instructorAdvisoryLabelOutlet.text = "no owner instructors added to class"
+            
+        } else if let instructorsCD = aulaCD?.adultStudentInstructorsAula, instructorsCD.count == 0 {
+            
+            instructorAdvisoryLabelOutlet.isHidden = false
+            instructorAdvisoryLabelOutlet.text = "no student instructors added to group"
+            
+        } else if let  ownerInstructorsCD = aulaCD?.ownerInstructorAula, ownerInstructorsCD.count == 0 {
             
             instructorAdvisoryLabelOutlet.isHidden = false
             instructorAdvisoryLabelOutlet.text = "no owner added to group as instructors"
@@ -196,16 +220,16 @@ class StudentClassDetailTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        guard let aula = aula else {
-            print("ERROR: nil value for group property in ClassInfoDetailsTableViewController.swift -> tableView(_ tableView:, didSelectRowAt:) - line 197")
-            return
-        }
-        
-        guard let instructors = aula.instructor, let ownerInstructors = aula.ownerInstructor else {
-            
-            print("ERROR: nil value for aula.instructor or aula.ownerInstructor array in ClassInfoDetailsTableViewController.swift -> tableView(_ tableView:, numberOfRowsInSection:) - line 203")
-            return
-        }
+//        guard let aula = aula else {
+//            print("ERROR: nil value for group property in ClassInfoDetailsTableViewController.swift -> tableView(_ tableView:, didSelectRowAt:) - line 197")
+//            return
+//        }
+//        
+//        guard let instructors = aula.instructor, let ownerInstructors = aula.ownerInstructor else {
+//
+//            print("ERROR: nil value for aula.instructor or aula.ownerInstructor array in ClassInfoDetailsTableViewController.swift -> tableView(_ tableView:, numberOfRowsInSection:) - line 203")
+//            return
+//        }
         
         // programmatically performing the segue
         
@@ -251,23 +275,21 @@ class StudentClassDetailTableViewController: UITableViewController {
             
             
             // CoreData version
-            guard let ownerInstructorsCD = ownersCD else {
+            guard let ownerInstructorsCD = aulaCD?.ownerInstructorAula else {
                 
                 print("ERROR: nil value for kidMembersCD array in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 242.")
                 return
             }
             
-            let ownerInstructorsCDSet = NSSet(array: ownerInstructorsCD)
-            
             let nameSort = NSSortDescriptor(key: "firstName", ascending: true)
-            let kids = ownerInstructorsCDSet.sortedArray(using: [nameSort])
+            let owners = ownerInstructorsCD.sortedArray(using: [nameSort])
             
-            guard let studentKidCD = kids[indexPath.row] as? StudentKidCD else {
+            guard let ownerCD = owners[indexPath.row] as? OwnerCD else {
                 print("ERROR: nil value for studentKidCD in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 252.")
                 return
             }
             
-            destViewController.studentKidCD = studentKidCD
+            destViewController.ownerCD = ownerCD
             
         } else if indexPath.section == 1 {
             // adultStudent setup
@@ -297,16 +319,14 @@ class StudentClassDetailTableViewController: UITableViewController {
             
             
             // CoreData version
-            guard let adultInstructorsCD = adultInstructorsCD else {
+            guard let adultInstructorsCD = aulaCD?.adultStudentInstructorsAula else {
                 
                 print("ERROR: nil value for adultMembersCD array in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 288.")
                 return
             }
             
-            let adultInstructorsCDSet = NSSet(array: adultInstructorsCD)
-            
             let nameSort = NSSortDescriptor(key: "firstName", ascending: true)
-            let adults = adultInstructorsCDSet.sortedArray(using: [nameSort])
+            let adults = adultInstructorsCD.sortedArray(using: [nameSort])
             
             guard let studentAdultCD = adults[indexPath.row] as? StudentAdultCD else {
                 print("ERROR: nil value for studentAdultCD in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 298.")

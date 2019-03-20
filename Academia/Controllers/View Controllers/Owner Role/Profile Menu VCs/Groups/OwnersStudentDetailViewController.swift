@@ -47,6 +47,7 @@ class OwnersStudentDetailViewController: UIViewController {
     // CoreData properties
     var studentKidCD: StudentKidCD?
     var studentAdultCD: StudentAdultCD?
+    var ownerCD: OwnerCD?
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -61,7 +62,7 @@ class OwnersStudentDetailViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         
-        populateCompletedProfileInfo(adult: adult, kid: kid, adultCD: studentAdultCD, kidCD: studentKidCD)
+        populateCompletedProfileInfo(adult: adult, kid: kid, adultCD: studentAdultCD, kidCD: studentKidCD, ownerCD: ownerCD)
         
     }
     
@@ -96,7 +97,7 @@ extension OwnersStudentDetailViewController {
 extension OwnersStudentDetailViewController {
     
     func populateCompletedProfileInfo(adult: AdultStudent?,
-                                      kid: KidStudent?, adultCD: StudentAdultCD?, kidCD: StudentKidCD?) {
+                                      kid: KidStudent?, adultCD: StudentAdultCD?, kidCD: StudentKidCD?, ownerCD: OwnerCD?) {
         
         if /** let kid = kid, **/ let kidCD = kidCD, let address = kidCD.address, let emergencyContact = kidCD.emergencyContact, let birthdate = kidCD.birthdate, let belt = kidCD.belt {
             
@@ -162,6 +163,43 @@ extension OwnersStudentDetailViewController {
             
             // profile pic imageView
             if let profilePicData = adultCD.profilePic {
+                
+                profilePicImageView.image = UIImage(data: profilePicData)
+            }
+            
+            // display birthdate
+            formatBirthdate(birthdate: birthdate)
+            
+            // belt holder UIView
+            
+            if let beltContstructor = InternationalStandardBJJBelts(rawValue: belt.beltLevel!), let numberOfStripes = Int(exactly: belt.numberOfStripes) {
+                
+                beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltContstructor, numberOfStripes: numberOfStripes)
+            }
+        } else if let ownerCD = ownerCD, let address = ownerCD.address, let emergencyContact = ownerCD.emergencyContact, let birthdate = ownerCD.birthdate, let belt = ownerCD.belt {
+            
+            // populate UI elements in VC
+            nameLabelOutlet.text = "\(ownerCD.firstName ?? "ERROR: no firstName property for adultCD, so likely everything broken in kidCD object in OwnersStudentDetailViewController -> populateCompletedProfileInfo(adult:kid:adultCD:kidCD:) - line 144.") \(ownerCD.lastName ?? "")"
+            usernameLabelOutlet.text = "user: \(ownerCD.username ?? "")"
+            // contact info outlets
+            phoneLabelOutlet.text = "p: \(ownerCD.phone ?? "")"
+            // mobile is not a required field
+            mobileLabelOutlet.text = "m: \(ownerCD.mobile ?? "")"
+            emailLabelOutlet.text = ownerCD.email
+            // address outlets
+            addressLine1LabelOutlet.text = address.addressLine1 ?? ""
+            // addressLine2 is not a required field
+            addressLine2LabelOutlet.text = address.addressLine2 ?? ""
+            cityLabelOutlet.text = address.city ?? ""
+            stateLabelOutlet.text = address.state ?? ""
+            zipCodeLabelOutlet.text = address.zipCode ?? ""
+            // emergency contact info outlets
+            emergencyContactNameLabelOutlet.text = emergencyContact.name ?? ""
+            emergencyContactRelationshipLabelOutlet.text = emergencyContact.relationship ?? ""
+            emergencyContactPhoneLabelOutlet.text = emergencyContact.phone ?? ""
+            
+            // profile pic imageView
+            if let profilePicData = ownerCD.profilePic {
                 
                 profilePicImageView.image = UIImage(data: profilePicData)
             }

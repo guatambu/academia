@@ -34,9 +34,7 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
 
     var instructors: [AdultStudent] = []
     var ownerInstructors: [Owner] = []
-    
-    var instructorsCD: [StudentAdultCD] = []
-    var ownerInstructorsCD: [OwnerCD] = []
+
     
     var inEditingMode: Bool?
     var aulaToEdit: Aula?
@@ -53,6 +51,9 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
     // CoreData Properties
     var aulaCD: AulaCD?
     var aulaCDToEdit: AulaCD?
+    
+    var instructorsCD: [StudentAdultCD] = []
+    var ownerInstructorsCD: [OwnerCD] = []
     
     
     // MARK: - ViewController Lifecycle Functions
