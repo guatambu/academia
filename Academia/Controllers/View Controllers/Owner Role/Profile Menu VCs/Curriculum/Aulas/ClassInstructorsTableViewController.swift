@@ -52,6 +52,8 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
     var aulaCD: AulaCD?
     var aulaCDToEdit: AulaCD?
     
+    var locationCD: LocationCD?
+    
     var instructorsCD: [StudentAdultCD] = []
     var ownerInstructorsCD: [OwnerCD] = []
     
@@ -149,6 +151,7 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
         
         // Configure the cell...
         if indexPath.section == 0 {
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "ownerInstructorCell", for: indexPath) as! OwnerInstructorTableViewCell
             
             // set delegate to communicate with AddNewStudentGroupImageMenuTableViewCell
@@ -186,7 +189,9 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
                 }
             }
             
-            cell.ownerInstructorCD = ownerInstructorsCD[indexPath.row]
+            guard let ownersCD = fetchedResultsControllerOwnerInstructors.fetchedObjects else { return UITableViewCell() }
+            
+            cell.ownerInstructorCD = ownersCD[indexPath.row]
             
             cell.ownerInstructor = availableOwners[indexPath.row]
             
@@ -229,6 +234,8 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
                     }
                 }
                 
+                guard let instructorsCD = fetchedResultsControllerAdultInstructors.fetchedObjects else { return UITableViewCell() }
+
                 cell.instructorCD = instructorsCD[indexPath.row]
             
                 cell.instructor = possibleInstructors[indexPath.row]
@@ -302,14 +309,14 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
             let ownerInstructorsCDSet = NSSet(array: ownerInstructorsCD)
             
             let nameSort = NSSortDescriptor(key: "firstName", ascending: true)
-            let kids = ownerInstructorsCDSet.sortedArray(using: [nameSort])
+            let owners = ownerInstructorsCDSet.sortedArray(using: [nameSort])
             
-            guard let studentKidCD = kids[indexPath.row] as? StudentKidCD else {
+            guard let ownerCD = owners[indexPath.row] as? OwnerCD else {
                 print("ERROR: nil value for studentKidCD in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 252.")
                 return
             }
             
-            destViewController.studentKidCD = studentKidCD
+            destViewController.ownerCD = ownerCD
             
         } else if indexPath.section == 1 {
             // adultStudent setup
@@ -385,6 +392,10 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
             destViewController.aulaName = aulaName
             destViewController.active = active
             destViewController.aulaDescription = aulaDescription
+            
+            destViewController.locationCD = locationCD
+            destViewController.ownerInstructorsCD = ownerInstructorsCD
+            destViewController.instructorsCD = instructorsCD
             
             destViewController.inEditingMode = inEditingMode
             destViewController.aulaToEdit = aulaToEdit
@@ -470,6 +481,7 @@ extension ClassInstructorsTableViewController: NSFetchedResultsControllerDelegat
         requestOwners.sortDescriptors = [ownerNameSort]
         
         let moc = CoreDataStack.context
+        
         fetchedResultsControllerOwnerInstructors = NSFetchedResultsController(fetchRequest: requestOwners, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil) as? NSFetchedResultsController<OwnerCD>
         fetchedResultsControllerOwnerInstructors.delegate = self
         

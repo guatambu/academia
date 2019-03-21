@@ -26,6 +26,12 @@ class ClassGroupTableViewCell: UITableViewCell {
         }
     }
     
+    var groupCD: GroupCD? {
+        didSet {
+            updateViews()
+        }
+    }
+    
     
     // MARK: - Actions
     
@@ -34,8 +40,13 @@ class ClassGroupTableViewCell: UITableViewCell {
         // toggle isChosen Boolean value
         isChosen = !isChosen
         
-        guard let group = group else {
-            print("ERROR: nil value found while attepting to unwrap optional group in ClassGroupTableViewCell.swift -> groupSelectionButtonTapped(sender:) - line 33.")
+//        guard let group = group else {
+//            print("ERROR: nil value found while attepting to unwrap optional group in ClassGroupTableViewCell.swift -> groupSelectionButtonTapped(sender:) - line 33.")
+//            return
+//        }
+        
+        guard let groupCD = groupCD else {
+            print("ERROR: nil value found while attepting to unwrap optional groupCD in ClassGroupTableViewCell.swift -> groupSelectionButtonTapped(sender:) - line 33.")
             return
         }
         
@@ -47,7 +58,7 @@ class ClassGroupTableViewCell: UITableViewCell {
         }
         
         // append/remove group from array
-        addGroup(group: group)
+        addGroup(groupCD: groupCD)
     }
     
 
@@ -62,12 +73,20 @@ class ClassGroupTableViewCell: UITableViewCell {
     
     func updateViews() {
         
-        guard let group = group else {
-            print("ERROR: nil value found while attepting to unwrap optional group in ClassGroupTableViewCell.swift -> updateViews() - line 56.")
+//        guard let group = group else {
+//            print("ERROR: nil value found while attepting to unwrap optional group in ClassGroupTableViewCell.swift -> updateViews() - line 56.")
+//            return
+//        }
+//
+//        groupNameLabelOutlet.text = "\(group.name)"
+        
+        // CoreData version
+        guard let groupCD = groupCD else {
+            print("ERROR: nil value found while attempting to unwrap optional groupCD in ClassGroupTableViewCell.swift -> updateViews() - line 56.")
             return
         }
-
-        groupNameLabelOutlet.text = "\(group.name)"
+        
+        groupNameLabelOutlet.text = "\(groupCD.name ?? "")"
         
         // when inEditingMode = true for ClassInstrcuctorsTVC, toggle roundProfilePicView borderColor
         if isChosen {
@@ -88,32 +107,59 @@ class ClassGroupTableViewCell: UITableViewCell {
         groupSelectionButtonOutlet.setImage(selectedImage, for: .selected)
     }
     
-    func addGroup(group: Group?) {
+    func addGroup(groupCD: GroupCD?) {
         
-        guard let group = group else {
-            print("ERROR: nil value found while attepting to unwrap optional group in ClassGroupTableViewCell.swift -> addGroup(group:) - line 77.")
+//        guard let group = group else {
+//            print("ERROR: nil value found while attepting to unwrap optional group in ClassGroupTableViewCell.swift -> addGroup(group:) - line 77.")
+//            return
+//        }
+//
+//        guard var classGroups = delegate?.classGroups else {
+//
+//            print("ERRORL: nil value found while trying to unwrap delegate?.classGroups array via delegate in ClassGroupTableViewCell.swift -> addGroup(group:) - line 83")
+//            return
+//        }
+//
+//        if classGroups.contains(group) {
+//
+//            delegate?.classGroups = classGroups.filter({ $0 != group })
+//
+//            print("\(String(describing: delegate?.classGroups))")
+//
+//        } else {
+//
+//            classGroups.append(group)
+//
+//            delegate?.classGroups = classGroups
+//
+//            print("\(String(describing: delegate?.classGroups))")
+//        }
+        
+        // CoreData version
+        guard let groupCD = groupCD else {
+            print("ERROR: nil value found while attepting to unwrap optional groupCD in ClassGroupTableViewCell.swift -> addGroup(group:) - line 127.")
             return
         }
         
-        guard var classGroups = delegate?.classGroups else {
+        guard var classGroupsCD = delegate?.classGroupsCD else {
             
-            print("ERRORL: nil value found while trying to unwrap delegate?.classGroups array via delegate in ClassGroupTableViewCell.swift -> addGroup(group:) - line 83")
+            print("ERRORL: nil value found while trying to unwrap delegate?.classGroupsCD array via delegate in ClassGroupTableViewCell.swift -> addGroup(group:) - line 83")
             return
         }
         
-        if classGroups.contains(group) {
+        if classGroupsCD.contains(groupCD) {
             
-            delegate?.classGroups = classGroups.filter({ $0 != group })
+            delegate?.classGroupsCD = classGroupsCD.filter({ $0 != groupCD })
             
-            print("\(String(describing: delegate?.classGroups))")
+            print("\(String(describing: delegate?.classGroupsCD))")
             
         } else {
             
-            classGroups.append(group)
+            classGroupsCD.append(groupCD)
             
-            delegate?.classGroups = classGroups
+            delegate?.classGroupsCD = classGroupsCD
             
-            print("\(String(describing: delegate?.classGroups))")
+            print("\(String(describing: delegate?.classGroupsCD))")
         }
     }
 

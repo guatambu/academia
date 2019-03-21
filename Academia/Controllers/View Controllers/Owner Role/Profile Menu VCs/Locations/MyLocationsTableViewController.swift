@@ -48,6 +48,7 @@ class MyLocationsTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ownerLocationsImageMenuCell", for: indexPath) as? LocationsImageMenuTableViewCell else { return UITableViewCell() }
         
 //        let location = LocationModelController.shared.locations[indexPath.row]

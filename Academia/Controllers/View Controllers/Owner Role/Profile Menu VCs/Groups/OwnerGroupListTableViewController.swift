@@ -86,12 +86,14 @@ class OwnerGroupListTableViewController: UITableViewController {
         
 //        let group = GroupModelController.shared.groups[indexPath.row]
         
-        guard let group = self.fetchedResultsController?.object(at: indexPath) else {
+        guard let groupCD = self.fetchedResultsController?.object(at: indexPath) else {
             fatalError("Attempt to configure cell without a managed object")
         }
         
         // Configure the cell...
-        cell.title = group.name
+        cell.title = groupCD.name
+        
+        print(groupCD.kidMembers as Any)
 
         return cell
     }
@@ -150,8 +152,9 @@ class OwnerGroupListTableViewController: UITableViewController {
             
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
             
-            let group = GroupModelController.shared.groups[indexPath.row]
-            destination.group = group
+            
+//            let group = GroupModelController.shared.groups[indexPath.row]
+//            destination.group = group
             
             let groupCD = fetchedResultsController.object(at: indexPath)
             destination.groupCD = groupCD
@@ -165,7 +168,7 @@ extension OwnerGroupListTableViewController: NSFetchedResultsControllerDelegate 
     
     func initializeFetchedResultsController() {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "GroupCD")
-        let groupNameSort = NSSortDescriptor(key: "programName", ascending: true)
+        let groupNameSort = NSSortDescriptor(key: "name", ascending: true)
         request.sortDescriptors = [groupNameSort]
         
         let moc = CoreDataStack.context

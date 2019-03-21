@@ -84,11 +84,13 @@ class OwnerClassListTableViewController: UITableViewController {
         // Sunday
         if section == 0 {
             
-            var sundays: [Aula] = []
+            var sundays: [AulaCD] = []
             
-            for aula in AulaModelController.shared.aulas {
+            for aula in AulaCDModelController.shared.aulas {
                 
-                if aula.daysOfTheWeek.contains(.Sunday) {
+                if let daysOfTheWeek = aula.daysOfTheWeek {
+                    daysOfTheWeek.contains(ClassTimeComponents.Weekdays.Sunday.rawValue)
+                    
                     sundays.append(aula)
                 }
             }
@@ -98,11 +100,13 @@ class OwnerClassListTableViewController: UITableViewController {
         // Monday
         } else if section == 1 {
             
-            var mondays: [Aula] = []
+            var mondays: [AulaCD] = []
             
-            for aula in AulaModelController.shared.aulas {
+            for aula in AulaCDModelController.shared.aulas {
                 
-                if aula.daysOfTheWeek.contains(.Monday) {
+                if let daysOfTheWeek = aula.daysOfTheWeek {
+                    daysOfTheWeek.contains(ClassTimeComponents.Weekdays.Monday.rawValue)
+                    
                     mondays.append(aula)
                 }
             }
@@ -111,11 +115,13 @@ class OwnerClassListTableViewController: UITableViewController {
         // Tuesday
         } else if section == 2 {
             
-            var tuesdays: [Aula] = []
+            var tuesdays: [AulaCD] = []
             
-            for aula in AulaModelController.shared.aulas {
+            for aula in AulaCDModelController.shared.aulas {
                 
-                if aula.daysOfTheWeek.contains(.Tuesday) {
+                if let daysOfTheWeek = aula.daysOfTheWeek {
+                    daysOfTheWeek.contains(ClassTimeComponents.Weekdays.Tuesday.rawValue)
+                    
                     tuesdays.append(aula)
                 }
             }
@@ -124,11 +130,13 @@ class OwnerClassListTableViewController: UITableViewController {
         // Wednesday
         } else if section == 3 {
             
-            var wednesdays: [Aula] = []
+            var wednesdays: [AulaCD] = []
             
-            for aula in AulaModelController.shared.aulas {
+            for aula in AulaCDModelController.shared.aulas {
                 
-                if aula.daysOfTheWeek.contains(.Wednesday) {
+                if let daysOfTheWeek = aula.daysOfTheWeek {
+                    daysOfTheWeek.contains(ClassTimeComponents.Weekdays.Wednesday.rawValue)
+                    
                     wednesdays.append(aula)
                 }
             }
@@ -137,11 +145,13 @@ class OwnerClassListTableViewController: UITableViewController {
         // Thursday
         } else if section == 4 {
             
-            var thursdays: [Aula] = []
+            var thursdays: [AulaCD] = []
             
-            for aula in AulaModelController.shared.aulas {
+            for aula in AulaCDModelController.shared.aulas {
                 
-                if aula.daysOfTheWeek.contains(.Thursday) {
+                if let daysOfTheWeek = aula.daysOfTheWeek {
+                    daysOfTheWeek.contains(ClassTimeComponents.Weekdays.Thursday.rawValue)
+                    
                     thursdays.append(aula)
                 }
             }
@@ -150,11 +160,13 @@ class OwnerClassListTableViewController: UITableViewController {
         // Friday
         } else if section == 5 {
             
-            var fridays: [Aula] = []
+            var fridays: [AulaCD] = []
             
-            for aula in AulaModelController.shared.aulas {
+            for aula in AulaCDModelController.shared.aulas {
                 
-                if aula.daysOfTheWeek.contains(.Friday) {
+                if let daysOfTheWeek = aula.daysOfTheWeek {
+                    daysOfTheWeek.contains(ClassTimeComponents.Weekdays.Friday.rawValue)
+                    
                     fridays.append(aula)
                 }
             }
@@ -163,11 +175,13 @@ class OwnerClassListTableViewController: UITableViewController {
         // Saturday
         } else if section == 6 {
             
-            var saturdays: [Aula] = []
+            var saturdays: [AulaCD] = []
             
-            for aula in AulaModelController.shared.aulas {
+            for aula in AulaCDModelController.shared.aulas {
                 
-                if aula.daysOfTheWeek.contains(.Saturday) {
+                if let daysOfTheWeek = aula.daysOfTheWeek {
+                    daysOfTheWeek.contains(ClassTimeComponents.Weekdays.Saturday.rawValue)
+                    
                     saturdays.append(aula)
                 }
             }
@@ -189,22 +203,24 @@ class OwnerClassListTableViewController: UITableViewController {
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "classesMenuCell", for: indexPath) as? AulasListMenuTableViewCell else { return UITableViewCell() }
             
-            var sundays: [Aula] = []
+            var sundays: [AulaCD] = []
             
-            for aula in AulaModelController.shared.aulas {
+            for aula in AulaCDModelController.shared.aulas {
                 
-                if aula.daysOfTheWeek.contains(.Sunday) {
+                if let daysOfTheWeek = aula.daysOfTheWeek {
+                    daysOfTheWeek.contains(ClassTimeComponents.Weekdays.Sunday.rawValue)
+                    
                     sundays.append(aula)
                 }
             }
             
             // sort sundays array to display classes by timeCode
-            sundays.sort(by: {$0.timeCode ?? 0 < $1.timeCode ?? 0})
+            sundays.sort(by: {$0.timeCode < $1.timeCode })
             print(sundays)
-            let aula = sundays[indexPath.row]
+            let aulaCD = sundays[indexPath.row]
         
             // Configure the cell
-            cell.aula = aula
+            cell.aulaCD = aulaCD
             
             return cell
             
@@ -213,23 +229,25 @@ class OwnerClassListTableViewController: UITableViewController {
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "classesMenuCell", for: indexPath) as? AulasListMenuTableViewCell else { return UITableViewCell() }
             
-            var mondays: [Aula] = []
+            var mondays: [AulaCD] = []
             
-            for aula in AulaModelController.shared.aulas {
+            for aula in AulaCDModelController.shared.aulas {
                 
-                if aula.daysOfTheWeek.contains(.Monday) {
+                if let daysOfTheWeek = aula.daysOfTheWeek {
+                    daysOfTheWeek.contains(ClassTimeComponents.Weekdays.Monday.rawValue)
+                    
                     mondays.append(aula)
                 }
             }
             
             // sort mondays array to display classes by timeCode
-            mondays.sort(by: {$0.timeCode ?? 0 < $1.timeCode ?? 0})
+            mondays.sort(by: {$0.timeCode < $1.timeCode })
             print(mondays)
             
-            let aula = mondays[indexPath.row]
+            let aulaCD = mondays[indexPath.row]
             
             // Configure the cell...
-            cell.aula = aula
+            cell.aulaCD = aulaCD
             
             return cell
             
@@ -238,23 +256,25 @@ class OwnerClassListTableViewController: UITableViewController {
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "classesMenuCell", for: indexPath) as? AulasListMenuTableViewCell else { return UITableViewCell() }
             
-            var tuesdays: [Aula] = []
+            var tuesdays: [AulaCD] = []
             
-            for aula in AulaModelController.shared.aulas {
+            for aula in AulaCDModelController.shared.aulas {
                 
-                if aula.daysOfTheWeek.contains(.Tuesday) {
+                if let daysOfTheWeek = aula.daysOfTheWeek {
+                    daysOfTheWeek.contains(ClassTimeComponents.Weekdays.Tuesday.rawValue)
+                    
                     tuesdays.append(aula)
                 }
             }
             
             // sort tuesdays array to display classes by timeCode
-            tuesdays.sort(by: {$0.timeCode ?? 0 < $1.timeCode ?? 0})
+            tuesdays.sort(by: {$0.timeCode < $1.timeCode })
             print(tuesdays)
             
-            let aula = tuesdays[indexPath.row]
+            let aulaCD = tuesdays[indexPath.row]
             
             // Configure the cell...
-            cell.aula = aula
+            cell.aulaCD = aulaCD
             
             return cell
             
@@ -263,23 +283,25 @@ class OwnerClassListTableViewController: UITableViewController {
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "classesMenuCell", for: indexPath) as? AulasListMenuTableViewCell else { return UITableViewCell() }
             
-            var wednesdays: [Aula] = []
+            var wednesdays: [AulaCD] = []
             
-            for aula in AulaModelController.shared.aulas {
+            for aula in AulaCDModelController.shared.aulas {
                 
-                if aula.daysOfTheWeek.contains(.Wednesday) {
+                if let daysOfTheWeek = aula.daysOfTheWeek {
+                    daysOfTheWeek.contains(ClassTimeComponents.Weekdays.Wednesday.rawValue)
+                    
                     wednesdays.append(aula)
                 }
             }
             
             // sort wednesdays array to display classes by timeCode
-            wednesdays.sort(by: {$0.timeCode ?? 0 < $1.timeCode ?? 0})
+            wednesdays.sort(by: {$0.timeCode < $1.timeCode })
             print(wednesdays)
             
-            let aula = wednesdays[indexPath.row]
+            let aulaCD = wednesdays[indexPath.row]
             
             // Configure the cell...
-            cell.aula = aula
+            cell.aulaCD = aulaCD
             
             return cell
             
@@ -288,23 +310,25 @@ class OwnerClassListTableViewController: UITableViewController {
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "classesMenuCell", for: indexPath) as? AulasListMenuTableViewCell else { return UITableViewCell() }
             
-            var thursdays: [Aula] = []
+            var thursdays: [AulaCD] = []
             
-            for aula in AulaModelController.shared.aulas {
+            for aula in AulaCDModelController.shared.aulas {
                 
-                if aula.daysOfTheWeek.contains(.Thursday) {
+                if let daysOfTheWeek = aula.daysOfTheWeek {
+                    daysOfTheWeek.contains(ClassTimeComponents.Weekdays.Thursday.rawValue)
+                    
                     thursdays.append(aula)
                 }
             }
             
             // sort thursdays array to display classes by timeCode
-            thursdays.sort(by: {$0.timeCode ?? 0 < $1.timeCode ?? 0})
+            thursdays.sort(by: {$0.timeCode < $1.timeCode })
             print(thursdays)
             
-            let aula = thursdays[indexPath.row]
+            let aulaCD = thursdays[indexPath.row]
             
             // Configure the cell...
-            cell.aula = aula
+            cell.aulaCD = aulaCD
             
             return cell
         
@@ -313,23 +337,25 @@ class OwnerClassListTableViewController: UITableViewController {
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "classesMenuCell", for: indexPath) as? AulasListMenuTableViewCell else { return UITableViewCell() }
             
-            var fridays: [Aula] = []
+            var fridays: [AulaCD] = []
             
-            for aula in AulaModelController.shared.aulas {
+            for aula in AulaCDModelController.shared.aulas {
                 
-                if aula.daysOfTheWeek.contains(.Friday) {
+                if let daysOfTheWeek = aula.daysOfTheWeek {
+                    daysOfTheWeek.contains(ClassTimeComponents.Weekdays.Friday.rawValue)
+                    
                     fridays.append(aula)
                 }
             }
             
             // sort fridays array to display classes by timeCode
-            fridays.sort(by: {$0.timeCode ?? 0 < $1.timeCode ?? 0})
+            fridays.sort(by: {$0.timeCode < $1.timeCode })
             print(fridays)
             
-            let aula = fridays[indexPath.row]
+            let aulaCD = fridays[indexPath.row]
             
             // Configure the cell...
-            cell.aula = aula
+            cell.aulaCD = aulaCD
             
             return cell
         
@@ -338,23 +364,25 @@ class OwnerClassListTableViewController: UITableViewController {
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "classesMenuCell", for: indexPath) as? AulasListMenuTableViewCell else { return UITableViewCell() }
             
-            var saturdays: [Aula] = []
+            var saturdays: [AulaCD] = []
             
-            for aula in AulaModelController.shared.aulas {
+            for aula in AulaCDModelController.shared.aulas {
                 
-                if aula.daysOfTheWeek.contains(.Saturday) {
+                if let daysOfTheWeek = aula.daysOfTheWeek {
+                    daysOfTheWeek.contains(ClassTimeComponents.Weekdays.Saturday.rawValue)
+                    
                     saturdays.append(aula)
                 }
             }
             
             // sort saturdays array to display classes by timeCode
-            saturdays.sort(by: {$0.timeCode ?? 0 < $1.timeCode ?? 0})
+            saturdays.sort(by: {$0.timeCode < $1.timeCode })
             print(saturdays)
             
-            let aula = saturdays[indexPath.row]
+            let aulaCD = saturdays[indexPath.row]
             
             // Configure the cell...
-            cell.aula = aula
+            cell.aulaCD = aulaCD
             
             return cell
             
@@ -560,3 +588,7 @@ extension OwnerClassListTableViewController: NSFetchedResultsControllerDelegate 
     }
 }
 
+
+******
+// TODO: can the sections and their respective data be better handled by the fetchedResultsController.  i believe so.
+******

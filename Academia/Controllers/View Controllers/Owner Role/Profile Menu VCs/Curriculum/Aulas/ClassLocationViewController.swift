@@ -9,10 +9,14 @@
 // NOTE:  "aula" means "class" in Portuguese. "aula" stands in for the word "class" throughout this workflow as the word "class" is already used as a Swift keyword.
 
 import UIKit
+import CoreData
 
 class ClassLocationViewController: UIViewController {
 
     // MARK: - Properties
+    
+    // create a fetchedRequestController with predicate to grab the current LocationsCD objects... use these as the source for the tableView DataSource  methods
+    var fetchedResultsController: NSFetchedResultsController<LocationCD>!
     
     // MOCK DATA
     var locations = [MockData.myLocation, MockData.myLocation, MockData.myLocation, MockData.myLocation, MockData.myLocation, MockData.myLocation, MockData.myLocation, MockData.myLocation]
@@ -28,6 +32,8 @@ class ClassLocationViewController: UIViewController {
     // to hold the compiled string for the classLocationLabelOutlet
     var locationString = ""
     
+    var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
+    
     var inEditingMode: Bool?
     var aulaToEdit: Aula?
     
@@ -41,6 +47,12 @@ class ClassLocationViewController: UIViewController {
     // class time UIPickerView
     @IBOutlet weak var classLocationPickerView: UIPickerView!
     
+    // CoreData Properties
+    var aulaCD: AulaCD?
+    var aulaCDToEdit: AulaCD?
+    
+    var locationCD: LocationCD?
+    
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -53,10 +65,15 @@ class ClassLocationViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = avenirFont
         
         enterEditingMode(inEditingMode: inEditingMode)
+        
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // create fetch request and initialize results
+        initializeFetchedResultsController()
         
         classLocationPickerView.delegate = self
         classLocationPickerView.dataSource = self
@@ -95,13 +112,17 @@ class ClassLocationViewController: UIViewController {
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         // check for errors before performing segue, and if error, block navigation
-        if location != nil {
+        if locationCD != nil {
             
             return true
             
         } else {
             
             addClassLabelOutlet.textColor = beltBuilder.redBeltRed
+            
+            // fire haptic feedback for error
+            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
             
             return false
         }
@@ -129,6 +150,8 @@ class ClassLocationViewController: UIViewController {
             destViewController.aulaName = aulaName
             destViewController.active = active
             destViewController.aulaDescription = aulaDescription
+            
+            destViewController.locationCD = locationCD
             
             destViewController.inEditingMode = inEditingMode
             destViewController.aulaToEdit = aulaToEdit
@@ -215,8 +238,13 @@ extension ClassLocationViewController: UIPickerViewDelegate, UIPickerViewDataSou
         
         // locations component
         if component == 0 {
-            return locations.count
-
+//            return locations.count
+            
+            guard let components = fetchedResultsController.sections else {
+                fatalError("No sections in fetchedResultsController")
+            }
+            let componentInfo = components[component]
+            return componentInfo.numberOfObjects
         }
         return 0
     }
@@ -225,29 +253,66 @@ extension ClassLocationViewController: UIPickerViewDelegate, UIPickerViewDataSou
         
         // locations component
         if component == 0 {
-            return "\(locations[row].locationName)"
+            
+            guard let components = fetchedResultsController.fetchedObjects else {
+                fatalError("No sections in fetchedResultsController")
+            }
+            let componentInfo = components[component]
+            if let name = componentInfo.locationName {
+                
+                return "\(name)"
+            }
         }
         return ""
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-
-        let locationSelected = locations[pickerView.selectedRow(inComponent: 0)]
         
-        locationString = "\(locationSelected.locationName)"
+        guard let locationsCD = fetchedResultsController.fetchedObjects else {
+            fatalError("No fetchedObjects in fetchedResultsController")
+        }
+
+//        let locationSelected = locations[pickerView.selectedRow(inComponent: 0)]
+        let locationSelectedCD = locationsCD[pickerView.selectedRow(inComponent: 0)]
+        
+        if let name = locationSelectedCD.locationName {
+            
+            locationString = "\(name)"
+        }
         
         classLocationLabelOutlet.text = locationString
         
-        location = locationSelected
+        locationCD = locationSelectedCD
         
-        guard let location = location else {
-            print("nil found for location property in ClassLocationViewController.swift -> pickerView(pickerView: didSelectRow:) - line 238.")
+        guard let locationCD = locationCD else {
+            print("nil found for location property in ClassLocationViewController.swift -> pickerView(pickerView: didSelectRow:) - line 280.")
             return
         }
-        print("location name: \(location.locationName)")
+        print("location name: \(String(describing: locationCD.locationName))")
         
     }
 }
 
 
-
+// MARK: - NSFetchedREsultsController initializer method
+extension ClassLocationViewController: NSFetchedResultsControllerDelegate {
+    
+    func initializeFetchedResultsController() {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "LocationCD")
+        let locationNameSort = NSSortDescriptor(key: "locationName", ascending: true)
+        
+        request.sortDescriptors = [locationNameSort]
+        
+        let moc = CoreDataStack.context
+        
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil) as? NSFetchedResultsController<LocationCD>
+        
+        fetchedResultsController.delegate = self
+        
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            fatalError("Failed to initialize FetchedResultsController: \(error)")
+        }
+    }
+}

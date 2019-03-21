@@ -9,10 +9,14 @@
 // NOTE:  "aula" means "class" in Portuguese. "aula" stands in for the word "class" throughout this workflow as the word "class" is already used as a Swift keyword.
 
 import UIKit
+import CoreData
 
 class AddGroupToClassTableViewController: UITableViewController, ClassGroupDelegate {
 
     // MARK: - Properties
+    
+    // create a fetchedRequestController with predicate to grab the current LocationsCD objects... use these as the source for the tableView DataSource  methods
+    var fetchedResultsController: NSFetchedResultsController<GroupCD>!
     
     var mockDatGroups = [MockData.allStudents, MockData.allStudents, MockData.allStudents, MockData.allStudents ]
     
@@ -37,9 +41,15 @@ class AddGroupToClassTableViewController: UITableViewController, ClassGroupDeleg
     @IBOutlet weak var welcomeInstructions1LabelOutlet: UILabel!
     @IBOutlet weak var welcomeInstructions2LabelOutlet: UILabel!
     
-    // CoreData properties
+    // CoreData Properties
+    var aulaCD: AulaCD?
+    var aulaCDToEdit: AulaCD?
+    
+    var locationCD: LocationCD?
+    
     var instructorsCD: [StudentAdultCD] = []
     var ownerInstructorsCD: [OwnerCD] = []
+    var classGroupsCD: [GroupCD] = []
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -52,6 +62,11 @@ class AddGroupToClassTableViewController: UITableViewController, ClassGroupDeleg
         navigationController?.navigationBar.titleTextAttributes = avenirFont
         
         enterEditingMode(inEditingMode: inEditingMode)
+        
+        // create fetch request and initialize results
+        initializeFetchedResultsController()
+        
+        tableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -87,41 +102,51 @@ class AddGroupToClassTableViewController: UITableViewController, ClassGroupDeleg
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return mockDatGroups.count
+//        return mockDatGroups.count
+        
+        guard let sections = fetchedResultsController.sections else {
+            fatalError("No sections in fetchedResultsController")
+        }
+        let sectionInfo = sections[section]
+        return sectionInfo.numberOfObjects
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // Configure the cell...
         
-            let cell = tableView.dequeueReusableCell(withIdentifier: "classGroupCell", for: indexPath) as! ClassGroupTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "classGroupCell", for: indexPath) as! ClassGroupTableViewCell
+        
+        // set delegate to communicate with AddNewStudentGroupImageMenuTableViewCell
+        cell.delegate = self
             
-            // set delegate to communicate with AddNewStudentGroupImageMenuTableViewCell
-            cell.delegate = self
+        // set the isChosen to true if inEditingMode == true and current student is present in groupToEdit.kidMembers array to display the student as chosen
+        if let inEditingMode = inEditingMode {
             
-            // set the isChosen to true if inEditingMode == true and current student is present in groupToEdit.kidMembers array to display the student as chosen
-            if let inEditingMode = inEditingMode {
+            if inEditingMode {
                 
-                if inEditingMode {
+                guard let classGroupsToEdit = aulaToEdit?.classGroups else {
+                    print("ERROR: nil value for aulaToEdit.classGroups in AddGroupToClassTableViewController.swift -> tableView(tableView:, cellForRowAt:) - line 109")
+                    return UITableViewCell()
+                }
+                
+                if classGroupsToEdit.isEmpty == false && (classGroupsToEdit.count - 1) >= indexPath.row {
                     
-                    guard let classGroupsToEdit = aulaToEdit?.classGroups else {
-                        print("ERROR: nil value for aulaToEdit.classGroups in AddGroupToClassTableViewController.swift -> tableView(tableView:, cellForRowAt:) - line 109")
-                        return UITableViewCell()
-                    }
-                    
-                    if classGroupsToEdit.isEmpty == false && (classGroupsToEdit.count - 1) >= indexPath.row {
+                    if classGroups.contains(classGroupsToEdit[indexPath.row]) {
                         
-                        if classGroups.contains(classGroupsToEdit[indexPath.row]) {
-                            
-                            cell.isChosen = true
-                        }
+                        cell.isChosen = true
                     }
                 }
             }
-            
-            cell.group = mockDatGroups[indexPath.row]
-            
-            return cell
+        }
+    
+        guard let groupCD = self.fetchedResultsController?.object(at: indexPath) else {
+        fatalError("Attempt to configure cell without a managed object")
+        }
+        cell.groupCD = groupCD
+//        cell.group = mockDatGroups[indexPath.row]
+        
+        return cell
             
     }
     
@@ -130,7 +155,7 @@ class AddGroupToClassTableViewController: UITableViewController, ClassGroupDeleg
         // programmatically performing the segue
         
         // instantiate the relevant storyboard
-        let mainView: UIStoryboard = UIStoryboard(name: "OwnerStudentsFlow", bundle: nil)
+        let mainView: UIStoryboard = UIStoryboard(name: "OwnerBaseCampFlow", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
         let destViewController = mainView.instantiateViewController(withIdentifier: "toGroupInfoDetails") as! GroupInfoDetailsTableViewController
         
@@ -149,6 +174,12 @@ class AddGroupToClassTableViewController: UITableViewController, ClassGroupDeleg
         let group = mockDatGroups[indexPath.row]
         
         destViewController.group = group
+        
+        // CoreData version
+        // get the desired paymentProgramCD for the selected cell
+        let groupCD = fetchedResultsController.object(at: indexPath)
+        // pass CoreData payment program on to InfoDetails view
+        destViewController.groupCD = groupCD
     }
     
     
@@ -178,6 +209,11 @@ class AddGroupToClassTableViewController: UITableViewController, ClassGroupDeleg
             destViewController.aulaName = aulaName
             destViewController.active = active
             destViewController.aulaDescription = aulaDescription
+            
+            destViewController.locationCD = locationCD
+            destViewController.ownerInstructorsCD = ownerInstructorsCD
+            destViewController.instructorsCD = instructorsCD
+            destViewController.classGroupsCD = classGroupsCD
             
             destViewController.inEditingMode = inEditingMode
             destViewController.aulaToEdit = aulaToEdit
@@ -240,5 +276,27 @@ extension AddGroupToClassTableViewController {
         classGroups = groupsToEdit
         
         print("the VC's aula timeOfDay, location, and daysOfTheWeek have been set to the existing aula's coresponding details to be edited and the collection views have reloaded their data")
+    }
+}
+
+
+// MARK: - NSFetchedREsultsController initializer method
+extension AddGroupToClassTableViewController: NSFetchedResultsControllerDelegate {
+    
+    func initializeFetchedResultsController() {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "GroupCD")
+        let groupNameSort = NSSortDescriptor(key: "name", ascending: true)
+        request.sortDescriptors = [groupNameSort]
+        
+        let moc = CoreDataStack.context
+        
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil) as? NSFetchedResultsController<GroupCD>
+        fetchedResultsController.delegate = self
+        
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            fatalError("Failed to initialize FetchedResultsController: \(error)")
+        }
     }
 }

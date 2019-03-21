@@ -22,7 +22,6 @@ class ReviewAndCreateClassTableViewController: UITableViewController {
     var location: Location?
     var daysOfTheWeek: [ClassTimeComponents.Weekdays]?
     
-    var locationCD: LocationCD?
     var instructors: [AdultStudent]?
     var ownerInstructors: [Owner]?
     var classGroups: [Group]?
@@ -49,6 +48,7 @@ class ReviewAndCreateClassTableViewController: UITableViewController {
     @IBOutlet weak var instructorAdvisoryLabelOutlet: UILabel!
     
     // CoreData properties
+    var locationCD: LocationCD?
     var instructorsCD: [StudentAdultCD]?
     var ownerInstructorsCD: [OwnerCD]?
     var classGroupsCD: [GroupCD]?
@@ -102,7 +102,7 @@ class ReviewAndCreateClassTableViewController: UITableViewController {
         createAulaCoreDataModel()
         
         // create the new location in the LocationModelController source of truth
-        createClass()
+//        createClass()
         
         // programmatic segue back to the MyLocations TVC to view the current locations
         guard let viewControllers = self.navigationController?.viewControllers else {
@@ -153,14 +153,28 @@ class ReviewAndCreateClassTableViewController: UITableViewController {
         
         if section == 0 {
             
-            if let ownerInstructors = ownerInstructors {
+//            if let ownerInstructors = ownerInstructors {
+//
+//                return ownerInstructors.count
+//            }
+            
+            // CoreData version
+            if let ownerInstructorsCD = ownerInstructorsCD {
                 
-                return ownerInstructors.count
+                return ownerInstructorsCD.count
             }
+            
+            
         } else if section == 1 {
-            if let instructors = instructors {
+//            if let instructors = instructors {
+//
+//                return instructors.count
+//            }
+            
+            // CoreData version
+            if let instructorsCD = instructorsCD {
                 
-                return instructors.count
+                return instructorsCD.count
             }
         }
         return 0
@@ -168,26 +182,41 @@ class ReviewAndCreateClassTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let ownerInstructors = ownerInstructors, let instructors = instructors else {
-            print("ERROR: nil value for ownerInstructor and/or instructors in ReviewAndCreateClassTableViewController.swift -> tableView(tableView:, cellForRowAt:) - line 160")
-            return UITableViewCell()
-        }
+//        guard let ownerInstructors = ownerInstructors, let instructors = instructors else {
+//            print("ERROR: nil value for ownerInstructor and/or instructors in ReviewAndCreateClassTableViewController.swift -> tableView(tableView:, cellForRowAt:) - line 160")
+//            return UITableViewCell()
+//        }
         
         // Configure the cell...
         if indexPath.section == 0 {
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "reviewOwnerInstructorCell", for: indexPath) as! ReviewOwnerInstructorTableViewCell
             
-            cell.ownerInstructor = ownerInstructors[indexPath.row]
+//            cell.ownerInstructor = ownerInstructors[indexPath.row]
             
-            return cell
+            // CoreData version
+            if let ownerInstructorsCD = ownerInstructorsCD {
+                
+                cell.ownerInstructorCD = ownerInstructorsCD[indexPath.row]
+
+                return cell
+            }
+            
             
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "reviewInsructorCell", for: indexPath) as! ReviewInstructorTableViewCell
             
-            cell.instructor = instructors[indexPath.row]
+//            cell.instructor = instructors[indexPath.row]
             
-            return cell
+            // CoreData version
+            if let instructorsCD = instructorsCD {
+                
+                cell.instructorCD = instructorsCD[indexPath.row]
+                
+                return cell
+            }
         }
+        return UITableViewCell()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -254,14 +283,14 @@ class ReviewAndCreateClassTableViewController: UITableViewController {
             let ownerInstructorsCDSet = NSSet(array: ownerInstructorsCD)
             
             let nameSort = NSSortDescriptor(key: "firstName", ascending: true)
-            let kids = ownerInstructorsCDSet.sortedArray(using: [nameSort])
+            let owners = ownerInstructorsCDSet.sortedArray(using: [nameSort])
             
-            guard let studentKidCD = kids[indexPath.row] as? StudentKidCD else {
+            guard let ownerCD = owners[indexPath.row] as? OwnerCD else {
                 print("ERROR: nil value for studentKidCD in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 252.")
                 return
             }
             
-            destViewController.studentKidCD = studentKidCD
+            destViewController.ownerCD = ownerCD
             
         } else if indexPath.section == 1 {
             // adultStudent setup
@@ -341,12 +370,22 @@ extension ReviewAndCreateClassTableViewController {
             print("there was a nil value in the time passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 285")
             return
         }
-        guard let location = location else {
-            print("there was a nil value in the location passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 289")
+//        guard let location = location else {
+//            print("there was a nil value in the location passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 289")
+//            return
+//        }
+//        guard let classGroups = classGroups else {
+//            print("there was a nil value in the classGroups array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 293")
+//            return
+//        }
+        
+        // CoreData properties
+        guard let locationCD = locationCD else {
+            print("there was a nil value in the locationCD passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 384")
             return
         }
-        guard let classGroups = classGroups else {
-            print("there was a nil value in the classGroups array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 293")
+        guard let classGroupsCD = classGroupsCD else {
+            print("there was a nil value in the classGroupsCD array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 388")
             return
         }
     
@@ -374,16 +413,28 @@ extension ReviewAndCreateClassTableViewController {
         let currentDayAndTime = Date()
         formatLastChanged(lastChanged: currentDayAndTime)
         // group list outlet
-        for group in classGroups {
-            if group == classGroups.last {
-                groupNamesString += "\(group.name)"
+//        for group in classGroups {
+//            if group == classGroups.last {
+//                groupNamesString += "\(group.name)"
+//            } else {
+//                groupNamesString += "\(group.name), "
+//            }
+//        }
+        for groupCD in classGroupsCD {
+            if groupCD == classGroupsCD.last {
+                
+                groupNamesString += "\(groupCD.name ?? "")"
+                
             } else {
-                groupNamesString += "\(group.name), "
+                
+                groupNamesString += "\(groupCD.name ?? ""), "
             }
         }
         groupListLabelOutlet.text = groupNamesString
         // location outlet
-        locationNameLabelOutlet.text = "\(location.locationName)"
+//        locationNameLabelOutlet.text = "\(location.locationName)"
+        locationNameLabelOutlet.text = "\(locationCD.locationName ?? "")"
+        
         // class description
         classDescriptionTextView.text = "\(aulaDescription)"
     }
@@ -468,43 +519,51 @@ extension ReviewAndCreateClassTableViewController {
     func createAulaCoreDataModel() {
         
         guard let aulaName = aulaName else {
-            print("there was a nil value in the aulaName passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 425")
+            print("there was a nil value in the aulaName passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 522")
             return
         }
         guard let active = active else {
-            print("there was a nil value in the active passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 429")
+            print("there was a nil value in the active passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 526")
             return
         }
         guard let aulaDescription = aulaDescription else {
-            print("there was a nil value in the aulaDescription passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 433")
+            print("there was a nil value in the aulaDescription passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 530")
             return
         }
         guard let time = time else {
-            print("there was a nil value in the time passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 441")
+            print("there was a nil value in the time passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 534")
             return
         }
         guard let timeCode = timeCode else {
-            print("there was a nil value in the timeCode passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 445")
+            print("there was a nil value in the timeCode passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 538")
             return
         }
         guard let daysOfTheWeek = daysOfTheWeek else {
-            print("there was a nil value in the daysOfTheWeek array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 497")
+            print("there was a nil value in the daysOfTheWeek array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 542")
             return
         }
-        guard let location = location else {
-            print("there was a nil value in the locationCD passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 449")
+        guard let locationCD = locationCD else {
+            print("there was a nil value in the locationCD passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 546")
             return
         }
+//        guard let addressCD = locationCD.address else {
+//            print("there was a nil value in the locationCDaddressCD passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 550")
+//            return
+//        }
+//        guard let socialLinksCD = locationCD.socialLinks else {
+//            print("there was a nil value in the locationCD.socialLinksCD passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 554")
+//            return
+//        }
         guard let instructorsCD = instructorsCD else {
-            print("there was a nil value in the instructorsCD array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 453")
+            print("there was a nil value in the instructorsCD array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 558")
             return
         }
         guard let ownerInstructorsCD = ownerInstructorsCD else {
-            print("there was a nil value in the ownerInstructorsCD array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 457")
+            print("there was a nil value in the ownerInstructorsCD array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 562")
             return
         }
         guard let classGroupsCD = classGroupsCD else {
-            print("there was a nil value in the classGroupsCD array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 461")
+            print("there was a nil value in the classGroupsCD array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 566")
             return
         }
         
@@ -513,15 +572,15 @@ extension ReviewAndCreateClassTableViewController {
         // create newAula data model object
         let newAula = AulaCD(active: active, aulaName: aulaName, aulaDescription: aulaDescription, time: time, timeCode: timeCodeInt16, location: locationCD)
         
-        // create AddressCD data model object
-        let addressCD = AddressCD(addressLine1: location.addressLine1, addressLine2: location.addressLine2, city: location.city, state: location.state, zipCode: location.zipCode)
-        // create SocialLinksCD data model object
-        let socialLinks = LocationSocialLinksCD(socialLink1: location.social1, socialLink2: location.social2, socialLink3: location.social3)
-        // properly format location pic to Data type
-        guard let locationPicData = location.locationPic?.jpegData(compressionQuality: 1) else { print("fail locationPicData"); return }
-        // create LocationCD data model object and assign it to newAula
-        locationCD = LocationCD(locationUUID: UUID(), active: true
-            , dateCreated: Date(), dateEdited: Date(), locationPic: locationPicData, locationName: location.locationName, phone: location.phone, website: location.website, email: location.email ?? "no email in aula location", address: addressCD, socialLinks: socialLinks, aula: newAula)
+//        // create AddressCD data model object
+//        let newAddressCD = AddressCD(addressLine1: (addressCD.addressLine1 ?? ""), addressLine2: (addressCD.addressLine2 ?? ""), city: (addressCD.city ?? ""), state: (addressCD.state ?? ""), zipCode: (addressCD.zipCode ?? ""))
+//        // create SocialLinksCD data model object
+//        let newSocialLinksCD = LocationSocialLinksCD(socialLink1: (socialLinksCD.socialLink1 ?? ""), socialLink2: (socialLinksCD.socialLink2 ?? ""), socialLink3: (socialLinksCD.socialLink3 ?? ""))
+//        // properly format location pic to Data type
+//        guard let locationPicData = locationCD.locationPic else { print("fail locationPicData"); return }
+//        // create LocationCD data model object and assign it to newAula
+//        locationCD = LocationCD(locationUUID: UUID(), active: true
+//            , dateCreated: Date(), dateEdited: Date(), locationPic: locationPicData, locationName: locationCD.locationName, phone: locationCD.phone, website: locationCD.website, email: (locationCD.email ?? "no email in aula location"), address: addressCD, socialLinks: newSocialLinksCD, aula: newAula)
         
         // configure newAula "to-many" properties
         // days of the week
@@ -580,6 +639,3 @@ extension ReviewAndCreateClassTableViewController {
 }
 
 
-
-
-// TODO:  set the entire data models throughout the app to CoreData sources of truth for next step in testing.  that goes for all the Data Model Object types: Owner, students, location, payment program, aula, groups across their respective creation workflows
