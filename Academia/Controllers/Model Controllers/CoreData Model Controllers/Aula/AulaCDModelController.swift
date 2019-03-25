@@ -18,6 +18,9 @@ class AulaCDModelController {
     var aulas: [AulaCD] {
         let fetchRequest: NSFetchRequest<AulaCD> = AulaCD.fetchRequest()
         
+        let aulaNameSort = NSSortDescriptor(key: "aulaName", ascending: true)
+        fetchRequest.sortDescriptors = [aulaNameSort]
+        
         do {
             return try CoreDataStack.context.fetch(fetchRequest)
         } catch {

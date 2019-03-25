@@ -15,9 +15,6 @@ class OwnerClassListTableViewController: UITableViewController {
     
     // MARK: - Properties
     
-    // create a fetchedRequestController with predicate to grab the current AulaCD objects... use these as the source for the tableView DataSource  methods
-    var fetchedResultsController: NSFetchedResultsController<AulaCD>!
-    
     let beltBuilder = BeltBuilder()
     
     @IBOutlet weak var addClassRightBarButtonOutlet: UIBarButtonItem!
@@ -36,16 +33,11 @@ class OwnerClassListTableViewController: UITableViewController {
         
         navigationController?.navigationBar.titleTextAttributes = avenirFont
         
-        // create fetch request and initialize results
-        initializeFetchedResultsController()
-        
         tableView.reloadData()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("aulas array in AulaModelController:\(AulaModelController.shared.aulas)")
 
     }
 
@@ -81,10 +73,13 @@ class OwnerClassListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        // get the returned [AulaCD] fetchedObjects array from fetchedResultsController
-        guard let aulasCD = fetchedResultsController.fetchedObjects else {
-            return 0
-        }
+//        // get the returned [AulaCD] fetchedObjects array from fetchedResultsController
+//        guard let aulasCD = fetchedResultsController.fetchedObjects else {
+//            return 0
+//        }
+        
+        // get the saved aulas source of truth array
+        let aulasCD = AulaCDModelController.shared.aulas
         
         // for each section, search the returned aulasCD array for each day of the week String and populate the weekday sections arrays according to those reuslts
         
@@ -93,105 +88,133 @@ class OwnerClassListTableViewController: UITableViewController {
             
             var sundays: NSSet = []
             
+            var counter = 0
+            
             for aula in aulasCD {
                 
                 if let daysOfTheWeek = aula.daysOfTheWeek {
                     let predicate = NSPredicate(format: "day == %@", "\(ClassTimeComponents.Weekdays.Sunday.rawValue)")
                     sundays = daysOfTheWeek.filtered(using: predicate) as NSSet
+                    if sundays.count != 0 {
+                        counter += 1
+                    }
                 }
             }
-            print("sundays: \(sundays.count)")
-            return sundays.count
+            return counter
           
         // Monday
         } else if section == 1 {
             
             var mondays: NSSet = []
             
+            var counter = 0
+            
             for aula in aulasCD {
                 
                 if let daysOfTheWeek = aula.daysOfTheWeek {
                     let predicate = NSPredicate(format: "day == %@", "\(ClassTimeComponents.Weekdays.Monday.rawValue)")
                     mondays = daysOfTheWeek.filtered(using: predicate) as NSSet
+                    if mondays.count != 0 {
+                        counter += 1
+                    }
                 }
             }
-            print("mondays: \(mondays.count)")
-            return mondays.count
+            return counter
         
         // Tuesday
         } else if section == 2 {
             
             var tuesdays: NSSet = []
             
+            var counter = 0
+            
             for aula in aulasCD {
                 
                 if let daysOfTheWeek = aula.daysOfTheWeek {
                     let predicate = NSPredicate(format: "day == %@", "\(ClassTimeComponents.Weekdays.Tuesday.rawValue)")
                     tuesdays = daysOfTheWeek.filtered(using: predicate) as NSSet
+                    if tuesdays.count != 0 {
+                        counter += 1
+                    }
                 }
             }
-            print("tuesdays: \(tuesdays.count)")
-            return tuesdays.count
+            return counter
         
         // Wednesday
         } else if section == 3 {
             
             var wednesdays: NSSet = []
             
+            var counter = 0
+            
             for aula in aulasCD {
                 
                 if let daysOfTheWeek = aula.daysOfTheWeek {
                     let predicate = NSPredicate(format: "day == %@", "\(ClassTimeComponents.Weekdays.Wednesday.rawValue)")
                     wednesdays = daysOfTheWeek.filtered(using: predicate) as NSSet
+                    if wednesdays.count != 0 {
+                        counter += 1
+                    }
                 }
             }
-            print("wednesdays: \(wednesdays.count)")
-            return wednesdays.count
+            return counter
         
         // Thursday
         } else if section == 4 {
             
             var thursdays: NSSet = []
             
+            var counter = 0
+            
             for aula in aulasCD {
                 
                 if let daysOfTheWeek = aula.daysOfTheWeek {
                     let predicate = NSPredicate(format: "day == %@", "\(ClassTimeComponents.Weekdays.Thursday.rawValue)")
                     thursdays = daysOfTheWeek.filtered(using: predicate) as NSSet
+                    if thursdays.count != 0 {
+                        counter += 1
+                    }
                 }
             }
-            print("thursdays: \(thursdays.count)")
-            return thursdays.count
+            return counter
          
         // Friday
         } else if section == 5 {
             
             var fridays: NSSet = []
             
+            var counter = 0
+            
             for aula in aulasCD {
                 
                 if let daysOfTheWeek = aula.daysOfTheWeek {
                     let predicate = NSPredicate(format: "day == %@", "\(ClassTimeComponents.Weekdays.Friday.rawValue)")
                     fridays = daysOfTheWeek.filtered(using: predicate) as NSSet
+                    if fridays.count != 0 {
+                        counter += 1
+                    }
                 }
             }
-            print("fridays: \(fridays.count)")
-            return fridays.count
+            return counter
          
         // Saturday
         } else if section == 6 {
             
             var saturdays: NSSet = []
             
+            var counter = 0
+            
             for aula in aulasCD {
                 
                 if let daysOfTheWeek = aula.daysOfTheWeek {
                     let predicate = NSPredicate(format: "day == %@", "\(ClassTimeComponents.Weekdays.Saturday.rawValue)")
                     saturdays = daysOfTheWeek.filtered(using: predicate) as NSSet
+                    if saturdays.count != 0 {
+                        counter += 1
+                    }
                 }
             }
-            print("saturdays: \(saturdays.count)")
-            return saturdays.count
+            return counter
         
         // error case where some random section were to be displayed
         } else {
@@ -202,13 +225,15 @@ class OwnerClassListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        // get the returned [AulaCD] fetchedObjects array from fetchedResultsController
-        guard let aulasCD = fetchedResultsController.fetchedObjects else {
-            return UITableViewCell()
-        }
+//        // get the returned [AulaCD] fetchedObjects array from fetchedResultsController
+//        guard let aulasCD = fetchedResultsController.fetchedObjects else {
+//            return UITableViewCell()
+//        }
         
-        
+        // get the saved aulas source of truth array
+        let aulasCD = AulaCDModelController.shared.aulas
 
+        print("indexPath.section: \(indexPath.section)")
         // Configure the cell...
         
         // for each section, search the returned aulasCD array for each day of the week String and populate the cells according to those reuslts
@@ -231,7 +256,6 @@ class OwnerClassListTableViewController: UITableViewController {
                     sundaySet = daysOfTheWeek.filtered(using: predicate) as NSSet
                 }
                 // if the sundaySet has a value for this aula object, then that confirms there is an aula for htis day, so append the aula to the sundays: [AulaCD] array
-                print("sundays: \(sundaySet.count)")
                 
                 if sundaySet.count != 0 {
                     sundays.append(aula)
@@ -239,7 +263,6 @@ class OwnerClassListTableViewController: UITableViewController {
             }
             // sort sundays array to display included classes by timeCode
             sundays.sort(by: {$0.timeCode < $1.timeCode })
-            print("sundays: \(sundays)")
             // if the sundays: [AulaCD array is not empty, pass the contents to the cell via the appropriate indexPath.row Int value]
             // Configure the cell
             if !sundays.isEmpty {
@@ -269,7 +292,6 @@ class OwnerClassListTableViewController: UITableViewController {
                     mondaySet = daysOfTheWeek.filtered(using: predicate) as NSSet
                 }
                 // if the sundaySet has a value for this aula object, then that confirms there is an aula for htis day, so append the aula to the sundays: [AulaCD] array
-                print("sundays: \(mondaySet.count)")
                 
                 if mondaySet.count != 0 {
                     mondays.append(aula)
@@ -277,7 +299,6 @@ class OwnerClassListTableViewController: UITableViewController {
             }
             // sort sundays array to display included classes by timeCode
             mondays.sort(by: {$0.timeCode < $1.timeCode })
-            print("sundays: \(mondays)")
             // if the sundays: [AulaCD array is not empty, pass the contents to the cell via the appropriate indexPath.row Int value]
             // Configure the cell
             if !mondays.isEmpty {
@@ -307,7 +328,6 @@ class OwnerClassListTableViewController: UITableViewController {
                     tuesdaySet = daysOfTheWeek.filtered(using: predicate) as NSSet
                 }
                 // if the sundaySet has a value for this aula object, then that confirms there is an aula for htis day, so append the aula to the sundays: [AulaCD] array
-                print("sundays: \(tuesdaySet.count)")
                 
                 if tuesdaySet.count != 0 {
                     tuesdays.append(aula)
@@ -315,7 +335,6 @@ class OwnerClassListTableViewController: UITableViewController {
             }
             // sort sundays array to display included classes by timeCode
             tuesdays.sort(by: {$0.timeCode < $1.timeCode })
-            print("sundays: \(tuesdays)")
             // if the sundays: [AulaCD array is not empty, pass the contents to the cell via the appropriate indexPath.row Int value]
             // Configure the cell
             if !tuesdays.isEmpty {
@@ -345,7 +364,6 @@ class OwnerClassListTableViewController: UITableViewController {
                     wednesdaySet = daysOfTheWeek.filtered(using: predicate) as NSSet
                 }
                 // if the sundaySet has a value for this aula object, then that confirms there is an aula for htis day, so append the aula to the sundays: [AulaCD] array
-                print("sundays: \(wednesdaySet.count)")
                 
                 if wednesdaySet.count != 0 {
                     wednesdays.append(aula)
@@ -353,7 +371,6 @@ class OwnerClassListTableViewController: UITableViewController {
             }
             // sort sundays array to display included classes by timeCode
             wednesdays.sort(by: {$0.timeCode < $1.timeCode })
-            print("sundays: \(wednesdays)")
             // if the sundays: [AulaCD array is not empty, pass the contents to the cell via the appropriate indexPath.row Int value]
             // Configure the cell
             if !wednesdays.isEmpty {
@@ -383,7 +400,6 @@ class OwnerClassListTableViewController: UITableViewController {
                     thursdaySet = daysOfTheWeek.filtered(using: predicate) as NSSet
                 }
                 // if the sundaySet has a value for this aula object, then that confirms there is an aula for htis day, so append the aula to the sundays: [AulaCD] array
-                print("sundays: \(thursdaySet.count)")
                 
                 if thursdaySet.count != 0 {
                     thursdays.append(aula)
@@ -391,7 +407,6 @@ class OwnerClassListTableViewController: UITableViewController {
             }
             // sort sundays array to display included classes by timeCode
             thursdays.sort(by: {$0.timeCode < $1.timeCode })
-            print("sundays: \(thursdays)")
             // if the sundays: [AulaCD array is not empty, pass the contents to the cell via the appropriate indexPath.row Int value]
             // Configure the cell
             if !thursdays.isEmpty {
@@ -421,7 +436,6 @@ class OwnerClassListTableViewController: UITableViewController {
                     fridaySet = daysOfTheWeek.filtered(using: predicate) as NSSet
                 }
                 // if the sundaySet has a value for this aula object, then that confirms there is an aula for htis day, so append the aula to the sundays: [AulaCD] array
-                print("sundays: \(fridaySet.count)")
                 
                 if fridaySet.count != 0 {
                     fridays.append(aula)
@@ -429,7 +443,6 @@ class OwnerClassListTableViewController: UITableViewController {
             }
             // sort sundays array to display included classes by timeCode
             fridays.sort(by: {$0.timeCode < $1.timeCode })
-            print("sundays: \(fridays)")
             // if the sundays: [AulaCD array is not empty, pass the contents to the cell via the appropriate indexPath.row Int value]
             // Configure the cell
             if !fridays.isEmpty {
@@ -459,7 +472,6 @@ class OwnerClassListTableViewController: UITableViewController {
                     saturdaySet = daysOfTheWeek.filtered(using: predicate) as NSSet
                 }
                 // if the sundaySet has a value for this aula object, then that confirms there is an aula for htis day, so append the aula to the sundays: [AulaCD] array
-                print("sundays: \(saturdaySet.count)")
                 
                 if saturdaySet.count != 0 {
                     saturdays.append(aula)
@@ -467,7 +479,6 @@ class OwnerClassListTableViewController: UITableViewController {
             }
             // sort sundays array to display included classes by timeCode
             saturdays.sort(by: {$0.timeCode < $1.timeCode })
-            print("sundays: \(saturdays)")
             // if the sundays: [AulaCD array is not empty, pass the contents to the cell via the appropriate indexPath.row Int value]
             // Configure the cell
             if !saturdays.isEmpty {
@@ -495,8 +506,13 @@ class OwnerClassListTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         // Get the new view controller using segue.destinationViewController.
         if segue.identifier == "toAulaInfoDetailsSegue" {
+            
+            // get the saved aulas source of truth array
+            let aulasCD = AulaCDModelController.shared.aulas
+            
             guard let destinationTVC = segue.destination as? ClassInfoDetailsTableViewController else { return }
             guard let indexPath = self.tableView.indexPathForSelectedRow else { return }
             
@@ -508,149 +524,226 @@ class OwnerClassListTableViewController: UITableViewController {
             // Sunday
             if indexPath.section == 0 {
                 
-                var sundays: [Aula] = []
+                var sundays: [AulaCD] = []
                 
-                for aula in AulaModelController.shared.aulas {
+                var sundaySet: NSSet = []
+                
+                for aula in aulasCD {
                     
-                    if aula.daysOfTheWeek.contains(.Sunday) {
+                    // check the aula.daysOfTheWeek NSSet to see if there is a day of the week present that is identical to this day of the week
+                    if let daysOfTheWeek = aula.daysOfTheWeek {
+                        let predicate = NSPredicate(format: "day == %@", "\(ClassTimeComponents.Weekdays.Sunday.rawValue)")
+                        // using the predicate, return the filtered result to the sundaySet
+                        sundaySet = daysOfTheWeek.filtered(using: predicate) as NSSet
+                    }
+                    // if the sundaySet has a value for this aula object, then that confirms there is an aula for htis day, so append the aula to the sundays: [AulaCD] array
+                    
+                    if sundaySet.count != 0 {
                         sundays.append(aula)
                     }
                 }
                 
                 // sort sundays array to display classes by timeCode
-                sundays.sort(by: {$0.timeCode ?? 0 < $1.timeCode ?? 0})
+                sundays.sort(by: {$0.timeCode < $1.timeCode })
                 print(sundays)
                 
-                let aula = sundays[indexPath.row]
+                let aulaCD = sundays[indexPath.row]
                 
                 // Pass the selected object to the new view controller.
-                destinationTVC.aula = aula
+                destinationTVC.aulaCD = aulaCD
+                destinationTVC.dayOfTheWeek = ClassTimeComponents.Weekdays.Sunday.rawValue
                 
             // Monday
             } else if indexPath.section == 1 {
                 
-                var mondays: [Aula] = []
+                var mondays: [AulaCD] = []
                 
-                for aula in AulaModelController.shared.aulas {
+                var mondaySet: NSSet = []
+                
+                for aula in aulasCD {
                     
-                    if aula.daysOfTheWeek.contains(.Monday) {
+                    // check the aula.daysOfTheWeek NSSet to see if there is a day of the week present that is identical to this day of the week
+                    if let daysOfTheWeek = aula.daysOfTheWeek {
+                        let predicate = NSPredicate(format: "day == %@", "\(ClassTimeComponents.Weekdays.Monday.rawValue)")
+                        // using the predicate, return the filtered result to the sundaySet
+                        mondaySet = daysOfTheWeek.filtered(using: predicate) as NSSet
+                    }
+                    // if the sundaySet has a value for this aula object, then that confirms there is an aula for htis day, so append the aula to the sundays: [AulaCD] array
+                    
+                    if mondaySet.count != 0 {
                         mondays.append(aula)
                     }
                 }
                 
                 // sort mondays array to display classes by timeCode
-                mondays.sort(by: {$0.timeCode ?? 0 < $1.timeCode ?? 0})
+                mondays.sort(by: {$0.timeCode < $1.timeCode })
                 print(mondays)
                 
-                let aula = mondays[indexPath.row]
+                let aulaCD = mondays[indexPath.row]
                 
                 // Pass the selected object to the new view controller.
-                destinationTVC.aula = aula
+                destinationTVC.aulaCD = aulaCD
+                destinationTVC.dayOfTheWeek = ClassTimeComponents.Weekdays.Monday.rawValue
                 
             // Tuesday
             } else if indexPath.section == 2 {
                 
-                var tuesdays: [Aula] = []
+                var tuesdays: [AulaCD] = []
                 
-                for aula in AulaModelController.shared.aulas {
+                var tuesdaySet: NSSet = []
+                
+                for aula in aulasCD {
                     
-                    if aula.daysOfTheWeek.contains(.Tuesday) {
+                    // check the aula.daysOfTheWeek NSSet to see if there is a day of the week present that is identical to this day of the week
+                    if let daysOfTheWeek = aula.daysOfTheWeek {
+                        let predicate = NSPredicate(format: "day == %@", "\(ClassTimeComponents.Weekdays.Tuesday.rawValue)")
+                        // using the predicate, return the filtered result to the sundaySet
+                        tuesdaySet = daysOfTheWeek.filtered(using: predicate) as NSSet
+                    }
+                    // if the sundaySet has a value for this aula object, then that confirms there is an aula for htis day, so append the aula to the sundays: [AulaCD] array
+                    
+                    if tuesdaySet.count != 0 {
                         tuesdays.append(aula)
                     }
                 }
                 
                 // sort tuesdays array to display classes by timeCode
-                tuesdays.sort(by: {$0.timeCode ?? 0 < $1.timeCode ?? 0})
+                tuesdays.sort(by: {$0.timeCode < $1.timeCode })
                 print(tuesdays)
                 
-                let aula = tuesdays[indexPath.row]
+                let aulaCD = tuesdays[indexPath.row]
                 
                 // Pass the selected object to the new view controller.
-                destinationTVC.aula = aula
+                destinationTVC.aulaCD = aulaCD
+                destinationTVC.dayOfTheWeek = ClassTimeComponents.Weekdays.Tuesday.rawValue
                 
             // Wednesday
             } else if indexPath.section == 3 {
                 
-                var wednesdays: [Aula] = []
+                var wednesdays: [AulaCD] = []
                 
-                for aula in AulaModelController.shared.aulas {
+                var wednesdaySet: NSSet = []
+                
+                for aula in aulasCD {
                     
-                    if aula.daysOfTheWeek.contains(.Wednesday) {
+                    // check the aula.daysOfTheWeek NSSet to see if there is a day of the week present that is identical to this day of the week
+                    if let daysOfTheWeek = aula.daysOfTheWeek {
+                        let predicate = NSPredicate(format: "day == %@", "\(ClassTimeComponents.Weekdays.Wednesday.rawValue)")
+                        // using the predicate, return the filtered result to the sundaySet
+                        wednesdaySet = daysOfTheWeek.filtered(using: predicate) as NSSet
+                    }
+                    // if the sundaySet has a value for this aula object, then that confirms there is an aula for htis day, so append the aula to the sundays: [AulaCD] array
+                    
+                    if wednesdaySet.count != 0 {
                         wednesdays.append(aula)
                     }
                 }
                 
                 // sort wednesdays array to display classes by timeCode
-                wednesdays.sort(by: {$0.timeCode ?? 0 < $1.timeCode ?? 0})
+                wednesdays.sort(by: {$0.timeCode < $1.timeCode })
                 print(wednesdays)
                 
-                let aula = wednesdays[indexPath.row]
+                let aulaCD = wednesdays[indexPath.row]
                 
                 // Pass the selected object to the new view controller.
-                destinationTVC.aula = aula
+                destinationTVC.aulaCD = aulaCD
+                destinationTVC.dayOfTheWeek = ClassTimeComponents.Weekdays.Wednesday.rawValue
                 
             // Thursday
             } else if indexPath.section == 4 {
                 
-                var thursdays: [Aula] = []
+                var thursdays: [AulaCD] = []
                 
-                for aula in AulaModelController.shared.aulas {
+                var thursdaySet: NSSet = []
+                
+                for aula in aulasCD {
                     
-                    if aula.daysOfTheWeek.contains(.Thursday) {
+                    // check the aula.daysOfTheWeek NSSet to see if there is a day of the week present that is identical to this day of the week
+                    if let daysOfTheWeek = aula.daysOfTheWeek {
+                        let predicate = NSPredicate(format: "day == %@", "\(ClassTimeComponents.Weekdays.Thursday.rawValue)")
+                        // using the predicate, return the filtered result to the sundaySet
+                        thursdaySet = daysOfTheWeek.filtered(using: predicate) as NSSet
+                    }
+                    // if the sundaySet has a value for this aula object, then that confirms there is an aula for htis day, so append the aula to the sundays: [AulaCD] array
+                    
+                    if thursdaySet.count != 0 {
                         thursdays.append(aula)
                     }
                 }
                 
                 // sort thursdays array to display classes by timeCode
-                thursdays.sort(by: {$0.timeCode ?? 0 < $1.timeCode ?? 0})
+                thursdays.sort(by: {$0.timeCode < $1.timeCode })
                 print(thursdays)
                 
-                let aula = thursdays[indexPath.row]
+                let aulaCD = thursdays[indexPath.row]
                 
                 // Pass the selected object to the new view controller.
-                destinationTVC.aula = aula
+                destinationTVC.aulaCD = aulaCD
+                destinationTVC.dayOfTheWeek = ClassTimeComponents.Weekdays.Thursday.rawValue
                 
             // Friday
             } else if indexPath.section == 5 {
                 
-                var fridays: [Aula] = []
+                var fridays: [AulaCD] = []
                 
-                for aula in AulaModelController.shared.aulas {
+                var fridaySet: NSSet = []
+                
+                for aula in aulasCD {
                     
-                    if aula.daysOfTheWeek.contains(.Friday) {
+                    // check the aula.daysOfTheWeek NSSet to see if there is a day of the week present that is identical to this day of the week
+                    if let daysOfTheWeek = aula.daysOfTheWeek {
+                        let predicate = NSPredicate(format: "day == %@", "\(ClassTimeComponents.Weekdays.Friday.rawValue)")
+                        // using the predicate, return the filtered result to the sundaySet
+                        fridaySet = daysOfTheWeek.filtered(using: predicate) as NSSet
+                    }
+                    // if the sundaySet has a value for this aula object, then that confirms there is an aula for htis day, so append the aula to the sundays: [AulaCD] array
+                    
+                    if fridaySet.count != 0 {
                         fridays.append(aula)
                     }
                 }
                 
                 // sort fridays array to display classes by timeCode
-                fridays.sort(by: {$0.timeCode ?? 0 < $1.timeCode ?? 0})
+                fridays.sort(by: {$0.timeCode < $1.timeCode })
                 print(fridays)
                 
-                let aula = fridays[indexPath.row]
+                let aulaCD = fridays[indexPath.row]
                 
                 // Pass the selected object to the new view controller.
-                destinationTVC.aula = aula
+                destinationTVC.aulaCD = aulaCD
+                destinationTVC.dayOfTheWeek = ClassTimeComponents.Weekdays.Friday.rawValue
                 
             // Saturday
             } else if indexPath.section == 6 {
                 
-                var saturdays: [Aula] = []
+                var saturdays: [AulaCD] = []
                 
-                for aula in AulaModelController.shared.aulas {
+                var saturdaySet: NSSet = []
+                
+                for aula in aulasCD {
                     
-                    if aula.daysOfTheWeek.contains(.Saturday) {
+                    // check the aula.daysOfTheWeek NSSet to see if there is a day of the week present that is identical to this day of the week
+                    if let daysOfTheWeek = aula.daysOfTheWeek {
+                        let predicate = NSPredicate(format: "day == %@", "\(ClassTimeComponents.Weekdays.Saturday.rawValue)")
+                        // using the predicate, return the filtered result to the sundaySet
+                        saturdaySet = daysOfTheWeek.filtered(using: predicate) as NSSet
+                    }
+                    // if the sundaySet has a value for this aula object, then that confirms there is an aula for htis day, so append the aula to the sundays: [AulaCD] array
+                    
+                    if saturdaySet.count != 0 {
                         saturdays.append(aula)
                     }
                 }
                 
                 // sort saturdays array to display classes by timeCode
-                saturdays.sort(by: {$0.timeCode ?? 0 < $1.timeCode ?? 0})
+                saturdays.sort(by: {$0.timeCode < $1.timeCode })
                 print(saturdays)
                 
-                let aula = saturdays[indexPath.row]
+                let aulaCD = saturdays[indexPath.row]
                 
                 // Pass the selected object to the new view controller.
-                destinationTVC.aula = aula
+                destinationTVC.aulaCD = aulaCD
+                destinationTVC.dayOfTheWeek = ClassTimeComponents.Weekdays.Saturday.rawValue
                 
                 
             } else {
@@ -662,26 +755,3 @@ class OwnerClassListTableViewController: UITableViewController {
 }
 
 
-// MARK: - NSFetchedREsultsController initializer method
-extension OwnerClassListTableViewController: NSFetchedResultsControllerDelegate {
-    
-    func initializeFetchedResultsController() {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "AulaCD")
-        let aulaNameSort = NSSortDescriptor(key: "aulaName", ascending: true)
-        request.sortDescriptors = [aulaNameSort]
-        
-        let moc = CoreDataStack.context
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil) as? NSFetchedResultsController<AulaCD>
-        fetchedResultsController.delegate = self
-        
-        do {
-            try fetchedResultsController.performFetch()
-        } catch {
-            fatalError("Failed to initialize FetchedResultsController: \(error)")
-        }
-    }
-}
-
-
-
-// TODO: can the sections and their respective data be better handled by the fetchedResultsController.  i believe so.

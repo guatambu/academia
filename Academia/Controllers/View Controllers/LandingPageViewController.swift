@@ -114,7 +114,7 @@ class LandingPageViewController: UIViewController {
                     
 //                    AulaCDModelController.shared.remove(aula: aula)
                     
-                    print("aula.name = \(aula.aulaName ?? "no aula name present")")
+                    print("aula.aulaName = \(aula.aulaName ?? "no aulaName present")")
                     print("")
                     print("aula.timeCode = \(aula.timeCode)")
                     print("")

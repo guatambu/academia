@@ -61,25 +61,26 @@ class InstructorTableViewCell: UITableViewCell {
         }
         
         // add/remove student to appropriate model controller's source of truth
-        guard let instructor = instructor else {
-            print("ERROR: nil value found while attepting to unwrap optional adultStudent in AdultStudentTableViewCell.swift -> profilePicTapped - line 57.")
-            return
-        }
         
-        guard var instructors = delegate?.instructors else {
-            
-            print("ERRORL: nil value found while trying to unwrap adultMembers array via delegate in AdultStudentTableViewCell.swift -> profilePicTapped() - line 63")
-            return
-        }
-        
-        if isChosen {
-            instructors.append(instructor)
-            delegate?.instructors = instructors
-            print("instructorss: \(String(describing: delegate?.instructors))")
-            
-        } else {
-            delegate?.instructors = delegate?.instructors.filter({ $0 != instructor }) ?? []
-        }
+//        guard let instructor = instructor else {
+//            print("ERROR: nil value found while attepting to unwrap optional adultStudent in AdultStudentTableViewCell.swift -> profilePicTapped - line 57.")
+//            return
+//        }
+//
+//        guard var instructors = delegate?.instructors else {
+//
+//            print("ERRORL: nil value found while trying to unwrap adultMembers array via delegate in AdultStudentTableViewCell.swift -> profilePicTapped() - line 63")
+//            return
+//        }
+//
+//        if isChosen {
+//            instructors.append(instructor)
+//            delegate?.instructors = instructors
+//            print("instructorss: \(String(describing: delegate?.instructors))")
+//
+//        } else {
+//            delegate?.instructors = delegate?.instructors.filter({ $0 != instructor }) ?? []
+//        }
         
         // CoreData version
         guard let instructorCD = instructorCD else {
@@ -108,13 +109,13 @@ class InstructorTableViewCell: UITableViewCell {
     
     func updateViews() {
         
-        guard let instructor = instructor else {
-            print("ERROR: nil value found while attepting to unwrap optional adultStudent in AdultStudentTableViewCell.swift -> updateViews() - line 84.")
-            return
-        }
-        
-        userThumbnailImageViewOutlet.image = instructor.profilePic
-        cellTitleOutlet.text = "\(instructor.firstName) \(instructor.lastName)"
+//        guard let instructor = instructor else {
+//            print("ERROR: nil value found while attepting to unwrap optional adultStudent in AdultStudentTableViewCell.swift -> updateViews() - line 84.")
+//            return
+//        }
+//
+//        userThumbnailImageViewOutlet.image = instructor.profilePic
+//        cellTitleOutlet.text = "\(instructor.firstName) \(instructor.lastName)"
         
         // CoreData version
         guard let instructorCD = instructorCD else {

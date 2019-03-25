@@ -572,16 +572,6 @@ extension ReviewAndCreateClassTableViewController {
         // create newAula data model object
         let newAula = AulaCD(active: active, aulaName: aulaName, aulaDescription: aulaDescription, time: time, timeCode: timeCodeInt16, location: locationCD)
         
-//        // create AddressCD data model object
-//        let newAddressCD = AddressCD(addressLine1: (addressCD.addressLine1 ?? ""), addressLine2: (addressCD.addressLine2 ?? ""), city: (addressCD.city ?? ""), state: (addressCD.state ?? ""), zipCode: (addressCD.zipCode ?? ""))
-//        // create SocialLinksCD data model object
-//        let newSocialLinksCD = LocationSocialLinksCD(socialLink1: (socialLinksCD.socialLink1 ?? ""), socialLink2: (socialLinksCD.socialLink2 ?? ""), socialLink3: (socialLinksCD.socialLink3 ?? ""))
-//        // properly format location pic to Data type
-//        guard let locationPicData = locationCD.locationPic else { print("fail locationPicData"); return }
-//        // create LocationCD data model object and assign it to newAula
-//        locationCD = LocationCD(locationUUID: UUID(), active: true
-//            , dateCreated: Date(), dateEdited: Date(), locationPic: locationPicData, locationName: locationCD.locationName, phone: locationCD.phone, website: locationCD.website, email: (locationCD.email ?? "no email in aula location"), address: addressCD, socialLinks: newSocialLinksCD, aula: newAula)
-        
         // configure newAula "to-many" properties
         // days of the week
         for day in daysOfTheWeek {
@@ -631,7 +621,7 @@ extension ReviewAndCreateClassTableViewController {
             }
         }
         
-        // add the created and configured aulato the source of truth
+        // add the created and configured aula to the source of truth
         AulaCDModelController.shared.add(aula: newAula)
         // save to CoreData
         OwnerCDModelController.shared.saveToPersistentStorage()

@@ -41,6 +41,7 @@ class ClassInfoDetailsTableViewController: UITableViewController {
     
     // CoreData properties
     var aulaCD: AulaCD?
+    var dayOfTheWeek: String?
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -50,25 +51,26 @@ class ClassInfoDetailsTableViewController: UITableViewController {
         populateCompletedAulaInfo()
         
         // run checks to produce advisory info to user regarding student types selected to a group
-        if let instructors = aula?.instructor, let ownerInstructors = aula?.ownerInstructor, instructors.isEmpty && ownerInstructors.isEmpty {
-            
-            instructorAdvisoryLabelOutlet.isHidden = false
-            instructorAdvisoryLabelOutlet.text = "no owner instructors added to class"
-            
-        } else if let instructors = aula?.instructor, instructors.isEmpty {
-            
-            instructorAdvisoryLabelOutlet.isHidden = false
-            instructorAdvisoryLabelOutlet.text = "no student instructors added to group"
-            
-        } else if let  ownerInstructors = aula?.ownerInstructor, ownerInstructors.isEmpty {
-            
-            instructorAdvisoryLabelOutlet.isHidden = false
-            instructorAdvisoryLabelOutlet.text = "no owner added to group as instructors"
-            
-        } else {
-            
-            instructorAdvisoryLabelOutlet.isHidden = true
-        }
+        
+//        if let instructors = aula?.instructor, let ownerInstructors = aula?.ownerInstructor, instructors.isEmpty && ownerInstructors.isEmpty {
+//
+//            instructorAdvisoryLabelOutlet.isHidden = false
+//            instructorAdvisoryLabelOutlet.text = "no owner instructors added to class"
+//
+//        } else if let instructors = aula?.instructor, instructors.isEmpty {
+//
+//            instructorAdvisoryLabelOutlet.isHidden = false
+//            instructorAdvisoryLabelOutlet.text = "no student instructors added to group"
+//
+//        } else if let  ownerInstructors = aula?.ownerInstructor, ownerInstructors.isEmpty {
+//
+//            instructorAdvisoryLabelOutlet.isHidden = false
+//            instructorAdvisoryLabelOutlet.text = "no owner added to group as instructors"
+//
+//        } else {
+//
+//            instructorAdvisoryLabelOutlet.isHidden = true
+//        }
         
         // CoreData version
         if let instructorsCD = aulaCD?.adultStudentInstructorsAula, let ownerInstructorsCD = aulaCD?.ownerInstructorAula, instructorsCD.count == 0 && ownerInstructorsCD.count == 0 {
@@ -103,12 +105,12 @@ class ClassInfoDetailsTableViewController: UITableViewController {
         
         title = "Please Review Your Info"
         
-        guard let aula = aula else {
+        guard let aulaCD = aulaCD else {
             print("ERROR: found nil value when unwrapping aula property in ClassInfoDetailsTableViewController.swift -> viewDidLoad() - line 48.")
             return
         }
         
-        print("daysOfTheWeek: \(aula.daysOfTheWeek)")
+        print("daysOfTheWeek: \(String(describing: aulaCD.aulaName))")
         
     }
     
@@ -246,50 +248,106 @@ class ClassInfoDetailsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let aula = aula else {
-            print("ERROR: nil value for aula property in ClassInfoDetailsTableViewController.swift -> tableView(_ tableView:, cellForRowAt:) - line 171")
-            return UITableViewCell()
-        }
+//        guard let aula = aula else {
+//            print("ERROR: nil value for aula property in ClassInfoDetailsTableViewController.swift -> tableView(_ tableView:, cellForRowAt:) - line 171")
+//            return UITableViewCell()
+//        }
+//
+//        guard let instructors = aula.instructor, let ownerInstructors = aula.ownerInstructor else {
+//
+//            print("ERROR: nil value for aula.instructor or aula.ownerInstructor array in ClassInfoDetailsTableViewController.swift -> tableView(_ tableView:, numberOfRowsInSection:) - line 177")
+//            return UITableViewCell()
+//        }
+//
+//        // Configure the cell...
+//        if indexPath.section == 0 {
+//
+//            if ownerInstructors.isEmpty {
+//
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "reviewOwnerInstructorCell", for: indexPath) as! ReviewOwnerInstructorTableViewCell
+//
+//                return cell
+//
+//            } else {
+//
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "reviewOwnerInstructorCell", for: indexPath) as! ReviewOwnerInstructorTableViewCell
+//
+//                cell.ownerInstructor = ownerInstructors[indexPath.row]
+//
+//                return cell
+//            }
+//
+//
+//        } else {
+//
+//            if instructors.isEmpty {
+//
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "reviewOwnerInstructorCell", for: indexPath) as! ReviewOwnerInstructorTableViewCell
+//
+//                return cell
+//
+//            } else {
+//
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "reviewInstructorCell", for: indexPath) as! ReviewInstructorTableViewCell
+//
+//                cell.instructor = instructors[indexPath.row]
+//
+//                return cell
+//            }
+//        }
         
-        guard let instructors = aula.instructor, let ownerInstructors = aula.ownerInstructor else {
+        // CoreData version
+        guard let aulaCD = aulaCD else {
             
-            print("ERROR: nil value for aula.instructor or aula.ownerInstructor array in ClassInfoDetailsTableViewController.swift -> tableView(_ tableView:, numberOfRowsInSection:) - line 177")
+            print("ERROR: nil value for aulaCD property in ClassInfoDetailsTableViewController.swift -> tableView(_ tableView:, cellForRowAt:) - line 301")
             return UITableViewCell()
         }
         
         // Configure the cell...
         if indexPath.section == 0 {
             
-            if ownerInstructors.isEmpty {
+            guard let ownerInstructorsCD = aulaCD.ownerInstructorAula else {
                 
+                print("ERROR: nil value for aula.ownerInstructor array in ClassInfoDetailsTableViewController.swift -> tableView(_ tableView:, numberOfRowsInSection:) - line 316")
+                return UITableViewCell()
+            }
+
+            if ownerInstructorsCD.count != 0 {
+
                 let cell = tableView.dequeueReusableCell(withIdentifier: "reviewOwnerInstructorCell", for: indexPath) as! ReviewOwnerInstructorTableViewCell
+
+                cell.ownerInstructorCD = ownerInstructorsCD.object(at: indexPath.row) as? OwnerCD
                 
                 return cell
-                
+
             } else {
-                
+
                 let cell = tableView.dequeueReusableCell(withIdentifier: "reviewOwnerInstructorCell", for: indexPath) as! ReviewOwnerInstructorTableViewCell
-                
-                cell.ownerInstructor = ownerInstructors[indexPath.row]
-                
+
                 return cell
             }
-            
-            
+
+
         } else {
             
-            if instructors.isEmpty {
+            guard let instructorsCD = aulaCD.adultStudentInstructorsAula else {
                 
-                let cell = tableView.dequeueReusableCell(withIdentifier: "reviewOwnerInstructorCell", for: indexPath) as! ReviewOwnerInstructorTableViewCell
+                print("ERROR: nil value for aula.instructor array in ClassInfoDetailsTableViewController.swift -> tableView(_ tableView:, numberOfRowsInSection:) - line 340")
+                return UITableViewCell()
+            }
+
+            if instructorsCD.count != 0 {
+
+                let cell = tableView.dequeueReusableCell(withIdentifier: "reviewOwnerInstructorCell", for: indexPath) as! ReviewInstructorTableViewCell
+
+                cell.instructorCD = instructorsCD.object(at: indexPath.row) as? StudentAdultCD
                 
                 return cell
-                
+
             } else {
-                
+
                 let cell = tableView.dequeueReusableCell(withIdentifier: "reviewInstructorCell", for: indexPath) as! ReviewInstructorTableViewCell
-                
-                cell.instructor = instructors[indexPath.row]
-                
+
                 return cell
             }
         }
@@ -311,7 +369,7 @@ class ClassInfoDetailsTableViewController: UITableViewController {
         // programmatically performing the segue
         
         // instantiate the relevant storyboard
-        let mainView: UIStoryboard = UIStoryboard(name: "OwnerStudentsFlow", bundle: nil)
+        let mainView: UIStoryboard = UIStoryboard(name: "OwnerBaseCampFlow", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
         let destViewController = mainView.instantiateViewController(withIdentifier: "toProfileComplete") as! OwnersStudentDetailViewController
         
@@ -358,7 +416,7 @@ class ClassInfoDetailsTableViewController: UITableViewController {
             // CoreData version
             guard let ownerInstructorsCD = aulaCD?.ownerInstructorAula else {
                 
-                print("ERROR: nil value for kidMembersCD array in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 242.")
+                print("ERROR: nil value for kidMembersCD array in ClassInfoDetailsTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 363.")
                 return
             }
             
@@ -366,7 +424,7 @@ class ClassInfoDetailsTableViewController: UITableViewController {
             let owners = ownerInstructorsCD.sortedArray(using: [nameSort])
             
             guard let ownerCD = owners[indexPath.row] as? OwnerCD else {
-                print("ERROR: nil value for studentKidCD in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 252.")
+                print("ERROR: nil value for studentKidCD in ClassInfoDetailsTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 371.")
                 return
             }
             
@@ -402,7 +460,7 @@ class ClassInfoDetailsTableViewController: UITableViewController {
             // CoreData version
             guard let adultInstructorsCD = aulaCD?.adultStudentInstructorsAula else {
                 
-                print("ERROR: nil value for adultMembersCD array in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 288.")
+                print("ERROR: nil value for adultMembersCD array in ClassInfoDetailsTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 407.")
                 return
             }
             
@@ -410,7 +468,7 @@ class ClassInfoDetailsTableViewController: UITableViewController {
             let adults = adultInstructorsCD.sortedArray(using: [nameSort])
             
             guard let studentAdultCD = adults[indexPath.row] as? StudentAdultCD else {
-                print("ERROR: nil value for studentAdultCD in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 298.")
+                print("ERROR: nil value for studentAdultCD in ClassInfoDetailsTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 415.")
                 return
             }
             
@@ -424,63 +482,115 @@ extension ClassInfoDetailsTableViewController {
     
     func populateCompletedAulaInfo() {
         
-        guard let aula = aula else {
-            print("ERROR: nil value for aula property in ClassInfoDetailsTableViewController.swift -> populateCompletedAulaInfo() - line 327")
+//        guard let aula = aula else {
+//            print("ERROR: nil value for aula property in ClassInfoDetailsTableViewController.swift -> populateCompletedAulaInfo() - line 327")
+//            return
+//        }
+//
+//        var daysOfTheWeekString = ""
+//        var groupNamesString = ""
+//
+//
+//        guard let time = aula.time else {
+//            print("there was a nil value in the time passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 285")
+//            return
+//        }
+//        guard let location = aula.location else {
+//            print("there was a nil value in the location passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 289")
+//            return
+//        }
+//        guard let classGroups = aula.classGroups else {
+//            print("there was a nil value in the classGroups array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 293")
+//            return
+//        }
+//
+//        // name outlet
+//        classNameLabelOutlet.text = aula.aulaName
+//        // days of th week outlet
+//        for day in aula.daysOfTheWeek {
+//            if day == aula.daysOfTheWeek.last {
+//                daysOfTheWeekString += "\(day.rawValue)"
+//            } else {
+//                daysOfTheWeekString += "\(day.rawValue), "
+//            }
+//        }
+//        daysOfTheWeekLabelOutlet.text = daysOfTheWeekString
+//        // time of day outlet
+//        timeLabelOutlet.text = "\(time)"
+//        // active outlet
+//        if aula.active == true {
+//
+//            activeLabelOutlet.text = "active: YES"
+//        } else {
+//            activeLabelOutlet.text = "active: NO"
+//        }
+//        // lastChanged outlet
+//        formatLastChanged(lastChanged: aula.dateEdited)
+//        // group list outlet
+//        for group in classGroups {
+//            if group == classGroups.last {
+//                groupNamesString += "\(group.name)"
+//            } else {
+//                groupNamesString += "\(group.name), "
+//            }
+//        }
+//        groupListLabelOutlet.text = groupNamesString
+//        // location outlet
+//        locationNameLabelOutlet.text = "\(location.locationName)"
+//        // class description
+//        classDescriptionTextView.text = "\(aula.aulaDescription)"
+        
+        // CoreData version
+        guard let aulaCD = aulaCD else {
+            print("ERROR: nil value for aula property in ClassInfoDetailsTableViewController.swift -> populateCompletedAulaInfo() - line 488")
+            return
+        }
+        guard let location = aulaCD.location else {
+            print("there was a nil value in the location passed to ClassInfoDetailsTableViewController.swift -> populateCompletedClassInfo() - line 493")
+            return
+        }
+        guard let classGroups = aulaCD.groupsAula else {
+            print("there was a nil value in the groupsAula array passed to ClassInfoDetailsTableViewController.swift -> populateCompletedClassInfo() - line 497")
             return
         }
         
-        var daysOfTheWeekString = ""
         var groupNamesString = ""
-        
-        
-        guard let time = aula.time else {
-            print("there was a nil value in the time passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 285")
-            return
-        }
-        guard let location = aula.location else {
-            print("there was a nil value in the location passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 289")
-            return
-        }
-        guard let classGroups = aula.classGroups else {
-            print("there was a nil value in the classGroups array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 293")
-            return
-        }
+        let groupCounter = classGroups.count
         
         // name outlet
-        classNameLabelOutlet.text = aula.aulaName
+        classNameLabelOutlet.text = aulaCD.aulaName
         // days of th week outlet
-        for day in aula.daysOfTheWeek {
-            if day == aula.daysOfTheWeek.last {
-                daysOfTheWeekString += "\(day.rawValue)"
-            } else {
-                daysOfTheWeekString += "\(day.rawValue), "
-            }
-        }
-        daysOfTheWeekLabelOutlet.text = daysOfTheWeekString
+        daysOfTheWeekLabelOutlet.text = dayOfTheWeek
         // time of day outlet
-        timeLabelOutlet.text = "\(time)"
+        timeLabelOutlet.text = "\(aulaCD.time ?? "")"
         // active outlet
-        if aula.active == true {
+        if aulaCD.active == true {
             
             activeLabelOutlet.text = "active: YES"
         } else {
             activeLabelOutlet.text = "active: NO"
         }
         // lastChanged outlet
-        formatLastChanged(lastChanged: aula.dateEdited)
+        formatLastChanged(lastChanged: aulaCD.dateEdited ?? Date())
         // group list outlet
-        for group in classGroups {
-            if group == classGroups.last {
-                groupNamesString += "\(group.name)"
-            } else {
-                groupNamesString += "\(group.name), "
+        if classGroups.count != 0 {
+            
+            for _ in 1...classGroups.count {
+                
+                let groupCD = classGroups.object(at: (classGroups.count - 1)) as! GroupCD
+                
+                if groupCounter <= 1 {
+                    groupNamesString += "\(groupCD.name ?? "")"
+                } else {
+                    groupNamesString += "\(groupCD.name ?? ""), "
+                }
             }
         }
         groupListLabelOutlet.text = groupNamesString
         // location outlet
-        locationNameLabelOutlet.text = "\(location.locationName)"
+        locationNameLabelOutlet.text = "\(location.locationName ?? "")"
         // class description
-        classDescriptionTextView.text = "\(aula.aulaDescription)"
+        classDescriptionTextView.text = "\(aulaCD.aulaDescription ?? "")"
     }
 }
 
