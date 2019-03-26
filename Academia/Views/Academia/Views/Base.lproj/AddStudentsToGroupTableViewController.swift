@@ -418,7 +418,7 @@ extension AddStudentsToGroupTableViewController {
                 groupCDToEdit.addToAdultMembers(adult)
             }
         }
-    
+        // save to CoreData
         OwnerCDModelController.shared.saveToPersistentStorage()
     }
     

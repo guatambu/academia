@@ -398,7 +398,7 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
             destViewController.instructorsCD = instructorsCD
             
             destViewController.inEditingMode = inEditingMode
-            destViewController.aulaToEdit = aulaToEdit
+            destViewController.aulaCDToEdit = aulaCDToEdit
         }
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
@@ -420,6 +420,37 @@ extension ClassInstructorsTableViewController {
         AulaModelController.shared.update(aula: aula, active: nil, kidAttendees: nil, adultAttendees: nil, aulaDescription: nil, aulaName: nil, daysOfTheWeek: nil, instructor: instructors, ownerInstructor: ownerInstructors, location: nil, students: nil, time: nil, timeCode: nil, classGroups: nil)
         print("update class instructors: \(String(describing: AulaModelController.shared.aulas[0].instructor)) \n\(String(describing: AulaModelController.shared.aulas[0].ownerInstructor))")
         
+        // CoreData GroupCD update info
+        guard let aulaCDToEdit = aulaCDToEdit else { return }
+        
+        guard let ownerInstructorExisting = aulaCDToEdit.ownerInstructorAula else { return }
+        
+        guard let adultStudentInstructorExisting = aulaCDToEdit.adultStudentInstructorsAula else { return }
+        
+        // here we want to loop through the two instructorsCD arrays and check the existing corresponding group members NSSet to see if it contains the current iterated member object and if it does NOT, then add that iterated member object to the group members NSSet
+        
+        for owner in ownerInstructorsCD {
+            // check to see if current kidMembersCD actually has kid, this should not fail
+            let containsOwner =  ownerInstructorExisting.contains(owner)
+            // if the kid is not present, add it to the groupCDToEdit object
+            if containsOwner == false {
+                
+                aulaCDToEdit.addToOwnerInstructorAula(owner)
+            }
+        }
+        
+        for adult in instructorsCD {
+            
+            // check to see if current adultMembersCD actually has adult, this should not fail
+            let containsAdult =  adultStudentInstructorExisting.contains(adult)
+            // if the adult is not present, add it to the groupCDToEdit object
+            if containsAdult == false {
+                
+                aulaCDToEdit.addToAdultStudentInstructorsAula(adult)
+            }
+        }
+        // save to CoreData
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func enterEditingMode(inEditingMode: Bool?) {
@@ -438,30 +469,58 @@ extension ClassInstructorsTableViewController {
     
     // owner setup for editing mode
     func aulaEditingSetup() {
+
+//        guard let aulaToEdit = aulaToEdit else {
+//            print("ERROR: nil value for aulaToEdit in ClassInstructorsTableViewController.swift -> aulaEditingSetup() - line 330")
+//            return
+//        }
+//        guard let instructorsToEdit = aulaToEdit.instructor else {
+//            print("ERROR: nil value for aulaToEdit.instructor in ClassInstructorsTableViewController.swift -> aulaEditingSetup() - line 334")
+//            return
+//        }
+//        guard let ownerInstructorsToEdit = aulaToEdit.ownerInstructor else {
+//            print("ERROR: nil value for aulaToEdit.ownerInstructor in ClassInstructorsTableViewController.swift -> aulaEditingSetup() - line 338")
+//            return
+//        }
+//
+//        welcomeMessageLabelOutlet.text = "\(aulaToEdit.aulaName)"
+//
+//        welcomeInstructions1LabelOutlet.textColor = beltBuilder.redBeltRed
+//        welcomeInstructions1LabelOutlet.text = "you are in class editing mode"
+//
+//        daysOfTheWeek = aulaToEdit.daysOfTheWeek
+//        time = aulaToEdit.time ?? ""
+//
+//        instructors = instructorsToEdit
+//        ownerInstructors = ownerInstructorsToEdit
+//
+//        print("the VC's aula timeOfDay, location, and daysOfTheWeek have been set to the existing aula's coresponding details to be edited and the collection views have reloaded their data")
         
-        guard let aulaToEdit = aulaToEdit else {
-            print("ERROR: nil value for aulaToEdit in ClassInstructorsTableViewController.swift -> aulaEditingSetup() - line 330")
+        // CoreData version
+        guard let aulaCDToEdit = aulaCDToEdit else {
+            print("ERROR: nil value for aulaCDToEdit in ClassInstructorsTableViewController.swift -> aulaEditingSetup() - line 501")
             return
         }
-        guard let instructorsToEdit = aulaToEdit.instructor else {
-            print("ERROR: nil value for aulaToEdit.instructor in ClassInstructorsTableViewController.swift -> aulaEditingSetup() - line 334")
+        guard let instructorsCDToEdit = aulaCDToEdit.adultStudentInstructorsAula else {
+            print("ERROR: nil value for aulaToEdit.adultStudentInstructorsAula in ClassInstructorsTableViewController.swift -> aulaEditingSetup() - line 505")
             return
         }
-        guard let ownerInstructorsToEdit = aulaToEdit.ownerInstructor else {
-            print("ERROR: nil value for aulaToEdit.ownerInstructor in ClassInstructorsTableViewController.swift -> aulaEditingSetup() - line 338")
+        guard let ownerInstructorsCDToEdit = aulaCDToEdit.ownerInstructorAula else {
+            print("ERROR: nil value for aulaToEdit.ownerInstructorAula in ClassInstructorsTableViewController.swift -> aulaEditingSetup() - line 509")
             return
         }
-        
-        welcomeMessageLabelOutlet.text = "\(aulaToEdit.aulaName)"
+        guard let aulaCDName = aulaCDToEdit.aulaName else {
+            
+            print("ERROR: nil value for aulaToEdit.aulaName in ClassInstructorsTableViewController.swift -> aulaEditingSetup() - line 514")
+            return
+        }
+        welcomeMessageLabelOutlet.text = "\(aulaCDName)"
         
         welcomeInstructions1LabelOutlet.textColor = beltBuilder.redBeltRed
         welcomeInstructions1LabelOutlet.text = "you are in class editing mode"
         
-        daysOfTheWeek = aulaToEdit.daysOfTheWeek
-        time = aulaToEdit.time ?? ""
-        
-        instructors = instructorsToEdit
-        ownerInstructors = ownerInstructorsToEdit
+        instructorsCD = Array(instructorsCDToEdit) as! [StudentAdultCD]
+        ownerInstructorsCD = Array(ownerInstructorsCDToEdit) as! [OwnerCD]
         
         print("the VC's aula timeOfDay, location, and daysOfTheWeek have been set to the existing aula's coresponding details to be edited and the collection views have reloaded their data")
     }

@@ -75,7 +75,6 @@ class GroupNameAndDescriptionViewController: UIViewController, UITextInputTraits
         groupNameTextField.delegate = self
         groupDescriptionTextView.delegate = self
         
-        //populateCompletedProfileInfo()
     }
     
     
@@ -218,8 +217,8 @@ extension GroupNameAndDescriptionViewController {
             
             GroupCDModelController.shared.update(group: groupCDToEdit, active: active, name: groupNameTextField.text, groupDescription: groupDescriptionTextView.text)
         }
+        
         OwnerCDModelController.shared.saveToPersistentStorage()
-
     }
     
     func enterEditingMode(inEditingMode: Bool?) {
@@ -286,12 +285,9 @@ extension GroupNameAndDescriptionViewController: UITextFieldDelegate, UITextView
     // keyboardWillChange to handle Keyboard Notifications
     @objc func keyboardWillChange(notification: Notification) {
         
-        // uncomment for print statement ensuring this method is properly called
-        // print("Keyboard will change: \(notification.name.rawValue) - \(notification.description)")
-        
         // get the size of the keyboard
         guard let keyboardCGRectValue = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-            print("ERROR: nil value for notification.userInfo[UIKeyboardFrameEndUserInfoKey] in SignUpLoginViewController.swift -> keyboardWillChange(notification:) - line 225")
+            print("ERROR: nil value for notification.userInfo[UIKeyboardFrameEndUserInfoKey] in SignUpLoginViewController.swift -> keyboardWillChange(notification:) - line 290")
             return
         }
         

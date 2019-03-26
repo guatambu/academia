@@ -33,7 +33,6 @@ class AddGroupToClassTableViewController: UITableViewController, ClassGroupDeleg
     var classGroups: [Group] = []
     
     var inEditingMode: Bool?
-    var aulaToEdit: Aula?
     
     let beltBuilder = BeltBuilder()
     
@@ -92,7 +91,7 @@ class AddGroupToClassTableViewController: UITableViewController, ClassGroupDeleg
         
         self.returnToClassInfo()
         
-        print("update aula location: \(String(describing: self.aulaToEdit?.location?.locationName))")
+        print("update aula location: \(String(describing: self.aulaCDToEdit?.location?.locationName))")
         
         inEditingMode = false
     }
@@ -125,14 +124,16 @@ class AddGroupToClassTableViewController: UITableViewController, ClassGroupDeleg
             
             if inEditingMode {
                 
-                guard let classGroupsToEdit = aulaToEdit?.classGroups else {
+                guard let groupsAulaCDToEdit = aulaCDToEdit?.groupsAula else {
                     print("ERROR: nil value for aulaToEdit.classGroups in AddGroupToClassTableViewController.swift -> tableView(tableView:, cellForRowAt:) - line 109")
                     return UITableViewCell()
                 }
                 
-                if classGroupsToEdit.isEmpty == false && (classGroupsToEdit.count - 1) >= indexPath.row {
+                let groupsAulaCDArray = Array(groupsAulaCDToEdit) as! [GroupCD]
+                
+                if groupsAulaCDArray.isEmpty == false && (groupsAulaCDArray.count - 1) >= indexPath.row {
                     
-                    if classGroups.contains(classGroupsToEdit[indexPath.row]) {
+                    if classGroupsCD.contains(groupsAulaCDArray[indexPath.row]) {
                         
                         cell.isChosen = true
                     }
@@ -216,7 +217,6 @@ class AddGroupToClassTableViewController: UITableViewController, ClassGroupDeleg
             destViewController.classGroupsCD = classGroupsCD
             
             destViewController.inEditingMode = inEditingMode
-            destViewController.aulaToEdit = aulaToEdit
         }
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
@@ -231,12 +231,35 @@ extension AddGroupToClassTableViewController {
     // Update Function for case where want to update user info without a segue
     func updateAulaInfo() {
         
-        guard let aula = aulaToEdit else { return }
+//        guard let aula = aulaCDToEdit else { return }
+//
+//        // class update info
+//
+//        AulaModelController.shared.update(aula: aula, active: nil, kidAttendees: nil, adultAttendees: nil, aulaDescription: nil, aulaName: nil, daysOfTheWeek: nil, instructor: nil, ownerInstructor: nil, location: nil, students: nil, time: nil, timeCode: nil, classGroups: classGroups)
+//        print("update class groups: \(String(describing: AulaModelController.shared.aulas[0].classGroups))")
         
-        // class update info
+        // CoreData version
+        guard let aulaCDToEdit = aulaCDToEdit else { return }
         
-        AulaModelController.shared.update(aula: aula, active: nil, kidAttendees: nil, adultAttendees: nil, aulaDescription: nil, aulaName: nil, daysOfTheWeek: nil, instructor: nil, ownerInstructor: nil, location: nil, students: nil, time: nil, timeCode: nil, classGroups: classGroups)
-        print("update class groups: \(String(describing: AulaModelController.shared.aulas[0].classGroups))")
+        // here we want to loop through the classGroupsCD array and check the existing corresponding groupsAulaCD NSSet to see if it contains the current iterated member object and if it does NOT, then add that iterated member object to the groupsAulaExistingCD NSSet
+        for group in classGroupsCD {
+            
+            // check the aulaCDToEdit.clasGroups NSSet to see if the daysOfTheWeek array contents are present in the NSSet version
+            if let groupsAulaExistingCD = aulaCDToEdit.groupsAula {
+                
+                let predicate = NSPredicate(format: "name == %@", "\(group.name ?? "")")
+                // using the predicate, return the filtered result to a new NSSet
+                let confirmedPresentGroupsAulaNSSet = groupsAulaExistingCD.filtered(using: predicate)
+                
+                // if the resulting confirmedPresentGroupsAulaNSSet does not have a group in it, then the current iteration of group is not present in the groupsAulaExistingCD NSSet
+                if confirmedPresentGroupsAulaNSSet.count == 0 {
+                    // add the group to the existing aulaToEdit.groupsAula property
+                    aulaCDToEdit.addToGroupsAula(group)
+                }
+            }
+            // save the update
+            OwnerCDModelController.shared.saveToPersistentStorage()
+        }
         
     }
     
@@ -257,23 +280,42 @@ extension AddGroupToClassTableViewController {
     // owner setup for editing mode
     func aulaEditingSetup() {
         
-        guard let aulaToEdit = aulaToEdit else {
+//        guard let aulaToEdit = aulaToEdit else {
+//            return
+//        }
+//
+//        guard let groupsToEdit = aulaToEdit.classGroups else {
+//            print("ERROR: nil value for aulaToEdit.classGroups in AddGroupToClassTableViewController.swift -> aulaEditingSetup() - line 222")
+//            return
+//        }
+//
+//        welcomeMessageLabelOutlet.text = "\(aulaToEdit.aulaName)"
+//
+//        welcomeInstructions1LabelOutlet.textColor = beltBuilder.redBeltRed
+//        welcomeInstructions1LabelOutlet.text = "you are in class editing mode"
+//
+//        daysOfTheWeek = aulaToEdit.daysOfTheWeek
+//        time = aulaToEdit.time ?? ""
+//        classGroups = groupsToEdit
+//
+//        print("the VC's aula timeOfDay, location, and daysOfTheWeek have been set to the existing aula's coresponding details to be edited and the collection views have reloaded their data")
+        
+        // CoreData version
+        guard let aulaCDToEdit = aulaCDToEdit else {
             return
         }
         
-        guard let groupsToEdit = aulaToEdit.classGroups else {
-            print("ERROR: nil value for aulaToEdit.classGroups in AddGroupToClassTableViewController.swift -> aulaEditingSetup() - line 222")
+        guard let groupsCDToEdit = aulaCDToEdit.groupsAula else {
+            print("ERROR: nil value for aulaCDToEdit.classGroups in AddGroupToClassTableViewController.swift -> aulaEditingSetup() - line 222")
             return
         }
         
-        welcomeMessageLabelOutlet.text = "\(aulaToEdit.aulaName)"
+        welcomeMessageLabelOutlet.text = "\(aulaCDToEdit.aulaName ?? "")"
         
         welcomeInstructions1LabelOutlet.textColor = beltBuilder.redBeltRed
         welcomeInstructions1LabelOutlet.text = "you are in class editing mode"
         
-        daysOfTheWeek = aulaToEdit.daysOfTheWeek
-        time = aulaToEdit.time ?? ""
-        classGroups = groupsToEdit
+        classGroupsCD = Array(groupsCDToEdit) as! [GroupCD]
         
         print("the VC's aula timeOfDay, location, and daysOfTheWeek have been set to the existing aula's coresponding details to be edited and the collection views have reloaded their data")
     }

@@ -35,6 +35,9 @@ class ClassNameAndDescriptionViewController: UIViewController {
     @IBOutlet weak var lastChangedLabelOutlet: UILabel!
     @IBOutlet weak var classDescriptionTextView: UITextView!
     
+    // CoreData properties
+    var aulaCDToEdit: AulaCD?
+    
     
     // MARK: - ViewController Lifecycle Functions
     
@@ -180,6 +183,7 @@ class ClassNameAndDescriptionViewController: UIViewController {
             
             destViewController.inEditingMode = inEditingMode
             destViewController.aulaToEdit = aulaToEdit
+            destViewController.aulaCDToEdit = aulaCDToEdit
             
             // dismiss keyboard when leaving VC scene
             if classNameTextField.isFirstResponder {
@@ -188,7 +192,6 @@ class ClassNameAndDescriptionViewController: UIViewController {
                 classDescriptionTextView.resignFirstResponder()
             }
         }
-        
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
         updateAulaInfo()
@@ -212,7 +215,11 @@ extension ClassNameAndDescriptionViewController {
         if classNameTextField.text != "" {
             AulaModelController.shared.update(aula: aula, active: active, kidAttendees: nil, adultAttendees: nil, aulaDescription: classDescriptionTextView.text, aulaName: classNameTextField.text, daysOfTheWeek: nil, instructor: nil, ownerInstructor: nil, location: nil, students: nil, time: nil, timeCode: nil, classGroups: nil)
             print("update aula name: \(AulaModelController.shared.aulas[0].aulaName)")
+            
+            guard let aulaCDToEdit = aulaCDToEdit else { return }
+            AulaCDModelController.shared.update(aula: aulaCDToEdit, active: active, aulaName: classNameTextField.text, aulaDescription: classDescriptionTextView.text, timeCode: nil, time: nil)
         }
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func enterEditingMode(inEditingMode: Bool?) {
@@ -231,22 +238,43 @@ extension ClassNameAndDescriptionViewController {
     
     // owner setup for editing mode
     func aulaEditingSetup() {
+//
+//        guard let aulaToEdit = aulaToEdit else {
+//            return
+//        }
+//
+//        welcomeMessageLabelOutlet.text = "\(aulaToEdit.aulaName)"
+//
+//        welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
+//        welcomeInstructionsLabelOutlet.text = "you are in class editing mode"
+//
+//        classDescriptionTextView.text = aulaToEdit.aulaDescription
+//        classNameTextField.text = aulaToEdit.aulaName
+//
+//        active = aulaToEdit.active
+//
+//        if aulaToEdit.active {
+//            activeSwitch.isOn = true
+//        } else {
+//            activeSwitch.isOn = false
+//        }
         
-        guard let aulaToEdit = aulaToEdit else {
+        // CoreData version
+        guard let aulaCDToEdit = aulaCDToEdit else {
             return
         }
         
-        welcomeMessageLabelOutlet.text = "\(aulaToEdit.aulaName)"
+        welcomeMessageLabelOutlet.text = "\(aulaCDToEdit.aulaName ?? "")"
         
         welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
         welcomeInstructionsLabelOutlet.text = "you are in class editing mode"
         
-        classDescriptionTextView.text = aulaToEdit.aulaDescription
-        classNameTextField.text = aulaToEdit.aulaName
+        classDescriptionTextView.text = "\(aulaCDToEdit.aulaDescription ?? "")"
+        classNameTextField.text = "\(aulaCDToEdit.aulaName ?? "")"
         
-        active = aulaToEdit.active
+        active = aulaCDToEdit.active
         
-        if aulaToEdit.active {
+        if aulaCDToEdit.active {
             activeSwitch.isOn = true
         } else {
             activeSwitch.isOn = false
@@ -307,9 +335,6 @@ extension ClassNameAndDescriptionViewController: UITextFieldDelegate, UITextView
     
     // keyboardWillChange to handle Keyboard Notifications
     @objc func keyboardWillChange(notification: Notification) {
-        
-        // uncomment for print statement ensuring this method is properly called
-        // print("Keyboard will change: \(notification.name.rawValue) - \(notification.description)")
         
         // get the size of the keyboard
         guard let keyboardCGRectValue = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {

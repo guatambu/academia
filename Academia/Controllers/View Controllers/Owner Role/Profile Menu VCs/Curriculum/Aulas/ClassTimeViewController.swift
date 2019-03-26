@@ -40,6 +40,9 @@ class ClassTimeViewController: UIViewController  {
     // class time UIPickerView
     @IBOutlet weak var classTimePickerView: UIPickerView!
     
+    // CoreData properties
+    var aulaCDToEdit: AulaCD?
+    
     
 
     // MARK: - ViewController Lifecycle Functions
@@ -167,6 +170,7 @@ class ClassTimeViewController: UIViewController  {
             
             destViewController.inEditingMode = inEditingMode
             destViewController.aulaToEdit = aulaToEdit
+            destViewController.aulaCDToEdit = aulaCDToEdit
         }
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
@@ -186,13 +190,29 @@ extension ClassTimeViewController {
     // Update Function for case where want to update user info without a segue
     func updateAulaInfo() {
         
-        guard let aula = aulaToEdit else { return }
-
-        // class update info
-       
-        AulaModelController.shared.update(aula: aula, active: nil, kidAttendees: nil, adultAttendees: nil, aulaDescription: nil, aulaName: nil, daysOfTheWeek: nil, instructor: nil, ownerInstructor: nil, location: nil, students: nil, time: time, timeCode: timeCode, classGroups: nil)
-        print("update class time and timeCode: \(String(describing: AulaModelController.shared.aulas[0].time)) \n\(String(describing: AulaModelController.shared.aulas[0].timeCode)))")
+//        guard let aula = aulaToEdit else { return }
+//
+//        // class update info
+//       
+//        AulaModelController.shared.update(aula: aula, active: nil, kidAttendees: nil, adultAttendees: nil, aulaDescription: nil, aulaName: nil, daysOfTheWeek: nil, instructor: nil, ownerInstructor: nil, location: nil, students: nil, time: time, timeCode: timeCode, classGroups: nil)
+//        print("update class time and timeCode: \(String(describing: AulaModelController.shared.aulas[0].time)) \n\(String(describing: AulaModelController.shared.aulas[0].timeCode)))")
         
+        // CoreData version
+        guard let aulaCDToEdit = aulaCDToEdit else { return }
+        
+        // unwrap the timeCode value for conversion to Int16
+        if let timeCodeForUpdate = timeCode {
+            // convert timeCode: Int property to Int16 type
+            let timeCodeInt16 = Int16(exactly: timeCodeForUpdate)
+            // update with the timeCodeInt16 value if not nil
+            AulaCDModelController.shared.update(aula: aulaCDToEdit, active: nil, aulaName: nil, aulaDescription: nil, timeCode: timeCodeInt16, time: time)
+            
+        } else {
+            // update with the time property - this is not likely to happen so we'll add a print statement to warn the developer
+            print(("ERROR: nil value for timeCode in ClassTimeViewController.swift -> updateAulaInfo() - line 211"))
+        }
+        // save to CoreData
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func enterEditingMode(inEditingMode: Bool?) {
@@ -212,18 +232,94 @@ extension ClassTimeViewController {
     // owner setup for editing mode
     func aulaEditingSetup() {
         
-        guard let aulaToEdit = aulaToEdit else {
+//        guard let aulaToEdit = aulaToEdit else {
+//            return
+//        }
+//
+//        addClassTimeLabelOutlet.text = "\(aulaToEdit.aulaName)"
+//
+//        daysOfTheWeek = aulaToEdit.daysOfTheWeek
+//        time = aulaToEdit.time ?? ""
+//        timeCode = aulaToEdit.timeCode
+//        timeCodeReader(timeCode: aulaToEdit.timeCode)
+//
+//        print("time: \(time ?? "ERROR: unexpected nil value for time property in ClassTimeVC.swift -> aulaEditingSetup() - line 204")")
+//
+//        print("the VC's aula timeOfDay, location, and daysOfTheWeek have been set to the existing aula's coresponding details to be edited and the collection views have reloaded their data")
+        
+        // CoreData version
+        guard let aulaCDToEdit = aulaCDToEdit else {
             return
         }
         
-        addClassTimeLabelOutlet.text = "\(aulaToEdit.aulaName)"
+        addClassTimeLabelOutlet.text = "\(aulaCDToEdit.aulaName ?? "")"
         
-        daysOfTheWeek = aulaToEdit.daysOfTheWeek
-        time = aulaToEdit.time ?? ""
-        timeCode = aulaToEdit.timeCode
-        timeCodeReader(timeCode: aulaToEdit.timeCode)
+        time = aulaCDToEdit.time ?? ""
+        // convert the CoreData Int16 value to regular Int where necessary
+        timeCode = Int(aulaCDToEdit.timeCode)
+        let timeCodeToEdit = Int(aulaCDToEdit.timeCode)
         
-        print("time: \(time ?? "ERROR: unexpected nil value for time property in ClassTimeVC.swift -> aulaEditingSetup() - line 204")")
+        timeCodeReader(timeCode: timeCodeToEdit)
+        
+        print("time: \(time ?? "ERROR: unexpected nil value for time property in ClassTimeVC.swift -> aulaEditingSetup() - line 262")")
+        
+        // check the aulaCDToEdit.daysOfTheWeek NSSet to see which days are present in its contents
+        guard let daysOfTheWeekExistingCD = aulaCDToEdit.daysOfTheWeek else { return }
+        
+        let daySort = NSSortDescriptor(key: "day", ascending: true)
+        
+        let daysExistingCDArray = daysOfTheWeekExistingCD.sortedArray(using: [daySort]) as! [AulaDaysOfTheWeekCD]
+        
+        for day in daysExistingCDArray {
+            
+            switch day.day {
+                
+            case ClassTimeComponents.Weekdays.Sunday.rawValue:
+                
+                if let dayEnum = ClassTimeComponents.Weekdays(rawValue: day.day ?? "") {
+                    daysOfTheWeek?.append(dayEnum)
+                }
+                
+            case ClassTimeComponents.Weekdays.Monday.rawValue:
+                
+                if let dayEnum = ClassTimeComponents.Weekdays(rawValue: day.day ?? "") {
+                    daysOfTheWeek?.append(dayEnum)
+                }
+                
+            case ClassTimeComponents.Weekdays.Tuesday.rawValue:
+                
+                if let dayEnum = ClassTimeComponents.Weekdays(rawValue: day.day ?? "") {
+                    daysOfTheWeek?.append(dayEnum)
+                }
+                
+            case ClassTimeComponents.Weekdays.Wednesday.rawValue:
+                
+                if let dayEnum = ClassTimeComponents.Weekdays(rawValue: day.day ?? "") {
+                    daysOfTheWeek?.append(dayEnum)
+                }
+                
+            case ClassTimeComponents.Weekdays.Thursday.rawValue:
+                
+                if let dayEnum = ClassTimeComponents.Weekdays(rawValue: day.day ?? "") {
+                    daysOfTheWeek?.append(dayEnum)
+                }
+                
+            case ClassTimeComponents.Weekdays.Friday.rawValue:
+                
+                if let dayEnum = ClassTimeComponents.Weekdays(rawValue: day.day ?? "") {
+                    daysOfTheWeek?.append(dayEnum)
+                }
+                
+            case ClassTimeComponents.Weekdays.Saturday.rawValue:
+                
+                if let dayEnum = ClassTimeComponents.Weekdays(rawValue: day.day ?? "") {
+                    daysOfTheWeek?.append(dayEnum)
+                }
+                
+            default:
+                print("ERROR: somehow found a value outside of the days of the week in ClassDayViewController.swift -> aulaEditingSetup() - line 345.")
+            }
+        }
         
         print("the VC's aula timeOfDay, location, and daysOfTheWeek have been set to the existing aula's coresponding details to be edited and the collection views have reloaded their data")
     }

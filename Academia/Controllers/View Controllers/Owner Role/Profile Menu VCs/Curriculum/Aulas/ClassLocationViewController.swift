@@ -18,8 +18,8 @@ class ClassLocationViewController: UIViewController {
     // create a fetchedRequestController with predicate to grab the current LocationsCD objects... use these as the source for the tableView DataSource  methods
     var fetchedResultsController: NSFetchedResultsController<LocationCD>!
     
-    // MOCK DATA
-    var locations = [MockData.myLocation, MockData.myLocation, MockData.myLocation, MockData.myLocation, MockData.myLocation, MockData.myLocation, MockData.myLocation, MockData.myLocation]
+//    // MOCK DATA
+//    var locations = [MockData.myLocation, MockData.myLocation, MockData.myLocation, MockData.myLocation, MockData.myLocation, MockData.myLocation, MockData.myLocation, MockData.myLocation]
     
     var aulaName: String?
     var active: Bool?
@@ -78,7 +78,12 @@ class ClassLocationViewController: UIViewController {
         classLocationPickerView.delegate = self
         classLocationPickerView.dataSource = self
         
-        classLocationLabelOutlet.text = locations[classLocationPickerView.selectedRow(inComponent: 0)].locationName
+        guard let firstLocation = fetchedResultsController.fetchedObjects?.first else {
+            print("ERROR: nil value found by fetchedResultsController.fetchedObjects array in ClassLocationViewController.swift -> viewDidLoad() - line 82.")
+            return
+        }
+        
+        classLocationLabelOutlet.text = firstLocation.locationName ?? ""
         
         guard let aulaName = aulaName, let active = active, let aulaDescription = aulaDescription else {
             print("ERROR: no aulaName, active, or aulaDescription passed to: ClassLocationVC -> viewDidLoad() - line 61")
@@ -155,6 +160,7 @@ class ClassLocationViewController: UIViewController {
             
             destViewController.inEditingMode = inEditingMode
             destViewController.aulaToEdit = aulaToEdit
+            destViewController.aulaCDToEdit = aulaCDToEdit
         }
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
@@ -180,6 +186,15 @@ extension ClassLocationViewController {
         AulaModelController.shared.update(aula: aula, active: nil, kidAttendees: nil, adultAttendees: nil, aulaDescription: nil, aulaName: nil, daysOfTheWeek: nil, instructor: nil, ownerInstructor: nil, location: location, students: nil, time: nil, timeCode: nil, classGroups: nil)
         print("update class location: \(String(describing: AulaModelController.shared.aulas[0].location?.locationName))")
         
+        // CoreData version
+        guard let aulaCDToEdit = aulaCDToEdit else { return }
+        
+        guard let locationCD = locationCD else { return }
+        // set the location to the current location chosen by the pickerView
+        aulaCDToEdit.location = locationCD
+        
+        OwnerCDModelController.shared.saveToPersistentStorage()
+        
     }
     
     func enterEditingMode(inEditingMode: Bool?) {
@@ -199,23 +214,52 @@ extension ClassLocationViewController {
     // owner setup for editing mode
     func aulaEditingSetup() {
         
-        guard let aulaToEdit = aulaToEdit else {
+//        guard let aulaToEdit = aulaToEdit else {
+//            return
+//        }
+//
+//        guard let locationToEdit = aulaToEdit.location else {
+//            print("ERROR: nil value found for aula property in  ClassLocationVC -> aulaEditingSetup() - line 177")
+//            return
+//        }
+//
+//        addClassLabelOutlet.text = "\(aulaToEdit.aulaName)"
+//
+//        daysOfTheWeek = aulaToEdit.daysOfTheWeek
+//        time = aulaToEdit.time ?? ""
+//        location = locationToEdit
+//
+//        // in the classLocationPickerView datasource array, search for the locationToEdit value
+//        guard let indexPath = locations.firstIndex(of: locationToEdit) else {
+//
+//            print("ERROR: nil value found for indexPath for aulaToeDit.location in  ClassLocationVC -> aulaEditingSetup() - line 193")
+//            return
+//        }
+//        classLocationPickerView.selectRow(indexPath, inComponent: 0, animated: true)
+//
+//        print("the VC's aula timeOfDay, location, and daysOfTheWeek have been set to the existing aula's coresponding details to be edited and the collection views have reloaded their data")
+        
+        // CoreData version
+        guard let aulaCDToEdit = aulaCDToEdit else {
             return
         }
         
-        guard let locationToEdit = aulaToEdit.location else {
-            print("ERROR: nil value found for aula property in  ClassLocationVC -> aulaEditingSetup() - line 177")
+        guard let locationCDToEdit = aulaCDToEdit.location else {
+            print("ERROR: nil value found for aulaCDToEdit.location property in  ClassLocationVC -> aulaEditingSetup() - line 247")
             return
         }
         
-        addClassLabelOutlet.text = "\(aulaToEdit.aulaName)"
+        addClassLabelOutlet.text = "\(aulaCDToEdit.aulaName ?? "")"
         
-        daysOfTheWeek = aulaToEdit.daysOfTheWeek
-        time = aulaToEdit.time ?? ""
-        location = locationToEdit
+        time = aulaCDToEdit.time ?? ""
+        locationCD = locationCDToEdit
         
         // in the classLocationPickerView datasource array, search for the locationToEdit value
-        guard let indexPath = locations.firstIndex(of: locationToEdit) else {
+        guard let fetchedLocations = fetchedResultsController.fetchedObjects else {
+            print("ERROR: nil value found for aulaCDToEdit.location property in  ClassLocationVC -> aulaEditingSetup() - line 258.")
+            return
+        }
+        guard let indexPath = fetchedLocations.firstIndex(of: locationCDToEdit) else {
             
             print("ERROR: nil value found for indexPath for aulaToeDit.location in  ClassLocationVC -> aulaEditingSetup() - line 193")
             return

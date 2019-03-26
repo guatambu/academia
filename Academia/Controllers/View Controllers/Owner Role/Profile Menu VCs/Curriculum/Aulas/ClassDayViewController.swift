@@ -22,7 +22,9 @@ class ClassDayViewController: UIViewController {
     var inEditingMode: Bool?
     var aulaToEdit: Aula?
     
+    let classTimeComponents = ClassTimeComponents()
     let beltBuilder = BeltBuilder()
+    let dateFormatter = DateFormatter()
     var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
     
     // IBOutlets
@@ -43,6 +45,10 @@ class ClassDayViewController: UIViewController {
     @IBOutlet weak var thursdayButtonOutlet: UIButton!
     @IBOutlet weak var fridayButtonOutlet: UIButton!
     @IBOutlet weak var saturdayButtonOutlet: UIButton!
+    
+    // CoreData Properties
+    var aulaCDToEdit: AulaCD?
+    var daysOfTheWeekStrings: [String] = []
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -188,6 +194,7 @@ class ClassDayViewController: UIViewController {
             
             destViewController.inEditingMode = inEditingMode
             destViewController.aulaToEdit = aulaToEdit
+            destViewController.aulaCDToEdit = aulaCDToEdit
             
         }
         
@@ -211,6 +218,30 @@ extension ClassDayViewController {
             AulaModelController.shared.update(aula: aula, active: nil, kidAttendees: nil, adultAttendees: nil, aulaDescription: nil, aulaName: nil, daysOfTheWeek: daysOfTheWeek, instructor: nil, ownerInstructor: nil, location: nil, students: nil, time: nil, timeCode: nil, classGroups: nil)
             print("update class day: \(AulaModelController.shared.aulas[0].daysOfTheWeek)")
         }
+        
+        // CoreData version
+        guard let aulaCDToEdit = aulaCDToEdit else { return }
+        
+        // here we want to loop through the daysOfTheWeek array and check the existing corresponding daysOfTheWeekExistingCD NSSet to see if it contains the current iterated member object and if it does NOT, then add that iterated member object to the daysOfTheWeekExistingCD NSSet
+        for day in daysOfTheWeek {
+            
+            // check the aulaCDToEdit.daysOfTheWeek NSSet to see if the daysOfTheWeek array contents are present in the NSSet version
+            if let daysOfTheWeekExistingCD = aulaCDToEdit.daysOfTheWeek {
+                let predicate = NSPredicate(format: "day == %@", "\(day.rawValue)")
+                // using the predicate, return the filtered result to a new NSSet
+                let confirmedPresentDaysOfTheWeekNSet = daysOfTheWeekExistingCD.filtered(using: predicate) as NSSet
+                
+                // if the resulting confirmedPresentDaysOfTheWeekNSet does not have a day in it, then the current iteration of day is not present in the daysOfTheWeekExistingCD NSSet
+                if confirmedPresentDaysOfTheWeekNSet.count == 0 {
+                    // create a new AulaDaysOfTheWeekCD object from the day iteration
+                    let newAulaDayToAddToCD = AulaDaysOfTheWeekCD(day: day.rawValue)
+                    // add the newAulaDayToAddToCD to the existing aulaToEdit.daysOfTheWeek property
+                    aulaCDToEdit.addToDaysOfTheWeek(newAulaDayToAddToCD)
+                }
+            }
+            // save the update
+            OwnerCDModelController.shared.saveToPersistentStorage()
+        }
     }
     
     func enterEditingMode(inEditingMode: Bool?) {
@@ -227,41 +258,104 @@ extension ClassDayViewController {
         print("ClassDayVC -> inEditingMode: \(inEditingMode)")
     }
     
+    
+    // TODO: - correct data sources for the CoreData versin of the Editing setup here and in entire aula workflow, check the other major data points for the app for this update as well
+    
     // owner setup for editing mode
     func aulaEditingSetup() {
         
-        guard let aulaToEdit = aulaToEdit else {
-            return
-        }
+//        guard let aulaToEdit = aulaToEdit else {
+//            return
+//        }
+
+//        addClassDaysLabelOutlet.text = "\(aulaToEdit.aulaName)"
+
+//        for day in aulaToEdit.daysOfTheWeek {
+//
+//            switch day {
+//            case .Sunday :
+//                sundayButtonOutlet.isSelected = true
+//                daysOfTheWeek = [.Sunday]
+//            case .Monday:
+//                mondayButtonOutlet.isSelected = true
+//                daysOfTheWeek = [.Monday]
+//            case .Tuesday:
+//                tuesdayButtonOutlet.isSelected = true
+//                daysOfTheWeek = [.Tuesday]
+//            case .Wednesday:
+//                wednesdayButtonOutlet.isSelected = true
+//                daysOfTheWeek = [.Wednesday]
+//            case .Thursday:
+//                thursdayButtonOutlet.isSelected = true
+//                daysOfTheWeek = [.Thursday]
+//            case .Friday:
+//                fridayButtonOutlet.isSelected = true
+//                daysOfTheWeek = [.Friday]
+//            case .Saturday:
+//                saturdayButtonOutlet.isSelected = true
+//                daysOfTheWeek = [.Saturday]
+//            }
+//        }
         
-        addClassDaysLabelOutlet.text = "\(aulaToEdit.aulaName)"
+        // CoreData version
+        guard let aulaCDToEdit = aulaCDToEdit else { return }
         
-        for day in aulaToEdit.daysOfTheWeek {
+        addClassDaysLabelOutlet.text = "\(aulaCDToEdit.aulaName ?? "")"
+        
+        // check the aulaCDToEdit.daysOfTheWeek NSSet to see which days are present in its contents
+        guard let daysOfTheWeekExistingCD = aulaCDToEdit.daysOfTheWeek else { return }
+        // creaete a sort descriptor to then convert the NSSet to a sorted array
+        let daySort = NSSortDescriptor(key: "day", ascending: true)
+        // sort the NSSet to an array and cast it to an array of AulaDaysOfTheWeekCD type as these are the type of the objects returned by CoreData in the NSSet
+        let daysExistingCDArray = daysOfTheWeekExistingCD.sortedArray(using: [daySort]) as! [AulaDaysOfTheWeekCD]
+        // loop through the sorted array
+        for day in daysExistingCDArray {
+            // switching on the AulaDaysOfTheWeekCD.day String property
+            switch day.day {
+                // wherever a match, append the matched day to the daysOfTheWeek array as enum ClassComponents.Weekdays type to minimize String errors
+            case ClassTimeComponents.Weekdays.Sunday.rawValue:
+                    sundayButtonOutlet.isSelected = true
+                    daysOfTheWeek.append(ClassTimeComponents.Weekdays.Sunday)
             
-            switch day {
-            case .Sunday :
-                sundayButtonOutlet.isSelected = true
-                daysOfTheWeek = [.Sunday]
-            case .Monday:
+            case ClassTimeComponents.Weekdays.Monday.rawValue:
                 mondayButtonOutlet.isSelected = true
-                daysOfTheWeek = [.Monday]
-            case .Tuesday:
+                daysOfTheWeek.append(ClassTimeComponents.Weekdays.Monday)
+                
+            case ClassTimeComponents.Weekdays.Tuesday.rawValue:
                 tuesdayButtonOutlet.isSelected = true
-                daysOfTheWeek = [.Tuesday]
-            case .Wednesday:
+                daysOfTheWeek.append(ClassTimeComponents.Weekdays.Tuesday)
+                
+            case ClassTimeComponents.Weekdays.Wednesday.rawValue:
                 wednesdayButtonOutlet.isSelected = true
-                daysOfTheWeek = [.Wednesday]
-            case .Thursday:
+                daysOfTheWeek.append(ClassTimeComponents.Weekdays.Wednesday)
+                
+            case ClassTimeComponents.Weekdays.Thursday.rawValue:
                 thursdayButtonOutlet.isSelected = true
-                daysOfTheWeek = [.Thursday]
-            case .Friday:
+                daysOfTheWeek.append(ClassTimeComponents.Weekdays.Thursday)
+                
+            case ClassTimeComponents.Weekdays.Friday.rawValue:
                 fridayButtonOutlet.isSelected = true
-                daysOfTheWeek = [.Friday]
-            case .Saturday:
+                daysOfTheWeek.append(ClassTimeComponents.Weekdays.Friday)
+                
+            case ClassTimeComponents.Weekdays.Saturday.rawValue:
                 saturdayButtonOutlet.isSelected = true
-                daysOfTheWeek = [.Saturday]
+                daysOfTheWeek.append(ClassTimeComponents.Weekdays.Saturday)
+                
+            default:
+                print("ERROR: somehow found a value outside of the days of the week in ClassDayViewController.swift -> aulaEditingSetup() - line 345.")
             }
         }
+        
+        // create a dictionary to store the weekdays with an ordered corresponding Int vlaue for sorting
+        var daysDictionary: [ClassTimeComponents.Weekdays: Int] = [:]
+        // loop through a range of 7 Int values that correspond to the 7 day week
+        for i in 0...6 {
+            daysDictionary[classTimeComponents.weekdaysArray[i]] = i
+        }
+        // sort the daysOfTheWeek enum type array [ClassTimeComponents.Weekday] according to the numeric values established in the daysDictionary
+        daysOfTheWeek.sort { (daysDictionary[$0] ?? 7) < (daysDictionary[$1] ?? 7) }
+        // check result in console
+        print("sorted days of the week results: \(daysOfTheWeek.map {$0.rawValue})")
     }
 }
 
