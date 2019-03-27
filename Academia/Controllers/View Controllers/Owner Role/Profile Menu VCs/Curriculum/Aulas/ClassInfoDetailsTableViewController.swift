@@ -24,6 +24,7 @@ class ClassInfoDetailsTableViewController: UITableViewController {
     let sectionHeaderLabels = ["Owners", "Instructors"]
     
     let beltBuilder = BeltBuilder()
+    let classTimeComponents = ClassTimeComponents()
     
     // outlets
     @IBOutlet weak var classNameLabelOutlet: UILabel!
@@ -345,12 +346,20 @@ extension ClassInfoDetailsTableViewController {
             print("ERROR: nil value for aula property in ClassInfoDetailsTableViewController.swift -> populateCompletedAulaInfo() - line 344")
             return
         }
+        print("aulaCD.aulaName: \(aulaCD.aulaName ?? "")")
+        print("aulaCD.location.locationName: \(aulaCD.location?.locationName ?? "")")
+        print("aulaCD.groupsAula.count: \(aulaCD.groupsAula?.count ?? 0)")
+        
         guard let location = aulaCD.location else {
-            print("there was a nil value in the location passed to ClassInfoDetailsTableViewController.swift -> populateCompletedClassInfo() - line 348")
+            print("there was a nil value in the location passed to ClassInfoDetailsTableViewController.swift -> populateCompletedClassInfo() - line 354")
+            return
+        }
+        guard let dayOfTheWeek = aulaCD.dayOfTheWeek else {
+            print("there was a nil value in the dayOfTheWeek passed to ClassInfoDetailsTableViewController.swift -> populateCompletedClassInfo() - line 358")
             return
         }
         guard let classGroups = aulaCD.groupsAula else {
-            print("there was a nil value in the groupsAula array passed to ClassInfoDetailsTableViewController.swift -> populateCompletedClassInfo() - line 352")
+            print("there was a nil value in the groupsAula array passed to ClassInfoDetailsTableViewController.swift -> populateCompletedClassInfo() - line 362")
             return
         }
         
@@ -359,8 +368,10 @@ extension ClassInfoDetailsTableViewController {
         
         // name outlet
         classNameLabelOutlet.text = aulaCD.aulaName
-        // days of th week outlet
-        daysOfTheWeekLabelOutlet.text = dayOfTheWeek
+        
+        // days of the week outlet
+        daysOfTheWeekLabelOutlet.text = "\(dayOfTheWeek)"
+        
         // time of day outlet
         timeLabelOutlet.text = "\(aulaCD.time ?? "")"
         // active outlet

@@ -59,6 +59,8 @@ class LandingPageViewController: UIViewController {
                 print("")
                 print("owner.beltLevel = \(owner.belt?.beltLevel ?? "no belt level present")")
                 print("")
+                print("ownerCD isInstructor: \(owner.isInstructor)")
+                print("")
     
             }
             
@@ -118,7 +120,10 @@ class LandingPageViewController: UIViewController {
                     print("")
                     print("aula.timeCode = \(aula.timeCode)")
                     print("")
-                    print("aula.daysOfTheWeek = \(aula.daysOfTheWeek?.count ?? 10000)")
+                    print("aula.daysOfTheWeek = \(aula.dayOfTheWeek ?? "whaaaaa???")")
+                    print("")
+                    print("aula.location.locationName: \(aula.location?.locationName ?? "")")
+                    print("")
                 }
             } else {
                 print("no aulas in the source of truth")
@@ -157,6 +162,8 @@ class LandingPageViewController: UIViewController {
         navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
         navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
         navigationController?.navigationBar.shadowImage = UIImage()
+        
+        
         
     }
     

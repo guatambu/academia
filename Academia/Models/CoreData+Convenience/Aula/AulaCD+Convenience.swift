@@ -19,6 +19,7 @@ extension AulaCD {
                      dateEdited: Date = Date(),
                      aulaName: String,
                      aulaDescription: String,
+                     dayOfTheWeek: String,
                      time: String,
                      timeCode: Int16,
                      location: LocationCD?,
@@ -32,6 +33,7 @@ extension AulaCD {
         self.dateEdited = dateEdited
         self.aulaName = aulaName
         self.aulaDescription = aulaDescription
+        self.dayOfTheWeek = dayOfTheWeek
         self.time = time
         self.timeCode = timeCode
         self.location = location

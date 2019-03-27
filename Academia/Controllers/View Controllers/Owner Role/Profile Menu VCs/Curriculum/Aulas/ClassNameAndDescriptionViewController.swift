@@ -130,7 +130,7 @@ class ClassNameAndDescriptionViewController: UIViewController {
             
             self.returnToClassInfo()
             
-            print("update aula name: \(String(describing: self.aulaToEdit?.aulaName))")
+            print("update aula name: \(String(describing: self.aulaCDToEdit?.aulaName))")
         }
         inEditingMode = false
     }
@@ -210,14 +210,12 @@ extension ClassNameAndDescriptionViewController {
     
     // Update Function for case where want to update user info without a segue
     func updateAulaInfo() {
-        guard let aula = aulaToEdit else { return }
         // group update info
         if classNameTextField.text != "" {
-            AulaModelController.shared.update(aula: aula, active: active, kidAttendees: nil, adultAttendees: nil, aulaDescription: classDescriptionTextView.text, aulaName: classNameTextField.text, daysOfTheWeek: nil, instructor: nil, ownerInstructor: nil, location: nil, students: nil, time: nil, timeCode: nil, classGroups: nil)
-            print("update aula name: \(AulaModelController.shared.aulas[0].aulaName)")
             
+            // CoreData version
             guard let aulaCDToEdit = aulaCDToEdit else { return }
-            AulaCDModelController.shared.update(aula: aulaCDToEdit, active: active, aulaName: classNameTextField.text, aulaDescription: classDescriptionTextView.text, timeCode: nil, time: nil)
+            AulaCDModelController.shared.update(aula: aulaCDToEdit, active: active, aulaName: classNameTextField.text, aulaDescription: classDescriptionTextView.text, dayOfTheWeek: nil, timeCode: nil, time: nil)
         }
         OwnerCDModelController.shared.saveToPersistentStorage()
     }

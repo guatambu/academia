@@ -27,18 +27,14 @@
         <attribute name="aulaUUID" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="dateEdited" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dayOfTheWeek" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="time" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timeCode" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="adultStudentInstructorsAula" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="StudentAdultCD" inverseName="aulaAdultStudentInstructors" inverseEntity="StudentAdultCD" syncable="YES"/>
         <relationship name="attendance" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AulaAttendanceCD" inverseName="aula" inverseEntity="AulaAttendanceCD" syncable="YES"/>
-        <relationship name="daysOfTheWeek" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AulaDaysOfTheWeekCD" inverseName="aula" inverseEntity="AulaDaysOfTheWeekCD" syncable="YES"/>
         <relationship name="groupsAula" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="GroupCD" inverseName="aulaGroups" inverseEntity="GroupCD" syncable="YES"/>
         <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LocationCD" inverseName="aulaCD" inverseEntity="LocationCD" syncable="YES"/>
         <relationship name="ownerInstructorAula" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="OwnerCD" inverseName="aulaOwnerInstructor" inverseEntity="OwnerCD" syncable="YES"/>
-    </entity>
-    <entity name="AulaDaysOfTheWeekCD" representedClassName="AulaDaysOfTheWeekCD" syncable="YES" codeGenerationType="class">
-        <attribute name="day" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="aula" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AulaCD" inverseName="daysOfTheWeek" inverseEntity="AulaCD" syncable="YES"/>
     </entity>
     <entity name="BeltCD" representedClassName="BeltCD" syncable="YES" codeGenerationType="class">
         <attribute name="active" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
@@ -130,7 +126,7 @@
         <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AddressCD" inverseName="location" inverseEntity="AddressCD" syncable="YES"/>
-        <relationship name="aulaCD" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AulaCD" inverseName="location" inverseEntity="AulaCD" syncable="YES"/>
+        <relationship name="aulaCD" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AulaCD" inverseName="location" inverseEntity="AulaCD" syncable="YES"/>
         <relationship name="ownerCD" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OwnerCD" inverseName="locations" inverseEntity="OwnerCD" syncable="YES"/>
         <relationship name="socialLinks" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LocationSocialLinksCD" inverseName="location" inverseEntity="LocationSocialLinksCD" syncable="YES"/>
     </entity>
@@ -258,7 +254,6 @@
         <element name="AddressCD" positionX="-747" positionY="-396" width="128" height="210"/>
         <element name="AulaAttendanceCD" positionX="-669.02734375" positionY="192.5234375" width="128" height="120"/>
         <element name="AulaCD" positionX="-733.0078125" positionY="18.625" width="128" height="255"/>
-        <element name="AulaDaysOfTheWeekCD" positionX="-952.91015625" positionY="9.2734375" width="128" height="75"/>
         <element name="BeltCD" positionX="-193.765625" positionY="-356.95703125" width="128" height="225"/>
         <element name="BeltPromotionAttendanceCriteriaCD" positionX="-747" positionY="-396" width="128" height="240"/>
         <element name="BeltPromotionCD" positionX="-747" positionY="-396" width="128" height="135"/>

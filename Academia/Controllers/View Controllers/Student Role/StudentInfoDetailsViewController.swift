@@ -12,12 +12,16 @@ class StudentInfoDetailsViewController: UIViewController {
 
     // MARK: - Properties
     
+    var isInstructor = false
      // create a computed property with a fetchedRequestController predicate to grab the current logged in user by using the ActiveUserModelController.shared.activeUser array contents and isLogged on properties... use this property as the source for the populateCompletedProfileInfo() method
+    var activeStudentAdult: StudentAdultCD?
     
     let beltBuilder = BeltBuilder()
     
     var isKid: Bool?
     
+    // isInstructor switch
+    @IBOutlet weak var isInstructorSwitch: UISwitch!
     // username outlet
     @IBOutlet weak var usernameLabelOutlet: UILabel!
     // birthdate outlet
@@ -66,6 +70,21 @@ class StudentInfoDetailsViewController: UIViewController {
     
     
     // MARK: - Actions
+    
+    @IBAction func toggleIsInstructorSwitch(_ sender: UISwitch) {
+        
+        isInstructor = !isInstructor
+        print("isInstructorSwitch toggled, currently isInstructor = \(isInstructor)")
+        
+        guard let StudentAdultCD = activeStudentAdult else {
+            print("ERROR: nil value found for activeOwner property of type OwnerCD in OwnerInfoDetailsViewController.swift -> toggleIsInstructorSwitch(sender:) - line 87.")
+            return
+        }
+        
+        // update the activeOwner's isInstructor value
+        StudentAdultCDModelController.shared.update(studentAdult: StudentAdultCD, isInstructor: isInstructor, birthdate: nil, mostRecentPromotion: nil, studentStatus: nil, belt: nil, profilePic: nil, username: nil, password: nil, firstName: nil, lastName: nil, address: nil, phone: nil, mobile: nil, email: nil, emergencyContact: nil)
+        OwnerCDModelController.shared.saveToPersistentStorage()
+    }
     
     @IBAction func editButtonTapped(_ sender: Any) {
         

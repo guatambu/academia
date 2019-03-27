@@ -83,7 +83,6 @@
 		FA946412222D01C20063B34C /* AulaCDModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA946411222D01C20063B34C /* AulaCDModelController.swift */; };
 		FA946414222DB7600063B34C /* AddressCDModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA946413222DB7600063B34C /* AddressCDModelController.swift */; };
 		FA946416222DB77D0063B34C /* AulaAttendanceCDModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA946415222DB77D0063B34C /* AulaAttendanceCDModelController.swift */; };
-		FA946418222DB7BF0063B34C /* AulaDaysOfTheWeekCDModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA946417222DB7BF0063B34C /* AulaDaysOfTheWeekCDModelController.swift */; };
 		FA94641A222DB7E50063B34C /* BeltPromotionCDModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA946419222DB7E50063B34C /* BeltPromotionCDModelController.swift */; };
 		FA94641C222DB80B0063B34C /* BeltStripeAgeDetailsCDModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA94641B222DB80B0063B34C /* BeltStripeAgeDetailsCDModelController.swift */; };
 		FA946422222DB8870063B34C /* EmergencyContactCDModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA946421222DB8870063B34C /* EmergencyContactCDModelController.swift */; };
@@ -150,7 +149,6 @@
 		FAB806C32210E7B300124EBA /* PaymentBillingDateCD+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB806C22210E7B300124EBA /* PaymentBillingDateCD+Convenience.swift */; };
 		FAB806C52210E7CE00124EBA /* PaymentBillingSignatureCD+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB806C42210E7CE00124EBA /* PaymentBillingSignatureCD+Convenience.swift */; };
 		FAB806C72210E7F000124EBA /* PaymentBillingTypeCD+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB806C62210E7F000124EBA /* PaymentBillingTypeCD+Convenience.swift */; };
-		FAB806C92210E81200124EBA /* AulaDaysOfTheWeekCD+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB806C82210E81200124EBA /* AulaDaysOfTheWeekCD+Convenience.swift */; };
 		FAB806CB2210E83300124EBA /* GroupCD+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB806CA2210E83300124EBA /* GroupCD+Convenience.swift */; };
 		FAB806CD2210E84400124EBA /* StudentKidCD+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB806CC2210E84400124EBA /* StudentKidCD+Convenience.swift */; };
 		FAB806CF2210E85A00124EBA /* LocationCD+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB806CE2210E85A00124EBA /* LocationCD+Convenience.swift */; };
@@ -394,7 +392,6 @@
 		FA946411222D01C20063B34C /* AulaCDModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AulaCDModelController.swift; sourceTree = "<group>"; };
 		FA946413222DB7600063B34C /* AddressCDModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCDModelController.swift; sourceTree = "<group>"; };
 		FA946415222DB77D0063B34C /* AulaAttendanceCDModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AulaAttendanceCDModelController.swift; sourceTree = "<group>"; };
-		FA946417222DB7BF0063B34C /* AulaDaysOfTheWeekCDModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AulaDaysOfTheWeekCDModelController.swift; sourceTree = "<group>"; };
 		FA946419222DB7E50063B34C /* BeltPromotionCDModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeltPromotionCDModelController.swift; sourceTree = "<group>"; };
 		FA94641B222DB80B0063B34C /* BeltStripeAgeDetailsCDModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeltStripeAgeDetailsCDModelController.swift; sourceTree = "<group>"; };
 		FA946421222DB8870063B34C /* EmergencyContactCDModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyContactCDModelController.swift; sourceTree = "<group>"; };
@@ -461,7 +458,6 @@
 		FAB806C22210E7B300124EBA /* PaymentBillingDateCD+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PaymentBillingDateCD+Convenience.swift"; sourceTree = "<group>"; };
 		FAB806C42210E7CE00124EBA /* PaymentBillingSignatureCD+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PaymentBillingSignatureCD+Convenience.swift"; sourceTree = "<group>"; };
 		FAB806C62210E7F000124EBA /* PaymentBillingTypeCD+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PaymentBillingTypeCD+Convenience.swift"; sourceTree = "<group>"; };
-		FAB806C82210E81200124EBA /* AulaDaysOfTheWeekCD+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AulaDaysOfTheWeekCD+Convenience.swift"; sourceTree = "<group>"; };
 		FAB806CA2210E83300124EBA /* GroupCD+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GroupCD+Convenience.swift"; sourceTree = "<group>"; };
 		FAB806CC2210E84400124EBA /* StudentKidCD+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StudentKidCD+Convenience.swift"; sourceTree = "<group>"; };
 		FAB806CE2210E85A00124EBA /* LocationCD+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocationCD+Convenience.swift"; sourceTree = "<group>"; };
@@ -1024,7 +1020,6 @@
 			children = (
 				FA946415222DB77D0063B34C /* AulaAttendanceCDModelController.swift */,
 				FA946411222D01C20063B34C /* AulaCDModelController.swift */,
-				FA946417222DB7BF0063B34C /* AulaDaysOfTheWeekCDModelController.swift */,
 			);
 			path = Aula;
 			sourceTree = "<group>";
@@ -1075,7 +1070,6 @@
 			isa = PBXGroup;
 			children = (
 				FAB806BC2210E72B00124EBA /* AulaAttendanceCD+Convenience.swift */,
-				FAB806C82210E81200124EBA /* AulaDaysOfTheWeekCD+Convenience.swift */,
 				FAB806BE2210E74400124EBA /* AulaCD+Convenience.swift */,
 			);
 			path = Aula;
@@ -1693,7 +1687,6 @@
 				FAD2A3BB21E6E1F900364FC0 /* ReviewOwnerInstructorTableViewCell.swift in Sources */,
 				FAF29BCA212E23E300752414 /* OwnerHomeTableViewController.swift in Sources */,
 				FA0C444821278C9A00B59194 /* PaymentProgram.swift in Sources */,
-				FAB806C92210E81200124EBA /* AulaDaysOfTheWeekCD+Convenience.swift in Sources */,
 				FAE2FD942140BFED00815402 /* CityTextFieldTableViewCell.swift in Sources */,
 				FAE2FDAE2140C0A600815402 /* WebsiteTextFieldTableViewCell.swift in Sources */,
 				FA8B3CBF21CA22B7003398FB /* GroupNameAndDescriptionViewController.swift in Sources */,
@@ -1716,7 +1709,6 @@
 				FAA516DB2190CA8F009875CB /* TechniqueModelController.swift in Sources */,
 				FAD2A3B321E6B93300364FC0 /* ReviewAndCreateClassTableViewController.swift in Sources */,
 				FAB7E350212B7D47003E3B79 /* LandingPageViewController.swift in Sources */,
-				FA946418222DB7BF0063B34C /* AulaDaysOfTheWeekCDModelController.swift in Sources */,
 				FAB20413216566E50034E1D4 /* ThingsToDoList.swift in Sources */,
 				FAD2097921C1D00200B9C622 /* SignatureCollectionViewCell.swift in Sources */,
 				FA97240722265C00001247CA /* Address+Convenience.swift in Sources */,

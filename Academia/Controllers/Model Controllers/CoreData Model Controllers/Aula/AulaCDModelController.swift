@@ -53,6 +53,7 @@ class AulaCDModelController {
                 active: Bool?,
                 aulaName: String?,
                 aulaDescription: String?,
+                dayOfTheWeek: String?,
                 timeCode: Int16?,
                 time: String?) {
         
@@ -63,6 +64,9 @@ class AulaCDModelController {
         }
         if let aulaDescription = aulaDescription {
             aula.aulaDescription = aulaDescription
+        }
+        if let dayOfTheWeek = dayOfTheWeek {
+            aula.dayOfTheWeek = dayOfTheWeek
         }
         if let timeCode = timeCode {
             aula.timeCode = timeCode

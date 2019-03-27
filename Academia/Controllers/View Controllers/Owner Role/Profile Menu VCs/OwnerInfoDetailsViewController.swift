@@ -13,6 +13,8 @@ class OwnerInfoDetailsViewController: UIViewController {
     
     // MARK: - Properties
     
+    var isInstructor = true
+    
     // create a fetchedRequestController with predicate to grab the current logged in user by using the ActiveUserModelController.shared.activeUser array contents and isLogged on properties... use this property as the source for the populateCompletedProfileInfo() method
     var fetchedResultsController: NSFetchedResultsController<OwnerCD>!
 
@@ -22,6 +24,9 @@ class OwnerInfoDetailsViewController: UIViewController {
     
     // username outlet
     @IBOutlet weak var ownerNameLabelOutlet: UILabel!
+    // isInstructor switch outlet
+    @IBOutlet weak var isInstuctorSwitch: UISwitch!
+    // username outlet
     @IBOutlet weak var usernameLabelOutlet: UILabel!
     // birthdate outlet
     @IBOutlet weak var birthdateLabelOutlets: UILabel!
@@ -72,7 +77,22 @@ class OwnerInfoDetailsViewController: UIViewController {
     
 
     // MARK: - Actions
- 
+    
+    @IBAction func toggleIsInstructorSwitch(_ sender: UISwitch) {
+        
+        isInstructor = !isInstructor
+        print("isInstructorSwitch toggled, currently isInstructor = \(isInstructor)")
+        
+        guard let ownerCD = activeOwner else {
+            print("ERROR: nil value found for activeOwner property of type OwnerCD in OwnerInfoDetailsViewController.swift -> toggleIsInstructorSwitch(sender:) - line 87.")
+            return
+        }
+        
+        // update the activeOwner's isInstructor value
+        OwnerCDModelController.shared.update(owner: ownerCD, isInstructor: isInstructor, birthdate: nil, mostRecentPromotion: nil, belt: nil, profilePic: nil, username: nil, password: nil, firstName: nil, lastName: nil, address: nil, phone: nil, mobile: nil, email: nil, emergencyContact: nil)
+        OwnerCDModelController.shared.saveToPersistentStorage()
+    }
+    
     @IBAction func editButtonTapped(_ sender: Any) {
         
         // programmatically performing the segue

@@ -35,10 +35,11 @@ class AddGroupToClassTableViewController: UITableViewController, ClassGroupDeleg
     var inEditingMode: Bool?
     
     let beltBuilder = BeltBuilder()
-    
-    @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
+   
     @IBOutlet weak var welcomeInstructions1LabelOutlet: UILabel!
     @IBOutlet weak var welcomeInstructions2LabelOutlet: UILabel!
+    @IBOutlet weak var nextButtonOutlet: DesignableButton!
+    
     
     // CoreData Properties
     var aulaCD: AulaCD?
@@ -271,7 +272,13 @@ extension AddGroupToClassTableViewController {
             let saveButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveButtonTapped))
             navigationItem.rightBarButtonItem = saveButtonItem
             
+            nextButtonOutlet.isHidden = true
+            nextButtonOutlet.isEnabled = false
+            
             aulaEditingSetup()
+        } else {
+            nextButtonOutlet.isHidden = false
+            nextButtonOutlet.isEnabled = true
         }
         
         print("ClassLocationAndTimeVC -> inEditingMode: \(inEditingMode)")
@@ -310,10 +317,10 @@ extension AddGroupToClassTableViewController {
             return
         }
         
-        welcomeMessageLabelOutlet.text = "\(aulaCDToEdit.aulaName ?? "")"
-        
-        welcomeInstructions1LabelOutlet.textColor = beltBuilder.redBeltRed
-        welcomeInstructions1LabelOutlet.text = "you are in class editing mode"
+//        welcomeMessageLabelOutlet.text = "\(aulaCDToEdit.aulaName ?? "")"
+//        
+//        welcomeInstructions1LabelOutlet.textColor = beltBuilder.redBeltRed
+//        welcomeInstructions1LabelOutlet.text = "you are in class editing mode"
         
         classGroupsCD = Array(groupsCDToEdit) as! [GroupCD]
         

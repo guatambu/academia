@@ -546,85 +546,69 @@ extension ReviewAndCreateClassTableViewController {
             print("there was a nil value in the locationCD passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 546")
             return
         }
-//        guard let addressCD = locationCD.address else {
-//            print("there was a nil value in the locationCDaddressCD passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 550")
-//            return
-//        }
-//        guard let socialLinksCD = locationCD.socialLinks else {
-//            print("there was a nil value in the locationCD.socialLinksCD passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 554")
-//            return
-//        }
         guard let instructorsCD = instructorsCD else {
-            print("there was a nil value in the instructorsCD array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 558")
+            print("there was a nil value in the instructorsCD array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 550")
             return
         }
         guard let ownerInstructorsCD = ownerInstructorsCD else {
-            print("there was a nil value in the ownerInstructorsCD array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 562")
+            print("there was a nil value in the ownerInstructorsCD array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 554")
             return
         }
         guard let classGroupsCD = classGroupsCD else {
-            print("there was a nil value in the classGroupsCD array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 566")
+            print("there was a nil value in the classGroupsCD array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 558")
             return
         }
         
-        // convert timeCode Int value to Int16
-        guard let timeCodeInt16 = Int16(exactly: timeCode) else { return }
-        // create newAula data model object
-        let newAula = AulaCD(active: active, aulaName: aulaName, aulaDescription: aulaDescription, time: time, timeCode: timeCodeInt16, location: locationCD)
-        
-        // configure newAula "to-many" properties
         // days of the week
         for day in daysOfTheWeek {
-            switch day {
-            case .Sunday:
-                let sunday = AulaDaysOfTheWeekCD(day: day.rawValue)
-                newAula.addToDaysOfTheWeek(sunday)
-            case .Monday:
-                let monday = AulaDaysOfTheWeekCD(day: day.rawValue)
-                newAula.addToDaysOfTheWeek(monday)
-            case .Tuesday:
-                let tuesday = AulaDaysOfTheWeekCD(day: day.rawValue)
-                newAula.addToDaysOfTheWeek(tuesday)
-            case .Wednesday:
-                let wednesday = AulaDaysOfTheWeekCD(day: day.rawValue)
-                newAula.addToDaysOfTheWeek(wednesday)
-            case .Thursday:
-                let thursday = AulaDaysOfTheWeekCD(day: day.rawValue)
-                newAula.addToDaysOfTheWeek(thursday)
-            case .Friday:
-                let friday = AulaDaysOfTheWeekCD(day: day.rawValue)
-                newAula.addToDaysOfTheWeek(friday)
-            case .Saturday:
-                let saturday = AulaDaysOfTheWeekCD(day: day.rawValue)
-                newAula.addToDaysOfTheWeek(saturday)
+            
+            // convert timeCode Int value to Int16
+            guard let timeCodeInt16 = Int16(exactly: timeCode) else { return }
+            // create newAula data model object
+            let newAula = AulaCD(active: active, aulaName: aulaName, aulaDescription: aulaDescription, dayOfTheWeek: day.rawValue, time: time, timeCode: timeCodeInt16, location: locationCD)
+            
+            print("locationCD.locationName: \(locationCD.locationName ?? "")")
+            print("newAula.location.locationName: \(newAula.location?.locationName ?? "")")
+            print("^^^ the two locationName values above should match")
+            
+            // instructors
+            if !instructorsCD.isEmpty {
+                // add instructors to newAula
+                for instructor in instructorsCD {
+                    newAula.addToAdultStudentInstructorsAula(instructor)
+                }
             }
-        }
-        // instructors
-        if !instructorsCD.isEmpty {
-            // add instructors to newAula
-            for instructor in instructorsCD {
-                newAula.addToAdultStudentInstructorsAula(instructor)
+            // owner instructors
+            if !ownerInstructorsCD.isEmpty {
+                // add instructors to newAula
+                for ownerInstructor in ownerInstructorsCD {
+                    newAula.addToOwnerInstructorAula(ownerInstructor)
+                }
             }
-        }
-        // owner instructors
-        if !ownerInstructorsCD.isEmpty {
-            // add instructors to newAula
-            for ownerInstructor in ownerInstructorsCD {
-                newAula.addToOwnerInstructorAula(ownerInstructor)
+            // groups associated with newAula
+            if !classGroupsCD.isEmpty {
+                // add groups to newAula
+                for group in classGroupsCD {
+                    newAula.addToGroupsAula(group)
+                }
             }
+            
+            // add the created and configured aula to the source of truth
+            AulaCDModelController.shared.add(aula: newAula)
         }
-        // groups associated with newAula
-        if !classGroupsCD.isEmpty {
-            // add groups to newAula
-            for group in classGroupsCD {
-                newAula.addToGroupsAula(group)
-            }
+        print("pre-save to COreData")
+        print("AulaCDModelController.shared.aulas.count: \(AulaCDModelController.shared.aulas.count)")
+        for aula in AulaCDModelController.shared.aulas {
+            print("aula.location.locationName: \(aula.location?.locationName ?? "")")
         }
-        
-        // add the created and configured aula to the source of truth
-        AulaCDModelController.shared.add(aula: newAula)
         // save to CoreData
         OwnerCDModelController.shared.saveToPersistentStorage()
+        
+        print("post save to CoreData")
+        print("AulaCDModelController.shared.aulas.count: \(AulaCDModelController.shared.aulas.count)")
+        for aula in AulaCDModelController.shared.aulas {
+            print("aula.location.locationName: \(aula.location?.locationName ?? "")")
+        }
     }
 }
 

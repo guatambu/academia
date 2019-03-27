@@ -205,7 +205,7 @@ extension ClassTimeViewController {
             // convert timeCode: Int property to Int16 type
             let timeCodeInt16 = Int16(exactly: timeCodeForUpdate)
             // update with the timeCodeInt16 value if not nil
-            AulaCDModelController.shared.update(aula: aulaCDToEdit, active: nil, aulaName: nil, aulaDescription: nil, timeCode: timeCodeInt16, time: time)
+            AulaCDModelController.shared.update(aula: aulaCDToEdit, active: nil, aulaName: nil, aulaDescription: nil, dayOfTheWeek: nil, timeCode: timeCodeInt16, time: time)
             
         } else {
             // update with the time property - this is not likely to happen so we'll add a print statement to warn the developer
@@ -232,21 +232,6 @@ extension ClassTimeViewController {
     // owner setup for editing mode
     func aulaEditingSetup() {
         
-//        guard let aulaToEdit = aulaToEdit else {
-//            return
-//        }
-//
-//        addClassTimeLabelOutlet.text = "\(aulaToEdit.aulaName)"
-//
-//        daysOfTheWeek = aulaToEdit.daysOfTheWeek
-//        time = aulaToEdit.time ?? ""
-//        timeCode = aulaToEdit.timeCode
-//        timeCodeReader(timeCode: aulaToEdit.timeCode)
-//
-//        print("time: \(time ?? "ERROR: unexpected nil value for time property in ClassTimeVC.swift -> aulaEditingSetup() - line 204")")
-//
-//        print("the VC's aula timeOfDay, location, and daysOfTheWeek have been set to the existing aula's coresponding details to be edited and the collection views have reloaded their data")
-        
         // CoreData version
         guard let aulaCDToEdit = aulaCDToEdit else {
             return
@@ -264,61 +249,54 @@ extension ClassTimeViewController {
         print("time: \(time ?? "ERROR: unexpected nil value for time property in ClassTimeVC.swift -> aulaEditingSetup() - line 262")")
         
         // check the aulaCDToEdit.daysOfTheWeek NSSet to see which days are present in its contents
-        guard let daysOfTheWeekExistingCD = aulaCDToEdit.daysOfTheWeek else { return }
-        
-        let daySort = NSSortDescriptor(key: "day", ascending: true)
-        
-        let daysExistingCDArray = daysOfTheWeekExistingCD.sortedArray(using: [daySort]) as! [AulaDaysOfTheWeekCD]
-        
-        for day in daysExistingCDArray {
+        guard let dayOfTheWeekExistingCD = aulaCDToEdit.dayOfTheWeek else { return }
             
-            switch day.day {
-                
-            case ClassTimeComponents.Weekdays.Sunday.rawValue:
-                
-                if let dayEnum = ClassTimeComponents.Weekdays(rawValue: day.day ?? "") {
-                    daysOfTheWeek?.append(dayEnum)
-                }
-                
-            case ClassTimeComponents.Weekdays.Monday.rawValue:
-                
-                if let dayEnum = ClassTimeComponents.Weekdays(rawValue: day.day ?? "") {
-                    daysOfTheWeek?.append(dayEnum)
-                }
-                
-            case ClassTimeComponents.Weekdays.Tuesday.rawValue:
-                
-                if let dayEnum = ClassTimeComponents.Weekdays(rawValue: day.day ?? "") {
-                    daysOfTheWeek?.append(dayEnum)
-                }
-                
-            case ClassTimeComponents.Weekdays.Wednesday.rawValue:
-                
-                if let dayEnum = ClassTimeComponents.Weekdays(rawValue: day.day ?? "") {
-                    daysOfTheWeek?.append(dayEnum)
-                }
-                
-            case ClassTimeComponents.Weekdays.Thursday.rawValue:
-                
-                if let dayEnum = ClassTimeComponents.Weekdays(rawValue: day.day ?? "") {
-                    daysOfTheWeek?.append(dayEnum)
-                }
-                
-            case ClassTimeComponents.Weekdays.Friday.rawValue:
-                
-                if let dayEnum = ClassTimeComponents.Weekdays(rawValue: day.day ?? "") {
-                    daysOfTheWeek?.append(dayEnum)
-                }
-                
-            case ClassTimeComponents.Weekdays.Saturday.rawValue:
-                
-                if let dayEnum = ClassTimeComponents.Weekdays(rawValue: day.day ?? "") {
-                    daysOfTheWeek?.append(dayEnum)
-                }
-                
-            default:
-                print("ERROR: somehow found a value outside of the days of the week in ClassDayViewController.swift -> aulaEditingSetup() - line 345.")
+        switch dayOfTheWeekExistingCD {
+            
+        case ClassTimeComponents.Weekdays.Sunday.rawValue:
+            
+            if let dayEnum = ClassTimeComponents.Weekdays(rawValue: dayOfTheWeekExistingCD) {
+                daysOfTheWeek?.append(dayEnum)
             }
+            
+        case ClassTimeComponents.Weekdays.Monday.rawValue:
+            
+            if let dayEnum = ClassTimeComponents.Weekdays(rawValue: dayOfTheWeekExistingCD) {
+                daysOfTheWeek?.append(dayEnum)
+            }
+            
+        case ClassTimeComponents.Weekdays.Tuesday.rawValue:
+            
+            if let dayEnum = ClassTimeComponents.Weekdays(rawValue: dayOfTheWeekExistingCD) {
+                daysOfTheWeek?.append(dayEnum)
+            }
+            
+        case ClassTimeComponents.Weekdays.Wednesday.rawValue:
+            
+            if let dayEnum = ClassTimeComponents.Weekdays(rawValue: dayOfTheWeekExistingCD) {
+                daysOfTheWeek?.append(dayEnum)
+            }
+            
+        case ClassTimeComponents.Weekdays.Thursday.rawValue:
+            
+            if let dayEnum = ClassTimeComponents.Weekdays(rawValue: dayOfTheWeekExistingCD) {
+                daysOfTheWeek?.append(dayEnum)
+            }
+            
+        case ClassTimeComponents.Weekdays.Friday.rawValue:
+            
+            if let dayEnum = ClassTimeComponents.Weekdays(rawValue: dayOfTheWeekExistingCD) {
+                daysOfTheWeek?.append(dayEnum)
+            }
+            
+        case ClassTimeComponents.Weekdays.Saturday.rawValue:
+            
+            if let dayEnum = ClassTimeComponents.Weekdays(rawValue: dayOfTheWeekExistingCD) {
+                daysOfTheWeek?.append(dayEnum)
+            }
+            
+        default:
+            print("ERROR: somehow found a value outside of the days of the week in ClassDayViewController.swift -> aulaEditingSetup() - line 345.")
         }
         
         print("the VC's aula timeOfDay, location, and daysOfTheWeek have been set to the existing aula's coresponding details to be edited and the collection views have reloaded their data")

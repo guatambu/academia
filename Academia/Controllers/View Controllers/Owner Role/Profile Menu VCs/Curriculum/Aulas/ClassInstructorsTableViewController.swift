@@ -44,7 +44,6 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
     
     let beltBuilder = BeltBuilder()
     
-    @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
     @IBOutlet weak var welcomeInstructions1LabelOutlet: UILabel!
     @IBOutlet weak var welcomeInstructions2LabelOutlet: UILabel!
     
@@ -162,18 +161,18 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
                 
                 if inEditingMode {
                     
-                    guard let ownerInstructorsToEdit = aulaToEdit?.ownerInstructor else {
-                        print("ERROR: nil value for aulaToEdit.ownerInstructor in ClassInstructorsTableViewController.swift -> tableView(tableView:, cellForRowAt:) - line 162")
-                        return UITableViewCell()
-                    }
-
-                    if ownerInstructorsToEdit.isEmpty == false && (ownerInstructorsToEdit.count - 1) >= indexPath.row {
-                        
-                        if availableOwners.contains(ownerInstructorsToEdit[indexPath.row]) {
-                            
-                            cell.isChosen = true
-                        }
-                    }
+//                    guard let ownerInstructorsToEdit = aulaToEdit?.ownerInstructor else {
+//                        print("ERROR: nil value for aulaToEdit.ownerInstructor in ClassInstructorsTableViewController.swift -> tableView(tableView:, cellForRowAt:) - line 162")
+//                        return UITableViewCell()
+//                    }
+//
+//                    if ownerInstructorsToEdit.isEmpty == false && (ownerInstructorsToEdit.count - 1) >= indexPath.row {
+//
+//                        if availableOwners.contains(ownerInstructorsToEdit[indexPath.row]) {
+//
+//                            cell.isChosen = true
+//                        }
+//                    }
                     
                     // set the isChosen to true if inEditingMode == true and current ownerInstructor is present in aulaCDToEdit.ownerInstructor NSSet to display the ownerInstructor as chosen
                     
@@ -183,8 +182,11 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
                         return UITableViewCell()
                     }
                     
-                    if ownerInstructorsCDToEdit.contains(ownerInstructorsCD[indexPath.row]) {
-                        cell.isChosen = true
+                    if ownerInstructorsCDToEdit.count != 0 && (ownerInstructorsCDToEdit.count - 1) >= indexPath.row {
+                        
+                        if ownerInstructorsCDToEdit.contains(ownerInstructorsCD[indexPath.row]) {
+                            cell.isChosen = true
+                        }
                     }
                 }
             }
@@ -193,7 +195,7 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
             
             cell.ownerInstructorCD = ownersCD[indexPath.row]
             
-            cell.ownerInstructor = availableOwners[indexPath.row]
+//            cell.ownerInstructor = availableOwners[indexPath.row]
             
             return cell
             
@@ -208,25 +210,13 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
             if let inEditingMode = inEditingMode {
                 
                 if inEditingMode {
-                    
-                    guard let instructorsToEdit = aulaToEdit?.instructor else {
-                        print("ERROR: nil value for aulaToEdit.instructor in ClassInstructorsTableViewController.swift -> tableView(tableView:, cellForRowAt:) - line 173")
+                        
+                    // CoreData version
+                    guard let adultInstructorsCDToEdit = aulaCDToEdit?.adultStudentInstructorsAula else {
+                        print("ERROR: nil value for aulaCDToEdit.adultInstructorAula in ClassInstructorsTableViewController.swift -> tableView(tableView:, cellForRowAt:) - line 221")
                         return UITableViewCell()
                     }
-                    if instructorsToEdit.isEmpty == false && (instructorsToEdit.count - 1) >= indexPath.row {
-
-                        if possibleInstructors.contains(instructorsToEdit[indexPath.row])  {
-                            
-                            cell.isChosen = true
-                        }
-                        
-                        // set the isChosen to true if inEditingMode == true and current ownerInstructor is present in aulaCDToEdit.ownerInstructor NSSet to display the ownerInstructor as chosen
-                        
-                        // CoreData version
-                        guard let adultInstructorsCDToEdit = aulaCDToEdit?.adultStudentInstructorsAula else {
-                            print("ERROR: nil value for aulaCDToEdit.adultInstructorAula in ClassInstructorsTableViewController.swift -> tableView(tableView:, cellForRowAt:) - line 221")
-                            return UITableViewCell()
-                        }
+                    if adultInstructorsCDToEdit.count != 0 && (adultInstructorsCDToEdit.count - 1) >= indexPath.row {
                         
                         if adultInstructorsCDToEdit.contains(instructorsCD[indexPath.row]) {
                             cell.isChosen = true
@@ -238,7 +228,7 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
 
                 cell.instructorCD = instructorsCD[indexPath.row]
             
-                cell.instructor = possibleInstructors[indexPath.row]
+//                cell.instructor = possibleInstructors[indexPath.row]
             
                 return cell
                 
@@ -509,15 +499,16 @@ extension ClassInstructorsTableViewController {
             print("ERROR: nil value for aulaToEdit.ownerInstructorAula in ClassInstructorsTableViewController.swift -> aulaEditingSetup() - line 509")
             return
         }
-        guard let aulaCDName = aulaCDToEdit.aulaName else {
-            
-            print("ERROR: nil value for aulaToEdit.aulaName in ClassInstructorsTableViewController.swift -> aulaEditingSetup() - line 514")
-            return
-        }
-        welcomeMessageLabelOutlet.text = "\(aulaCDName)"
-        
-        welcomeInstructions1LabelOutlet.textColor = beltBuilder.redBeltRed
-        welcomeInstructions1LabelOutlet.text = "you are in class editing mode"
+//        guard let aulaCDName = aulaCDToEdit.aulaName else {
+//
+//            print("ERROR: nil value for aulaToEdit.aulaName in ClassInstructorsTableViewController.swift -> aulaEditingSetup() - line 514")
+//            return
+//        }
+//
+//        self.title = "\(aulaCDName)"
+//
+//        welcomeInstructions1LabelOutlet.textColor = beltBuilder.redBeltRed
+//        welcomeInstructions1LabelOutlet.text = "you are in class editing mode"
         
         instructorsCD = Array(instructorsCDToEdit) as! [StudentAdultCD]
         ownerInstructorsCD = Array(ownerInstructorsCDToEdit) as! [OwnerCD]

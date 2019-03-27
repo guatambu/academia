@@ -941,6 +941,10 @@
                     <navigationItem key="navigationItem" id="EUY-Tv-hDV">
                         <barButtonItem key="backBarButtonItem" title=" " id="uYG-kc-5QE"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="welcomeInstructions1LabelOutlet" destination="0vk-QM-c7L" id="i9y-S2-ZBW"/>
+                        <outlet property="welcomeInstructions2LabelOutlet" destination="tbc-fF-HeO" id="jWA-wc-jBt"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1d4-5L-S1F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1185,6 +1189,11 @@
                     <navigationItem key="navigationItem" id="IRz-IW-YYW">
                         <barButtonItem key="backBarButtonItem" title=" " id="iXA-hZ-POH"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="nextButtonOutlet" destination="vjv-dp-tFS" id="58J-fo-Tr5"/>
+                        <outlet property="welcomeInstructions1LabelOutlet" destination="k6j-ff-XAr" id="obT-el-9s8"/>
+                        <outlet property="welcomeInstructions2LabelOutlet" destination="Ims-A8-PKc" id="7KS-Qb-KFV"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eIY-wt-oFi" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Ad0-D9-Swm" userLabel="Exit" sceneMemberID="exit"/>
