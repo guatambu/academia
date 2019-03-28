@@ -156,7 +156,7 @@
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AddressCD" inverseName="owner" inverseEntity="AddressCD" syncable="YES"/>
         <relationship name="attendanceOwner" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AulaAttendanceCD" inverseName="ownerAttendance" inverseEntity="AulaAttendanceCD" syncable="YES"/>
-        <relationship name="aulaOwnerInstructor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AulaCD" inverseName="ownerInstructorAula" inverseEntity="AulaCD" syncable="YES"/>
+        <relationship name="aulaOwnerInstructor" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AulaCD" inverseName="ownerInstructorAula" inverseEntity="AulaCD" syncable="YES"/>
         <relationship name="belt" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BeltCD" inverseName="ownerCD" inverseEntity="BeltCD" syncable="YES"/>
         <relationship name="emergencyContact" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EmergencyContactCD" inverseName="owner" inverseEntity="EmergencyContactCD" syncable="YES"/>
         <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GroupCD" inverseName="ownerGroups" inverseEntity="GroupCD" syncable="YES"/>
@@ -208,7 +208,7 @@
         <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AddressCD" inverseName="adultStudent" inverseEntity="AddressCD" syncable="YES"/>
         <relationship name="adultMembers" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GroupCD" inverseName="adultMembers" inverseEntity="GroupCD" syncable="YES"/>
         <relationship name="attendanceStudentAdult" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AulaAttendanceCD" inverseName="studentAdultAttendance" inverseEntity="AulaAttendanceCD" syncable="YES"/>
-        <relationship name="aulaAdultStudentInstructors" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AulaCD" inverseName="adultStudentInstructorsAula" inverseEntity="AulaCD" syncable="YES"/>
+        <relationship name="aulaAdultStudentInstructors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AulaCD" inverseName="adultStudentInstructorsAula" inverseEntity="AulaCD" syncable="YES"/>
         <relationship name="belt" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="BeltCD" inverseName="adultStudentCD" inverseEntity="BeltCD" syncable="YES"/>
         <relationship name="emergencyContact" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EmergencyContactCD" inverseName="adultStudent" inverseEntity="EmergencyContactCD" syncable="YES"/>
         <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="GroupCD" inverseName="studentAdultGroups" inverseEntity="GroupCD" syncable="YES"/>

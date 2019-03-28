@@ -567,10 +567,6 @@ extension ReviewAndCreateClassTableViewController {
             // create newAula data model object
             let newAula = AulaCD(active: active, aulaName: aulaName, aulaDescription: aulaDescription, dayOfTheWeek: day.rawValue, time: time, timeCode: timeCodeInt16, location: locationCD)
             
-            print("locationCD.locationName: \(locationCD.locationName ?? "")")
-            print("newAula.location.locationName: \(newAula.location?.locationName ?? "")")
-            print("^^^ the two locationName values above should match")
-            
             // instructors
             if !instructorsCD.isEmpty {
                 // add instructors to newAula

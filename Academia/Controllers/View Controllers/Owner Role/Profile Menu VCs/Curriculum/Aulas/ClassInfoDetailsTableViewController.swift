@@ -386,9 +386,9 @@ extension ClassInfoDetailsTableViewController {
         // group list outlet
         if classGroups.count != 0 {
             
-            for _ in 1...classGroups.count {
+            for i in 1...classGroups.count {
                 
-                let groupCD = classGroups.object(at: (classGroups.count - 1)) as! GroupCD
+                let groupCD = classGroups.object(at: (i - 1)) as! GroupCD
                 
                 if groupCounter <= 1 {
                     groupNamesString += "\(groupCD.name ?? "")"

@@ -119,8 +119,6 @@ class ClassTimeViewController: UIViewController  {
         // reset welcome instructions text color and message upon succesful save
         addClassTimeLabelOutlet.textColor = beltBuilder.blackBeltBlack
         
-        print("saved edited class time and timeCode: \(String(describing: AulaModelController.shared.aulas[0].time)) \n\(String(describing: AulaModelController.shared.aulas[0].timeCode)))")
-        
         inEditingMode = false
     }
     

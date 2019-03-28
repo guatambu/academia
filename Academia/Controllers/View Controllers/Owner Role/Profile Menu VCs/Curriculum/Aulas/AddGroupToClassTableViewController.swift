@@ -232,13 +232,6 @@ extension AddGroupToClassTableViewController {
     // Update Function for case where want to update user info without a segue
     func updateAulaInfo() {
         
-//        guard let aula = aulaCDToEdit else { return }
-//
-//        // class update info
-//
-//        AulaModelController.shared.update(aula: aula, active: nil, kidAttendees: nil, adultAttendees: nil, aulaDescription: nil, aulaName: nil, daysOfTheWeek: nil, instructor: nil, ownerInstructor: nil, location: nil, students: nil, time: nil, timeCode: nil, classGroups: classGroups)
-//        print("update class groups: \(String(describing: AulaModelController.shared.aulas[0].classGroups))")
-        
         // CoreData version
         guard let aulaCDToEdit = aulaCDToEdit else { return }
         

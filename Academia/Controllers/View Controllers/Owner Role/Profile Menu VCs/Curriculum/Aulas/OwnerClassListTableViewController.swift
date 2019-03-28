@@ -125,7 +125,7 @@ class OwnerClassListTableViewController: UITableViewController {
                 
                 if let dayOfTheWeek = aula.dayOfTheWeek {
                     
-                    if dayOfTheWeek == ClassTimeComponents.Weekdays.Monday.rawValue {
+                    if dayOfTheWeek == ClassTimeComponents.Weekdays.Tuesday.rawValue {
                         counter += 1
                     }
                 }
@@ -141,7 +141,7 @@ class OwnerClassListTableViewController: UITableViewController {
                 
                 if let dayOfTheWeek = aula.dayOfTheWeek {
                     
-                    if dayOfTheWeek == ClassTimeComponents.Weekdays.Monday.rawValue {
+                    if dayOfTheWeek == ClassTimeComponents.Weekdays.Wednesday.rawValue {
                         counter += 1
                     }
                 }
@@ -156,7 +156,7 @@ class OwnerClassListTableViewController: UITableViewController {
                 
                 if let dayOfTheWeek = aula.dayOfTheWeek {
                     
-                    if dayOfTheWeek == ClassTimeComponents.Weekdays.Monday.rawValue {
+                    if dayOfTheWeek == ClassTimeComponents.Weekdays.Thursday.rawValue {
                         counter += 1
                     }
                 }
@@ -172,7 +172,7 @@ class OwnerClassListTableViewController: UITableViewController {
                 
                 if let dayOfTheWeek = aula.dayOfTheWeek {
                     
-                    if dayOfTheWeek == ClassTimeComponents.Weekdays.Monday.rawValue {
+                    if dayOfTheWeek == ClassTimeComponents.Weekdays.Friday.rawValue {
                         counter += 1
                     }
                 }
@@ -188,7 +188,7 @@ class OwnerClassListTableViewController: UITableViewController {
                 
                 if let dayOfTheWeek = aula.dayOfTheWeek {
                     
-                    if dayOfTheWeek == ClassTimeComponents.Weekdays.Monday.rawValue {
+                    if dayOfTheWeek == ClassTimeComponents.Weekdays.Saturday.rawValue {
                         counter += 1
                     }
                 }
@@ -237,6 +237,7 @@ class OwnerClassListTableViewController: UITableViewController {
             }
             // sort sundays array to display included classes by timeCode
             sundays.sort(by: {$0.timeCode < $1.timeCode })
+            print("sundays.count: \(sundays.count)")
             // if the sundays: [AulaCD array is not empty, pass the contents to the cell via the appropriate indexPath.row Int value]
             // Configure the cell
             if !sundays.isEmpty {
@@ -269,6 +270,7 @@ class OwnerClassListTableViewController: UITableViewController {
             }
             // sort sundays array to display included classes by timeCode
             mondays.sort(by: {$0.timeCode < $1.timeCode })
+            print("mondays.count: \(mondays.count)")
             // if the sundays: [AulaCD array is not empty, pass the contents to the cell via the appropriate indexPath.row Int value]
             // Configure the cell
             if !mondays.isEmpty {
@@ -301,6 +303,8 @@ class OwnerClassListTableViewController: UITableViewController {
             }
             // sort sundays array to display included classes by timeCode
             tuesdays.sort(by: {$0.timeCode < $1.timeCode })
+            print("tuesdays.count: \(tuesdays.count)")
+            print("indexPath.row: \(indexPath.row)")
             // if the sundays: [AulaCD array is not empty, pass the contents to the cell via the appropriate indexPath.row Int value]
             // Configure the cell
             if !tuesdays.isEmpty {
@@ -333,6 +337,7 @@ class OwnerClassListTableViewController: UITableViewController {
             }
             // sort sundays array to display included classes by timeCode
             wednesdays.sort(by: {$0.timeCode < $1.timeCode })
+            print("wednesdays.count: \(wednesdays.count)")
             // if the sundays: [AulaCD array is not empty, pass the contents to the cell via the appropriate indexPath.row Int value]
             // Configure the cell
             if !wednesdays.isEmpty {
@@ -365,6 +370,7 @@ class OwnerClassListTableViewController: UITableViewController {
             }
             // sort sundays array to display included classes by timeCode
             thursdays.sort(by: {$0.timeCode < $1.timeCode })
+            print("thursdays.count: \(thursdays.count)")
             // if the sundays: [AulaCD array is not empty, pass the contents to the cell via the appropriate indexPath.row Int value]
             // Configure the cell
             if !thursdays.isEmpty {
@@ -397,6 +403,7 @@ class OwnerClassListTableViewController: UITableViewController {
             }
             // sort sundays array to display included classes by timeCode
             fridays.sort(by: {$0.timeCode < $1.timeCode })
+            print("fridays.count: \(fridays.count)")
             // if the sundays: [AulaCD array is not empty, pass the contents to the cell via the appropriate indexPath.row Int value]
             // Configure the cell
             if !fridays.isEmpty {
@@ -429,6 +436,7 @@ class OwnerClassListTableViewController: UITableViewController {
             }
             // sort sundays array to display included classes by timeCode
             saturdays.sort(by: {$0.timeCode < $1.timeCode })
+            print("saturdays.count: \(saturdays.count)")
             // if the sundays: [AulaCD array is not empty, pass the contents to the cell via the appropriate indexPath.row Int value]
             // Configure the cell
             if !saturdays.isEmpty {
