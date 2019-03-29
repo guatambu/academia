@@ -363,8 +363,14 @@ extension ClassInfoDetailsTableViewController {
             return
         }
         
+        // sort the classGroups on the .name property to return them in alphabetical order
+        let nameSort = NSSortDescriptor(key: "name", ascending: true)
+        let sortedClassGroups = classGroups.sortedArray(using: [nameSort])
+        
+        // properties to properly build a string to list the names of the included groups (if any)
         var groupNamesString = ""
-        let groupCounter = classGroups.count
+        // set a counter property to track where we are in the array iteration process so we can know when we are at the last object in the array's contents
+        var groupCounter = classGroups.count
         
         // name outlet
         classNameLabelOutlet.text = aulaCD.aulaName
@@ -388,12 +394,13 @@ extension ClassInfoDetailsTableViewController {
             
             for i in 1...classGroups.count {
                 
-                let groupCD = classGroups.object(at: (i - 1)) as! GroupCD
+                let groupCD = sortedClassGroups[i - 1] as! GroupCD
                 
-                if groupCounter <= 1 {
+                if groupCounter <= i {
                     groupNamesString += "\(groupCD.name ?? "")"
                 } else {
                     groupNamesString += "\(groupCD.name ?? ""), "
+                    groupCounter -= 1
                 }
             }
         }

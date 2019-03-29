@@ -15,11 +15,6 @@ class AddGroupToClassTableViewController: UITableViewController, ClassGroupDeleg
 
     // MARK: - Properties
     
-    // create a fetchedRequestController with predicate to grab the current LocationsCD objects... use these as the source for the tableView DataSource  methods
-    var fetchedResultsController: NSFetchedResultsController<GroupCD>!
-    
-    var mockDatGroups = [MockData.allStudents, MockData.allStudents, MockData.allStudents, MockData.allStudents ]
-    
     var aulaName: String?
     var active: Bool?
     var aulaDescription: String?
@@ -63,9 +58,6 @@ class AddGroupToClassTableViewController: UITableViewController, ClassGroupDeleg
         
         enterEditingMode(inEditingMode: inEditingMode)
         
-        // create fetch request and initialize results
-        initializeFetchedResultsController()
-        
         tableView.reloadData()
     }
     
@@ -102,13 +94,8 @@ class AddGroupToClassTableViewController: UITableViewController, ClassGroupDeleg
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-//        return mockDatGroups.count
+        return GroupCDModelController.shared.groups.count
         
-        guard let sections = fetchedResultsController.sections else {
-            fatalError("No sections in fetchedResultsController")
-        }
-        let sectionInfo = sections[section]
-        return sectionInfo.numberOfObjects
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -131,25 +118,25 @@ class AddGroupToClassTableViewController: UITableViewController, ClassGroupDeleg
                 }
                 
                 let groupsAulaCDArray = Array(groupsAulaCDToEdit) as! [GroupCD]
-                
-                if groupsAulaCDArray.isEmpty == false && (groupsAulaCDArray.count - 1) >= indexPath.row {
+                // run check to make sure the groupsAulaCDArray is not empty 
+                if groupsAulaCDArray.isEmpty == false  {
                     
-                    if classGroupsCD.contains(groupsAulaCDArray[indexPath.row]) {
+                    for group in groupsAulaCDArray {
                         
-                        cell.isChosen = true
+                        // run check to see whether this object.name property matches the current object.name listed at this point in the tableView's cell
+                        if GroupCDModelController.shared.groups[indexPath.row].name == group.name {
+                            
+                            cell.isChosen = true
+                        }
                     }
                 }
             }
         }
-    
-        guard let groupCD = self.fetchedResultsController?.object(at: indexPath) else {
-        fatalError("Attempt to configure cell without a managed object")
-        }
+
+        let groupCD = GroupCDModelController.shared.groups[indexPath.row]
         cell.groupCD = groupCD
-//        cell.group = mockDatGroups[indexPath.row]
         
         return cell
-            
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -173,13 +160,9 @@ class AddGroupToClassTableViewController: UITableViewController, ClassGroupDeleg
         navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
         navigationController?.navigationBar.shadowImage = UIImage()
         
-        let group = mockDatGroups[indexPath.row]
-        
-        destViewController.group = group
-        
         // CoreData version
         // get the desired paymentProgramCD for the selected cell
-        let groupCD = fetchedResultsController.object(at: indexPath)
+        let groupCD = GroupCDModelController.shared.groups[indexPath.row]
         // pass CoreData payment program on to InfoDetails view
         destViewController.groupCD = groupCD
     }
@@ -235,26 +218,10 @@ extension AddGroupToClassTableViewController {
         // CoreData version
         guard let aulaCDToEdit = aulaCDToEdit else { return }
         
-        // here we want to loop through the classGroupsCD array and check the existing corresponding groupsAulaCD NSSet to see if it contains the current iterated member object and if it does NOT, then add that iterated member object to the groupsAulaExistingCD NSSet
-        for group in classGroupsCD {
-            
-            // check the aulaCDToEdit.clasGroups NSSet to see if the daysOfTheWeek array contents are present in the NSSet version
-            if let groupsAulaExistingCD = aulaCDToEdit.groupsAula {
-                
-                let predicate = NSPredicate(format: "name == %@", "\(group.name ?? "")")
-                // using the predicate, return the filtered result to a new NSSet
-                let confirmedPresentGroupsAulaNSSet = groupsAulaExistingCD.filtered(using: predicate)
-                
-                // if the resulting confirmedPresentGroupsAulaNSSet does not have a group in it, then the current iteration of group is not present in the groupsAulaExistingCD NSSet
-                if confirmedPresentGroupsAulaNSSet.count == 0 {
-                    // add the group to the existing aulaToEdit.groupsAula property
-                    aulaCDToEdit.addToGroupsAula(group)
-                }
-            }
-            // save the update
-            OwnerCDModelController.shared.saveToPersistentStorage()
-        }
-        
+        aulaCDToEdit.groupsAula = NSOrderedSet(array: classGroupsCD)
+    
+        // save the update
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func enterEditingMode(inEditingMode: Bool?) {
@@ -280,26 +247,6 @@ extension AddGroupToClassTableViewController {
     // owner setup for editing mode
     func aulaEditingSetup() {
         
-//        guard let aulaToEdit = aulaToEdit else {
-//            return
-//        }
-//
-//        guard let groupsToEdit = aulaToEdit.classGroups else {
-//            print("ERROR: nil value for aulaToEdit.classGroups in AddGroupToClassTableViewController.swift -> aulaEditingSetup() - line 222")
-//            return
-//        }
-//
-//        welcomeMessageLabelOutlet.text = "\(aulaToEdit.aulaName)"
-//
-//        welcomeInstructions1LabelOutlet.textColor = beltBuilder.redBeltRed
-//        welcomeInstructions1LabelOutlet.text = "you are in class editing mode"
-//
-//        daysOfTheWeek = aulaToEdit.daysOfTheWeek
-//        time = aulaToEdit.time ?? ""
-//        classGroups = groupsToEdit
-//
-//        print("the VC's aula timeOfDay, location, and daysOfTheWeek have been set to the existing aula's coresponding details to be edited and the collection views have reloaded their data")
-        
         // CoreData version
         guard let aulaCDToEdit = aulaCDToEdit else {
             return
@@ -322,23 +269,3 @@ extension AddGroupToClassTableViewController {
 }
 
 
-// MARK: - NSFetchedREsultsController initializer method
-extension AddGroupToClassTableViewController: NSFetchedResultsControllerDelegate {
-    
-    func initializeFetchedResultsController() {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "GroupCD")
-        let groupNameSort = NSSortDescriptor(key: "name", ascending: true)
-        request.sortDescriptors = [groupNameSort]
-        
-        let moc = CoreDataStack.context
-        
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil) as? NSFetchedResultsController<GroupCD>
-        fetchedResultsController.delegate = self
-        
-        do {
-            try fetchedResultsController.performFetch()
-        } catch {
-            fatalError("Failed to initialize FetchedResultsController: \(error)")
-        }
-    }
-}
