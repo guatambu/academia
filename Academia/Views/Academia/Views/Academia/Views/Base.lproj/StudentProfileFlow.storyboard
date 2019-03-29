@@ -969,7 +969,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r0c-Vg-3dT" userLabel="isInstrutor Switch">
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="r0c-Vg-3dT" userLabel="isInstrutor Switch">
                                                         <rect key="frame" x="91.5" y="0.0" width="51" height="31"/>
                                                         <connections>
                                                             <action selector="toggleIsInstructorSwitch:" destination="3Hd-Fs-Avs" eventType="valueChanged" id="Xrg-dR-JJp"/>
@@ -1206,6 +1206,8 @@
                         <outlet property="emergencyContactNameLabelOutlet" destination="htM-tg-I2W" id="CeH-nj-MAu"/>
                         <outlet property="emergencyContactPhoneLabelOutlet" destination="qk6-11-q2V" id="dJn-Kg-krr"/>
                         <outlet property="emergencyContactRelationshipLabelOutlet" destination="NKw-yx-bli" id="Hta-mF-77o"/>
+                        <outlet property="instructorLabelOutlet" destination="Zjr-o1-nU0" id="dWL-gC-upg"/>
+                        <outlet property="isInstructorStackView" destination="aeD-MW-Trb" id="Mgv-LJ-o7u"/>
                         <outlet property="isInstructorSwitch" destination="r0c-Vg-3dT" id="q8s-6u-KdS"/>
                         <outlet property="mobileLabelOutlet" destination="p4M-Jx-WJT" id="8fM-pW-vQ7"/>
                         <outlet property="parentGuardianLabelOutlet" destination="HnR-9u-fr9" id="S8E-tQ-zph"/>

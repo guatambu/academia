@@ -191,17 +191,6 @@ class GroupInfoDetailsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-//        guard let group = group else {
-//            print("ERROR: nil value for group property in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, numberOfRowsInSection:) - line 184")
-//            return 0
-//        }
-//
-//        guard let kidMembers = group.kidMembers, let adultMembers = group.adultMembers else {
-//
-//            print("ERROR: nil value for either kidMembers and/or adultMemebers array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, numberOfRowsInSection:) - line 190")
-//            return 0
-//        }
-        
         // CoreData versions
         guard let groupCD = groupCD else {
             
@@ -216,11 +205,11 @@ class GroupInfoDetailsTableViewController: UITableViewController {
         }
 
         if section == 0 {
-//            return kidMembers.count
+            
             return kidMembersCD.count
             
         } else if section == 1 {
-//            return adultMembers.count
+
             return adultMembersCD.count
         } else {
             return 0
@@ -229,17 +218,6 @@ class GroupInfoDetailsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-//        guard let group = group else {
-//            print("ERROR: nil value for group property in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, cellForRowAt:) - line 143")
-//            return UITableViewCell()
-//        }
-//
-//        guard let kidMembers = group.kidMembers, let adultMembers = group.adultMembers else {
-//
-//            print("ERROR: nil value for either kidMembers and/or adultMemebers array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, cellForRowAt:) - line 149")
-//            return UITableViewCell()
-//        }
-        
         // CoreData versions
         guard let groupCD = groupCD else {
             
@@ -247,30 +225,24 @@ class GroupInfoDetailsTableViewController: UITableViewController {
             return UITableViewCell()
         }
         
-        guard let kidMembersCD = groupCD.kidMembers, let adultMembersCD = groupCD.adultMembers else {
-            
-            print("ERROR: nil value for either kidMembersCD and/or adultMemebersCD array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, numberOfRowsInSection:) - line 214")
-            return UITableViewCell()
-        }
-        
         // Configure the cell...
         if indexPath.section == 0 {
+            
+            guard let kidMembersCD = groupCD.kidMembers else {
+                
+                print("ERROR: nil value for either kidMembersCD array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, numberOfRowsInSection:) - line 239")
+                return UITableViewCell()
+            }
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "kidStudentCell", for: indexPath) as? KidGroupInfoDetailsTableViewCell else {
                 
                 return UITableViewCell()
             }
             
-//            print("\(kidMembers[indexPath.row].firstName)")
-//            print("\(String(describing: kidMembers[indexPath.row].profilePic?.scale))")
-//            cell.kidStudent = kidMembers[indexPath.row]
-//
-//            return cell
-            
             let nameSort = NSSortDescriptor(key: "firstName", ascending: true)
             let kids = kidMembersCD.sortedArray(using: [nameSort])
             
-            guard let studentKidCD = kids [indexPath.row] as? StudentKidCD else { return UITableViewCell() }
+            guard let studentKidCD = kids[indexPath.row] as? StudentKidCD else { return UITableViewCell() }
             
             print("\(String(describing: studentKidCD.firstName))")
             
@@ -284,18 +256,22 @@ class GroupInfoDetailsTableViewController: UITableViewController {
             
         } else {
             
+            guard let adultMembersCD = groupCD.adultMembers else {
+                
+                print("ERROR: nil value for either adultMemebersCD array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, numberOfRowsInSection:) - line 261")
+                return UITableViewCell()
+            }
+            
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "adultStudentCell", for: indexPath) as? AdultGroupInfoDetailsTableViewCell else {
                 
                 return UITableViewCell()
             }
             
-//            cell.adultStudent = adultMembers[indexPath.row]
-            
             // CoreData Version
             let nameSort = NSSortDescriptor(key: "firstName", ascending: true)
             let adults = adultMembersCD.sortedArray(using: [nameSort])
             
-            guard let studentAdultCD = adults [indexPath.row] as? StudentAdultCD else { return UITableViewCell() }
+            guard let studentAdultCD = adults[indexPath.row] as? StudentAdultCD else { return UITableViewCell() }
             
             cell.studentAdultCD = studentAdultCD
             
@@ -304,17 +280,6 @@ class GroupInfoDetailsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-//        guard let group = group else {
-//            print("ERROR: nil value for group property in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, didSelectRowAt:) - line 173")
-//            return
-//        }
-//
-//        guard let kidMembers = group.kidMembers, let adultMembers = group.adultMembers else {
-//
-//            print("ERROR: nil value for either kidMembers and/or adultMemebers array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, didSelectRowAt:) - line 179")
-//            return
-//        }
         
         // CoreData versions
         guard let groupCD = groupCD else {
@@ -332,7 +297,7 @@ class GroupInfoDetailsTableViewController: UITableViewController {
         // programmatically performing the segue
         
         // instantiate the relevant storyboard
-        let mainView: UIStoryboard = UIStoryboard(name: "OwnerStudentsFlow", bundle: nil)
+        let mainView: UIStoryboard = UIStoryboard(name: "OwnerBaseCampFlow", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
         let destViewController = mainView.instantiateViewController(withIdentifier: "toProfileComplete") as! OwnersStudentDetailViewController
         
@@ -350,10 +315,6 @@ class GroupInfoDetailsTableViewController: UITableViewController {
         
         if indexPath.section == 0 {
             // kidStudent setup
-//            let kid = kidMembers[indexPath.row]
-//
-//            destViewController.kid = kid
-            
             
             // CoreData Version
             let nameSort = NSSortDescriptor(key: "firstName", ascending: true)
@@ -365,13 +326,11 @@ class GroupInfoDetailsTableViewController: UITableViewController {
             }
             
             destViewController.studentKidCD = studentKidCD
+            destViewController.isKid = true
             
         } else if indexPath.section == 1 {
             
             // adultStudent setup
-//            let adult = adultMembers[indexPath.row]
-//            
-//            destViewController.adult = adult
             
             // CoreData Version
             let nameSort = NSSortDescriptor(key: "firstName", ascending: true)
@@ -383,6 +342,7 @@ class GroupInfoDetailsTableViewController: UITableViewController {
             }
             
             destViewController.studentAdultCD = studentAdultCD
+            destViewController.isKid = false
             
         }
     }

@@ -18,6 +18,10 @@ class GroupCDModelController {
     var groups: [GroupCD] {
         let fetchRequest: NSFetchRequest<GroupCD> = GroupCD.fetchRequest()
         
+        let nameSort = NSSortDescriptor(key: "name", ascending: true)
+        
+        fetchRequest.sortDescriptors = [nameSort]
+        
         do {
             return try CoreDataStack.context.fetch(fetchRequest)
         } catch {

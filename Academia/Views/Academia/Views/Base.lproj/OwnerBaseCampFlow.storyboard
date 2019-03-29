@@ -3831,8 +3831,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="npB-b9-7ie" userLabel="plese review and name Stack View">
-                                <rect key="frame" x="24" y="36" width="272" height="24"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="npB-b9-7ie" userLabel="plese review and name Stack View">
+                                <rect key="frame" x="24" y="36" width="272" height="63"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(name)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dNd-JM-sZ2">
                                         <rect key="frame" x="0.0" y="0.0" width="272" height="24"/>
@@ -3843,6 +3843,20 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="EkT-pX-eM7" userLabel="isInstructor Stack View">
+                                        <rect key="frame" x="68" y="32" width="136.5" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instructor: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5T-Hb-j6F">
+                                                <rect key="frame" x="0.0" y="0.0" width="83.5" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bmP-Q7-Kgd">
+                                                <rect key="frame" x="87.5" y="0.0" width="51" height="31"/>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="dNd-JM-sZ2" secondAttribute="trailing" id="f0k-tP-DZV"/>
@@ -3850,7 +3864,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="C5x-z5-yqr" userLabel="User Stack View">
-                                <rect key="frame" x="16" y="76" width="288" height="384.5"/>
+                                <rect key="frame" x="16" y="115" width="288" height="384.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="50p-Ky-zx2" userLabel="profile Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="120"/>
@@ -4053,6 +4067,9 @@
                         <outlet property="emergencyContactNameLabelOutlet" destination="PGs-vS-rRt" id="cNc-tV-O1c"/>
                         <outlet property="emergencyContactPhoneLabelOutlet" destination="LNY-A3-IkJ" id="Ji7-30-gCP"/>
                         <outlet property="emergencyContactRelationshipLabelOutlet" destination="yN5-hr-kHA" id="kfU-6j-6iE"/>
+                        <outlet property="instructorLabelOutlet" destination="g5T-Hb-j6F" id="FmK-ek-TOa"/>
+                        <outlet property="isInstructorStackView" destination="EkT-pX-eM7" id="TDC-p8-8ZW"/>
+                        <outlet property="isInstructorSwitch" destination="bmP-Q7-Kgd" id="3O3-qz-Zfr"/>
                         <outlet property="mobileLabelOutlet" destination="fer-tr-nmb" id="ywy-Vy-GHD"/>
                         <outlet property="nameLabelOutlet" destination="dNd-JM-sZ2" id="MFO-vv-EN3"/>
                         <outlet property="parentGuardianLabelOutlet" destination="HMH-r4-ufa" id="VLo-y3-04b"/>

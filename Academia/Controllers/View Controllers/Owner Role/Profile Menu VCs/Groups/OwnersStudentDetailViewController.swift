@@ -13,6 +13,7 @@ class OwnersStudentDetailViewController: UIViewController {
     // MARK: - Properties
     
     var isKid: Bool?
+    var isInstructor = false
     
     var kid: KidStudent?
     var adult: AdultStudent?
@@ -22,6 +23,10 @@ class OwnersStudentDetailViewController: UIViewController {
     // name / username outlets
     @IBOutlet weak var nameLabelOutlet: UILabel!
     @IBOutlet weak var usernameLabelOutlet: UILabel!
+    // isInstructor outlets
+    @IBOutlet weak var isInstructorStackView: UIStackView!
+    @IBOutlet weak var instructorLabelOutlet: UILabel!
+    @IBOutlet weak var isInstructorSwitch: UISwitch!
     // birthdate outlet
     @IBOutlet weak var birthdateLabelOutlet: UILabel!
     // profile pic imageView
@@ -62,12 +67,41 @@ class OwnersStudentDetailViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         
-        populateCompletedProfileInfo(adult: adult, kid: kid, adultCD: studentAdultCD, kidCD: studentKidCD, ownerCD: ownerCD)
+        // check to see if user isKid or not.  only StudentAdultCD may be instructors. only owner may toggle the switch
+        if let isKid = isKid {
+            
+            if isKid {
+                isInstructorStackView.isHidden = true
+                instructorLabelOutlet.isHidden = true
+                isInstructorSwitch.isHidden = true
+                isInstructorSwitch.isEnabled = false
+            } else {
+                isInstructorStackView.isHidden = false
+                instructorLabelOutlet.isHidden = false
+                isInstructorSwitch.isHidden = false
+                isInstructorSwitch.isEnabled = true
+            }
+        }
         
+        populateCompletedProfileInfo(adult: adult, kid: kid, adultCD: studentAdultCD, kidCD: studentKidCD, ownerCD: ownerCD)
     }
     
     
     // MARK: - Actions
+    @IBAction func toggleIsInstructorSwitch(_ sender: UISwitch) {
+        
+        isInstructor = !isInstructor
+        print("isInstructorSwitch toggled, currently isInstructor = \(isInstructor)")
+        
+        guard let StudentAdultCD = studentAdultCD else {
+            print("ERROR: nil value found for activeOwner property of type OwnerCD in OwnerInfoDetailsViewController.swift -> toggleIsInstructorSwitch(sender:) - line 87.")
+            return
+        }
+        
+        // update the activeOwner's isInstructor value
+        StudentAdultCDModelController.shared.update(studentAdult: StudentAdultCD, isInstructor: isInstructor, birthdate: nil, mostRecentPromotion: nil, studentStatus: nil, belt: nil, profilePic: nil, username: nil, password: nil, firstName: nil, lastName: nil, address: nil, phone: nil, mobile: nil, email: nil, emergencyContact: nil)
+        OwnerCDModelController.shared.saveToPersistentStorage()
+    }
     
     
 }

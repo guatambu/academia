@@ -16,7 +16,7 @@ class ReviewAdultStudentTableViewCell: UITableViewCell {
     @IBOutlet weak var cellTitleOutlet: UILabel!
     @IBOutlet weak var rightRedArrowImageViewOutlet: UIImageView!
     
-    var adultStudent: AdultStudent? {
+    var adultStudentCD: StudentAdultCD? {
         didSet {
             updateViews()
         }
@@ -35,15 +35,20 @@ class ReviewAdultStudentTableViewCell: UITableViewCell {
     
     func updateViews() {
         
-        guard let adultStudent = adultStudent  else {
+        guard let studentAdultCD = adultStudentCD  else {
             
-            print("ERROR: nil value found when unwrapping adultStudent in ReviewKidStudentTableViewCell.swift -> updateViews() - line 40")
+            print("ERROR: nil value found when unwrapping adultStudentCD in ReviewAdultStudentTableViewCell.swift -> updateViews() - line 40")
             
             return
         }
         
-        userThumbnailImageViewOutlet.image = adultStudent.profilePic
-        cellTitleOutlet.text = "\(adultStudent.firstName) \(adultStudent.lastName)"
+        if let profilePicData = studentAdultCD.profilePic {
+            
+            userThumbnailImageViewOutlet.image = UIImage(data: profilePicData)
+        }
+        if let firstName = studentAdultCD.firstName, let lastName = studentAdultCD.lastName {
+            cellTitleOutlet.text = "\(firstName) \(lastName)"
+        }
     }
 }
 

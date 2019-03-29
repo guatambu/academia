@@ -113,6 +113,7 @@ class CompletedProfileViewController: UIViewController {
         
         // programmatically performing the segue
         guard let isOwner = isOwner else { return }
+        
         if isOwner {
             
             // instantiate the relevant storyboard for the Owner
@@ -135,7 +136,7 @@ class CompletedProfileViewController: UIViewController {
                 // instantiate the relevant storyboard for the Student (Kid or Adult... both are directed to the same TabBarController)
                 let mainView: UIStoryboard = UIStoryboard(name: "StudentBaseCampFlow", bundle: nil)
                 // create the UITabBarController segue programmatically - MODAL
-                if let tabBarDestViewController = (mainView.instantiateViewController(withIdentifier: "toStudentDashbooard") as? UITabBarController) {
+                if let tabBarDestViewController = (mainView.instantiateViewController(withIdentifier: "toStudentDashboard") as? UITabBarController) {
                     
                     self.present(tabBarDestViewController, animated: true, completion: nil)
                     

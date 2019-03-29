@@ -40,24 +40,10 @@ class KidGroupInfoDetailsTableViewCell: UITableViewCell {
     // MARK: - updateViews()
     
     func updateViews() {
-        
-        guard let kidStudent = kidStudent  else {
-            
-            print("ERROR: nil value found when unwrapping kidStudent in ReviewKidStudentTableViewCell.swift -> updateViews() - line 40")
-            
-            return
-        }
-        
-        cellTitleOutlet.text = "\(kidStudent.firstName) \(kidStudent.lastName)"
-        userThumbnailImageViewOutlet.image = kidStudent.profilePic ?? UIImage(contentsOfFile: "user_placeholder")
-        
-        print("cell: \(kidStudent.firstName)")
-        print("cell: \(String(describing: kidStudent.profilePic?.size))")
-        
-        
+
         // CoreData verison
         guard let studentKidCD = studentKidCD else {
-            print("ERROR: nil value found while attepting to unwrap optional kidStudentCD in KidStudentTableViewCell.swift -> updateViews() - line 98.")
+            print("ERROR: nil value found while attepting to unwrap optional kidStudentCD in KidGroupInfoDetailsTableViewCell.swift -> updateViews() - line 59.")
             return
         }
         
@@ -67,12 +53,6 @@ class KidGroupInfoDetailsTableViewCell: UITableViewCell {
         }
         if let firstName = studentKidCD.firstName, let lastName = studentKidCD.lastName {
             cellTitleOutlet.text = "\(firstName) \(lastName)"
-        }
-        
-        print("\(String(describing: studentKidCD.firstName))")
-        
-        if let profilePicData = studentKidCD.profilePic, let profilePic = UIImage(data: profilePicData) {
-            print("\(profilePic.scale)")
         }
     }
 }

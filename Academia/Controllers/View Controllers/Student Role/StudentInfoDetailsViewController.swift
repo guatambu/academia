@@ -21,6 +21,8 @@ class StudentInfoDetailsViewController: UIViewController {
     var isKid: Bool?
     
     // isInstructor switch
+    @IBOutlet weak var isInstructorStackView: UIStackView!
+    @IBOutlet weak var instructorLabelOutlet: UILabel!
     @IBOutlet weak var isInstructorSwitch: UISwitch!
     // username outlet
     @IBOutlet weak var usernameLabelOutlet: UILabel!
@@ -65,7 +67,21 @@ class StudentInfoDetailsViewController: UIViewController {
         addressLine2LabelOutlet.isHidden = false
         mobileLabelOutlet.isHidden = false
         
-        //populateCompletedProfileInfo()
+        // check to see if user isKid or not.  only StudentAdultCD may be instructors.
+        if let isKid = isKid {
+            
+            if isKid {
+                isInstructorStackView.isHidden = true
+                instructorLabelOutlet.isHidden = true
+                isInstructorSwitch.isHidden = true
+                isInstructorSwitch.isEnabled = false
+            } else {
+                isInstructorStackView.isHidden = false
+                instructorLabelOutlet.isHidden = false
+                isInstructorSwitch.isHidden = false
+                isInstructorSwitch.isEnabled = false
+            }
+        }
     }
     
     

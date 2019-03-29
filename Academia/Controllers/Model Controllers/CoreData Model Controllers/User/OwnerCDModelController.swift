@@ -18,6 +18,11 @@ class OwnerCDModelController {
     var owners: [OwnerCD] {
         let fetchRequest: NSFetchRequest<OwnerCD> = OwnerCD.fetchRequest()
         
+        let lastNameSort = NSSortDescriptor(key: "lastName", ascending: true)
+        let firstNameSort = NSSortDescriptor(key: "firstName", ascending: true)
+
+        fetchRequest.sortDescriptors = [lastNameSort, firstNameSort]
+        
         do {
             return try CoreDataStack.context.fetch(fetchRequest)
         } catch {

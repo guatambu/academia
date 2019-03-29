@@ -13,9 +13,6 @@ class OwnerGroupListTableViewController: UITableViewController {
     
     // MARK: - Properties
     
-    // create a fetchedRequestController with predicate to grab the current GroupCD objects... use these as the source for the tableView DataSource  methods
-    var fetchedResultsController: NSFetchedResultsController<GroupCD>!
-    
     let beltBuilder = BeltBuilder()
     
 //    var allGroups = [MockData.allStudents]
@@ -24,9 +21,6 @@ class OwnerGroupListTableViewController: UITableViewController {
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        // create fetch request and initialize results
-        initializeFetchedResultsController()
         
         tableView.reloadData()
     }
@@ -70,13 +64,7 @@ class OwnerGroupListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-//        return GroupModelController.shared.groups.count
-        
-        guard let sections = fetchedResultsController.sections else {
-            fatalError("No sections in fetchedResultsController")
-        }
-        let sectionInfo = sections[section]
-        return sectionInfo.numberOfObjects
+        return GroupCDModelController.shared.groups.count
     }
 
     
@@ -86,14 +74,10 @@ class OwnerGroupListTableViewController: UITableViewController {
         
 //        let group = GroupModelController.shared.groups[indexPath.row]
         
-        guard let groupCD = self.fetchedResultsController?.object(at: indexPath) else {
-            fatalError("Attempt to configure cell without a managed object")
-        }
+        let groupCD = GroupCDModelController.shared.groups[indexPath.row]
         
         // Configure the cell...
         cell.title = groupCD.name
-        
-        print(groupCD.kidMembers as Any)
 
         return cell
     }
@@ -131,7 +115,7 @@ class OwnerGroupListTableViewController: UITableViewController {
         navigationController?.navigationBar.shadowImage = UIImage(contentsOfFile: "")
         
         // get the desired groupCD for the selected cell
-        let groupCD = fetchedResultsController.object(at: indexPath as IndexPath)
+        let groupCD = GroupCDModelController.shared.groups[indexPath.row]
         // pass CoreData payment program on to InfoDetails view
         destViewController.groupCD = groupCD
     }
@@ -152,72 +136,52 @@ class OwnerGroupListTableViewController: UITableViewController {
             
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
             
-            
-//            let group = GroupModelController.shared.groups[indexPath.row]
-//            destination.group = group
-            
-            let groupCD = fetchedResultsController.object(at: indexPath)
+            let groupCD = GroupCDModelController.shared.groups[indexPath.row]
             destination.groupCD = groupCD
         }
     }
 }
 
 
-// MARK: - NSFetchedREsultsController initializer method
-extension OwnerGroupListTableViewController: NSFetchedResultsControllerDelegate {
-    
-    func initializeFetchedResultsController() {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "GroupCD")
-        let groupNameSort = NSSortDescriptor(key: "name", ascending: true)
-        request.sortDescriptors = [groupNameSort]
-        
-        let moc = CoreDataStack.context
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil) as? NSFetchedResultsController<GroupCD>
-        fetchedResultsController.delegate = self
-        
-        do {
-            try fetchedResultsController.performFetch()
-        } catch {
-            fatalError("Failed to initialize FetchedResultsController: \(error)")
-        }
-    }
-    
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.beginUpdates()
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-        switch type {
-        case .insert:
-            tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
-        case .delete:
-            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .fade)
-        case .move:
-            break
-        case .update:
-            break
-        }
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch type {
-        case .insert:
-            tableView.insertRows(at: [newIndexPath!], with: .fade)
-        case .delete:
-            tableView.deleteRows(at: [indexPath!], with: .fade)
-        case .update:
-            tableView.reloadRows(at: [indexPath!], with: .fade)
-        case .move:
-            tableView.moveRow(at: indexPath!, to: newIndexPath!)
-        }
-    }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.endUpdates()
-    }
-}
-
-
+//// MARK: - NSFetchedREsultsController initializer method
+//extension OwnerGroupListTableViewController: NSFetchedResultsControllerDelegate {
+//    
+//    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+//        tableView.beginUpdates()
+//    }
+//    
+//    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+//        switch type {
+//        case .insert:
+//            tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
+//        case .delete:
+//            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .fade)
+//        case .move:
+//            break
+//        case .update:
+//            break
+//        }
+//    }
+//    
+//    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+//        switch type {
+//        case .insert:
+//            tableView.insertRows(at: [newIndexPath!], with: .fade)
+//        case .delete:
+//            tableView.deleteRows(at: [indexPath!], with: .fade)
+//        case .update:
+//            tableView.reloadRows(at: [indexPath!], with: .fade)
+//        case .move:
+//            tableView.moveRow(at: indexPath!, to: newIndexPath!)
+//        }
+//    }
+//    
+//    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+//        tableView.endUpdates()
+//    }
+//}
+//
+//
 
 
 

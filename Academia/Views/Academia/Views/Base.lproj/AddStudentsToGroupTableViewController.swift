@@ -13,14 +13,14 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
     
     // MARK: - Properties
     
-    // Mock Data
-    var mockAdults = [MockData.adultA, MockData.adultB]
-    var mockKids = [MockData.kidA, MockData.kidB]
-    
-    // create a fetchedRequestController with predicate to grab the current GroupCD objects... use these as the source for the tableView DataSource  methods
-    var fetchedResultsControllerKids: NSFetchedResultsController<StudentKidCD>!
-    var fetchedResultsControllerAdults: NSFetchedResultsController<StudentAdultCD>!
-    
+//    // Mock Data
+//    var mockAdults = [MockData.adultA, MockData.adultB]
+//    var mockKids = [MockData.kidA, MockData.kidB]
+//
+//    // create a fetchedRequestController with predicate to grab the current GroupCD objects... use these as the source for the tableView DataSource  methods
+//    var fetchedResultsControllerKids: NSFetchedResultsController<StudentKidCD>!
+//    var fetchedResultsControllerAdults: NSFetchedResultsController<StudentAdultCD>!
+
     var groupName: String?
     var active: Bool = true
     var groupDescription: String?
@@ -57,9 +57,9 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
         navigationController?.navigationBar.titleTextAttributes = avenirFont
         
         enterEditingMode(inEditingMode: inEditingMode)
-        
-        // create fetch request and initialize results
-        initializeFetchedResultsControllers()
+//
+//        // create fetch request and initialize results
+//        initializeFetchedResultsControllers()
         
         tableView.reloadData()
     }
@@ -110,8 +110,8 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
         destViewController.groupName = groupName
         destViewController.active = active
         destViewController.groupDescription = groupDescription
-        destViewController.kidMembers = kidMembers
-        destViewController.adultMembers = adultMembers
+        destViewController.kidMembersCD = kidMembersCD
+        destViewController.adultMembersCD = adultMembersCD
         
         destViewController.inEditingMode = inEditingMode
         destViewController.groupToEdit = groupToEdit
@@ -154,22 +154,12 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if section == 0 {
-//            return mockKids.count
-            
-            guard let fetchedKidsCD =  fetchedResultsControllerKids.fetchedObjects?.count else {
-                return 0
-            }
-            
-            return fetchedKidsCD
+
+            return StudentKidCDModelController.shared.studentKids.count
             
         } else if section == 1 {
-//            return mockAdults.count
-            
-            guard let fetchedAdultsCD = fetchedResultsControllerAdults.fetchedObjects?.count else {
-                return 0
-            }
-            
-            return fetchedAdultsCD
+
+            return StudentAdultCDModelController.shared.studentAdults.count
             
         } else {
             return 0
@@ -190,36 +180,24 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
                 
                 if inEditingMode {
                     
-                    guard let kidsToEdit = groupToEdit?.kidMembers else {
-                        print("ERROR: nil value for groupToEdit in AddStudentsToGroupTableViewController.swift -> tableView(tableView:, cellForRowAt:) - line 166")
-                        return UITableViewCell()
-                    }
-                    
-                    if kidsToEdit.contains(mockKids[indexPath.row]) {
-                        
-                        cell.isChosen = true
-                    }
-                    
                     // CoreData version
                     guard let kidsToEditCD = groupCDToEdit?.kidMembers else {
                         print("ERROR: nil value for kidsToEditCE in AddStudentsToGroupTableViewController.swift -> tableView(tableView:, cellForRowAt:) - line 205")
                         return UITableViewCell()
                     }
                     
-                    guard let fetchedKidCD = self.fetchedResultsControllerKids?.object(at: indexPath) else {
-                        fatalError("Attempt to configure cell without a managed object")
-                    }
+                    let kidCD = StudentKidCDModelController.shared.studentKids[indexPath.row]
                     
-                    if kidsToEditCD.contains(fetchedKidCD) {
+                    if kidsToEditCD.contains(kidCD) {
                         
                         cell.isChosen = true
                     }
                 }
             }
             
-            cell.studentKidCD = self.fetchedResultsControllerKids?.object(at: indexPath)
+            cell.studentKidCD = StudentKidCDModelController.shared.studentKids[indexPath.row]
             
-            cell.kidStudent = mockKids[indexPath.row]
+//            cell.kidStudent = mockKids[indexPath.row]
             
             return cell
             
@@ -233,37 +211,25 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
             if let inEditingMode = inEditingMode {
                 
                 if inEditingMode {
-                    
-                    guard let adultsToEdit = groupToEdit?.adultMembers else {
-                        print("ERROR: nil value for groupToEdit.adultMembers in AddStudentsToGroupTableViewController.swift -> tableView(tableView:, cellForRowAt:) - line 191")
-                        return UITableViewCell()
-                    }
-                    
-                    if adultsToEdit.contains(mockAdults[indexPath.row]) {
-                        
-                        cell.isChosen = true
-                    }
-                    
+
                     // CoreData version
                     guard let adultsToEditCD = groupCDToEdit?.adultMembers else {
                         print("ERROR: nil value for adultsToEditCD in AddStudentsToGroupTableViewController.swift -> tableView(tableView:, cellForRowAt:) - line 205")
                         return UITableViewCell()
                     }
                     
-                    guard let fetchedAdultCD = self.fetchedResultsControllerAdults?.object(at: indexPath) else {
-                        fatalError("Attempt to configure cell without a managed object")
-                    }
+                    let adultCD = StudentAdultCDModelController.shared.studentAdults[indexPath.row]
                     
-                    if adultsToEditCD.contains(fetchedAdultCD) {
+                    if adultsToEditCD.contains(adultCD) {
                         
                         cell.isChosen = true
                     }
                 }
             }
             
-            cell.studentAdultCD = self.fetchedResultsControllerAdults?.object(at: indexPath)
+            cell.studentAdultCD = StudentAdultCDModelController.shared.studentAdults[indexPath.row]
             
-            cell.adultStudent = mockAdults[indexPath.row]
+//            cell.adultStudent = mockAdults[indexPath.row]
             
             return cell
         }
@@ -291,32 +257,8 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
         navigationController?.navigationBar.shadowImage = UIImage()
         
         if indexPath.section == 0 {
-            // kidStudent setup
-//            let kid = mockKids[indexPath.row]
-//
-//            destViewController.isOwner = false
-//            destViewController.isKid = true
-//            destViewController.username = kid.username
-//            destViewController.password = kid.password
-//            destViewController.firstName = kid.firstName
-//            destViewController.lastName = kid.lastName
-//            destViewController.parentGuardian = kid.parentGuardian
-//            destViewController.profilePic = kid.profilePic
-//            destViewController.birthdate = kid.birthdate
-//            destViewController.beltLevel = kid.belt.beltLevel
-//            destViewController.numberOfStripes = kid.belt.numberOfStripes
-//            destViewController.addressLine1 = kid.addressLine1
-//            destViewController.addressLine2 = kid.addressLine2
-//            destViewController.city = kid.city
-//            destViewController.state = kid.state
-//            destViewController.zipCode = kid.zipCode
-//            destViewController.phone = kid.phone
-//            destViewController.mobile = kid.mobile
-//            destViewController.email = kid.email
-//            destViewController.emergencyContactName = kid.emergencyContactName
-//            destViewController.emergencyContactRelationship = kid.emergencyContactRelationship
-//            destViewController.emergencyContactPhone = kid.emergencyContactPhone
             
+            // kidStudent setup
             
             // CoreData version
             
@@ -325,51 +267,26 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
             let nameSort = NSSortDescriptor(key: "firstName", ascending: true)
             let kids = kidMembersCDSet.sortedArray(using: [nameSort])
             
-            guard let studentKidCD = kids[indexPath.row] as? StudentKidCD else {
-                print("ERROR: nil value for studentKidCD in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 252.")
-                return
-            }
+            let studentKidCD = StudentKidCDModelController.shared.studentKids[indexPath.row]
             
             destViewController.studentKidCD = studentKidCD
             
         } else if indexPath.section == 1 {
-            // adultStudent setup
-//            let adult = mockAdults[indexPath.row]
-//
-//            destViewController.isOwner = false
-//            destViewController.isKid = false
-//            destViewController.username = adult.username
-//            destViewController.password = adult.password
-//            destViewController.firstName = adult.firstName
-//            destViewController.lastName = adult.lastName
-//            destViewController.profilePic = adult.profilePic
-//            destViewController.birthdate = adult.birthdate
-//            destViewController.beltLevel = adult.belt.beltLevel
-//            destViewController.numberOfStripes = adult.belt.numberOfStripes
-//            destViewController.addressLine1 = adult.addressLine1
-//            destViewController.addressLine2 = adult.addressLine2
-//            destViewController.city = adult.city
-//            destViewController.state = adult.state
-//            destViewController.zipCode = adult.zipCode
-//            destViewController.phone = adult.phone
-//            destViewController.mobile = adult.mobile
-//            destViewController.email = adult.email
-//            destViewController.emergencyContactName = adult.emergencyContactName
-//            destViewController.emergencyContactRelationship = adult.emergencyContactRelationship
-//            destViewController.emergencyContactPhone = adult.emergencyContactPhone
             
+            // adult setup
             
             // CoreData version
-    
-            let adultMembersCDSet = NSSet(array: adultMembersCD)
+//
+//            let adultMembersCDSet = NSSet(array: adultMembersCD)
+//
+//            let nameSort = NSSortDescriptor(key: "firstName", ascending: true)
+//            let adults = adultMembersCDSet.sortedArray(using: [nameSort])
             
-            let nameSort = NSSortDescriptor(key: "firstName", ascending: true)
-            let adults = adultMembersCDSet.sortedArray(using: [nameSort])
-            
-            guard let studentAdultCD = adults[indexPath.row] as? StudentAdultCD else {
-                print("ERROR: nil value for studentAdultCD in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 298.")
-                return
-            }
+            let studentAdultCD = StudentAdultCDModelController.shared.studentAdults[indexPath.row]
+//                as? StudentAdultCD else {
+//                print("ERROR: nil value for studentAdultCD in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 298.")
+//                return
+//            }
             
             destViewController.studentAdultCD = studentAdultCD
         }
@@ -462,75 +379,75 @@ extension AddStudentsToGroupTableViewController {
 }
 
 
-// MARK: - NSFetchedREsultsController initializer method
-extension AddStudentsToGroupTableViewController: NSFetchedResultsControllerDelegate {
-    
-    func initializeFetchedResultsControllers() {
-        
-        // instantiate the macro managed object context
-        let moc = CoreDataStack.context
-        
-        // fetch results for all StudentKidCD type students
-        let requestKids = NSFetchRequest<NSFetchRequestResult>(entityName: "StudentKidCD")
-        let kidNameSort = NSSortDescriptor(key: "firstName", ascending: true)
-        requestKids.sortDescriptors = [kidNameSort]
-        
-        fetchedResultsControllerKids = NSFetchedResultsController(fetchRequest: requestKids, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil) as? NSFetchedResultsController<StudentKidCD>
-        fetchedResultsControllerKids.delegate = self
-        
-        do {
-            try fetchedResultsControllerKids.performFetch()
-        } catch {
-            fatalError("Failed to initialize StudentKidCD FetchedResultsController: \(error)")
-        }
-        
-        // fetch results for all StudentAdultCD type students
-        let requestAdults = NSFetchRequest<NSFetchRequestResult>(entityName: "StudentAdultCD")
-        let adultNameSort = NSSortDescriptor(key: "firstName", ascending: true)
-        requestAdults.sortDescriptors = [adultNameSort]
-        
-        fetchedResultsControllerAdults = NSFetchedResultsController(fetchRequest: requestAdults, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil) as? NSFetchedResultsController<StudentAdultCD>
-        fetchedResultsControllerAdults.delegate = self
-        
-        do {
-            try fetchedResultsControllerAdults.performFetch()
-        } catch {
-            fatalError("Failed to initialize StudentADultCD FetchedResultsController: \(error)")
-        }
-    }
-    
-    
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.beginUpdates()
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-        switch type {
-        case .insert:
-            tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
-        case .delete:
-            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .fade)
-        case .move:
-            break
-        case .update:
-            break
-        }
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch type {
-        case .insert:
-            tableView.insertRows(at: [newIndexPath!], with: .fade)
-        case .delete:
-            tableView.deleteRows(at: [indexPath!], with: .fade)
-        case .update:
-            tableView.reloadRows(at: [indexPath!], with: .fade)
-        case .move:
-            tableView.moveRow(at: indexPath!, to: newIndexPath!)
-        }
-    }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.endUpdates()
-    }
-}
+//// MARK: - NSFetchedREsultsController initializer method
+//extension AddStudentsToGroupTableViewController: NSFetchedResultsControllerDelegate {
+//
+//    func initializeFetchedResultsControllers() {
+//
+//        // instantiate the macro managed object context
+//        let moc = CoreDataStack.context
+//
+//        // fetch results for all StudentKidCD type students
+//        let requestKids = NSFetchRequest<NSFetchRequestResult>(entityName: "StudentKidCD")
+//        let kidNameSort = NSSortDescriptor(key: "firstName", ascending: true)
+//        requestKids.sortDescriptors = [kidNameSort]
+//
+//        fetchedResultsControllerKids = NSFetchedResultsController(fetchRequest: requestKids, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil) as? NSFetchedResultsController<StudentKidCD>
+//        fetchedResultsControllerKids.delegate = self
+//
+//        do {
+//            try fetchedResultsControllerKids.performFetch()
+//        } catch {
+//            fatalError("Failed to initialize StudentKidCD FetchedResultsController: \(error)")
+//        }
+//
+//        // fetch results for all StudentAdultCD type students
+//        let requestAdults = NSFetchRequest<NSFetchRequestResult>(entityName: "StudentAdultCD")
+//        let adultNameSort = NSSortDescriptor(key: "firstName", ascending: true)
+//        requestAdults.sortDescriptors = [adultNameSort]
+//
+//        fetchedResultsControllerAdults = NSFetchedResultsController(fetchRequest: requestAdults, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil) as? NSFetchedResultsController<StudentAdultCD>
+//        fetchedResultsControllerAdults.delegate = self
+//
+//        do {
+//            try fetchedResultsControllerAdults.performFetch()
+//        } catch {
+//            fatalError("Failed to initialize StudentADultCD FetchedResultsController: \(error)")
+//        }
+//    }
+//
+//
+//    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+//        tableView.beginUpdates()
+//    }
+//
+//    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+//        switch type {
+//        case .insert:
+//            tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
+//        case .delete:
+//            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .fade)
+//        case .move:
+//            break
+//        case .update:
+//            break
+//        }
+//    }
+//
+//    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+//        switch type {
+//        case .insert:
+//            tableView.insertRows(at: [newIndexPath!], with: .fade)
+//        case .delete:
+//            tableView.deleteRows(at: [indexPath!], with: .fade)
+//        case .update:
+//            tableView.reloadRows(at: [indexPath!], with: .fade)
+//        case .move:
+//            tableView.moveRow(at: indexPath!, to: newIndexPath!)
+//        }
+//    }
+//
+//    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+//        tableView.endUpdates()
+//    }
+//}

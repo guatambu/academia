@@ -131,19 +131,19 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        guard let kidMembers = kidMembers, let adultMembers = adultMembers else {
+        guard let kidMembersCD = kidMembersCD, let adultMembersCD = adultMembersCD else {
             
-            print("ERROR: nil value for either kidMembers and/or adultMemebers array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, numberOfRowsInSection:) - line 133")
+            print("ERROR: nil value for either kidMembersCD and/or adultMemebersCD array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, numberOfRowsInSection:) - line 133")
             return 0
         }
         
         if section == 0 {
             
-            return kidMembers.count
+            return kidMembersCD.count
             
         } else if section == 1 {
 
-            return adultMembers.count
+            return adultMembersCD.count
             
         } else {
             return 0
@@ -152,9 +152,9 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let kidMembers = kidMembers, let adultMembers = adultMembers else {
+        guard let kidMembersCD = kidMembersCD, let adultMembersCD = adultMembersCD else {
             
-            print("ERROR: nil value for either kidMembers and/or adultMemebers array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, cellForRowAt:) - line 154")
+            print("ERROR: nil value for either kidMembersCD and/or adultMemebersCD array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, cellForRowAt:) - line 154")
             return UITableViewCell()
         }
         
@@ -163,7 +163,7 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "reviewKidStudentCell", for: indexPath) as! ReviewKidStudentTableViewCell
             
-            cell.kidStudent = kidMembers[indexPath.row]
+            cell.kidStudentCD = kidMembersCD[indexPath.row]
             
             return cell
             
@@ -171,11 +171,8 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "reviewAdultStudentCell", for: indexPath) as! ReviewAdultStudentTableViewCell
             
-            if adultMembers.isEmpty {
-                cell.adultStudent = nil
-            } else {
-                cell.adultStudent = adultMembers[indexPath.row]
-            }
+            cell.adultStudentCD = adultMembersCD[indexPath.row]
+            
             return cell
         }
     }
@@ -210,32 +207,6 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
         if indexPath.section == 0 {
             // kidStudent setup
             
-//            let kid = kidMembers[indexPath.row]
-//
-//            destViewController.isOwner = false
-//            destViewController.isKid = true
-//            destViewController.username = kid.username
-//            destViewController.password = kid.password
-//            destViewController.firstName = kid.firstName
-//            destViewController.lastName = kid.lastName
-//            destViewController.parentGuardian = kid.parentGuardian
-//            destViewController.profilePic = kid.profilePic
-//            destViewController.birthdate = kid.birthdate
-//            destViewController.beltLevel = kid.belt.beltLevel
-//            destViewController.numberOfStripes = kid.belt.numberOfStripes
-//            destViewController.addressLine1 = kid.addressLine1
-//            destViewController.addressLine2 = kid.addressLine2
-//            destViewController.city = kid.city
-//            destViewController.state = kid.state
-//            destViewController.zipCode = kid.zipCode
-//            destViewController.phone = kid.phone
-//            destViewController.mobile = kid.mobile
-//            destViewController.email = kid.email
-//            destViewController.emergencyContactName = kid.emergencyContactName
-//            destViewController.emergencyContactRelationship = kid.emergencyContactRelationship
-//            destViewController.emergencyContactPhone = kid.emergencyContactPhone
-            
-            
             // CoreData version
             guard let kidMembersCD = kidMembersCD else {
                 
@@ -256,31 +227,7 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
             destViewController.studentKidCD = studentKidCD
             
         } else if indexPath.section == 1 {
-            // adultStudent setup
-//            let adult = adultMembers[indexPath.row]
-//
-//            destViewController.isOwner = false
-//            destViewController.isKid = false
-//            destViewController.username = adult.username
-//            destViewController.password = adult.password
-//            destViewController.firstName = adult.firstName
-//            destViewController.lastName = adult.lastName
-//            destViewController.profilePic = adult.profilePic
-//            destViewController.birthdate = adult.birthdate
-//            destViewController.beltLevel = adult.belt.beltLevel
-//            destViewController.numberOfStripes = adult.belt.numberOfStripes
-//            destViewController.addressLine1 = adult.addressLine1
-//            destViewController.addressLine2 = adult.addressLine2
-//            destViewController.city = adult.city
-//            destViewController.state = adult.state
-//            destViewController.zipCode = adult.zipCode
-//            destViewController.phone = adult.phone
-//            destViewController.mobile = adult.mobile
-//            destViewController.email = adult.email
-//            destViewController.emergencyContactName = adult.emergencyContactName
-//            destViewController.emergencyContactRelationship = adult.emergencyContactRelationship
-//            destViewController.emergencyContactPhone = adult.emergencyContactPhone
-            
+            // adultStudent setup      
             
             // CoreData version
             guard let adultMembersCD = adultMembersCD else {
@@ -352,27 +299,28 @@ extension ReviewAndCreateGroupTableViewController {
         guard let active = active else { print("fail active");  return }
         guard let groupDescription = groupDescription else { print("fail groupDescription"); return }
         
-        let newGroup = GroupCD(active: active, name: groupName, groupDescription: groupDescription)
+        let newGroupCD = GroupCD(active: active, name: groupName, groupDescription: groupDescription)
         
         // configure newGroup's "to-many" properties
         if let kidMembersCD = kidMembersCD {
             // if present in kidMembersCD array, add kids to newGroup's kidMembers
             if !kidMembersCD.isEmpty {
                 for kid in kidMembersCD {
-                    newGroup.addToKidMembers(kid)
+                    newGroupCD.addToKidMembers(kid)
                 }
             }
-        } else if let adultMembersCD = adultMembersCD {
+        }
+        if let adultMembersCD = adultMembersCD {
             // if present in adultMembersCD array, add adults to newGroup's adultMembers
             if !adultMembersCD.isEmpty {
                 for adult in adultMembersCD {
-                    newGroup.addToAdultMembers(adult)
+                    newGroupCD.addToAdultMembers(adult)
                 }
             }
         }
         
         // add the created and configured group to the source of truth
-        GroupCDModelController.shared.add(group: newGroup)
+        GroupCDModelController.shared.add(group: newGroupCD)
         // save to CoreData
         OwnerCDModelController.shared.saveToPersistentStorage()
     }

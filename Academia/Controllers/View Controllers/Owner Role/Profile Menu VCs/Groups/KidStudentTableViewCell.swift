@@ -25,12 +25,6 @@ class KidStudentTableViewCell: UITableViewCell {
     @IBOutlet weak var userThumbnailImageViewOutlet: UIImageView!
     @IBOutlet weak var cellTitleOutlet: UILabel!
     @IBOutlet weak var rightRedArrowImageViewOutlet: UIImageView!
-
-    var kidStudent: KidStudent? {
-        didSet {
-            updateViews()
-        }
-    }
     
     var studentKidCD: StudentKidCD? {
         didSet {
@@ -55,26 +49,14 @@ class KidStudentTableViewCell: UITableViewCell {
         
         print(isChosen)
         
-        // add/remove student to appropriate model controller's source of truth
-        guard let kidStudent = kidStudent else {
-            print("ERROR: nil value found while attepting to unwrap optional kidStudent in KidStudentTableViewCell.swift -> profilePicTapped() - line 59.")
-            return
-        }
-        
-        guard var kidMembers = delegate?.kidMembers else {
-            
-            print("ERRORL: nil value found while trying to unwrap kidMembers array via delegate in KidStudentTableViewCell.swift -> profilePicTapped() - line 65")
-            return
-        }
-        
         guard let studentKidCD = studentKidCD else {
-            print("ERROR: nil value found while attepting to unwrap optional kidStudentCD in KidStudentTableViewCell.swift -> profilePicTapped() - line 71.")
+            print("ERROR: nil value found while attepting to unwrap optional kidStudentCD in KidStudentTableViewCell.swift -> profilePicTapped() - line 53.")
             return
         }
         
         guard var kidMembersCD = delegate?.kidMembersCD else {
             
-            print("ERRORL: nil value found while trying to unwrap kidMembersCD array via delegate in KidStudentTableViewCell.swift -> profilePicTapped() - line 77")
+            print("ERRORL: nil value found while trying to unwrap kidMembersCD array via delegate in KidStudentTableViewCell.swift -> profilePicTapped() - line 59")
             return
         }
         
@@ -82,11 +64,6 @@ class KidStudentTableViewCell: UITableViewCell {
         if isChosen {
             
             roundProfilePicView.borderColor = beltBuilder.redBeltRed
-            print("kidMembers: \(kidMembers)")
-            kidMembers.append(kidStudent)
-            print("kidMembers: \(kidMembers)")
-            delegate?.kidMembers = kidMembers
-            print("delegate kidMembers: \(String(describing: delegate?.kidMembers))")
             
             // CoreData version
             print("kidMembersCD: \(kidMembersCD)")
@@ -98,7 +75,6 @@ class KidStudentTableViewCell: UITableViewCell {
         } else {
             
             roundProfilePicView.borderColor = UIColor.clear
-            delegate!.kidMembers = delegate!.kidMembers.filter({ $0 != kidStudent })
             
             // CoreData version
             delegate!.kidMembersCD = delegate!.kidMembersCD.filter({ $0 != studentKidCD })
@@ -109,15 +85,6 @@ class KidStudentTableViewCell: UITableViewCell {
     // MARK: - updateViews()
     
     func updateViews() {
-        
-//        guard let kidStudent = kidStudent else {
-//            print("ERROR: nil value found while attepting to unwrap optional kidStudent in KidStudentTableViewCell.swift -> updateViews() - line 93.")
-//            return
-//        }
-        
-        
-//        userThumbnailImageViewOutlet.image = kidStudent.profilePic
-//        cellTitleOutlet.text = "\(kidStudent.firstName) \(kidStudent.lastName)"
         
         // CoreData verison
         guard let studentKidCD = studentKidCD else {

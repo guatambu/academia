@@ -396,7 +396,7 @@ extension ClassInfoDetailsTableViewController {
                 
                 let groupCD = sortedClassGroups[i - 1] as! GroupCD
                 
-                if groupCounter <= i {
+                if groupCounter < i {
                     groupNamesString += "\(groupCD.name ?? "")"
                 } else {
                     groupNamesString += "\(groupCD.name ?? ""), "

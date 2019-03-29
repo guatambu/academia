@@ -42,7 +42,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="qTK-sj-pIX">
             <objects>
-                <tabBarController storyboardIdentifier="toStudentDashbooard" id="exi-0H-Cuo" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="toStudentDashboard" id="exi-0H-Cuo" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KRc-lC-0me">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

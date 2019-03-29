@@ -151,6 +151,7 @@ class LoginViewController: UIViewController {
                             // pass uuid to ActiveUserModelController.activeUsers
                             ActiveUserModelController.shared.activeUser.append(uuid)                            
                         }
+                        
                         // login successful, leave function
                         return
                         
@@ -181,6 +182,7 @@ class LoginViewController: UIViewController {
                             // pass uuid to ActiveUserModelController.activeUsers
                             ActiveUserModelController.shared.activeUser.append(uuid)
                         }
+                        
                         // login successful, leave function
                         return
                         
@@ -211,6 +213,7 @@ class LoginViewController: UIViewController {
                             // pass uuid to ActiveUserModelController.activeUsers
                             ActiveUserModelController.shared.activeUser.append(uuid)
                         }
+                        
                         // login successful, leave function
                         return
                         
@@ -271,12 +274,13 @@ extension LoginViewController {
     func performTabBarControllerSegue(storyboardString: String, tabBarControllerIdentifier: String) {
         
         // programmatically performing the segue
-        
+            
         // instantiate the relevant storyboard
         let mainView: UIStoryboard = UIStoryboard(name: storyboardString, bundle: nil)
         
         // create the UITabBarController segue programmatically - MODAL
         if let tabBarDestViewController = (mainView.instantiateViewController(withIdentifier: tabBarControllerIdentifier) as? UITabBarController) {
+            
             self.present(tabBarDestViewController, animated: true, completion: nil)
         }
         
