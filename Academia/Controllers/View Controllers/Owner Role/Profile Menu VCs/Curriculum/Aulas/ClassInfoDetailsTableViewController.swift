@@ -103,7 +103,13 @@ class ClassInfoDetailsTableViewController: UITableViewController {
         let cancel = UIAlertAction(title: "cancel", style: UIAlertAction.Style.cancel, handler: nil)
         let deleteAccount = UIAlertAction(title: "delete", style: UIAlertAction.Style.destructive) { (alert) in
             
-            AulaModelController.shared.delete(aula: AulaModelController.shared.aulas[0])
+            // unwrap the self.aulaCD? property
+            guard let aulaCD = self.aulaCD else {
+                print("ERROR: nil value found for self.aulaCD in ClassInfoDetailsTableViewController -> deleteClassButtonTapped(sender:) - line 107.")
+                return
+            }
+            // remove from CoreData store
+            AulaCDModelController.shared.remove(aula: aulaCD)
             
             // programmatically performing the segue
             guard let viewControllers = self.navigationController?.viewControllers else { return }

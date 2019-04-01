@@ -104,8 +104,6 @@ class PaymentProgramInfoDetailsViewController: UIViewController {
         let cancel = UIAlertAction(title: "cancel", style: UIAlertAction.Style.cancel, handler: nil)
         let deleteAccount = UIAlertAction(title: "delete", style: UIAlertAction.Style.destructive) { (alert) in
             
-//            PaymentProgramModelController.shared.delete(paymentProgram: PaymentProgramModelController.shared.paymentPrograms[0])
-            
             guard let paymentProgram = self.paymentProgramCD else {
                 print("ERROR: nil value found for paymentProgramCD in PaymentProgramInfoDetailsViewController.swift -> deletePaymentProgramButtonTapped(sender:) - line 111.")
                 return

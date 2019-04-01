@@ -104,8 +104,6 @@ class LocationInfoDetailsViewController: UIViewController {
         let cancel = UIAlertAction(title: "cancel", style: UIAlertAction.Style.cancel, handler: nil)
         let deleteAccount = UIAlertAction(title: "delete account", style: UIAlertAction.Style.destructive) { (alert) in
             
-//            LocationModelController.shared.delete(location: LocationModelController.shared.locations[0])
-            
             guard let location = self.locationCD else {
                 print("ERROR: nil value found for location in LocationInfoDetailsViewController.swift -> deleteAccountButtonTapped(sender:) - line 110.")
                 return

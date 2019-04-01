@@ -131,8 +131,6 @@ class OwnerInfoDetailsViewController: UIViewController {
         let cancel = UIAlertAction(title: "cancel", style: UIAlertAction.Style.cancel, handler: nil)
         let deleteAccount = UIAlertAction(title: "delete account", style: UIAlertAction.Style.destructive) { (alert) in
             
-//            OwnerModelController.shared.delete(owner: OwnerModelController.shared.owners[0])
-            
             guard let owner = self.activeOwner else {
                 print("ERROR: nil value found for activeOwner in OwnerInfoDetailsViewController.swift -> deleteAccountButtonTapped(sender:) - line 117.")
                 return
@@ -149,10 +147,6 @@ class OwnerInfoDetailsViewController: UIViewController {
             let destVCNavigation = UINavigationController(rootViewController: destViewController)
             // perform the segure - present viewController of choice
             self.navigationController?.present(destVCNavigation, animated: true, completion: nil)
-            
-            // perform segue to specified viewController removing all others from Navigation Stack
-//            self.navigationController?.popToViewController(destVCNavigation, animated: true)
-            // why can't i 'pop' to this VC?  if not the way to go, then, is navigation stack clean?
             
             // set nav bar controller appearance
             self.navigationController?.navigationBar.tintColor = self.beltBuilder.redBeltRed
