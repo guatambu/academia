@@ -691,9 +691,6 @@ extension ClassTimeViewController: UIPickerViewDelegate, UIPickerViewDataSource 
         default:
             print("ERROR: unexpected value for MinutesCode in ClassTimeViewController.swift -> timeCodeReader(timeCode:) - line 573")
         }
-        
-        
     }
-
     
 }

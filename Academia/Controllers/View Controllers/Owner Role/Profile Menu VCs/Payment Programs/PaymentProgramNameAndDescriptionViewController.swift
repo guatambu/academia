@@ -183,10 +183,6 @@ class PaymentProgramNameAndDescriptionViewController: UIViewController, UITextIn
         destViewController.programDescription = programDescription
         
         destViewController.inEditingMode = inEditingMode
-        destViewController.paymentProgramToEdit = paymentProgramToEdit
-        destViewController.billingTypes = paymentProgramToEdit?.billingTypes ?? []
-        destViewController.billingDates = paymentProgramToEdit?.billingDates ?? []
-        destViewController.signatureTypes = paymentProgramToEdit?.signatureTypes ?? []
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
         updatePaymentProgramInfo()
@@ -234,15 +230,15 @@ extension PaymentProgramNameAndDescriptionViewController {
     // owner setup for editing mode
     func paymentProgramEditingSetup() {
         
-        guard let paymentProgramToEdit = paymentProgramToEdit else {
+        guard let paymentProgramCDToEdit = paymentProgramCDToEdit else {
             return
         }
         
-        addPaymentProgramNameDescriptionLabelOutlet.text = "Program: \(paymentProgramToEdit.programName)"
+        addPaymentProgramNameDescriptionLabelOutlet.text = "Program: \(paymentProgramCDToEdit.programName ?? "")"
         
-        programDescriptionTextView.attributedText = NSAttributedString(string: paymentProgramToEdit.paymentDescription, attributes: beltBuilder.avenirFontBlack)
+        programDescriptionTextView.attributedText = NSAttributedString(string: (paymentProgramCDToEdit.paymentDescription ?? ""), attributes: beltBuilder.avenirFontBlack)
 
-        programNameTextField.text = paymentProgramToEdit.programName
+        programNameTextField.text = "\(paymentProgramCDToEdit.programName ?? "")"
     }
 }
 

@@ -13,8 +13,8 @@ class OwnerPaymentProgramsTableViewController: UITableViewController {
     
     // MARK: Properties
     
-    // create a fetchedRequestController with predicate to grab the current PaymentProgramCD objects... use these as the source for the tableView DataSource  methods
-    var fetchedResultsController: NSFetchedResultsController<PaymentProgramCD>!
+//    // create a fetchedRequestController with predicate to grab the current PaymentProgramCD objects... use these as the source for the tableView DataSource  methods
+//    var fetchedResultsController: NSFetchedResultsController<PaymentProgramCD>!
     
     let beltBuilder = BeltBuilder()
 
@@ -23,9 +23,9 @@ class OwnerPaymentProgramsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         self.navigationController?.navigationBar.tintColor = UIColor(displayP3Red: 241.0, green: 0.0, blue: 0.0, alpha: 1.0)
-        
-        // create fetch request and initialize results
-        initializeFetchedResultsController()
+//        
+//        // create fetch request and initialize results
+//        initializeFetchedResultsController()
         
         tableView.reloadData()
     }
@@ -49,13 +49,13 @@ class OwnerPaymentProgramsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-//        return PaymentProgramModelController.shared.paymentPrograms.count
+        return PaymentProgramCDModelController.shared.paymentPrograms.count
         
-        guard let sections = fetchedResultsController.sections else {
-            fatalError("No sections in fetchedResultsController")
-        }
-        let sectionInfo = sections[section]
-        return sectionInfo.numberOfObjects
+//        guard let sections = fetchedResultsController.sections else {
+//            fatalError("No sections in fetchedResultsController")
+//        }
+//        let sectionInfo = sections[section]
+//        return sectionInfo.numberOfObjects
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -63,9 +63,10 @@ class OwnerPaymentProgramsTableViewController: UITableViewController {
         // Configure the cell...
         if let cell = tableView.dequeueReusableCell(withIdentifier: "generalMenuCell", for: indexPath) as? GeneralMenuTableViewCell {
             
-            guard let myCell = self.fetchedResultsController?.object(at: indexPath) else {
-                fatalError("Attempt to configure cell without a managed object")
-            }
+            let myCell = PaymentProgramCDModelController.shared.paymentPrograms[indexPath.row]
+//                else {
+//                fatalError("Attempt to configure cell without a managed object")
+//            }
 //            let myCell = PaymentProgramModelController.shared.paymentPrograms[indexPath.row]
             
             cell.cellTitleOutlet.text = myCell.programName
@@ -124,63 +125,63 @@ class OwnerPaymentProgramsTableViewController: UITableViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         
         // get the desired paymentProgramCD for the selected cell
-        let paymentProgramCD = fetchedResultsController.object(at: indexPath)
+        let paymentProgramCD = PaymentProgramCDModelController.shared.paymentPrograms[indexPath.row]
         // pass CoreData payment program on to InfoDetails view
         destViewController.paymentProgramCD = paymentProgramCD
     }
 }
 
 
-// MARK: - NSFetchedREsultsController initializer method
-extension OwnerPaymentProgramsTableViewController: NSFetchedResultsControllerDelegate {
-    
-    func initializeFetchedResultsController() {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "PaymentProgramCD")
-        let programNameSort = NSSortDescriptor(key: "programName", ascending: true)
-        request.sortDescriptors = [programNameSort]
-        
-        let moc = CoreDataStack.context
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil) as? NSFetchedResultsController<PaymentProgramCD>
-        fetchedResultsController.delegate = self
-        
-        do {
-            try fetchedResultsController.performFetch()
-        } catch {
-            fatalError("Failed to initialize FetchedResultsController: \(error)")
-        }
-    }
-    
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.beginUpdates()
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-        switch type {
-        case .insert:
-            tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
-        case .delete:
-            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .fade)
-        case .move:
-            break
-        case .update:
-            break
-        }
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch type {
-        case .insert:
-            tableView.insertRows(at: [newIndexPath!], with: .fade)
-        case .delete:
-            tableView.deleteRows(at: [indexPath!], with: .fade)
-        case .update:
-            tableView.reloadRows(at: [indexPath!], with: .fade)
-        case .move:
-            tableView.moveRow(at: indexPath!, to: newIndexPath!)
-        }
-    }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.endUpdates()
-    }
-}
+//// MARK: - NSFetchedREsultsController initializer method
+//extension OwnerPaymentProgramsTableViewController: NSFetchedResultsControllerDelegate {
+//
+//    func initializeFetchedResultsController() {
+//        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "PaymentProgramCD")
+//        let programNameSort = NSSortDescriptor(key: "programName", ascending: true)
+//        request.sortDescriptors = [programNameSort]
+//
+//        let moc = CoreDataStack.context
+//        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil) as? NSFetchedResultsController<PaymentProgramCD>
+//        fetchedResultsController.delegate = self
+//
+//        do {
+//            try fetchedResultsController.performFetch()
+//        } catch {
+//            fatalError("Failed to initialize FetchedResultsController: \(error)")
+//        }
+//    }
+//
+//    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+//        tableView.beginUpdates()
+//    }
+//
+//    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+//        switch type {
+//        case .insert:
+//            tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
+//        case .delete:
+//            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .fade)
+//        case .move:
+//            break
+//        case .update:
+//            break
+//        }
+//    }
+//
+//    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+//        switch type {
+//        case .insert:
+//            tableView.insertRows(at: [newIndexPath!], with: .fade)
+//        case .delete:
+//            tableView.deleteRows(at: [indexPath!], with: .fade)
+//        case .update:
+//            tableView.reloadRows(at: [indexPath!], with: .fade)
+//        case .move:
+//            tableView.moveRow(at: indexPath!, to: newIndexPath!)
+//        }
+//    }
+//
+//    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+//        tableView.endUpdates()
+//    }
+//}

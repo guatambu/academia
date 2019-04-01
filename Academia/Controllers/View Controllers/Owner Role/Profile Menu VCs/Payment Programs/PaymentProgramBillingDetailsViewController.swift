@@ -9,7 +9,6 @@
 import UIKit
 
 class PaymentProgramBillingDetailsViewController: UIViewController, BillingTypeDelegate, BillingDateDelegate, SignatureTypeDelegate {
-    
 
     // MARK: - Properties
     
@@ -19,9 +18,9 @@ class PaymentProgramBillingDetailsViewController: UIViewController, BillingTypeD
     var billingOptionsString = ""
     var billingTypeString = ""
     var signatureTypeString = ""
-    var billingTypes: [Billing.BillingType]?
-    var billingDates: [Billing.BillingDate]?
-    var signatureTypes: [Billing.BillingSignature]?
+    var billingTypes: [Billing.BillingType] = []
+    var billingDates: [Billing.BillingDate] = []
+    var signatureTypes: [Billing.BillingSignature] = []
     
     var inEditingMode: Bool?
     var paymentProgramToEdit: PaymentProgram?
@@ -89,11 +88,6 @@ class PaymentProgramBillingDetailsViewController: UIViewController, BillingTypeD
     
     @objc func saveButtonTapped() {
         
-        guard let billingTypes = billingTypes, let billingDates = billingDates, let signatureTypes = signatureTypes else {
-            print("ERROR: nil values for billingTypes, billingDates, and signatureTypes in PaymentProgramBillingDetailsVC -> saveButtonTapped() - line 89")
-            return
-        }
-        
         // Location update profile info
         if billingTypes.count != 0 && billingDates.count != 0 && signatureTypes.count != 0 {
             
@@ -101,7 +95,6 @@ class PaymentProgramBillingDetailsViewController: UIViewController, BillingTypeD
             
             self.returnToPaymentProgramInfo()
             
-            print("update payment program name: \(PaymentProgramModelController.shared.paymentPrograms[0].programName)")
         } else {
             
             // fire haptic feedback for error
@@ -132,10 +125,6 @@ class PaymentProgramBillingDetailsViewController: UIViewController, BillingTypeD
         let destViewController = mainView.instantiateViewController(withIdentifier: "toPaymentProgramAgreement") as! PaymentProgramAgreementViewController
         
         // run check to see if billing details are properly selectedby user
-        guard let billingTypes = billingTypes, let billingDates = billingDates, let signatureTypes = signatureTypes else {
-            print("ERROR: nil values for billingTypes, billingDates, and signatureTypes in PaymentProgramBillingDetailsVC -> nextButtonTapped() - line 117")
-            return
-        }
         guard billingTypes.count != 0 || billingDates.count != 0 || signatureTypes.count != 0 else {
             
             // fire haptic feedback for error
@@ -186,60 +175,40 @@ extension PaymentProgramBillingDetailsViewController {
     
     // Update Function for case where want to update user info without a segue
     func updatePaymentProgramInfo() {
-        guard let paymentProgramToEdit = paymentProgramToEdit else { return }
-        
-        guard let billingTypes = billingTypes, let billingDates = billingDates, let signatureTypes = signatureTypes else {
-            print("ERROR: nil values for billingTypes, billingDates, and signatureTypes in PaymentProgramBillingDetailsVC -> updatePaymentProgramInfo() - line 160")
-            return
-        }
         // payment program update info
         if billingTypes.count != 0 && billingDates.count != 0 && signatureTypes.count != 0 {
-            PaymentProgramModelController.shared.update(paymentProgram: paymentProgramToEdit, programName: nil, active: nil, paymentDescription: nil, billingTypes: billingTypes, billingDates: billingDates, signatureTypes: signatureTypes, paymentAgreement: nil)
-            print("update payment program billingTypes: \(PaymentProgramModelController.shared.paymentPrograms[0].billingTypes)")
+            
+            print("billingTypes in update function in PaymentProgramBillingDetailsViewController.swift: \(billingTypes)")
+            print("billingDates in update function in PaymentProgramBillingDetailsViewController.swift: \(billingDates)")
+            print("signatureTypes in update function in PaymentProgramBillingDetailsViewController.swift: \(signatureTypes)")
             
             // CoreData PaymentProgramCD update info
             guard let paymentProgramCDToEdit = paymentProgramCDToEdit else { return }
             
+            paymentProgramCDToEdit.paymentBillingType = []
+            paymentProgramCDToEdit.paymentBillingSignature = []
+            paymentProgramCDToEdit.paymentBillingDate = []
+            
             // loop through current owner created billingDates array
             for existingBillingDate in billingDates {
-                // check to see if current paymentProgramCD actually has existingBillingDate, this should not fail
-                guard let containsExistingBillingDate =  paymentProgramCDToEdit.paymentBillingDate?.contains(existingBillingDate.rawValue) else {
-                    print("ERROR: nil value found for paymentProgramCD.paymentBillingDate?.contains in PaymentProgramBillingDetailsViewController.swift -> updatePaymentProgramInfo() - line 205.")
-                    return
-                }
-                // if the existingBillingDate is not present, add it to the paymentProgramCD object
-                if containsExistingBillingDate == false {
-                    let existingBillingDateString = PaymentBillingDateCD(billingDate: existingBillingDate.rawValue)
-                    paymentProgramCDToEdit.addToPaymentBillingDate(existingBillingDateString)
-                }
+                
+                let existingBillingDateString = PaymentBillingDateCD(billingDate: existingBillingDate.rawValue)
+                paymentProgramCDToEdit.addToPaymentBillingDate(existingBillingDateString)
             }
             
             // loop through current owner created signatureTypes array
             for existingBillingSignature in signatureTypes {
-                // check to see if current paymentProgramCD actually has existingBillingSignature, this should not fail
-                guard let containsExistingBillingSignature =  paymentProgramCDToEdit.paymentBillingSignature?.contains(existingBillingSignature.rawValue) else {
-                    print("ERROR: nil value found for paymentProgramCD.paymentBillingSignature?.contains in PaymentProgramBillingDetailsViewController.swift -> updatePaymentProgramInfo() - line 220.")
-                    return
-                }
-                // if the existingBillingSignature is not present, add it to the paymentProgramCD object
-                if containsExistingBillingSignature == false {
-                    let existingBillingSignatureString = PaymentBillingSignatureCD(billingSignature: existingBillingSignature.rawValue)
-                    paymentProgramCDToEdit.addToPaymentBillingSignature(existingBillingSignatureString)
-                }
+    
+                let existingBillingSignatureString = PaymentBillingSignatureCD(billingSignature: existingBillingSignature.rawValue)
+                paymentProgramCDToEdit.addToPaymentBillingSignature(existingBillingSignatureString)
             }
             
             // loop through current owner created billingTypes array
             for existingBillingType in billingTypes {
-                // check to see if current paymentProgramCD actually has existingBillingSignature, this should not fail
-                guard let containsExistingBillingType =  paymentProgramCDToEdit.paymentBillingType?.contains(existingBillingType.rawValue) else {
-                    print("ERROR: nil value found forType?.contains in PaymentProgramBillingDetailsViewController.swift -> updatePaymentProgramInfo() - line 220.")
-                    return
-                }
-                // if the existingBillingSignature is not present, add it to the paymentProgramCD object
-                if containsExistingBillingType == false {
-                    let existingBillingTypeString = PaymentBillingTypeCD(billingType: existingBillingType.rawValue)
-                    paymentProgramCDToEdit.addToPaymentBillingType(existingBillingTypeString)
-                }
+                
+                let existingBillingTypeString = PaymentBillingTypeCD(billingType: existingBillingType.rawValue)
+                paymentProgramCDToEdit.addToPaymentBillingType(existingBillingTypeString)
+                
             }
         }
         OwnerCDModelController.shared.saveToPersistentStorage()
@@ -258,14 +227,47 @@ extension PaymentProgramBillingDetailsViewController {
     
     // owner setup for editing mode
     func paymentProgramEditingSetup() {
-        guard let paymentProgramToEdit = paymentProgramToEdit else {
+        guard let paymentProgramCDToEdit = paymentProgramCDToEdit else {
             return
         }
-        addBillingDetailsLabelOutlet.text = "Program: \(paymentProgramToEdit.programName)"
         
-        billingTypes = paymentProgramToEdit.billingTypes
-        billingDates = paymentProgramToEdit.billingDates
-        signatureTypes = paymentProgramToEdit.signatureTypes
+        addBillingDetailsLabelOutlet.text = "Program: \(paymentProgramCDToEdit.programName ?? "")"
+        
+        // billingTypes
+        let billingTypeSort = NSSortDescriptor(key: "billingType", ascending: true)
+        let billingTypeCDArray = paymentProgramCDToEdit.paymentBillingType?.sortedArray(using: [billingTypeSort]) as! [PaymentBillingTypeCD]
+        
+        for type in billingTypeCDArray {
+                
+            if let bt = Billing.BillingType(rawValue: type.billingType ?? "") {
+                
+                billingTypes.append(bt)
+            }
+        }
+        
+        //billingDates
+        let billingDateSort = NSSortDescriptor(key: "billingDate", ascending: true)
+        let billingDateCDArray = paymentProgramCDToEdit.paymentBillingDate?.sortedArray(using: [billingDateSort]) as! [PaymentBillingDateCD]
+        
+        for date in billingDateCDArray {
+                
+            if let bd = Billing.BillingDate(rawValue: date.billingDate ?? "") {
+                
+                billingDates.append(bd)
+            }
+        }
+        
+        // signatureTypes
+        let billingSignatureSort = NSSortDescriptor(key: "billingSignature", ascending: true)
+        let billingSignatureCDArray = paymentProgramCDToEdit.paymentBillingSignature?.sortedArray(using: [billingSignatureSort]) as! [PaymentBillingSignatureCD]
+        
+        for signature in billingSignatureCDArray {
+        
+            if let bs = Billing.BillingSignature(rawValue: signature.billingSignature ?? "") {
+                
+                signatureTypes.append(bs)
+            }
+        }
         
         billingTypeCollectionView.reloadData()
         billingDateCollectionView.reloadData()
@@ -300,7 +302,6 @@ extension PaymentProgramBillingDetailsViewController: UICollectionViewDelegate, 
             cell.delegate = self
             
             cell.billingType = billing.types[indexPath.row]
-            cell.selectedBillingTypes = paymentProgramToEdit?.billingTypes
             
             return cell
             
@@ -312,7 +313,6 @@ extension PaymentProgramBillingDetailsViewController: UICollectionViewDelegate, 
             cell.delegate = self
             
             cell.billingDate = billing.dates[indexPath.row]
-            cell.selectedBillingDates = paymentProgramToEdit?.billingDates
             
             return cell
             
@@ -324,7 +324,6 @@ extension PaymentProgramBillingDetailsViewController: UICollectionViewDelegate, 
             cell.delegate = self
             
             cell.signatureType = billing.signatures[indexPath.row]
-            cell.selectedSignatureTypes = paymentProgramToEdit?.signatureTypes
             
             return cell
         

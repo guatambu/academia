@@ -103,7 +103,6 @@ class PaymentProgramAgreementViewController: UIViewController {
             
             self.returnToPaymentProgramInfo()
             
-            print("update payment program name: \(PaymentProgramModelController.shared.paymentPrograms[0].programName)")
         }
         inEditingMode = false
     }
@@ -171,11 +170,11 @@ extension PaymentProgramAgreementViewController {
     
     // Update Function for case where want to update user info without a segue
     func updatePaymentProgramInfo() {
-        guard let paymentProgramToEdit = paymentProgramToEdit else { return }
+//        guard let paymentProgramToEdit = paymentProgramToEdit else { return }
         // payment program update info
         if programAgreementTextView.text != "" {
-            PaymentProgramModelController.shared.update(paymentProgram: paymentProgramToEdit, programName: nil, active: nil, paymentDescription: nil, billingTypes: nil, billingDates: nil, signatureTypes: nil, paymentAgreement: programAgreementTextView.text)
-            print("update payment program name: \(PaymentProgramModelController.shared.paymentPrograms[0].paymentAgreement)")
+//            PaymentProgramModelController.shared.update(paymentProgram: paymentProgramToEdit, programName: nil, active: nil, paymentDescription: nil, billingTypes: nil, billingDates: nil, signatureTypes: nil, paymentAgreement: programAgreementTextView.text)
+//            print("update payment program name: \(PaymentProgramModelController.shared.paymentPrograms[0].paymentAgreement)")
             
             
             // CoreData PaymentProgramCD update info
@@ -183,8 +182,6 @@ extension PaymentProgramAgreementViewController {
             
             PaymentProgramCDModelController.shared.update(paymentProgramn: paymentProgramCDToEdit, active: nil, programName: nil, paymentAgreement: programAgreementTextView.text, paymentDescription: nil)
         }
-        
-    
         OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
@@ -208,13 +205,13 @@ extension PaymentProgramAgreementViewController {
     // owner setup for editing mode
     func paymentProgramEditingSetup() {
         
-        guard let paymentProgramToEdit = paymentProgramToEdit else {
+        guard let paymentProgramCDToEdit = paymentProgramCDToEdit else {
             return
         }
         
-        addPaymentProgramAgreementLabelOutlet.text = "Program: \(paymentProgramToEdit.programName)"
+        addPaymentProgramAgreementLabelOutlet.text = "Program: \(paymentProgramCDToEdit.programName ?? "")"
         
-        programAgreementTextView.text = paymentProgramToEdit.paymentAgreement
+        programAgreementTextView.text = paymentProgramCDToEdit.paymentAgreement
     }
 }
 
