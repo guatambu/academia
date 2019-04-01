@@ -10,11 +10,6 @@ import UIKit
 import CoreData
 
 class GroupInfoDetailsTableViewController: UITableViewController {
-    
-    
-//    // create a fetchedRequestController with predicate to grab the current GroupCD's StudentKidCD and StudentAdultCD  objects... use these as the source for the tableView DataSource  methods
-//    var fetchedResultsControllerKids: NSFetchedResultsController<StudentKidCD>!
-//    var fetchedResultsControllerAdults: NSFetchedResultsController<StudentAdultCD>!
 
     // MARK: - Properties
     var group: Group?
@@ -40,10 +35,6 @@ class GroupInfoDetailsTableViewController: UITableViewController {
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
-        
-//        // create fetch request and initialize results
-//        initializeFetchedResultsControllerKids()
-//        initializeFetchedResultsControllerAdults()
         
         populateCompletedGroupInfo()
         
@@ -99,8 +90,6 @@ class GroupInfoDetailsTableViewController: UITableViewController {
         let cancel = UIAlertAction(title: "cancel", style: UIAlertAction.Style.cancel, handler: nil)
         let deleteAccount = UIAlertAction(title: "delete", style: UIAlertAction.Style.destructive) { (alert) in
             
-//            GroupModelController.shared.delete(group: GroupModelController.shared.groups[0])
-            
             guard let groupCD = self.groupCD else {
                 print("ERROR: nil value found for groupCD in GroupInfoDetailsViewController.swift -> deleteGroupButtonTapped(sender:) - line 92.")
                 return
@@ -151,10 +140,7 @@ class GroupInfoDetailsTableViewController: UITableViewController {
         // set properties on destinationVC
         destViewController.inEditingMode = true
         
-        groupToEdit = group
-        destViewController.groupToEdit = groupToEdit
         destViewController.groupCDToEdit = groupCD
-        
     }
     
     
@@ -353,24 +339,6 @@ extension GroupInfoDetailsTableViewController {
     
     func populateCompletedGroupInfo() {
         
-//        guard let group = group else {
-//            print("there was a nil value in the group passed to GroupInfoDetailsTableViewController.swift -> populateCompletedGroupInfo() - line 256")
-//            return
-//        }
-//        // VC title
-//        groupNameLabelOutlet.text = group.name
-//        // active outlet
-//        if group.active == true {
-//            
-//            activeLabelOutlet.text = "active: YES"
-//        } else {
-//            activeLabelOutlet.text = "active: NO"
-//        }
-//        // lastChanged outlet
-//        lastChangedLabelOutlet.text = "\(group.dateEdited)"
-//        // payment program description
-//        groupDescriptionTextView.text = group.description
-        
         // CoreData version
         guard let groupCD = groupCD else {
             print("there was a nil value in the groupCD passed to GroupInfoDetailsTableViewController.swift -> populateCompletedGroupInfo() - line 256")
@@ -392,54 +360,10 @@ extension GroupInfoDetailsTableViewController {
             lastChangedLabelOutlet.text = "\(dateEdited)"
         }
         // payment program description
-        if let description = groupCD.groupDescription {
-            
-            groupDescriptionTextView.text = "\(description)"
-        }
-        
+        groupDescriptionTextView.text = "\(groupCD.groupDescription ?? "")"
     }
 }
 
-
-//// MARK: - NSFetchedREsultsController initializer method
-//extension GroupInfoDetailsTableViewController: NSFetchedResultsControllerDelegate {
-//
-//    func initializeFetchedResultsControllerKids() {
-//
-//        let requestKids = NSFetchRequest<NSFetchRequestResult>(entityName: "GroupCD")
-//        requestKids.predicate = NSPredicate(format: <#T##String#>, <#T##args: CVarArg...##CVarArg#>)
-//        let nameSort = NSSortDescriptor(key: "kidMembers.firstName", ascending: true)
-//        requestKids.sortDescriptors = [nameSort]
-//
-//        let moc = CoreDataStack.context
-//        fetchedResultsControllerKids = NSFetchedResultsController(fetchRequest: requestKids, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil) as? NSFetchedResultsController<StudentKidCD>
-//        fetchedResultsControllerKids.delegate = self
-//
-//        do {
-//            try fetchedResultsControllerKids.performFetch()
-//        } catch {
-//            fatalError("Failed to initialize FetchedResultsControllerKids: \(error)")
-//        }
-//    }
-//
-//    func initializeFetchedResultsControllerAdults() {
-//
-//        let requestAdults = NSFetchRequest<NSFetchRequestResult>(entityName: "GroupCD")
-//        let groupSort = NSSortDescriptor(key: "adultMembers", ascending: true)
-//        let nameSort = NSSortDescriptor(key: "firstName", ascending: true)
-//        requestAdults.sortDescriptors = [groupSort, nameSort]
-//
-//        let moc = CoreDataStack.context
-//        fetchedResultsControllerAdults = NSFetchedResultsController(fetchRequest: requestAdults, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil) as? NSFetchedResultsController<StudentAdultCD>
-//        fetchedResultsControllerAdults.delegate = self
-//
-//        do {
-//            try fetchedResultsControllerAdults.performFetch()
-//        } catch {
-//            fatalError("Failed to initialize FetchedResultsControllerAdults: \(error)")
-//        }
-//    }
-//}
 
 // MARK: - Programmatic Segues to return to proper ProfileFlow storyboard and group profileVC
 extension UIViewController {

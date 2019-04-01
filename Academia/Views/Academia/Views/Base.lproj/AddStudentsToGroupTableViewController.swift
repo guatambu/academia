@@ -12,14 +12,6 @@ import CoreData
 class AddStudentsToGroupTableViewController: UITableViewController, GroupMembersDelegate {
     
     // MARK: - Properties
-    
-//    // Mock Data
-//    var mockAdults = [MockData.adultA, MockData.adultB]
-//    var mockKids = [MockData.kidA, MockData.kidB]
-//
-//    // create a fetchedRequestController with predicate to grab the current GroupCD objects... use these as the source for the tableView DataSource  methods
-//    var fetchedResultsControllerKids: NSFetchedResultsController<StudentKidCD>!
-//    var fetchedResultsControllerAdults: NSFetchedResultsController<StudentAdultCD>!
 
     var groupName: String?
     var active: Bool = true
@@ -262,11 +254,6 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
             
             // CoreData version
             
-            let kidMembersCDSet = NSSet(array: kidMembersCD)
-            
-            let nameSort = NSSortDescriptor(key: "firstName", ascending: true)
-            let kids = kidMembersCDSet.sortedArray(using: [nameSort])
-            
             let studentKidCD = StudentKidCDModelController.shared.studentKids[indexPath.row]
             
             destViewController.studentKidCD = studentKidCD
@@ -299,42 +286,21 @@ extension AddStudentsToGroupTableViewController {
     
     // Update Function for case where want to update user info without a segue
     func updateGroupInfo() {
-        guard let group = groupToEdit else { return }
-        
-        // group update info
-        GroupModelController.shared.update(group: group, active: nil, name: nil, description: nil, kidMembers: kidMembers, adultMembers: adultMembers, kidStudent: nil, adultStudent: nil)
-        print("how many members in the group: \(GroupModelController.shared.groups.count)")
-        
         
         // CoreData GroupCD update info
         guard let groupCDToEdit = groupCDToEdit else { return }
         
-        guard let kidsExisting = groupCDToEdit.kidMembers else { return }
+        groupCDToEdit.adultMembers = []
+        groupCDToEdit.kidMembers = []
         
-        guard let adultsExisting = groupCDToEdit.adultMembers else { return }
-        
-        // here we want to loop through the membersCD arrays and check the existing corresponding group members NSSet to see if it contains the current iterated member object and if it does NOT, then add that iterated member object to the group members NSSet
-        
-        for kid in kidMembersCD {
-            // check to see if current kidMembersCD actually has kid, this should not fail
-            let containsKid =  kidsExisting.contains(kid)
-            // if the kid is not present, add it to the groupCDToEdit object
-            if containsKid == false {
-                
-                groupCDToEdit.addToKidMembers(kid)
-            }
+        for existingAdult in adultMembersCD {
+            groupCDToEdit.addToAdultMembers(existingAdult)
         }
         
-        for adult in adultMembersCD {
-            
-            // check to see if current adultMembersCD actually has adult, this should not fail
-            let containsAdult =  adultsExisting.contains(adult) 
-            // if the adult is not present, add it to the groupCDToEdit object
-            if containsAdult == false {
-                
-                groupCDToEdit.addToAdultMembers(adult)
-            }
+        for existingKid in kidMembersCD {
+            groupCDToEdit.addToKidMembers(existingKid)
         }
+        
         // save to CoreData
         OwnerCDModelController.shared.saveToPersistentStorage()
     }
@@ -360,11 +326,13 @@ extension AddStudentsToGroupTableViewController {
     // owner setup for editing mode
     func groupEditingSetup() {
         
-        guard let groupToEdit = groupToEdit else {
+        guard let groupCDToEdit = groupCDToEdit else {
             return
         }
+        guard let kidMembers = groupCDToEdit.kidMembers else { return }
+        guard let adultMembers = groupCDToEdit.adultMembers else { return }
         
-        welcomeLabelOutlet.text = "Group: \(groupToEdit.name)"
+        welcomeLabelOutlet.text = "Group: \(groupCDToEdit.name ?? "")"
         
         welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
         welcomeInstructionsLabelOutlet.text = "you are in group editing mode"
@@ -373,81 +341,15 @@ extension AddStudentsToGroupTableViewController {
         nextButtonOutlet.isEnabled = false
         
         // sync up the grouptoEdit students with this TVC's properties when inEditingMode == true
-        kidMembers = groupToEdit.kidMembers ?? []
-        adultMembers = groupToEdit.adultMembers ?? []
+        let firstNameSort = NSSortDescriptor(key: "firstName", ascending: true)
+        let lastNameSort = NSSortDescriptor(key: "lastName", ascending: true)
+        
+        let adults = adultMembers.sortedArray(using: [lastNameSort, firstNameSort]) as! [StudentAdultCD]
+        let kids = kidMembers.sortedArray(using: [lastNameSort, firstNameSort]) as! [StudentKidCD]
+        
+        kidMembersCD = kids
+        adultMembersCD = adults
     }
 }
 
-
-//// MARK: - NSFetchedREsultsController initializer method
-//extension AddStudentsToGroupTableViewController: NSFetchedResultsControllerDelegate {
-//
-//    func initializeFetchedResultsControllers() {
-//
-//        // instantiate the macro managed object context
-//        let moc = CoreDataStack.context
-//
-//        // fetch results for all StudentKidCD type students
-//        let requestKids = NSFetchRequest<NSFetchRequestResult>(entityName: "StudentKidCD")
-//        let kidNameSort = NSSortDescriptor(key: "firstName", ascending: true)
-//        requestKids.sortDescriptors = [kidNameSort]
-//
-//        fetchedResultsControllerKids = NSFetchedResultsController(fetchRequest: requestKids, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil) as? NSFetchedResultsController<StudentKidCD>
-//        fetchedResultsControllerKids.delegate = self
-//
-//        do {
-//            try fetchedResultsControllerKids.performFetch()
-//        } catch {
-//            fatalError("Failed to initialize StudentKidCD FetchedResultsController: \(error)")
-//        }
-//
-//        // fetch results for all StudentAdultCD type students
-//        let requestAdults = NSFetchRequest<NSFetchRequestResult>(entityName: "StudentAdultCD")
-//        let adultNameSort = NSSortDescriptor(key: "firstName", ascending: true)
-//        requestAdults.sortDescriptors = [adultNameSort]
-//
-//        fetchedResultsControllerAdults = NSFetchedResultsController(fetchRequest: requestAdults, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil) as? NSFetchedResultsController<StudentAdultCD>
-//        fetchedResultsControllerAdults.delegate = self
-//
-//        do {
-//            try fetchedResultsControllerAdults.performFetch()
-//        } catch {
-//            fatalError("Failed to initialize StudentADultCD FetchedResultsController: \(error)")
-//        }
-//    }
-//
-//
-//    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-//        tableView.beginUpdates()
-//    }
-//
-//    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-//        switch type {
-//        case .insert:
-//            tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
-//        case .delete:
-//            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .fade)
-//        case .move:
-//            break
-//        case .update:
-//            break
-//        }
-//    }
-//
-//    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-//        switch type {
-//        case .insert:
-//            tableView.insertRows(at: [newIndexPath!], with: .fade)
-//        case .delete:
-//            tableView.deleteRows(at: [indexPath!], with: .fade)
-//        case .update:
-//            tableView.reloadRows(at: [indexPath!], with: .fade)
-//        case .move:
-//            tableView.moveRow(at: indexPath!, to: newIndexPath!)
-//        }
-//    }
-//
-//    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-//        tableView.endUpdates()
-//    }
-//}
+// TODO: - finish up CoreData for Groups editing and info display

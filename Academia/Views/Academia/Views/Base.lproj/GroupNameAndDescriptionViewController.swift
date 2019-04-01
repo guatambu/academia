@@ -197,6 +197,7 @@ class GroupNameAndDescriptionViewController: UIViewController, UITextInputTraits
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
         updateGroupInfo()
+        destViewController.groupCDToEdit = groupCDToEdit
     }
 }
 
@@ -206,11 +207,8 @@ extension GroupNameAndDescriptionViewController {
     
     // Update Function for case where want to update user info without a segue
     func updateGroupInfo() {
-        guard let group = groupToEdit else { return }
         // group update info
         if groupNameTextField.text != "" {
-            GroupModelController.shared.update(group: group, active: active, name: groupNameTextField.text, description: groupDescriptionTextView.text, kidMembers: nil, adultMembers: nil, kidStudent: nil, adultStudent: nil)
-            print("update group name: \(GroupModelController.shared.groups[0].name)")
         
             // CoreData PaymentProgramCD update info
             guard let groupCDToEdit = groupCDToEdit else { return }
@@ -238,17 +236,18 @@ extension GroupNameAndDescriptionViewController {
     // owner setup for editing mode
     func groupEditingSetup() {
         
-        guard let groupToEdit = groupToEdit else {
+        guard let groupCDToEdit = groupCDToEdit else {
             return
         }
         
-        welcomeLabelOutlet.text = "Group: \(groupToEdit.name)"
+        
+        welcomeLabelOutlet.text = "Group: \(groupCDToEdit.name ?? "")"
         
         welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
         welcomeInstructionsLabelOutlet.text = "you are in group editing mode"
         
-        groupDescriptionTextView.text = groupToEdit.description
-        groupNameTextField.text = groupToEdit.name
+        groupDescriptionTextView.text = groupCDToEdit.groupDescription
+        groupNameTextField.text = groupCDToEdit.name
     }
 }
 
