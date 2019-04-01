@@ -199,11 +199,8 @@ extension LocationPicAndNameViewController {
     
     // Update Function for case where want to update user info without a segue
     func updateLocationInfo() {
-        guard let location = locationToEdit else { return }
         // Location update profile info
         if locationNameTextField.text != "" && locationPicImageViewOutlet.image != UIImage(contentsOfFile: "user_placeholder") {
-            LocationModelController.shared.update(location: location, active: active, locationPic: locationPicImageViewOutlet.image, locationName: locationNameTextField.text, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, website: nil, email: nil, social1: nil, social2: nil, social3: nil)
-            print("update location name: \(LocationModelController.shared.locations[0].locationName)")
             
             // CoreData LocationCD update info
             guard let locationCD = locationCDToEdit else { return }
@@ -235,16 +232,21 @@ extension LocationPicAndNameViewController {
     // owner setup for editing mode
     func locationEditingSetup() {
         
-        guard let locationToEdit = locationToEdit else {
+        guard let locationCDToEdit = locationCDToEdit else {
             return
         }
         
-        self.title = locationToEdit.locationName
+        self.title = locationCDToEdit.locationName
         
-        locationNameAndPicLabelOutlet.text = "Location: \(locationToEdit.locationName)"
+        locationNameAndPicLabelOutlet.text = "Location: \(locationCDToEdit.locationName ?? "")"
         
-        locationPicImageViewOutlet.image = locationToEdit.locationPic
-        locationNameTextField.text = locationToEdit.locationName
+        // profile pic imageView
+        if let profilePicData = locationCDToEdit.locationPic {
+            
+            locationPicImageViewOutlet.image = UIImage(data: profilePicData)
+        }
+        
+        locationNameTextField.text = locationCDToEdit.locationName
     }
 }
 

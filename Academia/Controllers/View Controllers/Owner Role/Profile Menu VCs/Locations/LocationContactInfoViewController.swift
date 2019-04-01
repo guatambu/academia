@@ -149,8 +149,6 @@ class LocationContactInfoViewController: UIViewController, UITextInputTraits {
         
         self.returnToLocationInfo()
         
-        print("update location address: \(LocationModelController.shared.locations[0].phone) \n\(String(describing: LocationModelController.shared.locations[0].website)) \n\(String(describing: LocationModelController.shared.locations[0].email))")
-        
         inEditingMode = false
     }
     
@@ -255,10 +253,6 @@ extension LocationContactInfoViewController {
     func updateLocationInfo() {
         if phoneTextField.text != "" && emailTextField.text != "" {
             
-            guard let location = locationToEdit else { return }
-            
-            LocationModelController.shared.update(location: location, active: nil, locationPic: nil, locationName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: phoneTextField.text, website: websiteTextField.text, email: emailTextField.text, social1: nil, social2: nil, social3: nil)
-            
             // CoreData LocationCD update info
             guard let locationCD = locationCDToEdit else { return }
             
@@ -285,15 +279,15 @@ extension LocationContactInfoViewController {
     // location setup for editing mode
     func locationEditingSetup(userToEdit: Location?) {
         
-        guard let locationToEdit = locationToEdit else {
+        guard let locationCDToEdit = locationCDToEdit else {
             return
         }
         
-        contactInformationForLocationLabelOutlet.text = "Location: \(locationToEdit.locationName)"
+        contactInformationForLocationLabelOutlet.text = "Location: \(locationCDToEdit.locationName ?? "")"
         
-        phoneTextField.text = locationToEdit.phone
-        websiteTextField.text = locationToEdit.website
-        emailTextField.text = locationToEdit.email
+        phoneTextField.text = locationCDToEdit.phone
+        websiteTextField.text = locationCDToEdit.website
+        emailTextField.text = locationCDToEdit.email
     }
 }
 

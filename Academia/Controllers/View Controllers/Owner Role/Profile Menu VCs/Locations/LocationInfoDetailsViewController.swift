@@ -149,8 +149,7 @@ class LocationInfoDetailsViewController: UIViewController {
 extension LocationInfoDetailsViewController {
     
     func populateCompletedProfileInfo() {
-        
-//        guard let location = LocationModelController.shared.locations.first else { return }
+
         guard let location = locationCD else {
             print("ERROR: nil value found for locationCD in LocationInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 155.")
             return

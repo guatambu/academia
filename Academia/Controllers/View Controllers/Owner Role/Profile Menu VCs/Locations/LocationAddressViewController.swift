@@ -187,8 +187,6 @@ class LocationAddressViewController: UIViewController, UITextInputTraits{
         
         self.returnToLocationInfo()
         
-        print("update location address: \(LocationModelController.shared.locations[0].addressLine1) \n\(LocationModelController.shared.locations[0].addressLine2) \n\(LocationModelController.shared.locations[0].city) \(LocationModelController.shared.locations[0].state) \(LocationModelController.shared.locations[0].zipCode)")
-        
         inEditingMode = false
     }
     
@@ -319,11 +317,7 @@ extension LocationAddressViewController {
     // Update Function for case where want to update user info without a segue
     func updateLocationInfo() {
         if addressLine1TextField.text != "" && cityTextField.text != "" && stateTextField.text != "" && zipCodeTextField.text != "" {
-            
-            guard let location = locationToEdit else { return }
-            
-            LocationModelController.shared.update(location: location, active: nil, locationPic: nil, locationName: nil, addressLine1: addressLine1TextField.text, addressLine2: addressLine2TextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: zipCodeTextField.text, phone: nil, website: nil, email: nil, social1: nil, social2: nil, social3: nil)
-        
+
             // CoreData LocationCD property update
             guard let locationCD = locationCDToEdit else { return }
             guard let address = locationCD.address else { return }
@@ -356,17 +350,17 @@ extension LocationAddressViewController {
     // owner setup for editing mode
     func locationEditingSetup(locationToEdit: Location?) {
         
-        guard let locationToEdit = locationToEdit else {
+        guard let locationCDToEdit = locationCDToEdit else {
             return
         }
         
-        whatIsLocationAddressLabelOutlet.text = "Location: \(locationToEdit.locationName)"
+        whatIsLocationAddressLabelOutlet.text = "Location: \(locationCDToEdit.locationName ?? "")"
         
-        addressLine1TextField.text = locationToEdit.addressLine1
-        addressLine2TextField.text = locationToEdit.addressLine2
-        cityTextField.text = locationToEdit.city
-        stateTextField.text = locationToEdit.state
-        zipCodeTextField.text = locationToEdit.zipCode
+        addressLine1TextField.text = locationCDToEdit.address?.addressLine1
+        addressLine2TextField.text = locationCDToEdit.address?.addressLine2
+        cityTextField.text = locationCDToEdit.address?.city
+        stateTextField.text = locationCDToEdit.address?.state
+        zipCodeTextField.text = locationCDToEdit.address?.zipCode
         
         
     }
