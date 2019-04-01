@@ -8,6 +8,11 @@
 
 // NOTE:  "aula" means "class" in Portuguese. "aula" stands in for the word "class" throughout this workflow as the word "class" is already used as a Swift keyword.
 
+
+
+// TODO: simplify the Aula object to remove the AulaDaysOfTheWeek Entity and make the necessary dayOfThWeek property a simple string value, NOT an Entity relationship
+
+
 import UIKit
 
 class ClassDayViewController: UIViewController {
@@ -22,7 +27,9 @@ class ClassDayViewController: UIViewController {
     var inEditingMode: Bool?
     var aulaToEdit: Aula?
     
+    let classTimeComponents = ClassTimeComponents()
     let beltBuilder = BeltBuilder()
+    let dateFormatter = DateFormatter()
     var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
     
     // IBOutlets
@@ -43,6 +50,10 @@ class ClassDayViewController: UIViewController {
     @IBOutlet weak var thursdayButtonOutlet: UIButton!
     @IBOutlet weak var fridayButtonOutlet: UIButton!
     @IBOutlet weak var saturdayButtonOutlet: UIButton!
+    
+    // CoreData Properties
+    var aulaCDToEdit: AulaCD?
+    var daysOfTheWeekStrings: [String] = []
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -104,42 +115,49 @@ class ClassDayViewController: UIViewController {
     
     @IBAction func sundayButtonTapped(_ sender: UIButton) {
         
+        editingModeButtonToggle(day: .Sunday)
         sundayButtonOutlet.isSelected = !sundayButtonOutlet.isSelected
         addDayofTheWeek(day: .Sunday)
     }
     
     @IBAction func mondayButtonTapped(_ sender: UIButton) {
         
+        editingModeButtonToggle(day: .Monday)
         mondayButtonOutlet.isSelected = !mondayButtonOutlet.isSelected
         addDayofTheWeek(day: .Monday)
     }
     
     @IBAction func tuesdayButtonTapped(_ sender: UIButton) {
         
+        editingModeButtonToggle(day: .Tuesday)
         tuesdayButtonOutlet.isSelected = !tuesdayButtonOutlet.isSelected
         addDayofTheWeek(day: .Tuesday)
     }
     
     @IBAction func wednesdayButtonTapped(_ sender: UIButton) {
         
+        editingModeButtonToggle(day: .Wednesday)
         wednesdayButtonOutlet.isSelected = !wednesdayButtonOutlet.isSelected
         addDayofTheWeek(day: .Wednesday)
     }
     
     @IBAction func thursdayButtonTapped(_ sender: UIButton) {
         
+        editingModeButtonToggle(day: .Thursday)
         thursdayButtonOutlet.isSelected = !thursdayButtonOutlet.isSelected
         addDayofTheWeek(day: .Thursday)
     }
     
     @IBAction func fridayButtonTapped(_ sender: UIButton) {
         
+        editingModeButtonToggle(day: .Friday)
         fridayButtonOutlet.isSelected = !fridayButtonOutlet.isSelected
         addDayofTheWeek(day: .Friday)
     }
     
     @IBAction func saturdayButtonTapped(_ sender: UIButton) {
         
+        editingModeButtonToggle(day: .Saturday)
         saturdayButtonOutlet.isSelected = !saturdayButtonOutlet.isSelected
         addDayofTheWeek(day: .Saturday)
     }
@@ -188,14 +206,20 @@ class ClassDayViewController: UIViewController {
             
             destViewController.inEditingMode = inEditingMode
             destViewController.aulaToEdit = aulaToEdit
+            destViewController.aulaCDToEdit = aulaCDToEdit
             
         }
         
-        // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
-        updateAulaInfo()
-        
-        // reset welcome instructions text color and message upon succesful save
-        addClassDaysLabelOutlet.textColor = beltBuilder.blackBeltBlack
+        if let inEditingMode = inEditingMode {
+            
+            if inEditingMode {
+                // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
+                updateAulaInfo()
+                
+                // reset welcome instructions text color and message upon succesful save
+                addClassDaysLabelOutlet.textColor = beltBuilder.blackBeltBlack
+            }
+        }
     }
 }
 
@@ -205,12 +229,15 @@ extension ClassDayViewController {
     
     // Update Function for case where want to update user info without a segue
     func updateAulaInfo() {
-        guard let aula = aulaToEdit else { return }
-        // group update info
-        if daysOfTheWeek.isEmpty != true {
-            AulaModelController.shared.update(aula: aula, active: nil, kidAttendees: nil, adultAttendees: nil, aulaDescription: nil, aulaName: nil, daysOfTheWeek: daysOfTheWeek, instructor: nil, ownerInstructor: nil, location: nil, students: nil, time: nil, timeCode: nil, classGroups: nil)
-            print("update class day: \(AulaModelController.shared.aulas[0].daysOfTheWeek)")
-        }
+        
+        // CoreData version
+        guard let aulaCDToEdit = aulaCDToEdit else { return }
+        
+        AulaCDModelController.shared.update(aula: aulaCDToEdit, active: nil, aulaName: nil, aulaDescription: nil, dayOfTheWeek: daysOfTheWeek[0].rawValue, timeCode: nil, time: nil)
+        // save the update
+        OwnerCDModelController.shared.saveToPersistentStorage()
+        
+        print("******\naulaCDToEdit.daysOfTheWeek: \(aulaCDToEdit.dayOfTheWeek ?? "")")
     }
     
     func enterEditingMode(inEditingMode: Bool?) {
@@ -227,41 +254,56 @@ extension ClassDayViewController {
         print("ClassDayVC -> inEditingMode: \(inEditingMode)")
     }
     
+    
+    // TODO: - correct data sources for the CoreData versin of the Editing setup here and in entire aula workflow, check the other major data points for the app for this update as well
+    
     // owner setup for editing mode
     func aulaEditingSetup() {
         
-        guard let aulaToEdit = aulaToEdit else {
-            return
-        }
+        // make sure the daysOfTheWeek array is empty for editing setup
+        daysOfTheWeek = []
         
-        addClassDaysLabelOutlet.text = "\(aulaToEdit.aulaName)"
+        // CoreData version
+        guard let aulaCDToEdit = aulaCDToEdit else { return }
         
-        for day in aulaToEdit.daysOfTheWeek {
-            
-            switch day {
-            case .Sunday :
+        // set the name of the class
+        addClassDaysLabelOutlet.text = "\(aulaCDToEdit.aulaName ?? "")"
+        
+        // switch on the dayOfTheWeek String property to determine which boxes are to be displayed as checked and which day is to be added to the empty daysOfTheWeek array
+        switch aulaCDToEdit.dayOfTheWeek {
+        // wherever a match, append the matched day to the daysOfTheWeek array as enum ClassComponents.Weekdays type to minimize String errors
+        case ClassTimeComponents.Weekdays.Sunday.rawValue:
                 sundayButtonOutlet.isSelected = true
-                daysOfTheWeek = [.Sunday]
-            case .Monday:
-                mondayButtonOutlet.isSelected = true
-                daysOfTheWeek = [.Monday]
-            case .Tuesday:
-                tuesdayButtonOutlet.isSelected = true
-                daysOfTheWeek = [.Tuesday]
-            case .Wednesday:
-                wednesdayButtonOutlet.isSelected = true
-                daysOfTheWeek = [.Wednesday]
-            case .Thursday:
-                thursdayButtonOutlet.isSelected = true
-                daysOfTheWeek = [.Thursday]
-            case .Friday:
-                fridayButtonOutlet.isSelected = true
-                daysOfTheWeek = [.Friday]
-            case .Saturday:
-                saturdayButtonOutlet.isSelected = true
-                daysOfTheWeek = [.Saturday]
-            }
+                daysOfTheWeek.append(ClassTimeComponents.Weekdays.Sunday)
+        
+        case ClassTimeComponents.Weekdays.Monday.rawValue:
+            mondayButtonOutlet.isSelected = true
+            daysOfTheWeek.append(ClassTimeComponents.Weekdays.Monday)
+            
+        case ClassTimeComponents.Weekdays.Tuesday.rawValue:
+            tuesdayButtonOutlet.isSelected = true
+            daysOfTheWeek.append(ClassTimeComponents.Weekdays.Tuesday)
+            
+        case ClassTimeComponents.Weekdays.Wednesday.rawValue:
+            wednesdayButtonOutlet.isSelected = true
+            daysOfTheWeek.append(ClassTimeComponents.Weekdays.Wednesday)
+            
+        case ClassTimeComponents.Weekdays.Thursday.rawValue:
+            thursdayButtonOutlet.isSelected = true
+            daysOfTheWeek.append(ClassTimeComponents.Weekdays.Thursday)
+            
+        case ClassTimeComponents.Weekdays.Friday.rawValue:
+            fridayButtonOutlet.isSelected = true
+            daysOfTheWeek.append(ClassTimeComponents.Weekdays.Friday)
+            
+        case ClassTimeComponents.Weekdays.Saturday.rawValue:
+            saturdayButtonOutlet.isSelected = true
+            daysOfTheWeek.append(ClassTimeComponents.Weekdays.Saturday)
+            
+        default:
+            print("ERROR: somehow found a value outside of the days of the week in ClassDayViewController.swift -> aulaEditingSetup() - line 304.")
         }
+       
     }
 }
 
@@ -310,4 +352,29 @@ extension ClassDayViewController {
             print(daysOfTheWeek)
         }
     }
+    
+    func editingModeButtonToggle(day: ClassTimeComponents.Weekdays) {
+        
+        if let inEditingMode = inEditingMode {
+            // if in editing mode and there is already a day of the
+            if inEditingMode {
+                
+                let buttons = [sundayButtonOutlet, mondayButtonOutlet, tuesdayButtonOutlet, wednesdayButtonOutlet, thursdayButtonOutlet, fridayButtonOutlet, saturdayButtonOutlet]
+                // loop throught the buttons array to see which button isSelected and toggle it off
+                
+                for button in buttons {
+                    if let button = button {
+                        
+                        if button.isSelected {
+                            
+                            button.isSelected = !button.isSelected
+                            
+                        }
+                    }
+                }
+                daysOfTheWeek = []
+            }
+        }
+    }
+    
 }

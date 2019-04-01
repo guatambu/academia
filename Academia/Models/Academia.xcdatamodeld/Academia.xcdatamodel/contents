@@ -1,123 +1,105 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18D109" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="AdultStudentCD" representedClassName="AdultStudentCD" syncable="YES" codeGenerationType="class">
+    <entity name="AddressCD" representedClassName="AddressCD" syncable="YES" codeGenerationType="class">
         <attribute name="addressLine1" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="addressLine2" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="adultStudentUUID" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="birthdate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="dateEdited" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="emergencyContactName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="emergencyContactPhone" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="emergencyContactRelationship" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="isInstructor" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="mobile" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="mostRecentPromotion" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="profilePic" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zipCode" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="adultMembers" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GroupCD" inverseName="adultMembers" inverseEntity="GroupCD" syncable="YES"/>
-        <relationship name="attendanceAdultStudent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AttendanceCD" inverseName="adultStudentAttendance" inverseEntity="AttendanceCD" syncable="YES"/>
-        <relationship name="aulaAdultStudentInstructors" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AulaCD" inverseName="adultStudentInstructorsAula" inverseEntity="AulaCD" syncable="YES"/>
-        <relationship name="belt" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="BeltCD" inverseName="adultStudentCD" inverseEntity="BeltCD" syncable="YES"/>
-        <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="GroupCD" inverseName="adultStudentGroups" inverseEntity="GroupCD" syncable="YES"/>
-        <relationship name="paymentProgram" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PaymentProgramCD" inverseName="adultStudent" inverseEntity="PaymentProgramCD" syncable="YES"/>
-        <relationship name="promotions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PromotionCD" inverseName="adultStudent" inverseEntity="PromotionCD" syncable="YES"/>
-        <relationship name="studentStatus" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StudentStatusCD" inverseName="adultStudent" inverseEntity="StudentStatusCD" syncable="YES"/>
+        <relationship name="adultStudent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StudentAdultCD" inverseName="address" inverseEntity="StudentAdultCD" syncable="YES"/>
+        <relationship name="kidStudent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StudentKidCD" inverseName="address" inverseEntity="StudentKidCD" syncable="YES"/>
+        <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LocationCD" inverseName="address" inverseEntity="LocationCD" syncable="YES"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OwnerCD" inverseName="address" inverseEntity="OwnerCD" syncable="YES"/>
     </entity>
-    <entity name="AttendanceCD" representedClassName="AttendanceCD" syncable="YES" codeGenerationType="class">
+    <entity name="AulaAttendanceCD" representedClassName="AulaAttendanceCD" syncable="YES" codeGenerationType="class">
         <attribute name="currentDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <relationship name="adultStudentAttendance" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AdultStudentCD" inverseName="attendanceAdultStudent" inverseEntity="AdultStudentCD" syncable="YES"/>
         <relationship name="aula" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AulaCD" inverseName="attendance" inverseEntity="AulaCD" syncable="YES"/>
-        <relationship name="kidStudentAttendance" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KidStudentCD" inverseName="attendanceKidStudent" inverseEntity="KidStudentCD" syncable="YES"/>
         <relationship name="ownerAttendance" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OwnerCD" inverseName="attendanceOwner" inverseEntity="OwnerCD" syncable="YES"/>
+        <relationship name="studentAdultAttendance" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StudentAdultCD" inverseName="attendanceStudentAdult" inverseEntity="StudentAdultCD" syncable="YES"/>
+        <relationship name="studentKidAttendance" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StudentKidCD" inverseName="attendanceStudentKid" inverseEntity="StudentKidCD" syncable="YES"/>
     </entity>
     <entity name="AulaCD" representedClassName="AulaCD" syncable="YES" codeGenerationType="class">
         <attribute name="active" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="aulaDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="aulaName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="aulaUUID" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="currentDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="dateEdited" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dayOfTheWeek" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="time" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timeCode" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="adultStudentInstructorsAula" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AdultStudentCD" inverseName="aulaAdultStudentInstructors" inverseEntity="AdultStudentCD" syncable="YES"/>
-        <relationship name="attendance" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AttendanceCD" inverseName="aula" inverseEntity="AttendanceCD" syncable="YES"/>
-        <relationship name="daysOfTheWeek" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DaysOfTheWeekCD" inverseName="aula" inverseEntity="DaysOfTheWeekCD" syncable="YES"/>
-        <relationship name="groupsAula" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GroupCD" inverseName="aulaGroups" inverseEntity="GroupCD" syncable="YES"/>
+        <relationship name="adultStudentInstructorsAula" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="StudentAdultCD" inverseName="aulaAdultStudentInstructors" inverseEntity="StudentAdultCD" syncable="YES"/>
+        <relationship name="attendance" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AulaAttendanceCD" inverseName="aula" inverseEntity="AulaAttendanceCD" syncable="YES"/>
+        <relationship name="groupsAula" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="GroupCD" inverseName="aulaGroups" inverseEntity="GroupCD" syncable="YES"/>
         <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LocationCD" inverseName="aulaCD" inverseEntity="LocationCD" syncable="YES"/>
-        <relationship name="ownerInstructorAula" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="OwnerCD" inverseName="aulaOwnerInstructor" inverseEntity="OwnerCD" syncable="YES"/>
+        <relationship name="ownerInstructorAula" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="OwnerCD" inverseName="aulaOwnerInstructor" inverseEntity="OwnerCD" syncable="YES"/>
     </entity>
     <entity name="BeltCD" representedClassName="BeltCD" syncable="YES" codeGenerationType="class">
         <attribute name="active" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="beltLevel" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="beltTime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="beltUUID" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="classesToNextPromotion" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="dateEdited" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="elligibleForNextBelt" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="iiiStripeTime" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="iiStripeTime" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="iStripeTime" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="ivStripeTime" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="ixStripeTime" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="minAgeRequirement" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="numberOfStripes" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="viiiStripeTime" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="viiStripeTime" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="viStripeTime" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="vStripeTime" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="xiStripeTime" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="xStripeTime" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="adultStudentCD" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="AdultStudentCD" inverseName="belt" inverseEntity="AdultStudentCD" syncable="YES"/>
-        <relationship name="kidStudentCD" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="KidStudentCD" inverseName="belt" inverseEntity="KidStudentCD" syncable="YES"/>
+        <relationship name="adultStudentCD" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="StudentAdultCD" inverseName="belt" inverseEntity="StudentAdultCD" syncable="YES"/>
+        <relationship name="beltPromotionAttendanceCriteria" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BeltPromotionAttendanceCriteriaCD" inverseName="belt" inverseEntity="BeltPromotionAttendanceCriteriaCD" syncable="YES"/>
+        <relationship name="beltStripeAgeDetails" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BeltStripeAgeDetailsCD" inverseName="belt" inverseEntity="BeltStripeAgeDetailsCD" syncable="YES"/>
+        <relationship name="kidStudentCD" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="StudentKidCD" inverseName="belt" inverseEntity="StudentKidCD" syncable="YES"/>
         <relationship name="ownerCD" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="OwnerCD" inverseName="belt" inverseEntity="OwnerCD" syncable="YES"/>
     </entity>
-    <entity name="BillingDateCD" representedClassName="BillingDateCD" syncable="YES" codeGenerationType="class">
-        <attribute name="fifteenthOfTheMonth" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="fifthOfTheMonth" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="firstOfTheMonth" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="registrationDay" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="singleDay" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="twentiethOfTheMonth" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="paymentProgram" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PaymentProgramCD" inverseName="billingDate" inverseEntity="PaymentProgramCD" syncable="YES"/>
+    <entity name="BeltPromotionAttendanceCriteriaCD" representedClassName="BeltPromotionAttendanceCriteriaCD" syncable="YES" codeGenerationType="class">
+        <attribute name="nextBelt" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="stripe1" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="stripe2" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="stripe3" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="stripe4" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="stripe5" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="stripe6" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="stripe7" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="stripe8" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="stripe9" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="stripe10" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="stripe11" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="belt" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BeltCD" inverseName="beltPromotionAttendanceCriteria" inverseEntity="BeltCD" syncable="YES"/>
     </entity>
-    <entity name="BillingSignatureCD" representedClassName="BillingSignatureCD" syncable="YES" codeGenerationType="class">
-        <attribute name="biometricEyeIris" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="biometricFace" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="biometricFinger" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="digitalFingerSignature" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="digitallyTyped" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="otherBiometric" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="paperContract" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="paymentProgram" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PaymentProgramCD" inverseName="billingSignature" inverseEntity="PaymentProgramCD" syncable="YES"/>
+    <entity name="BeltPromotionCD" representedClassName="BeltPromotionCD" syncable="YES" codeGenerationType="class">
+        <attribute name="beltLevel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dateOfPromotion" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="numberOfStripes" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="adultStudent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StudentAdultCD" inverseName="promotions" inverseEntity="StudentAdultCD" syncable="YES"/>
+        <relationship name="kidStudent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StudentKidCD" inverseName="promotions" inverseEntity="StudentKidCD" syncable="YES"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OwnerCD" inverseName="promotions" inverseEntity="OwnerCD" syncable="YES"/>
     </entity>
-    <entity name="BillingTypeCD" representedClassName="BillingTypeCD" syncable="YES" codeGenerationType="class">
-        <attribute name="dropIn" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="monthly" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="sixMonths" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="threeMonths" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="twelveMonths" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="paymentProgram" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PaymentProgramCD" inverseName="billingType" inverseEntity="PaymentProgramCD" syncable="YES"/>
+    <entity name="BeltStripeAgeDetailsCD" representedClassName="BeltStripeAgeDetailsCD" syncable="YES" codeGenerationType="class">
+        <attribute name="beltRequiredTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dateEdited" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="iiiStripeRequiredTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="iiStripeRequiredTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="iStripeRequiredTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ivStripeRequiredTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ixStripeRequiredTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="minAgeRequirements" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="viiiStripeRequiredTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="viiStripeRequiredTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="viStripeRequiredTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vStripeRequiredTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="xiStripeRequiredTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="xStripeRequiredTime" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="belt" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BeltCD" inverseName="beltStripeAgeDetails" inverseEntity="BeltCD" syncable="YES"/>
     </entity>
-    <entity name="DaysOfTheWeekCD" representedClassName="DaysOfTheWeekCD" syncable="YES" codeGenerationType="class">
-        <attribute name="friday" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="monday" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="saturday" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="sunday" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="thursday" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="tuesday" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="wednesday" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="aula" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AulaCD" inverseName="daysOfTheWeek" inverseEntity="AulaCD" syncable="YES"/>
+    <entity name="EmergencyContactCD" representedClassName="EmergencyContactCD" syncable="YES" codeGenerationType="class">
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dateEdited" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="relationship" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="adultStudent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StudentAdultCD" inverseName="emergencyContact" inverseEntity="StudentAdultCD" syncable="YES"/>
+        <relationship name="kidStudent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StudentKidCD" inverseName="emergencyContact" inverseEntity="StudentKidCD" syncable="YES"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OwnerCD" inverseName="emergencyContact" inverseEntity="OwnerCD" syncable="YES"/>
     </entity>
     <entity name="GroupCD" representedClassName="GroupCD" syncable="YES" codeGenerationType="class">
         <attribute name="active" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
@@ -126,49 +108,15 @@
         <attribute name="groupDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="groupUUID" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="adultMembers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AdultStudentCD" inverseName="adultMembers" inverseEntity="AdultStudentCD" syncable="YES"/>
-        <relationship name="adultStudentGroups" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AdultStudentCD" inverseName="groups" inverseEntity="AdultStudentCD" syncable="YES"/>
-        <relationship name="aulaGroups" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AulaCD" inverseName="groupsAula" inverseEntity="AulaCD" syncable="YES"/>
-        <relationship name="kidMembers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="KidStudentCD" inverseName="kidMembers" inverseEntity="KidStudentCD" syncable="YES"/>
-        <relationship name="kidStudentGroups" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KidStudentCD" inverseName="groups" inverseEntity="KidStudentCD" syncable="YES"/>
-        <relationship name="ownerGroups" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OwnerCD" inverseName="groups" inverseEntity="OwnerCD" syncable="YES"/>
-    </entity>
-    <entity name="KidStudentCD" representedClassName="KidStudentCD" syncable="YES" codeGenerationType="class">
-        <attribute name="addressLine1" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="addressLine2" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="birthdate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="dateEdited" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="emergencyContactName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="emergencyContactPhone" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="emergencyContactRelationship" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="kidStudentUUID" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="mobile" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="mostRecentPromotion" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="parentGuardian" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="profilePic" optional="YES" attributeType="Binary" syncable="YES"/>
-        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="zipCode" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="attendanceKidStudent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AttendanceCD" inverseName="kidStudentAttendance" inverseEntity="AttendanceCD" syncable="YES"/>
-        <relationship name="belt" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="BeltCD" inverseName="kidStudentCD" inverseEntity="BeltCD" syncable="YES"/>
-        <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GroupCD" inverseName="kidStudentGroups" inverseEntity="GroupCD" syncable="YES"/>
-        <relationship name="kidMembers" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GroupCD" inverseName="kidMembers" inverseEntity="GroupCD" syncable="YES"/>
-        <relationship name="paymentProgram" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PaymentProgramCD" inverseName="kidStudent" inverseEntity="PaymentProgramCD" syncable="YES"/>
-        <relationship name="promotions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PromotionCD" inverseName="kidStudent" inverseEntity="PromotionCD" syncable="YES"/>
-        <relationship name="studentStatus" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StudentStatusCD" inverseName="kidStudent" inverseEntity="StudentStatusCD" syncable="YES"/>
+        <relationship name="adultMembers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StudentAdultCD" inverseName="adultMembers" inverseEntity="StudentAdultCD" syncable="YES"/>
+        <relationship name="aulaGroups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AulaCD" inverseName="groupsAula" inverseEntity="AulaCD" syncable="YES"/>
+        <relationship name="kidMembers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StudentKidCD" inverseName="kidMembers" inverseEntity="StudentKidCD" syncable="YES"/>
+        <relationship name="ownerGroups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="OwnerCD" inverseName="groups" inverseEntity="OwnerCD" syncable="YES"/>
+        <relationship name="studentAdultGroups" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StudentAdultCD" inverseName="groups" inverseEntity="StudentAdultCD" syncable="YES"/>
+        <relationship name="studentKidGroups" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StudentKidCD" inverseName="groups" inverseEntity="StudentKidCD" syncable="YES"/>
     </entity>
     <entity name="LocationCD" representedClassName="LocationCD" syncable="YES" codeGenerationType="class">
         <attribute name="active" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="addressLine1" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="addressLine2" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="dateEdited" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
@@ -176,28 +124,28 @@
         <attribute name="locationPic" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="locationUUID" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AddressCD" inverseName="location" inverseEntity="AddressCD" syncable="YES"/>
+        <relationship name="aulaCD" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AulaCD" inverseName="location" inverseEntity="AulaCD" syncable="YES"/>
+        <relationship name="ownerCD" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OwnerCD" inverseName="locations" inverseEntity="OwnerCD" syncable="YES"/>
+        <relationship name="socialLinks" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LocationSocialLinksCD" inverseName="location" inverseEntity="LocationSocialLinksCD" syncable="YES"/>
+    </entity>
+    <entity name="LocationSocialLinksCD" representedClassName="LocationSocialLinksCD" syncable="YES" codeGenerationType="class">
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dateEdited" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="socialLink1" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="socialLink2" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="socialLink3" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="zipCode" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="aulaCD" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AulaCD" inverseName="location" inverseEntity="AulaCD" syncable="YES"/>
-        <relationship name="ownerCD" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OwnerCD" inverseName="locations" inverseEntity="OwnerCD" syncable="YES"/>
+        <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LocationCD" inverseName="socialLinks" inverseEntity="LocationCD" syncable="YES"/>
     </entity>
     <entity name="OwnerCD" representedClassName="OwnerCD" syncable="YES" codeGenerationType="class">
-        <attribute name="addressLine1" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="addressLine2" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="birthdate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="dateEdited" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="emergencyContactName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="emergencyContactPhone" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="emergencyContactRelationship" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isInstructor" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isLoggedOn" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mobile" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mostRecentPromotion" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -205,15 +153,27 @@
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="profilePic" optional="YES" attributeType="Binary" syncable="YES"/>
-        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="zipCode" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="attendanceOwner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AttendanceCD" inverseName="ownerAttendance" inverseEntity="AttendanceCD" syncable="YES"/>
-        <relationship name="aulaOwnerInstructor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AulaCD" inverseName="ownerInstructorAula" inverseEntity="AulaCD" syncable="YES"/>
+        <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AddressCD" inverseName="owner" inverseEntity="AddressCD" syncable="YES"/>
+        <relationship name="attendanceOwner" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AulaAttendanceCD" inverseName="ownerAttendance" inverseEntity="AulaAttendanceCD" syncable="YES"/>
+        <relationship name="aulaOwnerInstructor" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AulaCD" inverseName="ownerInstructorAula" inverseEntity="AulaCD" syncable="YES"/>
         <relationship name="belt" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BeltCD" inverseName="ownerCD" inverseEntity="BeltCD" syncable="YES"/>
+        <relationship name="emergencyContact" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EmergencyContactCD" inverseName="owner" inverseEntity="EmergencyContactCD" syncable="YES"/>
         <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GroupCD" inverseName="ownerGroups" inverseEntity="GroupCD" syncable="YES"/>
         <relationship name="locations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LocationCD" inverseName="ownerCD" inverseEntity="LocationCD" syncable="YES"/>
-        <relationship name="promotions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PromotionCD" inverseName="owner" inverseEntity="PromotionCD" syncable="YES"/>
+        <relationship name="promotions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BeltPromotionCD" inverseName="owner" inverseEntity="BeltPromotionCD" syncable="YES"/>
+    </entity>
+    <entity name="PaymentBillingDateCD" representedClassName="PaymentBillingDateCD" syncable="YES" codeGenerationType="class">
+        <attribute name="billingDate" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="paymentProgram" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PaymentProgramCD" inverseName="paymentBillingDate" inverseEntity="PaymentProgramCD" syncable="YES"/>
+    </entity>
+    <entity name="PaymentBillingSignatureCD" representedClassName="PaymentBillingSignatureCD" syncable="YES" codeGenerationType="class">
+        <attribute name="billingSignature" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="paymentProgram" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PaymentProgramCD" inverseName="paymentBillingSignature" inverseEntity="PaymentProgramCD" syncable="YES"/>
+    </entity>
+    <entity name="PaymentBillingTypeCD" representedClassName="PaymentBillingTypeCD" syncable="YES" codeGenerationType="class">
+        <attribute name="billingType" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="paymentProgram" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PaymentProgramCD" inverseName="paymentBillingType" inverseEntity="PaymentProgramCD" syncable="YES"/>
     </entity>
     <entity name="PaymentProgramCD" representedClassName="PaymentProgramCD" syncable="YES" codeGenerationType="class">
         <attribute name="active" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
@@ -223,43 +183,92 @@
         <attribute name="paymentDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="paymentProgramUUID" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="programName" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="adultStudent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AdultStudentCD" inverseName="paymentProgram" inverseEntity="AdultStudentCD" syncable="YES"/>
-        <relationship name="billingDate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BillingDateCD" inverseName="paymentProgram" inverseEntity="BillingDateCD" syncable="YES"/>
-        <relationship name="billingSignature" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BillingSignatureCD" inverseName="paymentProgram" inverseEntity="BillingSignatureCD" syncable="YES"/>
-        <relationship name="billingType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BillingTypeCD" inverseName="paymentProgram" inverseEntity="BillingTypeCD" syncable="YES"/>
-        <relationship name="kidStudent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KidStudentCD" inverseName="paymentProgram" inverseEntity="KidStudentCD" syncable="YES"/>
+        <relationship name="paymentBillingDate" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="PaymentBillingDateCD" inverseName="paymentProgram" inverseEntity="PaymentBillingDateCD" syncable="YES"/>
+        <relationship name="paymentBillingSignature" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="PaymentBillingSignatureCD" inverseName="paymentProgram" inverseEntity="PaymentBillingSignatureCD" syncable="YES"/>
+        <relationship name="paymentBillingType" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="PaymentBillingTypeCD" inverseName="paymentProgram" inverseEntity="PaymentBillingTypeCD" syncable="YES"/>
+        <relationship name="studentAdult" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StudentAdultCD" inverseName="paymentProgram" inverseEntity="StudentAdultCD" syncable="YES"/>
+        <relationship name="studentKid" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StudentKidCD" inverseName="paymentProgram" inverseEntity="StudentKidCD" syncable="YES"/>
     </entity>
-    <entity name="PromotionCD" representedClassName="PromotionCD" syncable="YES" codeGenerationType="class">
-        <attribute name="beltLevel" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="dateOfPromotion" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="numberOfStripes" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="adultStudent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AdultStudentCD" inverseName="promotions" inverseEntity="AdultStudentCD" syncable="YES"/>
-        <relationship name="kidStudent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KidStudentCD" inverseName="promotions" inverseEntity="KidStudentCD" syncable="YES"/>
-        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OwnerCD" inverseName="promotions" inverseEntity="OwnerCD" syncable="YES"/>
+    <entity name="StudentAdultCD" representedClassName="StudentAdultCD" syncable="YES" codeGenerationType="class">
+        <attribute name="adultStudentUUID" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="birthdate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dateEdited" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isInstructor" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isLoggedOn" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mobile" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mostRecentPromotion" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="profilePic" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AddressCD" inverseName="adultStudent" inverseEntity="AddressCD" syncable="YES"/>
+        <relationship name="adultMembers" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GroupCD" inverseName="adultMembers" inverseEntity="GroupCD" syncable="YES"/>
+        <relationship name="attendanceStudentAdult" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AulaAttendanceCD" inverseName="studentAdultAttendance" inverseEntity="AulaAttendanceCD" syncable="YES"/>
+        <relationship name="aulaAdultStudentInstructors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AulaCD" inverseName="adultStudentInstructorsAula" inverseEntity="AulaCD" syncable="YES"/>
+        <relationship name="belt" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="BeltCD" inverseName="adultStudentCD" inverseEntity="BeltCD" syncable="YES"/>
+        <relationship name="emergencyContact" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EmergencyContactCD" inverseName="adultStudent" inverseEntity="EmergencyContactCD" syncable="YES"/>
+        <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="GroupCD" inverseName="studentAdultGroups" inverseEntity="GroupCD" syncable="YES"/>
+        <relationship name="paymentProgram" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PaymentProgramCD" inverseName="studentAdult" inverseEntity="PaymentProgramCD" syncable="YES"/>
+        <relationship name="promotions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BeltPromotionCD" inverseName="adultStudent" inverseEntity="BeltPromotionCD" syncable="YES"/>
+        <relationship name="studentStatus" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StudentStatusCD" inverseName="studentAdult" inverseEntity="StudentStatusCD" syncable="YES"/>
+    </entity>
+    <entity name="StudentKidCD" representedClassName="StudentKidCD" syncable="YES" codeGenerationType="class">
+        <attribute name="birthdate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dateEdited" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isLoggedOn" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="kidStudentUUID" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mobile" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mostRecentPromotion" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="parentGuardian" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="profilePic" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AddressCD" inverseName="kidStudent" inverseEntity="AddressCD" syncable="YES"/>
+        <relationship name="attendanceStudentKid" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AulaAttendanceCD" inverseName="studentKidAttendance" inverseEntity="AulaAttendanceCD" syncable="YES"/>
+        <relationship name="belt" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="BeltCD" inverseName="kidStudentCD" inverseEntity="BeltCD" syncable="YES"/>
+        <relationship name="emergencyContact" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EmergencyContactCD" inverseName="kidStudent" inverseEntity="EmergencyContactCD" syncable="YES"/>
+        <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GroupCD" inverseName="studentKidGroups" inverseEntity="GroupCD" syncable="YES"/>
+        <relationship name="kidMembers" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GroupCD" inverseName="kidMembers" inverseEntity="GroupCD" syncable="YES"/>
+        <relationship name="paymentProgram" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PaymentProgramCD" inverseName="studentKid" inverseEntity="PaymentProgramCD" syncable="YES"/>
+        <relationship name="promotions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BeltPromotionCD" inverseName="kidStudent" inverseEntity="BeltPromotionCD" syncable="YES"/>
+        <relationship name="studentStatus" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StudentStatusCD" inverseName="studentKid" inverseEntity="StudentStatusCD" syncable="YES"/>
     </entity>
     <entity name="StudentStatusCD" representedClassName="StudentStatusCD" syncable="YES" codeGenerationType="class">
         <attribute name="active" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="medicalMembershipPause" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="membershipPaused" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="paid" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="adultStudent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AdultStudentCD" inverseName="studentStatus" inverseEntity="AdultStudentCD" syncable="YES"/>
-        <relationship name="kidStudent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KidStudentCD" inverseName="studentStatus" inverseEntity="KidStudentCD" syncable="YES"/>
+        <relationship name="studentAdult" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StudentAdultCD" inverseName="studentStatus" inverseEntity="StudentAdultCD" syncable="YES"/>
+        <relationship name="studentKid" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StudentKidCD" inverseName="studentStatus" inverseEntity="StudentKidCD" syncable="YES"/>
     </entity>
     <elements>
-        <element name="AdultStudentCD" positionX="-2.69921875" positionY="-545.51953125" width="128" height="495"/>
-        <element name="AttendanceCD" positionX="-669.02734375" positionY="192.5234375" width="128" height="120"/>
-        <element name="AulaCD" positionX="-733.0078125" positionY="18.625" width="128" height="270"/>
-        <element name="BeltCD" positionX="-193.765625" positionY="-356.95703125" width="128" height="403"/>
-        <element name="BillingDateCD" positionX="551.6640625" positionY="-347.15625" width="128" height="58"/>
-        <element name="BillingSignatureCD" positionX="550.7109375" positionY="-264.40234375" width="128" height="58"/>
-        <element name="BillingTypeCD" positionX="554.09375" positionY="-169.73046875" width="128" height="58"/>
-        <element name="DaysOfTheWeekCD" positionX="-952.91015625" positionY="9.2734375" width="128" height="58"/>
-        <element name="GroupCD" positionX="-803.0234375" positionY="-194.1015625" width="128" height="133"/>
-        <element name="KidStudentCD" positionX="8.1484375" positionY="-179.87890625" width="128" height="480"/>
-        <element name="LocationCD" positionX="-949.203125" positionY="168.14453125" width="128" height="330"/>
-        <element name="OwnerCD" positionX="-494.6796875" positionY="-356.46484375" width="128" height="465"/>
-        <element name="PaymentProgramCD" positionX="310.90234375" positionY="-291.76953125" width="128" height="118"/>
-        <element name="StudentStatusCD" positionX="31.05078125" positionY="-322.66796875" width="128" height="73"/>
-        <element name="PromotionCD" positionX="-747" positionY="-396" width="128" height="135"/>
+        <element name="AddressCD" positionX="-747" positionY="-396" width="128" height="210"/>
+        <element name="AulaAttendanceCD" positionX="-669.02734375" positionY="192.5234375" width="128" height="120"/>
+        <element name="AulaCD" positionX="-733.0078125" positionY="18.625" width="128" height="255"/>
+        <element name="BeltCD" positionX="-193.765625" positionY="-356.95703125" width="128" height="225"/>
+        <element name="BeltPromotionAttendanceCriteriaCD" positionX="-747" positionY="-396" width="128" height="240"/>
+        <element name="BeltPromotionCD" positionX="-747" positionY="-396" width="128" height="135"/>
+        <element name="BeltStripeAgeDetailsCD" positionX="-738" positionY="-387" width="128" height="285"/>
+        <element name="EmergencyContactCD" positionX="-729" positionY="-378" width="128" height="165"/>
+        <element name="GroupCD" positionX="-803.0234375" positionY="-194.1015625" width="128" height="225"/>
+        <element name="LocationCD" positionX="-949.203125" positionY="168.14453125" width="128" height="240"/>
+        <element name="LocationSocialLinksCD" positionX="-720" positionY="-369" width="128" height="135"/>
+        <element name="OwnerCD" positionX="-494.6796875" positionY="-356.46484375" width="128" height="390"/>
+        <element name="PaymentBillingDateCD" positionX="551.6640625" positionY="-347.15625" width="128" height="75"/>
+        <element name="PaymentBillingSignatureCD" positionX="550.7109375" positionY="-264.40234375" width="128" height="75"/>
+        <element name="PaymentBillingTypeCD" positionX="554.09375" positionY="-169.73046875" width="128" height="75"/>
+        <element name="PaymentProgramCD" positionX="310.90234375" positionY="-291.76953125" width="128" height="225"/>
+        <element name="StudentAdultCD" positionX="-2.69921875" positionY="-545.51953125" width="128" height="420"/>
+        <element name="StudentKidCD" positionX="8.1484375" positionY="-179.87890625" width="128" height="405"/>
+        <element name="StudentStatusCD" positionX="31.05078125" positionY="-322.66796875" width="128" height="135"/>
     </elements>
 </model>

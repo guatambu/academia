@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class LocationContactInfoViewController: UIViewController, UITextInputTraits {
     
@@ -34,6 +35,10 @@ class LocationContactInfoViewController: UIViewController, UITextInputTraits {
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var websiteTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
+    
+    // CoreData properties
+    var location: LocationCD?
+    var locationCDToEdit: LocationCD?
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -77,6 +82,20 @@ class LocationContactInfoViewController: UIViewController, UITextInputTraits {
     
     
     // MARK: - Actions
+    
+    @IBAction func tapAnywhereToDismissKeyboard(_ sender: UITapGestureRecognizer) {
+        
+        view.endEditing(true)
+        
+        // dismiss keyboard when leaving VC scene
+        if phoneTextField.isFirstResponder {
+            phoneTextField.resignFirstResponder()
+        } else if websiteTextField.isFirstResponder {
+            websiteTextField.resignFirstResponder()
+        } else if emailTextField.isFirstResponder {
+            emailTextField.resignFirstResponder()
+        }
+    }
     
     @objc func saveButtonTapped() {
         
@@ -129,8 +148,6 @@ class LocationContactInfoViewController: UIViewController, UITextInputTraits {
         updateLocationInfo()
         
         self.returnToLocationInfo()
-        
-        print("update location address: \(LocationModelController.shared.locations[0].phone) \n\(String(describing: LocationModelController.shared.locations[0].website)) \n\(String(describing: LocationModelController.shared.locations[0].email))")
         
         inEditingMode = false
     }
@@ -224,6 +241,7 @@ class LocationContactInfoViewController: UIViewController, UITextInputTraits {
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
         updateLocationInfo()
+        destViewController.locationCDToEdit = locationCDToEdit
     }
 }
 
@@ -235,10 +253,13 @@ extension LocationContactInfoViewController {
     func updateLocationInfo() {
         if phoneTextField.text != "" && emailTextField.text != "" {
             
-            guard let location = locationToEdit else { return }
+            // CoreData LocationCD update info
+            guard let locationCD = locationCDToEdit else { return }
             
-            LocationModelController.shared.update(location: location, active: nil, locationPic: nil, locationName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: phoneTextField.text, website: websiteTextField.text, email: emailTextField.text, social1: nil, social2: nil, social3: nil)
+            LocationCDModelController.shared.update(location: locationCD, locationPic: nil, locationName: nil, address: nil, phone: phoneTextField.text, website: websiteTextField.text, email: emailTextField.text, socialLinks: nil)
+            
         }
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func enterEditingMode(inEditingMode: Bool?) {
@@ -258,15 +279,15 @@ extension LocationContactInfoViewController {
     // location setup for editing mode
     func locationEditingSetup(userToEdit: Location?) {
         
-        guard let locationToEdit = locationToEdit else {
+        guard let locationCDToEdit = locationCDToEdit else {
             return
         }
         
-        contactInformationForLocationLabelOutlet.text = "Location: \(locationToEdit.locationName)"
+        contactInformationForLocationLabelOutlet.text = "Location: \(locationCDToEdit.locationName ?? "")"
         
-        phoneTextField.text = locationToEdit.phone
-        websiteTextField.text = locationToEdit.website
-        emailTextField.text = locationToEdit.email
+        phoneTextField.text = locationCDToEdit.phone
+        websiteTextField.text = locationCDToEdit.website
+        emailTextField.text = locationCDToEdit.email
     }
 }
 

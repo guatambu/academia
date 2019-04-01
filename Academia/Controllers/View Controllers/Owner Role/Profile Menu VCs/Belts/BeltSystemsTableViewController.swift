@@ -28,7 +28,7 @@ class BeltSystemsTableViewController: UITableViewController {
         let nib = UINib(nibName: "GeneralMenuCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "generalMenuCell")
         
-        self.navigationController?.navigationBar.tintColor = UIColor(red: 241/255, green: 0/255, blue: 0/255, alpha: 1.0)
+        self.navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
     }
 
 

@@ -29,6 +29,10 @@ class LocationPicAndNameViewController: UIViewController {
     @IBOutlet weak var locationPicImageViewOutlet: UIImageView!
     @IBOutlet weak var activeSwitch: UISwitch!
     @IBOutlet weak var locationNameTextField: UITextField!
+    
+    // CoreData properties
+    var location: LocationCD?
+    var locationCDToEdit: LocationCD?
 
     
     // MARK: - ViewController Lifecycle Functions
@@ -70,6 +74,15 @@ class LocationPicAndNameViewController: UIViewController {
     
     
     // MARK: - Actions
+    @IBAction func tapAnywhereToDismissKeyboardTapped(_ sender: UITapGestureRecognizer) {
+        
+        view.endEditing(true)
+        
+        // dismiss keyboard when leaving VC scene
+        if locationNameTextField.isFirstResponder {
+            locationNameTextField.resignFirstResponder()
+        }
+    }
     
     @IBAction func activeSwitchToggled(_ sender: UISwitch) {
         active = !active
@@ -106,7 +119,7 @@ class LocationPicAndNameViewController: UIViewController {
             
             self.returnToLocationInfo()
             
-            print("update location name: \(LocationModelController.shared.locations[0].locationName)")
+            print("update location name: \(locationCDToEdit?.locationName ?? "")")
         }
         
         inEditingMode = false
@@ -173,8 +186,10 @@ class LocationPicAndNameViewController: UIViewController {
         destViewController.inEditingMode = inEditingMode
         destViewController.locationToEdit = locationToEdit
         
+        
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
         updateLocationInfo()
+        destViewController.locationCDToEdit = locationCDToEdit
     }
 }
 
@@ -184,12 +199,20 @@ extension LocationPicAndNameViewController {
     
     // Update Function for case where want to update user info without a segue
     func updateLocationInfo() {
-        guard let location = locationToEdit else { return }
-        // Owner update profile info
+        // Location update profile info
         if locationNameTextField.text != "" && locationPicImageViewOutlet.image != UIImage(contentsOfFile: "user_placeholder") {
-            LocationModelController.shared.update(location: location, active: active, locationPic: locationPicImageViewOutlet.image, locationName: locationNameTextField.text, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, website: nil, email: nil, social1: nil, social2: nil, social3: nil)
-            print("update location name: \(LocationModelController.shared.locations[0].locationName)")
+            
+            // CoreData LocationCD update info
+            guard let locationCD = locationCDToEdit else { return }
+            
+            // convert profilePic to Data
+            let locationPic = locationPicImageViewOutlet.image
+            if let locationPicData = locationPic?.jpegData(compressionQuality: 1) {
+                
+                LocationCDModelController.shared.update(location: locationCD, locationPic: locationPicData, locationName: locationNameTextField.text, address: nil, phone: nil, website: nil, email: nil, socialLinks: nil)
+            }
         }
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func enterEditingMode(inEditingMode: Bool?) {
@@ -209,16 +232,21 @@ extension LocationPicAndNameViewController {
     // owner setup for editing mode
     func locationEditingSetup() {
         
-        guard let locationToEdit = locationToEdit else {
+        guard let locationCDToEdit = locationCDToEdit else {
             return
         }
         
-        self.title = locationToEdit.locationName
+        self.title = locationCDToEdit.locationName
         
-        locationNameAndPicLabelOutlet.text = "Location: \(locationToEdit.locationName)"
+        locationNameAndPicLabelOutlet.text = "Location: \(locationCDToEdit.locationName ?? "")"
         
-        locationPicImageViewOutlet.image = locationToEdit.locationPic
-        locationNameTextField.text = locationToEdit.locationName
+        // profile pic imageView
+        if let profilePicData = locationCDToEdit.locationPic {
+            
+            locationPicImageViewOutlet.image = UIImage(data: profilePicData)
+        }
+        
+        locationNameTextField.text = locationCDToEdit.locationName
     }
 }
 

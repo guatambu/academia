@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class StudentChoiceViewController: UIViewController {
     
@@ -27,6 +28,9 @@ class StudentChoiceViewController: UIViewController {
     @IBOutlet weak var confirmKidsProgramButtonOutlet: DesignableButton!
     @IBOutlet weak var confirmAdultsProgramButtonOutlet: DesignableButton!
     @IBOutlet weak var cancelButtonOutlet: UIButton!
+    
+    // CoreData Properties
+    var groupCD: GroupCD?
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -125,6 +129,8 @@ class StudentChoiceViewController: UIViewController {
         destViewController.isKid = true
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
         destViewController.group = group
+        
+        
     }
     
     @IBAction func confirmAdultsProgramButtonTapped(_ sender: UIButton) {
@@ -150,6 +156,11 @@ class StudentChoiceViewController: UIViewController {
         destViewController.isKid = isKid
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
         destViewController.group = group
+        
+        // MARK: - CoreData implementaiton
+        let studentAdult = StudentAdultCD(context: CoreDataStack.context)
+        studentAdult.adultStudentUUID = UUID()
+        destViewController.studentAdult = studentAdult
     }
     
     @IBAction func cancelButtonTapped(_ sender: UIButton) {

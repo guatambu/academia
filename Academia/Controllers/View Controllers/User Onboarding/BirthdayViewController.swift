@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class BirthdayViewController: UIViewController {
     
@@ -38,6 +39,12 @@ class BirthdayViewController: UIViewController {
     @IBOutlet weak var nextButtonOutlet: DesignableButton!
     
     @IBOutlet weak var firstProgressDotOutlet: DesignableView!
+    
+    // CoreData Properties
+    var owner: OwnerCD?
+    var studentAdult: StudentAdultCD?
+    var studentKid: StudentKidCD?
+    var groupCD: GroupCD?
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -155,6 +162,7 @@ class BirthdayViewController: UIViewController {
         
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
         destViewController.group = group
+        destViewController.groupCD = groupCD
         
         destViewController.inEditingMode = inEditingMode
         destViewController.userToEdit = userToEdit
@@ -189,6 +197,16 @@ extension BirthdayViewController {
             OwnerModelController.shared.updateProfileInfo(owner: owner, isInstructor: nil, birthdate: birthdate, groups: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
         }
         print("update owner name: \(OwnerModelController.shared.owners[0].firstName) \(OwnerModelController.shared.owners[0].lastName)")
+        
+        // CoreData Owner update profile info
+        guard let ownerCD = userToEdit as? OwnerCD else { return }
+        
+        if birthdate != nil {
+            OwnerCDModelController.shared.update(owner: ownerCD, isInstructor: nil, birthdate: birthdate, mostRecentPromotion: nil, belt: nil, profilePic: nil, username: nil, password: nil, firstName: nil, lastName: nil, address: nil, phone: nil, mobile: nil, email: nil, emergencyContact: nil)
+        } else {
+            print("EROR: birthdate value is nil.  BirthdayViewController.swift -> updateAdultStudentInfo() - line 223.")
+        }
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func updateKidStudentInfo() {
@@ -197,6 +215,16 @@ extension BirthdayViewController {
         if birthdate != nil {
             KidStudentModelController.shared.updateProfileInfo(kidStudent: kidStudent,birthdate: birthdate, groups: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, parentGuardian: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
         }
+        
+        // CoreData Owner update profile info
+        guard let studentKidCD = userToEdit as? StudentKidCD else { return }
+        
+        if birthdate != nil {
+            StudentKidCDModelController.shared.update(studentKid: studentKidCD, birthdate: birthdate, mostRecentPromotion: nil, studentStatus: nil, belt: nil, profilePic: nil, username: nil, password: nil, firstName: nil, lastName: nil, parentGuardian: nil, address: nil, phone: nil, mobile: nil, email: nil, emergencyContact: nil)
+        } else {
+            print("EROR: birthdate value is nil.  BirthdayViewController.swift -> updateAdultStudentInfo() - line 240.")
+        }
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func updateAdultStudentInfo() {
@@ -205,6 +233,16 @@ extension BirthdayViewController {
         if birthdate != nil {
             AdultStudentModelController.shared.updateProfileInfo(adultStudent: adultStudent, birthdate: birthdate, groups: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
         }
+        
+        // CoreData Owner update profile info
+        guard let studentAdultCD = userToEdit as? StudentAdultCD else { return }
+        
+        if birthdate != nil {
+            StudentAdultCDModelController.shared.update(studentAdult: studentAdultCD, isInstructor: nil, birthdate: birthdate, mostRecentPromotion: nil, studentStatus: nil, belt: nil, profilePic: nil, username: nil, password: nil, firstName: nil, lastName: nil, address: nil, phone: nil, mobile: nil, email: nil, emergencyContact: nil)
+        } else {
+            print("EROR: birthdate value is nil.  BirthdayViewController.swift -> updateAdultStudentInfo() - line 257.")
+        }
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func enterEditingMode(inEditingMode: Bool?) {

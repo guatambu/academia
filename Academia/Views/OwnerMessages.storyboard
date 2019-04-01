@@ -12,7 +12,7 @@
         <!--Messages Table View Controller-->
         <scene sceneID="sJQ-vj-OvN">
             <objects>
-                <tableViewController id="51w-VD-cwe" userLabel="Messages Table View Controller" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="toOwnerMessages" useStoryboardIdentifierAsRestorationIdentifier="YES" id="51w-VD-cwe" userLabel="Messages Table View Controller" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="Xjb-Q8-vcb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

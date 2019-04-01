@@ -22,6 +22,12 @@ class KidGroupInfoDetailsTableViewCell: UITableViewCell {
         }
     }
     
+    var studentKidCD: StudentKidCD? {
+        didSet {
+            updateViews()
+        }
+    }
+    
     
     // MARK: - awakeFromNib()
     
@@ -34,19 +40,19 @@ class KidGroupInfoDetailsTableViewCell: UITableViewCell {
     // MARK: - updateViews()
     
     func updateViews() {
-        
-        guard let kidStudent = kidStudent  else {
-            
-            print("ERROR: nil value found when unwrapping kidStudent in ReviewKidStudentTableViewCell.swift -> updateViews() - line 40")
-            
+
+        // CoreData verison
+        guard let studentKidCD = studentKidCD else {
+            print("ERROR: nil value found while attepting to unwrap optional kidStudentCD in KidGroupInfoDetailsTableViewCell.swift -> updateViews() - line 59.")
             return
         }
         
-        cellTitleOutlet.text = "\(kidStudent.firstName) \(kidStudent.lastName)"
-        userThumbnailImageViewOutlet.image = kidStudent.profilePic ?? UIImage(contentsOfFile: "user_placeholder")
-        
-        print("cell: \(kidStudent.firstName)")
-        print("cell: \(String(describing: kidStudent.profilePic?.size))")
+        if let profilePicData = studentKidCD.profilePic {
+            
+            userThumbnailImageViewOutlet.image = UIImage(data: profilePicData)
+        }
+        if let firstName = studentKidCD.firstName, let lastName = studentKidCD.lastName {
+            cellTitleOutlet.text = "\(firstName) \(lastName)"
+        }
     }
-    
 }

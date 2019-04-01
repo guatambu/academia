@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class CompletedProfileViewController: UIViewController {
     
@@ -37,11 +38,20 @@ class CompletedProfileViewController: UIViewController {
     
     var belt: Belt?
     
+    var beltCD: BeltCD?
+    var addressCD: AddressCD?
+    var emergencyContactCD: EmergencyContactCD?
+    var groupCD: GroupCD?
+    var newStudentKidCD: StudentKidCD?
+    var newStudentAdultCD: StudentAdultCD?
+    
     var isOwnerAddingStudent: Bool?
     var group: Group?
     
     let beltBuilder = BeltBuilder()
     
+    // name outlet
+    @IBOutlet weak var nameLabelOutlet: UILabel!
     // username outlet
     @IBOutlet weak var usernameLabelOutlet: UILabel!
     // birthdate outlet
@@ -74,7 +84,15 @@ class CompletedProfileViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         
-        populateCompletedProfileInfo(isOwner: isOwner, isKid: isKid, username: username, password: password, firstName: firstName, lastName: lastName, profilePic: profilePic, birthdate: birthdate, beltLevel: beltLevel, numberOfStripes: numberOfStripes, parentGuardian: parentGuardian, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, phone: phone, mobile: mobile, email: email, emergencyContactName: emergencyContactName, emergencyContactPhone: emergencyContactPhone, emergencyContactRelationship: emergencyContactRelationship)
+        populateCompletedProfileInfo(username: username, firstName: firstName, lastName: lastName, profilePic: profilePic, birthdate: birthdate, beltLevel: beltLevel, numberOfStripes: numberOfStripes, parentGuardian: parentGuardian, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, phone: phone, mobile: mobile, email: email, emergencyContactName: emergencyContactName, emergencyContactPhone: emergencyContactPhone, emergencyContactRelationship: emergencyContactRelationship)
+        
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
+        
+        if OwnerCDModelController.shared.owners.count > 1 {
+            checkIfMoreThanOneOwnerAccountAllowedByOwner()
+            print("owners count: \(OwnerCDModelController.shared.owners.count)")
+        } 
     
     }
     
@@ -83,7 +101,10 @@ class CompletedProfileViewController: UIViewController {
     
     @IBAction func createAccountButtonTapped(_ sender: DesignableButton) {
         
-        // create data models
+        // create and save new user account to CoreData
+        createAndSaveNewUser()
+        
+        // create data models - NOT CoreData
         createBelt()
         
         createUser(isOwner: isOwner, isKid: isKid, birthdate: birthdate, username: username, password: password, firstName: firstName, lastName: lastName, profilePic: profilePic, belt: belt, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, phone: phone, mobile: mobile, email: email, emergencyContactName: emergencyContactName, emergencyContactPhone: emergencyContactPhone, emergencyContactRelationship: emergencyContactRelationship, parentGuardian: parentGuardian)
@@ -92,50 +113,79 @@ class CompletedProfileViewController: UIViewController {
         
         // programmatically performing the segue
         guard let isOwner = isOwner else { return }
+        
         if isOwner {
             
             // instantiate the relevant storyboard for the Owner
             let mainView: UIStoryboard = UIStoryboard(name: "OwnerBaseCampFlow", bundle: nil)
             // create the UITabBarController segue programmatically - MODAL
             if let tabBarDestViewController = (mainView.instantiateViewController(withIdentifier: "toOwnerBaseCamp") as? UITabBarController) {
+                
                 self.present(tabBarDestViewController, animated: true, completion: nil)
+                
+                // exit funciton
+                return
             }
             
         } else if isOwner == false {
             // unwrap isOwnerAddingStudent? 
             guard let isOwnerAddingStudent = isOwnerAddingStudent else {
+                
                 print("ERROR: a nil value was found when trying to unwrap isOwnerAddingStudent in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 100.")
                 
                 // instantiate the relevant storyboard for the Student (Kid or Adult... both are directed to the same TabBarController)
                 let mainView: UIStoryboard = UIStoryboard(name: "StudentBaseCampFlow", bundle: nil)
                 // create the UITabBarController segue programmatically - MODAL
-                if let tabBarDestViewController = (mainView.instantiateViewController(withIdentifier: "toStudentDashbooard") as? UITabBarController) {
+                if let tabBarDestViewController = (mainView.instantiateViewController(withIdentifier: "toStudentDashboard") as? UITabBarController) {
+                    
                     self.present(tabBarDestViewController, animated: true, completion: nil)
+                    
                 }
                 
+                // exit function
                 return
             }
             
             if isOwnerAddingStudent {
                 // need to append the created user to the appropriate group
                 guard let group = group else {
-                    print("ERROR: a nil value was found when trying to unwrap group property in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 112.")
+                    print("ERROR: a nil value was found when trying to unwrap group property in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 149.")
                     return
                 }
                 guard let isKid = isKid else {
-                    print("ERROR: a nil value was found when trying to unwrap isKid property in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 118.")
+                    print("ERROR: a nil value was found when trying to unwrap isKid property in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 153.")
                     return
                 }
+                guard let groupCD = groupCD else {
+                    print("ERROR: a nil value was found when trying to unwrap groupCD property in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 157.")
+                    return
+                }
+        
                 if isKid {
                     // get the kidStudent and update the group to include this student
                     let kidStudent = KidStudentModelController.shared.kids.last
                     // update the group to include this student
                     GroupModelController.shared.update(group: group, active: nil, name: nil, description: nil, kidMembers: nil, adultMembers: nil, kidStudent: kidStudent, adultStudent: nil)
+                    
+                    // CoreData - update the group to include this student
+                    guard let newStudentKidCD = newStudentKidCD else {
+                        print("ERROR: a nil value was found when trying to unwrap newStudentKidCD property in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 171.")
+                        return
+                    }
+                    groupCD.addToKidMembers(newStudentKidCD)
+                    
                 } else {
                     // get the adultStudent and update the group to include this student
                     let adultStudent = AdultStudentModelController.shared.adults.last
                     // update the group to include this student
                     GroupModelController.shared.update(group: group, active: nil, name: nil, description: nil, kidMembers: nil, adultMembers: nil, kidStudent: nil, adultStudent: adultStudent)
+                    
+                    // CoreData - update the group to include this student
+                    guard let newStudentAdultCD = newStudentAdultCD else {
+                        print("ERROR: a nil value was found when trying to unwrap newStudentAdultCD property in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 171.")
+                        return
+                    }
+                    groupCD.addToAdultMembers(newStudentAdultCD)
                 }
                 
                 returnToGroupInfo()
@@ -171,10 +221,7 @@ extension CompletedProfileViewController {
 //MARK: - populate CompletedProfileVC with user info for display at viewDidLoad()
 extension CompletedProfileViewController {
     
-    func populateCompletedProfileInfo(isOwner: Bool?,
-                                      isKid: Bool?,
-                                      username: String?,
-                                      password: String?,
+    func populateCompletedProfileInfo(username: String?,
                                       firstName: String?,
                                       lastName: String?,
                                       profilePic: UIImage?,
@@ -194,8 +241,6 @@ extension CompletedProfileViewController {
                                       emergencyContactPhone: String?,
                                       emergencyContactRelationship: String?) {
         
-        guard let isOwner = isOwner else { print("fail isOwner"); return }
-        guard let isKid = isKid else { print("fail isKid"); return }
         guard let profilePic = profilePic else { print("fail profilePic"); return }
         guard let username = username else { print("fail username"); return }
         guard let password = password else { print("fail password"); return }
@@ -216,10 +261,11 @@ extension CompletedProfileViewController {
         
         
         // print to console for developer verification
-        print("isOwner: \(isOwner) \nisKid: \(isKid) \nusername: \(username) \npassword: \(password) \nfirstName: \(firstName) \nlastName: \(lastName) \nbirthdate: \(birthdate) \nbeltLevel: \(beltLevel.rawValue) \nnumberOfStripes: \(numberOfStripes) \naddressLine1: \(addressLine1) \naddressLine2: \(String(describing: addressLine2)) \ncity: \(city) \nstate: \(state) \nzipCode: \(zipCode) \nphone: \(phone) \nmobile: \(String(describing: mobile)) \nemail: \(email) \nemergencyContactName: \(emergencyContactName) \nemergencyContactRelationship: \(emergencyContactRelationship) \nemergencyContactPhone: \(emergencyContactPhone) \nparentGuardian: \(String(describing: parentGuardian))")
+        print("username: \(username) \npassword: \(password) \nfirstName: \(firstName) \nlastName: \(lastName) \nbirthdate: \(birthdate) \nbeltLevel: \(beltLevel) \nnumberOfStripes: \(numberOfStripes) \naddressLine1: \(addressLine1) \naddressLine2: \(String(describing: addressLine2)) \ncity: \(city) \nstate: \(state) \nzipCode: \(zipCode) \nphone: \(phone) \nmobile: \(String(describing: mobile)) \nemail: \(email) \nemergencyContactName: \(emergencyContactName) \nemergencyContactRelationship: \(emergencyContactRelationship) \nemergencyContactPhone: \(emergencyContactPhone) \nparentGuardian: \(String(describing: parentGuardian))")
         
         // populate UI elements in VC
-        title = "\(firstName) \(lastName)"
+        title = "Please Review Your Info"
+        nameLabelOutlet.text = "\(firstName) \(lastName)"
         usernameLabelOutlet.text = "user: " + username
         // contact info outlets
         phoneLabelOutlet.text = "p: " + phone
@@ -246,6 +292,7 @@ extension CompletedProfileViewController {
         formatBirthdate(birthdate: birthdate)
         
         // belt holder UIView
+        // this is set up below to directly accept a value from InternationalStandarBJJBelts
         beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: numberOfStripes)
     }
 }
@@ -378,8 +425,185 @@ extension CompletedProfileViewController {
                                                       emergencyContactRelationship: emergencyContactRelationship)
         }
     }
-    
 }
 
 
+// MARK: - AlertController to check if more than one owner account allowed by actual owner
+extension CompletedProfileViewController {
+    
+    func checkIfMoreThanOneOwnerAccountAllowedByOwner() {
+        
+        let alertController = UIAlertController(title: "Attention", message: "are you sure you want to add more than one owner to this account?", preferredStyle: UIAlertController.Style.alert)
+        
+        let deleteAccount = UIAlertAction(title: "Thanks for the heads up!", style: UIAlertAction.Style.default, handler: nil)
+        
+        alertController.addAction(deleteAccount)
+        
+        self.present(alertController, animated: true)
+    }
+}
 
+
+// MARK: - function to initiate user account model creation process and save the user in CoreData
+extension CompletedProfileViewController {
+    
+    func createAndSaveNewUser() {
+        
+        // create belt model in CoreData
+        createBeltCoreDataModel()
+        // create address model in CoreData
+        createAddressCoreDataModel()
+        // create emergency contact model in CoreData
+        createEmergencyContactCoreDataModel()
+        // create new user account in CoreData
+        createUserAccountAndLoginCoreDataModel()
+        // CoreData save
+        OwnerCDModelController.shared.saveToPersistentStorage()
+        
+    }
+}
+
+// MARK: - function to create user account model in CoreData
+extension CompletedProfileViewController {
+    
+    // create User model
+    func createUserAccountAndLoginCoreDataModel() {
+        
+        guard let isOwner = isOwner else { print("fail isOwner"); return }
+        guard let isKid = isKid else { print("fail isKid"); return }
+        
+        guard let username = username else { print("fail username"); return }
+        guard let password = password else { print("fail password"); return }
+        
+        guard let firstName = firstName else { print("fail firtsName"); return }
+        guard let lastName = lastName else { print("fail lastName"); return }
+        guard let parentGuardian = parentGuardian else { print("fail parentGuardian"); return }
+        guard let profilePic = profilePic else { print("fail profilePic"); return }
+        
+        guard let birthdate = birthdate else { print("fail birthdate"); return }
+        
+        guard let beltCD = beltCD else { print("fail beltCD"); return }
+        
+        guard let addressCD = addressCD else { print("fail addressCD"); return }
+        
+        guard let phone = phone else { print("fail phone"); return }
+        guard let email = email else { print("fail email"); return }
+        
+        guard let emergencyContactCD = emergencyContactCD else { print("fail emergencyContactCD"); return }
+        
+        let mobileCD = mobile ?? ""
+        
+        // convert profilePic to Data
+        guard let profilePicData = profilePic.jpegData(compressionQuality: 1) else { print("fail profilePicData"); return }
+        
+        
+        
+        if isOwner{
+            
+            let newOwner = OwnerCD(birthdate: birthdate, mostRecentPromotion: nil, studentStatus: nil, belt: beltCD, profilePic: profilePicData, username: username, password: password, firstName: firstName, lastName: lastName, address: addressCD, phone: phone, mobile: mobileCD, email: email, emergencyContact: emergencyContactCD)
+            
+            OwnerCDModelController.shared.add(owner: newOwner)
+            
+            if let id = newOwner.ownerUUID {
+                ActiveUserModelController.shared.activeUser.append(id)
+            }
+        
+            newOwner.isLoggedOn = true
+            
+        } else if isKid {
+            
+            let newStudentKid = StudentKidCD(dateCreated: Date(), dateEdited: Date(), birthdate: birthdate, studentStatus: nil, belt: beltCD, profilePic: profilePicData, username: username, password: password, firstName: firstName, lastName: lastName, parentGuardian: parentGuardian, address: addressCD, phone: phone, mobile: mobileCD, email: email, emergencyContact: emergencyContactCD)
+            
+            StudentKidCDModelController.shared.add(studentKid: newStudentKid)
+            
+            if let id = newStudentKid.kidStudentUUID {
+                ActiveUserModelController.shared.activeUser.append(id)
+            }
+            
+            newStudentKid.isLoggedOn = true
+            
+            // if isOwnerAddingStudent == true, then we update the local newStudentKidCD property to the newly created newStudentKid
+            if let isOwnerAddingStudent = isOwnerAddingStudent {
+                
+                if isOwnerAddingStudent {
+                    // pass to CoreData local property
+                    newStudentKidCD = newStudentKid
+                }
+            }
+            
+        } else if !isKid {
+            
+            let newStudentAdult = StudentAdultCD(isInstructor: false, dateCreated: Date(), dateEdited: Date(), birthdate: birthdate, studentStatus: nil, belt: beltCD, profilePic: profilePicData, username: username, password: password, firstName: firstName, lastName: lastName, address: addressCD, phone: phone, mobile: mobileCD, email: email, emergencyContact: emergencyContactCD)
+
+            StudentAdultCDModelController.shared.add(studentAdult: newStudentAdult)
+            
+            if let id = newStudentAdult.adultStudentUUID {
+                ActiveUserModelController.shared.activeUser.append(id)
+            }
+            
+            newStudentAdult.isLoggedOn = true
+            
+            // if isOwnerAddingStudent == true, then we update the local newStudentAdultCD property to the newly created newStudentAdult
+            if let isOwnerAddingStudent = isOwnerAddingStudent {
+                
+                if isOwnerAddingStudent {
+                    // pass to CoreData local property
+                    newStudentAdultCD = newStudentAdult
+                }
+            }
+        }
+    }
+}
+
+
+// MARK: - function to create belt data model in CoreData
+extension CompletedProfileViewController {
+    
+    func createBeltCoreDataModel() {
+        
+        // pass CoreData belt properties
+        guard let numberOfStripes = numberOfStripes else { return }
+        guard let beltLevel = beltLevel?.rawValue else { return }
+        // convert numberOfStripes to Int16
+        guard let stripesInt16 = Int16(exactly: numberOfStripes) else { return }
+        
+        beltCD = BeltCD(beltUUID: UUID(), active: true, dateCreated: Date(), dateEdited: Date(), beltLevel: beltLevel, beltPromotionAttendanceCriteria: nil, beltStripeAgeDetails: nil, classesToNextPromotion: nil, numberOfStripes: stripesInt16)
+    }
+}
+
+
+// MARK: - function to create address data model in CoreData
+extension CompletedProfileViewController {
+    
+    func createAddressCoreDataModel() {
+        
+        guard let addressLine1 = addressLine1 else { print("fail addressLine1"); return }
+        
+        let addressLine2CD = addressLine2 ?? ""
+        
+        guard let city = city else { print("fail city"); return }
+        
+        guard let state = state else { print("fail state"); return }
+        
+        guard let zipCode = zipCode else { print("fail zip"); return }
+        
+        addressCD = AddressCD(addressLine1: addressLine1, addressLine2: addressLine2CD, city: city, state: state, zipCode: zipCode)
+        
+    }
+}
+
+
+// MARK: - function to create emergency contact data model in CoreData
+extension CompletedProfileViewController {
+    
+    func createEmergencyContactCoreDataModel() {
+        
+        guard let name = emergencyContactName else { print("fail emergencyContactName"); return }
+        
+        guard let phone = emergencyContactPhone else { print("fail emergencyContactPhone"); return }
+        
+        guard let relationship = emergencyContactRelationship else { print("fail emergencyContactRelationship"); return }
+        
+        emergencyContactCD = EmergencyContactCD(name: name, phone: phone, relationship: relationship)
+    }
+}

@@ -24,7 +24,7 @@ class PaymentProgramInfoDetailsViewController: UIViewController {
     var paymentProgramToEdit: PaymentProgram?
     
     let beltBuilder = BeltBuilder()
-
+    
     // payment program info outlets
     @IBOutlet weak var paymentProgramNameLabelOutlet: UILabel!
     @IBOutlet weak var activeLabelOutlet: UILabel!
@@ -36,15 +36,12 @@ class PaymentProgramInfoDetailsViewController: UIViewController {
     @IBOutlet weak var billingDateLabelOutlet: UILabel!
     @IBOutlet weak var signatureTypeLabelOutlet: UILabel!
     
+    // CoreData properties
+    var paymentProgramCD: PaymentProgramCD?
     
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
-        
-        navigationController?.navigationBar.titleTextAttributes = avenirFont
         
         populateCompletedProfileInfo()
     }
@@ -55,7 +52,10 @@ class PaymentProgramInfoDetailsViewController: UIViewController {
         let rightEditButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(self.editButtonTapped))
         self.navigationItem.rightBarButtonItem = rightEditButton
         
-        //populateCompletedProfileInfo()
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
+        
+        title = "Please Review Your Info"
     }
 
     
@@ -80,11 +80,20 @@ class PaymentProgramInfoDetailsViewController: UIViewController {
         navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
         navigationController?.navigationBar.shadowImage = UIImage()
         
-        // pass the current payment program name and agreeemnt to destVC
-        guard let paymentProgram = PaymentProgramModelController.shared.paymentPrograms.first else { return }
+//        // pass the current payment program name and agreeemnt to destVC
+//        guard let paymentProgram = PaymentProgramModelController.shared.paymentPrograms.first else { return }
+//
+//        destViewController.paymentProgramName = paymentProgram.programName
+//        destViewController.agreement = paymentProgram.paymentAgreement
         
-        destViewController.paymentProgramName = paymentProgram.programName
-        destViewController.agreement = paymentProgram.paymentAgreement
+        // pass the current CoreData payment program name and agreeemnt to destVC
+        guard let paymentProgramCD = paymentProgramCD else {
+            print("ERROR: nil value found for paymentProgramCD in PaymentProgramInfoDetailsViewController.swift -> reviewAgreementTextButtonTapped(sender:) - line 92.")
+            return
+        }
+        
+        destViewController.paymentProgramName = paymentProgramCD.programName
+        destViewController.agreement = paymentProgramCD.paymentAgreement
     }
     
     
@@ -95,7 +104,13 @@ class PaymentProgramInfoDetailsViewController: UIViewController {
         let cancel = UIAlertAction(title: "cancel", style: UIAlertAction.Style.cancel, handler: nil)
         let deleteAccount = UIAlertAction(title: "delete", style: UIAlertAction.Style.destructive) { (alert) in
             
-            PaymentProgramModelController.shared.delete(paymentProgram: PaymentProgramModelController.shared.paymentPrograms[0])
+//            PaymentProgramModelController.shared.delete(paymentProgram: PaymentProgramModelController.shared.paymentPrograms[0])
+            
+            guard let paymentProgram = self.paymentProgramCD else {
+                print("ERROR: nil value found for paymentProgramCD in PaymentProgramInfoDetailsViewController.swift -> deletePaymentProgramButtonTapped(sender:) - line 111.")
+                return
+            }
+            PaymentProgramCDModelController.shared.remove(paymentProgram: paymentProgram)
             
             // programmatically performing the segue
             guard let viewControllers = self.navigationController?.viewControllers else { return }
@@ -139,8 +154,9 @@ class PaymentProgramInfoDetailsViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         
         // set properties on destinationVC
+        //        destViewController.paymentProgramToEdit = PaymentProgramModelController.shared.paymentPrograms[0]
         destViewController.inEditingMode = true
-        destViewController.paymentProgramToEdit = PaymentProgramModelController.shared.paymentPrograms[0]
+        destViewController.paymentProgramCDToEdit = paymentProgramCD
         
     }
     
@@ -151,20 +167,23 @@ extension PaymentProgramInfoDetailsViewController {
     
     func populateCompletedProfileInfo() {
         
-        guard let paymentProgram = PaymentProgramModelController.shared.paymentPrograms.first else { return }
+        guard let paymentProgramCD = paymentProgramCD else {
+            print("ERROR: nil value found for paymentProgramCD in PaymentProgramInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 171. ")
+            return
+        }
         // name outlet
-        title = paymentProgram.programName
+        paymentProgramNameLabelOutlet.text = paymentProgramCD.programName
         // active outlet
-        if paymentProgram.active == true {
+        if paymentProgramCD.active == true {
             
             activeLabelOutlet.text = "active: YES"
         } else {
             activeLabelOutlet.text = "active: NO"
         }
         // lastChanged outlet
-        lastChangedLabelOutlet.text = "\(paymentProgram.dateEdited)"
+        lastChangedLabelOutlet.text = "\(paymentProgramCD.dateEdited ?? Date())"
         // payment program description
-        programDescriptionTextView.text = paymentProgram.paymentDescription
+        programDescriptionTextView.text = paymentProgramCD.paymentDescription
         
         // billing details outlets
         
@@ -172,44 +191,52 @@ extension PaymentProgramInfoDetailsViewController {
         billingDates = ""
         signatureTypes = ""
         
+        // TODO: - created sorted arrays via the name property for the NSSet .sorted array method and then sort that resulting array like the days of the week in the Aula model objects
+        
         // billingTypes
-        for type in paymentProgram.billingTypes {
+        let billingTypeSort = NSSortDescriptor(key: "billingType", ascending: true)
+        let billingTypeCDArray = paymentProgramCD.paymentBillingType?.sortedArray(using: [billingTypeSort]) as! [PaymentBillingTypeCD]
+        for type in billingTypeCDArray {
             
             if billingTypes == "" {
                 
-                billingTypes += type.rawValue
+                billingTypes += type.billingType ?? ""
                 
             } else {
                 
-                billingTypes += ", \(type.rawValue)"
+                billingTypes += ", \(type.billingType ?? "")"
             }
         }
         billingTypeLabelOutlet.text = billingTypes
         
         //billingDates
-        for date in paymentProgram.billingDates {
+        let billingDateSort = NSSortDescriptor(key: "billingDate", ascending: true)
+        let billingDateCDArray = paymentProgramCD.paymentBillingDate?.sortedArray(using: [billingDateSort]) as! [PaymentBillingDateCD]
+        for date in billingDateCDArray {
             
             if billingDates == "" {
                 
-                billingDates += date.rawValue
+                billingDates += date.billingDate ?? ""
                 
             } else {
                 
-                billingDates += ", \(date.rawValue)"
+                billingDates += ", \(date.billingDate ?? "")"
             }
         }
         billingDateLabelOutlet.text = billingDates
         
         // signatureTypes
-        for type in paymentProgram.signatureTypes {
+        let billingSignatureSort = NSSortDescriptor(key: "billingSignature", ascending: true)
+        let billingSignatureCDArray = paymentProgramCD.paymentBillingSignature?.sortedArray(using: [billingSignatureSort]) as! [PaymentBillingSignatureCD]
+        for signature in billingSignatureCDArray {
             
             if signatureTypes == "" {
                 
-                signatureTypes += type.rawValue
+                signatureTypes += signature.billingSignature ?? ""
                 
             } else {
                 
-                signatureTypes += ", \(type.rawValue)"
+                signatureTypes += ", \(signature.billingSignature ?? "")"
             }
             
         }

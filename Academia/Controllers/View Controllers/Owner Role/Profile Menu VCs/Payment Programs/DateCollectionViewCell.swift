@@ -86,7 +86,7 @@ class DateCollectionViewCell: UICollectionViewCell {
             
             delegate?.billingDates = billingDates.filter({ $0 != billingDate })
             
-            print("\(String(describing: delegate?.billingDates))")
+            print("in DateCollectionCell.swift - delegate.billingDates: \(String(describing: delegate?.billingDates))")
             
         } else {
             
@@ -96,7 +96,7 @@ class DateCollectionViewCell: UICollectionViewCell {
             
             delegate?.billingDates = billingDates
             
-            print("\(String(describing: delegate?.billingDates))")
+            print("in DateCollectionCell.swift - delegate.billingDates: \(String(describing: delegate?.billingDates))")
             
         }
     }

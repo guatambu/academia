@@ -11,5 +11,6 @@ import Foundation
 // MARK: - ClassGroupTVC.swift to ClassGroupTableViewCell.swift Delegate protocol to access TVC's classGroups array properties
 protocol ClassGroupDelegate: class {
     var classGroups: [Group] { get set }
+    var classGroupsCD: [GroupCD] { get set }
 }
 

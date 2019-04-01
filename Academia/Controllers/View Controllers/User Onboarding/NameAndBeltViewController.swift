@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class NameAndBeltViewController: UIViewController {
     
@@ -39,6 +40,12 @@ class NameAndBeltViewController: UIViewController {
     @IBOutlet weak var beltLevelPickerView: UIPickerView!
     
     @IBOutlet weak var nextButtonOutlet: DesignableButton!
+    
+    // CoreData Properties
+    var owner: OwnerCD?
+    var studentAdult: StudentAdultCD?
+    var studentKid: StudentKidCD?
+    var groupCD: GroupCD?
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -130,6 +137,7 @@ class NameAndBeltViewController: UIViewController {
         
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
         destViewController.group = group
+        destViewController.groupCD = groupCD
         
         destViewController.inEditingMode = inEditingMode
         destViewController.userToEdit = userToEdit
@@ -434,16 +442,40 @@ extension NameAndBeltViewController {
     func updateOwnerInfo() {
         guard let owner = userToEdit as? Owner else { return }
         BeltModelController.shared.update(belt: owner.belt, active: nil, elligibleForNextBelt: nil, classesToNextPromotion: nil, beltLevel: beltLevel, numberOfStripes: numberOfStripes)
+        
+        // CoreData Belt property update
+        guard let ownerCD = userToEdit as? OwnerCD else { return }
+        guard let belt = ownerCD.belt else { return }
+        let stripesInt16 = Int16(exactly: numberOfStripes)
+        
+        BeltCDModelController.shared.update(belt: belt, active: nil, elligibleForNextBelt: nil, beltLevel: beltLevel.rawValue, numberOfStripes: stripesInt16)
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func updateKidStudentInfo() {
         guard let kidStudent = userToEdit as? KidStudent else { return }
         BeltModelController.shared.update(belt: kidStudent.belt, active: nil, elligibleForNextBelt: nil, classesToNextPromotion: nil, beltLevel: beltLevel, numberOfStripes: numberOfStripes)
+        
+        // CoreData Belt property update
+        guard let studentKidCD = userToEdit as? StudentKidCD else { return }
+        guard let belt = studentKidCD.belt else { return }
+        let stripesInt16 = Int16(exactly: numberOfStripes)
+        
+        BeltCDModelController.shared.update(belt: belt, active: nil, elligibleForNextBelt: nil, beltLevel: beltLevel.rawValue, numberOfStripes: stripesInt16)
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func updateAdultStudentInfo() {
         guard let adultStudent = userToEdit as? AdultStudent else { return }
         BeltModelController.shared.update(belt: adultStudent.belt, active: nil, elligibleForNextBelt: nil, classesToNextPromotion: nil, beltLevel: beltLevel, numberOfStripes: numberOfStripes)
+        
+        // CoreData Belt property update
+        guard let studentAdultCD = userToEdit as? StudentAdultCD else { return }
+        guard let belt = studentAdultCD.belt else { return }
+        let stripesInt16 = Int16(exactly: numberOfStripes)
+        
+        BeltCDModelController.shared.update(belt: belt, active: nil, elligibleForNextBelt: nil, beltLevel: beltLevel.rawValue, numberOfStripes: stripesInt16)
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func enterEditingMode(inEditingMode: Bool?) {

@@ -29,6 +29,9 @@ class StudentClassDetailTableViewController: UITableViewController {
     @IBOutlet weak var classDescriptionTextView: UITextView!
     @IBOutlet weak var instructorAdvisoryLabelOutlet: UILabel!
     
+    // CoreData properties
+    var aulaCD: AulaCD?
+    
     
     // MARK: - ViewController Lifecycle Functions
     
@@ -53,6 +56,27 @@ class StudentClassDetailTableViewController: UITableViewController {
             instructorAdvisoryLabelOutlet.text = "no student instructors added to group"
             
         } else if let  ownerInstructors = aula?.ownerInstructor, ownerInstructors.isEmpty {
+            
+            instructorAdvisoryLabelOutlet.isHidden = false
+            instructorAdvisoryLabelOutlet.text = "no owner added to group as instructors"
+            
+        } else {
+            
+            instructorAdvisoryLabelOutlet.isHidden = true
+        }
+        
+        // CoreData version
+        if let instructorsCD = aulaCD?.adultStudentInstructorsAula, let ownerInstructorsCD = aulaCD?.ownerInstructorAula, instructorsCD.count == 0 && ownerInstructorsCD.count == 0 {
+            
+            instructorAdvisoryLabelOutlet.isHidden = false
+            instructorAdvisoryLabelOutlet.text = "no owner instructors added to class"
+            
+        } else if let instructorsCD = aulaCD?.adultStudentInstructorsAula, instructorsCD.count == 0 {
+            
+            instructorAdvisoryLabelOutlet.isHidden = false
+            instructorAdvisoryLabelOutlet.text = "no student instructors added to group"
+            
+        } else if let  ownerInstructorsCD = aulaCD?.ownerInstructorAula, ownerInstructorsCD.count == 0 {
             
             instructorAdvisoryLabelOutlet.isHidden = false
             instructorAdvisoryLabelOutlet.text = "no owner added to group as instructors"
@@ -196,16 +220,16 @@ class StudentClassDetailTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        guard let aula = aula else {
-            print("ERROR: nil value for group property in ClassInfoDetailsTableViewController.swift -> tableView(_ tableView:, didSelectRowAt:) - line 197")
-            return
-        }
-        
-        guard let instructors = aula.instructor, let ownerInstructors = aula.ownerInstructor else {
-            
-            print("ERROR: nil value for aula.instructor or aula.ownerInstructor array in ClassInfoDetailsTableViewController.swift -> tableView(_ tableView:, numberOfRowsInSection:) - line 203")
-            return
-        }
+//        guard let aula = aula else {
+//            print("ERROR: nil value for group property in ClassInfoDetailsTableViewController.swift -> tableView(_ tableView:, didSelectRowAt:) - line 197")
+//            return
+//        }
+//        
+//        guard let instructors = aula.instructor, let ownerInstructors = aula.ownerInstructor else {
+//
+//            print("ERROR: nil value for aula.instructor or aula.ownerInstructor array in ClassInfoDetailsTableViewController.swift -> tableView(_ tableView:, numberOfRowsInSection:) - line 203")
+//            return
+//        }
         
         // programmatically performing the segue
         
@@ -224,56 +248,92 @@ class StudentClassDetailTableViewController: UITableViewController {
         
         if indexPath.section == 0 {
             // kidStudent setup
-            let owner = ownerInstructors[indexPath.row]
+            //            let kid = mockKids[indexPath.row]
+            //
+            //            destViewController.isOwner = false
+            //            destViewController.isKid = true
+            //            destViewController.username = kid.username
+            //            destViewController.password = kid.password
+            //            destViewController.firstName = kid.firstName
+            //            destViewController.lastName = kid.lastName
+            //            destViewController.parentGuardian = kid.parentGuardian
+            //            destViewController.profilePic = kid.profilePic
+            //            destViewController.birthdate = kid.birthdate
+            //            destViewController.beltLevel = kid.belt.beltLevel
+            //            destViewController.numberOfStripes = kid.belt.numberOfStripes
+            //            destViewController.addressLine1 = kid.addressLine1
+            //            destViewController.addressLine2 = kid.addressLine2
+            //            destViewController.city = kid.city
+            //            destViewController.state = kid.state
+            //            destViewController.zipCode = kid.zipCode
+            //            destViewController.phone = kid.phone
+            //            destViewController.mobile = kid.mobile
+            //            destViewController.email = kid.email
+            //            destViewController.emergencyContactName = kid.emergencyContactName
+            //            destViewController.emergencyContactRelationship = kid.emergencyContactRelationship
+            //            destViewController.emergencyContactPhone = kid.emergencyContactPhone
             
-            destViewController.isOwner = true
-            destViewController.isKid = false
-            destViewController.username = owner.username
-            destViewController.password = owner.password
-            destViewController.firstName = owner.firstName
-            destViewController.lastName = owner.lastName
-            destViewController.profilePic = owner.profilePic
-            destViewController.birthdate = owner.birthdate
-            destViewController.beltLevel = owner.belt.beltLevel
-            destViewController.numberOfStripes = owner.belt.numberOfStripes
-            destViewController.addressLine1 = owner.addressLine1
-            destViewController.addressLine2 = owner.addressLine2
-            destViewController.city = owner.city
-            destViewController.state = owner.state
-            destViewController.zipCode = owner.zipCode
-            destViewController.phone = owner.phone
-            destViewController.mobile = owner.mobile
-            destViewController.email = owner.email
-            destViewController.emergencyContactName = owner.emergencyContactName
-            destViewController.emergencyContactRelationship = owner.emergencyContactRelationship
-            destViewController.emergencyContactPhone = owner.emergencyContactPhone
+            
+            // CoreData version
+            guard let ownerInstructorsCD = aulaCD?.ownerInstructorAula else {
+                
+                print("ERROR: nil value for kidMembersCD array in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 242.")
+                return
+            }
+            
+            let nameSort = NSSortDescriptor(key: "firstName", ascending: true)
+            let owners = ownerInstructorsCD.sortedArray(using: [nameSort])
+            
+            guard let ownerCD = owners[indexPath.row] as? OwnerCD else {
+                print("ERROR: nil value for studentKidCD in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 252.")
+                return
+            }
+            
+            destViewController.ownerCD = ownerCD
             
         } else if indexPath.section == 1 {
             // adultStudent setup
-            let adult = instructors[indexPath.row]
+            //            let adult = mockAdults[indexPath.row]
+            //
+            //            destViewController.isOwner = false
+            //            destViewController.isKid = false
+            //            destViewController.username = adult.username
+            //            destViewController.password = adult.password
+            //            destViewController.firstName = adult.firstName
+            //            destViewController.lastName = adult.lastName
+            //            destViewController.profilePic = adult.profilePic
+            //            destViewController.birthdate = adult.birthdate
+            //            destViewController.beltLevel = adult.belt.beltLevel
+            //            destViewController.numberOfStripes = adult.belt.numberOfStripes
+            //            destViewController.addressLine1 = adult.addressLine1
+            //            destViewController.addressLine2 = adult.addressLine2
+            //            destViewController.city = adult.city
+            //            destViewController.state = adult.state
+            //            destViewController.zipCode = adult.zipCode
+            //            destViewController.phone = adult.phone
+            //            destViewController.mobile = adult.mobile
+            //            destViewController.email = adult.email
+            //            destViewController.emergencyContactName = adult.emergencyContactName
+            //            destViewController.emergencyContactRelationship = adult.emergencyContactRelationship
+            //            destViewController.emergencyContactPhone = adult.emergencyContactPhone
             
-            destViewController.isOwner = false
-            destViewController.isKid = false
-            destViewController.username = adult.username
-            destViewController.password = adult.password
-            destViewController.firstName = adult.firstName
-            destViewController.lastName = adult.lastName
-            destViewController.profilePic = adult.profilePic
-            destViewController.birthdate = adult.birthdate
-            destViewController.beltLevel = adult.belt.beltLevel
-            destViewController.numberOfStripes = adult.belt.numberOfStripes
-            destViewController.addressLine1 = adult.addressLine1
-            destViewController.addressLine2 = adult.addressLine2
-            destViewController.city = adult.city
-            destViewController.state = adult.state
-            destViewController.zipCode = adult.zipCode
-            destViewController.phone = adult.phone
-            destViewController.mobile = adult.mobile
-            destViewController.email = adult.email
-            destViewController.emergencyContactName = adult.emergencyContactName
-            destViewController.emergencyContactRelationship = adult.emergencyContactRelationship
-            destViewController.emergencyContactPhone = adult.emergencyContactPhone
             
+            // CoreData version
+            guard let adultInstructorsCD = aulaCD?.adultStudentInstructorsAula else {
+                
+                print("ERROR: nil value for adultMembersCD array in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 288.")
+                return
+            }
+            
+            let nameSort = NSSortDescriptor(key: "firstName", ascending: true)
+            let adults = adultInstructorsCD.sortedArray(using: [nameSort])
+            
+            guard let studentAdultCD = adults[indexPath.row] as? StudentAdultCD else {
+                print("ERROR: nil value for studentAdultCD in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 298.")
+                return
+            }
+            
+            destViewController.studentAdultCD = studentAdultCD
         }
     }
 }

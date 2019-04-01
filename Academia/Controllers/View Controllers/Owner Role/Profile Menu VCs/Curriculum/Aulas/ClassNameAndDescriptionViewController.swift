@@ -24,6 +24,8 @@ class ClassNameAndDescriptionViewController: UIViewController {
     let beltBuilder = BeltBuilder()
     var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
 
+    let classDescriptionTextViewPlaceholderString = PlaceholderStrings.classDescription.rawValue
+    
     // IBOutlets
     @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
@@ -33,6 +35,9 @@ class ClassNameAndDescriptionViewController: UIViewController {
     @IBOutlet weak var lastChangedLabelOutlet: UILabel!
     @IBOutlet weak var classDescriptionTextView: UITextView!
     
+    // CoreData properties
+    var aulaCDToEdit: AulaCD?
+    
     
     // MARK: - ViewController Lifecycle Functions
     
@@ -40,10 +45,7 @@ class ClassNameAndDescriptionViewController: UIViewController {
         
         subscribeToKeyboardNotifications()
         
-        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
-        
-        navigationController?.navigationBar.titleTextAttributes = avenirFont
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
         
         enterEditingMode(inEditingMode: inEditingMode)
     }
@@ -78,8 +80,15 @@ class ClassNameAndDescriptionViewController: UIViewController {
     }
     
     @IBAction func tapAnywhereToDismissTapped(_ sender: Any) {
+        
         view.endEditing(true)
-        classDescriptionTextView.resignFirstResponder()
+        
+        // dismiss keyboard when leaving VC scene
+        if classNameTextField.isFirstResponder {
+            classNameTextField.resignFirstResponder()
+        } else if classDescriptionTextView.isFirstResponder {
+            classDescriptionTextView.resignFirstResponder()
+        }
     }
     
     @objc func saveButtonTapped() {
@@ -121,7 +130,7 @@ class ClassNameAndDescriptionViewController: UIViewController {
             
             self.returnToClassInfo()
             
-            print("update aula name: \(String(describing: self.aulaToEdit?.aulaName))")
+            print("update aula name: \(String(describing: self.aulaCDToEdit?.aulaName))")
         }
         inEditingMode = false
     }
@@ -174,6 +183,7 @@ class ClassNameAndDescriptionViewController: UIViewController {
             
             destViewController.inEditingMode = inEditingMode
             destViewController.aulaToEdit = aulaToEdit
+            destViewController.aulaCDToEdit = aulaCDToEdit
             
             // dismiss keyboard when leaving VC scene
             if classNameTextField.isFirstResponder {
@@ -182,7 +192,6 @@ class ClassNameAndDescriptionViewController: UIViewController {
                 classDescriptionTextView.resignFirstResponder()
             }
         }
-        
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
         updateAulaInfo()
@@ -201,12 +210,14 @@ extension ClassNameAndDescriptionViewController {
     
     // Update Function for case where want to update user info without a segue
     func updateAulaInfo() {
-        guard let aula = aulaToEdit else { return }
         // group update info
         if classNameTextField.text != "" {
-            AulaModelController.shared.update(aula: aula, active: active, kidAttendees: nil, adultAttendees: nil, aulaDescription: classDescriptionTextView.text, aulaName: classNameTextField.text, daysOfTheWeek: nil, instructor: nil, ownerInstructor: nil, location: nil, students: nil, time: nil, timeCode: nil, classGroups: nil)
-            print("update aula name: \(AulaModelController.shared.aulas[0].aulaName)")
+            
+            // CoreData version
+            guard let aulaCDToEdit = aulaCDToEdit else { return }
+            AulaCDModelController.shared.update(aula: aulaCDToEdit, active: active, aulaName: classNameTextField.text, aulaDescription: classDescriptionTextView.text, dayOfTheWeek: nil, timeCode: nil, time: nil)
         }
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func enterEditingMode(inEditingMode: Bool?) {
@@ -225,22 +236,43 @@ extension ClassNameAndDescriptionViewController {
     
     // owner setup for editing mode
     func aulaEditingSetup() {
+//
+//        guard let aulaToEdit = aulaToEdit else {
+//            return
+//        }
+//
+//        welcomeMessageLabelOutlet.text = "\(aulaToEdit.aulaName)"
+//
+//        welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
+//        welcomeInstructionsLabelOutlet.text = "you are in class editing mode"
+//
+//        classDescriptionTextView.text = aulaToEdit.aulaDescription
+//        classNameTextField.text = aulaToEdit.aulaName
+//
+//        active = aulaToEdit.active
+//
+//        if aulaToEdit.active {
+//            activeSwitch.isOn = true
+//        } else {
+//            activeSwitch.isOn = false
+//        }
         
-        guard let aulaToEdit = aulaToEdit else {
+        // CoreData version
+        guard let aulaCDToEdit = aulaCDToEdit else {
             return
         }
         
-        welcomeMessageLabelOutlet.text = "\(aulaToEdit.aulaName)"
+        welcomeMessageLabelOutlet.text = "\(aulaCDToEdit.aulaName ?? "")"
         
         welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
         welcomeInstructionsLabelOutlet.text = "you are in class editing mode"
         
-        classDescriptionTextView.text = aulaToEdit.aulaDescription
-        classNameTextField.text = aulaToEdit.aulaName
+        classDescriptionTextView.text = "\(aulaCDToEdit.aulaDescription ?? "")"
+        classNameTextField.text = "\(aulaCDToEdit.aulaName ?? "")"
         
-        active = aulaToEdit.active
+        active = aulaCDToEdit.active
         
-        if aulaToEdit.active {
+        if aulaCDToEdit.active {
             activeSwitch.isOn = true
         } else {
             activeSwitch.isOn = false
@@ -275,23 +307,32 @@ extension ClassNameAndDescriptionViewController: UITextFieldDelegate, UITextView
     
     // method to call in viewWillAppear() to subscribe to desired UIResponder keyboard notifications
     func subscribeToKeyboardNotifications() {
+        
+        // notifications unique to keyboard itself
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        
+        // notifications unique to editing of classDescriptionTextView text
+        NotificationCenter.default.addObserver(self, selector: #selector(texfViewWillEdit(notificaiton:)), name: UITextView.textDidBeginEditingNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(texfViewWillEdit(notificaiton:)), name: UITextView.textDidEndEditingNotification, object: nil)
     }
     
     // method to be called in viewWillDisappear() to unsubscribe from desired UIResponder keyboard notifications
     func unsubscribeToKeyboardNotifications() {
+        
+        // notifications unique to keyboard itself
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        
+        // notifications unique to editing of classDescriptionTextView text
+        NotificationCenter.default.removeObserver(self, name: UITextView.textDidBeginEditingNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UITextView.textDidEndEditingNotification, object: nil)
     }
     
     // keyboardWillChange to handle Keyboard Notifications
     @objc func keyboardWillChange(notification: Notification) {
-        
-        // uncomment for print statement ensuring this method is properly called
-        // print("Keyboard will change: \(notification.name.rawValue) - \(notification.description)")
         
         // get the size of the keyboard
         guard let keyboardCGRectValue = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
@@ -316,6 +357,24 @@ extension ClassNameAndDescriptionViewController: UITextFieldDelegate, UITextView
         } else {
             
             self.view.frame.origin.y = 0
+        }
+    }
+    
+    // funciton to handle UITextView user editing
+    @objc func texfViewWillEdit(notificaiton: Notification) {
+        
+        // check for start of editing with placeholder text in place
+        if notificaiton.name == UITextView.textDidBeginEditingNotification && classDescriptionTextView.text == classDescriptionTextViewPlaceholderString {
+            
+            // change to input fontstyle and empty textView.text ready for user input
+            classDescriptionTextView.font = UIFont(name: "Avenir-Light", size: 16)
+            classDescriptionTextView.text = ""
+            
+            // check for end of editing and no user input
+        } else if notificaiton.name == UITextView.textDidEndEditingNotification && classDescriptionTextView.text == "" {
+            
+            // reset to placeholder text
+            classDescriptionTextView.attributedText = NSAttributedString(string: classDescriptionTextViewPlaceholderString, attributes: beltBuilder.avenirFont)
         }
     }
     

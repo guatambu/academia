@@ -17,6 +17,8 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
     var groupDescription: String?
     var kidMembers: [KidStudent]?
     var adultMembers: [AdultStudent]?
+    var kidMembersCD: [StudentKidCD]?
+    var adultMembersCD: [StudentAdultCD]?
     
     var inEditingMode: Bool?
     var groupToEdit: Group?
@@ -26,7 +28,6 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
     // tableView Sections Header Labels
     let sectionHeaderLabels = ["Kids", "Adults"]
     
-    @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     @IBOutlet weak var groupNameLabelOutlet: UILabel!
     @IBOutlet weak var activeLabelOutlet: UILabel!
@@ -39,11 +40,6 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
-        
-        navigationController?.navigationBar.titleTextAttributes = avenirFont
         
         populateCompletedGroupInfo()
         
@@ -71,13 +67,20 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
+        
+        title = "Please Review Your Info"
     }
     
     
     // MARK: - Actions
     
     @IBAction func createGroupButtonTapped(_ sender: DesignableButton) {
+        
+        // create GroupCD data model object
+        createAndSaveGroupCoreDataModel()
             
         // create the new location in the LocationModelController source of truth
         createGroup()
@@ -128,19 +131,19 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        guard let kidMembers = kidMembers, let adultMembers = adultMembers else {
+        guard let kidMembersCD = kidMembersCD, let adultMembersCD = adultMembersCD else {
             
-            print("ERROR: nil value for either kidMembers and/or adultMemebers array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, numberOfRowsInSection:) - line 133")
+            print("ERROR: nil value for either kidMembersCD and/or adultMemebersCD array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, numberOfRowsInSection:) - line 133")
             return 0
         }
         
         if section == 0 {
             
-            return kidMembers.count
+            return kidMembersCD.count
             
         } else if section == 1 {
 
-            return adultMembers.count
+            return adultMembersCD.count
             
         } else {
             return 0
@@ -149,9 +152,9 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let kidMembers = kidMembers, let adultMembers = adultMembers else {
+        guard let kidMembersCD = kidMembersCD, let adultMembersCD = adultMembersCD else {
             
-            print("ERROR: nil value for either kidMembers and/or adultMemebers array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, cellForRowAt:) - line 154")
+            print("ERROR: nil value for either kidMembersCD and/or adultMemebersCD array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, cellForRowAt:) - line 154")
             return UITableViewCell()
         }
         
@@ -160,7 +163,7 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "reviewKidStudentCell", for: indexPath) as! ReviewKidStudentTableViewCell
             
-            cell.kidStudent = kidMembers[indexPath.row]
+            cell.kidStudentCD = kidMembersCD[indexPath.row]
             
             return cell
             
@@ -168,22 +171,19 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "reviewAdultStudentCell", for: indexPath) as! ReviewAdultStudentTableViewCell
             
-            if adultMembers.isEmpty {
-                cell.adultStudent = nil
-            } else {
-                cell.adultStudent = adultMembers[indexPath.row]
-            }
+            cell.adultStudentCD = adultMembersCD[indexPath.row]
+            
             return cell
         }
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        guard let kidMembers = kidMembers, let adultMembers = adultMembers else {
-            
-            print("ERROR: nil value for either kidMembers and/or adultMemebers array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, didSelectRowAt:) - line 186")
-            return
-        }
+//        guard let kidMembers = kidMembers, let adultMembers = adultMembers else {
+//            
+//            print("ERROR: nil value for either kidMembers and/or adultMemebers array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, didSelectRowAt:) - line 186")
+//            return
+//        }
         
         // programmatically performing the segue
         
@@ -206,56 +206,47 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
         
         if indexPath.section == 0 {
             // kidStudent setup
-            let kid = kidMembers[indexPath.row]
             
-            destViewController.isOwner = false
-            destViewController.isKid = true
-            destViewController.username = kid.username
-            destViewController.password = kid.password
-            destViewController.firstName = kid.firstName
-            destViewController.lastName = kid.lastName
-            destViewController.parentGuardian = kid.parentGuardian
-            destViewController.profilePic = kid.profilePic
-            destViewController.birthdate = kid.birthdate
-            destViewController.beltLevel = kid.belt.beltLevel
-            destViewController.numberOfStripes = kid.belt.numberOfStripes
-            destViewController.addressLine1 = kid.addressLine1
-            destViewController.addressLine2 = kid.addressLine2
-            destViewController.city = kid.city
-            destViewController.state = kid.state
-            destViewController.zipCode = kid.zipCode
-            destViewController.phone = kid.phone
-            destViewController.mobile = kid.mobile
-            destViewController.email = kid.email
-            destViewController.emergencyContactName = kid.emergencyContactName
-            destViewController.emergencyContactRelationship = kid.emergencyContactRelationship
-            destViewController.emergencyContactPhone = kid.emergencyContactPhone
+            // CoreData version
+            guard let kidMembersCD = kidMembersCD else {
+                
+                print("ERROR: nil value for kidMembersCD array in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 242.")
+                return
+            }
+            
+            let kidMembersCDSet = NSSet(array: kidMembersCD)
+            
+            let nameSort = NSSortDescriptor(key: "firstName", ascending: true)
+            let kids = kidMembersCDSet.sortedArray(using: [nameSort])
+            
+            guard let studentKidCD = kids[indexPath.row] as? StudentKidCD else {
+                print("ERROR: nil value for studentKidCD in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 252.")
+                return
+            }
+            
+            destViewController.studentKidCD = studentKidCD
             
         } else if indexPath.section == 1 {
-            // adultStudent setup
-            let adult = adultMembers[indexPath.row]
+            // adultStudent setup      
             
-            destViewController.isOwner = false
-            destViewController.isKid = false
-            destViewController.username = adult.username
-            destViewController.password = adult.password
-            destViewController.firstName = adult.firstName
-            destViewController.lastName = adult.lastName
-            destViewController.profilePic = adult.profilePic
-            destViewController.birthdate = adult.birthdate
-            destViewController.beltLevel = adult.belt.beltLevel
-            destViewController.numberOfStripes = adult.belt.numberOfStripes
-            destViewController.addressLine1 = adult.addressLine1
-            destViewController.addressLine2 = adult.addressLine2
-            destViewController.city = adult.city
-            destViewController.state = adult.state
-            destViewController.zipCode = adult.zipCode
-            destViewController.phone = adult.phone
-            destViewController.mobile = adult.mobile
-            destViewController.email = adult.email
-            destViewController.emergencyContactName = adult.emergencyContactName
-            destViewController.emergencyContactRelationship = adult.emergencyContactRelationship
-            destViewController.emergencyContactPhone = adult.emergencyContactPhone
+            // CoreData version
+            guard let adultMembersCD = adultMembersCD else {
+                
+                print("ERROR: nil value for adultMembersCD array in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 288.")
+                return
+            }
+            
+            let adultMembersCDSet = NSSet(array: adultMembersCD)
+            
+            let nameSort = NSSortDescriptor(key: "firstName", ascending: true)
+            let adults = adultMembersCDSet.sortedArray(using: [nameSort])
+            
+            guard let studentAdultCD = adults[indexPath.row] as? StudentAdultCD else {
+                print("ERROR: nil value for studentAdultCD in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 298.")
+                return
+            }
+            
+            destViewController.studentAdultCD = studentAdultCD
             
         }
     }
@@ -297,3 +288,41 @@ extension ReviewAndCreateGroupTableViewController {
         GroupModelController.shared.add(active: active, name: groupName, description: groupDescription, kidMembers: kidMembers, adultMembers: adultMembers)
     }
 }
+
+
+// MARK: - funciton to create and save group to CoreData
+extension ReviewAndCreateGroupTableViewController {
+    
+    func createAndSaveGroupCoreDataModel() {
+        
+        guard let groupName = groupName else { print("fail groupName"); return }
+        guard let active = active else { print("fail active");  return }
+        guard let groupDescription = groupDescription else { print("fail groupDescription"); return }
+        
+        let newGroupCD = GroupCD(active: active, name: groupName, groupDescription: groupDescription)
+        
+        // configure newGroup's "to-many" properties
+        if let kidMembersCD = kidMembersCD {
+            // if present in kidMembersCD array, add kids to newGroup's kidMembers
+            if !kidMembersCD.isEmpty {
+                for kid in kidMembersCD {
+                    newGroupCD.addToKidMembers(kid)
+                }
+            }
+        }
+        if let adultMembersCD = adultMembersCD {
+            // if present in adultMembersCD array, add adults to newGroup's adultMembers
+            if !adultMembersCD.isEmpty {
+                for adult in adultMembersCD {
+                    newGroupCD.addToAdultMembers(adult)
+                }
+            }
+        }
+        
+        // add the created and configured group to the source of truth
+        GroupCDModelController.shared.add(group: newGroupCD)
+        // save to CoreData
+        OwnerCDModelController.shared.saveToPersistentStorage()
+    }
+}
+

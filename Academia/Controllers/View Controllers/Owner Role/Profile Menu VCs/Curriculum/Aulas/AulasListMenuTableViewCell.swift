@@ -22,6 +22,12 @@ class AulasListMenuTableViewCell: UITableViewCell {
         }
     }
     
+    var aulaCD: AulaCD? {
+        didSet {
+            updateViews()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -31,12 +37,21 @@ class AulasListMenuTableViewCell: UITableViewCell {
     // MARK: - updateViews()
     
     func updateViews() {
-        guard let aula = aula else {
-            print("ERROR: nil value found for aula property in AulasListMenuTableViewCell.swift -> updateViews() - line 34")
+//        guard let aula = aula else {
+//            print("ERROR: nil value found for aula property in AulasListMenuTableViewCell.swift -> updateViews() - line 34")
+//            return
+//        }
+//        
+//        cellTitleOutlet.text = "\(aula.aulaName)"
+//        aulaTimeLabelOutlet.text = "\(aula.time ?? "")"
+        
+        // CoreData version
+        guard let aulaCD = aulaCD else {
+            print("ERROR: nil value found for aulaCD property in AulasListMenuTableViewCell.swift -> updateViews() - line 50")
             return
         }
         
-        cellTitleOutlet.text = "\(aula.aulaName)"
-        aulaTimeLabelOutlet.text = "\(aula.time ?? "")"
+        cellTitleOutlet.text = "\(aulaCD.aulaName ?? "")"
+        aulaTimeLabelOutlet.text = "\(aulaCD.time ?? "")"
     }
 }

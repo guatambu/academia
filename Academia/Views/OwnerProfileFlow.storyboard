@@ -13,7 +13,7 @@
         <!--Profile Table View Controller-->
         <scene sceneID="oRZ-Yf-Yuk">
             <objects>
-                <tableViewController id="viL-Zh-6Uc" userLabel="Profile Table View Controller" customClass="OwnerProfileTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="toOwnerProfile" useStoryboardIdentifierAsRestorationIdentifier="YES" id="viL-Zh-6Uc" userLabel="Profile Table View Controller" customClass="OwnerProfileTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="VJC-HT-zTC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -67,7 +67,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="cDB-5R-ULH" kind="show" id="tZf-rd-v1P"/>
+                                            <segue destination="cDB-5R-ULH" kind="show" identifier="toLoggedInOwnerInfoDetails" id="tZf-rd-v1P"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="srl-J7-qxO" userLabel="My Locations Table View Cell">
@@ -471,7 +471,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Profile" id="ONp-eR-Zj1">
-                        <barButtonItem key="backBarButtonItem" title="Profile" id="q5H-TM-ddZ"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="q5H-TM-ddZ"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qCt-FN-Ii0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -487,39 +487,44 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1iZ-Ri-MIy">
-                                <rect key="frame" x="0.0" y="80" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="80" width="320" height="423"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="z0C-b0-dDY" userLabel="plese review and name Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="63"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Review Your Info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edJ-hb-z3g">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(name)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edJ-hb-z3g">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="4FK-Go-SO1"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="24"/>
-                                                <color key="textColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap Edit above to make changes" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uVL-Ej-Ltc">
-                                                <rect key="frame" x="0.0" y="32" width="320" height="24"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="24" id="BIU-RD-Vzo"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dNe-a8-jLx" userLabel="isInstructor Stack View">
+                                                <rect key="frame" x="93.5" y="32" width="133" height="31"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instructor: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ru-6e-T1r" userLabel="isInstructor Label">
+                                                        <rect key="frame" x="0.0" y="4.5" width="76" height="22"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="asF-fw-kYk" userLabel="isInstructor Switch">
+                                                        <rect key="frame" x="84" y="0.0" width="51" height="31"/>
+                                                        <connections>
+                                                            <action selector="toggleIsInstructorSwitch:" destination="cDB-5R-ULH" eventType="valueChanged" id="nBF-DZ-QSS"/>
+                                                        </connections>
+                                                    </switch>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="edJ-hb-z3g" firstAttribute="leading" secondItem="z0C-b0-dDY" secondAttribute="leading" id="04R-h4-1ew"/>
                                             <constraint firstAttribute="trailing" secondItem="edJ-hb-z3g" secondAttribute="trailing" id="Mug-1a-iKi"/>
-                                            <constraint firstAttribute="trailing" secondItem="uVL-Ej-Ltc" secondAttribute="trailing" id="hGK-Ks-0Pb"/>
-                                            <constraint firstItem="uVL-Ej-Ltc" firstAttribute="leading" secondItem="z0C-b0-dDY" secondAttribute="leading" id="xR0-A5-q37"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="QOS-3D-cIq" userLabel="User Stack View">
-                                        <rect key="frame" x="16" y="64" width="288" height="352"/>
+                                        <rect key="frame" x="16" y="71" width="288" height="352"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="4M8-hE-Z6D" userLabel="profile Stack View">
                                                 <rect key="frame" x="0.0" y="0.0" width="288" height="120"/>
@@ -553,13 +558,13 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(username)" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="2EE-cd-9bo">
                                                                 <rect key="frame" x="0.0" y="0.0" width="152" height="49.5"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="birthdate: (birthdate)" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vDA-Um-inj" userLabel="birthdate Label Outlet">
                                                                 <rect key="frame" x="0.0" y="17.5" width="148" height="49.5"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="p: 310 123-4567" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="XgR-t5-9hw">
@@ -733,7 +738,9 @@
                         <outlet property="emergencyContactNameLabelOutlet" destination="6OB-K0-Xh9" id="SV2-z8-o26"/>
                         <outlet property="emergencyContactPhoneLabelOutlet" destination="bJt-QM-A0l" id="iQZ-WM-8ca"/>
                         <outlet property="emergencyContactRelationshipLabelOutlet" destination="SfN-mv-cYN" id="VPk-K3-ref"/>
+                        <outlet property="isInstuctorSwitch" destination="asF-fw-kYk" id="5AT-59-kpN"/>
                         <outlet property="mobileLabelOutlet" destination="TZL-lg-rTk" id="7JM-4g-Zyb"/>
+                        <outlet property="ownerNameLabelOutlet" destination="edJ-hb-z3g" id="yRC-6f-QbV"/>
                         <outlet property="phoneLabelOutlet" destination="XgR-t5-9hw" id="wZh-va-Slc"/>
                         <outlet property="profilePicImageView" destination="4qd-wA-4eV" id="QVN-r0-A2h"/>
                         <outlet property="stateLabelOutlet" destination="3wO-ZI-5gL" id="4M0-xg-Mm3"/>

@@ -16,7 +16,13 @@ class LocationsImageMenuTableViewCell: UITableViewCell {
     @IBOutlet weak var cellTitleOutlet: UILabel!
     @IBOutlet weak var rightRedArrowImageViewOutlet: UIImageView!
     
-    var location: Location? {
+//    var location: Location? {
+//        didSet {
+//            updateViews()
+//        }
+//    }
+    
+    var location: LocationCD? {
         didSet {
             updateViews()
         }
@@ -41,10 +47,20 @@ class LocationsImageMenuTableViewCell: UITableViewCell {
             
             return
         }
-        print("LocationsImageMenuTVCell location object: \(location)")
+        guard let locationPicData = location.locationPic else {
+            print("ERROR: nil value found for locationPic in LocationsImageMenuTableViewCell.swift -> updateViews() - line 53.")
+            return
+        }
+        guard let locationName = location.locationName else {
+            print("ERROR: nil value found for locationName in LocationsImageMenuTableViewCell.swift -> updateViews() - line 55.")
+            return
+        }
         
-        locationThumbnailImageView.image = location.locationPic
-        cellTitleOutlet.text = "\(location.locationName)"
+        print("LocationsImageMenuTVCell location object name: \(locationName)")
+        
+        // populate cell UI elements
+        locationThumbnailImageView.image = UIImage(data: locationPicData)
+        cellTitleOutlet.text = "\(locationName)"
         
     }
 

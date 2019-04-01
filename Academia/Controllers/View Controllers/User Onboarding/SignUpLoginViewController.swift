@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class SignUpLoginViewController: UIViewController, UITextInputTraits {
     
@@ -31,6 +32,12 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var signUpButtonOutlet: UIButton!
     
+    // CoreData Properties
+    var owner: OwnerCD?
+    var studentAdult: StudentAdultCD?
+    var studentKid: StudentKidCD?
+    var groupCD: GroupCD?
+    
     
     // MARK: - ViewController Lifecycle Functions
     
@@ -47,6 +54,10 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         usernameTextField.autocapitalizationType = UITextAutocapitalizationType.none
         passwordTextField.autocapitalizationType = UITextAutocapitalizationType.none
         confirmPasswordTextField.autocapitalizationType = UITextAutocapitalizationType.none
+        
+        // turns on secure text entry in password and confirm password textFields
+        passwordTextField.isSecureTextEntry = true
+        confirmPasswordTextField.isSecureTextEntry = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -69,16 +80,12 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
             welcomeMessageOutlet.text = "Welcome New Student"
         }
         
-//        username = "guatambu"
-//        password = "1998Gwbic"
-        
         confirmPasswordTextField.isEnabled = true
         confirmPasswordTextField.isHidden = false
-//        confirmPasswordLabelOutlet.isHidden = false
         
         welcomeMessageOutlet.textColor = beltBuilder.blackBeltBlack
         
-        navigationController?.navigationBar.titleTextAttributes = beltBuilder.avenirFont
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
         
         usernameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.username.rawValue, attributes: beltBuilder.avenirFont)
         passwordTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.password.rawValue, attributes: beltBuilder.avenirFont)
@@ -100,30 +107,22 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
             
             return
         }
-        
-        if isOwner {
-            welcomeMessageOutlet.text = "Welcome Owner"
-            welcomeInstructionsOutlet.text = "please login"
-//            passwordLabelOutlet.text = "password"
-            confirmPasswordTextField.isEnabled = false
-            confirmPasswordTextField.isHidden = true
-//            confirmPasswordLabelOutlet.isHidden = true
-            signUpButtonOutlet.setTitle("Login", for: UIControl.State.normal)
-            
-        } else {
-            welcomeMessageOutlet.text = "Welcome Student"
-            welcomeInstructionsOutlet.text = "please login"
-//            passwordLabelOutlet.text = "password"
-            confirmPasswordTextField.isEnabled = false
-            confirmPasswordTextField.isHidden = true
-//            confirmPasswordLabelOutlet.isHidden = true
-            signUpButtonOutlet.setTitle("Login", for: UIControl.State.normal)
-        }
     }
     
     
     // MARK: - Actions
     
+    @IBAction func tapAnywhereToDismissKeyboard(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+        // dismiss keyboard when leaving VC scene
+        if usernameTextField.isFirstResponder {
+            usernameTextField.resignFirstResponder()
+        } else if passwordTextField.isFirstResponder {
+            passwordTextField.resignFirstResponder()
+        } else if confirmPasswordTextField.isFirstResponder {
+            confirmPasswordTextField.resignFirstResponder()
+        }
+    }
     @IBAction func signUpButtonTapped(_ sender: UIButton) {
         
         // dismiss keyboard when leaving VC scene
@@ -237,7 +236,7 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
                 destViewController.password = newPassword
             }
             
-            // create the segue programmatically
+            // create the segue programmatically to TakeProfilePicViewController
             self.navigationController?.pushViewController(destViewController, animated: true)
             // set the desired properties of the destinationVC's navgation Item
             let backButtonItem = UIBarButtonItem()
@@ -255,6 +254,30 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
             destViewController.isOwnerAddingStudent = isOwnerAddingStudent
             destViewController.group = group
             
+            // pass CoreData Properties
+            guard let newPassword = self.passwordTextField.text else { return }
+            
+            destViewController.groupCD = groupCD
+            
+            if let owner = owner {
+                
+                owner.username = newUsername
+                owner.password = newPassword
+                destViewController.ownerCD = owner
+                
+            } else if let studentAdult = studentAdult  {
+                
+                studentAdult.username = newUsername
+                studentAdult.password = newPassword
+                destViewController.studentAdultCD = studentAdult
+                
+            } else if let studentKid = studentKid  {
+                
+                studentKid.username = newUsername
+                studentKid.password = newPassword
+                destViewController.studentKidCD = studentKid
+            }
+            
             // reset welcome instructions text color and message upon succesful save
             welcomeInstructionsOutlet.textColor = beltBuilder.blackBeltBlack
             welcomeInstructionsOutlet.text = "please enter the following"
@@ -269,9 +292,10 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         destViewController.password = password
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
         destViewController.group = group
+        
         // if usermame/password - login
         
-        // create the segue programmatically
+        // create the segue programmatically to TakeProfilePicViewController
         self.navigationController?.pushViewController(destViewController, animated: true)
         // set the desired properties of the destinationVC's navgation Item
         let backButtonItem = UIBarButtonItem()

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class OwnerGroupListTableViewController: UITableViewController {
     
@@ -14,22 +15,23 @@ class OwnerGroupListTableViewController: UITableViewController {
     
     let beltBuilder = BeltBuilder()
     
-    var allGroups = [MockData.allStudents]
+//    var allGroups = [MockData.allStudents]
     
     
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
-        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.gray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 24)! ]
-        
-        navigationController?.navigationBar.titleTextAttributes = avenirFont
         
         tableView.reloadData()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
+        
+        title = "Student Groups"
  
     }
     
@@ -62,7 +64,7 @@ class OwnerGroupListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return GroupModelController.shared.groups.count
+        return GroupCDModelController.shared.groups.count
     }
 
     
@@ -70,10 +72,12 @@ class OwnerGroupListTableViewController: UITableViewController {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ownerStudentGroupsMenuCell", for: indexPath) as? StudentGroupGeneralMenuTableViewCell else { return UITableViewCell() }
         
-        let group = GroupModelController.shared.groups[indexPath.row]
+//        let group = GroupModelController.shared.groups[indexPath.row]
+        
+        let groupCD = GroupCDModelController.shared.groups[indexPath.row]
         
         // Configure the cell...
-        cell.title = group.name
+        cell.title = groupCD.name
 
         return cell
     }
@@ -110,7 +114,10 @@ class OwnerGroupListTableViewController: UITableViewController {
         navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
         navigationController?.navigationBar.shadowImage = UIImage(contentsOfFile: "")
         
-        destViewController.group = GroupModelController.shared.groups[indexPath.row]
+        // get the desired groupCD for the selected cell
+        let groupCD = GroupCDModelController.shared.groups[indexPath.row]
+        // pass CoreData payment program on to InfoDetails view
+        destViewController.groupCD = groupCD
     }
     
     
@@ -129,13 +136,52 @@ class OwnerGroupListTableViewController: UITableViewController {
             
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
             
-            let group = GroupModelController.shared.groups[indexPath.row]
-            
-            destination.group = group
+            let groupCD = GroupCDModelController.shared.groups[indexPath.row]
+            destination.groupCD = groupCD
         }
     }
 }
 
+
+//// MARK: - NSFetchedREsultsController initializer method
+//extension OwnerGroupListTableViewController: NSFetchedResultsControllerDelegate {
+//    
+//    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+//        tableView.beginUpdates()
+//    }
+//    
+//    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+//        switch type {
+//        case .insert:
+//            tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
+//        case .delete:
+//            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .fade)
+//        case .move:
+//            break
+//        case .update:
+//            break
+//        }
+//    }
+//    
+//    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+//        switch type {
+//        case .insert:
+//            tableView.insertRows(at: [newIndexPath!], with: .fade)
+//        case .delete:
+//            tableView.deleteRows(at: [indexPath!], with: .fade)
+//        case .update:
+//            tableView.reloadRows(at: [indexPath!], with: .fade)
+//        case .move:
+//            tableView.moveRow(at: indexPath!, to: newIndexPath!)
+//        }
+//    }
+//    
+//    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+//        tableView.endUpdates()
+//    }
+//}
+//
+//
 
 
 

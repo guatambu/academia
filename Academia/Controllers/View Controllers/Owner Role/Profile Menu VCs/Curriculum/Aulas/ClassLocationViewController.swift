@@ -9,13 +9,17 @@
 // NOTE:  "aula" means "class" in Portuguese. "aula" stands in for the word "class" throughout this workflow as the word "class" is already used as a Swift keyword.
 
 import UIKit
+import CoreData
 
 class ClassLocationViewController: UIViewController {
 
     // MARK: - Properties
     
-    // MOCK DATA
-    var locations = [MockData.myLocation, MockData.myLocation, MockData.myLocation, MockData.myLocation, MockData.myLocation, MockData.myLocation, MockData.myLocation, MockData.myLocation]
+    // create a fetchedRequestController with predicate to grab the current LocationsCD objects... use these as the source for the tableView DataSource  methods
+    var fetchedResultsController: NSFetchedResultsController<LocationCD>!
+    
+//    // MOCK DATA
+//    var locations = [MockData.myLocation, MockData.myLocation, MockData.myLocation, MockData.myLocation, MockData.myLocation, MockData.myLocation, MockData.myLocation, MockData.myLocation]
     
     var aulaName: String?
     var active: Bool?
@@ -27,6 +31,8 @@ class ClassLocationViewController: UIViewController {
     
     // to hold the compiled string for the classLocationLabelOutlet
     var locationString = ""
+    
+    var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
     
     var inEditingMode: Bool?
     var aulaToEdit: Aula?
@@ -41,6 +47,12 @@ class ClassLocationViewController: UIViewController {
     // class time UIPickerView
     @IBOutlet weak var classLocationPickerView: UIPickerView!
     
+    // CoreData Properties
+    var aulaCD: AulaCD?
+    var aulaCDToEdit: AulaCD?
+    
+    var locationCD: LocationCD?
+    
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -53,15 +65,25 @@ class ClassLocationViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = avenirFont
         
         enterEditingMode(inEditingMode: inEditingMode)
+        
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // create fetch request and initialize results
+        initializeFetchedResultsController()
+        
         classLocationPickerView.delegate = self
         classLocationPickerView.dataSource = self
         
-        classLocationLabelOutlet.text = locations[classLocationPickerView.selectedRow(inComponent: 0)].locationName
+        guard let firstLocation = fetchedResultsController.fetchedObjects?.first else {
+            print("ERROR: nil value found by fetchedResultsController.fetchedObjects array in ClassLocationViewController.swift -> viewDidLoad() - line 82.")
+            return
+        }
+        
+        classLocationLabelOutlet.text = firstLocation.locationName ?? ""
         
         guard let aulaName = aulaName, let active = active, let aulaDescription = aulaDescription else {
             print("ERROR: no aulaName, active, or aulaDescription passed to: ClassLocationVC -> viewDidLoad() - line 61")
@@ -95,13 +117,17 @@ class ClassLocationViewController: UIViewController {
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         // check for errors before performing segue, and if error, block navigation
-        if location != nil {
+        if locationCD != nil {
             
             return true
             
         } else {
             
             addClassLabelOutlet.textColor = beltBuilder.redBeltRed
+            
+            // fire haptic feedback for error
+            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
             
             return false
         }
@@ -130,8 +156,11 @@ class ClassLocationViewController: UIViewController {
             destViewController.active = active
             destViewController.aulaDescription = aulaDescription
             
+            destViewController.locationCD = locationCD
+            
             destViewController.inEditingMode = inEditingMode
             destViewController.aulaToEdit = aulaToEdit
+            destViewController.aulaCDToEdit = aulaCDToEdit
         }
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
@@ -157,6 +186,15 @@ extension ClassLocationViewController {
         AulaModelController.shared.update(aula: aula, active: nil, kidAttendees: nil, adultAttendees: nil, aulaDescription: nil, aulaName: nil, daysOfTheWeek: nil, instructor: nil, ownerInstructor: nil, location: location, students: nil, time: nil, timeCode: nil, classGroups: nil)
         print("update class location: \(String(describing: AulaModelController.shared.aulas[0].location?.locationName))")
         
+        // CoreData version
+        guard let aulaCDToEdit = aulaCDToEdit else { return }
+        
+        guard let locationCD = locationCD else { return }
+        // set the location to the current location chosen by the pickerView
+        aulaCDToEdit.location = locationCD
+        
+        OwnerCDModelController.shared.saveToPersistentStorage()
+        
     }
     
     func enterEditingMode(inEditingMode: Bool?) {
@@ -176,23 +214,52 @@ extension ClassLocationViewController {
     // owner setup for editing mode
     func aulaEditingSetup() {
         
-        guard let aulaToEdit = aulaToEdit else {
+//        guard let aulaToEdit = aulaToEdit else {
+//            return
+//        }
+//
+//        guard let locationToEdit = aulaToEdit.location else {
+//            print("ERROR: nil value found for aula property in  ClassLocationVC -> aulaEditingSetup() - line 177")
+//            return
+//        }
+//
+//        addClassLabelOutlet.text = "\(aulaToEdit.aulaName)"
+//
+//        daysOfTheWeek = aulaToEdit.daysOfTheWeek
+//        time = aulaToEdit.time ?? ""
+//        location = locationToEdit
+//
+//        // in the classLocationPickerView datasource array, search for the locationToEdit value
+//        guard let indexPath = locations.firstIndex(of: locationToEdit) else {
+//
+//            print("ERROR: nil value found for indexPath for aulaToeDit.location in  ClassLocationVC -> aulaEditingSetup() - line 193")
+//            return
+//        }
+//        classLocationPickerView.selectRow(indexPath, inComponent: 0, animated: true)
+//
+//        print("the VC's aula timeOfDay, location, and daysOfTheWeek have been set to the existing aula's coresponding details to be edited and the collection views have reloaded their data")
+        
+        // CoreData version
+        guard let aulaCDToEdit = aulaCDToEdit else {
             return
         }
         
-        guard let locationToEdit = aulaToEdit.location else {
-            print("ERROR: nil value found for aula property in  ClassLocationVC -> aulaEditingSetup() - line 177")
+        guard let locationCDToEdit = aulaCDToEdit.location else {
+            print("ERROR: nil value found for aulaCDToEdit.location property in  ClassLocationVC -> aulaEditingSetup() - line 247")
             return
         }
         
-        addClassLabelOutlet.text = "\(aulaToEdit.aulaName)"
+        addClassLabelOutlet.text = "\(aulaCDToEdit.aulaName ?? "")"
         
-        daysOfTheWeek = aulaToEdit.daysOfTheWeek
-        time = aulaToEdit.time ?? ""
-        location = locationToEdit
+        time = aulaCDToEdit.time ?? ""
+        locationCD = locationCDToEdit
         
         // in the classLocationPickerView datasource array, search for the locationToEdit value
-        guard let indexPath = locations.firstIndex(of: locationToEdit) else {
+        guard let fetchedLocations = fetchedResultsController.fetchedObjects else {
+            print("ERROR: nil value found for aulaCDToEdit.location property in  ClassLocationVC -> aulaEditingSetup() - line 258.")
+            return
+        }
+        guard let indexPath = fetchedLocations.firstIndex(of: locationCDToEdit) else {
             
             print("ERROR: nil value found for indexPath for aulaToeDit.location in  ClassLocationVC -> aulaEditingSetup() - line 193")
             return
@@ -215,8 +282,13 @@ extension ClassLocationViewController: UIPickerViewDelegate, UIPickerViewDataSou
         
         // locations component
         if component == 0 {
-            return locations.count
-
+//            return locations.count
+            
+            guard let components = fetchedResultsController.sections else {
+                fatalError("No sections in fetchedResultsController")
+            }
+            let componentInfo = components[component]
+            return componentInfo.numberOfObjects
         }
         return 0
     }
@@ -225,29 +297,66 @@ extension ClassLocationViewController: UIPickerViewDelegate, UIPickerViewDataSou
         
         // locations component
         if component == 0 {
-            return "\(locations[row].locationName)"
+            
+            guard let components = fetchedResultsController.fetchedObjects else {
+                fatalError("No sections in fetchedResultsController")
+            }
+            let componentInfo = components[component]
+            if let name = componentInfo.locationName {
+                
+                return "\(name)"
+            }
         }
         return ""
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-
-        let locationSelected = locations[pickerView.selectedRow(inComponent: 0)]
         
-        locationString = "\(locationSelected.locationName)"
+        guard let locationsCD = fetchedResultsController.fetchedObjects else {
+            fatalError("No fetchedObjects in fetchedResultsController")
+        }
+
+//        let locationSelected = locations[pickerView.selectedRow(inComponent: 0)]
+        let locationSelectedCD = locationsCD[pickerView.selectedRow(inComponent: 0)]
+        
+        if let name = locationSelectedCD.locationName {
+            
+            locationString = "\(name)"
+        }
         
         classLocationLabelOutlet.text = locationString
         
-        location = locationSelected
+        locationCD = locationSelectedCD
         
-        guard let location = location else {
-            print("nil found for location property in ClassLocationViewController.swift -> pickerView(pickerView: didSelectRow:) - line 238.")
+        guard let locationCD = locationCD else {
+            print("nil found for location property in ClassLocationViewController.swift -> pickerView(pickerView: didSelectRow:) - line 280.")
             return
         }
-        print("location name: \(location.locationName)")
+        print("location name: \(String(describing: locationCD.locationName))")
         
     }
 }
 
 
-
+// MARK: - NSFetchedREsultsController initializer method
+extension ClassLocationViewController: NSFetchedResultsControllerDelegate {
+    
+    func initializeFetchedResultsController() {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "LocationCD")
+        let locationNameSort = NSSortDescriptor(key: "locationName", ascending: true)
+        
+        request.sortDescriptors = [locationNameSort]
+        
+        let moc = CoreDataStack.context
+        
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil) as? NSFetchedResultsController<LocationCD>
+        
+        fetchedResultsController.delegate = self
+        
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            fatalError("Failed to initialize FetchedResultsController: \(error)")
+        }
+    }
+}

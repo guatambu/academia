@@ -11,6 +11,7 @@ import UIKit
 class StudentProfileDetailTableViewController: UITableViewController {
     
     //MARK: - Properties
+    var uuid: UUID?
     
     let beltBuilder = BeltBuilder()
     

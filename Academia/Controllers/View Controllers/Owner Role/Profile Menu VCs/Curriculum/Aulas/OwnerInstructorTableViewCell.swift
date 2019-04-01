@@ -32,6 +32,12 @@ class OwnerInstructorTableViewCell: UITableViewCell {
         }
     }
     
+    var ownerInstructorCD: OwnerCD? {
+        didSet {
+            updateViews()
+        }
+    }
+    
     
     // MARK: - awakeFromNib()
     
@@ -55,24 +61,47 @@ class OwnerInstructorTableViewCell: UITableViewCell {
         }
         
         // add/remove student to appropriate model controller's source of truth
-        guard let ownerInstructor = ownerInstructor else {
-            print("ERROR: nil value found while attepting to unwrap optional adultStudent in AdultStudentTableViewCell.swift -> profilePicTapped - line 57.")
+        
+        
+//        guard let ownerInstructor = ownerInstructor else {
+//            print("ERROR: nil value found while attepting to unwrap optional adultStudent in AdultStudentTableViewCell.swift -> profilePicTapped - line 57.")
+//            return
+//        }
+        
+//        guard var ownerInstructors = delegate?.ownerInstructors else {
+//
+//            print("ERRORL: nil value found while trying to unwrap adultMembers array via delegate in AdultStudentTableViewCell.swift -> profilePicTapped() - line 63")
+//            return
+//        }
+//
+//        if isChosen {
+//            ownerInstructors.append(ownerInstructor)
+//            delegate?.ownerInstructors = ownerInstructors
+//            print("ownerInstructors: \(String(describing: delegate?.ownerInstructors))")
+//
+//        } else {
+//            delegate?.ownerInstructors = (delegate?.ownerInstructors.filter({ $0 != ownerInstructor })) ?? []
+//        }
+        
+        // CoreData version
+        guard let ownerInstructorCD = ownerInstructorCD else {
+            print("ERROR: nil value found while attepting to unwrap ownerInstructor in InstructorTableViewCell.swift -> profilePicTapped - line 86.")
             return
         }
         
-        guard var ownerInstructors = delegate?.ownerInstructors else {
+        guard var ownerInstructorsCD = delegate?.ownerInstructorsCD else {
             
-            print("ERRORL: nil value found while trying to unwrap adultMembers array via delegate in AdultStudentTableViewCell.swift -> profilePicTapped() - line 63")
+            print("ERRORL: nil value found while trying to unwrap ownerInstructors array via delegate in InstructorTableViewCell.swift -> profilePicTapped() - line 92")
             return
         }
         
         if isChosen {
-            ownerInstructors.append(ownerInstructor)
-            delegate?.ownerInstructors = ownerInstructors
-            print("ownerInstructors: \(String(describing: delegate?.ownerInstructors))")
+            ownerInstructorsCD.append(ownerInstructorCD)
+            delegate?.ownerInstructorsCD = ownerInstructorsCD
+            print("instructorss: \(String(describing: delegate?.ownerInstructorsCD))")
             
         } else {
-            delegate?.ownerInstructors = (delegate?.ownerInstructors.filter({ $0 != ownerInstructor })) ?? []
+            delegate?.ownerInstructorsCD = delegate?.ownerInstructorsCD.filter({ $0 != ownerInstructorCD }) ?? []
         }
     }
     
@@ -81,13 +110,24 @@ class OwnerInstructorTableViewCell: UITableViewCell {
     
     func updateViews() {
         
-        guard let ownerInstructor = ownerInstructor else {
-            print("ERROR: nil value found while attepting to unwrap optional adultStudent in AdultStudentTableViewCell.swift -> updateViews() - line 85.")
+//        guard let ownerInstructor = ownerInstructor else {
+//            print("ERROR: nil value found while attepting to unwrap optional ownerInstructor in OwnerInstructorTableViewCell.swift -> updateViews() - line 112.")
+//            return
+//        }
+//        
+//        userThumbnailImageViewOutlet.image = ownerInstructor.profilePic
+//        cellTitleOutlet.text = "\(ownerInstructor.firstName) \(ownerInstructor.lastName)"
+        
+        // CoreData version
+        guard let ownerInstructorCD = ownerInstructorCD else {
+            print("ERROR: nil value found while attepting to unwrap optional ownerInstructorCD in OwnerInstructorTableViewCell.swift -> updateViews() - line 121.")
             return
         }
         
-        userThumbnailImageViewOutlet.image = ownerInstructor.profilePic
-        cellTitleOutlet.text = "\(ownerInstructor.firstName) \(ownerInstructor.lastName)"
+        if let profilePicData = ownerInstructorCD.profilePic {
+            userThumbnailImageViewOutlet.image = UIImage(data: profilePicData)
+        }
+        cellTitleOutlet.text = "\(ownerInstructorCD.firstName ?? "") \(ownerInstructorCD.lastName ?? "")"
         
         // when inEditingMode = true for ClassInstrcuctorsTVC, toggle roundProfilePicView borderColor
         if isChosen {

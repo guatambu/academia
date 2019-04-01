@@ -9,12 +9,11 @@
 // NOTE:  "aula" means "class" in Portuguese. "aula" stands in for the word "class" throughout this workflow as the word "class" is already used as a Swift keyword.
 
 import UIKit
+import CoreData
 
 class AddGroupToClassTableViewController: UITableViewController, ClassGroupDelegate {
 
     // MARK: - Properties
-    
-    var mockDatGroups = [MockData.allStudents, MockData.allStudents, MockData.allStudents, MockData.allStudents ]
     
     var aulaName: String?
     var active: Bool?
@@ -29,13 +28,23 @@ class AddGroupToClassTableViewController: UITableViewController, ClassGroupDeleg
     var classGroups: [Group] = []
     
     var inEditingMode: Bool?
-    var aulaToEdit: Aula?
     
     let beltBuilder = BeltBuilder()
-    
-    @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
+   
     @IBOutlet weak var welcomeInstructions1LabelOutlet: UILabel!
     @IBOutlet weak var welcomeInstructions2LabelOutlet: UILabel!
+    @IBOutlet weak var nextButtonOutlet: DesignableButton!
+    
+    
+    // CoreData Properties
+    var aulaCD: AulaCD?
+    var aulaCDToEdit: AulaCD?
+    
+    var locationCD: LocationCD?
+    
+    var instructorsCD: [StudentAdultCD] = []
+    var ownerInstructorsCD: [OwnerCD] = []
+    var classGroupsCD: [GroupCD] = []
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -48,6 +57,8 @@ class AddGroupToClassTableViewController: UITableViewController, ClassGroupDeleg
         navigationController?.navigationBar.titleTextAttributes = avenirFont
         
         enterEditingMode(inEditingMode: inEditingMode)
+        
+        tableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -73,7 +84,7 @@ class AddGroupToClassTableViewController: UITableViewController, ClassGroupDeleg
         
         self.returnToClassInfo()
         
-        print("update aula location: \(String(describing: self.aulaToEdit?.location?.locationName))")
+        print("update aula location: \(String(describing: self.aulaCDToEdit?.location?.locationName))")
         
         inEditingMode = false
     }
@@ -83,42 +94,49 @@ class AddGroupToClassTableViewController: UITableViewController, ClassGroupDeleg
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return mockDatGroups.count
+        return GroupCDModelController.shared.groups.count
+        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // Configure the cell...
         
-            let cell = tableView.dequeueReusableCell(withIdentifier: "classGroupCell", for: indexPath) as! ClassGroupTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "classGroupCell", for: indexPath) as! ClassGroupTableViewCell
+        
+        // set delegate to communicate with AddNewStudentGroupImageMenuTableViewCell
+        cell.delegate = self
             
-            // set delegate to communicate with AddNewStudentGroupImageMenuTableViewCell
-            cell.delegate = self
+        // set the isChosen to true if inEditingMode == true and current student is present in groupToEdit.kidMembers array to display the student as chosen
+        if let inEditingMode = inEditingMode {
             
-            // set the isChosen to true if inEditingMode == true and current student is present in groupToEdit.kidMembers array to display the student as chosen
-            if let inEditingMode = inEditingMode {
+            if inEditingMode {
                 
-                if inEditingMode {
+                guard let groupsAulaCDToEdit = aulaCDToEdit?.groupsAula else {
+                    print("ERROR: nil value for aulaToEdit.classGroups in AddGroupToClassTableViewController.swift -> tableView(tableView:, cellForRowAt:) - line 109")
+                    return UITableViewCell()
+                }
+                
+                let groupsAulaCDArray = Array(groupsAulaCDToEdit) as! [GroupCD]
+                // run check to make sure the groupsAulaCDArray is not empty 
+                if groupsAulaCDArray.isEmpty == false  {
                     
-                    guard let classGroupsToEdit = aulaToEdit?.classGroups else {
-                        print("ERROR: nil value for aulaToEdit.classGroups in AddGroupToClassTableViewController.swift -> tableView(tableView:, cellForRowAt:) - line 109")
-                        return UITableViewCell()
-                    }
-                    
-                    if classGroupsToEdit.isEmpty == false && (classGroupsToEdit.count - 1) >= indexPath.row {
+                    for group in groupsAulaCDArray {
                         
-                        if classGroups.contains(classGroupsToEdit[indexPath.row]) {
+                        // run check to see whether this object.name property matches the current object.name listed at this point in the tableView's cell
+                        if GroupCDModelController.shared.groups[indexPath.row].name == group.name {
                             
                             cell.isChosen = true
                         }
                     }
                 }
             }
-            
-            cell.group = mockDatGroups[indexPath.row]
-            
-            return cell
-            
+        }
+
+        let groupCD = GroupCDModelController.shared.groups[indexPath.row]
+        cell.groupCD = groupCD
+        
+        return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -126,7 +144,7 @@ class AddGroupToClassTableViewController: UITableViewController, ClassGroupDeleg
         // programmatically performing the segue
         
         // instantiate the relevant storyboard
-        let mainView: UIStoryboard = UIStoryboard(name: "OwnerStudentsFlow", bundle: nil)
+        let mainView: UIStoryboard = UIStoryboard(name: "OwnerBaseCampFlow", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
         let destViewController = mainView.instantiateViewController(withIdentifier: "toGroupInfoDetails") as! GroupInfoDetailsTableViewController
         
@@ -142,9 +160,11 @@ class AddGroupToClassTableViewController: UITableViewController, ClassGroupDeleg
         navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
         navigationController?.navigationBar.shadowImage = UIImage()
         
-        let group = mockDatGroups[indexPath.row]
-        
-        destViewController.group = group
+        // CoreData version
+        // get the desired paymentProgramCD for the selected cell
+        let groupCD = GroupCDModelController.shared.groups[indexPath.row]
+        // pass CoreData payment program on to InfoDetails view
+        destViewController.groupCD = groupCD
     }
     
     
@@ -175,8 +195,12 @@ class AddGroupToClassTableViewController: UITableViewController, ClassGroupDeleg
             destViewController.active = active
             destViewController.aulaDescription = aulaDescription
             
+            destViewController.locationCD = locationCD
+            destViewController.ownerInstructorsCD = ownerInstructorsCD
+            destViewController.instructorsCD = instructorsCD
+            destViewController.classGroupsCD = classGroupsCD
+            
             destViewController.inEditingMode = inEditingMode
-            destViewController.aulaToEdit = aulaToEdit
         }
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
@@ -191,13 +215,13 @@ extension AddGroupToClassTableViewController {
     // Update Function for case where want to update user info without a segue
     func updateAulaInfo() {
         
-        guard let aula = aulaToEdit else { return }
+        // CoreData version
+        guard let aulaCDToEdit = aulaCDToEdit else { return }
         
-        // class update info
-        
-        AulaModelController.shared.update(aula: aula, active: nil, kidAttendees: nil, adultAttendees: nil, aulaDescription: nil, aulaName: nil, daysOfTheWeek: nil, instructor: nil, ownerInstructor: nil, location: nil, students: nil, time: nil, timeCode: nil, classGroups: classGroups)
-        print("update class groups: \(String(describing: AulaModelController.shared.aulas[0].classGroups))")
-        
+        aulaCDToEdit.groupsAula = NSOrderedSet(array: classGroupsCD)
+    
+        // save the update
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func enterEditingMode(inEditingMode: Bool?) {
@@ -208,7 +232,13 @@ extension AddGroupToClassTableViewController {
             let saveButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveButtonTapped))
             navigationItem.rightBarButtonItem = saveButtonItem
             
+            nextButtonOutlet.isHidden = true
+            nextButtonOutlet.isEnabled = false
+            
             aulaEditingSetup()
+        } else {
+            nextButtonOutlet.isHidden = false
+            nextButtonOutlet.isEnabled = true
         }
         
         print("ClassLocationAndTimeVC -> inEditingMode: \(inEditingMode)")
@@ -217,24 +247,25 @@ extension AddGroupToClassTableViewController {
     // owner setup for editing mode
     func aulaEditingSetup() {
         
-        guard let aulaToEdit = aulaToEdit else {
+        // CoreData version
+        guard let aulaCDToEdit = aulaCDToEdit else {
             return
         }
         
-        guard let groupsToEdit = aulaToEdit.classGroups else {
-            print("ERROR: nil value for aulaToEdit.classGroups in AddGroupToClassTableViewController.swift -> aulaEditingSetup() - line 222")
+        guard let groupsCDToEdit = aulaCDToEdit.groupsAula else {
+            print("ERROR: nil value for aulaCDToEdit.classGroups in AddGroupToClassTableViewController.swift -> aulaEditingSetup() - line 222")
             return
         }
         
-        welcomeMessageLabelOutlet.text = "\(aulaToEdit.aulaName)"
+//        welcomeMessageLabelOutlet.text = "\(aulaCDToEdit.aulaName ?? "")"
+//        
+//        welcomeInstructions1LabelOutlet.textColor = beltBuilder.redBeltRed
+//        welcomeInstructions1LabelOutlet.text = "you are in class editing mode"
         
-        welcomeInstructions1LabelOutlet.textColor = beltBuilder.redBeltRed
-        welcomeInstructions1LabelOutlet.text = "you are in class editing mode"
-        
-        daysOfTheWeek = aulaToEdit.daysOfTheWeek
-        time = aulaToEdit.time ?? ""
-        classGroups = groupsToEdit
+        classGroupsCD = Array(groupsCDToEdit) as! [GroupCD]
         
         print("the VC's aula timeOfDay, location, and daysOfTheWeek have been set to the existing aula's coresponding details to be edited and the collection views have reloaded their data")
     }
 }
+
+

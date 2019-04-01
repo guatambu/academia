@@ -17,10 +17,10 @@ class ReviewAndCreateClassTableViewController: UITableViewController {
     var aulaName: String?
     var active: Bool?
     var aulaDescription: String?
-    var daysOfTheWeek: [ClassTimeComponents.Weekdays]?
     var time: String?
     var timeCode: Int?
-    var location:Location?
+    var location: Location?
+    var daysOfTheWeek: [ClassTimeComponents.Weekdays]?
     
     var instructors: [AdultStudent]?
     var ownerInstructors: [Owner]?
@@ -34,7 +34,6 @@ class ReviewAndCreateClassTableViewController: UITableViewController {
     
     let beltBuilder = BeltBuilder()
     
-    @IBOutlet weak var welcomeMessageLabelOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsLabelOutlet: UILabel!
     @IBOutlet weak var classNameLabelOutlet: UILabel!
     @IBOutlet weak var daysOfTheWeekLabelOutlet: UILabel!
@@ -48,15 +47,18 @@ class ReviewAndCreateClassTableViewController: UITableViewController {
     @IBOutlet weak var classDescriptionTextView: UITextView!
     @IBOutlet weak var instructorAdvisoryLabelOutlet: UILabel!
     
+    // CoreData properties
+    var locationCD: LocationCD?
+    var instructorsCD: [StudentAdultCD]?
+    var ownerInstructorsCD: [OwnerCD]?
+    var classGroupsCD: [GroupCD]?
+    
+    
+    
     
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
-        
-        navigationController?.navigationBar.titleTextAttributes = avenirFont
         
         populateCompletedClassInfo()
         
@@ -85,6 +87,10 @@ class ReviewAndCreateClassTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
+        
+        title = "Please Review Your Info"
     }
     
     
@@ -92,8 +98,11 @@ class ReviewAndCreateClassTableViewController: UITableViewController {
     
     @IBAction func createClassButtonTapped(_ sender: DesignableButton) {
         
+        // create AulaCD data model object
+        createAulaCoreDataModel()
+        
         // create the new location in the LocationModelController source of truth
-        createClass()
+//        createClass()
         
         // programmatic segue back to the MyLocations TVC to view the current locations
         guard let viewControllers = self.navigationController?.viewControllers else {
@@ -144,14 +153,28 @@ class ReviewAndCreateClassTableViewController: UITableViewController {
         
         if section == 0 {
             
-            if let ownerInstructors = ownerInstructors {
+//            if let ownerInstructors = ownerInstructors {
+//
+//                return ownerInstructors.count
+//            }
+            
+            // CoreData version
+            if let ownerInstructorsCD = ownerInstructorsCD {
                 
-                return ownerInstructors.count
+                return ownerInstructorsCD.count
             }
+            
+            
         } else if section == 1 {
-            if let instructors = instructors {
+//            if let instructors = instructors {
+//
+//                return instructors.count
+//            }
+            
+            // CoreData version
+            if let instructorsCD = instructorsCD {
                 
-                return instructors.count
+                return instructorsCD.count
             }
         }
         return 0
@@ -159,39 +182,54 @@ class ReviewAndCreateClassTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let ownerInstructors = ownerInstructors, let instructors = instructors else {
-            print("ERROR: nil value for ownerInstructor and/or instructors in ReviewAndCreateClassTableViewController.swift -> tableView(tableView:, cellForRowAt:) - line 160")
-            return UITableViewCell()
-        }
+//        guard let ownerInstructors = ownerInstructors, let instructors = instructors else {
+//            print("ERROR: nil value for ownerInstructor and/or instructors in ReviewAndCreateClassTableViewController.swift -> tableView(tableView:, cellForRowAt:) - line 160")
+//            return UITableViewCell()
+//        }
         
         // Configure the cell...
         if indexPath.section == 0 {
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "reviewOwnerInstructorCell", for: indexPath) as! ReviewOwnerInstructorTableViewCell
             
-            cell.ownerInstructor = ownerInstructors[indexPath.row]
+//            cell.ownerInstructor = ownerInstructors[indexPath.row]
             
-            return cell
+            // CoreData version
+            if let ownerInstructorsCD = ownerInstructorsCD {
+                
+                cell.ownerInstructorCD = ownerInstructorsCD[indexPath.row]
+
+                return cell
+            }
+            
             
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "reviewInsructorCell", for: indexPath) as! ReviewInstructorTableViewCell
             
-            cell.instructor = instructors[indexPath.row]
+//            cell.instructor = instructors[indexPath.row]
             
-            return cell
+            // CoreData version
+            if let instructorsCD = instructorsCD {
+                
+                cell.instructorCD = instructorsCD[indexPath.row]
+                
+                return cell
+            }
         }
+        return UITableViewCell()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        guard let ownerInstructors = ownerInstructors, let instructors = instructors else {
-            print("ERROR: nil value for ownerInstructor and/or instructors in ReviewAndCreateClassTableViewController.swift -> tableView(tableView:, didSelectRowAt:) - line 185")
-            return
-        }
+//        guard let ownerInstructors = ownerInstructors, let instructors = instructors else {
+//            print("ERROR: nil value for ownerInstructor and/or instructors in ReviewAndCreateClassTableViewController.swift -> tableView(tableView:, didSelectRowAt:) - line 185")
+//            return
+//        }
         
         // programmatically performing the segue
         
         // instantiate the relevant storyboard
-        let mainView: UIStoryboard = UIStoryboard(name: "OwnerStudentsFlow", bundle: nil)
+        let mainView: UIStoryboard = UIStoryboard(name: "OwnerBaseCampFlow", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
         let destViewController = mainView.instantiateViewController(withIdentifier: "toProfileComplete") as! OwnersStudentDetailViewController
         
@@ -209,55 +247,96 @@ class ReviewAndCreateClassTableViewController: UITableViewController {
         
         if indexPath.section == 0 {
             // kidStudent setup
-            let owner = ownerInstructors[indexPath.row]
+            //            let kid = mockKids[indexPath.row]
+            //
+            //            destViewController.isOwner = false
+            //            destViewController.isKid = true
+            //            destViewController.username = kid.username
+            //            destViewController.password = kid.password
+            //            destViewController.firstName = kid.firstName
+            //            destViewController.lastName = kid.lastName
+            //            destViewController.parentGuardian = kid.parentGuardian
+            //            destViewController.profilePic = kid.profilePic
+            //            destViewController.birthdate = kid.birthdate
+            //            destViewController.beltLevel = kid.belt.beltLevel
+            //            destViewController.numberOfStripes = kid.belt.numberOfStripes
+            //            destViewController.addressLine1 = kid.addressLine1
+            //            destViewController.addressLine2 = kid.addressLine2
+            //            destViewController.city = kid.city
+            //            destViewController.state = kid.state
+            //            destViewController.zipCode = kid.zipCode
+            //            destViewController.phone = kid.phone
+            //            destViewController.mobile = kid.mobile
+            //            destViewController.email = kid.email
+            //            destViewController.emergencyContactName = kid.emergencyContactName
+            //            destViewController.emergencyContactRelationship = kid.emergencyContactRelationship
+            //            destViewController.emergencyContactPhone = kid.emergencyContactPhone
             
-            destViewController.isOwner = true
-            destViewController.isKid = false
-            destViewController.username = owner.username
-            destViewController.password = owner.password
-            destViewController.firstName = owner.firstName
-            destViewController.lastName = owner.lastName
-            destViewController.profilePic = owner.profilePic
-            destViewController.birthdate = owner.birthdate
-            destViewController.beltLevel = owner.belt.beltLevel
-            destViewController.numberOfStripes = owner.belt.numberOfStripes
-            destViewController.addressLine1 = owner.addressLine1
-            destViewController.addressLine2 = owner.addressLine2
-            destViewController.city = owner.city
-            destViewController.state = owner.state
-            destViewController.zipCode = owner.zipCode
-            destViewController.phone = owner.phone
-            destViewController.mobile = owner.mobile
-            destViewController.email = owner.email
-            destViewController.emergencyContactName = owner.emergencyContactName
-            destViewController.emergencyContactRelationship = owner.emergencyContactRelationship
-            destViewController.emergencyContactPhone = owner.emergencyContactPhone
+            
+            // CoreData version
+            guard let ownerInstructorsCD = ownerInstructorsCD else {
+                
+                print("ERROR: nil value for kidMembersCD array in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 242.")
+                return
+            }
+            
+            let ownerInstructorsCDSet = NSSet(array: ownerInstructorsCD)
+            
+            let nameSort = NSSortDescriptor(key: "firstName", ascending: true)
+            let owners = ownerInstructorsCDSet.sortedArray(using: [nameSort])
+            
+            guard let ownerCD = owners[indexPath.row] as? OwnerCD else {
+                print("ERROR: nil value for studentKidCD in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 252.")
+                return
+            }
+            
+            destViewController.ownerCD = ownerCD
             
         } else if indexPath.section == 1 {
             // adultStudent setup
-            let instructor = instructors[indexPath.row]
+            //            let adult = mockAdults[indexPath.row]
+            //
+            //            destViewController.isOwner = false
+            //            destViewController.isKid = false
+            //            destViewController.username = adult.username
+            //            destViewController.password = adult.password
+            //            destViewController.firstName = adult.firstName
+            //            destViewController.lastName = adult.lastName
+            //            destViewController.profilePic = adult.profilePic
+            //            destViewController.birthdate = adult.birthdate
+            //            destViewController.beltLevel = adult.belt.beltLevel
+            //            destViewController.numberOfStripes = adult.belt.numberOfStripes
+            //            destViewController.addressLine1 = adult.addressLine1
+            //            destViewController.addressLine2 = adult.addressLine2
+            //            destViewController.city = adult.city
+            //            destViewController.state = adult.state
+            //            destViewController.zipCode = adult.zipCode
+            //            destViewController.phone = adult.phone
+            //            destViewController.mobile = adult.mobile
+            //            destViewController.email = adult.email
+            //            destViewController.emergencyContactName = adult.emergencyContactName
+            //            destViewController.emergencyContactRelationship = adult.emergencyContactRelationship
+            //            destViewController.emergencyContactPhone = adult.emergencyContactPhone
             
-            destViewController.isOwner = false
-            destViewController.isKid = false
-            destViewController.username = instructor.username
-            destViewController.password = instructor.password
-            destViewController.firstName = instructor.firstName
-            destViewController.lastName = instructor.lastName
-            destViewController.profilePic = instructor.profilePic
-            destViewController.birthdate = instructor.birthdate
-            destViewController.beltLevel = instructor.belt.beltLevel
-            destViewController.numberOfStripes = instructor.belt.numberOfStripes
-            destViewController.addressLine1 = instructor.addressLine1
-            destViewController.addressLine2 = instructor.addressLine2
-            destViewController.city = instructor.city
-            destViewController.state = instructor.state
-            destViewController.zipCode = instructor.zipCode
-            destViewController.phone = instructor.phone
-            destViewController.mobile = instructor.mobile
-            destViewController.email = instructor.email
-            destViewController.emergencyContactName = instructor.emergencyContactName
-            destViewController.emergencyContactRelationship = instructor.emergencyContactRelationship
-            destViewController.emergencyContactPhone = instructor.emergencyContactPhone
+            
+            // CoreData version
+            guard let adultInstructorsCD = instructorsCD else {
+                
+                print("ERROR: nil value for adultMembersCD array in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 288.")
+                return
+            }
+            
+            let adultInstructorsCDSet = NSSet(array: adultInstructorsCD)
+            
+            let nameSort = NSSortDescriptor(key: "firstName", ascending: true)
+            let adults = adultInstructorsCDSet.sortedArray(using: [nameSort])
+            
+            guard let studentAdultCD = adults[indexPath.row] as? StudentAdultCD else {
+                print("ERROR: nil value for studentAdultCD in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 298.")
+                return
+            }
+            
+            destViewController.studentAdultCD = studentAdultCD
         }
     }
 }
@@ -291,17 +370,27 @@ extension ReviewAndCreateClassTableViewController {
             print("there was a nil value in the time passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 285")
             return
         }
-        guard let location = location else {
-            print("there was a nil value in the location passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 289")
+//        guard let location = location else {
+//            print("there was a nil value in the location passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 289")
+//            return
+//        }
+//        guard let classGroups = classGroups else {
+//            print("there was a nil value in the classGroups array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 293")
+//            return
+//        }
+        
+        // CoreData properties
+        guard let locationCD = locationCD else {
+            print("there was a nil value in the locationCD passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 384")
             return
         }
-        guard let classGroups = classGroups else {
-            print("there was a nil value in the classGroups array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 293")
+        guard let classGroupsCD = classGroupsCD else {
+            print("there was a nil value in the classGroupsCD array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 388")
             return
         }
     
         // name outlet
-        title = aulaName
+        classNameLabelOutlet.text = aulaName
         // days of th week outlet
         for day in daysOfTheWeek {
             if day == daysOfTheWeek.last {
@@ -324,16 +413,28 @@ extension ReviewAndCreateClassTableViewController {
         let currentDayAndTime = Date()
         formatLastChanged(lastChanged: currentDayAndTime)
         // group list outlet
-        for group in classGroups {
-            if group == classGroups.last {
-                groupNamesString += "\(group.name)"
+//        for group in classGroups {
+//            if group == classGroups.last {
+//                groupNamesString += "\(group.name)"
+//            } else {
+//                groupNamesString += "\(group.name), "
+//            }
+//        }
+        for groupCD in classGroupsCD {
+            if groupCD == classGroupsCD.last {
+                
+                groupNamesString += "\(groupCD.name ?? "")"
+                
             } else {
-                groupNamesString += "\(group.name), "
+                
+                groupNamesString += "\(groupCD.name ?? ""), "
             }
         }
         groupListLabelOutlet.text = groupNamesString
         // location outlet
-        locationNameLabelOutlet.text = "\(location.locationName)"
+//        locationNameLabelOutlet.text = "\(location.locationName)"
+        locationNameLabelOutlet.text = "\(locationCD.locationName ?? "")"
+        
         // class description
         classDescriptionTextView.text = "\(aulaDescription)"
     }
@@ -408,6 +509,102 @@ extension ReviewAndCreateClassTableViewController {
         print(lastChangedString)
         
         self.lastChangedLabelOutlet.text = "last change: " + lastChangedString
+    }
+}
+
+
+// MARK: - functions to create, configure, and save AulaCD data model to CoreData
+extension ReviewAndCreateClassTableViewController {
+    
+    func createAulaCoreDataModel() {
+        
+        guard let aulaName = aulaName else {
+            print("there was a nil value in the aulaName passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 522")
+            return
+        }
+        guard let active = active else {
+            print("there was a nil value in the active passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 526")
+            return
+        }
+        guard let aulaDescription = aulaDescription else {
+            print("there was a nil value in the aulaDescription passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 530")
+            return
+        }
+        guard let time = time else {
+            print("there was a nil value in the time passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 534")
+            return
+        }
+        guard let timeCode = timeCode else {
+            print("there was a nil value in the timeCode passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 538")
+            return
+        }
+        guard let daysOfTheWeek = daysOfTheWeek else {
+            print("there was a nil value in the daysOfTheWeek array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 542")
+            return
+        }
+        guard let locationCD = locationCD else {
+            print("there was a nil value in the locationCD passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 546")
+            return
+        }
+        guard let instructorsCD = instructorsCD else {
+            print("there was a nil value in the instructorsCD array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 550")
+            return
+        }
+        guard let ownerInstructorsCD = ownerInstructorsCD else {
+            print("there was a nil value in the ownerInstructorsCD array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 554")
+            return
+        }
+        guard let classGroupsCD = classGroupsCD else {
+            print("there was a nil value in the classGroupsCD array passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 558")
+            return
+        }
+        
+        // days of the week
+        for day in daysOfTheWeek {
+            
+            // convert timeCode Int value to Int16
+            guard let timeCodeInt16 = Int16(exactly: timeCode) else { return }
+            // create newAula data model object
+            let newAula = AulaCD(active: active, aulaName: aulaName, aulaDescription: aulaDescription, dayOfTheWeek: day.rawValue, time: time, timeCode: timeCodeInt16, location: locationCD)
+            
+            // instructors
+            if !instructorsCD.isEmpty {
+                // add instructors to newAula
+                for instructor in instructorsCD {
+                    newAula.addToAdultStudentInstructorsAula(instructor)
+                }
+            }
+            // owner instructors
+            if !ownerInstructorsCD.isEmpty {
+                // add instructors to newAula
+                for ownerInstructor in ownerInstructorsCD {
+                    newAula.addToOwnerInstructorAula(ownerInstructor)
+                }
+            }
+            // groups associated with newAula
+            if !classGroupsCD.isEmpty {
+                // add groups to newAula
+                for group in classGroupsCD {
+                    newAula.addToGroupsAula(group)
+                }
+            }
+            
+            // add the created and configured aula to the source of truth
+            AulaCDModelController.shared.add(aula: newAula)
+        }
+        print("pre-save to COreData")
+        print("AulaCDModelController.shared.aulas.count: \(AulaCDModelController.shared.aulas.count)")
+        for aula in AulaCDModelController.shared.aulas {
+            print("aula.location.locationName: \(aula.location?.locationName ?? "")")
+        }
+        // save to CoreData
+        OwnerCDModelController.shared.saveToPersistentStorage()
+        
+        print("post save to CoreData")
+        print("AulaCDModelController.shared.aulas.count: \(AulaCDModelController.shared.aulas.count)")
+        for aula in AulaCDModelController.shared.aulas {
+            print("aula.location.locationName: \(aula.location?.locationName ?? "")")
+        }
     }
 }
 

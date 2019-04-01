@@ -35,6 +35,10 @@ class LocationAddressViewController: UIViewController, UITextInputTraits{
     @IBOutlet weak var stateTextField: UITextField!
     @IBOutlet weak var zipCodeTextField: UITextField!
     
+    // CoreData properties
+    var locationCD: LocationCD?
+    var locationCDToEdit: LocationCD?
+    
     
     // MARK: - ViewController Lifecycle Functions
     
@@ -85,6 +89,24 @@ class LocationAddressViewController: UIViewController, UITextInputTraits{
     
     
     // MARK: - Actions
+    
+    @IBAction func tapAnywhereToDismissKeyboardTapped(_ sender: UITapGestureRecognizer) {
+        
+        view.endEditing(true)
+        
+        // dismiss keyboard when leaving VC scene
+        if addressLine1TextField.isFirstResponder {
+            addressLine1TextField.resignFirstResponder()
+        } else if addressLine2TextField.isFirstResponder {
+            addressLine2TextField.resignFirstResponder()
+        } else if cityTextField.isFirstResponder {
+            cityTextField.resignFirstResponder()
+        } else if stateTextField.isFirstResponder {
+            stateTextField.resignFirstResponder()
+        } else if zipCodeTextField.isFirstResponder {
+            zipCodeTextField.resignFirstResponder()
+        }
+    }
     
     @objc func saveButtonTapped() {
         
@@ -164,8 +186,6 @@ class LocationAddressViewController: UIViewController, UITextInputTraits{
         updateLocationInfo()
         
         self.returnToLocationInfo()
-        
-        print("update location address: \(LocationModelController.shared.locations[0].addressLine1) \n\(LocationModelController.shared.locations[0].addressLine2) \n\(LocationModelController.shared.locations[0].city) \(LocationModelController.shared.locations[0].state) \(LocationModelController.shared.locations[0].zipCode)")
         
         inEditingMode = false
     }
@@ -263,10 +283,10 @@ class LocationAddressViewController: UIViewController, UITextInputTraits{
         navigationController?.navigationBar.shadowImage = UIImage()
         
         // required fields
-        let addressLine1 = addressLine1TextField.text
-        let city = cityTextField.text
-        let state = stateTextField.text
-        let zipCode = zipCodeTextField.text
+        guard let addressLine1 = addressLine1TextField.text else { return }
+        guard let city = cityTextField.text else { return }
+        guard let state = stateTextField.text else { return }
+        guard let zipCode = zipCodeTextField.text else { return }
         
         // not required field
         let addressLine2 = addressLine2TextField.text
@@ -286,6 +306,7 @@ class LocationAddressViewController: UIViewController, UITextInputTraits{
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
         updateLocationInfo()
+        destViewController.locationCDToEdit = locationCDToEdit
     }
 }
 
@@ -296,11 +317,19 @@ extension LocationAddressViewController {
     // Update Function for case where want to update user info without a segue
     func updateLocationInfo() {
         if addressLine1TextField.text != "" && cityTextField.text != "" && stateTextField.text != "" && zipCodeTextField.text != "" {
+
+            // CoreData LocationCD property update
+            guard let locationCD = locationCDToEdit else { return }
+            guard let address = locationCD.address else { return }
             
-            guard let location = locationToEdit else { return }
+            AddressCDModelController.shared.update(address: address, addressLine1: addressLine1TextField.text, addressLine2: addressLine2TextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: zipCodeTextField.text)
             
-            LocationModelController.shared.update(location: location, active: nil, locationPic: nil, locationName: nil, addressLine1: addressLine1TextField.text, addressLine2: addressLine2TextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: zipCodeTextField.text, phone: nil, website: nil, email: nil, social1: nil, social2: nil, social3: nil)
+            // MARK: - vvv is this necessary? vvv
+            LocationCDModelController.shared.update(location: locationCD, locationPic: nil, locationName: nil, address: address, phone: nil, website: nil, email: nil, socialLinks: nil)
         }
+        OwnerCDModelController.shared.saveToPersistentStorage()
+        
+        
     }
     
     func enterEditingMode(inEditingMode: Bool?) {
@@ -321,17 +350,17 @@ extension LocationAddressViewController {
     // owner setup for editing mode
     func locationEditingSetup(locationToEdit: Location?) {
         
-        guard let locationToEdit = locationToEdit else {
+        guard let locationCDToEdit = locationCDToEdit else {
             return
         }
         
-        whatIsLocationAddressLabelOutlet.text = "Location: \(locationToEdit.locationName)"
+        whatIsLocationAddressLabelOutlet.text = "Location: \(locationCDToEdit.locationName ?? "")"
         
-        addressLine1TextField.text = locationToEdit.addressLine1
-        addressLine2TextField.text = locationToEdit.addressLine2
-        cityTextField.text = locationToEdit.city
-        stateTextField.text = locationToEdit.state
-        zipCodeTextField.text = locationToEdit.zipCode
+        addressLine1TextField.text = locationCDToEdit.address?.addressLine1
+        addressLine2TextField.text = locationCDToEdit.address?.addressLine2
+        cityTextField.text = locationCDToEdit.address?.city
+        stateTextField.text = locationCDToEdit.address?.state
+        zipCodeTextField.text = locationCDToEdit.address?.zipCode
         
         
     }

@@ -87,7 +87,7 @@ class TypeCollectionViewCell: UICollectionViewCell {
                 
             delegate?.billingTypes = billingTypes.filter({ $0 != billingType })
             
-            print("\(String(describing: delegate?.billingTypes))")
+            print("in TypeCollectionCell.swift - delegate.billingTypes: \(String(describing: delegate?.billingTypes))")
             
         } else {
             
@@ -97,7 +97,7 @@ class TypeCollectionViewCell: UICollectionViewCell {
             
             delegate?.billingTypes = billingTypes
             
-            print("\(String(describing: delegate?.billingTypes))")
+            print("in TypeCollectionCell.swift - delegate.billingTypes: \(String(describing: delegate?.billingTypes))")
 
         }
     }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ContactInfoViewController: UIViewController, UITextInputTraits {
 
@@ -45,6 +46,12 @@ class ContactInfoViewController: UIViewController, UITextInputTraits {
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var mobileTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
+    
+    // CoreData Properties
+    var owner: OwnerCD?
+    var studentAdult: StudentAdultCD?
+    var studentKid: StudentKidCD?
+    var groupCD: GroupCD?
 
     
     // MARK: - ViewController Lifecycle Functions
@@ -87,6 +94,20 @@ class ContactInfoViewController: UIViewController, UITextInputTraits {
     
     
     // MARK: - Actions
+    
+    @IBAction func tapAnywhereToDismissKeyboardTapped(_ sender: UITapGestureRecognizer) {
+        
+        view.endEditing(true)
+        
+        // dismiss keyboard when leaving VC scene
+        if phoneTextField.isFirstResponder {
+            phoneTextField.resignFirstResponder()
+        } else if mobileTextField.isFirstResponder {
+            mobileTextField.resignFirstResponder()
+        } else if emailTextField.isFirstResponder {
+            emailTextField.resignFirstResponder()
+        }
+    }
     
     @objc func saveButtonTapped() {
         
@@ -220,10 +241,10 @@ class ContactInfoViewController: UIViewController, UITextInputTraits {
         navigationController?.navigationBar.shadowImage = UIImage()
         
         // required fields
-        let phone = phoneTextField.text
-        let email = emailTextField.text
+        let phone = phoneTextField.text ?? ""
+        let email = emailTextField.text ?? ""
         // not a required field
-        let mobile = mobileTextField.text
+        let mobile = mobileTextField.text ?? ""
         
         // pass data to destViewController
         destViewController.isOwner = isOwner
@@ -248,6 +269,7 @@ class ContactInfoViewController: UIViewController, UITextInputTraits {
         
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
         destViewController.group = group
+        destViewController.groupCD = groupCD
         
         destViewController.inEditingMode = inEditingMode
         destViewController.userToEdit = userToEdit
@@ -284,7 +306,13 @@ extension ContactInfoViewController {
             guard let owner = userToEdit as? Owner else { return }
             
             OwnerModelController.shared.updateProfileInfo(owner: owner, isInstructor: nil, birthdate: nil, groups: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: phoneTextField.text, mobile: mobileTextField.text, email: emailTextField.text, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+            
+            // CoreData Owner update profile info
+            guard let ownerCD = userToEdit as? OwnerCD else { return }
+            
+            OwnerCDModelController.shared.update(owner: ownerCD, isInstructor: nil, birthdate: nil, mostRecentPromotion: nil, belt: nil, profilePic: nil, username: nil, password: nil, firstName: nil, lastName: nil, address: nil, phone: phoneTextField.text, mobile: mobileTextField.text, email: emailTextField.text, emergencyContact: nil)
         }
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func updateKidStudentInfo() {
@@ -293,7 +321,13 @@ extension ContactInfoViewController {
             guard let kidStudent = userToEdit as? KidStudent else { return }
             
             KidStudentModelController.shared.updateProfileInfo(kidStudent: kidStudent, birthdate: nil, groups: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, parentGuardian: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: phoneTextField.text, mobile: mobileTextField.text, email: emailTextField.text, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+            
+            // CoreData Owner update profile info
+            guard let studentKidCD = userToEdit as? StudentKidCD else { return }
+            
+            StudentKidCDModelController.shared.update(studentKid: studentKidCD, birthdate: nil, mostRecentPromotion: nil, studentStatus: nil, belt: nil, profilePic: nil, username: nil, password: nil, firstName: nil, lastName: nil, parentGuardian: nil, address: nil, phone: phoneTextField.text, mobile: mobileTextField.text, email: emailTextField.text, emergencyContact: nil)
         }
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func updateAdultStudentInfo() {
@@ -302,7 +336,13 @@ extension ContactInfoViewController {
             guard let adultStudent = userToEdit as? AdultStudent else { return }
             
             AdultStudentModelController.shared.updateProfileInfo(adultStudent: adultStudent, birthdate: nil, groups: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: phoneTextField.text, mobile: mobileTextField.text, email: emailTextField.text, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+            
+            // CoreData Owner update profile info
+            guard let studentAdultCD = userToEdit as? StudentAdultCD else { return }
+            
+                StudentAdultCDModelController.shared.update(studentAdult: studentAdultCD, isInstructor: nil, birthdate: nil, mostRecentPromotion: nil, studentStatus: nil, belt: nil, profilePic: nil, username: nil, password: nil, firstName: nil, lastName: nil, address: nil, phone: phoneTextField.text, mobile: mobileTextField.text, email: emailTextField.text, emergencyContact: nil)
         }
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func enterEditingMode(inEditingMode: Bool?) {

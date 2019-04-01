@@ -39,6 +39,11 @@ class LocationSocialLinksViewController: UIViewController {
     
     @IBOutlet weak var nextButtonOutlet: DesignableButton!
     
+    // CoreData properties
+    var location: LocationCD?
+    var locationCDToEdit: LocationCD?
+    
+    
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,6 +79,20 @@ class LocationSocialLinksViewController: UIViewController {
     
     // MARK: - Actions
     
+    @IBAction func tapAnywhereToDismissKeyboardTapped(_ sender: UITapGestureRecognizer) {
+        
+        view.endEditing(true)
+        
+        // dismiss keyboard when leaving VC scene
+        if socialLink1TextField.isFirstResponder {
+            socialLink1TextField.resignFirstResponder()
+        } else if socialLink2TextField.isFirstResponder {
+            socialLink2TextField.resignFirstResponder()
+        } else if socialLink3TextField.isFirstResponder {
+            socialLink3TextField.resignFirstResponder()
+        }
+    }
+    
     @objc func saveButtonTapped() {
         
         // dismiss keyboard when leaving VC scene
@@ -89,8 +108,6 @@ class LocationSocialLinksViewController: UIViewController {
         updateLocationInfo()
         
         self.returnToLocationInfo()
-        
-        print("update location social links (if any): \(String(describing: LocationModelController.shared.locations[0].social1)) \n\(String(describing: LocationModelController.shared.locations[0].social2)) \n\(String(describing: LocationModelController.shared.locations[0].social3))")
         
         inEditingMode = false
     }
@@ -152,9 +169,17 @@ extension LocationSocialLinksViewController {
     // Update Function for case where want to update location info without a segue
     func updateLocationInfo() {
         
-        guard let location = locationToEdit else { return }
+        // CoreData LocationCD update info
+        guard let locationCD = locationCDToEdit else { return }
+        guard let socialLinks = locationCD.socialLinks else { return }
         
-        LocationModelController.shared.update(location: location, active: nil, locationPic: nil, locationName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, website: nil, email: nil, social1: socialLink1TextField.text, social2: socialLink2TextField.text, social3: socialLink3TextField.text)
+        LocationSocialLinksCDModelController.shared.update(locationSocialLinks: socialLinks, socialLink1: socialLink1TextField.text, socialLink2: socialLink2TextField.text, socialLink3: socialLink3TextField.text)
+        
+        // MARK: - vvv is this necessary? vvv
+        LocationCDModelController.shared.update(location: locationCD, locationPic: nil, locationName: nil, address: nil, phone: nil, website: nil, email: nil, socialLinks: socialLinks)
+        
+    
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func enterEditingMode(inEditingMode: Bool?) {
@@ -178,15 +203,15 @@ extension LocationSocialLinksViewController {
     // location setup for editing mode
     func locationEditingSetup(userToEdit: Location?) {
         
-        guard let locationToEdit = locationToEdit else {
+        guard let locationCDToEdit = locationCDToEdit else {
             return
         }
         
-        anySocialMediaLinksToAddLabelOutlet.text = "Location: \(locationToEdit.locationName)"
+        anySocialMediaLinksToAddLabelOutlet.text = "Location: \(locationCDToEdit.locationName ?? "")"
         
-        socialLink1TextField.text = "Instagram: \(locationToEdit.social1 ?? "")"
-        socialLink2TextField.text = "facebook: \(locationToEdit.social2 ?? "")"
-        socialLink3TextField.text = "Twitter: \(locationToEdit.social3 ?? "")"
+        socialLink1TextField.text = "Instagram: \(locationCDToEdit.socialLinks?.socialLink1 ?? "")"
+        socialLink2TextField.text = "facebook: \(locationCDToEdit.socialLinks?.socialLink2 ?? "")"
+        socialLink3TextField.text = "Twitter: \(locationCDToEdit.socialLinks?.socialLink3 ?? "")"
     }
 }
 

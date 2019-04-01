@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class AddressViewController: UIViewController, UITextInputTraits {
     
@@ -46,6 +47,12 @@ class AddressViewController: UIViewController, UITextInputTraits {
     @IBOutlet weak var cityTextField: UITextField!
     @IBOutlet weak var stateTextField: UITextField!
     @IBOutlet weak var zipCodeTextField: UITextField!
+    
+    // CoreData Properties
+    var owner: OwnerCD?
+    var studentAdult: StudentAdultCD?
+    var studentKid: StudentKidCD?
+    var groupCD: GroupCD?
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -96,6 +103,23 @@ class AddressViewController: UIViewController, UITextInputTraits {
     
     // MARK: - Actions
     
+    @IBAction func tapAnywhereToDismissKeyboardTapped(_ sender: UITapGestureRecognizer) {
+        
+        view.endEditing(true)
+        
+        // dismiss keyboard when leaving VC scene
+        if addressLine1TextField.isFirstResponder {
+            addressLine1TextField.resignFirstResponder()
+        } else if addressLine2TextField.isFirstResponder {
+            addressLine2TextField.resignFirstResponder()
+        } else if cityTextField.isFirstResponder {
+            cityTextField.resignFirstResponder()
+        } else if stateTextField.isFirstResponder {
+            stateTextField.resignFirstResponder()
+        } else if zipCodeTextField.isFirstResponder {
+            zipCodeTextField.resignFirstResponder()
+        }
+    }
     @objc func saveButtonTapped() {
         
         // dismiss keyboard when leaving VC scene
@@ -278,12 +302,12 @@ class AddressViewController: UIViewController, UITextInputTraits {
         navigationController?.navigationBar.shadowImage = UIImage()
         
         // required fields
-        let addressLine1 = addressLine1TextField.text
-        let city = cityTextField.text
-        let state = stateTextField.text
-        let zipCode = zipCodeTextField.text
+        let addressLine1 = addressLine1TextField.text ?? ""
+        let city = cityTextField.text  ?? ""
+        let state = stateTextField.text  ?? ""
+        let zipCode = zipCodeTextField.text  ?? ""
         // not a required field
-        let addressLine2 = addressLine2TextField.text
+        let addressLine2 = addressLine2TextField.text  ?? ""
         
         // pass data to destViewController
         destViewController.isOwner = isOwner
@@ -305,6 +329,7 @@ class AddressViewController: UIViewController, UITextInputTraits {
         
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
         destViewController.group = group
+        destViewController.groupCD = groupCD
         
         destViewController.inEditingMode = inEditingMode
         destViewController.userToEdit = userToEdit
@@ -343,7 +368,14 @@ extension AddressViewController {
             guard let owner = userToEdit as? Owner else { return }
             
             OwnerModelController.shared.updateProfileInfo(owner: owner, isInstructor: nil, birthdate: nil, groups: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: addressLine1TextField.text, addressLine2: addressLine2TextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: zipCodeTextField.text, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+            
+            // CoreData Belt property update
+            guard let ownerCD = userToEdit as? OwnerCD else { return }
+            guard let address = ownerCD.address else { return }
+            
+            AddressCDModelController.shared.update(address: address, addressLine1: addressLine1TextField.text, addressLine2: addressLine2TextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: zipCodeTextField.text)
         }
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func updateKidStudentInfo() {
@@ -352,7 +384,14 @@ extension AddressViewController {
             guard let kidStudent = userToEdit as? KidStudent else { return }
             
             KidStudentModelController.shared.updateProfileInfo(kidStudent: kidStudent, birthdate: nil, groups: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, parentGuardian: nil, addressLine1: addressLine1TextField.text, addressLine2: addressLine2TextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: zipCodeTextField.text, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+            
+            // CoreData Belt property update
+            guard let studentKidCD = userToEdit as? StudentKidCD else { return }
+            guard let address = studentKidCD.address else { return }
+            
+            AddressCDModelController.shared.update(address: address, addressLine1: addressLine1TextField.text, addressLine2: addressLine2TextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: zipCodeTextField.text)
         }
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func updateAdultStudentInfo() {
@@ -361,7 +400,14 @@ extension AddressViewController {
             guard let adultStudent = userToEdit as? AdultStudent else { return }
             
             AdultStudentModelController.shared.updateProfileInfo(adultStudent: adultStudent, birthdate: nil, groups: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: addressLine1TextField.text, addressLine2: addressLine2TextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: zipCodeTextField.text, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
+            
+            // CoreData Belt property update
+            guard let studentAdultCD = userToEdit as? StudentAdultCD else { return }
+            guard let address = studentAdultCD.address else { return }
+            
+            AddressCDModelController.shared.update(address: address, addressLine1: addressLine1TextField.text, addressLine2: addressLine2TextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: zipCodeTextField.text)
         }
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func enterEditingMode(inEditingMode: Bool?) {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class TakeProfilePicViewController: UIViewController {
 
@@ -36,6 +37,12 @@ class TakeProfilePicViewController: UIViewController {
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var parentGuardianTextField: UITextField!
+    
+    // CoreData Properties
+    var ownerCD: OwnerCD?
+    var studentAdultCD: StudentAdultCD?
+    var studentKidCD: StudentKidCD?
+    var groupCD: GroupCD?
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -77,6 +84,19 @@ class TakeProfilePicViewController: UIViewController {
     
     
     // MARK: - Actions
+    
+    @IBAction func tapAnywhereToDismissKeyboardTapped(_ sender: UITapGestureRecognizer) {
+            view.endEditing(true)
+        // dismiss keyboard when leaving VC scene
+        if firstNameTextField.isFirstResponder {
+            firstNameTextField.resignFirstResponder()
+        } else if lastNameTextField.isFirstResponder {
+            lastNameTextField.resignFirstResponder()
+        } else if parentGuardianTextField.isFirstResponder {
+            parentGuardianTextField.resignFirstResponder()
+        }
+    }
+    
     
     @objc func saveButtonTapped() {
         
@@ -253,9 +273,12 @@ class TakeProfilePicViewController: UIViewController {
         
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
         destViewController.group = group
+        destViewController.groupCD = groupCD
         
         destViewController.inEditingMode = inEditingMode
         destViewController.userToEdit = userToEdit
+        
+        
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
         if let isOwner = isOwner {
@@ -289,6 +312,17 @@ extension TakeProfilePicViewController {
         if firstNameTextField.text != "" && lastNameTextField.text != "" && profilePicImageViewOutlet.image != UIImage(contentsOfFile: "user_placeholder") {
             OwnerModelController.shared.updateProfileInfo(owner: owner, isInstructor: nil, birthdate: nil, groups: nil, belt: nil, profilePic: profilePicImageViewOutlet.image, username: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
             print("update owner name: \(OwnerModelController.shared.owners[0].firstName) \(OwnerModelController.shared.owners[0].lastName)")
+            
+            // CoreData Owner update profile info
+            guard let ownerCD = userToEdit as? OwnerCD else { return }
+            
+            // convert profilePic to Data
+            let profilePic = profilePicImageViewOutlet.image
+            if let profilePicData = profilePic?.jpegData(compressionQuality: 1) {
+                
+                OwnerCDModelController.shared.update(owner: ownerCD, isInstructor: nil, birthdate: nil, mostRecentPromotion: nil, belt: nil, profilePic: profilePicData, username: nil, password: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: nil, phone: nil, mobile: nil, email: nil, emergencyContact: nil)
+            }
+            OwnerCDModelController.shared.saveToPersistentStorage()
         }
     }
     
@@ -298,6 +332,17 @@ extension TakeProfilePicViewController {
         if firstNameTextField.text != "" && lastNameTextField.text != "" && parentGuardianTextField.text != "" && profilePicImageViewOutlet.image != UIImage(contentsOfFile: "user_placeholder") {
             KidStudentModelController.shared.updateProfileInfo(kidStudent: kidStudent, birthdate: nil, groups: nil, belt: nil, profilePic: profilePicImageViewOutlet.image, username: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, parentGuardian: parentGuardianTextField.text, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
         }
+        
+        // CoreData Owner update profile info
+        guard let studentKidCD = userToEdit as? StudentKidCD else { return }
+        
+        // convert profilePic to Data
+        let profilePic = profilePicImageViewOutlet.image
+        if let profilePicData = profilePic?.jpegData(compressionQuality: 1) {
+            
+            StudentKidCDModelController.shared.update(studentKid: studentKidCD, birthdate: nil, mostRecentPromotion: nil, studentStatus: nil, belt: nil, profilePic: profilePicData, username: nil, password: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, parentGuardian: parentGuardianTextField.text, address: nil, phone: nil, mobile: nil, email: nil, emergencyContact: nil)
+        }
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func updateAdultStudentInfo() {
@@ -307,6 +352,17 @@ extension TakeProfilePicViewController {
         if firstNameTextField.text != "" && lastNameTextField.text != "" && profilePicImageViewOutlet.image != UIImage(contentsOfFile: "user_placeholder") {
             AdultStudentModelController.shared.updateProfileInfo(adultStudent: adultStudent, birthdate: nil, groups: nil, belt: nil, profilePic: profilePicImageViewOutlet.image, username: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
         }
+        
+        // CoreData Owner update profile info
+        guard let studentAdultCD = userToEdit as? StudentAdultCD else { return }
+        
+        // convert profilePic to Data
+        let profilePic = profilePicImageViewOutlet.image
+        if let profilePicData = profilePic?.jpegData(compressionQuality: 1) {
+            
+            StudentAdultCDModelController.shared.update(studentAdult: studentAdultCD, isInstructor: nil, birthdate: nil, mostRecentPromotion: nil, studentStatus: nil, belt: nil, profilePic: profilePicData, username: nil, password: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: nil, phone: nil, mobile: nil, email: nil, emergencyContact: nil)
+        }
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func enterEditingMode(inEditingMode: Bool?) {
@@ -533,3 +589,14 @@ extension TakeProfilePicViewController: UITextFieldDelegate {
         return true
     }
 }
+
+// MARK: Data to UIImageextension
+
+// To convert back to Image from Data you just need to use UIImage(data:) initializer:
+extension Data {
+    var uiImage: UIImage? {
+        return UIImage(data: self)
+    }
+}
+
+

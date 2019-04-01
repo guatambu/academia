@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class EmergencyContactViewController: UIViewController {
 
@@ -53,6 +54,12 @@ class EmergencyContactViewController: UIViewController {
     
     @IBOutlet weak var firstProgressDotOutlet: DesignableView!
     
+    // CoreData Properties
+    var ownerCD: OwnerCD?
+    var studentAdultCD: StudentAdultCD?
+    var studentKidCD: StudentKidCD?
+    var groupCD: GroupCD?
+    
     
     // MARK: - ViewController Lifecycle Functions
     
@@ -89,6 +96,19 @@ class EmergencyContactViewController: UIViewController {
     
     // MARK: - Actions
     
+    @IBAction func tapAnywhereToDismissKeyboardTapped(_ sender: UITapGestureRecognizer) {
+        
+        view.endEditing(true)
+        
+        // dismiss keyboard when leaving VC scene
+        if emergencyContactNameTextField.isFirstResponder {
+            emergencyContactNameTextField.resignFirstResponder()
+        } else if emergencyContactNameTextField.isFirstResponder {
+            emergencyContactPhoneTextField.resignFirstResponder()
+        } else if emergencyContactRelationshipTextField.isFirstResponder {
+            emergencyContactRelationshipTextField.resignFirstResponder()
+        }
+    }
     @objc func saveButtonTapped() {
         
         // dismiss keyboard when leaving VC scene
@@ -280,6 +300,7 @@ class EmergencyContactViewController: UIViewController {
         
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
         destViewController.group = group
+        destViewController.groupCD = groupCD
         
         guard let isOwner = isOwner else { print("fail isOwner"); return }
         guard let isKid = isKid else { print("fail isKid"); return }
@@ -314,7 +335,17 @@ extension EmergencyContactViewController {
             guard let owner = userToEdit as? Owner else { return }
             
             OwnerModelController.shared.updateProfileInfo(owner: owner, isInstructor: nil, birthdate: nil, groups: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: emergencyContactNameTextField.text, emergencyContactPhone: emergencyContactPhoneTextField.text, emergencyContactRelationship: emergencyContactRelationshipTextField.text)
+            
+            // CoreData Belt property update
+            guard let ownerCD = userToEdit as? OwnerCD else { return }
+            guard let emergencyContact = ownerCD.emergencyContact else { return }
+            let name = emergencyContactNameTextField.text ?? ""
+            let phone = emergencyContactPhoneTextField.text ?? ""
+            let relationship = emergencyContactRelationshipTextField.text ?? ""
+            
+            EmergencyContactCDModelController.shared.update(emergencyContact: emergencyContact, name: name, phone: phone, relationship: relationship)
         }
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func updateKidStudentInfo() {
@@ -323,7 +354,17 @@ extension EmergencyContactViewController {
             guard let kidStudent = userToEdit as? KidStudent else { return }
             
             KidStudentModelController.shared.updateProfileInfo(kidStudent: kidStudent, birthdate: nil, groups: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, parentGuardian: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: emergencyContactNameTextField.text, emergencyContactPhone: emergencyContactPhoneTextField.text, emergencyContactRelationship: emergencyContactRelationshipTextField.text)
+            
+            // CoreData Belt property update
+            guard let studentKidCD = userToEdit as? StudentKidCD else { return }
+            guard let emergencyContact = studentKidCD.emergencyContact else { return }
+            let name = emergencyContactNameTextField.text ?? ""
+            let phone = emergencyContactPhoneTextField.text ?? ""
+            let relationship = emergencyContactRelationshipTextField.text ?? ""
+            
+            EmergencyContactCDModelController.shared.update(emergencyContact: emergencyContact, name: name, phone: phone, relationship: relationship)
         }
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func updateAdultStudentInfo() {
@@ -333,7 +374,17 @@ extension EmergencyContactViewController {
             
 //            let adult = AdultStudentModelController.shared.adults[0]
             AdultStudentModelController.shared.updateProfileInfo(adultStudent: adultStudent, birthdate: nil, groups: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: emergencyContactNameTextField.text, emergencyContactPhone: emergencyContactPhoneTextField.text, emergencyContactRelationship: emergencyContactRelationshipTextField.text)
+            
+            // CoreData Belt property update
+            guard let studentAdultCD = userToEdit as? StudentAdultCD else { return }
+            guard let emergencyContact = studentAdultCD.emergencyContact else { return }
+            let name = emergencyContactNameTextField.text ?? ""
+            let phone = emergencyContactPhoneTextField.text ?? ""
+            let relationship = emergencyContactRelationshipTextField.text ?? ""
+            
+            EmergencyContactCDModelController.shared.update(emergencyContact: emergencyContact, name: name, phone: phone, relationship: relationship)
         }
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func enterEditingMode(inEditingMode: Bool?) {

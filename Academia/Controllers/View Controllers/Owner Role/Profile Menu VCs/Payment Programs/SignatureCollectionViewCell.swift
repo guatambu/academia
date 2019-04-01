@@ -85,7 +85,7 @@ class SignatureCollectionViewCell: UICollectionViewCell {
             
             delegate?.signatureTypes = signatureTypes.filter({ $0 != signatureType })
             
-            print("\(String(describing: delegate?.signatureTypes))")
+            print("in SignatureCollectionCell.swift - delegate.signatureTypess: \(String(describing: delegate?.signatureTypes))")
             
         } else {
             
@@ -95,7 +95,7 @@ class SignatureCollectionViewCell: UICollectionViewCell {
             
             delegate?.signatureTypes = signatureTypes
             
-            print("\(String(describing: delegate?.signatureTypes))")
+            print("in SignatureCollectionCell.swift - delegate.signatureTypess: \(String(describing: delegate?.signatureTypes))")
             
         }
     }

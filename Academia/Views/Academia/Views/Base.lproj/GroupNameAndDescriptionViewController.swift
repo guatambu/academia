@@ -36,6 +36,10 @@ class GroupNameAndDescriptionViewController: UIViewController, UITextInputTraits
     // program description textView
     @IBOutlet weak var groupDescriptionTextView: UITextView!
     
+    // CoreData Properties
+    var groupCD: GroupCD?
+    var groupCDToEdit: GroupCD?
+    
     
     // MARK: - ViewController Lifecycle Functions
     
@@ -71,7 +75,6 @@ class GroupNameAndDescriptionViewController: UIViewController, UITextInputTraits
         groupNameTextField.delegate = self
         groupDescriptionTextView.delegate = self
         
-        //populateCompletedProfileInfo()
     }
     
     
@@ -86,7 +89,12 @@ class GroupNameAndDescriptionViewController: UIViewController, UITextInputTraits
     
     @IBAction func tapAnywhereToDismissTapped(_ sender: Any) {
         view.endEditing(true)
-        groupDescriptionTextView.resignFirstResponder()
+        // dismiss keyboard when leaving VC scene
+        if groupNameTextField.isFirstResponder {
+            groupNameTextField.resignFirstResponder()
+        } else if groupDescriptionTextView.isFirstResponder {
+            groupDescriptionTextView.resignFirstResponder()
+        }
     }
     
     @objc func saveButtonTapped() {
@@ -203,7 +211,14 @@ extension GroupNameAndDescriptionViewController {
         if groupNameTextField.text != "" {
             GroupModelController.shared.update(group: group, active: active, name: groupNameTextField.text, description: groupDescriptionTextView.text, kidMembers: nil, adultMembers: nil, kidStudent: nil, adultStudent: nil)
             print("update group name: \(GroupModelController.shared.groups[0].name)")
+        
+            // CoreData PaymentProgramCD update info
+            guard let groupCDToEdit = groupCDToEdit else { return }
+            
+            GroupCDModelController.shared.update(group: groupCDToEdit, active: active, name: groupNameTextField.text, groupDescription: groupDescriptionTextView.text)
         }
+        
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func enterEditingMode(inEditingMode: Bool?) {
@@ -270,12 +285,9 @@ extension GroupNameAndDescriptionViewController: UITextFieldDelegate, UITextView
     // keyboardWillChange to handle Keyboard Notifications
     @objc func keyboardWillChange(notification: Notification) {
         
-        // uncomment for print statement ensuring this method is properly called
-        // print("Keyboard will change: \(notification.name.rawValue) - \(notification.description)")
-        
         // get the size of the keyboard
         guard let keyboardCGRectValue = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-            print("ERROR: nil value for notification.userInfo[UIKeyboardFrameEndUserInfoKey] in SignUpLoginViewController.swift -> keyboardWillChange(notification:) - line 225")
+            print("ERROR: nil value for notification.userInfo[UIKeyboardFrameEndUserInfoKey] in SignUpLoginViewController.swift -> keyboardWillChange(notification:) - line 290")
             return
         }
         

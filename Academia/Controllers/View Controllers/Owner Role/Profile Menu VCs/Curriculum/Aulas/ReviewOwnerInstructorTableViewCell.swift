@@ -26,6 +26,12 @@ class ReviewOwnerInstructorTableViewCell: UITableViewCell {
         }
     }
     
+    var ownerInstructorCD: OwnerCD? {
+        didSet {
+            updateViews()
+        }
+    }
+    
     
     // MARK: - awakeFromNib()
     
@@ -39,13 +45,24 @@ class ReviewOwnerInstructorTableViewCell: UITableViewCell {
     
     func updateViews() {
         
-        guard let ownerInstructor = ownerInstructor else {
-            print("ERROR: nil value found while attepting to unwrap optional adultStudent in AdultStudentTableViewCell.swift -> updateViews() - line 43.")
+//        guard let ownerInstructor = ownerInstructor else {
+//            print("ERROR: nil value found while attepting to unwrap optional adultStudent in AdultStudentTableViewCell.swift -> updateViews() - line 43.")
+//            return
+//        }
+//        
+//        userThumbnailImageViewOutlet.image = ownerInstructor.profilePic
+//        cellTitleOutlet.text = "\(ownerInstructor.firstName) \(ownerInstructor.lastName)"
+        
+        // CoreData version
+        guard let ownerInstructorCD = ownerInstructorCD else {
+            print("ERROR: nil value found while attepting to unwrap optional ownerInstructorCD in OwnerInstructorTableViewCell.swift -> updateViews() - line 121.")
             return
         }
         
-        userThumbnailImageViewOutlet.image = ownerInstructor.profilePic
-        cellTitleOutlet.text = "\(ownerInstructor.firstName) \(ownerInstructor.lastName)"
+        if let profilePicData = ownerInstructorCD.profilePic {
+            userThumbnailImageViewOutlet.image = UIImage(data: profilePicData)
+        }
+        cellTitleOutlet.text = "\(ownerInstructorCD.firstName ?? "") \(ownerInstructorCD.lastName ?? "")"
     }
 }
 

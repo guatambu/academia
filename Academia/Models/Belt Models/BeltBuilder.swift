@@ -46,6 +46,12 @@ class BeltBuilder {
     let redBeltRed = UIColor(red: 255/255, green: 38/255, blue: 0/255, alpha: 1.0)
     
     // fonts
+    // gil sans light using redBelRed
+    let gillSansLightRed = [ NSAttributedString.Key.foregroundColor: UIColor(red: 255/255, green: 38/255, blue: 0/255, alpha: 1.0),
+                            NSAttributedString.Key.font: UIFont(name: "GillSans-Light", size: 20)! ]
+    // large black avenir font using blackBeltBlack
+    let avenirFontBlackLarge = [ NSAttributedString.Key.foregroundColor: UIColor.black,
+                            NSAttributedString.Key.font: UIFont(name: "Avenir-Light", size: 24)! ]
     // black avenir font using blackBeltBlack
     let avenirFontBlack = [ NSAttributedString.Key.foregroundColor: UIColor.black,
                        NSAttributedString.Key.font: UIFont(name: "Avenir-Light", size: 16)! ]
