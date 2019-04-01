@@ -23,7 +23,7 @@ class TakeProfilePicViewController: UIViewController {
     var profilePic: UIImage?
     
     var inEditingMode: Bool?
-    var userToEdit: Any?
+    var userCDToEdit: Any?
     
     var isOwnerAddingStudent: Bool?
     var group: Group?
@@ -150,8 +150,7 @@ class TakeProfilePicViewController: UIViewController {
                     updateOwnerInfo()
                     
                     self.returnToOwnerInfo()
-                  
-                    print("update owner name: \(OwnerModelController.shared.owners[0].firstName) \(OwnerModelController.shared.owners[0].lastName)")
+                
                 } else {
                     // warning to user where welcome instructions text changes to red
                     self.firstNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.firstName.rawValue, attributes: beltBuilder.errorAvenirFont)
@@ -276,7 +275,7 @@ class TakeProfilePicViewController: UIViewController {
         destViewController.groupCD = groupCD
         
         destViewController.inEditingMode = inEditingMode
-        destViewController.userToEdit = userToEdit
+        destViewController.userCDToEdit = userCDToEdit
         
         
         
@@ -307,14 +306,12 @@ extension TakeProfilePicViewController {
     
     // Update Function for case where want to update user info without a segue
     func updateOwnerInfo() {
-        guard let owner = userToEdit as? Owner else { return }
-            // Owner update profile info
+        
+        // Owner update profile info
         if firstNameTextField.text != "" && lastNameTextField.text != "" && profilePicImageViewOutlet.image != UIImage(contentsOfFile: "user_placeholder") {
-            OwnerModelController.shared.updateProfileInfo(owner: owner, isInstructor: nil, birthdate: nil, groups: nil, belt: nil, profilePic: profilePicImageViewOutlet.image, username: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
-            print("update owner name: \(OwnerModelController.shared.owners[0].firstName) \(OwnerModelController.shared.owners[0].lastName)")
             
             // CoreData Owner update profile info
-            guard let ownerCD = userToEdit as? OwnerCD else { return }
+            guard let ownerCD = userCDToEdit as? OwnerCD else { return }
             
             // convert profilePic to Data
             let profilePic = profilePicImageViewOutlet.image
@@ -327,42 +324,38 @@ extension TakeProfilePicViewController {
     }
     
     func updateKidStudentInfo() {
-        guard let kidStudent = userToEdit as? KidStudent else { return }
-            // kidStudent update profile info
-        if firstNameTextField.text != "" && lastNameTextField.text != "" && parentGuardianTextField.text != "" && profilePicImageViewOutlet.image != UIImage(contentsOfFile: "user_placeholder") {
-            KidStudentModelController.shared.updateProfileInfo(kidStudent: kidStudent, birthdate: nil, groups: nil, belt: nil, profilePic: profilePicImageViewOutlet.image, username: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, parentGuardian: parentGuardianTextField.text, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
-        }
         
-        // CoreData Owner update profile info
-        guard let studentKidCD = userToEdit as? StudentKidCD else { return }
+        if firstNameTextField.text != "" && lastNameTextField.text != "" && profilePicImageViewOutlet.image != UIImage(contentsOfFile: "user_placeholder") {
         
-        // convert profilePic to Data
-        let profilePic = profilePicImageViewOutlet.image
-        if let profilePicData = profilePic?.jpegData(compressionQuality: 1) {
+            // CoreData Owner update profile info
+            guard let studentKidCD = userCDToEdit as? StudentKidCD else { return }
             
-            StudentKidCDModelController.shared.update(studentKid: studentKidCD, birthdate: nil, mostRecentPromotion: nil, studentStatus: nil, belt: nil, profilePic: profilePicData, username: nil, password: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, parentGuardian: parentGuardianTextField.text, address: nil, phone: nil, mobile: nil, email: nil, emergencyContact: nil)
+            // convert profilePic to Data
+            let profilePic = profilePicImageViewOutlet.image
+            if let profilePicData = profilePic?.jpegData(compressionQuality: 1) {
+                
+                StudentKidCDModelController.shared.update(studentKid: studentKidCD, birthdate: nil, mostRecentPromotion: nil, studentStatus: nil, belt: nil, profilePic: profilePicData, username: nil, password: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, parentGuardian: parentGuardianTextField.text, address: nil, phone: nil, mobile: nil, email: nil, emergencyContact: nil)
+            }
+            OwnerCDModelController.shared.saveToPersistentStorage()
         }
-        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func updateAdultStudentInfo() {
-        guard let adultStudent = userToEdit as? AdultStudent else { return }
         
         // adultStudent update profile info
         if firstNameTextField.text != "" && lastNameTextField.text != "" && profilePicImageViewOutlet.image != UIImage(contentsOfFile: "user_placeholder") {
-            AdultStudentModelController.shared.updateProfileInfo(adultStudent: adultStudent, birthdate: nil, groups: nil, belt: nil, profilePic: profilePicImageViewOutlet.image, username: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
-        }
         
-        // CoreData Owner update profile info
-        guard let studentAdultCD = userToEdit as? StudentAdultCD else { return }
-        
-        // convert profilePic to Data
-        let profilePic = profilePicImageViewOutlet.image
-        if let profilePicData = profilePic?.jpegData(compressionQuality: 1) {
+            // CoreData Owner update profile info
+            guard let studentAdultCD = userCDToEdit as? StudentAdultCD else { return }
             
-            StudentAdultCDModelController.shared.update(studentAdult: studentAdultCD, isInstructor: nil, birthdate: nil, mostRecentPromotion: nil, studentStatus: nil, belt: nil, profilePic: profilePicData, username: nil, password: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: nil, phone: nil, mobile: nil, email: nil, emergencyContact: nil)
+            // convert profilePic to Data
+            let profilePic = profilePicImageViewOutlet.image
+            if let profilePicData = profilePic?.jpegData(compressionQuality: 1) {
+                
+                StudentAdultCDModelController.shared.update(studentAdult: studentAdultCD, isInstructor: nil, birthdate: nil, mostRecentPromotion: nil, studentStatus: nil, belt: nil, profilePic: profilePicData, username: nil, password: nil, firstName: firstNameTextField.text, lastName: lastNameTextField.text, address: nil, phone: nil, mobile: nil, email: nil, emergencyContact: nil)
+            }
+            OwnerCDModelController.shared.saveToPersistentStorage()
         }
-        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     func enterEditingMode(inEditingMode: Bool?) {
@@ -375,14 +368,14 @@ extension TakeProfilePicViewController {
             
             if let isOwner = isOwner {
                 if isOwner {
-                    ownerEditingSetup(userToEdit: userToEdit)
+                    ownerEditingSetup(userToEdit: userCDToEdit)
                 }
             }
             if let isKid = isKid {
                 if isKid {
-                    kidStudentEditingSetup(userToEdit: userToEdit)
+                    kidStudentEditingSetup(userToEdit: userCDToEdit)
                 } else {
-                    adultStudentEditingSetup(userToEdit: userToEdit)
+                    adultStudentEditingSetup(userToEdit: userCDToEdit)
                 }
             }
         }
@@ -393,27 +386,35 @@ extension TakeProfilePicViewController {
     // owner setup for editing mode
     func ownerEditingSetup(userToEdit: Any?) {
         
-        guard let ownerToEdit = userToEdit as? Owner else {
+        guard let ownerCDToEdit = userToEdit as? OwnerCD else {
             return
         }
         
-        nameAndProfilePicLabeltOutlet.text = "Welcome \(ownerToEdit.firstName)"
+        nameAndProfilePicLabeltOutlet.text = "Welcome \(ownerCDToEdit.firstName ?? "")"
         
-        profilePicImageViewOutlet.image = ownerToEdit.profilePic
-        firstNameTextField.text = ownerToEdit.firstName
-        lastNameTextField.text = ownerToEdit.lastName
+        // unwrap the profilePic? image data
+        if let profilePicData = ownerCDToEdit.profilePic {
+            // assign the generated image to the UI
+            profilePicImageViewOutlet.image = UIImage(data: profilePicData)
+        }
+        firstNameTextField.text = ownerCDToEdit.firstName
+        lastNameTextField.text = ownerCDToEdit.lastName
     }
     
     // kid student setu for editing mode
     func kidStudentEditingSetup(userToEdit: Any?) {
         
-        guard let kidToEdit = userToEdit as? KidStudent else {
+        guard let kidToEdit = userToEdit as? StudentKidCD else {
             return
         }
         
-        nameAndProfilePicLabeltOutlet.text = "Welcome \(kidToEdit.firstName)"
+        nameAndProfilePicLabeltOutlet.text = "Welcome \(kidToEdit.firstName ?? "")"
         
-        profilePicImageViewOutlet.image = kidToEdit.profilePic
+        // unwrap the profilePic? image data
+        if let profilePicData = kidToEdit.profilePic {
+            // assign the generated image to the UI
+            profilePicImageViewOutlet.image = UIImage(data: profilePicData)
+        }
         firstNameTextField.text = kidToEdit.firstName
         lastNameTextField.text = kidToEdit.lastName
         parentGuardianTextField.text = kidToEdit.parentGuardian
@@ -422,13 +423,17 @@ extension TakeProfilePicViewController {
     // adult student setu for editing mode
     func adultStudentEditingSetup(userToEdit: Any?) {
         
-        guard let adultToEdit = userToEdit as? AdultStudent else {
+        guard let adultToEdit = userToEdit as? StudentAdultCD else {
             return
         }
         
-        nameAndProfilePicLabeltOutlet.text = "Welcome \(adultToEdit.firstName)"
+        nameAndProfilePicLabeltOutlet.text = "Welcome \(adultToEdit.firstName ?? "")"
         
-        profilePicImageViewOutlet.image = adultToEdit.profilePic
+        // unwrap the profilePic? image data
+        if let profilePicData = adultToEdit.profilePic {
+            // assign the generated image to the UI
+            profilePicImageViewOutlet.image = UIImage(data: profilePicData)
+        }
         firstNameTextField.text = adultToEdit.firstName
         lastNameTextField.text = adultToEdit.lastName
     }
@@ -482,7 +487,7 @@ extension TakeProfilePicViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
       
         if let selectedPhoto = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
-            let scaledImage = selectedPhoto.scaleImage(640) {
+            let scaledImage = selectedPhoto.scaleImage(800) {
             
             dismiss(animated: true, completion: {
                 self.profilePicImageViewOutlet.image = scaledImage

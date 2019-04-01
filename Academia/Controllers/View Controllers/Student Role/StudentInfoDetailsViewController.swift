@@ -138,12 +138,12 @@ class StudentInfoDetailsViewController: UIViewController {
         if isKid {
             // **** IF KID STUDENT ****
             destViewController.isKid = true
-            destViewController.userToEdit = KidStudentModelController.shared.kids[0]
+            destViewController.userCDToEdit = KidStudentModelController.shared.kids[0]
             print("saved kid belt level from kid model controller source of truth: " + KidStudentModelController.shared.kids[0].belt.beltLevel.rawValue)
         } else {
             // **** IF ADULT STUDENT ****
             destViewController.isKid = false
-            destViewController.userToEdit = AdultStudentModelController.shared.adults[0]
+            destViewController.userCDToEdit = AdultStudentModelController.shared.adults[0]
         }
     
 //         TODO: set destinationVC properties to display user to be edited
