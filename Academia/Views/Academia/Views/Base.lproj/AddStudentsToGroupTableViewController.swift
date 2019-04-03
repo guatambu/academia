@@ -49,9 +49,6 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
         navigationController?.navigationBar.titleTextAttributes = avenirFont
         
         enterEditingMode(inEditingMode: inEditingMode)
-//
-//        // create fetch request and initialize results
-//        initializeFetchedResultsControllers()
         
         tableView.reloadData()
     }
@@ -71,7 +68,7 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
         
         self.returnToGroupInfo()
         
-        print("update... \nkidsMembers.count = \(String(describing: self.groupToEdit?.kidMembers?.count))\nadultMembers.count = \(String(describing: self.groupToEdit?.adultMembers?.count))")
+        print("update... \nkidsMembers.count = \(String(describing: self.groupCDToEdit?.kidMembers?.count))\nadultMembers.count = \(String(describing: self.groupCDToEdit?.adultMembers?.count))")
         
         inEditingMode = false
     }
@@ -184,12 +181,14 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
                         
                         cell.isChosen = true
                     }
+                    
+                    cell.studentKidCD = StudentKidCDModelController.shared.studentKids[indexPath.row]
+                    
+                    return cell
                 }
             }
-            
+       
             cell.studentKidCD = StudentKidCDModelController.shared.studentKids[indexPath.row]
-            
-//            cell.kidStudent = mockKids[indexPath.row]
             
             return cell
             
@@ -216,12 +215,14 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
                         
                         cell.isChosen = true
                     }
+                    
+                    cell.studentAdultCD = StudentAdultCDModelController.shared.studentAdults[indexPath.row]
+                    
+                    return cell
                 }
             }
             
             cell.studentAdultCD = StudentAdultCDModelController.shared.studentAdults[indexPath.row]
-            
-//            cell.adultStudent = mockAdults[indexPath.row]
             
             return cell
         }
@@ -263,17 +264,8 @@ class AddStudentsToGroupTableViewController: UITableViewController, GroupMembers
             // adult setup
             
             // CoreData version
-//
-//            let adultMembersCDSet = NSSet(array: adultMembersCD)
-//
-//            let nameSort = NSSortDescriptor(key: "firstName", ascending: true)
-//            let adults = adultMembersCDSet.sortedArray(using: [nameSort])
             
             let studentAdultCD = StudentAdultCDModelController.shared.studentAdults[indexPath.row]
-//                as? StudentAdultCD else {
-//                print("ERROR: nil value for studentAdultCD in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 298.")
-//                return
-//            }
             
             destViewController.studentAdultCD = studentAdultCD
         }
@@ -287,20 +279,22 @@ extension AddStudentsToGroupTableViewController {
     // Update Function for case where want to update user info without a segue
     func updateGroupInfo() {
         
-        // CoreData GroupCD update info
-        guard let groupCDToEdit = groupCDToEdit else { return }
+        if kidMembersCD.count != 0 && adultMembersCD.count != 0 {
         
-        groupCDToEdit.adultMembers = []
-        groupCDToEdit.kidMembers = []
+            // CoreData GroupCD update info
+            guard let groupCDToEdit = groupCDToEdit else { return }
         
-        for existingAdult in adultMembersCD {
-            groupCDToEdit.addToAdultMembers(existingAdult)
+            groupCDToEdit.adultMembers = []
+            groupCDToEdit.kidMembers = []
+        
+            for existingAdult in adultMembersCD {
+                groupCDToEdit.addToAdultMembers(existingAdult)
+            }
+        
+            for existingKid in kidMembersCD {
+                groupCDToEdit.addToKidMembers(existingKid)
+            }
         }
-        
-        for existingKid in kidMembersCD {
-            groupCDToEdit.addToKidMembers(existingKid)
-        }
-        
         // save to CoreData
         OwnerCDModelController.shared.saveToPersistentStorage()
     }
@@ -352,4 +346,4 @@ extension AddStudentsToGroupTableViewController {
     }
 }
 
-// TODO: - finish up CoreData for Groups editing and info display
+

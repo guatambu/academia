@@ -104,6 +104,7 @@ class LandingPageViewController: UIViewController {
                     print("")
                     print("group.adultMembers = \(group.adultMembers?.count ?? 4000)")
                     print("")
+                    print("group.active = \(group.active)")
                     
                 }
             }else {

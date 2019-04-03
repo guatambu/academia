@@ -2950,7 +2950,6 @@
                                 <connections>
                                     <outlet property="cellTitleOutlet" destination="kSw-Cc-AJX" id="UFt-Gx-BHW"/>
                                     <outlet property="rightRedArrowImageViewOutlet" destination="chX-2d-bmh" id="7kP-Wm-w0O"/>
-                                    <segue destination="0KS-uN-QNh" kind="show" identifier="toGroupDetails" id="4rE-rD-3E1"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

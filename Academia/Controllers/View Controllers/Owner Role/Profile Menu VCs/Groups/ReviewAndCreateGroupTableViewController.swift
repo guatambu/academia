@@ -82,8 +82,8 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
         // create GroupCD data model object
         createAndSaveGroupCoreDataModel()
             
-        // create the new location in the LocationModelController source of truth
-        createGroup()
+//        // create the new location in the LocationModelController source of truth
+//        createGroup()
         
         // programmatic segue back to the MyLocations TVC to view the current locations
         guard let viewControllers = self.navigationController?.viewControllers else { return }
@@ -277,16 +277,18 @@ extension ReviewAndCreateGroupTableViewController {
         groupDescriptionTextView.text = "\(groupDescription)"
     }
     
-    func createGroup() {
-        
-        guard let groupName = groupName else { print("fail groupName"); return }
-        guard let active = active else { print("fail active");  return }
-        guard let groupDescription = groupDescription else { print("fail groupDescription"); return }
-        guard let kidMembers = kidMembers else { print("fail kidMembers"); return }
-        guard let adultMembers = adultMembers else { print("fail adultMembers"); return }
-        
-        GroupModelController.shared.add(active: active, name: groupName, description: groupDescription, kidMembers: kidMembers, adultMembers: adultMembers)
-    }
+//    func createGroup() {
+//
+//        guard let groupName = groupName else { print("fail groupName"); return }
+//        guard let active = active else { print("fail active");  return }
+//        guard let groupDescription = groupDescription else { print("fail groupDescription"); return }
+//        guard let kidMembers = kidMembers else {
+//            print("fail kidMembers")
+//            return }
+//        guard let adultMembers = adultMembers else { print("fail adultMembers"); return }
+//
+//        GroupModelController.shared.add(active: active, name: groupName, description: groupDescription, kidMembers: kidMembers, adultMembers: adultMembers)
+//    }
 }
 
 

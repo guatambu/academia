@@ -230,7 +230,7 @@ class GroupInfoDetailsTableViewController: UITableViewController {
             
             guard let studentKidCD = kids[indexPath.row] as? StudentKidCD else { return UITableViewCell() }
             
-            print("\(String(describing: studentKidCD.firstName))")
+            print("GroupInfoDetailsTableViewController -> studentKidCD.firstName: \(String(describing: studentKidCD.firstName))")
             
             if let profilePicData = studentKidCD.profilePic, let profilePic = UIImage(data: profilePicData) {
                 print("\(profilePic.scale)")
@@ -258,6 +258,8 @@ class GroupInfoDetailsTableViewController: UITableViewController {
             let adults = adultMembersCD.sortedArray(using: [nameSort])
             
             guard let studentAdultCD = adults[indexPath.row] as? StudentAdultCD else { return UITableViewCell() }
+            
+            print("GroupInfoDetailsTableViewController -> studentAdultCD.firstName: \(String(describing: studentAdultCD.firstName))")
             
             cell.studentAdultCD = studentAdultCD
             

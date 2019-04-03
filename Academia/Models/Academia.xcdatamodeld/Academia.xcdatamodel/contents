@@ -206,7 +206,7 @@
         <attribute name="profilePic" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AddressCD" inverseName="adultStudent" inverseEntity="AddressCD" syncable="YES"/>
-        <relationship name="adultMembers" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GroupCD" inverseName="adultMembers" inverseEntity="GroupCD" syncable="YES"/>
+        <relationship name="adultMembers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GroupCD" inverseName="adultMembers" inverseEntity="GroupCD" syncable="YES"/>
         <relationship name="attendanceStudentAdult" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AulaAttendanceCD" inverseName="studentAdultAttendance" inverseEntity="AulaAttendanceCD" syncable="YES"/>
         <relationship name="aulaAdultStudentInstructors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AulaCD" inverseName="adultStudentInstructorsAula" inverseEntity="AulaCD" syncable="YES"/>
         <relationship name="belt" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="BeltCD" inverseName="adultStudentCD" inverseEntity="BeltCD" syncable="YES"/>
@@ -237,7 +237,7 @@
         <relationship name="belt" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="BeltCD" inverseName="kidStudentCD" inverseEntity="BeltCD" syncable="YES"/>
         <relationship name="emergencyContact" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EmergencyContactCD" inverseName="kidStudent" inverseEntity="EmergencyContactCD" syncable="YES"/>
         <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GroupCD" inverseName="studentKidGroups" inverseEntity="GroupCD" syncable="YES"/>
-        <relationship name="kidMembers" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GroupCD" inverseName="kidMembers" inverseEntity="GroupCD" syncable="YES"/>
+        <relationship name="kidMembers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GroupCD" inverseName="kidMembers" inverseEntity="GroupCD" syncable="YES"/>
         <relationship name="paymentProgram" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PaymentProgramCD" inverseName="studentKid" inverseEntity="PaymentProgramCD" syncable="YES"/>
         <relationship name="promotions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BeltPromotionCD" inverseName="kidStudent" inverseEntity="BeltPromotionCD" syncable="YES"/>
         <relationship name="studentStatus" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StudentStatusCD" inverseName="studentKid" inverseEntity="StudentStatusCD" syncable="YES"/>

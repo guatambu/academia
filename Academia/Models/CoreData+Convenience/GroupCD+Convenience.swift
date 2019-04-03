@@ -23,6 +23,7 @@ extension GroupCD {
         
         self.init(context: context)
         
+        self.active = active
         self.groupUUID = groupUUID
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
