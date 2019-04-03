@@ -31,7 +31,7 @@ class AddressViewController: UIViewController, UITextInputTraits {
     var zipCode: String?
     
     var inEditingMode: Bool?
-    var userToEdit: Any?
+    var userCDToEdit: Any?
     
     var isOwnerAddingStudent: Bool?
     var group: Group?
@@ -332,7 +332,7 @@ class AddressViewController: UIViewController, UITextInputTraits {
         destViewController.groupCD = groupCD
         
         destViewController.inEditingMode = inEditingMode
-        destViewController.userToEdit = userToEdit
+        destViewController.userCDToEdit = userCDToEdit
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
         if let isOwner = isOwner {
@@ -365,12 +365,8 @@ extension AddressViewController {
     func updateOwnerInfo() {
         if addressLine1TextField.text != "" && cityTextField.text != "" && stateTextField.text != "" && zipCodeTextField.text != "" {
             
-            guard let owner = userToEdit as? Owner else { return }
-            
-            OwnerModelController.shared.updateProfileInfo(owner: owner, isInstructor: nil, birthdate: nil, groups: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: addressLine1TextField.text, addressLine2: addressLine2TextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: zipCodeTextField.text, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
-            
             // CoreData Belt property update
-            guard let ownerCD = userToEdit as? OwnerCD else { return }
+            guard let ownerCD = userCDToEdit as? OwnerCD else { return }
             guard let address = ownerCD.address else { return }
             
             AddressCDModelController.shared.update(address: address, addressLine1: addressLine1TextField.text, addressLine2: addressLine2TextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: zipCodeTextField.text)
@@ -381,12 +377,8 @@ extension AddressViewController {
     func updateKidStudentInfo() {
         if addressLine1TextField.text != "" && cityTextField.text != "" && stateTextField.text != "" && zipCodeTextField.text != "" {
             
-            guard let kidStudent = userToEdit as? KidStudent else { return }
-            
-            KidStudentModelController.shared.updateProfileInfo(kidStudent: kidStudent, birthdate: nil, groups: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, parentGuardian: nil, addressLine1: addressLine1TextField.text, addressLine2: addressLine2TextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: zipCodeTextField.text, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
-            
             // CoreData Belt property update
-            guard let studentKidCD = userToEdit as? StudentKidCD else { return }
+            guard let studentKidCD = userCDToEdit as? StudentKidCD else { return }
             guard let address = studentKidCD.address else { return }
             
             AddressCDModelController.shared.update(address: address, addressLine1: addressLine1TextField.text, addressLine2: addressLine2TextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: zipCodeTextField.text)
@@ -397,12 +389,8 @@ extension AddressViewController {
     func updateAdultStudentInfo() {
         if addressLine1TextField.text != "" && cityTextField.text != "" && stateTextField.text != "" && zipCodeTextField.text != "" {
             
-            guard let adultStudent = userToEdit as? AdultStudent else { return }
-            
-            AdultStudentModelController.shared.updateProfileInfo(adultStudent: adultStudent, birthdate: nil, groups: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: addressLine1TextField.text, addressLine2: addressLine2TextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: zipCodeTextField.text, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
-            
             // CoreData Belt property update
-            guard let studentAdultCD = userToEdit as? StudentAdultCD else { return }
+            guard let studentAdultCD = userCDToEdit as? StudentAdultCD else { return }
             guard let address = studentAdultCD.address else { return }
             
             AddressCDModelController.shared.update(address: address, addressLine1: addressLine1TextField.text, addressLine2: addressLine2TextField.text, city: cityTextField.text, state: stateTextField.text, zipCode: zipCodeTextField.text)
@@ -421,14 +409,14 @@ extension AddressViewController {
             // set editing mode for each user case
             if let isOwner = isOwner {
                 if isOwner {
-                    ownerEditingSetup(userToEdit: userToEdit)
+                    ownerEditingSetup(userToEdit: userCDToEdit)
                 }
             }
             if let isKid = isKid {
                 if isKid {
-                    kidStudentEditingSetup(userToEdit: userToEdit)
+                    kidStudentEditingSetup(userToEdit: userCDToEdit)
                 } else {
-                    adultStudentEditingSetup(userToEdit: userToEdit)
+                    adultStudentEditingSetup(userToEdit: userCDToEdit)
                 }
             }
         }
@@ -439,17 +427,17 @@ extension AddressViewController {
     // owner setup for editing mode
     func ownerEditingSetup(userToEdit: Any?) {
         
-        guard let ownerToEdit = userToEdit as? Owner else {
+        guard let ownerToEdit = userToEdit as? OwnerCD else {
             return
         }
         
-        whatIsYourAddressLabelOutlet.text = "Welcome \(ownerToEdit.firstName)"
+        whatIsYourAddressLabelOutlet.text = "Welcome \(ownerToEdit.firstName ?? "")"
         
-        addressLine1TextField.text = ownerToEdit.addressLine1
-        addressLine2TextField.text = ownerToEdit.addressLine2
-        cityTextField.text = ownerToEdit.city
-        stateTextField.text = ownerToEdit.state
-        zipCodeTextField.text = ownerToEdit.zipCode
+        addressLine1TextField.text = ownerToEdit.address?.addressLine1
+        addressLine2TextField.text = ownerToEdit.address?.addressLine2
+        cityTextField.text = ownerToEdit.address?.city
+        stateTextField.text = ownerToEdit.address?.state
+        zipCodeTextField.text = ownerToEdit.address?.zipCode
         
         
     }
@@ -457,33 +445,33 @@ extension AddressViewController {
     // kid student setu for editing mode
     func kidStudentEditingSetup(userToEdit: Any?) {
         
-        guard let kidToEdit = userToEdit as? KidStudent else {
+        guard let kidToEdit = userToEdit as? StudentKidCD else {
             return
         }
         
-        whatIsYourAddressLabelOutlet.text = "Welcome \(kidToEdit.firstName)"
+        whatIsYourAddressLabelOutlet.text = "Welcome \(kidToEdit.firstName ?? "")"
         
-        addressLine1TextField.text = kidToEdit.addressLine1
-        addressLine2TextField.text = kidToEdit.addressLine2
-        cityTextField.text = kidToEdit.city
-        stateTextField.text = kidToEdit.state
-        zipCodeTextField.text = kidToEdit.zipCode
+        addressLine1TextField.text = kidToEdit.address?.addressLine1
+        addressLine2TextField.text = kidToEdit.address?.addressLine2
+        cityTextField.text = kidToEdit.address?.city
+        stateTextField.text = kidToEdit.address?.state
+        zipCodeTextField.text = kidToEdit.address?.zipCode
     }
     
     // adult student setu for editing mode
     func adultStudentEditingSetup(userToEdit: Any?) {
         
-        guard let adultToEdit = userToEdit as? AdultStudent else {
+        guard let adultToEdit = userToEdit as? StudentAdultCD else {
             return
         }
         
-        whatIsYourAddressLabelOutlet.text = "Welcome \(adultToEdit.firstName)"
+        whatIsYourAddressLabelOutlet.text = "Welcome \(adultToEdit.firstName ?? "")"
         
-        addressLine1TextField.text = adultToEdit.addressLine1
-        addressLine2TextField.text = adultToEdit.addressLine2
-        cityTextField.text = adultToEdit.city
-        stateTextField.text = adultToEdit.state
-        zipCodeTextField.text = adultToEdit.zipCode
+        addressLine1TextField.text = adultToEdit.address?.addressLine1
+        addressLine2TextField.text = adultToEdit.address?.addressLine2
+        cityTextField.text = adultToEdit.address?.city
+        stateTextField.text = adultToEdit.address?.state
+        zipCodeTextField.text = adultToEdit.address?.zipCode
     }
 }
 

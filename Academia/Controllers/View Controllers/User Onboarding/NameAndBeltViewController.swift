@@ -26,7 +26,7 @@ class NameAndBeltViewController: UIViewController {
     var numberOfStripes: Int = 0
     
     var inEditingMode: Bool?
-    var userToEdit: Any?
+    var userCDToEdit: Any?
     
     var isOwnerAddingStudent: Bool?
     var group: Group?
@@ -140,7 +140,7 @@ class NameAndBeltViewController: UIViewController {
         destViewController.groupCD = groupCD
         
         destViewController.inEditingMode = inEditingMode
-        destViewController.userToEdit = userToEdit
+        destViewController.userCDToEdit = userCDToEdit
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
         if let isOwner = isOwner {
@@ -440,11 +440,9 @@ extension NameAndBeltViewController {
     
     // Update Function for case where want to update user info without a segue
     func updateOwnerInfo() {
-        guard let owner = userToEdit as? Owner else { return }
-        BeltModelController.shared.update(belt: owner.belt, active: nil, elligibleForNextBelt: nil, classesToNextPromotion: nil, beltLevel: beltLevel, numberOfStripes: numberOfStripes)
         
         // CoreData Belt property update
-        guard let ownerCD = userToEdit as? OwnerCD else { return }
+        guard let ownerCD = userCDToEdit as? OwnerCD else { return }
         guard let belt = ownerCD.belt else { return }
         let stripesInt16 = Int16(exactly: numberOfStripes)
         
@@ -453,11 +451,9 @@ extension NameAndBeltViewController {
     }
     
     func updateKidStudentInfo() {
-        guard let kidStudent = userToEdit as? KidStudent else { return }
-        BeltModelController.shared.update(belt: kidStudent.belt, active: nil, elligibleForNextBelt: nil, classesToNextPromotion: nil, beltLevel: beltLevel, numberOfStripes: numberOfStripes)
         
         // CoreData Belt property update
-        guard let studentKidCD = userToEdit as? StudentKidCD else { return }
+        guard let studentKidCD = userCDToEdit as? StudentKidCD else { return }
         guard let belt = studentKidCD.belt else { return }
         let stripesInt16 = Int16(exactly: numberOfStripes)
         
@@ -466,11 +462,9 @@ extension NameAndBeltViewController {
     }
     
     func updateAdultStudentInfo() {
-        guard let adultStudent = userToEdit as? AdultStudent else { return }
-        BeltModelController.shared.update(belt: adultStudent.belt, active: nil, elligibleForNextBelt: nil, classesToNextPromotion: nil, beltLevel: beltLevel, numberOfStripes: numberOfStripes)
         
         // CoreData Belt property update
-        guard let studentAdultCD = userToEdit as? StudentAdultCD else { return }
+        guard let studentAdultCD = userCDToEdit as? StudentAdultCD else { return }
         guard let belt = studentAdultCD.belt else { return }
         let stripesInt16 = Int16(exactly: numberOfStripes)
         
@@ -488,14 +482,14 @@ extension NameAndBeltViewController {
             
             if let isOwner = isOwner {
                 if isOwner {
-                    ownerEditingSetup(userToEdit: userToEdit)
+                    ownerEditingSetup(userToEdit: userCDToEdit)
                 }
             }
             if let isKid = isKid {
                 if isKid {
-                    kidStudentEditingSetup(userToEdit: userToEdit)
+                    kidStudentEditingSetup(userToEdit: userCDToEdit)
                 } else {
-                    adultStudentEditingSetup(userToEdit: userToEdit)
+                    adultStudentEditingSetup(userToEdit: userCDToEdit)
                 }
             }
         }
@@ -506,47 +500,67 @@ extension NameAndBeltViewController {
     // owner setup for editing mode
     func ownerEditingSetup(userToEdit: Any?) {
         
-        guard let ownerToEdit = userToEdit as? Owner else {
+        guard let ownerToEdit = userToEdit as? OwnerCD else { return }
+        guard let belt = ownerToEdit.belt else { return }
+        
+        guard let numberOfStripesInt = Int(exactly: belt.numberOfStripes) else {
+            print("ERROR: no value found for numberOfStripes in OwnerInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 220.")
             return
         }
         
-        chooseYourBeltLabelOutlet.text = "Welcome \(ownerToEdit.firstName)"
+        chooseYourBeltLabelOutlet.text = "Welcome \(ownerToEdit.firstName ?? "")"
         
-        beltLevel = ownerToEdit.belt.beltLevel
-        numberOfStripes = ownerToEdit.belt.numberOfStripes
+        beltLevel = InternationalStandardBJJBelts(rawValue: belt.beltLevel!) ?? .adultWhiteBelt
         
-        beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: ownerToEdit.belt.beltLevel, numberOfStripes: ownerToEdit.belt.numberOfStripes)
+        numberOfStripes = numberOfStripesInt
         
-        setEditingModeForBeltPicker(beltLevel: ownerToEdit.belt.beltLevel, numberOfStripes: ownerToEdit.belt.numberOfStripes)
+        beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: numberOfStripes)
+        
+        setEditingModeForBeltPicker(beltLevel: beltLevel, numberOfStripes: numberOfStripes)
     }
     
     // kid student setu for editing mode
     func kidStudentEditingSetup(userToEdit: Any?) {
         
-        guard let kidToEdit = userToEdit as? KidStudent else {
+        guard let kidToEdit = userToEdit as? StudentKidCD else { return }
+        guard let belt = kidToEdit.belt else { return }
+        
+        guard let numberOfStripesInt = Int(exactly: belt.numberOfStripes) else {
+            print("ERROR: no value found for numberOfStripes in OwnerInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 220.")
             return
         }
         
-        chooseYourBeltLabelOutlet.text = "Welcome \(kidToEdit.firstName)"
+        chooseYourBeltLabelOutlet.text = "Welcome \(kidToEdit.firstName ?? "")"
         
-        beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: kidToEdit.belt.beltLevel, numberOfStripes: kidToEdit.belt.numberOfStripes)
+        beltLevel = InternationalStandardBJJBelts(rawValue: belt.beltLevel!) ?? .adultWhiteBelt
         
-        setEditingModeForBeltPicker(beltLevel: kidToEdit.belt.beltLevel, numberOfStripes: kidToEdit.belt.numberOfStripes)
+        numberOfStripes = numberOfStripesInt
+        
+        beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: numberOfStripes)
+        
+        setEditingModeForBeltPicker(beltLevel: beltLevel, numberOfStripes: numberOfStripes)
     }
     
     // adult student setu for editing mode
     func adultStudentEditingSetup(userToEdit: Any?) {
         
-        guard let adultToEdit = userToEdit as? AdultStudent else {
+        guard let adultToEdit = userToEdit as? StudentAdultCD else { return }
+        guard let belt = adultToEdit.belt else { return }
+        
+        guard let numberOfStripesInt = Int(exactly: belt.numberOfStripes) else {
+            print("ERROR: no value found for numberOfStripes in OwnerInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 220.")
             return
         }
         
-        chooseYourBeltLabelOutlet.text = "Welcome \(adultToEdit.firstName)"
+        chooseYourBeltLabelOutlet.text = "Welcome \(adultToEdit.firstName ?? "")"
         
-        beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: adultToEdit.belt.beltLevel, numberOfStripes: adultToEdit.belt.numberOfStripes)
+        beltLevel = InternationalStandardBJJBelts(rawValue: belt.beltLevel!) ?? .adultWhiteBelt
         
-        setEditingModeForBeltPicker(beltLevel: adultToEdit.belt.beltLevel, numberOfStripes: adultToEdit.belt.numberOfStripes)
+        numberOfStripes = numberOfStripesInt
         
+        beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: numberOfStripes)
+        
+        setEditingModeForBeltPicker(beltLevel: beltLevel, numberOfStripes: numberOfStripes) 
     }
     
     

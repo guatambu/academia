@@ -118,7 +118,7 @@ class OwnerInfoDetailsViewController: UIViewController {
         destViewController.inEditingMode = true
         destViewController.isOwner = true
         destViewController.isKid = false
-        destViewController.userToEdit = activeOwner
+        destViewController.userCDToEdit = activeOwner
         // TODO: set destinationVC properties to display user to be edited
             // in destintaionVC unrwrap userToEdit? as either Owner, AdultStudent, or KidStudent and us this to display info, and be passed around for updating in each update function
             // also need to build in programmatic segues for saveTapped to exit editing mode and return to OwnerProfileDetailsVC
@@ -130,8 +130,6 @@ class OwnerInfoDetailsViewController: UIViewController {
         
         let cancel = UIAlertAction(title: "cancel", style: UIAlertAction.Style.cancel, handler: nil)
         let deleteAccount = UIAlertAction(title: "delete account", style: UIAlertAction.Style.destructive) { (alert) in
-            
-//            OwnerModelController.shared.delete(owner: OwnerModelController.shared.owners[0])
             
             guard let owner = self.activeOwner else {
                 print("ERROR: nil value found for activeOwner in OwnerInfoDetailsViewController.swift -> deleteAccountButtonTapped(sender:) - line 117.")
@@ -149,10 +147,6 @@ class OwnerInfoDetailsViewController: UIViewController {
             let destVCNavigation = UINavigationController(rootViewController: destViewController)
             // perform the segure - present viewController of choice
             self.navigationController?.present(destVCNavigation, animated: true, completion: nil)
-            
-            // perform segue to specified viewController removing all others from Navigation Stack
-//            self.navigationController?.popToViewController(destVCNavigation, animated: true)
-            // why can't i 'pop' to this VC?  if not the way to go, then, is navigation stack clean?
             
             // set nav bar controller appearance
             self.navigationController?.navigationBar.tintColor = self.beltBuilder.redBeltRed

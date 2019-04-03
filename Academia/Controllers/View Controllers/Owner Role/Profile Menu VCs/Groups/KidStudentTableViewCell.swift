@@ -66,11 +66,11 @@ class KidStudentTableViewCell: UITableViewCell {
             roundProfilePicView.borderColor = beltBuilder.redBeltRed
             
             // CoreData version
-            print("kidMembersCD: \(kidMembersCD)")
+            print("KidStudentTableViewCell -> kidMembersCD BEFORE new addition: \(kidMembersCD)")
             kidMembersCD.append(studentKidCD)
-            print("kidMembersCD: \(kidMembersCD)")
+            print("KidStudentTableViewCell -> kidMembersCD AFTER new addition: \(kidMembersCD)")
             delegate?.kidMembersCD = kidMembersCD
-            print("delegate kidMembersCD: \(String(describing: delegate?.kidMembersCD))")
+            print("delegate.kidMembersCD AFTER new addition: \(String(describing: delegate?.kidMembersCD))")
 
         } else {
             

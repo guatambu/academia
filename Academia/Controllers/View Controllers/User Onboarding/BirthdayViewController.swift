@@ -24,7 +24,7 @@ class BirthdayViewController: UIViewController {
     var birthdate: Date?
     
     var inEditingMode: Bool?
-    var userToEdit: Any?
+    var userCDToEdit: Any?
     
     var isOwnerAddingStudent: Bool?
     var group: Group?
@@ -165,7 +165,7 @@ class BirthdayViewController: UIViewController {
         destViewController.groupCD = groupCD
         
         destViewController.inEditingMode = inEditingMode
-        destViewController.userToEdit = userToEdit
+        destViewController.userCDToEdit = userCDToEdit
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
         if let isOwner = isOwner {
@@ -191,15 +191,9 @@ extension BirthdayViewController {
     
     // Update Function for case where want to update user info without a segue
     func updateOwnerInfo() {
-        guard let owner = userToEdit as? Owner else { return }
-        // Owner update profile info
-        if birthdate != nil {
-            OwnerModelController.shared.updateProfileInfo(owner: owner, isInstructor: nil, birthdate: birthdate, groups: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
-        }
-        print("update owner name: \(OwnerModelController.shared.owners[0].firstName) \(OwnerModelController.shared.owners[0].lastName)")
         
         // CoreData Owner update profile info
-        guard let ownerCD = userToEdit as? OwnerCD else { return }
+        guard let ownerCD = userCDToEdit as? OwnerCD else { return }
         
         if birthdate != nil {
             OwnerCDModelController.shared.update(owner: ownerCD, isInstructor: nil, birthdate: birthdate, mostRecentPromotion: nil, belt: nil, profilePic: nil, username: nil, password: nil, firstName: nil, lastName: nil, address: nil, phone: nil, mobile: nil, email: nil, emergencyContact: nil)
@@ -210,14 +204,9 @@ extension BirthdayViewController {
     }
     
     func updateKidStudentInfo() {
-        guard let kidStudent = userToEdit as? KidStudent else { return }
-        // kidStudent update profile info
-        if birthdate != nil {
-            KidStudentModelController.shared.updateProfileInfo(kidStudent: kidStudent,birthdate: birthdate, groups: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, parentGuardian: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
-        }
         
         // CoreData Owner update profile info
-        guard let studentKidCD = userToEdit as? StudentKidCD else { return }
+        guard let studentKidCD = userCDToEdit as? StudentKidCD else { return }
         
         if birthdate != nil {
             StudentKidCDModelController.shared.update(studentKid: studentKidCD, birthdate: birthdate, mostRecentPromotion: nil, studentStatus: nil, belt: nil, profilePic: nil, username: nil, password: nil, firstName: nil, lastName: nil, parentGuardian: nil, address: nil, phone: nil, mobile: nil, email: nil, emergencyContact: nil)
@@ -228,14 +217,9 @@ extension BirthdayViewController {
     }
     
     func updateAdultStudentInfo() {
-        guard let adultStudent = userToEdit as? AdultStudent else { return }
-        // adultStudent update profile info
-        if birthdate != nil {
-            AdultStudentModelController.shared.updateProfileInfo(adultStudent: adultStudent, birthdate: birthdate, groups: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
-        }
         
         // CoreData Owner update profile info
-        guard let studentAdultCD = userToEdit as? StudentAdultCD else { return }
+        guard let studentAdultCD = userCDToEdit as? StudentAdultCD else { return }
         
         if birthdate != nil {
             StudentAdultCDModelController.shared.update(studentAdult: studentAdultCD, isInstructor: nil, birthdate: birthdate, mostRecentPromotion: nil, studentStatus: nil, belt: nil, profilePic: nil, username: nil, password: nil, firstName: nil, lastName: nil, address: nil, phone: nil, mobile: nil, email: nil, emergencyContact: nil)
@@ -255,14 +239,14 @@ extension BirthdayViewController {
             
             if let isOwner = isOwner {
                 if isOwner {
-                    ownerEditingSetup(userToEdit: userToEdit)
+                    ownerEditingSetup(userToEdit: userCDToEdit)
                 }
             }
             if let isKid = isKid {
                 if isKid {
-                    kidStudentEditingSetup(userToEdit: userToEdit)
+                    kidStudentEditingSetup(userToEdit: userCDToEdit)
                 } else {
-                    adultStudentEditingSetup(userToEdit: userToEdit)
+                    adultStudentEditingSetup(userToEdit: userCDToEdit)
                 }
             }
         }
@@ -273,34 +257,37 @@ extension BirthdayViewController {
     // owner setup for editing mode
     func ownerEditingSetup(userToEdit: Any?) {
         
-        guard let ownerToEdit = userToEdit as? Owner else { return }
+        guard let ownerToEdit = userToEdit as? OwnerCD else { return }
         
-        whenIsYourBirthdayLabelOutlet.text = "Welcome \(ownerToEdit.firstName)"
+        whenIsYourBirthdayLabelOutlet.text = "Welcome \(ownerToEdit.firstName ?? "")"
         
-        print("BirthdayVC birthdate choice: \(ownerToEdit.birthdate)")
-        birthdayDatePickerView.date = ownerToEdit.birthdate
+        print("BirthdayVC birthdate choice: \(ownerToEdit.birthdate ?? Date())")
+        birthdate = ownerToEdit.birthdate ?? Date()
+        birthdayDatePickerView.date = ownerToEdit.birthdate ?? Date()
         
     }
     
     // kid student setu for editing mode
     func kidStudentEditingSetup(userToEdit: Any?) {
         
-        guard let kidToEdit = userToEdit as? KidStudent else { return }
+        guard let kidToEdit = userToEdit as? StudentKidCD else { return }
         
-        whenIsYourBirthdayLabelOutlet.text = "Welcome \(kidToEdit.firstName)"
+        whenIsYourBirthdayLabelOutlet.text = "Welcome \(kidToEdit.firstName ?? "")"
 
-        print("BirthdayVC birthdate choice: \(kidToEdit.birthdate)")
-        birthdayDatePickerView.date = kidToEdit.birthdate
+        print("BirthdayVC birthdate choice: \(kidToEdit.birthdate ?? Date())")
+        birthdate = kidToEdit.birthdate ?? Date()
+        birthdayDatePickerView.date = kidToEdit.birthdate ?? Date()
     }
     
     // adult student setu for editing mode
     func adultStudentEditingSetup(userToEdit: Any?) {
         
-        guard let adultToEdit = userToEdit as? AdultStudent else { return }
+        guard let adultToEdit = userToEdit as? StudentAdultCD else { return }
         
-        whenIsYourBirthdayLabelOutlet.text = "Welcome \(adultToEdit.firstName)"
+        whenIsYourBirthdayLabelOutlet.text = "Welcome \(adultToEdit.firstName ?? "")"
     
-        print("BirthdayVC birthdate choice: \(adultToEdit.birthdate)")
-        birthdayDatePickerView.date = adultToEdit.birthdate
+        print("BirthdayVC birthdate choice: \(adultToEdit.birthdate ?? Date())")
+        birthdate = adultToEdit.birthdate ?? Date()
+        birthdayDatePickerView.date = adultToEdit.birthdate ?? Date()
     }
 }

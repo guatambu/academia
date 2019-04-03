@@ -34,7 +34,7 @@ class ContactInfoViewController: UIViewController, UITextInputTraits {
     var email: String?
     
     var inEditingMode: Bool?
-    var userToEdit: Any?
+    var userCDToEdit: Any?
     
     var isOwnerAddingStudent: Bool?
     var group: Group?
@@ -272,7 +272,7 @@ class ContactInfoViewController: UIViewController, UITextInputTraits {
         destViewController.groupCD = groupCD
         
         destViewController.inEditingMode = inEditingMode
-        destViewController.userToEdit = userToEdit
+        destViewController.userCDToEdit = userCDToEdit
         
         // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
         if let isOwner = isOwner {
@@ -303,12 +303,8 @@ extension ContactInfoViewController {
     func updateOwnerInfo() {
         if phoneTextField.text != "" && emailTextField.text != "" {
             
-            guard let owner = userToEdit as? Owner else { return }
-            
-            OwnerModelController.shared.updateProfileInfo(owner: owner, isInstructor: nil, birthdate: nil, groups: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: phoneTextField.text, mobile: mobileTextField.text, email: emailTextField.text, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
-            
             // CoreData Owner update profile info
-            guard let ownerCD = userToEdit as? OwnerCD else { return }
+            guard let ownerCD = userCDToEdit as? OwnerCD else { return }
             
             OwnerCDModelController.shared.update(owner: ownerCD, isInstructor: nil, birthdate: nil, mostRecentPromotion: nil, belt: nil, profilePic: nil, username: nil, password: nil, firstName: nil, lastName: nil, address: nil, phone: phoneTextField.text, mobile: mobileTextField.text, email: emailTextField.text, emergencyContact: nil)
         }
@@ -318,12 +314,8 @@ extension ContactInfoViewController {
     func updateKidStudentInfo() {
         if phoneTextField.text != "" && emailTextField.text != "" {
             
-            guard let kidStudent = userToEdit as? KidStudent else { return }
-            
-            KidStudentModelController.shared.updateProfileInfo(kidStudent: kidStudent, birthdate: nil, groups: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, parentGuardian: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: phoneTextField.text, mobile: mobileTextField.text, email: emailTextField.text, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
-            
             // CoreData Owner update profile info
-            guard let studentKidCD = userToEdit as? StudentKidCD else { return }
+            guard let studentKidCD = userCDToEdit as? StudentKidCD else { return }
             
             StudentKidCDModelController.shared.update(studentKid: studentKidCD, birthdate: nil, mostRecentPromotion: nil, studentStatus: nil, belt: nil, profilePic: nil, username: nil, password: nil, firstName: nil, lastName: nil, parentGuardian: nil, address: nil, phone: phoneTextField.text, mobile: mobileTextField.text, email: emailTextField.text, emergencyContact: nil)
         }
@@ -333,12 +325,8 @@ extension ContactInfoViewController {
     func updateAdultStudentInfo() {
         if phoneTextField.text != "" && emailTextField.text != "" {
             
-            guard let adultStudent = userToEdit as? AdultStudent else { return }
-            
-            AdultStudentModelController.shared.updateProfileInfo(adultStudent: adultStudent, birthdate: nil, groups: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: phoneTextField.text, mobile: mobileTextField.text, email: emailTextField.text, emergencyContactName: nil, emergencyContactPhone: nil, emergencyContactRelationship: nil)
-            
             // CoreData Owner update profile info
-            guard let studentAdultCD = userToEdit as? StudentAdultCD else { return }
+            guard let studentAdultCD = userCDToEdit as? StudentAdultCD else { return }
             
                 StudentAdultCDModelController.shared.update(studentAdult: studentAdultCD, isInstructor: nil, birthdate: nil, mostRecentPromotion: nil, studentStatus: nil, belt: nil, profilePic: nil, username: nil, password: nil, firstName: nil, lastName: nil, address: nil, phone: phoneTextField.text, mobile: mobileTextField.text, email: emailTextField.text, emergencyContact: nil)
         }
@@ -356,14 +344,14 @@ extension ContactInfoViewController {
             // set editing mode for each user case
             if let isOwner = isOwner {
                 if isOwner {
-                    ownerEditingSetup(userToEdit: userToEdit)
+                    ownerEditingSetup(userToEdit: userCDToEdit)
                 }
             }
             if let isKid = isKid {
                 if isKid {
-                    kidStudentEditingSetup(userToEdit: userToEdit)
+                    kidStudentEditingSetup(userToEdit: userCDToEdit)
                 } else {
-                    adultStudentEditingSetup(userToEdit: userToEdit)
+                    adultStudentEditingSetup(userToEdit: userCDToEdit)
                 }
             }
         }
@@ -374,11 +362,11 @@ extension ContactInfoViewController {
     // owner setup for editing mode
     func ownerEditingSetup(userToEdit: Any?) {
         
-        guard let ownerToEdit = userToEdit as? Owner else {
+        guard let ownerToEdit = userToEdit as? OwnerCD else {
             return
         }
         
-        whatIsYourContactInfoLabelOutlet.text = "Welcome \(ownerToEdit.firstName)"
+        whatIsYourContactInfoLabelOutlet.text = "Welcome \(ownerToEdit.firstName ?? "")"
         
         phoneTextField.text = ownerToEdit.phone
         mobileTextField.text = ownerToEdit.mobile
@@ -388,11 +376,11 @@ extension ContactInfoViewController {
     // kid student setu for editing mode
     func kidStudentEditingSetup(userToEdit: Any?) {
         
-        guard let kidToEdit = userToEdit as? KidStudent else {
+        guard let kidToEdit = userToEdit as? StudentKidCD else {
             return
         }
         
-        whatIsYourContactInfoLabelOutlet.text = "Welcome \(kidToEdit.firstName)"
+        whatIsYourContactInfoLabelOutlet.text = "Welcome \(kidToEdit.firstName ?? "")"
         
         phoneTextField.text = kidToEdit.phone
         mobileTextField.text = kidToEdit.mobile
@@ -402,11 +390,11 @@ extension ContactInfoViewController {
     // adult student setu for editing mode
     func adultStudentEditingSetup(userToEdit: Any?) {
         
-        guard let adultToEdit = userToEdit as? AdultStudent else {
+        guard let adultToEdit = userToEdit as? StudentAdultCD else {
             return
         }
         
-        whatIsYourContactInfoLabelOutlet.text = "Welcome \(adultToEdit.firstName)"
+        whatIsYourContactInfoLabelOutlet.text = "Welcome \(adultToEdit.firstName ?? "")"
         
         phoneTextField.text = adultToEdit.phone
         mobileTextField.text = adultToEdit.mobile

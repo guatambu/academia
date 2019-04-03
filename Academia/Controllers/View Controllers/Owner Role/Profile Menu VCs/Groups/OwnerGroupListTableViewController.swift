@@ -15,8 +15,6 @@ class OwnerGroupListTableViewController: UITableViewController {
     
     let beltBuilder = BeltBuilder()
     
-//    var allGroups = [MockData.allStudents]
-    
     
     // MARK: - ViewController Lifecycle Functions
     
@@ -32,7 +30,6 @@ class OwnerGroupListTableViewController: UITableViewController {
         navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
         
         title = "Student Groups"
- 
     }
     
     
@@ -72,8 +69,6 @@ class OwnerGroupListTableViewController: UITableViewController {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ownerStudentGroupsMenuCell", for: indexPath) as? StudentGroupGeneralMenuTableViewCell else { return UITableViewCell() }
         
-//        let group = GroupModelController.shared.groups[indexPath.row]
-        
         let groupCD = GroupCDModelController.shared.groups[indexPath.row]
         
         // Configure the cell...
@@ -96,7 +91,8 @@ class OwnerGroupListTableViewController: UITableViewController {
         }
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         // programmatically performing the group segue
         
         // instantiate the relevant storyboard
@@ -118,70 +114,10 @@ class OwnerGroupListTableViewController: UITableViewController {
         let groupCD = GroupCDModelController.shared.groups[indexPath.row]
         // pass CoreData payment program on to InfoDetails view
         destViewController.groupCD = groupCD
-    }
-    
-    
-    // MARK: - Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "toGroupDetails" {
-            
-            // set nav bar controller appearance
-            navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
-            navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
-            navigationController?.navigationBar.shadowImage = UIImage()
-            
-            guard let destination = segue.destination as? GroupInfoDetailsTableViewController else { return }
-            
-            guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            
-            let groupCD = GroupCDModelController.shared.groups[indexPath.row]
-            destination.groupCD = groupCD
-        }
     }
 }
 
-
-//// MARK: - NSFetchedREsultsController initializer method
-//extension OwnerGroupListTableViewController: NSFetchedResultsControllerDelegate {
-//    
-//    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-//        tableView.beginUpdates()
-//    }
-//    
-//    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-//        switch type {
-//        case .insert:
-//            tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
-//        case .delete:
-//            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .fade)
-//        case .move:
-//            break
-//        case .update:
-//            break
-//        }
-//    }
-//    
-//    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-//        switch type {
-//        case .insert:
-//            tableView.insertRows(at: [newIndexPath!], with: .fade)
-//        case .delete:
-//            tableView.deleteRows(at: [indexPath!], with: .fade)
-//        case .update:
-//            tableView.reloadRows(at: [indexPath!], with: .fade)
-//        case .move:
-//            tableView.moveRow(at: indexPath!, to: newIndexPath!)
-//        }
-//    }
-//    
-//    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-//        tableView.endUpdates()
-//    }
-//}
-//
-//
 
 
 

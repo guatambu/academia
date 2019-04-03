@@ -37,7 +37,7 @@ class EmergencyContactViewController: UIViewController {
     var emergencyContactRelationship: String?
     
     var inEditingMode: Bool?
-    var userToEdit: Any?
+    var userCDToEdit: Any?
     
     var isOwnerAddingStudent: Bool?
     var group: Group?
@@ -332,12 +332,8 @@ extension EmergencyContactViewController {
     func updateOwnerInfo() {
         if emergencyContactNameTextField.text != "" && emergencyContactPhoneTextField.text != "" && emergencyContactRelationshipTextField.text != "" {
             
-            guard let owner = userToEdit as? Owner else { return }
-            
-            OwnerModelController.shared.updateProfileInfo(owner: owner, isInstructor: nil, birthdate: nil, groups: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: emergencyContactNameTextField.text, emergencyContactPhone: emergencyContactPhoneTextField.text, emergencyContactRelationship: emergencyContactRelationshipTextField.text)
-            
-            // CoreData Belt property update
-            guard let ownerCD = userToEdit as? OwnerCD else { return }
+            // CoreData Emergency Contact property update
+            guard let ownerCD = userCDToEdit as? OwnerCD else { return }
             guard let emergencyContact = ownerCD.emergencyContact else { return }
             let name = emergencyContactNameTextField.text ?? ""
             let phone = emergencyContactPhoneTextField.text ?? ""
@@ -351,12 +347,8 @@ extension EmergencyContactViewController {
     func updateKidStudentInfo() {
         if emergencyContactNameTextField.text != "" && emergencyContactPhoneTextField.text != "" && emergencyContactRelationshipTextField.text != "" {
             
-            guard let kidStudent = userToEdit as? KidStudent else { return }
-            
-            KidStudentModelController.shared.updateProfileInfo(kidStudent: kidStudent, birthdate: nil, groups: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, parentGuardian: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: emergencyContactNameTextField.text, emergencyContactPhone: emergencyContactPhoneTextField.text, emergencyContactRelationship: emergencyContactRelationshipTextField.text)
-            
-            // CoreData Belt property update
-            guard let studentKidCD = userToEdit as? StudentKidCD else { return }
+            // CoreData Emergency Contact property update
+            guard let studentKidCD = userCDToEdit as? StudentKidCD else { return }
             guard let emergencyContact = studentKidCD.emergencyContact else { return }
             let name = emergencyContactNameTextField.text ?? ""
             let phone = emergencyContactPhoneTextField.text ?? ""
@@ -370,13 +362,8 @@ extension EmergencyContactViewController {
     func updateAdultStudentInfo() {
         if emergencyContactNameTextField.text != "" && emergencyContactPhoneTextField.text != "" && emergencyContactRelationshipTextField.text != "" {
             
-            guard let adultStudent = userToEdit as? AdultStudent else { return }
-            
-//            let adult = AdultStudentModelController.shared.adults[0]
-            AdultStudentModelController.shared.updateProfileInfo(adultStudent: adultStudent, birthdate: nil, groups: nil, belt: nil, profilePic: nil, username: nil, firstName: nil, lastName: nil, addressLine1: nil, addressLine2: nil, city: nil, state: nil, zipCode: nil, phone: nil, mobile: nil, email: nil, emergencyContactName: emergencyContactNameTextField.text, emergencyContactPhone: emergencyContactPhoneTextField.text, emergencyContactRelationship: emergencyContactRelationshipTextField.text)
-            
-            // CoreData Belt property update
-            guard let studentAdultCD = userToEdit as? StudentAdultCD else { return }
+            // CoreData Emergency Contact property update
+            guard let studentAdultCD = userCDToEdit as? StudentAdultCD else { return }
             guard let emergencyContact = studentAdultCD.emergencyContact else { return }
             let name = emergencyContactNameTextField.text ?? ""
             let phone = emergencyContactPhoneTextField.text ?? ""
@@ -398,14 +385,14 @@ extension EmergencyContactViewController {
             // set editing mode for each user case
             if let isOwner = isOwner {
                 if isOwner {
-                    ownerEditingSetup(userToEdit: userToEdit)
+                    ownerEditingSetup(userToEdit: userCDToEdit)
                 }
             }
             if let isKid = isKid {
                 if isKid {
-                    kidStudentEditingSetup(userToEdit: userToEdit)
+                    kidStudentEditingSetup(userToEdit: userCDToEdit)
                 } else {
-                    adultStudentEditingSetup(userToEdit: userToEdit)
+                    adultStudentEditingSetup(userToEdit: userCDToEdit)
                 }
             }
             nextButtonOutlet.isHidden = true
@@ -418,43 +405,43 @@ extension EmergencyContactViewController {
     // owner setup for editing mode
     func ownerEditingSetup(userToEdit: Any?) {
         
-        guard let ownerToEdit = userToEdit as? Owner else {
+        guard let ownerCDToEdit = userCDToEdit as? OwnerCD else {
             return
         }
         
-        whoIsYourEmergencyContactLabelOutlet.text = "Welcome \(ownerToEdit.firstName)"
+        whoIsYourEmergencyContactLabelOutlet.text = "Welcome \(ownerCDToEdit.firstName ?? "")"
         
-        emergencyContactNameTextField.text = ownerToEdit.emergencyContactName
-        emergencyContactPhoneTextField.text = ownerToEdit.emergencyContactPhone
-        emergencyContactRelationshipTextField.text = ownerToEdit.emergencyContactRelationship
+        emergencyContactNameTextField.text = ownerCDToEdit.emergencyContact?.name
+        emergencyContactPhoneTextField.text = ownerCDToEdit.emergencyContact?.phone
+        emergencyContactRelationshipTextField.text = ownerCDToEdit.emergencyContact?.relationship
     }
     
     // kid student setu for editing mode
     func kidStudentEditingSetup(userToEdit: Any?) {
         
-        guard let kidToEdit = userToEdit as? KidStudent else {
+        guard let kidCDToEdit = userCDToEdit as? StudentKidCD else {
             return
         }
         
-        whoIsYourEmergencyContactLabelOutlet.text = "Welcome \(kidToEdit.firstName)"
+        whoIsYourEmergencyContactLabelOutlet.text = "Welcome \(kidCDToEdit.firstName ?? "")"
         
-        emergencyContactNameTextField.text = kidToEdit.emergencyContactName
-        emergencyContactPhoneTextField.text = kidToEdit.emergencyContactPhone
-        emergencyContactRelationshipTextField.text = kidToEdit.emergencyContactRelationship
+        emergencyContactNameTextField.text = kidCDToEdit.emergencyContact?.name
+        emergencyContactPhoneTextField.text = kidCDToEdit.emergencyContact?.phone
+        emergencyContactRelationshipTextField.text = kidCDToEdit.emergencyContact?.relationship
     }
     
     // adult student setu for editing mode
     func adultStudentEditingSetup(userToEdit: Any?) {
         
-        guard let adultToEdit = userToEdit as? AdultStudent else {
+        guard let adultCDToEdit = userCDToEdit as? StudentAdultCD else {
             return
         }
         
-        whoIsYourEmergencyContactLabelOutlet.text = "Welcome \(adultToEdit.firstName)"
+        whoIsYourEmergencyContactLabelOutlet.text = "Welcome \(adultCDToEdit.firstName ?? "")"
         
-        emergencyContactNameTextField.text = adultToEdit.emergencyContactName
-        emergencyContactPhoneTextField.text = adultToEdit.emergencyContactPhone
-        emergencyContactRelationshipTextField.text = adultToEdit.emergencyContactRelationship
+        emergencyContactNameTextField.text = adultCDToEdit.emergencyContact?.name
+        emergencyContactPhoneTextField.text = adultCDToEdit.emergencyContact?.phone
+        emergencyContactRelationshipTextField.text = adultCDToEdit.emergencyContact?.relationship
     }
 }
 
