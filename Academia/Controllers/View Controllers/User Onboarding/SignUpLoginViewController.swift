@@ -292,6 +292,7 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         destViewController.password = password
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
         destViewController.group = group
+        destViewController.groupCD = groupCD
         
         // if usermame/password - login
         

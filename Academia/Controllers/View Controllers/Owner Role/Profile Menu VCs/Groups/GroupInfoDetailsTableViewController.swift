@@ -54,6 +54,10 @@ class GroupInfoDetailsTableViewController: UITableViewController {
     
     // MARK: - Actions
     
+    @objc func backToGroupInfoDetails() {
+        navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func addStudentButtonTapped(_ sender: DesignableButton) {
         
         // programmatically performing the segue
@@ -68,6 +72,7 @@ class GroupInfoDetailsTableViewController: UITableViewController {
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        backButtonItem.action = #selector(backToGroupInfoDetails)
         // set nav bar controller appearance
         navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
         navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor

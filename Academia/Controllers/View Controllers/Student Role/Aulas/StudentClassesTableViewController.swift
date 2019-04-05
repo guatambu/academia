@@ -224,7 +224,6 @@ class StudentClassesTableViewController: UITableViewController {
             }
             // sort sundays array to display included classes by timeCode
             sundays.sort(by: {$0.timeCode < $1.timeCode })
-            print("sundays.count: \(sundays.count)")
             // if the sundays: [AulaCD array is not empty, pass the contents to the cell via the appropriate indexPath.row Int value]
             // Configure the cell
             if !sundays.isEmpty {
@@ -257,7 +256,6 @@ class StudentClassesTableViewController: UITableViewController {
             }
             // sort sundays array to display included classes by timeCode
             mondays.sort(by: {$0.timeCode < $1.timeCode })
-            print("mondays.count: \(mondays.count)")
             // if the sundays: [AulaCD array is not empty, pass the contents to the cell via the appropriate indexPath.row Int value]
             // Configure the cell
             if !mondays.isEmpty {
@@ -290,8 +288,6 @@ class StudentClassesTableViewController: UITableViewController {
             }
             // sort sundays array to display included classes by timeCode
             tuesdays.sort(by: {$0.timeCode < $1.timeCode })
-            print("tuesdays.count: \(tuesdays.count)")
-            print("indexPath.row: \(indexPath.row)")
             // if the sundays: [AulaCD array is not empty, pass the contents to the cell via the appropriate indexPath.row Int value]
             // Configure the cell
             if !tuesdays.isEmpty {
@@ -324,7 +320,6 @@ class StudentClassesTableViewController: UITableViewController {
             }
             // sort sundays array to display included classes by timeCode
             wednesdays.sort(by: {$0.timeCode < $1.timeCode })
-            print("wednesdays.count: \(wednesdays.count)")
             // if the sundays: [AulaCD array is not empty, pass the contents to the cell via the appropriate indexPath.row Int value]
             // Configure the cell
             if !wednesdays.isEmpty {
@@ -357,7 +352,6 @@ class StudentClassesTableViewController: UITableViewController {
             }
             // sort sundays array to display included classes by timeCode
             thursdays.sort(by: {$0.timeCode < $1.timeCode })
-            print("thursdays.count: \(thursdays.count)")
             // if the sundays: [AulaCD array is not empty, pass the contents to the cell via the appropriate indexPath.row Int value]
             // Configure the cell
             if !thursdays.isEmpty {
@@ -390,7 +384,6 @@ class StudentClassesTableViewController: UITableViewController {
             }
             // sort sundays array to display included classes by timeCode
             fridays.sort(by: {$0.timeCode < $1.timeCode })
-            print("fridays.count: \(fridays.count)")
             // if the sundays: [AulaCD array is not empty, pass the contents to the cell via the appropriate indexPath.row Int value]
             // Configure the cell
             if !fridays.isEmpty {
@@ -423,7 +416,6 @@ class StudentClassesTableViewController: UITableViewController {
             }
             // sort sundays array to display included classes by timeCode
             saturdays.sort(by: {$0.timeCode < $1.timeCode })
-            print("saturdays.count: \(saturdays.count)")
             // if the sundays: [AulaCD array is not empty, pass the contents to the cell via the appropriate indexPath.row Int value]
             // Configure the cell
             if !saturdays.isEmpty {
@@ -452,12 +444,12 @@ class StudentClassesTableViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
-        if segue.identifier == "toAulaInfoDetailsSegue" {
+        if segue.identifier == "toStudentClassDetailSegue" {
             
             // get the saved aulas source of truth array
             let aulasCD = AulaCDModelController.shared.aulas
             
-            guard let destinationTVC = segue.destination as? ClassInfoDetailsTableViewController else { return }
+            guard let destinationTVC = segue.destination as? StudentClassDetailTableViewController else { return }
             guard let indexPath = self.tableView.indexPathForSelectedRow else { return }
             
             // set nav bar controller appearance

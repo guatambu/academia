@@ -279,7 +279,7 @@ extension AddStudentsToGroupTableViewController {
     // Update Function for case where want to update user info without a segue
     func updateGroupInfo() {
         
-        if kidMembersCD.count != 0 && adultMembersCD.count != 0 {
+//        if kidMembersCD.count != 0 && adultMembersCD.count != 0 {
         
             // CoreData GroupCD update info
             guard let groupCDToEdit = groupCDToEdit else { return }
@@ -294,7 +294,7 @@ extension AddStudentsToGroupTableViewController {
             for existingKid in kidMembersCD {
                 groupCDToEdit.addToKidMembers(existingKid)
             }
-        }
+//        }
         // save to CoreData
         OwnerCDModelController.shared.saveToPersistentStorage()
     }

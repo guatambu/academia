@@ -148,10 +148,7 @@ class CompletedProfileViewController: UIViewController {
             
             if isOwnerAddingStudent {
                 // need to append the created user to the appropriate group
-                guard let group = group else {
-                    print("ERROR: a nil value was found when trying to unwrap group property in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 149.")
-                    return
-                }
+
                 guard let isKid = isKid else {
                     print("ERROR: a nil value was found when trying to unwrap isKid property in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 153.")
                     return
@@ -162,10 +159,6 @@ class CompletedProfileViewController: UIViewController {
                 }
         
                 if isKid {
-                    // get the kidStudent and update the group to include this student
-                    let kidStudent = KidStudentModelController.shared.kids.last
-                    // update the group to include this student
-                    GroupModelController.shared.update(group: group, active: nil, name: nil, description: nil, kidMembers: nil, adultMembers: nil, kidStudent: kidStudent, adultStudent: nil)
                     
                     // CoreData - update the group to include this student
                     guard let newStudentKidCD = newStudentKidCD else {
@@ -173,12 +166,8 @@ class CompletedProfileViewController: UIViewController {
                         return
                     }
                     groupCD.addToKidMembers(newStudentKidCD)
-                    
+                    OwnerCDModelController.shared.saveToPersistentStorage()
                 } else {
-                    // get the adultStudent and update the group to include this student
-                    let adultStudent = AdultStudentModelController.shared.adults.last
-                    // update the group to include this student
-                    GroupModelController.shared.update(group: group, active: nil, name: nil, description: nil, kidMembers: nil, adultMembers: nil, kidStudent: nil, adultStudent: adultStudent)
                     
                     // CoreData - update the group to include this student
                     guard let newStudentAdultCD = newStudentAdultCD else {
@@ -186,6 +175,7 @@ class CompletedProfileViewController: UIViewController {
                         return
                     }
                     groupCD.addToAdultMembers(newStudentAdultCD)
+                    OwnerCDModelController.shared.saveToPersistentStorage()
                 }
                 
                 returnToGroupInfo()

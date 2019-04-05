@@ -97,8 +97,6 @@ class OwnerInfoDetailsViewController: UIViewController {
         
         // programmatically performing the segue
         
-        // OPTIONS FOR DIFFERENT TYPES OF SEGUES + TYPES OF DESTINATION VIEWCONTROLLERS
-        
         // instantiate the relevant storyboard
         let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
@@ -119,9 +117,6 @@ class OwnerInfoDetailsViewController: UIViewController {
         destViewController.isOwner = true
         destViewController.isKid = false
         destViewController.userCDToEdit = activeOwner
-        // TODO: set destinationVC properties to display user to be edited
-            // in destintaionVC unrwrap userToEdit? as either Owner, AdultStudent, or KidStudent and us this to display info, and be passed around for updating in each update function
-            // also need to build in programmatic segues for saveTapped to exit editing mode and return to OwnerProfileDetailsVC
     }
     
     @IBAction func deleteAccountButtonTapped(_ sender: UIButton) {

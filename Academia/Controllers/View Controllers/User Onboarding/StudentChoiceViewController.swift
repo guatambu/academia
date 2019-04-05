@@ -129,7 +129,7 @@ class StudentChoiceViewController: UIViewController {
         destViewController.isKid = true
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
         destViewController.group = group
-        
+        destViewController.groupCD = groupCD
         
     }
     
@@ -156,6 +156,7 @@ class StudentChoiceViewController: UIViewController {
         destViewController.isKid = isKid
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
         destViewController.group = group
+        destViewController.groupCD = groupCD
         
     }
     

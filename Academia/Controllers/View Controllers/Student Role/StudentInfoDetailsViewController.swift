@@ -22,6 +22,7 @@ class StudentInfoDetailsViewController: UIViewController {
     
     let beltBuilder = BeltBuilder()
     
+    @IBOutlet weak var studentNameLabelOutlet: UILabel!
     // isInstructor switch
     @IBOutlet weak var isInstructorStackView: UIStackView!
     @IBOutlet weak var instructorLabelOutlet: UILabel!
@@ -73,6 +74,11 @@ class StudentInfoDetailsViewController: UIViewController {
         
         addressLine2LabelOutlet.isHidden = false
         mobileLabelOutlet.isHidden = false
+        
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
+        
+        title = "Please Review Your Info"
         
         // check to see if user isKid or not.  only StudentAdultCD may be instructors.
         let isKid = ActiveUserModelController.shared.isKid
@@ -145,10 +151,6 @@ class StudentInfoDetailsViewController: UIViewController {
             destViewController.isKid = false
             destViewController.userCDToEdit = AdultStudentModelController.shared.adults[0]
         }
-    
-//         TODO: set destinationVC properties to display user to be edited
-//         in destintaionVC unrwrap userToEdit? as either Owner, AdultStudent, or KidStudent and us this to display info, and be passed around for updating in each update function
-//         also need to build in programmatic segues for saveTapped to exit editing mode and return to OwnerProfileDetailsVC
     }
     
     @IBAction func deleteAccountButtonTapped(_ sender: UIButton) {
@@ -218,7 +220,7 @@ extension StudentInfoDetailsViewController {
             guard let belt = activeStudentKid.belt else { return }
             
             // populate UI elements in VC
-            self.title = "\(activeStudentKid.firstName ?? "") \(activeStudentKid.lastName ?? "")"
+            studentNameLabelOutlet.text = "\(activeStudentKid.firstName ?? "") \(activeStudentKid.lastName ?? "")"
             usernameLabelOutlet.text = "username: \(activeStudentKid.username ?? "")"
             // populate birthdate outlet
             formatBirthdate(birthdate: activeStudentKid.birthdate ?? Date())
@@ -275,7 +277,7 @@ extension StudentInfoDetailsViewController {
             guard let belt = activeStudentAdult.belt else { return }
             
             // populate UI elements in VC
-            self.title = "\(activeStudentAdult.firstName ?? "") \(activeStudentAdult.lastName ?? "")"
+            studentNameLabelOutlet.text = "\(activeStudentAdult.firstName ?? "") \(activeStudentAdult.lastName ?? "")"
             usernameLabelOutlet.text = "username: \(activeStudentAdult.username ?? "")"
             // populate birthdate outlet
             formatBirthdate(birthdate: activeStudentAdult.birthdate ?? Date())
