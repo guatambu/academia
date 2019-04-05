@@ -64,6 +64,34 @@ class LandingPageViewController: UIViewController {
     
             }
             
+            for adult in StudentAdultCDModelController.shared.studentAdults {
+                
+//                StudentAdultCDModelController.shared.remove(studentAdult: adult)
+                
+                print("total objects in StudentAdultCDModelController.shared.studentAdults: \(StudentAdultCDModelController.shared.studentAdults.count)")
+                print("adult.username = \(adult.username ?? "owner object present but has no first name :'{ ")")
+                print("adult.password = \(adult.password ?? "owner object present but has no first name :'{ ")")
+                print("")
+                print("adult.beltLevel = \(adult.belt?.beltLevel ?? "no belt level present")")
+                print("")
+                print("adultCD isInstructor: \(adult.isInstructor)")
+                print("")
+                
+            }
+            
+            for kid in StudentKidCDModelController.shared.studentKids {
+                
+//                StudentKidCDModelController.shared.remove(studentKid: kid)
+                
+                print("total objects in StudentKidCDModelController.shared.studentKids: \(StudentKidCDModelController.shared.studentKids.count)")
+                print("kid.username = \(kid.username ?? "owner object present but has no first name :'{ ")")
+                print("kid.password = \(kid.password ?? "owner object present but has no first name :'{ ")")
+                print("")
+                print("kid.beltLevel = \(kid.belt?.beltLevel ?? "no belt level present")")
+                print("")
+                
+            }
+            
             if !LocationCDModelController.shared.locations.isEmpty {
                 
                 for location in LocationCDModelController.shared.locations {

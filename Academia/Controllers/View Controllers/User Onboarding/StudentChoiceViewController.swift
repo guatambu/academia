@@ -157,10 +157,6 @@ class StudentChoiceViewController: UIViewController {
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
         destViewController.group = group
         
-        // MARK: - CoreData implementaiton
-        let studentAdult = StudentAdultCD(context: CoreDataStack.context)
-        studentAdult.adultStudentUUID = UUID()
-        destViewController.studentAdult = studentAdult
     }
     
     @IBAction func cancelButtonTapped(_ sender: UIButton) {

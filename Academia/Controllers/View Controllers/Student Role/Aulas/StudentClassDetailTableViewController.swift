@@ -6,6 +6,9 @@
 //  Copyright © 2018 DunDak, LLC. All rights reserved.
 //
 
+// NOTE:  "aula" means "class" in Portuguese. "aula" stands in for the word "class" throughout this workflow as the word "class" is already used as a Swift keyword.
+
+
 import UIKit
 
 class StudentClassDetailTableViewController: UITableViewController {
@@ -18,6 +21,7 @@ class StudentClassDetailTableViewController: UITableViewController {
     let sectionHeaderLabels = ["Owners", "Instructors"]
     
     let beltBuilder = BeltBuilder()
+    let classTimeComponents = ClassTimeComponents()
     
     // outlets
     @IBOutlet weak var classNameLabelOutlet: UILabel!
@@ -31,82 +35,32 @@ class StudentClassDetailTableViewController: UITableViewController {
     
     // CoreData properties
     var aulaCD: AulaCD?
+    var dayOfTheWeek: String?
     
     
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
         
+        populateCompletedAulaInfo()
+        
         let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
                            NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
         
         navigationController?.navigationBar.titleTextAttributes = avenirFont
-        
-        populateCompletedAulaInfo()
-        
-        // run checks to produce advisory info to user regarding student types selected to a group
-        if let instructors = aula?.instructor, let ownerInstructors = aula?.ownerInstructor, instructors.isEmpty && ownerInstructors.isEmpty {
             
-            instructorAdvisoryLabelOutlet.isHidden = false
-            instructorAdvisoryLabelOutlet.text = "no owner instructors added to class"
-            
-        } else if let instructors = aula?.instructor, instructors.isEmpty {
-            
-            instructorAdvisoryLabelOutlet.isHidden = false
-            instructorAdvisoryLabelOutlet.text = "no student instructors added to group"
-            
-        } else if let  ownerInstructors = aula?.ownerInstructor, ownerInstructors.isEmpty {
-            
-            instructorAdvisoryLabelOutlet.isHidden = false
-            instructorAdvisoryLabelOutlet.text = "no owner added to group as instructors"
-            
-        } else {
-            
-            instructorAdvisoryLabelOutlet.isHidden = true
-        }
-        
-        // CoreData version
-        if let instructorsCD = aulaCD?.adultStudentInstructorsAula, let ownerInstructorsCD = aulaCD?.ownerInstructorAula, instructorsCD.count == 0 && ownerInstructorsCD.count == 0 {
-            
-            instructorAdvisoryLabelOutlet.isHidden = false
-            instructorAdvisoryLabelOutlet.text = "no owner instructors added to class"
-            
-        } else if let instructorsCD = aulaCD?.adultStudentInstructorsAula, instructorsCD.count == 0 {
-            
-            instructorAdvisoryLabelOutlet.isHidden = false
-            instructorAdvisoryLabelOutlet.text = "no student instructors added to group"
-            
-        } else if let  ownerInstructorsCD = aulaCD?.ownerInstructorAula, ownerInstructorsCD.count == 0 {
-            
-            instructorAdvisoryLabelOutlet.isHidden = false
-            instructorAdvisoryLabelOutlet.text = "no owner added to group as instructors"
-            
-        } else {
-            
-            instructorAdvisoryLabelOutlet.isHidden = true
-        }
+        instructorAdvisoryLabelOutlet.isHidden = true
         
         tableView.reloadData()
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let aula = aula else {
-            print("ERROR: found nil value when unwrapping aula property in ClassInfoDetailsTableViewController.swift -> viewDidLoad() - line 48.")
-            return
-        }
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
         
-        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
-        
-        navigationController?.navigationBar.titleTextAttributes = avenirFont
-        
-        title = aula.aulaName
-        
-        print("daysOfTheWeek: \(aula.daysOfTheWeek)")
-        
+        title = "Current Class Schedule"
     }
     
     
@@ -145,22 +99,25 @@ class StudentClassDetailTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        guard let aula = aula else {
-            print("ERROR: nil value for aula property in ClassInfoDetailsTableViewController.swift -> tableView(_ tableView:, numberOfRowsInSection:) - line 152")
+        // CoreData version
+        guard let aulaCD = aulaCD else {
+            print("ERROR: nil value for aulaCD property in StudentClassDetailTableViewController.swift -> tableView(_ tableView:, numberOfRowsInSection:) - line 104")
             return 0
         }
         
-        guard let instructors = aula.instructor, let ownerInstructors = aula.ownerInstructor else {
+        guard let instructorsCD = aulaCD.adultStudentInstructorsAula, let ownerInstructorsCD = aulaCD.ownerInstructorAula else {
             
-            print("ERROR: nil value for aula.instructor or aula.ownerInstructor array in ClassInfoDetailsTableViewController.swift -> tableView(_ tableView:, numberOfRowsInSection:) - line 158")
+            print("ERROR: nil value for aula.instructor or aula.ownerInstructor array in StudentClassDetailTableViewController.swift -> tableView(_ tableView:, numberOfRowsInSection:) - line 110")
             return 0
         }
         
         if section == 0 {
-            return ownerInstructors.count
+            
+            return ownerInstructorsCD.count
             
         } else if section == 1 {
-            return instructors.count
+            
+            return instructorsCD.count
             
         } else {
             return 0
@@ -169,31 +126,33 @@ class StudentClassDetailTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let aula = aula else {
-            print("ERROR: nil value for aula property in ClassInfoDetailsTableViewController.swift -> tableView(_ tableView:, cellForRowAt:) - line 171")
-            return UITableViewCell()
-        }
-        
-        guard let instructors = aula.instructor, let ownerInstructors = aula.ownerInstructor else {
+        // CoreData version
+        guard let aulaCD = aulaCD else {
             
-            print("ERROR: nil value for aula.instructor or aula.ownerInstructor array in ClassInfoDetailsTableViewController.swift -> tableView(_ tableView:, numberOfRowsInSection:) - line 177")
+            print("ERROR: nil value for aulaCD property in StudentClassDetailTableViewController.swift -> tableView(_ tableView:, cellForRowAt:) - line 132")
             return UITableViewCell()
         }
         
         // Configure the cell...
         if indexPath.section == 0 {
             
-            if ownerInstructors.isEmpty {
+            guard let ownerInstructorsCD = aulaCD.ownerInstructorAula else {
+                
+                print("ERROR: nil value for aula.ownerInstructor array in StudentClassDetailTableViewController.swift -> tableView(_ tableView:, numberOfRowsInSection:) - line 141")
+                return UITableViewCell()
+            }
+            
+            if ownerInstructorsCD.count != 0 {
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "reviewOwnerInstructorCell", for: indexPath) as! ReviewOwnerInstructorTableViewCell
+                
+                cell.ownerInstructorCD = ownerInstructorsCD.object(at: indexPath.row) as? OwnerCD
                 
                 return cell
                 
             } else {
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "reviewOwnerInstructorCell", for: indexPath) as! ReviewOwnerInstructorTableViewCell
-                
-                cell.ownerInstructor = ownerInstructors[indexPath.row]
                 
                 return cell
             }
@@ -201,17 +160,23 @@ class StudentClassDetailTableViewController: UITableViewController {
             
         } else {
             
-            if instructors.isEmpty {
+            guard let instructorsCD = aulaCD.adultStudentInstructorsAula else {
                 
-                let cell = tableView.dequeueReusableCell(withIdentifier: "reviewOwnerInstructorCell", for: indexPath) as! ReviewOwnerInstructorTableViewCell
+                print("ERROR: nil value for aula.instructor array in StudentClassDetailTableViewController.swift -> tableView(_ tableView:, numberOfRowsInSection:) - line 165")
+                return UITableViewCell()
+            }
+            
+            if instructorsCD.count != 0 {
+                
+                let cell = tableView.dequeueReusableCell(withIdentifier: "reviewOwnerInstructorCell", for: indexPath) as! ReviewInstructorTableViewCell
+                
+                cell.instructorCD = instructorsCD.object(at: indexPath.row) as? StudentAdultCD
                 
                 return cell
                 
             } else {
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "reviewInstructorCell", for: indexPath) as! ReviewInstructorTableViewCell
-                
-                cell.instructor = instructors[indexPath.row]
                 
                 return cell
             }
@@ -220,21 +185,10 @@ class StudentClassDetailTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-//        guard let aula = aula else {
-//            print("ERROR: nil value for group property in ClassInfoDetailsTableViewController.swift -> tableView(_ tableView:, didSelectRowAt:) - line 197")
-//            return
-//        }
-//        
-//        guard let instructors = aula.instructor, let ownerInstructors = aula.ownerInstructor else {
-//
-//            print("ERROR: nil value for aula.instructor or aula.ownerInstructor array in ClassInfoDetailsTableViewController.swift -> tableView(_ tableView:, numberOfRowsInSection:) - line 203")
-//            return
-//        }
-        
         // programmatically performing the segue
         
         // instantiate the relevant storyboard
-        let mainView: UIStoryboard = UIStoryboard(name: "OwnerStudentsFlow", bundle: nil)
+        let mainView: UIStoryboard = UIStoryboard(name: "OwnerBaseCampFlow", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
         let destViewController = mainView.instantiateViewController(withIdentifier: "toProfileComplete") as! OwnersStudentDetailViewController
         
@@ -245,39 +199,17 @@ class StudentClassDetailTableViewController: UITableViewController {
         let backButtonItem = UIBarButtonItem()
         backButtonItem.title = " "
         navigationItem.backBarButtonItem = backButtonItem
+        // set nav bar controller appearance
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+        navigationController?.navigationBar.shadowImage = UIImage()
         
         if indexPath.section == 0 {
-            // kidStudent setup
-            //            let kid = mockKids[indexPath.row]
-            //
-            //            destViewController.isOwner = false
-            //            destViewController.isKid = true
-            //            destViewController.username = kid.username
-            //            destViewController.password = kid.password
-            //            destViewController.firstName = kid.firstName
-            //            destViewController.lastName = kid.lastName
-            //            destViewController.parentGuardian = kid.parentGuardian
-            //            destViewController.profilePic = kid.profilePic
-            //            destViewController.birthdate = kid.birthdate
-            //            destViewController.beltLevel = kid.belt.beltLevel
-            //            destViewController.numberOfStripes = kid.belt.numberOfStripes
-            //            destViewController.addressLine1 = kid.addressLine1
-            //            destViewController.addressLine2 = kid.addressLine2
-            //            destViewController.city = kid.city
-            //            destViewController.state = kid.state
-            //            destViewController.zipCode = kid.zipCode
-            //            destViewController.phone = kid.phone
-            //            destViewController.mobile = kid.mobile
-            //            destViewController.email = kid.email
-            //            destViewController.emergencyContactName = kid.emergencyContactName
-            //            destViewController.emergencyContactRelationship = kid.emergencyContactRelationship
-            //            destViewController.emergencyContactPhone = kid.emergencyContactPhone
-            
             
             // CoreData version
             guard let ownerInstructorsCD = aulaCD?.ownerInstructorAula else {
                 
-                print("ERROR: nil value for kidMembersCD array in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 242.")
+                print("ERROR: nil value for kidMembersCD array in StudentClassDetailTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 212.")
                 return
             }
             
@@ -285,43 +217,18 @@ class StudentClassDetailTableViewController: UITableViewController {
             let owners = ownerInstructorsCD.sortedArray(using: [nameSort])
             
             guard let ownerCD = owners[indexPath.row] as? OwnerCD else {
-                print("ERROR: nil value for studentKidCD in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 252.")
+                print("ERROR: nil value for studentKidCD in StudentClassDetailTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 220.")
                 return
             }
             
             destViewController.ownerCD = ownerCD
             
         } else if indexPath.section == 1 {
-            // adultStudent setup
-            //            let adult = mockAdults[indexPath.row]
-            //
-            //            destViewController.isOwner = false
-            //            destViewController.isKid = false
-            //            destViewController.username = adult.username
-            //            destViewController.password = adult.password
-            //            destViewController.firstName = adult.firstName
-            //            destViewController.lastName = adult.lastName
-            //            destViewController.profilePic = adult.profilePic
-            //            destViewController.birthdate = adult.birthdate
-            //            destViewController.beltLevel = adult.belt.beltLevel
-            //            destViewController.numberOfStripes = adult.belt.numberOfStripes
-            //            destViewController.addressLine1 = adult.addressLine1
-            //            destViewController.addressLine2 = adult.addressLine2
-            //            destViewController.city = adult.city
-            //            destViewController.state = adult.state
-            //            destViewController.zipCode = adult.zipCode
-            //            destViewController.phone = adult.phone
-            //            destViewController.mobile = adult.mobile
-            //            destViewController.email = adult.email
-            //            destViewController.emergencyContactName = adult.emergencyContactName
-            //            destViewController.emergencyContactRelationship = adult.emergencyContactRelationship
-            //            destViewController.emergencyContactPhone = adult.emergencyContactPhone
-            
             
             // CoreData version
             guard let adultInstructorsCD = aulaCD?.adultStudentInstructorsAula else {
                 
-                print("ERROR: nil value for adultMembersCD array in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 288.")
+                print("ERROR: nil value for adultMembersCD array in StudentClassDetailTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 231.")
                 return
             }
             
@@ -329,7 +236,7 @@ class StudentClassDetailTableViewController: UITableViewController {
             let adults = adultInstructorsCD.sortedArray(using: [nameSort])
             
             guard let studentAdultCD = adults[indexPath.row] as? StudentAdultCD else {
-                print("ERROR: nil value for studentAdultCD in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 298.")
+                print("ERROR: nil value for studentAdultCD in StudentClassDetailTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 239.")
                 return
             }
             
@@ -344,82 +251,40 @@ extension StudentClassDetailTableViewController {
     
     func populateCompletedAulaInfo() {
         
-        guard let aula = aula else {
-            print("ERROR: nil value for aula property in ClassInfoDetailsTableViewController.swift -> populateCompletedAulaInfo() - line 327")
+        // CoreData version
+        guard let aulaCD = aulaCD else {
+            print("ERROR: nil value for aula property in ClassInfoDetailsTableViewController.swift -> populateCompletedAulaInfo() - line 344")
             return
         }
+        print("aulaCD.aulaName: \(aulaCD.aulaName ?? "")")
+        print("aulaCD.location.locationName: \(aulaCD.location?.locationName ?? "")")
+        print("aulaCD.groupsAula.count: \(aulaCD.groupsAula?.count ?? 0)")
         
-        var daysOfTheWeekString = ""
-        
-        guard let time = aula.time else {
-            print("there was a nil value in the time passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 285")
+        guard let location = aulaCD.location else {
+            print("there was a nil value in the location passed to ClassInfoDetailsTableViewController.swift -> populateCompletedClassInfo() - line 354")
             return
         }
-        guard let location = aula.location else {
-            print("there was a nil value in the location passed to ReviewAndCreateClassTVC.swift -> populateCompletedClassInfo() - line 289")
+        guard let dayOfTheWeek = aulaCD.dayOfTheWeek else {
+            print("there was a nil value in the dayOfTheWeek passed to ClassInfoDetailsTableViewController.swift -> populateCompletedClassInfo() - line 358")
             return
         }
         
         // name outlet
-        classNameLabelOutlet.text = aula.aulaName
-        // days of th week outlet
-        for day in aula.daysOfTheWeek {
-            if day == aula.daysOfTheWeek.last {
-                daysOfTheWeekString += "\(day.rawValue)"
-            } else {
-                daysOfTheWeekString += "\(day.rawValue), "
-            }
-        }
-        daysOfTheWeekLabelOutlet.text = daysOfTheWeekString
-        // time of day outlet
-        timeLabelOutlet.text = "\(time)"
+        classNameLabelOutlet.text = aulaCD.aulaName
         
-        locationNameLabelOutlet.text = "\(location.locationName)"
+        // days of the week outlet
+        daysOfTheWeekLabelOutlet.text = "\(dayOfTheWeek)"
+        
+        // time of day outlet
+        timeLabelOutlet.text = "\(aulaCD.time ?? "")"
+
+        // location outlet
+        locationNameLabelOutlet.text = "\(location.locationName ?? "")"
         // class description
-        classDescriptionTextView.text = "\(aula.aulaDescription)"
+        classDescriptionTextView.text = "\(aulaCD.aulaDescription ?? "")"
+        
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

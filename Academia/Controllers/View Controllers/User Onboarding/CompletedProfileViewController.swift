@@ -89,11 +89,16 @@ class CompletedProfileViewController: UIViewController {
         // set VC title font styling
         navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
         
-        if OwnerCDModelController.shared.owners.count > 1 {
-            checkIfMoreThanOneOwnerAccountAllowedByOwner()
-            print("owners count: \(OwnerCDModelController.shared.owners.count)")
-        } 
-    
+        // check to see how many owner profiles exist (if any).  if there is one or more ownersCD objects saved, fire the warning to the user to make sure they want to add an owner account.
+        if let isOwner = isOwner {
+            if isOwner {
+                
+                if OwnerCDModelController.shared.owners.count >= 1 {
+                    checkIfMoreThanOneOwnerAccountAllowedByOwner()
+                    print("owners count: \(OwnerCDModelController.shared.owners.count)")
+                }
+            }
+        }
     }
     
     
@@ -103,12 +108,7 @@ class CompletedProfileViewController: UIViewController {
         
         // create and save new user account to CoreData
         createAndSaveNewUser()
-        
-        // create data models - NOT CoreData
-        createBelt()
-        
-        createUser(isOwner: isOwner, isKid: isKid, birthdate: birthdate, username: username, password: password, firstName: firstName, lastName: lastName, profilePic: profilePic, belt: belt, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, phone: phone, mobile: mobile, email: email, emergencyContactName: emergencyContactName, emergencyContactPhone: emergencyContactPhone, emergencyContactRelationship: emergencyContactRelationship, parentGuardian: parentGuardian)
-        
+
         // place network call to firebase firestore for account creation
         
         // programmatically performing the segue
@@ -297,136 +297,6 @@ extension CompletedProfileViewController {
     }
 }
 
-// MARK: - Create Data Models Functions
-extension CompletedProfileViewController {
-    
-    // create a Belt model for a User
-    func createBelt() {
-        
-        guard let beltLevel = beltLevel else { print("fail beltLevel"); return }
-        guard let numberOfStripes = numberOfStripes else { print("fail stripes"); return }
-        
-        print("CompletedProfileVC -> createBelt() - beltLevel: \(beltLevel.rawValue) numberOfStripes: \(numberOfStripes)")
-        
-        belt = Belt(classesToNextPromotion: 32, beltLevel: beltLevel, numberOfStripes: numberOfStripes)
-
-    }
-    
-    // create User model
-    func createUser(isOwner: Bool?,
-                     isKid: Bool?,
-                     birthdate: Date?,
-                     username: String?,
-                     password: String?,
-                     firstName: String?,
-                     lastName: String?,
-                     profilePic: UIImage?,
-                     belt: Belt?,
-                     addressLine1: String?,
-                     addressLine2: String?,
-                     city: String?,
-                     state: String?,
-                     zipCode: String?,
-                     phone: String?,
-                     mobile: String?,
-                     email: String?,
-                     emergencyContactName: String?,
-                     emergencyContactPhone: String?,
-                     emergencyContactRelationship: String?,
-                     parentGuardian: String?) {
-        
-        guard let isOwner = isOwner else { print("fail isOwner"); return }
-        guard let isKid = isKid else { print("fail isKid"); return }
-        guard let profilePic = profilePic else { print("fail profilePic"); return }
-        guard let username = username else { print("fail username"); return }
-        guard let password = password else { print("fail password"); return }
-        guard let firstName = firstName else { print("fail firtsName"); return }
-        guard let lastName = lastName else { print("fail lastName"); return }
-        guard let belt = belt else { print("fail belt"); return }
-        guard let addressLine1 = addressLine1 else { print("fail addressLine1"); return }
-        guard let city = city else { print("fail city"); return }
-        guard let state = state else { print("fail state"); return }
-        guard let zipCode = zipCode else { print("fail zip"); return }
-        guard let phone = phone else { print("fail phone"); return }
-        guard let email = email else { print("fail email"); return }
-        guard let emergencyContactName = emergencyContactName else { print("fail emergencyContactName"); return }
-        guard let emergencyContactRelationship = emergencyContactRelationship else { print("fail emergencyContactRelationship"); return }
-        guard let emergencyContactPhone = emergencyContactPhone else { print("fail emergencyContactPhone"); return }
-        
-        guard let parentGuardian = parentGuardian else { print("fail parentGuardian"); return }
-        guard let birthdate = birthdate else { print("fail birthdate"); return }
-        
-        let addressLine2 = addressLine2 ?? ""
-        let mobile = mobile ?? ""
-        
-        if isOwner{
-            
-            OwnerModelController.shared.addNew(birthdate: birthdate,
-                                               belt: belt,
-                                               profilePic: profilePic,
-                                               username: username,
-                                               password: password,
-                                               firstName: firstName,
-                                               lastName: lastName,
-                                               addressLine1: addressLine1,
-                                               addressLine2: addressLine2,
-                                               city: city,
-                                               state: state,
-                                               zipCode: zipCode,
-                                               phone: phone,
-                                               mobile: mobile,
-                                               email: email,
-                                               emergencyContactName: emergencyContactName,
-                                               emergencyContactPhone: emergencyContactPhone,
-                                               emergencyContactRelationship: emergencyContactRelationship)
-        } else if isKid {
-            
-            KidStudentModelController.shared.addNew(birthdate: birthdate,
-                                                    belt: belt,
-                                                    profilePic: profilePic,
-                                                    username: username,
-                                                    password: password,
-                                                    firstName: firstName,
-                                                    lastName: lastName,
-                                                    parentGuardian: parentGuardian,
-                                                    addressLine1: addressLine1,
-                                                    addressLine2: addressLine2,
-                                                    city: city,
-                                                    state: state,
-                                                    zipCode: zipCode,
-                                                    phone: phone,
-                                                    mobile: mobile,
-                                                    email: email,
-                                                    emergencyContactName: emergencyContactName,
-                                                    emergencyContactPhone: emergencyContactPhone,
-                                                    emergencyContactRelationship: emergencyContactRelationship)
-            
-            print("kid just created in CompletedProfileVC birthdate: \(String(describing: KidStudentModelController.shared.kids.last?.birthdate))")
-            
-        } else if !isKid {
-            
-            AdultStudentModelController.shared.addNew(birthdate: birthdate,
-                                                      belt: belt,
-                                                      profilePic: profilePic,
-                                                      username: username,
-                                                      password: password,
-                                                      firstName: firstName,
-                                                      lastName: lastName,
-                                                      addressLine1: addressLine1,
-                                                      addressLine2: addressLine2,
-                                                      city: city,
-                                                      state: state,
-                                                      zipCode: zipCode,
-                                                      phone: phone,
-                                                      mobile: mobile,
-                                                      email: email,
-                                                      emergencyContactName: emergencyContactName,
-                                                      emergencyContactPhone: emergencyContactPhone,
-                                                      emergencyContactRelationship: emergencyContactRelationship)
-        }
-    }
-}
-
 
 // MARK: - AlertController to check if more than one owner account allowed by actual owner
 extension CompletedProfileViewController {
@@ -457,9 +327,6 @@ extension CompletedProfileViewController {
         createEmergencyContactCoreDataModel()
         // create new user account in CoreData
         createUserAccountAndLoginCoreDataModel()
-        // CoreData save
-        OwnerCDModelController.shared.saveToPersistentStorage()
-        
     }
 }
 
@@ -495,8 +362,6 @@ extension CompletedProfileViewController {
         
         // convert profilePic to Data
         guard let profilePicData = profilePic.jpegData(compressionQuality: 1) else { print("fail profilePicData"); return }
-        
-        
         
         if isOwner{
             
@@ -552,6 +417,8 @@ extension CompletedProfileViewController {
                 }
             }
         }
+        // CoreData save
+        OwnerCDModelController.shared.saveToPersistentStorage()
     }
 }
 

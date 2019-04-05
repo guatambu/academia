@@ -8,9 +8,11 @@
 
 import UIKit
 
-class OwnerHomeTableViewController: UITableViewController {
-    
+class OwnerHomeTableViewController: UITableViewController, ActiveOwnerDelegate {
+   
     // MARK: - Properties
+    
+    var activeOwner: UUID?
     
     let beltBuilder = BeltBuilder()
     

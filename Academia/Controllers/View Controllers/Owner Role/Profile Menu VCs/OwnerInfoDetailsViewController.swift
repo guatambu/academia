@@ -276,7 +276,7 @@ extension OwnerInfoDetailsViewController: NSFetchedResultsControllerDelegate {
     
     func initializeFetchedResultsController() {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "OwnerCD")
-        let uuidSort = NSSortDescriptor(key: "ownerUUID", ascending: true)
+        let uuidSort = NSSortDescriptor(key: "lastName", ascending: true)
         request.sortDescriptors = [uuidSort]
         
         let moc = CoreDataStack.context

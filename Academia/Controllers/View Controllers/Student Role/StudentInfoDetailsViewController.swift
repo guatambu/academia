@@ -7,18 +7,20 @@
 //
 
 import UIKit
+import CoreData
 
 class StudentInfoDetailsViewController: UIViewController {
 
     // MARK: - Properties
     
     var isInstructor = false
-     // create a computed property with a fetchedRequestController predicate to grab the current logged in user by using the ActiveUserModelController.shared.activeUser array contents and isLogged on properties... use this property as the source for the populateCompletedProfileInfo() method
+    // create a fetchedRequestController with predicate to grab the current logged in user by using the ActiveUserModelController.shared.activeUser array contents and isLogged on properties... use this property as the source for the populateCompletedProfileInfo() method
+    var fetchedResultsControllerStudentAdults: NSFetchedResultsController<StudentAdultCD>!
+    var fetchedResultsControllerStudentKids: NSFetchedResultsController<StudentKidCD>!
     var activeStudentAdult: StudentAdultCD?
+    var activeStudentKid: StudentKidCD?
     
     let beltBuilder = BeltBuilder()
-    
-    var isKid: Bool?
     
     // isInstructor switch
     @IBOutlet weak var isInstructorStackView: UIStackView!
@@ -58,6 +60,11 @@ class StudentInfoDetailsViewController: UIViewController {
         
         navigationController?.navigationBar.titleTextAttributes = avenirFont
         
+        // create fetch request and initialize results
+        initializeFetchedResultsControllers()
+        // search fetch results to find activeOwner
+        findActiveUser()
+        // populate activeOwner details to UI
         populateCompletedProfileInfo()
     }
     
@@ -68,20 +75,21 @@ class StudentInfoDetailsViewController: UIViewController {
         mobileLabelOutlet.isHidden = false
         
         // check to see if user isKid or not.  only StudentAdultCD may be instructors.
-        if let isKid = isKid {
-            
-            if isKid {
-                isInstructorStackView.isHidden = true
-                instructorLabelOutlet.isHidden = true
-                isInstructorSwitch.isHidden = true
-                isInstructorSwitch.isEnabled = false
-            } else {
-                isInstructorStackView.isHidden = false
-                instructorLabelOutlet.isHidden = false
-                isInstructorSwitch.isHidden = false
-                isInstructorSwitch.isEnabled = false
-            }
+        let isKid = ActiveUserModelController.shared.isKid
+        if isKid {
+            isInstructorStackView.isHidden = true
+            instructorLabelOutlet.isHidden = true
+            isInstructorSwitch.isHidden = true
+            isInstructorSwitch.isEnabled = false
+        } else {
+            isInstructorStackView.isHidden = false
+            instructorLabelOutlet.isHidden = false
+            isInstructorSwitch.isHidden = false
+            isInstructorSwitch.isEnabled = false
         }
+        
+        print("isKid: \(String(describing: isKid))")
+        
     }
     
     
@@ -125,16 +133,8 @@ class StudentInfoDetailsViewController: UIViewController {
         destViewController.inEditingMode = true
         destViewController.isOwner = false
         
-        if KidStudentModelController.shared.kids.isEmpty == false {
-            isKid = true
-        } else if AdultStudentModelController.shared.adults.isEmpty == false {
-            isKid = false
-        }
+        let isKid = ActiveUserModelController.shared.isKid
         
-        guard let isKid = isKid else {
-            print("there is no vlaue for isKid in StudentInfoDetailsVC -> editButtonTapped(sender:) - line 83")
-            return
-        }
         if isKid {
             // **** IF KID STUDENT ****
             destViewController.isKid = true
@@ -159,15 +159,12 @@ class StudentInfoDetailsViewController: UIViewController {
         let deleteAccount = UIAlertAction(title: "delete account", style: UIAlertAction.Style.destructive) { (alert) in
             
             // check the isKid property
-            guard let isKid = self.isKid else {
-                print("StudentInfoDetailsVC -> deleteAccountButtonTapped(sender:) - isKid is nil, and that's a problem")
-                return
-            }
+            let isKid = ActiveUserModelController.shared.isKid
             // determine user deletion type
             if isKid {
                 let kid = KidStudentModelController.shared.kids[0]
                 KidStudentModelController.shared.delete(kidStudent: kid)
-            } else if !isKid {
+            } else {
                 let adult = AdultStudentModelController.shared.adults[0]
                 AdultStudentModelController.shared.delete(adultStudent: adult)
             }
@@ -210,102 +207,127 @@ extension StudentInfoDetailsViewController {
     
     func populateCompletedProfileInfo() {
         
-        if KidStudentModelController.shared.kids.isEmpty == false {
+        findActiveUser()
+        
+        let isKid = ActiveUserModelController.shared.isKid
+        
+        if isKid {
             
             // KID STUDENT OPTION
-            guard let kidStudent = KidStudentModelController.shared.kids.first else { return }
-            
-            isKid = true
+            guard let activeStudentKid = activeStudentKid else { return }
+            guard let belt = activeStudentKid.belt else { return }
             
             // populate UI elements in VC
-            self.title = "\(kidStudent.firstName) \(kidStudent.lastName)"
-            usernameLabelOutlet.text = "username: \(kidStudent.username)"
+            self.title = "\(activeStudentKid.firstName ?? "") \(activeStudentKid.lastName ?? "")"
+            usernameLabelOutlet.text = "username: \(activeStudentKid.username ?? "")"
             // populate birthdate outlet
-            formatBirthdate(birthdate: kidStudent.birthdate)
+            formatBirthdate(birthdate: activeStudentKid.birthdate ?? Date())
             // contact info outlets
-            phoneLabelOutlet.text = kidStudent.phone
+            phoneLabelOutlet.text = activeStudentKid.phone
             // mobile is not a required field
-            if kidStudent.mobile != "" {
-                mobileLabelOutlet.text = kidStudent.mobile
+            if activeStudentKid.mobile != "" {
+                mobileLabelOutlet.text = activeStudentKid.mobile
             } else {
                 mobileLabelOutlet.isHidden = true
             }
-            emailLabelOutlet.text = kidStudent.email
+            emailLabelOutlet.text = activeStudentKid.email
             // parent / guardian name
-            parentGuardianLabelOutlet.text = "parent/guardian: \(kidStudent.parentGuardian)"
+            parentGuardianLabelOutlet.text = "parent/guardian: \(activeStudentKid.parentGuardian ?? "")"
             // address outlets
-            addressLine1LabelOutlet.text = kidStudent.addressLine1
+            addressLine1LabelOutlet.text = activeStudentKid.address?.addressLine1
             // addressLine2 is not a required field
-            if kidStudent.addressLine2 != "" {
-                addressLine2LabelOutlet.text = kidStudent.addressLine2
+            if activeStudentKid.address?.addressLine2 != "" {
+                addressLine2LabelOutlet.text = activeStudentKid.address?.addressLine2
             } else {
                 addressLine2LabelOutlet.isHidden = true
             }
-            cityLabelOutlet.text = kidStudent.city
-            stateLabelOutlet.text = kidStudent.state
-            zipCodeLabelOutlet.text = kidStudent.zipCode
+            cityLabelOutlet.text = activeStudentKid.address?.city
+            stateLabelOutlet.text = activeStudentKid.address?.state
+            zipCodeLabelOutlet.text = activeStudentKid.address?.zipCode
             // emergency contact info outlets
-            emergencyContactNameLabelOutlet.text = kidStudent.emergencyContactName
-            emergencyContactRelationshipLabelOutlet.text = kidStudent.emergencyContactRelationship
-            emergencyContactPhoneLabelOutlet.text = kidStudent.emergencyContactPhone
+            emergencyContactNameLabelOutlet.text = activeStudentKid.emergencyContact?.name
+            emergencyContactRelationshipLabelOutlet.text = activeStudentKid.emergencyContact?.relationship
+            emergencyContactPhoneLabelOutlet.text = activeStudentKid.emergencyContact?.phone
             
             // profile pic imageView
-            profilePicImageView.image = kidStudent.profilePic
+            if let profilePicData = activeStudentKid.profilePic {
+                
+                profilePicImageView.image = UIImage(data: profilePicData)
+            }
             
             // belt holder UIView
-            print("Kid Student Info in StudentInfodetailsVC -> beltLevel: \(kidStudent.belt.beltLevel)")
-            print("Kid Student Info in StudentInfodetailsVC -> \(kidStudent.belt.numberOfStripes)")
-            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: kidStudent.belt.beltLevel, numberOfStripes: kidStudent.belt.numberOfStripes)
+            print("Kid Student Info in StudentInfodetailsVC -> beltLevel: \(String(describing: activeStudentKid.belt?.beltLevel))")
+            print("Kid Student Info in StudentInfodetailsVC -> \(String(describing: activeStudentKid.belt?.numberOfStripes))")
             
-        } else if AdultStudentModelController.shared.adults.isEmpty == false {
+            // convert numberOfStripes to Int from Int16 in CoreData
+            let stripesInt = Int(belt.numberOfStripes)
+            // get enum value from CoreData beltLevel String
+            if let beltLevel = belt.beltLevel {
+                let beltLevelEnum = InternationalStandardBJJBelts(rawValue: beltLevel)
+                // build the belt
+                beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevelEnum ?? .adultWhiteBelt, numberOfStripes: stripesInt)
+            }
+            
+        } else {
             
             // ADULT STUDENT OPTION
-            guard let adultStudent = AdultStudentModelController.shared.adults.first else {
-                return
-            }
-            
-            isKid = false
+            guard let activeStudentAdult = activeStudentAdult else { return }
+            guard let belt = activeStudentAdult.belt else { return }
             
             // populate UI elements in VC
-            self.title = "\(adultStudent.firstName) \(adultStudent.lastName)"
-            usernameLabelOutlet.text = "username: \(adultStudent.username)"
+            self.title = "\(activeStudentAdult.firstName ?? "") \(activeStudentAdult.lastName ?? "")"
+            usernameLabelOutlet.text = "username: \(activeStudentAdult.username ?? "")"
             // populate birthdate outlet
-            formatBirthdate(birthdate: adultStudent.birthdate)
+            formatBirthdate(birthdate: activeStudentAdult.birthdate ?? Date())
             // contact info outlets
-            phoneLabelOutlet.text = adultStudent.phone
+            phoneLabelOutlet.text = activeStudentAdult.phone
             // mobile is not a required field
-            if adultStudent.mobile != "" {
-                mobileLabelOutlet.text = adultStudent.mobile
+            if activeStudentAdult.mobile != "" {
+                mobileLabelOutlet.text = activeStudentAdult.mobile
             } else {
                 mobileLabelOutlet.isHidden = true
             }
-            emailLabelOutlet.text = adultStudent.email
+            emailLabelOutlet.text = activeStudentAdult.email
             // address outlets
-            addressLine1LabelOutlet.text = adultStudent.addressLine1
+            addressLine1LabelOutlet.text = activeStudentAdult.address?.addressLine1
             // addressLine2 is not a required field
-            if adultStudent.addressLine2 != "" {
-                addressLine2LabelOutlet.text = adultStudent.addressLine2
+            if activeStudentAdult.address?.addressLine2 != "" {
+                addressLine2LabelOutlet.text = activeStudentAdult.address?.addressLine2
             } else {
                 addressLine2LabelOutlet.isHidden = true
             }
-            cityLabelOutlet.text = adultStudent.city
-            stateLabelOutlet.text = adultStudent.state
-            zipCodeLabelOutlet.text = adultStudent.zipCode
+            cityLabelOutlet.text = activeStudentAdult.address?.city
+            stateLabelOutlet.text = activeStudentAdult.address?.state
+            zipCodeLabelOutlet.text = activeStudentAdult.address?.zipCode
             // emergency contact info outlets
-            emergencyContactNameLabelOutlet.text = adultStudent.emergencyContactName
-            emergencyContactRelationshipLabelOutlet.text = adultStudent.emergencyContactRelationship
-            emergencyContactPhoneLabelOutlet.text = adultStudent.emergencyContactPhone
-            
+            emergencyContactNameLabelOutlet.text = activeStudentAdult.emergencyContact?.name
+            emergencyContactRelationshipLabelOutlet.text = activeStudentAdult.emergencyContact?.relationship
+            emergencyContactPhoneLabelOutlet.text = activeStudentAdult.emergencyContact?.phone
+
             // profile pic imageView
-            profilePicImageView.image = adultStudent.profilePic
+            if let profilePicData = activeStudentAdult.profilePic {
+                
+                profilePicImageView.image = UIImage(data: profilePicData)
+            }
             
             // belt holder UIView
-            print("Adult Student Info in StudentInfodetailsVC -> beltLevel: \(adultStudent.belt.beltLevel)")
-            print("Adult Student Info in StudentInfodetailsVC -> \(adultStudent.belt.numberOfStripes)")
-            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: adultStudent.belt.beltLevel, numberOfStripes: adultStudent.belt.numberOfStripes)
+            print("Adult Student Info in StudentInfodetailsVC -> beltLevel: \(String(describing: belt.beltLevel))")
+            print("Adult Student Info in StudentInfodetailsVC -> \(belt.numberOfStripes)")
+            // convert numberOfStripes to Int from Int16 in CoreData
+            let stripesInt = Int(belt.numberOfStripes)
+            // get enum value from CoreData beltLevel String
+            if let beltLevel = belt.beltLevel {
+                let beltLevelEnum = InternationalStandardBJJBelts(rawValue: beltLevel)
+                // build the belt
+                beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevelEnum ?? .adultWhiteBelt, numberOfStripes: stripesInt)
+            }
         }
     }
-    
+}
+        
+
+// MARK: - formatBirthdate()
+extension StudentInfoDetailsViewController {
     func formatBirthdate(birthdate: Date) {
         
         // set up date format
@@ -323,3 +345,104 @@ extension StudentInfoDetailsViewController {
     }
 }
 
+
+// MARK: - fetched ResultsController and findActiveUser()
+extension StudentInfoDetailsViewController: NSFetchedResultsControllerDelegate {
+        
+        func initializeFetchedResultsControllers() {
+
+            initializeFetchResultsControllerStudentKidCD()
+            
+            initializeFetchResultsControllerStudentAdultCD()
+            
+        }
+    
+    func initializeFetchResultsControllerStudentKidCD() {
+        
+        let requestStudentKid = NSFetchRequest<NSFetchRequestResult>(entityName: "StudentKidCD")
+        
+        let lastNameSort = NSSortDescriptor(key: "lastName", ascending: true)
+        requestStudentKid.sortDescriptors = [lastNameSort]
+        
+        let moc = CoreDataStack.context
+        
+        fetchedResultsControllerStudentKids = NSFetchedResultsController(fetchRequest: requestStudentKid, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil) as? NSFetchedResultsController<StudentKidCD>
+        
+        fetchedResultsControllerStudentKids.delegate = self
+        
+        do {
+            try fetchedResultsControllerStudentKids.performFetch()
+        } catch {
+            fatalError("Failed to initialize FetchedResultsController: \(error)")
+        }
+    
+    }
+    
+    func initializeFetchResultsControllerStudentAdultCD() {
+        
+        let requestStudentAdult = NSFetchRequest<NSFetchRequestResult>(entityName: "StudentAdultCD")
+        
+        let lastNameSort = NSSortDescriptor(key: "lastName", ascending: true)
+        requestStudentAdult.sortDescriptors = [lastNameSort]
+        
+        let moc = CoreDataStack.context
+        
+        fetchedResultsControllerStudentAdults = NSFetchedResultsController(fetchRequest: requestStudentAdult, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil) as? NSFetchedResultsController<StudentAdultCD>
+        
+        fetchedResultsControllerStudentAdults.delegate = self
+        
+        do {
+            try fetchedResultsControllerStudentAdults.performFetch()
+        } catch {
+            fatalError("Failed to initialize FetchedResultsController: \(error)")
+        }
+        
+    }
+    
+    
+    func findActiveUser() {
+        
+        // get active user uuid
+        guard let uuid = ActiveUserModelController.shared.activeUser.first else {
+            print("ERROR: no uuid returned by ActiveUserModelController.shared.activeUser.first in OwnerInfoDetailsViewController.swift -> findActiveUser() - line 232.")
+            return
+        }
+        
+        let isKid = ActiveUserModelController.shared.isKid
+        
+        if isKid {
+            // match kid with activeUser UUID
+            guard let activeKids = fetchedResultsControllerStudentKids.fetchedObjects else { return }
+            
+            for kid in activeKids {
+            
+                if kid.kidStudentUUID == uuid {
+                    activeStudentKid = kid
+                    print("SUCCESS: activeKidStudent uuid matches a kid named: \(String(describing: activeStudentKid?.firstName)) \(String(describing: activeStudentKid?.lastName))")
+                    return
+                }
+            }
+        } else {
+            // match adult with activeUser UUID
+            
+            
+            
+            
+            // TODO: - seems like there are duplicate entries in the results of the fetchedResultsController either there are duplicates saved to CoreData, or there are duplicates returned somehow by the resultsController itself
+            
+            
+            
+            
+            guard let activeAdults = fetchedResultsControllerStudentAdults.fetchedObjects else { return }
+            print("activeAdults in findActiveUSer: \(activeAdults)")
+            for adult in activeAdults {
+                
+                if adult.adultStudentUUID == uuid {
+                    activeStudentAdult = adult
+                    print("SUCCESS: activeKidStudent uuid matches an adult named: \(String(describing: activeStudentAdult?.firstName)) \(String(describing: activeStudentAdult?.lastName))")
+                    return
+                }
+            }
+        }
+    }
+}

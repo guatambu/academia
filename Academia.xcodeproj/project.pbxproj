@@ -170,6 +170,8 @@
 		FABF85AD21B78C6F005CEBD4 /* ReviewAndCreatePaymentProgramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF85AC21B78C6F005CEBD4 /* ReviewAndCreatePaymentProgramViewController.swift */; };
 		FABF85AF21B78CB2005CEBD4 /* ViewPaymentProgramAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF85AE21B78CB2005CEBD4 /* ViewPaymentProgramAgreementViewController.swift */; };
 		FABF85BF21BB09FC005CEBD4 /* Billing.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF85BE21BB09FC005CEBD4 /* Billing.swift */; };
+		FAC3E25A22552B0900481C52 /* StudentMessagesListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC3E25922552B0900481C52 /* StudentMessagesListTableViewController.swift */; };
+		FAC3E25C225534F400481C52 /* ActiveUserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC3E25B225534F400481C52 /* ActiveUserDelegate.swift */; };
 		FAC5D3C621BE25550083B417 /* OwnerLocationWorkFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC5D3C521BE25550083B417 /* OwnerLocationWorkFlow.storyboard */; };
 		FAC5D3CA21BF0F600083B417 /* OwnerPaymentProgramWorkflow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC5D3C921BF0F600083B417 /* OwnerPaymentProgramWorkflow.storyboard */; };
 		FACA3EAC21927C3F0099E620 /* profile_pic_placeholder_image.png in Resources */ = {isa = PBXBuildFile; fileRef = FACA3EAB21927C3F0099E620 /* profile_pic_placeholder_image.png */; };
@@ -478,6 +480,8 @@
 		FABF85AC21B78C6F005CEBD4 /* ReviewAndCreatePaymentProgramViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewAndCreatePaymentProgramViewController.swift; sourceTree = "<group>"; };
 		FABF85AE21B78CB2005CEBD4 /* ViewPaymentProgramAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPaymentProgramAgreementViewController.swift; sourceTree = "<group>"; };
 		FABF85BE21BB09FC005CEBD4 /* Billing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Billing.swift; sourceTree = "<group>"; };
+		FAC3E25922552B0900481C52 /* StudentMessagesListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentMessagesListTableViewController.swift; sourceTree = "<group>"; };
+		FAC3E25B225534F400481C52 /* ActiveUserDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveUserDelegate.swift; sourceTree = "<group>"; };
 		FAC5D3C521BE25550083B417 /* OwnerLocationWorkFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerLocationWorkFlow.storyboard; sourceTree = "<group>"; };
 		FAC5D3C921BF0F600083B417 /* OwnerPaymentProgramWorkflow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OwnerPaymentProgramWorkflow.storyboard; sourceTree = "<group>"; };
 		FACA3EAB21927C3F0099E620 /* profile_pic_placeholder_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile_pic_placeholder_image.png; sourceTree = "<group>"; };
@@ -844,6 +848,7 @@
 				FA5C5C55215499F300BF62D5 /* StudentProfileDetailTableViewController.swift */,
 				FAE67A35215C2DDF00822DCF /* StudentPaymentTableViewController.swift */,
 				FABF859221AF8370005CEBD4 /* StudentInfoDetailsViewController.swift */,
+				FAC3E25922552B0900481C52 /* StudentMessagesListTableViewController.swift */,
 			);
 			path = "Student Role";
 			sourceTree = "<group>";
@@ -1188,6 +1193,7 @@
 				FAD5B12C21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift */,
 				FAAEDB4F21DDA27500E1A04F /* GroupMembersDelegate.swift */,
 				FAD2A3BC21E6E42000364FC0 /* InstructorsDelegate.swift */,
+				FAC3E25B225534F400481C52 /* ActiveUserDelegate.swift */,
 				FA1CEF3E21FBAD68004498BC /* ClassGroupDelegate.swift */,
 			);
 			path = "Protocols (Delegates and others))";
@@ -1672,6 +1678,7 @@
 				FAE2FD9C2140C01B00815402 /* MobileTextFieldTableViewCell.swift in Sources */,
 				FA23D2922167F9EF00707056 /* OnBoardingTaskModelController.swift in Sources */,
 				FA94642B222DB9500063B34C /* PaymentBillingTypeCDModelController.swift in Sources */,
+				FAC3E25A22552B0900481C52 /* StudentMessagesListTableViewController.swift in Sources */,
 				FAB806CD2210E84400124EBA /* StudentKidCD+Convenience.swift in Sources */,
 				FA6FB9FF2149F32200558657 /* Owner.swift in Sources */,
 				FA531C2421954E2C00AE2C38 /* Belt.swift in Sources */,
@@ -1789,6 +1796,7 @@
 				FACA3EB92192895C0099E620 /* CompletedProfileViewController.swift in Sources */,
 				FA946416222DB77D0063B34C /* AulaAttendanceCDModelController.swift in Sources */,
 				FAE2FD8C2140BFBA00815402 /* UsernameTextFieldTableViewCell.swift in Sources */,
+				FAC3E25C225534F400481C52 /* ActiveUserDelegate.swift in Sources */,
 				FAD2A3B121E6B90D00364FC0 /* AddGroupToClassTableViewController.swift in Sources */,
 				FA6FBA082149F3C700558657 /* StudentStatus.swift in Sources */,
 				FAAEDB4E21DD7BBB00E1A04F /* ReviewKidStudentTableViewCell.swift in Sources */,

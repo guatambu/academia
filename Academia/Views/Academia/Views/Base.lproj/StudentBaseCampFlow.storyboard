@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Messages Table View Controller-->
+        <!--Student Messages List Table View Controller-->
         <scene sceneID="ewE-e1-RLq">
             <objects>
-                <tableViewController id="12V-is-Xlm" userLabel="Messages Table View Controller" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="toStudentMessagesList" id="12V-is-Xlm" userLabel="Student Messages List Table View Controller" customClass="StudentMessagesListTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="F5T-tW-Sgq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
