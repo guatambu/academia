@@ -153,6 +153,12 @@ class StudentInfoDetailsViewController: UIViewController {
         }
     }
     
+    @IBAction func logoutButtonTapped(_ sender: UIButton) {
+        
+        logoutStudentUserAndReturnToLandingPage()
+        
+    }
+    
     @IBAction func deleteAccountButtonTapped(_ sender: UIButton) {
         
         let alertController = UIAlertController(title: "Delete Account", message: "are you sure you want to delete your account?", preferredStyle: UIAlertController.Style.alert)
@@ -448,3 +454,28 @@ extension StudentInfoDetailsViewController: NSFetchedResultsControllerDelegate {
         }
     }
 }
+
+
+// MARK: - Programmatic Segues to return to LandingPage and logout current Student User
+extension StudentInfoDetailsViewController {
+    
+    func logoutStudentUserAndReturnToLandingPage() {
+        
+        // remove current Student User from ActiveUserModelController active user array
+        // this array should be totally empty whenever no user of any type is logged in
+        ActiveUserModelController.shared.activeUser.removeAll()
+        
+        // set isLoggedOn property of Student User to false
+        if let activeStudentAdult = activeStudentAdult {
+            activeStudentAdult.isLoggedOn = false
+        }
+        if let activeStudentKid = activeStudentKid {
+            activeStudentKid.isLoggedOn = false
+        }
+        // return to the LandingPageVC scene
+        returnToLandingPage()
+    }
+}
+
+
+

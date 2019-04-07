@@ -119,6 +119,10 @@ class OwnerInfoDetailsViewController: UIViewController {
         destViewController.userCDToEdit = activeOwner
     }
     
+    @IBAction func logoutButtonTapped(_ sender: UIButton) {
+        logoutOwnerUserAndReturnToLandingPage()
+    }
+    
     @IBAction func deleteAccountButtonTapped(_ sender: UIButton) {
         
         let alertController = UIAlertController(title: "Delete Account", message: "are you sure you want to delete your account?", preferredStyle: UIAlertController.Style.alert)
@@ -338,3 +342,66 @@ extension UIViewController {
     }
 }
 
+// MARK: - Programmatic Segues to return to LandingPage and logout current Owner
+extension UIViewController {
+    
+    func logoutOwnerAndReturnToLandingPage() {
+        
+        // remove current Owner from ActiveUserModelController active user array
+        
+        // set isLoggedOn property of Owner to false
+        
+        // tear down and reset nav stack to beginning at LandingPAgeViewController AND segue back to landingPage
+        guard let viewControllers = self.navigationController?.viewControllers else { return }
+        
+        for viewController in viewControllers {
+            
+            if viewController is LandingPageViewController {
+                self.navigationController?.popToViewController(viewController, animated: true)
+                
+            }
+        }
+    }
+}
+
+
+// MARK: - Programmatic Segues to return to LandingPage and logout current Student User
+extension OwnerInfoDetailsViewController {
+    
+    func logoutOwnerUserAndReturnToLandingPage() {
+        
+        // remove current Student User from ActiveUserModelController active user array
+        // this array should be totally empty whenever no user of any type is logged in
+        ActiveUserModelController.shared.activeUser.removeAll()
+        
+        // set isLoggedOn property of Student User to false
+        if let activeOwner = activeOwner {
+            activeOwner.isLoggedOn = false
+        }
+        // return to the LandingPageVC scene
+        returnToLandingPage()
+    }
+}
+
+
+// MARK: - returnToLandingPage()
+extension UIViewController {
+    
+    func returnToLandingPage() {
+        // tear down and reset nav stack to beginning at LandingPageViewController AND segue back to landingPage
+
+        guard var viewControllers = self.navigationController?.viewControllers else { return }
+        
+        viewControllers.removeAll()
+        
+        // programmatically performing the segue
+        
+        // instantiate the relevant storyboard
+        let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        // instantiate the desired TableViewController as ViewController on relevant storyboard
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toLandingPage") as! LandingPageViewController
+        // create the segue programmatically - PUSH
+        UIApplication.shared.keyWindow?.rootViewController = destViewController
+        
+    }
+}
