@@ -30,7 +30,7 @@ class OwnerHomeTableViewController: UITableViewController, ActiveOwnerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let nib = UINib(nibName: "OnBoardingDashboardCell", bundle: nil)
+        let nib = UINib(nibName: "OwnerOnBoardingDashboardCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "ownerHomeDashboardCell")
         
     }
@@ -46,7 +46,7 @@ class OwnerHomeTableViewController: UITableViewController, ActiveOwnerDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ownerHomeDashboardCell", for: indexPath) as? OwnerDashboardTableViewCell else { return UITableViewCell() }
 
-        let task = OwnerModelController.shared.ownerOnboardingTasks[indexPath.row]
+        let task = OwnerCDModelController.shared.ownerOnboardingTasks[indexPath.row]
         
         cell.onBoardTask = task
         

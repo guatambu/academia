@@ -35,8 +35,8 @@ class StudentHomeTableViewController: UITableViewController, ActiveStudentDelega
         
         print("isKid: \(String(describing: isKid))")
         
-        let nib = UINib(nibName: "OnBoardingDashboardCell", bundle: nil)
-        self.tableView.register(nib, forCellReuseIdentifier: "ownerHomeDashboardCell")
+        let nib = UINib(nibName: "StudentDashboardCell", bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: "studentDashboardCell")
         
         self.tabBarController?.selectedIndex = 1
         
@@ -61,7 +61,7 @@ class StudentHomeTableViewController: UITableViewController, ActiveStudentDelega
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ownerHomeDashboardCell", for: indexPath) as? OwnerDashboardTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "studentDashboardCell", for: indexPath) as? StudentDashboardTableViewCell else { return UITableViewCell() }
         
         if isKid {
             let adultStudentTask = StudentAdultCDModelController.shared.adultStudentOnboardingTasks[indexPath.row]

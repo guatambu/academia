@@ -14,6 +14,7 @@ class OwnerDashboardTableViewCell: UITableViewCell {
     
 
     @IBOutlet weak var checkboxButtonOutlet: UIButton!
+    @IBOutlet weak var checkBoxImageView: UIImageView!
     @IBOutlet weak var rightRedArrowOutlet: UIImageView!
     @IBOutlet weak var onBoardingTaskTitleOutlet: UILabel!
     @IBOutlet weak var onBoardingTaskDescriptionOutlet: UILabel!
@@ -51,9 +52,9 @@ class OwnerDashboardTableViewCell: UITableViewCell {
         guard let onBoardTaskComplete = onBoardTask.isCompleted else { return }
         
         if onBoardTaskComplete {
-            checkboxButtonOutlet.imageView?.image = #imageLiteral(resourceName: "checked_tick_box_32.png")
+            checkBoxImageView.image = UIImage(named: "checked_box_50")
         } else {
-            checkboxButtonOutlet.imageView?.image = #imageLiteral(resourceName: "unchecked_checkbox_32.png")
+            checkBoxImageView.image = UIImage(named: "unchecked_box_50")
         }
     }
 }
