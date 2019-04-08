@@ -31,6 +31,21 @@ class OwnerCDModelController {
         }
     }
     
+    var numberTasksCompleted: Int = 0
+    
+    var ownerOnboardingTasks: [OnBoardingTask] = [
+        
+        OnBoardingTask(onboardingTaskUID: UUID(), name: "welcome", title: "Welcome!", descriptionDetail: "This is your Home's Dashboard. Here you stay current with your academy.", isCompleted: true, dateCompleted: nil, dateOfMostRecentChange: nil),
+        OnBoardingTask(onboardingTaskUID: UUID(), name: "startGettingPaid", title: "Start getting paid", descriptionDetail: "Set up your account to receive your payments.", isCompleted: false, dateCompleted: nil, dateOfMostRecentChange: nil),
+        OnBoardingTask(onboardingTaskUID: UUID(), name: "setUpPaymentPrograms", title: "$0.00 in sales", descriptionDetail: "Please set the Payment Program(s) for your school.", isCompleted: false, dateCompleted: nil, dateOfMostRecentChange: nil),
+        OnBoardingTask(onboardingTaskUID: UUID(), name: "locationsSetUp", title: "No Locations", descriptionDetail: "Please add your School Location(s).", isCompleted: false, dateCompleted: nil, dateOfMostRecentChange: nil),
+        OnBoardingTask(onboardingTaskUID: UUID(), name: "messagingGroups", title: "0 Messaging Groups", descriptionDetail: "Please create Messaging Group(s) for your academy.", isCompleted: false, dateCompleted: nil, dateOfMostRecentChange: nil),
+        OnBoardingTask(onboardingTaskUID: UUID(), name: "createClassSchedule", title: "No Classes Scheduled", descriptionDetail: "Please set up Your School's complete Class Schedule", isCompleted: false, dateCompleted: nil, dateOfMostRecentChange: nil),
+        OnBoardingTask(onboardingTaskUID: UUID(), name: "reviewBeltSystems", title: "Review Belt Systems", descriptionDetail: "Please Take a moment to review the included Belt Systems", isCompleted: false, dateCompleted: nil, dateOfMostRecentChange: nil)
+    ]
+    
+    var deletedOwnerOnboardingTasks: [OnBoardingTask] = []
+    
     
     // MARK: - CRUD Functions
     

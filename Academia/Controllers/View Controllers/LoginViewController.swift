@@ -43,6 +43,10 @@ class LoginViewController: UIViewController {
     var studentKid: StudentKidCD?
     var uuid: UUID?
     
+    // active user delegate
+    var activeOwnerDelegate: ActiveOwnerDelegate?
+    var activeStudentDelegate: ActiveStudentDelegate?
+    
     
     // MARK: - ViewController Lifecycle Functions
     
@@ -149,7 +153,7 @@ class LoginViewController: UIViewController {
                         // unwrap owner.uuid value
                         if let uuid = owner.ownerUUID {
                             // pass uuid to ActiveUserModelController.activeUsers
-                            ActiveUserModelController.shared.activeUser.append(uuid)                            
+                            ActiveUserModelController.shared.activeUser.append(uuid)
                         }
                         
                         // login successful, leave function
@@ -177,6 +181,10 @@ class LoginViewController: UIViewController {
                         resetViewControllerLoginSuccessful()
                         // toggle owner.isLoggedOn
                         studentAdult.isLoggedOn = true
+                        // toggle the delegate location isKid property in StudentHomeTVC.swift
+                        ActiveUserModelController.shared.isKid = false
+                        print("ActiveUserModelController.shared.isKid: \(ActiveUserModelController.shared.isKid)")
+                        
                         // unwrap studentAdult.uuid value
                         if let uuid = studentAdult.adultStudentUUID {
                             // pass uuid to ActiveUserModelController.activeUsers
@@ -208,6 +216,10 @@ class LoginViewController: UIViewController {
                         resetViewControllerLoginSuccessful()
                         // toggle owner.isLoggedOn
                         studentKid.isLoggedOn = true
+                        // toggle the delegate location isKid property in StudentHomeTVC.swift
+                        ActiveUserModelController.shared.isKid = true
+                        print("ActiveUserModelController.shared.isKid: \(ActiveUserModelController.shared.isKid)")
+                        
                         // unwrap studentKid.uuid value
                         if let uuid = studentKid.kidStudentUUID {
                             // pass uuid to ActiveUserModelController.activeUsers

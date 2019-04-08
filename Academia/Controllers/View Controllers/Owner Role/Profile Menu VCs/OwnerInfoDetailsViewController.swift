@@ -97,8 +97,6 @@ class OwnerInfoDetailsViewController: UIViewController {
         
         // programmatically performing the segue
         
-        // OPTIONS FOR DIFFERENT TYPES OF SEGUES + TYPES OF DESTINATION VIEWCONTROLLERS
-        
         // instantiate the relevant storyboard
         let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
@@ -119,9 +117,10 @@ class OwnerInfoDetailsViewController: UIViewController {
         destViewController.isOwner = true
         destViewController.isKid = false
         destViewController.userCDToEdit = activeOwner
-        // TODO: set destinationVC properties to display user to be edited
-            // in destintaionVC unrwrap userToEdit? as either Owner, AdultStudent, or KidStudent and us this to display info, and be passed around for updating in each update function
-            // also need to build in programmatic segues for saveTapped to exit editing mode and return to OwnerProfileDetailsVC
+    }
+    
+    @IBAction func logoutButtonTapped(_ sender: UIButton) {
+        logoutOwnerUserAndReturnToLandingPage()
     }
     
     @IBAction func deleteAccountButtonTapped(_ sender: UIButton) {
@@ -276,7 +275,7 @@ extension OwnerInfoDetailsViewController: NSFetchedResultsControllerDelegate {
     
     func initializeFetchedResultsController() {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "OwnerCD")
-        let uuidSort = NSSortDescriptor(key: "ownerUUID", ascending: true)
+        let uuidSort = NSSortDescriptor(key: "lastName", ascending: true)
         request.sortDescriptors = [uuidSort]
         
         let moc = CoreDataStack.context
@@ -343,3 +342,53 @@ extension UIViewController {
     }
 }
 
+
+// MARK: - Programmatic Segues to return to LandingPage and logout current Student User
+extension OwnerInfoDetailsViewController {
+    
+    func logoutOwnerUserAndReturnToLandingPage() {
+        
+        // give user the chance to cancel logout in case of accidental logout button tap
+        let alertController = UIAlertController(title: "Logout", message: "are you sure you want to logout of your account?", preferredStyle: UIAlertController.Style.alert)
+        
+        let cancel = UIAlertAction(title: "cancel", style: UIAlertAction.Style.cancel, handler: nil)
+        let logout = UIAlertAction(title: "logout", style: UIAlertAction.Style.destructive) { (alert) in
+        
+            // remove current Student User from ActiveUserModelController active user array
+            // this array should be totally empty whenever no user of any type is logged in
+            ActiveUserModelController.shared.activeUser.removeAll()
+            
+            // set isLoggedOn property of Student User to false
+            if let activeOwner = self.activeOwner {
+                activeOwner.isLoggedOn = false
+            }
+            // return to the LandingPageVC scene
+            self.returnToLandingPage()
+        }
+        
+        alertController.addAction(cancel)
+        alertController.addAction(logout)
+        
+        self.present(alertController, animated: true)
+    }
+}
+
+
+// MARK: - returnToLandingPage()
+extension UIViewController {
+    
+    func returnToLandingPage() {
+        
+        // programmatically performing the segue
+        
+        // instantiate the relevant storyboard
+        let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        // instantiate the desired TableViewController as ViewController on relevant storyboard
+        if let destViewController = (mainView.instantiateViewController(withIdentifier: "toLandingPage") as? LandingPageViewController) {
+            
+            // assign new navController since we are tearing down the old navController
+            let navBarOnModal: UINavigationController = UINavigationController(rootViewController: destViewController)
+            self.present(navBarOnModal, animated: true, completion: nil)
+        }
+    }
+}

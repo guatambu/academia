@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ownerHomeDashboardCell" rowHeight="80" id="ILG-FY-gdT" userLabel="OnBoarding Dashboard Table View Cell" customClass="OwnerDashboardTableViewCell" customModule="Academia" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ownerHomeDashboardCell" rowHeight="80" id="ILG-FY-gdT" userLabel="Owner OnBoarding Dashboard Table View Cell" customClass="OwnerDashboardTableViewCell" customModule="Academia" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ILG-FY-gdT" id="U7a-HS-hSR">
@@ -24,9 +24,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcG-Rc-sDk" userLabel="Checkbox View">
                                 <rect key="frame" x="0.0" y="0.0" width="40" height="79.5"/>
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unchecked_box_50" translatesAutoresizingMaskIntoConstraints="NO" id="7Rn-Ri-XEW">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="79.5"/>
+                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="95g-bz-JNx" userLabel="Checkbox Button">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="79.5"/>
-                                        <state key="normal" image="checked_tick_box_32.png"/>
                                         <connections>
                                             <action selector="checkboxButtonTapped:" destination="ILG-FY-gdT" eventType="touchUpInside" id="VYh-0a-jbX"/>
                                         </connections>
@@ -37,8 +39,12 @@
                                     <constraint firstAttribute="trailing" secondItem="95g-bz-JNx" secondAttribute="trailing" id="70K-cw-ktg"/>
                                     <constraint firstAttribute="width" constant="40" id="b0m-ZT-XQO"/>
                                     <constraint firstAttribute="bottom" secondItem="95g-bz-JNx" secondAttribute="bottom" id="hu4-3l-EZe"/>
+                                    <constraint firstAttribute="trailing" secondItem="7Rn-Ri-XEW" secondAttribute="trailing" id="jOY-N9-krw"/>
                                     <constraint firstItem="95g-bz-JNx" firstAttribute="top" secondItem="fcG-Rc-sDk" secondAttribute="top" id="kP5-dY-cyZ"/>
                                     <constraint firstItem="95g-bz-JNx" firstAttribute="leading" secondItem="fcG-Rc-sDk" secondAttribute="leading" id="mM1-PT-ivZ"/>
+                                    <constraint firstItem="7Rn-Ri-XEW" firstAttribute="top" secondItem="fcG-Rc-sDk" secondAttribute="top" id="vNk-8h-Lk9"/>
+                                    <constraint firstItem="7Rn-Ri-XEW" firstAttribute="leading" secondItem="fcG-Rc-sDk" secondAttribute="leading" id="wa7-gy-xhM"/>
+                                    <constraint firstAttribute="bottom" secondItem="7Rn-Ri-XEW" secondAttribute="bottom" id="wh9-xZ-tlf"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n9o-R3-9rI" userLabel="Text Container View">
@@ -101,6 +107,7 @@
             </tableViewCellContentView>
             <gestureRecognizers/>
             <connections>
+                <outlet property="checkBoxImageView" destination="7Rn-Ri-XEW" id="bbe-pD-Gcf"/>
                 <outlet property="checkboxButtonOutlet" destination="95g-bz-JNx" id="qx1-lA-PK5"/>
                 <outlet property="onBoardingTaskDescriptionOutlet" destination="eqh-rI-nF4" id="ItY-X5-hLG"/>
                 <outlet property="onBoardingTaskTitleOutlet" destination="Ebx-k2-3Z8" id="zyQ-9y-kQd"/>
@@ -110,7 +117,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="checked_tick_box_32.png" width="32" height="32"/>
         <image name="right_red_arrow_32.png" width="32" height="32"/>
+        <image name="unchecked_box_50" width="37.5" height="37.5"/>
     </resources>
 </document>

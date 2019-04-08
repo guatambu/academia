@@ -90,7 +90,6 @@ class ClassInfoDetailsTableViewController: UITableViewController {
         }
         
         print("daysOfTheWeek: \(String(describing: aulaCD.aulaName))")
-        
     }
     
     
@@ -207,12 +206,10 @@ class ClassInfoDetailsTableViewController: UITableViewController {
         }
         
         if section == 0 {
-//            return ownerInstructors.count
             
             return ownerInstructorsCD.count
             
         } else if section == 1 {
-//            return instructors.count
             
             return instructorsCD.count
             

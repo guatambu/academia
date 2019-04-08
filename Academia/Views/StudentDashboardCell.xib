@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="studentDashboardCell" rowHeight="80" id="EVT-Rs-kv7" userLabel="Student OnBoarding Dashboard Table View Cell" customClass="StudentDashboardTableViewCell" customModule="Academia" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EVT-Rs-kv7" id="vJE-UX-eYI">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="wJT-Mw-YVm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Xp-PL-OsX" userLabel="Checkbox View">
+                                <rect key="frame" x="0.0" y="0.0" width="16" height="79.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="16" id="kKd-w1-0u8"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dCd-lu-USq" userLabel="Text Container View">
+                                <rect key="frame" x="28" y="0.0" width="295" height="79.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="OnBoarding Task Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="P4Q-fE-izC">
+                                        <rect key="frame" x="0.0" y="4" width="295" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="c5i-YQ-gLK"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="This is a description of this one specific OnBoarding Task." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="f8L-bZ-f5I">
+                                        <rect key="frame" x="0.0" y="31.5" width="295" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="m1c-i0-vGm"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="P4Q-fE-izC" secondAttribute="trailing" id="915-GT-nqw"/>
+                                    <constraint firstItem="P4Q-fE-izC" firstAttribute="top" secondItem="dCd-lu-USq" secondAttribute="top" constant="4" id="GyT-Nm-sSl"/>
+                                    <constraint firstAttribute="trailing" secondItem="f8L-bZ-f5I" secondAttribute="trailing" id="iUV-Sn-cda"/>
+                                    <constraint firstItem="P4Q-fE-izC" firstAttribute="leading" secondItem="dCd-lu-USq" secondAttribute="leading" id="kfp-eo-qA5"/>
+                                    <constraint firstItem="f8L-bZ-f5I" firstAttribute="leading" secondItem="dCd-lu-USq" secondAttribute="leading" id="qqf-iR-cNF"/>
+                                    <constraint firstAttribute="bottom" secondItem="f8L-bZ-f5I" secondAttribute="bottom" constant="4" id="wj8-I7-Foa"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="umA-yK-ERe" userLabel="Image Container View">
+                                <rect key="frame" x="335" y="0.0" width="40" height="79.5"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_red_arrow_32.png" translatesAutoresizingMaskIntoConstraints="NO" id="iF5-aH-dTy">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="79.5"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="iF5-aH-dTy" firstAttribute="top" secondItem="umA-yK-ERe" secondAttribute="top" id="ZWe-Dh-LhD"/>
+                                    <constraint firstAttribute="bottom" secondItem="iF5-aH-dTy" secondAttribute="bottom" id="cva-CV-eOH"/>
+                                    <constraint firstAttribute="trailing" secondItem="iF5-aH-dTy" secondAttribute="trailing" id="hOi-2q-DGR"/>
+                                    <constraint firstAttribute="width" constant="40" id="mQj-ME-5Pb"/>
+                                    <constraint firstItem="iF5-aH-dTy" firstAttribute="leading" secondItem="umA-yK-ERe" secondAttribute="leading" id="mSm-e3-8WY"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="wJT-Mw-YVm" firstAttribute="leading" secondItem="vJE-UX-eYI" secondAttribute="leading" id="2T0-vN-1Db"/>
+                    <constraint firstAttribute="trailing" secondItem="wJT-Mw-YVm" secondAttribute="trailing" id="KJc-N6-8ld"/>
+                    <constraint firstItem="wJT-Mw-YVm" firstAttribute="top" secondItem="vJE-UX-eYI" secondAttribute="top" id="YcO-KJ-C5p"/>
+                    <constraint firstAttribute="bottom" secondItem="wJT-Mw-YVm" secondAttribute="bottom" id="mul-tC-Ey9"/>
+                </constraints>
+            </tableViewCellContentView>
+            <gestureRecognizers/>
+            <connections>
+                <outlet property="onBoardingTaskDescriptionOutlet" destination="f8L-bZ-f5I" id="qOm-DS-bDH"/>
+                <outlet property="onBoardingTaskTitleOutlet" destination="P4Q-fE-izC" id="gZ2-59-5RL"/>
+                <outlet property="rightRedArrowOutlet" destination="iF5-aH-dTy" id="SvT-tz-HGz"/>
+            </connections>
+            <point key="canvasLocation" x="61.5" y="161"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="right_red_arrow_32.png" width="32" height="32"/>
+    </resources>
+</document>

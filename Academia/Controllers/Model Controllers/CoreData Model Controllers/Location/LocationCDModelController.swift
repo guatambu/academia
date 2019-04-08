@@ -18,6 +18,10 @@ class LocationCDModelController {
     var locations: [LocationCD] {
         let fetchRequest: NSFetchRequest<LocationCD> = LocationCD.fetchRequest()
         
+        let locationNameSort = NSSortDescriptor(key: "locationName", ascending: true)
+        
+        fetchRequest.sortDescriptors = [locationNameSort]
+        
         do {
             return try CoreDataStack.context.fetch(fetchRequest)
         } catch {

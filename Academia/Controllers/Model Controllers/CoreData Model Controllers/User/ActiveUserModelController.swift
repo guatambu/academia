@@ -15,6 +15,7 @@ class ActiveUserModelController {
     static let shared = ActiveUserModelController()
     
     var activeUser: [UUID] = []
+    var isKid = false
 
     
     // MARK: - Delete

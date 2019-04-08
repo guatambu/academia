@@ -695,27 +695,45 @@
                                     <constraint firstAttribute="trailing" secondItem="QOS-3D-cIq" secondAttribute="trailing" constant="16" id="bIL-6f-PGH"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="LtR-SD-FdO">
-                                <rect key="frame" x="74.5" y="530" width="171" height="22"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
-                                <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <inset key="contentEdgeInsets" minX="32" minY="0.0" maxX="32" maxY="0.0"/>
-                                <state key="normal" title="delete account">
-                                    <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="deleteAccountButtonTapped:" destination="cDB-5R-ULH" eventType="touchUpInside" id="xIZ-AQ-BXd"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="X6Y-h2-eYO" userLabel="delete/logout account Stack View">
+                                <rect key="frame" x="24" y="532" width="272" height="20"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="LtR-SD-FdO">
+                                        <rect key="frame" x="0.0" y="0.0" width="126" height="20"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="13"/>
+                                        <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <inset key="contentEdgeInsets" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
+                                        <state key="normal" title="delete account">
+                                            <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="deleteAccountButtonTapped:" destination="cDB-5R-ULH" eventType="touchUpInside" id="xIZ-AQ-BXd"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="cbs-uC-Zc0" userLabel="logout">
+                                        <rect key="frame" x="146" y="0.0" width="126" height="20"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                                        <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <inset key="contentEdgeInsets" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
+                                        <state key="normal" title="logout">
+                                            <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="logoutButtonTapped:" destination="cDB-5R-ULH" eventType="touchUpInside" id="n9b-V7-rVZ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="qbH-Hf-8xE" firstAttribute="bottom" secondItem="X6Y-h2-eYO" secondAttribute="bottom" constant="16" id="5S1-qj-6Hd"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="1iZ-Ri-MIy" secondAttribute="bottom" constant="40" id="7P5-6C-zMf"/>
+                            <constraint firstAttribute="trailing" secondItem="X6Y-h2-eYO" secondAttribute="trailing" constant="24" id="Amf-65-jtJ"/>
                             <constraint firstItem="qbH-Hf-8xE" firstAttribute="trailing" secondItem="1iZ-Ri-MIy" secondAttribute="trailing" id="Ioc-8E-8Wt"/>
-                            <constraint firstItem="LtR-SD-FdO" firstAttribute="centerX" secondItem="xOr-hb-RuH" secondAttribute="centerX" id="PIh-y0-MgO"/>
                             <constraint firstItem="1iZ-Ri-MIy" firstAttribute="leading" secondItem="xOr-hb-RuH" secondAttribute="leading" id="aRI-Rq-4UN"/>
+                            <constraint firstItem="X6Y-h2-eYO" firstAttribute="leading" secondItem="qbH-Hf-8xE" secondAttribute="leading" constant="24" id="gAd-cd-RO8"/>
                             <constraint firstItem="1iZ-Ri-MIy" firstAttribute="top" secondItem="qbH-Hf-8xE" secondAttribute="top" constant="16" id="rfq-hb-3Zh"/>
-                            <constraint firstItem="qbH-Hf-8xE" firstAttribute="bottom" secondItem="LtR-SD-FdO" secondAttribute="bottom" constant="16" id="yhu-Z9-Ret"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qbH-Hf-8xE"/>
                     </view>

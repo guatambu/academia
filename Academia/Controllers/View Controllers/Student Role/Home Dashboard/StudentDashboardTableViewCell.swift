@@ -1,19 +1,17 @@
 //
-//  OwnerDashboardTableViewCell.swift
+//  StudentDashboardTableViewCell.swift
 //  Academia
 //
-//  Created by Michael Guatambu Davis on 8/23/18.
-//  Copyright © 2018 DunDak, LLC. All rights reserved.
+//  Created by Kelly Johnson on 4/8/19.
+//  Copyright © 2019 DunDak, LLC. All rights reserved.
 //
 
 import UIKit
 
-class OwnerDashboardTableViewCell: UITableViewCell {
-    
+class StudentDashboardTableViewCell: UITableViewCell {
+        
     // MARK: - Properties
     
-
-    @IBOutlet weak var checkboxButtonOutlet: UIButton!
     @IBOutlet weak var rightRedArrowOutlet: UIImageView!
     @IBOutlet weak var onBoardingTaskTitleOutlet: UILabel!
     @IBOutlet weak var onBoardingTaskDescriptionOutlet: UILabel!
@@ -27,8 +25,8 @@ class OwnerDashboardTableViewCell: UITableViewCell {
     
     // MARK: - Actions
     
-    @IBAction func checkboxButtonTapped(_ sender: UIButton) {
-    }
+//    @IBAction func checkboxButtonTapped(_ sender: UIButton) {
+//    }
     
     
     // MARK: - awakeFromNib()
@@ -47,13 +45,14 @@ class OwnerDashboardTableViewCell: UITableViewCell {
         onBoardingTaskTitleOutlet.text = onBoardTask.title
         onBoardingTaskDescriptionOutlet.text = onBoardTask.descriptionDetail
         
+//        checkBoxImageView.image = UIImage()
         
-        guard let onBoardTaskComplete = onBoardTask.isCompleted else { return }
-        
-        if onBoardTaskComplete {
-            checkboxButtonOutlet.imageView?.image = #imageLiteral(resourceName: "checked_tick_box_32.png")
-        } else {
-            checkboxButtonOutlet.imageView?.image = #imageLiteral(resourceName: "unchecked_checkbox_32.png")
-        }
+//        guard let onBoardTaskComplete = onBoardTask.isCompleted else { return }
+//        
+//        if onBoardTaskComplete {
+//            checkBoxImageView.image = UIImage(named: "checked_box_32")
+//        } else {
+//            checkBoxImageView.image = UIImage(named: "unchecked_box_32")
+//        }
     }
 }

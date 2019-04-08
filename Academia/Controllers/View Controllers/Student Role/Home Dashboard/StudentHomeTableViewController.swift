@@ -8,21 +8,16 @@
 
 
 // TODO:
-    // need to build in a check for whether the user is adult student or kid student
-    // since a student user profile will only have one user, the test will be whether or there is an user object in either the source of truth for a kid or an adult student
-    // if there is an user object present, then populate this TVC properly with the respective info and set adultStudent property to the present adultStudent or set the kidStudent property to the present kidStudent from the respective source of truth
     // maybe want to set up where a parent or family member can manage all of the family in one account, meaning that the studentController sources of truth may have more than one entry... might not be for first time launch.  maybe a later feature.
 
 import UIKit
 
-class StudentHomeTableViewController: UITableViewController {
+class StudentHomeTableViewController: UITableViewController, ActiveStudentDelegate {
     
     // MARK: - Properties
     
-    var adultStudent: AdultStudent?
-    var kidStudent: KidStudent?
-    var isKid: Bool?
-    var uuid: UUID?
+    var activeStudent: UUID?
+    var isKid: Bool = false
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -32,26 +27,22 @@ class StudentHomeTableViewController: UITableViewController {
                            NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 24)! ]
         
         navigationController?.navigationBar.titleTextAttributes = avenirFont
-        
-        tableView.estimatedRowHeight = 80
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let nib = UINib(nibName: "OnBoardingDashboardCell", bundle: nil)
-        self.tableView.register(nib, forCellReuseIdentifier: "ownerHomeDashboardCell")
+        print("isKid: \(String(describing: isKid))")
+        
+        let nib = UINib(nibName: "StudentDashboardCell", bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: "studentDashboardCell")
         
         self.tabBarController?.selectedIndex = 1
         
-        if AdultStudentModelController.shared.adults.isEmpty == false {
-            adultStudent = AdultStudentModelController.shared.adults.first
-            isKid = false
-        } else if KidStudentModelController.shared.kids.isEmpty == false {
-            kidStudent = KidStudentModelController.shared.kids.first
-            isKid = true
-        }
+        
+        // TODO: - get active student user via UUID from ActiveUserModelController
+        
     }
     
     
@@ -59,17 +50,24 @@ class StudentHomeTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return AdultStudentModelController.shared.adultStudentOnboardingTasks.count
+        
+        if isKid {
+            return StudentKidCDModelController.shared.kidStudentOnboardingTasks.count
+        } else {
+            
+            return StudentAdultCDModelController.shared.adultStudentOnboardingTasks.count
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ownerHomeDashboardCell", for: indexPath) as? OwnerDashboardTableViewCell else { return UITableViewCell() }
         
-        if adultStudent != nil {
-            let adultStudentTask = AdultStudentModelController.shared.adultStudentOnboardingTasks[indexPath.row]
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "studentDashboardCell", for: indexPath) as? StudentDashboardTableViewCell else { return UITableViewCell() }
+        
+        if isKid {
+            let adultStudentTask = StudentAdultCDModelController.shared.adultStudentOnboardingTasks[indexPath.row]
             cell.onBoardTask = adultStudentTask
-        } else if kidStudent != nil  {
-            let kidStudentTask = KidStudentModelController.shared.kidStudentOnboardingTasks[indexPath.row]
+        } else  {
+            let kidStudentTask = StudentKidCDModelController.shared.kidStudentOnboardingTasks[indexPath.row]
             cell.onBoardTask = kidStudentTask
         }
         
@@ -78,15 +76,9 @@ class StudentHomeTableViewController: UITableViewController {
         return cell
     }
     
-    //
-    //
-    // need to update the following for the adult student experience
-    //
-    //
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if AdultStudentModelController.shared.adultStudentOnboardingTasks[indexPath.item].name == "setUpPaymentPrograms" {
+        if StudentAdultCDModelController.shared.adultStudentOnboardingTasks[indexPath.item].name == "setUpPaymentPrograms" {
             
             // instantiate the relevant storyboard
             let studentProfileFlowView: UIStoryboard = UIStoryboard(name: "StudentProfileFlow", bundle: nil)
@@ -100,15 +92,14 @@ class StudentHomeTableViewController: UITableViewController {
             navigationItem.backBarButtonItem = backButtonItem
             navigationController?.navigationBar.tintColor = UIColor(red: 241.0, green: 0.0, blue: 0.0, alpha: 1.0)
             
-            destViewController.adultStudent = adultStudent
-            destViewController.kidStudent = kidStudent
+//            destViewController.activeStudentUser = activeStudentUser
             
-        } else if AdultStudentModelController.shared.adultStudentOnboardingTasks[indexPath.item].name == "messagingGroups" {
+        } else if StudentAdultCDModelController.shared.adultStudentOnboardingTasks[indexPath.item].name == "messagingGroups" {
             
             // instantiate the relevant storyboard
             let ownerStudentsFlowView: UIStoryboard = UIStoryboard(name: "StudentBaseCampFlow", bundle: nil)
             // instantiate the desired TableViewController as ViewController on relevant storyboard
-            let destViewController = ownerStudentsFlowView.instantiateViewController(withIdentifier: "toOwnerGroupList") as! OwnerGroupListTableViewController
+            let destViewController = ownerStudentsFlowView.instantiateViewController(withIdentifier: "toStudentMessagesList") as! StudentMessagesListTableViewController
             // create the segue programmatically
             self.navigationController?.pushViewController(destViewController, animated: true)
             // set the desired properties of the destinationVC's navgation Item
@@ -117,7 +108,7 @@ class StudentHomeTableViewController: UITableViewController {
             navigationItem.backBarButtonItem = backButtonItem
             navigationController?.navigationBar.tintColor = UIColor(red: 241.0, green: 0.0, blue: 0.0, alpha: 1.0)
             
-        } else if AdultStudentModelController.shared.adultStudentOnboardingTasks[indexPath.item].name == "viewClassSchedule" {
+        } else if StudentAdultCDModelController.shared.adultStudentOnboardingTasks[indexPath.item].name == "viewClassSchedule" {
             
             let ownerBaseCampFlowView: UIStoryboard = UIStoryboard(name: "StudentBaseCampFlow", bundle: nil)
             // instantiate the desired TableViewController on relevant storyboard
@@ -130,7 +121,7 @@ class StudentHomeTableViewController: UITableViewController {
             navigationItem.backBarButtonItem = backButtonItem
             navigationController?.navigationBar.tintColor = UIColor(red: 241.0, green: 0.0, blue: 0.0, alpha: 1.0)
             
-        } else if AdultStudentModelController.shared.adultStudentOnboardingTasks[indexPath.item].name == "learnTheBeltSystems" {
+        } else if StudentAdultCDModelController.shared.adultStudentOnboardingTasks[indexPath.item].name == "learnTheBeltSystems" {
             
             // instantiate the relevant storyboard
             let ownerBeltSystemFlowView: UIStoryboard = UIStoryboard(name: "OwnerBeltSystemFlow", bundle: nil)
@@ -167,17 +158,4 @@ class StudentHomeTableViewController: UITableViewController {
             
         }
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     
-     
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
 }

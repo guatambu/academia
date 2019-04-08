@@ -41,6 +41,7 @@ class OwnerClassListTableViewController: UITableViewController {
         super.viewDidLoad()
 
     }
+    
 
     // MARK: - Table view data source
 
@@ -73,11 +74,6 @@ class OwnerClassListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-//        // get the returned [AulaCD] fetchedObjects array from fetchedResultsController
-//        guard let aulasCD = fetchedResultsController.fetchedObjects else {
-//            return 0
-//        }
         
         // get the saved aulas source of truth array
         let aulasCD = AulaCDModelController.shared.aulas
@@ -203,11 +199,6 @@ class OwnerClassListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-//        // get the returned [AulaCD] fetchedObjects array from fetchedResultsController
-//        guard let aulasCD = fetchedResultsController.fetchedObjects else {
-//            return UITableViewCell()
-//        }
         
         // get the saved aulas source of truth array
         let aulasCD = AulaCDModelController.shared.aulas
