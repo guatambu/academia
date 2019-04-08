@@ -342,44 +342,34 @@ extension UIViewController {
     }
 }
 
-// MARK: - Programmatic Segues to return to LandingPage and logout current Owner
-extension UIViewController {
-    
-    func logoutOwnerAndReturnToLandingPage() {
-        
-        // remove current Owner from ActiveUserModelController active user array
-        
-        // set isLoggedOn property of Owner to false
-        
-        // tear down and reset nav stack to beginning at LandingPAgeViewController AND segue back to landingPage
-        guard let viewControllers = self.navigationController?.viewControllers else { return }
-        
-        for viewController in viewControllers {
-            
-            if viewController is LandingPageViewController {
-                self.navigationController?.popToViewController(viewController, animated: true)
-                
-            }
-        }
-    }
-}
-
 
 // MARK: - Programmatic Segues to return to LandingPage and logout current Student User
 extension OwnerInfoDetailsViewController {
     
     func logoutOwnerUserAndReturnToLandingPage() {
         
-        // remove current Student User from ActiveUserModelController active user array
-        // this array should be totally empty whenever no user of any type is logged in
-        ActiveUserModelController.shared.activeUser.removeAll()
+        // give user the chance to cancel logout in case of accidental logout button tap
+        let alertController = UIAlertController(title: "Logout", message: "are you sure you want to logout of your account?", preferredStyle: UIAlertController.Style.alert)
         
-        // set isLoggedOn property of Student User to false
-        if let activeOwner = activeOwner {
-            activeOwner.isLoggedOn = false
+        let cancel = UIAlertAction(title: "cancel", style: UIAlertAction.Style.cancel, handler: nil)
+        let logout = UIAlertAction(title: "logout", style: UIAlertAction.Style.destructive) { (alert) in
+        
+            // remove current Student User from ActiveUserModelController active user array
+            // this array should be totally empty whenever no user of any type is logged in
+            ActiveUserModelController.shared.activeUser.removeAll()
+            
+            // set isLoggedOn property of Student User to false
+            if let activeOwner = self.activeOwner {
+                activeOwner.isLoggedOn = false
+            }
+            // return to the LandingPageVC scene
+            self.returnToLandingPage()
         }
-        // return to the LandingPageVC scene
-        returnToLandingPage()
+        
+        alertController.addAction(cancel)
+        alertController.addAction(logout)
+        
+        self.present(alertController, animated: true)
     }
 }
 
@@ -388,20 +378,17 @@ extension OwnerInfoDetailsViewController {
 extension UIViewController {
     
     func returnToLandingPage() {
-        // tear down and reset nav stack to beginning at LandingPageViewController AND segue back to landingPage
-
-        guard var viewControllers = self.navigationController?.viewControllers else { return }
-        
-        viewControllers.removeAll()
         
         // programmatically performing the segue
         
         // instantiate the relevant storyboard
         let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
-        let destViewController = mainView.instantiateViewController(withIdentifier: "toLandingPage") as! LandingPageViewController
-        // create the segue programmatically - PUSH
-        UIApplication.shared.keyWindow?.rootViewController = destViewController
-        
+        if let destViewController = (mainView.instantiateViewController(withIdentifier: "toLandingPage") as? LandingPageViewController) {
+            
+            // assign new navController since we are tearing down the old navController
+            let navBarOnModal: UINavigationController = UINavigationController(rootViewController: destViewController)
+            self.present(navBarOnModal, animated: true, completion: nil)
+        }
     }
 }

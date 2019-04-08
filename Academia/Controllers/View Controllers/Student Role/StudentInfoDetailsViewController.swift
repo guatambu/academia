@@ -433,14 +433,6 @@ extension StudentInfoDetailsViewController: NSFetchedResultsControllerDelegate {
         } else {
             // match adult with activeUser UUID
             
-            
-            
-            
-            // TODO: - seems like there are duplicate entries in the results of the fetchedResultsController either there are duplicates saved to CoreData, or there are duplicates returned somehow by the resultsController itself
-            
-            
-            
-            
             guard let activeAdults = fetchedResultsControllerStudentAdults.fetchedObjects else { return }
             print("activeAdults in findActiveUSer: \(activeAdults)")
             for adult in activeAdults {
@@ -461,19 +453,32 @@ extension StudentInfoDetailsViewController {
     
     func logoutStudentUserAndReturnToLandingPage() {
         
-        // remove current Student User from ActiveUserModelController active user array
-        // this array should be totally empty whenever no user of any type is logged in
-        ActiveUserModelController.shared.activeUser.removeAll()
+        // give user the chance to cancel logout in case of accidental logout button tap
+        let alertController = UIAlertController(title: "Logout", message: "are you sure you want to logout of your account?", preferredStyle: UIAlertController.Style.alert)
         
-        // set isLoggedOn property of Student User to false
-        if let activeStudentAdult = activeStudentAdult {
-            activeStudentAdult.isLoggedOn = false
+        let cancel = UIAlertAction(title: "cancel", style: UIAlertAction.Style.cancel, handler: nil)
+        let logout = UIAlertAction(title: "logout", style: UIAlertAction.Style.destructive) { (alert) in
+        
+            // remove current Student User from ActiveUserModelController active user array
+            // this array should be totally empty whenever no user of any type is logged in
+            ActiveUserModelController.shared.activeUser.removeAll()
+            
+            // set isLoggedOn property of Student User to false
+            if let activeStudentAdult = self.activeStudentAdult {
+                activeStudentAdult.isLoggedOn = false
+            }
+            if let activeStudentKid = self.activeStudentKid {
+                activeStudentKid.isLoggedOn = false
+            }
+            // return to the LandingPageVC scene
+            self.returnToLandingPage()
         }
-        if let activeStudentKid = activeStudentKid {
-            activeStudentKid.isLoggedOn = false
-        }
-        // return to the LandingPageVC scene
-        returnToLandingPage()
+            
+        alertController.addAction(cancel)
+        alertController.addAction(logout)
+        
+        self.present(alertController, animated: true)
+        
     }
 }
 

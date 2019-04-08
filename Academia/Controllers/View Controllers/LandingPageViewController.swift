@@ -29,16 +29,13 @@ class LandingPageViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         
         // following code allows tracking of howmany VCs are present in the current Navigaiton Stack in case have stray VCs out there at any point
+                
         print("how many viewControllers we got at LandingPageVC: \(String(describing: self.navigationController?.viewControllers.count))")
         
-        guard let navStack = self.navigationController?.viewControllers else {
-            print("no VCs right now")
-            return
-        }
-        var index = 0
-        for vc in navStack {
-            print("\(vc) at navStack index: \(index)")
-            index += 1
+        var navIndex = 0
+        for vc in self.navigationController?.viewControllers ?? [] {
+            print("\(vc) at navStack index: \(navIndex)")
+            navIndex += 1
         }
         
 //        print("***** CoreData Persistence Check - begin - *****")
@@ -190,10 +187,5 @@ class LandingPageViewController: UIViewController {
         navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
         navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
         navigationController?.navigationBar.shadowImage = UIImage()
-        
-        
-        
     }
-    
-
 }
