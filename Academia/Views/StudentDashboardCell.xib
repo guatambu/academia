@@ -22,36 +22,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Xp-PL-OsX" userLabel="Checkbox View">
-                                <rect key="frame" x="0.0" y="0.0" width="40" height="79.5"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unchecked_checkbox_50.png" translatesAutoresizingMaskIntoConstraints="NO" id="ogA-xo-Cth">
-                                        <rect key="frame" x="0.0" y="0.0" width="40" height="79.5"/>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kdv-c7-hVy" userLabel="Checkbox Button">
-                                        <rect key="frame" x="0.0" y="0.0" width="40" height="79.5"/>
-                                        <connections>
-                                            <action selector="checkboxButtonTapped:" destination="EVT-Rs-kv7" eventType="touchUpInside" id="Zpy-At-4th"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
+                                <rect key="frame" x="0.0" y="0.0" width="16" height="79.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="Kdv-c7-hVy" firstAttribute="top" secondItem="2Xp-PL-OsX" secondAttribute="top" id="LVO-5S-3e3"/>
-                                    <constraint firstItem="Kdv-c7-hVy" firstAttribute="leading" secondItem="2Xp-PL-OsX" secondAttribute="leading" id="M2k-d0-lHX"/>
-                                    <constraint firstAttribute="trailing" secondItem="ogA-xo-Cth" secondAttribute="trailing" id="M4D-eW-gIz"/>
-                                    <constraint firstAttribute="trailing" secondItem="Kdv-c7-hVy" secondAttribute="trailing" id="Y8t-7F-aFL"/>
-                                    <constraint firstAttribute="width" constant="40" id="kKd-w1-0u8"/>
-                                    <constraint firstItem="ogA-xo-Cth" firstAttribute="leading" secondItem="2Xp-PL-OsX" secondAttribute="leading" id="nJp-ZX-cvy"/>
-                                    <constraint firstAttribute="bottom" secondItem="Kdv-c7-hVy" secondAttribute="bottom" id="pY1-5t-d6P"/>
-                                    <constraint firstItem="ogA-xo-Cth" firstAttribute="top" secondItem="2Xp-PL-OsX" secondAttribute="top" id="rgX-q4-pCV"/>
-                                    <constraint firstAttribute="bottom" secondItem="ogA-xo-Cth" secondAttribute="bottom" id="wMJ-YU-DMC"/>
+                                    <constraint firstAttribute="width" constant="16" id="kKd-w1-0u8"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dCd-lu-USq" userLabel="Text Container View">
-                                <rect key="frame" x="52" y="0.0" width="271" height="79.5"/>
+                                <rect key="frame" x="28" y="0.0" width="295" height="79.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="OnBoarding Task Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="P4Q-fE-izC">
-                                        <rect key="frame" x="0.0" y="4" width="271" height="32"/>
+                                        <rect key="frame" x="0.0" y="4" width="295" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="c5i-YQ-gLK"/>
                                         </constraints>
@@ -60,7 +41,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="This is a description of this one specific OnBoarding Task." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="f8L-bZ-f5I">
-                                        <rect key="frame" x="0.0" y="31.5" width="271" height="44"/>
+                                        <rect key="frame" x="0.0" y="31.5" width="295" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="m1c-i0-vGm"/>
                                         </constraints>
@@ -107,8 +88,6 @@
             </tableViewCellContentView>
             <gestureRecognizers/>
             <connections>
-                <outlet property="checkBoxImageView" destination="ogA-xo-Cth" id="NQs-H3-cA7"/>
-                <outlet property="checkboxButtonOutlet" destination="Kdv-c7-hVy" id="gwv-aI-hKo"/>
                 <outlet property="onBoardingTaskDescriptionOutlet" destination="f8L-bZ-f5I" id="qOm-DS-bDH"/>
                 <outlet property="onBoardingTaskTitleOutlet" destination="P4Q-fE-izC" id="gZ2-59-5RL"/>
                 <outlet property="rightRedArrowOutlet" destination="iF5-aH-dTy" id="SvT-tz-HGz"/>
@@ -118,6 +97,5 @@
     </objects>
     <resources>
         <image name="right_red_arrow_32.png" width="32" height="32"/>
-        <image name="unchecked_checkbox_50.png" width="50" height="50"/>
     </resources>
 </document>

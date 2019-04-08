@@ -12,9 +12,6 @@ class StudentDashboardTableViewCell: UITableViewCell {
         
     // MARK: - Properties
     
-    
-    @IBOutlet weak var checkboxButtonOutlet: UIButton!
-    @IBOutlet weak var checkBoxImageView: UIImageView!
     @IBOutlet weak var rightRedArrowOutlet: UIImageView!
     @IBOutlet weak var onBoardingTaskTitleOutlet: UILabel!
     @IBOutlet weak var onBoardingTaskDescriptionOutlet: UILabel!
@@ -28,8 +25,8 @@ class StudentDashboardTableViewCell: UITableViewCell {
     
     // MARK: - Actions
     
-    @IBAction func checkboxButtonTapped(_ sender: UIButton) {
-    }
+//    @IBAction func checkboxButtonTapped(_ sender: UIButton) {
+//    }
     
     
     // MARK: - awakeFromNib()
@@ -48,13 +45,14 @@ class StudentDashboardTableViewCell: UITableViewCell {
         onBoardingTaskTitleOutlet.text = onBoardTask.title
         onBoardingTaskDescriptionOutlet.text = onBoardTask.descriptionDetail
         
+//        checkBoxImageView.image = UIImage()
         
-        guard let onBoardTaskComplete = onBoardTask.isCompleted else { return }
-        
-        if onBoardTaskComplete {
-            checkBoxImageView.image = UIImage(named: "checked_box_50")
-        } else {
-            checkBoxImageView.image = UIImage(named: "unchecked_box_50")
-        }
+//        guard let onBoardTaskComplete = onBoardTask.isCompleted else { return }
+//        
+//        if onBoardTaskComplete {
+//            checkBoxImageView.image = UIImage(named: "checked_box_32")
+//        } else {
+//            checkBoxImageView.image = UIImage(named: "unchecked_box_32")
+//        }
     }
 }
