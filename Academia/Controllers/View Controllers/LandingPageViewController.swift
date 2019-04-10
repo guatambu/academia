@@ -38,6 +38,10 @@ class LandingPageViewController: UIViewController {
             navIndex += 1
         }
         
+        OwnerCDModelController.shared.add(owner: MockData.ownerCD)
+        StudentAdultCDModelController.shared.add(studentAdult: MockData.adultA)
+        StudentKidCDModelController.shared.add(studentKid: MockData.kidA)
+        
 //        print("***** CoreData Persistence Check - begin - *****")
 //        print("")
 //        print("owners count: \(OwnerCDModelController.shared.owners.count)")
