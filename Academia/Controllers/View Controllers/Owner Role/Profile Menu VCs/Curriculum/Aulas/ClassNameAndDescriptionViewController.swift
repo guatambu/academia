@@ -236,27 +236,7 @@ extension ClassNameAndDescriptionViewController {
     
     // owner setup for editing mode
     func aulaEditingSetup() {
-//
-//        guard let aulaToEdit = aulaToEdit else {
-//            return
-//        }
-//
-//        welcomeMessageLabelOutlet.text = "\(aulaToEdit.aulaName)"
-//
-//        welcomeInstructionsLabelOutlet.textColor = beltBuilder.redBeltRed
-//        welcomeInstructionsLabelOutlet.text = "you are in class editing mode"
-//
-//        classDescriptionTextView.text = aulaToEdit.aulaDescription
-//        classNameTextField.text = aulaToEdit.aulaName
-//
-//        active = aulaToEdit.active
-//
-//        if aulaToEdit.active {
-//            activeSwitch.isOn = true
-//        } else {
-//            activeSwitch.isOn = false
-//        }
-        
+
         // CoreData version
         guard let aulaCDToEdit = aulaCDToEdit else {
             return

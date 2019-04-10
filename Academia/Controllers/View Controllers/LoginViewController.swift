@@ -76,6 +76,9 @@ class LoginViewController: UIViewController {
         
         usernameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.username.rawValue, attributes: beltBuilder.avenirFont)
         passwordTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.password.rawValue, attributes: beltBuilder.avenirFont)
+        
+        usernameTextField.delegate = self
+        passwordTextField.delegate = self
     }
 
     // MARK: - Actions

@@ -35,6 +35,8 @@ class OwnerClassListTableViewController: UITableViewController {
         
         tableView.reloadData()
         
+        checkForAllNecessaryAulaAssemblyComponents()
+        
     }
 
     override func viewDidLoad() {
@@ -672,7 +674,46 @@ class OwnerClassListTableViewController: UITableViewController {
             }
         }
     }
-
 }
 
 
+// MARK: - check to run to make sure all necessary components in place to actually create an aula object
+extension OwnerClassListTableViewController {
+    
+    func checkForAllNecessaryAulaAssemblyComponents() {
+        
+        if LocationCDModelController.shared.locations.isEmpty {
+            
+            showAulaCannotBeCreatedAlert()
+        }
+    }
+    
+    func showAulaCannotBeCreatedAlert() {
+        
+        // inform user that there is no Location component in place, so a class cannot be created
+        let alertController = UIAlertController(title: "No Location Created Yet", message: "At least one Location is required to create a Class. Please create a Location.", preferredStyle: UIAlertController.Style.alert)
+        
+        let ok = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) { (alert) in
+            
+            // programmatically performing the segue to return to the owner dashboard
+            self.returnToOwnerDashboardScene()
+        }
+        
+        alertController.addAction(ok)
+        
+        self.present(alertController, animated: true)
+    }
+    
+    // return to OwnerDashboardTVC
+    func returnToOwnerDashboardScene() {
+        
+        guard let viewControllers = self.navigationController?.viewControllers else { return }
+        
+        for viewController in viewControllers {
+            
+            if viewController is OwnerHomeTableViewController {
+                self.navigationController?.popToViewController(viewController, animated: true)
+            }
+        }
+    }
+}

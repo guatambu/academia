@@ -20,9 +20,9 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
     var fetchedResultsControllerAdultInstructors: NSFetchedResultsController<StudentAdultCD>!
     
     
-    // MOCK DATA
-    let possibleInstructors = [MockData.adultA, MockData.adultB]
-    let availableOwners = [MockData.owner]
+//    // MOCK DATA
+//    let possibleInstructors = [MockData.adultA, MockData.adultB]
+//    let availableOwners = [MockData.owner]
     
     var aulaName: String?
     var active: Bool?

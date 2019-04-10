@@ -24,6 +24,8 @@ class OwnerHomeTableViewController: UITableViewController, ActiveOwnerDelegate {
                            NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 24)! ]
         
         navigationController?.navigationBar.titleTextAttributes = avenirFont
+        
+        tableView.reloadData()
     }
     
 

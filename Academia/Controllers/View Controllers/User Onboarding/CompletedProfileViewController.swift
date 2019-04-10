@@ -424,7 +424,7 @@ extension CompletedProfileViewController {
         // convert numberOfStripes to Int16
         guard let stripesInt16 = Int16(exactly: numberOfStripes) else { return }
         
-        beltCD = BeltCD(beltUUID: UUID(), active: true, dateCreated: Date(), dateEdited: Date(), beltLevel: beltLevel, beltPromotionAttendanceCriteria: nil, beltStripeAgeDetails: nil, classesToNextPromotion: nil, numberOfStripes: stripesInt16)
+        beltCD = BeltCD(beltLevel: beltLevel, beltPromotionAttendanceCriteria: nil, beltStripeAgeDetails: nil, classesToNextPromotion: nil, numberOfStripes: stripesInt16)
     }
 }
 

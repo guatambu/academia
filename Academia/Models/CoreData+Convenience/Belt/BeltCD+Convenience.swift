@@ -13,11 +13,11 @@ import CoreData
 extension BeltCD {
     
     // convenience initializer to allow creation of a BeltCD object via Academia CoreDataStack's managedObjectContext
-    convenience init(beltUUID: UUID,
-                     active: Bool,
+    convenience init(beltUUID: UUID = UUID(),
+                     active: Bool = true,
                      elligibleForNextBelt: Bool = false,
-                     dateCreated: Date,
-                     dateEdited: Date,
+                     dateCreated: Date = Date(),
+                     dateEdited: Date = Date(),
                      beltLevel: String,
                      beltPromotionAttendanceCriteria: BeltPromotionAttendanceCriteriaCD?,
                      beltStripeAgeDetails: BeltStripeAgeDetailsCD?,

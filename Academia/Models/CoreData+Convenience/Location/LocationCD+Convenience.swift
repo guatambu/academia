@@ -13,10 +13,10 @@ import CoreData
 extension LocationCD {
     
     // convenience initializer to allow creation of a LocationCD object via Academia CoreDataStack's managedObjectContext
-    convenience init(locationUUID: UUID,
+    convenience init(locationUUID: UUID = UUID(),
                      active: Bool,
-                     dateCreated: Date,
-                     dateEdited: Date,
+                     dateCreated: Date = Date(),
+                     dateEdited: Date = Date(),
                      locationPic: Data?,
                      locationName: String,
                      phone: String?,

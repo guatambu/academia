@@ -10,37 +10,59 @@ import UIKit
 
 struct MockData {
 
-    // 1. build the mock data in the respective ViewController's viewDidLoad() rather than an external file like here
-
-    // 2. app delegate then is home of user for the whole app
-
-    // 3. should be ready to go going forward
+    // for demo accounts for TestFlight purposes
+    
 
     // groups
-    static var allStudents = Group(groupUID: UUID(), active: true, name: "all students", description: "description", dateCreated: Date(), dateEdited: Date(), kidMembers: [kidA], adultMembers: [adultA])
+    // CoreData
+    static var allStudentsCD = GroupCD(active: true, name: "all students", groupDescription: "a group for all the people enrolled in the academy")
+    
+    // classes
+    // CoreData
+    static var adultsClass1 = AulaCD(active: true, aulaName: "adults 1", aulaDescription: "fundamentals class for adults", dayOfTheWeek: "Monday", time: "7:00 pm", timeCode: 10700, location: headquarters)
 
     // location
-    static var myLocation = Location(locationUID: UUID(), active: true, dateCreated: Date(), dateEdited: Date(), locationPic: #imageLiteral(resourceName: "owner_sample.png"), locationName: "my location", addressLine1: "1267 the spot blvd.", addressLine2: "", city: "you know", state: "LA", zipCode: "09854", phone: "987-876-1230", website: "www.theschool.gov", email: "email@theschool.gov", social1: nil, social2: nil, social3: nil)
-
+    // CoreData
+    static var hqAddress = AddressCD(addressLine1: "123 street rd.", addressLine2: "suite 34", city: "gainsville", state: "WY", zipCode: "10293")
+    
+    static var hqLinks = LocationSocialLinksCD(socialLink1: "instagramLink", socialLink2: "facebookLink", socialLink3: "twitterLink")
+    
+    static var headquarters = LocationCD(active: true, locationPic: nil, locationName: "hq", phone: "(323) 543-9876", website: "wwww.academywebsite.com", email: "info@academywebsite.com", address: hqAddress, socialLinks: hqLinks, aula: nil)
+    
     // payment programs
-    static var programA: PaymentProgram = PaymentProgram(paymentProgramUID: UUID(), active: true, programName: "programA", dateCreated: Date(), dateEdited: Date(), billingTypes: [Billing.BillingType.monthly], billingDates: [Billing.BillingDate.firstOfTheMonth], signatureTypes: [Billing.BillingSignature.digitallyTyped], paymentDescription: "things", paymentAgreement: "stuff")
-
-    // classes
-    static let adultClassA: Aula = Aula(aulaUID: UUID(), active: true, aulaName: "adult A", aulaDescription: "A class for the adults",  daysOfTheWeek: [ClassTimeComponents.Weekdays.Monday, ClassTimeComponents.Weekdays.Wednesday, ClassTimeComponents.Weekdays.Friday], time: "\(ClassTimeComponents.Hours24.eighteen.rawValue)", timeCode: 5, location: myLocation, instructor: [adultA], ownerInstructor: [owner], classGroups: [allStudents], dateCreated: Date(), dateEdited: Date())
-
+    // CoreData
+    static var adultsProgram = PaymentProgramCD(active: true, dateCreated: Date(), dateEdited: Date(), programName: "adults", paymentDescription: "a program for adults", paymentAgreement: "adults program agreement")
+    
     // users
-    static var owner: Owner = Owner(ownerUID: UUID(), isInstructor: true, dateCreated: Date(), dateEdited: Date(), birthdate: Date(), promotions: nil, mostRecentPromotion: nil, attendance: nil, groups: nil, belt: blackBelt, profilePic: #imageLiteral(resourceName: "owner_sample.png"), username: "owner", password: "password", firstName: "steve", lastName: "meister", addressLine1: "1234 street dr.", addressLine2: "123", city: "coolville", state: "CA", zipCode: "93421", phone: "(523) 763-0961", mobile: "(312) 736-7843", email: "my@email.com", emergencyContactName: "margaret stewart", emergencyContactPhone: "345-123-0987", emergencyContactRelationship: "bae")
-
-    static var adultA: AdultStudent = AdultStudent(adultStudentUID: UUID(), isInstructor: true, dateCreated: Date(), dateEdited: Date(), birthdate: Date(), promotions: nil, mostRecentPromotion: nil, attendance: nil, studentStatus: [StudentStatus.active, StudentStatus.paid], groups: nil, paymentProgram: programA, belt: purpleBelt, profilePic: #imageLiteral(resourceName: "student_sample.jpg"), username: "adultA", password: "adultA", firstName: "dan", lastName: "cnakle", addressLine1: "123 my street blvd.", addressLine2: "4A", city: "theTown", state: "CA", zipCode: "92346", phone: "123-987-0980", mobile: "098-865-1234", email: "adult@email.com", emergencyContactName: "margie", emergencyContactPhone: "858-098-1234", emergencyContactRelationship: "wife")
+    // CoreData
     
-    static var adultB: AdultStudent = AdultStudent(adultStudentUID: UUID(), isInstructor: true, dateCreated: Date(), dateEdited: Date(), birthdate: Date(), promotions: nil, mostRecentPromotion: nil, attendance: nil, studentStatus: [StudentStatus.active, StudentStatus.paid], groups: nil, paymentProgram: programA, belt: blueBelt, profilePic: #imageLiteral(resourceName: "student_sample.jpg"), username: "adultB", password: "adultB", firstName: "pat", lastName: "jones", addressLine1: "765 my avenue ave.", addressLine2: "7G", city: "theTown", state: "CA", zipCode: "92346", phone: "123-987-4567", mobile: "098-345-7890", email: "beme@email.com", emergencyContactName: "sheila", emergencyContactPhone: "098-890-5674", emergencyContactRelationship: "the wife")
-
-    static var kidA: KidStudent = KidStudent(kidUID: UUID(), dateCreated: Date(), dateEdited: Date(), birthdate: Date(), promotions: nil, mostRecentPromotion: nil, attendance: nil, studentStatus: [StudentStatus.active], groups: nil, paymentProgram: programA, belt: grayBelt, profilePic: #imageLiteral(resourceName: "kid_sample.jpg"), username: "kiddo", password: "kidA", firstName: "stevie", lastName: "johnson", parentGuardian: "david johnson", addressLine1: "123 street st.", addressLine2: "#3D", city: "city", state: "state", zipCode: "12334", phone: "123-098-0987", mobile: "345-678-5432", email: "email@email.com", emergencyContactName: "marsha johnson", emergencyContactPhone: "123-098-0997", emergencyContactRelationship: "momma")
+    // owner
+    static var blackBeltCD = BeltCD(beltLevel: "black belt", beltPromotionAttendanceCriteria: nil, beltStripeAgeDetails: nil, classesToNextPromotion: nil, numberOfStripes: 1)
     
-    static var kidB: KidStudent = KidStudent(kidUID: UUID(), dateCreated: Date(), dateEdited: Date(), birthdate: Date(), promotions: nil, mostRecentPromotion: nil, attendance: nil, studentStatus: [StudentStatus.active], groups: nil, paymentProgram: programA, belt: grayWhiteBelt, profilePic: #imageLiteral(resourceName: "kid_sample.jpg"), username: "kiddie", password: "kidB", firstName: "griffin", lastName: "smith", parentGuardian: "david smith", addressLine1: "789 raod rd.", addressLine2: "#5A", city: "city", state: "state", zipCode: "12334", phone: "987-654-3210", mobile: "789-654-1234", email: "mel@email.com", emergencyContactName: "marsha smith", emergencyContactPhone: "321-654-0987", emergencyContactRelationship: "mom")
+    static var ownerAddress = AddressCD(addressLine1: "321 owner st.", addressLine2: nil, city: "ownerville", state: "CA", zipCode: "91839")
+    
+    static var ownerEmergencyContact = EmergencyContactCD(name: "marge owner", phone: "(323) 123-0987", relationship: "significant other")
+    
+    static var ownerCD = OwnerCD(birthdate: Date(), mostRecentPromotion: nil, studentStatus: nil, belt: blackBeltCD, profilePic: nil, username: "owner", password: "owner", firstName: "jim", lastName: "owner", address: ownerAddress, phone: "(323) 123-7654", mobile: "(323) 555-1212", email: "owner@academywebiste.com", emergencyContact: ownerEmergencyContact)
 
-    static var adultStudents = [adultA]
-    static var kidStudents = [kidA]
+    // adultA
+    static var blueBeltCD = BeltCD(beltLevel: "blue belt", beltPromotionAttendanceCriteria: nil, beltStripeAgeDetails: nil, classesToNextPromotion: nil, numberOfStripes: 2)
+    
+    static var adultAAddress = AddressCD(addressLine1: "456 student st.", addressLine2: nil, city: "ownerville", state: "CA", zipCode: "91839")
+    
+    static var adultEmergencyContact = EmergencyContactCD(name: "betty student", phone: "(323) 098-5678", relationship: "significant other")
+    
+    static var adultA = StudentAdultCD(isInstructor: false, dateCreated: Date(), dateEdited: Date(), birthdate: Date(), studentStatus: nil, belt: blueBeltCD, profilePic: nil, username: "studentA", password: "studentA", firstName: "larry", lastName: "student", address: adultAAddress, phone: "(323) 345-6789)", mobile: "(323 945-0987)", email: "adultA@myemail.com", emergencyContact: adultEmergencyContact)
+    
+    // kidA
+    static var grayBeltCD = BeltCD(beltLevel: "gray belt", beltPromotionAttendanceCriteria: nil, beltStripeAgeDetails: nil, classesToNextPromotion: nil, numberOfStripes: 6)
+    
+    static var kidAAddress = AddressCD(addressLine1: "456 kiddos blvd.", addressLine2: nil, city: "ownerville", state: "CA", zipCode: "91839")
+    
+    static var kidEmergencyContact = EmergencyContactCD(name: "susan kid", phone: "(323) 789-5674", relationship: "mother")
+    
+    static var kidA = StudentKidCD(dateCreated: Date(), dateEdited: Date(), birthdate: Date(), studentStatus: nil, belt: grayBeltCD, profilePic: nil, username: "kidA", password: "kidA", firstName: "daniel", lastName: "kid", parentGuardian: "susan kid", address: kidAAddress, phone: "(323) 678-1234", mobile: "(323) 432-9876", email: "mom@email.com", emergencyContact: kidEmergencyContact)
+  
 
     // adult basic belts
     static let whiteBelt = Belt(classesToNextPromotion: 0, beltLevel: InternationalStandardBJJBelts.adultWhiteBelt, numberOfStripes: 4, beltTime: "1 year", minAgeRequirement: "none", iStripe: "1M", iiStripe: "1M", iiiStripe: "2M", ivStripe: "4M", vStripe: nil, viStripe: nil, viiStripe: nil, viiiStripe: nil, ixStripe: nil, xStripe: nil, xiStripe: nil)

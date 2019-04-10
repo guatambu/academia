@@ -225,7 +225,7 @@ extension ReviewAndCreatePaymentProgramViewController {
         guard let programAgreement = programAgreement else { print("fail programAgreement"); return }
         
         // create new payment program data model object
-        let newPaymentProgram = PaymentProgramCD(active: active, dateCreated: Date(), dateEdited: Date(), programName: paymentProgramName, paymentDescription: programDescription, paymentAgreement: programAgreement)
+        let newPaymentProgram = PaymentProgramCD(active: active, programName: paymentProgramName, paymentDescription: programDescription, paymentAgreement: programAgreement)
         
         // TODO: borrow from AulaCD creation in AulaReviewAndCreateVC
         // create corresponding BillingDates
