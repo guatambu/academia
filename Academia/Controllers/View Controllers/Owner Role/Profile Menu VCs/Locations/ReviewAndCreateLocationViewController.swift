@@ -184,7 +184,7 @@ extension ReviewAndCreateLocationViewController {
         
         
         
-        let newLocation = LocationCD(locationUUID: UUID(), active: active, dateCreated: Date(), dateEdited: Date(), locationPic: locationPicData, locationName: locationName, phone: phone, website: website, email: email, address: addressCD, socialLinks: socialLinksCD, aula: nil)
+        let newLocation = LocationCD(active: active, locationPic: locationPicData, locationName: locationName, phone: phone, website: website, email: email, address: addressCD, socialLinks: socialLinksCD, aula: nil)
         
         LocationCDModelController.shared.add(location: newLocation)
         

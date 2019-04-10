@@ -14,7 +14,7 @@ extension PaymentProgramCD {
     
     // convenience initializer to allow creation of a PaymentProgramCD object via Academia CoreDataStack's managedObjectContext
     convenience init(paymentProgramUUID: UUID = UUID(),
-                     active: Bool = true,
+                     active: Bool,
                      dateCreated: Date = Date(),
                      dateEdited: Date = Date(),
                      programName: String,
