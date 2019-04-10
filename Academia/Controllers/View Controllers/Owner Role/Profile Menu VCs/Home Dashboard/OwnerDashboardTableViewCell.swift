@@ -68,10 +68,18 @@ class OwnerDashboardTableViewCell: UITableViewCell {
                 
                 onBoardTask.isCompleted = false
             } else {
+                
                 // show the current amount in sales?
-//                onBoardingTaskTitleOutlet.text
+                //                onBoardingTaskTitleOutlet.text
                 // at a a glance in description for how many active contracts the owner currently has running
-                onBoardingTaskDescriptionOutlet.text = "you currently have \(PaymentProgramCDModelController.shared.paymentPrograms.count) contract types available."
+                if PaymentProgramCDModelController.shared.paymentPrograms.count == 1 {
+                    
+                    onBoardingTaskDescriptionOutlet.text = "you currently have \(PaymentProgramCDModelController.shared.paymentPrograms.count) payment program available."
+                    
+                } else {
+                    
+                    onBoardingTaskDescriptionOutlet.text = "you currently have \(PaymentProgramCDModelController.shared.paymentPrograms.count) payment programs available."
+                }
                 
                 onBoardTask.isCompleted = true
             }
@@ -84,11 +92,20 @@ class OwnerDashboardTableViewCell: UITableViewCell {
                 
                 onBoardTask.isCompleted = false
             } else {
-                // show hom many locations the owner has
-                onBoardingTaskTitleOutlet.text = "\(LocationCDModelController.shared.locations.count) Locations"
-                // details for the description message
-                onBoardingTaskDescriptionOutlet.text = "you currently have \(LocationCDModelController.shared.locations.count) locations setup"
                 
+                if LocationCDModelController.shared.locations.count == 1 {
+                    // show hom many locations the owner has
+                    onBoardingTaskTitleOutlet.text = "\(LocationCDModelController.shared.locations.count) Location"
+                    // details for the description message
+                    onBoardingTaskDescriptionOutlet.text = "you currently have \(LocationCDModelController.shared.locations.count) location setup"
+                    
+                } else {
+                    // show hom many locations the owner has
+                    onBoardingTaskTitleOutlet.text = "\(LocationCDModelController.shared.locations.count) Locations"
+                    // details for the description message
+                    onBoardingTaskDescriptionOutlet.text = "you currently have \(LocationCDModelController.shared.locations.count) locations setup"
+                    
+                }
                 onBoardTask.isCompleted = true
             }
             
@@ -100,8 +117,16 @@ class OwnerDashboardTableViewCell: UITableViewCell {
                 
                 onBoardTask.isCompleted = false
             } else {
-                // show total number of students macro...
-                onBoardingTaskTitleOutlet.text = "\(GroupCDModelController.shared.groups.count) Messaging Groups"
+                
+                if GroupCDModelController.shared.groups.count == 1 {
+                    
+                    // show total number of students macro...
+                    onBoardingTaskTitleOutlet.text = "\(GroupCDModelController.shared.groups.count) Messaging Group"
+                    
+                } else {
+                    // show total number of students macro...
+                    onBoardingTaskTitleOutlet.text = "\(GroupCDModelController.shared.groups.count) Messaging Groups"
+                }
                 // and then micro for each group?
                 onBoardingTaskDescriptionOutlet.text = "currently, there are \((StudentAdultCDModelController.shared.studentAdults.count + StudentKidCDModelController.shared.studentKids.count)) total students with \(StudentAdultCDModelController.shared.studentAdults.count) adults, \(StudentKidCDModelController.shared.studentKids.count) kids enrolled across all locaitons."
                 
@@ -115,9 +140,19 @@ class OwnerDashboardTableViewCell: UITableViewCell {
                 initialDashboardSetup()
                 
                 onBoardTask.isCompleted = false
+                
             } else {
+                
+                if AulaCDModelController.shared.aulas.count == 1 {
+                
+                    onBoardingTaskTitleOutlet.text = "\(AulaCDModelController.shared.aulas.count) Class Scheduled"
+                    
+                } else {
+                    
+                    onBoardingTaskTitleOutlet.text = "\(AulaCDModelController.shared.aulas.count) Classes Scheduled"
+                }
+                
                 // offer link to view current schedule.
-                onBoardingTaskTitleOutlet.text = "\(AulaCDModelController.shared.aulas.count) Classes Scheduled"
                 onBoardingTaskDescriptionOutlet.text = "click to review your current schedule"
                 
                 onBoardTask.isCompleted = true

@@ -27,7 +27,7 @@ struct MockData {
     
     static var hqLinks = LocationSocialLinksCD(socialLink1: "instagramLink", socialLink2: "facebookLink", socialLink3: "twitterLink")
     
-    static var headquarters = LocationCD(locationPic: nil, locationName: "hq", phone: "(323) 543-9876", website: "wwww.academywebsite.com", email: "info@academywebsite.com", address: hqAddress, socialLinks: hqLinks, aula: nil)
+    static var headquarters = LocationCD(active: true, locationPic: nil, locationName: "hq", phone: "(323) 543-9876", website: "wwww.academywebsite.com", email: "info@academywebsite.com", address: hqAddress, socialLinks: hqLinks, aula: nil)
     
     // payment programs
     // CoreData

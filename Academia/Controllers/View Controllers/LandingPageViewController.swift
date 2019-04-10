@@ -38,9 +38,13 @@ class LandingPageViewController: UIViewController {
             navIndex += 1
         }
         
-        OwnerCDModelController.shared.add(owner: MockData.ownerCD)
-        StudentAdultCDModelController.shared.add(studentAdult: MockData.adultA)
-        StudentKidCDModelController.shared.add(studentKid: MockData.kidA)
+        // for testflight and AppStore submission purposes we add demo accounts
+        if OwnerCDModelController.shared.owners.isEmpty && StudentAdultCDModelController.shared.studentAdults.isEmpty && StudentKidCDModelController.shared.studentKids.isEmpty {
+            
+            OwnerCDModelController.shared.add(owner: MockData.ownerCD)
+            StudentAdultCDModelController.shared.add(studentAdult: MockData.adultA)
+            StudentKidCDModelController.shared.add(studentKid: MockData.kidA)
+        }
         
 //        print("***** CoreData Persistence Check - begin - *****")
 //        print("")
