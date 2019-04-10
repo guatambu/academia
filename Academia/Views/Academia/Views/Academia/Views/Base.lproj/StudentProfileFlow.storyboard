@@ -984,16 +984,16 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_pic_placeholder_image.png" translatesAutoresizingMaskIntoConstraints="NO" id="rVr-Kv-Oui" userLabel="Profile Pic Image View">
-                                                                <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                                                <rect key="frame" x="-32" y="-32" width="184" height="184"/>
                                                             </imageView>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="120" id="GvT-bY-KqJ"/>
-                                                            <constraint firstItem="rVr-Kv-Oui" firstAttribute="leading" secondItem="9ku-41-e4X" secondAttribute="leading" id="ZHo-op-a2f"/>
-                                                            <constraint firstItem="rVr-Kv-Oui" firstAttribute="top" secondItem="9ku-41-e4X" secondAttribute="top" id="dhy-tv-NFd"/>
-                                                            <constraint firstAttribute="trailing" secondItem="rVr-Kv-Oui" secondAttribute="trailing" id="hAB-bA-cNe"/>
-                                                            <constraint firstAttribute="bottom" secondItem="rVr-Kv-Oui" secondAttribute="bottom" id="mpg-B4-DzZ"/>
+                                                            <constraint firstItem="rVr-Kv-Oui" firstAttribute="leading" secondItem="9ku-41-e4X" secondAttribute="leading" constant="-32" id="ZHo-op-a2f"/>
+                                                            <constraint firstItem="rVr-Kv-Oui" firstAttribute="top" secondItem="9ku-41-e4X" secondAttribute="top" constant="-32" id="dhy-tv-NFd"/>
+                                                            <constraint firstAttribute="trailing" secondItem="rVr-Kv-Oui" secondAttribute="trailing" constant="-32" id="hAB-bA-cNe"/>
+                                                            <constraint firstAttribute="bottom" secondItem="rVr-Kv-Oui" secondAttribute="bottom" constant="-32" id="mpg-B4-DzZ"/>
                                                             <constraint firstAttribute="height" constant="120" id="ous-4h-72t"/>
                                                             <constraint firstAttribute="width" secondItem="9ku-41-e4X" secondAttribute="height" multiplier="1:1" id="v2T-BG-X2D"/>
                                                         </constraints>
@@ -1137,7 +1137,6 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="fC3-By-fK2" secondAttribute="trailing" id="4Sg-lZ-rf7"/>
                                             <constraint firstItem="fC3-By-fK2" firstAttribute="leading" secondItem="BzS-rZ-ae6" secondAttribute="leading" id="6KY-h0-wZV"/>
-                                            <constraint firstItem="U9T-C1-m2V" firstAttribute="top" secondItem="rVr-Kv-Oui" secondAttribute="bottom" constant="8" id="ALc-oT-qDO"/>
                                             <constraint firstAttribute="trailing" secondItem="bhG-Xy-tss" secondAttribute="trailing" constant="16" id="BgI-e0-ftc"/>
                                             <constraint firstItem="U9T-C1-m2V" firstAttribute="leading" secondItem="BzS-rZ-ae6" secondAttribute="leading" id="JQR-nW-9lg"/>
                                             <constraint firstAttribute="trailing" secondItem="U9T-C1-m2V" secondAttribute="trailing" id="Xxb-Hp-BXK"/>

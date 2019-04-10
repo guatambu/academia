@@ -410,17 +410,17 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_pic_placeholder_image.png" translatesAutoresizingMaskIntoConstraints="NO" id="jv6-Ta-Ej1" userLabel="Profile Pic Image View">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                                    <rect key="frame" x="-16" y="-16" width="112" height="112"/>
                                                                 </imageView>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstItem="jv6-Ta-Ej1" firstAttribute="top" secondItem="bgt-hB-ruv" secondAttribute="top" id="ZjE-6m-DlT"/>
+                                                                <constraint firstItem="jv6-Ta-Ej1" firstAttribute="top" secondItem="bgt-hB-ruv" secondAttribute="top" constant="-16" id="ZjE-6m-DlT"/>
                                                                 <constraint firstAttribute="width" constant="80" id="fl8-OQ-BIQ"/>
-                                                                <constraint firstAttribute="bottom" secondItem="jv6-Ta-Ej1" secondAttribute="bottom" id="huC-N4-Fd2"/>
-                                                                <constraint firstAttribute="trailing" secondItem="jv6-Ta-Ej1" secondAttribute="trailing" id="kOa-y7-K8L"/>
+                                                                <constraint firstAttribute="bottom" secondItem="jv6-Ta-Ej1" secondAttribute="bottom" constant="-16" id="huC-N4-Fd2"/>
+                                                                <constraint firstAttribute="trailing" secondItem="jv6-Ta-Ej1" secondAttribute="trailing" constant="-16" id="kOa-y7-K8L"/>
                                                                 <constraint firstAttribute="height" constant="80" id="naO-be-eG3"/>
-                                                                <constraint firstItem="jv6-Ta-Ej1" firstAttribute="leading" secondItem="bgt-hB-ruv" secondAttribute="leading" id="zK6-ma-Uxg"/>
+                                                                <constraint firstItem="jv6-Ta-Ej1" firstAttribute="leading" secondItem="bgt-hB-ruv" secondAttribute="leading" constant="-16" id="zK6-ma-Uxg"/>
                                                                 <constraint firstAttribute="width" secondItem="bgt-hB-ruv" secondAttribute="height" multiplier="1:1" id="zR7-wd-lhs"/>
                                                             </constraints>
                                                             <userDefinedRuntimeAttributes>
@@ -493,16 +493,16 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_pic_placeholder_image.png" translatesAutoresizingMaskIntoConstraints="NO" id="bH6-W6-0QI" userLabel="Profile Pic Image View">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                                    <rect key="frame" x="-24" y="-24" width="128" height="128"/>
                                                                 </imageView>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstItem="bH6-W6-0QI" firstAttribute="top" secondItem="06a-AE-vUz" secondAttribute="top" id="5Dl-WN-eqY"/>
+                                                                <constraint firstItem="bH6-W6-0QI" firstAttribute="top" secondItem="06a-AE-vUz" secondAttribute="top" constant="-24" id="5Dl-WN-eqY"/>
                                                                 <constraint firstAttribute="width" constant="80" id="Dpe-gT-Alm"/>
-                                                                <constraint firstItem="bH6-W6-0QI" firstAttribute="leading" secondItem="06a-AE-vUz" secondAttribute="leading" id="cvV-Ki-BBa"/>
-                                                                <constraint firstAttribute="trailing" secondItem="bH6-W6-0QI" secondAttribute="trailing" id="eNc-2S-FhK"/>
-                                                                <constraint firstAttribute="bottom" secondItem="bH6-W6-0QI" secondAttribute="bottom" id="oVS-HO-QyK"/>
+                                                                <constraint firstItem="bH6-W6-0QI" firstAttribute="leading" secondItem="06a-AE-vUz" secondAttribute="leading" constant="-24" id="cvV-Ki-BBa"/>
+                                                                <constraint firstAttribute="trailing" secondItem="bH6-W6-0QI" secondAttribute="trailing" constant="-24" id="eNc-2S-FhK"/>
+                                                                <constraint firstAttribute="bottom" secondItem="bH6-W6-0QI" secondAttribute="bottom" constant="-24" id="oVS-HO-QyK"/>
                                                                 <constraint firstAttribute="width" secondItem="06a-AE-vUz" secondAttribute="height" multiplier="1:1" id="v3c-4q-QHe"/>
                                                                 <constraint firstAttribute="height" constant="80" id="yMc-Na-ZyE"/>
                                                             </constraints>
