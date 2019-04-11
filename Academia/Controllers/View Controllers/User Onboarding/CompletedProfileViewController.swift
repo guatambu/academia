@@ -123,6 +123,8 @@ class CompletedProfileViewController: UIViewController {
                 
                 self.present(tabBarDestViewController, animated: true, completion: nil)
                 
+                navigationController?.navigationBar.shadowImage = UIImage()
+                
                 // exit funciton
                 return
             }
@@ -140,6 +142,7 @@ class CompletedProfileViewController: UIViewController {
                     
                     self.present(tabBarDestViewController, animated: true, completion: nil)
                     
+                    navigationController?.navigationBar.shadowImage = UIImage()
                 }
                 
                 // exit function

@@ -28,6 +28,8 @@ class OwnerProfileTableViewController: UITableViewController {
         let nib = UINib(nibName: "GeneralMenuCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "generalMenuCell")
         
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
     }
 
 }

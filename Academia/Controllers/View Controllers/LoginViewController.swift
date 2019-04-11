@@ -297,6 +297,7 @@ extension LoginViewController {
         if let tabBarDestViewController = (mainView.instantiateViewController(withIdentifier: tabBarControllerIdentifier) as? UITabBarController) {
             
             self.present(tabBarDestViewController, animated: true, completion: nil)
+            
         }
         
         // set the desired properties of the destinationVC's navgation Item

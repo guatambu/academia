@@ -30,6 +30,8 @@ class OwnerGroupListTableViewController: UITableViewController {
         navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
         
         title = "Student Groups"
+        
+        navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     

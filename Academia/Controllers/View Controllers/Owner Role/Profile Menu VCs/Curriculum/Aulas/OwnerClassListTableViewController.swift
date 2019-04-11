@@ -41,6 +41,8 @@ class OwnerClassListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.shadowImage = UIImage()
 
     }
     
@@ -706,6 +708,8 @@ extension OwnerClassListTableViewController {
     
     // return to OwnerDashboardTVC
     func returnToOwnerDashboardScene() {
+        
+        _ = self.tabBarController?.selectedIndex = 2
         
         guard let viewControllers = self.navigationController?.viewControllers else { return }
         

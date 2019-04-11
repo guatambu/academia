@@ -487,7 +487,7 @@ extension TakeProfilePicViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
       
         if let selectedPhoto = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
-            let scaledImage = selectedPhoto.scaleImage(800) {
+            let scaledImage = selectedPhoto.scaleImage(640) {
             
             dismiss(animated: true, completion: {
                 self.profilePicImageViewOutlet.image = scaledImage

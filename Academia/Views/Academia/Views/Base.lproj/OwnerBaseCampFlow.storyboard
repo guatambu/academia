@@ -2990,10 +2990,10 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qii-wl-p8L" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
-                                    <rect key="frame" x="92.5" y="34" width="135" height="38"/>
+                                    <rect key="frame" x="35.5" y="34" width="249" height="38"/>
                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                     <inset key="contentEdgeInsets" minX="24" minY="8" maxX="24" maxY="8"/>
-                                    <state key="normal" title="add student">
+                                    <state key="normal" title="create and add new student">
                                         <color key="titleColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                     <userDefinedRuntimeAttributes>

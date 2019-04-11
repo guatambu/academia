@@ -289,7 +289,7 @@ extension PaymentProgramAgreementViewController: UITextViewDelegate {
             if #available(iOS 11.0, *) {
                 
                 self.view.frame.origin.y = -(keyboardCGRectValue.height - bottomPadding)
-                self.agreementStackViewTopToSafeAreaConstraintOutlet.constant = (agreementStackViewTopToSafeAreaConstraintOriginalValue + 56.0)
+                self.agreementStackViewTopToSafeAreaConstraintOutlet.constant = (agreementStackViewTopToSafeAreaConstraintOriginalValue + 64.0)
                 self.nextButtonToBottomAgreementStackViewConstraintOutlet.constant = 8.0
                 
             } else {

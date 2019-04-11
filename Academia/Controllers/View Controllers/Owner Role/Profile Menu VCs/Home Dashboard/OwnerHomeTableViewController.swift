@@ -35,6 +35,8 @@ class OwnerHomeTableViewController: UITableViewController, ActiveOwnerDelegate {
         let nib = UINib(nibName: "OwnerOnBoardingDashboardCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "ownerHomeDashboardCell")
         
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
     }
 
     
