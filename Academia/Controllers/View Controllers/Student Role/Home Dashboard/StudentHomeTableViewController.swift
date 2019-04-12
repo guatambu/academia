@@ -16,6 +16,8 @@ class StudentHomeTableViewController: UITableViewController, ActiveStudentDelega
     
     // MARK: - Properties
     
+    let beltBuilder = BeltBuilder()
+    
     var activeStudent: UUID?
     var isKid: Bool = false
     

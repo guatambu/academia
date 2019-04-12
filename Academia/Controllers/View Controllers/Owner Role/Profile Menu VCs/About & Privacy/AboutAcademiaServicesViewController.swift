@@ -9,6 +9,12 @@
 import UIKit
 
 class AboutAcademiaServicesViewController: UIViewController {
+    
+    // MARK: - Properties
+    let beltBuilder = BeltBuilder()
+    
+    
+    // ViewCotnroller Lifecycle Functions
 
     override func viewDidLoad() {
         super.viewDidLoad()

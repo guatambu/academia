@@ -9,6 +9,12 @@
 import UIKit
 
 class StudentMessagesListTableViewController: UITableViewController {
+    
+    // MARK: - Properties
+    let beltBuilder = BeltBuilder()
+    
+    
+    // ViewCotnroller Lifecycle Functions
 
     override func viewDidLoad() {
         super.viewDidLoad()

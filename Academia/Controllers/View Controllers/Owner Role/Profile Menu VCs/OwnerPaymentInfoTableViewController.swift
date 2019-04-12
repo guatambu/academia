@@ -9,6 +9,10 @@
 import UIKit
 
 class OwnerPaymentInfoTableViewController: UITableViewController {
+    
+    // MARK: - Properties
+    let beltBuilder = BeltBuilder()
+    
 
     // MARK: - ViewController Lifecycle Functions
     

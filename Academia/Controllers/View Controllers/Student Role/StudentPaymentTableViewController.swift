@@ -25,6 +25,8 @@ class StudentPaymentTableViewController: UITableViewController {
     var adultStudent: AdultStudent?
     var kidStudent: KidStudent?
     
+    let beltBuilder = BeltBuilder()
+    
     
     // MARK: - ViewController Lifecycle Functions
     
