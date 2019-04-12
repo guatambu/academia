@@ -25,17 +25,14 @@ class StudentClassesTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.gray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 24)! ]
-        
-        navigationController?.navigationBar.titleTextAttributes = avenirFont
-        
         tableView.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
     }
     
     

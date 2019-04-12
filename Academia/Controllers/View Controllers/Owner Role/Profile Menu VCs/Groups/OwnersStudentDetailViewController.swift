@@ -57,11 +57,21 @@ class OwnersStudentDetailViewController: UIViewController {
     
     // MARK: - ViewController Lifecycle Functions
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        populateCompletedProfileInfo(adult: adult, kid: kid, adultCD: studentAdultCD, kidCD: studentKidCD, ownerCD: ownerCD)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // set VC title font styling
         navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
+        
+        let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(self.editButtonTapped))
+        self.navigationItem.rightBarButtonItem = editButton
+    
+
         
         title = "Please Review Your Info"
         
@@ -103,7 +113,43 @@ class OwnersStudentDetailViewController: UIViewController {
         OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
-    
+    @objc func editButtonTapped() {
+        
+        // programmatically performing the segue
+        
+        // instantiate the relevant storyboard
+        let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        // instantiate the desired TableViewController as ViewController on relevant storyboard
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toTakeProfilePic") as! TakeProfilePicViewController
+        // create the segue programmatically - PUSH
+        self.navigationController?.pushViewController(destViewController, animated: true)
+        // set the desired properties of the destinationVC's navgation Item
+        let backButtonItem = UIBarButtonItem()
+        backButtonItem.title = " "
+        navigationItem.backBarButtonItem = backButtonItem
+        // set nav bar controller appearance
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
+        // set properties in destinationVC
+        destViewController.inEditingMode = true
+        destViewController.isOwner = false
+        
+        if let isKid = isKid {
+            
+            if isKid {
+                // **** IF KID STUDENT ****
+                destViewController.isKid = true
+                destViewController.userCDToEdit = studentKidCD
+            } else {
+                // **** IF ADULT STUDENT ****
+                destViewController.isKid = false
+                destViewController.userCDToEdit = studentAdultCD
+            }
+        }
+        
+    }
 }
 
 // MARK: - date formatter setup for birthdate display

@@ -51,11 +51,6 @@ class AddGroupToClassTableViewController: UITableViewController, ClassGroupDeleg
     
     override func viewWillAppear(_ animated: Bool) {
         
-        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
-        
-        navigationController?.navigationBar.titleTextAttributes = avenirFont
-        
         enterEditingMode(inEditingMode: inEditingMode)
         
         tableView.reloadData()
@@ -63,6 +58,9 @@ class AddGroupToClassTableViewController: UITableViewController, ClassGroupDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
         
         guard let aulaName = aulaName, let active = active, let aulaDescription = aulaDescription else {
             print("no aulaName, active, or aulaDescription passed to: ClassLocationVC -> viewDidLoad() - line 61")

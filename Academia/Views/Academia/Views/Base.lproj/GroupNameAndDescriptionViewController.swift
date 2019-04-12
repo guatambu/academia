@@ -53,11 +53,6 @@ class GroupNameAndDescriptionViewController: UIViewController, UITextInputTraits
         // turns off auto-capitalization in these UITextFields
         groupNameTextField.autocapitalizationType = UITextAutocapitalizationType.none
         
-        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
-        
-        navigationController?.navigationBar.titleTextAttributes = avenirFont
-        
         enterEditingMode(inEditingMode: inEditingMode)
     }
     
@@ -68,6 +63,9 @@ class GroupNameAndDescriptionViewController: UIViewController, UITextInputTraits
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
         
         groupNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.groupName.rawValue, attributes: beltBuilder.avenirFont)
         groupDescriptionTextView.attributedText = NSAttributedString(string: groupDescriptionTextViewPlaceholderString, attributes: beltBuilder.avenirFont)

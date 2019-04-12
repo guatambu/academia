@@ -45,8 +45,6 @@ class ClassNameAndDescriptionViewController: UIViewController {
         
         subscribeToKeyboardNotifications()
         
-        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
-        
         enterEditingMode(inEditingMode: inEditingMode)
     }
     
@@ -57,6 +55,9 @@ class ClassNameAndDescriptionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
         
         classNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.className.rawValue, attributes: beltBuilder.avenirFont)
         classDescriptionTextView.attributedText = NSAttributedString(string: PlaceholderStrings.classDescription.rawValue, attributes: beltBuilder.avenirFont)

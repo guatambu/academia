@@ -73,6 +73,9 @@ class LocationAddressViewController: UIViewController, UITextInputTraits{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
+        
         addressLine1TextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.streetAddress.rawValue, attributes: beltBuilder.avenirFont)
         addressLine2TextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.additionalAddress.rawValue, attributes: beltBuilder.avenirFont)
         cityTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.city.rawValue, attributes: beltBuilder.avenirFont)

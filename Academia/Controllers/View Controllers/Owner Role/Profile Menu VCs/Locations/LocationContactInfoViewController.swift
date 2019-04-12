@@ -70,6 +70,9 @@ class LocationContactInfoViewController: UIViewController, UITextInputTraits {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
+        
         phoneTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.phone.rawValue, attributes: beltBuilder.avenirFont)
         websiteTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.website.rawValue, attributes: beltBuilder.avenirFont)
         emailTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.email.rawValue, attributes: beltBuilder.avenirFont)

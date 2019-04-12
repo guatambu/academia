@@ -56,11 +56,6 @@ class StudentInfoDetailsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
-        
-        navigationController?.navigationBar.titleTextAttributes = avenirFont
-        
         // create fetch request and initialize results
         initializeFetchedResultsControllers()
         // search fetch results to find activeOwner
@@ -71,6 +66,9 @@ class StudentInfoDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
         
         addressLine2LabelOutlet.isHidden = false
         mobileLabelOutlet.isHidden = false

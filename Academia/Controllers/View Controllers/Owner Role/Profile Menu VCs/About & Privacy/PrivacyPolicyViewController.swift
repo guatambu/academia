@@ -12,6 +12,9 @@ class PrivacyPolicyViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
 
         // Do any additional setup after loading the view.
     }

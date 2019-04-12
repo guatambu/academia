@@ -58,6 +58,9 @@ class BirthdayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
+        
         // set birthdayPickerView maxDate to today current date
         let currentDate = Date()
         var dateComponents = DateComponents()

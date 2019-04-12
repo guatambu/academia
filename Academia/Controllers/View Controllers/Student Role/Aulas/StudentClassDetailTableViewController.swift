@@ -43,11 +43,6 @@ class StudentClassDetailTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         populateCompletedAulaInfo()
-        
-        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
-        
-        navigationController?.navigationBar.titleTextAttributes = avenirFont
             
         instructorAdvisoryLabelOutlet.isHidden = true
         

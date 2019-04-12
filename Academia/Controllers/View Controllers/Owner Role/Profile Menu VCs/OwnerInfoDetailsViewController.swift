@@ -337,6 +337,8 @@ extension UIViewController {
             
             if viewController is StudentInfoDetailsViewController {
                 self.navigationController?.popToViewController(viewController, animated: true)
+            } else if viewController is OwnersStudentDetailViewController {
+                self.navigationController?.popToViewController(viewController, animated: true)
             }
         }
     }

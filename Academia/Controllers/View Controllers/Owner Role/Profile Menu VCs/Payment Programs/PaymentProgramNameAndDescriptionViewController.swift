@@ -65,6 +65,9 @@ class PaymentProgramNameAndDescriptionViewController: UIViewController, UITextIn
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
+        
         programNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.paymentProgramName.rawValue, attributes: beltBuilder.avenirFont)
         programDescriptionTextView.attributedText = NSAttributedString(string: programDescriptionTextViewPlaceholderString, attributes: beltBuilder.avenirFont)
         

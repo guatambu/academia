@@ -77,6 +77,9 @@ class EmergencyContactViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
+        
         emergencyContactNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactName.rawValue, attributes: beltBuilder.avenirFont)
         emergencyContactPhoneTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactPhone.rawValue, attributes: beltBuilder.avenirFont)
         emergencyContactRelationshipTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactRelationship.rawValue, attributes: beltBuilder.avenirFont)

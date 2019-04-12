@@ -62,6 +62,9 @@ class LocationSocialLinksViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
     
         socialLink1TextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.instagram.rawValue, attributes: beltBuilder.avenirFont)
         socialLink2TextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.facebook.rawValue, attributes: beltBuilder.avenirFont)

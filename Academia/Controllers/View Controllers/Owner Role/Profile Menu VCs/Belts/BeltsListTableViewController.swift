@@ -32,6 +32,9 @@ class BeltsListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
+        
         tableView.estimatedRowHeight = 120
         tableView.rowHeight = 120
         

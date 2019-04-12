@@ -60,7 +60,8 @@ class TakeProfilePicViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.titleTextAttributes = beltBuilder.avenirFont
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
         
         firstNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.firstName.rawValue, attributes: beltBuilder.avenirFont)
         lastNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.lastName.rawValue, attributes: beltBuilder.avenirFont)

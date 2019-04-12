@@ -48,11 +48,6 @@ class PaymentProgramAgreementViewController: UIViewController {
         
         subscribeToKeyboardNotifications()
         
-        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
-        
-        navigationController?.navigationBar.titleTextAttributes = avenirFont
-        
         enterEditingMode(inEditingMode: inEditingMode)
     }
     
@@ -63,6 +58,9 @@ class PaymentProgramAgreementViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
         
         programAgreementTextView.attributedText = NSAttributedString(string: programAgreementTextViewPlaceholderString, attributes: beltBuilder.avenirFont)
         
