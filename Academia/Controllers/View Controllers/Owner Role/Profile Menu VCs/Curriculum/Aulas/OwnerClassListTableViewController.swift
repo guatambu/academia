@@ -229,7 +229,7 @@ class OwnerClassListTableViewController: UITableViewController {
             }
             // sort sundays array to display included classes by timeCode
             sundays.sort(by: {$0.timeCode < $1.timeCode })
-            print("sundays.count: \(sundays.count)")
+        
             // if the sundays: [AulaCD array is not empty, pass the contents to the cell via the appropriate indexPath.row Int value]
             // Configure the cell
             if !sundays.isEmpty {
@@ -262,7 +262,7 @@ class OwnerClassListTableViewController: UITableViewController {
             }
             // sort sundays array to display included classes by timeCode
             mondays.sort(by: {$0.timeCode < $1.timeCode })
-            print("mondays.count: \(mondays.count)")
+            
             // if the sundays: [AulaCD array is not empty, pass the contents to the cell via the appropriate indexPath.row Int value]
             // Configure the cell
             if !mondays.isEmpty {
@@ -295,8 +295,7 @@ class OwnerClassListTableViewController: UITableViewController {
             }
             // sort sundays array to display included classes by timeCode
             tuesdays.sort(by: {$0.timeCode < $1.timeCode })
-            print("tuesdays.count: \(tuesdays.count)")
-            print("indexPath.row: \(indexPath.row)")
+            
             // if the sundays: [AulaCD array is not empty, pass the contents to the cell via the appropriate indexPath.row Int value]
             // Configure the cell
             if !tuesdays.isEmpty {
@@ -329,7 +328,7 @@ class OwnerClassListTableViewController: UITableViewController {
             }
             // sort sundays array to display included classes by timeCode
             wednesdays.sort(by: {$0.timeCode < $1.timeCode })
-            print("wednesdays.count: \(wednesdays.count)")
+            
             // if the sundays: [AulaCD array is not empty, pass the contents to the cell via the appropriate indexPath.row Int value]
             // Configure the cell
             if !wednesdays.isEmpty {
@@ -362,7 +361,7 @@ class OwnerClassListTableViewController: UITableViewController {
             }
             // sort sundays array to display included classes by timeCode
             thursdays.sort(by: {$0.timeCode < $1.timeCode })
-            print("thursdays.count: \(thursdays.count)")
+            
             // if the sundays: [AulaCD array is not empty, pass the contents to the cell via the appropriate indexPath.row Int value]
             // Configure the cell
             if !thursdays.isEmpty {
@@ -395,7 +394,7 @@ class OwnerClassListTableViewController: UITableViewController {
             }
             // sort sundays array to display included classes by timeCode
             fridays.sort(by: {$0.timeCode < $1.timeCode })
-            print("fridays.count: \(fridays.count)")
+            
             // if the sundays: [AulaCD array is not empty, pass the contents to the cell via the appropriate indexPath.row Int value]
             // Configure the cell
             if !fridays.isEmpty {
@@ -428,7 +427,7 @@ class OwnerClassListTableViewController: UITableViewController {
             }
             // sort sundays array to display included classes by timeCode
             saturdays.sort(by: {$0.timeCode < $1.timeCode })
-            print("saturdays.count: \(saturdays.count)")
+            
             // if the sundays: [AulaCD array is not empty, pass the contents to the cell via the appropriate indexPath.row Int value]
             // Configure the cell
             if !saturdays.isEmpty {
@@ -491,7 +490,6 @@ class OwnerClassListTableViewController: UITableViewController {
                 
                 // sort sundays array to display classes by timeCode
                 sundays.sort(by: {$0.timeCode < $1.timeCode })
-                print(sundays)
                 
                 let aulaCD = sundays[indexPath.row]
                 
@@ -519,7 +517,6 @@ class OwnerClassListTableViewController: UITableViewController {
                 
                 // sort mondays array to display classes by timeCode
                 mondays.sort(by: {$0.timeCode < $1.timeCode })
-                print(mondays)
                 
                 let aulaCD = mondays[indexPath.row]
                 
@@ -547,7 +544,6 @@ class OwnerClassListTableViewController: UITableViewController {
                 
                 // sort tuesdays array to display classes by timeCode
                 tuesdays.sort(by: {$0.timeCode < $1.timeCode })
-                print(tuesdays)
                 
                 let aulaCD = tuesdays[indexPath.row]
                 
@@ -575,7 +571,6 @@ class OwnerClassListTableViewController: UITableViewController {
                 
                 // sort wednesdays array to display classes by timeCode
                 wednesdays.sort(by: {$0.timeCode < $1.timeCode })
-                print(wednesdays)
                 
                 let aulaCD = wednesdays[indexPath.row]
                 
@@ -603,7 +598,6 @@ class OwnerClassListTableViewController: UITableViewController {
                 
                 // sort thursdays array to display classes by timeCode
                 thursdays.sort(by: {$0.timeCode < $1.timeCode })
-                print(thursdays)
                 
                 let aulaCD = thursdays[indexPath.row]
                 
@@ -631,7 +625,6 @@ class OwnerClassListTableViewController: UITableViewController {
                 
                 // sort fridays array to display classes by timeCode
                 fridays.sort(by: {$0.timeCode < $1.timeCode })
-                print(fridays)
                 
                 let aulaCD = fridays[indexPath.row]
                 
@@ -659,7 +652,6 @@ class OwnerClassListTableViewController: UITableViewController {
                 
                 // sort saturdays array to display classes by timeCode
                 saturdays.sort(by: {$0.timeCode < $1.timeCode })
-                print(saturdays)
                 
                 let aulaCD = saturdays[indexPath.row]
                 

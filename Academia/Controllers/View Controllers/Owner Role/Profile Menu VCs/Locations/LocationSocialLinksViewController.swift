@@ -212,9 +212,9 @@ extension LocationSocialLinksViewController {
         
         anySocialMediaLinksToAddLabelOutlet.text = "Location: \(locationCDToEdit.locationName ?? "")"
         
-        socialLink1TextField.text = "Instagram: \(locationCDToEdit.socialLinks?.socialLink1 ?? "")"
-        socialLink2TextField.text = "facebook: \(locationCDToEdit.socialLinks?.socialLink2 ?? "")"
-        socialLink3TextField.text = "Twitter: \(locationCDToEdit.socialLinks?.socialLink3 ?? "")"
+        socialLink1TextField.text = "\(locationCDToEdit.socialLinks?.socialLink1 ?? "")"
+        socialLink2TextField.text = "\(locationCDToEdit.socialLinks?.socialLink2 ?? "")"
+        socialLink3TextField.text = "\(locationCDToEdit.socialLinks?.socialLink3 ?? "")"
     }
 }
 
