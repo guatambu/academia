@@ -154,19 +154,6 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
                 
                 if inEditingMode {
                     
-//                    guard let ownerInstructorsToEdit = aulaToEdit?.ownerInstructor else {
-//                        print("ERROR: nil value for aulaToEdit.ownerInstructor in ClassInstructorsTableViewController.swift -> tableView(tableView:, cellForRowAt:) - line 162")
-//                        return UITableViewCell()
-//                    }
-//
-//                    if ownerInstructorsToEdit.isEmpty == false && (ownerInstructorsToEdit.count - 1) >= indexPath.row {
-//
-//                        if availableOwners.contains(ownerInstructorsToEdit[indexPath.row]) {
-//
-//                            cell.isChosen = true
-//                        }
-//                    }
-                    
                     // set the isChosen to true if inEditingMode == true and current ownerInstructor is present in aulaCDToEdit.ownerInstructor NSSet to display the ownerInstructor as chosen
                     
                     // CoreData version
@@ -187,8 +174,6 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
             guard let ownersCD = fetchedResultsControllerOwnerInstructors.fetchedObjects else { return UITableViewCell() }
             
             cell.ownerInstructorCD = ownersCD[indexPath.row]
-            
-//            cell.ownerInstructor = availableOwners[indexPath.row]
             
             return cell
             
@@ -220,8 +205,6 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
                 guard let instructorsCD = fetchedResultsControllerAdultInstructors.fetchedObjects else { return UITableViewCell() }
 
                 cell.instructorCD = instructorsCD[indexPath.row]
-            
-//                cell.instructor = possibleInstructors[indexPath.row]
             
                 return cell
                 
@@ -256,31 +239,6 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
         
         if indexPath.section == 0 {
             // kidStudent setup
-            //            let kid = mockKids[indexPath.row]
-            //
-            //            destViewController.isOwner = false
-            //            destViewController.isKid = true
-            //            destViewController.username = kid.username
-            //            destViewController.password = kid.password
-            //            destViewController.firstName = kid.firstName
-            //            destViewController.lastName = kid.lastName
-            //            destViewController.parentGuardian = kid.parentGuardian
-            //            destViewController.profilePic = kid.profilePic
-            //            destViewController.birthdate = kid.birthdate
-            //            destViewController.beltLevel = kid.belt.beltLevel
-            //            destViewController.numberOfStripes = kid.belt.numberOfStripes
-            //            destViewController.addressLine1 = kid.addressLine1
-            //            destViewController.addressLine2 = kid.addressLine2
-            //            destViewController.city = kid.city
-            //            destViewController.state = kid.state
-            //            destViewController.zipCode = kid.zipCode
-            //            destViewController.phone = kid.phone
-            //            destViewController.mobile = kid.mobile
-            //            destViewController.email = kid.email
-            //            destViewController.emergencyContactName = kid.emergencyContactName
-            //            destViewController.emergencyContactRelationship = kid.emergencyContactRelationship
-            //            destViewController.emergencyContactPhone = kid.emergencyContactPhone
-            
             
             // CoreData version
             guard let ownerInstructorsCD = fetchedResultsControllerOwnerInstructors.fetchedObjects else {
@@ -303,30 +261,6 @@ class ClassInstructorsTableViewController: UITableViewController, InstructorsDel
             
         } else if indexPath.section == 1 {
             // adultStudent setup
-            //            let adult = mockAdults[indexPath.row]
-            //
-            //            destViewController.isOwner = false
-            //            destViewController.isKid = false
-            //            destViewController.username = adult.username
-            //            destViewController.password = adult.password
-            //            destViewController.firstName = adult.firstName
-            //            destViewController.lastName = adult.lastName
-            //            destViewController.profilePic = adult.profilePic
-            //            destViewController.birthdate = adult.birthdate
-            //            destViewController.beltLevel = adult.belt.beltLevel
-            //            destViewController.numberOfStripes = adult.belt.numberOfStripes
-            //            destViewController.addressLine1 = adult.addressLine1
-            //            destViewController.addressLine2 = adult.addressLine2
-            //            destViewController.city = adult.city
-            //            destViewController.state = adult.state
-            //            destViewController.zipCode = adult.zipCode
-            //            destViewController.phone = adult.phone
-            //            destViewController.mobile = adult.mobile
-            //            destViewController.email = adult.email
-            //            destViewController.emergencyContactName = adult.emergencyContactName
-            //            destViewController.emergencyContactRelationship = adult.emergencyContactRelationship
-            //            destViewController.emergencyContactPhone = adult.emergencyContactPhone
-            
             
             // CoreData version
             guard let adultInstructorsCD = fetchedResultsControllerAdultInstructors.fetchedObjects else {
@@ -396,42 +330,17 @@ extension ClassInstructorsTableViewController {
     // Update Function for case where want to update user info without a segue
     func updateAulaInfo() {
         
-        guard let aula = aulaToEdit else { return }
-        
-        // class update info
-        
-        AulaModelController.shared.update(aula: aula, active: nil, kidAttendees: nil, adultAttendees: nil, aulaDescription: nil, aulaName: nil, daysOfTheWeek: nil, instructor: instructors, ownerInstructor: ownerInstructors, location: nil, students: nil, time: nil, timeCode: nil, classGroups: nil)
-        print("update class instructors: \(String(describing: AulaModelController.shared.aulas[0].instructor)) \n\(String(describing: AulaModelController.shared.aulas[0].ownerInstructor))")
-        
         // CoreData GroupCD update info
         guard let aulaCDToEdit = aulaCDToEdit else { return }
         
-        guard let ownerInstructorExisting = aulaCDToEdit.ownerInstructorAula else { return }
-        
-        guard let adultStudentInstructorExisting = aulaCDToEdit.adultStudentInstructorsAula else { return }
-        
-        // here we want to loop through the two instructorsCD arrays and check the existing corresponding group members NSSet to see if it contains the current iterated member object and if it does NOT, then add that iterated member object to the group members NSSet
-        
-        for owner in ownerInstructorsCD {
-            // check to see if current kidMembersCD actually has kid, this should not fail
-            let containsOwner =  ownerInstructorExisting.contains(owner)
-            // if the kid is not present, add it to the groupCDToEdit object
-            if containsOwner == false {
-                
-                aulaCDToEdit.addToOwnerInstructorAula(owner)
-            }
-        }
-        
-        for adult in instructorsCD {
-            
-            // check to see if current adultMembersCD actually has adult, this should not fail
-            let containsAdult =  adultStudentInstructorExisting.contains(adult)
-            // if the adult is not present, add it to the groupCDToEdit object
-            if containsAdult == false {
-                
-                aulaCDToEdit.addToAdultStudentInstructorsAula(adult)
-            }
-        }
+        // reset the instructor NSOrderedSets on aulaCDToEdit
+        aulaCDToEdit.ownerInstructorAula = []
+        aulaCDToEdit.adultStudentInstructorsAula = []
+
+        // update to the latest version of the instructor arrays
+        aulaCDToEdit.ownerInstructorAula = NSOrderedSet(array: ownerInstructorsCD)
+        aulaCDToEdit.adultStudentInstructorsAula = NSOrderedSet(array: instructorsCD)
+
         // save to CoreData
         OwnerCDModelController.shared.saveToPersistentStorage()
     }
@@ -452,32 +361,6 @@ extension ClassInstructorsTableViewController {
     
     // owner setup for editing mode
     func aulaEditingSetup() {
-
-//        guard let aulaToEdit = aulaToEdit else {
-//            print("ERROR: nil value for aulaToEdit in ClassInstructorsTableViewController.swift -> aulaEditingSetup() - line 330")
-//            return
-//        }
-//        guard let instructorsToEdit = aulaToEdit.instructor else {
-//            print("ERROR: nil value for aulaToEdit.instructor in ClassInstructorsTableViewController.swift -> aulaEditingSetup() - line 334")
-//            return
-//        }
-//        guard let ownerInstructorsToEdit = aulaToEdit.ownerInstructor else {
-//            print("ERROR: nil value for aulaToEdit.ownerInstructor in ClassInstructorsTableViewController.swift -> aulaEditingSetup() - line 338")
-//            return
-//        }
-//
-//        welcomeMessageLabelOutlet.text = "\(aulaToEdit.aulaName)"
-//
-//        welcomeInstructions1LabelOutlet.textColor = beltBuilder.redBeltRed
-//        welcomeInstructions1LabelOutlet.text = "you are in class editing mode"
-//
-//        daysOfTheWeek = aulaToEdit.daysOfTheWeek
-//        time = aulaToEdit.time ?? ""
-//
-//        instructors = instructorsToEdit
-//        ownerInstructors = ownerInstructorsToEdit
-//
-//        print("the VC's aula timeOfDay, location, and daysOfTheWeek have been set to the existing aula's coresponding details to be edited and the collection views have reloaded their data")
         
         // CoreData version
         guard let aulaCDToEdit = aulaCDToEdit else {
@@ -492,16 +375,6 @@ extension ClassInstructorsTableViewController {
             print("ERROR: nil value for aulaToEdit.ownerInstructorAula in ClassInstructorsTableViewController.swift -> aulaEditingSetup() - line 509")
             return
         }
-//        guard let aulaCDName = aulaCDToEdit.aulaName else {
-//
-//            print("ERROR: nil value for aulaToEdit.aulaName in ClassInstructorsTableViewController.swift -> aulaEditingSetup() - line 514")
-//            return
-//        }
-//
-//        self.title = "\(aulaCDName)"
-//
-//        welcomeInstructions1LabelOutlet.textColor = beltBuilder.redBeltRed
-//        welcomeInstructions1LabelOutlet.text = "you are in class editing mode"
         
         instructorsCD = Array(instructorsCDToEdit) as! [StudentAdultCD]
         ownerInstructorsCD = Array(ownerInstructorsCDToEdit) as! [OwnerCD]
@@ -549,7 +422,6 @@ extension ClassInstructorsTableViewController: NSFetchedResultsControllerDelegat
         } catch {
             fatalError("Failed to initialize FetchedResultsController: \(error)")
         }
-        
     }
 }
 

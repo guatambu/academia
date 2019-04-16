@@ -26,12 +26,6 @@ class OwnerInstructorTableViewCell: UITableViewCell {
     @IBOutlet weak var cellTitleOutlet: UILabel!
     @IBOutlet weak var rightRedArrowImageViewOutlet: UIImageView!
     
-    var ownerInstructor: Owner? {
-        didSet {
-            updateViews()
-        }
-    }
-    
     var ownerInstructorCD: OwnerCD? {
         didSet {
             updateViews()

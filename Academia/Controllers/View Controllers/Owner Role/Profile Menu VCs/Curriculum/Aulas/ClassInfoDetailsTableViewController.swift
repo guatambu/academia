@@ -73,7 +73,6 @@ class ClassInfoDetailsTableViewController: UITableViewController {
         }
         
         tableView.reloadData()
-        
     }
     
     override func viewDidLoad() {
