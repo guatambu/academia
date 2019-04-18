@@ -824,36 +824,97 @@
             </objects>
             <point key="canvasLocation" x="921" y="7759"/>
         </scene>
-        <!--Privacy Policy View Controller-->
+        <!--Privacy Policy 1 View Controller-->
         <scene sceneID="Sz1-RO-CbG">
             <objects>
-                <viewController storyboardIdentifier="toPrivacyPolicy" id="Iym-ir-YpH" userLabel="Privacy Policy View Controller" customClass="PrivacyPolicyViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toPrivacyPolicy1" id="Iym-ir-YpH" userLabel="Privacy Policy 1 View Controller" customClass="PrivacyPolicyViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QNy-jY-NlC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="glw-cq-H6w">
-                                <rect key="frame" x="16" y="80" width="288" height="472"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OtH-QH-igb">
+                                <rect key="frame" x="16" y="80" width="288" height="464"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. OUR COMMITMENT TO PRIVACY." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JIt-vn-tks">
+                                        <rect key="frame" x="0.0" y="8" width="288" height="22"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="23Q-bh-yDg">
+                                        <rect key="frame" x="8" y="30" width="280" height="109.5"/>
+                                        <string key="text">This notice describes our Privacy Policy. Our privacy policy is designed to advise you about how we collect, use, and protect the personal information you provide.</string>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By using this app, you are accepting the practices described in this Privacy Policy." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vw0-OM-Q3K">
+                                        <rect key="frame" x="8" y="139.5" width="280" height="66"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. WHAT INFORMATION IS COLLECTED." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DnL-h0-Wa9">
+                                        <rect key="frame" x="0.0" y="221.5" width="288" height="44"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yhf-H6-Bah">
+                                        <rect key="frame" x="8" y="265.5" width="280" height="153"/>
+                                        <string key="text">(a) Information You Provide to Us: We collect any information you enter in the app, or that you give us in any other way. You can choose not to provide certain information, but you may not be able to take advantage of our services and features.</string>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FJc-8d-xZR">
+                                        <rect key="frame" x="64" y="426.5" width="160" height="30"/>
+                                        <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
+                                        <state key="normal" title="next page">
+                                            <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="78b-NK-BoV" kind="show" id="2tq-JY-0a4"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Yhf-H6-Bah" firstAttribute="leading" secondItem="OtH-QH-igb" secondAttribute="leading" constant="8" id="2P6-Jo-a6R"/>
+                                    <constraint firstItem="FJc-8d-xZR" firstAttribute="top" secondItem="Yhf-H6-Bah" secondAttribute="bottom" constant="8" id="6Jy-Ag-fGa"/>
+                                    <constraint firstAttribute="height" constant="464" id="C4Z-Gg-hrW"/>
+                                    <constraint firstItem="FJc-8d-xZR" firstAttribute="leading" secondItem="OtH-QH-igb" secondAttribute="leading" constant="64" id="CjZ-cf-UfJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="FJc-8d-xZR" secondAttribute="trailing" constant="64" id="Epj-Hm-u0n"/>
+                                    <constraint firstAttribute="trailing" secondItem="23Q-bh-yDg" secondAttribute="trailing" id="JxJ-En-7qN"/>
+                                    <constraint firstAttribute="trailing" secondItem="Yhf-H6-Bah" secondAttribute="trailing" id="LeQ-7j-Kve"/>
+                                    <constraint firstItem="23Q-bh-yDg" firstAttribute="top" secondItem="JIt-vn-tks" secondAttribute="bottom" id="N2f-Wl-eln"/>
+                                    <constraint firstAttribute="trailing" secondItem="DnL-h0-Wa9" secondAttribute="trailing" id="Uba-dO-HMM"/>
+                                    <constraint firstItem="JIt-vn-tks" firstAttribute="leading" secondItem="OtH-QH-igb" secondAttribute="leading" id="W9g-Gk-M9S"/>
+                                    <constraint firstItem="Yhf-H6-Bah" firstAttribute="top" secondItem="DnL-h0-Wa9" secondAttribute="bottom" id="WXy-iJ-wYj"/>
+                                    <constraint firstItem="Vw0-OM-Q3K" firstAttribute="leading" secondItem="OtH-QH-igb" secondAttribute="leading" constant="8" id="hM6-TA-Bsr"/>
+                                    <constraint firstItem="JIt-vn-tks" firstAttribute="top" secondItem="OtH-QH-igb" secondAttribute="top" constant="8" id="kLP-5I-9dA"/>
+                                    <constraint firstItem="DnL-h0-Wa9" firstAttribute="leading" secondItem="OtH-QH-igb" secondAttribute="leading" id="lif-3Q-G4K"/>
+                                    <constraint firstItem="Vw0-OM-Q3K" firstAttribute="top" secondItem="23Q-bh-yDg" secondAttribute="bottom" id="mLm-Le-f0C"/>
+                                    <constraint firstAttribute="trailing" secondItem="Vw0-OM-Q3K" secondAttribute="trailing" id="oH7-ku-Qvl"/>
+                                    <constraint firstItem="DnL-h0-Wa9" firstAttribute="top" secondItem="Vw0-OM-Q3K" secondAttribute="bottom" constant="16" id="pk2-tx-LQT"/>
+                                    <constraint firstAttribute="trailing" secondItem="JIt-vn-tks" secondAttribute="trailing" id="r67-av-8sX"/>
+                                    <constraint firstItem="23Q-bh-yDg" firstAttribute="leading" secondItem="OtH-QH-igb" secondAttribute="leading" constant="8" id="ydo-hK-o4s"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Dov-17-nCg" firstAttribute="trailing" secondItem="glw-cq-H6w" secondAttribute="trailing" constant="16" id="7lU-R5-GTM"/>
-                            <constraint firstItem="glw-cq-H6w" firstAttribute="leading" secondItem="Dov-17-nCg" secondAttribute="leading" constant="16" id="OCQ-TU-0hL"/>
-                            <constraint firstItem="glw-cq-H6w" firstAttribute="top" secondItem="Dov-17-nCg" secondAttribute="top" constant="16" id="gNA-IF-If0"/>
-                            <constraint firstItem="Dov-17-nCg" firstAttribute="bottom" secondItem="glw-cq-H6w" secondAttribute="bottom" constant="16" id="q20-hA-Ym9"/>
+                            <constraint firstItem="OtH-QH-igb" firstAttribute="leading" secondItem="Dov-17-nCg" secondAttribute="leading" constant="16" id="1ys-UE-b8v"/>
+                            <constraint firstItem="Dov-17-nCg" firstAttribute="trailing" secondItem="OtH-QH-igb" secondAttribute="trailing" constant="16" id="5gL-bQ-qbc"/>
+                            <constraint firstItem="OtH-QH-igb" firstAttribute="top" secondItem="Dov-17-nCg" secondAttribute="top" constant="16" id="ueR-xd-Hoa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Dov-17-nCg"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Privacy" id="WIo-gP-SGv"/>
+                    <navigationItem key="navigationItem" title="Academi Privacy Policy" id="WIo-gP-SGv"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0tT-2d-bej" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1918" y="7431"/>
+            <point key="canvasLocation" x="1916.25" y="7430.2816901408451"/>
         </scene>
         <!--About Acdemia's Services View Controller-->
         <scene sceneID="fYv-8n-AaE">
@@ -1478,6 +1539,695 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O4y-kZ-dui" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7838" y="7430"/>
+        </scene>
+        <!--Privacy Policy 2 View Controller-->
+        <scene sceneID="HES-f0-Upj">
+            <objects>
+                <viewController storyboardIdentifier="toPrivacyPolicy2" id="78b-NK-BoV" userLabel="Privacy Policy 2 View Controller" customClass="PrivacyPolicyViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3Aa-xk-b3G">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="enP-gc-GdF">
+                                <rect key="frame" x="16" y="80" width="288" height="464"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. WHAT INFORMATION IS COLLECTED. (cont.)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VcZ-S3-J6T">
+                                        <rect key="frame" x="0.0" y="8" width="288" height="44"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hhy-Bw-wqH">
+                                        <rect key="frame" x="8" y="52" width="280" height="131.5"/>
+                                        <string key="text">(b) Automatic Information: We do not collect any information automatically at this point in time.  This may change in the future, and any such changes will require us to notify the user and obtain the user’s consent.</string>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3. HOW AND WHEN THE INFORMATION IS USED." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4N-YP-BSG">
+                                        <rect key="frame" x="0.0" y="199.5" width="288" height="44"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bz3-Cp-zer">
+                                        <rect key="frame" x="8" y="243.5" width="280" height="131.5"/>
+                                        <string key="text">(a) The information we collect is used for administering our business activities. Occasionally we may use the information to notify you about changes to our application, its services, new services, or special offers.</string>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7kh-pJ-pfN">
+                                        <rect key="frame" x="64" y="383" width="160" height="30"/>
+                                        <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
+                                        <state key="normal" title="next page">
+                                            <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="7sd-rq-N3z" kind="show" id="iRT-UO-DbL"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="7kh-pJ-pfN" secondAttribute="trailing" constant="64" id="1vN-IM-O6i"/>
+                                    <constraint firstAttribute="trailing" secondItem="VcZ-S3-J6T" secondAttribute="trailing" id="2V0-ds-5hM"/>
+                                    <constraint firstAttribute="trailing" secondItem="Y4N-YP-BSG" secondAttribute="trailing" id="GiO-XX-B6a"/>
+                                    <constraint firstItem="Hhy-Bw-wqH" firstAttribute="top" secondItem="VcZ-S3-J6T" secondAttribute="bottom" id="IvL-aI-a9g"/>
+                                    <constraint firstAttribute="height" constant="464" id="OSO-c7-n2C"/>
+                                    <constraint firstItem="Hhy-Bw-wqH" firstAttribute="leading" secondItem="enP-gc-GdF" secondAttribute="leading" constant="8" id="aLW-3r-zTT"/>
+                                    <constraint firstItem="bz3-Cp-zer" firstAttribute="leading" secondItem="enP-gc-GdF" secondAttribute="leading" constant="8" id="bqX-3o-qt5"/>
+                                    <constraint firstAttribute="trailing" secondItem="Hhy-Bw-wqH" secondAttribute="trailing" id="dY9-QW-vI5"/>
+                                    <constraint firstItem="7kh-pJ-pfN" firstAttribute="top" secondItem="bz3-Cp-zer" secondAttribute="bottom" constant="8" id="djU-Yd-UwL"/>
+                                    <constraint firstItem="Y4N-YP-BSG" firstAttribute="top" secondItem="Hhy-Bw-wqH" secondAttribute="bottom" constant="16" id="fG3-F3-2tY"/>
+                                    <constraint firstItem="VcZ-S3-J6T" firstAttribute="top" secondItem="enP-gc-GdF" secondAttribute="top" constant="8" id="ilN-qw-9q0"/>
+                                    <constraint firstItem="Y4N-YP-BSG" firstAttribute="leading" secondItem="enP-gc-GdF" secondAttribute="leading" id="ng8-YH-cxe"/>
+                                    <constraint firstAttribute="trailing" secondItem="bz3-Cp-zer" secondAttribute="trailing" id="ubx-TZ-ATk"/>
+                                    <constraint firstItem="7kh-pJ-pfN" firstAttribute="leading" secondItem="enP-gc-GdF" secondAttribute="leading" constant="64" id="w81-kj-TT8"/>
+                                    <constraint firstItem="bz3-Cp-zer" firstAttribute="top" secondItem="Y4N-YP-BSG" secondAttribute="bottom" id="xbI-0U-UK0"/>
+                                    <constraint firstItem="VcZ-S3-J6T" firstAttribute="leading" secondItem="enP-gc-GdF" secondAttribute="leading" id="yfN-kh-5yK"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="enP-gc-GdF" firstAttribute="top" secondItem="g8w-ep-S5g" secondAttribute="top" constant="16" id="6M3-3y-W5S"/>
+                            <constraint firstItem="g8w-ep-S5g" firstAttribute="trailing" secondItem="enP-gc-GdF" secondAttribute="trailing" constant="16" id="Vyv-3Y-TWu"/>
+                            <constraint firstItem="enP-gc-GdF" firstAttribute="leading" secondItem="g8w-ep-S5g" secondAttribute="leading" constant="16" id="fCB-U8-yyp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="g8w-ep-S5g"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Academi Privacy Policy" id="FFX-vH-P9T"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9ga-xj-stX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1916" y="8204"/>
+        </scene>
+        <!--Privacy Policy 3 View Controller-->
+        <scene sceneID="Fxa-NZ-OB3">
+            <objects>
+                <viewController storyboardIdentifier="toPrivacyPolicy3" id="7sd-rq-N3z" userLabel="Privacy Policy 3 View Controller" customClass="PrivacyPolicyViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JtX-89-M2p">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bAt-dZ-b69">
+                                <rect key="frame" x="16" y="80" width="288" height="464"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3. HOW AND WHEN THE INFORMATION IS USED. (cont.)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RJF-dB-Zg9">
+                                        <rect key="frame" x="0.0" y="8" width="288" height="44"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgZ-1m-9qz">
+                                        <rect key="frame" x="8" y="52" width="280" height="350"/>
+                                        <mutableString key="text">(b) We release account and other personal information when we believe release is appropriate to comply with the law; enforce or apply other agreements; or protect the rights, property, or safety of Academi, our users, or others. This includes exchanging information with other companies and organizations for fraud protection and credit risk reduction. This does not include selling, renting, sharing, or otherwise disclosing personally identifiable information from customers for commercial purposes in violation of the commitments set forth in this Privacy Policy.</mutableString>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8HT-Gk-4Qu">
+                                        <rect key="frame" x="64" y="418" width="160" height="30"/>
+                                        <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
+                                        <state key="normal" title="next page">
+                                            <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="uAW-mc-e8w" kind="show" id="fHz-Dq-cUv"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="LgZ-1m-9qz" secondAttribute="trailing" id="15B-Iy-usc"/>
+                                    <constraint firstAttribute="trailing" secondItem="RJF-dB-Zg9" secondAttribute="trailing" id="3Oh-kv-MBX"/>
+                                    <constraint firstAttribute="height" constant="464" id="Lrl-Hl-Mrg"/>
+                                    <constraint firstItem="8HT-Gk-4Qu" firstAttribute="leading" secondItem="bAt-dZ-b69" secondAttribute="leading" constant="64" id="Tuh-Te-OFu"/>
+                                    <constraint firstItem="LgZ-1m-9qz" firstAttribute="top" secondItem="RJF-dB-Zg9" secondAttribute="bottom" id="nHb-VH-Nm5"/>
+                                    <constraint firstAttribute="trailing" secondItem="8HT-Gk-4Qu" secondAttribute="trailing" constant="64" id="nPA-g3-alg"/>
+                                    <constraint firstItem="8HT-Gk-4Qu" firstAttribute="top" secondItem="LgZ-1m-9qz" secondAttribute="bottom" constant="16" id="nij-yn-3pC"/>
+                                    <constraint firstItem="RJF-dB-Zg9" firstAttribute="top" secondItem="bAt-dZ-b69" secondAttribute="top" constant="8" id="odt-3Z-uRf"/>
+                                    <constraint firstItem="LgZ-1m-9qz" firstAttribute="leading" secondItem="bAt-dZ-b69" secondAttribute="leading" constant="8" id="sY3-e9-j47"/>
+                                    <constraint firstItem="RJF-dB-Zg9" firstAttribute="leading" secondItem="bAt-dZ-b69" secondAttribute="leading" id="zA4-xG-bLT"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LzX-cZ-553" firstAttribute="trailing" secondItem="bAt-dZ-b69" secondAttribute="trailing" constant="16" id="Hht-Ua-FAJ"/>
+                            <constraint firstItem="bAt-dZ-b69" firstAttribute="top" secondItem="LzX-cZ-553" secondAttribute="top" constant="16" id="PKp-Jx-pT4"/>
+                            <constraint firstItem="bAt-dZ-b69" firstAttribute="leading" secondItem="LzX-cZ-553" secondAttribute="leading" constant="16" id="ldU-J3-bCe"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LzX-cZ-553"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Academi Privacy Policy" id="BDR-98-jiX"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CtX-dM-vdi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1916" y="8943"/>
+        </scene>
+        <!--Privacy Policy 4 View Controller-->
+        <scene sceneID="UGD-DQ-Qim">
+            <objects>
+                <viewController storyboardIdentifier="toPrivacyPolicy4" id="uAW-mc-e8w" userLabel="Privacy Policy 4 View Controller" customClass="PrivacyPolicyViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fbq-Gm-6Qk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pK4-uQ-uDv">
+                                <rect key="frame" x="16" y="80" width="288" height="464"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4. HOW WE PROTECT YOUR INFORMATION." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzZ-bC-vb4">
+                                        <rect key="frame" x="0.0" y="8" width="288" height="44"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFw-U3-f4e">
+                                        <rect key="frame" x="8" y="52" width="280" height="240.5"/>
+                                        <string key="text">The privacy and protection of your information is important to us. We do not make any personal information available to third parties without your permission. Your access to some services and content is password protected. We advise that you do not disclose your password to anyone. In addition, we recommend you sign out of password-protected services at the end of your session.</string>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9MT-w2-MXd">
+                                        <rect key="frame" x="64" y="308.5" width="160" height="30"/>
+                                        <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
+                                        <state key="normal" title="next page">
+                                            <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="JNL-bY-Hyx" kind="show" id="5Aw-VL-ePs"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="9MT-w2-MXd" firstAttribute="leading" secondItem="pK4-uQ-uDv" secondAttribute="leading" constant="64" id="5NO-wV-CnR"/>
+                                    <constraint firstAttribute="trailing" secondItem="9MT-w2-MXd" secondAttribute="trailing" constant="64" id="8fM-t4-NcJ"/>
+                                    <constraint firstItem="gzZ-bC-vb4" firstAttribute="leading" secondItem="pK4-uQ-uDv" secondAttribute="leading" id="BTN-HT-8SJ"/>
+                                    <constraint firstItem="9MT-w2-MXd" firstAttribute="top" secondItem="cFw-U3-f4e" secondAttribute="bottom" constant="16" id="SHJ-M7-dvr"/>
+                                    <constraint firstAttribute="height" constant="464" id="c0h-sO-pKc"/>
+                                    <constraint firstItem="gzZ-bC-vb4" firstAttribute="top" secondItem="pK4-uQ-uDv" secondAttribute="top" constant="8" id="lfq-Io-sN6"/>
+                                    <constraint firstItem="cFw-U3-f4e" firstAttribute="top" secondItem="gzZ-bC-vb4" secondAttribute="bottom" id="oFw-nQ-w5e"/>
+                                    <constraint firstAttribute="trailing" secondItem="gzZ-bC-vb4" secondAttribute="trailing" id="oMv-T9-XWQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="cFw-U3-f4e" secondAttribute="trailing" id="rP8-V3-Z0s"/>
+                                    <constraint firstItem="cFw-U3-f4e" firstAttribute="leading" secondItem="pK4-uQ-uDv" secondAttribute="leading" constant="8" id="yfe-4J-ebT"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pK4-uQ-uDv" firstAttribute="top" secondItem="yfy-Ze-vNV" secondAttribute="top" constant="16" id="dLi-xj-OJy"/>
+                            <constraint firstItem="yfy-Ze-vNV" firstAttribute="trailing" secondItem="pK4-uQ-uDv" secondAttribute="trailing" constant="16" id="n3F-Vf-maL"/>
+                            <constraint firstItem="pK4-uQ-uDv" firstAttribute="leading" secondItem="yfy-Ze-vNV" secondAttribute="leading" constant="16" id="sWt-kr-L1A"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yfy-Ze-vNV"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Academi Privacy Policy" id="cx2-db-eu4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fcd-A4-AJE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1914" y="9715"/>
+        </scene>
+        <!--Privacy Policy 5 View Controller-->
+        <scene sceneID="4x5-wf-ayX">
+            <objects>
+                <viewController storyboardIdentifier="toPrivacyPolicy5" id="JNL-bY-Hyx" userLabel="Privacy Policy 5 View Controller" customClass="PrivacyPolicyViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4ZL-YY-Md3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NIz-KB-MoH">
+                                <rect key="frame" x="16" y="80" width="288" height="464"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5. WHO HAS ACCESS TO THE INFORMATION." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QHN-fd-BdC">
+                                        <rect key="frame" x="0.0" y="8" width="288" height="44"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHE-dY-Y2c">
+                                        <rect key="frame" x="8" y="52" width="280" height="372"/>
+                                        <mutableString key="text">Information about our users is important to us. We will not disclose any individually identifiable information to any third party without first receiving that user's permission. Our site includes third-party advertising and links to other Web sites. We do not provide any personally identifiable customer information to these advertisers or third-party Web sites. These third-party Web sites and advertisers may sometimes use technology to send the advertisements that appear on our Web site directly to your browser. They automatically receive your IP address when this happens. (cont.)</mutableString>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bVa-rP-OB0">
+                                        <rect key="frame" x="64" y="440" width="160" height="30"/>
+                                        <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
+                                        <state key="normal" title="next page">
+                                            <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="e7O-CS-16s" kind="show" id="AUP-gu-flm"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="QHN-fd-BdC" secondAttribute="trailing" id="3nP-aj-jqO"/>
+                                    <constraint firstAttribute="height" constant="464" id="I8P-RO-id2"/>
+                                    <constraint firstItem="dHE-dY-Y2c" firstAttribute="top" secondItem="QHN-fd-BdC" secondAttribute="bottom" id="J81-sN-RgW"/>
+                                    <constraint firstItem="dHE-dY-Y2c" firstAttribute="leading" secondItem="NIz-KB-MoH" secondAttribute="leading" constant="8" id="Rfn-V2-FOm"/>
+                                    <constraint firstAttribute="trailing" secondItem="dHE-dY-Y2c" secondAttribute="trailing" id="Sov-Ez-E4f"/>
+                                    <constraint firstItem="QHN-fd-BdC" firstAttribute="top" secondItem="NIz-KB-MoH" secondAttribute="top" constant="8" id="hzi-II-Awb"/>
+                                    <constraint firstItem="QHN-fd-BdC" firstAttribute="leading" secondItem="NIz-KB-MoH" secondAttribute="leading" id="iuz-Xx-XLT"/>
+                                    <constraint firstAttribute="trailing" secondItem="bVa-rP-OB0" secondAttribute="trailing" constant="64" id="pUi-mM-qON"/>
+                                    <constraint firstItem="bVa-rP-OB0" firstAttribute="top" secondItem="dHE-dY-Y2c" secondAttribute="bottom" constant="16" id="s61-Se-nmB"/>
+                                    <constraint firstItem="bVa-rP-OB0" firstAttribute="leading" secondItem="NIz-KB-MoH" secondAttribute="leading" constant="64" id="v1Q-EZ-yep"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="NIz-KB-MoH" firstAttribute="top" secondItem="bCY-M4-eRy" secondAttribute="top" constant="16" id="CeI-pS-41T"/>
+                            <constraint firstItem="NIz-KB-MoH" firstAttribute="leading" secondItem="bCY-M4-eRy" secondAttribute="leading" constant="16" id="GtL-JR-OP9"/>
+                            <constraint firstItem="bCY-M4-eRy" firstAttribute="trailing" secondItem="NIz-KB-MoH" secondAttribute="trailing" constant="16" id="c6d-6C-JPL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bCY-M4-eRy"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Academi Privacy Policy" id="Mkx-yk-vZA"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IDT-m8-vPG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1913" y="10462"/>
+        </scene>
+        <!--Privacy Policy 6 View Controller-->
+        <scene sceneID="Hgs-IX-dQe">
+            <objects>
+                <viewController storyboardIdentifier="toPrivacyPolicy6" id="e7O-CS-16s" userLabel="Privacy Policy 6 View Controller" customClass="PrivacyPolicyViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="t5V-KM-1ex">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vYh-m4-ExZ">
+                                <rect key="frame" x="16" y="80" width="288" height="464"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5. WHO HAS ACCESS TO THE INFORMATION. (cont.)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Unz-MN-356">
+                                        <rect key="frame" x="0.0" y="8" width="288" height="44"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e3V-Ve-gJI">
+                                        <rect key="frame" x="8" y="52" width="280" height="262.5"/>
+                                        <string key="text">They may also use cookies and other technologies to measure the effectiveness of their ads and to personalize advertising content. We do not have access to or control over cookies or other features that they may use, and the information practices of these advertisers and third-party Web sites are not covered by this Privacy Policy. Please contact them directly for more information about their privacy practices.</string>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Slk-Ux-Tpa">
+                                        <rect key="frame" x="64" y="330.5" width="160" height="30"/>
+                                        <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
+                                        <state key="normal" title="next page">
+                                            <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="beE-dL-Ioc" kind="show" id="4k2-wk-uGi"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="e3V-Ve-gJI" firstAttribute="top" secondItem="Unz-MN-356" secondAttribute="bottom" id="4Xs-95-Ezg"/>
+                                    <constraint firstItem="e3V-Ve-gJI" firstAttribute="leading" secondItem="vYh-m4-ExZ" secondAttribute="leading" constant="8" id="5i5-Kr-s58"/>
+                                    <constraint firstAttribute="trailing" secondItem="e3V-Ve-gJI" secondAttribute="trailing" id="Abv-gb-KAP"/>
+                                    <constraint firstItem="Slk-Ux-Tpa" firstAttribute="leading" secondItem="vYh-m4-ExZ" secondAttribute="leading" constant="64" id="Bnm-Ef-eZF"/>
+                                    <constraint firstItem="Slk-Ux-Tpa" firstAttribute="top" secondItem="e3V-Ve-gJI" secondAttribute="bottom" constant="16" id="E5u-ju-FxE"/>
+                                    <constraint firstItem="Unz-MN-356" firstAttribute="top" secondItem="vYh-m4-ExZ" secondAttribute="top" constant="8" id="Ex8-H7-w8L"/>
+                                    <constraint firstAttribute="height" constant="464" id="gAk-XF-OuJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="Slk-Ux-Tpa" secondAttribute="trailing" constant="64" id="mdf-dZ-geH"/>
+                                    <constraint firstAttribute="trailing" secondItem="Unz-MN-356" secondAttribute="trailing" id="oV9-F0-ldO"/>
+                                    <constraint firstItem="Unz-MN-356" firstAttribute="leading" secondItem="vYh-m4-ExZ" secondAttribute="leading" id="uju-Oz-im5"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vYh-m4-ExZ" firstAttribute="top" secondItem="sQZ-Ja-h42" secondAttribute="top" constant="16" id="1Lx-z9-Jec"/>
+                            <constraint firstItem="vYh-m4-ExZ" firstAttribute="leading" secondItem="sQZ-Ja-h42" secondAttribute="leading" constant="16" id="a6Z-8A-ecd"/>
+                            <constraint firstItem="sQZ-Ja-h42" firstAttribute="trailing" secondItem="vYh-m4-ExZ" secondAttribute="trailing" constant="16" id="bfr-BV-0ot"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="sQZ-Ja-h42"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Academi Privacy Policy" id="1h1-Ty-oEg"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I9t-jN-2VF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1913" y="11255"/>
+        </scene>
+        <!--Privacy Policy 7 View Controller-->
+        <scene sceneID="rcm-0B-ahW">
+            <objects>
+                <viewController storyboardIdentifier="toPrivacyPolicy7" id="beE-dL-Ioc" userLabel="Privacy Policy 7 View Controller" customClass="PrivacyPolicyViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="I4R-Fx-lbx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XCH-pw-sdF">
+                                <rect key="frame" x="16" y="80" width="288" height="464"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6. METHODS WE USE TO PROTECT YOUR INFORMATION." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sm6-4f-OsD">
+                                        <rect key="frame" x="0.0" y="8" width="288" height="44"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWL-Ec-38w">
+                                        <rect key="frame" x="8" y="52" width="280" height="240.5"/>
+                                        <string key="text">We use security software to protect the confidentiality of your personal information. In addition, our business practices are reviewed periodically for compliance with policies and procedures governing the security and confidentiality of our information. Our business practices limit employee access to confidential information, and limit the use and disclosure of such information to authorized persons.</string>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7. CHILDREN." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQf-O0-7U0">
+                                        <rect key="frame" x="0.0" y="308.5" width="288" height="22"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5JJ-HF-qUj">
+                                        <rect key="frame" x="8" y="330.5" width="280" height="131.5"/>
+                                        <string key="text">This application does not provide services or sell products to children under the age of 18. If you are under 18, you may use this application only with the involvement of a parent or guardian.</string>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QYP-lN-Wa5">
+                                        <rect key="frame" x="64" y="458" width="160" height="30"/>
+                                        <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
+                                        <state key="normal" title="next page">
+                                            <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="4OB-dT-Inl" kind="show" id="ydS-uB-KiH"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="JWL-Ec-38w" firstAttribute="top" secondItem="Sm6-4f-OsD" secondAttribute="bottom" id="2Q7-ve-b4h"/>
+                                    <constraint firstAttribute="height" constant="464" id="5p6-06-goS"/>
+                                    <constraint firstItem="QYP-lN-Wa5" firstAttribute="leading" secondItem="XCH-pw-sdF" secondAttribute="leading" constant="64" id="8WK-jQ-QB5"/>
+                                    <constraint firstItem="5JJ-HF-qUj" firstAttribute="leading" secondItem="XCH-pw-sdF" secondAttribute="leading" constant="8" id="Fvn-UD-Whr"/>
+                                    <constraint firstItem="JWL-Ec-38w" firstAttribute="leading" secondItem="XCH-pw-sdF" secondAttribute="leading" constant="8" id="Fy9-iN-ago"/>
+                                    <constraint firstAttribute="trailing" secondItem="Sm6-4f-OsD" secondAttribute="trailing" id="MCf-1w-TeW"/>
+                                    <constraint firstAttribute="trailing" secondItem="JWL-Ec-38w" secondAttribute="trailing" id="TNn-id-6LF"/>
+                                    <constraint firstAttribute="trailing" secondItem="5JJ-HF-qUj" secondAttribute="trailing" id="UWp-BH-jMl"/>
+                                    <constraint firstItem="5JJ-HF-qUj" firstAttribute="top" secondItem="vQf-O0-7U0" secondAttribute="bottom" id="W86-Q8-lGx"/>
+                                    <constraint firstItem="Sm6-4f-OsD" firstAttribute="leading" secondItem="XCH-pw-sdF" secondAttribute="leading" id="YGb-K3-muF"/>
+                                    <constraint firstItem="vQf-O0-7U0" firstAttribute="top" secondItem="JWL-Ec-38w" secondAttribute="bottom" constant="16" id="Yjw-Vz-ClP"/>
+                                    <constraint firstAttribute="trailing" secondItem="QYP-lN-Wa5" secondAttribute="trailing" constant="64" id="a5T-ME-F5G"/>
+                                    <constraint firstAttribute="trailing" secondItem="vQf-O0-7U0" secondAttribute="trailing" id="gZx-wD-Oxd"/>
+                                    <constraint firstItem="Sm6-4f-OsD" firstAttribute="top" secondItem="XCH-pw-sdF" secondAttribute="top" constant="8" id="koA-Lb-veC"/>
+                                    <constraint firstItem="QYP-lN-Wa5" firstAttribute="top" secondItem="5JJ-HF-qUj" secondAttribute="bottom" constant="-4" id="xUH-iW-doH"/>
+                                    <constraint firstItem="vQf-O0-7U0" firstAttribute="leading" secondItem="XCH-pw-sdF" secondAttribute="leading" id="yLL-QR-IUb"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XCH-pw-sdF" firstAttribute="leading" secondItem="SgC-zU-bp8" secondAttribute="leading" constant="16" id="6Fa-RI-w4d"/>
+                            <constraint firstItem="SgC-zU-bp8" firstAttribute="trailing" secondItem="XCH-pw-sdF" secondAttribute="trailing" constant="16" id="FHy-30-bAa"/>
+                            <constraint firstItem="XCH-pw-sdF" firstAttribute="top" secondItem="SgC-zU-bp8" secondAttribute="top" constant="16" id="u9v-db-Gnm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="SgC-zU-bp8"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Academi Privacy Policy" id="f95-cf-rhb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rhf-UY-d9O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1916" y="12064"/>
+        </scene>
+        <!--Privacy Policy 8 View Controller-->
+        <scene sceneID="oVu-8w-YOU">
+            <objects>
+                <viewController storyboardIdentifier="toPrivacyPolicy8" id="4OB-dT-Inl" userLabel="Privacy Policy 8 View Controller" customClass="PrivacyPolicyViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0Gi-rg-ctc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oar-qw-ECe">
+                                <rect key="frame" x="16" y="80" width="288" height="464"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8. HOW YOU CAN ACCESS YOUR INFORMATION." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CV7-tx-gNJ">
+                                        <rect key="frame" x="0.0" y="8" width="288" height="44"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can request access to all your personally identifiable information by sending an e-mail to admin@leme.group." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lGa-Ma-1Za">
+                                        <rect key="frame" x="8" y="52" width="280" height="87.5"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9. CONSENT." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5e4-Q9-ykR">
+                                        <rect key="frame" x="0.0" y="155.5" width="288" height="22"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Tx-Me-bby">
+                                        <rect key="frame" x="8" y="177.5" width="280" height="197"/>
+                                        <string key="text">By using our application, you consent to the collection and use of your personal information as described in this Privacy Policy. Your use and any dispute over privacy is subject to this Policy, including limitations on damages, resolution of disputes, and application of the law of the state of California. (cont.)</string>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uDG-6Q-87j">
+                                        <rect key="frame" x="64" y="382.5" width="160" height="30"/>
+                                        <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
+                                        <state key="normal" title="next page">
+                                            <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="M3i-K3-itU" kind="show" id="mdc-f4-8kp"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="4Tx-Me-bby" firstAttribute="leading" secondItem="oar-qw-ECe" secondAttribute="leading" constant="8" id="77N-Sc-WJM"/>
+                                    <constraint firstItem="CV7-tx-gNJ" firstAttribute="top" secondItem="oar-qw-ECe" secondAttribute="top" constant="8" id="D1Q-nJ-QGK"/>
+                                    <constraint firstItem="lGa-Ma-1Za" firstAttribute="leading" secondItem="oar-qw-ECe" secondAttribute="leading" constant="8" id="DgQ-h5-J7k"/>
+                                    <constraint firstAttribute="trailing" secondItem="lGa-Ma-1Za" secondAttribute="trailing" id="GG8-ag-ote"/>
+                                    <constraint firstAttribute="trailing" secondItem="CV7-tx-gNJ" secondAttribute="trailing" id="GeD-dM-D6l"/>
+                                    <constraint firstAttribute="trailing" secondItem="4Tx-Me-bby" secondAttribute="trailing" id="I0O-wt-7ir"/>
+                                    <constraint firstAttribute="trailing" secondItem="uDG-6Q-87j" secondAttribute="trailing" constant="64" id="O8y-P3-3Ie"/>
+                                    <constraint firstAttribute="trailing" secondItem="5e4-Q9-ykR" secondAttribute="trailing" id="Rlv-hk-Z4T"/>
+                                    <constraint firstItem="5e4-Q9-ykR" firstAttribute="leading" secondItem="oar-qw-ECe" secondAttribute="leading" id="Vqw-Yd-cSa"/>
+                                    <constraint firstAttribute="height" constant="464" id="eU2-pc-kAS"/>
+                                    <constraint firstItem="uDG-6Q-87j" firstAttribute="top" secondItem="4Tx-Me-bby" secondAttribute="bottom" constant="8" id="sfb-OK-MCg"/>
+                                    <constraint firstItem="5e4-Q9-ykR" firstAttribute="top" secondItem="lGa-Ma-1Za" secondAttribute="bottom" constant="16" id="t03-l8-Juh"/>
+                                    <constraint firstItem="uDG-6Q-87j" firstAttribute="leading" secondItem="oar-qw-ECe" secondAttribute="leading" constant="64" id="vBt-6F-77T"/>
+                                    <constraint firstItem="CV7-tx-gNJ" firstAttribute="leading" secondItem="oar-qw-ECe" secondAttribute="leading" id="y0L-Mf-Mb7"/>
+                                    <constraint firstItem="lGa-Ma-1Za" firstAttribute="top" secondItem="CV7-tx-gNJ" secondAttribute="bottom" id="yRx-z6-KMF"/>
+                                    <constraint firstItem="4Tx-Me-bby" firstAttribute="top" secondItem="5e4-Q9-ykR" secondAttribute="bottom" id="yu7-Hb-IuO"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0Wf-kN-5Xy" firstAttribute="trailing" secondItem="oar-qw-ECe" secondAttribute="trailing" constant="16" id="bes-pP-HK9"/>
+                            <constraint firstItem="oar-qw-ECe" firstAttribute="leading" secondItem="0Wf-kN-5Xy" secondAttribute="leading" constant="16" id="leg-jm-xRm"/>
+                            <constraint firstItem="oar-qw-ECe" firstAttribute="top" secondItem="0Wf-kN-5Xy" secondAttribute="top" constant="16" id="pBo-cU-fsV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0Wf-kN-5Xy"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Academi Privacy Policy" id="iGr-M7-mbJ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iX3-2f-pMf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1914" y="12866"/>
+        </scene>
+        <!--Privacy Policy 9 View Controller-->
+        <scene sceneID="Zb7-3P-Hsu">
+            <objects>
+                <viewController storyboardIdentifier="toPrivacyPolicy9" id="M3i-K3-itU" userLabel="Privacy Policy 9 View Controller" customClass="PrivacyPolicyViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f1X-2x-THW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qiL-tA-rzO">
+                                <rect key="frame" x="16" y="80" width="288" height="464"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9. CONSENT. (cont.)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rfx-lG-fNM">
+                                        <rect key="frame" x="0.0" y="8" width="288" height="22"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oac-pE-0v9">
+                                        <rect key="frame" x="8" y="30" width="280" height="306"/>
+                                        <string key="text">If you have any concern about privacy while using Academi the application, you may contact us via email at admin@leme.group with a thorough description, and we will try to resolve it. We may e-mail periodic reminders of our notices and conditions, and any changes thereof, unless you have instructed us not to, but we request that you check our Web site frequently to see recent changes. Unless stated otherwise, our current Privacy Policy applies to all information that we have about you and your account.</string>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="owX-PJ-ayi">
+                                        <rect key="frame" x="64" y="352" width="160" height="30"/>
+                                        <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
+                                        <state key="normal" title="next page">
+                                            <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="12E-fZ-Tru" kind="show" id="7Av-oj-qk5"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="464" id="B1o-37-GrH"/>
+                                    <constraint firstItem="oac-pE-0v9" firstAttribute="top" secondItem="Rfx-lG-fNM" secondAttribute="bottom" id="JUo-MY-fpK"/>
+                                    <constraint firstItem="owX-PJ-ayi" firstAttribute="top" secondItem="oac-pE-0v9" secondAttribute="bottom" constant="16" id="TqH-RW-XBG"/>
+                                    <constraint firstAttribute="trailing" secondItem="owX-PJ-ayi" secondAttribute="trailing" constant="64" id="cqE-uE-l1p"/>
+                                    <constraint firstItem="oac-pE-0v9" firstAttribute="leading" secondItem="qiL-tA-rzO" secondAttribute="leading" constant="8" id="e0K-9x-tGG"/>
+                                    <constraint firstAttribute="trailing" secondItem="Rfx-lG-fNM" secondAttribute="trailing" id="fHs-sb-Nj2"/>
+                                    <constraint firstAttribute="trailing" secondItem="oac-pE-0v9" secondAttribute="trailing" id="fLn-Rr-uKx"/>
+                                    <constraint firstItem="Rfx-lG-fNM" firstAttribute="leading" secondItem="qiL-tA-rzO" secondAttribute="leading" id="mlV-5h-ssG"/>
+                                    <constraint firstItem="Rfx-lG-fNM" firstAttribute="top" secondItem="qiL-tA-rzO" secondAttribute="top" constant="8" id="oKT-9d-oFH"/>
+                                    <constraint firstItem="owX-PJ-ayi" firstAttribute="leading" secondItem="qiL-tA-rzO" secondAttribute="leading" constant="64" id="xcm-3Q-Epg"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qiL-tA-rzO" firstAttribute="top" secondItem="ntM-RF-ai2" secondAttribute="top" constant="16" id="DtB-GV-mTe"/>
+                            <constraint firstItem="ntM-RF-ai2" firstAttribute="trailing" secondItem="qiL-tA-rzO" secondAttribute="trailing" constant="16" id="WrS-Bu-Ajm"/>
+                            <constraint firstItem="qiL-tA-rzO" firstAttribute="leading" secondItem="ntM-RF-ai2" secondAttribute="leading" constant="16" id="aYy-UB-zbR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ntM-RF-ai2"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Academi Privacy Policy" id="Xar-I7-Ja8"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fex-hT-Lhd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1914" y="13683"/>
+        </scene>
+        <!--Privacy Policy 10 View Controller-->
+        <scene sceneID="RHS-pX-a0G">
+            <objects>
+                <viewController storyboardIdentifier="toPrivacyPolicy10" id="12E-fZ-Tru" userLabel="Privacy Policy 10 View Controller" customClass="PrivacyLastPageViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hI7-bW-7DL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="suN-ey-eog">
+                                <rect key="frame" x="16" y="80" width="288" height="464"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10. CHANGES TO PRIVACY POLICY." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QLR-bT-12p">
+                                        <rect key="frame" x="0.0" y="8" width="288" height="22"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="het-xE-O5n">
+                                        <rect key="frame" x="8" y="30" width="280" height="131.5"/>
+                                        <string key="text">If our Privacy Policy or procedures change, we will immediately post those changes to our website. Any such changes will be effective immediately upon being posted, unless otherwise stated in the change.</string>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11. EFFECTIVE DATE." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qyp-Cm-hI6">
+                                        <rect key="frame" x="0.0" y="177.5" width="288" height="22"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This Privacy Policy is effective as of April 15th, 2019." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v8y-e5-7ZL">
+                                        <rect key="frame" x="8" y="199.5" width="280" height="44"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="for more on our policy:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9uB-OQ-z09">
+                                        <rect key="frame" x="0.0" y="267.5" width="288" height="22"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="www.leme.group/academi-privacy" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iNN-Wd-rAH">
+                                        <rect key="frame" x="8" y="289.5" width="280" height="22"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="www.leme.group/academi-contact-support" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Crx-He-nvv">
+                                        <rect key="frame" x="8" y="357.5" width="280" height="44"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ni-2B-kp8">
+                                        <rect key="frame" x="48" y="425.5" width="192" height="30"/>
+                                        <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
+                                        <state key="normal" title="back to profile menu">
+                                            <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backToProfileMenuButtonTapped:" destination="12E-fZ-Tru" eventType="touchUpInside" id="dUz-3e-N0p"/>
+                                            <action selector="backToProfileMenuButtonTapped:" destination="c5H-mh-PaP" eventType="touchUpInside" id="wOQ-uC-ZRt"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="contact us with any questions:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISd-zz-xhR">
+                                        <rect key="frame" x="0.0" y="335.5" width="288" height="22"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Qyp-Cm-hI6" secondAttribute="trailing" id="2rG-xJ-ahR"/>
+                                    <constraint firstItem="QLR-bT-12p" firstAttribute="top" secondItem="suN-ey-eog" secondAttribute="top" constant="8" id="Apj-lV-s2Q"/>
+                                    <constraint firstItem="Crx-He-nvv" firstAttribute="leading" secondItem="suN-ey-eog" secondAttribute="leading" constant="8" id="BtO-fI-2QD"/>
+                                    <constraint firstItem="9uB-OQ-z09" firstAttribute="leading" secondItem="suN-ey-eog" secondAttribute="leading" id="Cze-ao-Csr"/>
+                                    <constraint firstItem="v8y-e5-7ZL" firstAttribute="leading" secondItem="suN-ey-eog" secondAttribute="leading" constant="8" id="Geb-Cu-cQp"/>
+                                    <constraint firstAttribute="trailing" secondItem="Crx-He-nvv" secondAttribute="trailing" id="Gqr-m2-blb"/>
+                                    <constraint firstItem="iNN-Wd-rAH" firstAttribute="top" secondItem="9uB-OQ-z09" secondAttribute="bottom" id="HGo-4p-6Dd"/>
+                                    <constraint firstAttribute="trailing" secondItem="v8y-e5-7ZL" secondAttribute="trailing" id="Mpa-ak-Dzk"/>
+                                    <constraint firstAttribute="trailing" secondItem="het-xE-O5n" secondAttribute="trailing" id="UTG-ua-LAo"/>
+                                    <constraint firstItem="9uB-OQ-z09" firstAttribute="top" secondItem="v8y-e5-7ZL" secondAttribute="bottom" constant="24" id="atL-NS-irN"/>
+                                    <constraint firstAttribute="trailing" secondItem="QLR-bT-12p" secondAttribute="trailing" id="bj3-c4-hdF"/>
+                                    <constraint firstItem="het-xE-O5n" firstAttribute="top" secondItem="QLR-bT-12p" secondAttribute="bottom" id="blc-8K-gqM"/>
+                                    <constraint firstItem="Crx-He-nvv" firstAttribute="top" secondItem="ISd-zz-xhR" secondAttribute="bottom" id="c2a-Du-ufT"/>
+                                    <constraint firstItem="v8y-e5-7ZL" firstAttribute="top" secondItem="Qyp-Cm-hI6" secondAttribute="bottom" id="d2K-LJ-uKl"/>
+                                    <constraint firstItem="QLR-bT-12p" firstAttribute="leading" secondItem="suN-ey-eog" secondAttribute="leading" id="dBD-rJ-vZP"/>
+                                    <constraint firstItem="Crx-He-nvv" firstAttribute="top" secondItem="ISd-zz-xhR" secondAttribute="bottom" id="eQL-pj-FYD"/>
+                                    <constraint firstAttribute="trailing" secondItem="9uB-OQ-z09" secondAttribute="trailing" id="iU7-el-Bcc"/>
+                                    <constraint firstItem="4ni-2B-kp8" firstAttribute="leading" secondItem="suN-ey-eog" secondAttribute="leading" constant="48" id="iWr-KP-OZo"/>
+                                    <constraint firstItem="het-xE-O5n" firstAttribute="leading" secondItem="suN-ey-eog" secondAttribute="leading" constant="8" id="ipq-Kg-KRK"/>
+                                    <constraint firstItem="iNN-Wd-rAH" firstAttribute="leading" secondItem="suN-ey-eog" secondAttribute="leading" constant="8" id="mGD-l1-W1B"/>
+                                    <constraint firstItem="ISd-zz-xhR" firstAttribute="top" secondItem="iNN-Wd-rAH" secondAttribute="bottom" constant="24" id="pVa-ed-ND4"/>
+                                    <constraint firstAttribute="trailing" secondItem="4ni-2B-kp8" secondAttribute="trailing" constant="48" id="qtK-2v-Wtm"/>
+                                    <constraint firstAttribute="trailing" secondItem="iNN-Wd-rAH" secondAttribute="trailing" id="ulZ-tU-EDk"/>
+                                    <constraint firstAttribute="trailing" secondItem="ISd-zz-xhR" secondAttribute="trailing" id="ust-LD-uxG"/>
+                                    <constraint firstAttribute="height" constant="464" id="vCc-Jq-GS6"/>
+                                    <constraint firstItem="Qyp-Cm-hI6" firstAttribute="leading" secondItem="suN-ey-eog" secondAttribute="leading" id="vVx-Oa-MyP"/>
+                                    <constraint firstItem="Qyp-Cm-hI6" firstAttribute="top" secondItem="het-xE-O5n" secondAttribute="bottom" constant="16" id="xfA-hn-NiN"/>
+                                    <constraint firstItem="4ni-2B-kp8" firstAttribute="top" secondItem="Crx-He-nvv" secondAttribute="bottom" constant="24" id="zjR-1N-MWd"/>
+                                    <constraint firstItem="ISd-zz-xhR" firstAttribute="leading" secondItem="suN-ey-eog" secondAttribute="leading" id="zvi-W9-Oo5"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bvN-ur-uaf" firstAttribute="trailing" secondItem="suN-ey-eog" secondAttribute="trailing" constant="16" id="5OW-b7-YnX"/>
+                            <constraint firstItem="suN-ey-eog" firstAttribute="leading" secondItem="bvN-ur-uaf" secondAttribute="leading" constant="16" id="7YD-sz-KHe"/>
+                            <constraint firstItem="suN-ey-eog" firstAttribute="top" secondItem="bvN-ur-uaf" secondAttribute="top" constant="16" id="PFm-5F-HDe"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bvN-ur-uaf"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Academi Privacy Policy" id="5ss-zr-aNs"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z1b-cB-O6H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="c5H-mh-PaP" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1914" y="14498"/>
         </scene>
     </scenes>
     <resources>

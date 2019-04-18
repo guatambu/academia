@@ -11,16 +11,10 @@ import UIKit
 class OwnerProfileTableViewController: UITableViewController {
     
     // MARK: - Properties
+    let beltBuilder = BeltBuilder()
     
     
     // MARK: - ViewController Lifecycle Functions
-    
-    override func viewWillAppear(_ animated: Bool) {
-        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 24)! ]
-        
-        navigationController?.navigationBar.titleTextAttributes = avenirFont
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +23,10 @@ class OwnerProfileTableViewController: UITableViewController {
         self.tableView.register(nib, forCellReuseIdentifier: "generalMenuCell")
         
         navigationController?.navigationBar.shadowImage = UIImage()
+        
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
+        
         
     }
 
