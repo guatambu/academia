@@ -20,12 +20,6 @@ class ReviewOwnerInstructorTableViewCell: UITableViewCell {
     @IBOutlet weak var cellTitleOutlet: UILabel!
     @IBOutlet weak var rightRedArrowImageViewOutlet: UIImageView!
     
-    var ownerInstructor: Owner? {
-        didSet {
-            updateViews()
-        }
-    }
-    
     var ownerInstructorCD: OwnerCD? {
         didSet {
             updateViews()
@@ -44,14 +38,6 @@ class ReviewOwnerInstructorTableViewCell: UITableViewCell {
     // MARK: - updateViews()
     
     func updateViews() {
-        
-//        guard let ownerInstructor = ownerInstructor else {
-//            print("ERROR: nil value found while attepting to unwrap optional adultStudent in AdultStudentTableViewCell.swift -> updateViews() - line 43.")
-//            return
-//        }
-//        
-//        userThumbnailImageViewOutlet.image = ownerInstructor.profilePic
-//        cellTitleOutlet.text = "\(ownerInstructor.firstName) \(ownerInstructor.lastName)"
         
         // CoreData version
         guard let ownerInstructorCD = ownerInstructorCD else {

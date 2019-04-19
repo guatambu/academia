@@ -59,6 +59,9 @@ class NameAndBeltViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
+        
         beltLevelPickerView.delegate = self
         beltLevelPickerView.dataSource = self
         

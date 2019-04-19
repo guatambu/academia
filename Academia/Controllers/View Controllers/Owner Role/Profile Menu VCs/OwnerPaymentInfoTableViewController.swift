@@ -9,6 +9,10 @@
 import UIKit
 
 class OwnerPaymentInfoTableViewController: UITableViewController {
+    
+    // MARK: - Properties
+    let beltBuilder = BeltBuilder()
+    
 
     // MARK: - ViewController Lifecycle Functions
     
@@ -19,6 +23,9 @@ class OwnerPaymentInfoTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
 
         
     }

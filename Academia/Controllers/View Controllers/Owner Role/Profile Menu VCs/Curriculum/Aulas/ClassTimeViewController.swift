@@ -49,11 +49,6 @@ class ClassTimeViewController: UIViewController  {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 20)! ]
-        
-        navigationController?.navigationBar.titleTextAttributes = avenirFont
-        
         // populate the classDaysLabelOutlet with the previously selected daysOfTheWeek
         guard let daysOfTheWeek = daysOfTheWeek else {
             
@@ -77,6 +72,9 @@ class ClassTimeViewController: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
         
         classTimePickerView.delegate = self
         classTimePickerView.dataSource = self

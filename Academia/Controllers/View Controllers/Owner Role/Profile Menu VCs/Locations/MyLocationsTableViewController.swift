@@ -16,6 +16,8 @@ class MyLocationsTableViewController: UITableViewController {
     // create a fetchedRequestController with predicate to grab the current LocationsCD objects... use these as the source for the tableView DataSource  methods
     var fetchedResultsController: NSFetchedResultsController<LocationCD>!
     
+    let beltBuilder = BeltBuilder()
+    
     
     // MARK: - ViewController Lifecycle Functions
     
@@ -29,6 +31,9 @@ class MyLocationsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
 
     }
 

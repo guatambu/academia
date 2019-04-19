@@ -302,7 +302,7 @@
         <!--login / signup-->
         <scene sceneID="Cv7-Ml-mLh">
             <objects>
-                <viewController storyboardIdentifier="toUsernamePassword" id="VkD-Ki-GOj" userLabel="login / signup" customClass="SignUpLoginViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toSignUpLoginViewController" id="VkD-Ki-GOj" userLabel="login / signup" customClass="SignUpLoginViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yJ7-23-i4y">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

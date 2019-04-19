@@ -16,6 +16,8 @@ class StudentHomeTableViewController: UITableViewController, ActiveStudentDelega
     
     // MARK: - Properties
     
+    let beltBuilder = BeltBuilder()
+    
     var activeStudent: UUID?
     var isKid: Bool = false
     
@@ -23,15 +25,15 @@ class StudentHomeTableViewController: UITableViewController, ActiveStudentDelega
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
-        let avenirFont = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray,
-                           NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 24)! ]
         
-        navigationController?.navigationBar.titleTextAttributes = avenirFont
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
         
         print("isKid: \(String(describing: isKid))")
         

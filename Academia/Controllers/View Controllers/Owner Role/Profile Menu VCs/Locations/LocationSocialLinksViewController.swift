@@ -62,6 +62,9 @@ class LocationSocialLinksViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
     
         socialLink1TextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.instagram.rawValue, attributes: beltBuilder.avenirFont)
         socialLink2TextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.facebook.rawValue, attributes: beltBuilder.avenirFont)
@@ -209,9 +212,9 @@ extension LocationSocialLinksViewController {
         
         anySocialMediaLinksToAddLabelOutlet.text = "Location: \(locationCDToEdit.locationName ?? "")"
         
-        socialLink1TextField.text = "Instagram: \(locationCDToEdit.socialLinks?.socialLink1 ?? "")"
-        socialLink2TextField.text = "facebook: \(locationCDToEdit.socialLinks?.socialLink2 ?? "")"
-        socialLink3TextField.text = "Twitter: \(locationCDToEdit.socialLinks?.socialLink3 ?? "")"
+        socialLink1TextField.text = "\(locationCDToEdit.socialLinks?.socialLink1 ?? "")"
+        socialLink2TextField.text = "\(locationCDToEdit.socialLinks?.socialLink2 ?? "")"
+        socialLink3TextField.text = "\(locationCDToEdit.socialLinks?.socialLink3 ?? "")"
     }
 }
 

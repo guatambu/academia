@@ -54,6 +54,9 @@ class LocationPicAndNameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
+        
         locationNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.locationName.rawValue, attributes: beltBuilder.avenirFont)
         
         locationNameTextField.delegate = self

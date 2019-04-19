@@ -60,7 +60,8 @@ class TakeProfilePicViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.titleTextAttributes = beltBuilder.avenirFont
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
         
         firstNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.firstName.rawValue, attributes: beltBuilder.avenirFont)
         lastNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.lastName.rawValue, attributes: beltBuilder.avenirFont)
@@ -487,7 +488,7 @@ extension TakeProfilePicViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
       
         if let selectedPhoto = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
-            let scaledImage = selectedPhoto.scaleImage(800) {
+            let scaledImage = selectedPhoto.scaleImage(640) {
             
             dismiss(animated: true, completion: {
                 self.profilePicImageViewOutlet.image = scaledImage

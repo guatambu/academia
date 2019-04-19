@@ -17,9 +17,9 @@ class StudentProfileDetailTableViewController: UITableViewController {
     
     @IBOutlet weak var studentProfileMenuCell: UITableViewCell!
     @IBOutlet weak var beltSystemsMenuCell: UITableViewCell!
-    @IBOutlet weak var studentPaymentDetailsMenuCell: UITableViewCell!
+//    @IBOutlet weak var studentPaymentDetailsMenuCell: UITableViewCell!
     @IBOutlet weak var socialNetworksMenuCell: UITableViewCell!
-    @IBOutlet weak var tutorialsMenuCell: UITableViewCell!
+//    @IBOutlet weak var tutorialsMenuCell: UITableViewCell!
     @IBOutlet weak var privacyInfoMenuCell: UITableViewCell!
     @IBOutlet weak var aboutAcademiaMenuCell: UITableViewCell!
     @IBOutlet weak var aboutAcademiaServicesMenuCell: UITableViewCell!
@@ -32,6 +32,9 @@ class StudentProfileDetailTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
     }
     
     
@@ -54,11 +57,11 @@ class StudentProfileDetailTableViewController: UITableViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
     }
     
-    @IBAction func studentPaymentDetailsButtonTapped(_ sender: UIButton) {
+    @IBAction func followUsButtonTapped(_ sender: UIButton) {
         // instantiate the relevant storyboard
-        let studentProfileFlowView: UIStoryboard = UIStoryboard(name: "StudentProfileFlow", bundle: nil)
+        let ownerBeltSystemFlowView: UIStoryboard = UIStoryboard(name: "StudentProfileFlow", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
-        let destViewController = studentProfileFlowView.instantiateViewController(withIdentifier: "toStudentPayment") as! StudentPaymentTableViewController
+        let destViewController = ownerBeltSystemFlowView.instantiateViewController(withIdentifier: "toStudentSocialLinks") as! StudentSocialLinksViewController
         // create the segue programmatically
         self.navigationController?.pushViewController(destViewController, animated: true)
         // set the desired properties of the destinationVC's navgation Item
@@ -69,31 +72,33 @@ class StudentProfileDetailTableViewController: UITableViewController {
         navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
         navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
         navigationController?.navigationBar.shadowImage = UIImage()
-        
-        destViewController.adultStudent = adultStudent
-        destViewController.kidStudent = kidStudent
-        
-        guard let kidStudent = kidStudent else { return }
-        print("*********  kidStudent first name: \(kidStudent.firstName)")
-
     }
     
-    @IBAction func tutorialsButtonTapped(_ sender: UIButton) {
-        // instantiate the relevant storyboard
-        let ownerProfileFlowView: UIStoryboard = UIStoryboard(name: "OwnerProfileFlow", bundle: nil)
-        // instantiate the desired TableViewController as ViewController on relevant storyboard
-        let destViewController = ownerProfileFlowView.instantiateViewController(withIdentifier: "toOwnerPaymentInfo") as! OwnerPaymentInfoTableViewController
-        // create the segue programmatically
-        self.navigationController?.pushViewController(destViewController, animated: true)
-        // set the desired properties of the destinationVC's navgation Item
-        let backButtonItem = UIBarButtonItem()
-        backButtonItem.title = " "
-        navigationItem.backBarButtonItem = backButtonItem
-        // set nav bar controller appearance
-        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
-        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
-        navigationController?.navigationBar.shadowImage = UIImage()
-    }
+    // MARK: - Payment Details to be brought in in later version
+    
+//    @IBAction func studentPaymentDetailsButtonTapped(_ sender: UIButton) {
+//        // instantiate the relevant storyboard
+//        let studentProfileFlowView: UIStoryboard = UIStoryboard(name: "StudentProfileFlow", bundle: nil)
+//        // instantiate the desired TableViewController as ViewController on relevant storyboard
+//        let destViewController = studentProfileFlowView.instantiateViewController(withIdentifier: "toStudentPayment") as! StudentPaymentTableViewController
+//        // create the segue programmatically
+//        self.navigationController?.pushViewController(destViewController, animated: true)
+//        // set the desired properties of the destinationVC's navgation Item
+//        let backButtonItem = UIBarButtonItem()
+//        backButtonItem.title = " "
+//        navigationItem.backBarButtonItem = backButtonItem
+//        // set nav bar controller appearance
+//        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+//        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+//        navigationController?.navigationBar.shadowImage = UIImage()
+//
+//        destViewController.adultStudent = adultStudent
+//        destViewController.kidStudent = kidStudent
+//
+//        guard let kidStudent = kidStudent else { return }
+//        print("*********  kidStudent first name: \(kidStudent.firstName)")
+//
+//    }
     
     @IBAction func privacyInfoButtonTapped(_ sender: UIButton) {
         // instantiate the relevant storyboard

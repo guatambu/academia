@@ -9,9 +9,18 @@
 import UIKit
 
 class TutorialsTableViewController: UITableViewController {
+    
+    // MARK: - Properties
+    let beltBuilder = BeltBuilder()
+    
+    
+    // ViewCotnroller Lifecycle Functions
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // set VC title font styling
+        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

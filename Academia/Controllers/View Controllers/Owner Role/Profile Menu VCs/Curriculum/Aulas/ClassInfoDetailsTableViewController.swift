@@ -73,7 +73,6 @@ class ClassInfoDetailsTableViewController: UITableViewController {
         }
         
         tableView.reloadData()
-        
     }
     
     override func viewDidLoad() {
@@ -366,14 +365,6 @@ extension ClassInfoDetailsTableViewController {
             return
         }
         
-        // sort the classGroups on the .name property to return them in alphabetical order
-        let nameSort = NSSortDescriptor(key: "name", ascending: true)
-        let sortedClassGroups = classGroups.sortedArray(using: [nameSort])
-        
-        // properties to properly build a string to list the names of the included groups (if any)
-        var groupNamesString = ""
-        // set a counter property to track where we are in the array iteration process so we can know when we are at the last object in the array's contents
-        var groupCounter = classGroups.count
         
         // name outlet
         classNameLabelOutlet.text = aulaCD.aulaName
@@ -392,6 +383,15 @@ extension ClassInfoDetailsTableViewController {
         }
         // lastChanged outlet
         formatLastChanged(lastChanged: aulaCD.dateEdited ?? Date())
+        
+        // sort the classGroups on the .name property to return them in alphabetical order
+        let nameSort = NSSortDescriptor(key: "name", ascending: true)
+        let sortedClassGroups = classGroups.sortedArray(using: [nameSort])
+        
+        // properties to properly build a string to list the names of the included groups (if any)
+        var groupNamesString = ""
+        // set a counter property to track where we are in the array iteration process so we can know when we are at the last object in the array's contents
+        var groupCounter = classGroups.count
         // group list outlet
         if classGroups.count != 0 {
             
@@ -399,7 +399,7 @@ extension ClassInfoDetailsTableViewController {
                 
                 let groupCD = sortedClassGroups[i - 1] as! GroupCD
                 
-                if groupCounter < i {
+                if groupCounter == i {
                     groupNamesString += "\(groupCD.name ?? "")"
                 } else {
                     groupNamesString += "\(groupCD.name ?? ""), "
