@@ -20,6 +20,8 @@ class StudentInfoDetailsViewController: UIViewController {
     var activeStudentAdult: StudentAdultCD?
     var activeStudentKid: StudentKidCD?
     
+    var inEditingMode: Bool?
+    
     let beltBuilder = BeltBuilder()
     
     @IBOutlet weak var studentNameLabelOutlet: UILabel!
@@ -121,7 +123,7 @@ class StudentInfoDetailsViewController: UIViewController {
         // instantiate the relevant storyboard
         let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
-        let destViewController = mainView.instantiateViewController(withIdentifier: "toTakeProfilePic") as! TakeProfilePicViewController
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toSignUpLoginViewController") as! SignUpLoginViewController
         // create the segue programmatically - PUSH
         self.navigationController?.pushViewController(destViewController, animated: true)
         // set the desired properties of the destinationVC's navgation Item

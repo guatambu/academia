@@ -56,5 +56,12 @@ struct MiscBigStrings {
     let privacyPolicySection11Text = "This Privacy Policy is effective as of April 15th, 2019."
     
     // academi about us text
-    let aboutUs = ""
+    let aboutUs = "Academi is run by fellow jiu-jitsu players that code. We hope you find this app useful and enjoyable. We are trying to improve people's jiu-jitsu experience though technology. Feel free to send us any suggestions. We would love to hear from you. We can't promise to enact every suggestion we receive, but we do promise to listen to what you have to say."
+    
+    let vamoLa = "Vamo lá!"
+    
+    // academi about our services text
+    let aboutOurServicesPart1 = "The Academi app is designed for a school owner and students alike. With the familiarity of your smartphone, owners will be able to organize and run their schools from anywhere, and students will be able to better enjoy their jiu-jitsu experience."
+    
+    let aboutOurServicesPart2 = "Our services are meant to be an enjoyable and efficient tool for any jiu-jitsu academy in the world. If we are so lucky as to serve jiu-jitsu players around the world, more and more language support will be coming in future versions of this app along with localized methods of payment that efficiently work for as many school owners as possible."
 }

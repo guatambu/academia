@@ -178,7 +178,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yND-Bk-4fE">
                                                     <rect key="frame" x="16" y="0.0" width="288" height="79.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Payment Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="6pD-Xq-Xfh" userLabel="My Payment Info">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Payment Info (coming soon)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="6pD-Xq-Xfh" userLabel="My Payment Info">
                                                             <rect key="frame" x="0.0" y="0.0" width="256" height="79.5"/>
                                                             <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="24"/>
                                                             <nil key="textColor"/>
@@ -266,57 +266,8 @@
                                             <segue destination="W5p-wm-1RN" kind="show" id="Pa9-ks-Kc0"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="iBP-pU-Acl" userLabel="Tutorials Table View Cell">
-                                        <rect key="frame" x="0.0" y="400" width="320" height="80"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iBP-pU-Acl" id="RAI-JW-7A4">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RXD-Ll-lIr">
-                                                    <rect key="frame" x="16" y="0.0" width="288" height="79.5"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tutorials" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="4DK-cg-fYN" userLabel="Tutorials">
-                                                            <rect key="frame" x="0.0" y="0.0" width="256" height="79.5"/>
-                                                            <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="24"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Tec-H8-geO">
-                                                            <rect key="frame" x="256" y="0.0" width="32" height="79.5"/>
-                                                            <subviews>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tJh-GJ-ND9">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="32" height="26.5"/>
-                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                </view>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_red_arrow_32.png" translatesAutoresizingMaskIntoConstraints="NO" id="AUq-xK-HSv">
-                                                                    <rect key="frame" x="0.0" y="26.5" width="32" height="26.5"/>
-                                                                </imageView>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ymg-c7-CJj">
-                                                                    <rect key="frame" x="0.0" y="53" width="32" height="26.5"/>
-                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                </view>
-                                                            </subviews>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="32" id="Nb2-3t-QZg"/>
-                                                            </constraints>
-                                                        </stackView>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="RXD-Ll-lIr" secondAttribute="trailing" constant="16" id="0lo-6T-nNB"/>
-                                                <constraint firstItem="RXD-Ll-lIr" firstAttribute="leading" secondItem="RAI-JW-7A4" secondAttribute="leading" constant="16" id="7aX-sl-evr"/>
-                                                <constraint firstItem="RXD-Ll-lIr" firstAttribute="top" secondItem="RAI-JW-7A4" secondAttribute="top" id="Ehc-Ab-EYK"/>
-                                                <constraint firstAttribute="bottom" secondItem="RXD-Ll-lIr" secondAttribute="bottom" id="rqL-Pv-DuK"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="SHe-Uf-Zdo" kind="show" id="fgC-ho-VYN"/>
-                                        </connections>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="2Hm-qm-huR" userLabel="Privacy Table View Cell">
-                                        <rect key="frame" x="0.0" y="480" width="320" height="80"/>
+                                        <rect key="frame" x="0.0" y="400" width="320" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2Hm-qm-huR" id="eR1-YN-wTE">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
@@ -365,7 +316,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="dDs-Sj-suX" userLabel="About Academia Table View Cell">
-                                        <rect key="frame" x="0.0" y="560" width="320" height="80"/>
+                                        <rect key="frame" x="0.0" y="480" width="320" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dDs-Sj-suX" id="zQ3-uG-Osr">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
@@ -414,7 +365,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="6d2-7X-BBI" userLabel="About Academia's Services Table View Cell">
-                                        <rect key="frame" x="0.0" y="640" width="320" height="80"/>
+                                        <rect key="frame" x="0.0" y="560" width="320" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6d2-7X-BBI" id="e92-FX-Oac">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
@@ -801,24 +752,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="G2e-u5-zjc">
-                                <rect key="frame" x="16" y="80" width="288" height="472"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uQ6-lL-P7t">
+                                <rect key="frame" x="16" y="80" width="288" height="219"/>
+                                <string key="text">  Academi is run by fellow jiu-jitsu players that code. We hope you find this app useful and enjoyable. We are trying to improve people's jiu-jitsu experience though technology. Feel free to send us any suggestions. We would love to hear from you. We can't promise to enact every suggestion we receive, but we do promise to listen to what you have to say.</string>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Vamo lá!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4CN-DG-lyd">
+                                <rect key="frame" x="16" y="315" width="288" height="22"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Please send us your questions and feedback:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fd6-wp-wpb">
+                                <rect key="frame" x="16" y="353" width="288" height="44"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  www.leme.group/academi-contact-support" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOZ-Ld-IEn">
+                                <rect key="frame" x="16" y="405" width="288" height="44"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="G2e-u5-zjc" firstAttribute="top" secondItem="axN-wu-euI" secondAttribute="top" constant="16" id="7kV-2u-Gos"/>
-                            <constraint firstItem="G2e-u5-zjc" firstAttribute="leading" secondItem="axN-wu-euI" secondAttribute="leading" constant="16" id="CNj-Kl-2ed"/>
-                            <constraint firstItem="axN-wu-euI" firstAttribute="bottom" secondItem="G2e-u5-zjc" secondAttribute="bottom" constant="16" id="E5k-iU-XRf"/>
-                            <constraint firstItem="axN-wu-euI" firstAttribute="trailing" secondItem="G2e-u5-zjc" secondAttribute="trailing" constant="16" id="lbe-bB-7ES"/>
+                            <constraint firstItem="uQ6-lL-P7t" firstAttribute="leading" secondItem="axN-wu-euI" secondAttribute="leading" constant="16" id="00M-0d-zg8"/>
+                            <constraint firstItem="axN-wu-euI" firstAttribute="trailing" secondItem="WOZ-Ld-IEn" secondAttribute="trailing" constant="16" id="7Xm-gB-Gcg"/>
+                            <constraint firstItem="4CN-DG-lyd" firstAttribute="top" secondItem="uQ6-lL-P7t" secondAttribute="bottom" constant="16" id="Dxc-Vr-Rpg"/>
+                            <constraint firstItem="axN-wu-euI" firstAttribute="trailing" secondItem="4CN-DG-lyd" secondAttribute="trailing" constant="16" id="KdU-lI-wDm"/>
+                            <constraint firstItem="fd6-wp-wpb" firstAttribute="top" secondItem="4CN-DG-lyd" secondAttribute="bottom" constant="16" id="O8z-pl-V11"/>
+                            <constraint firstItem="4CN-DG-lyd" firstAttribute="leading" secondItem="axN-wu-euI" secondAttribute="leading" constant="16" id="bWp-bp-4Q5"/>
+                            <constraint firstItem="axN-wu-euI" firstAttribute="trailing" secondItem="uQ6-lL-P7t" secondAttribute="trailing" constant="16" id="eSY-It-cAA"/>
+                            <constraint firstItem="uQ6-lL-P7t" firstAttribute="top" secondItem="axN-wu-euI" secondAttribute="top" constant="16" id="mS0-t6-qhk"/>
+                            <constraint firstItem="WOZ-Ld-IEn" firstAttribute="top" secondItem="fd6-wp-wpb" secondAttribute="bottom" constant="8" id="nfx-iS-KPJ"/>
+                            <constraint firstItem="fd6-wp-wpb" firstAttribute="leading" secondItem="axN-wu-euI" secondAttribute="leading" constant="16" id="rY6-Ai-yIN"/>
+                            <constraint firstItem="axN-wu-euI" firstAttribute="trailing" secondItem="fd6-wp-wpb" secondAttribute="trailing" constant="16" id="vXG-cz-6MQ"/>
+                            <constraint firstItem="WOZ-Ld-IEn" firstAttribute="leading" secondItem="axN-wu-euI" secondAttribute="leading" constant="16" id="ye0-JR-a8T"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="axN-wu-euI"/>
                     </view>
-                    <navigationItem key="navigationItem" title="About Academia" id="WWH-Yp-mea"/>
+                    <navigationItem key="navigationItem" title="About Academi" id="WWH-Yp-mea"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="43d-Ds-OVk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -862,7 +839,7 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yhf-H6-Bah">
                                         <rect key="frame" x="8" y="265.5" width="280" height="153"/>
-                                        <string key="text">(a) Information You Provide to Us: We collect any information you enter in the app, or that you give us in any other way. You can choose not to provide certain information, but you may not be able to take advantage of our services and features.</string>
+                                        <string key="text">(a) Information You Provide to Us: We collect any information you enter in the app, or that you give us in any other way. You can choose not to provide certain information, but you may not be able to take advantage of our services and features. (cont.)</string>
                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -924,24 +901,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xdF-8M-ZZk">
-                                <rect key="frame" x="16" y="80" width="288" height="472"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yth-x0-Srs">
+                                <rect key="frame" x="16" y="80" width="288" height="153"/>
+                                <string key="text">  The Academi app is designed for a school owner and students alike. With the familiarity of your smartphone, owners will be able to organize and run their schools from anywhere, and students will be able to better enjoy their jiu-jitsu experience.</string>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qES-6O-KNl">
+                                <rect key="frame" x="16" y="249" width="288" height="197"/>
+                                <string key="text">  Our services are meant to be an enjoyable and efficient tool for any jiu-jitsu academy in the world. If we are so lucky as to serve jiu-jitsu players around the world, more and more language support will be coming in future versions of this app along with localized methods of payment that efficiently work for as many school owners as possible.</string>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  www.leme.group/academi-contact-support" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sAe-kh-ePv">
+                                <rect key="frame" x="16" y="514" width="288" height="44"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Please send us your questions and feedback:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="42o-2Q-u0a">
+                                <rect key="frame" x="16" y="462" width="288" height="44"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="xdF-8M-ZZk" firstAttribute="leading" secondItem="T4e-a6-dta" secondAttribute="leading" constant="16" id="Rw9-Ga-Ol8"/>
-                            <constraint firstItem="T4e-a6-dta" firstAttribute="trailing" secondItem="xdF-8M-ZZk" secondAttribute="trailing" constant="16" id="UBf-GJ-2FF"/>
-                            <constraint firstItem="xdF-8M-ZZk" firstAttribute="top" secondItem="T4e-a6-dta" secondAttribute="top" constant="16" id="jxc-4z-dcj"/>
-                            <constraint firstItem="T4e-a6-dta" firstAttribute="bottom" secondItem="xdF-8M-ZZk" secondAttribute="bottom" constant="16" id="xJ7-nf-dGG"/>
+                            <constraint firstItem="qES-6O-KNl" firstAttribute="top" secondItem="Yth-x0-Srs" secondAttribute="bottom" constant="16" id="2SL-ya-xKh"/>
+                            <constraint firstItem="42o-2Q-u0a" firstAttribute="leading" secondItem="T4e-a6-dta" secondAttribute="leading" constant="16" id="7UM-T2-qga"/>
+                            <constraint firstItem="T4e-a6-dta" firstAttribute="trailing" secondItem="sAe-kh-ePv" secondAttribute="trailing" constant="16" id="9HO-PF-iLQ"/>
+                            <constraint firstItem="Yth-x0-Srs" firstAttribute="top" secondItem="T4e-a6-dta" secondAttribute="top" constant="16" id="D8q-T9-z2n"/>
+                            <constraint firstAttribute="trailing" secondItem="Yth-x0-Srs" secondAttribute="trailing" constant="16" id="Enj-bD-XdC"/>
+                            <constraint firstItem="qES-6O-KNl" firstAttribute="top" secondItem="Yth-x0-Srs" secondAttribute="bottom" constant="16" id="MEA-w7-clE"/>
+                            <constraint firstItem="sAe-kh-ePv" firstAttribute="leading" secondItem="T4e-a6-dta" secondAttribute="leading" constant="16" id="RvG-an-q8l"/>
+                            <constraint firstItem="sAe-kh-ePv" firstAttribute="top" secondItem="42o-2Q-u0a" secondAttribute="bottom" constant="8" id="WRK-Ak-YrH"/>
+                            <constraint firstItem="sAe-kh-ePv" firstAttribute="top" secondItem="42o-2Q-u0a" secondAttribute="bottom" constant="8" id="Yek-ae-Nnh"/>
+                            <constraint firstItem="42o-2Q-u0a" firstAttribute="top" secondItem="qES-6O-KNl" secondAttribute="bottom" constant="16" id="d9H-0P-vPh"/>
+                            <constraint firstItem="qES-6O-KNl" firstAttribute="leading" secondItem="T4e-a6-dta" secondAttribute="leading" constant="16" id="fQ5-aS-wtv"/>
+                            <constraint firstItem="T4e-a6-dta" firstAttribute="trailing" secondItem="42o-2Q-u0a" secondAttribute="trailing" constant="16" id="ndt-VN-MoV"/>
+                            <constraint firstItem="T4e-a6-dta" firstAttribute="trailing" secondItem="qES-6O-KNl" secondAttribute="trailing" constant="16" id="pQA-YU-thI"/>
+                            <constraint firstItem="Yth-x0-Srs" firstAttribute="leading" secondItem="T4e-a6-dta" secondAttribute="leading" constant="16" id="rc4-Aa-DwG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="T4e-a6-dta"/>
                     </view>
-                    <navigationItem key="navigationItem" title="About Academia's Services" id="WXU-ZC-3Rg"/>
+                    <navigationItem key="navigationItem" title="About Academi's Services" id="WXU-ZC-3Rg"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LnK-J5-kMk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1350,76 +1356,6 @@
             </objects>
             <point key="canvasLocation" x="4796" y="8582"/>
         </scene>
-        <!--Tutorials Table View Controller-->
-        <scene sceneID="LrW-Ng-VGZ">
-            <objects>
-                <tableViewController id="SHe-Uf-Zdo" userLabel="Tutorials Table View Controller" customClass="TutorialsTableViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="1hT-Id-a5M">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ownerTutorialsMenuCell" rowHeight="80" id="1X5-wq-5qc" customClass="GeneralMenuTableViewCell" customModule="Academia" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="320" height="80"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1X5-wq-5qc" id="Hmo-PL-cSC">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Ur-YS-xCo">
-                                            <rect key="frame" x="16" y="0.0" width="288" height="79.5"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adults" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="0Me-h2-RkL" userLabel="Kids Program A Class 6PM">
-                                                    <rect key="frame" x="0.0" y="0.0" width="256" height="79.5"/>
-                                                    <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="24"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="zyx-BZ-9aV">
-                                                    <rect key="frame" x="256" y="0.0" width="32" height="79.5"/>
-                                                    <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mWX-ok-fPs">
-                                                            <rect key="frame" x="0.0" y="0.0" width="32" height="26.5"/>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </view>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_red_arrow_32.png" translatesAutoresizingMaskIntoConstraints="NO" id="BZp-bi-X1H">
-                                                            <rect key="frame" x="0.0" y="26.5" width="32" height="26.5"/>
-                                                        </imageView>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jQg-3t-d9M">
-                                                            <rect key="frame" x="0.0" y="53" width="32" height="26.5"/>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </view>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="32" id="u0T-Ib-PFT"/>
-                                                    </constraints>
-                                                </stackView>
-                                            </subviews>
-                                        </stackView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="1Ur-YS-xCo" firstAttribute="leading" secondItem="Hmo-PL-cSC" secondAttribute="leading" constant="16" id="DIn-3F-oE9"/>
-                                        <constraint firstItem="1Ur-YS-xCo" firstAttribute="top" secondItem="Hmo-PL-cSC" secondAttribute="top" id="Ioj-Qh-KZT"/>
-                                        <constraint firstAttribute="bottom" secondItem="1Ur-YS-xCo" secondAttribute="bottom" id="XLa-cT-0No"/>
-                                        <constraint firstAttribute="trailing" secondItem="1Ur-YS-xCo" secondAttribute="trailing" constant="16" id="rVp-wJ-YAr"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="SHe-Uf-Zdo" id="YDS-oy-oDN"/>
-                            <outlet property="delegate" destination="SHe-Uf-Zdo" id="foN-iX-5CR"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Tutorials" id="tOl-Ii-zal">
-                        <barButtonItem key="backBarButtonItem" title=" " id="9um-W9-e0t"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="gcn-RH-Rlv"/>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="46b-Gw-1ci" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1283" y="5532"/>
-        </scene>
         <!--UITableViewController-TZb-1N-cMc-->
         <scene sceneID="opF-1m-zq1">
             <objects>
@@ -1572,7 +1508,7 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bz3-Cp-zer">
                                         <rect key="frame" x="8" y="243.5" width="280" height="131.5"/>
-                                        <string key="text">(a) The information we collect is used for administering our business activities. Occasionally we may use the information to notify you about changes to our application, its services, new services, or special offers.</string>
+                                        <string key="text">(a) The information we collect is used for administering our business activities. Occasionally we may use the information to notify you about changes to our application, its services, new services, or special offers. (cont.)</string>
                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1617,7 +1553,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="g8w-ep-S5g"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Academi Privacy Policy" id="FFX-vH-P9T"/>
+                    <navigationItem key="navigationItem" title="Academi Privacy Policy" id="FFX-vH-P9T">
+                        <barButtonItem key="backBarButtonItem" title=" " id="cpL-Sl-dEL"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ga-xj-stX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1681,7 +1619,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LzX-cZ-553"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Academi Privacy Policy" id="BDR-98-jiX"/>
+                    <navigationItem key="navigationItem" title="Academi Privacy Policy" id="BDR-98-jiX">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Prz-q1-VdN"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CtX-dM-vdi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1745,7 +1685,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yfy-Ze-vNV"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Academi Privacy Policy" id="cx2-db-eu4"/>
+                    <navigationItem key="navigationItem" title="Academi Privacy Policy" id="cx2-db-eu4">
+                        <barButtonItem key="backBarButtonItem" title=" " id="EiI-bJ-e8D"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fcd-A4-AJE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1809,7 +1751,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bCY-M4-eRy"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Academi Privacy Policy" id="Mkx-yk-vZA"/>
+                    <navigationItem key="navigationItem" title="Academi Privacy Policy" id="Mkx-yk-vZA">
+                        <barButtonItem key="backBarButtonItem" title=" " id="QfA-BR-6ra"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IDT-m8-vPG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1873,7 +1817,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sQZ-Ja-h42"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Academi Privacy Policy" id="1h1-Ty-oEg"/>
+                    <navigationItem key="navigationItem" title="Academi Privacy Policy" id="1h1-Ty-oEg">
+                        <barButtonItem key="backBarButtonItem" title=" " id="k6E-PL-dnv"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I9t-jN-2VF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1956,7 +1902,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SgC-zU-bp8"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Academi Privacy Policy" id="f95-cf-rhb"/>
+                    <navigationItem key="navigationItem" title="Academi Privacy Policy" id="f95-cf-rhb">
+                        <barButtonItem key="backBarButtonItem" title=" " id="jih-4G-qtK"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rhf-UY-d9O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2038,7 +1986,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0Wf-kN-5Xy"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Academi Privacy Policy" id="iGr-M7-mbJ"/>
+                    <navigationItem key="navigationItem" title="Academi Privacy Policy" id="iGr-M7-mbJ">
+                        <barButtonItem key="backBarButtonItem" title=" " id="wbT-Ed-NuS"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iX3-2f-pMf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2102,7 +2052,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ntM-RF-ai2"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Academi Privacy Policy" id="Xar-I7-Ja8"/>
+                    <navigationItem key="navigationItem" title="Academi Privacy Policy" id="Xar-I7-Ja8">
+                        <barButtonItem key="backBarButtonItem" title=" " id="r6P-RL-ppb"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fex-hT-Lhd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2222,7 +2174,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bvN-ur-uaf"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Academi Privacy Policy" id="5ss-zr-aNs"/>
+                    <navigationItem key="navigationItem" title="Academi Privacy Policy" id="5ss-zr-aNs">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Jya-Rv-a6c"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z1b-cB-O6H" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="c5H-mh-PaP" userLabel="Exit" sceneMemberID="exit"/>

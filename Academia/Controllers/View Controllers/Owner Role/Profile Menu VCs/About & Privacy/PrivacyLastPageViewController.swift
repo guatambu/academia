@@ -47,7 +47,10 @@ extension UIViewController {
             if viewController is OwnerProfileTableViewController {
                 self.navigationController?.popToViewController(viewController, animated: true)
                 
+            } else if viewController is StudentProfileDetailTableViewController {
+                self.navigationController?.popToViewController(viewController, animated: true)
             }
+            
         }
     }
 }

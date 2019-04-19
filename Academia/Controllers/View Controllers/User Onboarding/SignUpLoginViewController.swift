@@ -6,6 +6,9 @@
 //  Copyright © 2018 DunDak, LLC. All rights reserved.
 //
 
+
+// TODO: - update this VC for editing mode.  follow the compiler errors
+
 import UIKit
 import CoreData
 
@@ -19,6 +22,9 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
     
     var isOwnerAddingStudent: Bool?
     var group: Group?
+    
+    var inEditingMode: Bool?
+    var userCDToEdit: Any?
     
     var delegate: InitialStudentSegueDelegate!
     
@@ -58,6 +64,9 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         // turns on secure text entry in password and confirm password textFields
         passwordTextField.isSecureTextEntry = true
         confirmPasswordTextField.isSecureTextEntry = true
+        
+        // check to see if enter editing mode
+        enterEditingMode(inEditingMode: inEditingMode)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -67,6 +76,9 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // establish Sign Up button text for new user
+        signUpButtonOutlet.setTitle("Sign Up", for: UIControl.State.normal)
         
         usernameTextField.delegate = self
         passwordTextField.delegate = self
@@ -96,12 +108,10 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
             if isOwner {
                 welcomeMessageOutlet.text = "Welcome New Owner"
                 welcomeInstructionsOutlet.text = "please create a username and password"
-//                passwordLabelOutlet.text = "create password"
                 signUpButtonOutlet.setTitle("Sign Up", for: UIControl.State.normal)
             } else {
                 welcomeMessageOutlet.text = "Welcome New Student"
                 welcomeInstructionsOutlet.text = "please create a username and password"
-//                passwordLabelOutlet.text = "create password"
                 signUpButtonOutlet.setTitle("Sign Up", for: UIControl.State.normal)
             }
             
@@ -111,6 +121,90 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
     
     
     // MARK: - Actions
+    
+    @objc func saveButtonTapped() {
+        
+        // dismiss keyboard when leaving VC scene
+        if usernameTextField.isFirstResponder {
+            usernameTextField.resignFirstResponder()
+        } else if passwordTextField.isFirstResponder {
+            passwordTextField.resignFirstResponder()
+        } else if confirmPasswordTextField.isFirstResponder {
+            confirmPasswordTextField.resignFirstResponder()
+        }
+        
+        // check for required information being left blank by user
+        if usernameTextField.text == "" || passwordTextField.text == "" || confirmPasswordTextField.text == "" {
+            
+            checkForEmptyTextFields()
+            
+            // save not allowed, so we exit function
+            return
+        }
+        
+        // check to see if there is a valid and matching password
+        if self.passwordTextField.text == "" {
+            welcomeInstructionsOutlet.text = "please create a password"
+            welcomeInstructionsOutlet.textColor = beltBuilder.redBeltRed
+            // fire haptic feedback for error
+            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+            
+            passwordTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.password.rawValue, attributes: beltBuilder.errorAvenirFont)
+            
+            return
+        } else if self.confirmPasswordTextField.text == "" {
+            welcomeInstructionsOutlet.text = "please confirm your password"
+            welcomeInstructionsOutlet.textColor = beltBuilder.redBeltRed
+            // fire haptic feedback for error
+            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+            
+            confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.confirmPassword.rawValue, attributes: beltBuilder.errorAvenirFont)
+            
+            return
+        } else if self.passwordTextField.text != self.confirmPasswordTextField.text {
+            welcomeInstructionsOutlet.text = "your passwords do not match."
+            welcomeInstructionsOutlet.textColor = beltBuilder.redBeltRed
+            // fire haptic feedback for error
+            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+            return
+        } else if self.passwordTextField.text == self.confirmPasswordTextField.text {
+            // if valid password update profile and segue back to user's InfoDetailsVC
+            if let isOwner = isOwner {
+                
+                if isOwner {
+                    // Owner update profile info
+                    updateOwnerInfo()
+                    
+                    self.returnToOwnerInfo()
+                }
+            }
+            if let isKid = isKid {
+                
+                if isKid{
+                    // kidStudent update profile info
+                    updateKidStudentInfo()
+                    
+                    self.returnToStudentInfo()
+                    
+                } else {
+                    // adultStudent update profile info
+                    updateAdultStudentInfo()
+                    
+                    self.returnToStudentInfo()
+                }
+            }
+            
+            inEditingMode = false
+            
+            // reset textfield placeholder text color to gray upon succesful save
+            usernameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.username.rawValue, attributes: beltBuilder.avenirFont)
+            passwordTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.password.rawValue, attributes: beltBuilder.avenirFont)
+            
+        }
+    }
     
     @IBAction func tapAnywhereToDismissKeyboard(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
@@ -144,43 +238,7 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         // check for required information being left blank by user
         if usernameTextField.text == "" || passwordTextField.text == "" || confirmPasswordTextField.text == "" {
             
-            // warning to user where welcome instructions text changes to red
-            welcomeInstructionsOutlet.textColor = beltBuilder.redBeltRed
-            
-            // fire haptic feedback for error
-            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
-            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
-            
-            // warnings for specific textfield being left blank by user
-            if usernameTextField.text == "" {
-                
-                usernameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.username.rawValue, attributes: beltBuilder.errorAvenirFont)
-                
-            } else {
-                
-                usernameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.username.rawValue, attributes: beltBuilder.avenirFont)
-                
-            }
-            
-            if passwordTextField.text == "" {
-                
-                passwordTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.password.rawValue, attributes: beltBuilder.errorAvenirFont)
-                
-            } else {
-                
-                passwordTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.password.rawValue, attributes: beltBuilder.avenirFont)
-                
-            }
-            
-            if confirmPasswordTextField.text == "" {
-                
-                confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.confirmPassword.rawValue, attributes: beltBuilder.errorAvenirFont)
-                
-            } else {
-                
-                confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.confirmPassword.rawValue, attributes: beltBuilder.avenirFont)
-                
-            }
+            checkForEmptyTextFields()
             
             // save not allowed, so we exit function
             return
@@ -202,6 +260,7 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
                 
                 return
             }
+            
             // check to see if there is a valid and matching password
             if self.passwordTextField.text == "" {
                 welcomeInstructionsOutlet.text = "please create a password"
@@ -253,6 +312,8 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
             destViewController.username = newUsername
             destViewController.isOwnerAddingStudent = isOwnerAddingStudent
             destViewController.group = group
+            destViewController.inEditingMode = inEditingMode
+            destViewController.userCDToEdit = userCDToEdit
             
             // pass CoreData Properties
             guard let newPassword = self.passwordTextField.text else { return }
@@ -285,6 +346,20 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
             return
         }
         
+        // if in Editing Mode = true, good to allow user to have their work saved as the progress through the edit workflow for one final save rather than having to save at each viewcontroller
+        if let isOwner = isOwner {
+            if isOwner {
+                updateOwnerInfo()
+            }
+        }
+        if let isKid = isKid {
+            if isKid {
+                updateKidStudentInfo()
+            } else {
+                updateAdultStudentInfo()
+            }
+        }
+        
         // pass data to destViewController
         destViewController.isOwner = isOwner
         destViewController.isKid = isKid
@@ -315,6 +390,125 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         passwordTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.password.rawValue, attributes: beltBuilder.avenirFont)
         confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.confirmPassword.rawValue, attributes: beltBuilder.avenirFont)
         
+    }
+}
+
+
+// MARK: - Editing Mode for Individual User case specific setup
+extension SignUpLoginViewController {
+    
+    // Update Function for case where want to update user info without a segue
+    func updateOwnerInfo() {
+        
+        // Owner update profile info
+        if usernameTextField.text != "" && passwordTextField.text != "" {
+            
+            // CoreData Owner update profile info
+            guard let ownerCD = userCDToEdit as? OwnerCD else { return }
+            
+            OwnerCDModelController.shared.update(owner: ownerCD, isInstructor: nil, birthdate: nil, mostRecentPromotion: nil, belt: nil, profilePic: nil, username: usernameTextField.text, password: passwordTextField.text, firstName: nil, lastName: nil, address: nil, phone: nil, mobile: nil, email: nil, emergencyContact: nil)
+            
+            OwnerCDModelController.shared.saveToPersistentStorage()
+        }
+    }
+    
+    func updateKidStudentInfo() {
+        
+        if usernameTextField.text != "" && passwordTextField.text != "" {
+            
+            // CoreData Owner update profile info
+            guard let studentKidCD = userCDToEdit as? StudentKidCD else { return }
+            
+                
+            StudentKidCDModelController.shared.update(studentKid: studentKidCD, birthdate: nil, mostRecentPromotion: nil, studentStatus: nil, belt: nil, profilePic: nil, username: usernameTextField.text, password: passwordTextField.text, firstName: nil, lastName: nil, parentGuardian: nil, address: nil, phone: nil, mobile: nil, email: nil, emergencyContact: nil)
+            
+            OwnerCDModelController.shared.saveToPersistentStorage()
+        }
+    }
+    
+    func updateAdultStudentInfo() {
+        
+        // adultStudent update profile info
+        if usernameTextField.text != "" && passwordTextField.text != "" {
+            
+            // CoreData Owner update profile info
+            guard let studentAdultCD = userCDToEdit as? StudentAdultCD else { return }
+                
+            StudentAdultCDModelController.shared.update(studentAdult: studentAdultCD, isInstructor: nil, birthdate: nil, mostRecentPromotion: nil, studentStatus: nil, belt: nil, profilePic: nil, username: usernameTextField.text, password: passwordTextField.text, firstName: nil, lastName: nil, address: nil, phone: nil, mobile: nil, email: nil, emergencyContact: nil)
+            
+            OwnerCDModelController.shared.saveToPersistentStorage()
+        }
+    }
+    
+    func enterEditingMode(inEditingMode: Bool?) {
+        
+        guard let inEditingMode = inEditingMode else { return }
+        
+        if inEditingMode {
+            // add Save to right hand side of NavBar
+            let saveButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveButtonTapped))
+            navigationItem.rightBarButtonItem = saveButtonItem
+            
+            // change text on the Sign Up Button to "Next" for existing user in editing mode
+            signUpButtonOutlet.setTitle("Next", for: UIControl.State.normal)
+            
+            if let isOwner = isOwner {
+                if isOwner {
+                    ownerEditingSetup(userToEdit: userCDToEdit)
+                }
+            }
+            if let isKid = isKid {
+                if isKid {
+                    kidStudentEditingSetup(userToEdit: userCDToEdit)
+                } else {
+                    adultStudentEditingSetup(userToEdit: userCDToEdit)
+                }
+            }
+        }
+        
+        print("SignUpLoginVC -> inEditingMode: \(inEditingMode)")
+    }
+    
+    // owner setup for editing mode
+    func ownerEditingSetup(userToEdit: Any?) {
+        
+        guard let ownerCDToEdit = userToEdit as? OwnerCD else {
+            return
+        }
+        
+        welcomeMessageOutlet.text = "Welcome \(ownerCDToEdit.firstName ?? "")"
+        
+        usernameTextField.text = ownerCDToEdit.username
+        passwordTextField.text = ownerCDToEdit.password
+        confirmPasswordTextField.text = ownerCDToEdit.password
+    }
+    
+    // kid student setu for editing mode
+    func kidStudentEditingSetup(userToEdit: Any?) {
+        
+        guard let kidToEdit = userToEdit as? StudentKidCD else {
+            return
+        }
+        
+        welcomeMessageOutlet.text = "Welcome \(kidToEdit.firstName ?? "")"
+        
+        usernameTextField.text = kidToEdit.username
+        passwordTextField.text = kidToEdit.password
+        confirmPasswordTextField.text = kidToEdit.password
+    }
+    
+    // adult student setu for editing mode
+    func adultStudentEditingSetup(userToEdit: Any?) {
+        
+        guard let adultToEdit = userToEdit as? StudentAdultCD else {
+            return
+        }
+        
+        welcomeMessageOutlet.text = "Welcome \(adultToEdit.firstName ?? "")"
+        
+        usernameTextField.text = adultToEdit.username
+        passwordTextField.text = adultToEdit.password
+        confirmPasswordTextField.text = adultToEdit.password
     }
 }
 
@@ -386,4 +580,83 @@ extension SignUpLoginViewController: UITextFieldDelegate {
         }
         return true
     }
+}
+
+
+// MARK: - funcitons to check for user input error
+extension SignUpLoginViewController {
+    
+    // empty textfield check
+    func checkForEmptyTextFields() {
+        // warning to user where welcome instructions text changes to red
+        welcomeInstructionsOutlet.textColor = beltBuilder.redBeltRed
+        
+        // fire haptic feedback for error
+        hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+        hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+        
+        // warnings for specific textfield being left blank by user
+        if usernameTextField.text == "" {
+            
+            usernameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.username.rawValue, attributes: beltBuilder.errorAvenirFont)
+            
+        } else {
+            
+            usernameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.username.rawValue, attributes: beltBuilder.avenirFont)
+            
+        }
+        
+        if passwordTextField.text == "" {
+            
+            passwordTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.password.rawValue, attributes: beltBuilder.errorAvenirFont)
+            
+        } else {
+            
+            passwordTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.password.rawValue, attributes: beltBuilder.avenirFont)
+            
+        }
+        
+        if confirmPasswordTextField.text == "" {
+            
+            confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.confirmPassword.rawValue, attributes: beltBuilder.errorAvenirFont)
+            
+        } else {
+            
+            confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.confirmPassword.rawValue, attributes: beltBuilder.avenirFont)
+            
+        }
+    }
+    
+    // passwords check
+//    func passwordErrorCheck() {
+//        // check to see if there is a valid and matching password
+//        if self.passwordTextField.text == "" {
+//            welcomeInstructionsOutlet.text = "please create a password"
+//            welcomeInstructionsOutlet.textColor = beltBuilder.redBeltRed
+//            // fire haptic feedback for error
+//            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+//            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+//
+//            passwordTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.password.rawValue, attributes: beltBuilder.errorAvenirFont)
+//
+//            return
+//        } else if self.confirmPasswordTextField.text == "" {
+//            welcomeInstructionsOutlet.text = "please confirm your password"
+//            welcomeInstructionsOutlet.textColor = beltBuilder.redBeltRed
+//            // fire haptic feedback for error
+//            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+//            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+//
+//            confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.confirmPassword.rawValue, attributes: beltBuilder.errorAvenirFont)
+//
+//            return
+//        } else if self.passwordTextField.text != self.confirmPasswordTextField.text {
+//            welcomeInstructionsOutlet.text = "your passwords do not match."
+//            welcomeInstructionsOutlet.textColor = beltBuilder.redBeltRed
+//            // fire haptic feedback for error
+//            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+//            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+//            return
+//        }
+//    }
 }
