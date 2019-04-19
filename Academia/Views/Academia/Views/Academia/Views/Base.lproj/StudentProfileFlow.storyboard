@@ -136,7 +136,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pYy-Kn-WSi">
                                                     <rect key="frame" x="16" y="0.0" width="288" height="79.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Social Networks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="aaT-C8-axK" userLabel="payment Info">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Follow Us!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="aaT-C8-axK" userLabel="Follow Us!">
                                                             <rect key="frame" x="0.0" y="0.0" width="256" height="79.5"/>
                                                             <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="24"/>
                                                             <nil key="textColor"/>
@@ -166,7 +166,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wvg-u2-QWk" userLabel="Social Networks Button">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
                                                     <connections>
-                                                        <action selector="socialNetworksButtonTapped:" destination="nXN-oV-aSa" eventType="touchUpInside" id="2ET-HP-MsJ"/>
+                                                        <action selector="followUsButtonTapped:" destination="nXN-oV-aSa" eventType="touchUpInside" id="GX6-aH-ri9"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -391,7 +391,57 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4tD-sT-WIB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8377" y="107"/>
+            <point key="canvasLocation" x="8220" y="-13"/>
+        </scene>
+        <!--Follow Us! Student Social Links-->
+        <scene sceneID="3si-xY-eGK">
+            <objects>
+                <viewController storyboardIdentifier="toStudentSocialLinks" id="wI1-Z8-goY" userLabel="Follow Us! Student Social Links" customClass="StudentSocialLinksViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9OV-7h-f5r">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="3vo-An-c7q">
+                                <rect key="frame" x="16" y="68" width="288" height="114"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(social Link 1)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acb-cZ-5Ik">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="22"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(social Link 2)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wxf-K5-mH3">
+                                        <rect key="frame" x="0.0" y="46" width="288" height="22"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(social Link 3)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O8j-Bh-S0p">
+                                        <rect key="frame" x="0.0" y="92" width="288" height="22"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3vo-An-c7q" firstAttribute="top" secondItem="8cN-Nx-32N" secondAttribute="top" constant="48" id="EQY-3m-Erd"/>
+                            <constraint firstItem="8cN-Nx-32N" firstAttribute="trailing" secondItem="3vo-An-c7q" secondAttribute="trailing" constant="16" id="YRU-kL-bwK"/>
+                            <constraint firstItem="3vo-An-c7q" firstAttribute="leading" secondItem="8cN-Nx-32N" secondAttribute="leading" constant="16" id="tRP-Sr-bQJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8cN-Nx-32N"/>
+                    </view>
+                    <connections>
+                        <outlet property="socialLink1LabelOutlet" destination="acb-cZ-5Ik" id="mwM-zv-AdY"/>
+                        <outlet property="socialLink2LabelOutlet" destination="Wxf-K5-mH3" id="YIs-X2-u00"/>
+                        <outlet property="socialLink3LabelOutlet" destination="O8j-Bh-S0p" id="BEI-Nz-1Sh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CeJ-KW-sBm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="10404" y="1067"/>
         </scene>
         <!--Student Payment Scene-->
         <scene sceneID="TeF-Y3-cXW">
@@ -812,7 +862,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lYC-dA-I9s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10358" y="860"/>
+            <point key="canvasLocation" x="10404" y="336"/>
         </scene>
         <!--Student Info Details View Controller-->
         <scene sceneID="Kca-gS-FQK">
@@ -1113,7 +1163,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5lT-5W-84E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10358" y="107"/>
+            <point key="canvasLocation" x="10406" y="-393"/>
         </scene>
     </scenes>
     <resources>

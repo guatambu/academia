@@ -112,7 +112,7 @@ class StudentChoiceViewController: UIViewController {
         // instantiate the relevant storyboard
         let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
-        let destViewController = mainView.instantiateViewController(withIdentifier: "toUsernamePassword") as! SignUpLoginViewController
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toSignUpLoginViewController") as! SignUpLoginViewController
         // create the segue programmatically
         self.navigationController?.pushViewController(destViewController, animated: true)
         // set the desired properties of the destinationVC's navgation Item
@@ -139,7 +139,7 @@ class StudentChoiceViewController: UIViewController {
         // instantiate the relevant storyboard
         let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
-        let destViewController = mainView.instantiateViewController(withIdentifier: "toUsernamePassword") as! SignUpLoginViewController
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toSignUpLoginViewController") as! SignUpLoginViewController
         // create the segue programmatically
         self.navigationController?.pushViewController(destViewController, animated: true)
         // set the desired properties of the destinationVC's navgation Item

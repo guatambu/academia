@@ -4485,6 +4485,86 @@
             </objects>
             <point key="canvasLocation" x="9713" y="4275"/>
         </scene>
+        <!--Classes Instructor Detail-->
+        <scene sceneID="FSu-MJ-EB1">
+            <objects>
+                <viewController storyboardIdentifier="toStudentClassesInstructorDetail" id="eeu-UX-52F" userLabel="Classes Instructor Detail" customClass="StudentClassesInstructorDetailViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Kx3-tB-RR2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nOl-wn-l98" userLabel="name Stack View">
+                                <rect key="frame" x="16" y="60" width="288" height="24"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(name)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PDh-LV-KwG">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="DEM-bQ-1Wc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="PDh-LV-KwG" secondAttribute="trailing" id="Ff8-0D-Uc7"/>
+                                    <constraint firstItem="PDh-LV-KwG" firstAttribute="leading" secondItem="nOl-wn-l98" secondAttribute="leading" id="Qeh-Wd-SWo"/>
+                                </constraints>
+                            </stackView>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D8x-UP-LqE" userLabel="Round Profile Pic View" customClass="DesignableView" customModule="Academia" customModuleProvider="target">
+                                <rect key="frame" x="100" y="108" width="120" height="120"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_pic_placeholder_image.png" translatesAutoresizingMaskIntoConstraints="NO" id="qh2-iz-0hT" userLabel="Profile Pic Image View">
+                                        <rect key="frame" x="-32" y="-32" width="184" height="184"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="qh2-iz-0hT" secondAttribute="bottom" constant="-32" id="2nT-GA-RjZ"/>
+                                    <constraint firstAttribute="height" constant="120" id="50w-i2-eFo"/>
+                                    <constraint firstAttribute="width" secondItem="D8x-UP-LqE" secondAttribute="height" multiplier="1:1" id="Hu7-kN-WwO"/>
+                                    <constraint firstItem="qh2-iz-0hT" firstAttribute="top" secondItem="D8x-UP-LqE" secondAttribute="top" constant="-32" id="JiS-8j-JYZ"/>
+                                    <constraint firstAttribute="width" constant="120" id="Tw0-8L-Zbx"/>
+                                    <constraint firstAttribute="trailing" secondItem="qh2-iz-0hT" secondAttribute="trailing" constant="-32" id="arG-gF-yZh"/>
+                                    <constraint firstItem="qh2-iz-0hT" firstAttribute="leading" secondItem="D8x-UP-LqE" secondAttribute="leading" constant="-32" id="igR-JS-nAA"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="60"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rbr-QJ-Hum" userLabel="belt holder View">
+                                <rect key="frame" x="16" y="268" width="288" height="40"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="elH-GW-HmJ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nOl-wn-l98" firstAttribute="leading" secondItem="3cD-GK-kR8" secondAttribute="leading" constant="16" id="2rw-xx-O6W"/>
+                            <constraint firstItem="rbr-QJ-Hum" firstAttribute="top" secondItem="qh2-iz-0hT" secondAttribute="bottom" constant="8" id="4VG-hM-YdH"/>
+                            <constraint firstItem="3cD-GK-kR8" firstAttribute="trailing" secondItem="rbr-QJ-Hum" secondAttribute="trailing" constant="16" id="EPx-1C-yhf"/>
+                            <constraint firstItem="D8x-UP-LqE" firstAttribute="top" secondItem="PDh-LV-KwG" secondAttribute="bottom" constant="24" id="UO7-Y7-a9C"/>
+                            <constraint firstItem="rbr-QJ-Hum" firstAttribute="leading" secondItem="3cD-GK-kR8" secondAttribute="leading" constant="16" id="c6R-ES-f2k"/>
+                            <constraint firstItem="3cD-GK-kR8" firstAttribute="trailing" secondItem="nOl-wn-l98" secondAttribute="trailing" constant="16" id="fGJ-KS-Rvv"/>
+                            <constraint firstItem="nOl-wn-l98" firstAttribute="top" secondItem="3cD-GK-kR8" secondAttribute="top" constant="40" id="gYh-wJ-Jm4"/>
+                            <constraint firstItem="D8x-UP-LqE" firstAttribute="centerX" secondItem="Kx3-tB-RR2" secondAttribute="centerX" id="qoW-OM-MxJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3cD-GK-kR8"/>
+                    </view>
+                    <connections>
+                        <outlet property="beltHolderViewOutlet" destination="rbr-QJ-Hum" id="DHu-a5-Ajs"/>
+                        <outlet property="nameLabelOutlet" destination="PDh-LV-KwG" id="bv7-zR-Dwr"/>
+                        <outlet property="profilePicImageView" destination="qh2-iz-0hT" id="0W1-0f-ZXO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xKg-ix-dKv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3174" y="4423"/>
+        </scene>
     </scenes>
     <resources>
         <image name="classes_red_32.png" width="32" height="32"/>

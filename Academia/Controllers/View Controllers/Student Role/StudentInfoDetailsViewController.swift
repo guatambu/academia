@@ -69,9 +69,6 @@ class StudentInfoDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // set VC title font styling
-        navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
-        
         addressLine2LabelOutlet.isHidden = false
         mobileLabelOutlet.isHidden = false
         
@@ -211,6 +208,7 @@ class StudentInfoDetailsViewController: UIViewController {
 }
 
 
+// MARK: - setup the view
 extension StudentInfoDetailsViewController {
     
     func populateCompletedProfileInfo() {

@@ -17,9 +17,9 @@ class StudentProfileDetailTableViewController: UITableViewController {
     
     @IBOutlet weak var studentProfileMenuCell: UITableViewCell!
     @IBOutlet weak var beltSystemsMenuCell: UITableViewCell!
-    @IBOutlet weak var studentPaymentDetailsMenuCell: UITableViewCell!
+//    @IBOutlet weak var studentPaymentDetailsMenuCell: UITableViewCell!
     @IBOutlet weak var socialNetworksMenuCell: UITableViewCell!
-    @IBOutlet weak var tutorialsMenuCell: UITableViewCell!
+//    @IBOutlet weak var tutorialsMenuCell: UITableViewCell!
     @IBOutlet weak var privacyInfoMenuCell: UITableViewCell!
     @IBOutlet weak var aboutAcademiaMenuCell: UITableViewCell!
     @IBOutlet weak var aboutAcademiaServicesMenuCell: UITableViewCell!
@@ -45,6 +45,23 @@ class StudentProfileDetailTableViewController: UITableViewController {
         let ownerBeltSystemFlowView: UIStoryboard = UIStoryboard(name: "OwnerBeltSystemFlow", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
         let destViewController = ownerBeltSystemFlowView.instantiateViewController(withIdentifier: "UITableViewController-TZb-1N-cMc") as! BeltSystemsTableViewController
+        // create the segue programmatically
+        self.navigationController?.pushViewController(destViewController, animated: true)
+        // set the desired properties of the destinationVC's navgation Item
+        let backButtonItem = UIBarButtonItem()
+        backButtonItem.title = " "
+        navigationItem.backBarButtonItem = backButtonItem
+        // set nav bar controller appearance
+        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+        navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    
+    @IBAction func followUsButtonTapped(_ sender: UIButton) {
+        // instantiate the relevant storyboard
+        let ownerBeltSystemFlowView: UIStoryboard = UIStoryboard(name: "StudentProfileFlow", bundle: nil)
+        // instantiate the desired TableViewController as ViewController on relevant storyboard
+        let destViewController = ownerBeltSystemFlowView.instantiateViewController(withIdentifier: "toStudentSocialLinks") as! StudentSocialLinksViewController
         // create the segue programmatically
         self.navigationController?.pushViewController(destViewController, animated: true)
         // set the desired properties of the destinationVC's navgation Item

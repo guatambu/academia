@@ -185,7 +185,7 @@ class StudentClassDetailTableViewController: UITableViewController {
         // instantiate the relevant storyboard
         let mainView: UIStoryboard = UIStoryboard(name: "OwnerBaseCampFlow", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
-        let destViewController = mainView.instantiateViewController(withIdentifier: "toProfileComplete") as! OwnersStudentDetailViewController
+        let destViewController = mainView.instantiateViewController(withIdentifier: "toStudentClassesInstructorDetail") as! StudentClassesInstructorDetailViewController
         
         // create the segue programmatically - PUSH
         self.navigationController?.pushViewController(destViewController, animated: true)
@@ -216,7 +216,11 @@ class StudentClassDetailTableViewController: UITableViewController {
                 return
             }
             
-            destViewController.ownerCD = ownerCD
+            destViewController.firstName = ownerCD.firstName
+            destViewController.lastName = ownerCD.lastName
+            destViewController.beltLevel = ownerCD.belt?.beltLevel
+            destViewController.numberOfStripes = ownerCD.belt?.numberOfStripes
+            destViewController.profilePicData = ownerCD.profilePic
             
         } else if indexPath.section == 1 {
             
@@ -235,7 +239,11 @@ class StudentClassDetailTableViewController: UITableViewController {
                 return
             }
             
-            destViewController.studentAdultCD = studentAdultCD
+            destViewController.firstName = studentAdultCD.firstName
+            destViewController.lastName = studentAdultCD.lastName
+            destViewController.beltLevel = studentAdultCD.belt?.beltLevel
+            destViewController.numberOfStripes = studentAdultCD.belt?.numberOfStripes
+            destViewController.profilePicData = studentAdultCD.profilePic
         }
     }
 }
