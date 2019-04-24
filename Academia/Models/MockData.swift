@@ -43,7 +43,8 @@ struct MockData {
     
     static var ownerEmergencyContact = EmergencyContactCD(name: "marge owner", phone: "(323) 123-0987", relationship: "significant other")
     
-    static var ownerCD = OwnerCD(birthdate: Date(), mostRecentPromotion: nil, studentStatus: nil, belt: blackBeltCD, profilePic: nil, username: "owner", password: "owner", firstName: "jim", lastName: "owner", address: ownerAddress, phone: "(323) 123-7654", mobile: "(323) 555-1212", email: "owner@academywebiste.com", emergencyContact: ownerEmergencyContact)
+    static var ownerCD = OwnerCD(mostRecentPromotion: nil, studentStatus: nil, belt: blackBeltCD, profilePic: nil, username: "owner", password: "owner", firstName: "jim", lastName: "owner", address: ownerAddress, phone: "(323) 123-7654", mobile: "(323) 555-1212", email: "owner@academywebiste.com", emergencyContact: ownerEmergencyContact)
+
 
     // adultA
     static var blueBeltCD = BeltCD(beltLevel: "blue belt", beltPromotionAttendanceCriteria: nil, beltStripeAgeDetails: nil, classesToNextPromotion: nil, numberOfStripes: 2)
@@ -52,7 +53,7 @@ struct MockData {
     
     static var adultEmergencyContact = EmergencyContactCD(name: "betty student", phone: "(323) 098-5678", relationship: "significant other")
     
-    static var adultA = StudentAdultCD(isInstructor: false, dateCreated: Date(), dateEdited: Date(), birthdate: Date(), studentStatus: nil, belt: blueBeltCD, profilePic: nil, username: "studentA", password: "studentA", firstName: "larry", lastName: "student", address: adultAAddress, phone: "(323) 345-6789)", mobile: "(323 945-0987)", email: "adultA@myemail.com", emergencyContact: adultEmergencyContact)
+    static var adultA = StudentAdultCD(isInstructor: false, dateCreated: Date(), dateEdited: Date(), studentStatus: nil, belt: blueBeltCD, profilePic: nil, username: "studentA", password: "studentA", firstName: "larry", lastName: "student", address: adultAAddress, phone: "(323) 345-6789)", mobile: "(323 945-0987)", email: "adultA@myemail.com", emergencyContact: adultEmergencyContact)
     
     // kidA
     static var grayBeltCD = BeltCD(beltLevel: "gray belt", beltPromotionAttendanceCriteria: nil, beltStripeAgeDetails: nil, classesToNextPromotion: nil, numberOfStripes: 6)
@@ -61,7 +62,7 @@ struct MockData {
     
     static var kidEmergencyContact = EmergencyContactCD(name: "susan kid", phone: "(323) 789-5674", relationship: "mother")
     
-    static var kidA = StudentKidCD(dateCreated: Date(), dateEdited: Date(), birthdate: Date(), studentStatus: nil, belt: grayBeltCD, profilePic: nil, username: "kidA", password: "kidA", firstName: "daniel", lastName: "kid", parentGuardian: "susan kid", address: kidAAddress, phone: "(323) 678-1234", mobile: "(323) 432-9876", email: "mom@email.com", emergencyContact: kidEmergencyContact)
+    static var kidA = StudentKidCD(dateCreated: Date(), dateEdited: Date(), studentStatus: nil, belt: grayBeltCD, profilePic: nil, username: "kidA", password: "kidA", firstName: "daniel", lastName: "kid", parentGuardian: "susan kid", address: kidAAddress, phone: "(323) 678-1234", mobile: "(323) 432-9876", email: "mom@email.com", emergencyContact: kidEmergencyContact)
   
 
     // adult basic belts

@@ -40,6 +40,10 @@ class BirthdayViewController: UIViewController {
     
     @IBOutlet weak var firstProgressDotOutlet: DesignableView!
     
+    @IBOutlet weak var thisIsOptionalLabelOutlet: UILabel!
+    
+    @IBOutlet weak var addAnyTimeLabelOutlet: UILabel!
+    
     // CoreData Properties
     var owner: OwnerCD?
     var studentAdult: StudentAdultCD?
@@ -76,16 +80,6 @@ class BirthdayViewController: UIViewController {
     
     @objc func saveButtonTapped() {
         
-        guard birthdate != nil else {
-            // warning to user where instructions text changes to red
-            whenIsYourBirthdayLabelOutlet.textColor = beltBuilder.redBeltRed
-
-            // fire haptic feedback for error
-            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
-            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
-            return
-        }
-        
         if let isOwner = isOwner {
             if isOwner {
                 // Owner update profile info
@@ -121,16 +115,6 @@ class BirthdayViewController: UIViewController {
 
     
     @IBAction func nextButtonTapped(_ sender: Any) {
-        
-        guard birthdate != nil else {
-            // warning to user where welcome instructions text changes to red
-            whenIsYourBirthdayLabelOutlet.textColor = beltBuilder.redBeltRed
-
-            // fire haptic feedback for error
-            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
-            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
-            return
-        }
         
         // reset instructions text changes to black
         whenIsYourBirthdayLabelOutlet.textColor = beltBuilder.blackBeltBlack
@@ -260,37 +244,52 @@ extension BirthdayViewController {
     // owner setup for editing mode
     func ownerEditingSetup(userToEdit: Any?) {
         
-        guard let ownerToEdit = userToEdit as? OwnerCD else { return }
+        guard let ownerCDToEdit = userToEdit as? OwnerCD else { return }
         
-        whenIsYourBirthdayLabelOutlet.text = "Welcome \(ownerToEdit.firstName ?? "")"
+        if ownerCDToEdit.birthdate != nil {
+            
+            whenIsYourBirthdayLabelOutlet.text = "Welcome \(ownerCDToEdit.firstName ?? "")"
+            thisIsOptionalLabelOutlet.isHidden = true
+            addAnyTimeLabelOutlet.isHidden = true
+        }
         
-        print("BirthdayVC birthdate choice: \(ownerToEdit.birthdate ?? Date())")
-        birthdate = ownerToEdit.birthdate ?? Date()
-        birthdayDatePickerView.date = ownerToEdit.birthdate ?? Date()
+        print("BirthdayVC birthdate choice: \(ownerCDToEdit.birthdate ?? Date())")
+        birthdate = ownerCDToEdit.birthdate ?? Date()
+        birthdayDatePickerView.date = ownerCDToEdit.birthdate ?? Date()
         
     }
     
     // kid student setu for editing mode
     func kidStudentEditingSetup(userToEdit: Any?) {
         
-        guard let kidToEdit = userToEdit as? StudentKidCD else { return }
+        guard let kidCDToEdit = userToEdit as? StudentKidCD else { return }
         
-        whenIsYourBirthdayLabelOutlet.text = "Welcome \(kidToEdit.firstName ?? "")"
+        if kidCDToEdit.birthdate != nil {
+            
+            whenIsYourBirthdayLabelOutlet.text = "Welcome \(kidCDToEdit.firstName ?? "")"
+            thisIsOptionalLabelOutlet.isHidden = true
+            addAnyTimeLabelOutlet.isHidden = true
+        }
 
-        print("BirthdayVC birthdate choice: \(kidToEdit.birthdate ?? Date())")
-        birthdate = kidToEdit.birthdate ?? Date()
-        birthdayDatePickerView.date = kidToEdit.birthdate ?? Date()
+        print("BirthdayVC birthdate choice: \(kidCDToEdit.birthdate ?? Date())")
+        birthdate = kidCDToEdit.birthdate ?? Date()
+        birthdayDatePickerView.date = kidCDToEdit.birthdate ?? Date()
     }
     
     // adult student setu for editing mode
     func adultStudentEditingSetup(userToEdit: Any?) {
         
-        guard let adultToEdit = userToEdit as? StudentAdultCD else { return }
+        guard let adultCDToEdit = userToEdit as? StudentAdultCD else { return }
         
-        whenIsYourBirthdayLabelOutlet.text = "Welcome \(adultToEdit.firstName ?? "")"
+        if adultCDToEdit.birthdate != nil {
+            
+            whenIsYourBirthdayLabelOutlet.text = "Welcome \(adultCDToEdit.firstName ?? "")"
+            thisIsOptionalLabelOutlet.isHidden = true
+            addAnyTimeLabelOutlet.isHidden = true
+        }
     
-        print("BirthdayVC birthdate choice: \(adultToEdit.birthdate ?? Date())")
-        birthdate = adultToEdit.birthdate ?? Date()
-        birthdayDatePickerView.date = adultToEdit.birthdate ?? Date()
+        print("BirthdayVC birthdate choice: \(adultCDToEdit.birthdate ?? Date())")
+        birthdate = adultCDToEdit.birthdate ?? Date()
+        birthdayDatePickerView.date = adultCDToEdit.birthdate ?? Date()
     }
 }

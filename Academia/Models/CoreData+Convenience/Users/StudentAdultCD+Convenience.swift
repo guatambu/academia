@@ -14,9 +14,8 @@ extension StudentAdultCD {
     // convenience initializer to allow creation of an AdultStudentCD object via Academia CoreDataStack's managedObjectContext
     convenience init(adultStudentUUID: UUID = UUID(),
                      isInstructor: Bool,
-                     dateCreated: Date,
-                     dateEdited: Date,
-                     birthdate: Date,
+                     dateCreated: Date = Date(),
+                     dateEdited: Date = Date(),
                      studentStatus: StudentStatusCD?,
                      belt: BeltCD,
                      profilePic: Data?,
@@ -37,7 +36,6 @@ extension StudentAdultCD {
         self.isInstructor = isInstructor
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
-        self.birthdate = birthdate
         self.studentStatus = studentStatus
         self.belt = belt
         self.profilePic = profilePic

@@ -197,7 +197,10 @@ extension OwnerInfoDetailsViewController {
         ownerNameLabelOutlet.text = "\(firstName) \(lastName)"
         usernameLabelOutlet.text = "user: \(username)"
         // populate birthdate outlet
-        formatBirthdate(birthdate: owner.birthdate)
+        if let birthdate = owner.birthdate {
+            
+            formatBirthdate(birthdate: birthdate)
+        }
         // contact info outlets
         phoneLabelOutlet.text = owner.phone
         // mobile is not a required field
@@ -211,7 +214,7 @@ extension OwnerInfoDetailsViewController {
         addressLine1LabelOutlet.text = address.addressLine1
         // addressLine2 is not a required field
         if address.addressLine2 != "" {
-            addressLine2LabelOutlet.text = address.addressLine2
+            addressLine2LabelOutlet.text = address.addressLine2 ?? ""
         } else {
             addressLine2LabelOutlet.isHidden = true
         }

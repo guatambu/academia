@@ -14,9 +14,8 @@ extension StudentKidCD {
     
     // convenience initializer to allow creation of a KidStudentCD object via Academia CoreDataStack's managedObjectContext
     convenience init(studentKidUUID: UUID = UUID(),
-                     dateCreated: Date,
-                     dateEdited: Date,
-                     birthdate: Date,
+                     dateCreated: Date = Date(),
+                     dateEdited: Date = Date(),
                      studentStatus: StudentStatusCD?,
                      belt: BeltCD,
                      profilePic: Data?,
@@ -37,7 +36,6 @@ extension StudentKidCD {
         self.kidStudentUUID = studentKidUUID
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
-        self.birthdate = birthdate
         self.studentStatus = studentStatus
         self.belt = belt
         self.profilePic = profilePic

@@ -17,7 +17,6 @@ extension OwnerCD {
                      isInstructor: Bool = true,
                      dateCreated: Date = Date(),
                      dateEdited: Date = Date(),
-                     birthdate: Date,
                      mostRecentPromotion: Date?,
                      studentStatus: StudentStatusCD?,
                      belt: BeltCD,
@@ -39,7 +38,6 @@ extension OwnerCD {
         self.isInstructor = isInstructor
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
-        self.birthdate = birthdate
         self.mostRecentPromotion = mostRecentPromotion
         self.belt = belt
         self.profilePic = profilePic
