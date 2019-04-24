@@ -141,12 +141,38 @@ class StudentInfoDetailsViewController: UIViewController {
         if isKid {
             // **** IF KID STUDENT ****
             destViewController.isKid = true
-            destViewController.userCDToEdit = KidStudentModelController.shared.kids[0]
-            print("saved kid belt level from kid model controller source of truth: " + KidStudentModelController.shared.kids[0].belt.beltLevel.rawValue)
+            
+            
+            if let fetchedKids = fetchedResultsControllerStudentKids.fetchedObjects {
+                
+                for kid in fetchedKids {
+                    if let uuid = kid.kidStudentUUID {
+                        if uuid == ActiveUserModelController.shared.activeUser[0] {
+                            destViewController.userCDToEdit = kid
+                        }
+                    }
+                }
+            }
         } else {
             // **** IF ADULT STUDENT ****
             destViewController.isKid = false
-            destViewController.userCDToEdit = AdultStudentModelController.shared.adults[0]
+            
+            if let fetchedAdults = fetchedResultsControllerStudentAdults.fetchedObjects {
+                
+                for adult in fetchedAdults {
+                    if let uuid = adult.adultStudentUUID {
+                        if uuid == ActiveUserModelController.shared.activeUser[0] {
+                            destViewController.userCDToEdit = adult
+                        }
+                    }
+                }
+            }
+            
+            
+            
+                
+                
+            
         }
     }
     
@@ -227,7 +253,10 @@ extension StudentInfoDetailsViewController {
             studentNameLabelOutlet.text = "\(activeStudentKid.firstName ?? "") \(activeStudentKid.lastName ?? "")"
             usernameLabelOutlet.text = "username: \(activeStudentKid.username ?? "")"
             // populate birthdate outlet
-            formatBirthdate(birthdate: activeStudentKid.birthdate ?? Date())
+            if let birthdate = activeStudentKid.birthdate {
+                
+                formatBirthdate(birthdate: birthdate)
+            }
             // contact info outlets
             phoneLabelOutlet.text = activeStudentKid.phone
             // mobile is not a required field
@@ -430,7 +459,6 @@ extension StudentInfoDetailsViewController: NSFetchedResultsControllerDelegate {
             }
         } else {
             // match adult with activeUser UUID
-            
             guard let activeAdults = fetchedResultsControllerStudentAdults.fetchedObjects else { return }
             print("activeAdults in findActiveUSer: \(activeAdults)")
             for adult in activeAdults {

@@ -967,6 +967,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="this is optional." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lhy-zK-bSr">
+                                <rect key="frame" x="16" y="168" width="288" height="22"/>
+                                <fontDescription key="fontDescription" name="Avenir-LightOblique" family="Avenir" pointSize="16"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="you can add it any time." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bo-ZJ-3dw">
+                                <rect key="frame" x="16" y="190" width="288" height="22"/>
+                                <fontDescription key="fontDescription" name="Avenir-LightOblique" family="Avenir" pointSize="16"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="ca9-ym-M4X" userLabel="Sign up elements Stack View">
                                 <rect key="frame" x="16" y="280" width="288" height="232"/>
                                 <subviews>
@@ -1197,9 +1209,15 @@
                         <constraints>
                             <constraint firstItem="PdY-Ny-qZk" firstAttribute="trailing" secondItem="RPU-lZ-CTq" secondAttribute="trailing" constant="16" id="51U-ze-vub"/>
                             <constraint firstItem="CQY-pR-AxX" firstAttribute="centerX" secondItem="Nza-qM-EcD" secondAttribute="centerX" id="6gi-lw-JWI"/>
+                            <constraint firstItem="4bo-ZJ-3dw" firstAttribute="leading" secondItem="PdY-Ny-qZk" secondAttribute="leading" constant="16" id="9Sk-l5-i5e"/>
                             <constraint firstItem="CQY-pR-AxX" firstAttribute="top" secondItem="ca9-ym-M4X" secondAttribute="bottom" constant="24" id="9XW-Qc-kCf"/>
+                            <constraint firstItem="Lhy-zK-bSr" firstAttribute="leading" secondItem="PdY-Ny-qZk" secondAttribute="leading" constant="16" id="CZj-xp-rL6"/>
+                            <constraint firstItem="4bo-ZJ-3dw" firstAttribute="top" secondItem="Lhy-zK-bSr" secondAttribute="bottom" id="IFT-zO-GpA"/>
+                            <constraint firstItem="PdY-Ny-qZk" firstAttribute="trailing" secondItem="4bo-ZJ-3dw" secondAttribute="trailing" constant="16" id="Ike-R7-3l0"/>
+                            <constraint firstItem="PdY-Ny-qZk" firstAttribute="trailing" secondItem="Lhy-zK-bSr" secondAttribute="trailing" constant="16" id="NaU-Z8-TQS"/>
                             <constraint firstItem="PdY-Ny-qZk" firstAttribute="bottom" secondItem="CQY-pR-AxX" secondAttribute="bottom" constant="24" id="Vzb-KI-khx"/>
                             <constraint firstItem="ca9-ym-M4X" firstAttribute="leading" secondItem="PdY-Ny-qZk" secondAttribute="leading" constant="16" id="Zi3-cK-T26"/>
+                            <constraint firstItem="Lhy-zK-bSr" firstAttribute="top" secondItem="RPU-lZ-CTq" secondAttribute="bottom" id="cqb-kn-Bvr"/>
                             <constraint firstItem="RPU-lZ-CTq" firstAttribute="leading" secondItem="PdY-Ny-qZk" secondAttribute="leading" constant="16" id="e2H-Qo-gAo"/>
                             <constraint firstItem="PdY-Ny-qZk" firstAttribute="trailing" secondItem="ca9-ym-M4X" secondAttribute="trailing" constant="16" id="ojo-RA-Pcj"/>
                             <constraint firstItem="ca9-ym-M4X" firstAttribute="top" secondItem="RPU-lZ-CTq" secondAttribute="bottom" constant="112" id="qPh-NK-EXy"/>
@@ -1213,11 +1231,13 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="bye-SA-Zsb"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="addAnyTimeLabelOutlet" destination="4bo-ZJ-3dw" id="vU7-ht-rCV"/>
                         <outlet property="addressLine1TextField" destination="mag-Vi-ZQ2" id="yC4-m8-JVA"/>
                         <outlet property="addressLine2TextField" destination="JZM-ae-XSW" id="Uvc-Vr-L0X"/>
                         <outlet property="cityTextField" destination="Ydw-YA-IwU" id="kWQ-XZ-3ap"/>
                         <outlet property="signUpElementsStackView" destination="ca9-ym-M4X" id="aWn-Xm-QM1"/>
                         <outlet property="stateTextField" destination="E0j-7v-PIT" id="3KD-RV-ZYr"/>
+                        <outlet property="thisIsOptionalLabelOutlet" destination="Lhy-zK-bSr" id="rEt-IT-Sly"/>
                         <outlet property="whatIsYourAddressLabelOutlet" destination="RPU-lZ-CTq" id="FZk-e0-WdO"/>
                         <outlet property="zipCodeTextField" destination="RTs-Bz-XVW" id="Nn4-Qy-F47"/>
                     </connections>
@@ -2186,6 +2206,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="who is your emergency contact?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZP-yk-qAK">
+                                <rect key="frame" x="16" y="102" width="288" height="66"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="this is optional." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s04-Jd-e2c">
+                                <rect key="frame" x="16" y="168" width="288" height="22"/>
+                                <fontDescription key="fontDescription" name="Avenir-LightOblique" family="Avenir" pointSize="16"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="you can add it any time." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t32-Nb-7qf">
+                                <rect key="frame" x="16" y="190" width="288" height="22"/>
+                                <fontDescription key="fontDescription" name="Avenir-LightOblique" family="Avenir" pointSize="16"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="KtE-4y-EfR" userLabel="Sign up elements Stack View">
                                 <rect key="frame" x="16" y="318" width="288" height="194"/>
                                 <subviews>
@@ -2266,12 +2304,6 @@
                                     <constraint firstAttribute="trailing" secondItem="c75-dL-YcS" secondAttribute="trailing" id="gbc-hC-nho"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="who is your emergency contact?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZP-yk-qAK">
-                                <rect key="frame" x="16" y="102" width="288" height="66"/>
-                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Vmx-fN-27M" userLabel="Progress Stack View">
                                 <rect key="frame" x="44" y="536" width="232" height="8"/>
                                 <subviews>
@@ -2398,14 +2430,20 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="s04-Jd-e2c" firstAttribute="top" secondItem="oZP-yk-qAK" secondAttribute="bottom" id="2jx-Cl-tEw"/>
+                            <constraint firstItem="t32-Nb-7qf" firstAttribute="leading" secondItem="7mc-0F-3fF" secondAttribute="leading" constant="16" id="4Yu-Ec-rAa"/>
+                            <constraint firstItem="7mc-0F-3fF" firstAttribute="trailing" secondItem="s04-Jd-e2c" secondAttribute="trailing" constant="16" id="9CS-zb-xsh"/>
                             <constraint firstItem="Vmx-fN-27M" firstAttribute="top" secondItem="KtE-4y-EfR" secondAttribute="bottom" constant="24" id="BFp-YV-6f3"/>
                             <constraint firstItem="7mc-0F-3fF" firstAttribute="trailing" secondItem="KtE-4y-EfR" secondAttribute="trailing" constant="16" id="C81-gz-NVH"/>
+                            <constraint firstItem="t32-Nb-7qf" firstAttribute="top" secondItem="s04-Jd-e2c" secondAttribute="bottom" id="JEt-Xq-LdE"/>
+                            <constraint firstItem="s04-Jd-e2c" firstAttribute="leading" secondItem="7mc-0F-3fF" secondAttribute="leading" constant="16" id="P4Z-BH-VuE"/>
                             <constraint firstItem="KtE-4y-EfR" firstAttribute="top" secondItem="oZP-yk-qAK" secondAttribute="bottom" constant="150" id="QId-rf-pUQ"/>
                             <constraint firstItem="Vmx-fN-27M" firstAttribute="centerX" secondItem="2sT-Ya-K3f" secondAttribute="centerX" id="R9B-88-Lvz"/>
                             <constraint firstItem="oZP-yk-qAK" firstAttribute="leading" secondItem="7mc-0F-3fF" secondAttribute="leading" constant="16" id="atj-lE-aKx"/>
                             <constraint firstItem="7mc-0F-3fF" firstAttribute="bottom" secondItem="Vmx-fN-27M" secondAttribute="bottom" constant="24" id="bTw-5N-jV9"/>
                             <constraint firstItem="7mc-0F-3fF" firstAttribute="trailing" secondItem="oZP-yk-qAK" secondAttribute="trailing" constant="16" id="cKT-RE-Nl6"/>
                             <constraint firstItem="KtE-4y-EfR" firstAttribute="leading" secondItem="7mc-0F-3fF" secondAttribute="leading" constant="16" id="eqy-DQ-9dT"/>
+                            <constraint firstItem="7mc-0F-3fF" firstAttribute="trailing" secondItem="t32-Nb-7qf" secondAttribute="trailing" constant="16" id="fvJ-IR-G5n"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7mc-0F-3fF"/>
                         <connections>
@@ -2416,11 +2454,13 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="e7P-Sr-Ocd"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="addAnyTimeLabelOutlet" destination="t32-Nb-7qf" id="N7L-lT-u7G"/>
                         <outlet property="emergencyContactNameTextField" destination="fN9-Ga-Wdw" id="wlv-9q-GTF"/>
                         <outlet property="emergencyContactPhoneTextField" destination="zFT-Nr-eSM" id="xcc-lU-5KE"/>
                         <outlet property="emergencyContactRelationshipTextField" destination="plq-5q-JLg" id="rOG-Ms-2J0"/>
                         <outlet property="firstProgressDotOutlet" destination="zdb-pR-tOs" id="MQA-eQ-bz5"/>
                         <outlet property="nextButtonOutlet" destination="peg-9k-muy" id="hma-g1-Duf"/>
+                        <outlet property="thisIsOptionalLabelOutlet" destination="s04-Jd-e2c" id="Tck-kL-4ok"/>
                         <outlet property="whoIsYourEmergencyContactLabelOutlet" destination="oZP-yk-qAK" id="oPj-fk-s9w"/>
                     </connections>
                 </viewController>
@@ -2445,6 +2485,18 @@
                                 <rect key="frame" x="16" y="135" width="288" height="33"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="24"/>
                                 <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="this is optional." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kOX-Gz-jdO">
+                                <rect key="frame" x="16" y="168" width="288" height="22"/>
+                                <fontDescription key="fontDescription" name="Avenir-LightOblique" family="Avenir" pointSize="16"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="you can add it any time." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qsr-DV-pla">
+                                <rect key="frame" x="16" y="190" width="288" height="22"/>
+                                <fontDescription key="fontDescription" name="Avenir-LightOblique" family="Avenir" pointSize="16"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="GMk-Cb-qsR">
@@ -2601,15 +2653,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="kOX-Gz-jdO" firstAttribute="top" secondItem="J6p-EH-HfR" secondAttribute="bottom" id="3qz-ML-QxC"/>
                             <constraint firstItem="GMk-Cb-qsR" firstAttribute="leading" secondItem="Jkh-Yv-fLa" secondAttribute="leading" id="4V8-j3-WYW"/>
                             <constraint firstItem="Jkh-Yv-fLa" firstAttribute="trailing" secondItem="J6p-EH-HfR" secondAttribute="trailing" constant="16" id="8TZ-yU-rJf"/>
+                            <constraint firstItem="Jkh-Yv-fLa" firstAttribute="trailing" secondItem="Qsr-DV-pla" secondAttribute="trailing" constant="16" id="AHp-b0-Rm6"/>
                             <constraint firstItem="J6p-EH-HfR" firstAttribute="leading" secondItem="Jkh-Yv-fLa" secondAttribute="leading" constant="16" id="GaY-Ak-f9V"/>
                             <constraint firstItem="GMk-Cb-qsR" firstAttribute="trailing" secondItem="Jkh-Yv-fLa" secondAttribute="trailing" id="MAb-eU-ZiK"/>
+                            <constraint firstItem="kOX-Gz-jdO" firstAttribute="leading" secondItem="Jkh-Yv-fLa" secondAttribute="leading" constant="16" id="QAu-Ig-rr6"/>
                             <constraint firstItem="Jkh-Yv-fLa" firstAttribute="bottom" secondItem="Fp0-bI-xb2" secondAttribute="bottom" constant="24" id="avh-Oe-rJ0"/>
                             <constraint firstItem="GMk-Cb-qsR" firstAttribute="top" secondItem="J6p-EH-HfR" secondAttribute="bottom" constant="48" id="bmP-ft-wPq"/>
                             <constraint firstItem="Fp0-bI-xb2" firstAttribute="top" secondItem="ef6-dh-gYh" secondAttribute="bottom" constant="24" id="cIV-aW-PdE"/>
+                            <constraint firstItem="Qsr-DV-pla" firstAttribute="leading" secondItem="Jkh-Yv-fLa" secondAttribute="leading" constant="16" id="gbA-54-aFC"/>
+                            <constraint firstAttribute="trailing" secondItem="kOX-Gz-jdO" secondAttribute="trailing" constant="16" id="hYW-OI-WWh"/>
                             <constraint firstItem="Fp0-bI-xb2" firstAttribute="centerX" secondItem="Ks4-Ek-77h" secondAttribute="centerX" id="kU6-uZ-B5S"/>
                             <constraint firstItem="ef6-dh-gYh" firstAttribute="top" secondItem="GMk-Cb-qsR" secondAttribute="bottom" constant="40" id="lM4-Vi-Tzy"/>
+                            <constraint firstItem="Qsr-DV-pla" firstAttribute="top" secondItem="kOX-Gz-jdO" secondAttribute="bottom" id="n5q-qY-phC"/>
                             <constraint firstItem="ef6-dh-gYh" firstAttribute="centerX" secondItem="Ks4-Ek-77h" secondAttribute="centerX" id="xcv-xk-RHZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Jkh-Yv-fLa"/>
@@ -2618,9 +2676,11 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="vIO-5a-vwy"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="addAnyTimeLabelOutlet" destination="Qsr-DV-pla" id="hzt-qy-qBH"/>
                         <outlet property="birthdayDatePickerView" destination="GMk-Cb-qsR" id="BMg-34-FDT"/>
                         <outlet property="firstProgressDotOutlet" destination="LSe-hF-cqW" id="eca-E7-LHn"/>
                         <outlet property="nextButtonOutlet" destination="ef6-dh-gYh" id="cb2-nc-nrF"/>
+                        <outlet property="thisIsOptionalLabelOutlet" destination="kOX-Gz-jdO" id="NwE-TN-3Z9"/>
                         <outlet property="whenIsYourBirthdayLabelOutlet" destination="J6p-EH-HfR" id="1nL-rl-Fie"/>
                     </connections>
                 </viewController>

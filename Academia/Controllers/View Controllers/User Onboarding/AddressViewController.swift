@@ -41,6 +41,8 @@ class AddressViewController: UIViewController, UITextInputTraits {
     
     // IBOutlets
     @IBOutlet weak var whatIsYourAddressLabelOutlet: UILabel!
+    @IBOutlet weak var thisIsOptionalLabelOutlet: UILabel!
+    @IBOutlet weak var addAnyTimeLabelOutlet: UILabel!
     @IBOutlet weak var signUpElementsStackView: UIStackView!
     @IBOutlet weak var addressLine1TextField: UITextField!
     @IBOutlet weak var addressLine2TextField: UITextField!
@@ -138,57 +140,6 @@ class AddressViewController: UIViewController, UITextInputTraits {
             zipCodeTextField.resignFirstResponder()
         }
         
-        // check for required information being left blank by user
-        if addressLine1TextField.text == "" || cityTextField.text == "" || stateTextField.text == "" || zipCodeTextField.text == "" {
-            
-            // fire haptic feedback for error
-            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
-            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
-            
-            // warnings for specific textfield being left blank by user
-            if addressLine1TextField.text == "" {
-                
-                addressLine1TextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.streetAddress.rawValue, attributes: beltBuilder.errorAvenirFont)
-                
-            } else {
-                
-                addressLine1TextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.streetAddress.rawValue, attributes: beltBuilder.avenirFont)
-                
-            }
-            
-            if cityTextField.text == "" {
-                
-                cityTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.city.rawValue, attributes: beltBuilder.errorAvenirFont)
-                
-            } else {
-                
-                cityTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.city.rawValue, attributes: beltBuilder.avenirFont)
-                
-            }
-            
-            if stateTextField.text == "" {
-                
-                stateTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.state.rawValue, attributes: beltBuilder.errorAvenirFontSmall)
-                
-            } else {
-                
-                stateTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.state.rawValue, attributes: beltBuilder.avenirFontSmall)
-                
-            }
-            
-            if zipCodeTextField.text == "" {
-                
-                zipCodeTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.zipCode.rawValue, attributes: beltBuilder.errorAvenirFontSmall)
-                
-            } else {
-                
-                zipCodeTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.zipCode.rawValue, attributes: beltBuilder.avenirFontSmall)
-            }
-            
-            // save not allowed, so we exit function
-            return
-        }
-        
         // if successful input from user, then we proceed on to save
         if let isOwner = isOwner {
             if isOwner {
@@ -210,13 +161,6 @@ class AddressViewController: UIViewController, UITextInputTraits {
         }
         
         inEditingMode = false
-        
-        // reset textfield placeholder text color to gray upon succesful save
-        addressLine1TextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.streetAddress.rawValue, attributes: beltBuilder.avenirFont)
-        cityTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.city.rawValue, attributes: beltBuilder.avenirFont)
-        stateTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.state.rawValue, attributes: beltBuilder.avenirFontSmall)
-        zipCodeTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.zipCode.rawValue, attributes: beltBuilder.avenirFontSmall)
-        
     }
     
     @IBAction func nextButtonTapped(_ sender: DesignableButton) {
@@ -232,58 +176,6 @@ class AddressViewController: UIViewController, UITextInputTraits {
             stateTextField.resignFirstResponder()
         } else if zipCodeTextField.isFirstResponder {
             zipCodeTextField.resignFirstResponder()
-        }
-        
-        // check for required information being left blank by user
-        if addressLine1TextField.text == "" || cityTextField.text == "" || stateTextField.text == "" || zipCodeTextField.text == "" {
-            
-            // fire haptic feedback for error
-            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
-            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
-            
-            // warnings for specific textfield being left blank by user
-            if addressLine1TextField.text == "" {
-                
-                addressLine1TextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.streetAddress.rawValue, attributes: beltBuilder.errorAvenirFont)
-                
-            } else {
-                
-                addressLine1TextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.streetAddress.rawValue, attributes: beltBuilder.avenirFont)
-                
-            }
-            
-            if cityTextField.text == "" {
-                
-                cityTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.city.rawValue, attributes: beltBuilder.errorAvenirFont)
-                
-            } else {
-                
-                cityTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.city.rawValue, attributes: beltBuilder.avenirFont)
-                
-            }
-            
-            if stateTextField.text == "" {
-                
-                stateTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.state.rawValue, attributes: beltBuilder.errorAvenirFontSmall)
-                
-            } else {
-                
-                stateTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.state.rawValue, attributes: beltBuilder.avenirFontSmall)
-                
-            }
-            
-            if zipCodeTextField.text == "" {
-                
-                zipCodeTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.zipCode.rawValue, attributes: beltBuilder.errorAvenirFontSmall)
-                
-            } else {
-                
-                zipCodeTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.zipCode.rawValue, attributes: beltBuilder.avenirFontSmall)
-                
-            }
-            
-            // save not allowed, so we exit function
-            return
         }
         
         // programmatically performing segue
@@ -350,13 +242,6 @@ class AddressViewController: UIViewController, UITextInputTraits {
                 updateAdultStudentInfo()
             }
         }
-        
-        // reset textfield placeholder text color to gray upon succesful save
-        addressLine1TextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.streetAddress.rawValue, attributes: beltBuilder.avenirFont)
-        cityTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.city.rawValue, attributes: beltBuilder.avenirFont)
-        stateTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.state.rawValue, attributes: beltBuilder.avenirFontSmall)
-        zipCodeTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.zipCode.rawValue, attributes: beltBuilder.avenirFontSmall)
-        
     }
 }
 
@@ -434,7 +319,12 @@ extension AddressViewController {
             return
         }
         
-        whatIsYourAddressLabelOutlet.text = "Welcome \(ownerToEdit.firstName ?? "")"
+        if ownerToEdit.address?.addressLine1 != "" {
+            
+            whatIsYourAddressLabelOutlet.text = "Welcome \(ownerToEdit.firstName ?? "")"
+            thisIsOptionalLabelOutlet.isHidden = true
+            addAnyTimeLabelOutlet.isHidden = true
+        }
         
         addressLine1TextField.text = ownerToEdit.address?.addressLine1
         addressLine2TextField.text = ownerToEdit.address?.addressLine2
@@ -448,33 +338,43 @@ extension AddressViewController {
     // kid student setu for editing mode
     func kidStudentEditingSetup(userToEdit: Any?) {
         
-        guard let kidToEdit = userToEdit as? StudentKidCD else {
+        guard let kidCDToEdit = userToEdit as? StudentKidCD else {
             return
         }
         
-        whatIsYourAddressLabelOutlet.text = "Welcome \(kidToEdit.firstName ?? "")"
+        if kidCDToEdit.emergencyContact?.name != "" {
+            
+            whatIsYourAddressLabelOutlet.text = "Welcome \(kidCDToEdit.firstName ?? "")"
+            thisIsOptionalLabelOutlet.isHidden = true
+            addAnyTimeLabelOutlet.isHidden = true
+        }
         
-        addressLine1TextField.text = kidToEdit.address?.addressLine1
-        addressLine2TextField.text = kidToEdit.address?.addressLine2
-        cityTextField.text = kidToEdit.address?.city
-        stateTextField.text = kidToEdit.address?.state
-        zipCodeTextField.text = kidToEdit.address?.zipCode
+        addressLine1TextField.text = kidCDToEdit.address?.addressLine1
+        addressLine2TextField.text = kidCDToEdit.address?.addressLine2
+        cityTextField.text = kidCDToEdit.address?.city
+        stateTextField.text = kidCDToEdit.address?.state
+        zipCodeTextField.text = kidCDToEdit.address?.zipCode
     }
     
     // adult student setu for editing mode
     func adultStudentEditingSetup(userToEdit: Any?) {
         
-        guard let adultToEdit = userToEdit as? StudentAdultCD else {
+        guard let adultCDToEdit = userToEdit as? StudentAdultCD else {
             return
         }
         
-        whatIsYourAddressLabelOutlet.text = "Welcome \(adultToEdit.firstName ?? "")"
+        if adultCDToEdit.emergencyContact?.name != "" {
+            
+            whatIsYourAddressLabelOutlet.text = "Welcome \(adultCDToEdit.firstName ?? "")"
+            thisIsOptionalLabelOutlet.isHidden = true
+            addAnyTimeLabelOutlet.isHidden = true
+        }
         
-        addressLine1TextField.text = adultToEdit.address?.addressLine1
-        addressLine2TextField.text = adultToEdit.address?.addressLine2
-        cityTextField.text = adultToEdit.address?.city
-        stateTextField.text = adultToEdit.address?.state
-        zipCodeTextField.text = adultToEdit.address?.zipCode
+        addressLine1TextField.text = adultCDToEdit.address?.addressLine1
+        addressLine2TextField.text = adultCDToEdit.address?.addressLine2
+        cityTextField.text = adultCDToEdit.address?.city
+        stateTextField.text = adultCDToEdit.address?.state
+        zipCodeTextField.text = adultCDToEdit.address?.zipCode
     }
 }
 

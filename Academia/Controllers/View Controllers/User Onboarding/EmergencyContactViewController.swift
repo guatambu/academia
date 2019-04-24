@@ -46,6 +46,8 @@ class EmergencyContactViewController: UIViewController {
     var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
     
     @IBOutlet weak var whoIsYourEmergencyContactLabelOutlet: UILabel!
+    @IBOutlet weak var thisIsOptionalLabelOutlet: UILabel!
+    @IBOutlet weak var addAnyTimeLabelOutlet: UILabel!
     @IBOutlet weak var emergencyContactNameTextField: UITextField!
     @IBOutlet weak var emergencyContactPhoneTextField: UITextField!
     @IBOutlet weak var emergencyContactRelationshipTextField: UITextField!
@@ -124,49 +126,6 @@ class EmergencyContactViewController: UIViewController {
         }
         
         // ADD TO Properties
-        var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
-        
-        // check for required information being left blank by user
-        if emergencyContactNameTextField.text == "" || emergencyContactNameTextField.text == "" || emergencyContactRelationshipTextField.text == "" {
-            
-            // fire haptic feedback for error
-            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
-            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
-            
-            // warnings for specific textfield being left blank by user
-            if emergencyContactNameTextField.text == "" {
-                
-                emergencyContactNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactName.rawValue, attributes: beltBuilder.errorAvenirFont)
-                
-            } else {
-                
-                emergencyContactNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactName.rawValue, attributes: beltBuilder.avenirFont)
-                
-            }
-            
-            if emergencyContactPhoneTextField.text == "" {
-                
-                emergencyContactPhoneTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactPhone.rawValue, attributes: beltBuilder.errorAvenirFont)
-                
-            } else {
-                
-                emergencyContactPhoneTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactPhone.rawValue, attributes: beltBuilder.avenirFont)
-                
-            }
-            
-            if emergencyContactRelationshipTextField.text == "" {
-                
-                emergencyContactRelationshipTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactRelationship.rawValue, attributes: beltBuilder.errorAvenirFont)
-                
-            } else {
-                
-                emergencyContactRelationshipTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactRelationship.rawValue, attributes: beltBuilder.avenirFont)
-                
-            }
-            
-            // save not allowed, so we exit function
-            return
-        }
         
         if let isOwner = isOwner {
             if isOwner {
@@ -188,12 +147,6 @@ class EmergencyContactViewController: UIViewController {
         }
         
         inEditingMode = false
-        
-        // reset textfield placeholder text color to gray upon succesful save
-        emergencyContactNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactName.rawValue, attributes: beltBuilder.avenirFont)
-        emergencyContactPhoneTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactPhone.rawValue, attributes: beltBuilder.avenirFont)
-        emergencyContactRelationshipTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactRelationship.rawValue, attributes: beltBuilder.avenirFont)
-    
     }
     
     @IBAction func nextButtonTapped(_ sender: DesignableButton) {
@@ -205,48 +158,6 @@ class EmergencyContactViewController: UIViewController {
             emergencyContactPhoneTextField.resignFirstResponder()
         } else if emergencyContactRelationshipTextField.isFirstResponder {
             emergencyContactRelationshipTextField.resignFirstResponder()
-        }
-        
-        // check for required information being left blank by user
-        if emergencyContactNameTextField.text == "" || emergencyContactPhoneTextField.text == "" || emergencyContactRelationshipTextField.text == "" {
-            
-            // fire haptic feedback for error
-            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
-            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
-            
-            // warnings for specific textfield being left blank by user
-            if emergencyContactNameTextField.text == "" {
-                
-                emergencyContactNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactName.rawValue, attributes: beltBuilder.errorAvenirFont)
-                
-            } else {
-                
-                emergencyContactNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactName.rawValue, attributes: beltBuilder.avenirFont)
-                
-            }
-            
-            if emergencyContactPhoneTextField.text == "" {
-                
-               emergencyContactPhoneTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactPhone.rawValue, attributes: beltBuilder.errorAvenirFont)
-                
-            } else {
-                
-                emergencyContactPhoneTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactPhone.rawValue, attributes: beltBuilder.avenirFont)
-                
-            }
-            
-            if emergencyContactRelationshipTextField.text == "" {
-                
-                emergencyContactRelationshipTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactRelationship.rawValue, attributes: beltBuilder.errorAvenirFont)
-                
-            } else {
-                
-                emergencyContactRelationshipTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactRelationship.rawValue, attributes: beltBuilder.avenirFont)
-                
-            }
-            
-            // save not allowed, so we exit function
-            return
         }
         
         // programmatically performing segue
@@ -266,11 +177,6 @@ class EmergencyContactViewController: UIViewController {
         navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
         navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
         navigationController?.navigationBar.shadowImage = UIImage()
-        
-        // reset textfield placeholder text color to gray upon succesful save
-        emergencyContactNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactName.rawValue, attributes: beltBuilder.avenirFont)
-        emergencyContactPhoneTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactPhone.rawValue, attributes: beltBuilder.avenirFont)
-        emergencyContactRelationshipTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.emergencyContactRelationship.rawValue, attributes: beltBuilder.avenirFont)
         
         // required fields
         guard let emergencyContactName = emergencyContactNameTextField.text else { print("fail emergencyContactName"); return }
@@ -412,7 +318,12 @@ extension EmergencyContactViewController {
             return
         }
         
-        whoIsYourEmergencyContactLabelOutlet.text = "Welcome \(ownerCDToEdit.firstName ?? "")"
+        if ownerCDToEdit.emergencyContact?.name != "" {
+            
+            whoIsYourEmergencyContactLabelOutlet.text = "Welcome \(ownerCDToEdit.firstName ?? "")"
+            thisIsOptionalLabelOutlet.isHidden = true
+            addAnyTimeLabelOutlet.isHidden = true
+        }
         
         emergencyContactNameTextField.text = ownerCDToEdit.emergencyContact?.name
         emergencyContactPhoneTextField.text = ownerCDToEdit.emergencyContact?.phone
@@ -426,7 +337,12 @@ extension EmergencyContactViewController {
             return
         }
         
-        whoIsYourEmergencyContactLabelOutlet.text = "Welcome \(kidCDToEdit.firstName ?? "")"
+        if kidCDToEdit.emergencyContact?.name != "" {
+            
+            whoIsYourEmergencyContactLabelOutlet.text = "Welcome \(kidCDToEdit.firstName ?? "")"
+            thisIsOptionalLabelOutlet.isHidden = true
+            addAnyTimeLabelOutlet.isHidden = true
+        }
         
         emergencyContactNameTextField.text = kidCDToEdit.emergencyContact?.name
         emergencyContactPhoneTextField.text = kidCDToEdit.emergencyContact?.phone
@@ -440,7 +356,12 @@ extension EmergencyContactViewController {
             return
         }
         
-        whoIsYourEmergencyContactLabelOutlet.text = "Welcome \(adultCDToEdit.firstName ?? "")"
+        if adultCDToEdit.emergencyContact?.name != "" {
+            
+            whoIsYourEmergencyContactLabelOutlet.text = "Welcome \(adultCDToEdit.firstName ?? "")"
+            thisIsOptionalLabelOutlet.isHidden = true
+            addAnyTimeLabelOutlet.isHidden = true
+        }
         
         emergencyContactNameTextField.text = adultCDToEdit.emergencyContact?.name
         emergencyContactPhoneTextField.text = adultCDToEdit.emergencyContact?.phone

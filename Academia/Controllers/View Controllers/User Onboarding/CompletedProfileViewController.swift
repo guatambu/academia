@@ -239,22 +239,14 @@ extension CompletedProfileViewController {
         guard let password = password else { print("fail password"); return }
         guard let firstName = firstName else { print("fail firtsName"); return }
         guard let lastName = lastName else { print("fail lastName"); return }
-        guard let birthdate = birthdate else { print("fail birthdate"); return }
         guard let beltLevel = beltLevel else { print("fail beltLevel"); return }
         guard let numberOfStripes = numberOfStripes else { print("fail stripes"); return }
-        guard let addressLine1 = addressLine1 else { print("fail addressLine1"); return }
-        guard let city = city else { print("fail city"); return }
-        guard let state = state else { print("fail state"); return }
-        guard let zipCode = zipCode else { print("fail zip"); return }
         guard let phone = phone else { print("fail phone"); return }
         guard let email = email else { print("fail email"); return }
-        guard let emergencyContactName = emergencyContactName else { print("fail emergencyContactName"); return }
-        guard let emergencyContactRelationship = emergencyContactRelationship else { print("fail emergencyContactRelationship"); return }
-        guard let emergencyContactPhone = emergencyContactPhone else { print("fail emergencyContactPhone"); return }
         
         
         // print to console for developer verification
-        print("username: \(username) \npassword: \(password) \nfirstName: \(firstName) \nlastName: \(lastName) \nbirthdate: \(birthdate) \nbeltLevel: \(beltLevel) \nnumberOfStripes: \(numberOfStripes) \naddressLine1: \(addressLine1) \naddressLine2: \(String(describing: addressLine2)) \ncity: \(city) \nstate: \(state) \nzipCode: \(zipCode) \nphone: \(phone) \nmobile: \(String(describing: mobile)) \nemail: \(email) \nemergencyContactName: \(emergencyContactName) \nemergencyContactRelationship: \(emergencyContactRelationship) \nemergencyContactPhone: \(emergencyContactPhone) \nparentGuardian: \(String(describing: parentGuardian))")
+        print("username: \(username) \npassword: \(password) \nfirstName: \(firstName) \nlastName: \(lastName) \nbirthdate: \(String(describing: birthdate)) \nbeltLevel: \(beltLevel) \nnumberOfStripes: \(numberOfStripes) \naddressLine1: \(String(describing: addressLine1)) \naddressLine2: \(String(describing: addressLine2)) \ncity: \(String(describing: city)) \nstate: \(String(describing: state)) \nzipCode: \(String(describing: zipCode)) \nphone: \(phone) \nmobile: \(String(describing: mobile)) \nemail: \(email) \nemergencyContactName: \(String(describing: emergencyContactName)) \nemergencyContactRelationship: \(String(describing: emergencyContactRelationship)) \nemergencyContactPhone: \(String(describing: emergencyContactPhone)) \nparentGuardian: \(String(describing: parentGuardian))")
         
         // populate UI elements in VC
         title = "Please Review Your Info"
@@ -267,22 +259,24 @@ extension CompletedProfileViewController {
         emailLabelOutlet.text = email
         // address outlets
         parentGuardianLabelOutlet.text = "guardian: \(parentGuardian ?? "")"
-        addressLine1LabelOutlet.text = addressLine1
+        addressLine1LabelOutlet.text = addressLine1 ?? ""
         // addressLine2 is not a required field
         addressLine2LabelOutlet.text = addressLine2 ?? ""
-        cityLabelOutlet.text = city
-        stateLabelOutlet.text = state
-        zipCodeLabelOutlet.text = zipCode
+        cityLabelOutlet.text = city ?? ""
+        stateLabelOutlet.text = state ?? ""
+        zipCodeLabelOutlet.text = zipCode ?? ""
         // emergency contact info outlets
-        emergencyContactNameLabelOutlet.text = emergencyContactName
-        emergencyContactRelationshipLabelOutlet.text = emergencyContactRelationship
-        emergencyContactPhoneLabelOutlet.text = emergencyContactPhone
+        emergencyContactNameLabelOutlet.text = emergencyContactName ?? ""
+        emergencyContactRelationshipLabelOutlet.text = emergencyContactRelationship ?? ""
+        emergencyContactPhoneLabelOutlet.text = emergencyContactPhone ?? ""
         
         // profile pic imageView
         profilePicImageView.image = profilePic
         
         // display birthdate
-        formatBirthdate(birthdate: birthdate)
+        if let birthdate = birthdate {
+            formatBirthdate(birthdate: birthdate)
+        }
         
         // belt holder UIView
         // this is set up below to directly accept a value from InternationalStandarBJJBelts
@@ -340,7 +334,7 @@ extension CompletedProfileViewController {
         guard let parentGuardian = parentGuardian else { print("fail parentGuardian"); return }
         guard let profilePic = profilePic else { print("fail profilePic"); return }
         
-        guard let birthdate = birthdate else { print("fail birthdate"); return }
+//        guard let birthdate = birthdate else { print("fail birthdate"); return }
         
         guard let beltCD = beltCD else { print("fail beltCD"); return }
         
@@ -358,19 +352,24 @@ extension CompletedProfileViewController {
         
         if isOwner{
             
-            let newOwner = OwnerCD(birthdate: birthdate, mostRecentPromotion: nil, studentStatus: nil, belt: beltCD, profilePic: profilePicData, username: username, password: password, firstName: firstName, lastName: lastName, address: addressCD, phone: phone, mobile: mobileCD, email: email, emergencyContact: emergencyContactCD)
+            let newOwner = OwnerCD(mostRecentPromotion: nil, studentStatus: nil, belt: beltCD, profilePic: profilePicData, username: username, password: password, firstName: firstName, lastName: lastName, address: addressCD, phone: phone, mobile: mobileCD, email: email, emergencyContact: emergencyContactCD)
             
             OwnerCDModelController.shared.add(owner: newOwner)
             
             if let id = newOwner.ownerUUID {
                 ActiveUserModelController.shared.activeUser.append(id)
             }
-        
+            
+            // check and if present, add birthdate value
+            addBirthdate(owner: newOwner, kid: nil, adult: nil)
+            // toggle the owner isLoggedOn to true as they have successfully logged on for the first time
             newOwner.isLoggedOn = true
+            // set the isKid value in ActiveUserModelController to false
+            ActiveUserModelController.shared.isKid = false
             
         } else if isKid {
             
-            let newStudentKid = StudentKidCD(dateCreated: Date(), dateEdited: Date(), birthdate: birthdate, studentStatus: nil, belt: beltCD, profilePic: profilePicData, username: username, password: password, firstName: firstName, lastName: lastName, parentGuardian: parentGuardian, address: addressCD, phone: phone, mobile: mobileCD, email: email, emergencyContact: emergencyContactCD)
+            let newStudentKid = StudentKidCD(studentStatus: nil, belt: beltCD, profilePic: profilePicData, username: username, password: password, firstName: firstName, lastName: lastName, parentGuardian: parentGuardian, address: addressCD, phone: phone, mobile: mobileCD, email: email, emergencyContact: emergencyContactCD)
             
             StudentKidCDModelController.shared.add(studentKid: newStudentKid)
             
@@ -378,8 +377,12 @@ extension CompletedProfileViewController {
                 ActiveUserModelController.shared.activeUser.append(id)
             }
             
+            // check and if present, add birthdate value
+            addBirthdate(owner: nil, kid: newStudentKid, adult: nil)
+            // toggle the owner isLoggedOn to true as they have successfully logged on for the first time
             newStudentKid.isLoggedOn = true
-            
+            // set the isKid value in ActiveUserModelController to true
+            ActiveUserModelController.shared.isKid = true
             // if isOwnerAddingStudent == true, then we update the local newStudentKidCD property to the newly created newStudentKid
             if let isOwnerAddingStudent = isOwnerAddingStudent {
                 
@@ -391,7 +394,7 @@ extension CompletedProfileViewController {
             
         } else if !isKid {
             
-            let newStudentAdult = StudentAdultCD(isInstructor: false, dateCreated: Date(), dateEdited: Date(), birthdate: birthdate, studentStatus: nil, belt: beltCD, profilePic: profilePicData, username: username, password: password, firstName: firstName, lastName: lastName, address: addressCD, phone: phone, mobile: mobileCD, email: email, emergencyContact: emergencyContactCD)
+            let newStudentAdult = StudentAdultCD(isInstructor: false, studentStatus: nil, belt: beltCD, profilePic: profilePicData, username: username, password: password, firstName: firstName, lastName: lastName, address: addressCD, phone: phone, mobile: mobileCD, email: email, emergencyContact: emergencyContactCD)
 
             StudentAdultCDModelController.shared.add(studentAdult: newStudentAdult)
             
@@ -399,7 +402,12 @@ extension CompletedProfileViewController {
                 ActiveUserModelController.shared.activeUser.append(id)
             }
             
+            // check and if present, add birthdate value
+            addBirthdate(owner: nil, kid: nil, adult: newStudentAdult)
+            // toggle the owner isLoggedOn to true as they have successfully logged on for the first time
             newStudentAdult.isLoggedOn = true
+            // set the isKid value in ActiveUserModelController to false
+            ActiveUserModelController.shared.isKid = false
             
             // if isOwnerAddingStudent == true, then we update the local newStudentAdultCD property to the newly created newStudentAdult
             if let isOwnerAddingStudent = isOwnerAddingStudent {
@@ -432,23 +440,48 @@ extension CompletedProfileViewController {
 }
 
 
+// MARK: - function to add birthdate in CoreData
+extension CompletedProfileViewController {
+    
+    func addBirthdate(owner: OwnerCD?, kid: StudentKidCD?, adult: StudentAdultCD?) {
+        // for user privacy criteria, this is optional upon account creation, and the user can update it easily at a later date if so desired
+        
+        // check the birthdate optional value
+        guard let birthdate = birthdate else {
+            print("user has not added a birthdate in CompletedProfileViewController.swift -> addBirtdate() - line 442")
+            return
+        }
+        // check for the appropriate user to add birthdate when present
+        if let owner = owner {
+            owner.birthdate = birthdate
+        }
+        if let kid = kid {
+            kid.birthdate = birthdate
+        }
+        if let adult = adult {
+            adult.birthdate = birthdate
+        }
+    }
+}
+
+
 // MARK: - function to create address data model in CoreData
 extension CompletedProfileViewController {
     
+    // for user privacy criteria, this is optional upon account creation, so we simply create an object with no information so the user can update it easily at a later date if so desired
     func createAddressCoreDataModel() {
         
-        guard let addressLine1 = addressLine1 else { print("fail addressLine1"); return }
+        let addressLine1CD = addressLine1 ?? ""
         
         let addressLine2CD = addressLine2 ?? ""
         
-        guard let city = city else { print("fail city"); return }
+        let cityCD = city ?? ""
         
-        guard let state = state else { print("fail state"); return }
+        let stateCD = state ?? ""
         
-        guard let zipCode = zipCode else { print("fail zip"); return }
+        let zipCodeCD = zipCode ?? ""
         
-        addressCD = AddressCD(addressLine1: addressLine1, addressLine2: addressLine2CD, city: city, state: state, zipCode: zipCode)
-        
+        addressCD = AddressCD(addressLine1: addressLine1CD, addressLine2: addressLine2CD, city: cityCD, state: stateCD, zipCode: zipCodeCD)
     }
 }
 
@@ -456,13 +489,14 @@ extension CompletedProfileViewController {
 // MARK: - function to create emergency contact data model in CoreData
 extension CompletedProfileViewController {
     
+    // for user privacy criteria, this is optional upon account creation, so we simply create an object with no information so the user can update it easily at a later date if so desired
     func createEmergencyContactCoreDataModel() {
         
-        guard let name = emergencyContactName else { print("fail emergencyContactName"); return }
+        let name = emergencyContactName ?? ""
         
-        guard let phone = emergencyContactPhone else { print("fail emergencyContactPhone"); return }
+        let phone = emergencyContactPhone ?? ""
         
-        guard let relationship = emergencyContactRelationship else { print("fail emergencyContactRelationship"); return }
+        let relationship = emergencyContactRelationship ?? ""
         
         emergencyContactCD = EmergencyContactCD(name: name, phone: phone, relationship: relationship)
     }
