@@ -185,7 +185,7 @@ class KidStudentModelController {
     
     // Delete
     func delete(kidStudent: KidStudent) {
-        guard let index = self.kids.index(of: kidStudent) else { return }
+        guard let index = self.kids.firstIndex(of: kidStudent) else { return }
         self.kids.remove(at: index)
     }
     

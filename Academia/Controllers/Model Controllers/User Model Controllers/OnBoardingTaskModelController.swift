@@ -63,17 +63,17 @@ class OnBoardingTaskModelController {
     
     // Delete
     func deleteOwnerTask(ownerTask: OnBoardingTask) {
-        guard let index = self.ownerOnBoardingTasks.index(of: ownerTask) else { return }
+        guard let index = self.ownerOnBoardingTasks.firstIndex(of: ownerTask) else { return }
         self.ownerOnBoardingTasks.remove(at: index)
     }
     
     func deleteAdultStudentTask(adultStudentTask: OnBoardingTask) {
-        guard let index = self.adultStudentOnBoardingTasks.index(of: adultStudentTask) else { return }
+        guard let index = self.adultStudentOnBoardingTasks.firstIndex(of: adultStudentTask) else { return }
         self.adultStudentOnBoardingTasks.remove(at: index)
     }
     
     func deleteKidStudentTask(kidStudentTask: OnBoardingTask) {
-        guard let index = self.kidStudentOnBoardingTasks.index(of: kidStudentTask) else { return }
+        guard let index = self.kidStudentOnBoardingTasks.firstIndex(of: kidStudentTask) else { return }
         self.kidStudentOnBoardingTasks.remove(at: index)
     }
     

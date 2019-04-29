@@ -186,7 +186,7 @@ class OwnerModelController {
     
     // Delete
     func delete(owner: Owner) {
-        guard let index = self.owners.index(of: owner) else { return }
+        guard let index = self.owners.firstIndex(of: owner) else { return }
         self.owners.remove(at: index)
     }
     

@@ -109,7 +109,7 @@ class LocationModelController {
     
     // Delete
     func delete(location: Location) {
-        guard let index = self.locations.index(of: location) else { return }
+        guard let index = self.locations.firstIndex(of: location) else { return }
         self.locations.remove(at: index)
     }
     

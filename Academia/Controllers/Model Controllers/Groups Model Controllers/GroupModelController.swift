@@ -61,7 +61,7 @@ class GroupModelController {
     
     // Delete
     func delete(group: Group) {
-        guard let index = self.groups.index(of: group) else { return }
+        guard let index = self.groups.firstIndex(of: group) else { return }
         self.groups.remove(at: index)
     }
     

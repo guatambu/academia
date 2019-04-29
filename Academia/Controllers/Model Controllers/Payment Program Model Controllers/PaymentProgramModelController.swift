@@ -70,7 +70,7 @@ class PaymentProgramModelController {
     
     // Delete
     func delete(paymentProgram: PaymentProgram) {
-        guard let index = self.paymentPrograms.index(of: paymentProgram) else { return }
+        guard let index = self.paymentPrograms.firstIndex(of: paymentProgram) else { return }
         self.paymentPrograms.remove(at: index)
     }
     
