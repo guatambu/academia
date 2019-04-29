@@ -70,7 +70,7 @@ class BeltModelController {
     
     // Delete
     func delete(belt: Belt) {
-        guard let index = self.belts.index(of: belt) else { return }
+        guard let index = self.belts.firstIndex(of: belt) else { return }
         self.belts.remove(at: index)
     }
     

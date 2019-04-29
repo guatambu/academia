@@ -180,7 +180,7 @@ class AdultStudentModelController {
     
     // Delete
     func delete(adultStudent: AdultStudent) {
-        guard let index = self.adults.index(of: adultStudent) else { return }
+        guard let index = self.adults.firstIndex(of: adultStudent) else { return }
         self.adults.remove(at: index)
     }
     

@@ -69,7 +69,7 @@ class AulaModelController {
     
     // Delete
     func delete(aula: Aula) {
-        guard let index = self.aulas.index(of: aula) else { return }
+        guard let index = self.aulas.firstIndex(of: aula) else { return }
         self.aulas.remove(at: index)
     }
     
