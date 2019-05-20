@@ -28,6 +28,7 @@
 		FA23D2882166F5E400707056 /* GroupModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23D2872166F5E400707056 /* GroupModelController.swift */; };
 		FA23D28A2167E31200707056 /* BeltModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23D2892167E31200707056 /* BeltModelController.swift */; };
 		FA23D2922167F9EF00707056 /* OnBoardingTaskModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23D2912167F9EF00707056 /* OnBoardingTaskModelController.swift */; };
+		FA3563172293318C0020C448 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA3563162293318B0020C448 /* GoogleService-Info.plist */; };
 		FA41CE6721A1336F00EAD53A /* BeltCellNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA41CE6621A1336F00EAD53A /* BeltCellNib.xib */; };
 		FA41CE6B21A344B100EAD53A /* OwnerInfoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41CE6A21A344B100EAD53A /* OwnerInfoDetailsViewController.swift */; };
 		FA41CE6D21A5EBAA00EAD53A /* BirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41CE6C21A5EBAA00EAD53A /* BirthdayViewController.swift */; };
@@ -344,6 +345,7 @@
 		FA23D2872166F5E400707056 /* GroupModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupModelController.swift; sourceTree = "<group>"; };
 		FA23D2892167E31200707056 /* BeltModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeltModelController.swift; sourceTree = "<group>"; };
 		FA23D2912167F9EF00707056 /* OnBoardingTaskModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingTaskModelController.swift; sourceTree = "<group>"; };
+		FA3563162293318B0020C448 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA41CE6621A1336F00EAD53A /* BeltCellNib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BeltCellNib.xib; sourceTree = "<group>"; };
 		FA41CE6A21A344B100EAD53A /* OwnerInfoDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerInfoDetailsViewController.swift; sourceTree = "<group>"; };
 		FA41CE6C21A5EBAA00EAD53A /* BirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayViewController.swift; sourceTree = "<group>"; };
@@ -690,6 +692,7 @@
 				FA0C441521278A8F00B59194 /* AppDelegate.swift */,
 				FA0C441F21278A8F00B59194 /* Assets.xcassets */,
 				FA0C442421278A8F00B59194 /* Info.plist */,
+				FA3563162293318B0020C448 /* GoogleService-Info.plist */,
 				FA9ADA142138C6450005E1F1 /* academia_sample_profile_pic.jpeg */,
 				FA5C5C2B214EFCCC00BF62D5 /* location1.jpg */,
 				FACA3EAB21927C3F0099E620 /* profile_pic_placeholder_image.png */,
@@ -1547,6 +1550,7 @@
 				FAF29B9A212E1EF700752414 /* right_red_arrow_50.png in Resources */,
 				FAF29BD7212F8CE400752414 /* home_outline_black_32 copy.png in Resources */,
 				FA5C5C2E214EFCD100BF62D5 /* location2.jpg in Resources */,
+				FA3563172293318C0020C448 /* GoogleService-Info.plist in Resources */,
 				FAF29BBA212E21EA00752414 /* right_red_arrow_32.png in Resources */,
 				FAE2FD772140BED100815402 /* EmailTextFieldCell.xib in Resources */,
 				FAF29BE32130AC2900752414 /* ImageMenuCell.xib in Resources */,
