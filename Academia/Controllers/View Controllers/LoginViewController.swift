@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class LoginViewController: UIViewController {
     
@@ -47,6 +48,9 @@ class LoginViewController: UIViewController {
     var activeOwnerDelegate: ActiveOwnerDelegate?
     var activeStudentDelegate: ActiveStudentDelegate?
     
+    // Firebase Firestore properties
+    var docRef: DocumentReference!
+    
     
     // MARK: - ViewController Lifecycle Functions
     
@@ -64,6 +68,29 @@ class LoginViewController: UIViewController {
         
         // turns on secure text entry in password and confirm password textFields
         passwordTextField.isSecureTextEntry = true
+        
+        // FIREBASE FIRESTORE docRef listeners
+        docRef.addSnapshotListener { (docSnapshot, error) in
+            
+            guard let docSnapshot = docSnapshot, docSnapshot.exists else {
+                print("ERROR: no docSnapshot in LoginVC.swift -> loginButtonTapped - line 134.")
+                return
+            }
+            if let error = error {
+                print("ERROR: error: \(error.localizedDescription) occurred while trying to get docSnapshot in LoginVC.swift -> loginButtonTapped - line 138. ")
+            } else {
+                print("successful docSnapshot retrieval!")
+                if let myData = docSnapshot.data() {
+                    
+                    let usernameTextInput = myData["username"] as? String ?? "username fail"
+                    let passwordTextInput = myData["password"] as? String ?? "password fail"
+                    
+                    print("username: \(usernameTextInput)\npassword: \(passwordTextInput)")
+                }
+            }
+        }
+        
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -79,6 +106,8 @@ class LoginViewController: UIViewController {
         
         usernameTextField.delegate = self
         passwordTextField.delegate = self
+        
+        docRef = Firestore.firestore().collection("tests").document("level1")
     }
 
     // MARK: - Actions
@@ -101,6 +130,28 @@ class LoginViewController: UIViewController {
         } else if passwordTextField.isFirstResponder {
             passwordTextField.resignFirstResponder()
         }
+        
+        
+        // FIREBASE FIRESTORE TESTING
+        guard let usernameText = usernameTextField.text, !usernameText.isEmpty else {
+            print("ERROR: no valid text input in the usernameTextField in LoginVC.swift -> loginButtonTapped - line 108.")
+            return
+        }
+        guard let passwordText = passwordTextField.text, !passwordText.isEmpty else {
+            print("ERROR: no valid text input in the passwordTextField in LoginVC.swift -> loginButtonTapped - line 112.")
+            return
+        }
+        
+        let dataToSave: [String : Any] = ["username" : usernameText, "password" : passwordText]
+        
+        docRef.setData(dataToSave) { (error) in
+            if let error = error {
+                print("ERROR: error: \(error.localizedDescription) occurred while trying to save to Firebase Firestore in LoginVC.swift -> loginButtonTapped - line 125. ")
+            } else {
+                print("Data successfully saved to Firebase Firestore")
+            }
+        }
+        
         
         // check for required information being left blank by user
         if usernameTextField.text == "" || passwordTextField.text == "" {
