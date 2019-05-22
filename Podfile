@@ -8,7 +8,7 @@ target 'Academia' do
   # Pods for Academia
 
   pod 'Firebase/Core'
-
+  pod 'Firebase/Firestore'
 
   target 'AcademiaTests' do
     inherit! :search_paths

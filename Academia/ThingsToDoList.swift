@@ -118,9 +118,9 @@ import Foundation
             // CRUD Functions
 
     // Core Data
-        // create models specifically for persistance
-        // refactor existing models
-        // set up Core Data structure to support the immediate collection and storage of data
+        // create models specifically for persistance **** COMPLETE
+        // refactor existing models **** COMPLETE
+        // set up Core Data structure to support the immediate collection and storage of data **** COMPLETE
         // on owner side - the data is then sent to cloud backup via batches or individual user granted action
         // on student side - the student does not need to use CoreData, only the owner does, so all student ineractions will be with cloud server ( Firebase Firestore )
         // the flow would be... an action sheet or allert popup that gives the option to save and upload later to cloud, or save and upload to cloud at same time
@@ -137,8 +137,15 @@ import Foundation
     // Stripe integration for monthly payments per agreement terms
     // Stripe integration for in house product sales
 
+    // Looking seriously at PayPal rather than Stripe becuase PayPal appears to be in more countries with different payment strategies
+
     // Firebase integration
         // hopefully quick and easy
+        // install FireBase CocoaPod **** COMPLETE
+        // setup Firebase in AppDelegate **** COMPLETE
+        // create FirebaseFireStore github branch **** COMPLETE
+        // starting basic testing
+
 
     // messaging
         // push notifications from owner to students re: events/opportunities
