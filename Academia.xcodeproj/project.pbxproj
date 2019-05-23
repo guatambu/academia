@@ -72,6 +72,7 @@
 		FA6FBA012149F33100558657 /* AdultStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6FBA002149F33100558657 /* AdultStudent.swift */; };
 		FA6FBA032149F36300558657 /* KidStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6FBA022149F36300558657 /* KidStudent.swift */; };
 		FA6FBA082149F3C700558657 /* StudentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6FBA072149F3C700558657 /* StudentStatus.swift */; };
+		FA76FE4A229635C100548906 /* FirestoreTestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA76FE49229635C100548906 /* FirestoreTestModel.swift */; };
 		FA8B3CBF21CA22B7003398FB /* GroupNameAndDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B3CBD21CA22B7003398FB /* GroupNameAndDescriptionViewController.swift */; };
 		FA8B3CC221CA230B003398FB /* AddStudentsToGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B3CC021CA230B003398FB /* AddStudentsToGroupTableViewController.swift */; };
 		FA8B3CC721CB2366003398FB /* ReviewAndCreateGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B3CC621CB2366003398FB /* ReviewAndCreateGroupTableViewController.swift */; };
@@ -395,6 +396,7 @@
 		FA6FBA002149F33100558657 /* AdultStudent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdultStudent.swift; sourceTree = "<group>"; };
 		FA6FBA022149F36300558657 /* KidStudent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidStudent.swift; sourceTree = "<group>"; };
 		FA6FBA072149F3C700558657 /* StudentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentStatus.swift; sourceTree = "<group>"; };
+		FA76FE49229635C100548906 /* FirestoreTestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreTestModel.swift; sourceTree = "<group>"; };
 		FA7A12D1216AE57A00C03590 /* Academia.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Academia.xcdatamodel; sourceTree = "<group>"; };
 		FA8B3CBE21CA22B7003398FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Base; path = Academia/Views/Academia/Views/Base.lproj/GroupNameAndDescriptionViewController.swift; sourceTree = SOURCE_ROOT; };
 		FA8B3CC121CA230B003398FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Base; path = Academia/Views/Academia/Views/Base.lproj/AddStudentsToGroupTableViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -774,6 +776,7 @@
 				FAE2FD3B2140700F00815402 /* MockData.swift */,
 				FA9724042224B3C2001247CA /* PlaceholderStrings.swift */,
 				FAC617BC2267CF28006CE228 /* MiscBigStrings.swift */,
+				FA76FE49229635C100548906 /* FirestoreTestModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1841,6 +1844,7 @@
 				FAD2A3BB21E6E1F900364FC0 /* ReviewOwnerInstructorTableViewCell.swift in Sources */,
 				FAF29BCA212E23E300752414 /* OwnerHomeTableViewController.swift in Sources */,
 				FAC617C3226A7C9B006CE228 /* StudentSocialLinksViewController.swift in Sources */,
+				FA76FE4A229635C100548906 /* FirestoreTestModel.swift in Sources */,
 				FA0C444821278C9A00B59194 /* PaymentProgram.swift in Sources */,
 				FAE2FD942140BFED00815402 /* CityTextFieldTableViewCell.swift in Sources */,
 				FAE2FDAE2140C0A600815402 /* WebsiteTextFieldTableViewCell.swift in Sources */,
