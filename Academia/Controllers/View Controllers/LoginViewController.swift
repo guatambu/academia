@@ -168,7 +168,7 @@ class LoginViewController: UIViewController {
         
         let testModelRef = self.db.collection("tests")
         
-        testModelRef.document(usernameText).setData(test.dictionary) { (error) in
+        testModelRef.document(/*usernameText*/).setData(test.dictionary) { (error) in
             // ^^^ NOTE: the document id can be created and set to my specifications as it is currently being set in the .document(usernameText) portion of the method call above.  an option would be to have the id as its own key:value pair in the TestModel dictionary property itself, and then access it via the dictionary key and set it in below in the place of the current 'usernameText' property
             if let error = error {
                 print("ERROR: error: \(error.localizedDescription) occurred while trying to save test.dictionary to Firestore in LoginVC.swift -> loginButtonTapped - line 173. ")
