@@ -45,7 +45,7 @@ extension TestModel: DocumentTestModelSerializable {
             print("ERROR: nil value found for password in firestore dictionary in TestModel.swift -> init(dictionary:) - line 45.")
             return nil
         }
-        
+
         self.init(username: username, password: password)
     }
 }

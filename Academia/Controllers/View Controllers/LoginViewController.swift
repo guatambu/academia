@@ -74,6 +74,7 @@ class LoginViewController: UIViewController {
         // turns on secure text entry in password and confirm password textFields
         passwordTextField.isSecureTextEntry = true
         
+        
         // FIREBASE FIRESTORE docRef listeners
         
         firestoreTestListener = docRef.addSnapshotListener { (docSnapshot, error) in
@@ -91,7 +92,7 @@ class LoginViewController: UIViewController {
                     let usernameTextInput = myData["username"] as? String ?? "username fail"
                     let passwordTextInput = myData["password"] as? String ?? "password fail"
                     
-                    print("username: \(usernameTextInput)\npassword: \(passwordTextInput)")
+                    print("docID: \(docSnapshot.documentID)\nusername: \(usernameTextInput)\npassword: \(passwordTextInput)")
                 }
             }
         }

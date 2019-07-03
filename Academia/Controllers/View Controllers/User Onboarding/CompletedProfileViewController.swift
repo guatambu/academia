@@ -501,3 +501,9 @@ extension CompletedProfileViewController {
         emergencyContactCD = EmergencyContactCD(name: name, phone: phone, relationship: relationship)
     }
 }
+
+
+// MARK: - Firesbase Firestore Users Model creation
+extension CompletedProfileViewController {
+    
+}

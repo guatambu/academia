@@ -78,6 +78,7 @@
 		FA8B3CC721CB2366003398FB /* ReviewAndCreateGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B3CC621CB2366003398FB /* ReviewAndCreateGroupTableViewController.swift */; };
 		FA8B3CCC21CB276B003398FB /* OwnersStudentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B3CCB21CB276B003398FB /* OwnersStudentDetailViewController.swift */; };
 		FA8B3CCE21CB3901003398FB /* GroupInfoDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B3CCD21CB3901003398FB /* GroupInfoDetailsTableViewController.swift */; };
+		FA9005CB22CC7B89001D450C /* OwnerFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9005CA22CC7B89001D450C /* OwnerFirestore.swift */; };
 		FA9463FC2229D0F10063B34C /* FindYourAcademyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9463FB2229D0F10063B34C /* FindYourAcademyViewController.swift */; };
 		FA9463FF222CEE220063B34C /* OwnerCDModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9463FE222CEE220063B34C /* OwnerCDModelController.swift */; };
 		FA946401222CF5A00063B34C /* StudentAdultCDModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA946400222CF5A00063B34C /* StudentAdultCDModelController.swift */; };
@@ -403,6 +404,7 @@
 		FA8B3CC621CB2366003398FB /* ReviewAndCreateGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewAndCreateGroupTableViewController.swift; sourceTree = "<group>"; };
 		FA8B3CCB21CB276B003398FB /* OwnersStudentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnersStudentDetailViewController.swift; sourceTree = "<group>"; };
 		FA8B3CCD21CB3901003398FB /* GroupInfoDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoDetailsTableViewController.swift; sourceTree = "<group>"; };
+		FA9005CA22CC7B89001D450C /* OwnerFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerFirestore.swift; sourceTree = "<group>"; };
 		FA9463FB2229D0F10063B34C /* FindYourAcademyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindYourAcademyViewController.swift; sourceTree = "<group>"; };
 		FA9463FE222CEE220063B34C /* OwnerCDModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerCDModelController.swift; sourceTree = "<group>"; };
 		FA946400222CF5A00063B34C /* StudentAdultCDModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentAdultCDModelController.swift; sourceTree = "<group>"; };
@@ -763,6 +765,7 @@
 		FA0C443A21278AE500B59194 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FA9005C922CC7B63001D450C /* FirebaseFirestoreModels */,
 				FADA615122112AC100BB3302 /* CoreDataStack.swift */,
 				FA55E170220E4B0400E1A839 /* CoreData+Convenience */,
 				FA7A12D0216AE57A00C03590 /* Academia.xcdatamodeld */,
@@ -1059,6 +1062,14 @@
 				FA6FBA072149F3C700558657 /* StudentStatus.swift */,
 			);
 			path = "User Models";
+			sourceTree = "<group>";
+		};
+		FA9005C922CC7B63001D450C /* FirebaseFirestoreModels */ = {
+			isa = PBXGroup;
+			children = (
+				FA9005CA22CC7B89001D450C /* OwnerFirestore.swift */,
+			);
+			path = FirebaseFirestoreModels;
 			sourceTree = "<group>";
 		};
 		FA9463FD222CEDDE0063B34C /* CoreData Model Controllers */ = {
@@ -1911,6 +1922,7 @@
 				FA4DF330218CCA2400ECC167 /* Curriculum.swift in Sources */,
 				FAE2FDA82140C07F00815402 /* EmergencyContactPhoneTextFieldTableViewCell.swift in Sources */,
 				FA94640F222D00740063B34C /* GroupCDModelController.swift in Sources */,
+				FA9005CB22CC7B89001D450C /* OwnerFirestore.swift in Sources */,
 				FAF29BDF2130892B00752414 /* ImageMenuTableViewCell.swift in Sources */,
 				FA946406222CF9310063B34C /* LocationCDModelController.swift in Sources */,
 				FA9ADA092137861B0005E1F1 /* OwnerPaymentInfoTableViewController.swift in Sources */,
