@@ -92,13 +92,13 @@ class CompletedProfileViewController: UIViewController {
         firestoreTestListener = docRef.addSnapshotListener { (docSnapshot, error) in
             
             guard let docSnapshot = docSnapshot, docSnapshot.exists else {
-                print("ERROR: no docSnapshot in LoginVC.swift -> loginButtonTapped - line 134.")
+                print("ERROR: no docSnapshot in CompletedProfileViewController.swift -> viewWillAppear() - line 95.")
                 return
             }
             if let error = error {
-                print("ERROR: error: \(error.localizedDescription) occurred while trying to get docSnapshot in LoginVC.swift -> loginButtonTapped - line 138. ")
+                print("ERROR: error: \(error.localizedDescription) occurred while trying to get docSnapshot in CompletedProfileViewController.swift -> viewWillAppear() - line 99. ")
             } else {
-                print("successful docSnapshot retrieval!")
+                print("successful docSnapshot retrieval from owners collection!")
                 if let myData = docSnapshot.data() {
                     
                     let usernameTextInput = myData["username"] as? String ?? "username fail"
@@ -140,7 +140,7 @@ class CompletedProfileViewController: UIViewController {
         }
         
         // Firestore Test properties setup
-        docRef = Firestore.firestore().collection("tests").document("ownerTest")
+        docRef = Firestore.firestore().collection("owners").document("newOwner")
         db = Firestore.firestore()
     }
     
@@ -177,7 +177,7 @@ class CompletedProfileViewController: UIViewController {
         
         docRef.setData(dataToSave) { (error) in
             if let error = error {
-                print("ERROR: error: \(error.localizedDescription) occurred while trying to save to Firebase Firestore in LoginVC.swift -> loginButtonTapped - line 180. ")
+                print("ERROR: \(error.localizedDescription) error occurred while trying to save to Firebase Firestore in CompletedProfileViewController.swift -> viewWillAppear() - line 180. ")
             } else {
                 print("Data successfully saved to Firebase Firestore")
             }
@@ -186,12 +186,12 @@ class CompletedProfileViewController: UIViewController {
         // test for new testModel object creation within Firestore using the username and password checks in lines 143 and 147 above, respectively.
         let test = OwnerFirestore(mostRecentPromotion: Date(), profilePic: "URL I haven't set up yet", username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: mobileNumber, email: email)
         
-        let testModelRef = self.db.collection("tests")
+        let testModelRef = self.db.collection("owners")
         
-        testModelRef.document(/*usernameText*/).setData(test.dictionary) { (error) in
+        testModelRef.document("newOwner").setData(test.dictionary) { (error) in
             // ^^^ NOTE: the document id can be created and set to my specifications as it is currently being set in the .document(usernameText) portion of the method call above.  an option would be to have the id as its own key:value pair in the TestModel dictionary property itself, and then access it via the dictionary key and set it in below in the place of the current 'usernameText' property
             if let error = error {
-                print("ERROR: error: \(error.localizedDescription) occurred while trying to save test.dictionary to Firestore in LoginVC.swift -> loginButtonTapped - line 194. ")
+                print("ERROR: error: \(error.localizedDescription) occurred while trying to save test.dictionary to Firestore in LoginVC.swift -> createAccountButtonTapped(sender:) - line 194.")
             } else {
                 print("test dictionary data successfully saved to Firestore document in tests collection")
             }
@@ -225,7 +225,7 @@ class CompletedProfileViewController: UIViewController {
             // unwrap isOwnerAddingStudent? 
             guard let isOwnerAddingStudent = isOwnerAddingStudent else {
                 
-                print("ERROR: a nil value was found when trying to unwrap isOwnerAddingStudent in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 100.")
+                print("ERROR: a nil value was found when trying to unwrap isOwnerAddingStudent in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 228.")
                 
                 // instantiate the relevant storyboard for the Student (Kid or Adult... both are directed to the same TabBarController)
                 let mainView: UIStoryboard = UIStoryboard(name: "StudentBaseCampFlow", bundle: nil)
@@ -245,11 +245,11 @@ class CompletedProfileViewController: UIViewController {
                 // need to append the created user to the appropriate group
 
                 guard let isKid = isKid else {
-                    print("ERROR: a nil value was found when trying to unwrap isKid property in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 153.")
+                    print("ERROR: a nil value was found when trying to unwrap isKid property in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 248.")
                     return
                 }
                 guard let groupCD = groupCD else {
-                    print("ERROR: a nil value was found when trying to unwrap groupCD property in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 157.")
+                    print("ERROR: a nil value was found when trying to unwrap groupCD property in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 252.")
                     return
                 }
         
@@ -257,7 +257,7 @@ class CompletedProfileViewController: UIViewController {
                     
                     // CoreData - update the group to include this student
                     guard let newStudentKidCD = newStudentKidCD else {
-                        print("ERROR: a nil value was found when trying to unwrap newStudentKidCD property in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 171.")
+                        print("ERROR: a nil value was found when trying to unwrap newStudentKidCD property in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 260.")
                         return
                     }
                     groupCD.addToKidMembers(newStudentKidCD)
@@ -266,7 +266,7 @@ class CompletedProfileViewController: UIViewController {
                     
                     // CoreData - update the group to include this student
                     guard let newStudentAdultCD = newStudentAdultCD else {
-                        print("ERROR: a nil value was found when trying to unwrap newStudentAdultCD property in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 171.")
+                        print("ERROR: a nil value was found when trying to unwrap newStudentAdultCD property in CompletedProfileViewController.swift -> createAccountButtonTapped(sender:) - line 269.")
                         return
                     }
                     groupCD.addToAdultMembers(newStudentAdultCD)
@@ -276,7 +276,7 @@ class CompletedProfileViewController: UIViewController {
                 returnToGroupInfo()
                 
             } else if isOwnerAddingStudent == false {
-                print("ERROR:  we have a non nil value of isOwnerAddingStudent = false... isOwnerAdding student should only be nil or true.  CompletedProfileViewController.swift -> createAccountButtonTapped(_ sender:) - line 141.")
+                print("ERROR:  we have a non nil value of isOwnerAddingStudent = false... isOwnerAdding student should only be nil or true.  CompletedProfileViewController.swift -> createAccountButtonTapped(_ sender:) - line 279.")
             }
         }
     }
@@ -540,7 +540,7 @@ extension CompletedProfileViewController {
         
         // check the birthdate optional value
         guard let birthdate = birthdate else {
-            print("user has not added a birthdate in CompletedProfileViewController.swift -> addBirtdate() - line 442")
+            print("user has not added a birthdate in CompletedProfileViewController.swift -> addBirtdate() - line 543")
             return
         }
         // check for the appropriate user to add birthdate when present
