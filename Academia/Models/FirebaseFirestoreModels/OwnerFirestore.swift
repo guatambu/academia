@@ -15,7 +15,7 @@ protocol OwnerFirestoreModelSerializable {
 
 struct OwnerFirestore {
     
-    var ownerUUID: UUID
+    var ownerUUID: String
     var isInstructor: Bool
     var dateCreated: Date
     var dateEdited: Date
@@ -57,7 +57,7 @@ struct OwnerFirestore {
     
     
     // convenience initializer to allow creation of an OwnerCD object via Academia CoreDataStack's managedObjectContext
-    init(ownerUUID: UUID = UUID(),
+    init(ownerUUID: String = "\(UUID())",
                      isInstructor: Bool = true,
                      dateCreated: Date = Date(),
                      dateEdited: Date = Date(),
@@ -102,7 +102,7 @@ extension OwnerFirestore: OwnerFirestoreModelSerializable {
     init?(dictionary: [String : Any]) {
         
         
-        guard let ownerUUID = dictionary["ownerUUID"] as? UUID else {
+        guard let ownerUUID = dictionary["ownerUUID"] as? String else {
             
             print("ERROR: nil value found for ownerUUID in firestore dictionary in TestModel.swift -> init(dictionary:) - line 118.")
             return nil
