@@ -213,6 +213,8 @@
 		FAD2A3C121E810DD00364FC0 /* AdultGroupInfoDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2A3C021E810DD00364FC0 /* AdultGroupInfoDetailsTableViewCell.swift */; };
 		FAD5B12D21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5B12C21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift */; };
 		FAD5B12F21C44BCA004ED286 /* ViewAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5B12E21C44BCA004ED286 /* ViewAgreementViewController.swift */; };
+		FAD6692F22CF2093008F4AF5 /* AdultStudentFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6692E22CF2093008F4AF5 /* AdultStudentFirestore.swift */; };
+		FAD6693122CF2162008F4AF5 /* KidStudentFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6693022CF2161008F4AF5 /* KidStudentFirestore.swift */; };
 		FADA615222112AC100BB3302 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADA615122112AC100BB3302 /* CoreDataStack.swift */; };
 		FADA6157221B98B800BB3302 /* BeltPromotionCD+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADA6156221B98B800BB3302 /* BeltPromotionCD+Convenience.swift */; };
 		FAE2FD3C2140700F00815402 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE2FD3B2140700F00815402 /* MockData.swift */; };
@@ -538,6 +540,8 @@
 		FAD2A3C021E810DD00364FC0 /* AdultGroupInfoDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdultGroupInfoDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		FAD5B12C21C3649E004ED286 /* PaymentProgramDelegateProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProgramDelegateProtocols.swift; sourceTree = "<group>"; };
 		FAD5B12E21C44BCA004ED286 /* ViewAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAgreementViewController.swift; sourceTree = "<group>"; };
+		FAD6692E22CF2093008F4AF5 /* AdultStudentFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdultStudentFirestore.swift; sourceTree = "<group>"; };
+		FAD6693022CF2161008F4AF5 /* KidStudentFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidStudentFirestore.swift; sourceTree = "<group>"; };
 		FADA615122112AC100BB3302 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		FADA6156221B98B800BB3302 /* BeltPromotionCD+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BeltPromotionCD+Convenience.swift"; sourceTree = "<group>"; };
 		FAE2FD3B2140700F00815402 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
@@ -1068,6 +1072,8 @@
 			isa = PBXGroup;
 			children = (
 				FA9005CA22CC7B89001D450C /* OwnerFirestore.swift */,
+				FAD6692E22CF2093008F4AF5 /* AdultStudentFirestore.swift */,
+				FAD6693022CF2161008F4AF5 /* KidStudentFirestore.swift */,
 			);
 			path = FirebaseFirestoreModels;
 			sourceTree = "<group>";
@@ -1778,6 +1784,7 @@
 				FA21D6802130BB1E006790E5 /* OwnerClassListTableViewController.swift in Sources */,
 				FAE2FDA22140C04A00815402 /* PaymentProgramTextFieldTableViewCell.swift in Sources */,
 				FAE2FD962140BFF600815402 /* StateTextFieldTableViewCell.swift in Sources */,
+				FAD6692F22CF2093008F4AF5 /* AdultStudentFirestore.swift in Sources */,
 				FABF859821B38934005CEBD4 /* LocationPicAndNameViewController.swift in Sources */,
 				FA0C444621278BBF00B59194 /* Aula.swift in Sources */,
 				FAD2A3BD21E6E42000364FC0 /* InstructorsDelegate.swift in Sources */,
@@ -1792,6 +1799,7 @@
 				FAE67A3A215C6EDD00822DCF /* StudentGroupGeneralMenuTableViewCell.swift in Sources */,
 				FA946424222DB8B30063B34C /* LocationSocialLinksCDModelController.swift in Sources */,
 				FA9ADA0F21378B140005E1F1 /* BeltsListTableViewController.swift in Sources */,
+				FAD6693122CF2162008F4AF5 /* KidStudentFirestore.swift in Sources */,
 				FAD2A3A521E4216600364FC0 /* ClassTimeComponents.swift in Sources */,
 				FA4DF32E218CCA1A00ECC167 /* CurriculumModule.swift in Sources */,
 				FAE2FDB02140C0C900815402 /* SocialNetworksTextFieldTableViewCell.swift in Sources */,
