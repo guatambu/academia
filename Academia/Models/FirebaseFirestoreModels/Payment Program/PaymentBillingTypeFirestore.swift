@@ -1,22 +1,21 @@
 //
-//  AdultStudentFirestore.swift
+//  PaymentBillingTypeFirestore.swift
 //  Academia
 //
-//  Created by Kelly Johnson on 7/4/19.
+//  Created by Michael Guatambu Davis on 7/5/19.
 //  Copyright © 2019 DunDak, LLC. All rights reserved.
 //
 
 import UIKit
 
-protocol AdultStudentFirestoreModelSerializable {
+protocol KidStudentFirestoreModelSerializable {
     init?(dictionary: [String : Any])
 }
 
 
-struct AdultStudentFirestore {
+struct KidStudentFirestore {
     
-    var adultStudentUUID: String
-    var isInstructor: Bool
+    var kidStudentUUID: String
     var dateCreated: Date
     var dateEdited: Date
     var mostRecentPromotion: Date?
@@ -36,8 +35,7 @@ struct AdultStudentFirestore {
     
     var dictionary: [String : Any] {
         return [
-            "adultStudentUUID" : adultStudentUUID,
-            "isInstructor" : isInstructor,
+            "kidStudentUUID" : kidStudentUUID,
             "dateCreated" : dateCreated,
             "dateEdited" : dateEdited,
             "mostRecentPromotion" : mostRecentPromotion ?? Date(),
@@ -57,8 +55,7 @@ struct AdultStudentFirestore {
     
     
     // convenience initializer to allow creation of an OwnerCD object via Academia CoreDataStack's managedObjectContext
-    init(adultStudentUUID: String = "\(UUID())",
-        isInstructor: Bool = true,
+    init(kidStudentUUID: String = "\(UUID())",
         dateCreated: Date = Date(),
         dateEdited: Date = Date(),
         mostRecentPromotion: Date?,
@@ -76,8 +73,7 @@ struct AdultStudentFirestore {
         //emergencyContact: EmergencyContactCD
         ) {
         
-        self.adultStudentUUID = adultStudentUUID
-        self.isInstructor = isInstructor
+        self.kidStudentUUID = kidStudentUUID
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
         self.mostRecentPromotion = mostRecentPromotion
@@ -97,20 +93,14 @@ struct AdultStudentFirestore {
 }
 
 
-extension AdultStudentFirestore: AdultStudentFirestoreModelSerializable {
+extension KidStudentFirestore: KidStudentFirestoreModelSerializable {
     
     init?(dictionary: [String : Any]) {
         
         
-        guard let adultStudentUUID = dictionary["adultStudentUUID"] as? String else {
+        guard let kidStudentUUID = dictionary["kidStudentUUID"] as? String else {
             
-            print("ERROR: nil value found for adultStudentUUID in firestore dictionary in TestModel.swift -> init(dictionary:) - line 118.")
-            return nil
-        }
-        
-        guard let isInstructor = dictionary["isInstructor"] as? Bool else {
-            
-            print("ERROR: nil value found for isInstructor in firestore dictionary in TestModel.swift -> init(dictionary:) - line 124.")
+            print("ERROR: nil value found for kidStudentUUID in firestore dictionary in TestModel.swift -> init(dictionary:) - line 118.")
             return nil
         }
         
@@ -204,6 +194,6 @@ extension AdultStudentFirestore: AdultStudentFirestoreModelSerializable {
         //            return nil
         //        }
         
-        self.init(adultStudentUUID: adultStudentUUID, isInstructor: isInstructor, dateCreated: dateCreated, dateEdited: dateEdited, mostRecentPromotion: mostRecentPromotion, profilePic: profilePic, username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: mobile, email: email)
+        self.init(kidStudentUUID: kidStudentUUID, dateCreated: dateCreated, dateEdited: dateEdited, mostRecentPromotion: mostRecentPromotion, profilePic: profilePic, username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: mobile, email: email)
     }
 }

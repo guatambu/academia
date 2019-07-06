@@ -1,8 +1,8 @@
 //
-//  KidStudentFirestore.swift
+//  TechniqueFirestore.swift
 //  Academia
 //
-//  Created by Kelly Johnson on 7/4/19.
+//  Created by Michael Guatambu Davis on 7/5/19.
 //  Copyright © 2019 DunDak, LLC. All rights reserved.
 //
 
@@ -197,4 +197,3 @@ extension KidStudentFirestore: KidStudentFirestoreModelSerializable {
         self.init(kidStudentUUID: kidStudentUUID, dateCreated: dateCreated, dateEdited: dateEdited, mostRecentPromotion: mostRecentPromotion, profilePic: profilePic, username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: mobile, email: email)
     }
 }
-

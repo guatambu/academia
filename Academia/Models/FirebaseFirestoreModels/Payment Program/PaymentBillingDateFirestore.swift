@@ -1,22 +1,21 @@
 //
-//  OwnerFirestore.swift
+//  PaymentBillingDateFirestore.swift
 //  Academia
 //
-//  Created by Michael Guatambu Davis on 7/2/19.
+//  Created by Michael Guatambu Davis on 7/5/19.
 //  Copyright © 2019 DunDak, LLC. All rights reserved.
 //
 
 import UIKit
 
-protocol OwnerFirestoreModelSerializable {
+protocol KidStudentFirestoreModelSerializable {
     init?(dictionary: [String : Any])
 }
 
 
-struct OwnerFirestore {
+struct KidStudentFirestore {
     
-    var ownerUUID: String
-    var isInstructor: Bool
+    var kidStudentUUID: String
     var dateCreated: Date
     var dateEdited: Date
     var mostRecentPromotion: Date?
@@ -36,8 +35,7 @@ struct OwnerFirestore {
     
     var dictionary: [String : Any] {
         return [
-            "ownerUUID" : ownerUUID,
-            "isInstructor" : isInstructor,
+            "kidStudentUUID" : kidStudentUUID,
             "dateCreated" : dateCreated,
             "dateEdited" : dateEdited,
             "mostRecentPromotion" : mostRecentPromotion ?? Date(),
@@ -57,27 +55,25 @@ struct OwnerFirestore {
     
     
     // convenience initializer to allow creation of an OwnerCD object via Academia CoreDataStack's managedObjectContext
-    init(ownerUUID: String = "\(UUID())",
-                     isInstructor: Bool = true,
-                     dateCreated: Date = Date(),
-                     dateEdited: Date = Date(),
-                     mostRecentPromotion: Date?,
-                     //studentStatus: StudentStatusCD?,
-                     //belt: BeltCD,
-                     profilePic: String?,
-                     username: String,
-                     password: String,
-                     firstName: String,
-                     lastName: String,
-                     //address: AddressCD,
-                     phone: String?,
-                     mobile: String?,
-                     email: String
-                     //emergencyContact: EmergencyContactCD
-                    ) {
+    init(kidStudentUUID: String = "\(UUID())",
+        dateCreated: Date = Date(),
+        dateEdited: Date = Date(),
+        mostRecentPromotion: Date?,
+        //studentStatus: StudentStatusCD?,
+        //belt: BeltCD,
+        profilePic: String?,
+        username: String,
+        password: String,
+        firstName: String,
+        lastName: String,
+        //address: AddressCD,
+        phone: String?,
+        mobile: String?,
+        email: String
+        //emergencyContact: EmergencyContactCD
+        ) {
         
-        self.ownerUUID = ownerUUID
-        self.isInstructor = isInstructor
+        self.kidStudentUUID = kidStudentUUID
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
         self.mostRecentPromotion = mostRecentPromotion
@@ -97,20 +93,14 @@ struct OwnerFirestore {
 }
 
 
-extension OwnerFirestore: OwnerFirestoreModelSerializable {
+extension KidStudentFirestore: KidStudentFirestoreModelSerializable {
     
     init?(dictionary: [String : Any]) {
         
         
-        guard let ownerUUID = dictionary["ownerUUID"] as? String else {
+        guard let kidStudentUUID = dictionary["kidStudentUUID"] as? String else {
             
-            print("ERROR: nil value found for ownerUUID in firestore dictionary in TestModel.swift -> init(dictionary:) - line 118.")
-            return nil
-        }
-        
-        guard let isInstructor = dictionary["isInstructor"] as? Bool else {
-            
-            print("ERROR: nil value found for isInstructor in firestore dictionary in TestModel.swift -> init(dictionary:) - line 124.")
+            print("ERROR: nil value found for kidStudentUUID in firestore dictionary in TestModel.swift -> init(dictionary:) - line 118.")
             return nil
         }
         
@@ -132,17 +122,17 @@ extension OwnerFirestore: OwnerFirestoreModelSerializable {
             return nil
         }
         
-//        guard let studentStatus = dictionary["studentStatus"] as? StudentStatus else {
-//
-//            print("ERROR: nil value found for studentStatus in firestore dictionary in TestModel.swift -> init(dictionary:) - line 148.")
-//            return nil
-//        }
+        //        guard let studentStatus = dictionary["studentStatus"] as? StudentStatus else {
+        //
+        //            print("ERROR: nil value found for studentStatus in firestore dictionary in TestModel.swift -> init(dictionary:) - line 148.")
+        //            return nil
+        //        }
         
-//        guard let belt = dictionary["belt"] as? Belt else {
-//
-//            print("ERROR: nil value found for belt in firestore dictionary in TestModel.swift -> init(dictionary:) - line 154.")
-//            return nil
-//        }
+        //        guard let belt = dictionary["belt"] as? Belt else {
+        //
+        //            print("ERROR: nil value found for belt in firestore dictionary in TestModel.swift -> init(dictionary:) - line 154.")
+        //            return nil
+        //        }
         
         guard let profilePic = dictionary["profilePic"] as? String else {
             
@@ -174,11 +164,11 @@ extension OwnerFirestore: OwnerFirestoreModelSerializable {
             return nil
         }
         
-//        guard let address = dictionary["address"] as? AddressFirestore else {
-//
-//            print("ERROR: nil value found for address in firestore dictionary in TestModel.swift -> init(dictionary:) - line 178.")
-//            return nil
-//        }
+        //        guard let address = dictionary["address"] as? AddressFirestore else {
+        //
+        //            print("ERROR: nil value found for address in firestore dictionary in TestModel.swift -> init(dictionary:) - line 178.")
+        //            return nil
+        //        }
         
         guard let phone = dictionary["phone"] as? String else {
             
@@ -198,15 +188,12 @@ extension OwnerFirestore: OwnerFirestoreModelSerializable {
             return nil
         }
         
-//        guard let emergencyContact = dictionary["emergencyContact"] as? EmergencyContactFirestore else {
-//
-//            print("ERROR: nil value found for emergencyContact in firestore dictionary in TestModel.swift -> init(dictionary:) - line 202.")
-//            return nil
-//        }
+        //        guard let emergencyContact = dictionary["emergencyContact"] as? EmergencyContactFirestore else {
+        //
+        //            print("ERROR: nil value found for emergencyContact in firestore dictionary in TestModel.swift -> init(dictionary:) - line 202.")
+        //            return nil
+        //        }
         
-        self.init(ownerUUID: ownerUUID, isInstructor: isInstructor, dateCreated: dateCreated, dateEdited: dateEdited, mostRecentPromotion: mostRecentPromotion, profilePic: profilePic, username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: mobile, email: email)
+        self.init(kidStudentUUID: kidStudentUUID, dateCreated: dateCreated, dateEdited: dateEdited, mostRecentPromotion: mostRecentPromotion, profilePic: profilePic, username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: mobile, email: email)
     }
 }
-
-
-
