@@ -8,192 +8,133 @@
 
 import UIKit
 
-protocol KidStudentFirestoreModelSerializable {
+protocol BeltFirestoreModelSerializable {
     init?(dictionary: [String : Any])
 }
 
 
-struct KidStudentFirestore {
+struct BeltFirestore {
     
-    var kidStudentUUID: String
+    var beltUUID: String
+    var active: Bool
+    var elligibleForNextBelt: Bool
     var dateCreated: Date
     var dateEdited: Date
-    var mostRecentPromotion: Date?
-    //var studentStatus: StudentStatusCD?
-    //var belt: BeltCD
-    var profilePic: String?
-    var username: String
-    var password: String
-    var firstName: String
-    var lastName: String
-    //var address: AddressCD
-    var phone: String?
-    var mobile: String?
-    var email: String
-    //var emergencyContact: EmergencyContactCD
+    var beltLevel: String
+    var beltPromotionAttendanceCriteria: BeltPromotionAttendanceFirestore?
+    var beltStripeAgeDetails: BeltStripeAgeDetailsFirestore?
+    var classesToNextPromotion: Int?
+    var numberOfStripes: Int
     
     
     var dictionary: [String : Any] {
         return [
-            "kidStudentUUID" : kidStudentUUID,
+            "beltUUID" : beltUUID,
+            "active" : active,
+            "elligibleForNextBelt" : elligibleForNextBelt,
             "dateCreated" : dateCreated,
             "dateEdited" : dateEdited,
-            "mostRecentPromotion" : mostRecentPromotion ?? Date(),
-            // "studentStatus" : studentStatus,
-            // "belt" : username,
-            "profilePic" : profilePic ?? "",
-            "username" : username,
-            // "address" : address,
-            "firstName" : firstName,
-            "lastName" : lastName,
-            "phone" : phone ?? "",
-            "mobile" : mobile ?? "",
-            "email" : email,
-            // "emergencyContact" : emergencyContact
+            "beltLevel" : beltLevel,
+            "beltPromotionAttendanceCriteria" : beltPromotionAttendanceCriteria
+            "beltStripeAgeDetails" : beltStripeAgeDetails,
+            "classesToNextPromotion" : classesToNextPromotion,
+            "numberOfStripes" : numberOfStripes
         ]
     }
     
     
-    // convenience initializer to allow creation of an OwnerCD object via Academia CoreDataStack's managedObjectContext
-    init(kidStudentUUID: String = "\(UUID())",
-        dateCreated: Date = Date(),
-        dateEdited: Date = Date(),
-        mostRecentPromotion: Date?,
-        //studentStatus: StudentStatusCD?,
-        //belt: BeltCD,
-        profilePic: String?,
-        username: String,
-        password: String,
-        firstName: String,
-        lastName: String,
-        //address: AddressCD,
-        phone: String?,
-        mobile: String?,
-        email: String
-        //emergencyContact: EmergencyContactCD
+    // initializer to allow creation of a BeltFirestore object
+    init(beltUUID: String = "\(UUID())",
+         active: Bool = true,
+         elligibleForNextBelt: Bool = false,
+         dateCreated: Date = Date(),
+         dateEdited: Date = Date(),
+         beltLevel: String,
+         beltPromotionAttendanceCriteria: BeltPromotionAttendanceCriteriaCD?,
+         beltStripeAgeDetails: BeltStripeAgeDetailsCD?,
+         classesToNextPromotion: Int?,
+         numberOfStripes: Int
         ) {
         
-        self.kidStudentUUID = kidStudentUUID
+        self.beltUUID = beltUUID
+        self.active = active
+        self.elligibleForNextBelt = elligibleForNextBelt
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
-        self.mostRecentPromotion = mostRecentPromotion
-        //self.studentStatus = studentStatus
-        //self.belt = belt
-        self.profilePic = profilePic
-        self.username = username
-        self.password = password
-        self.firstName = firstName
-        self.lastName = lastName
-        //self.address = address
-        self.phone = phone
-        self.mobile = mobile
-        self.email = email
-        //self.emergencyContact = emergencyContact
+        self.beltLevel = beltLevel
+        self.beltPromotionAttendanceCriteria = beltPromotionAttendanceCriteria
+        self.beltStripeAgeDetails = beltStripeAgeDetails
+        self.classesToNextPromotion = classesToNextPromotion
+        self.numberOfStripes = numberOfStripes
     }
 }
 
 
-extension KidStudentFirestore: KidStudentFirestoreModelSerializable {
+extension BeltFirestore: BeltFirestoreModelSerializable {
     
     init?(dictionary: [String : Any]) {
         
         
-        guard let kidStudentUUID = dictionary["kidStudentUUID"] as? String else {
+        guard let beltUUID = dictionary["beltUUID"] as? String else {
             
-            print("ERROR: nil value found for kidStudentUUID in firestore dictionary in TestModel.swift -> init(dictionary:) - line 118.")
+            print("ERROR: nil value found for beltUUID in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 118.")
             return nil
         }
         
         guard let dateCreated = dictionary["dateCreated"] as? Date else {
             
-            print("ERROR: nil value found for dateCreated in firestore dictionary in TestModel.swift -> init(dictionary:) - line 130.")
+            print("ERROR: nil value found for dateCreated in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 130.")
             return nil
         }
         
         guard let dateEdited = dictionary["dateEdited"] as? Date else {
             
-            print("ERROR: nil value found for dateEdited in firestore dictionary in TestModel.swift -> init(dictionary:) - line 136.")
+            print("ERROR: nil value found for dateEdited in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 136.")
             return nil
         }
         
-        guard let mostRecentPromotion = dictionary["mostRecentPromotion"] as? Date else {
+        guard let active = dictionary["active"] as? Bool else {
             
-            print("ERROR: nil value found for mostRecentPromotion in firestore dictionary in TestModel.swift -> init(dictionary:) - line 142.")
+            print("ERROR: nil value found for active in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 142.")
             return nil
         }
         
-        //        guard let studentStatus = dictionary["studentStatus"] as? StudentStatus else {
-        //
-        //            print("ERROR: nil value found for studentStatus in firestore dictionary in TestModel.swift -> init(dictionary:) - line 148.")
-        //            return nil
-        //        }
-        
-        //        guard let belt = dictionary["belt"] as? Belt else {
-        //
-        //            print("ERROR: nil value found for belt in firestore dictionary in TestModel.swift -> init(dictionary:) - line 154.")
-        //            return nil
-        //        }
-        
-        guard let profilePic = dictionary["profilePic"] as? String else {
+        guard let elligibleForNextBelt = dictionary["elligibleForNextBelt"] as? Bool else {
             
-            print("ERROR: nil value found forprofilePic in firestore dictionary in TestModel.swift -> init(dictionary:) - line 160.")
+            print("ERROR: nil value found elligibleForNextBelt in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 160.")
             return nil
         }
         
-        guard let username = dictionary["username"] as? String else {
+        guard let beltLevel = dictionary["beltLevel"] as? String else {
             
-            print("ERROR: nil value found for username in firestore dictionary in TestModel.swift -> init(dictionary:) - line 106.")
+            print("ERROR: nil value found for beltLevel in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 106.")
             return nil
         }
         
-        guard let password = dictionary["password"] as? String else {
+        guard let beltPromotionAttendanceCriteria = dictionary["beltPromotionAttendanceCriteria"] as? BeltPromotionAttendanceFirestore else {
             
-            print("ERROR: nil value found for password in firestore dictionary in TestModel.swift -> init(dictionary:) - line 112.")
+            print("ERROR: nil value found for beltPromotionAttendanceCriteria in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 112.")
             return nil
         }
         
-        guard let firstName = dictionary["firstName"] as? String else {
+        guard let beltStripeAgeDetails = dictionary["beltStripeAgeDetails"] as? BeltStripeAgeDetailsFirestore else {
             
-            print("ERROR: nil value found for firstName in firestore dictionary in TestModel.swift -> init(dictionary:) - line 166.")
+            print("ERROR: nil value found for beltStripeAgeDetails in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 166.")
             return nil
         }
         
-        guard let lastName = dictionary["lastName"] as? String else {
+        guard let classesToNextPromotion = dictionary["classesToNextPromotion"] as? String else {
             
-            print("ERROR: nil value found for lastName in firestore dictionary in TestModel.swift -> init(dictionary:) - line 172.")
+            print("ERROR: nil value found for classesToNextPromotion in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 172.")
             return nil
         }
         
-        //        guard let address = dictionary["address"] as? AddressFirestore else {
-        //
-        //            print("ERROR: nil value found for address in firestore dictionary in TestModel.swift -> init(dictionary:) - line 178.")
-        //            return nil
-        //        }
-        
-        guard let phone = dictionary["phone"] as? String else {
+        guard let numberOfStripes = dictionary["numberOfStripes"] as? String else {
             
-            print("ERROR: nil value found for phone in firestore dictionary in TestModel.swift -> init(dictionary:) - line 184.")
+            print("ERROR: nil value found for numberOfStripes in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 184.")
             return nil
         }
         
-        guard let mobile = dictionary["mobile"] as? String else {
-            
-            print("ERROR: nil value found for mobile in firestore dictionary in TestModel.swift -> init(dictionary:) - line 190.")
-            return nil
-        }
-        
-        guard let email = dictionary["email"] as? String else {
-            
-            print("ERROR: nil value found for email in firestore dictionary in TestModel.swift -> init(dictionary:) - line 196.")
-            return nil
-        }
-        
-        //        guard let emergencyContact = dictionary["emergencyContact"] as? EmergencyContactFirestore else {
-        //
-        //            print("ERROR: nil value found for emergencyContact in firestore dictionary in TestModel.swift -> init(dictionary:) - line 202.")
-        //            return nil
-        //        }
-        
-        self.init(kidStudentUUID: kidStudentUUID, dateCreated: dateCreated, dateEdited: dateEdited, mostRecentPromotion: mostRecentPromotion, profilePic: profilePic, username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: mobile, email: email)
+        self.init(beltUUID: beltUUID, active: active, elligibleForNextBelt: elligibleForNextBelt, dateCreated: dateCreated, dateEdited: dateEdited, beltLevel: beltLevel, beltPromotionAttendanceCriteria: beltPromotionAttendanceCriteria, beltStripeAgeDetails: beltStripeAgeDetails, classesToNextPromotion: classesToNextPromotion, numberOfStripes: numberOfStripes)
     }
 }
