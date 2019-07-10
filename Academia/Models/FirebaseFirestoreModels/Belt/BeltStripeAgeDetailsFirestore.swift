@@ -53,7 +53,7 @@ struct BeltStripeAgeDetailsFirestore {
     }
     
     
-    // convenience initializer to allow creation of a BeltStripeAgeDetailsFirestore object
+    // initializer to allow creation of a BeltStripeAgeDetailsFirestore object
     init(beltRequiredTime: String?,
          minAgeRequirements: String?,
          iStripeRequiredTime: String?,

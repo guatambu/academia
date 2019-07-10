@@ -29,7 +29,7 @@ struct BeltPromotionFirestore {
     }
     
     
-    // initializer to allow creation of a BeltPromotionFirestore objct
+    // initializer to allow creation of a BeltPromotionFirestore object
     init(promotionDate: Date = Date(), // do i want to manually set the date?
         numberOfStripes: Int,
         beltLevel: String
