@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import FirebaseCore
+import FirebaseFirestore
+
 
 class LoginViewController: UIViewController {
     
@@ -47,6 +50,12 @@ class LoginViewController: UIViewController {
     var activeOwnerDelegate: ActiveOwnerDelegate?
     var activeStudentDelegate: ActiveStudentDelegate?
     
+//    // Firebase Firestore properties
+//    var docRef: DocumentReference!
+//    var firestoreTestListener: ListenerRegistration!
+//    var db: Firestore!
+    
+    
     
     // MARK: - ViewController Lifecycle Functions
     
@@ -64,11 +73,37 @@ class LoginViewController: UIViewController {
         
         // turns on secure text entry in password and confirm password textFields
         passwordTextField.isSecureTextEntry = true
+        
+        
+//        // FIREBASE FIRESTORE docRef listeners
+//
+//        firestoreTestListener = docRef.addSnapshotListener { (docSnapshot, error) in
+//
+//            guard let docSnapshot = docSnapshot, docSnapshot.exists else {
+//                print("ERROR: no docSnapshot in LoginVC.swift -> loginButtonTapped - line 134.")
+//                return
+//            }
+//            if let error = error {
+//                print("ERROR: error: \(error.localizedDescription) occurred while trying to get docSnapshot in LoginVC.swift -> loginButtonTapped - line 138. ")
+//            } else {
+//                print("successful docSnapshot retrieval for OwnerFirestore model!")
+//                if let myData = docSnapshot.data() {
+//
+//                    let usernameTextInput = myData["username"] as? String ?? "username fail"
+//                    let passwordTextInput = myData["password"] as? String ?? "password fail"
+//
+//                    print("docID: \(docSnapshot.documentID)\nusername: \(usernameTextInput)\npassword: \(passwordTextInput)")
+//                }
+//            }
+//        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         
         unsubscribeToKeyboardNotifications()
+        
+//        // FIREBASE FIRESTORE remove the test listener to avoid reference cycle
+//        firestoreTestListener.remove()
     }
 
     override func viewDidLoad() {
@@ -79,6 +114,10 @@ class LoginViewController: UIViewController {
         
         usernameTextField.delegate = self
         passwordTextField.delegate = self
+        
+//        // Firestore Test properties setup
+//        docRef = Firestore.firestore().collection("tests").document("level1")
+//        db = Firestore.firestore()
     }
 
     // MARK: - Actions
@@ -101,6 +140,42 @@ class LoginViewController: UIViewController {
         } else if passwordTextField.isFirstResponder {
             passwordTextField.resignFirstResponder()
         }
+        
+        
+//        // FIREBASE FIRESTORE TESTING
+//        guard let usernameText = usernameTextField.text, !usernameText.isEmpty else {
+//            print("ERROR: no valid text input in the usernameTextField in LoginVC.swift -> loginButtonTapped - line 108.")
+//            return
+//        }
+//        guard let passwordText = passwordTextField.text, !passwordText.isEmpty else {
+//            print("ERROR: no valid text input in the passwordTextField in LoginVC.swift -> loginButtonTapped - line 112.")
+//            return
+//        }
+//
+//        let dataToSave: [String : Any] = ["username" : usernameText, "password" : passwordText]
+//
+//        docRef.setData(dataToSave) { (error) in
+//            if let error = error {
+//                print("ERROR: error: \(error.localizedDescription) occurred while trying to save to Firebase Firestore in LoginVC.swift -> loginButtonTapped - line 125. ")
+//            } else {
+//                print("Data successfully saved to Firebase Firestore")
+//            }
+//        }
+//
+//        // test for new testModel object creation within Firestore using the username and password checks in lines 143 and 147 above, respectively.
+//        let test = TestModel(username: usernameText, password: passwordText)
+//
+//        let testModelRef = self.db.collection("tests")
+//
+//        testModelRef.document(/*usernameText*/).setData(test.dictionary) { (error) in
+//            // ^^^ NOTE: the document id can be created and set to my specifications as it is currently being set in the .document(usernameText) portion of the method call above.  an option would be to have the id as its own key:value pair in the TestModel dictionary property itself, and then access it via the dictionary key and set it in below in the place of the current 'usernameText' property
+//            if let error = error {
+//                print("ERROR: error: \(error.localizedDescription) occurred while trying to save test.dictionary to Firestore in LoginVC.swift -> loginButtonTapped - line 173. ")
+//            } else {
+//                print("test dictionary data successfully saved to Firestore document in tests collection")
+//            }
+//        }
+        
         
         // check for required information being left blank by user
         if usernameTextField.text == "" || passwordTextField.text == "" {
