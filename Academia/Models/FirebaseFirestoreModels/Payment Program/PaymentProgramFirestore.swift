@@ -8,99 +8,69 @@
 
 import UIKit
 
-protocol KidStudentFirestoreModelSerializable {
+protocol PaymentProgramFirestoreModelSerializable {
     init?(dictionary: [String : Any])
 }
 
 
-struct KidStudentFirestore {
+struct PaymentProgramFirestore {
     
-    var kidStudentUUID: String
+    var paymentProgramUUID: String
+    var active: Bool
     var dateCreated: Date
     var dateEdited: Date
-    var mostRecentPromotion: Date?
-    //var studentStatus: StudentStatusCD?
-    //var belt: BeltCD
-    var profilePic: String?
-    var username: String
-    var password: String
-    var firstName: String
-    var lastName: String
-    //var address: AddressCD
-    var phone: String?
-    var mobile: String?
-    var email: String
-    //var emergencyContact: EmergencyContactCD
+    var programName: String
+    var paymentDescription: String
+    var paymentAgreement: String
     
     
     var dictionary: [String : Any] {
         return [
-            "kidStudentUUID" : kidStudentUUID,
+            "paymentProgramUUID" : paymentProgramUUID,
+            "active" : active,
             "dateCreated" : dateCreated,
             "dateEdited" : dateEdited,
-            "mostRecentPromotion" : mostRecentPromotion ?? Date(),
-            // "studentStatus" : studentStatus,
-            // "belt" : username,
-            "profilePic" : profilePic ?? "",
-            "username" : username,
-            // "address" : address,
-            "firstName" : firstName,
-            "lastName" : lastName,
-            "phone" : phone ?? "",
-            "mobile" : mobile ?? "",
-            "email" : email,
-            // "emergencyContact" : emergencyContact
+            "programName" : programName,
+            "paymentDescription" : paymentDescription
         ]
     }
     
     
-    // convenience initializer to allow creation of an OwnerCD object via Academia CoreDataStack's managedObjectContext
-    init(kidStudentUUID: String = "\(UUID())",
-        dateCreated: Date = Date(),
-        dateEdited: Date = Date(),
-        mostRecentPromotion: Date?,
-        //studentStatus: StudentStatusCD?,
-        //belt: BeltCD,
-        profilePic: String?,
-        username: String,
-        password: String,
-        firstName: String,
-        lastName: String,
-        //address: AddressCD,
-        phone: String?,
-        mobile: String?,
-        email: String
-        //emergencyContact: EmergencyContactCD
+    // initializer to allow creation of a PaymentProgramFirestore object
+    init(paymentProgramUUID: String = "\(UUID())",
+         active: Bool,
+         dateCreated: Date = Date(),
+         dateEdited: Date = Date(),
+         programName: String,
+         paymentDescription: String,
+         paymentAgreement: String
         ) {
         
-        self.kidStudentUUID = kidStudentUUID
+        self.paymentProgramUUID = paymentProgramUUID
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
-        self.mostRecentPromotion = mostRecentPromotion
-        //self.studentStatus = studentStatus
-        //self.belt = belt
-        self.profilePic = profilePic
-        self.username = username
-        self.password = password
-        self.firstName = firstName
-        self.lastName = lastName
-        //self.address = address
-        self.phone = phone
-        self.mobile = mobile
-        self.email = email
-        //self.emergencyContact = emergencyContact
+        self.active = active
+        self.programName = programName
+        self.paymentDescription = paymentDescription
+        self.paymentAgreement = paymentAgreement
     }
 }
 
 
-extension KidStudentFirestore: KidStudentFirestoreModelSerializable {
+extension PaymentProgramFirestore: PaymentProgramFirestoreModelSerializable {
     
     init?(dictionary: [String : Any]) {
         
         
-        guard let kidStudentUUID = dictionary["kidStudentUUID"] as? String else {
+        guard let paymentProgramUUID = dictionary["paymentProgramUUID"] as? String else {
             
-            print("ERROR: nil value found for kidStudentUUID in firestore dictionary in TestModel.swift -> init(dictionary:) - line 118.")
+            print("ERROR: nil value found for paymentProgramUUID in firestore dictionary in TestModel.swift -> init(dictionary:) - line 118.")
+            return nil
+        }
+        
+        guard let active = dictionary["active"] as? Bool else {
+            
+            print("ERROR: nil value found for active in firestore dictionary in TestModel.swift -> init(dictionary:) - line 142.")
             return nil
         }
         
@@ -116,84 +86,24 @@ extension KidStudentFirestore: KidStudentFirestoreModelSerializable {
             return nil
         }
         
-        guard let mostRecentPromotion = dictionary["mostRecentPromotion"] as? Date else {
+        guard let programName = dictionary["programName"] as? String else {
             
-            print("ERROR: nil value found for mostRecentPromotion in firestore dictionary in TestModel.swift -> init(dictionary:) - line 142.")
+            print("ERROR: nil value found programName in firestore dictionary in TestModel.swift -> init(dictionary:) - line 160.")
             return nil
         }
         
-        //        guard let studentStatus = dictionary["studentStatus"] as? StudentStatus else {
-        //
-        //            print("ERROR: nil value found for studentStatus in firestore dictionary in TestModel.swift -> init(dictionary:) - line 148.")
-        //            return nil
-        //        }
-        
-        //        guard let belt = dictionary["belt"] as? Belt else {
-        //
-        //            print("ERROR: nil value found for belt in firestore dictionary in TestModel.swift -> init(dictionary:) - line 154.")
-        //            return nil
-        //        }
-        
-        guard let profilePic = dictionary["profilePic"] as? String else {
+        guard let paymentDescription = dictionary["paymentDescription"] as? String else {
             
-            print("ERROR: nil value found forprofilePic in firestore dictionary in TestModel.swift -> init(dictionary:) - line 160.")
+            print("ERROR: nil value found for paymentDescription in firestore dictionary in TestModel.swift -> init(dictionary:) - line 106.")
             return nil
         }
         
-        guard let username = dictionary["username"] as? String else {
+        guard let paymentAgreement = dictionary["paymentAgreement"] as? String else {
             
-            print("ERROR: nil value found for username in firestore dictionary in TestModel.swift -> init(dictionary:) - line 106.")
+            print("ERROR: nil value found for paymentAgreement in firestore dictionary in TestModel.swift -> init(dictionary:) - line 112.")
             return nil
         }
         
-        guard let password = dictionary["password"] as? String else {
-            
-            print("ERROR: nil value found for password in firestore dictionary in TestModel.swift -> init(dictionary:) - line 112.")
-            return nil
-        }
-        
-        guard let firstName = dictionary["firstName"] as? String else {
-            
-            print("ERROR: nil value found for firstName in firestore dictionary in TestModel.swift -> init(dictionary:) - line 166.")
-            return nil
-        }
-        
-        guard let lastName = dictionary["lastName"] as? String else {
-            
-            print("ERROR: nil value found for lastName in firestore dictionary in TestModel.swift -> init(dictionary:) - line 172.")
-            return nil
-        }
-        
-        //        guard let address = dictionary["address"] as? AddressFirestore else {
-        //
-        //            print("ERROR: nil value found for address in firestore dictionary in TestModel.swift -> init(dictionary:) - line 178.")
-        //            return nil
-        //        }
-        
-        guard let phone = dictionary["phone"] as? String else {
-            
-            print("ERROR: nil value found for phone in firestore dictionary in TestModel.swift -> init(dictionary:) - line 184.")
-            return nil
-        }
-        
-        guard let mobile = dictionary["mobile"] as? String else {
-            
-            print("ERROR: nil value found for mobile in firestore dictionary in TestModel.swift -> init(dictionary:) - line 190.")
-            return nil
-        }
-        
-        guard let email = dictionary["email"] as? String else {
-            
-            print("ERROR: nil value found for email in firestore dictionary in TestModel.swift -> init(dictionary:) - line 196.")
-            return nil
-        }
-        
-        //        guard let emergencyContact = dictionary["emergencyContact"] as? EmergencyContactFirestore else {
-        //
-        //            print("ERROR: nil value found for emergencyContact in firestore dictionary in TestModel.swift -> init(dictionary:) - line 202.")
-        //            return nil
-        //        }
-        
-        self.init(kidStudentUUID: kidStudentUUID, dateCreated: dateCreated, dateEdited: dateEdited, mostRecentPromotion: mostRecentPromotion, profilePic: profilePic, username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: mobile, email: email)
+        self.init(paymentProgramUUID: paymentProgramUUID, active: active, dateCreated: dateCreated, dateEdited: dateEdited, programName: programName, paymentDescription: paymentDescription, paymentAgreement: paymentAgreement)
     }
 }

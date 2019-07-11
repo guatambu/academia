@@ -38,7 +38,8 @@ struct AulaFirestore {
             "dayOfTheWeek" : dayOfTheWeek,
             "time" : time,
             "timeCode" : timeCode,
-            "location" : location        ]
+            "location" : location as Any
+        ]
     }
     
     

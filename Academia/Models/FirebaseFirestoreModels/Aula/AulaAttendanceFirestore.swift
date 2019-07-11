@@ -25,10 +25,10 @@ struct AulaAttendanceFirestore {
     var dictionary: [String : Any] {
         return [
             "currentDate" : currentDate,
-            "studentAdultAttendance" : adultStudent,
-            "studentKidAttendance" : kidStudent,
-            "ownerAttendance" : owner,
-            "aula" : aula
+            "studentAdultAttendance" : adultStudent as Any,
+            "studentKidAttendance" : kidStudent as Any,
+            "ownerAttendance" : owner as Any,
+            "aula" : aula as Any
         ]
     }
     
@@ -38,7 +38,7 @@ struct AulaAttendanceFirestore {
          adultStudent: AdultStudentFirestore?,
          kidStudent: KidStudentFirestore?,
          owner: OwnerFirestore?,
-         aula: AulaFirestore?,
+         aula: AulaFirestore?
         ) {
         
         self.currentDate = currentDate

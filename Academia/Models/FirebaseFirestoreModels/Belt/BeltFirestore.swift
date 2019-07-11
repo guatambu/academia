@@ -21,7 +21,7 @@ struct BeltFirestore {
     var dateCreated: Date
     var dateEdited: Date
     var beltLevel: String
-    var beltPromotionAttendanceCriteria: BeltPromotionAttendanceFirestore?
+    var beltPromotionAttendanceCriteria: BeltPromotionAttendanceCriteriaFirestore?
     var beltStripeAgeDetails: BeltStripeAgeDetailsFirestore?
     var classesToNextPromotion: Int?
     var numberOfStripes: Int
@@ -35,9 +35,9 @@ struct BeltFirestore {
             "dateCreated" : dateCreated,
             "dateEdited" : dateEdited,
             "beltLevel" : beltLevel,
-            "beltPromotionAttendanceCriteria" : beltPromotionAttendanceCriteria
-            "beltStripeAgeDetails" : beltStripeAgeDetails,
-            "classesToNextPromotion" : classesToNextPromotion,
+            "beltPromotionAttendanceCriteria" : beltPromotionAttendanceCriteria as Any,
+            "beltStripeAgeDetails" : beltStripeAgeDetails as Any,
+            "classesToNextPromotion" : classesToNextPromotion as Any,
             "numberOfStripes" : numberOfStripes
         ]
     }
@@ -50,8 +50,8 @@ struct BeltFirestore {
          dateCreated: Date = Date(),
          dateEdited: Date = Date(),
          beltLevel: String,
-         beltPromotionAttendanceCriteria: BeltPromotionAttendanceCriteriaCD?,
-         beltStripeAgeDetails: BeltStripeAgeDetailsCD?,
+         beltPromotionAttendanceCriteria: BeltPromotionAttendanceCriteriaFirestore?,
+         beltStripeAgeDetails: BeltStripeAgeDetailsFirestore?,
          classesToNextPromotion: Int?,
          numberOfStripes: Int
         ) {
@@ -77,61 +77,61 @@ extension BeltFirestore: BeltFirestoreModelSerializable {
         
         guard let beltUUID = dictionary["beltUUID"] as? String else {
             
-            print("ERROR: nil value found for beltUUID in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 118.")
+            print("ERROR: nil value found for beltUUID in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 80.")
             return nil
         }
         
         guard let dateCreated = dictionary["dateCreated"] as? Date else {
             
-            print("ERROR: nil value found for dateCreated in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 130.")
+            print("ERROR: nil value found for dateCreated in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 86.")
             return nil
         }
         
         guard let dateEdited = dictionary["dateEdited"] as? Date else {
             
-            print("ERROR: nil value found for dateEdited in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 136.")
+            print("ERROR: nil value found for dateEdited in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 92.")
             return nil
         }
         
         guard let active = dictionary["active"] as? Bool else {
             
-            print("ERROR: nil value found for active in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 142.")
+            print("ERROR: nil value found for active in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 98.")
             return nil
         }
         
         guard let elligibleForNextBelt = dictionary["elligibleForNextBelt"] as? Bool else {
             
-            print("ERROR: nil value found elligibleForNextBelt in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 160.")
+            print("ERROR: nil value found elligibleForNextBelt in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 104.")
             return nil
         }
         
         guard let beltLevel = dictionary["beltLevel"] as? String else {
             
-            print("ERROR: nil value found for beltLevel in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 106.")
+            print("ERROR: nil value found for beltLevel in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 110.")
             return nil
         }
         
-        guard let beltPromotionAttendanceCriteria = dictionary["beltPromotionAttendanceCriteria"] as? BeltPromotionAttendanceFirestore else {
+        guard let beltPromotionAttendanceCriteria = dictionary["beltPromotionAttendanceCriteria"] as? BeltPromotionAttendanceCriteriaFirestore else {
             
-            print("ERROR: nil value found for beltPromotionAttendanceCriteria in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 112.")
+            print("ERROR: nil value found for beltPromotionAttendanceCriteria in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 116.")
             return nil
         }
         
         guard let beltStripeAgeDetails = dictionary["beltStripeAgeDetails"] as? BeltStripeAgeDetailsFirestore else {
             
-            print("ERROR: nil value found for beltStripeAgeDetails in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 166.")
+            print("ERROR: nil value found for beltStripeAgeDetails in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 122.")
             return nil
         }
         
-        guard let classesToNextPromotion = dictionary["classesToNextPromotion"] as? String else {
+        guard let classesToNextPromotion = dictionary["classesToNextPromotion"] as? Int else {
             
-            print("ERROR: nil value found for classesToNextPromotion in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 172.")
+            print("ERROR: nil value found for classesToNextPromotion in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 128.")
             return nil
         }
         
-        guard let numberOfStripes = dictionary["numberOfStripes"] as? String else {
+        guard let numberOfStripes = dictionary["numberOfStripes"] as? Int else {
             
-            print("ERROR: nil value found for numberOfStripes in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 184.")
+            print("ERROR: nil value found for numberOfStripes in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 134.")
             return nil
         }
         

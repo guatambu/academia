@@ -57,31 +57,31 @@ extension LocationSocialLinksFirestore: LocationSocialLinksFirestoreModelSeriali
         
         guard let socialLink1 = dictionary["socialLink1"] as? String else {
             
-            print("ERROR: nil value found for socialLink1 in firestore dictionary in TestModel.swift -> init(dictionary:) - line 118.")
+            print("ERROR: nil value found for socialLink1 in firestore dictionary in LocationSocialLinksFirestore.swift -> init(dictionary:) - line 60.")
             return nil
         }
         
         guard let socialLink2 = dictionary["socialLink3"] as? String else {
             
-            print("ERROR: nil value found for socialLink2 in firestore dictionary in TestModel.swift -> init(dictionary:) - line 130.")
+            print("ERROR: nil value found for socialLink2 in firestore dictionary in LocationSocialLinksFirestore.swift -> init(dictionary:) - line 66.")
             return nil
         }
         
         guard let socialLink3 = dictionary["socialLink3"] as? String else {
             
-            print("ERROR: nil value found for socialLink3 in firestore dictionary in TestModel.swift -> init(dictionary:) - line 136.")
+            print("ERROR: nil value found for socialLink3 in firestore dictionary in LocationSocialLinksFirestore.swift -> init(dictionary:) - line 72.")
             return nil
         }
         
         guard let dateCreated = dictionary["dateCreated"] as? Date else {
             
-            print("ERROR: nil value found for dateCreated in firestore dictionary in TestModel.swift -> init(dictionary:) - line 142.")
+            print("ERROR: nil value found for dateCreated in firestore dictionary in LocationSocialLinksFirestore.swift -> init(dictionary:) - line 78.")
             return nil
         }
         
         guard let dateEdited = dictionary["dateEdited"] as? Date else {
             
-            print("ERROR: nil value found dateEdited in firestore dictionary in TestModel.swift -> init(dictionary:) - line 160.")
+            print("ERROR: nil value found dateEdited in firestore dictionary in LocationSocialLinksFirestore.swift -> init(dictionary:) - line 84.")
             return nil
         }
         
