@@ -18,6 +18,7 @@ struct KidStudentFirestore {
     var kidStudentUUID: String
     var dateCreated: Date
     var dateEdited: Date
+    var birthdate: Date
     var mostRecentPromotion: Date?
     //var studentStatus: StudentStatusCD?
     //var belt: BeltCD
@@ -26,6 +27,7 @@ struct KidStudentFirestore {
     var password: String
     var firstName: String
     var lastName: String
+    var parentGuardian: String
     //var address: AddressCD
     var phone: String?
     var mobile: String?
@@ -38,6 +40,7 @@ struct KidStudentFirestore {
             "kidStudentUUID" : kidStudentUUID,
             "dateCreated" : dateCreated,
             "dateEdited" : dateEdited,
+            "birthdate" : birthdate,
             "mostRecentPromotion" : mostRecentPromotion ?? Date(),
             // "studentStatus" : studentStatus,
             // "belt" : username,
@@ -46,6 +49,7 @@ struct KidStudentFirestore {
             // "address" : address,
             "firstName" : firstName,
             "lastName" : lastName,
+            "parentGuardian" : parentGuardian,
             "phone" : phone ?? "",
             "mobile" : mobile ?? "",
             "email" : email,
@@ -58,6 +62,7 @@ struct KidStudentFirestore {
     init(kidStudentUUID: String = "\(UUID())",
         dateCreated: Date = Date(),
         dateEdited: Date = Date(),
+        birthdate: Date,
         mostRecentPromotion: Date?,
         //studentStatus: StudentStatusCD?,
         //belt: BeltCD,
@@ -66,6 +71,7 @@ struct KidStudentFirestore {
         password: String,
         firstName: String,
         lastName: String,
+        parentGuardian: String,
         //address: AddressCD,
         phone: String?,
         mobile: String?,
@@ -76,6 +82,7 @@ struct KidStudentFirestore {
         self.kidStudentUUID = kidStudentUUID
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
+        self.birthdate = birthdate
         self.mostRecentPromotion = mostRecentPromotion
         //self.studentStatus = studentStatus
         //self.belt = belt
@@ -84,6 +91,7 @@ struct KidStudentFirestore {
         self.password = password
         self.firstName = firstName
         self.lastName = lastName
+        self.parentGuardian = parentGuardian
         //self.address = address
         self.phone = phone
         self.mobile = mobile
@@ -100,101 +108,112 @@ extension KidStudentFirestore: KidStudentFirestoreModelSerializable {
         
         guard let kidStudentUUID = dictionary["kidStudentUUID"] as? String else {
             
-            print("ERROR: nil value found for kidStudentUUID in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 103.")
+            print("ERROR: nil value found for kidStudentUUID in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 111.")
             return nil
         }
         
         guard let dateCreated = dictionary["dateCreated"] as? Date else {
             
-            print("ERROR: nil value found for dateCreated in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 109.")
+            print("ERROR: nil value found for dateCreated in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 117.")
             return nil
         }
         
         guard let dateEdited = dictionary["dateEdited"] as? Date else {
             
-            print("ERROR: nil value found for dateEdited in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 115.")
+            print("ERROR: nil value found for dateEdited in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 123.")
+            return nil
+        }
+        
+        guard let birthdate = dictionary["birthdate"] as? Date else {
+            print("ERROR: nil value found for birthdate in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 128.")
             return nil
         }
         
         guard let mostRecentPromotion = dictionary["mostRecentPromotion"] as? Date else {
             
-            print("ERROR: nil value found for mostRecentPromotion in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 121.")
+            print("ERROR: nil value found for mostRecentPromotion in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 134.")
             return nil
         }
         
         //        guard let studentStatus = dictionary["studentStatus"] as? StudentStatus else {
         //
-        //            print("ERROR: nil value found for studentStatus in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 127.")
+        //            print("ERROR: nil value found for studentStatus in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 140.")
         //            return nil
         //        }
         
         //        guard let belt = dictionary["belt"] as? Belt else {
         //
-        //            print("ERROR: nil value found for belt in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 133.")
+        //            print("ERROR: nil value found for belt in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 146.")
         //            return nil
         //        }
         
         guard let profilePic = dictionary["profilePic"] as? String else {
             
-            print("ERROR: nil value found forprofilePic in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 139.")
+            print("ERROR: nil value found forprofilePic in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 152.")
             return nil
         }
         
         guard let username = dictionary["username"] as? String else {
             
-            print("ERROR: nil value found for username in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 145.")
+            print("ERROR: nil value found for username in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 158.")
             return nil
         }
         
         guard let password = dictionary["password"] as? String else {
             
-            print("ERROR: nil value found for password in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 151.")
+            print("ERROR: nil value found for password in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 164.")
             return nil
         }
         
         guard let firstName = dictionary["firstName"] as? String else {
             
-            print("ERROR: nil value found for firstName in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 157.")
+            print("ERROR: nil value found for firstName in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 170.")
             return nil
         }
         
         guard let lastName = dictionary["lastName"] as? String else {
             
-            print("ERROR: nil value found for lastName in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 163.")
+            print("ERROR: nil value found for lastName in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 176.")
+            return nil
+        }
+        
+        guard let parentGuardian = dictionary["parentGuardian"] as? String else {
+            
+            print("ERROR: nil value found for parentGuardian in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 182.")
             return nil
         }
         
         //        guard let address = dictionary["address"] as? AddressFirestore else {
         //
-        //            print("ERROR: nil value found for address in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 169.")
+        //            print("ERROR: nil value found for address in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 188.")
         //            return nil
         //        }
         
         guard let phone = dictionary["phone"] as? String else {
             
-            print("ERROR: nil value found for phone in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 175.")
+            print("ERROR: nil value found for phone in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 194.")
             return nil
         }
         
         guard let mobile = dictionary["mobile"] as? String else {
             
-            print("ERROR: nil value found for mobile in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 181.")
+            print("ERROR: nil value found for mobile in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 200.")
             return nil
         }
         
         guard let email = dictionary["email"] as? String else {
             
-            print("ERROR: nil value found for email in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 187.")
+            print("ERROR: nil value found for email in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 206.")
             return nil
         }
         
         //        guard let emergencyContact = dictionary["emergencyContact"] as? EmergencyContactFirestore else {
         //
-        //            print("ERROR: nil value found for emergencyContact in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 193.")
+        //            print("ERROR: nil value found for emergencyContact in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 212.")
         //            return nil
         //        }
         
-        self.init(kidStudentUUID: kidStudentUUID, dateCreated: dateCreated, dateEdited: dateEdited, mostRecentPromotion: mostRecentPromotion, profilePic: profilePic, username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: mobile, email: email)
+        self.init(kidStudentUUID: kidStudentUUID, dateCreated: dateCreated, dateEdited: dateEdited, birthdate: birthdate, mostRecentPromotion: mostRecentPromotion, profilePic: profilePic, username: username, password: password, firstName: firstName, lastName: lastName, parentGuardian: parentGuardian, phone: phone, mobile: mobile, email: email)
     }
 }
 

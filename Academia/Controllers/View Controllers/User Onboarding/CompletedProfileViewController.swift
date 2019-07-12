@@ -82,10 +82,21 @@ class CompletedProfileViewController: UIViewController {
     var ownerDocRef: DocumentReference!
     var adultStudentDocRef: DocumentReference!
     var kidStudentDocRef: DocumentReference!
+    var beltDocRef: DocumentReference!
+    var addressDocRef: DocumentReference!
+    var emergencyContactDocRef: DocumentReference!
+    var groupDocRef: DocumentReference!
     var firestoreOwnerListener: ListenerRegistration!
     var firestoreAdultStudentListener: ListenerRegistration!
     var firestoreKidStudentListener: ListenerRegistration!
     var db: Firestore!
+    // Firebase Firestore data model properties
+    var beltFirestore: BeltFirestore!
+    var addressFirestore: AddressFirestore!
+    var emergencyContactFirestore: EmergencyContactFirestore!
+    var groupFirestore: GroupFirestore!
+    var newStudentKidFirestore: KidStudentFirestore!
+    var newStudentAdultFirestore: AdultStudentFirestore!
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -417,6 +428,16 @@ extension CompletedProfileViewController {
         createEmergencyContactCoreDataModel()
         // create new user account in CoreData
         createUserAccountAndLoginCoreDataModel()
+        
+        // Firebase Firestore versions
+        // create new user account
+        createUserAccountFirestoreDataModel()
+        // create belt model
+        createBeltFirestore(owner: <#T##OwnerFirestore?#>, kid: <#T##KidStudentFirestore?#>, adult: <#T##AdultStudentFirestore?#>)
+        // create address model
+        createAddressFirebaseDataModel(owner: <#T##OwnerFirestore?#>, kid: <#T##KidStudentFirestore?#>, adult: <#T##AdultStudentFirestore?#>)
+        // create emergency contact model
+        createEmergencyContactFirebaseDataModel(owner: <#T##OwnerFirestore?#>, kid: <#T##KidStudentFirestore?#>, adult: <#T##AdultStudentFirestore?#>)
     }
 }
 
@@ -437,7 +458,7 @@ extension CompletedProfileViewController {
         guard let parentGuardian = parentGuardian else { print("fail parentGuardian"); return }
         guard let profilePic = profilePic else { print("fail profilePic"); return }
         
-//        guard let birthdate = birthdate else { print("fail birthdate"); return }
+        guard let birthdate = birthdate else { print("fail birthdate"); return }
         
         guard let beltCD = beltCD else { print("fail beltCD"); return }
         
@@ -456,7 +477,7 @@ extension CompletedProfileViewController {
         if isOwner{
             
             // FIREBASE FIRESTORE TESTING
-            let dataToSave: [String : Any] = ["username" : username, "password" : password, "firstName" : firstName, "lastName" : lastName, "phone" : phone, "email" : email, "mobile" : mobileCD]
+            let dataToSave: [String : Any] = ["birthdate" : birthdate, "username" : username, "password" : password, "firstName" : firstName, "lastName" : lastName, "phone" : phone, "email" : email, "mobile" : mobileCD]
             
             ownerDocRef.setData(dataToSave) { (error) in
                 if let error = error {
@@ -467,7 +488,7 @@ extension CompletedProfileViewController {
             }
             
             // test for new testModel object creation within Firestore using the username and password checks in lines 143 and 147 above, respectively.
-            let test = OwnerFirestore(mostRecentPromotion: Date(), profilePic: "URL I haven't set up yet", username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: mobileCD, email: email)
+            let test = OwnerFirestore(birthdate: birthdate, mostRecentPromotion: nil, profilePic: "I don't have this URL Setup yet", username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: mobile, email: email)
             
             let testModelRef = self.db.collection("owners")
             
@@ -499,7 +520,7 @@ extension CompletedProfileViewController {
         } else if isKid {
             
             // FIREBASE FIRESTORE TESTING
-            let dataToSave: [String : Any] = ["username" : username, "password" : password, "firstName" : firstName, "lastName" : lastName, "phone" : phone, "email" : email, "mobile" : mobileCD]
+            let dataToSave: [String : Any] = ["birthdate" : birthdate, "username" : username, "password" : password, "firstName" : firstName, "lastName" : lastName, "phone" : phone, "email" : email, "mobile" : mobileCD]
             
             kidStudentDocRef.setData(dataToSave) { (error) in
                 if let error = error {
@@ -510,7 +531,7 @@ extension CompletedProfileViewController {
             }
             
             // test for new testModel object creation within Firestore using the username and password checks in lines 143 and 147 above, respectively.
-            let test = KidStudentFirestore(mostRecentPromotion: Date(), profilePic: "URL I haven't set up yet", username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: mobileCD, email: email)
+            let test = KidStudentFirestore(birthdate: birthdate, mostRecentPromotion: Date(), profilePic: "URL I haven't set up yet", username: username, password: password, firstName: firstName, lastName: lastName, parentGuardian: parentGuardian, phone: phone, mobile: mobileCD, email: email)
             
             let testModelRef = self.db.collection("owners").document("newOwner").collection("students")
             
@@ -550,7 +571,7 @@ extension CompletedProfileViewController {
         } else if !isKid {
             
             // FIREBASE FIRESTORE TESTING
-            let dataToSave: [String : Any] = ["username" : username, "password" : password, "firstName" : firstName, "lastName" : lastName, "phone" : phone, "email" : email, "mobile" : mobileCD]
+            let dataToSave: [String : Any] = ["birthdate" : birthdate, "username" : username, "password" : password, "firstName" : firstName, "lastName" : lastName, "phone" : phone, "email" : email, "mobile" : mobileCD]
             
             adultStudentDocRef.setData(dataToSave) { (error) in
                 if let error = error {
@@ -561,7 +582,7 @@ extension CompletedProfileViewController {
             }
             
             // test for new testModel object creation within Firestore using the username and password checks in lines 143 and 147 above, respectively.
-            let test = AdultStudentFirestore(mostRecentPromotion: Date(), profilePic: "URL I haven't set up yet", username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: mobileCD, email: email)
+            let test = AdultStudentFirestore(birthdate: birthdate, mostRecentPromotion: Date(), profilePic: "URL I haven't set up yet", username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: mobileCD, email: email)
             
             let testModelRef = self.db.collection("owners").document("newOwner").collection("students")
             
@@ -602,6 +623,129 @@ extension CompletedProfileViewController {
         // CoreData save
         OwnerCDModelController.shared.saveToPersistentStorage()
     }
+    
+    func createUserAccountFirestoreDataModel() {
+        
+        guard let isOwner = isOwner else { print("fail isOwner"); return }
+        guard let isKid = isKid else { print("fail isKid"); return }
+        
+        guard let username = username else { print("fail username"); return }
+        guard let password = password else { print("fail password"); return }
+        
+        guard let firstName = firstName else { print("fail firtsName"); return }
+        guard let lastName = lastName else { print("fail lastName"); return }
+        guard let parentGuardian = parentGuardian else { print("fail parentGuardian"); return }
+        
+        guard let profilePic = profilePic else { print("fail profilePic"); return }
+        
+        guard let birthdate = birthdate else { print("fail birthdate"); return }
+        
+        guard let phone = phone else { print("fail phone"); return }
+        guard let email = email else { print("fail email"); return }
+        let mobileCD = mobile ?? ""
+        
+        // convert profilePic to Data
+        guard let profilePicData = profilePic.jpegData(compressionQuality: 1) else { print("fail profilePicData"); return }
+        
+        if isOwner{
+            
+            // FIREBASE FIRESTORE TESTING
+            let dataToSave: [String : Any] = ["birthdate" : birthdate, "username" : username, "password" : password, "firstName" : firstName, "lastName" : lastName, "phone" : phone, "email" : email, "mobile" : mobileCD]
+            
+            ownerDocRef.setData(dataToSave) { (error) in
+                if let error = error {
+                    print("ERROR: \(error.localizedDescription) error occurred while trying to save to Firebase Firestore in CompletedProfileViewController.swift -> viewWillAppear() - line 180. ")
+                } else {
+                    print("Data successfully saved to Firebase Firestore")
+                }
+            }
+            
+            // test for new testModel object creation within Firestore using the username and password checks in lines 143 and 147 above, respectively.
+            let test = OwnerFirestore(birthdate: birthdate, mostRecentPromotion: nil, profilePic: "I don't have this URL Setup yet", username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: mobile, email: email)
+            
+            let testModelRef = self.db.collection("owners")
+            
+            testModelRef.document("newOwner").setData(test.dictionary) { (error) in
+                // ^^^ NOTE: the document id can be created and set to my specifications as it is currently being set in the .document(usernameText) portion of the method call above.  an option would be to have the id as its own key:value pair in the TestModel dictionary property itself, and then access it via the dictionary key and set it in below in the place of the current 'usernameText' property
+                if let error = error {
+                    print("ERROR: error: \(error.localizedDescription) occurred while trying to save test.dictionary to Firestore in LoginVC.swift -> createAccountButtonTapped(sender:) - line 194.")
+                } else {
+                    print("test dictionary data successfully saved to Firestore document in tests collection")
+                }
+            }
+            
+        } else if isKid {
+            
+            // FIREBASE FIRESTORE TESTING
+            let dataToSave: [String : Any] = ["birthdate" : birthdate, "username" : username, "password" : password, "firstName" : firstName, "lastName" : lastName, "parentGuardian" : parentGuardian, "phone" : phone, "email" : email, "mobile" : mobileCD]
+            
+            kidStudentDocRef.setData(dataToSave) { (error) in
+                if let error = error {
+                    print("ERROR: \(error.localizedDescription) error occurred while trying to save to Firebase Firestore in CompletedProfileViewController.swift -> viewWillAppear() - line 180. ")
+                } else {
+                    print("Data successfully saved to Firebase Firestore")
+                }
+            }
+            
+            // test for new testModel object creation within Firestore using the username and password checks in lines 143 and 147 above, respectively.
+            let test = KidStudentFirestore(birthdate: birthdate, mostRecentPromotion: Date(), profilePic: "URL I haven't set up yet", username: username, password: password, firstName: firstName, lastName: lastName, parentGuardian: parentGuardian, phone: phone, mobile: mobileCD, email: email)
+            
+            let testModelRef = self.db.collection("owners").document("newOwner").collection("students")
+            
+            testModelRef.document("newKidStudent").setData(test.dictionary) { (error) in
+                // ^^^ NOTE: the document id can be created and set to my specifications as it is currently being set in the .document(usernameText) portion of the method call above.  an option would be to have the id as its own key:value pair in the TestModel dictionary property itself, and then access it via the dictionary key and set it in below in the place of the current 'usernameText' property
+                if let error = error {
+                    print("ERROR: error: \(error.localizedDescription) occurred while trying to save test.dictionary to Firestore in LoginVC.swift -> createAccountButtonTapped(sender:) - line 194.")
+                } else {
+                    print("test dictionary data successfully saved to Firestore document in tests collection")
+                }
+            }
+            // if isOwnerAddingStudent == true, then we update the local newStudentKidCD property to the newly created newStudentKid
+//            if let isOwnerAddingStudent = isOwnerAddingStudent {
+//
+//                if isOwnerAddingStudent {
+//                    // pass to CoreData local property
+//                    newStudentKidCD = newStudentKid
+//                }
+//            }
+            
+        } else if !isKid {
+            
+            // FIREBASE FIRESTORE TESTING
+            let dataToSave: [String : Any] = ["birthdate" : birthdate, "username" : username, "password" : password, "firstName" : firstName, "lastName" : lastName, "phone" : phone, "email" : email, "mobile" : mobileCD]
+            
+            adultStudentDocRef.setData(dataToSave) { (error) in
+                if let error = error {
+                    print("ERROR: \(error.localizedDescription) error occurred while trying to save to Firebase Firestore in CompletedProfileViewController.swift -> viewWillAppear() - line 180. ")
+                } else {
+                    print("Data successfully saved to Firebase Firestore")
+                }
+            }
+            
+            // test for new testModel object creation within Firestore using the username and password checks in lines 143 and 147 above, respectively.
+            let test = AdultStudentFirestore(birthdate: birthdate, mostRecentPromotion: Date(), profilePic: "URL I haven't set up yet", username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: mobileCD, email: email)
+            
+            let testModelRef = self.db.collection("owners").document("newOwner").collection("students")
+            
+            testModelRef.document("newAdultStudent").setData(test.dictionary) { (error) in
+                // ^^^ NOTE: the document id can be created and set to my specifications as it is currently being set in the .document(usernameText) portion of the method call above.  an option would be to have the id as its own key:value pair in the TestModel dictionary property itself, and then access it via the dictionary key and set it in below in the place of the current 'usernameText' property
+                if let error = error {
+                    print("ERROR: error: \(error.localizedDescription) occurred while trying to save test.dictionary to Firestore in LoginVC.swift -> createAccountButtonTapped(sender:) - line 194.")
+                } else {
+                    print("test dictionary data successfully saved to Firestore document in tests collection")
+                }
+            }
+            
+            // if isOwnerAddingStudent == true, then we update the local newStudentAdultCD property to the newly created newStudentAdult
+//            if let isOwnerAddingStudent = isOwnerAddingStudent {
+//
+//                if isOwnerAddingStudent {
+//                    // pass to CoreData local property
+//                    newStudentAdultCD = newStudentAdult
+//                }
+//            }
+        }
+    }
 }
 
 
@@ -618,6 +762,16 @@ extension CompletedProfileViewController {
         
         beltCD = BeltCD(beltLevel: beltLevel, beltPromotionAttendanceCriteria: nil, beltStripeAgeDetails: nil, classesToNextPromotion: nil, numberOfStripes: stripesInt16)
     }
+    
+    func createBeltFirestore(owner: OwnerFirestore?, kid: KidStudentFirestore?, adult: AdultStudentFirestore?) {
+    
+        // check for valid belt properties
+        guard let numberOfStripes = numberOfStripes else { return }
+        guard let beltLevel = beltLevel?.rawValue else { return }
+    
+        beltFirestore = BeltFirestore(beltLevel: beltLevel, beltPromotionAttendanceCriteria: nil, beltStripeAgeDetails: nil, classesToNextPromotion: nil, numberOfStripes: numberOfStripes)
+    
+    }
 }
 
 
@@ -629,7 +783,7 @@ extension CompletedProfileViewController {
         
         // check the birthdate optional value
         guard let birthdate = birthdate else {
-            print("user has not added a birthdate in CompletedProfileViewController.swift -> addBirtdate() - line 543")
+            print("user has not added a birthdate in CompletedProfileViewController.swift -> addBirtdate() - line 639")
             return
         }
         // check for the appropriate user to add birthdate when present
@@ -664,6 +818,21 @@ extension CompletedProfileViewController {
         
         addressCD = AddressCD(addressLine1: addressLine1CD, addressLine2: addressLine2CD, city: cityCD, state: stateCD, zipCode: zipCodeCD)
     }
+
+    func createAddressFirebaseDataModel(owner: OwnerFirestore?, kid: KidStudentFirestore?, adult: AdultStudentFirestore?)  {
+        
+        let addressLine1Firebase = addressLine1 ?? ""
+        
+        let addressLine2Firebase = addressLine2 ?? ""
+        
+        let cityFirebase = city ?? ""
+        
+        let stateFirebase = state ?? ""
+        
+        let zipCodeFirebase = zipCode ?? ""
+        
+        addressFirestore = AddressFirestore(addressLine1: addressLine1Firebase, addressLine2: addressLine2Firebase, city: cityFirebase, state: stateFirebase, zipCode: zipCodeFirebase)
+    }
 }
 
 
@@ -680,5 +849,38 @@ extension CompletedProfileViewController {
         let relationship = emergencyContactRelationship ?? ""
         
         emergencyContactCD = EmergencyContactCD(name: name, phone: phone, relationship: relationship)
+    }
+    
+    func createEmergencyContactFirebaseDataModel(owner: OwnerFirestore?, kid: KidStudentFirestore?, adult: AdultStudentFirestore?) {
+        
+        let name = emergencyContactName ?? ""
+        
+        let phone = emergencyContactPhone ?? ""
+        
+        let relationship = emergencyContactRelationship ?? ""
+    
+        // FIREBASE FIRESTORE TESTING
+        let dataToSave: [String : Any] = ["name" : name, "phone" : phone, "relationship" : relationship]
+        
+        emergencyContactDocRef.setData(dataToSave) { (error) in
+            if let error = error {
+                print("ERROR: \(error.localizedDescription) error occurred while trying to save to Firebase Firestore in CompletedProfileViewController.swift -> viewWillAppear() - line 746. ")
+            } else {
+                print("Data successfully saved to Firebase Firestore")
+            }
+        }
+        
+        // test for new testModel object creation within Firestore using the username and password checks in lines 143 and 147 above, respectively.
+        emergencyContactFirestore = EmergencyContactFirestore(name: name, phone: phone, relationship: relationship)
+        
+        let testModelRef = self.db.collection("owners").document("newOwner").collection("students")
+        testModelRef.document("newAdultStudent").setData(emergencyContactFirestore.dictionary) { (error) in
+            // ^^^ NOTE: the document id can be created and set to my specifications as it is currently being set in the .document(usernameText) portion of the method call above.  an option would be to have the id as its own key:value pair in the TestModel dictionary property itself, and then access it via the dictionary key and set it in below in the place of the current 'usernameText' property
+            if let error = error {
+                print("ERROR: error: \(error.localizedDescription) occurred while trying to save test.dictionary to Firestore in LoginVC.swift -> createAccountButtonTapped(sender:) - line 194.")
+            } else {
+                print("test dictionary data successfully saved to Firestore document in tests collection")
+            }
+        }
     }
 }
