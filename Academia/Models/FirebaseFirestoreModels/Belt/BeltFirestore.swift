@@ -21,8 +21,10 @@ struct BeltFirestore {
     var dateCreated: Date
     var dateEdited: Date
     var beltLevel: String
+    // these two may be rompting the need for an academy belt template class all its own
     var beltPromotionAttendanceCriteria: BeltPromotionAttendanceCriteriaFirestore?
     var beltStripeAgeDetails: BeltStripeAgeDetailsFirestore?
+    // see comment ^^^
     var classesToNextPromotion: Int?
     var numberOfStripes: Int
     

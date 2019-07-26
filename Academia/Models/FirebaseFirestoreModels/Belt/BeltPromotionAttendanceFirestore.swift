@@ -15,6 +15,14 @@ protocol BeltPromotionAttendanceCriteriaFirestoreModelSerializable {
 
 struct BeltPromotionAttendanceCriteriaFirestore {
     
+    // need to change properties according to the stripes...
+    // we can still have one macro belt criteria that will include all available stripes...
+    // it is important to remember that not every stripe has the same amount of time for each stripe
+    // the decision is whther to have the stripes listed as properties independent of colors and just have stripes 1-11 with stripes 5-11 being optionals
+    // then one would have a boolean check to see if the belt is adult or kid
+    // then could have checks for black, coral, white red, and red adult belts
+    // depending on boolean result, then that would dictate color scheme for either the adults or the kids stripes
+    
     var beltLevel: String
     var attendancePerStripe: Int
     var attendancePerBelt: Int

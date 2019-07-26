@@ -24,7 +24,7 @@ struct AulaFirestore {
     var dayOfTheWeek: String
     var time: String
     var timeCode: Int
-    var location: LocationFirestore?
+    var locationUUID: String?
     
     
     var dictionary: [String : Any] {
@@ -38,7 +38,7 @@ struct AulaFirestore {
             "dayOfTheWeek" : dayOfTheWeek,
             "time" : time,
             "timeCode" : timeCode,
-            "location" : location as Any
+            "locationUUID" : locationUUID as Any
         ]
     }
     
@@ -53,7 +53,7 @@ struct AulaFirestore {
         dayOfTheWeek: String,
         time: String,
         timeCode: Int,
-        location: LocationFirestore?
+        locationUUID: String?
         ) {
         
         self.aulaUUID = aulaUUID
@@ -65,7 +65,7 @@ struct AulaFirestore {
         self.dayOfTheWeek = dayOfTheWeek
         self.time = time
         self.timeCode = timeCode
-        self.location = location
+        self.locationUUID = locationUUID
     }
 }
 
@@ -129,13 +129,13 @@ extension AulaFirestore: AulaFirestoreModelSerializable {
             return nil
         }
         
-        guard let location = dictionary["location"] as? LocationFirestore else {
+        guard let locationUUID = dictionary["locationUUID"] as? String? else {
             
-            print("ERROR: nil value found for location in firestore dictionary in AulaFirestore.swift -> init(dictionary:) - line 133.")
+            print("ERROR: nil value found for locationUUID in firestore dictionary in AulaFirestore.swift -> init(dictionary:) - line 133.")
             return nil
         }
         
-        self.init(aulaUUID: aulaUUID, active: active, dateCreated: dateCreated, dateEdited: dateEdited, aulaName: aulaName, aulaDescription: aulaDescription, dayOfTheWeek: dayOfTheWeek, time: time, timeCode: timeCode, location: location)
+        self.init(aulaUUID: aulaUUID, active: active, dateCreated: dateCreated, dateEdited: dateEdited, aulaName: aulaName, aulaDescription: aulaDescription, dayOfTheWeek: dayOfTheWeek, time: time, timeCode: timeCode, locationUUID: locationUUID)
     }
 }
 

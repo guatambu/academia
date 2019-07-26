@@ -16,36 +16,36 @@ protocol AulaAttendanceFirestoreModelSerializable {
 struct AulaAttendanceFirestore {
     
     var currentDate: String
-    var adultStudent: AdultStudentFirestore?
-    var kidStudent: KidStudentFirestore?
-    var owner: OwnerFirestore?
-    var aula: AulaFirestore?
+    var adultStudents: [String]?
+    var kidStudents: [String]?
+    var owners: [String]?
+    var aulaUUID: String
     
     
     var dictionary: [String : Any] {
         return [
             "currentDate" : currentDate,
-            "studentAdultAttendance" : adultStudent as Any,
-            "studentKidAttendance" : kidStudent as Any,
-            "ownerAttendance" : owner as Any,
-            "aula" : aula as Any
+            "studentAdultsAttendance" : adultStudents as Any,
+            "studentKidsAttendance" : kidStudents as Any,
+            "ownersAttendance" : owners as Any,
+            "aulaUUID" : aulaUUID
         ]
     }
     
     
     // convenience initializer to allow creation of an OwnerCD object via Academia CoreDataStack's managedObjectContext
     init(currentDate: String = "\(Date())",
-         adultStudent: AdultStudentFirestore?,
-         kidStudent: KidStudentFirestore?,
-         owner: OwnerFirestore?,
-         aula: AulaFirestore?
+         adultStudents: [String]?,
+         kidStudents: [String]?,
+         owners: [String]?,
+         aulaUUID: String
         ) {
         
         self.currentDate = currentDate
-        self.adultStudent = adultStudent
-        self.kidStudent = kidStudent
-        self.owner = owner
-        self.aula = aula
+        self.adultStudents = adultStudents
+        self.kidStudents = kidStudents
+        self.owners = owners
+        self.aulaUUID = aulaUUID
     }
 }
 
@@ -61,30 +61,30 @@ extension AulaAttendanceFirestore: AulaAttendanceFirestoreModelSerializable {
             return nil
         }
         
-        guard let adultStudent = dictionary["adultStudent"] as? AdultStudentFirestore else {
+        guard let adultStudents = dictionary["adultStudents"] as? [String]? else {
             
-            print("ERROR: nil value found for adultStudent in firestore dictionary in AulaAttendanceFirestore.swift -> init(dictionary:) - line 66.")
+            print("ERROR: nil value found for adultStudents in firestore dictionary in AulaAttendanceFirestore.swift -> init(dictionary:) - line 66.")
             return nil
         }
         
-        guard let kidStudent = dictionary["kidStudent"] as? KidStudentFirestore else {
+        guard let kidStudents = dictionary["kidStudents"] as? [String]? else {
             
-            print("ERROR: nil value found for kidStudent in firestore dictionary in AulaAttendanceFirestore.swift -> init(dictionary:) - line 72.")
+            print("ERROR: nil value found for kidStudents in firestore dictionary in AulaAttendanceFirestore.swift -> init(dictionary:) - line 72.")
             return nil
         }
         
-        guard let owner = dictionary["owner"] as? OwnerFirestore else {
+        guard let owners = dictionary["owners"] as? [String]? else {
             
-            print("ERROR: nil value found for owner in firestore dictionary in AulaAttendanceFirestore.swift -> init(dictionary:) - line 78.")
+            print("ERROR: nil value found for owners in firestore dictionary in AulaAttendanceFirestore.swift -> init(dictionary:) - line 78.")
             return nil
         }
         
-        guard let aula = dictionary["aula"] as? AulaFirestore else {
+        guard let aulaUUID = dictionary["aulaUUID"] as? String else {
             
-            print("ERROR: nil value found aula in firestore dictionary in AulaAttendanceFirestore.swift -> init(dictionary:) - line 84.")
+            print("ERROR: nil value found aulaUUID in firestore dictionary in AulaAttendanceFirestore.swift -> init(dictionary:) - line 82.")
             return nil
         }
         
-        self.init(currentDate: currentDate, adultStudent: adultStudent, kidStudent: kidStudent, owner: owner, aula: aula)
+        self.init(currentDate: currentDate, adultStudents: adultStudents, kidStudents: kidStudents, owners: owners, aulaUUID: aulaUUID)
     }
 }
