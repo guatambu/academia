@@ -26,7 +26,6 @@ struct AulaFirestore {
     var timeCode: Int
     var locationUUID: String?
     
-    
     var dictionary: [String : Any] {
         return [
             "aulaUUID" : aulaUUID,
@@ -41,7 +40,6 @@ struct AulaFirestore {
             "locationUUID" : locationUUID as Any
         ]
     }
-    
     
     // initializer to allow creation of an AulaFirestore object
     init(aulaUUID: String = "\(UUID())",
