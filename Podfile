@@ -10,6 +10,8 @@ target 'Academia' do
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage' 
+  pod 'FirebaseUI'
+  pod 'FirebaseUI/Auth'
 
   target 'AcademiaTests' do
     inherit! :search_paths

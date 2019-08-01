@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import FirebaseCore
 import FirebaseFirestore
+import FirebaseStorage
 
 class CompletedProfileViewController: UIViewController {
     
@@ -98,6 +99,8 @@ class CompletedProfileViewController: UIViewController {
     // Firebase Firestore user data models
     var newStudentKidFirestore: KidStudentFirestore!
     var newStudentAdultFirestore: AdultStudentFirestore!
+    // Firebase Storage Reference
+    let firebaseStorageRef = Storage.storage().reference()
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -569,7 +572,15 @@ extension CompletedProfileViewController {
         // convert profilePic to Data
         guard let profilePicData = profilePic.jpegData(compressionQuality: 1) else { print("fail profilePicData"); return }
         
+        // FIREBASE STORAGE REFERENCE
+        let profilePicsRef = firebaseStorageRef.child("profilePics")
+        // TODO: create local file path for image
+            // in order for this need to build in Firebase Authentication because that will give a filepath tied to the current user and their profile pic
+        
         if isOwner{
+            
+            // FIREBASE STORAGE OWNER PROFILE PICS REFERENCE
+            let ownersProfilePicsRef = profilePicsRef.child("owners")
             
             // FIREBASE FIRESTORE TESTING
             let dataToSave: [String : Any] = ["birthdate" : birthdate, "username" : username, "password" : password, "firstName" : firstName, "lastName" : lastName, "phone" : phone, "email" : email, "mobile" : mobileCD]
@@ -601,6 +612,9 @@ extension CompletedProfileViewController {
             createUserDataModelProperties(owner: test, kid: nil, adult: nil, userModelRef: testModelRef.document("newOwner"))
             
         } else if isKid {
+            
+            // FIREBASE STORAGE KID STUDENT PROFILE PICS REFERENCE
+            let kidStudentsProfilePicsRef = profilePicsRef.child("kidStudents")
             
             // FIREBASE FIRESTORE TESTING
             let dataToSave: [String : Any] = ["birthdate" : birthdate, "username" : username, "password" : password, "firstName" : firstName, "lastName" : lastName, "parentGuardian" : parentGuardian, "phone" : phone, "email" : email, "mobile" : mobileCD]
@@ -640,6 +654,9 @@ extension CompletedProfileViewController {
 //            }
             
         } else if !isKid {
+            
+            // FIREBASE STORAGE ADULT STUDENT PROFILE PICS REFERENCE
+            let adultStudentsProfilePicsRef = profilePicsRef.child("adultStudents")
             
             // FIREBASE FIRESTORE TESTING
             let dataToSave: [String : Any] = ["birthdate" : birthdate, "username" : username, "password" : password, "firstName" : firstName, "lastName" : lastName, "phone" : phone, "email" : email, "mobile" : mobileCD]
