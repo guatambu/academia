@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 class BirthdayViewController: UIViewController {
     
@@ -49,6 +50,9 @@ class BirthdayViewController: UIViewController {
     var studentAdult: StudentAdultCD?
     var studentKid: StudentKidCD?
     var groupCD: GroupCD?
+    
+    // Firebase Properties
+    var birthdateTimestamp: Timestamp?
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -109,6 +113,8 @@ class BirthdayViewController: UIViewController {
     @IBAction func birthdayPicked(_ sender: UIDatePicker) {
         
         birthdate = birthdayDatePickerView.date
+        
+        birthdateTimestamp = Timestamp(date: birthdate ?? Date())
 
         print("\(String(describing: birthdate))")
     }
@@ -146,6 +152,7 @@ class BirthdayViewController: UIViewController {
         destViewController.parentGuardian = parentGuardian
         destViewController.profilePic = profilePic
         destViewController.birthdate = birthdate
+        destViewController.birthdateTimestamp = birthdateTimestamp
         
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
         destViewController.group = group

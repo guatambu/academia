@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 protocol OwnerFirestoreModelSerializable {
     init?(dictionary: [String : Any])
@@ -18,10 +19,10 @@ struct OwnerFirestore {
     var ownerUUID: String
     var isOwner: Bool
     var isInstructor: Bool
-    var dateCreated: Date
-    var dateEdited: Date
-    var birthdate: Date
-    var mostRecentPromotion: Date?
+    var dateCreated: Timestamp
+    var dateEdited: Timestamp
+    var birthdate: Timestamp
+    var mostRecentPromotion: Timestamp?
     //var studentStatus: StudentStatusCD?
     var profilePic: String?
     var username: String
@@ -41,7 +42,7 @@ struct OwnerFirestore {
             "dateCreated" : dateCreated,
             "dateEdited" : dateEdited,
             "birthdate" : birthdate,
-            "mostRecentPromotion" : mostRecentPromotion ?? Date(),
+            "mostRecentPromotion" : mostRecentPromotion ?? Timestamp(),
             // "studentStatus" : studentStatus,
             "profilePic" : profilePic ?? "",
             "username" : username,
@@ -58,10 +59,10 @@ struct OwnerFirestore {
     init(ownerUUID: String = "\(UUID())",
                      isOwner: Bool = true,
                      isInstructor: Bool = true,
-                     dateCreated: Date = Date(),
-                     dateEdited: Date = Date(),
-                     birthdate: Date,
-                     mostRecentPromotion: Date?,
+                     dateCreated: Timestamp = Timestamp(),
+                     dateEdited: Timestamp = Timestamp(),
+                     birthdate: Timestamp,
+                     mostRecentPromotion: Timestamp?,
                      //studentStatus: StudentStatusCD?,
                      profilePic: String?,
                      username: String,
@@ -116,25 +117,25 @@ extension OwnerFirestore: OwnerFirestoreModelSerializable {
             return nil
         }
         
-        guard let dateCreated = dictionary["dateCreated"] as? Date else {
+        guard let dateCreated = dictionary["dateCreated"] as? Timestamp else {
             
             print("ERROR: nil value found for dateCreated in firestore dictionary in OwnerFirestore.swift -> init(dictionary:) - line 121.")
             return nil
         }
         
-        guard let dateEdited = dictionary["dateEdited"] as? Date else {
+        guard let dateEdited = dictionary["dateEdited"] as? Timestamp else {
             
             print("ERROR: nil value found for dateEdited in firestore dictionary in OwnerFirestore.swift -> init(dictionary:) - line 127.")
             return nil
         }
         
-        guard let birthdate = dictionary["birthdate"] as? Date else {
+        guard let birthdate = dictionary["birthdate"] as? Timestamp else {
 
             print("ERROR: nil value found for birthdate in firestore dictionary in OwnerFirestore.swift -> init(dictionary:) - line 133.")
             return nil
         }
         
-        guard let mostRecentPromotion = dictionary["mostRecentPromotion"] as? Date else {
+        guard let mostRecentPromotion = dictionary["mostRecentPromotion"] as? Timestamp else {
             
             print("ERROR: nil value found for mostRecentPromotion in firestore dictionary in OwnerFirestore.swift -> init(dictionary:) - line 139.")
             return nil

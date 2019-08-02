@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 class EmergencyContactViewController: UIViewController {
 
@@ -61,6 +62,8 @@ class EmergencyContactViewController: UIViewController {
     var studentAdultCD: StudentAdultCD?
     var studentKidCD: StudentKidCD?
     var groupCD: GroupCD?
+    // Firebase Properties
+    var birthdateTimestamp: Timestamp?
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -193,16 +196,21 @@ class EmergencyContactViewController: UIViewController {
         destViewController.parentGuardian = parentGuardian
         destViewController.profilePic = profilePic
         destViewController.birthdate = birthdate
+        destViewController.birthdateTimestamp = birthdateTimestamp
+        
         destViewController.beltLevel = beltLevel
         destViewController.numberOfStripes = numberOfStripes
+        
         destViewController.addressLine1 = addressLine1
         destViewController.addressLine2 = addressLine2
         destViewController.city = city
         destViewController.state = state
         destViewController.zipCode = zipCode
+        
         destViewController.phone = phone
         destViewController.mobile = mobile
         destViewController.email = email
+        
         destViewController.emergencyContactName = emergencyContactName
         destViewController.emergencyContactRelationship = emergencyContactRelationship
         destViewController.emergencyContactPhone = emergencyContactPhone

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 class NameAndBeltViewController: UIViewController {
     
@@ -46,6 +47,8 @@ class NameAndBeltViewController: UIViewController {
     var studentAdult: StudentAdultCD?
     var studentKid: StudentKidCD?
     var groupCD: GroupCD?
+    // Firebase Properties
+    var birthdateTimestamp: Timestamp?
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -135,6 +138,8 @@ class NameAndBeltViewController: UIViewController {
         destViewController.parentGuardian = parentGuardian
         destViewController.profilePic = profilePic
         destViewController.birthdate = birthdate
+        destViewController.birthdateTimestamp = birthdateTimestamp
+        
         destViewController.beltLevel = beltLevel
         destViewController.numberOfStripes = numberOfStripes
         
