@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 protocol BeltFirestoreModelSerializable {
     init?(dictionary: [String : Any])
@@ -17,8 +18,8 @@ struct BeltFirestore {
     
     var active: Bool
     var elligibleForNextBelt: Bool
-    var dateCreated: Date
-    var dateEdited: Date
+    var dateCreated: Timestamp
+    var dateEdited: Timestamp
     var beltLevel: String
     // these two may be rompting the need for an academy belt template class all its own
     var beltPromotionAttendanceCriteria: BeltPromotionAttendanceCriteriaFirestore?
@@ -46,8 +47,8 @@ struct BeltFirestore {
     // initializer to allow creation of a BeltFirestore object
     init(active: Bool = true,
          elligibleForNextBelt: Bool = false,
-         dateCreated: Date = Date(),
-         dateEdited: Date = Date(),
+         dateCreated: Timestamp = Timestamp(),
+         dateEdited: Timestamp = Timestamp(),
          beltLevel: String,
          beltPromotionAttendanceCriteria: BeltPromotionAttendanceCriteriaFirestore?,
          beltStripeAgeDetails: BeltStripeAgeDetailsFirestore?,
@@ -72,13 +73,13 @@ extension BeltFirestore: BeltFirestoreModelSerializable {
     
     init?(dictionary: [String : Any]) {
         
-        guard let dateCreated = dictionary["dateCreated"] as? Date else {
+        guard let dateCreated = dictionary["dateCreated"] as? Timestamp else {
             
             print("ERROR: nil value found for dateCreated in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 77.")
             return nil
         }
         
-        guard let dateEdited = dictionary["dateEdited"] as? Date else {
+        guard let dateEdited = dictionary["dateEdited"] as? Timestamp else {
             
             print("ERROR: nil value found for dateEdited in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 83.")
             return nil

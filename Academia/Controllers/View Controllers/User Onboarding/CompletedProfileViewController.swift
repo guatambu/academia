@@ -492,6 +492,8 @@ extension CompletedProfileViewController {
         
         // convert profilePic to Data
         guard let profilePicData = profilePic.jpegData(compressionQuality: 1) else { print("fail profilePicData"); return }
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpeg"
         
         // FIREBASE AUTHENTICATION VIA EMAIL AND PASSWORD
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
@@ -518,13 +520,47 @@ extension CompletedProfileViewController {
             
             if isOwner{
             
-                // FIREBASE STORAGE OWNER PROFILE PICS REFERENCE
-                let ownersProfilePicsRef = profilePicsRef.child("owners")
-                
-                // FIREBASE FIRESTORE CREATE AND SAVE NEW OWNER MODEL
-                
                 let userUID = user.uid
                 
+                // FIREBASE STORAGE OWNER PROFILE PICS REFERENCE
+                let ownersProfilePicsRef = profilePicsRef.child("owners").child(userUID)
+                
+                let uploadTask = ownersProfilePicsRef.putData(profilePicData, metadata: metadata) { (metadata, error) in
+                    
+                    guard let metadata = metadata else {
+                        
+                        if let error = error {
+                            print("ERROR: \(error.localizedDescription) - error while uploading profile pic and its metadata in CompletedProfileVC.swift -> createUserAccountFirestoreDataModel() - line 532.")
+                        }
+                        return
+                    }
+                    
+                    ownersProfilePicsRef.downloadURL{ (url, error) in
+                        
+                        print(metadata.size)
+                        
+                        ownersProfilePicsRef.downloadURL { (url, error) in
+                            
+                            guard let downloadURL = url  else {
+                                
+                            print("ERROR: error after uploading profile pic and its metadata and then getting the URL in CompletedProfileVC.swift -> createUserAccountFirestoreDataModel() - line 546.")
+                            return
+                            }
+                            
+                            let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                            changeRequest?.photoURL = downloadURL
+                            changeRequest?.commitChanges { (error) in
+                                
+                                if let error = error {
+                                    
+                                    print("ERROR: \(error.localizedDescription) failure to execute change request with photoURL in new/current user a in CompletedProfileVC.swift -> createUserAccountFirestoreDataModel() - line 556.")
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                // FIREBASE FIRESTORE CREATE AND SAVE NEW OWNER MODEL
                 let owner = OwnerFirestore(birthdate: birthdateTimestamp, mostRecentPromotion: nil, profilePic: "I don't have this URL Setup yet", username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: self.mobile, email: email)
                 
                 self.ownerCollectionRef.document(userUID).setData(owner.dictionary) { (error) in
