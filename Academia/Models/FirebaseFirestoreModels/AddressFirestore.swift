@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 protocol AddressFirestoreModelSerializable {
     init?(dictionary: [String : Any])
@@ -20,8 +21,8 @@ struct AddressFirestore {
     var city: String
     var state: String
     var zipCode: String
-    var dateCreated: Date
-    var dateEdited: Date
+    var dateCreated: Timestamp
+    var dateEdited: Timestamp
     
     var dictionary: [String : Any] {
         return [
@@ -37,8 +38,8 @@ struct AddressFirestore {
     
     
     // initializer to allow creation of an AddressFirestore object 
-    init(dateCreated: Date = Date(),
-        dateEdited: Date = Date(),
+    init(dateCreated: Timestamp = Timestamp(),
+        dateEdited: Timestamp = Timestamp(),
         addressLine1: String,
         addressLine2: String?,
         city: String,
@@ -62,13 +63,13 @@ extension AddressFirestore: AddressFirestoreModelSerializable {
     init?(dictionary: [String : Any]) {
         
         
-        guard let dateCreated = dictionary["dateCreated"] as? Date else {
+        guard let dateCreated = dictionary["dateCreated"] as? Timestamp else {
             
             print("ERROR: nil value found for dateCreated in firestore dictionary in TestModel.swift -> init(dictionary:) - line 67.")
             return nil
         }
         
-        guard let dateEdited = dictionary["dateEdited"] as? Date else {
+        guard let dateEdited = dictionary["dateEdited"] as? Timestamp else {
             
             print("ERROR: nil value found for dateEdited in firestore dictionary in TestModel.swift -> init(dictionary:) - line 73.")
             return nil

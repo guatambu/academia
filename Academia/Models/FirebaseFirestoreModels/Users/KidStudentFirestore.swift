@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 protocol KidStudentFirestoreModelSerializable {
     init?(dictionary: [String : Any])
@@ -15,12 +16,11 @@ protocol KidStudentFirestoreModelSerializable {
 
 struct KidStudentFirestore {
     
-    var kidStudentUUID: String
     var isKid: Bool
-    var dateCreated: Date
-    var dateEdited: Date
+    var dateCreated: Timestamp
+    var dateEdited: Timestamp
     var birthdate: Date
-    var mostRecentPromotion: Date?
+    var mostRecentPromotion: Timestamp?
     //var studentStatus: StudentStatusCD?
     var profilePic: String?
     var username: String
@@ -35,7 +35,6 @@ struct KidStudentFirestore {
     
     var dictionary: [String : Any] {
         return [
-            "kidStudentUUID" : kidStudentUUID,
             "isKid" : isKid,
             "dateCreated" : dateCreated,
             "dateEdited" : dateEdited,
@@ -55,25 +54,23 @@ struct KidStudentFirestore {
     
     
     // initializer to allow creation of an KidStudentFirestore object
-    init(kidStudentUUID: String = "\(UUID())",
-        isKid: Bool = true,
-        dateCreated: Date = Date(),
-        dateEdited: Date = Date(),
-        birthdate: Date,
-        mostRecentPromotion: Date?,
-        //studentStatus: StudentStatusCD?,
-        profilePic: String?,
-        username: String,
-        password: String,
-        firstName: String,
-        lastName: String,
-        parentGuardian: String,
-        phone: String?,
-        mobile: String?,
-        email: String
-        ) {
+    init(isKid: Bool = true,
+         dateCreated: Timestamp = Timestamp(),
+         dateEdited: Timestamp = Timestamp(),
+         birthdate: Date,
+         mostRecentPromotion: Timestamp?,
+         //studentStatus: StudentStatusCD?,
+         profilePic: String?,
+         username: String,
+         password: String,
+         firstName: String,
+         lastName: String,
+         parentGuardian: String,
+         phone: String?,
+         mobile: String?,
+         email: String
+         ) {
         
-        self.kidStudentUUID = kidStudentUUID
         self.isKid = isKid
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
@@ -110,13 +107,13 @@ extension KidStudentFirestore: KidStudentFirestoreModelSerializable {
             return nil
         }
         
-        guard let dateCreated = dictionary["dateCreated"] as? Date else {
+        guard let dateCreated = dictionary["dateCreated"] as? Timestamp else {
             
             print("ERROR: nil value found for dateCreated in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 115.")
             return nil
         }
         
-        guard let dateEdited = dictionary["dateEdited"] as? Date else {
+        guard let dateEdited = dictionary["dateEdited"] as? Timestamp else {
             
             print("ERROR: nil value found for dateEdited in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 121.")
             return nil
@@ -127,7 +124,7 @@ extension KidStudentFirestore: KidStudentFirestoreModelSerializable {
             return nil
         }
         
-        guard let mostRecentPromotion = dictionary["mostRecentPromotion"] as? Date else {
+        guard let mostRecentPromotion = dictionary["mostRecentPromotion"] as? Timestamp else {
             
             print("ERROR: nil value found for mostRecentPromotion in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 132.")
             return nil
@@ -193,7 +190,7 @@ extension KidStudentFirestore: KidStudentFirestoreModelSerializable {
             return nil
         }
         
-        self.init(kidStudentUUID: kidStudentUUID, isKid: isKid, dateCreated: dateCreated, dateEdited: dateEdited, birthdate: birthdate, mostRecentPromotion: mostRecentPromotion, profilePic: profilePic, username: username, password: password, firstName: firstName, lastName: lastName, parentGuardian: parentGuardian, phone: phone, mobile: mobile, email: email)
+        self.init(isKid: isKid, dateCreated: dateCreated, dateEdited: dateEdited, birthdate: birthdate, mostRecentPromotion: mostRecentPromotion, profilePic: profilePic, username: username, password: password, firstName: firstName, lastName: lastName, parentGuardian: parentGuardian, phone: phone, mobile: mobile, email: email)
     }
 }
 

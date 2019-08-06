@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 protocol AdultStudentFirestoreModelSerializable {
     init?(dictionary: [String : Any])
@@ -15,13 +16,12 @@ protocol AdultStudentFirestoreModelSerializable {
 
 struct AdultStudentFirestore {
     
-    var adultStudentUUID: String
     var isKid: Bool
     var isInstructor: Bool
-    var dateCreated: Date
-    var dateEdited: Date
+    var dateCreated: Timestamp
+    var dateEdited: Timestamp
     var birthdate: Date
-    var mostRecentPromotion: Date?
+    var mostRecentPromotion: Timestamp?
     //var studentStatus: StudentStatusCD?
     var profilePic: String?
     var username: String
@@ -35,7 +35,6 @@ struct AdultStudentFirestore {
     
     var dictionary: [String : Any] {
         return [
-            "adultStudentUUID" : adultStudentUUID,
             "isKid" : isKid,
             "isInstructor" : isInstructor,
             "dateCreated" : dateCreated,
@@ -55,25 +54,23 @@ struct AdultStudentFirestore {
     
     
     // initializer to allow creation of an AdultStudentFirestore object
-    init(adultStudentUUID: String = "\(UUID())",
-        isKid: Bool = false,
-        isInstructor: Bool = true,
-        dateCreated: Date = Date(),
-        dateEdited: Date = Date(),
-        birthdate: Date,
-        mostRecentPromotion: Date?,
-        //studentStatus: StudentStatusCD?,
-        profilePic: String?,
-        username: String,
-        password: String,
-        firstName: String,
-        lastName: String,
-        phone: String?,
-        mobile: String?,
-        email: String
-        ) {
+    init(isKid: Bool = false,
+         isInstructor: Bool = true,
+         dateCreated: Timestamp = Timestamp(),
+         dateEdited: Timestamp = Timestamp(),
+         birthdate: Date,
+         mostRecentPromotion: Timestamp?,
+         //studentStatus: StudentStatusCD?,
+         profilePic: String?,
+         username: String,
+         password: String,
+         firstName: String,
+         lastName: String,
+         phone: String?,
+         mobile: String?,
+         email: String
+         ) {
         
-        self.adultStudentUUID = adultStudentUUID
         self.isKid = isKid
         self.isInstructor = isInstructor
         self.dateCreated = dateCreated
@@ -116,14 +113,14 @@ extension AdultStudentFirestore: AdultStudentFirestoreModelSerializable {
             return nil
         }
         
-        guard let dateCreated = dictionary["dateCreated"] as? Date else {
+        guard let dateCreated = dictionary["dateCreated"] as? Timestamp else {
             
             print("ERROR: nil value found for dateCreated in firestore dictionary in AdultStudentFirestore.swift -> init(dictionary:) - line 121.")
             return nil
         }
         
         
-        guard let dateEdited = dictionary["dateEdited"] as? Date else {
+        guard let dateEdited = dictionary["dateEdited"] as? Timestamp else {
             
             print("ERROR: nil value found for dateEdited in firestore dictionary in AdultStudentFirestore.swift -> init(dictionary:) - line 128.")
             return nil
@@ -135,7 +132,7 @@ extension AdultStudentFirestore: AdultStudentFirestoreModelSerializable {
             return nil
         }
         
-        guard let mostRecentPromotion = dictionary["mostRecentPromotion"] as? Date else {
+        guard let mostRecentPromotion = dictionary["mostRecentPromotion"] as? Timestamp else {
             
             print("ERROR: nil value found for mostRecentPromotion in firestore dictionary in AdultStudentFirestore.swift -> init(dictionary:) - line 140.")
             return nil
@@ -195,6 +192,6 @@ extension AdultStudentFirestore: AdultStudentFirestoreModelSerializable {
             return nil
         }
         
-        self.init(adultStudentUUID: adultStudentUUID, isKid: isKid, isInstructor: isInstructor, dateCreated: dateCreated, dateEdited: dateEdited, birthdate: birthdate, mostRecentPromotion: mostRecentPromotion, profilePic: profilePic, username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: mobile, email: email)
+        self.init(isKid: isKid, isInstructor: isInstructor, dateCreated: dateCreated, dateEdited: dateEdited, birthdate: birthdate, mostRecentPromotion: mostRecentPromotion, profilePic: profilePic, username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: mobile, email: email)
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 protocol EmergencyContactFirestoreModelSerializable {
     init?(dictionary: [String : Any])
@@ -15,8 +16,8 @@ protocol EmergencyContactFirestoreModelSerializable {
 
 struct EmergencyContactFirestore {
     
-    var dateCreated: Date
-    var dateEdited: Date
+    var dateCreated: Timestamp
+    var dateEdited: Timestamp
     var name: String?
     var phone: String?
     var relationship: String?
@@ -34,8 +35,8 @@ struct EmergencyContactFirestore {
     
     
     // initializer to allow creation of an OwnerCD object via Academia CoreDataStack's managedObjectContext
-    init(dateCreated: Date = Date(),
-         dateEdited: Date = Date(),
+    init(dateCreated: Timestamp = Timestamp(),
+         dateEdited: Timestamp = Timestamp(),
          name: String?,
          phone: String?,
          relationship: String?
@@ -54,13 +55,13 @@ extension EmergencyContactFirestore: EmergencyContactFirestoreModelSerializable 
     
     init?(dictionary: [String : Any]) {
       
-        guard let dateCreated = dictionary["dateCreated"] as? Date else {
+        guard let dateCreated = dictionary["dateCreated"] as? Timestamp else {
             
             print("ERROR: nil value found for dateCreated in firestore dictionary in EmergencyContactFirestore.swift -> init(dictionary:) - line 59.")
             return nil
         }
         
-        guard let dateEdited = dictionary["dateEdited"] as? Date else {
+        guard let dateEdited = dictionary["dateEdited"] as? Timestamp else {
             
             print("ERROR: nil value found for dateEdited in firestore dictionary in EmergencyContactFirestore.swift -> init(dictionary:) - line 65.")
             return nil

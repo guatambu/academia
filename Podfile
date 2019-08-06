@@ -9,6 +9,7 @@ target 'Academia' do
 
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
+  pod 'Firebase/Analytics'
   pod 'Firebase/Storage' 
   pod 'FirebaseUI'
   pod 'FirebaseUI/Auth'
