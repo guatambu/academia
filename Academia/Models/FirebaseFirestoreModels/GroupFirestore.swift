@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 protocol GroupFirestoreModelSerializable {
     init?(dictionary: [String : Any])
@@ -15,20 +16,18 @@ protocol GroupFirestoreModelSerializable {
 
 struct GroupFirestore {
     
-    var groupUUID: String
-    var dateCreated: Date
-    var dateEdited: Date
-    var active: Bool
+    var dateCreated: Timestamp
+    var dateEdited: Timestamp
+    var isActive: Bool
     var name: String
     var groupDescription: String
     
     
     var dictionary: [String : Any] {
         return [
-            "groupUUID" : groupUUID,
             "dateCreated" : dateCreated,
             "dateEdited" : dateEdited,
-            "active" : active,
+            "isActive" : isActive,
             "name" : name,
             "groupDescription" : groupDescription
         ]
@@ -36,18 +35,16 @@ struct GroupFirestore {
     
     
     // initializer to allow creation of an GroupFirestore object
-    init(groupUUID: String = "\(UUID())",
-         dateCreated: Date = Date(),
-         dateEdited: Date = Date(),
-         active: Bool,
+    init(dateCreated: Timestamp = Timestamp(),
+         dateEdited: Timestamp = Timestamp(),
+         isActive: Bool,
          name: String,
          groupDescription: String
         ) {
         
-        self.groupUUID = groupUUID
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
-        self.active = active
+        self.isActive = isActive
         self.name = name
         self.groupDescription = groupDescription
     }
@@ -58,43 +55,36 @@ extension GroupFirestore: GroupFirestoreModelSerializable {
     
     init?(dictionary: [String : Any]) {
         
-        
-        guard let groupUUID = dictionary["groupUUID"] as? String else {
+        guard let dateCreated = dictionary["dateCreated"] as? Timestamp else {
             
-            print("ERROR: nil value found for groupUUID in firestore dictionary in GroupFirestore.swift -> init(dictionary:) - line 64.")
+            print("ERROR: nil value found for dateCreated in firestore dictionary in GroupFirestore.swift -> init(dictionary:) - line 60.")
             return nil
         }
         
-        guard let dateCreated = dictionary["dateCreated"] as? Date else {
+        guard let dateEdited = dictionary["dateEdited"] as? Timestamp else {
             
-            print("ERROR: nil value found for dateCreated in firestore dictionary in GroupFirestore.swift -> init(dictionary:) - line 70.")
+            print("ERROR: nil value found for dateEdited in firestore dictionary in GroupFirestore.swift -> init(dictionary:) - line 66.")
             return nil
         }
         
-        guard let dateEdited = dictionary["dateEdited"] as? Date else {
+        guard let isActive = dictionary["isActive"] as? Bool else {
             
-            print("ERROR: nil value found for dateEdited in firestore dictionary in GroupFirestore.swift -> init(dictionary:) - line 76.")
-            return nil
-        }
-        
-        guard let active = dictionary["active"] as? Bool else {
-            
-            print("ERROR: nil value found for active in firestore dictionary in GroupFirestore.swift -> init(dictionary:) - line 82.")
+            print("ERROR: nil value found for isActive in firestore dictionary in GroupFirestore.swift -> init(dictionary:) - line 72.")
             return nil
         }
         
         guard let name = dictionary["name"] as? String else {
             
-            print("ERROR: nil value found name in firestore dictionary in GroupFirestore.swift -> init(dictionary:) - line 88.")
+            print("ERROR: nil value found name in firestore dictionary in GroupFirestore.swift -> init(dictionary:) - line 78.")
             return nil
         }
         
         guard let groupDescription = dictionary["groupDescription"] as? String else {
             
-            print("ERROR: nil value found for groupDescription in firestore dictionary in GroupFirestore.swift -> init(dictionary:) - line 94.")
+            print("ERROR: nil value found for groupDescription in firestore dictionary in GroupFirestore.swift -> init(dictionary:) - line 84.")
             return nil
         }
         
-        self.init(groupUUID: groupUUID, dateCreated: dateCreated, dateEdited: dateEdited, active: active, name: name, groupDescription: groupDescription)
+        self.init(dateCreated: dateCreated, dateEdited: dateEdited, isActive: isActive, name: name, groupDescription: groupDescription)
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 protocol AulaFirestoreModelSerializable {
     init?(dictionary: [String : Any])
@@ -15,10 +16,9 @@ protocol AulaFirestoreModelSerializable {
 
 struct AulaFirestore {
     
-    var aulaUUID: String
-    var active: Bool
-    var dateCreated: Date
-    var dateEdited: Date
+    var isActive: Bool
+    var dateCreated: Timestamp
+    var dateEdited: Timestamp
     var aulaName: String
     var aulaDescription: String
     var dayOfTheWeek: String
@@ -28,8 +28,7 @@ struct AulaFirestore {
     
     var dictionary: [String : Any] {
         return [
-            "aulaUUID" : aulaUUID,
-            "active" : active,
+            "isActive" : isActive,
             "dateCreated" : dateCreated,
             "dateEdited" : dateEdited,
             "aulaName" : aulaName,
@@ -42,10 +41,10 @@ struct AulaFirestore {
     }
     
     // initializer to allow creation of an AulaFirestore object
-    init(aulaUUID: String = "\(UUID())",
-        active: Bool,
-        dateCreated: Date = Date(),
-        dateEdited: Date = Date(),
+    init(
+        isActive: Bool,
+        dateCreated: Timestamp = Timestamp(),
+        dateEdited: Timestamp = Timestamp(),
         aulaName: String,
         aulaDescription: String,
         dayOfTheWeek: String,
@@ -54,8 +53,7 @@ struct AulaFirestore {
         locationUUID: String?
         ) {
         
-        self.aulaUUID = aulaUUID
-        self.active = active
+        self.isActive = isActive
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
         self.aulaName = aulaName
@@ -72,68 +70,61 @@ extension AulaFirestore: AulaFirestoreModelSerializable {
     
     init?(dictionary: [String : Any]) {
         
-        
-        guard let aulaUUID = dictionary["aulaUUID"] as? String else {
+        guard let isActive = dictionary["isActive"] as? Bool else {
             
-            print("ERROR: nil value found for aulaUUID in firestore dictionary in AulaFirestore.swift -> init(dictionary:) - line 79.")
+            print("ERROR: nil value found for isActive in firestore dictionary in AulaFirestore.swift -> init(dictionary:) - line 75.")
             return nil
         }
         
-        guard let active = dictionary["active"] as? Bool else {
+        guard let dateCreated = dictionary["dateCreated"] as? Timestamp else {
             
-            print("ERROR: nil value found for active in firestore dictionary in AulaFirestore.swift -> init(dictionary:) - line 85.")
+            print("ERROR: nil value found for dateCreated in firestore dictionary in AulaFirestore.swift -> init(dictionary:) - line 81.")
             return nil
         }
         
-        guard let dateCreated = dictionary["dateCreated"] as? Date else {
+        guard let dateEdited = dictionary["dateEdited"] as? Timestamp else {
             
-            print("ERROR: nil value found for dateCreated in firestore dictionary in AulaFirestore.swift -> init(dictionary:) - line 91.")
-            return nil
-        }
-        
-        guard let dateEdited = dictionary["dateEdited"] as? Date else {
-            
-            print("ERROR: nil value found for dateEdited in firestore dictionary in AulaFirestore.swift -> init(dictionary:) - line 97.")
+            print("ERROR: nil value found for dateEdited in firestore dictionary in AulaFirestore.swift -> init(dictionary:) - line 87.")
             return nil
         }
         
         guard let aulaName = dictionary["aulaName"] as? String else {
             
-            print("ERROR: nil value found for aulaName in firestore dictionary in AulaFirestore.swift -> init(dictionary:) - line 103.")
+            print("ERROR: nil value found for aulaName in firestore dictionary in AulaFirestore.swift -> init(dictionary:) - line 93.")
             return nil
         }
         
         guard let aulaDescription = dictionary["aulaDescription"] as? String else {
             
-            print("ERROR: nil value found aulaDescription in firestore dictionary in AulaFirestore.swift -> init(dictionary:) - line 109.")
+            print("ERROR: nil value found aulaDescription in firestore dictionary in AulaFirestore.swift -> init(dictionary:) - line 99.")
             return nil
         }
         
         guard let dayOfTheWeek = dictionary["dayOfTheWeek"] as? String else {
             
-            print("ERROR: nil value found for dayOfTheWeek in firestore dictionary in AulaFirestore.swift -> init(dictionary:) - line 115.")
+            print("ERROR: nil value found for dayOfTheWeek in firestore dictionary in AulaFirestore.swift -> init(dictionary:) - line 105.")
             return nil
         }
         
         guard let time = dictionary["time"] as? String else {
             
-            print("ERROR: nil value found for time in firestore dictionary in AulaFirestore.swift -> init(dictionary:) - line 121.")
+            print("ERROR: nil value found for time in firestore dictionary in AulaFirestore.swift -> init(dictionary:) - line 111.")
             return nil
         }
         
         guard let timeCode = dictionary["timeCode"] as? Int else {
             
-            print("ERROR: nil value found for timeCode in firestore dictionary in AulaFirestore.swift -> init(dictionary:) - line 127.")
+            print("ERROR: nil value found for timeCode in firestore dictionary in AulaFirestore.swift -> init(dictionary:) - line 117.")
             return nil
         }
         
         guard let locationUUID = dictionary["locationUUID"] as? String? else {
             
-            print("ERROR: nil value found for locationUUID in firestore dictionary in AulaFirestore.swift -> init(dictionary:) - line 133.")
+            print("ERROR: nil value found for locationUUID in firestore dictionary in AulaFirestore.swift -> init(dictionary:) - line 123.")
             return nil
         }
         
-        self.init(aulaUUID: aulaUUID, active: active, dateCreated: dateCreated, dateEdited: dateEdited, aulaName: aulaName, aulaDescription: aulaDescription, dayOfTheWeek: dayOfTheWeek, time: time, timeCode: timeCode, locationUUID: locationUUID)
+        self.init(isActive: isActive, dateCreated: dateCreated, dateEdited: dateEdited, aulaName: aulaName, aulaDescription: aulaDescription, dayOfTheWeek: dayOfTheWeek, time: time, timeCode: timeCode, locationUUID: locationUUID)
     }
 }
 

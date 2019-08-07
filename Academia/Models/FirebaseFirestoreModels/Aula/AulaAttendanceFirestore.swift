@@ -81,7 +81,7 @@ extension AulaAttendanceFirestore: AulaAttendanceFirestoreModelSerializable {
         
         guard let aulaUUID = dictionary["aulaUUID"] as? String else {
             
-            print("ERROR: nil value found aulaUUID in firestore dictionary in AulaAttendanceFirestore.swift -> init(dictionary:) - line 82.")
+            print("ERROR: nil value found aulaUUID in firestore dictionary in AulaAttendanceFirestore.swift -> init(dictionary:) - line 84.")
             return nil
         }
         

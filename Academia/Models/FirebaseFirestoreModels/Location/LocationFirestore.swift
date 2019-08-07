@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 protocol LocationFirestoreModelSerializable {
     init?(dictionary: [String : Any])
@@ -15,10 +16,9 @@ protocol LocationFirestoreModelSerializable {
 
 struct LocationFirestore {
     
-    var locationUUID: String
-    var active: Bool
-    var dateCreated: Date
-    var dateEdited: Date
+    var isActive: Bool
+    var dateCreated: Timestamp
+    var dateEdited: Timestamp
     var locationPic: String?
     var locationName: String
     var phone: String?
@@ -31,8 +31,7 @@ struct LocationFirestore {
     
     var dictionary: [String : Any] {
         return [
-            "locationUUID" : locationUUID,
-            "active" : active,
+            "isActive" : isActive,
             "dateCreated" : dateCreated,
             "dateEdited" : dateEdited,
             "locationPic" : locationPic ?? "",
@@ -48,10 +47,9 @@ struct LocationFirestore {
     
     
     // initializer to allow creation of a LocationFirestore object
-    init(locationUUID: String = "\(UUID())",
-         active: Bool,
-         dateCreated: Date = Date(),
-         dateEdited: Date = Date(),
+    init(isActive: Bool,
+         dateCreated: Timestamp = Timestamp(),
+         dateEdited: Timestamp = Timestamp(),
          locationPic: String?,
          locationName: String,
          phone: String?,
@@ -62,10 +60,9 @@ struct LocationFirestore {
          aulas: [AulaFirestore]?
         ) {
         
-        self.locationUUID = locationUUID
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
-        self.active = active
+        self.isActive = isActive
         self.locationPic = locationPic
         self.locationName = locationName
         self.phone = phone
@@ -82,28 +79,21 @@ extension LocationFirestore: LocationFirestoreModelSerializable {
     
     init?(dictionary: [String : Any]) {
         
-        
-        guard let locationUUID = dictionary["locationUUID"] as? String else {
-            
-            print("ERROR: nil value found for locationUUID in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 88.")
-            return nil
-        }
-        
-        guard let dateCreated = dictionary["dateCreated"] as? Date else {
+        guard let dateCreated = dictionary["dateCreated"] as? Timestamp else {
             
             print("ERROR: nil value found for dateCreated in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 94.")
             return nil
         }
         
-        guard let dateEdited = dictionary["dateEdited"] as? Date else {
+        guard let dateEdited = dictionary["dateEdited"] as? Timestamp else {
             
             print("ERROR: nil value found for dateEdited in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 100.")
             return nil
         }
         
-        guard let active = dictionary["active"] as? Bool else {
+        guard let isActive = dictionary["isActive"] as? Bool else {
             
-            print("ERROR: nil value found for active in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 106.")
+            print("ERROR: nil value found for isActive in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 106.")
             return nil
         }
         
@@ -155,6 +145,6 @@ extension LocationFirestore: LocationFirestoreModelSerializable {
             return nil
         }
         
-        self.init(locationUUID: locationUUID, active: active, dateCreated: dateCreated, dateEdited: dateEdited, locationPic: locationPic, locationName: locationName, phone: phone, website: website, email: email, address: address, socialLinks: socialLinks, aulas: aulas)
+        self.init(isActive: isActive, dateCreated: dateCreated, dateEdited: dateEdited, locationPic: locationPic, locationName: locationName, phone: phone, website: website, email: email, address: address, socialLinks: socialLinks, aulas: aulas)
     }
 }

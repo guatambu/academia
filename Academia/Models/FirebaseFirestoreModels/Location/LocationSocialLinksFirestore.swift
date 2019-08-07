@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 protocol LocationSocialLinksFirestoreModelSerializable {
     init?(dictionary: [String : Any])
@@ -18,8 +19,8 @@ struct LocationSocialLinksFirestore {
     var socialLink1: String?
     var socialLink2: String?
     var socialLink3: String?
-    var dateCreated: Date
-    var dateEdited: Date
+    var dateCreated: Timestamp
+    var dateEdited: Timestamp
     
     
     var dictionary: [String : Any] {
@@ -37,8 +38,8 @@ struct LocationSocialLinksFirestore {
     init(socialLink1: String?,
          socialLink2: String?,
          socialLink3: String?,
-         dateCreated: Date = Date(),
-         dateEdited: Date = Date()
+         dateCreated: Timestamp = Timestamp(),
+         dateEdited: Timestamp = Timestamp()
         ) {
         
         self.socialLink1 = socialLink1
@@ -73,13 +74,13 @@ extension LocationSocialLinksFirestore: LocationSocialLinksFirestoreModelSeriali
             return nil
         }
         
-        guard let dateCreated = dictionary["dateCreated"] as? Date else {
+        guard let dateCreated = dictionary["dateCreated"] as? Timestamp else {
             
             print("ERROR: nil value found for dateCreated in firestore dictionary in LocationSocialLinksFirestore.swift -> init(dictionary:) - line 78.")
             return nil
         }
         
-        guard let dateEdited = dictionary["dateEdited"] as? Date else {
+        guard let dateEdited = dictionary["dateEdited"] as? Timestamp else {
             
             print("ERROR: nil value found dateEdited in firestore dictionary in LocationSocialLinksFirestore.swift -> init(dictionary:) - line 84.")
             return nil

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 protocol CurriculumModuleFirestoreModelSerializable {
     init?(dictionary: [String : Any])
@@ -16,8 +17,8 @@ protocol CurriculumModuleFirestoreModelSerializable {
 struct CurriculumModuleFirestore {
     
     var curriculumModuleUUID: String
-    var dateCreated: Date
-    var dateEdited: Date
+    var dateCreated: Timestamp
+    var dateEdited: Timestamp
     var name: String
     var descriptionDetail: String
     var techniques: [TechniqueFirestore]
@@ -37,8 +38,8 @@ struct CurriculumModuleFirestore {
     
     // initializer to allow creation of an CurriculumModuleFirestore objcct
     init(curriculumModuleUUID: String = "\(UUID())",
-         dateCreated: Date,
-         dateEdited: Date,
+         dateCreated: Timestamp,
+         dateEdited: Timestamp,
          name: String,
          descriptionDetail: String,
          techniques: [TechniqueFirestore]
@@ -61,37 +62,37 @@ extension CurriculumModuleFirestore: CurriculumModuleFirestoreModelSerializable 
         
         guard let curriculumModuleUUID = dictionary["curriculumModuleUUID"] as? String else {
             
-            print("ERROR: nil value found for curriculumModuleUUID in firestore dictionary in TestModel.swift -> init(dictionary:) - line 118.")
+            print("ERROR: nil value found for curriculumModuleUUID in firestore dictionary in TestModel.swift -> init(dictionary:) - line 65.")
             return nil
         }
         
-        guard let dateCreated = dictionary["dateCreated"] as? Date else {
+        guard let dateCreated = dictionary["dateCreated"] as? Timestamp else {
             
-            print("ERROR: nil value found for dateCreated in firestore dictionary in TestModel.swift -> init(dictionary:) - line 130.")
+            print("ERROR: nil value found for dateCreated in firestore dictionary in TestModel.swift -> init(dictionary:) - line 71.")
             return nil
         }
         
-        guard let dateEdited = dictionary["dateEdited"] as? Date else {
+        guard let dateEdited = dictionary["dateEdited"] as? Timestamp else {
             
-            print("ERROR: nil value found for dateEdited in firestore dictionary in TestModel.swift -> init(dictionary:) - line 136.")
+            print("ERROR: nil value found for dateEdited in firestore dictionary in TestModel.swift -> init(dictionary:) - line 77.")
             return nil
         }
         
         guard let name = dictionary["name"] as? String else {
             
-            print("ERROR: nil value found name in firestore dictionary in TestModel.swift -> init(dictionary:) - line 160.")
+            print("ERROR: nil value found name in firestore dictionary in TestModel.swift -> init(dictionary:) - line 83.")
             return nil
         }
         
         guard let descriptionDetail = dictionary["descriptionDetail"] as? String else {
             
-            print("ERROR: nil value found for descriptionDetail in firestore dictionary in TestModel.swift -> init(dictionary:) - line 106.")
+            print("ERROR: nil value found for descriptionDetail in firestore dictionary in TestModel.swift -> init(dictionary:) - line 89.")
             return nil
         }
         
         guard let techniques = dictionary["techniques"] as? [TechniqueFirestore] else {
             
-            print("ERROR: nil value found for techniques in firestore dictionary in TestModel.swift -> init(dictionary:) - line 112.")
+            print("ERROR: nil value found for techniques in firestore dictionary in TestModel.swift -> init(dictionary:) - line 95.")
             return nil
         }
         

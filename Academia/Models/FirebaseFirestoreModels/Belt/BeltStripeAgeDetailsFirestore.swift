@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 protocol BeltStripeAgeDetailsFirestoreModelSerializable {
     init?(dictionary: [String : Any])
@@ -29,8 +30,8 @@ struct BeltStripeAgeDetailsFirestore {
     var ixStripeRequiredTime: String?
     var xStripeRequiredTime: String?
     var xiStripeRequiredTime: String?
-    var dateCreated: Date
-    var dateEdited: Date
+    var dateCreated: Timestamp
+    var dateEdited: Timestamp
     
     
     var dictionary: [String : Any] {
@@ -70,8 +71,8 @@ struct BeltStripeAgeDetailsFirestore {
          ixStripeRequiredTime: String?,
          xStripeRequiredTime: String?,
          xiStripeRequiredTime: String?,
-         dateCreated: Date = Date(),
-         dateEdited: Date = Date()
+         dateCreated: Timestamp = Timestamp(),
+         dateEdited: Timestamp = Timestamp()
         ) {
         
         self.beltLevel = beltLevel
@@ -183,13 +184,13 @@ extension BeltStripeAgeDetailsFirestore: BeltStripeAgeDetailsFirestoreModelSeria
             return nil
         }
         
-        guard let dateCreated = dictionary["dateCreated"] as? Date else {
+        guard let dateCreated = dictionary["dateCreated"] as? Timestamp else {
             
             print("ERROR: nil value found for dateCreated in firestore dictionary in BeltStripeAgeDetailsFirestore.swift -> init(dictionary:) - line 188.")
             return nil
         }
         
-        guard let dateEdited = dictionary["dateEdited"] as? Date else {
+        guard let dateEdited = dictionary["dateEdited"] as? Timestamp else {
             
             print("ERROR: nil value found for dateEdited in firestore dictionary in BeltStripeAgeDetailsFirestore.swift -> init(dictionary:) - line 194.")
             return nil

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 protocol BeltPromotionFirestoreModelSerializable {
     init?(dictionary: [String : Any])
@@ -15,7 +16,7 @@ protocol BeltPromotionFirestoreModelSerializable {
 
 struct BeltPromotionFirestore {
     
-    var promotionDate: Date
+    var promotionDate: Timestamp
     var numberOfStripes: Int
     var beltLevel: String
     
@@ -30,7 +31,7 @@ struct BeltPromotionFirestore {
     
     
     // initializer to allow creation of a BeltPromotionFirestore object
-    init(promotionDate: Date = Date(), // do i want to manually set the date?
+    init(promotionDate: Timestamp = Timestamp(), // do i want to manually set the date?
         numberOfStripes: Int,
         beltLevel: String
         ) {
@@ -47,7 +48,7 @@ extension BeltPromotionFirestore: BeltPromotionFirestoreModelSerializable {
     init?(dictionary: [String : Any]) {
         
         
-        guard let promotionDate = dictionary["promotionDate"] as? Date else {
+        guard let promotionDate = dictionary["promotionDate"] as? Timestamp else {
             
             print("ERROR: nil value found for promotionDate in firestore dictionary in BeltPromotionFirestore.swift -> init(dictionary:) - line 52.")
             return nil

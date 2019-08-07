@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 protocol PaymentProgramFirestoreModelSerializable {
     init?(dictionary: [String : Any])
@@ -15,10 +16,9 @@ protocol PaymentProgramFirestoreModelSerializable {
 
 struct PaymentProgramFirestore {
     
-    var paymentProgramUUID: String
-    var active: Bool
-    var dateCreated: Date
-    var dateEdited: Date
+    var isActive: Bool
+    var dateCreated: Timestamp
+    var dateEdited: Timestamp
     var programName: String
     var paymentDescription: String
     var paymentAgreement: String
@@ -26,8 +26,7 @@ struct PaymentProgramFirestore {
     
     var dictionary: [String : Any] {
         return [
-            "paymentProgramUUID" : paymentProgramUUID,
-            "active" : active,
+            "isActive" : isActive,
             "dateCreated" : dateCreated,
             "dateEdited" : dateEdited,
             "programName" : programName,
@@ -37,19 +36,17 @@ struct PaymentProgramFirestore {
     
     
     // initializer to allow creation of a PaymentProgramFirestore object
-    init(paymentProgramUUID: String = "\(UUID())",
-         active: Bool,
-         dateCreated: Date = Date(),
-         dateEdited: Date = Date(),
+    init(isActive: Bool,
+         dateCreated: Timestamp = Timestamp(),
+         dateEdited: Timestamp = Timestamp(),
          programName: String,
          paymentDescription: String,
          paymentAgreement: String
         ) {
         
-        self.paymentProgramUUID = paymentProgramUUID
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
-        self.active = active
+        self.isActive = isActive
         self.programName = programName
         self.paymentDescription = paymentDescription
         self.paymentAgreement = paymentAgreement
@@ -61,49 +58,42 @@ extension PaymentProgramFirestore: PaymentProgramFirestoreModelSerializable {
     
     init?(dictionary: [String : Any]) {
         
-        
-        guard let paymentProgramUUID = dictionary["paymentProgramUUID"] as? String else {
+        guard let isActive = dictionary["isActive"] as? Bool else {
             
-            print("ERROR: nil value found for paymentProgramUUID in firestore dictionary in TestModel.swift -> init(dictionary:) - line 118.")
+            print("ERROR: nil value found for active in firestore dictionary in TestModel.swift -> init(dictionary:) - line 63.")
             return nil
         }
         
-        guard let active = dictionary["active"] as? Bool else {
+        guard let dateCreated = dictionary["dateCreated"] as? Timestamp else {
             
-            print("ERROR: nil value found for active in firestore dictionary in TestModel.swift -> init(dictionary:) - line 142.")
+            print("ERROR: nil value found for dateCreated in firestore dictionary in TestModel.swift -> init(dictionary:) - line 69.")
             return nil
         }
         
-        guard let dateCreated = dictionary["dateCreated"] as? Date else {
+        guard let dateEdited = dictionary["dateEdited"] as? Timestamp else {
             
-            print("ERROR: nil value found for dateCreated in firestore dictionary in TestModel.swift -> init(dictionary:) - line 130.")
-            return nil
-        }
-        
-        guard let dateEdited = dictionary["dateEdited"] as? Date else {
-            
-            print("ERROR: nil value found for dateEdited in firestore dictionary in TestModel.swift -> init(dictionary:) - line 136.")
+            print("ERROR: nil value found for dateEdited in firestore dictionary in TestModel.swift -> init(dictionary:) - line 75.")
             return nil
         }
         
         guard let programName = dictionary["programName"] as? String else {
             
-            print("ERROR: nil value found programName in firestore dictionary in TestModel.swift -> init(dictionary:) - line 160.")
+            print("ERROR: nil value found programName in firestore dictionary in TestModel.swift -> init(dictionary:) - line 81.")
             return nil
         }
         
         guard let paymentDescription = dictionary["paymentDescription"] as? String else {
             
-            print("ERROR: nil value found for paymentDescription in firestore dictionary in TestModel.swift -> init(dictionary:) - line 106.")
+            print("ERROR: nil value found for paymentDescription in firestore dictionary in TestModel.swift -> init(dictionary:) - line 87.")
             return nil
         }
         
         guard let paymentAgreement = dictionary["paymentAgreement"] as? String else {
             
-            print("ERROR: nil value found for paymentAgreement in firestore dictionary in TestModel.swift -> init(dictionary:) - line 112.")
+            print("ERROR: nil value found for paymentAgreement in firestore dictionary in TestModel.swift -> init(dictionary:) - line 93.")
             return nil
         }
         
-        self.init(paymentProgramUUID: paymentProgramUUID, active: active, dateCreated: dateCreated, dateEdited: dateEdited, programName: programName, paymentDescription: paymentDescription, paymentAgreement: paymentAgreement)
+        self.init(isActive: isActive, dateCreated: dateCreated, dateEdited: dateEdited, programName: programName, paymentDescription: paymentDescription, paymentAgreement: paymentAgreement)
     }
 }

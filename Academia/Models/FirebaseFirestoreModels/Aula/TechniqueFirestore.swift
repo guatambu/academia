@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 protocol TechniqueFirestoreModelSerializable {
     init?(dictionary: [String : Any])
@@ -17,8 +18,8 @@ struct TechniqueFirestore {
     
     var techniqueUUID: String
     var name: String
-    var dateCreated: Date
-    var dateEdited: Date
+    var dateCreated: Timestamp
+    var dateEdited: Timestamp
     var descriptionDetail: String
     var skillLevel: InternationalStandardBJJBelts
     var images: [String]?
@@ -40,8 +41,8 @@ struct TechniqueFirestore {
     // initializer to allow creation of an TechniqueFirestore model object
     init(techniqueUUID: String = "\(UUID())",
          name: String,
-         dateCreated: Date,
-         dateEdited: Date,
+         dateCreated: Timestamp,
+         dateEdited: Timestamp,
          descriptionDetail: String,
          skillLevel: InternationalStandardBJJBelts,
          images: [String]?
@@ -65,43 +66,43 @@ extension TechniqueFirestore: TechniqueFirestoreModelSerializable {
         
         guard let techniqueUUID = dictionary["techniqueUUID"] as? String else {
             
-            print("ERROR: nil value found for techniqueUUID in firestore dictionary in TechniqueFirestore.swift -> init(dictionary:) - line 68.")
+            print("ERROR: nil value found for techniqueUUID in firestore dictionary in TechniqueFirestore.swift -> init(dictionary:) - line 69.")
             return nil
         }
         
-        guard let dateCreated = dictionary["dateCreated"] as? Date else {
+        guard let dateCreated = dictionary["dateCreated"] as? Timestamp else {
             
-            print("ERROR: nil value found for dateCreated in firestore dictionary in TechniqueFirestore.swift -> init(dictionary:) - line 74.")
+            print("ERROR: nil value found for dateCreated in firestore dictionary in TechniqueFirestore.swift -> init(dictionary:) - line 75.")
             return nil
         }
         
-        guard let dateEdited = dictionary["dateEdited"] as? Date else {
+        guard let dateEdited = dictionary["dateEdited"] as? Timestamp else {
             
-            print("ERROR: nil value found for dateEdited in firestore dictionary in TechniqueFirestore.swift -> init(dictionary:) - line 80.")
+            print("ERROR: nil value found for dateEdited in firestore dictionary in TechniqueFirestore.swift -> init(dictionary:) - line 81.")
             return nil
         }
         
         guard let name = dictionary["name"] as? String else {
             
-            print("ERROR: nil value found for name in firestore dictionary in TechniqueFirestore.swift -> init(dictionary:) - line 86.")
+            print("ERROR: nil value found for name in firestore dictionary in TechniqueFirestore.swift -> init(dictionary:) - line 87.")
             return nil
         }
         
         guard let descriptionDetail = dictionary["descriptionDetail"] as? String else {
             
-            print("ERROR: nil value found descriptionDetail in firestore dictionary in TechniqueFirestore.swift -> init(dictionary:) - line 92.")
+            print("ERROR: nil value found descriptionDetail in firestore dictionary in TechniqueFirestore.swift -> init(dictionary:) - line 93.")
             return nil
         }
         
         guard let skillLevel = dictionary["skillLevel"] as? InternationalStandardBJJBelts else {
             
-            print("ERROR: nil value found for skillLevel in firestore dictionary in TechniqueFirestore.swift -> init(dictionary:) - line 98.")
+            print("ERROR: nil value found for skillLevel in firestore dictionary in TechniqueFirestore.swift -> init(dictionary:) - line 99.")
             return nil
         }
         
         guard let images = dictionary["images"] as? [String] else {
             
-            print("ERROR: nil value found for images in firestore dictionary in TechniqueFirestore.swift -> init(dictionary:) - line 104.")
+            print("ERROR: nil value found for images in firestore dictionary in TechniqueFirestore.swift -> init(dictionary:) - line 105.")
             return nil
         }
         
