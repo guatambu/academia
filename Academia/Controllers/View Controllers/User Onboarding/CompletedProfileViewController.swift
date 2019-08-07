@@ -488,7 +488,7 @@ extension CompletedProfileViewController {
         
         guard let phone = phone else { print("fail phone"); return }
         guard let email = email else { print("fail email"); return }
-        let mobileCD = mobile ?? ""
+        let mobileFirestore = mobile ?? ""
         
         // convert profilePic to Data
         guard let profilePicData = profilePic.jpegData(compressionQuality: 1) else { print("fail profilePicData"); return }
@@ -500,7 +500,7 @@ extension CompletedProfileViewController {
             
             guard let user = authResult?.user, error == nil else {
                 
-                print("ERROR: \(error!.localizedDescription) - error creating Firebase Auth user in CompletedProfileVC.swift -> createUserAccountFirestoreDataModel() - line 581.")
+                print("ERROR: \(error!.localizedDescription) - error creating Firebase Auth user in CompletedProfileVC.swift -> createUserAccountFirestoreDataModel() - line 503.")
                 return
             }
             let changeRequest = user.createProfileChangeRequest()
@@ -509,28 +509,29 @@ extension CompletedProfileViewController {
                 
                 if let error = error {
                     
-                    print("ERROR: \(error.localizedDescription) - error in user changeRequest while setting display name to username in CompletedProfileVC.swift -> createUserAccountFirestoreDataModel() - line 590.")
+                    print("ERROR: \(error.localizedDescription) - error in user changeRequest while setting display name to username in CompletedProfileVC.swift -> createUserAccountFirestoreDataModel() - line 512.")
                 }
             })
             
             // FIREBASE STORAGE REFERENCE
             let profilePicsRef = self.firebaseStorageRef.child("profilePics")
-            // TODO: create local file path for image
-            // in order for this need to build in Firebase Authentication because that will give a filepath tied to the current user and their profile pic
             
-            if isOwner{
+            // get the user.uid from the Authorizaton object
+            let userUID = user.uid
             
-                let userUID = user.uid
-                
+            // Run checks for the type of new user
+            // new OwnerFirestore data model creation
+            if isOwner {
+            
                 // FIREBASE STORAGE OWNER PROFILE PICS REFERENCE
                 let ownersProfilePicsRef = profilePicsRef.child("owners").child(userUID)
                 
-                let uploadTask = ownersProfilePicsRef.putData(profilePicData, metadata: metadata) { (metadata, error) in
+                _ = ownersProfilePicsRef.putData(profilePicData, metadata: metadata) { (metadata, error) in
                     
                     guard let metadata = metadata else {
                         
                         if let error = error {
-                            print("ERROR: \(error.localizedDescription) - error while uploading profile pic and its metadata in CompletedProfileVC.swift -> createUserAccountFirestoreDataModel() - line 532.")
+                            print("ERROR: \(error.localizedDescription) - error while uploading owner profile pic and its metadata in CompletedProfileVC.swift -> createUserAccountFirestoreDataModel() - line 534.")
                         }
                         return
                     }
@@ -543,7 +544,7 @@ extension CompletedProfileViewController {
                             
                             guard let downloadURL = url  else {
                                 
-                            print("ERROR: error after uploading profile pic and its metadata and then getting the URL in CompletedProfileVC.swift -> createUserAccountFirestoreDataModel() - line 546.")
+                            print("ERROR: error after uploading owner profile pic and its metadata and then getting the URL in CompletedProfileVC.swift -> createUserAccountFirestoreDataModel() - line 547.")
                             return
                             }
                             
@@ -553,7 +554,7 @@ extension CompletedProfileViewController {
                                 
                                 if let error = error {
                                     
-                                    print("ERROR: \(error.localizedDescription) failure to execute change request with photoURL in new/current user a in CompletedProfileVC.swift -> createUserAccountFirestoreDataModel() - line 556.")
+                                    print("ERROR: \(error.localizedDescription) failure to execute change request with owner photoURL in new/current user a in CompletedProfileVC.swift -> createUserAccountFirestoreDataModel() - line 557.")
                                 }
                             }
                         }
@@ -561,11 +562,11 @@ extension CompletedProfileViewController {
                 }
                 
                 // FIREBASE FIRESTORE CREATE AND SAVE NEW OWNER MODEL
-                let owner = OwnerFirestore(birthdate: birthdateTimestamp, mostRecentPromotion: nil, profilePic: "I don't have this URL Setup yet", username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: self.mobile, email: email)
+                let owner = OwnerFirestore(birthdate: birthdateTimestamp, mostRecentPromotion: nil, profilePic: "I don't have this URL Setup yet", username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: mobileFirestore, email: email)
                 
                 self.ownerCollectionRef.document(userUID).setData(owner.dictionary) { (error) in
                     if let error = error {
-                        print("ERROR: \(error.localizedDescription) error occurred while trying to save owner to Firebase Firestore in CompletedProfileViewController.swift -> createUserAccountFirestoreDataModel() - line 611. ")
+                        print("ERROR: \(error.localizedDescription) error occurred while trying to save owner to Firebase Firestore in CompletedProfileViewController.swift -> createUserAccountFirestoreDataModel() - line 569. ")
                     } else {
                         print("new owner data successfully saved to Firebase Firestore in owners collection")
                     }
@@ -573,133 +574,121 @@ extension CompletedProfileViewController {
                 
                 // create data models as user properties in Firebase Firestore
                 self.createUserDataModelProperties(owner: owner, kid: nil, adult: nil, userModelRef: self.ownerCollectionRef.document(userUID))
+            
+            // for KidStudentFirebase object creation
+            } else if isKid {
+                
+                // FIREBASE STORAGE OWNER PROFILE PICS REFERENCE
+                let kidStudentProfilePicsRef = profilePicsRef.child("kidStudents").child(userUID)
+                
+                _ = kidStudentProfilePicsRef.putData(profilePicData, metadata: metadata) { (metadata, error) in
+                    
+                    guard let metadata = metadata else {
+                        
+                        if let error = error {
+                            print("ERROR: \(error.localizedDescription) - error while uploading kidStudent profile pic and its metadata in CompletedProfileVC.swift -> createUserAccountFirestoreDataModel() - line 589.")
+                        }
+                        return
+                    }
+                    
+                    kidStudentProfilePicsRef.downloadURL{ (url, error) in
+                        
+                        print(metadata.size)
+                        
+                        kidStudentProfilePicsRef.downloadURL { (url, error) in
+                            
+                            guard let downloadURL = url  else {
+                                
+                                print("ERROR: error after uploading kidStudent profile pic and its metadata and then getting the URL in CompletedProfileVC.swift -> createUserAccountFirestoreDataModel() - line 602.")
+                                return
+                            }
+                            
+                            let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                            changeRequest?.photoURL = downloadURL
+                            changeRequest?.commitChanges { (error) in
+                                
+                                if let error = error {
+                                    
+                                    print("ERROR: \(error.localizedDescription) failure to execute change request with kidStudent photoURL in new/current user a in CompletedProfileVC.swift -> createUserAccountFirestoreDataModel() - line 612.")
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                // FIREBASE FIRESTORE CREATE AND SAVE NEW OWNER MODEL
+                let kidStudent = KidStudentFirestore(birthdate: birthdate, mostRecentPromotion: nil, profilePic: "I don't have this URL Setup yet", username: username, password: password, firstName: firstName, lastName: lastName, parentGuardian: parentGuardian, phone: phone, mobile: mobileFirestore, email: email)
+                
+                // TODO: set up doc ref so that we can save to specfic owner that user chooses
+                self.ownerCollectionRef.document(userUID).setData(kidStudent.dictionary) { (error) in
+                    if let error = error {
+                        print("ERROR: \(error.localizedDescription) error occurred while trying to save kidStudent to Firebase Firestore in CompletedProfileViewController.swift -> createUserAccountFirestoreDataModel() - line 625. ")
+                    } else {
+                        print("new owner data successfully saved to Firebase Firestore in owners collection")
+                    }
+                }
+                
+                // create data models as user properties in Firebase Firestore
+                self.createUserDataModelProperties(owner: nil, kid: kidStudent, adult: nil, userModelRef: self.ownerCollectionRef.document(userUID))
+                
+            // for AdultStudentFirebase object creation
+            } else if !isKid {
+                
+                // FIREBASE STORAGE OWNER PROFILE PICS REFERENCE
+                let adultStudentsProfilePicsRef = profilePicsRef.child("adultStudents").child(userUID)
+                
+                _ = adultStudentsProfilePicsRef.putData(profilePicData, metadata: metadata) { (metadata, error) in
+                    
+                    guard let metadata = metadata else {
+                        
+                        if let error = error {
+                            print("ERROR: \(error.localizedDescription) - error while uploading adultStudent profile pic and its metadata in CompletedProfileVC.swift -> createUserAccountFirestoreDataModel() - line 645.")
+                        }
+                        return
+                    }
+                    
+                    adultStudentsProfilePicsRef.downloadURL{ (url, error) in
+                        
+                        print(metadata.size)
+                        
+                        adultStudentsProfilePicsRef.downloadURL { (url, error) in
+                            
+                            guard let downloadURL = url  else {
+                                
+                                print("ERROR: error after uploading adultStudent profile pic and its metadata and then getting the URL in CompletedProfileVC.swift -> createUserAccountFirestoreDataModel() - line 658.")
+                                return
+                            }
+                            
+                            let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                            changeRequest?.photoURL = downloadURL
+                            changeRequest?.commitChanges { (error) in
+                                
+                                if let error = error {
+                                    
+                                    print("ERROR: \(error.localizedDescription) failure to execute change request with photoURL in new/current user a in CompletedProfileVC.swift -> createUserAccountFirestoreDataModel() - line 668.")
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                // FIREBASE FIRESTORE CREATE AND SAVE NEW OWNER MODEL
+                let adultStudent = AdultStudentFirestore(birthdate: birthdate, mostRecentPromotion: nil, profilePic: "I don't have this URL Setup yet", username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: mobileFirestore, email: email)
+                
+               // TODO: set up doc ref so that we can save to specfic owner that user chooses
+                self.ownerCollectionRef.document(userUID).setData(adultStudent.dictionary) { (error) in
+                    if let error = error {
+                        print("ERROR: \(error.localizedDescription) error occurred while trying to save owner to Firebase Firestore in CompletedProfileViewController.swift -> createUserAccountFirestoreDataModel() - line 681. ")
+                    } else {
+                        print("new owner data successfully saved to Firebase Firestore in owners collection")
+                    }
+                }
+                
+                // create data models as user properties in Firebase Firestore
+                self.createUserDataModelProperties(owner: nil, kid: nil, adult: adultStudent, userModelRef: self.ownerCollectionRef.document(userUID))
+                
             }
         }
-        
-        // FIREBASE STORAGE REFERENCE
-        let profilePicsRef = firebaseStorageRef.child("profilePics")
-        // TODO: create local file path for image
-            // in order for this need to build in Firebase Authentication because that will give a filepath tied to the current user and their profile pic
-        
-//        if isOwner{
-//
-//
-//            // FIREBASE STORAGE OWNER PROFILE PICS REFERENCE
-//            let ownersProfilePicsRef = profilePicsRef.child("owners")
-//
-//            // FIREBASE FIRESTORE TESTING
-//            let dataToSave: [String : Any] = ["birthdate" : birthdate, "username" : username, "password" : password, "firstName" : firstName, "lastName" : lastName, "phone" : phone, "email" : email, "mobile" : mobileCD]
-//
-//            ownerCollectionRef.document().setData(dataToSave) { (error) in
-//                if let error = error {
-//                    print("ERROR: \(error.localizedDescription) error occurred while trying to save to Firebase Firestore in CompletedProfileViewController.swift -> createUserAccountFirestoreDataModel() - line 655. ")
-//                } else {
-//                    print("Data successfully saved to Firebase Firestore")
-//                }
-//            }
-//
-//            // test for new testModel object creation within Firestore
-//            let test = OwnerFirestore(birthdate: birthdate, mostRecentPromotion: nil, profilePic: "I don't have this URL Setup yet", username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: mobile, email: email)
-//
-//
-//            let testModelRef = self.db.collection("owners")
-//
-//            testModelRef.document("newOwner").setData(test.dictionary) { (error) in
-//                // ^^^ NOTE: the document id can be created and set to my specifications as it is currently being set in the .document(usernameText) portion of the method call above.  an option would be to have the id as its own key:value pair in the TestModel dictionary property itself, and then access it via the dictionary key and set it in below in the place of the current 'usernameText' property
-//                if let error = error {
-//                    print("ERROR: error: \(error.localizedDescription) occurred while trying to save test.dictionary to Firestore in LoginVC.swift -> createUserAccountFirestoreDataModel() - line 670.")
-//                } else {
-//                    print("test dictionary data successfully saved to Firestore document in tests collection")
-//                }
-//            }
-//
-//            // create data models as user properties in Firebase Firestore
-//            createUserDataModelProperties(owner: test, kid: nil, adult: nil, userModelRef: testModelRef.document("newOwner"))
-//
-//        } else  if isKid {
-//
-//            // FIREBASE STORAGE KID STUDENT PROFILE PICS REFERENCE
-//            let kidStudentsProfilePicsRef = profilePicsRef.child("kidStudents")
-//
-//            // FIREBASE FIRESTORE TESTING
-//            let dataToSave: [String : Any] = ["birthdate" : birthdate, "username" : username, "password" : password, "firstName" : firstName, "lastName" : lastName, "parentGuardian" : parentGuardian, "phone" : phone, "email" : email, "mobile" : mobileCD]
-//
-//            kidStudentDocRef.setData(dataToSave) { (error) in
-//                if let error = error {
-//                    print("ERROR: \(error.localizedDescription) error occurred while trying to save to Firebase Firestore in CompletedProfileViewController.swift -> createUserAccountFirestoreDataModel() - line 689. ")
-//                } else {
-//                    print("Data successfully saved to Firebase Firestore")
-//                }
-//            }
-//
-//            // test for new testModel object creation within Firestore
-//            let test = KidStudentFirestore(birthdate: birthdate, mostRecentPromotion: Date(), profilePic: "URL I haven't set up yet", username: username, password: password, firstName: firstName, lastName: lastName, parentGuardian: parentGuardian, phone: phone, mobile: mobileCD, email: email)
-//
-//            let testModelRef = self.db.collection("owners").document("newOwner").collection("students")
-//
-//            testModelRef.document("newKidStudent").setData(test.dictionary) { (error) in
-//                // ^^^ NOTE: the document id can be created and set to my specifications as it is currently being set in the .document(usernameText) portion of the method call above.  an option would be to have the id as its own key:value pair in the TestModel dictionary property itself, and then access it via the dictionary key and set it in below in the place of the current 'usernameText' property
-//                if let error = error {
-//                    print("ERROR: error: \(error.localizedDescription) occurred while trying to save test.dictionary to Firestore in LoginVC.swift -> createUserAccountFirestoreDataModel() - line 703.")
-//                } else {
-//                    print("test dictionary data successfully saved to Firestore document in tests collection")
-//                }
-//            }
-//
-//            // create data models as user properties in Firebase Firestore
-//            createUserDataModelProperties(owner: nil, kid: test, adult: nil, userModelRef: testModelRef.document("newKidStudent"))
-//
-//            // if isOwnerAddingStudent == true, then we update the local newStudentKidCD property to the newly created newStudentKid
-////            if let isOwnerAddingStudent = isOwnerAddingStudent {
-////
-////                if isOwnerAddingStudent {
-////                    // pass to CoreData local property
-////                    newStudentKidCD = newStudentKid
-////                }
-////            }
-//
-//        } else if !isKid {
-//
-//            // FIREBASE STORAGE ADULT STUDENT PROFILE PICS REFERENCE
-//            let adultStudentsProfilePicsRef = profilePicsRef.child("adultStudents")
-//
-//            // FIREBASE FIRESTORE TESTING
-//            let dataToSave: [String : Any] = ["birthdate" : birthdate, "username" : username, "password" : password, "firstName" : firstName, "lastName" : lastName, "phone" : phone, "email" : email, "mobile" : mobileCD]
-//
-//            adultStudentDocRef.setData(dataToSave) { (error) in
-//                if let error = error {
-//                    print("ERROR: \(error.localizedDescription) error occurred while trying to save to Firebase Firestore in CompletedProfileViewController.swift -> createUserAccountFirestoreDataModel() - line 731. ")
-//                } else {
-//                    print("Data successfully saved to Firebase Firestore")
-//                }
-//            }
-//
-//            // test for new testModel object creation within Firestore
-//            let test = AdultStudentFirestore(birthdate: birthdate, mostRecentPromotion: Date(), profilePic: "URL I haven't set up yet", username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: mobileCD, email: email)
-//
-//            let testModelRef = self.db.collection("owners").document("newOwner").collection("students")
-//
-//            testModelRef.document("newAdultStudent").setData(test.dictionary) { (error) in
-//                // ^^^ NOTE: the document id can be created and set to my specifications as it is currently being set in the .document(usernameText) portion of the method call above.  an option would be to have the id as its own key:value pair in the TestModel dictionary property itself, and then access it via the dictionary key and set it in below in the place of the current 'usernameText' property
-//                if let error = error {
-//                    print("ERROR: error: \(error.localizedDescription) occurred while trying to save test.dictionary to Firestore in LoginVC.swift -> createUserAccountFirestoreDataModel() - line 745.")
-//                } else {
-//                    print("test dictionary data successfully saved to Firestore document in tests collection")
-//                }
-//            }
-//
-//            // create data models as user properties in Firebase Firestore
-//            createUserDataModelProperties(owner: nil, kid: nil, adult: test, userModelRef: testModelRef.document("newAdultStudent"))
-//
-//            // if isOwnerAddingStudent == true, then we update the local newStudentAdultCD property to the newly created newStudentAdult
-////            if let isOwnerAddingStudent = isOwnerAddingStudent {
-////
-////                if isOwnerAddingStudent {
-////                    // pass to CoreData local property
-////                    newStudentAdultCD = newStudentAdult
-////                }
-////            }
-//        }
     }
 }
 
