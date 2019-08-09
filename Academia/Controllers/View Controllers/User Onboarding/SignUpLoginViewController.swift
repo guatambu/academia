@@ -17,6 +17,7 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
     // MARK: - Properties
     var isOwner: Bool?
     var isKid: Bool?
+    var academyChoice: String?
     var username: String?
     var password: String?
     
@@ -208,7 +209,7 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
     
     @IBAction func tapAnywhereToDismissKeyboard(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
-        // dismiss keyboard when leaving VC scene
+        // dismiss keyboard when tapGesture registered by user
         if usernameTextField.isFirstResponder {
             usernameTextField.resignFirstResponder()
         } else if passwordTextField.isFirstResponder {
@@ -309,6 +310,7 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
             // pass data to destViewController
             destViewController.isOwner = isOwner
             destViewController.isKid = isKid
+            destViewController.academyChoice = academyChoice
             destViewController.username = newUsername
             destViewController.isOwnerAddingStudent = isOwnerAddingStudent
             destViewController.group = group
@@ -363,6 +365,7 @@ class SignUpLoginViewController: UIViewController, UITextInputTraits {
         // pass data to destViewController
         destViewController.isOwner = isOwner
         destViewController.isKid = isKid
+        destViewController.academyChoice = academyChoice
         destViewController.username = username
         destViewController.password = password
         destViewController.isOwnerAddingStudent = isOwnerAddingStudent
@@ -538,7 +541,7 @@ extension SignUpLoginViewController: UITextFieldDelegate {
         
         // get the size of the keyboard
         guard let keyboardCGRectValue = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-            print("ERROR: nil value for notification.userInfo[UIKeyboardFrameEndUserInfoKey] in SignUpLoginViewController.swift -> keyboardWillChange(notification:) - line 225")
+            print("ERROR: nil value for notification.userInfo[UIKeyboardFrameEndUserInfoKey] in SignUpLoginViewController.swift -> keyboardWillChange(notification:) - line 544")
             return
         }
     

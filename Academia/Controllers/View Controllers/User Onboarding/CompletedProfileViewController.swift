@@ -19,6 +19,7 @@ class CompletedProfileViewController: UIViewController {
     
     var isOwner: Bool?
     var isKid: Bool?
+    var academyChoice: String?
     var username: String?
     var password: String?
     var firstName: String?
@@ -473,6 +474,7 @@ extension CompletedProfileViewController {
         
         guard let isOwner = isOwner else { print("fail isOwner"); return }
         guard let isKid = isKid else { print("fail isKid"); return }
+        guard let academyChoice = academyChoice else { print("fail academyChoice"); return }
         
         guard let username = username else { print("fail username"); return }
         guard let password = password else { print("fail password"); return }
@@ -617,7 +619,7 @@ extension CompletedProfileViewController {
                 }
                 
                 // FIREBASE FIRESTORE CREATE AND SAVE NEW OWNER MODEL
-                let kidStudent = KidStudentFirestore(birthdate: birthdate, mostRecentPromotion: nil, profilePic: "I don't have this URL Setup yet", username: username, password: password, firstName: firstName, lastName: lastName, parentGuardian: parentGuardian, phone: phone, mobile: mobileFirestore, email: email)
+                let kidStudent = KidStudentFirestore(academyChoice: academyChoice, birthdate: birthdate, mostRecentPromotion: nil, profilePic: "I don't have this URL Setup yet", username: username, password: password, firstName: firstName, lastName: lastName, parentGuardian: parentGuardian, phone: phone, mobile: mobileFirestore, email: email)
                 
                 // TODO: set up doc ref so that we can save to specfic owner that user chooses
                 self.ownerCollectionRef.document(userUID).setData(kidStudent.dictionary) { (error) in
@@ -673,7 +675,7 @@ extension CompletedProfileViewController {
                 }
                 
                 // FIREBASE FIRESTORE CREATE AND SAVE NEW OWNER MODEL
-                let adultStudent = AdultStudentFirestore(birthdate: birthdate, mostRecentPromotion: nil, profilePic: "I don't have this URL Setup yet", username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: mobileFirestore, email: email)
+                let adultStudent = AdultStudentFirestore(academyChoice: academyChoice, birthdate: birthdate, mostRecentPromotion: nil, profilePic: "I don't have this setup yet", username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: mobileFirestore, email: email)
                 
                // TODO: set up doc ref so that we can save to specfic owner that user chooses
                 self.ownerCollectionRef.document(userUID).setData(adultStudent.dictionary) { (error) in

@@ -17,6 +17,7 @@ protocol KidStudentFirestoreModelSerializable {
 struct KidStudentFirestore {
     
     var isKid: Bool
+    var academyChoice: String
     var dateCreated: Timestamp
     var dateEdited: Timestamp
     var birthdate: Date
@@ -36,6 +37,7 @@ struct KidStudentFirestore {
     var dictionary: [String : Any] {
         return [
             "isKid" : isKid,
+            "academyChoice" : academyChoice,
             "dateCreated" : dateCreated,
             "dateEdited" : dateEdited,
             "birthdate" : birthdate,
@@ -55,6 +57,7 @@ struct KidStudentFirestore {
     
     // initializer to allow creation of an KidStudentFirestore object
     init(isKid: Bool = true,
+         academyChoice: String,
          dateCreated: Timestamp = Timestamp(),
          dateEdited: Timestamp = Timestamp(),
          birthdate: Date,
@@ -72,6 +75,7 @@ struct KidStudentFirestore {
          ) {
         
         self.isKid = isKid
+        self.academyChoice = academyChoice
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
         self.birthdate = birthdate
@@ -94,14 +98,13 @@ extension KidStudentFirestore: KidStudentFirestoreModelSerializable {
     
     init?(dictionary: [String : Any]) {
         
-        
-        guard let kidStudentUUID = dictionary["kidStudentUUID"] as? String else {
+        guard let isKid = dictionary["isKid"] as? Bool else {
             
-            print("ERROR: nil value found for kidStudentUUID in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 111.")
+            print("ERROR: nil value found for isKid in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 103.")
             return nil
         }
         
-        guard let isKid = dictionary["isKid"] as? Bool else {
+        guard let academyChoice = dictionary["academyChoice"] as? String else {
             
             print("ERROR: nil value found for isKid in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 109.")
             return nil
@@ -190,7 +193,7 @@ extension KidStudentFirestore: KidStudentFirestoreModelSerializable {
             return nil
         }
         
-        self.init(isKid: isKid, dateCreated: dateCreated, dateEdited: dateEdited, birthdate: birthdate, mostRecentPromotion: mostRecentPromotion, profilePic: profilePic, username: username, password: password, firstName: firstName, lastName: lastName, parentGuardian: parentGuardian, phone: phone, mobile: mobile, email: email)
+        self.init(isKid: isKid, academyChoice: academyChoice, dateCreated: dateCreated, dateEdited: dateEdited, birthdate: birthdate, mostRecentPromotion: mostRecentPromotion, profilePic: profilePic, username: username, password: password, firstName: firstName, lastName: lastName, parentGuardian: parentGuardian, phone: phone, mobile: mobile, email: email)
     }
 }
 

@@ -16,6 +16,7 @@ class ContactInfoViewController: UIViewController, UITextInputTraits {
     
     var isOwner: Bool?
     var isKid: Bool?
+    var academyChoice: String?
     var username: String?
     var password: String?
     var firstName: String?
@@ -255,6 +256,7 @@ class ContactInfoViewController: UIViewController, UITextInputTraits {
         // pass data to destViewController
         destViewController.isOwner = isOwner
         destViewController.isKid = isKid
+        destViewController.academyChoice = academyChoice
         destViewController.username = username
         destViewController.password = password
         destViewController.firstName = firstName
@@ -438,7 +440,7 @@ extension ContactInfoViewController: UITextFieldDelegate {
         
         // get the size of the keyboard
         guard let keyboardCGRectValue = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-            print("ERROR: nil value for notification.userInfo[UIKeyboardFrameEndUserInfoKey] in SignUpLoginViewController.swift -> keyboardWillChange(notification:) - line 225")
+            print("ERROR: nil value for notification.userInfo[UIKeyboardFrameEndUserInfoKey] in ContactInfoViewController.swift -> keyboardWillChange(notification:) - line 443.")
             return
         }
         

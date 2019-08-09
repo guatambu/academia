@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bF5-EU-L88">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bF5-EU-L88">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -561,7 +561,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3032" y="205"/>
+            <point key="canvasLocation" x="3814" y="203"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OjB-cP-hRh">
@@ -951,7 +951,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LvP-3c-ToH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5408" y="206"/>
+            <point key="canvasLocation" x="6163" y="204"/>
         </scene>
         <!--address-->
         <scene sceneID="N4s-7k-cpQ">
@@ -1249,7 +1249,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="6246" y="205"/>
+            <point key="canvasLocation" x="6945" y="203"/>
         </scene>
         <!--contact info-->
         <scene sceneID="M8O-hx-JO7">
@@ -1489,7 +1489,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="7029" y="206"/>
+            <point key="canvasLocation" x="7719" y="203"/>
         </scene>
         <!--profile pic-->
         <scene sceneID="4Ky-ip-5cC">
@@ -1820,7 +1820,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3892.5" y="204.92957746478874"/>
+            <point key="canvasLocation" x="4590" y="205"/>
         </scene>
         <!--profile complete-->
         <scene sceneID="4VU-BK-fhG">
@@ -2196,7 +2196,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYx-wp-Y05" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8634" y="205"/>
+            <point key="canvasLocation" x="9291" y="204"/>
         </scene>
         <!--emergency contact info-->
         <scene sceneID="SGk-R8-yR3">
@@ -2471,7 +2471,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="7836" y="206"/>
+            <point key="canvasLocation" x="8494" y="205"/>
         </scene>
         <!--birthday-->
         <scene sceneID="X3v-96-U3Z">
@@ -2686,22 +2686,57 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z1D-gk-pdJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4667" y="205"/>
+            <point key="canvasLocation" x="5385" y="203"/>
         </scene>
-        <!--birthday-->
-        <scene sceneID="sFP-iv-ix3">
+        <!--find your academy View Controller-->
+        <scene sceneID="Iaq-zC-xX2">
             <objects>
-                <viewController storyboardIdentifier="toStudentChooseYourSchool" id="oGc-Rq-HhK" userLabel="birthday" customClass="FindYourAcademyViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="NbT-kn-kfG">
+                <viewController storyboardIdentifier="toFindYourAcademyViewController" id="vdm-uU-jGR" userLabel="find your academy View Controller" customClass="FindYourAcademyViewController" customModule="Academia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3KF-P8-Eco">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="please find your academy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CjM-bO-Vfh" userLabel="please find your academy Label Outlet">
-                                <rect key="frame" x="16" y="135" width="288" height="33"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fvz-Ho-Tt7" userLabel="Search Bar Button">
+                                <rect key="frame" x="0.0" y="20" width="320" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="searchBarButtonTapped:" destination="vdm-uU-jGR" eventType="touchUpInside" id="F3a-q0-Aan"/>
+                                </connections>
+                            </button>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="3Jb-Bv-geb">
+                                <rect key="frame" x="0.0" y="20" width="320" height="56"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                            </searchBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="please tap the search field to find your academy" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CjM-bO-Vfh" userLabel="please find your academy Label Outlet">
+                                <rect key="frame" x="16" y="120" width="288" height="66"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" estimatedRowHeight="40" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="d1w-3o-Jui">
+                                <rect key="frame" x="0.0" y="194" width="320" height="238"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="Lap-Bp-xg9" rowHeight="40" style="IBUITableViewCellStyleDefault" id="anw-ui-Dc2">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="40"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="anw-ui-Dc2" id="PdC-zZ-jfw">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="39.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Lap-Bp-xg9">
+                                                    <rect key="frame" x="15" y="0.0" width="290" height="39.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hCZ-05-Sj7" userLabel="Next Button Outlet" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
                                 <rect key="frame" x="105.5" y="472" width="109" height="40"/>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -2719,7 +2754,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="nextButtonTapped:" destination="oGc-Rq-HhK" eventType="touchUpInside" id="Phc-Mm-92c"/>
+                                    <action selector="nextButtonTapped:" destination="vdm-uU-jGR" eventType="touchUpInside" id="eww-Ya-FAt"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Caa-yw-h1d" userLabel="Progress Stack View">
@@ -2844,47 +2879,49 @@
                                     </view>
                                 </subviews>
                             </stackView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="hko-dA-B8o">
-                                <rect key="frame" x="0.0" y="256" width="320" height="56"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
-                            </searchBar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="CjM-bO-Vfh" firstAttribute="leading" secondItem="MzX-PJ-pPG" secondAttribute="leading" constant="16" id="1HB-P1-PRs"/>
-                            <constraint firstItem="Caa-yw-h1d" firstAttribute="top" secondItem="hCZ-05-Sj7" secondAttribute="bottom" constant="24" id="Be2-Ra-fL0"/>
-                            <constraint firstItem="Caa-yw-h1d" firstAttribute="centerX" secondItem="NbT-kn-kfG" secondAttribute="centerX" id="Jk4-vO-NtZ"/>
-                            <constraint firstItem="hko-dA-B8o" firstAttribute="top" secondItem="CjM-bO-Vfh" secondAttribute="bottom" constant="88" id="Mjq-FZ-Zef"/>
-                            <constraint firstItem="MzX-PJ-pPG" firstAttribute="trailing" secondItem="CjM-bO-Vfh" secondAttribute="trailing" constant="16" id="csX-w4-Jrt"/>
-                            <constraint firstItem="hko-dA-B8o" firstAttribute="leading" secondItem="MzX-PJ-pPG" secondAttribute="leading" id="dVj-0a-Sm7"/>
-                            <constraint firstItem="hCZ-05-Sj7" firstAttribute="top" secondItem="hko-dA-B8o" secondAttribute="bottom" constant="160" id="oHQ-kz-egq"/>
-                            <constraint firstItem="hko-dA-B8o" firstAttribute="trailing" secondItem="MzX-PJ-pPG" secondAttribute="trailing" id="pAV-fB-Hog"/>
-                            <constraint firstItem="hCZ-05-Sj7" firstAttribute="centerX" secondItem="NbT-kn-kfG" secondAttribute="centerX" id="ung-Lm-31p"/>
-                            <constraint firstItem="MzX-PJ-pPG" firstAttribute="bottom" secondItem="Caa-yw-h1d" secondAttribute="bottom" constant="24" id="ztp-Cz-EE0"/>
+                            <constraint firstItem="hCZ-05-Sj7" firstAttribute="top" secondItem="d1w-3o-Jui" secondAttribute="bottom" constant="40" id="18C-uH-V53"/>
+                            <constraint firstItem="HBb-0X-k95" firstAttribute="trailing" secondItem="CjM-bO-Vfh" secondAttribute="trailing" constant="16" id="8v1-xe-l9e"/>
+                            <constraint firstItem="d1w-3o-Jui" firstAttribute="top" secondItem="CjM-bO-Vfh" secondAttribute="bottom" constant="8" id="BEn-ib-ygw"/>
+                            <constraint firstItem="3Jb-Bv-geb" firstAttribute="leading" secondItem="HBb-0X-k95" secondAttribute="leading" id="FDK-Ly-nVT"/>
+                            <constraint firstItem="3Jb-Bv-geb" firstAttribute="trailing" secondItem="HBb-0X-k95" secondAttribute="trailing" id="Gdj-kn-aB7"/>
+                            <constraint firstItem="CjM-bO-Vfh" firstAttribute="leading" secondItem="HBb-0X-k95" secondAttribute="leading" constant="16" id="LoK-G1-d9l"/>
+                            <constraint firstItem="Caa-yw-h1d" firstAttribute="top" secondItem="hCZ-05-Sj7" secondAttribute="bottom" constant="24" id="PJI-u1-EbO"/>
+                            <constraint firstItem="hCZ-05-Sj7" firstAttribute="centerX" secondItem="3KF-P8-Eco" secondAttribute="centerX" id="X3F-2e-0lL"/>
+                            <constraint firstItem="3Jb-Bv-geb" firstAttribute="top" secondItem="HBb-0X-k95" secondAttribute="top" id="ZQN-vV-KmH"/>
+                            <constraint firstItem="hCZ-05-Sj7" firstAttribute="centerX" secondItem="3KF-P8-Eco" secondAttribute="centerX" id="Zsy-ua-FP4"/>
+                            <constraint firstItem="CjM-bO-Vfh" firstAttribute="top" secondItem="3Jb-Bv-geb" secondAttribute="bottom" constant="44" id="gY0-yN-yEX"/>
+                            <constraint firstItem="HBb-0X-k95" firstAttribute="trailing" secondItem="d1w-3o-Jui" secondAttribute="trailing" id="kLR-0j-2fP"/>
+                            <constraint firstItem="d1w-3o-Jui" firstAttribute="leading" secondItem="HBb-0X-k95" secondAttribute="leading" id="wIh-td-0bH"/>
+                            <constraint firstItem="HBb-0X-k95" firstAttribute="bottom" secondItem="Caa-yw-h1d" secondAttribute="bottom" constant="24" id="yKl-8a-q1x"/>
+                            <constraint firstItem="Caa-yw-h1d" firstAttribute="centerX" secondItem="3KF-P8-Eco" secondAttribute="centerX" id="zp9-qz-bEn"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="MzX-PJ-pPG"/>
+                        <viewLayoutGuide key="safeArea" id="HBb-0X-k95"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="jXX-p1-TtJ" appends="YES" id="AgJ-hx-xEh"/>
+                        </connections>
                     </view>
-                    <navigationItem key="navigationItem" title=" " id="di5-MZ-S3d">
-                        <barButtonItem key="backBarButtonItem" title=" " id="3RA-H0-fah"/>
-                    </navigationItem>
                     <connections>
-                        <outlet property="firstProgressDotOutlet" destination="23i-Sm-afA" id="eFy-cd-Wy5"/>
-                        <outlet property="nextButtonOutlet" destination="hCZ-05-Sj7" id="bnq-Yc-xD5"/>
-                        <outlet property="searchDisplayController" destination="tvV-gj-sdk" id="X8R-qk-bRy"/>
-                        <outlet property="whenIsYourBirthdayLabelOutlet" destination="CjM-bO-Vfh" id="R9F-IW-U8r"/>
+                        <outlet property="nextButtonOutlet" destination="hCZ-05-Sj7" id="xGX-jR-yrW"/>
+                        <outlet property="pleaseFindAcademyLabelOutlet" destination="CjM-bO-Vfh" id="Bud-Jb-mjf"/>
+                        <outlet property="searchBarButtonOutlet" destination="fvz-Ho-Tt7" id="wYm-MC-8RL"/>
+                        <outlet property="searchBarOutlet" destination="3Jb-Bv-geb" id="OWa-VU-x1H"/>
+                        <outlet property="searchResultsTableViewOutlet" destination="d1w-3o-Jui" id="XtK-x1-KuL"/>
+                        <outlet property="tapGestureRecognizerOutlet" destination="jXX-p1-TtJ" id="dvT-y9-KXe"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wOv-QL-vqr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="tvV-gj-sdk">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5hY-Om-Xzp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="jXX-p1-TtJ">
                     <connections>
-                        <outlet property="delegate" destination="oGc-Rq-HhK" id="I3O-kT-aoO"/>
-                        <outlet property="searchContentsController" destination="oGc-Rq-HhK" id="gBA-Th-qAj"/>
-                        <outlet property="searchResultsDataSource" destination="oGc-Rq-HhK" id="hHv-bi-FGu"/>
-                        <outlet property="searchResultsDelegate" destination="oGc-Rq-HhK" id="ZxV-Jb-6e1"/>
+                        <action selector="tapAnywhereTapped:" destination="vdm-uU-jGR" id="ROL-sc-DyS"/>
+                        <outlet property="delegate" destination="vdm-uU-jGR" id="HVS-Jl-IWX"/>
                     </connections>
-                </searchDisplayController>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3516" y="905"/>
+            <point key="canvasLocation" x="3024" y="205"/>
         </scene>
         <!--login -->
         <scene sceneID="gVy-Yl-muT">

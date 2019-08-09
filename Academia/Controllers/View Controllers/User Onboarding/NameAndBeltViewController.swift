@@ -16,6 +16,7 @@ class NameAndBeltViewController: UIViewController {
     
     var isOwner: Bool?
     var isKid: Bool?
+    var academyChoice: String?
     var username: String?
     var password: String?
     var firstName: String?
@@ -131,6 +132,7 @@ class NameAndBeltViewController: UIViewController {
         // pass data to destViewController
         destViewController.isOwner = isOwner
         destViewController.isKid = isKid
+        destViewController.academyChoice = academyChoice
         destViewController.username = username
         destViewController.password = password
         destViewController.firstName = firstName
@@ -213,7 +215,7 @@ extension NameAndBeltViewController: UIPickerViewDelegate, UIPickerViewDataSourc
                 
                 return beltBuilder.redBeltDegrees.count
             default:
-                print("OOOPS!  this belt is not currently represented in international standard. error: NameAndBeltVC - function sliderVlaueChanged, line 88 ")
+                print("OOOPS!  this belt is not currently represented in international standard. error: NameAndBeltVC.swift -> pickerView(pickerView: numberOfRowsInComponent:) - line 218.")
             }
             
         }
@@ -279,7 +281,7 @@ extension NameAndBeltViewController: UIPickerViewDelegate, UIPickerViewDataSourc
         
                 return "\(beltBuilder.redBeltDegrees[row]) degrees"
             default:
-                print("OOOPS!  this belt is not currently represented in international standard. error: NameAndBeltVC - function sliderVlaueChanged, line 88 ")
+                print("OOOPS!  this belt is not currently represented in international standard. error: NameAndBeltVC.swift -> pickerView(pickerView: titleForRow: forComponent component:) - line 284.")
             }
         }
         
@@ -289,7 +291,7 @@ extension NameAndBeltViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         guard let isKid = isKid else {
-            print("the isKid value is somehow nil in pickerView delegate method didSelectRow in NameAndBeltVC.swift - line: 272")
+            print("the isKid value is somehow nil in pickerView delegate method didSelectRow in NameAndBeltVC.swift - line: 294.")
             return
         }
         
@@ -436,7 +438,7 @@ extension NameAndBeltViewController: UIPickerViewDelegate, UIPickerViewDataSourc
                 }
                 
             default:
-                print("OOOPS!  this belt is not currently represented in international standard. error: NameAndBeltVC - function pickerView didSelectRow, line 316 ")
+                print("OOOPS!  this belt is not currently represented in international standard. error:  NameAndBeltVC.swift -> pickerView(pickerView: didSelectRow: inComponent:) - line 441.")
             }
         }
     }
@@ -512,7 +514,7 @@ extension NameAndBeltViewController {
         guard let belt = ownerToEdit.belt else { return }
         
         guard let numberOfStripesInt = Int(exactly: belt.numberOfStripes) else {
-            print("ERROR: no value found for numberOfStripes in OwnerInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 220.")
+            print("ERROR: no value found for numberOfStripes in OwnerInfoDetailsViewController.swift -> ownerEditingSetup(userToEdit:) - line 517.")
             return
         }
         
@@ -534,7 +536,7 @@ extension NameAndBeltViewController {
         guard let belt = kidToEdit.belt else { return }
         
         guard let numberOfStripesInt = Int(exactly: belt.numberOfStripes) else {
-            print("ERROR: no value found for numberOfStripes in OwnerInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 220.")
+            print("ERROR: no value found for numberOfStripes in OwnerInfoDetailsViewController.swift -> kidStudentEditingSetup(userToEdit:) - line 539.")
             return
         }
         
@@ -556,7 +558,7 @@ extension NameAndBeltViewController {
         guard let belt = adultToEdit.belt else { return }
         
         guard let numberOfStripesInt = Int(exactly: belt.numberOfStripes) else {
-            print("ERROR: no value found for numberOfStripes in OwnerInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 220.")
+            print("ERROR: no value found for numberOfStripes in OwnerInfoDetailsViewController.swift -> adultStudentEditingSetup(userToEdit:) - line 561.")
             return
         }
         
@@ -575,7 +577,7 @@ extension NameAndBeltViewController {
     func setEditingModeForBeltPicker(beltLevel: InternationalStandardBJJBelts?, numberOfStripes: Int?) {
         
         guard let beltLevel = beltLevel, let numberOfStripes = numberOfStripes else {
-            print("no value for editing mode beltLevel or numberOfStripes or both in: NameAndBeltVC -> setEditingModeForBeltPicker(beltLevel: numberOfStripes:) - line 518")
+            print("no value for editing mode beltLevel or numberOfStripes or both in: NameAndBeltVC -> setEditingModeForBeltPicker(beltLevel: numberOfStripes:) - line 580.")
             return
         }
         
@@ -624,7 +626,7 @@ extension NameAndBeltViewController {
         case .adultRedBelt:
             beltLevelPickerView.selectRow(7, inComponent: 0, animated: true)
             
-        default: print("that's NOT A BELT being used in: NameAndBeltVC -> setEditingModeForBeltPicker(beltLevel: numberOfStripes:) - line 567")
+        default: print("that's NOT A BELT being used in: NameAndBeltVC -> setEditingModeForBeltPicker(beltLevel: numberOfStripes:) - line 629.")
         }
         
         switch numberOfStripes {
@@ -666,7 +668,7 @@ extension NameAndBeltViewController {
             beltLevelPickerView.selectRow(11, inComponent: 1, animated: true)
             print("numberOfStripes: \(numberOfStripes)")
             
-        default: print("that's NOT A STRIPE being used in: NameAndBeltVC -> setEditingModeForBeltPicker(beltLevel: numberOfStripes:) - line 609")
+        default: print("that's NOT A STRIPE being used in: NameAndBeltVC -> setEditingModeForBeltPicker(beltLevel: numberOfStripes:) - line 671.")
         }
     }
 }

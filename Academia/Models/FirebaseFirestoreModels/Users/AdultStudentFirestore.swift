@@ -18,6 +18,7 @@ struct AdultStudentFirestore {
     
     var isKid: Bool
     var isInstructor: Bool
+    var academyChoice: String
     var dateCreated: Timestamp
     var dateEdited: Timestamp
     var birthdate: Date
@@ -37,6 +38,7 @@ struct AdultStudentFirestore {
         return [
             "isKid" : isKid,
             "isInstructor" : isInstructor,
+            "academyChoice" : academyChoice,
             "dateCreated" : dateCreated,
             "dateEdited" : dateEdited,
             "birthdate" : birthdate,
@@ -56,6 +58,7 @@ struct AdultStudentFirestore {
     // initializer to allow creation of an AdultStudentFirestore object
     init(isKid: Bool = false,
          isInstructor: Bool = true,
+         academyChoice: String,
          dateCreated: Timestamp = Timestamp(),
          dateEdited: Timestamp = Timestamp(),
          birthdate: Date,
@@ -73,6 +76,7 @@ struct AdultStudentFirestore {
         
         self.isKid = isKid
         self.isInstructor = isInstructor
+        self.academyChoice = academyChoice
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
         self.birthdate = birthdate
@@ -94,22 +98,21 @@ extension AdultStudentFirestore: AdultStudentFirestoreModelSerializable {
     
     init?(dictionary: [String : Any]) {
         
-        
-        guard let adultStudentUUID = dictionary["adultStudentUUID"] as? String else {
-            
-            print("ERROR: nil value found for adultStudentUUID in firestore dictionary in AdultStudentFirestore.swift -> init(dictionary:) - line 103.")
-            return nil
-        }
-        
         guard let isKid = dictionary["isKid"] as? Bool else {
             
-            print("ERROR: nil value found for isKid in firestore dictionary in AdultStudentFirestore.swift -> init(dictionary:) - line 109.")
+            print("ERROR: nil value found for isKid in firestore dictionary in AdultStudentFirestore.swift -> init(dictionary:) - line 103.")
             return nil
         }
         
         guard let isInstructor = dictionary["isInstructor"] as? Bool else {
             
-            print("ERROR: nil value found for isInstructor in firestore dictionary in AdultStudentFirestore.swift -> init(dictionary:) - line 115.")
+            print("ERROR: nil value found for isInstructor in firestore dictionary in AdultStudentFirestore.swift -> init(dictionary:) - line 109.")
+            return nil
+        }
+        
+        guard let academyChoice = dictionary["academyChoice"] as? String else {
+            
+            print("ERROR: nil value found for academyChoice in firestore dictionary in AdultStudentFirestore.swift -> init(dictionary:) - line 115.")
             return nil
         }
         
@@ -192,6 +195,6 @@ extension AdultStudentFirestore: AdultStudentFirestoreModelSerializable {
             return nil
         }
         
-        self.init(isKid: isKid, isInstructor: isInstructor, dateCreated: dateCreated, dateEdited: dateEdited, birthdate: birthdate, mostRecentPromotion: mostRecentPromotion, profilePic: profilePic, username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: mobile, email: email)
+        self.init(isKid: isKid, isInstructor: isInstructor, academyChoice: academyChoice, dateCreated: dateCreated, dateEdited: dateEdited, birthdate: birthdate, mostRecentPromotion: mostRecentPromotion, profilePic: profilePic, username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: mobile, email: email)
     }
 }

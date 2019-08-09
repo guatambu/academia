@@ -16,6 +16,7 @@ class BirthdayViewController: UIViewController {
     
     var isOwner: Bool?
     var isKid: Bool?
+    var academyChoice: String?
     var username: String?
     var password: String?
     var firstName: String?
@@ -145,6 +146,7 @@ class BirthdayViewController: UIViewController {
         // pass data to destViewController
         destViewController.isOwner = isOwner
         destViewController.isKid = isKid
+        destViewController.academyChoice = academyChoice
         destViewController.username = username
         destViewController.password = password
         destViewController.firstName = firstName
@@ -192,7 +194,7 @@ extension BirthdayViewController {
         if birthdate != nil {
             OwnerCDModelController.shared.update(owner: ownerCD, isInstructor: nil, birthdate: birthdate, mostRecentPromotion: nil, belt: nil, profilePic: nil, username: nil, password: nil, firstName: nil, lastName: nil, address: nil, phone: nil, mobile: nil, email: nil, emergencyContact: nil)
         } else {
-            print("EROR: birthdate value is nil.  BirthdayViewController.swift -> updateAdultStudentInfo() - line 223.")
+            print("EROR: birthdate value is nil.  BirthdayViewController.swift -> updateOwnerInfo() - line 197.")
         }
         OwnerCDModelController.shared.saveToPersistentStorage()
     }
@@ -205,7 +207,7 @@ extension BirthdayViewController {
         if birthdate != nil {
             StudentKidCDModelController.shared.update(studentKid: studentKidCD, birthdate: birthdate, mostRecentPromotion: nil, studentStatus: nil, belt: nil, profilePic: nil, username: nil, password: nil, firstName: nil, lastName: nil, parentGuardian: nil, address: nil, phone: nil, mobile: nil, email: nil, emergencyContact: nil)
         } else {
-            print("EROR: birthdate value is nil.  BirthdayViewController.swift -> updateAdultStudentInfo() - line 240.")
+            print("EROR: birthdate value is nil.  BirthdayViewController.swift -> updateKidStudentInfo() - line 210.")
         }
         OwnerCDModelController.shared.saveToPersistentStorage()
     }
@@ -218,7 +220,7 @@ extension BirthdayViewController {
         if birthdate != nil {
             StudentAdultCDModelController.shared.update(studentAdult: studentAdultCD, isInstructor: nil, birthdate: birthdate, mostRecentPromotion: nil, studentStatus: nil, belt: nil, profilePic: nil, username: nil, password: nil, firstName: nil, lastName: nil, address: nil, phone: nil, mobile: nil, email: nil, emergencyContact: nil)
         } else {
-            print("EROR: birthdate value is nil.  BirthdayViewController.swift -> updateAdultStudentInfo() - line 257.")
+            print("EROR: birthdate value is nil.  BirthdayViewController.swift -> updateAdultStudentInfo() - line 223.")
         }
         OwnerCDModelController.shared.saveToPersistentStorage()
     }
