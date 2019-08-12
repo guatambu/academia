@@ -2696,47 +2696,65 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fvz-Ho-Tt7" userLabel="Search Bar Button">
-                                <rect key="frame" x="0.0" y="20" width="320" height="56"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="searchBarButtonTapped:" destination="vdm-uU-jGR" eventType="touchUpInside" id="F3a-q0-Aan"/>
-                                </connections>
-                            </button>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="3Jb-Bv-geb">
-                                <rect key="frame" x="0.0" y="20" width="320" height="56"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
-                            </searchBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="please tap the search field to find your academy" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CjM-bO-Vfh" userLabel="please find your academy Label Outlet">
-                                <rect key="frame" x="16" y="120" width="288" height="66"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="please find your academy " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CjM-bO-Vfh" userLabel="please find your academy Label Outlet">
+                                <rect key="frame" x="16" y="52" width="288" height="33"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" estimatedRowHeight="40" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="d1w-3o-Jui">
-                                <rect key="frame" x="0.0" y="194" width="320" height="238"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="Lap-Bp-xg9" rowHeight="40" style="IBUITableViewCellStyleDefault" id="anw-ui-Dc2">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="40"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="anw-ui-Dc2" id="PdC-zZ-jfw">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="39.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Lap-Bp-xg9">
-                                                    <rect key="frame" x="15" y="0.0" width="290" height="39.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="y0l-0h-rF7" userLabel="search Stack View">
+                                <rect key="frame" x="16" y="93" width="288" height="68"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="academy name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BYV-z3-36f" userLabel="name search Round Style Text Field">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="city or zip code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gHJ-9M-8Ue" userLabel="location search Round Style Text Field">
+                                        <rect key="frame" x="0.0" y="38" width="288" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n0j-aW-O92">
+                                <rect key="frame" x="8" y="169" width="304" height="279"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" estimatedRowHeight="40" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="d1w-3o-Jui">
+                                        <rect key="frame" x="0.0" y="0.0" width="304" height="279"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchResultsCell" textLabel="Lap-Bp-xg9" rowHeight="40" style="IBUITableViewCellStyleDefault" id="anw-ui-Dc2">
+                                                <rect key="frame" x="0.0" y="28" width="304" height="40"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="anw-ui-Dc2" id="PdC-zZ-jfw">
+                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="39.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
+                                                    <subviews>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Lap-Bp-xg9">
+                                                            <rect key="frame" x="15" y="0.0" width="274" height="39.5"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="d1w-3o-Jui" firstAttribute="top" secondItem="n0j-aW-O92" secondAttribute="top" id="Kcp-6o-Uzu"/>
+                                    <constraint firstAttribute="trailing" secondItem="d1w-3o-Jui" secondAttribute="trailing" id="RyE-cF-osU"/>
+                                    <constraint firstItem="d1w-3o-Jui" firstAttribute="leading" secondItem="n0j-aW-O92" secondAttribute="leading" id="jp9-MW-KBf"/>
+                                    <constraint firstAttribute="bottom" secondItem="d1w-3o-Jui" secondAttribute="bottom" id="re7-Vf-8iR"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hCZ-05-Sj7" userLabel="Next Button Outlet" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
                                 <rect key="frame" x="105.5" y="472" width="109" height="40"/>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -2883,19 +2901,19 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="hCZ-05-Sj7" firstAttribute="top" secondItem="d1w-3o-Jui" secondAttribute="bottom" constant="40" id="18C-uH-V53"/>
+                            <constraint firstItem="HBb-0X-k95" firstAttribute="trailing" secondItem="y0l-0h-rF7" secondAttribute="trailing" constant="16" id="1eC-GK-by7"/>
+                            <constraint firstItem="y0l-0h-rF7" firstAttribute="leading" secondItem="HBb-0X-k95" secondAttribute="leading" constant="16" id="1uu-fA-6Vf"/>
                             <constraint firstItem="HBb-0X-k95" firstAttribute="trailing" secondItem="CjM-bO-Vfh" secondAttribute="trailing" constant="16" id="8v1-xe-l9e"/>
-                            <constraint firstItem="d1w-3o-Jui" firstAttribute="top" secondItem="CjM-bO-Vfh" secondAttribute="bottom" constant="8" id="BEn-ib-ygw"/>
-                            <constraint firstItem="3Jb-Bv-geb" firstAttribute="leading" secondItem="HBb-0X-k95" secondAttribute="leading" id="FDK-Ly-nVT"/>
-                            <constraint firstItem="3Jb-Bv-geb" firstAttribute="trailing" secondItem="HBb-0X-k95" secondAttribute="trailing" id="Gdj-kn-aB7"/>
+                            <constraint firstItem="n0j-aW-O92" firstAttribute="leading" secondItem="HBb-0X-k95" secondAttribute="leading" constant="8" id="GLa-TC-QAf"/>
+                            <constraint firstItem="y0l-0h-rF7" firstAttribute="top" secondItem="CjM-bO-Vfh" secondAttribute="bottom" constant="8" id="Kgq-Bi-qYA"/>
                             <constraint firstItem="CjM-bO-Vfh" firstAttribute="leading" secondItem="HBb-0X-k95" secondAttribute="leading" constant="16" id="LoK-G1-d9l"/>
+                            <constraint firstItem="hCZ-05-Sj7" firstAttribute="top" secondItem="n0j-aW-O92" secondAttribute="bottom" constant="24" id="Nx5-lq-iGT"/>
                             <constraint firstItem="Caa-yw-h1d" firstAttribute="top" secondItem="hCZ-05-Sj7" secondAttribute="bottom" constant="24" id="PJI-u1-EbO"/>
                             <constraint firstItem="hCZ-05-Sj7" firstAttribute="centerX" secondItem="3KF-P8-Eco" secondAttribute="centerX" id="X3F-2e-0lL"/>
-                            <constraint firstItem="3Jb-Bv-geb" firstAttribute="top" secondItem="HBb-0X-k95" secondAttribute="top" id="ZQN-vV-KmH"/>
                             <constraint firstItem="hCZ-05-Sj7" firstAttribute="centerX" secondItem="3KF-P8-Eco" secondAttribute="centerX" id="Zsy-ua-FP4"/>
-                            <constraint firstItem="CjM-bO-Vfh" firstAttribute="top" secondItem="3Jb-Bv-geb" secondAttribute="bottom" constant="44" id="gY0-yN-yEX"/>
-                            <constraint firstItem="HBb-0X-k95" firstAttribute="trailing" secondItem="d1w-3o-Jui" secondAttribute="trailing" id="kLR-0j-2fP"/>
-                            <constraint firstItem="d1w-3o-Jui" firstAttribute="leading" secondItem="HBb-0X-k95" secondAttribute="leading" id="wIh-td-0bH"/>
+                            <constraint firstItem="CjM-bO-Vfh" firstAttribute="top" secondItem="HBb-0X-k95" secondAttribute="top" constant="32" id="g7p-jR-54V"/>
+                            <constraint firstItem="n0j-aW-O92" firstAttribute="top" secondItem="y0l-0h-rF7" secondAttribute="bottom" constant="8" id="j3L-2H-XEk"/>
+                            <constraint firstItem="HBb-0X-k95" firstAttribute="trailing" secondItem="n0j-aW-O92" secondAttribute="trailing" constant="8" id="vj3-d6-AYO"/>
                             <constraint firstItem="HBb-0X-k95" firstAttribute="bottom" secondItem="Caa-yw-h1d" secondAttribute="bottom" constant="24" id="yKl-8a-q1x"/>
                             <constraint firstItem="Caa-yw-h1d" firstAttribute="centerX" secondItem="3KF-P8-Eco" secondAttribute="centerX" id="zp9-qz-bEn"/>
                         </constraints>
@@ -2905,12 +2923,12 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="locationSearchTextField" destination="gHJ-9M-8Ue" id="a9T-98-VI8"/>
+                        <outlet property="nameSearchTextField" destination="BYV-z3-36f" id="oPU-gN-MLl"/>
                         <outlet property="nextButtonOutlet" destination="hCZ-05-Sj7" id="xGX-jR-yrW"/>
                         <outlet property="pleaseFindAcademyLabelOutlet" destination="CjM-bO-Vfh" id="Bud-Jb-mjf"/>
-                        <outlet property="searchBarButtonOutlet" destination="fvz-Ho-Tt7" id="wYm-MC-8RL"/>
-                        <outlet property="searchBarOutlet" destination="3Jb-Bv-geb" id="OWa-VU-x1H"/>
                         <outlet property="searchResultsTableViewOutlet" destination="d1w-3o-Jui" id="XtK-x1-KuL"/>
-                        <outlet property="tapGestureRecognizerOutlet" destination="jXX-p1-TtJ" id="dvT-y9-KXe"/>
+                        <outlet property="searchStackView" destination="y0l-0h-rF7" id="hVE-zw-rXu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5hY-Om-Xzp" userLabel="First Responder" sceneMemberID="firstResponder"/>

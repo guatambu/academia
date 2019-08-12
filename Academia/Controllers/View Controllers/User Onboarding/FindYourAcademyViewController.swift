@@ -22,38 +22,48 @@ class FindYourAcademyViewController: UIViewController, UITableViewDelegate, UITa
     var group: Group?
     
     var isSearching: Bool = false
+    var searchResults: [LocationFirestore]?
     
     let beltBuilder = BeltBuilder()
     
-    @IBOutlet weak var searchBarOutlet: UISearchBar!
-    @IBOutlet weak var searchBarButtonOutlet: UIButton!
+    @IBOutlet weak var searchStackView: UIStackView!
+    @IBOutlet weak var nameSearchTextField: UITextField!
+    @IBOutlet weak var locationSearchTextField: UITextField!
     @IBOutlet weak var pleaseFindAcademyLabelOutlet: UILabel!
     @IBOutlet weak var searchResultsTableViewOutlet: UITableView!
     @IBOutlet weak var nextButtonOutlet: DesignableButton!
     
     // CoreData properties
     var groupCD: GroupCD?
+    var db: Firestore!
     
     
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
         
-        searchResultsTableViewOutlet.isHidden = true
-        // likely will want to setup an active firestore listener
+        // turns off auto-correct in these UITextFields
+        nameSearchTextField.autocorrectionType = UITextAutocorrectionType.no
+        locationSearchTextField.autocorrectionType = UITextAutocorrectionType.no
         
+        // turns off auto-capitalization in these UITextFields
+        nameSearchTextField.autocapitalizationType = UITextAutocapitalizationType.none
+        locationSearchTextField.autocapitalizationType = UITextAutocapitalizationType.none
+        
+        // searchResultsTableViewOutlet.isHidden = true
+        // likely will want to setup an active firestore listener
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         
         // likely will want to dismiss the active firestore listener
-        
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        searchBarOutlet.delegate = self
+        
+        nameSearchTextField.delegate = self
+        locationSearchTextField.delegate = self
         
         searchResultsTableViewOutlet.isHidden = true
         searchResultsTableViewOutlet.delegate = self
@@ -72,7 +82,14 @@ class FindYourAcademyViewController: UIViewController, UITableViewDelegate, UITa
             
             isSearching = false
             
-            searchBarOutlet.resignFirstResponder()
+            if nameSearchTextField.isFirstResponder {
+                
+                nameSearchTextField.resignFirstResponder()
+                
+            } else if locationSearchTextField.isFirstResponder {
+                
+                locationSearchTextField.resignFirstResponder()
+            }
         }
     }
     
@@ -108,36 +125,69 @@ class FindYourAcademyViewController: UIViewController, UITableViewDelegate, UITa
     // MARK: TableView DataSource Functions
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        
+        return searchResults?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "searchResultsCell") else {
+            
+            print("ERROR: nil value found for cell in FindYourAcademyVC.swift -> tableView(tableView: cellForRowAt) - line 120.")
+            return UITableViewCell()
+        }
+        
+        guard let location = searchResults?[indexPath.row] else {
+            
+            print("ERROR: nil value found for location in FindYourAcademyVC.swift -> tableView(tableView: cellForRowAt) - line 126.")
+            return UITableViewCell()
+        }
+        
+        cell.textLabel?.text = location.locationName
+        
+        return cell
     }
 }
 
 
 // MARK: - UITextField Delegate methods and Keyboard handling
-extension FindYourAcademyViewController: UISearchBarDelegate {
+extension FindYourAcademyViewController: UITextFieldDelegate {
 
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar)  {
+    func searchButtonClicked(_ searchBar: UISearchBar)  {
         
-        searchBar.resignFirstResponder()
-        
-        isSearching = false
-        
-        // keyboard search button fires off the firestore query and returns the query search results
+        if nameSearchTextField.isFirstResponder {
+            
+            nameSearchTextField.resignFirstResponder()
+            
+        } else if locationSearchTextField.isFirstResponder {
+            
+            locationSearchTextField.resignFirstResponder()
+        }
         
         
     }
     
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+    // UITextField Delegate methods
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        // un-hide table view to display search results
-        searchResultsTableViewOutlet.isHidden = false
+        if textField == nameSearchTextField {
+            textField.resignFirstResponder()
+            locationSearchTextField.becomeFirstResponder()
+            print("Next button tapped")
+            
+        } else if textField == locationSearchTextField {
+            textField.resignFirstResponder()
+            print("Search button tapped")
+            
+            isSearching = false
+            
+            // keyboard search button fires off the firestore query and returns the query search results
+            
+//            db.collectionGroup
+            
+        }
         
-        isSearching = true
-        
+        return true
     }
     
 }
