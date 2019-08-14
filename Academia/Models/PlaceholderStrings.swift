@@ -39,6 +39,8 @@ enum PlaceholderStrings: String {
     case groupDescription = "tap for group description"
     case className = "tap for class name"
     case classDescription = "tap for class description"
+    case academyNameSearch = "tap for academy name"
+    case locationSearch = "tap for city or zip code"
     
     
 }

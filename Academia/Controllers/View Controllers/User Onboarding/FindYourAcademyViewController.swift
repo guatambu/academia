@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 
+
 class FindYourAcademyViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
@@ -69,6 +70,15 @@ class FindYourAcademyViewController: UIViewController, UITableViewDelegate, UITa
         searchResultsTableViewOutlet.delegate = self
         searchResultsTableViewOutlet.dataSource = self
         
+        nameSearchTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.academyNameSearch.rawValue, attributes: beltBuilder.avenirFont)
+        locationSearchTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.locationSearch.rawValue, attributes: beltBuilder.avenirFont)
+        
+//         Firebase Firestore [START setup]
+        let settings = FirestoreSettings()
+
+        Firestore.firestore().settings = settings
+//         [END setup]
+        db = Firestore.firestore()
     }
     
 
@@ -152,20 +162,6 @@ class FindYourAcademyViewController: UIViewController, UITableViewDelegate, UITa
 
 // MARK: - UITextField Delegate methods and Keyboard handling
 extension FindYourAcademyViewController: UITextFieldDelegate {
-
-    func searchButtonClicked(_ searchBar: UISearchBar)  {
-        
-        if nameSearchTextField.isFirstResponder {
-            
-            nameSearchTextField.resignFirstResponder()
-            
-        } else if locationSearchTextField.isFirstResponder {
-            
-            locationSearchTextField.resignFirstResponder()
-        }
-        
-        
-    }
     
     // UITextField Delegate methods
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -182,8 +178,8 @@ extension FindYourAcademyViewController: UITextFieldDelegate {
             isSearching = false
             
             // keyboard search button fires off the firestore query and returns the query search results
+            db
             
-//            db.collectionGroup
             
         }
         
