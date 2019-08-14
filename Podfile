@@ -7,6 +7,7 @@ target 'Academia' do
 
   # Pods for Academia
 
+  pod 'Firebase'
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
   pod 'Firebase/Analytics'

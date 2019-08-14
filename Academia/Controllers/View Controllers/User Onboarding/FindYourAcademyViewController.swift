@@ -178,7 +178,7 @@ extension FindYourAcademyViewController: UITextFieldDelegate {
             isSearching = false
             
             // keyboard search button fires off the firestore query and returns the query search results
-            db
+            
             
             
         }
