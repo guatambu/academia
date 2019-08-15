@@ -177,10 +177,17 @@ extension FindYourAcademyViewController: UITextFieldDelegate {
             
             isSearching = false
             
-            // keyboard search button fires off the firestore query and returns the query search results
+            // keyboard search button fires off the firestore collcetion group query and returns the query search results
             
-            
-            
+            db.collectionGroup("locations").whereField("locationName", isEqualTo: true).getDocuments { (snapshopt, error) in
+                
+                if let error = error {
+                    print("ERROR: \(error.localizedDescription) - a nil value found for locations in FindYourAcademyVC.swift -> tableView(tableView: cellForRowAt) - line 185.")
+                }
+                
+                print("there are \(snapshopt?.documents.count ?? 0) retrieved by the locations collcetion group query")
+                
+            }
         }
         
         return true
