@@ -17,7 +17,7 @@ class FindYourAcademyViewController: UIViewController, UITableViewDelegate, UITa
     
     var isOwner: Bool?
     var isKid = false
-    var academyChoice: String?
+    var academyChoice: String?  // academy Firestore UID
     
     var isOwnerAddingStudent: Bool?
     var group: Group?
@@ -26,6 +26,7 @@ class FindYourAcademyViewController: UIViewController, UITableViewDelegate, UITa
     var searchResults: [LocationFirestore]?
     
     let beltBuilder = BeltBuilder()
+    var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
     
     @IBOutlet weak var searchStackView: UIStackView!
     @IBOutlet weak var nameSearchTextField: UITextField!
@@ -105,30 +106,46 @@ class FindYourAcademyViewController: UIViewController, UITableViewDelegate, UITa
     
     @IBAction func nextButtonTapped(_ sender: DesignableButton) {
         
+        if academyChoice != nil {
+            
+            // programmatically performing the Kid Student segue
+            // instantiate the relevant storyboard
+            let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            // instantiate the desired TableViewController as ViewController on relevant storyboard
+            let destViewController = mainView.instantiateViewController(withIdentifier: "toSignUpLoginViewController") as! SignUpLoginViewController
+            // create the segue programmatically
+            self.navigationController?.pushViewController(destViewController, animated: true)
+            // set the desired properties of the destinationVC's navgation Item
+            let backButtonItem = UIBarButtonItem()
+            backButtonItem.title = " "
+            navigationItem.backBarButtonItem = backButtonItem
+            // set nav bar controller appearance
+            navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
+            navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
+            navigationController?.navigationBar.shadowImage = UIImage()
+            
+            // pass desired data to relevant view controller
+            destViewController.isOwner = self.isOwner
+            destViewController.isKid = self.isKid
+            destViewController.academyChoice = academyChoice
+            destViewController.isOwnerAddingStudent = isOwnerAddingStudent
+            destViewController.group = group
+            destViewController.groupCD = groupCD
+            
+        } else {
+            
+            pleaseFindAcademyLabelOutlet.text = "please find your academy"
+            pleaseFindAcademyLabelOutlet.textColor = beltBuilder.redBeltRed
+            // fire haptic feedback for error
+            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+            
+            nameSearchTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.academyNameSearch.rawValue, attributes: beltBuilder.errorAvenirFont)
+            
+            locationSearchTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.locationSearch.rawValue, attributes: beltBuilder.errorAvenirFont)
+            
+        }
         
-        // programmatically performing the Kid Student segue
-        // instantiate the relevant storyboard
-        let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        // instantiate the desired TableViewController as ViewController on relevant storyboard
-        let destViewController = mainView.instantiateViewController(withIdentifier: "toSignUpLoginViewController") as! SignUpLoginViewController
-        // create the segue programmatically
-        self.navigationController?.pushViewController(destViewController, animated: true)
-        // set the desired properties of the destinationVC's navgation Item
-        let backButtonItem = UIBarButtonItem()
-        backButtonItem.title = " "
-        navigationItem.backBarButtonItem = backButtonItem
-        // set nav bar controller appearance
-        navigationController?.navigationBar.tintColor = beltBuilder.redBeltRed
-        navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
-        navigationController?.navigationBar.shadowImage = UIImage()
-        
-        // pass desired data to relevant view controller
-        destViewController.isOwner = self.isOwner
-        destViewController.isKid = self.isKid
-        destViewController.academyChoice = academyChoice
-        destViewController.isOwnerAddingStudent = isOwnerAddingStudent
-        destViewController.group = group
-        destViewController.groupCD = groupCD
         
     }
     
@@ -183,16 +200,64 @@ extension FindYourAcademyViewController: UITextFieldDelegate {
                 return true
             }
             
-            db.collectionGroup("locations").whereField("locationName", isEqualTo: nameSearch).whereField("zipCode", isEqualTo: locationSearch).getDocuments { (snapshopt, error) in
+            if nameSearch != "" && locationSearch != "" {
                 
-                if let error = error {
-                    print("ERROR: \(error.localizedDescription) - a nil value found for locations in FindYourAcademyVC.swift -> tableView(tableView: cellForRowAt) - line 185.")
+                // 'ideal' search case scenario
+                db.collectionGroup("locations").whereField("locationName", isEqualTo: nameSearch).whereField("zipCode", isEqualTo: locationSearch).getDocuments { (snapshopt, error) in
+                    
+                    if let error = error {
+                        print("ERROR: \(error.localizedDescription) - a nil value found for locations in FindYourAcademyVC.swift -> tableView(tableView: cellForRowAt) - line 185.")
+                    }
+                    
+                    print("there are \(snapshopt?.documents.count ?? 987654321) retrieved by the locations collection group query")
+                    for document in snapshopt?.documents ?? [] {
+                        print("\(document.data())")
+                    }
                 }
                 
-                print("there are \(snapshopt?.documents.count ?? 987654321) retrieved by the locations collection group query")
-                for document in snapshopt?.documents ?? [] {
-                    print("\(document.data())")
+            } else if nameSearch != "" && locationSearch == "" {
+                
+                // it can be acceptable to search only by name
+                db.collectionGroup("locations").whereField("locationName", isEqualTo: nameSearch).getDocuments { (snapshopt, error) in
+                    
+                    if let error = error {
+                        print("ERROR: \(error.localizedDescription) - a nil value found for locations in FindYourAcademyVC.swift -> tableView(tableView: cellForRowAt) - line 185.")
+                    }
+                    
+                    print("there are \(snapshopt?.documents.count ?? 987654321) retrieved by the locations collection group query")
+                    for document in snapshopt?.documents ?? [] {
+                        print("\(document.data())")
+                    }
                 }
+                
+            } else if nameSearch == "" && locationSearch != "" {
+                
+                // it can be accptable to only search via location
+                db.collectionGroup("locations").whereField("zipCode", isEqualTo: locationSearch).getDocuments { (snapshopt, error) in
+                    
+                    if let error = error {
+                        print("ERROR: \(error.localizedDescription) - a nil value found for locations in FindYourAcademyVC.swift -> tableView(tableView: cellForRowAt) - line 185.")
+                    }
+                    
+                    print("there are \(snapshopt?.documents.count ?? 987654321) retrieved by the locations collection group query")
+                    for document in snapshopt?.documents ?? [] {
+                        print("\(document.data())")
+                    }
+                }
+                
+            } else if nameSearch == "" && locationSearch == "" {
+                
+                // ERROR case
+                pleaseFindAcademyLabelOutlet.text = "please find your academy"
+                pleaseFindAcademyLabelOutlet.textColor = beltBuilder.redBeltRed
+                // fire haptic feedback for error
+                hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+                hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+                
+                nameSearchTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.locationName.rawValue, attributes: beltBuilder.errorAvenirFont)
+                
+                locationSearchTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.locationSearch.rawValue, attributes: beltBuilder.errorAvenirFont)
+                
             }
         }
         

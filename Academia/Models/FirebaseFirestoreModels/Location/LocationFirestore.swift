@@ -21,6 +21,7 @@ struct LocationFirestore {
     var dateEdited: Timestamp
     var locationPic: String?
     var locationName: String
+    var ownerName: 
     var phone: String?
     var website: String?
     var email: String

@@ -34,6 +34,7 @@
 		FA41CE6721A1336F00EAD53A /* BeltCellNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA41CE6621A1336F00EAD53A /* BeltCellNib.xib */; };
 		FA41CE6B21A344B100EAD53A /* OwnerInfoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41CE6A21A344B100EAD53A /* OwnerInfoDetailsViewController.swift */; };
 		FA41CE6D21A5EBAA00EAD53A /* BirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41CE6C21A5EBAA00EAD53A /* BirthdayViewController.swift */; };
+		FA45C45723072CF40059D691 /* AcademySearchResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA45C45623072CF40059D691 /* AcademySearchResultsTableViewCell.swift */; };
 		FA463DE4219F4343001CDDD7 /* BeltTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA463DE3219F4343001CDDD7 /* BeltTableViewCell.swift */; };
 		FA4DF32C218CCA0300ECC167 /* Technique.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4DF32B218CCA0300ECC167 /* Technique.swift */; };
 		FA4DF32E218CCA1A00ECC167 /* CurriculumModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4DF32D218CCA1A00ECC167 /* CurriculumModule.swift */; };
@@ -380,6 +381,7 @@
 		FA41CE6621A1336F00EAD53A /* BeltCellNib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BeltCellNib.xib; sourceTree = "<group>"; };
 		FA41CE6A21A344B100EAD53A /* OwnerInfoDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerInfoDetailsViewController.swift; sourceTree = "<group>"; };
 		FA41CE6C21A5EBAA00EAD53A /* BirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayViewController.swift; sourceTree = "<group>"; };
+		FA45C45623072CF40059D691 /* AcademySearchResultsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcademySearchResultsTableViewCell.swift; sourceTree = "<group>"; };
 		FA463DE3219F4343001CDDD7 /* BeltTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeltTableViewCell.swift; sourceTree = "<group>"; };
 		FA4DF32B218CCA0300ECC167 /* Technique.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Technique.swift; sourceTree = "<group>"; };
 		FA4DF32D218CCA1A00ECC167 /* CurriculumModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumModule.swift; sourceTree = "<group>"; };
@@ -1355,6 +1357,7 @@
 				FAB7E351212B7D73003E3B79 /* UserSelfIdentifyViewController.swift */,
 				FA5C5C3D2152CB3200BF62D5 /* StudentChoiceViewController.swift */,
 				FA9463FB2229D0F10063B34C /* FindYourAcademyViewController.swift */,
+				FA45C45623072CF40059D691 /* AcademySearchResultsTableViewCell.swift */,
 				FAF29B62212BBB5000752414 /* SignUpLoginViewController.swift */,
 				FACA3EB6219289310099E620 /* TakeProfilePicViewController.swift */,
 				FA41CE6C21A5EBAA00EAD53A /* BirthdayViewController.swift */,
@@ -1916,6 +1919,7 @@
 				FAA550712145D03F00EC7860 /* HeadingLabelTableViewCell.swift in Sources */,
 				FAD2A3B521E6E1AF00364FC0 /* InstructorTableViewCell.swift in Sources */,
 				FABF85A321B78ABD005CEBD4 /* PaymentProgramInfoDetailsViewController.swift in Sources */,
+				FA45C45723072CF40059D691 /* AcademySearchResultsTableViewCell.swift in Sources */,
 				FAB7E352212B7D73003E3B79 /* UserSelfIdentifyViewController.swift in Sources */,
 				FA21D6802130BB1E006790E5 /* OwnerClassListTableViewController.swift in Sources */,
 				FAD6694922D066F3008F4AF5 /* PaymentBillingSignatureFirestore.swift in Sources */,

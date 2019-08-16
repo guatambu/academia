@@ -16,7 +16,7 @@ class NameAndBeltViewController: UIViewController {
     
     var isOwner: Bool?
     var isKid: Bool?
-    var academyChoice: String?
+    var academyChoice: String?  // academy Firestore UID
     var username: String?
     var password: String?
     var firstName: String?

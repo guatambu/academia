@@ -40,7 +40,7 @@ enum PlaceholderStrings: String {
     case className = "tap for class name"
     case classDescription = "tap for class description"
     case academyNameSearch = "tap for academy name"
-    case locationSearch = "tap for city or zip code"
+    case locationSearch = "tap for city  (optional)"
     
     
 }
