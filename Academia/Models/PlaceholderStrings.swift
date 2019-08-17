@@ -35,6 +35,7 @@ enum PlaceholderStrings: String {
     case paymentProgramDescription = "tap for payment program description"
     case paymentProgramAgreement = "tap for payment program agreement"
     case locationName = "tap for location name"
+    case ownerName = "tap for owner name"
     case groupName =  "tap for group name"
     case groupDescription = "tap for group description"
     case className = "tap for class name"

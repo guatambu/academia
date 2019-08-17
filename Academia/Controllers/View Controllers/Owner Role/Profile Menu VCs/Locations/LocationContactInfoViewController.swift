@@ -14,6 +14,7 @@ class LocationContactInfoViewController: UIViewController, UITextInputTraits {
     // MARK: - Properties
     
     var locationName: String?
+    var ownerName: String?
     var locationPic: UIImage?
     var active: Bool?
     var addressLine1: String?
@@ -228,6 +229,7 @@ class LocationContactInfoViewController: UIViewController, UITextInputTraits {
         
         // pass data to destViewController
         destViewController.locationName = locationName
+        destViewController.ownerName = ownerName
         destViewController.active = active
         destViewController.locationPic = locationPic
         destViewController.addressLine1 = addressLine1

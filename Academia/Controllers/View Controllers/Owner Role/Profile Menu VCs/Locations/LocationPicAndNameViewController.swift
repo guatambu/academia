@@ -29,6 +29,7 @@ class LocationPicAndNameViewController: UIViewController {
     @IBOutlet weak var locationPicImageViewOutlet: UIImageView!
     @IBOutlet weak var activeSwitch: UISwitch!
     @IBOutlet weak var locationNameTextField: UITextField!
+    @IBOutlet weak var ownerNameTextField: UITextField!
     
     // CoreData properties
     var location: LocationCD?
@@ -58,6 +59,8 @@ class LocationPicAndNameViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
         
         locationNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.locationName.rawValue, attributes: beltBuilder.avenirFont)
+        
+        ownerNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.ownerName.rawValue, attributes: beltBuilder.avenirFont)
         
         locationNameTextField.delegate = self
         
@@ -113,10 +116,23 @@ class LocationPicAndNameViewController: UIViewController {
             
             // save not allowed, so we exit function
             return
+            
+        } else if ownerNameTextField.text ==  "" {
+            
+            // fire haptic feedback for error
+            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+            
+            // warnings for specific textfield being left blank by user
+            ownerNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.ownerName.rawValue, attributes: beltBuilder.errorAvenirFont)
+            
+            // save not allowed, so we exit function
+            return
+            
         }
     
         // Location update profile info
-        if locationNameTextField.text != "" && locationPicImageViewOutlet.image != UIImage(contentsOfFile: "user_placeholder") {
+        if locationNameTextField.text != "" && ownerNameTextField.text != "" && locationPicImageViewOutlet.image != UIImage(contentsOfFile: "user_placeholder") {
             
             updateLocationInfo()
             
@@ -129,6 +145,8 @@ class LocationPicAndNameViewController: UIViewController {
         
         // reset textField placeholder text to gray upon succesful save
         locationNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.locationName.rawValue, attributes: beltBuilder.avenirFont)
+        
+        ownerNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.ownerName.rawValue, attributes: beltBuilder.avenirFont)
     }
     
     
@@ -137,6 +155,8 @@ class LocationPicAndNameViewController: UIViewController {
         // dismiss keyboard when leaving VC scene
         if locationNameTextField.isFirstResponder {
             locationNameTextField.resignFirstResponder()
+        } else if ownerNameTextField.isFirstResponder {
+            ownerNameTextField.resignFirstResponder()
         }
         
         // check for required information being left blank by user
@@ -151,6 +171,18 @@ class LocationPicAndNameViewController: UIViewController {
             
             // save not allowed, so we exit function
             return
+        } else if ownerNameTextField.text ==  "" {
+            
+            // fire haptic feedback for error
+            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+            
+            // warnings for specific textfield being left blank by user
+            ownerNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.ownerName.rawValue, attributes: beltBuilder.errorAvenirFont)
+            
+            // save not allowed, so we exit function
+            return
+            
         }
         
         // programmatically performing the segue
@@ -164,8 +196,12 @@ class LocationPicAndNameViewController: UIViewController {
         // reset textField placeholder text to gray upon succesful save
         locationNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.locationName.rawValue, attributes: beltBuilder.avenirFont)
         
+        ownerNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.ownerName.rawValue, attributes: beltBuilder.avenirFont)
+        
         // run check to see is there is firstName, lastName, and profilePic
         guard let locationName = locationNameTextField.text else { return }
+        
+        guard let ownerName = ownerNameTextField.text else { return }
         
         guard let locationPic = locationPicImageViewOutlet.image else { return }
         
@@ -183,6 +219,7 @@ class LocationPicAndNameViewController: UIViewController {
         
         // pass data to destViewController
         destViewController.locationName = locationName
+        destViewController.ownerName = ownerName
         destViewController.locationPic = locationPic
         destViewController.active = active
         

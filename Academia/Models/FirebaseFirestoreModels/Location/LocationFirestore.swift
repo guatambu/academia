@@ -21,7 +21,7 @@ struct LocationFirestore {
     var dateEdited: Timestamp
     var locationPic: String?
     var locationName: String
-    var ownerName: 
+    var ownerName: String
     var phone: String?
     var website: String?
     var email: String
@@ -37,6 +37,7 @@ struct LocationFirestore {
             "dateEdited" : dateEdited,
             "locationPic" : locationPic ?? "",
             "locationName" : locationName,
+            "ownerName" : ownerName,
             "phone" : phone ?? "",
             "website" : website ?? "",
             "email" : email,
@@ -53,6 +54,7 @@ struct LocationFirestore {
          dateEdited: Timestamp = Timestamp(),
          locationPic: String?,
          locationName: String,
+         ownerName: String,
          phone: String?,
          website: String?,
          email: String,
@@ -66,6 +68,7 @@ struct LocationFirestore {
         self.isActive = isActive
         self.locationPic = locationPic
         self.locationName = locationName
+        self.ownerName = ownerName
         self.phone = phone
         self.website = website
         self.email = email
@@ -82,31 +85,37 @@ extension LocationFirestore: LocationFirestoreModelSerializable {
         
         guard let dateCreated = dictionary["dateCreated"] as? Timestamp else {
             
-            print("ERROR: nil value found for dateCreated in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 94.")
+            print("ERROR: nil value found for dateCreated in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 88.")
             return nil
         }
         
         guard let dateEdited = dictionary["dateEdited"] as? Timestamp else {
             
-            print("ERROR: nil value found for dateEdited in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 100.")
+            print("ERROR: nil value found for dateEdited in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 94.")
             return nil
         }
         
         guard let isActive = dictionary["isActive"] as? Bool else {
             
-            print("ERROR: nil value found for isActive in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 106.")
+            print("ERROR: nil value found for isActive in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 100.")
             return nil
         }
         
         guard let locationPic = dictionary["locationPic"] as? String else {
 
-            print("ERROR: nil value found for locationPic in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 112.")
+            print("ERROR: nil value found for locationPic in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 106.")
             return nil
         }
 
         guard let locationName = dictionary["locationName"] as? String else {
 
-            print("ERROR: nil value found for locationName in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 118.")
+            print("ERROR: nil value found for locationName in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 112.")
+            return nil
+        }
+        
+        guard let ownerName = dictionary["ownerName"] as? String else {
+            
+            print("ERROR: nil value found for ownerName in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 118.")
             return nil
         }
         
@@ -146,6 +155,6 @@ extension LocationFirestore: LocationFirestoreModelSerializable {
             return nil
         }
         
-        self.init(isActive: isActive, dateCreated: dateCreated, dateEdited: dateEdited, locationPic: locationPic, locationName: locationName, phone: phone, website: website, email: email, address: address, socialLinks: socialLinks, aulas: aulas)
+        self.init(isActive: isActive, dateCreated: dateCreated, dateEdited: dateEdited, locationPic: locationPic, locationName: locationName, ownerName: ownerName, phone: phone, website: website, email: email, address: address, socialLinks: socialLinks, aulas: aulas)
     }
 }

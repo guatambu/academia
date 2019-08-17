@@ -15,6 +15,7 @@ class LocationInfoDetailsViewController: UIViewController {
     
     var locationName: String?
     var locationPic: UIImage?
+    var ownerName: String?
     var active: Bool?
     var addressLine1: String?
     var addressLine2: String?
@@ -29,11 +30,13 @@ class LocationInfoDetailsViewController: UIViewController {
     var social3: String?
     
     var locationCD: LocationCD?
+    var locationFirestore: LocationFirestore?
     
     let beltBuilder = BeltBuilder()
     
     // profile pic imageView
     @IBOutlet weak var locationNameLabelOutlet: UILabel!
+    @IBOutlet weak var ownerNameLabelOutlet: UILabel!
     @IBOutlet weak var locationPicImageView: UIImageView!
     // contact info outlets
     @IBOutlet weak var phoneLabelOutlet: UILabel!
@@ -165,8 +168,10 @@ extension LocationInfoDetailsViewController {
             return
         }
         
+        // TODO: all these need to be switched to Firestore elements
         // populate UI elements in VC
         locationNameLabelOutlet.text = location.locationName
+        ownerNameLabelOutlet.text = locationFirestore?.ownerName
         // phone outlet
         phoneLabelOutlet.text = location.phone
         // mobile is not a required field

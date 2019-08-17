@@ -13,6 +13,7 @@ class ReviewAndCreateLocationViewController: UIViewController {
     // MARK: - Properties
     
     var locationName: String?
+    var ownerName: String? // TODO: create Firestore model
     var locationPic: UIImage?
     var active: Bool?
     var addressLine1: String?
@@ -36,6 +37,7 @@ class ReviewAndCreateLocationViewController: UIViewController {
     @IBOutlet weak var locationNameLabelOutlet: UILabel!
     @IBOutlet weak var locationPicImageView: UIImageView!
     // contact info outlets
+    @IBOutlet weak var ownerNameLabelOutlet: UILabel!
     @IBOutlet weak var phoneLabelOutlet: UILabel!
     @IBOutlet weak var websiteLabelOutlet: UILabel!
     @IBOutlet weak var emailLabelOutlet: UILabel!
@@ -107,10 +109,11 @@ extension ReviewAndCreateLocationViewController {
         
         // populate UI elements in VC
         guard let locationName = locationName else {
-            print("in ReviewAndCreateLocationVC -> populateCompletedProfile() there is no locationName!!! - line 101")
+            print("in ReviewAndCreateLocationVC -> populateCompletedProfile() there is no locationName!!! - line 112")
             return
         }
         locationNameLabelOutlet.text = locationName
+        ownerNameLabelOutlet.text = ownerName
         // phone outlet
         phoneLabelOutlet.text = phone
         // mobile is not a required field
@@ -143,6 +146,7 @@ extension ReviewAndCreateLocationViewController {
         
         guard let locationPic = locationPic else { print("fail locationPic"); return }
         guard let locationName = locationName else { print("fail locationName"); return }
+        guard let ownerName = ownerName else { print("fail ownernName"); return }
         guard let active = active else { print("fail active"); return }
         guard let addressLine1 = addressLine1 else { print("fail addressLine1"); return }
         guard let city = city else { print("fail city"); return }

@@ -2,7 +2,7 @@
 //  AcademySearchResultsTableViewCell.swift
 //  Academia
 //
-//  Created by Kelly Johnson on 8/16/19.
+//  Created by Michael Guatambu Davis on 8/16/19.
 //  Copyright © 2019 DunDak, LLC. All rights reserved.
 //
 
@@ -14,9 +14,8 @@ class AcademySearchResultsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var locationThumbnailImageView: UIImageView!
     @IBOutlet weak var cellTitleOutlet: UILabel!
+    @IBOutlet weak var cellTeacherNameOutlet: UILabel!
     @IBOutlet weak var cellSubtitleOutlet: UILabel!
-    @IBOutlet weak var cellTeacherNameDisplayOutlet: UILabel!
-
     
     var locationFirestore: LocationFirestore? {
         didSet {
@@ -51,10 +50,10 @@ class AcademySearchResultsTableViewCell: UITableViewCell {
         print("LocationsImageMenuTVCell location object name: \(location.locationName)")
         
         // populate cell UI elements
-//        locationThumbnailImageView.image = UIImage(data: locationPicData)
+        locationThumbnailImageView.image = UIImage(named: locationPicData)
         cellTitleOutlet.text = "\(location.locationName)"
+        cellTeacherNameOutlet.text = "\(location.ownerName)"
         cellSubtitleOutlet.text = "\(location.address.city), \(location.address.state) \(location.address.zipCode)"
-        cellTeacherNameDisplayOutlet.text = "\(location.ownerName)"
     }
 
 }

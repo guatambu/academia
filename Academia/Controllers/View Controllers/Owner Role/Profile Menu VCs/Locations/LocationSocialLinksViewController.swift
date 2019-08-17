@@ -13,6 +13,7 @@ class LocationSocialLinksViewController: UIViewController {
     // MARK: - Properties
     
     var locationName: String?
+    var ownerName: String?
     var locationPic: UIImage?
     var active: Bool?
     var addressLine1: String?
@@ -146,6 +147,7 @@ class LocationSocialLinksViewController: UIViewController {
         
         // pass data to destViewController
         destViewController.locationName = locationName
+        destViewController.ownerName = ownerName
         destViewController.active = active
         destViewController.locationPic = locationPic
         destViewController.addressLine1 = addressLine1
