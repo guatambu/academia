@@ -53,7 +53,7 @@ class AcademySearchResultsTableViewCell: UITableViewCell {
         locationThumbnailImageView.image = UIImage(named: locationPicData)
         cellTitleOutlet.text = "\(location.locationName)"
         cellTeacherNameOutlet.text = "\(location.ownerName)"
-        cellSubtitleOutlet.text = "\(location.address.city), \(location.address.state) \(location.address.zipCode)"
+        cellSubtitleOutlet.text = "\(location.city), \(location.state) \(location.zipCode)"
     }
 
 }

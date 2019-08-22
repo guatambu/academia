@@ -23,7 +23,7 @@ class FindYourAcademyViewController: UIViewController, UITableViewDelegate, UITa
     var group: Group?
     
     var isSearching: Bool = false
-    var searchResults: [LocationFirestore]?
+    var searchResults: [LocationFirestore] = []
     
     let beltBuilder = BeltBuilder()
     var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
@@ -52,7 +52,7 @@ class FindYourAcademyViewController: UIViewController, UITableViewDelegate, UITa
         nameSearchTextField.autocapitalizationType = UITextAutocapitalizationType.none
         locationSearchTextField.autocapitalizationType = UITextAutocapitalizationType.none
         
-        // searchResultsTableViewOutlet.isHidden = true
+        searchResultsTableViewOutlet.isHidden = true
         // likely will want to setup an active firestore listener
     }
     
@@ -125,12 +125,21 @@ class FindYourAcademyViewController: UIViewController, UITableViewDelegate, UITa
             navigationController?.navigationBar.shadowImage = UIImage()
             
             // pass desired data to relevant view controller
+            
             destViewController.isOwner = self.isOwner
             destViewController.isKid = self.isKid
-            destViewController.academyChoice = academyChoice
+            destViewController.academyChoice = academyChoice?.lowercased()
             destViewController.isOwnerAddingStudent = isOwnerAddingStudent
             destViewController.group = group
             destViewController.groupCD = groupCD
+            
+            // reset the pleaseFindAcademy Label to default messaging
+            pleaseFindAcademyLabelOutlet.text = "please find your academy"
+            pleaseFindAcademyLabelOutlet.textColor = beltBuilder.blackBeltBlack
+            // reset the searchResults array to empty, reload the tableView data, and hide the tableView ready for the next search
+            searchResults = []
+            searchResultsTableViewOutlet.reloadData()
+            searchResultsTableViewOutlet.isHidden = true
             
         } else {
             
@@ -145,34 +154,38 @@ class FindYourAcademyViewController: UIViewController, UITableViewDelegate, UITa
             locationSearchTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.locationSearch.rawValue, attributes: beltBuilder.errorAvenirFont)
             
         }
-        
-        
     }
     
     // MARK: TableView DataSource Functions
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return searchResults?.count ?? 0
+        return searchResults.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "searchResultsCell") else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "searchResultsCell") as? AcademySearchResultsTableViewCell else {
             
             print("ERROR: nil value found for cell in FindYourAcademyVC.swift -> tableView(tableView: cellForRowAt) - line 120.")
             return UITableViewCell()
         }
         
-        guard let location = searchResults?[indexPath.row] else {
-            
-            print("ERROR: nil value found for location in FindYourAcademyVC.swift -> tableView(tableView: cellForRowAt) - line 126.")
-            return UITableViewCell()
-        }
+        let location = searchResults[indexPath.row]
         
-        cell.textLabel?.text = location.locationName
+        cell.locationFirestore = location
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let location = searchResults[indexPath.row]
+        
+        academyChoice = location.locationName
+        
+        pleaseFindAcademyLabelOutlet.text = "your academy: \(academyChoice ?? "")"
+        
     }
 }
 
@@ -189,21 +202,24 @@ extension FindYourAcademyViewController: UITextFieldDelegate {
             print("Next button tapped")
             
         } else if textField == locationSearchTextField {
+            
             textField.resignFirstResponder()
+            
             print("Search button tapped")
             
-            isSearching = false
+            // reset the searchResults array to empty
+            searchResults = []
             
             // keyboard search button fires off the firestore collcetion group query and returns the query search results
             
-            guard let nameSearch = nameSearchTextField.text, let locationSearch = locationSearchTextField.text else {
+            guard let nameSearch = nameSearchTextField.text?.lowercased(), let locationSearch = locationSearchTextField.text?.lowercased() else {
                 return true
             }
             
             if nameSearch != "" && locationSearch != "" {
                 
                 // 'ideal' search case scenario
-                db.collectionGroup("locations").whereField("locationName", isEqualTo: nameSearch).whereField("zipCode", isEqualTo: locationSearch).getDocuments { (snapshopt, error) in
+                db.collectionGroup("locations").whereField("locationName", isEqualTo: nameSearch).whereField("city", isEqualTo: locationSearch).getDocuments { (snapshopt, error) in
                     
                     if let error = error {
                         print("ERROR: \(error.localizedDescription) - a nil value found for locations in FindYourAcademyVC.swift -> tableView(tableView: cellForRowAt) - line 185.")
@@ -211,7 +227,22 @@ extension FindYourAcademyViewController: UITextFieldDelegate {
                     
                     print("there are \(snapshopt?.documents.count ?? 987654321) retrieved by the locations collection group query")
                     for document in snapshopt?.documents ?? [] {
+                        // print the document dictionary data
                         print("\(document.data())")
+                        // create the location object formt the Firestore dictionary
+                        guard let location = LocationFirestore.init(dictionary: document.data()) else {
+                            
+                            print("ERROR: a nil value found for location in FindYourAcademyVC.swift -> tableView(tableView: cellForRowAt) - line 221.")
+                            
+                            return
+                        }
+                        // append the location to the search results array
+                        self.searchResults.append(location)
+                        // reload the tableView dataSource
+                        self.searchResultsTableViewOutlet.reloadData()
+                        // show the table view with its results
+                        self.searchResultsTableViewOutlet.isHidden = false
+                        
                     }
                 }
                 
@@ -226,14 +257,30 @@ extension FindYourAcademyViewController: UITextFieldDelegate {
                     
                     print("there are \(snapshopt?.documents.count ?? 987654321) retrieved by the locations collection group query")
                     for document in snapshopt?.documents ?? [] {
+                        
                         print("\(document.data())")
+                        
+                        // create the location object formt the Firestore dictionary
+                        guard let location = LocationFirestore.init(dictionary: document.data()) else {
+                            
+                            print("ERROR: a nil value found for location in FindYourAcademyVC.swift -> tableView(tableView: cellForRowAt) - line 221.")
+                            
+                            return
+                        }
+                        // append the location to the search results array
+                        self.searchResults.append(location)
+                        // reload the tableView dataSource
+                        self.searchResultsTableViewOutlet.reloadData()
+                        // show the table view with its results
+                        self.searchResultsTableViewOutlet.isHidden = false
+                        
                     }
                 }
                 
             } else if nameSearch == "" && locationSearch != "" {
                 
                 // it can be accptable to only search via location
-                db.collectionGroup("locations").whereField("zipCode", isEqualTo: locationSearch).getDocuments { (snapshopt, error) in
+                db.collectionGroup("locations").whereField("city", isEqualTo: locationSearch).getDocuments { (snapshopt, error) in
                     
                     if let error = error {
                         print("ERROR: \(error.localizedDescription) - a nil value found for locations in FindYourAcademyVC.swift -> tableView(tableView: cellForRowAt) - line 185.")
@@ -241,7 +288,23 @@ extension FindYourAcademyViewController: UITextFieldDelegate {
                     
                     print("there are \(snapshopt?.documents.count ?? 987654321) retrieved by the locations collection group query")
                     for document in snapshopt?.documents ?? [] {
+                        
                         print("\(document.data())")
+                        
+                        // create the location object formt the Firestore dictionary
+                        guard let location = LocationFirestore.init(dictionary: document.data()) else {
+                            
+                            print("ERROR: a nil value found for location in FindYourAcademyVC.swift -> tableView(tableView: cellForRowAt) - line 221.")
+                            
+                            return
+                        }
+                        // append the location to the search results array
+                        self.searchResults.append(location)
+                        // reload the tableView dataSource
+                        self.searchResultsTableViewOutlet.reloadData()
+                        // show the table view with its results
+                        self.searchResultsTableViewOutlet.isHidden = false
+                        
                     }
                 }
                 
@@ -263,7 +326,6 @@ extension FindYourAcademyViewController: UITextFieldDelegate {
         
         return true
     }
-    
 }
 
 

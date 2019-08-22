@@ -9,9 +9,6 @@
 import UIKit
 import CoreData
 import Firebase
-//import FirebaseCore
-//import FirebaseFirestore
-//import FirebaseStorage
 
 class CompletedProfileViewController: UIViewController {
     
@@ -57,6 +54,8 @@ class CompletedProfileViewController: UIViewController {
     
     // name outlet
     @IBOutlet weak var nameLabelOutlet: UILabel!
+    // academy choice outlet
+    @IBOutlet weak var academyChoiceLabelOutlet: UILabel!
     // username outlet
     @IBOutlet weak var usernameLabelOutlet: UILabel!
     // birthdate outlet
@@ -82,9 +81,8 @@ class CompletedProfileViewController: UIViewController {
     @IBOutlet weak var emergencyContactPhoneLabelOutlet: UILabel!
     
     // Firebase Firestore properties
-    var ownerCollectionRef: CollectionReference!
-    var adultStudentDocRef: DocumentReference!
-    var kidStudentDocRef: DocumentReference!
+    var ownersCollectionRef: CollectionReference!
+    var studentsCollectionRef: CollectionReference!
     var beltDocRef: DocumentReference!
     var addressDocRef: DocumentReference!
     var emergencyContactDocRef: DocumentReference!
@@ -114,7 +112,7 @@ class CompletedProfileViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         
-        populateCompletedProfileInfo(username: username, firstName: firstName, lastName: lastName, profilePic: profilePic, birthdate: birthdate, beltLevel: beltLevel, numberOfStripes: numberOfStripes, parentGuardian: parentGuardian, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, phone: phone, mobile: mobile, email: email, emergencyContactName: emergencyContactName, emergencyContactPhone: emergencyContactPhone, emergencyContactRelationship: emergencyContactRelationship)
+        populateCompletedProfileInfo(username: username, firstName: firstName, lastName: lastName, academyChoice: academyChoice, profilePic: profilePic, birthdate: birthdate, beltLevel: beltLevel, numberOfStripes: numberOfStripes, parentGuardian: parentGuardian, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, phone: phone, mobile: mobile, email: email, emergencyContactName: emergencyContactName, emergencyContactPhone: emergencyContactPhone, emergencyContactRelationship: emergencyContactRelationship)
         
         // set VC title font styling
         navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
@@ -131,11 +129,9 @@ class CompletedProfileViewController: UIViewController {
         }
         
         // Firestore Test properties setup
-        ownerCollectionRef = Firestore.firestore().collection("owners")
+        ownersCollectionRef = Firestore.firestore().collection("owners")
         
-        adultStudentDocRef = Firestore.firestore().collection("owners").document("newOwner").collection("students").document("newAdultStudent")
-        
-        kidStudentDocRef = Firestore.firestore().collection("owners").document("newOwner").collection("students").document("newKidStudent")
+        studentsCollectionRef = Firestore.firestore().collection("students")
         
         db = Firestore.firestore()
     }
@@ -257,6 +253,7 @@ extension CompletedProfileViewController {
     func populateCompletedProfileInfo(username: String?,
                                       firstName: String?,
                                       lastName: String?,
+                                      academyChoice: String?,
                                       profilePic: UIImage?,
                                       birthdate: Date?,
                                       beltLevel: InternationalStandardBJJBelts?,
@@ -279,6 +276,7 @@ extension CompletedProfileViewController {
         guard let password = password else { print("fail password"); return }
         guard let firstName = firstName else { print("fail firtsName"); return }
         guard let lastName = lastName else { print("fail lastName"); return }
+        guard let academyChoice = academyChoice else { print("fail acadeyChoice"); return }
         guard let beltLevel = beltLevel else { print("fail beltLevel"); return }
         guard let numberOfStripes = numberOfStripes else { print("fail stripes"); return }
         guard let phone = phone else { print("fail phone"); return }
@@ -286,11 +284,12 @@ extension CompletedProfileViewController {
         
         
         // print to console for developer verification
-        print("username: \(username) \npassword: \(password) \nfirstName: \(firstName) \nlastName: \(lastName) \nbirthdate: \(String(describing: birthdate)) \nbeltLevel: \(beltLevel) \nnumberOfStripes: \(numberOfStripes) \naddressLine1: \(String(describing: addressLine1)) \naddressLine2: \(String(describing: addressLine2)) \ncity: \(String(describing: city)) \nstate: \(String(describing: state)) \nzipCode: \(String(describing: zipCode)) \nphone: \(phone) \nmobile: \(String(describing: mobile)) \nemail: \(email) \nemergencyContactName: \(String(describing: emergencyContactName)) \nemergencyContactRelationship: \(String(describing: emergencyContactRelationship)) \nemergencyContactPhone: \(String(describing: emergencyContactPhone)) \nparentGuardian: \(String(describing: parentGuardian))")
+        print("username: \(username) \npassword: \(password) \nfirstName: \(firstName) \nlastName: \(lastName) \nacademyChoice: \(academyChoice) \nbirthdate: \(String(describing: birthdate)) \nbeltLevel: \(beltLevel) \nnumberOfStripes: \(numberOfStripes) \naddressLine1: \(String(describing: addressLine1)) \naddressLine2: \(String(describing: addressLine2)) \ncity: \(String(describing: city)) \nstate: \(String(describing: state)) \nzipCode: \(String(describing: zipCode)) \nphone: \(phone) \nmobile: \(String(describing: mobile)) \nemail: \(email) \nemergencyContactName: \(String(describing: emergencyContactName)) \nemergencyContactRelationship: \(String(describing: emergencyContactRelationship)) \nemergencyContactPhone: \(String(describing: emergencyContactPhone)) \nparentGuardian: \(String(describing: parentGuardian))")
         
         // populate UI elements in VC
         title = "Please Review Your Info"
         nameLabelOutlet.text = "\(firstName) \(lastName)"
+        academyChoiceLabelOutlet.text = academyChoice
         usernameLabelOutlet.text = "user: " + username
         // contact info outlets
         phoneLabelOutlet.text = "p: " + phone
@@ -566,7 +565,7 @@ extension CompletedProfileViewController {
                 // FIREBASE FIRESTORE CREATE AND SAVE NEW OWNER MODEL
                 let owner = OwnerFirestore(birthdate: birthdateTimestamp, mostRecentPromotion: nil, profilePic: "I don't have this URL Setup yet", username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: mobileFirestore, email: email)
                 
-                self.ownerCollectionRef.document(userUID).setData(owner.dictionary) { (error) in
+                self.ownersCollectionRef.document(userUID).setData(owner.dictionary) { (error) in
                     if let error = error {
                         print("ERROR: \(error.localizedDescription) error occurred while trying to save owner to Firebase Firestore in CompletedProfileViewController.swift -> createUserAccountFirestoreDataModel() - line 569. ")
                     } else {
@@ -575,7 +574,7 @@ extension CompletedProfileViewController {
                 }
                 
                 // create data models as user properties in Firebase Firestore
-                self.createUserDataModelProperties(owner: owner, kid: nil, adult: nil, userModelRef: self.ownerCollectionRef.document(userUID))
+                self.createUserDataModelProperties(owner: owner, kid: nil, adult: nil, userModelRef: self.ownersCollectionRef.document(userUID))
             
             // for KidStudentFirebase object creation
             } else if isKid {
@@ -618,11 +617,9 @@ extension CompletedProfileViewController {
                     }
                 }
                 
-                // FIREBASE FIRESTORE CREATE AND SAVE NEW OWNER MODEL
+                // FIREBASE FIRESTORE CREATE AND SAVE NEW KidStudent MODEL
                 let kidStudent = KidStudentFirestore(academyChoice: academyChoice, birthdate: birthdate, mostRecentPromotion: nil, profilePic: "I don't have this URL Setup yet", username: username, password: password, firstName: firstName, lastName: lastName, parentGuardian: parentGuardian, phone: phone, mobile: mobileFirestore, email: email)
-                
-                // TODO: set up doc ref so that we can save to specfic owner that user chooses
-                self.ownerCollectionRef.document(userUID).setData(kidStudent.dictionary) { (error) in
+                self.studentsCollectionRef.document(userUID).setData(kidStudent.dictionary) { (error) in
                     if let error = error {
                         print("ERROR: \(error.localizedDescription) error occurred while trying to save kidStudent to Firebase Firestore in CompletedProfileViewController.swift -> createUserAccountFirestoreDataModel() - line 625. ")
                     } else {
@@ -631,7 +628,7 @@ extension CompletedProfileViewController {
                 }
                 
                 // create data models as user properties in Firebase Firestore
-                self.createUserDataModelProperties(owner: nil, kid: kidStudent, adult: nil, userModelRef: self.ownerCollectionRef.document(userUID))
+                self.createUserDataModelProperties(owner: nil, kid: kidStudent, adult: nil, userModelRef: self.studentsCollectionRef.document(userUID))
                 
             // for AdultStudentFirebase object creation
             } else if !isKid {
@@ -678,7 +675,7 @@ extension CompletedProfileViewController {
                 let adultStudent = AdultStudentFirestore(academyChoice: academyChoice, birthdate: birthdate, mostRecentPromotion: nil, profilePic: "I don't have this setup yet", username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: mobileFirestore, email: email)
                 
                // TODO: set up doc ref so that we can save to specfic owner that user chooses
-                self.ownerCollectionRef.document(userUID).setData(adultStudent.dictionary) { (error) in
+                self.studentsCollectionRef.document(userUID).setData(adultStudent.dictionary) { (error) in
                     if let error = error {
                         print("ERROR: \(error.localizedDescription) error occurred while trying to save owner to Firebase Firestore in CompletedProfileViewController.swift -> createUserAccountFirestoreDataModel() - line 681. ")
                     } else {
@@ -687,7 +684,7 @@ extension CompletedProfileViewController {
                 }
                 
                 // create data models as user properties in Firebase Firestore
-                self.createUserDataModelProperties(owner: nil, kid: nil, adult: adultStudent, userModelRef: self.ownerCollectionRef.document(userUID))
+                self.createUserDataModelProperties(owner: nil, kid: nil, adult: adultStudent, userModelRef: self.studentsCollectionRef.document(userUID))
                 
             }
         }

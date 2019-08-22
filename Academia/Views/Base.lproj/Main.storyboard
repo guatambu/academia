@@ -1830,15 +1830,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="1d5-nP-CLP" userLabel="plese review and name Stack View">
-                                <rect key="frame" x="24" y="60" width="272" height="24"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="-8" translatesAutoresizingMaskIntoConstraints="NO" id="1d5-nP-CLP" userLabel="plese review and name Stack View">
+                                <rect key="frame" x="24" y="44" width="272" height="40"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(name)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozi-T8-xFp">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(name)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="ozi-T8-xFp">
                                         <rect key="frame" x="0.0" y="0.0" width="272" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="u5t-Hb-ELU"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(name)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="pEa-Ky-gFJ" userLabel="Academy Choice Label Outlet">
+                                        <rect key="frame" x="118" y="16" width="36.5" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="gE9-rJ-adz"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="12"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -2175,6 +2183,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="5rW-Kw-aE7"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="academyChoiceLabelOutlet" destination="pEa-Ky-gFJ" id="Lqm-7f-M1X"/>
                         <outlet property="addressLine1LabelOutlet" destination="jGd-F1-EBj" id="gaE-Ua-S4y"/>
                         <outlet property="addressLine2LabelOutlet" destination="Q8Y-kA-KkP" id="m8F-Vl-tLg"/>
                         <outlet property="beltHolderViewOutlet" destination="Iok-uA-7fH" id="AT7-45-HAG"/>
@@ -2791,7 +2800,6 @@
                                                 </tableViewCellContentView>
                                                 <connections>
                                                     <outlet property="cellSubtitleOutlet" destination="s6b-zL-uz9" id="bvA-fK-Wm2"/>
-                                                    <outlet property="cellTeacherNameDisplayOutlet" destination="s6b-zL-uz9" id="8L9-PD-HY6"/>
                                                     <outlet property="cellTeacherNameOutlet" destination="PWL-vs-EjF" id="may-lL-zaQ"/>
                                                     <outlet property="cellTitleOutlet" destination="4qW-Ic-m51" id="VNu-P1-UxD"/>
                                                     <outlet property="locationThumbnailImageView" destination="mz1-fg-Ta0" id="CBc-tF-JZE"/>
@@ -2985,7 +2993,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5hY-Om-Xzp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="jXX-p1-TtJ">
+                <tapGestureRecognizer cancelsTouchesInView="NO" id="jXX-p1-TtJ">
                     <connections>
                         <action selector="tapAnywhereTapped:" destination="vdm-uU-jGR" id="ROL-sc-DyS"/>
                         <outlet property="delegate" destination="vdm-uU-jGR" id="HVS-Jl-IWX"/>
