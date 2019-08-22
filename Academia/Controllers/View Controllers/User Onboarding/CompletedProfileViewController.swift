@@ -276,7 +276,6 @@ extension CompletedProfileViewController {
         guard let password = password else { print("fail password"); return }
         guard let firstName = firstName else { print("fail firtsName"); return }
         guard let lastName = lastName else { print("fail lastName"); return }
-        guard let academyChoice = academyChoice else { print("fail acadeyChoice"); return }
         guard let beltLevel = beltLevel else { print("fail beltLevel"); return }
         guard let numberOfStripes = numberOfStripes else { print("fail stripes"); return }
         guard let phone = phone else { print("fail phone"); return }
@@ -289,7 +288,7 @@ extension CompletedProfileViewController {
         // populate UI elements in VC
         title = "Please Review Your Info"
         nameLabelOutlet.text = "\(firstName) \(lastName)"
-        academyChoiceLabelOutlet.text = academyChoice
+        academyChoiceLabelOutlet.text = academyChoice ?? ""
         usernameLabelOutlet.text = "user: " + username
         // contact info outlets
         phoneLabelOutlet.text = "p: " + phone
@@ -473,7 +472,6 @@ extension CompletedProfileViewController {
         
         guard let isOwner = isOwner else { print("fail isOwner"); return }
         guard let isKid = isKid else { print("fail isKid"); return }
-        guard let academyChoice = academyChoice else { print("fail academyChoice"); return }
         
         guard let username = username else { print("fail username"); return }
         guard let password = password else { print("fail password"); return }
@@ -617,6 +615,9 @@ extension CompletedProfileViewController {
                     }
                 }
                 
+                // unwrap optional academyChoice for student data model creation
+                guard let academyChoice = self.academyChoice else { print("fail in KidStudentFirestore creation - academyChoice"); return }
+                
                 // FIREBASE FIRESTORE CREATE AND SAVE NEW KidStudent MODEL
                 let kidStudent = KidStudentFirestore(academyChoice: academyChoice, birthdate: birthdate, mostRecentPromotion: nil, profilePic: "I don't have this URL Setup yet", username: username, password: password, firstName: firstName, lastName: lastName, parentGuardian: parentGuardian, phone: phone, mobile: mobileFirestore, email: email)
                 self.studentsCollectionRef.document(userUID).setData(kidStudent.dictionary) { (error) in
@@ -670,6 +671,9 @@ extension CompletedProfileViewController {
                         }
                     }
                 }
+                
+                // unwrap optional academyChoice for student data model creation
+                guard let academyChoice = self.academyChoice else { print("fail in AdultStudentFirestore creation - academyChoice"); return }
                 
                 // FIREBASE FIRESTORE CREATE AND SAVE NEW OWNER MODEL
                 let adultStudent = AdultStudentFirestore(academyChoice: academyChoice, birthdate: birthdate, mostRecentPromotion: nil, profilePic: "I don't have this setup yet", username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: mobileFirestore, email: email)
