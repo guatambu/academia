@@ -37,6 +37,7 @@ class FindYourAcademyViewController: UIViewController, UITableViewDelegate, UITa
     
     // CoreData properties
     var groupCD: GroupCD?
+    // Firebase properties
     var db: Firestore!
     
     

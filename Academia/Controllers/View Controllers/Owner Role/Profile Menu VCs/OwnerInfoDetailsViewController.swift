@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 class OwnerInfoDetailsViewController: UIViewController {
     
@@ -20,8 +21,19 @@ class OwnerInfoDetailsViewController: UIViewController {
 
     let beltBuilder = BeltBuilder()
     
+    var activeOwnerFirestore: OwnerFirestore?
+    var activeOwnerFirestoreBelt: BeltFirestore?
+    var activeOwnerFirestoreAddress: AddressFirestore?
+    var activeOwnerFirestoreEmergencyContact: EmergencyContactFirestore?
+    
     var activeOwner: OwnerCD?
     var inEditingMode: Bool?
+    
+    // Firebase properties
+    var db: Firestore!
+    // The handler for the FIREBASE Auth state listener, to allow cancelling later.
+    var handle: AuthStateDidChangeListenerHandle?
+    
     
     // username outlet
     @IBOutlet weak var ownerNameLabelOutlet: UILabel!
@@ -55,13 +67,100 @@ class OwnerInfoDetailsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        // create fetch request and initialize results
-        initializeFetchedResultsController()
-        // search fetch results to find activeOwner
-        findActiveUser()
-        // populate activeOwner details to UI
-        populateCompletedProfileInfo()
+//        // create fetch request and initialize results
+//        initializeFetchedResultsController()
+//        // search fetch results to find activeOwner
+//        findActiveUser()
+//        // populate activeOwner details to UI
+//        populateCompletedProfileInfo()
         
+        // FIREBASE Auth listener
+        
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            
+            if Auth.auth().currentUser != nil {
+                
+                let user = Auth.auth().currentUser
+                
+                if let user = user {
+                    
+                    let uid = user.uid
+                    
+                    // get the active firestre owner info
+                    self.db.collection("owners").document(uid).getDocument { (querySnapshot, err) in
+                        if let err = err {
+                            print("Error getting documents: \(err)")
+                        } else {
+                            
+                            guard let ownerData = querySnapshot?.data() else {
+                                
+                                print("ERROR: nil value found for ownerData in OwnerInfoDetailsViewController.swift -> viewWillAppear - line 92.")
+                                return
+                            }
+                                
+                            print("\(String(describing: querySnapshot?.documentID)) => \(String(describing: querySnapshot?.data()))")
+                            
+                            self.activeOwnerFirestore = OwnerFirestore(dictionary: ownerData)
+                            
+                            
+                        }
+                    }
+                    // get the active firestre owner Belt info
+                    self.db.collection("owners").document(uid).collection("belts").getDocuments { (querySnapshot, err) in
+                        if let err = err {
+                            print("Error getting documents: \(err)")
+                        } else {
+                            
+                            if let documents = querySnapshot?.documents {
+                                
+                                for document in documents {
+                                    
+                                    self.activeOwnerFirestoreBelt = BeltFirestore(dictionary: document.data())
+                                }
+                            }
+                        }
+                    }
+                    // get the active firestre owner Address info
+                    self.db.collection("owners").document(uid).collection("addresses").getDocuments { (querySnapshot, err) in
+                        if let err = err {
+                            print("Error getting documents: \(err)")
+                        } else {
+                            
+                            if let documents = querySnapshot?.documents {
+                                
+                                for document in documents {
+                                    
+                                    self.activeOwnerFirestoreAddress = AddressFirestore(dictionary: document.data())
+                                }
+                            }
+                        }
+                    }
+                    // get the active firestre owner EmergencyContact info
+                    self.db.collection("owners").document(uid).collection("emergencyContacts").getDocuments { (querySnapshot, err) in
+                        if let err = err {
+                            print("Error getting documents: \(err)")
+                        } else {
+                            
+                            if let documents = querySnapshot?.documents {
+                                
+                                for document in documents {
+                                    
+                                    self.activeOwnerFirestoreEmergencyContact = EmergencyContactFirestore(dictionary: document.data())
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                self.populateCompletedProfileInfo()
+            }
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        // FIREBASE Auth listener
+        Auth.auth().removeStateDidChangeListener(handle!)
     }
 
     override func viewDidLoad() {
@@ -74,6 +173,8 @@ class OwnerInfoDetailsViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
         
         title = "Please Review Your Info"
+        
+        db = Firestore.firestore()
     }
     
 
@@ -173,34 +274,32 @@ extension OwnerInfoDetailsViewController {
     
         
 //        guard let owner = OwnerModelController.shared.owners.first else { return }
-        guard let owner = activeOwner else {
+        guard let owner = activeOwnerFirestore else {
             print("ERROR: nil value found for activeOwner in OwnerInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 157.")
             return
         }
-        guard let address = owner.address else {
-            print("ERROR: nil value found for owner.address in OwnerInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 161.")
+        guard let address = activeOwnerFirestoreAddress else {
+            print("ERROR: nil value found for address in OwnerInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 161.")
             return
         }
-        guard let belt = owner.belt else {
-            print("ERROR: nil value found for owner.belt in OwnerInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 165.")
+        guard let belt = activeOwnerFirestoreBelt else {
+            print("ERROR: nil value found for belt in OwnerInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 165.")
             return
         }
-        guard let emergencyContact = owner.emergencyContact else {
-            print("ERROR: nil value found for owner.emergencyContact in OwnerInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 169.")
+        guard let emergencyContact = activeOwnerFirestoreEmergencyContact else {
+            print("ERROR: nil value found for emergencyContact in OwnerInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 169.")
             return
         }
         
-        guard let firstName = owner.firstName else { print("fail firstName"); return }
-        guard let lastName = owner.lastName else { print("fail lastName"); return }
-        guard let username = owner.username else { print("fails username"); return }
+        let firstName = owner.firstName
+        let lastName = owner.lastName
+        let username = owner.username
         // populate UI elements in VC
         ownerNameLabelOutlet.text = "\(firstName) \(lastName)"
         usernameLabelOutlet.text = "user: \(username)"
         // populate birthdate outlet
-        if let birthdate = owner.birthdate {
-            
-            formatBirthdate(birthdate: birthdate)
-        }
+        formatBirthdate(birthdate: owner.birthdate)
+        
         // contact info outlets
         phoneLabelOutlet.text = owner.phone
         // mobile is not a required field
@@ -233,10 +332,10 @@ extension OwnerInfoDetailsViewController {
             return
         }
         // profile pic imageView
-        profilePicImageView.image = UIImage(data: profilePicData)
+        profilePicImageView.image = UIImage(named: profilePicData)
         
         // construct InternationalStandardBJJBelts object from owner.belt.beltLevel.rawValue
-        guard let beltLevel = InternationalStandardBJJBelts(rawValue: belt.beltLevel!) else {
+        guard let beltLevel = InternationalStandardBJJBelts(rawValue: belt.beltLevel) else {
             print("ERROR: no value found for beltLevel in OwnerInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 215.")
             return
         }
@@ -251,10 +350,10 @@ extension OwnerInfoDetailsViewController {
         beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevel, numberOfStripes: numberOfStripes)
     }
     
-    func formatBirthdate(birthdate: Date?) {
+    func formatBirthdate(birthdate: Timestamp?) {
         
-        guard let birthdate = birthdate else {
-            print("ERROR: no birthdate returned in OwnerInfoDetailsViewController.swift -> formatBirthdate(birthdate:) - line 202.")
+        guard let owner = activeOwnerFirestore else {
+            print("ERROR: no owner returned in OwnerInfoDetailsViewController.swift -> formatBirthdate(birthdate:) - line 202.")
             return
         }
         
@@ -265,7 +364,7 @@ extension OwnerInfoDetailsViewController {
         dateFormatter.timeStyle = DateFormatter.Style.none
         dateFormatter.locale = Locale(identifier: "en_US")
         
-        let birthdateString = dateFormatter.string(from: birthdate)
+        let birthdateString = dateFormatter.string(from: owner.birthdate.dateValue())
         
         print(birthdateString)
         
