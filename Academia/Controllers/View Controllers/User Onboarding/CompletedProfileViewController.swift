@@ -561,7 +561,7 @@ extension CompletedProfileViewController {
                 }
                 
                 // FIREBASE FIRESTORE CREATE AND SAVE NEW OWNER MODEL
-                let owner = OwnerFirestore(birthdate: birthdateTimestamp, mostRecentPromotion: nil, profilePic: "I don't have this URL Setup yet", username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: mobileFirestore, email: email)
+                let owner = OwnerFirestore(birthdate: birthdateTimestamp, mostRecentPromotion: nil, /*profilePic: ownersProfilePicsRef, */ username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: mobileFirestore, email: email)
                 
                 self.ownersCollectionRef.document(userUID).setData(owner.dictionary) { (error) in
                     if let error = error {
@@ -619,7 +619,7 @@ extension CompletedProfileViewController {
                 guard let academyChoice = self.academyChoice else { print("fail in KidStudentFirestore creation - academyChoice"); return }
                 
                 // FIREBASE FIRESTORE CREATE AND SAVE NEW KidStudent MODEL
-                let kidStudent = KidStudentFirestore(academyChoice: academyChoice, birthdate: birthdate, mostRecentPromotion: nil, profilePic: "I don't have this URL Setup yet", username: username, password: password, firstName: firstName, lastName: lastName, parentGuardian: parentGuardian, phone: phone, mobile: mobileFirestore, email: email)
+                let kidStudent = KidStudentFirestore(academyChoice: academyChoice, birthdate: birthdate, mostRecentPromotion: nil, profilePic: kidStudentProfilePicsRef, username: username, password: password, firstName: firstName, lastName: lastName, parentGuardian: parentGuardian, phone: phone, mobile: mobileFirestore, email: email)
                 self.studentsCollectionRef.document(userUID).setData(kidStudent.dictionary) { (error) in
                     if let error = error {
                         print("ERROR: \(error.localizedDescription) error occurred while trying to save kidStudent to Firebase Firestore in CompletedProfileViewController.swift -> createUserAccountFirestoreDataModel() - line 625. ")
@@ -676,7 +676,7 @@ extension CompletedProfileViewController {
                 guard let academyChoice = self.academyChoice else { print("fail in AdultStudentFirestore creation - academyChoice"); return }
                 
                 // FIREBASE FIRESTORE CREATE AND SAVE NEW OWNER MODEL
-                let adultStudent = AdultStudentFirestore(academyChoice: academyChoice, birthdate: birthdate, mostRecentPromotion: nil, profilePic: "I don't have this setup yet", username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: mobileFirestore, email: email)
+                let adultStudent = AdultStudentFirestore(academyChoice: academyChoice, birthdate: birthdate, mostRecentPromotion: nil, profilePic: adultStudentsProfilePicsRef, username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: mobileFirestore, email: email)
                 
                // TODO: set up doc ref so that we can save to specfic owner that user chooses
                 self.studentsCollectionRef.document(userUID).setData(adultStudent.dictionary) { (error) in

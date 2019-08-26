@@ -23,9 +23,9 @@ struct OwnerFirestore {
     var birthdate: Timestamp
     var mostRecentPromotion: Timestamp?
     //var studentStatus: StudentStatusCD?
-    var profilePic: String?
-    var username: String
-    var password: String
+//    var profilePic: StorageReference?
+//    var username: String
+//    var password: String
     var firstName: String
     var lastName: String
     var phone: String?
@@ -42,8 +42,8 @@ struct OwnerFirestore {
             "birthdate" : birthdate,
             "mostRecentPromotion" : mostRecentPromotion ?? Timestamp(),
             // "studentStatus" : studentStatus,
-            "profilePic" : profilePic ?? "",
-            "username" : username,
+//            "profilePic" : profilePic ?? "",
+//            "username" : username,
             "firstName" : firstName,
             "lastName" : lastName,
             "phone" : phone ?? "",
@@ -62,9 +62,9 @@ struct OwnerFirestore {
          birthdate: Timestamp,
          mostRecentPromotion: Timestamp?,
          //studentStatus: StudentStatusCD?,
-         profilePic: String?,
-         username: String,
-         password: String,
+//         profilePic: StorageReference?,
+//         username: String,
+//         password: String,
          firstName: String,
          lastName: String,
          phone: String?,
@@ -79,9 +79,9 @@ struct OwnerFirestore {
         self.birthdate = birthdate
         self.mostRecentPromotion = mostRecentPromotion
         //self.studentStatus = studentStatus
-        self.profilePic = profilePic
-        self.username = username
-        self.password = password
+//        self.profilePic = profilePic
+//        self.username = username
+//        self.password = password
         self.firstName = firstName
         self.lastName = lastName
         self.phone = phone
@@ -137,23 +137,23 @@ extension OwnerFirestore: OwnerFirestoreModelSerializable {
 //            return nil
 //        }
         
-        guard let profilePic = dictionary["profilePic"] as? String else {
-            
-            print("ERROR: nil value found forprofilePic in firestore dictionary in OwnerFirestore.swift -> init(dictionary:) - line 142.")
-            return nil
-        }
+//        guard let profilePic = dictionary["profilePic"] as? StorageReference else {
+//
+//            print("ERROR: nil value found forprofilePic in firestore dictionary in OwnerFirestore.swift -> init(dictionary:) - line 142.")
+//            return nil
+//        }
         
-        guard let username = dictionary["username"] as? String else {
-            
-            print("ERROR: nil value found for username in firestore dictionary in OwnerFirestore.swift -> init(dictionary:) - line 148.")
-            return nil
-        }
-        
-        guard let password = dictionary["password"] as? String else {
-            
-            print("ERROR: nil value found for password in firestore dictionary in OwnerFirestore.swift -> init(dictionary:) - line 154.")
-            return nil
-        }
+//        guard let username = dictionary["username"] as? String else {
+//
+//            print("ERROR: nil value found for username in firestore dictionary in OwnerFirestore.swift -> init(dictionary:) - line 148.")
+//            return nil
+//        }
+//
+//        guard let password = dictionary["password"] as? String else {
+//
+//            print("ERROR: nil value found for password in firestore dictionary in OwnerFirestore.swift -> init(dictionary:) - line 154.")
+//            return nil
+//        }
         
         guard let firstName = dictionary["firstName"] as? String else {
             
@@ -185,7 +185,7 @@ extension OwnerFirestore: OwnerFirestoreModelSerializable {
             return nil
         }
         
-        self.init(isOwner: isOwner, isInstructor: isInstructor, dateCreated: dateCreated, dateEdited: dateEdited, birthdate: birthdate, mostRecentPromotion: mostRecentPromotion, profilePic: profilePic, username: username, password: password, firstName: firstName, lastName: lastName, phone: phone, mobile: mobile, email: email)
+        self.init(isOwner: isOwner, isInstructor: isInstructor, dateCreated: dateCreated, dateEdited: dateEdited, birthdate: birthdate, mostRecentPromotion: mostRecentPromotion, /* profilePic: profilePic, username: username, password: password, */ firstName: firstName, lastName: lastName, phone: phone, mobile: mobile, email: email)
     }
 }
 

@@ -9,10 +9,15 @@
 import UIKit
 import CoreData
 import Firebase
+import FirebaseUI
 
 class OwnerInfoDetailsViewController: UIViewController {
     
     // MARK: - Properties
+    
+    // TODO: add implementation to retireve the profile pic data from the specific firebae storage location associated with the activeOwnerFirestore
+    
+        // also need to think and potentially rethink the need to breakup the user info into sub data models Belt, Address, EmergencyContact... maybe they should be one document?
     
     var isInstructor = true
     
@@ -25,6 +30,7 @@ class OwnerInfoDetailsViewController: UIViewController {
     var activeOwnerFirestoreBelt: BeltFirestore?
     var activeOwnerFirestoreAddress: AddressFirestore?
     var activeOwnerFirestoreEmergencyContact: EmergencyContactFirestore?
+    var activeOwnerStorageRef: StorageReference?
     
     var activeOwner: OwnerCD?
     var inEditingMode: Bool?
@@ -85,6 +91,9 @@ class OwnerInfoDetailsViewController: UIViewController {
                 if let user = user {
                     
                     let uid = user.uid
+                    
+                    // set the activeOwnerStorageReference path
+                    self.activeOwnerStorageRef = Storage.storage().reference().child("profilePics/owners/\(uid)")
                     
                     // get the active firestre owner info
                     self.db.collection("owners").document(uid).getDocument { (querySnapshot, err) in
@@ -325,14 +334,19 @@ extension OwnerInfoDetailsViewController {
         emergencyContactRelationshipLabelOutlet.text = emergencyContact.relationship
         emergencyContactPhoneLabelOutlet.text = emergencyContact.phone
         
-        // convert owner.profilePic to UIImage from Data
-        
-        guard let profilePicData = owner.profilePic else {
-            print("ERROR: nil value found for owner.profilePic as Data in OwnerInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 205.")
+        // unwrap activeOwnerStorageRef to get profilePic
+        guard let profilePicReference = activeOwnerStorageRef else {
+            print("ERROR: nil value found for profilePicReference in OwnerInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 205.")
             return
         }
-        // profile pic imageView
-        profilePicImageView.image = UIImage(named: profilePicData)
+        
+        
+        
+        // Placeholder image
+        let placeholderImage = UIImage(named: "profile_pic_placeholder_image.png")
+        
+        // profile pic imageView Load the image using SDWebImage
+        profilePicImageView.sd_setImage(with: profilePicReference, placeholderImage: placeholderImage)
         
         // construct InternationalStandardBJJBelts object from owner.belt.beltLevel.rawValue
         guard let beltLevel = InternationalStandardBJJBelts(rawValue: belt.beltLevel) else {

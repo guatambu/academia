@@ -24,7 +24,7 @@ struct AdultStudentFirestore {
     var birthdate: Date
     var mostRecentPromotion: Timestamp?
     //var studentStatus: StudentStatusCD?
-    var profilePic: String?
+    var profilePic: StorageReference?
     var username: String
     var password: String
     var firstName: String
@@ -64,7 +64,7 @@ struct AdultStudentFirestore {
          birthdate: Date,
          mostRecentPromotion: Timestamp?,
          //studentStatus: StudentStatusCD?,
-         profilePic: String?,
+         profilePic: StorageReference?,
          username: String,
          password: String,
          firstName: String,
@@ -147,7 +147,7 @@ extension AdultStudentFirestore: AdultStudentFirestoreModelSerializable {
         //            return nil
         //        }
         
-        guard let profilePic = dictionary["profilePic"] as? String else {
+        guard let profilePic = dictionary["profilePic"] as? StorageReference else {
             
             print("ERROR: nil value found forprofilePic in firestore dictionary in AdultStudentFirestore.swift -> init(dictionary:) - line 152.")
             return nil

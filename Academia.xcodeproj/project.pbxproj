@@ -234,7 +234,6 @@
 		FAD6695622D06897008F4AF5 /* TechniqueFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6695522D06897008F4AF5 /* TechniqueFirestore.swift */; };
 		FAD6695822D068AB008F4AF5 /* CurriculumModuleFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6695722D068AB008F4AF5 /* CurriculumModuleFirestore.swift */; };
 		FAD6695A22D068BE008F4AF5 /* CurriculumFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6695922D068BE008F4AF5 /* CurriculumFirestore.swift */; };
-		FAD6695C22D6C74E008F4AF5 /* BeltPromotionAttendanceFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6695B22D6C74E008F4AF5 /* BeltPromotionAttendanceFirestore.swift */; };
 		FADA615222112AC100BB3302 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADA615122112AC100BB3302 /* CoreDataStack.swift */; };
 		FADA6157221B98B800BB3302 /* BeltPromotionCD+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADA6156221B98B800BB3302 /* BeltPromotionCD+Convenience.swift */; };
 		FAE2FD3C2140700F00815402 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE2FD3B2140700F00815402 /* MockData.swift */; };
@@ -581,7 +580,6 @@
 		FAD6695522D06897008F4AF5 /* TechniqueFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechniqueFirestore.swift; sourceTree = "<group>"; };
 		FAD6695722D068AB008F4AF5 /* CurriculumModuleFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumModuleFirestore.swift; sourceTree = "<group>"; };
 		FAD6695922D068BE008F4AF5 /* CurriculumFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumFirestore.swift; sourceTree = "<group>"; };
-		FAD6695B22D6C74E008F4AF5 /* BeltPromotionAttendanceFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeltPromotionAttendanceFirestore.swift; sourceTree = "<group>"; };
 		FADA615122112AC100BB3302 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		FADA6156221B98B800BB3302 /* BeltPromotionCD+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BeltPromotionCD+Convenience.swift"; sourceTree = "<group>"; };
 		FAE2FD3B2140700F00815402 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
@@ -1422,7 +1420,6 @@
 				FAD6693E22D06641008F4AF5 /* BeltFirestore.swift */,
 				FAD6694022D06662008F4AF5 /* BeltPromotionFirestore.swift */,
 				FAD6694222D06680008F4AF5 /* BeltStripeAgeDetailsFirestore.swift */,
-				FAD6695B22D6C74E008F4AF5 /* BeltPromotionAttendanceFirestore.swift */,
 			);
 			path = Belt;
 			sourceTree = "<group>";
@@ -2051,7 +2048,6 @@
 				FACA3EB1219288CD0099E620 /* NameAndBeltViewController.swift in Sources */,
 				FAB203DA216187190034E1D4 /* StudentClassDetailTableViewController.swift in Sources */,
 				FA9AD9F72137839A0005E1F1 /* BeltSystemsTableViewController.swift in Sources */,
-				FAD6695C22D6C74E008F4AF5 /* BeltPromotionAttendanceFirestore.swift in Sources */,
 				FACA3EB5219289140099E620 /* ContactInfoViewController.swift in Sources */,
 				FAE2FD8E2140BFC700815402 /* FirstNameTextFieldTableViewCell.swift in Sources */,
 				FAE67A3E215C733400822DCF /* KidStudentTableViewCell.swift in Sources */,
