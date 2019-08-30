@@ -15,9 +15,7 @@ class OwnerInfoDetailsViewController: UIViewController {
     
     // MARK: - Properties
     
-    // TODO: add implementation to retireve the profile pic data from the specific firebae storage location associated with the activeOwnerFirestore
-    
-        // also need to think and potentially rethink the need to breakup the user info into sub data models Belt, Address, EmergencyContact... maybe they should be one document?
+    // TODO: rework users Firestore models to be based on one document call rather than multiple to populate the profile details page
     
     var isInstructor = true
     
@@ -26,16 +24,13 @@ class OwnerInfoDetailsViewController: UIViewController {
 
     let beltBuilder = BeltBuilder()
     
-    var activeOwnerFirestore: OwnerFirestore?
-    var activeOwnerFirestoreBelt: BeltFirestore?
-    var activeOwnerFirestoreAddress: AddressFirestore?
-    var activeOwnerFirestoreEmergencyContact: EmergencyContactFirestore?
-    var activeOwnerStorageRef: StorageReference?
-    
-    var activeOwner: OwnerCD?
+//    var activeOwner: OwnerCD?
     var inEditingMode: Bool?
     
-    // Firebase properties
+    // Firebase Firestore properties
+    var activeOwnerFirestore: OwnerFirestore?
+    var activeOwnerStorageRef: StorageReference?
+    
     var db: Firestore!
     // The handler for the FIREBASE Auth state listener, to allow cancelling later.
     var handle: AuthStateDidChangeListenerHandle?
@@ -111,57 +106,10 @@ class OwnerInfoDetailsViewController: UIViewController {
                             
                             self.activeOwnerFirestore = OwnerFirestore(dictionary: ownerData)
                             
-                            
-                        }
-                    }
-                    // get the active firestre owner Belt info
-                    self.db.collection("owners").document(uid).collection("belts").getDocuments { (querySnapshot, err) in
-                        if let err = err {
-                            print("Error getting documents: \(err)")
-                        } else {
-                            
-                            if let documents = querySnapshot?.documents {
-                                
-                                for document in documents {
-                                    
-                                    self.activeOwnerFirestoreBelt = BeltFirestore(dictionary: document.data())
-                                }
-                            }
-                        }
-                    }
-                    // get the active firestre owner Address info
-                    self.db.collection("owners").document(uid).collection("addresses").getDocuments { (querySnapshot, err) in
-                        if let err = err {
-                            print("Error getting documents: \(err)")
-                        } else {
-                            
-                            if let documents = querySnapshot?.documents {
-                                
-                                for document in documents {
-                                    
-                                    self.activeOwnerFirestoreAddress = AddressFirestore(dictionary: document.data())
-                                }
-                            }
-                        }
-                    }
-                    // get the active firestre owner EmergencyContact info
-                    self.db.collection("owners").document(uid).collection("emergencyContacts").getDocuments { (querySnapshot, err) in
-                        if let err = err {
-                            print("Error getting documents: \(err)")
-                        } else {
-                            
-                            if let documents = querySnapshot?.documents {
-                                
-                                for document in documents {
-                                    
-                                    self.activeOwnerFirestoreEmergencyContact = EmergencyContactFirestore(dictionary: document.data())
-                                }
-                            }
+                            self.populateCompletedProfileInfo(user: user)
                         }
                     }
                 }
-                
-                self.populateCompletedProfileInfo()
             }
         }
     }
@@ -194,14 +142,14 @@ class OwnerInfoDetailsViewController: UIViewController {
         isInstructor = !isInstructor
         print("isInstructorSwitch toggled, currently isInstructor = \(isInstructor)")
         
-        guard let ownerCD = activeOwner else {
-            print("ERROR: nil value found for activeOwner property of type OwnerCD in OwnerInfoDetailsViewController.swift -> toggleIsInstructorSwitch(sender:) - line 87.")
-            return
-        }
-        
-        // update the activeOwner's isInstructor value
-        OwnerCDModelController.shared.update(owner: ownerCD, isInstructor: isInstructor, birthdate: nil, mostRecentPromotion: nil, belt: nil, profilePic: nil, username: nil, password: nil, firstName: nil, lastName: nil, address: nil, phone: nil, mobile: nil, email: nil, emergencyContact: nil)
-        OwnerCDModelController.shared.saveToPersistentStorage()
+//        guard let ownerCD = activeOwner else {
+//            print("ERROR: nil value found for activeOwner property of type OwnerCD in OwnerInfoDetailsViewController.swift -> toggleIsInstructorSwitch(sender:) - line 87.")
+//            return
+//        }
+//
+//        // update the activeOwner's isInstructor value
+//        OwnerCDModelController.shared.update(owner: ownerCD, isInstructor: isInstructor, birthdate: nil, mostRecentPromotion: nil, belt: nil, profilePic: nil, username: nil, password: nil, firstName: nil, lastName: nil, address: nil, phone: nil, mobile: nil, email: nil, emergencyContact: nil)
+//        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     @IBAction func editButtonTapped(_ sender: Any) {
@@ -227,7 +175,7 @@ class OwnerInfoDetailsViewController: UIViewController {
         destViewController.inEditingMode = true
         destViewController.isOwner = true
         destViewController.isKid = false
-        destViewController.userCDToEdit = activeOwner
+//        destViewController.userCDToEdit = activeOwner
     }
     
     @IBAction func logoutButtonTapped(_ sender: UIButton) {
@@ -241,11 +189,11 @@ class OwnerInfoDetailsViewController: UIViewController {
         let cancel = UIAlertAction(title: "cancel", style: UIAlertAction.Style.cancel, handler: nil)
         let deleteAccount = UIAlertAction(title: "delete account", style: UIAlertAction.Style.destructive) { (alert) in
             
-            guard let owner = self.activeOwner else {
-                print("ERROR: nil value found for activeOwner in OwnerInfoDetailsViewController.swift -> deleteAccountButtonTapped(sender:) - line 117.")
-                return
-            }
-            OwnerCDModelController.shared.remove(owner: owner)
+//            guard let owner = self.activeOwner else {
+//                print("ERROR: nil value found for activeOwner in OwnerInfoDetailsViewController.swift -> deleteAccountButtonTapped(sender:) - line 117.")
+//                return
+//            }
+//            OwnerCDModelController.shared.remove(owner: owner)
             
             // programmatically performing the segue if "resetting" the app to beginning with no saved user
             
@@ -279,30 +227,18 @@ class OwnerInfoDetailsViewController: UIViewController {
 
 extension OwnerInfoDetailsViewController {
     
-    func populateCompletedProfileInfo() {
+    func populateCompletedProfileInfo(user: User?) {
     
         
 //        guard let owner = OwnerModelController.shared.owners.first else { return }
         guard let owner = activeOwnerFirestore else {
-            print("ERROR: nil value found for activeOwner in OwnerInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 157.")
-            return
-        }
-        guard let address = activeOwnerFirestoreAddress else {
-            print("ERROR: nil value found for address in OwnerInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 161.")
-            return
-        }
-        guard let belt = activeOwnerFirestoreBelt else {
-            print("ERROR: nil value found for belt in OwnerInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 165.")
-            return
-        }
-        guard let emergencyContact = activeOwnerFirestoreEmergencyContact else {
-            print("ERROR: nil value found for emergencyContact in OwnerInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 169.")
+            print("ERROR: nil value found for owner in OwnerInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 287.")
             return
         }
         
         let firstName = owner.firstName
         let lastName = owner.lastName
-        let username = owner.username
+        let username = user?.displayName ?? ""
         // populate UI elements in VC
         ownerNameLabelOutlet.text = "\(firstName) \(lastName)"
         usernameLabelOutlet.text = "user: \(username)"
@@ -319,29 +255,26 @@ extension OwnerInfoDetailsViewController {
         }
         emailLabelOutlet.text = owner.email
         // address outlets
-        addressLine1LabelOutlet.text = address.addressLine1
+        addressLine1LabelOutlet.text = owner.addressLine1
         // addressLine2 is not a required field
-        if address.addressLine2 != "" {
-            addressLine2LabelOutlet.text = address.addressLine2 ?? ""
+        if owner.addressLine2 != "" {
+            addressLine2LabelOutlet.text = owner.addressLine2 ?? ""
         } else {
             addressLine2LabelOutlet.isHidden = true
         }
-        cityLabelOutlet.text = address.city
-        stateLabelOutlet.text = address.state
-        zipCodeLabelOutlet.text = address.zipCode
+        cityLabelOutlet.text = owner.city
+        stateLabelOutlet.text = owner.state
+        zipCodeLabelOutlet.text = owner.zipCode
         // emergency contact info outlets
-        emergencyContactNameLabelOutlet.text = emergencyContact.name
-        emergencyContactRelationshipLabelOutlet.text = emergencyContact.relationship
-        emergencyContactPhoneLabelOutlet.text = emergencyContact.phone
+        emergencyContactNameLabelOutlet.text = owner.emergencyContactName
+        emergencyContactRelationshipLabelOutlet.text = owner.emergencyContactRelationship
+        emergencyContactPhoneLabelOutlet.text = owner.emergencyContactPhone
         
         // unwrap activeOwnerStorageRef to get profilePic
         guard let profilePicReference = activeOwnerStorageRef else {
             print("ERROR: nil value found for profilePicReference in OwnerInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 205.")
             return
         }
-        
-        
-        
         // Placeholder image
         let placeholderImage = UIImage(named: "profile_pic_placeholder_image.png")
         
@@ -349,12 +282,12 @@ extension OwnerInfoDetailsViewController {
         profilePicImageView.sd_setImage(with: profilePicReference, placeholderImage: placeholderImage)
         
         // construct InternationalStandardBJJBelts object from owner.belt.beltLevel.rawValue
-        guard let beltLevel = InternationalStandardBJJBelts(rawValue: belt.beltLevel) else {
+        guard let beltLevel = InternationalStandardBJJBelts(rawValue: owner.beltLevel) else {
             print("ERROR: no value found for beltLevel in OwnerInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 215.")
             return
         }
         // convert numberOfStripes Int16 to Int value
-        guard let numberOfStripes = Int(exactly: belt.numberOfStripes) else {
+        guard let numberOfStripes = Int(exactly: owner.numberOfStripes) else {
             print("ERROR: no value found for numberOfStripes in OwnerInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 220.")
             return
         }
@@ -408,25 +341,25 @@ extension OwnerInfoDetailsViewController: NSFetchedResultsControllerDelegate {
     
     func findActiveUser() {
         
-        // get active user uuid
-        guard let uuid = ActiveUserModelController.shared.activeUser.first else {
-            print("ERROR: no uuid returned by ActiveUserModelController.shared.activeUser.first in OwnerInfoDetailsViewController.swift -> findActiveUser() - line 232.")
-            return
-        }
-        
-        // get array of fetched objects from fetchedResultsController content(s)
-        guard let activeOwners = fetchedResultsController.fetchedObjects else {
-            print("ERROR: no owners returned by fetchedResultsController in OwnerInfoDetailsViewController.swift -> findActiveUser() - line 235.")
-            return
-        }
-        // match owner with activeUser UUID
-        for owner in activeOwners {
-            if owner.ownerUUID == uuid {
-                activeOwner = owner
-                print("SUCCESS: activeOwner uuid matches an owner")
-                return
-            }
-        }
+//        // get active user uuid
+//        guard let uuid = ActiveUserModelController.shared.activeUser.first else {
+//            print("ERROR: no uuid returned by ActiveUserModelController.shared.activeUser.first in OwnerInfoDetailsViewController.swift -> findActiveUser() - line 232.")
+//            return
+//        }
+//
+//        // get array of fetched objects from fetchedResultsController content(s)
+//        guard let activeOwners = fetchedResultsController.fetchedObjects else {
+//            print("ERROR: no owners returned by fetchedResultsController in OwnerInfoDetailsViewController.swift -> findActiveUser() - line 235.")
+//            return
+//        }
+//        // match owner with activeUser UUID
+//        for owner in activeOwners {
+//            if owner.ownerUUID == uuid {
+//                activeOwner = owner
+//                print("SUCCESS: activeOwner uuid matches an owner")
+//                return
+//            }
+//        }
     }
 }
 
@@ -478,9 +411,9 @@ extension OwnerInfoDetailsViewController {
             ActiveUserModelController.shared.activeUser.removeAll()
             
             // set isLoggedOn property of Student User to false
-            if let activeOwner = self.activeOwner {
-                activeOwner.isLoggedOn = false
-            }
+//            if let activeOwner = self.activeOwner {
+//                activeOwner.isLoggedOn = false
+//            }
             // return to the LandingPageVC scene
             self.returnToLandingPage()
         }

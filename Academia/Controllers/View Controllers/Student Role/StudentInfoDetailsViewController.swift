@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 class StudentInfoDetailsViewController: UIViewController {
 
@@ -53,17 +54,77 @@ class StudentInfoDetailsViewController: UIViewController {
     @IBOutlet weak var emergencyContactRelationshipLabelOutlet: UILabel!
     @IBOutlet weak var emergencyContactPhoneLabelOutlet: UILabel!
     
+    // Firebase Firestore properties
+    var activeKidStudentFirestore: KidStudentFirestore?
+    var activeAdultStudentFirestore: AdultStudentFirestore?
+    var activeStudentStorageRef: StorageReference?
+    
+    var db: Firestore!
+    // The handler for the FIREBASE Auth state listener, to allow cancelling later.
+    var handle: AuthStateDidChangeListenerHandle?
+    
     
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
         
-        // create fetch request and initialize results
-        initializeFetchedResultsControllers()
-        // search fetch results to find activeOwner
-        findActiveUser()
-        // populate activeOwner details to UI
-        populateCompletedProfileInfo()
+//        // create fetch request and initialize results
+//        initializeFetchedResultsControllers()
+//        // search fetch results to find activeOwner
+//        findActiveUser()
+//        // populate activeOwner details to UI
+//        populateCompletedProfileInfo()
+        
+        
+        // FIREBASE Auth listener
+        
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            
+            if Auth.auth().currentUser != nil {
+                
+                let user = Auth.auth().currentUser
+                
+                if let user = user {
+                    
+                    let uid = user.uid
+                    
+                    // set the activeOwnerStorageReference path
+                    self.activeStudentStorageRef = Storage.storage().reference().child("profilePics/students/\(uid)")
+                    
+                    // get the active firestre owner info
+                    self.db.collection("students").document(uid).getDocument { (querySnapshot, err) in
+                        if let err = err {
+                            print("Error getting documents: \(err)")
+                        } else {
+                            
+                            guard let studentData = querySnapshot?.data() else {
+                                
+                                print("ERROR: nil value found for studentData in OwnerInfoDetailsViewController.swift -> viewWillAppear - line 101.")
+                                return
+                            }
+                            
+                            print("\(String(describing: querySnapshot?.documentID)) => \(String(describing: querySnapshot?.data()))")
+                            
+                            // check student type
+                            let isKid: Bool = (studentData["isKid"] != nil)
+                            if isKid == true {
+                                
+                                self.activeKidStudentFirestore =
+                                    
+                                    KidStudentFirestore(dictionary: studentData)
+                                
+                            } else {
+                                
+                                self.activeAdultStudentFirestore = AdultStudentFirestore(dictionary: studentData)
+
+                            }
+                            
+                            self.populateCompletedProfileInfo(user: user)
+                        }
+                    }
+                }
+            }
+        }
     }
     
     override func viewDidLoad() {
@@ -237,126 +298,247 @@ class StudentInfoDetailsViewController: UIViewController {
 // MARK: - setup the view
 extension StudentInfoDetailsViewController {
     
-    func populateCompletedProfileInfo() {
+    func populateCompletedProfileInfo(user: User?) {
         
-        findActiveUser()
+//        findActiveUser()
         
-        let isKid = ActiveUserModelController.shared.isKid
+//        let isKid = ActiveUserModelController.shared.isKid
         
-        if isKid {
+        if let activeKid = activeKidStudentFirestore {
             
             // KID STUDENT OPTION
-            guard let activeStudentKid = activeStudentKid else { return }
-            guard let belt = activeStudentKid.belt else { return }
             
             // populate UI elements in VC
-            studentNameLabelOutlet.text = "\(activeStudentKid.firstName ?? "") \(activeStudentKid.lastName ?? "")"
-            usernameLabelOutlet.text = "username: \(activeStudentKid.username ?? "")"
+            studentNameLabelOutlet.text = "\(activeKid.firstName) \(activeKid.lastName)"
+            usernameLabelOutlet.text = "username: \(user?.displayName ?? "")"
             // populate birthdate outlet
-            if let birthdate = activeStudentKid.birthdate {
-                
-                formatBirthdate(birthdate: birthdate)
-            }
+            formatBirthdate(birthdate: activeKid.birthdate.dateValue())
             // contact info outlets
-            phoneLabelOutlet.text = activeStudentKid.phone
+            phoneLabelOutlet.text = activeKid.phone
             // mobile is not a required field
-            if activeStudentKid.mobile != "" {
-                mobileLabelOutlet.text = activeStudentKid.mobile
-            } else {
-                mobileLabelOutlet.isHidden = true
+            if let mobile = activeKid.mobile {
+                if mobile  != "" {
+                    mobileLabelOutlet.text = mobile
+                } else {
+                    mobileLabelOutlet.isHidden = true
+                }
             }
-            emailLabelOutlet.text = activeStudentKid.email
+            emailLabelOutlet.text = activeKid.email
             // parent / guardian name
-            parentGuardianLabelOutlet.text = "parent/guardian: \(activeStudentKid.parentGuardian ?? "")"
+            parentGuardianLabelOutlet.text = "parent/guardian: \(activeKid.parentGuardian)"
             // address outlets
-            addressLine1LabelOutlet.text = activeStudentKid.address?.addressLine1
+            addressLine1LabelOutlet.text = activeKid.addressLine1
             // addressLine2 is not a required field
-            if activeStudentKid.address?.addressLine2 != "" {
-                addressLine2LabelOutlet.text = activeStudentKid.address?.addressLine2
+            if activeKid.addressLine2 != "" {
+                addressLine2LabelOutlet.text = activeKid.addressLine2
             } else {
                 addressLine2LabelOutlet.isHidden = true
             }
-            cityLabelOutlet.text = activeStudentKid.address?.city
-            stateLabelOutlet.text = activeStudentKid.address?.state
-            zipCodeLabelOutlet.text = activeStudentKid.address?.zipCode
+            cityLabelOutlet.text = activeKid.city
+            stateLabelOutlet.text = activeKid.state
+            zipCodeLabelOutlet.text = activeKid.zipCode
             // emergency contact info outlets
-            emergencyContactNameLabelOutlet.text = activeStudentKid.emergencyContact?.name
-            emergencyContactRelationshipLabelOutlet.text = activeStudentKid.emergencyContact?.relationship
-            emergencyContactPhoneLabelOutlet.text = activeStudentKid.emergencyContact?.phone
+            emergencyContactNameLabelOutlet.text = activeKid.emergencyContactName
+            emergencyContactRelationshipLabelOutlet.text = activeKid.emergencyContactRelationship
+            emergencyContactPhoneLabelOutlet.text = activeKid.emergencyContactPhone
             
-            // profile pic imageView
-            if let profilePicData = activeStudentKid.profilePic {
-                
-                profilePicImageView.image = UIImage(data: profilePicData)
+            // unwrap activeOwnerStorageRef to get profilePic
+            guard let profilePicReference = activeStudentStorageRef else {
+                print("ERROR: nil value found for profilePicReference in OwnerInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 205.")
+                return
             }
+            // Placeholder image
+            let placeholderImage = UIImage(named: "profile_pic_placeholder_image.png")
+            // profile pic imageView Load the image using SDWebImage
+            profilePicImageView.sd_setImage(with: profilePicReference, placeholderImage: placeholderImage)
             
             // belt holder UIView
-            print("Kid Student Info in StudentInfodetailsVC -> beltLevel: \(String(describing: activeStudentKid.belt?.beltLevel))")
-            print("Kid Student Info in StudentInfodetailsVC -> \(String(describing: activeStudentKid.belt?.numberOfStripes))")
-            
+            print("Kid Student Info in StudentInfodetailsVC -> beltLevel: \(String(describing: activeKid.beltLevel))")
+            print("Kid Student Info in StudentInfodetailsVC -> numberOfStripes:  \(String(describing: activeKid.numberOfStripes))")
             // convert numberOfStripes to Int from Int16 in CoreData
-            let stripesInt = Int(belt.numberOfStripes)
+            let stripesInt = Int(activeKid.numberOfStripes)
             // get enum value from CoreData beltLevel String
-            if let beltLevel = belt.beltLevel {
-                let beltLevelEnum = InternationalStandardBJJBelts(rawValue: beltLevel)
-                // build the belt
-                beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevelEnum ?? .adultWhiteBelt, numberOfStripes: stripesInt)
-            }
+            let beltLevelEnum = InternationalStandardBJJBelts(rawValue: activeKid.beltLevel)
+            // build the belt
+            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevelEnum ?? .adultWhiteBelt, numberOfStripes: stripesInt)
             
-        } else {
+        }
+        
+        if let activeAdult = activeAdultStudentFirestore {
             
-            // ADULT STUDENT OPTION
-            guard let activeStudentAdult = activeStudentAdult else { return }
-            guard let belt = activeStudentAdult.belt else { return }
+            // KID STUDENT OPTION
             
             // populate UI elements in VC
-            studentNameLabelOutlet.text = "\(activeStudentAdult.firstName ?? "") \(activeStudentAdult.lastName ?? "")"
-            usernameLabelOutlet.text = "username: \(activeStudentAdult.username ?? "")"
+            studentNameLabelOutlet.text = "\(activeAdult.firstName) \(activeAdult.lastName)"
+            usernameLabelOutlet.text = "username: \(user?.displayName ?? "")"
             // populate birthdate outlet
-            formatBirthdate(birthdate: activeStudentAdult.birthdate ?? Date())
+            formatBirthdate(birthdate: activeAdult.birthdate.dateValue())
             // contact info outlets
-            phoneLabelOutlet.text = activeStudentAdult.phone
+            phoneLabelOutlet.text = activeAdult.phone
             // mobile is not a required field
-            if activeStudentAdult.mobile != "" {
-                mobileLabelOutlet.text = activeStudentAdult.mobile
-            } else {
-                mobileLabelOutlet.isHidden = true
+            if let mobile = activeAdult.mobile {
+                if mobile  != "" {
+                    mobileLabelOutlet.text = mobile
+                } else {
+                    mobileLabelOutlet.isHidden = true
+                }
             }
-            emailLabelOutlet.text = activeStudentAdult.email
+            emailLabelOutlet.text = activeAdult.email
+            // parent / guardian name
+            parentGuardianLabelOutlet.text = ""
             // address outlets
-            addressLine1LabelOutlet.text = activeStudentAdult.address?.addressLine1
+            addressLine1LabelOutlet.text = activeAdult.addressLine1
             // addressLine2 is not a required field
-            if activeStudentAdult.address?.addressLine2 != "" {
-                addressLine2LabelOutlet.text = activeStudentAdult.address?.addressLine2
+            if activeAdult.addressLine2 != "" {
+                addressLine2LabelOutlet.text = activeAdult.addressLine2
             } else {
                 addressLine2LabelOutlet.isHidden = true
             }
-            cityLabelOutlet.text = activeStudentAdult.address?.city
-            stateLabelOutlet.text = activeStudentAdult.address?.state
-            zipCodeLabelOutlet.text = activeStudentAdult.address?.zipCode
+            cityLabelOutlet.text = activeAdult.city
+            stateLabelOutlet.text = activeAdult.state
+            zipCodeLabelOutlet.text = activeAdult.zipCode
             // emergency contact info outlets
-            emergencyContactNameLabelOutlet.text = activeStudentAdult.emergencyContact?.name
-            emergencyContactRelationshipLabelOutlet.text = activeStudentAdult.emergencyContact?.relationship
-            emergencyContactPhoneLabelOutlet.text = activeStudentAdult.emergencyContact?.phone
-
-            // profile pic imageView
-            if let profilePicData = activeStudentAdult.profilePic {
-                
-                profilePicImageView.image = UIImage(data: profilePicData)
+            emergencyContactNameLabelOutlet.text = activeAdult.emergencyContactName
+            emergencyContactRelationshipLabelOutlet.text = activeAdult.emergencyContactRelationship
+            emergencyContactPhoneLabelOutlet.text = activeAdult.emergencyContactPhone
+            
+            // unwrap activeOwnerStorageRef to get profilePic
+            guard let profilePicReference = activeStudentStorageRef else {
+                print("ERROR: nil value found for profilePicReference in OwnerInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 205.")
+                return
             }
+            // Placeholder image
+            let placeholderImage = UIImage(named: "profile_pic_placeholder_image.png")
+            // profile pic imageView Load the image using SDWebImage
+            profilePicImageView.sd_setImage(with: profilePicReference, placeholderImage: placeholderImage)
             
             // belt holder UIView
-            print("Adult Student Info in StudentInfodetailsVC -> beltLevel: \(String(describing: belt.beltLevel))")
-            print("Adult Student Info in StudentInfodetailsVC -> \(belt.numberOfStripes)")
+            print("Kid Student Info in StudentInfodetailsVC -> beltLevel: \(String(describing: activeAdult.beltLevel))")
+            print("Kid Student Info in StudentInfodetailsVC -> numberOfStripes:  \(String(describing: activeAdult.numberOfStripes))")
             // convert numberOfStripes to Int from Int16 in CoreData
-            let stripesInt = Int(belt.numberOfStripes)
+            let stripesInt = Int(activeAdult.numberOfStripes)
             // get enum value from CoreData beltLevel String
-            if let beltLevel = belt.beltLevel {
-                let beltLevelEnum = InternationalStandardBJJBelts(rawValue: beltLevel)
-                // build the belt
-                beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevelEnum ?? .adultWhiteBelt, numberOfStripes: stripesInt)
-            }
+            let beltLevelEnum = InternationalStandardBJJBelts(rawValue: activeAdult.beltLevel)
+            // build the belt
+            beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevelEnum ?? .adultWhiteBelt, numberOfStripes: stripesInt)
+            
         }
+        
+        
+//        if isKid {
+//
+//            // KID STUDENT OPTION
+//            guard let activeStudentKid = activeStudentKid else { return }
+//            guard let belt = activeStudentKid.belt else { return }
+//
+//            // populate UI elements in VC
+//            studentNameLabelOutlet.text = "\(activeStudentKid.firstName ?? "") \(activeStudentKid.lastName ?? "")"
+//            usernameLabelOutlet.text = "username: \(activeStudentKid.username ?? "")"
+//            // populate birthdate outlet
+//            if let birthdate = activeStudentKid.birthdate {
+//
+//                formatBirthdate(birthdate: birthdate)
+//            }
+//            // contact info outlets
+//            phoneLabelOutlet.text = activeStudentKid.phone
+//            // mobile is not a required field
+//            if activeStudentKid.mobile != "" {
+//                mobileLabelOutlet.text = activeStudentKid.mobile
+//            } else {
+//                mobileLabelOutlet.isHidden = true
+//            }
+//            emailLabelOutlet.text = activeStudentKid.email
+//            // parent / guardian name
+//            parentGuardianLabelOutlet.text = "parent/guardian: \(activeStudentKid.parentGuardian ?? "")"
+//            // address outlets
+//            addressLine1LabelOutlet.text = activeStudentKid.address?.addressLine1
+//            // addressLine2 is not a required field
+//            if activeStudentKid.address?.addressLine2 != "" {
+//                addressLine2LabelOutlet.text = activeStudentKid.address?.addressLine2
+//            } else {
+//                addressLine2LabelOutlet.isHidden = true
+//            }
+//            cityLabelOutlet.text = activeStudentKid.address?.city
+//            stateLabelOutlet.text = activeStudentKid.address?.state
+//            zipCodeLabelOutlet.text = activeStudentKid.address?.zipCode
+//            // emergency contact info outlets
+//            emergencyContactNameLabelOutlet.text = activeStudentKid.emergencyContact?.name
+//            emergencyContactRelationshipLabelOutlet.text = activeStudentKid.emergencyContact?.relationship
+//            emergencyContactPhoneLabelOutlet.text = activeStudentKid.emergencyContact?.phone
+//
+//            // profile pic imageView
+//            if let profilePicData = activeStudentKid.profilePic {
+//
+//                profilePicImageView.image = UIImage(data: profilePicData)
+//            }
+//
+//            // belt holder UIView
+//            print("Kid Student Info in StudentInfodetailsVC -> beltLevel: \(String(describing: activeStudentKid.belt?.beltLevel))")
+//            print("Kid Student Info in StudentInfodetailsVC -> \(String(describing: activeStudentKid.belt?.numberOfStripes))")
+//
+//            // convert numberOfStripes to Int from Int16 in CoreData
+//            let stripesInt = Int(belt.numberOfStripes)
+//            // get enum value from CoreData beltLevel String
+//            if let beltLevel = belt.beltLevel {
+//                let beltLevelEnum = InternationalStandardBJJBelts(rawValue: beltLevel)
+//                // build the belt
+//                beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevelEnum ?? .adultWhiteBelt, numberOfStripes: stripesInt)
+//            }
+//
+//        } else {
+//
+//            // ADULT STUDENT OPTION
+//            guard let activeStudentAdult = activeStudentAdult else { return }
+//            guard let belt = activeStudentAdult.belt else { return }
+//
+//            // populate UI elements in VC
+//            studentNameLabelOutlet.text = "\(activeStudentAdult.firstName ?? "") \(activeStudentAdult.lastName ?? "")"
+//            usernameLabelOutlet.text = "username: \(activeStudentAdult.username ?? "")"
+//            // populate birthdate outlet
+//            formatBirthdate(birthdate: activeStudentAdult.birthdate ?? Date())
+//            // contact info outlets
+//            phoneLabelOutlet.text = activeStudentAdult.phone
+//            // mobile is not a required field
+//            if activeStudentAdult.mobile != "" {
+//                mobileLabelOutlet.text = activeStudentAdult.mobile
+//            } else {
+//                mobileLabelOutlet.isHidden = true
+//            }
+//            emailLabelOutlet.text = activeStudentAdult.email
+//            // address outlets
+//            addressLine1LabelOutlet.text = activeStudentAdult.address?.addressLine1
+//            // addressLine2 is not a required field
+//            if activeStudentAdult.address?.addressLine2 != "" {
+//                addressLine2LabelOutlet.text = activeStudentAdult.address?.addressLine2
+//            } else {
+//                addressLine2LabelOutlet.isHidden = true
+//            }
+//            cityLabelOutlet.text = activeStudentAdult.address?.city
+//            stateLabelOutlet.text = activeStudentAdult.address?.state
+//            zipCodeLabelOutlet.text = activeStudentAdult.address?.zipCode
+//            // emergency contact info outlets
+//            emergencyContactNameLabelOutlet.text = activeStudentAdult.emergencyContact?.name
+//            emergencyContactRelationshipLabelOutlet.text = activeStudentAdult.emergencyContact?.relationship
+//            emergencyContactPhoneLabelOutlet.text = activeStudentAdult.emergencyContact?.phone
+//
+//            // profile pic imageView
+//            if let profilePicData = activeStudentAdult.profilePic {
+//
+//                profilePicImageView.image = UIImage(data: profilePicData)
+//            }
+//
+//            // belt holder UIView
+//            print("Adult Student Info in StudentInfodetailsVC -> beltLevel: \(String(describing: belt.beltLevel))")
+//            print("Adult Student Info in StudentInfodetailsVC -> \(belt.numberOfStripes)")
+//            // convert numberOfStripes to Int from Int16 in CoreData
+//            let stripesInt = Int(belt.numberOfStripes)
+//            // get enum value from CoreData beltLevel String
+//            if let beltLevel = belt.beltLevel {
+//                let beltLevelEnum = InternationalStandardBJJBelts(rawValue: beltLevel)
+//                // build the belt
+//                beltBuilder.buildABelt(view: beltHolderViewOutlet, belt: beltLevelEnum ?? .adultWhiteBelt, numberOfStripes: stripesInt)
+//            }
+//        }
     }
 }
         

@@ -217,12 +217,9 @@
 		FAD6692F22CF2093008F4AF5 /* AdultStudentFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6692E22CF2093008F4AF5 /* AdultStudentFirestore.swift */; };
 		FAD6693122CF2162008F4AF5 /* KidStudentFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6693022CF2161008F4AF5 /* KidStudentFirestore.swift */; };
 		FAD6693322D06584008F4AF5 /* LocationFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6693222D06584008F4AF5 /* LocationFirestore.swift */; };
-		FAD6693522D065A6008F4AF5 /* AddressFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6693422D065A6008F4AF5 /* AddressFirestore.swift */; };
-		FAD6693722D065CD008F4AF5 /* EmergencyContactFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6693622D065CD008F4AF5 /* EmergencyContactFirestore.swift */; };
 		FAD6693922D065EC008F4AF5 /* GroupFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6693822D065EC008F4AF5 /* GroupFirestore.swift */; };
 		FAD6693B22D06611008F4AF5 /* AulaAttendanceFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6693A22D06611008F4AF5 /* AulaAttendanceFirestore.swift */; };
 		FAD6693D22D06629008F4AF5 /* AulaFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6693C22D06629008F4AF5 /* AulaFirestore.swift */; };
-		FAD6693F22D06641008F4AF5 /* BeltFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6693E22D06641008F4AF5 /* BeltFirestore.swift */; };
 		FAD6694122D06662008F4AF5 /* BeltPromotionFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6694022D06662008F4AF5 /* BeltPromotionFirestore.swift */; };
 		FAD6694322D06680008F4AF5 /* BeltStripeAgeDetailsFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6694222D06680008F4AF5 /* BeltStripeAgeDetailsFirestore.swift */; };
 		FAD6694522D066A7008F4AF5 /* PaymentProgramFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6694422D066A7008F4AF5 /* PaymentProgramFirestore.swift */; };
@@ -230,7 +227,6 @@
 		FAD6694922D066F3008F4AF5 /* PaymentBillingSignatureFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6694822D066F3008F4AF5 /* PaymentBillingSignatureFirestore.swift */; };
 		FAD6694B22D06711008F4AF5 /* PaymentBillingTypeFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6694A22D06711008F4AF5 /* PaymentBillingTypeFirestore.swift */; };
 		FAD6695122D067A7008F4AF5 /* StudentStatusFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6695022D067A7008F4AF5 /* StudentStatusFirestore.swift */; };
-		FAD6695322D067C8008F4AF5 /* LocationSocialLinksFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6695222D067C8008F4AF5 /* LocationSocialLinksFirestore.swift */; };
 		FAD6695622D06897008F4AF5 /* TechniqueFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6695522D06897008F4AF5 /* TechniqueFirestore.swift */; };
 		FAD6695822D068AB008F4AF5 /* CurriculumModuleFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6695722D068AB008F4AF5 /* CurriculumModuleFirestore.swift */; };
 		FAD6695A22D068BE008F4AF5 /* CurriculumFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6695922D068BE008F4AF5 /* CurriculumFirestore.swift */; };
@@ -563,12 +559,9 @@
 		FAD6692E22CF2093008F4AF5 /* AdultStudentFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdultStudentFirestore.swift; sourceTree = "<group>"; };
 		FAD6693022CF2161008F4AF5 /* KidStudentFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidStudentFirestore.swift; sourceTree = "<group>"; };
 		FAD6693222D06584008F4AF5 /* LocationFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFirestore.swift; sourceTree = "<group>"; };
-		FAD6693422D065A6008F4AF5 /* AddressFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressFirestore.swift; sourceTree = "<group>"; };
-		FAD6693622D065CD008F4AF5 /* EmergencyContactFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyContactFirestore.swift; sourceTree = "<group>"; };
 		FAD6693822D065EC008F4AF5 /* GroupFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupFirestore.swift; sourceTree = "<group>"; };
 		FAD6693A22D06611008F4AF5 /* AulaAttendanceFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AulaAttendanceFirestore.swift; sourceTree = "<group>"; };
 		FAD6693C22D06629008F4AF5 /* AulaFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AulaFirestore.swift; sourceTree = "<group>"; };
-		FAD6693E22D06641008F4AF5 /* BeltFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeltFirestore.swift; sourceTree = "<group>"; };
 		FAD6694022D06662008F4AF5 /* BeltPromotionFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeltPromotionFirestore.swift; sourceTree = "<group>"; };
 		FAD6694222D06680008F4AF5 /* BeltStripeAgeDetailsFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeltStripeAgeDetailsFirestore.swift; sourceTree = "<group>"; };
 		FAD6694422D066A7008F4AF5 /* PaymentProgramFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProgramFirestore.swift; sourceTree = "<group>"; };
@@ -576,7 +569,6 @@
 		FAD6694822D066F3008F4AF5 /* PaymentBillingSignatureFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentBillingSignatureFirestore.swift; sourceTree = "<group>"; };
 		FAD6694A22D06711008F4AF5 /* PaymentBillingTypeFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentBillingTypeFirestore.swift; sourceTree = "<group>"; };
 		FAD6695022D067A7008F4AF5 /* StudentStatusFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentStatusFirestore.swift; sourceTree = "<group>"; };
-		FAD6695222D067C8008F4AF5 /* LocationSocialLinksFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSocialLinksFirestore.swift; sourceTree = "<group>"; };
 		FAD6695522D06897008F4AF5 /* TechniqueFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechniqueFirestore.swift; sourceTree = "<group>"; };
 		FAD6695722D068AB008F4AF5 /* CurriculumModuleFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumModuleFirestore.swift; sourceTree = "<group>"; };
 		FAD6695922D068BE008F4AF5 /* CurriculumFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumFirestore.swift; sourceTree = "<group>"; };
@@ -1109,11 +1101,9 @@
 			isa = PBXGroup;
 			children = (
 				FA76FE49229635C100548906 /* FirestoreTestModel.swift */,
-				FAD6693422D065A6008F4AF5 /* AddressFirestore.swift */,
-				FAD6693622D065CD008F4AF5 /* EmergencyContactFirestore.swift */,
 				FAD6693822D065EC008F4AF5 /* GroupFirestore.swift */,
 				FAD6694E22D06758008F4AF5 /* Aula */,
-				FAD6694D22D06743008F4AF5 /* Belt */,
+				FAD6694D22D06743008F4AF5 /* Belt Details */,
 				FAD6695422D067E1008F4AF5 /* Location */,
 				FAD6694C22D0672E008F4AF5 /* Payment Program */,
 				FAD6694F22D0676E008F4AF5 /* Users */,
@@ -1414,14 +1404,13 @@
 			path = "Payment Program";
 			sourceTree = "<group>";
 		};
-		FAD6694D22D06743008F4AF5 /* Belt */ = {
+		FAD6694D22D06743008F4AF5 /* Belt Details */ = {
 			isa = PBXGroup;
 			children = (
-				FAD6693E22D06641008F4AF5 /* BeltFirestore.swift */,
 				FAD6694022D06662008F4AF5 /* BeltPromotionFirestore.swift */,
 				FAD6694222D06680008F4AF5 /* BeltStripeAgeDetailsFirestore.swift */,
 			);
-			path = Belt;
+			path = "Belt Details";
 			sourceTree = "<group>";
 		};
 		FAD6694E22D06758008F4AF5 /* Aula */ = {
@@ -1451,7 +1440,6 @@
 			isa = PBXGroup;
 			children = (
 				FAD6693222D06584008F4AF5 /* LocationFirestore.swift */,
-				FAD6695222D067C8008F4AF5 /* LocationSocialLinksFirestore.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -1927,7 +1915,6 @@
 				FA0C444621278BBF00B59194 /* Aula.swift in Sources */,
 				FAD2A3BD21E6E42000364FC0 /* InstructorsDelegate.swift in Sources */,
 				FA9ADA2F2139EE940005E1F1 /* IsKidTableViewCell.swift in Sources */,
-				FAD6693522D065A6008F4AF5 /* AddressFirestore.swift in Sources */,
 				FABF85AB21B78C36005CEBD4 /* PaymentProgramAgreementViewController.swift in Sources */,
 				FAD2097721C1CFF400B9C622 /* DateCollectionViewCell.swift in Sources */,
 				FA9ADA05213784720005E1F1 /* AboutAcademiaViewController.swift in Sources */,
@@ -1945,7 +1932,6 @@
 				FAD6694722D066CC008F4AF5 /* PaymentBillingDateFirestore.swift in Sources */,
 				FA4DF32E218CCA1A00ECC167 /* CurriculumModule.swift in Sources */,
 				FAE2FDB02140C0C900815402 /* SocialNetworksTextFieldTableViewCell.swift in Sources */,
-				FAD6693F22D06641008F4AF5 /* BeltFirestore.swift in Sources */,
 				FAE2FD9E2140C02800815402 /* EmailTextFieldTableViewCell.swift in Sources */,
 				FA946414222DB7600063B34C /* AddressCDModelController.swift in Sources */,
 				FABF859621B220B9005CEBD4 /* LocationInfoDetailsViewController.swift in Sources */,
@@ -2025,7 +2011,6 @@
 				FABF85A921B78B99005CEBD4 /* PaymentProgramBillingDetailsViewController.swift in Sources */,
 				FAA516DF2190CAC1009875CB /* CurriculumModelController.swift in Sources */,
 				FA23D2832166F5AE00707056 /* AulaModelController.swift in Sources */,
-				FAD6695322D067C8008F4AF5 /* LocationSocialLinksFirestore.swift in Sources */,
 				FA946422222DB8870063B34C /* EmergencyContactCDModelController.swift in Sources */,
 				FAB806C32210E7B300124EBA /* PaymentBillingDateCD+Convenience.swift in Sources */,
 				FAB806C72210E7F000124EBA /* PaymentBillingTypeCD+Convenience.swift in Sources */,
@@ -2081,7 +2066,6 @@
 				FA4DF330218CCA2400ECC167 /* Curriculum.swift in Sources */,
 				FAE2FDA82140C07F00815402 /* EmergencyContactPhoneTextFieldTableViewCell.swift in Sources */,
 				FA94640F222D00740063B34C /* GroupCDModelController.swift in Sources */,
-				FAD6693722D065CD008F4AF5 /* EmergencyContactFirestore.swift in Sources */,
 				FA9005CB22CC7B89001D450C /* OwnerFirestore.swift in Sources */,
 				FAF29BDF2130892B00752414 /* ImageMenuTableViewCell.swift in Sources */,
 				FA946406222CF9310063B34C /* LocationCDModelController.swift in Sources */,

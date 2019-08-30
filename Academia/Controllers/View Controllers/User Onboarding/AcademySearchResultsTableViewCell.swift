@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class AcademySearchResultsTableViewCell: UITableViewCell {
 
@@ -20,6 +21,12 @@ class AcademySearchResultsTableViewCell: UITableViewCell {
     var locationFirestore: LocationFirestore? {
         didSet {
             updateViews()
+        }
+    }
+    
+    var locationPic: UIImage? {
+        didSet {
+            updateImageView()
         }
     }
     
@@ -37,23 +44,26 @@ class AcademySearchResultsTableViewCell: UITableViewCell {
     func updateViews() {
         
         guard let location = locationFirestore else {
-            print("failed to unwrap a location object in LocationImageMenuTVCell")
-            print("how many locations we got in location source of truth: \(LocationModelController.shared.locations.count)")
+            
+            print("failed to unwrap a location object in AcademySearchResultsTableViewCell.swift -> updateViews()")
             
             return
         }
-        guard let locationPicData = location.locationPic else {
-            print("ERROR: nil value found for locationPic in LocationsImageMenuTableViewCell.swift -> updateViews() - line 53.")
-            return
-        }
-        
-        print("LocationsImageMenuTVCell location object name: \(location.locationName)")
-        
         // populate cell UI elements
-        locationThumbnailImageView.image = UIImage(named: locationPicData)
         cellTitleOutlet.text = "\(location.locationName)"
         cellTeacherNameOutlet.text = "\(location.ownerName)"
         cellSubtitleOutlet.text = "\(location.city), \(location.state) \(location.zipCode)"
     }
-
+    
+    func updateImageView() {
+        
+        guard let locationPic = locationPic else {
+            
+            print("failed to unwrap a locationPic in AcademySearchResultsTableViewCell.swift -> updateImageView()")
+            
+            return
+        }
+        // populate cell UIImageView
+        locationThumbnailImageView.image = locationPic
+    }
 }

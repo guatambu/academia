@@ -24,6 +24,7 @@ class FindYourAcademyViewController: UIViewController, UITableViewDelegate, UITa
     
     var isSearching: Bool = false
     var searchResults: [LocationFirestore] = []
+    var locationPic: UIImage?
     
     let beltBuilder = BeltBuilder()
     var hapticFeedbackGenerator : UINotificationFeedbackGenerator? = nil
@@ -39,6 +40,8 @@ class FindYourAcademyViewController: UIViewController, UITableViewDelegate, UITa
     var groupCD: GroupCD?
     // Firebase properties
     var db: Firestore!
+    // docID
+    var locationUID: String?
     
     
     // MARK: - ViewController Lifecycle Functions
@@ -172,8 +175,32 @@ class FindYourAcademyViewController: UIViewController, UITableViewDelegate, UITa
             return UITableViewCell()
         }
         
-        let location = searchResults[indexPath.row]
+        guard let uid = locationUID else {
+            
+            print("nil value found for uid in LocationImageMenuTVCell.swift -> updateViews() - line 54.")
+            
+            return UITableViewCell()
+        }
         
+        // location profile pic Firebase Store StorageReference
+        
+        /* vvv likely i will need to remove the '.jpg' bit off the end of the path once i have owner location creation in place with Firestore vvv */
+        let locationPicStorageRef = Storage.storage().reference().child("profilePics/locations/\(uid).jpg")
+        /* ^^^ likely i will need to remove the '.jpg' bit off the end of the path once i have owner location creation in place with Firestore ^^^ */
+            
+        // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
+        locationPicStorageRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            if let error = error {
+                print("ERROR: \(error.localizedDescription) in FindYourAcademyVC.swift -> tableView(tableView: cellForRowAt) - line 191.")
+            } else {
+                // Data for locationPicStorageRef is returned
+                let image = UIImage(data: data!)
+                cell.locationPic = image
+            }
+        }
+        
+        let location = searchResults[indexPath.row]
+    
         cell.locationFirestore = location
         
         return cell
@@ -237,6 +264,9 @@ extension FindYourAcademyViewController: UITextFieldDelegate {
                             
                             return
                         }
+                        
+                        // get location uid for profile pic
+                        self.locationUID = document.documentID
                         // append the location to the search results array
                         self.searchResults.append(location)
                         // reload the tableView dataSource
@@ -268,6 +298,8 @@ extension FindYourAcademyViewController: UITextFieldDelegate {
                             
                             return
                         }
+                        // get location uid for profile pic
+                        self.locationUID = document.documentID
                         // append the location to the search results array
                         self.searchResults.append(location)
                         // reload the tableView dataSource
@@ -299,6 +331,8 @@ extension FindYourAcademyViewController: UITextFieldDelegate {
                             
                             return
                         }
+                        // get location uid for profile pic
+                        self.locationUID = document.documentID
                         // append the location to the search results array
                         self.searchResults.append(location)
                         // reload the tableView dataSource
