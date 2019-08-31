@@ -621,7 +621,7 @@ extension CompletedProfileViewController {
                     if let error = error {
                         print("ERROR: \(error.localizedDescription) error occurred while trying to save kidStudent to Firebase Firestore in CompletedProfileViewController.swift -> createUserAccountFirestoreDataModel() - line 625. ")
                     } else {
-                        print("new owner data successfully saved to Firebase Firestore in owners collection")
+                        print("new kidStudent data successfully saved to Firebase Firestore in students collection")
                     }
                 }
                 
@@ -677,7 +677,7 @@ extension CompletedProfileViewController {
                     if let error = error {
                         print("ERROR: \(error.localizedDescription) error occurred while trying to save owner to Firebase Firestore in CompletedProfileViewController.swift -> createUserAccountFirestoreDataModel() - line 681. ")
                     } else {
-                        print("new owner data successfully saved to Firebase Firestore in owners collection")
+                        print("new adultStudent data successfully saved to Firebase Firestore in students collection")
                     }
                 }
             }

@@ -127,6 +127,12 @@ class StudentInfoDetailsViewController: UIViewController {
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        // FIREBASE Auth listener
+        Auth.auth().removeStateDidChangeListener(handle!)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -154,6 +160,8 @@ class StudentInfoDetailsViewController: UIViewController {
         
         print("isKid: \(String(describing: isKid))")
         
+        // Set up Firestore db reference
+        db = Firestore.firestore()
     }
     
     
@@ -164,14 +172,14 @@ class StudentInfoDetailsViewController: UIViewController {
         isInstructor = !isInstructor
         print("isInstructorSwitch toggled, currently isInstructor = \(isInstructor)")
         
-        guard let StudentAdultCD = activeStudentAdult else {
-            print("ERROR: nil value found for activeOwner property of type OwnerCD in OwnerInfoDetailsViewController.swift -> toggleIsInstructorSwitch(sender:) - line 87.")
-            return
-        }
-        
-        // update the activeOwner's isInstructor value
-        StudentAdultCDModelController.shared.update(studentAdult: StudentAdultCD, isInstructor: isInstructor, birthdate: nil, mostRecentPromotion: nil, studentStatus: nil, belt: nil, profilePic: nil, username: nil, password: nil, firstName: nil, lastName: nil, address: nil, phone: nil, mobile: nil, email: nil, emergencyContact: nil)
-        OwnerCDModelController.shared.saveToPersistentStorage()
+//        guard let StudentAdultCD = activeStudentAdult else {
+//            print("ERROR: nil value found for activeOwner property of type OwnerCD in OwnerInfoDetailsViewController.swift -> toggleIsInstructorSwitch(sender:) - line 87.")
+//            return
+//        }
+//
+//        // update the activeOwner's isInstructor value
+//        StudentAdultCDModelController.shared.update(studentAdult: StudentAdultCD, isInstructor: isInstructor, birthdate: nil, mostRecentPromotion: nil, studentStatus: nil, belt: nil, profilePic: nil, username: nil, password: nil, firstName: nil, lastName: nil, address: nil, phone: nil, mobile: nil, email: nil, emergencyContact: nil)
+//        OwnerCDModelController.shared.saveToPersistentStorage()
     }
     
     @IBAction func editButtonTapped(_ sender: Any) {
@@ -228,12 +236,6 @@ class StudentInfoDetailsViewController: UIViewController {
                     }
                 }
             }
-            
-            
-            
-                
-                
-            
         }
     }
     

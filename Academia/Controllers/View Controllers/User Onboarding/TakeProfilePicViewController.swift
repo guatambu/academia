@@ -201,45 +201,78 @@ class TakeProfilePicViewController: UIViewController {
         } else if parentGuardianTextField.isFirstResponder {
             parentGuardianTextField.resignFirstResponder()
         }
-    
         // programmatically performing the segue
-    
         print("to birthday segue")
         // instantiate the relevant storyboard
         let mainView: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         // instantiate the desired TableViewController as ViewController on relevant storyboard
         let destViewController = mainView.instantiateViewController(withIdentifier: "toUserBirthday") as! BirthdayViewController
-    
-        // check for required information being left blank by user
-        if firstNameTextField.text == "" || lastNameTextField.text == "" {
+        
+        // unwarp isKid to check for errors in user input
+        if let isKid = isKid {
             
-            // fire haptic feedback for error
-            hapticFeedbackGenerator = UINotificationFeedbackGenerator()
-            hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
-            
-            // warnings for specific textfield being left blank by user
-            if firstNameTextField.text == "" {
+            // check for required information being left blank by user
+            if !isKid {
                 
-                firstNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.firstName.rawValue, attributes: beltBuilder.errorAvenirFont)
+                if firstNameTextField.text == "" || lastNameTextField.text == "" {
+                    // fire haptic feedback for error
+                    hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+                    hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+                    // warnings for specific textfield being left blank by user
+                    if firstNameTextField.text == "" {
+                        
+                        firstNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.firstName.rawValue, attributes: beltBuilder.errorAvenirFont)
+                        
+                    } else {
+                        firstNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.firstName.rawValue, attributes: beltBuilder.avenirFont)
+                    }
+                    
+                    if lastNameTextField.text == "" {
+                        lastNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.lastName.rawValue, attributes: beltBuilder.errorAvenirFont)
+                        
+                    } else {
+                        lastNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.lastName.rawValue, attributes: beltBuilder.avenirFont)
+                    }
+                    // save not allowed, so we exit function
+                    return
+                }
                 
-            } else {
+            } else if isKid {
                 
-                firstNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.firstName.rawValue, attributes: beltBuilder.avenirFont)
-                
+                if parentGuardianTextField.text == "" {
+                    
+                    if firstNameTextField.text == "" || lastNameTextField.text == "" || parentGuardianTextField.text == "" {
+                        // fire haptic feedback for error
+                        hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+                        hapticFeedbackGenerator?.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+                        // warnings for specific textfield being left blank by user
+                        if firstNameTextField.text == "" {
+                            
+                            firstNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.firstName.rawValue, attributes: beltBuilder.errorAvenirFont)
+                            
+                        } else {
+                            firstNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.firstName.rawValue, attributes: beltBuilder.avenirFont)
+                        }
+                        
+                        if lastNameTextField.text == "" {
+                            lastNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.lastName.rawValue, attributes: beltBuilder.errorAvenirFont)
+                            
+                        } else {
+                            lastNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.lastName.rawValue, attributes: beltBuilder.avenirFont)
+                        }
+                        
+                        if parentGuardianTextField.text == "" {
+                            
+                            parentGuardianTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.parentGuardian.rawValue, attributes: beltBuilder.errorAvenirFont)
+                            
+                        } else {
+                            parentGuardianTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.parentGuardian.rawValue, attributes: beltBuilder.avenirFont)
+                        }
+                        // save not allowed, so we exit function
+                        return
+                    }
+                }
             }
-            
-            if lastNameTextField.text == "" {
-                
-                lastNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.lastName.rawValue, attributes: beltBuilder.errorAvenirFont)
-                
-            } else {
-                
-                lastNameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.lastName.rawValue, attributes: beltBuilder.avenirFont)
-                
-            }
-            
-            // save not allowed, so we exit function
-            return
         }
         
         guard let profilePic = profilePicImageViewOutlet.image else { return }
