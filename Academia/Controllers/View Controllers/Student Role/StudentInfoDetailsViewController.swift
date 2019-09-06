@@ -99,7 +99,7 @@ class StudentInfoDetailsViewController: UIViewController {
                             
                             guard let studentData = querySnapshot?.data() else {
                                 
-                                print("ERROR: nil value found for studentData in OwnerInfoDetailsViewController.swift -> viewWillAppear - line 101.")
+                                print("ERROR: nil value found for studentData in StudentInfoDetailsViewController.swift -> viewWillAppear - line 102.")
                                 return
                             }
                             

@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import FirebaseCore
-import FirebaseFirestore
+import Firebase
 
 
 class LoginViewController: UIViewController {
@@ -28,7 +27,7 @@ class LoginViewController: UIViewController {
     
     // user message string(s)
     let welcomeInstructions = "please enter the following"
-    let usernameNotFound = "username not found. please try again"
+    let loginEmailNotFound = "login email not found. please try again"
     let passwordIncorrect = "password incorrect. please try again"
     
     let beltBuilder = BeltBuilder()
@@ -36,7 +35,7 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var welcomeMessageOutlet: UILabel!
     @IBOutlet weak var welcomeInstructionsOutlet: UILabel!
-    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var loginEmailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signUpButtonOutlet: UIButton!
     
@@ -50,10 +49,13 @@ class LoginViewController: UIViewController {
     var activeOwnerDelegate: ActiveOwnerDelegate?
     var activeStudentDelegate: ActiveStudentDelegate?
     
-//    // Firebase Firestore properties
-//    var docRef: DocumentReference!
-//    var firestoreTestListener: ListenerRegistration!
-//    var db: Firestore!
+    // Firebase Firestore properties
+    var FirebaseAuth = Auth.auth()
+    var db = Firestore.firestore()
+    var activeUser: User?
+    var ownerFirestore: OwnerFirestore?
+    var kidStudentFirestore: KidStudentFirestore?
+    var adultStudentFirestore: AdultStudentFirestore?
     
     
     
@@ -64,60 +66,33 @@ class LoginViewController: UIViewController {
         subscribeToKeyboardNotifications()
         
         // turns off auto-correct in these UITextFields
-        usernameTextField.autocorrectionType = UITextAutocorrectionType.no
+        loginEmailTextField.autocorrectionType = UITextAutocorrectionType.no
         passwordTextField.autocorrectionType = UITextAutocorrectionType.no
         
         // turns off auto-capitalization in these UITextFields
-        usernameTextField.autocapitalizationType = UITextAutocapitalizationType.none
+        loginEmailTextField.autocapitalizationType = UITextAutocapitalizationType.none
         passwordTextField.autocapitalizationType = UITextAutocapitalizationType.none
         
         // turns on secure text entry in password and confirm password textFields
         passwordTextField.isSecureTextEntry = true
         
-        
-//        // FIREBASE FIRESTORE docRef listeners
-//
-//        firestoreTestListener = docRef.addSnapshotListener { (docSnapshot, error) in
-//
-//            guard let docSnapshot = docSnapshot, docSnapshot.exists else {
-//                print("ERROR: no docSnapshot in LoginVC.swift -> loginButtonTapped - line 134.")
-//                return
-//            }
-//            if let error = error {
-//                print("ERROR: error: \(error.localizedDescription) occurred while trying to get docSnapshot in LoginVC.swift -> loginButtonTapped - line 138. ")
-//            } else {
-//                print("successful docSnapshot retrieval for OwnerFirestore model!")
-//                if let myData = docSnapshot.data() {
-//
-//                    let usernameTextInput = myData["username"] as? String ?? "username fail"
-//                    let passwordTextInput = myData["password"] as? String ?? "password fail"
-//
-//                    print("docID: \(docSnapshot.documentID)\nusername: \(usernameTextInput)\npassword: \(passwordTextInput)")
-//                }
-//            }
-//        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         
         unsubscribeToKeyboardNotifications()
         
-//        // FIREBASE FIRESTORE remove the test listener to avoid reference cycle
-//        firestoreTestListener.remove()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        usernameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.username.rawValue, attributes: beltBuilder.avenirFont)
+        loginEmailTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.email.rawValue, attributes: beltBuilder.avenirFont)
         passwordTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.password.rawValue, attributes: beltBuilder.avenirFont)
         
-        usernameTextField.delegate = self
+        loginEmailTextField.delegate = self
         passwordTextField.delegate = self
         
-//        // Firestore Test properties setup
-//        docRef = Firestore.firestore().collection("tests").document("level1")
-//        db = Firestore.firestore()
     }
 
     // MARK: - Actions
@@ -125,8 +100,8 @@ class LoginViewController: UIViewController {
     @IBAction func tapAnywhereToDismissKeyboard(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
         // dismiss keyboard when leaving VC scene
-        if usernameTextField.isFirstResponder {
-            usernameTextField.resignFirstResponder()
+        if loginEmailTextField.isFirstResponder {
+            loginEmailTextField.resignFirstResponder()
         } else if passwordTextField.isFirstResponder {
             passwordTextField.resignFirstResponder()
         }
@@ -135,50 +110,14 @@ class LoginViewController: UIViewController {
     @IBAction func loginButtonTapped(_ sender: DesignableButton) {
         
         // dismiss keyboard when leaving VC scene
-        if usernameTextField.isFirstResponder {
-            usernameTextField.resignFirstResponder()
+        if loginEmailTextField.isFirstResponder {
+            loginEmailTextField.resignFirstResponder()
         } else if passwordTextField.isFirstResponder {
             passwordTextField.resignFirstResponder()
         }
         
-        
-//        // FIREBASE FIRESTORE TESTING
-//        guard let usernameText = usernameTextField.text, !usernameText.isEmpty else {
-//            print("ERROR: no valid text input in the usernameTextField in LoginVC.swift -> loginButtonTapped - line 108.")
-//            return
-//        }
-//        guard let passwordText = passwordTextField.text, !passwordText.isEmpty else {
-//            print("ERROR: no valid text input in the passwordTextField in LoginVC.swift -> loginButtonTapped - line 112.")
-//            return
-//        }
-//
-//        let dataToSave: [String : Any] = ["username" : usernameText, "password" : passwordText]
-//
-//        docRef.setData(dataToSave) { (error) in
-//            if let error = error {
-//                print("ERROR: error: \(error.localizedDescription) occurred while trying to save to Firebase Firestore in LoginVC.swift -> loginButtonTapped - line 125. ")
-//            } else {
-//                print("Data successfully saved to Firebase Firestore")
-//            }
-//        }
-//
-//        // test for new testModel object creation within Firestore using the username and password checks in lines 143 and 147 above, respectively.
-//        let test = TestModel(username: usernameText, password: passwordText)
-//
-//        let testModelRef = self.db.collection("tests")
-//
-//        testModelRef.document(/*usernameText*/).setData(test.dictionary) { (error) in
-//            // ^^^ NOTE: the document id can be created and set to my specifications as it is currently being set in the .document(usernameText) portion of the method call above.  an option would be to have the id as its own key:value pair in the TestModel dictionary property itself, and then access it via the dictionary key and set it in below in the place of the current 'usernameText' property
-//            if let error = error {
-//                print("ERROR: error: \(error.localizedDescription) occurred while trying to save test.dictionary to Firestore in LoginVC.swift -> loginButtonTapped - line 173. ")
-//            } else {
-//                print("test dictionary data successfully saved to Firestore document in tests collection")
-//            }
-//        }
-        
-        
         // check for required information being left blank by user
-        if usernameTextField.text == "" || passwordTextField.text == "" {
+        if loginEmailTextField.text == "" || passwordTextField.text == "" {
             
             // warning to user where welcome instructions text changes to red
             welcomeInstructionsOutlet.textColor = beltBuilder.redBeltRed
@@ -187,13 +126,13 @@ class LoginViewController: UIViewController {
             fireHapticFeedbackForError()
             
             // warnings for specific textfield being left blank by user
-            if usernameTextField.text == "" {
+            if loginEmailTextField.text == "" {
                 
-                usernameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.username.rawValue, attributes: beltBuilder.errorAvenirFont)
+                loginEmailTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.email.rawValue, attributes: beltBuilder.errorAvenirFont)
                 
             } else {
                 
-                usernameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.username.rawValue, attributes: beltBuilder.avenirFont)
+                loginEmailTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.email.rawValue, attributes: beltBuilder.avenirFont)
                 
             }
             
@@ -212,118 +151,67 @@ class LoginViewController: UIViewController {
         }
        
         // if username/password - login
-        if let username = usernameTextField.text, let password = passwordTextField.text {
-            
-            // check the owners array for the owner.username to match user input
-            for owner in OwnerCDModelController.shared.owners {
-                print("existing owner password: \(owner.password ?? "")")
-                print("current entered password: \(password)")
-                // if username match, check password
-                if owner.username == username {
-                    // if password match...
-                    if owner.password == password {
-                        // login successful, perform segue to owner dashboard
-                        performTabBarControllerSegue(storyboardString: ownerBaseCampStoryboardString, tabBarControllerIdentifier: ownerTabBarControllerIdentifier)
-                        // reset viewController instructions
-                        resetViewControllerLoginSuccessful()
-                        // toggle owner.isLoggedOn
-                        owner.isLoggedOn = true
-                        // unwrap owner.uuid value
-                        if let uuid = owner.ownerUUID {
-                            // pass uuid to ActiveUserModelController.activeUsers
-                            ActiveUserModelController.shared.activeUser.append(uuid)
-                        }
-                        
-                        // login successful, leave function
-                        return
-                        
-                    // if password incorrect inform user login unsuccessful
-                    } else {
-                        // give user haptic feedback
-                        fireHapticFeedbackForError()
-                        // warning to user
-                        displayWarning(warningMessage: passwordIncorrect)
-                        // login unsuccessful, leave function
-                        return
-                    }
+        if let loginEmail = loginEmailTextField.text, let password = passwordTextField.text {
+           
+            // FIREBASE Auth
+            FirebaseAuth.signIn(withEmail: loginEmail, password: password) { [weak self] authResult, error in
+                
+                // unwrap the current instance of LoginViewController
+                guard let strongSelf = self else { return }
+                
+                // run error check
+                if let error = error {
+                    print("ERROR: \(error.localizedDescription) in LoginViewController.swift -> loginButtonTapped(sender:) - line 164.")
+                    // USER ERROR: username finds no match in user records
+                    strongSelf.fireHapticFeedbackForError()
+                    // warn the user
+                    strongSelf.displayWarning(warningMessage: strongSelf.loginEmailNotFound)
+                    // login unsuccessful, leave function
+                    return
                 }
-            }
-            // if no match then check StudentAdultCD array for match
-            for studentAdult in StudentAdultCDModelController.shared.studentAdults {
-                if studentAdult.username == username {
-                    //if username match, check password
-                    if studentAdult.password == password {
-                        // login successful, perform segue to student dashboard
-                        performTabBarControllerSegue(storyboardString: studentBaseCampStoryboardString, tabBarControllerIdentifier: studentStoryboardIdentifier)
-                        // reset viewController instructions
-                        resetViewControllerLoginSuccessful()
-                        // toggle owner.isLoggedOn
-                        studentAdult.isLoggedOn = true
-                        // toggle the delegate location isKid property in StudentHomeTVC.swift
-                        ActiveUserModelController.shared.isKid = false
-                        print("ActiveUserModelController.shared.isKid: \(ActiveUserModelController.shared.isKid)")
-                        
-                        // unwrap studentAdult.uuid value
-                        if let uuid = studentAdult.adultStudentUUID {
-                            // pass uuid to ActiveUserModelController.activeUsers
-                            ActiveUserModelController.shared.activeUser.append(uuid)
-                        }
-                        
-                        // login successful, leave function
-                        return
-                        
-                    // if password incorrect inform user login unsuccessful
-                    } else {
-                        // give user haptic feedback
-                        fireHapticFeedbackForError()
-                        // warning to user
-                        displayWarning(warningMessage: passwordIncorrect)
-                        // login unsuccessful, leave function
-                        return
-                    }
-                }
-            }
-            // if no match then check StudentKidCD array for match
-            for studentKid in StudentKidCDModelController.shared.studentKids {
-                if studentKid.username == username {
-                    //if username match, check password
-                    if studentKid.password == password {
-                        // login successful, perform segue to student dashboard
-                        performTabBarControllerSegue(storyboardString: studentBaseCampStoryboardString, tabBarControllerIdentifier: studentStoryboardIdentifier)
-                        // reset viewController instructions
-                        resetViewControllerLoginSuccessful()
-                        // toggle owner.isLoggedOn
-                        studentKid.isLoggedOn = true
-                        // toggle the delegate location isKid property in StudentHomeTVC.swift
-                        ActiveUserModelController.shared.isKid = true
-                        print("ActiveUserModelController.shared.isKid: \(ActiveUserModelController.shared.isKid)")
-                        
-                        // unwrap studentKid.uuid value
-                        if let uuid = studentKid.kidStudentUUID {
-                            // pass uuid to ActiveUserModelController.activeUsers
-                            ActiveUserModelController.shared.activeUser.append(uuid)
-                        }
-                        
-                        // login successful, leave function
-                        return
-                        
-                    // if password incorrect inform user login unsuccessful
-                    } else {
-                        // give user haptic feedback
-                        fireHapticFeedbackForError()
-                        // warning to user
-                        displayWarning(warningMessage: passwordIncorrect)
-                        // login unsuccessful, leave function
-                        return
-                    }
-                }
+                
+                strongSelf.activeUser = authResult?.user
             }
             
-            // USER ERROR: username finds no match in user records
-            fireHapticFeedbackForError()
-            // warn the user
-            displayWarning(warningMessage: usernameNotFound)
-            // login unsuccessful, leave function
+            
+            /* TODO: either for the above closure or the one below or both, likely going to have to employ thread management via Grand Central Dispatch to properly update the UI */
+            
+            if let user = self.activeUser {
+                // get user IDToken to check for user type
+                user.getIDTokenResult { (result, error) in
+                    // access the user data object properties dictionary for isOwner key value
+                    guard let isOwner = result?.claims["isOwner"] as? NSNumber else {
+                        // check for any errors
+                        if let error = error {
+                            print("ERROR: \(error.localizedDescription) in LoginViewController.swift -> loginButtonTapped(sender:) - line 179.")
+                        }
+                        // we will likely not run into this scenario as the user will have an isOwner property set server side after object creation
+                        // login successful, perform segue to student dashboard
+                        self.performTabBarControllerSegue(storyboardString: self.studentBaseCampStoryboardString, tabBarControllerIdentifier: self.studentStoryboardIdentifier)
+                        // reset viewController instructions
+                        self.resetViewControllerLoginSuccessful()
+                        // login successful, leave the function
+                        return
+                    }
+                    
+                    // run checks for user type
+                    if isOwner.boolValue {
+                        // successful owner sign in so segue to owner dashboard
+                        self.performTabBarControllerSegue(storyboardString: self.ownerBaseCampStoryboardString, tabBarControllerIdentifier: self.ownerTabBarControllerIdentifier)
+                        // reset viewController instructions
+                        self.resetViewControllerLoginSuccessful()
+                        // login successful, leave the function
+                        return
+                    } else {
+                        // login successful, perform segue to student dashboard
+                        self.performTabBarControllerSegue(storyboardString: self.studentBaseCampStoryboardString, tabBarControllerIdentifier: self.studentStoryboardIdentifier)
+                        // reset viewController instructions
+                        self.resetViewControllerLoginSuccessful()
+                        // login successful, leave the function
+                        return
+                    }
+                }
+            }
             return
         }
     }
@@ -335,7 +223,7 @@ extension LoginViewController {
     
     func resetViewControllerLoginSuccessful() {
         // reset textfield placeholder text color to gray upon succesful save
-        usernameTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.username.rawValue, attributes: beltBuilder.avenirFont)
+        loginEmailTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.username.rawValue, attributes: beltBuilder.avenirFont)
         passwordTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.password.rawValue, attributes: beltBuilder.avenirFont)
         // reset welcome instructions upon succesful login
         resetWelcomeInstructions()
@@ -438,7 +326,7 @@ extension LoginViewController: UITextFieldDelegate {
     // UITextField Delegate methods
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        if textField == usernameTextField {
+        if textField == loginEmailTextField {
             passwordTextField.becomeFirstResponder()
             print("Next button tapped")
             
@@ -450,3 +338,114 @@ extension LoginViewController: UITextFieldDelegate {
         return true
     }
 }
+
+
+
+
+
+
+
+//            // check the owners array for the owner.username to match user input
+//            for owner in OwnerCDModelController.shared.owners {
+//                print("existing owner password: \(owner.password ?? "")")
+//                print("current entered password: \(password)")
+//                // if username match, check password
+//                if owner.username == username {
+//                    // if password match...
+//                    if owner.password == password {
+//                        // login successful, perform segue to owner dashboard
+//                        performTabBarControllerSegue(storyboardString: ownerBaseCampStoryboardString, tabBarControllerIdentifier: ownerTabBarControllerIdentifier)
+//                        // reset viewController instructions
+//                        resetViewControllerLoginSuccessful()
+//                        // toggle owner.isLoggedOn
+//                        owner.isLoggedOn = true
+//                        // unwrap owner.uuid value
+//                        if let uuid = owner.ownerUUID {
+//                            // pass uuid to ActiveUserModelController.activeUsers
+//                            ActiveUserModelController.shared.activeUser.append(uuid)
+//                        }
+//
+//                        // login successful, leave function
+//                        return
+//
+//                    // if password incorrect inform user login unsuccessful
+//                    } else {
+//                        // give user haptic feedback
+//                        fireHapticFeedbackForError()
+//                        // warning to user
+//                        displayWarning(warningMessage: passwordIncorrect)
+//                        // login unsuccessful, leave function
+//                        return
+//                    }
+//                }
+//            }
+//            // if no match then check StudentAdultCD array for match
+//            for studentAdult in StudentAdultCDModelController.shared.studentAdults {
+//                if studentAdult.username == username {
+//                    //if username match, check password
+//                    if studentAdult.password == password {
+//                        // login successful, perform segue to student dashboard
+//                        performTabBarControllerSegue(storyboardString: studentBaseCampStoryboardString, tabBarControllerIdentifier: studentStoryboardIdentifier)
+//                        // reset viewController instructions
+//                        resetViewControllerLoginSuccessful()
+//                        // toggle owner.isLoggedOn
+//                        studentAdult.isLoggedOn = true
+//                        // toggle the delegate location isKid property in StudentHomeTVC.swift
+//                        ActiveUserModelController.shared.isKid = false
+//                        print("ActiveUserModelController.shared.isKid: \(ActiveUserModelController.shared.isKid)")
+//
+//                        // unwrap studentAdult.uuid value
+//                        if let uuid = studentAdult.adultStudentUUID {
+//                            // pass uuid to ActiveUserModelController.activeUsers
+//                            ActiveUserModelController.shared.activeUser.append(uuid)
+//                        }
+//
+//                        // login successful, leave function
+//                        return
+//
+//                    // if password incorrect inform user login unsuccessful
+//                    } else {
+//                        // give user haptic feedback
+//                        fireHapticFeedbackForError()
+//                        // warning to user
+//                        displayWarning(warningMessage: passwordIncorrect)
+//                        // login unsuccessful, leave function
+//                        return
+//                    }
+//                }
+//            }
+//            // if no match then check StudentKidCD array for match
+//            for studentKid in StudentKidCDModelController.shared.studentKids {
+//                if studentKid.username == username {
+//                    //if username match, check password
+//                    if studentKid.password == password {
+//                        // login successful, perform segue to student dashboard
+//                        performTabBarControllerSegue(storyboardString: studentBaseCampStoryboardString, tabBarControllerIdentifier: studentStoryboardIdentifier)
+//                        // reset viewController instructions
+//                        resetViewControllerLoginSuccessful()
+//                        // toggle owner.isLoggedOn
+//                        studentKid.isLoggedOn = true
+//                        // toggle the delegate location isKid property in StudentHomeTVC.swift
+//                        ActiveUserModelController.shared.isKid = true
+//                        print("ActiveUserModelController.shared.isKid: \(ActiveUserModelController.shared.isKid)")
+//
+//                        // unwrap studentKid.uuid value
+//                        if let uuid = studentKid.kidStudentUUID {
+//                            // pass uuid to ActiveUserModelController.activeUsers
+//                            ActiveUserModelController.shared.activeUser.append(uuid)
+//                        }
+//
+//                        // login successful, leave function
+//                        return
+//
+//                    // if password incorrect inform user login unsuccessful
+//                    } else {
+//                        // give user haptic feedback
+//                        fireHapticFeedbackForError()
+//                        // warning to user
+//                        displayWarning(warningMessage: passwordIncorrect)
+//                        // login unsuccessful, leave function
+//                        return
+//                    }
+//                }
+//            }

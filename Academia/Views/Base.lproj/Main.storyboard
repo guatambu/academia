@@ -3234,9 +3234,9 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="aZD-CW-I0Z"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="loginEmailTextField" destination="Wet-sw-sqe" id="d11-fT-Di1"/>
                         <outlet property="passwordTextField" destination="zmp-AQ-5MC" id="7GB-Lg-5XW"/>
                         <outlet property="signUpButtonOutlet" destination="fQT-o2-9fY" id="Y8W-ti-gsB"/>
-                        <outlet property="usernameTextField" destination="Wet-sw-sqe" id="Api-pI-uT6"/>
                         <outlet property="welcomeInstructionsOutlet" destination="TY6-cO-66j" id="ui3-b5-7rO"/>
                         <outlet property="welcomeMessageOutlet" destination="UIC-zC-Qwz" id="v0v-9h-oaK"/>
                     </connections>
