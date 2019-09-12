@@ -12,20 +12,34 @@ export const helloWorld = functions.https.onRequest((request, response) => {
  response.status(200).json({message : 'Hello from Firebase cloud functions'});
 });
 
-exports.addAOwner = functions.https.onCall((data, context) => {
+// exports.createOwner = functions.firestore
+//     .document('owners/{userId}')
+//     .onCreate((snap, context) => {
+//       // Get an object representing the document
+//       // e.g. {'name': 'Marie', 'age': 66}
+//       const ownerData = snap.data();
+//       // perform desired operations ...
+//       return grantOwnerRole(ownerData.email).then(() => {
+//           return {
+//             result: 'Request fulfilled! ${ ownerData.email } is now an owner.'
+//           }
+//       })
+//     });
 
-    if (context.auth.token.isOwner !== true) {
-        error: "Request not authorized.  User must have Owner permissions.";
-        
-    };
+//     exports.createStudent = functions.firestore
+//     .document('students/{userId}')
+//     .onCreate((snap, context) => {
+//       // Get an object representing the document
+//       // e.g. {'name': 'Marie', 'age': 66}
+//       const studentData = snap.data();
+//       // perform desired operations ...
+//       return grantOwnerRole(studentData.email).then(() => {
+//           return {
+//             result: 'Request fulfilled! ${ studentData.email } is now a student.'
+//           }
+//       })
+//     });
 
-    const email = data.email;
-    return grantOwnerRole(email).then(() => {
-        return {
-            result: 'Request fulfilled! ${email} now has Owner permissions.'
-        }
-    })
-});
 
 
 async function grantOwnerRole(email: string): Promise<void> {
@@ -40,36 +54,52 @@ async function grantOwnerRole(email: string): Promise<void> {
     return admin.auth().setCustomUserClaims(user.uid, {
         isOwner: true,
         isKid: false,
+        isActive: true,
+        isMedicalMembershipPaused: false,
+        isMembershipPaused: false,
+        isPaid: true
     });
 }
 
-async function grantIsAdultStudentRole(email: string): Promise<void> {
+
+async function grantAdultStudentRole(email: string): Promise<void> {
     // create user constant from the firebase auth admin using the user email
     const user = await admin.auth().getUserByEmail(email);
     // check to see if the user already has this AdultStudent properties set, 
     // if true then return... nothing to do here
-    if (user.customClaims && (user.customClaims as any).isOwner == false) {
+    if (user.customClaims && (user.customClaims as any).isOwner == false && (user.customClaims as any).isKid == false) {
         return;
     } 
     // otherwise set the custom claims i wish to have in place for AdultStudent
     return admin.auth().setCustomUserClaims(user.uid, {
         isOwner: false,
         isKid: false,
+        isActive: true,
+        isMedicalMembershipPaused: false,
+        isMembershipPaused: false,
+        isPaid: true
     });
 }
 
-async function grantIsKidStudentRole(email: string): Promise<void> {
+async function grantKidStudentRole(email: string): Promise<void> {
     // create user constant from the firebase auth admin using the user email
     const user = await admin.auth().getUserByEmail(email);
-    // check to see if the user already has this KidStudent properties set, 
+    // check to see if the user already has this AdultStudent properties set, 
     // if true then return... nothing to do here
-    if (user.customClaims && (user.customClaims as any).isOwner == false) {
+    if (user.customClaims && (user.customClaims as any).isOwner == false && (user.customClaims as any).isKid == true) {
         return;
     } 
-    // otherwise set the custom claims i wish to have in place for KidStudent
+    // otherwise set the custom claims i wish to have in place for AdultStudent
     return admin.auth().setCustomUserClaims(user.uid, {
         isOwner: false,
         isKid: true,
+        isActive: true,
+        isMedicalMembershipPaused: false,
+        isMembershipPaused: false,
+        isPaid: true
     });
 }
 
+// perhaps want to consider triggers on server side
+// for now these async functions will be called from the respective client
+// 

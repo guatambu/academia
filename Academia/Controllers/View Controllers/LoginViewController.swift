@@ -171,47 +171,88 @@ class LoginViewController: UIViewController {
                 }
                 
                 strongSelf.activeUser = authResult?.user
+                print("\(String(describing: strongSelf.activeUser?.displayName))")
+                
+                
+                if let user = strongSelf.activeUser {
+                    // get user IDToken to check for user type
+                    user.getIDTokenResult { (result, error) in
+                        // access the user data object properties dictionary for isOwner key value
+                        guard let isOwner = result?.claims["isOwner"] as? NSNumber else {
+                            // check for any errors
+                            if let error = error {
+                                print("ERROR: \(error.localizedDescription) in LoginViewController.swift -> loginButtonTapped(sender:) - line 179.")
+                            }
+                            // we will likely not run into this scenario as the user will have an isOwner property set server side after object creation
+                            print("ERROR: isOwner returned nil in guard statement in LoginViewController.swift -> loginButtonTapped(sender:) - line 187.")
+                            // login successful, perform segue to student dashboard
+                            strongSelf.performTabBarControllerSegue(storyboardString: strongSelf.studentBaseCampStoryboardString, tabBarControllerIdentifier: strongSelf.studentStoryboardIdentifier)
+                            // reset viewController instructions
+                            strongSelf.resetViewControllerLoginSuccessful()
+                            // login successful, leave the function
+                            return
+                        }
+                        
+                        // run checks for user type
+                        if isOwner.boolValue {
+                            // successful owner sign in so segue to owner dashboard
+                            strongSelf.performTabBarControllerSegue(storyboardString: strongSelf.ownerBaseCampStoryboardString, tabBarControllerIdentifier: strongSelf.ownerTabBarControllerIdentifier)
+                            // reset viewController instructions
+                            strongSelf.resetViewControllerLoginSuccessful()
+                            // login successful, leave the function
+                            return
+                        } else {
+                            // login successful, perform segue to student dashboard
+                            strongSelf.performTabBarControllerSegue(storyboardString: strongSelf.studentBaseCampStoryboardString, tabBarControllerIdentifier: strongSelf.studentStoryboardIdentifier)
+                            // reset viewController instructions
+                            strongSelf.resetViewControllerLoginSuccessful()
+                            // login successful, leave the function
+                            return
+                        }
+                    }
+                }
+                
             }
             
             
             /* TODO: either for the above closure or the one below or both, likely going to have to employ thread management via Grand Central Dispatch to properly update the UI */
             
-            if let user = self.activeUser {
-                // get user IDToken to check for user type
-                user.getIDTokenResult { (result, error) in
-                    // access the user data object properties dictionary for isOwner key value
-                    guard let isOwner = result?.claims["isOwner"] as? NSNumber else {
-                        // check for any errors
-                        if let error = error {
-                            print("ERROR: \(error.localizedDescription) in LoginViewController.swift -> loginButtonTapped(sender:) - line 179.")
-                        }
-                        // we will likely not run into this scenario as the user will have an isOwner property set server side after object creation
-                        // login successful, perform segue to student dashboard
-                        self.performTabBarControllerSegue(storyboardString: self.studentBaseCampStoryboardString, tabBarControllerIdentifier: self.studentStoryboardIdentifier)
-                        // reset viewController instructions
-                        self.resetViewControllerLoginSuccessful()
-                        // login successful, leave the function
-                        return
-                    }
-                    
-                    // run checks for user type
-                    if isOwner.boolValue {
-                        // successful owner sign in so segue to owner dashboard
-                        self.performTabBarControllerSegue(storyboardString: self.ownerBaseCampStoryboardString, tabBarControllerIdentifier: self.ownerTabBarControllerIdentifier)
-                        // reset viewController instructions
-                        self.resetViewControllerLoginSuccessful()
-                        // login successful, leave the function
-                        return
-                    } else {
-                        // login successful, perform segue to student dashboard
-                        self.performTabBarControllerSegue(storyboardString: self.studentBaseCampStoryboardString, tabBarControllerIdentifier: self.studentStoryboardIdentifier)
-                        // reset viewController instructions
-                        self.resetViewControllerLoginSuccessful()
-                        // login successful, leave the function
-                        return
-                    }
-                }
-            }
+//            if let user = self.activeUser {
+//                // get user IDToken to check for user type
+//                user.getIDTokenResult { (result, error) in
+//                    // access the user data object properties dictionary for isOwner key value
+//                    guard let isOwner = result?.claims["isOwner"] as? NSNumber else {
+//                        // check for any errors
+//                        if let error = error {
+//                            print("ERROR: \(error.localizedDescription) in LoginViewController.swift -> loginButtonTapped(sender:) - line 179.")
+//                        }
+//                        // we will likely not run into this scenario as the user will have an isOwner property set server side after object creation
+//                        // login successful, perform segue to student dashboard
+//                        self.performTabBarControllerSegue(storyboardString: self.studentBaseCampStoryboardString, tabBarControllerIdentifier: self.studentStoryboardIdentifier)
+//                        // reset viewController instructions
+//                        self.resetViewControllerLoginSuccessful()
+//                        // login successful, leave the function
+//                        return
+//                    }
+//
+//                    // run checks for user type
+//                    if isOwner.boolValue {
+//                        // successful owner sign in so segue to owner dashboard
+//                        self.performTabBarControllerSegue(storyboardString: self.ownerBaseCampStoryboardString, tabBarControllerIdentifier: self.ownerTabBarControllerIdentifier)
+//                        // reset viewController instructions
+//                        self.resetViewControllerLoginSuccessful()
+//                        // login successful, leave the function
+//                        return
+//                    } else {
+//                        // login successful, perform segue to student dashboard
+//                        self.performTabBarControllerSegue(storyboardString: self.studentBaseCampStoryboardString, tabBarControllerIdentifier: self.studentStoryboardIdentifier)
+//                        // reset viewController instructions
+//                        self.resetViewControllerLoginSuccessful()
+//                        // login successful, leave the function
+//                        return
+//                    }
+//                }
+//            }
             return
         }
     }
