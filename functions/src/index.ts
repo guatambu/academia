@@ -26,7 +26,7 @@ exports.createOwner = functions.firestore
       })
     });
 
-    exports.createStudent = functions.firestore
+    exports.createKidStudent = functions.firestore
     .document('kidStudents/{userId}')
     .onCreate((snap, context) => {
       // Get an object representing the document
@@ -40,7 +40,7 @@ exports.createOwner = functions.firestore
       })
     });
 
-    exports.createStudent = functions.firestore
+    exports.createAdultStudent = functions.firestore
     .document('adultStudents/{userId}')
     .onCreate((snap, context) => {
       // Get an object representing the document
