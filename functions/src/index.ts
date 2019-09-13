@@ -12,33 +12,47 @@ export const helloWorld = functions.https.onRequest((request, response) => {
  response.status(200).json({message : 'Hello from Firebase cloud functions'});
 });
 
-// exports.createOwner = functions.firestore
-//     .document('owners/{userId}')
-//     .onCreate((snap, context) => {
-//       // Get an object representing the document
-//       // e.g. {'name': 'Marie', 'age': 66}
-//       const ownerData = snap.data();
-//       // perform desired operations ...
-//       return grantOwnerRole(ownerData.email).then(() => {
-//           return {
-//             result: 'Request fulfilled! ${ ownerData.email } is now an owner.'
-//           }
-//       })
-//     });
+exports.createOwner = functions.firestore
+    .document('owners/{userId}')
+    .onCreate((snap, context) => {
+      // Get an object representing the document
+      // e.g. {'name': 'Marie', 'age': 66}
+      const ownerData : any = snap.data();
+      // perform desired operations ...
+      return grantOwnerRole(ownerData.email).then(() => {
+          return {
+            result: 'Request fulfilled! ${ ownerData.email } is now an owner.'
+          }
+      })
+    });
 
-//     exports.createStudent = functions.firestore
-//     .document('students/{userId}')
-//     .onCreate((snap, context) => {
-//       // Get an object representing the document
-//       // e.g. {'name': 'Marie', 'age': 66}
-//       const studentData = snap.data();
-//       // perform desired operations ...
-//       return grantOwnerRole(studentData.email).then(() => {
-//           return {
-//             result: 'Request fulfilled! ${ studentData.email } is now a student.'
-//           }
-//       })
-//     });
+    exports.createStudent = functions.firestore
+    .document('kidStudents/{userId}')
+    .onCreate((snap, context) => {
+      // Get an object representing the document
+      // e.g. {'name': 'Marie', 'age': 66}
+      const kidStudentData : any = snap.data();
+      // perform desired operations ...
+      return grantKidStudentRole(kidStudentData.email).then(() => {
+          return {
+            result: 'Request fulfilled! ${ kidStudentData.email } is now a kid student.'
+          }
+      })
+    });
+
+    exports.createStudent = functions.firestore
+    .document('adultStudents/{userId}')
+    .onCreate((snap, context) => {
+      // Get an object representing the document
+      // e.g. {'name': 'Marie', 'age': 66}
+      const adultStudentData : any = snap.data();
+      // perform desired operations ...
+      return grantAdultStudentRole(adultStudentData.email).then(() => {
+          return {
+            result: 'Request fulfilled! ${ adultStudentData.email } is now an adult student.'
+          }
+      })
+    });
 
 
 

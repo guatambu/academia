@@ -82,7 +82,8 @@ class CompletedProfileViewController: UIViewController {
     
     // Firebase Firestore properties
     var ownersCollectionRef: CollectionReference!
-    var studentsCollectionRef: CollectionReference!
+    var kidStudentsCollectionRef: CollectionReference!
+    var adultStudentsCollectionRef: CollectionReference!
     var beltDocRef: DocumentReference!
     var addressDocRef: DocumentReference!
     var emergencyContactDocRef: DocumentReference!
@@ -128,7 +129,9 @@ class CompletedProfileViewController: UIViewController {
         // Firestore Test properties setup
         ownersCollectionRef = Firestore.firestore().collection("owners")
         
-        studentsCollectionRef = Firestore.firestore().collection("students")
+        kidStudentsCollectionRef = Firestore.firestore().collection("kidStudents")
+        
+        adultStudentsCollectionRef = Firestore.firestore().collection("adultStudents")
         
         db = Firestore.firestore()
     }
@@ -617,7 +620,7 @@ extension CompletedProfileViewController {
                 
                 // FIREBASE FIRESTORE CREATE AND SAVE NEW KidStudent MODEL
                 let kidStudent = KidStudentFirestore(academyChoice: academyChoice, birthdate: birthdateTimestamp, mostRecentPromotion: nil, firstName: firstName, lastName: lastName, parentGuardian: parentGuardian, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, phone: phone, mobile: mobileFirestore, email: email, emergencyContactName: emergencyContactName, emergencyContactPhone: emergencyContactPhone, emergencyContactRelationship: emergencyContactRelationship, beltLevel: beltLevel, numberOfStripes: numberOfStripes, numberOfClassesAttendedSinceLastPromotion: 0)
-                self.studentsCollectionRef.document(userUID).setData(kidStudent.dictionary) { (error) in
+                self.kidStudentsCollectionRef.document(userUID).setData(kidStudent.dictionary) { (error) in
                     if let error = error {
                         print("ERROR: \(error.localizedDescription) error occurred while trying to save kidStudent to Firebase Firestore in CompletedProfileViewController.swift -> createUserAccountFirestoreDataModel() - line 625. ")
                     } else {
@@ -673,7 +676,7 @@ extension CompletedProfileViewController {
                 let adultStudent = AdultStudentFirestore(academyChoice: academyChoice, birthdate: birthdateTimestamp, mostRecentPromotion: nil, firstName: firstName, lastName: lastName, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, phone: phone, mobile: mobileFirestore, email: email, emergencyContactName: emergencyContactName, emergencyContactPhone: emergencyContactPhone, emergencyContactRelationship: emergencyContactRelationship, beltLevel: beltLevel, numberOfStripes: numberOfStripes, numberOfClassesAttendedSinceLastPromotion: 0)
                 
                // TODO: set up doc ref so that we can save to specfic owner that user chooses
-                self.studentsCollectionRef.document(userUID).setData(adultStudent.dictionary) { (error) in
+                self.adultStudentsCollectionRef.document(userUID).setData(adultStudent.dictionary) { (error) in
                     if let error = error {
                         print("ERROR: \(error.localizedDescription) error occurred while trying to save owner to Firebase Firestore in CompletedProfileViewController.swift -> createUserAccountFirestoreDataModel() - line 681. ")
                     } else {
