@@ -55,13 +55,12 @@ exports.createOwner = functions.firestore
     });
 
 
-
 async function grantOwnerRole(email: string): Promise<void> {
     // create user constant from the firebase auth admin using the user email
     const user = await admin.auth().getUserByEmail(email);
     // check to see if the user already has this isOwner property set, 
     // if true then return... nothing to do here
-    if (user.customClaims && (user.customClaims as any).isOwner == true) {
+    if (user.customClaims && (user.customClaims as any).isOwner === true) {
         return;
     } 
     // otherwise set the custom claims i wish to have in place
@@ -71,7 +70,9 @@ async function grantOwnerRole(email: string): Promise<void> {
         isActive: true,
         isMedicalMembershipPaused: false,
         isMembershipPaused: false,
-        isPaid: true
+        isPaid: true,
+        isElligibleForPromotion: false,
+        isElligibleForNextBelt: false
     });
 }
 
@@ -81,7 +82,7 @@ async function grantAdultStudentRole(email: string): Promise<void> {
     const user = await admin.auth().getUserByEmail(email);
     // check to see if the user already has this AdultStudent properties set, 
     // if true then return... nothing to do here
-    if (user.customClaims && (user.customClaims as any).isOwner == false && (user.customClaims as any).isKid == false) {
+    if (user.customClaims && (user.customClaims as any).isOwner === false && (user.customClaims as any).isKid === false) {
         return;
     } 
     // otherwise set the custom claims i wish to have in place for AdultStudent
@@ -91,7 +92,9 @@ async function grantAdultStudentRole(email: string): Promise<void> {
         isActive: true,
         isMedicalMembershipPaused: false,
         isMembershipPaused: false,
-        isPaid: true
+        isPaid: true,
+        isElligibleForPromotion: false,
+        isElligibleForNextBelt: false
     });
 }
 
@@ -100,7 +103,7 @@ async function grantKidStudentRole(email: string): Promise<void> {
     const user = await admin.auth().getUserByEmail(email);
     // check to see if the user already has this AdultStudent properties set, 
     // if true then return... nothing to do here
-    if (user.customClaims && (user.customClaims as any).isOwner == false && (user.customClaims as any).isKid == true) {
+    if (user.customClaims && (user.customClaims as any).isOwner === false && (user.customClaims as any).isKid === true) {
         return;
     } 
     // otherwise set the custom claims i wish to have in place for AdultStudent
@@ -110,7 +113,154 @@ async function grantKidStudentRole(email: string): Promise<void> {
         isActive: true,
         isMedicalMembershipPaused: false,
         isMembershipPaused: false,
-        isPaid: true
+        isPaid: true,
+        isElligibleForPromotion: false,
+        isElligibleForNextBelt: false
+    });
+}
+
+async function setIsElligibleForPromotion(email: string): Promise<void> {
+    // get the authenticated user object
+    admin.auth().getUserByEmail(email).then((user) => {
+        // Add incremental custom claim without overwriting existing claims.
+        const currentCustomClaims: any = user.customClaims;
+        // check to make sure the isElligibleForPromotion is not null
+        if (currentCustomClaims.isElligibleForPromotion) {
+            // set isElligibleForPromotion status
+            currentCustomClaims['isElligibleForPromotion'] = true;
+            currentCustomClaims['isElligibleForNextBelt'] = false;
+            // Add custom claims for additional privileges.
+            return admin.auth().setCustomUserClaims(user.uid, currentCustomClaims);
+        } else {
+            return
+        }
+    })
+        .catch((error) => {
+          console.log(error);
+    });
+}
+
+async function setIsElligibleForNextBelt(email: string): Promise<void> {
+    // get the authenticated user object
+    admin.auth().getUserByEmail(email).then((user) => {
+        // Add incremental custom claim without overwriting existing claims.
+        const currentCustomClaims: any = user.customClaims;
+        // check to make sure the isElligibleForNextBelt is not null
+        if (currentCustomClaims.isElligibleForNextBelt) {
+            // set IsElligibleForNextBelt status
+            currentCustomClaims['isElligibleForPromotion'] = false;
+            currentCustomClaims['isElligibleForNextBelt'] = true;
+            // Add custom claims for additional privileges.
+            return admin.auth().setCustomUserClaims(user.uid, currentCustomClaims);
+        } else {
+            return
+        }
+    })
+        .catch((error) => {
+          console.log(error);
+    });
+}
+
+
+async function resetPromotions(email: string): Promise<void> {
+    // get the authenticated user object
+    admin.auth().getUserByEmail(email).then((user) => {
+        // Add incremental custom claim without overwriting existing claims.
+        const currentCustomClaims: any = user.customClaims;
+        // check to make sure the isElligibleForPromotion is not null
+        if (currentCustomClaims.isElligibleForPromotion) {
+            // set isElligibleForPromotion status
+            currentCustomClaims['isElligibleForPromotion'] = false;
+            currentCustomClaims['isElligibleForNextBelt'] = false;
+            // Add custom claims for additional privileges.
+            return admin.auth().setCustomUserClaims(user.uid, currentCustomClaims);
+        } else {
+            return
+        }
+    })
+        .catch((error) => {
+          console.log(error);
+    });
+}
+
+
+async function setIsActive(email: string): Promise<void> {
+    // get the authenticated user object
+    admin.auth().getUserByEmail(email).then((user) => {
+        // Add incremental custom claim without overwriting existing claims.
+        const currentCustomClaims : any = user.customClaims;
+        // check to make sure the isActive is not null
+        if (currentCustomClaims.isActive) {
+            // set isActive status
+            currentCustomClaims['isActive'] = !currentCustomClaims['isActive'];
+            // Add custom claims for additional privileges.
+            return admin.auth().setCustomUserClaims(user.uid, currentCustomClaims);
+        } else {
+            return
+        }
+    })
+        .catch((error) => {
+          console.log(error);
+    });
+}
+
+async function setIsMedicalMembershipPaused(email: string): Promise<void> {
+    // get the authenticated user object
+    admin.auth().getUserByEmail(email).then((user) => {
+        // Add incremental custom claim without overwriting existing claims.
+        const currentCustomClaims: any = user.customClaims;
+        // check to make sure the isMedicalMembershipPaused is not null
+        if (currentCustomClaims.isMedicalMembershipPaused) {
+            // set isMedicalMembershipPaused status
+            currentCustomClaims['isMedicalMembershipPaused'] = !currentCustomClaims['isMedicalMembershipPaused'];
+            // Add custom claims for additional privileges.
+            return admin.auth().setCustomUserClaims(user.uid, currentCustomClaims);
+        } else {
+            return
+        }
+    })
+        .catch((error) => {
+          console.log(error);
+    });
+}
+
+async function setIsPaid(email: string): Promise<void> {
+    // get the authenticated user object
+    admin.auth().getUserByEmail(email).then((user) => {
+        // Add incremental custom claim without overwriting existing claims.
+        const currentCustomClaims: any = user.customClaims;
+        // check to make sure the isPaid is not null
+        if (currentCustomClaims.isPaid) {
+            // set isPaid status
+            currentCustomClaims['isPaid'] = !currentCustomClaims['isPaid'];
+            // Add custom claims for additional privileges.
+            return admin.auth().setCustomUserClaims(user.uid, currentCustomClaims);
+        } else {
+            return
+        }
+    })
+        .catch((error) => {
+          console.log(error);
+    });
+}
+
+async function setIsMembershipPaused(email: string): Promise<void> {
+    // get the authenticated user object
+    admin.auth().getUserByEmail(email).then((user) => {
+        // Add incremental custom claim without overwriting existing claims.
+        const currentCustomClaims: any = user.customClaims;
+        // check to make sure the isMembershipPaused is not null
+        if (currentCustomClaims.isMembershipPaused) {
+            // set isMembershipPaused status
+            currentCustomClaims['isMembershipPaused'] = !currentCustomClaims['isMembershipPaused'];
+            // Add custom claims for additional privileges.
+            return admin.auth().setCustomUserClaims(user.uid, currentCustomClaims);
+        } else {
+            return
+        }
+    })
+        .catch((error) => {
+          console.log(error);
     });
 }
 
