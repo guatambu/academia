@@ -13,6 +13,7 @@ export const helloWorld = functions.https.onRequest((request, response) => {
  response.status(200).json({message : 'Hello from Firebase cloud functions'});
 });
 
+// on creation of an OwnerFirestore document, set the custom claims for the Auth object
 exports.createOwner = functions.firestore
     .document('owners/{userId}')
     .onCreate((snap, context) => {
@@ -27,6 +28,7 @@ exports.createOwner = functions.firestore
       })
     });
 
+    // on creation of an KidStudentFirestore document, set the custom claims for the Auth object
     exports.createKidStudent = functions.firestore
     .document('kidStudents/{userId}')
     .onCreate((snap, context) => {
@@ -41,6 +43,7 @@ exports.createOwner = functions.firestore
       })
     });
 
+    // on creation of an AdultStudentFirestore document, set the custom claims for the Auth object
     exports.createAdultStudent = functions.firestore
     .document('adultStudents/{userId}')
     .onCreate((snap, context) => {
@@ -56,7 +59,7 @@ exports.createOwner = functions.firestore
     });
 
 
-    // toggles the boolean value for isElligibleForPromotion 
+    // toggles the boolean value for isElligibleForPromotion from client side
     exports.togglePromotionElligibility = functions.https.onCall((data, context) => {
         // handle the possible optional value
         if (context.auth) {
@@ -73,7 +76,7 @@ exports.createOwner = functions.firestore
         }
     });
 
-    // toggles the boolean value for isElligibleForNextBelt 
+    // toggles the boolean value for isElligibleForNextBelt from client side
     exports.toggleNextBeltElligibility = functions.https.onCall((data, context) => {
         // handle the possible optional value
         if (context.auth) {
@@ -90,7 +93,7 @@ exports.createOwner = functions.firestore
         }
     });
 
-    // resets the boolean values for isElligibleForNextBelt and isElligibleForPromotion 
+    // resets the boolean values for isElligibleForNextBelt and isElligibleForPromotion from client side
     exports.resetPromotionsElligibility = functions.https.onCall((data, context) => {
         // handle the possible optional value
         if (context.auth) {
@@ -107,7 +110,7 @@ exports.createOwner = functions.firestore
         }
     });
 
-        // toggles the boolean values for isActive 
+        // toggles the boolean values for isActive from client side
     exports.toggleIsActive = functions.https.onCall((data, context) => {
         // handle the possible optional value
         if (context.auth) {
@@ -124,7 +127,7 @@ exports.createOwner = functions.firestore
         }
     });
 
-        // toggles the boolean values for isMedicalMembershipPaused
+        // toggles the boolean values for isMedicalMembershipPaused from client side
     exports.toggleIsMedicalMembershipPaused = functions.https.onCall((data, context) => {
         // handle the possible optional value
         if (context.auth) {
@@ -141,7 +144,7 @@ exports.createOwner = functions.firestore
         }
     });
 
-        // toggles the boolean values for isPaid 
+        // toggles the boolean values for isPaid from client side
     exports.toggleIsPaid = functions.https.onCall((data, context) => {
         // handle the possible optional value
         if (context.auth) {
@@ -158,7 +161,7 @@ exports.createOwner = functions.firestore
         }
     });
 
-         // toggles the boolean values for isMembershipPaused 
+         // toggles the boolean values for isMembershipPaused from client side
     exports.toggleIsMembershipPaused = functions.https.onCall((data, context) => {
         // handle the possible optional value
         if (context.auth) {
@@ -175,7 +178,7 @@ exports.createOwner = functions.firestore
         }
     });
 
-         // toggles the boolean values for isInstructor 
+         // toggles the boolean values for isInstructor from client side
     exports.toggleIsInstructor = functions.https.onCall((data, context) => {
         // handle the possible optional value
         if (context.auth) {
@@ -192,7 +195,7 @@ exports.createOwner = functions.firestore
         }
     });
 
-
+// function to create and set the custom claims on the OwnerFirestore user auth object
 async function grantOwnerRole(email: string): Promise<void> {
     // create user constant from the firebase auth admin using the user email
     const user = await admin.auth().getUserByEmail(email);
@@ -214,7 +217,7 @@ async function grantOwnerRole(email: string): Promise<void> {
     });
 }
 
-
+// function to create and set the custom claims on the AdultStudentFirestore user auth object
 async function grantAdultStudentRole(email: string): Promise<void> {
     // create user constant from the firebase auth admin using the user email
     const user = await admin.auth().getUserByEmail(email);
@@ -236,6 +239,7 @@ async function grantAdultStudentRole(email: string): Promise<void> {
     });
 }
 
+// function to create and set the custom claims on the KidStudentFirestore user auth object
 async function grantKidStudentRole(email: string): Promise<void> {
     // create user constant from the firebase auth admin using the user email
     const user = await admin.auth().getUserByEmail(email);
@@ -257,6 +261,7 @@ async function grantKidStudentRole(email: string): Promise<void> {
     });
 }
 
+// function to set the custom claims isElligibleForPromotion on the user auth object
 async function setIsElligibleForPromotion(email: string): Promise<void> {
     // get the authenticated user object
     admin.auth().getUserByEmail(email).then((user) => {
@@ -278,6 +283,7 @@ async function setIsElligibleForPromotion(email: string): Promise<void> {
     });
 }
 
+// function to set the custom claims isElligibleForNextBelt on the user auth object
 async function setIsElligibleForNextBelt(email: string): Promise<void> {
     // get the authenticated user object
     admin.auth().getUserByEmail(email).then((user) => {
@@ -299,7 +305,7 @@ async function setIsElligibleForNextBelt(email: string): Promise<void> {
     });
 }
 
-
+// function to reset the custom claims isElligibleForPromotion and isElligibleForNextBelt on the user auth object
 async function resetPromotions(email: string): Promise<void> {
     // get the authenticated user object
     admin.auth().getUserByEmail(email).then((user) => {
@@ -321,7 +327,7 @@ async function resetPromotions(email: string): Promise<void> {
     });
 }
 
-
+// function to set the custom claims isActive on the user auth object
 async function setIsActive(email: string): Promise<void> {
     // get the authenticated user object
     admin.auth().getUserByEmail(email).then((user) => {
@@ -342,6 +348,7 @@ async function setIsActive(email: string): Promise<void> {
     });
 }
 
+// function to set the custom claims isMedicalMembershipPaused on the user auth object
 async function setIsMedicalMembershipPaused(email: string): Promise<void> {
     // get the authenticated user object
     admin.auth().getUserByEmail(email).then((user) => {
@@ -362,6 +369,7 @@ async function setIsMedicalMembershipPaused(email: string): Promise<void> {
     });
 }
 
+// function to reset the custom claims isPaid on the user auth object
 async function setIsPaid(email: string): Promise<void> {
     // get the authenticated user object
     admin.auth().getUserByEmail(email).then((user) => {
@@ -382,6 +390,7 @@ async function setIsPaid(email: string): Promise<void> {
     });
 }
 
+// function to reset the custom claims isMembershipPaused on the user auth object
 async function setIsMembershipPaused(email: string): Promise<void> {
     // get the authenticated user object
     admin.auth().getUserByEmail(email).then((user) => {
@@ -402,7 +411,7 @@ async function setIsMembershipPaused(email: string): Promise<void> {
     });
 }
 
-
+// function to reset the custom claims isInstructor on the user auth object
 async function setIsInstructor(email: string): Promise<void> {
     // get the authenticated user object
     admin.auth().getUserByEmail(email).then((user) => {
