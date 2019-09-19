@@ -1,5 +1,6 @@
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
+import { stringify } from 'querystring';
 
 admin.initializeApp();
 
@@ -52,6 +53,143 @@ exports.createOwner = functions.firestore
             result: 'Request fulfilled! ${ adultStudentData.email } is now an adult student.'
           }
       })
+    });
+
+
+    // toggles the boolean value for isElligibleForPromotion 
+    exports.togglePromotionElligibility = functions.https.onCall((data, context) => {
+        // handle the possible optional value
+        if (context.auth) {
+            // Get the email string from the context auth token
+            const email : string = context.auth.token.email || null
+            // perform desired operations ...
+            return setIsElligibleForPromotion(email).then(() => {
+                return {
+                result: 'Request fulfilled! ${ email } user account auth isElligibleForPromotion toggled.'
+                }
+            })
+        } else {
+            return
+        }
+    });
+
+    // toggles the boolean value for isElligibleForNextBelt 
+    exports.toggleNextBeltElligibility = functions.https.onCall((data, context) => {
+        // handle the possible optional value
+        if (context.auth) {
+            // Get the email string from the context auth token
+            const email : string = context.auth.token.email || null
+            // perform desired operations ...
+            return setIsElligibleForNextBelt(email).then(() => {
+                return {
+                result: 'Request fulfilled! ${ email } user account auth isElligibleForNextBelt toggled.'
+                }
+            })
+        } else {
+            return
+        }
+    });
+
+    // resets the boolean values for isElligibleForNextBelt and isElligibleForPromotion 
+    exports.resetPromotionsElligibility = functions.https.onCall((data, context) => {
+        // handle the possible optional value
+        if (context.auth) {
+            // Get the email string from the context auth token
+            const email : string = context.auth.token.email || null
+            // perform desired operations ...
+            return resetPromotions(email).then(() => {
+                return {
+                result: 'Request fulfilled! ${ email } user account auth promotion values reset.'
+                }
+            })
+        } else {
+            return
+        }
+    });
+
+        // toggles the boolean values for isActive 
+    exports.toggleIsActive = functions.https.onCall((data, context) => {
+        // handle the possible optional value
+        if (context.auth) {
+            // Get the email string from the context auth token
+            const email : string = context.auth.token.email || null
+            // perform desired operations ...
+            return setIsActive(email).then(() => {
+                return {
+                result: 'Request fulfilled! ${ email } user account auth isActive toggled.'
+                }
+            })
+        } else {
+            return
+        }
+    });
+
+        // toggles the boolean values for isMedicalMembershipPaused
+    exports.toggleIsMedicalMembershipPaused = functions.https.onCall((data, context) => {
+        // handle the possible optional value
+        if (context.auth) {
+            // Get the email string from the context auth token
+            const email : string = context.auth.token.email || null
+            // perform desired operations ...
+            return setIsMedicalMembershipPaused(email).then(() => {
+                return {
+                result: 'Request fulfilled! ${ email } user account auth isMedicalMembershipPaused toggled.'
+                }
+            })
+        } else {
+            return
+        }
+    });
+
+        // toggles the boolean values for isPaid 
+    exports.toggleIsPaid = functions.https.onCall((data, context) => {
+        // handle the possible optional value
+        if (context.auth) {
+            // Get the email string from the context auth token
+            const email : string = context.auth.token.email || null
+            // perform desired operations ...
+            return setIsPaid(email).then(() => {
+                return {
+                result: 'Request fulfilled! ${ email } user account auth isPaid toggled.'
+                }
+            })
+        } else {
+            return
+        }
+    });
+
+         // toggles the boolean values for isMembershipPaused 
+    exports.toggleIsMembershipPaused = functions.https.onCall((data, context) => {
+        // handle the possible optional value
+        if (context.auth) {
+            // Get the email string from the context auth token
+            const email : string = context.auth.token.email || null
+            // perform desired operations ...
+            return setIsMembershipPaused(email).then(() => {
+                return {
+                result: 'Request fulfilled! ${ email } user account auth isMembershipPaused toggled.'
+                }
+            })
+        } else {
+            return
+        }
+    });
+
+         // toggles the boolean values for isInstructor 
+    exports.toggleIsInstructor = functions.https.onCall((data, context) => {
+        // handle the possible optional value
+        if (context.auth) {
+            // Get the email string from the context auth token
+            const email : string = context.auth.token.email || null
+            // perform desired operations ...
+            return setIsInstructor(email).then(() => {
+                return {
+                result: 'Request fulfilled! ${ email } user account auth isInstructor toggled.'
+                }
+            })
+        } else {
+            return
+        }
     });
 
 
@@ -253,6 +391,27 @@ async function setIsMembershipPaused(email: string): Promise<void> {
         if (currentCustomClaims.isMembershipPaused) {
             // set isMembershipPaused status
             currentCustomClaims['isMembershipPaused'] = !currentCustomClaims['isMembershipPaused'];
+            // Add custom claims for additional privileges.
+            return admin.auth().setCustomUserClaims(user.uid, currentCustomClaims);
+        } else {
+            return
+        }
+    })
+        .catch((error) => {
+          console.log(error);
+    });
+}
+
+
+async function setIsInstructor(email: string): Promise<void> {
+    // get the authenticated user object
+    admin.auth().getUserByEmail(email).then((user) => {
+        // Add incremental custom claim without overwriting existing claims.
+        const currentCustomClaims: any = user.customClaims;
+        // check to make sure the isMembershipPaused is not null
+        if (currentCustomClaims.isInstructor) {
+            // set isMembershipPaused status
+            currentCustomClaims['isInstructor'] = !currentCustomClaims['isInstructor'];
             // Add custom claims for additional privileges.
             return admin.auth().setCustomUserClaims(user.uid, currentCustomClaims);
         } else {
