@@ -173,7 +173,7 @@ class LoginViewController: UIViewController {
                 strongSelf.activeUser = authResult?.user
                 print("\(String(describing: strongSelf.activeUser?.displayName))")
                 
-                
+                // TODO: add login elements for 
                 if let user = strongSelf.activeUser {
                     // get user IDToken to check for user type
                     user.getIDTokenResult { (result, error) in

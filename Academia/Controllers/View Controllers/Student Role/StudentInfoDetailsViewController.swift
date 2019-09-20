@@ -91,35 +91,61 @@ class StudentInfoDetailsViewController: UIViewController {
                     // set the activeOwnerStorageReference path
                     self.activeStudentStorageRef = Storage.storage().reference().child("profilePics/students/\(uid)")
                     
-                    // get the active firestre owner info
-                    self.db.collection("students").document(uid).getDocument { (querySnapshot, err) in
-                        if let err = err {
-                            print("Error getting documents: \(err)")
-                        } else {
+                    user.getIDTokenResult { (result, error) in
+                        
+                        guard let isKid = result?.claims["isKid"] as? NSNumber else {
                             
-                            guard let studentData = querySnapshot?.data() else {
+                            if let error = error {
                                 
-                                print("ERROR: nil value found for studentData in StudentInfoDetailsViewController.swift -> viewWillAppear - line 102.")
-                                return
+                                print("ERROR: \(error.localizedDescription) in StudentInfoDetailsViewController.swift -> viewWillAppear - line 100.")
                             }
-                            
-                            print("\(String(describing: querySnapshot?.documentID)) => \(String(describing: querySnapshot?.data()))")
-                            
-                            // check student type
-                            let isKid: Bool = (studentData["isKid"] != nil)
-                            if isKid == true {
-                                
-                                self.activeKidStudentFirestore =
+                            return
+                        }
+                        
+                        if isKid.boolValue {                            
+                            // get the active firestre owner info
+                            self.db.collection("kidStudents").document(uid).getDocument { (querySnapshot, err) in
+                                if let err = err {
+                                    print("Error getting documents: \(err)")
+                                } else {
                                     
-                                    KidStudentFirestore(dictionary: studentData)
-                                
-                            } else {
-                                
-                                self.activeAdultStudentFirestore = AdultStudentFirestore(dictionary: studentData)
-
+                                    guard let studentData = querySnapshot?.data() else {
+                                        
+                                        print("ERROR: nil value found for studentData in StudentInfoDetailsViewController.swift -> viewWillAppear - line 114.")
+                                        return
+                                    }
+                                    
+                                    print("\(String(describing: querySnapshot?.documentID)) => \(String(describing: querySnapshot?.data()))")
+                                    
+                                    // create the kidStudentFirestore object
+                                    self.activeKidStudentFirestore = KidStudentFirestore(dictionary: studentData)
+                                    
+                                    self.populateCompletedProfileInfo(user: user)
+                                }
                             }
                             
-                            self.populateCompletedProfileInfo(user: user)
+                        } else {
+                            // get the active firestre owner info
+                            self.db.collection("adultStudents").document(uid).getDocument { (querySnapshot, err) in
+                                if let err = err {
+                                    print("Error getting documents: \(err)")
+                                } else {
+                                    
+                                    guard let studentData = querySnapshot?.data() else {
+                                        
+                                        print("ERROR: nil value found for studentData in StudentInfoDetailsViewController.swift -> viewWillAppear - line 136.")
+                                        return
+                                    }
+                                    
+                                    print("\(String(describing: querySnapshot?.documentID)) => \(String(describing: querySnapshot?.data()))")
+                                    
+                                    // create the adultStudentFirestore object
+                                    self.activeAdultStudentFirestore = AdultStudentFirestore(dictionary: studentData)
+                                    
+                                    self.populateCompletedProfileInfo(user: user)
+                                }
+                            }
+                            
                         }
                     }
                 }
