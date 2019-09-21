@@ -694,6 +694,14 @@ extension StudentInfoDetailsViewController {
         
         let cancel = UIAlertAction(title: "cancel", style: UIAlertAction.Style.cancel, handler: nil)
         let logout = UIAlertAction(title: "logout", style: UIAlertAction.Style.destructive) { (alert) in
+            
+            // Firebase Auth logout
+            let firebaseAuth = Auth.auth()
+            do {
+                try firebaseAuth.signOut()
+            } catch let signOutError as NSError {
+                print ("ERROR: \(signOutError.localizedDescription) while attempting to sign out in OwnerInfoDetailsViewController.swift -> logoutStudentUserAndReturnToLandingPage() - line 703.")
+            }
         
             // remove current Student User from ActiveUserModelController active user array
             // this array should be totally empty whenever no user of any type is logged in
