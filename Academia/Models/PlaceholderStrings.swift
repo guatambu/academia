@@ -21,6 +21,7 @@ enum PlaceholderStrings: String {
     case city = "tap for city"
     case state = "tap for state"
     case zipCode = "tap for zip code"
+    case country = "tap for country"
     case website = "tap for website"
     case mobile = "tap for mobile"
     case email = "tap for email"

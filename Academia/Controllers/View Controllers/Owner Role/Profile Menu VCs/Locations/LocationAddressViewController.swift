@@ -35,6 +35,7 @@ class LocationAddressViewController: UIViewController, UITextInputTraits{
     @IBOutlet weak var cityTextField: UITextField!
     @IBOutlet weak var stateTextField: UITextField!
     @IBOutlet weak var zipCodeTextField: UITextField!
+    @IBOutlet weak var countryTextField: UITextField!
     
     // CoreData properties
     var locationCD: LocationCD?
@@ -53,6 +54,7 @@ class LocationAddressViewController: UIViewController, UITextInputTraits{
         cityTextField.autocorrectionType = UITextAutocorrectionType.no
         stateTextField.autocorrectionType = UITextAutocorrectionType.no
         zipCodeTextField.autocorrectionType = UITextAutocorrectionType.no
+        countryTextField.autocorrectionType = UITextAutocorrectionType.no
         
         // turns off auto-capitalization in these UITextFields
         addressLine1TextField.autocapitalizationType = UITextAutocapitalizationType.none
@@ -60,6 +62,7 @@ class LocationAddressViewController: UIViewController, UITextInputTraits{
         cityTextField.autocapitalizationType = UITextAutocapitalizationType.none
         stateTextField.autocapitalizationType = UITextAutocapitalizationType.none
         zipCodeTextField.autocapitalizationType = UITextAutocapitalizationType.none
+        countryTextField.autocapitalizationType = UITextAutocapitalizationType.none
         
         // check to see if enter editing mode
         enterEditingMode(inEditingMode: inEditingMode)
@@ -82,12 +85,14 @@ class LocationAddressViewController: UIViewController, UITextInputTraits{
         cityTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.city.rawValue, attributes: beltBuilder.avenirFont)
         stateTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.state.rawValue, attributes: beltBuilder.avenirFont)
         zipCodeTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.zipCode.rawValue, attributes: beltBuilder.avenirFont)
+        countryTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.country.rawValue, attributes: beltBuilder.avenirFont)
         
         addressLine1TextField.delegate = self
         addressLine2TextField.delegate = self
         cityTextField.delegate = self
         stateTextField.delegate = self
         zipCodeTextField.delegate = self
+        countryTextField.delegate = self
         
     }
     
@@ -210,7 +215,7 @@ class LocationAddressViewController: UIViewController, UITextInputTraits{
         }
         
         // check for required information being left blank by user
-        if addressLine1TextField.text == "" || cityTextField.text == "" || stateTextField.text == "" || zipCodeTextField.text == "" {
+        if addressLine1TextField.text == "" || cityTextField.text == "" || stateTextField.text == "" || zipCodeTextField.text == "" || countryTextField.text == "" {
             
             // fire haptic feedback for error
             hapticFeedbackGenerator = UINotificationFeedbackGenerator()
@@ -257,6 +262,16 @@ class LocationAddressViewController: UIViewController, UITextInputTraits{
                 
             }
             
+            if countryTextField.text == "" {
+                
+                countryTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.country.rawValue, attributes: beltBuilder.errorAvenirFont)
+                
+            } else {
+                
+                countryTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.country.rawValue, attributes: beltBuilder.avenirFont)
+                
+            }
+            
             // save not allowed, so we exit function
             return
         }
@@ -267,6 +282,7 @@ class LocationAddressViewController: UIViewController, UITextInputTraits{
         cityTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.city.rawValue, attributes: beltBuilder.avenirFont)
         stateTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.state.rawValue, attributes: beltBuilder.avenirFont)
         zipCodeTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.zipCode.rawValue, attributes: beltBuilder.avenirFont)
+        countryTextField.attributedPlaceholder = NSAttributedString(string: PlaceholderStrings.country.rawValue, attributes: beltBuilder.avenirFont)
         
         // programmatically performing segue
         
@@ -291,6 +307,7 @@ class LocationAddressViewController: UIViewController, UITextInputTraits{
         guard let city = cityTextField.text else { return }
         guard let state = stateTextField.text else { return }
         guard let zipCode = zipCodeTextField.text else { return }
+        guard let country = countryTextField.text else { return }
         
         // not required field
         let addressLine2 = addressLine2TextField.text
@@ -305,6 +322,7 @@ class LocationAddressViewController: UIViewController, UITextInputTraits{
         destViewController.city = city
         destViewController.state = state
         destViewController.zipCode = zipCode
+        destViewController.country = country
         
         destViewController.inEditingMode = inEditingMode
         destViewController.locationToEdit = locationToEdit
@@ -444,6 +462,9 @@ extension LocationAddressViewController: UITextFieldDelegate {
             
         } else if textField == zipCodeTextField {
             zipCodeTextField.resignFirstResponder()
+            print("Done button tapped")
+        } else if textField == countryTextField {
+            countryTextField.resignFirstResponder()
             print("Done button tapped")
         }
         return true

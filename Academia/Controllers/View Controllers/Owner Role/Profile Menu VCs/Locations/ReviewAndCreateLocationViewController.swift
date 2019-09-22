@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ReviewAndCreateLocationViewController: UIViewController {
 
@@ -21,6 +22,7 @@ class ReviewAndCreateLocationViewController: UIViewController {
     var city: String?
     var state: String?
     var zipCode: String?
+    var country: String?
     var phone: String?
     var website: String?
     var email: String?
@@ -54,6 +56,18 @@ class ReviewAndCreateLocationViewController: UIViewController {
     
     @IBOutlet weak var createAccountButtonOutlet: DesignableButton!
     
+    // Firebase Firestore properties
+    var locationsCollectionRef: CollectionReference!
+    var activeLocationFirestore: LocationFirestore?
+    var activeOwnerStorageRef: StorageReference?
+    
+    var db: Firestore!
+    // The handler for the FIREBASE Auth state listener, to allow cancelling later.
+    var handle: AuthStateDidChangeListenerHandle?
+    // Firebase Storage Reference
+    let firebaseStorageRef = Storage.storage().reference()
+    
+    
     
     // MARK: - ViewController Lifecycle Functions
     
@@ -71,6 +85,9 @@ class ReviewAndCreateLocationViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
         
         title = "Please Review Your Info"
+        
+        // Firestore Test properties setup
+        db = Firestore.firestore()
     }
     
     // MARK: - Actions
@@ -152,16 +169,90 @@ extension ReviewAndCreateLocationViewController {
         guard let city = city else { print("fail city"); return }
         guard let state = state else { print("fail state"); return }
         guard let zipCode = zipCode else { print("fail zip"); return }
+        guard let country = country else { print("fail country"); return }
         guard let phone = phone else { print("fail phone"); return }
         guard let email = email else { print("fail email"); return }
         
         let website = self.website ?? ""
         let addressLine2 = self.addressLine2 ?? ""
-        let social1 = self.social1 ?? ""
-        let social2 = self.social2 ?? ""
-        let social3 = self.social3 ?? ""
+        let facebookLink = self.social1 ?? ""
+        let twitterLink = self.social2 ?? ""
+        let instagramLink = self.social3 ?? ""
         
-        LocationModelController.shared.addNew(locationPic: locationPic, active: active, locationName: locationName, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, phone: phone, website: website, email: email, social1: social1, social2: social2, social3: social3)
+//        LocationModelController.shared.addNew(locationPic: locationPic, active: active, locationName: locationName, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, phone: phone, website: website, email: email, social1: social1, social2: social2, social3: social3)
+        
+        // convert profilePic to Data
+        guard let locationPicData = locationPic.jpegData(compressionQuality: 1) else { print("fail profilePicData"); return }
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpeg"
+        
+        // FIREBASE STORAGE REFERENCE
+        let profilePicsRef = self.firebaseStorageRef.child("profilePics")
+        
+        // create FIREBASE FIRESTORE location data object and save to cloud Firestore
+        if Auth.auth().currentUser != nil {
+            
+            let user = Auth.auth().currentUser
+            
+            if let user = user {
+                
+                let userUID = user.uid
+                
+                // FIREBASE STORAGE LOCATION PROFILE PICS REFERENCE
+                let locationsProfilePicsRef = profilePicsRef.child("locations").child(userUID)
+                
+                _ = locationsProfilePicsRef.putData(locationPicData, metadata: metadata) { (metadata, error) in
+                    
+                    guard let metadata = metadata else {
+                        
+                        if let error = error {
+                            print("ERROR: \(error.localizedDescription) - error while uploading location profile pic and its metadata in ReviewAndCreateLocationVC -> createLocation() - line 203.")
+                        }
+                        return
+                    }
+                    
+                    locationsProfilePicsRef.downloadURL{ (url, error) in
+                        
+                        print(metadata.size)
+                        
+                        locationsProfilePicsRef.downloadURL { (url, error) in
+                            
+                            guard let downloadURL = url  else {
+                                
+                                print("ERROR: error after uploading location profile pic and its metadata and then getting the URL in ReviewAndCreateLocationVC -> createLocation() - line 216.")
+                                return
+                            }
+                            
+                            let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                            changeRequest?.photoURL = downloadURL
+                            changeRequest?.commitChanges { (error) in
+                                
+                                if let error = error {
+                                    
+                                    print("ERROR: \(error.localizedDescription) failure to execute change request with location photoURL in new/current loation a in ReviewAndCreateLocationVC -> createLocation() - line 226.")
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                // FIREBASE FIRESTORE CREATE AND SAVE NEW OWNER MODEL
+                let location = LocationFirestore(isActive: active, locationName: locationName, ownerName: ownerName, phone: phone, website: website, email: email, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, country: country, facebookLink: facebookLink, twitterLink: twitterLink, instagramLink: instagramLink, aulas: nil)
+                
+                // set the Firebase Firestore Location collection reference
+                locationsCollectionRef = Firestore.firestore().collection("owners").document(userUID).collection("locations")
+                
+                locationsCollectionRef.document(userUID).setData(location.dictionary) { (error) in
+                    if let error = error {
+                        print("ERROR: \(error.localizedDescription) error occurred while trying to save location to Firebase Firestore in ReviewAndCreateLocationVC -> createLocation() - line 237.")
+                    } else {
+                        print("new location data successfully saved to Firebase Firestore in owner's location collection")
+                    }
+                }
+            }
+        } else {
+            print("ERROR: no currentUser found in Firebase Auth object in ReviewAndCreateLocationVC -> createLocation() - line 237.")
+        }
     }
 }
 
@@ -227,6 +318,14 @@ extension ReviewAndCreateLocationViewController {
         socialLinksCD = LocationSocialLinksCD(socialLink1: social1, socialLink2: social2, socialLink3: social3)
     }
 }
+
+
+
+
+
+
+    
+
 
 
 

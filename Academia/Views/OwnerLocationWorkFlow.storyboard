@@ -630,10 +630,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="QL7-dH-a9X" userLabel="Sign up elements Stack View">
-                                <rect key="frame" x="16" y="280" width="288" height="232"/>
+                                <rect key="frame" x="16" y="242" width="288" height="270"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="NDo-If-iKH" userLabel="address Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="144"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="182"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="HZe-YI-GmY" userLabel="address 1 Stack View">
                                                 <rect key="frame" x="0.0" y="0.0" width="288" height="30"/>
@@ -715,10 +715,25 @@
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="o4r-Vg-c4T" userLabel="country Stack View">
+                                                <rect key="frame" x="0.0" y="152" width="288" height="30"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vhD-kC-Jya" userLabel="country Text Field">
+                                                        <rect key="frame" x="0.0" y="0.0" width="288" height="30"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                    </textField>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="vhD-kC-Jya" secondAttribute="trailing" id="3W1-aY-w4y"/>
+                                                    <constraint firstItem="vhD-kC-Jya" firstAttribute="leading" secondItem="o4r-Vg-c4T" secondAttribute="leading" id="Gdx-7D-RlB"/>
+                                                </constraints>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mY1-X2-bwK" customClass="DesignableButton" customModule="Academia" customModuleProvider="target">
-                                        <rect key="frame" x="89.5" y="192" width="109" height="40"/>
+                                        <rect key="frame" x="89.5" y="230" width="109" height="40"/>
                                         <color key="backgroundColor" red="0.94509803920000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="WOY-M6-jCS"/>
@@ -815,7 +830,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="location address?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bv8-rf-wKN">
-                                <rect key="frame" x="16" y="138" width="288" height="33"/>
+                                <rect key="frame" x="16" y="100" width="288" height="33"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -845,6 +860,7 @@
                         <outlet property="addressLine1TextField" destination="uqd-FL-fao" id="WXl-Oc-wim"/>
                         <outlet property="addressLine2TextField" destination="Dci-O5-dae" id="UNQ-Ga-K8S"/>
                         <outlet property="cityTextField" destination="cyR-WC-f1p" id="xjJ-mM-yEG"/>
+                        <outlet property="countryTextField" destination="vhD-kC-Jya" id="gYm-Sa-acY"/>
                         <outlet property="signUpElementsStackView" destination="QL7-dH-a9X" id="PGb-Yn-8ig"/>
                         <outlet property="stateTextField" destination="CgQ-se-Dfx" id="m6M-Dr-Jbc"/>
                         <outlet property="whatIsLocationAddressLabelOutlet" destination="bv8-rf-wKN" id="cfP-bD-UNW"/>

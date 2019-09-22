@@ -22,6 +22,7 @@ class LocationContactInfoViewController: UIViewController, UITextInputTraits {
     var city: String?
     var state: String?
     var zipCode: String?
+    var country: String?
     var phone: String?
     var website: String?
     var email: String?
@@ -237,6 +238,7 @@ class LocationContactInfoViewController: UIViewController, UITextInputTraits {
         destViewController.city = city
         destViewController.state = state
         destViewController.zipCode = zipCode
+        destViewController.country = country
         destViewController.phone = phone
         destViewController.website = website
         destViewController.email = email
