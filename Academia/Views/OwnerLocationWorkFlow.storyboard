@@ -609,7 +609,7 @@
                         <outlet property="locationNameAndPicLabelOutlet" destination="KhT-xa-Qwu" id="W5D-te-Xbj"/>
                         <outlet property="locationNameTextField" destination="4fh-67-w5G" id="Ndz-ZO-Iav"/>
                         <outlet property="locationPicImageViewOutlet" destination="bcJ-JO-l4p" id="gwD-AB-ETa"/>
-                        <outlet property="ownerNameLabelOutler" destination="4Rz-fb-wSL" id="Kz4-Ft-zaW"/>
+                        <outlet property="ownerNameTextField" destination="4Rz-fb-wSL" id="bR2-bP-W7S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bLQ-HH-jmi" userLabel="First Responder" sceneMemberID="firstResponder"/>

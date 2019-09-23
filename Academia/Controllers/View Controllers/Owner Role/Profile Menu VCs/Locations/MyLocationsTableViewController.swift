@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 class MyLocationsTableViewController: UITableViewController {
     
@@ -16,12 +17,56 @@ class MyLocationsTableViewController: UITableViewController {
     // create a fetchedRequestController with predicate to grab the current LocationsCD objects... use these as the source for the tableView DataSource  methods
     var fetchedResultsController: NSFetchedResultsController<LocationCD>!
     
+    var locations: [LocationFirestore] = []
+    
     let beltBuilder = BeltBuilder()
+    
+    // Firebase Firestore properties
+    var locationsCollectionRef: CollectionReference!
+    
+    var db: Firestore!
+    // The handler for the FIREBASE Auth state listener, to allow cancelling later.
+    var handle: AuthStateDidChangeListenerHandle?
     
     
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            
+            if Auth.auth().currentUser != nil {
+                
+                let user = Auth.auth().currentUser
+                
+                if let user = user {
+                    
+                    let userUID = user.uid
+                        
+                    let locationProfilePicsStoreageRef = Storage.storage().reference().child("profilePics/locations/\(userUID)")
+                    
+                    self.locationsCollectionRef = self.db.collection("owners").document("\(userUID)").collection("locations")
+                    
+                    self.locationsCollectionRef.addSnapshotListener { querySnapshot, error in
+                        
+                        guard let documents = querySnapshot?.documents else {
+                            print("Error fetching documents: \(error!.localizedDescription) in MyLocationsTableViewController.swift -> viewWillAppear() - line 55.")
+                            return
+                        }
+                        
+                        for document in documents {
+                            
+                            let data = document.data()
+                            
+                            if let location = LocationFirestore(dictionary: data) {
+                                
+                                self.locations.append(location)
+                            }
+                        }
+                    }
+                }
+            }
+        }
         
         // create fetch request and initialize results
         initializeFetchedResultsController()
@@ -34,7 +79,48 @@ class MyLocationsTableViewController: UITableViewController {
         
         // set VC title font styling
         navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
+        
+        // initial Firestore query to get data
+        loadTableDataFromFirestore()
 
+    }
+    
+    
+    // MARK: loadData() from Firestore owner locations collections
+    func loadTableDataFromFirestore() {
+        
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            
+            if Auth.auth().currentUser != nil {
+                
+                let user = Auth.auth().currentUser
+                
+                if let user = user {
+                    
+                    let userUID = user.uid
+                    
+                    self.locationsCollectionRef = self.db.collection("owners").document("\(userUID)").collection("locations")
+                    
+                    self.locationsCollectionRef.getDocuments() { querySnapshot, error in
+                        
+                        guard let documents = querySnapshot?.documents else {
+                            print("Error fetching documents: \(error!.localizedDescription) in MyLocationsTableViewController.swift -> viewWillAppear() - line 55.")
+                            return
+                        }
+                        
+                        for document in documents {
+                            
+                            let data = document.data()
+                            
+                            if let location = LocationFirestore(dictionary: data) {
+                                
+                                self.locations.append(location)
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
 
@@ -44,11 +130,13 @@ class MyLocationsTableViewController: UITableViewController {
        
 //        return LocationModelController.shared.locations.count
         
-        guard let sections = fetchedResultsController.sections else {
-            fatalError("No sections in fetchedResultsController")
-        }
-        let sectionInfo = sections[section]
-        return sectionInfo.numberOfObjects
+//        guard let sections = fetchedResultsController.sections else {
+//            fatalError("No sections in fetchedResultsController")
+//        }
+//        let sectionInfo = sections[section]
+//        return sectionInfo.numberOfObjects
+        
+        return locations.count
     }
 
     
@@ -58,9 +146,7 @@ class MyLocationsTableViewController: UITableViewController {
         
 //        let location = LocationModelController.shared.locations[indexPath.row]
         
-        guard let location = self.fetchedResultsController?.object(at: indexPath) else {
-            fatalError("Attempt to configure cell without a managed object")
-        }
+        let location = locations[indexPath.row]
         
         // Configure the cell...
         cell.location = location
