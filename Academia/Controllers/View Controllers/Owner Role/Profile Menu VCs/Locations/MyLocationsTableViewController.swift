@@ -160,7 +160,6 @@ class MyLocationsTableViewController: UITableViewController {
         
         // Configure the cell...
         cell.location = location
-        cell.userUID = Auth.auth().currentUser?.uid ?? ""
 
         return cell
     }

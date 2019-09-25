@@ -198,19 +198,19 @@ extension ReviewAndCreateLocationViewController {
                 
                 let userUID = user.uid
                 
-                // FIREBASE FIRESTORE CREATE AND SAVE NEW OWNER MODEL
-                let location = LocationFirestore(isActive: active, locationName: locationName, ownerName: ownerName, phone: phone, website: website, email: email, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, country: country, facebookLink: facebookLink, twitterLink: twitterLink, instagramLink: instagramLink, aulas: nil)
-                
-                // set the Firebase Firestore Location collection reference
-                locationsCollectionRef = Firestore.firestore().collection("owners").document(userUID).collection("locations")
-                
-                locationsCollectionRef.document().setData(location.dictionary) { (error) in
-                    if let error = error {
-                        print("ERROR: \(error.localizedDescription) error occurred while trying to save location to Firebase Firestore in ReviewAndCreateLocationVC -> createLocation() - line 237.")
-                    } else {
-                        print("new location data successfully saved to Firebase Firestore in owner's location collection")
-                    }
-                }
+//                // FIREBASE FIRESTORE CREATE AND SAVE NEW OWNER MODEL
+//                let location = LocationFirestore(isActive: active, locationName: locationName, ownerName: ownerName, phone: phone, website: website, email: email, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, country: country, facebookLink: facebookLink, twitterLink: twitterLink, instagramLink: instagramLink, aulas: nil)
+//                
+//                // set the Firebase Firestore Location collection reference
+//                locationsCollectionRef = Firestore.firestore().collection("owners").document(userUID).collection("locations")
+//                
+//                locationsCollectionRef.document().setData(location.dictionary) { (error) in
+//                    if let error = error {
+//                        print("ERROR: \(error.localizedDescription) error occurred while trying to save location to Firebase Firestore in ReviewAndCreateLocationVC -> createLocation() - line 237.")
+//                    } else {
+//                        print("new location data successfully saved to Firebase Firestore in owner's location collection")
+//                    }
+//                }
                 
                 // FIREBASE STORAGE LOCATION PROFILE PICS REFERENCE
                 let locationsProfilePicsRef = profilePicsRef.child("locations").child(userUID).child(locationName)
@@ -237,13 +237,17 @@ extension ReviewAndCreateLocationViewController {
                                 return
                             }
                             
-                            let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-                            changeRequest?.photoURL = downloadURL
-                            changeRequest?.commitChanges { (error) in
-                                
+                            // FIREBASE FIRESTORE CREATE AND SAVE NEW OWNER MODEL
+                            let location = LocationFirestore(isActive: active, profilePicStorageURL: "\(downloadURL)", locationName: locationName, ownerName: ownerName, phone: phone, website: website, email: email, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, country: country, facebookLink: facebookLink, twitterLink: twitterLink, instagramLink: instagramLink, aulas: nil)
+                            
+                            // set the Firebase Firestore Location collection reference
+                            self.locationsCollectionRef = Firestore.firestore().collection("owners").document(userUID).collection("locations")
+                            
+                            self.locationsCollectionRef.document().setData(location.dictionary) { (error) in
                                 if let error = error {
-                                    
-                                    print("ERROR: \(error.localizedDescription) failure to execute change request with location photoURL in new/current loation a in ReviewAndCreateLocationVC -> createLocation() - line 226.")
+                                    print("ERROR: \(error.localizedDescription) error occurred while trying to save location to Firebase Firestore in ReviewAndCreateLocationVC -> createLocation() - line 237.")
+                                } else {
+                                    print("new location data successfully saved to Firebase Firestore in owner's location collection")
                                 }
                             }
                         }

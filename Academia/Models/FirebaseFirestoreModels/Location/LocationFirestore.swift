@@ -19,6 +19,7 @@ struct LocationFirestore {
     var isActive: Bool
     var dateCreated: Timestamp
     var dateEdited: Timestamp
+    var profilePicStorageURL: String
     var locationName: String
     var ownerName: String
     var phone: String?
@@ -41,6 +42,7 @@ struct LocationFirestore {
             "isActive" : isActive,
             "dateCreated" : dateCreated,
             "dateEdited" : dateEdited,
+            "profilePicStorageURL" : profilePicStorageURL,
             "locationName" : locationName,
             "ownerName" : ownerName,
             "phone" : phone ?? "",
@@ -64,6 +66,7 @@ struct LocationFirestore {
     init(isActive: Bool,
          dateCreated: Timestamp = Timestamp(),
          dateEdited: Timestamp = Timestamp(),
+         profilePicStorageURL: String,
          locationName: String,
          ownerName: String,
          phone: String?,
@@ -83,6 +86,7 @@ struct LocationFirestore {
         
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
+        self.profilePicStorageURL = profilePicStorageURL
         self.isActive = isActive
         self.locationName = locationName
         self.ownerName = ownerName
@@ -109,112 +113,118 @@ extension LocationFirestore: LocationFirestoreModelSerializable {
         
         guard let dateCreated = dictionary["dateCreated"] as? Timestamp else {
             
-            print("ERROR: nil value found for dateCreated in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 112.")
+            print("ERROR: nil value found for dateCreated in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 116.")
             return nil
         }
         
         guard let dateEdited = dictionary["dateEdited"] as? Timestamp else {
             
-            print("ERROR: nil value found for dateEdited in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 118.")
+            print("ERROR: nil value found for dateEdited in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 122.")
+            return nil
+        }
+        
+        guard let profilePicStorageURL = dictionary["profilePicStorageURL"] as? String else {
+            
+            print("ERROR: nil value found for profilePicStorageURL in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 128.")
             return nil
         }
         
         guard let isActive = dictionary["isActive"] as? Bool else {
             
-            print("ERROR: nil value found for isActive in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 124.")
+            print("ERROR: nil value found for isActive in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 134.")
             return nil
         }
 
         guard let locationName = dictionary["locationName"] as? String else {
 
-            print("ERROR: nil value found for locationName in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 130.")
+            print("ERROR: nil value found for locationName in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 140.")
             return nil
         }
         
         guard let ownerName = dictionary["ownerName"] as? String else {
             
-            print("ERROR: nil value found for ownerName in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 136.")
+            print("ERROR: nil value found for ownerName in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 146.")
             return nil
         }
         
         guard let addressLine1 = dictionary["addressLine1"] as? String else {
             
-            print("ERROR: nil value found for addressLine1 in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 142.")
+            print("ERROR: nil value found for addressLine1 in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 152.")
             return nil
         }
         
         guard let addressLine2 = dictionary["addressLine2"] as? String else {
             
-            print("ERROR: nil value found for addressLine2 in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 148.")
+            print("ERROR: nil value found for addressLine2 in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 158.")
             return nil
         }
         
         guard let city = dictionary["city"] as? String else {
             
-            print("ERROR: nil value found for city in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 154.")
+            print("ERROR: nil value found for city in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 164.")
             return nil
         }
         
         guard let state = dictionary["state"] as? String else {
             
-            print("ERROR: nil value found for state in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 160.")
+            print("ERROR: nil value found for state in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 170.")
             return nil
         }
         
         guard let zipCode = dictionary["zipCode"] as? String else {
             
-            print("ERROR: nil value found for zipCode in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 166.")
+            print("ERROR: nil value found for zipCode in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 176.")
             return nil
         }
         
         guard let country = dictionary["country"] as? String else {
             
-            print("ERROR: nil value found for country in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 172.")
+            print("ERROR: nil value found for country in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 182.")
             return nil
         }
         
         guard let phone = dictionary["phone"] as? String else {
             
-            print("ERROR: nil value found for phone in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 178.")
+            print("ERROR: nil value found for phone in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 188.")
             return nil
         }
         
         guard let website = dictionary["website"] as? String else {
             
-            print("ERROR: nil value found for website in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 184.")
+            print("ERROR: nil value found for website in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 194.")
             return nil
         }
         
         guard let email = dictionary["email"] as? String else {
             
-            print("ERROR: nil value found for email in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 190.")
+            print("ERROR: nil value found for email in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 200.")
             return nil
         }
         
         guard let facebookLink = dictionary["facebookLink"] as? String else {
             
-            print("ERROR: nil value found for facebookLink in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 196.")
+            print("ERROR: nil value found for facebookLink in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 206.")
             return nil
         }
     
         guard let instagramLink = dictionary["instagramLink"] as? String else {
             
-            print("ERROR: nil value found for instagramLink in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 202.")
+            print("ERROR: nil value found for instagramLink in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 212.")
             return nil
         }
         
         guard let twitterLink = dictionary["twitterLink"] as? String else {
             
-            print("ERROR: nil value found for twitterLink in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 208.")
+            print("ERROR: nil value found for twitterLink in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 218.")
             return nil
         }
         
         guard let aulas = dictionary["aulas"] as? [String : Any] else {
             
-            print("ERROR: nil value found for aulas in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 214.")
+            print("ERROR: nil value found for aulas in firestore dictionary in LocationFirestore.swift -> init(dictionary:) - line 224.")
             return nil
         }
         
-        self.init(isActive: isActive, dateCreated: dateCreated, dateEdited: dateEdited, locationName: locationName, ownerName: ownerName, phone: phone, website: website, email: email,  addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, country: country, facebookLink: facebookLink, twitterLink: twitterLink, instagramLink: instagramLink, aulas: aulas)
+        self.init(isActive: isActive, dateCreated: dateCreated, dateEdited: dateEdited, profilePicStorageURL: profilePicStorageURL, locationName: locationName, ownerName: ownerName, phone: phone, website: website, email: email,  addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, country: country, facebookLink: facebookLink, twitterLink: twitterLink, instagramLink: instagramLink, aulas: aulas)
     }
 }
