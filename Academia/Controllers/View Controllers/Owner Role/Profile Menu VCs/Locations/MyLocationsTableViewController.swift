@@ -22,17 +22,18 @@ class MyLocationsTableViewController: UITableViewController {
     let beltBuilder = BeltBuilder()
     
     // Firebase Firestore properties
-    var locationsCollectionRef: CollectionReference!
+    var ownersCollectionRef: CollectionReference = Firestore.firestore().collection("owners")
     
     var db: Firestore!
     // The handler for the FIREBASE Auth state listener, to allow cancelling later.
     var handle: AuthStateDidChangeListenerHandle?
-    
+    var locationsListener: ListenerRegistration!
     
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
         
+        // initiate Firestore Snapshot Listeneer to update tableView
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             
             if Auth.auth().currentUser != nil {
@@ -42,18 +43,19 @@ class MyLocationsTableViewController: UITableViewController {
                 if let user = user {
                     
                     let userUID = user.uid
-                        
-                    let locationProfilePicsStoreageRef = Storage.storage().reference().child("profilePics/locations/\(userUID)")
                     
-                    self.locationsCollectionRef = self.db.collection("owners").document("\(userUID)").collection("locations")
-                    
-                    self.locationsCollectionRef.addSnapshotListener { querySnapshot, error in
+                    self.locationsListener = self.ownersCollectionRef.document("\(userUID)")
+                        .collection("locations")
+                        .addSnapshotListener { querySnapshot, error in
                         
                         guard let documents = querySnapshot?.documents else {
                             print("Error fetching documents: \(error!.localizedDescription) in MyLocationsTableViewController.swift -> viewWillAppear() - line 55.")
                             return
                         }
                         
+                        // reset the locations array to empty
+                        self.locations = []
+                        // repopulate it in case of updated data
                         for document in documents {
                             
                             let data = document.data()
@@ -61,17 +63,24 @@ class MyLocationsTableViewController: UITableViewController {
                             if let location = LocationFirestore(dictionary: data) {
                                 
                                 self.locations.append(location)
+                                
+                                
                             }
                         }
+                        // update the tableView
+                        self.tableView.reloadData()
                     }
                 }
             }
         }
-        
         // create fetch request and initialize results
-        initializeFetchedResultsController()
+//        initializeFetchedResultsController()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
         
-        tableView.reloadData()
+        // remove the Firestore SnapshotListener when no longer needed
+        locationsListener.remove()
     }
     
     override func viewDidLoad() {
@@ -81,7 +90,7 @@ class MyLocationsTableViewController: UITableViewController {
         navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
         
         // initial Firestore query to get data
-        loadTableDataFromFirestore()
+//        loadTableDataFromFirestore()
 
     }
     
@@ -99,9 +108,9 @@ class MyLocationsTableViewController: UITableViewController {
                     
                     let userUID = user.uid
                     
-                    self.locationsCollectionRef = self.db.collection("owners").document("\(userUID)").collection("locations")
-                    
-                    self.locationsCollectionRef.getDocuments() { querySnapshot, error in
+                    self.ownersCollectionRef.document("\(userUID)")
+                        .collection("locations")
+                        .getDocuments() { querySnapshot, error in
                         
                         guard let documents = querySnapshot?.documents else {
                             print("Error fetching documents: \(error!.localizedDescription) in MyLocationsTableViewController.swift -> viewWillAppear() - line 55.")
@@ -117,6 +126,7 @@ class MyLocationsTableViewController: UITableViewController {
                                 self.locations.append(location)
                             }
                         }
+                        self.tableView.reloadData()
                     }
                 }
             }
@@ -150,6 +160,7 @@ class MyLocationsTableViewController: UITableViewController {
         
         // Configure the cell...
         cell.location = location
+        cell.userUID = Auth.auth().currentUser?.uid ?? ""
 
         return cell
     }
@@ -195,69 +206,69 @@ class MyLocationsTableViewController: UITableViewController {
             // Get the new ViewController using segue.destinationViewController
             guard let destVC = segue.destination as? LocationInfoDetailsViewController else { return }
             let indexPath = tableView.indexPathForSelectedRow!
-            let location = fetchedResultsController.object(at: indexPath)
+            let location = locations[indexPath.row]
             
             // Pass the selected object to the new container
-            destVC.locationCD = location
+            /* destVC.locationCD = location */
         }
     }
 }
 
 
 // MARK: - NSFetchedREsultsController initializer method
-extension MyLocationsTableViewController: NSFetchedResultsControllerDelegate {
-    
-    func initializeFetchedResultsController() {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "LocationCD")
-        let locationNameSort = NSSortDescriptor(key: "locationName", ascending: true)
-        request.sortDescriptors = [locationNameSort]
-        
-        let moc = CoreDataStack.context
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil) as? NSFetchedResultsController<LocationCD>
-        fetchedResultsController.delegate = self
-        
-        do {
-            try fetchedResultsController.performFetch()
-        } catch {
-            fatalError("Failed to initialize FetchedResultsController: \(error)")
-        }
-    }
-    
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.beginUpdates()
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-        switch type {
-        case .insert:
-            tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
-        case .delete:
-            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .fade)
-        case .move:
-            break
-        case .update:
-            break
-        @unknown default:
-            fatalError()
-        }
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch type {
-        case .insert:
-            tableView.insertRows(at: [newIndexPath!], with: .fade)
-        case .delete:
-            tableView.deleteRows(at: [indexPath!], with: .fade)
-        case .update:
-            tableView.reloadRows(at: [indexPath!], with: .fade)
-        case .move:
-            tableView.moveRow(at: indexPath!, to: newIndexPath!)
-        @unknown default:
-            fatalError()
-        }
-    }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.endUpdates()
-    }
-}
+//extension MyLocationsTableViewController: NSFetchedResultsControllerDelegate {
+//
+//    func initializeFetchedResultsController() {
+//        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "LocationCD")
+//        let locationNameSort = NSSortDescriptor(key: "locationName", ascending: true)
+//        request.sortDescriptors = [locationNameSort]
+//
+//        let moc = CoreDataStack.context
+//        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil) as? NSFetchedResultsController<LocationCD>
+//        fetchedResultsController.delegate = self
+//
+//        do {
+//            try fetchedResultsController.performFetch()
+//        } catch {
+//            fatalError("Failed to initialize FetchedResultsController: \(error)")
+//        }
+//    }
+//
+//    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+//        tableView.beginUpdates()
+//    }
+//
+//    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+//        switch type {
+//        case .insert:
+//            tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
+//        case .delete:
+//            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .fade)
+//        case .move:
+//            break
+//        case .update:
+//            break
+//        @unknown default:
+//            fatalError()
+//        }
+//    }
+//
+//    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+//        switch type {
+//        case .insert:
+//            tableView.insertRows(at: [newIndexPath!], with: .fade)
+//        case .delete:
+//            tableView.deleteRows(at: [indexPath!], with: .fade)
+//        case .update:
+//            tableView.reloadRows(at: [indexPath!], with: .fade)
+//        case .move:
+//            tableView.moveRow(at: indexPath!, to: newIndexPath!)
+//        @unknown default:
+//            fatalError()
+//        }
+//    }
+//
+//    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+//        tableView.endUpdates()
+//    }
+//}
