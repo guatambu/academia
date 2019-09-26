@@ -151,24 +151,35 @@ extension LocationInfoDetailsViewController {
     
     func populateCompletedProfileInfo() {
 
-        guard let location = locationCD else {
-            print("ERROR: nil value found for locationCD in LocationInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 155.")
-            return
-        }
-        guard let address = location.address else {
-            print("ERROR: nil value found for location.address in LocationInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 159.")
-            return
-        }
-        guard let socialLinks = location.socialLinks else {
-            print("ERROR: nil value found for location.socalLinks in LocationInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 163.")
-            return
-        }
-        guard let locationPicData = location.locationPic else {
-            print("ERROR: nil value found for location.locationPic in LocationInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 167.")
+//        guard let location = locationCD else {
+//            print("ERROR: nil value found for locationCD in LocationInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 155.")
+//            return
+//        }
+//        guard let address = location.address else {
+//            print("ERROR: nil value found for location.address in LocationInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 159.")
+//            return
+//        }
+//        guard let socialLinks = location.socialLinks else {
+//            print("ERROR: nil value found for location.socalLinks in LocationInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 163.")
+//            return
+//        }
+//        guard let locationPicData = location.locationPic else {
+//            print("ERROR: nil value found for location.locationPic in LocationInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 167.")
+//            return
+//        }
+        
+        guard let location = locationFirestore else {
+            print("ERROR: nil value found for locationFirestore in LocationInfoDetailsViewController.swift -> populateCompletedProfileInfo() - line 155.")
             return
         }
         
-        // TODO: all these need to be switched to Firestore elements
+        
+        // Placeholder image
+        let placeholderImage = UIImage(named: "profile_pic_placeholder_image.png")
+        // convert location URL String to URL
+        let url = URL(string: location.profilePicStorageURL)
+        // profile pic imageView Load the image using SDWebImage
+        locationPicImageView.sd_setImage(with: url, placeholderImage: placeholderImage, options: [], completed: nil)
         // populate UI elements in VC
         locationNameLabelOutlet.text = location.locationName
         ownerNameLabelOutlet.text = locationFirestore?.ownerName
@@ -178,22 +189,20 @@ extension LocationInfoDetailsViewController {
         websiteLabelOutlet.text = location.website
         emailLabelOutlet.text = location.email
         // address outlets
-        addressLine1LabelOutlet.text = address.addressLine1
+        addressLine1LabelOutlet.text = location.addressLine1
         // addressLine2 is not a required field
-        if address.addressLine2 != "" {
-            addressLine2LabelOutlet.text = address.addressLine2
+        if location.addressLine2 != "" {
+            addressLine2LabelOutlet.text = location.addressLine2
         } else {
             addressLine2LabelOutlet.isHidden = true
         }
-        cityLabelOutlet.text = address.city
-        stateLabelOutlet.text = address.state
-        zipCodeLabelOutlet.text = address.zipCode
+        cityLabelOutlet.text = location.city
+        stateLabelOutlet.text = location.state
+        zipCodeLabelOutlet.text = location.zipCode
         // social media links outlets
-        socialLink1LabelOutlet.text = "Instagram: \(socialLinks.socialLink1 ?? "")"
-        socialLink2LabelOutlet.text = "facebook: \(socialLinks.socialLink2 ?? "")"
-        socialLink3LabelOutlet.text = "Twitter: \(socialLinks.socialLink3 ?? "")"
-        // profile pic imageView
-        locationPicImageView.image = UIImage(data: locationPicData)
+        socialLink1LabelOutlet.text = "Instagram: \(location.facebookLink ?? "")"
+        socialLink2LabelOutlet.text = "facebook: \(location.instagramLink ?? "")"
+        socialLink3LabelOutlet.text = "Twitter: \(location.twitterLink ?? "")"
     }
 }
 

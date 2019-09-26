@@ -67,6 +67,8 @@ class MyLocationsTableViewController: UITableViewController {
                                 
                             }
                         }
+                        // alphabetize the array according to location name
+                        self.locations = self.locations.sorted { $0.locationName.lowercased() < $1.locationName.lowercased() }
                         // update the tableView
                         self.tableView.reloadData()
                     }
@@ -88,49 +90,7 @@ class MyLocationsTableViewController: UITableViewController {
         
         // set VC title font styling
         navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
-        
-        // initial Firestore query to get data
-//        loadTableDataFromFirestore()
 
-    }
-    
-    
-    // MARK: loadData() from Firestore owner locations collections
-    func loadTableDataFromFirestore() {
-        
-        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-            
-            if Auth.auth().currentUser != nil {
-                
-                let user = Auth.auth().currentUser
-                
-                if let user = user {
-                    
-                    let userUID = user.uid
-                    
-                    self.ownersCollectionRef.document("\(userUID)")
-                        .collection("locations")
-                        .getDocuments() { querySnapshot, error in
-                        
-                        guard let documents = querySnapshot?.documents else {
-                            print("Error fetching documents: \(error!.localizedDescription) in MyLocationsTableViewController.swift -> viewWillAppear() - line 55.")
-                            return
-                        }
-                        
-                        for document in documents {
-                            
-                            let data = document.data()
-                            
-                            if let location = LocationFirestore(dictionary: data) {
-                                
-                                self.locations.append(location)
-                            }
-                        }
-                        self.tableView.reloadData()
-                    }
-                }
-            }
-        }
     }
 
 
@@ -208,7 +168,8 @@ class MyLocationsTableViewController: UITableViewController {
             let location = locations[indexPath.row]
             
             // Pass the selected object to the new container
-            /* destVC.locationCD = location */
+//            destVC.locationCD = location
+            destVC.locationFirestore = location
         }
     }
 }

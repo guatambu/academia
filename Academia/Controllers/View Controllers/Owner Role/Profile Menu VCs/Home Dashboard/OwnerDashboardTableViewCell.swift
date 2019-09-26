@@ -86,6 +86,7 @@ class OwnerDashboardTableViewCell: UITableViewCell {
             
         case "locationsSetUp":
             // encourage the creatioon of location(s), and then after we have that, show hom many locations the owner has
+            
             if LocationCDModelController.shared.locations.isEmpty {
                 // encourage the creatioon of location(s)
                 initialDashboardSetup()
