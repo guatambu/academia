@@ -31,6 +31,9 @@ class GroupInfoDetailsTableViewController: UITableViewController {
     var groupCD: GroupCD?
     var groupCDToEdit: GroupCD?
     
+    // Firebase properties
+    var groupFirestore: GroupFirestore?
+    
     
     // MARK: - ViewController Lifecycle Functions
     

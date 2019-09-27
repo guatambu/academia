@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 class OwnerGroupListTableViewController: UITableViewController {
     
@@ -15,12 +16,70 @@ class OwnerGroupListTableViewController: UITableViewController {
     
     let beltBuilder = BeltBuilder()
     
+    var groups: [GroupFirestore] = []
+    
+    // Firebase Firestore properties
+    var ownersCollectionRef: CollectionReference = Firestore.firestore().collection("owners")
+    
+    var db: Firestore!
+    // The handler for the FIREBASE Auth state listener, to allow cancelling later.
+    var handle: AuthStateDidChangeListenerHandle?
+    var groupsListener: ListenerRegistration!
+    
     
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
         
-        tableView.reloadData()
+        // initiate Firestore Snapshot Listeneer to update tableView
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            
+            if Auth.auth().currentUser != nil {
+                
+                let user = Auth.auth().currentUser
+                
+                if let user = user {
+                    
+                    let userUID = user.uid
+                    
+                    self.groupsListener = self.ownersCollectionRef.document("\(userUID)")
+                        .collection("groups")
+                        .addSnapshotListener { querySnapshot, error in
+                            
+                            guard let documents = querySnapshot?.documents else {
+                                print("Error fetching documents: \(error!.localizedDescription) in MyLocationsTableViewController.swift -> viewWillAppear() - line 55.")
+                                return
+                            }
+                            
+                            // reset the locations array to empty
+                            self.groups = []
+                            // repopulate it in case of updated data
+                            for document in documents {
+                                
+                                let data = document.data()
+                                
+                                if let group = GroupFirestore(dictionary: data) {
+                                    
+                                    self.groups.append(group)
+                                    
+                                }
+                            }
+                            // alphabetize the array according to location name
+                            self.groups = self.groups.sorted { $0.name.lowercased() < $1.name.lowercased() }
+                            // update the tableView
+                            self.tableView.reloadData()
+                    }
+                }
+            }
+        }
+        
+        //tableView.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        // remove the Firestore SnapshotListener when no longer needed
+        groupsListener.remove()
     }
 
     override func viewDidLoad() {
@@ -63,7 +122,9 @@ class OwnerGroupListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return GroupCDModelController.shared.groups.count
+//        return GroupCDModelController.shared.groups.count
+        
+        return groups.count
     }
 
     
@@ -71,10 +132,15 @@ class OwnerGroupListTableViewController: UITableViewController {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ownerStudentGroupsMenuCell", for: indexPath) as? StudentGroupGeneralMenuTableViewCell else { return UITableViewCell() }
         
-        let groupCD = GroupCDModelController.shared.groups[indexPath.row]
+//        let groupCD = GroupCDModelController.shared.groups[indexPath.row]
+//
+//        // Configure the cell...
+//        cell.title = groupCD.name
+        
+        let group = groups[indexPath.row]
         
         // Configure the cell...
-        cell.title = groupCD.name
+        cell.title = group.name
 
         return cell
     }
@@ -112,10 +178,15 @@ class OwnerGroupListTableViewController: UITableViewController {
         navigationController?.navigationBar.backgroundColor = beltBuilder.kidsWhiteCenterRibbonColor
         navigationController?.navigationBar.shadowImage = UIImage(contentsOfFile: "")
         
-        // get the desired groupCD for the selected cell
-        let groupCD = GroupCDModelController.shared.groups[indexPath.row]
-        // pass CoreData payment program on to InfoDetails view
-        destViewController.groupCD = groupCD
+//        // get the desired groupCD for the selected cell
+//        let groupCD = GroupCDModelController.shared.groups[indexPath.row]
+//        // pass CoreData payment program on to InfoDetails view
+//        destViewController.groupCD = groupCD
+        
+        // get the desired groupFirestore for the selected cell
+        let groupFirestore = groups[indexPath.row]
+        // pass groupFirestore on to InfoDetails view
+        destViewController.groupFirestore = groupFirestore
         
     }
 }

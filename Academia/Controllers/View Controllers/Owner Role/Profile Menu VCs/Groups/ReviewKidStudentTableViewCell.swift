@@ -22,6 +22,12 @@ class ReviewKidStudentTableViewCell: UITableViewCell {
         }
     }
     
+    var kidStudentFirestore: KidStudentFirestore? {
+        didSet {
+            updateViews()
+        }
+    }
+    
     
     // MARK: - awakeFromNib()
     

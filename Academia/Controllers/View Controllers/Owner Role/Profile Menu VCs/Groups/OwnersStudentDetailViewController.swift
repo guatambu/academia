@@ -54,6 +54,8 @@ class OwnersStudentDetailViewController: UIViewController {
     var studentAdultCD: StudentAdultCD?
     var ownerCD: OwnerCD?
     
+    var kidStudentFirestore: KidStudentFirestore?
+    var adultStudentFirestore: AdultStudentFirestore?
     
     // MARK: - ViewController Lifecycle Functions
     

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ReviewAndCreateGroupTableViewController: UITableViewController {
     
@@ -20,6 +21,9 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
     var kidMembersCD: [StudentKidCD]?
     var adultMembersCD: [StudentAdultCD]?
     
+    var kidMembersFirestore: [KidStudentFirestore]?
+    var adultMembersFirestore: [AdultStudentFirestore]?
+
     var inEditingMode: Bool?
     var groupToEdit: Group?
     
@@ -35,6 +39,14 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
     @IBOutlet weak var groupDescriptionLabelOutlet: UILabel!
     @IBOutlet weak var groupDescriptionTextView: UITextView!
     @IBOutlet weak var studentAdvisoryLabelOutlet: UILabel!
+    
+    // Firebase Firestore properties
+    var groupsCollectionRef: CollectionReference!
+    var activeGroupFirestore: LocationFirestore?
+    
+    var db: Firestore!
+    // The handler for the FIREBASE Auth state listener, to allow cancelling later.
+    var handle: AuthStateDidChangeListenerHandle?
 
     
     // MARK: - ViewController Lifecycle Functions
@@ -72,6 +84,9 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
         navigationController?.navigationBar.titleTextAttributes = beltBuilder.gillSansLightRed
         
         title = "Please Review Your Info"
+        
+        // Firestore Test properties setup
+        db = Firestore.firestore()
     }
     
     
@@ -81,6 +96,9 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
         
         // create GroupCD data model object
         createAndSaveGroupCoreDataModel()
+        
+        // create GroupFirestore data model object
+        createGroupFirestoreDataModel()
             
 //        // create the new location in the LocationModelController source of truth
 //        createGroup()
@@ -131,19 +149,28 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        guard let kidMembersCD = kidMembersCD, let adultMembersCD = adultMembersCD else {
+//        guard let kidMembersCD = kidMembersCD, let adultMembersCD = adultMembersCD else {
+//
+//            print("ERROR: nil value for either kidMembersCD and/or adultMemebersCD array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, numberOfRowsInSection:) - line 133")
+//            return 0
+//        }
+        
+        guard let kidMembersFirestore = kidMembersFirestore, let adultMembersFirestore = adultMembersFirestore else {
             
-            print("ERROR: nil value for either kidMembersCD and/or adultMemebersCD array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, numberOfRowsInSection:) - line 133")
+            print("ERROR: nil value for either kidMembersFirestore and/or adultMemebersFirestore array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, numberOfRowsInSection:) - line 160")
             return 0
         }
         
         if section == 0 {
             
-            return kidMembersCD.count
+//            return kidMembersCD.count
+            
+            return kidMembersFirestore.count
             
         } else if section == 1 {
 
-            return adultMembersCD.count
+//            return adultMembersCD.count
+            return adultMembersFirestore.count
             
         } else {
             return 0
@@ -152,9 +179,16 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let kidMembersCD = kidMembersCD, let adultMembersCD = adultMembersCD else {
+//        guard let kidMembersCD = kidMembersCD, let adultMembersCD = adultMembersCD else {
+//
+//            print("ERROR: nil value for either kidMembersCD and/or adultMemebersCD array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, cellForRowAt:) - line 154")
+//            return UITableViewCell()
+//        }
+        
+        guard let kidMembersFirestore = kidMembersFirestore, let adultMembersFirestore = adultMembersFirestore else {
             
-            print("ERROR: nil value for either kidMembersCD and/or adultMemebersCD array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, cellForRowAt:) - line 154")
+            print("ERROR: nil value for either kidMembersFirestore and/or adultMemebersFirestore array in ReviewAndCreateGroupTableViewController.swift -> tableView(_ tableView:, numberOfRowsInSection:) - line 190")
+            
             return UITableViewCell()
         }
         
@@ -163,7 +197,9 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "reviewKidStudentCell", for: indexPath) as! ReviewKidStudentTableViewCell
             
-            cell.kidStudentCD = kidMembersCD[indexPath.row]
+//            cell.kidStudentCD = kidMembersCD[indexPath.row]
+            
+            cell.kidStudentFirestore = kidMembersFirestore[indexPath.row]
             
             return cell
             
@@ -171,7 +207,9 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "reviewAdultStudentCell", for: indexPath) as! ReviewAdultStudentTableViewCell
             
-            cell.adultStudentCD = adultMembersCD[indexPath.row]
+//            cell.adultStudentCD = adultMembersCD[indexPath.row]
+            
+            cell.adultStudentFirestore = adultMembersFirestore[indexPath.row]
             
             return cell
         }
@@ -207,46 +245,68 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
         if indexPath.section == 0 {
             // kidStudent setup
             
-            // CoreData version
-            guard let kidMembersCD = kidMembersCD else {
+//            // CoreData version
+//            guard let kidMembersCD = kidMembersCD else {
+//
+//                print("ERROR: nil value for kidMembersCD array in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 242.")
+//                return
+//            }
+//
+//            let kidMembersCDSet = NSSet(array: kidMembersCD)
+//
+//            let nameSort = NSSortDescriptor(key: "firstName", ascending: true)
+//            let kids = kidMembersCDSet.sortedArray(using: [nameSort])
+//
+//            guard let studentKidCD = kids[indexPath.row] as? StudentKidCD else {
+//                print("ERROR: nil value for studentKidCD in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 252.")
+//                return
+//            }
+//
+//            destViewController.studentKidCD = studentKidCD
+            
+            guard let kidMembersFirestore = kidMembersFirestore else {
                 
-                print("ERROR: nil value for kidMembersCD array in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 242.")
+                print("ERROR: nil value for kidMembersFirestore array in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 269.")
+                
                 return
             }
             
-            let kidMembersCDSet = NSSet(array: kidMembersCD)
+            let kidStudentFirestore = kidMembersFirestore[indexPath.row] 
             
-            let nameSort = NSSortDescriptor(key: "firstName", ascending: true)
-            let kids = kidMembersCDSet.sortedArray(using: [nameSort])
-            
-            guard let studentKidCD = kids[indexPath.row] as? StudentKidCD else {
-                print("ERROR: nil value for studentKidCD in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 252.")
-                return
-            }
-            
-            destViewController.studentKidCD = studentKidCD
+            destViewController.kidStudentFirestore = kidStudentFirestore
             
         } else if indexPath.section == 1 {
             // adultStudent setup      
             
-            // CoreData version
-            guard let adultMembersCD = adultMembersCD else {
+//            // CoreData version
+//            guard let adultMembersCD = adultMembersCD else {
+//
+//                print("ERROR: nil value for adultMembersCD array in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 288.")
+//                return
+//            }
+//
+//            let adultMembersCDSet = NSSet(array: adultMembersCD)
+//
+//            let nameSort = NSSortDescriptor(key: "firstName", ascending: true)
+//            let adults = adultMembersCDSet.sortedArray(using: [nameSort])
+//
+//            guard let studentAdultCD = adults[indexPath.row] as? StudentAdultCD else {
+//                print("ERROR: nil value for studentAdultCD in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 298.")
+//                return
+//            }
+//
+//            destViewController.studentAdultCD = studentAdultCD
+            
+            guard let adultMembersFirestore = adultMembersFirestore else {
                 
-                print("ERROR: nil value for adultMembersCD array in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 288.")
+                print("ERROR: nil value for adultMembersFirestore array in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 288.")
+                
                 return
             }
             
-            let adultMembersCDSet = NSSet(array: adultMembersCD)
+            let adultStudentFirestore = adultMembersFirestore[indexPath.row]
             
-            let nameSort = NSSortDescriptor(key: "firstName", ascending: true)
-            let adults = adultMembersCDSet.sortedArray(using: [nameSort])
-            
-            guard let studentAdultCD = adults[indexPath.row] as? StudentAdultCD else {
-                print("ERROR: nil value for studentAdultCD in ReviewAndCreateGroupTableViewController.swift -> tableView(tableView: didSelectRowAt:) - line 298.")
-                return
-            }
-            
-            destViewController.studentAdultCD = studentAdultCD
+            destViewController.adultStudentFirestore = adultStudentFirestore
             
         }
     }
@@ -325,6 +385,39 @@ extension ReviewAndCreateGroupTableViewController {
         GroupCDModelController.shared.add(group: newGroupCD)
         // save to CoreData
         OwnerCDModelController.shared.saveToPersistentStorage()
+    }
+    
+    func createGroupFirestoreDataModel() {
+        
+        guard let groupName = groupName else { print("fail groupName"); return }
+        guard let active = active else { print("fail active");  return }
+        guard let groupDescription = groupDescription else { print("fail groupDescription"); return }
+        
+        // create FIREBASE FIRESTORE location data object and save to cloud Firestore
+        if Auth.auth().currentUser != nil {
+            
+            let user = Auth.auth().currentUser
+            
+            if let user = user {
+                
+                let userUID = user.uid
+    
+                // FIREBASE FIRESTORE CREATE AND SAVE NEW OWNER MODEL
+                let group = GroupFirestore(isActive: active, name: groupName, groupDescription: groupDescription)
+                            
+                // set the Firebase Firestore Location collection reference
+                groupsCollectionRef = Firestore.firestore().collection("owners").document(userUID).collection("groups")
+                            
+                groupsCollectionRef.document().setData(group.dictionary) { (error) in
+                    
+                    if let error = error {
+                        print("ERROR: \(error.localizedDescription) error occurred while trying to save location to Firebase Firestore in ReviewAndCreateLocationVC -> createLocation() - line 237.")
+                    } else {
+                        print("new location data successfully saved to Firebase Firestore in owner's location collection")
+                    }
+                }
+            }
+        }        
     }
 }
 
