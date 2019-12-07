@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 class GroupInfoDetailsTableViewController: UITableViewController {
 
@@ -31,18 +32,107 @@ class GroupInfoDetailsTableViewController: UITableViewController {
     var groupCD: GroupCD?
     var groupCDToEdit: GroupCD?
     
-    // Firebase properties
-    var groupFirestore: GroupFirestore?
+    // Firebase Firestore properties
+    var groupFirestoreTuple: (String, GroupFirestore)?
+    var kidMembers: [KidStudentFirestore]?
+    var adultMembers: [AdultStudentFirestore]?
+    
+    var ownersCollectionRef: CollectionReference = Firestore.firestore().collection("owners")
+    var kidStudentsCollectionRef: CollectionReference = Firestore.firestore().collection("kidStudents")
+    var adultStudentsCollectionRef: CollectionReference = Firestore.firestore().collection("adultStudents")
+    
+    var db: Firestore!
+    // The handler for the FIREBASE Auth state listener, to allow cancelling later.
+    var handle: AuthStateDidChangeListenerHandle?
+    var groupsListener: ListenerRegistration!
     
     
     // MARK: - ViewController Lifecycle Functions
     
     override func viewWillAppear(_ animated: Bool) {
         
-        populateCompletedGroupInfo()
-        
-        tableView.reloadData()
+        // initiate Firestore Snapshot Listeneer to update tableView
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            
+            if Auth.auth().currentUser != nil {
+                    
+                guard /*let groupDocumentID = self.groupFirestoreTuple?.0,*/ let group = self.groupFirestoreTuple?.1 else {
+                    
+                    print("ERROR: nil value found for groupFirestoreTuple value(s) in GroupInfoDetailsTableViewController.swift -> viewWillAppear() - line 64.")
+                    return
+                }
+            
+// TODO: we will want to update changes which include additions to either of the two member arrays, or the various group details themselves and call the Firestore db in the editing process when we save
+                
+                // reset the members arrays array to empty
+                self.kidMembers = []
+                self.adultMembers = []
+                
+                if let kidMembers = group.kidMembers {
+                    // iterate through the kidMembers array of UID strings
+                    for kidUID in kidMembers {
+                        // create the specific document Referebce with kidUID
+                        let docRef = self.kidStudentsCollectionRef.document(kidUID)
+                        // go get the kidStudent document in Firestore
+                        docRef.getDocument { (document, error) in
+                            // run checks to see if the document.data() exists
+                            if let data = document?.data() {
+                                // create the correspomding data object
+                                if let kid = KidStudentFirestore(dictionary: data) {
+                                    // append to the specfic mebers array
+                                    self.kidMembers?.append(kid)
+                                }
+                            } else {
+                                print("ERROR: value for kidUID Document.data() does not exist found for in GroupInfoDetailsTableViewController.swift -> viewWillAppear() - line 86. ")
+                            }
+                        }
+                    }
+                    
+                } else {
+                    print("ERROR: nil value found for group.kidMembers array in GroupInfoDetailsTableViewController.swift -> viewWillAppear() - line 92.")
+                }
+                
+                if let adultMembers = group.adultMembers {
+                    
+                    // iterate through the kidMembers array of UID strings
+                    for adultUID in adultMembers {
+                        // create the specific document Referebce with kidUID
+                        let docRef = self.kidStudentsCollectionRef.document(adultUID)
+                        // go get the kidStudent document in Firestore
+                        docRef.getDocument { (document, error) in
+                            // run checks to see if the document.data() exists
+                            if let data = document?.data() {
+                                // create the correspomding data object
+                                if let adult = AdultStudentFirestore(dictionary: data) {
+                                    // append to the specfic mebers array
+                                    self.adultMembers?.append(adult)
+                                }
+                            } else {
+                                print("ERROR: value for adultUID Document.data() does not exist found for in GroupInfoDetailsTableViewController.swift -> viewWillAppear() - line 111. ")
+                            }
+                        }
+                    }
+                    
+                } else {
+                    print("ERROR: nil value found for group.adultMembers array in GroupInfoDetailsTableViewController.swift -> viewWillAppear() - line 117.")
+                }
+                
+                // alphabetize the member arrays according to location name
+                self.kidMembers = self.kidMembers?.sorted { $0.firstName.lowercased() < $1.firstName.lowercased() }
+                self.adultMembers = self.adultMembers?.sorted { $0.firstName.lowercased() < $1.firstName.lowercased() }
+            
+                // populate the group info details
+                self.populateCompletedGroupInfo()
+                // update the students tableView
+                self.tableView.reloadData()
+                
+            }
+        }
+    //        populateCompletedGroupInfo()
+    //
+    //        tableView.reloadData()
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +142,8 @@ class GroupInfoDetailsTableViewController: UITableViewController {
         
         title = "Please Review Your Info"
         
+        // set Firestore b property
+        db = Firestore.firestore()
     }
     
     

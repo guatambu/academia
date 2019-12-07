@@ -35,7 +35,7 @@ class PrivacyLastPageViewController: UIViewController {
 }
 
 
-// MARK: - returnToOwnerProfile() funciton to bring us back to the owner profile menu TVC
+// MARK: - returnToOwnerProfile() function to bring us back to the owner profile menu TVC
 extension UIViewController {
     
     func returnToOwnerProfile() {

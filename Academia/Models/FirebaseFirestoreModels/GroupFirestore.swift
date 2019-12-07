@@ -21,6 +21,8 @@ struct GroupFirestore {
     var isActive: Bool
     var name: String
     var groupDescription: String
+    var kidMembers: [String]? // an array of userID to query documentIDs
+    var adultMembers: [String]? // an array of userID to query documentIDs
     
     
     var dictionary: [String : Any] {
@@ -29,7 +31,9 @@ struct GroupFirestore {
             "dateEdited" : dateEdited,
             "isActive" : isActive,
             "name" : name,
-            "groupDescription" : groupDescription
+            "groupDescription" : groupDescription,
+            "kidMembers" : kidMembers as Any,
+            "adultMembers" : adultMembers as Any
         ]
     }
     
@@ -39,7 +43,9 @@ struct GroupFirestore {
          dateEdited: Timestamp = Timestamp(),
          isActive: Bool,
          name: String,
-         groupDescription: String
+         groupDescription: String,
+         kidMembers: [String]?,
+         adultMembers: [String]?
         ) {
         
         self.dateCreated = dateCreated
@@ -47,6 +53,8 @@ struct GroupFirestore {
         self.isActive = isActive
         self.name = name
         self.groupDescription = groupDescription
+        self.kidMembers = kidMembers
+        self.adultMembers = adultMembers
     }
 }
 
@@ -85,6 +93,18 @@ extension GroupFirestore: GroupFirestoreModelSerializable {
             return nil
         }
         
-        self.init(dateCreated: dateCreated, dateEdited: dateEdited, isActive: isActive, name: name, groupDescription: groupDescription)
+        guard let kidMembers = dictionary["kidMembers"] as? [String] else {
+            
+            print("ERROR: nil value found for kidMembers in firestore dictionary in GroupFirestore.swift -> init(dictionary:) - line 84.")
+            return nil
+        }
+        
+        guard let adultMembers = dictionary["adultMembers"] as? [String] else {
+            
+            print("ERROR: nil value found for adultMembers in firestore dictionary in GroupFirestore.swift -> init(dictionary:) - line 84.")
+            return nil
+        }
+        
+        self.init(dateCreated: dateCreated, dateEdited: dateEdited, isActive: isActive, name: name, groupDescription: groupDescription, kidMembers: kidMembers, adultMembers: adultMembers)
     }
 }

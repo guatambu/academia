@@ -16,12 +16,14 @@ protocol KidStudentFirestoreModelSerializable {
 
 struct KidStudentFirestore {
     
+    var uid: String?
     var isKid: Bool
     var academyChoice: String
     var dateCreated: Timestamp
     var dateEdited: Timestamp
     var birthdate: Timestamp
     var mostRecentPromotion: Timestamp?
+    var profilePicStorageURL: String
     //var studentStatus: StudentStatusCD?
     var firstName: String
     var lastName: String
@@ -43,16 +45,22 @@ struct KidStudentFirestore {
     var numberOfClassesAttendedSinceLastPromotion: Int
     var elligibleForPromotion: Bool
     var elligibleForNextBelt: Bool
+    // students stats
+    var rankingValue: String?
+    var weight: String?
+    var weightClass: String?
     
     
     var dictionary: [String : Any] {
         return [
+            "uid" : uid ?? "",
             "isKid" : isKid,
             "academyChoice" : academyChoice,
             "dateCreated" : dateCreated,
             "dateEdited" : dateEdited,
             "birthdate" : birthdate,
             "mostRecentPromotion" : mostRecentPromotion ?? Date(),
+            "profilePicStorageURL" : profilePicStorageURL,
             // "studentStatus" : studentStatus,
             "firstName" : firstName,
             "lastName" : lastName,
@@ -72,17 +80,23 @@ struct KidStudentFirestore {
             "numberOfStripes" : numberOfStripes,
             "numberOfClassesAttendedSinceLastPromotion" : numberOfClassesAttendedSinceLastPromotion,
             "elligibleForPromotion" : elligibleForPromotion,
-            "elligibleForNextBelt" : elligibleForNextBelt
+            "elligibleForNextBelt" : elligibleForNextBelt,
+            "rankingValue" : rankingValue ?? "",
+            "weight" : weight ?? "",
+            "weightCLass" : weightClass ?? ""
         ]
     }
     
     // initializer to allow creation of an KidStudentFirestore object
-    init(isKid: Bool = true,
+    init(
+         uid: String?,
+         isKid: Bool = true,
          academyChoice: String,
          dateCreated: Timestamp = Timestamp(),
          dateEdited: Timestamp = Timestamp(),
          birthdate: Timestamp,
          mostRecentPromotion: Timestamp?,
+         profilePicStorageURL: String,
          //studentStatus: StudentStatusCD?,
          firstName: String,
          lastName: String,
@@ -102,15 +116,20 @@ struct KidStudentFirestore {
          numberOfStripes: Int,
          numberOfClassesAttendedSinceLastPromotion: Int,
          elligibleForPromotion: Bool = false,
-         elligibleForNextBelt: Bool = false
+         elligibleForNextBelt: Bool = false,
+         rankingValue: String?,
+         weight: String?,
+         weightClass: String?
          ) {
         
+        self.uid = uid
         self.isKid = isKid
         self.academyChoice = academyChoice
         self.dateCreated = dateCreated
         self.dateEdited = dateEdited
         self.birthdate = birthdate
         self.mostRecentPromotion = mostRecentPromotion
+        self.profilePicStorageURL = profilePicStorageURL
         //self.studentStatus = studentStatus
         self.firstName = firstName
         self.lastName = lastName
@@ -131,6 +150,9 @@ struct KidStudentFirestore {
         self.numberOfClassesAttendedSinceLastPromotion = numberOfClassesAttendedSinceLastPromotion
         self.elligibleForPromotion = elligibleForPromotion
         self.elligibleForNextBelt = elligibleForNextBelt
+        self.rankingValue = rankingValue
+        self.weight = weight
+        self.weightClass = weightClass
     }
 }
 
@@ -141,37 +163,43 @@ extension KidStudentFirestore: KidStudentFirestoreModelSerializable {
         
         guard let isKid = dictionary["isKid"] as? Bool else {
             
-            print("ERROR: nil value found for isKid in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 144.")
+            print("ERROR: nil value found for isKid in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 148.")
             return nil
         }
         
         guard let academyChoice = dictionary["academyChoice"] as? String else {
             
-            print("ERROR: nil value found for isKid in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 150.")
+            print("ERROR: nil value found for isKid in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 154.")
             return nil
         }
         
         guard let dateCreated = dictionary["dateCreated"] as? Timestamp else {
             
-            print("ERROR: nil value found for dateCreated in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 156.")
+            print("ERROR: nil value found for dateCreated in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 160.")
             return nil
         }
         
         guard let dateEdited = dictionary["dateEdited"] as? Timestamp else {
             
-            print("ERROR: nil value found for dateEdited in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 162.")
+            print("ERROR: nil value found for dateEdited in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 166.")
             return nil
         }
         
         guard let birthdate = dictionary["birthdate"] as? Timestamp else {
             
-            print("ERROR: nil value found for birthdate in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 168.")
+            print("ERROR: nil value found for birthdate in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 172.")
             return nil
         }
         
         guard let mostRecentPromotion = dictionary["mostRecentPromotion"] as? Timestamp else {
             
-            print("ERROR: nil value found for mostRecentPromotion in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 174.")
+            print("ERROR: nil value found for mostRecentPromotion in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 178.")
+            return nil
+        }
+        
+        guard let profilePicStorageURL = dictionary["profilePicStorageURL"] as? String else {
+            
+            print("ERROR: nil value found for profilePicStorageURL in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 184.")
             return nil
         }
         
@@ -183,119 +211,143 @@ extension KidStudentFirestore: KidStudentFirestoreModelSerializable {
         
         guard let firstName = dictionary["firstName"] as? String else {
             
-            print("ERROR: nil value found for firstName in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 186.")
+            print("ERROR: nil value found for firstName in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 196.")
             return nil
         }
         
         guard let lastName = dictionary["lastName"] as? String else {
             
-            print("ERROR: nil value found for lastName in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 192.")
+            print("ERROR: nil value found for lastName in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 202.")
             return nil
         }
         
         guard let parentGuardian = dictionary["parentGuardian"] as? String else {
             
-            print("ERROR: nil value found for parentGuardian in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 198.")
+            print("ERROR: nil value found for parentGuardian in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 208.")
             return nil
         }
         
         guard let addressLine1 = dictionary["addressLine1"] as? String else {
             
-            print("ERROR: nil value found for addressLine1 in firestore dictionary in AddressFirestore.swift -> init(dictionary:) - line 204.")
+            print("ERROR: nil value found for addressLine1 in firestore dictionary in AddressFirestore.swift -> init(dictionary:) - line 214.")
             return nil
         }
         
         guard let addressLine2 = dictionary["addressLine2"] as? String else {
             
-            print("ERROR: nil value found addressLine2 in firestore dictionary in AddressFirestore.swift -> init(dictionary:) - line 210.")
+            print("ERROR: nil value found addressLine2 in firestore dictionary in AddressFirestore.swift -> init(dictionary:) - line 220.")
             return nil
         }
         
         guard let city = dictionary["city"] as? String else {
             
-            print("ERROR: nil value found for city in firestore dictionary in AddressFirestore.swift -> init(dictionary:) - line 216.")
+            print("ERROR: nil value found for city in firestore dictionary in AddressFirestore.swift -> init(dictionary:) - line 226.")
             return nil
         }
         
         guard let state = dictionary["state"] as? String else {
             
-            print("ERROR: nil value found for state in firestore dictionary in AddressFirestore.swift -> init(dictionary:) - line 222.")
+            print("ERROR: nil value found for state in firestore dictionary in AddressFirestore.swift -> init(dictionary:) - line 232.")
             return nil
         }
         
         guard let zipCode = dictionary["zipCode"] as? String else {
             
-            print("ERROR: nil value found for zipCode in firestore dictionary in AddressFirestore.swift -> init(dictionary:) - line 228.")
+            print("ERROR: nil value found for zipCode in firestore dictionary in AddressFirestore.swift -> init(dictionary:) - line 238.")
             return nil
         }
         
         guard let phone = dictionary["phone"] as? String else {
             
-            print("ERROR: nil value found for phone in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 234.")
+            print("ERROR: nil value found for phone in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 244.")
             return nil
         }
         
         guard let mobile = dictionary["mobile"] as? String else {
             
-            print("ERROR: nil value found for mobile in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 240.")
+            print("ERROR: nil value found for mobile in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 250.")
             return nil
         }
         
         guard let email = dictionary["email"] as? String else {
             
-            print("ERROR: nil value found for email in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 246.")
+            print("ERROR: nil value found for email in firestore dictionary in KidStudentFirestore.swift -> init(dictionary:) - line 256.")
             return nil
         }
         
         guard let emergencyContactName = dictionary["emergencyContactName"] as? String else {
             
-            print("ERROR: nil value found for emergencyContactName in firestore dictionary in EmergencyContactFirestore.swift -> init(dictionary:) - line 252.")
+            print("ERROR: nil value found for emergencyContactName in firestore dictionary in EmergencyContactFirestore.swift -> init(dictionary:) - line 262.")
             return nil
         }
         
         guard let emergencyContactPhone = dictionary["emergencyContactPhone"] as? String else {
             
-            print("ERROR: nil value found emergencyContactPhone in firestore dictionary in EmergencyContactFirestore.swift -> init(dictionary:) - line 258.")
+            print("ERROR: nil value found emergencyContactPhone in firestore dictionary in EmergencyContactFirestore.swift -> init(dictionary:) - line 268.")
             return nil
         }
         
         guard let emergencyContactRelationship = dictionary["emergencyContactRelationship"] as? String else {
             
-            print("ERROR: nil value found for emergencyContactRelationship in firestore dictionary in EmergencyContactFirestore.swift -> init(dictionary:) - line 264.")
+            print("ERROR: nil value found for emergencyContactRelationship in firestore dictionary in EmergencyContactFirestore.swift -> init(dictionary:) - line 274.")
             return nil
         }
         
         guard let beltLevel = dictionary["beltLevel"] as? String else {
             
-            print("ERROR: nil value found for beltLevel in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 270.")
+            print("ERROR: nil value found for beltLevel in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 280.")
             return nil
         }
         
         guard let numberOfStripes = dictionary["numberOfStripes"] as? Int else {
             
-            print("ERROR: nil value found for numberOfStripes in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 276.")
+            print("ERROR: nil value found for numberOfStripes in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 286.")
             return nil
         }
         
         guard let numberOfClassesAttendedSinceLastPromotion = dictionary["numberOfClassesAttendedSinceLastPromotion"] as? Int else {
             
-            print("ERROR: nil value found for numberOfClassesAttendedSinceLastPromotion in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 282.")
+            print("ERROR: nil value found for numberOfClassesAttendedSinceLastPromotion in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 292.")
             return nil
         }
         
         guard let elligibleForPromotion = dictionary["elligibleForPromotion"] as? Bool else {
             
-            print("ERROR: nil value found elligibleForPromotion in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 288.")
+            print("ERROR: nil value found elligibleForPromotion in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 298.")
             return nil
         }
         
         guard let elligibleForNextBelt = dictionary["elligibleForNextBelt"] as? Bool else {
             
-            print("ERROR: nil value found elligibleForNextBelt in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 294.")
+            print("ERROR: nil value found elligibleForNextBelt in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 304.")
             return nil
         }
         
-        self.init(isKid: isKid, academyChoice: academyChoice, dateCreated: dateCreated, dateEdited: dateEdited, birthdate: birthdate, mostRecentPromotion: mostRecentPromotion, firstName: firstName, lastName: lastName, parentGuardian: parentGuardian, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, phone: phone, mobile: mobile, email: email, emergencyContactName: emergencyContactName, emergencyContactPhone: emergencyContactPhone, emergencyContactRelationship: emergencyContactRelationship, beltLevel: beltLevel, numberOfStripes: numberOfStripes, numberOfClassesAttendedSinceLastPromotion: numberOfClassesAttendedSinceLastPromotion, elligibleForPromotion: elligibleForPromotion, elligibleForNextBelt: elligibleForNextBelt)
+        guard let uid = dictionary["uid"] as? String else {
+            
+            print("ERROR: nil value found for uid in firestore dictionary in OwnerFirestore.swift -> init(dictionary:) - line 310.")
+            return nil
+        }
+        
+        guard let rankingValue = dictionary["rankingValue"] as? String else {
+            
+            print("ERROR: nil value found rankingValue in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 334.")
+            return nil
+        }
+        
+        guard let weight = dictionary["weight"] as? String else {
+            
+            print("ERROR: nil value found weight in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 340.")
+            return nil
+        }
+        
+        guard let weightClass = dictionary["weightClass"] as? String else {
+            
+            print("ERROR: nil value found weightCLass in firestore dictionary in BeltFirestore.swift -> init(dictionary:) - line 346.")
+            return nil
+        }
+        
+        self.init(uid: uid, isKid: isKid, academyChoice: academyChoice, dateCreated: dateCreated, dateEdited: dateEdited, birthdate: birthdate, mostRecentPromotion: mostRecentPromotion, profilePicStorageURL: profilePicStorageURL, firstName: firstName, lastName: lastName, parentGuardian: parentGuardian, addressLine1: addressLine1, addressLine2: addressLine2, city: city, state: state, zipCode: zipCode, phone: phone, mobile: mobile, email: email, emergencyContactName: emergencyContactName, emergencyContactPhone: emergencyContactPhone, emergencyContactRelationship: emergencyContactRelationship, beltLevel: beltLevel, numberOfStripes: numberOfStripes, numberOfClassesAttendedSinceLastPromotion: numberOfClassesAttendedSinceLastPromotion, elligibleForPromotion: elligibleForPromotion, elligibleForNextBelt: elligibleForNextBelt, rankingValue: rankingValue, weight: weight, weightClass: weightClass)
     }
 }
 

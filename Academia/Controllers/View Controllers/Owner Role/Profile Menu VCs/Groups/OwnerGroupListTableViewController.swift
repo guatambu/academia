@@ -16,7 +16,8 @@ class OwnerGroupListTableViewController: UITableViewController {
     
     let beltBuilder = BeltBuilder()
     
-    var groups: [GroupFirestore] = []
+    // an array of tuples that allow the documentID value and the group object to be grouped and passed together
+    var groups: [(String, GroupFirestore)] = []
     
     // Firebase Firestore properties
     var ownersCollectionRef: CollectionReference = Firestore.firestore().collection("owners")
@@ -47,7 +48,7 @@ class OwnerGroupListTableViewController: UITableViewController {
                         .addSnapshotListener { querySnapshot, error in
                             
                             guard let documents = querySnapshot?.documents else {
-                                print("Error fetching documents: \(error!.localizedDescription) in MyLocationsTableViewController.swift -> viewWillAppear() - line 55.")
+                                print("Error fetching documents: \(error!.localizedDescription) in OwnerGroupListTableViewController.swift -> viewWillAppear() - line 55.")
                                 return
                             }
                             
@@ -60,12 +61,11 @@ class OwnerGroupListTableViewController: UITableViewController {
                                 
                                 if let group = GroupFirestore(dictionary: data) {
                                     
-                                    self.groups.append(group)
-                                    
+                                    self.groups.append((document.documentID, group))
                                 }
                             }
                             // alphabetize the array according to location name
-                            self.groups = self.groups.sorted { $0.name.lowercased() < $1.name.lowercased() }
+                            self.groups = self.groups.sorted { $0.1.name.lowercased() < $1.1.name.lowercased() }
                             // update the tableView
                             self.tableView.reloadData()
                     }
@@ -91,6 +91,8 @@ class OwnerGroupListTableViewController: UITableViewController {
         title = "Student Groups"
         
         navigationController?.navigationBar.shadowImage = UIImage()
+        
+        db = Firestore.firestore()
     }
     
     
@@ -140,7 +142,7 @@ class OwnerGroupListTableViewController: UITableViewController {
         let group = groups[indexPath.row]
         
         // Configure the cell...
-        cell.title = group.name
+        cell.title = group.1.name
 
         return cell
     }
@@ -184,9 +186,9 @@ class OwnerGroupListTableViewController: UITableViewController {
 //        destViewController.groupCD = groupCD
         
         // get the desired groupFirestore for the selected cell
-        let groupFirestore = groups[indexPath.row]
+        let groupFirestoreTuple = groups[indexPath.row]
         // pass groupFirestore on to InfoDetails view
-        destViewController.groupFirestore = groupFirestore
+        destViewController.groupFirestoreTuple = groupFirestoreTuple
         
     }
 }

@@ -114,7 +114,7 @@ class OwnerModelController {
         owner.dateEdited = Date()
         
         if let isInstructor = isInstructor {
-        owner.isInstructor = isInstructor
+            owner.isInstructor = isInstructor
         }
         if let birthdate = birthdate {
             owner.birthdate = birthdate

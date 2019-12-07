@@ -42,7 +42,7 @@ class ReviewAndCreateGroupTableViewController: UITableViewController {
     
     // Firebase Firestore properties
     var groupsCollectionRef: CollectionReference!
-    var activeGroupFirestore: LocationFirestore?
+    var activeGroupFirestore: GroupFirestore?
     
     var db: Firestore!
     // The handler for the FIREBASE Auth state listener, to allow cancelling later.
@@ -392,6 +392,8 @@ extension ReviewAndCreateGroupTableViewController {
         guard let groupName = groupName else { print("fail groupName"); return }
         guard let active = active else { print("fail active");  return }
         guard let groupDescription = groupDescription else { print("fail groupDescription"); return }
+        guard let kidMembersFirestore = kidMembersFirestore else { print("fail kidMembersFirestore"); return }
+        guard let adultMembersFirestore = adultMembersFirestore else { print("fail adultMembersFirestore"); return }
         
         // create FIREBASE FIRESTORE location data object and save to cloud Firestore
         if Auth.auth().currentUser != nil {
@@ -403,7 +405,7 @@ extension ReviewAndCreateGroupTableViewController {
                 let userUID = user.uid
     
                 // FIREBASE FIRESTORE CREATE AND SAVE NEW OWNER MODEL
-                let group = GroupFirestore(isActive: active, name: groupName, groupDescription: groupDescription)
+                let group = GroupFirestore(isActive: active, name: groupName, groupDescription: groupDescription, kidMembers: <#T##[String]?#>, adultMembers: <#T##[String]?#>)
                             
                 // set the Firebase Firestore Location collection reference
                 groupsCollectionRef = Firestore.firestore().collection("owners").document(userUID).collection("groups")
